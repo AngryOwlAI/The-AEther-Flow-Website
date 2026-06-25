@@ -868,13 +868,65 @@ Deployment record - 2026-06-25:
     deployment configuration was present.
   - The likely Pages candidate
     `https://the-aether-flow-website.pages.dev/` did not resolve.
-- Deployment verification result: incomplete. The accepted website packet is
+- Initial deployment verification result: incomplete. The accepted website packet is
   pushed to GitHub, but no production deployment URL or build status is
   available from the current repository and authenticated local state.
 - Required bounded follow-up: connect or expose an authenticated deployment
   target, then rerun Phase 10 verification against the deployed URL. The
   smallest sufficient approval is:
   `Approve connecting this repository to Cloudflare Pages production on main and provide dashboard/API access or the deployed Pages URL.`
+
+Deployment completion update - 2026-06-25:
+
+- Cloudflare authorization completed through Wrangler OAuth for
+  `alex.omegapy@gmail.com`.
+- Cloudflare Pages project created:
+  - project: `the-aether-flow-website`;
+  - production domain: `https://the-aether-flow-website.pages.dev/`;
+  - production branch: `main`;
+  - Git provider: `No` in Wrangler project list, because this deployment used
+    Pages direct upload rather than dashboard Git integration.
+- Local pre-deployment quality passed with `make quality`.
+- Production deployment completed with:
+
+  ```bash
+  npx --yes wrangler@latest pages deploy dist \
+    --project-name the-aether-flow-website \
+    --branch main \
+    --commit-hash 62ed309b02af498d45578454660228e34d759eae \
+    --commit-message "Record GitHub Pages deployment attempt" \
+    --commit-dirty=false
+  ```
+
+- Cloudflare production deployment evidence:
+  - deployment id: `b249f679-3bef-4e9a-a770-836775fd8ff7`;
+  - deployment URL:
+    `https://b249f679.the-aether-flow-website.pages.dev`;
+  - Wrangler deployment list environment: `Production`;
+  - Wrangler deployment list branch: `main`;
+  - Wrangler deployment list source: `62ed309`.
+- Canonical production route smoke test passed for 23 routes:
+
+  ```bash
+  python scripts/smoke_test_site.py \
+    --base-url https://the-aether-flow-website.pages.dev \
+    --timeout 20
+  ```
+
+- Deployed browser QA passed across 19 rendered routes at desktop `1440x1100`
+  and mobile `390x900`, with 38 screenshots written under
+  `output/playwright/release-phase10-deployed-*-2026-06-25.png`.
+- Deployed browser QA verified one `h1` per page, source-authority and
+  claim-status language where required, image loads, no horizontal overflow, and
+  no positive overclaim patterns.
+- Representative deployed screenshot review covered desktop overview, mobile
+  overview, and desktop source authority. The deployed pages matched the local
+  Phase 9 visual baseline in layout, readability, and source-boundary copy.
+- Deployment issue noted: the one-off deployment URL reported by Wrangler had a
+  transient SSL handshake failure during early verification, while the canonical
+  production domain returned `200` and passed smoke/browser QA.
+- Result: Phase 10 deployment is verified for the canonical Cloudflare Pages
+  production domain.
 
 ## 7. Phase Ordering Rule
 

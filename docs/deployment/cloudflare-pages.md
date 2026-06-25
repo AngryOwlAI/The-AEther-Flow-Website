@@ -1,6 +1,25 @@
 # Cloudflare Pages Deployment
 
-Status: configuration-ready; dashboard deployment still requires Cloudflare access.
+Status: production deployed through Cloudflare Pages direct upload.
+
+Production URL:
+
+```text
+https://the-aether-flow-website.pages.dev/
+```
+
+Current production deployment:
+
+```text
+project: the-aether-flow-website
+deployment id: b249f679-3bef-4e9a-a770-836775fd8ff7
+branch: main
+source: 62ed309
+git provider: No
+```
+
+Note: the project is deployed with Wrangler Pages direct upload. Cloudflare
+dashboard Git integration remains optional future work.
 
 ## Build Settings
 
@@ -25,7 +44,30 @@ The header rules keep immutable caching on hashed Astro and diagram assets,
 shorter caching on public files, a TeX content type for `.tex` downloads, and
 basic security headers on all routes.
 
-## Dashboard Steps
+## Direct Upload Deployment
+
+Use this path when Wrangler is authenticated and a local static build should be
+published directly to Cloudflare Pages:
+
+```bash
+make quality
+npx --yes wrangler@latest pages deploy dist \
+  --project-name the-aether-flow-website \
+  --branch main \
+  --commit-hash "$(git rev-parse HEAD)" \
+  --commit-message "$(git log -1 --pretty=%s)" \
+  --commit-dirty=false
+```
+
+Verify the canonical production domain:
+
+```bash
+python scripts/smoke_test_site.py \
+  --base-url https://the-aether-flow-website.pages.dev \
+  --timeout 20
+```
+
+## Optional Dashboard Git Integration
 
 1. Open Cloudflare Workers & Pages.
 2. Create a Pages project connected to
@@ -60,6 +102,6 @@ If a local preview is running:
 
 ## External Constraints
 
-Production and preview deployment verification cannot be completed from this
-repository alone. It requires authenticated Cloudflare dashboard or API access
-and a pushed Git branch.
+Direct upload deployment requires an authenticated Wrangler session with Pages
+write access. Dashboard Git integration requires Cloudflare dashboard access and
+the Cloudflare GitHub app connection for this private repository.

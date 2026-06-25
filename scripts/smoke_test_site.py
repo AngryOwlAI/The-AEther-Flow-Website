@@ -43,10 +43,16 @@ DEFAULT_ROUTES = [
     RouteCheck("/robots.txt"),
 ]
 
+SMOKE_TEST_USER_AGENT = "The-AEther-Flow-Website smoke-test/1.0"
+
 
 def check_route(base_url: str, route: RouteCheck, timeout: float) -> str | None:
     url = urljoin(base_url.rstrip("/") + "/", route.path.lstrip("/"))
-    request = urllib.request.Request(url, method="HEAD")
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": SMOKE_TEST_USER_AGENT},
+        method="HEAD",
+    )
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             status = response.status
