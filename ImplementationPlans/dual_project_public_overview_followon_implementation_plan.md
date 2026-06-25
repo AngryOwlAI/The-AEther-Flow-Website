@@ -847,11 +847,18 @@ Deployment record - 2026-06-25:
   - repository: `https://github.com/AngryOwlAI/The-AEther-Flow-Website`;
   - visibility: private;
   - default branch: `main`;
+  - current token permissions: push and triage, but not admin or maintain;
   - homepage URL: empty;
   - GitHub Pages API: `404 Not Found`;
   - GitHub Actions workflow runs: none;
   - commit check runs for `bcb9a11`: none;
   - repository deployments API: empty list.
+- Alternate GitHub Pages target attempt:
+  - repository reports `has_pages: false`;
+  - `POST /repos/AngryOwlAI/The-AEther-Flow-Website/pages` with
+    `build_type=workflow` returned `404 Not Found`;
+  - conclusion: the current authenticated user can push commits but cannot
+    create the GitHub Pages deployment target from this workspace.
 - Cloudflare Pages evidence:
   - `docs/deployment/cloudflare-pages.md` states Cloudflare dashboard or API
     access is required for production/preview verification.
