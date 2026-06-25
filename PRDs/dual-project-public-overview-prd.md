@@ -14,7 +14,7 @@ Create a production-ready public overview experience for Æther Flow that introd
 
 > The Æther Flow is a research program with two connected tracks: one explores a physics interpretation, and the other develops the AI research-agent system used to pursue it.
 
-The overview should prioritize public comprehension and restrained promotion. It should use a visually rich, banner-inspired dark cosmic-laboratory direction with electric cyan, orange/gold, ivory text, thin amber outlines, and animated SVG field/workflow motifs. The default page should remain readable and clear. Denser technical diagrams and heavier animation should appear only after a deliberate "More detail" action.
+The overview should prioritize public comprehension and restrained promotion. It should use a visually rich, banner-inspired dark cosmic-laboratory direction with a very dark graphite/black background, warm amber/gold flare effects, ivory text, thin amber outlines, and animated SVG field/workflow motifs. The production direction intentionally moved away from the earlier blue/cyan schema. The default page should remain readable and clear. Denser technical diagrams and heavier animation should appear only after a deliberate "More detail" action.
 
 The current UI prototype compares three information-architecture hypotheses:
 
@@ -23,6 +23,8 @@ The current UI prototype compares three information-architecture hypotheses:
 3. Variant C: Trust and claim-status first.
 
 Decision: Variant A is the selected production direction. The overview should lead with the two equal first-class tracks, then use reader actions and trust/status framing as supporting sections rather than as the primary structure.
+
+Production update: Variant A has been promoted into normal production page code. The prototype comparison controls, query-parameter variant behavior, inactive Variant B/C panels, and prototype language have been removed from the public overview route.
 
 ## User Stories
 
@@ -55,10 +57,14 @@ Decision: Variant A is the selected production direction. The overview should le
 - Claim limitation placement: visible but not dominant. Put it near the physics path or trust/status panel, not as the hero headline.
 - Dynamic project treatment: include a "Living project" or "Current state" panel explaining that the website should be refreshed from reviewed project outputs, PDFs, source records, and documentation updates.
 - Visual direction: use the supplied banner as visual inspiration, not as a direct hero image. The production design should translate it into responsive SVG/CSS motion.
-- Animation boundary: use SVG for decorative and explanatory animation; use CSS-first motion plus small vanilla JavaScript for light interaction; avoid new production dependencies unless explicitly approved.
+- Final visual schema: use very dark graphite/black page and panel backgrounds with warm amber/gold flare effects, ivory/smoke accents, and restrained brass outlines. Avoid making the overview read as a blue/cyan interface.
+- Hero animation: use continuous luminous smoke/amber field ribbons, plasma filaments, dust, and flare rays. Do not use dashed graph-like route lines for the hero field effect.
+- Track visual treatment: keep Physics Research and AI Research-Agent System equal in structure. Distinguish the AI track with pale ivory/silver accents rather than blue/cyan.
+- Animation boundary: use SVG for decorative and explanatory animation; use CSS-first motion; avoid new production dependencies unless explicitly approved.
 - Progressive disclosure: default content stays clear; "More detail" panels can contain denser diagrams, heavier animation, and more technical language.
 - Link behavior: use real links for existing website resources and the GitHub/source project. Mark missing future pages as planned rather than linking to fake routes.
-- Prototype handling: the current overview prototype is a decision artifact. Promote the Variant A structure into normal production code, then remove prototype-only switcher behavior and inactive variant panels before production release unless a development-only mechanism is approved.
+- Prototype handling: complete. The Variant A structure has been promoted into normal production code, with prototype-only switcher behavior, query-parameter switching, inactive variant panels, and inline variant script removed.
+- Source notice: production copy should use `explanatory overview` rather than `explanatory prototype`.
 
 ## Testing Decisions
 
@@ -72,6 +78,8 @@ Decision: Variant A is the selected production direction. The overview should le
 - Run existing tests and lint for repository tooling.
 - Use browser QA on `127.0.0.1` for desktop and mobile screenshots, with artifacts stored under the existing Playwright output location.
 - Do not test animation internals as implementation detail; test observable behavior, accessibility, non-overlap, and route/interaction correctness.
+- Productionization verification completed for the dark Variant A overview: `npm run validate` passed; strict project-explainer frontend audit passed; Playwright DOM snapshot confirmed one `h1`, real links, no switcher, and source notice present.
+- Final browser evidence should include static desktop and mobile screenshots of `/project/overview/` without `?variant=` query parameters.
 
 ## Source Authority and Provenance
 
@@ -79,6 +87,7 @@ Decision: Variant A is the selected production direction. The overview should le
 - Website copy may explain reviewed source material, organize reader paths, and promote the project, but it must not create or strengthen claims.
 - Physics wording must preserve the open-derivation boundary unless the upstream source state changes.
 - AI-system wording must distinguish workflow/methodology claims from physics proof.
+- Visual polish and animation changes are presentation-only and do not create new scientific, mathematical, governance, or research-workflow claims.
 - New public claims, downloadable artifacts, diagrams, or technical pages require source provenance before production release.
 - The source project front door supports the dual-track framing: physics research track plus AI research-agent track.
 - Existing source reader paths include project overview, physics-frame explainers, research-agent workflow explainers, source authority pages, and generated HTML/Markdown public surfaces.
@@ -88,7 +97,8 @@ References:
 - AEther-Flow Project. (2026). `README.md` [Project front door and dual-track research program summary].
 - The AEther Flow Website. (2026). `CONTEXT.md` [Source Authority Boundary and website vocabulary].
 - The AEther Flow Website. (2026). `README.md` [Website workspace purpose, validation entry points, and source repository boundary].
-- The AEther Flow Website. (2026). `src/pages/project/overview.astro` [Current throwaway UI prototype for overview information architecture].
+- The AEther Flow Website. (2026). `src/pages/project/overview.astro` [Productionized dual-track project overview].
+- The AEther Flow Website. (2026). `src/styles/global.css` [Production dark overview visual system and responsive styling].
 
 ## Out of Scope
 
@@ -98,11 +108,13 @@ References:
 - New production dependencies for animation or interaction.
 - Treating the website repository as authoritative for physics or AI research-control claims.
 - Using the supplied banner bitmap as the production hero image.
-- Shipping the prototype switcher as a public production feature.
+- Reintroducing the prototype switcher as a public production feature.
+- Returning the production overview to a blue/cyan-dominant visual schema.
 
 ## Further Notes
 
-- Variant A has been selected. The logical next step is to productionize the dual-track-first overview and remove prototype-only comparison controls.
-- Useful elements from Variant B and Variant C may still be used as supporting sections: public reader actions from Variant B and trust/status framing from Variant C should appear below the primary dual-track explanation.
+- Variant A has been selected and productionized. The logical next step is visual review and commit.
+- Useful elements from Variant B and Variant C may still inform future supporting sections, but the shipped overview should not restore public comparison controls or inactive variant panels.
 - A later PRD should define the source-to-website update workflow once the project is ready to keep website content synchronized with upstream source pushes.
 - If the final overview introduces new source-backed pages for the physics track or AI research-agent track, those pages should each receive their own source provenance requirements and browser QA scope.
+- Current production screenshot evidence is stored under the existing Playwright output location for desktop and mobile review.
