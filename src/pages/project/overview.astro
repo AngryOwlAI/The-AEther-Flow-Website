@@ -1,57 +1,426 @@
 ---
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { overviewPillars, resourceGroups } from "../../lib/siteContent";
+
+// Throwaway UI prototype:
+// three information-architecture variants for /project/overview/?variant=.
+// Delete or promote the selected direction after the design decision.
+const variants = ["A", "B", "C"];
+
+const physicsDetails = [
+  "Æther / Æther-flow ontology",
+  "Exact-GR benchmark package",
+  "Open GR-derivation problem",
+  "No-go and obstruction record",
+];
+
+const aiDetails = [
+  "AI research-agent workflow",
+  "Role contracts and governed skills",
+  "Claim gates, review, and refutation discipline",
+  "Source-first memory, wiki, and registries",
+];
+
+const readerRoutes = [
+  {
+    title: "Understand the project",
+    body: "Start with the two connected tracks and the current state of the program.",
+    href: "#prototype-paths",
+  },
+  {
+    title: "Explore physics research",
+    body: "Read public resources, PDFs, diagrams, and source-backed research material.",
+    href: "/resources/documents/",
+  },
+  {
+    title: "Explore the AI system",
+    body: "See how bounded research work, roles, gates, and memory are organized.",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow",
+  },
+];
+
+const physicsMap = `
+  <svg class="detail-svg physics-svg" viewBox="0 0 420 220" role="img" aria-label="Animated physics detail map">
+    <rect width="420" height="220" rx="18"></rect>
+    <path class="metric-grid" d="M30 154 C92 108, 142 108, 208 150 C274 190, 338 166, 390 104"></path>
+    <path class="metric-grid second" d="M30 88 C96 128, 146 132, 208 98 C280 58, 342 70, 390 120"></path>
+    <circle class="detail-core" cx="210" cy="112" r="28"></circle>
+    <g class="detail-nodes">
+      <circle cx="84" cy="82" r="7"></circle>
+      <circle cx="158" cy="154" r="7"></circle>
+      <circle cx="282" cy="70" r="7"></circle>
+      <circle cx="338" cy="146" r="7"></circle>
+    </g>
+    <text x="34" y="40">ontology</text>
+    <text x="250" y="194">open derivation gap</text>
+  </svg>
+`;
+
+const agentMap = `
+  <svg class="detail-svg agent-svg" viewBox="0 0 420 220" role="img" aria-label="Animated AI research-agent detail map">
+    <rect width="420" height="220" rx="18"></rect>
+    <path class="agent-route" d="M54 112 H132 C168 112, 168 64, 204 64 H360"></path>
+    <path class="agent-route second" d="M54 112 H132 C168 112, 168 160, 204 160 H360"></path>
+    <g class="agent-node-group">
+      <circle cx="54" cy="112" r="18"></circle>
+      <circle cx="204" cy="64" r="18"></circle>
+      <circle cx="204" cy="160" r="18"></circle>
+      <circle cx="360" cy="64" r="18"></circle>
+      <circle cx="360" cy="160" r="18"></circle>
+    </g>
+    <text x="32" y="42">route</text>
+    <text x="172" y="112">check</text>
+    <text x="304" y="112">review</text>
+  </svg>
+`;
 ---
 
 <BaseLayout
   title="Project Overview"
-  description="Reader-facing project overview for The AEther Flow website."
+  description="General-public overview for Æther Flow as a dual physics-and-AI research program."
+  bodyClass="project-prototype-page"
 >
-  <section class="content-band" aria-labelledby="overview-title">
-    <div class="section-header">
-      <p class="eyebrow">Project overview</p>
-      <h1 id="overview-title">A controlled publication layer for a technical research project.</h1>
-      <p class="lead">
-        The AEther Flow website is designed to explain, organize, and publish
-        reviewed material without becoming a substitute for the source research
-        repository.
+  <section class="prototype-shell" aria-labelledby="overview-title">
+    <div class="prototype-hero">
+      <div class="prototype-hero-copy">
+        <p class="eyebrow">Dual research program</p>
+        <h1 id="overview-title">Æther Flow</h1>
+        <p class="prototype-lead">
+          A dual physics-and-AI research program exploring an Æther-flow
+          interpretation of relativity and the research-agent system built to
+          pursue it.
+        </p>
+        <div class="prototype-actions" aria-label="Primary reader actions">
+          <a class="primary-link" href="#prototype-paths">Understand the project</a>
+          <a class="secondary-link" href="/resources/documents/">Explore physics research</a>
+          <a class="secondary-link" href="https://github.com/AngryOwlAI/The-AEther-Flow">
+            Explore the AI research system
+          </a>
+        </div>
+      </div>
+
+      <figure class="field-stage" aria-labelledby="field-stage-caption">
+        <svg viewBox="0 0 680 420" role="img" aria-labelledby="field-stage-title">
+          <title id="field-stage-title">Animated two-track Æther Flow field map</title>
+          <defs>
+            <radialGradient id="core-glow" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#fff7cf" />
+              <stop offset="28%" stop-color="#ffb02e" stop-opacity="0.9" />
+              <stop offset="64%" stop-color="#00c8ff" stop-opacity="0.28" />
+              <stop offset="100%" stop-color="#020611" stop-opacity="0" />
+            </radialGradient>
+            <filter id="soft-glow">
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <rect width="680" height="420" rx="28" fill="#020611" />
+          <g class="starfield" aria-hidden="true">
+            <circle cx="62" cy="58" r="1.2" />
+            <circle cx="128" cy="312" r="1" />
+            <circle cx="220" cy="88" r="1.4" />
+            <circle cx="530" cy="72" r="1.1" />
+            <circle cx="604" cy="310" r="1.3" />
+            <circle cx="418" cy="350" r="0.9" />
+          </g>
+          <g class="blue-streams" filter="url(#soft-glow)" aria-hidden="true">
+            <path d="M32 246 C168 190, 245 183, 340 210 C438 238, 498 210, 642 128" />
+            <path d="M28 294 C178 246, 270 232, 342 212 C430 186, 520 204, 650 236" />
+            <path d="M84 126 C196 138, 263 168, 344 210 C422 252, 512 284, 644 324" />
+          </g>
+          <g class="gold-streams" filter="url(#soft-glow)" aria-hidden="true">
+            <path d="M36 96 C164 158, 236 198, 340 210 C438 222, 524 164, 648 80" />
+            <path d="M40 368 C178 278, 248 232, 342 212 C456 188, 520 270, 640 358" />
+            <path d="M92 42 C218 80, 282 148, 344 210 C438 304, 530 284, 648 216" />
+          </g>
+          <circle class="field-core" cx="340" cy="210" r="108" fill="url(#core-glow)" />
+          <g class="node-orbit" aria-hidden="true">
+            <circle cx="340" cy="102" r="5" />
+            <circle cx="442" cy="210" r="5" />
+            <circle cx="340" cy="318" r="5" />
+            <circle cx="238" cy="210" r="5" />
+          </g>
+          <g class="field-labels">
+            <text x="70" y="348">Physics research</text>
+            <text x="432" y="74">AI research-agent system</text>
+          </g>
+        </svg>
+        <figcaption id="field-stage-caption">
+          Two connected tracks: one explores the physics interpretation; one
+          develops the AI-assisted research discipline.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div id="prototype-paths" class="prototype-anchor" aria-hidden="true"></div>
+
+  <div class="prototype-switcher" data-variant-switcher aria-label="Prototype variants">
+    <button type="button" data-variant-prev aria-label="Previous variant">‹</button>
+    <span data-variant-label>Variant A</span>
+    <button type="button" data-variant-next aria-label="Next variant">›</button>
+  </div>
+
+  <section
+    class="prototype-panel"
+    data-variant-panel="A"
+    aria-labelledby="variant-a-title"
+  >
+    <div class="variant-heading">
+      <p class="eyebrow">Variant A · dual-track first</p>
+      <h2 id="variant-a-title">Two paths, one research program.</h2>
+      <p>
+        This version makes the project structure the first thing a general
+        reader sees: physics research and the AI research-agent system are equal
+        first-class paths.
       </p>
     </div>
-    <SourceNotice
-      claimStatus="explanatory"
-      updated="2026-06-25"
-      note="This overview describes the website publication model. It does not introduce scientific claims."
-    />
+    <div class="track-grid">
+      <article class="track-card physics-card">
+        <p class="track-label">Physics Research</p>
+        <h3>Exploring an Æther-flow interpretation of relativity.</h3>
+        <p>
+          The physics track studies an ontology, keeps an Exact-GR benchmark as
+          a reference point, and treats the GR-derivation problem as open.
+        </p>
+        <ul>
+          {physicsDetails.map((item) => <li>{item}</li>)}
+        </ul>
+        <details class="track-detail">
+          <summary>More detail</summary>
+          <div class="detail-grid">
+            <Fragment set:html={physicsMap} />
+            <p>
+              Current public language should preserve the distinction between
+              interpretation, benchmark compatibility, open derivation work, and
+              obstruction records.
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <article class="track-card ai-card">
+        <p class="track-label">AI Research-Agent System</p>
+        <h3>Building the AI-assisted workflow used to pursue the research.</h3>
+        <p>
+          The AI track organizes research work through bounded tasks, roles,
+          review discipline, claim gates, and source-first memory.
+        </p>
+        <ul>
+          {aiDetails.map((item) => <li>{item}</li>)}
+        </ul>
+        <details class="track-detail">
+          <summary>More detail</summary>
+          <div class="detail-grid">
+            <Fragment set:html={agentMap} />
+            <p>
+              Public copy should explain the system in plain language before
+              introducing internal terms such as AgentJobs, registries, and role
+              contracts.
+            </p>
+          </div>
+        </details>
+      </article>
+    </div>
   </section>
 
-  <section class="content-band content-band-tight" aria-labelledby="overview-pillars">
-    <div class="section-header">
-      <p class="eyebrow">Operating principles</p>
-      <h2 id="overview-pillars">Explanation, resources, and provenance move together.</h2>
+  <section
+    class="prototype-panel"
+    data-variant-panel="B"
+    aria-labelledby="variant-b-title"
+    hidden
+  >
+    <div class="variant-heading">
+      <p class="eyebrow">Variant B · reader journey first</p>
+      <h2 id="variant-b-title">What do you want to understand?</h2>
+      <p>
+        This version starts from public intent, then routes readers into the
+        physics and AI paths without asking them to understand the project
+        structure first.
+      </p>
     </div>
-    <div class="principle-grid">
-      {overviewPillars.map((pillar) => (
-        <article>
-          <h3>{pillar.title}</h3>
-          <p>{pillar.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="content-band content-band-tight" aria-labelledby="overview-routes">
-    <div class="section-header">
-      <p class="eyebrow">Reader paths</p>
-      <h2 id="overview-routes">Initial content surfaces</h2>
-    </div>
-    <div class="link-grid">
-      {resourceGroups.map((group) => (
-        <a class="link-card" href={group.href}>
-          <span>{group.title}</span>
-          <small>{group.body}</small>
+    <div class="journey-grid">
+      {readerRoutes.map((route) => (
+        <a class="journey-card" href={route.href}>
+          <span>{route.title}</span>
+          <small>{route.body}</small>
         </a>
       ))}
     </div>
+    <div class="split-map" aria-label="Two-track reading path">
+      <article>
+        <h3>For physics curiosity</h3>
+        <p>
+          Start with public resources and PDFs, then move toward ontology,
+          benchmark, and open derivation material as needed.
+        </p>
+        <details class="track-detail">
+          <summary>More detail</summary>
+          <div class="detail-grid">
+            <Fragment set:html={physicsMap} />
+            <p>
+              The detail layer can carry denser diagrams and richer motion
+              because the reader has explicitly asked for depth.
+            </p>
+          </div>
+        </details>
+      </article>
+      <article>
+        <h3>For AI-system curiosity</h3>
+        <p>
+          Start with the research-agent system as a structured AI-assisted
+          workflow, then offer GitHub/source links for technical readers.
+        </p>
+        <details class="track-detail">
+          <summary>More detail</summary>
+          <div class="detail-grid">
+            <Fragment set:html={agentMap} />
+            <p>
+              The public path can explain routing, gates, review, and memory as
+              trust mechanisms before exposing internal vocabulary.
+            </p>
+          </div>
+        </details>
+      </article>
+    </div>
   </section>
+
+  <section
+    class="prototype-panel"
+    data-variant-panel="C"
+    aria-labelledby="variant-c-title"
+    hidden
+  >
+    <div class="variant-heading">
+      <p class="eyebrow">Variant C · trust first</p>
+      <h2 id="variant-c-title">What is established, open, and source-bound?</h2>
+      <p>
+        This version leads with trust: what the project is exploring, what is
+        not yet claimed, and where source authority lives.
+      </p>
+    </div>
+    <div class="trust-grid">
+      <article>
+        <span>Exploratory</span>
+        <h3>Physics interpretation</h3>
+        <p>
+          The Æther-flow ontology is a research frame. The project has not
+          presented a completed first-principles derivation of GR from it.
+        </p>
+      </article>
+      <article>
+        <span>Reference point</span>
+        <h3>Exact-GR benchmark</h3>
+        <p>
+          The benchmark keeps ordinary GR behavior visible while derivation work
+          remains open and explicitly bounded.
+        </p>
+      </article>
+      <article>
+        <span>Operating system</span>
+        <h3>AI research-agent system</h3>
+        <p>
+          The AI-assisted workflow plans, checks, preserves, and reviews
+          research work through source-first controls.
+        </p>
+      </article>
+    </div>
+    <div class="track-grid compact-tracks">
+      <article class="track-card physics-card">
+        <p class="track-label">Physics path</p>
+        <h3>Read the scientific material.</h3>
+        <p>Use PDFs, diagrams, and source-backed resources for depth.</p>
+        <details class="track-detail">
+          <summary>More detail</summary>
+          <div class="detail-grid">
+            <Fragment set:html={physicsMap} />
+            <p>Dense physics structure belongs behind explicit reader choice.</p>
+          </div>
+        </details>
+      </article>
+      <article class="track-card ai-card">
+        <p class="track-label">AI-system path</p>
+        <h3>Inspect the research machinery.</h3>
+        <p>Use workflow, role, gate, memory, and GitHub/source surfaces.</p>
+        <details class="track-detail">
+          <summary>More detail</summary>
+          <div class="detail-grid">
+            <Fragment set:html={agentMap} />
+            <p>Dense workflow structure belongs behind explicit reader choice.</p>
+          </div>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <section class="prototype-panel live-state" aria-labelledby="live-state-title">
+    <div>
+      <p class="eyebrow">Living project</p>
+      <h2 id="live-state-title">The website should follow the source project.</h2>
+      <p>
+        The Æther Flow project changes as the source research repository
+        advances. This website is a public presentation layer intended to be
+        refreshed from reviewed project outputs, PDFs, source records, and
+        documentation updates.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus="explanatory prototype"
+      updated="2026-06-25"
+      note="This prototype tests information architecture and visual direction. Future production work should define a sync/update workflow from The-AEther-Flow pushes into website content and manifests."
+    />
+  </section>
+
+  <script is:inline>
+    const variants = ["A", "B", "C"];
+    const panels = [...document.querySelectorAll("[data-variant-panel]")];
+    const label = document.querySelector("[data-variant-label]");
+    const prev = document.querySelector("[data-variant-prev]");
+    const next = document.querySelector("[data-variant-next]");
+
+    function readVariant() {
+      const raw = new URLSearchParams(window.location.search).get("variant");
+      const normalized = raw ? raw.toUpperCase() : "A";
+      return variants.includes(normalized) ? normalized : "A";
+    }
+
+    function setVariant(nextVariant, updateUrl = true) {
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.variantPanel !== nextVariant;
+      });
+      if (label) {
+        label.textContent = `Variant ${nextVariant}`;
+      }
+      document.documentElement.dataset.prototypeVariant = nextVariant;
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("variant", nextVariant);
+        window.history.replaceState({}, "", url);
+      }
+    }
+
+    function cycle(delta) {
+      const current = readVariant();
+      const index = variants.indexOf(current);
+      const nextIndex = (index + delta + variants.length) % variants.length;
+      setVariant(variants[nextIndex]);
+    }
+
+    prev?.addEventListener("click", () => cycle(-1));
+    next?.addEventListener("click", () => cycle(1));
+    window.addEventListener("keydown", (event) => {
+      const target = event.target;
+      const editing =
+        target instanceof HTMLElement &&
+        (target.matches("input, textarea, select") || target.isContentEditable);
+      if (editing) return;
+      if (event.key === "ArrowLeft") cycle(-1);
+      if (event.key === "ArrowRight") cycle(1);
+    });
+
+    setVariant(readVariant(), false);
+  </script>
 </BaseLayout>
