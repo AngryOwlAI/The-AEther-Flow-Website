@@ -111,6 +111,44 @@ References:
 - Reintroducing the prototype switcher as a public production feature.
 - Returning the production overview to a blue/cyan-dominant visual schema.
 
+## Final Acceptance Record
+
+Acceptance date: 2026-06-25.
+
+Release scope: accept the productionized Variant A overview as the public
+dual-project overview. This record does not reopen Variant B/C, synchronization
+architecture, new source-backed pages, or subjective visual refinements.
+
+Commands run:
+
+- `make quality`
+- `python .codex/skills/project-explainer-frontend/scripts/audit_project_frontend.py --site dist --out-dir scratch/project-explainer --strict`
+- `npm run preview -- --host 127.0.0.1 --port 4327`
+- `python scripts/smoke_test_site.py --base-url http://127.0.0.1:4327`
+- `node --input-type=module` Playwright checks against `http://127.0.0.1:4327/project/overview/` for reduced motion, `More detail` panel behavior, and final screenshot capture.
+
+Results:
+
+- Full repository quality gate passed, including validation, build, tests, lint,
+  type checks, and static quality gate.
+- Strict project-explainer frontend audit passed and wrote audit evidence.
+- Local route smoke test passed for 12 routes.
+- Browser DOM evidence confirmed one `h1`, accessible headings, real links, no
+  public variant switcher, and visible source-authority / claim-status notice.
+- Reduced-motion browser evidence confirmed `prefers-reduced-motion: reduce`
+  is active and animation / transition durations collapse to near-zero.
+- `More detail` browser evidence confirmed both track detail panels open and
+  reveal the expected physics and AI research-agent detail copy.
+- Fresh desktop and mobile screenshot review found no objective release-blocking
+  overlap, hierarchy break, or CTA/source-notice defect.
+
+Evidence artifacts:
+
+- `scratch/project-explainer/frontend_audit.md`
+- `scratch/project-explainer/frontend_audit.json`
+- `output/playwright/project-overview-release-desktop-2026-06-25.png`
+- `output/playwright/project-overview-release-mobile-2026-06-25.png`
+
 ## Further Notes
 
 - Variant A has been selected and productionized. The logical next step is visual review and commit.
