@@ -1,6 +1,13 @@
 import assetManifest from "../../public/files/manifests/asset_manifest.json";
 import sourceManifest from "../../public/files/manifests/source_manifest.json";
 
+export type SourceApprovalStatus =
+  | "approved"
+  | "sample"
+  | "draft"
+  | "historical"
+  | "source-index-only";
+
 export type SourceManifestItem = {
   id: string;
   site_path: string;
@@ -8,7 +15,7 @@ export type SourceManifestItem = {
   title: string;
   source_path: string;
   source_commit?: string;
-  approval_status: string;
+  approval_status: SourceApprovalStatus;
   sha256?: string;
   generated_by?: string;
   generated_at?: string;
@@ -41,3 +48,17 @@ export const downloads: DownloadItem[] = assets.map((asset) => {
     source: sourceById.get(sourceId),
   };
 });
+
+export const approvedDownloads = downloads.filter(
+  (item) => item.source?.approval_status === "approved",
+);
+
+export const sampleDownloads = downloads.filter(
+  (item) => item.source?.approval_status === "sample",
+);
+
+export const downloadStatusCounts = downloads.reduce<Record<string, number>>((counts, item) => {
+  const status = item.source?.approval_status ?? "unknown";
+  counts[status] = (counts[status] ?? 0) + 1;
+  return counts;
+}, {});

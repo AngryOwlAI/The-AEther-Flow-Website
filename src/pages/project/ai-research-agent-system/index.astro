@@ -1,0 +1,172 @@
+---
+import SourceNotice from "../../../components/SourceNotice.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {
+  projectAiDeepDiveRoutes,
+  projectSourceNoticeDefaults,
+} from "../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.aiResearchAgentTrack;
+
+const workflowLayers = [
+  {
+    label: "Bounded work",
+    title: "Tasks and AgentJobs",
+    body: "The system narrows work into auditable packets with explicit allowed paths, expected outputs, validators, and claim boundaries.",
+  },
+  {
+    label: "Authority",
+    title: "Role contracts",
+    body: "Roles and skills orient work, but task-local execution records and allowlists decide what a specific transaction may do.",
+  },
+  {
+    label: "Review",
+    title: "Claim gates and refutation",
+    body: "Proposals, stress tests, completions, handoffs, and human gates keep workflow progress separate from physics proof.",
+  },
+  {
+    label: "Memory",
+    title: "Source-first retrieval",
+    body: "Memory, wiki, registries, and local search help find sources. They do not replace registered source files or authority rows.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Upstream source repository",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow",
+    body: "Canonical source files, registries, role contracts, and control records remain upstream.",
+  },
+  {
+    title: "Research-agent workflow explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+    body: "Reviewed generated noncanonical orientation for bounded research workflow.",
+  },
+  {
+    title: "Roles and skills catalog",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/roles-and-skills-explainer.md",
+    body: "Reviewed generated noncanonical guide to role and skill inspection order.",
+  },
+];
+---
+
+<BaseLayout
+  title="AI Research-Agent System"
+  description="AI research-agent track landing page for bounded tasks, role contracts, claim gates, review discipline, and source-first memory."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="ai-track-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent track</p>
+      <h1 id="ai-track-title">AI Research-Agent System</h1>
+      <p class="overview-lead">
+        The AI research-agent system is the governed, human-accountable
+        workflow used to plan, check, preserve, and review theoretical physics
+        work. Its workflow evidence can organize research; it does not become
+        physics proof by itself.
+      </p>
+      <div class="overview-actions" aria-label="AI research-agent page actions">
+        <a class="primary-link" href="#ai-system-status">Read the system status</a>
+        <a class="secondary-link" href="/project/overview/">Back to overview</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="ai-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="ai-figure-title">
+        <title id="ai-figure-title">AI research-agent workflow map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path signal-path" d="M82 180 H194 C242 180, 242 104, 292 104 H528" />
+        <path class="track-figure-path gold-path" d="M82 180 H194 C242 180, 242 256, 292 256 H528" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="82" cy="180" r="24" />
+          <circle cx="292" cy="104" r="24" />
+          <circle cx="292" cy="256" r="24" />
+          <circle cx="528" cy="104" r="24" />
+          <circle cx="528" cy="256" r="24" />
+        </g>
+        <text x="58" y="92">request</text>
+        <text x="236" y="182">bounded job</text>
+        <text x="404" y="306">review / handoff</text>
+      </svg>
+      <figcaption id="ai-figure-caption">
+        Visual orientation only: routing, roles, validation, memory, and review
+        support auditable workflow rather than autonomous scientific proof.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="ai-system-status" class="track-page-band" aria-labelledby="ai-system-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">System model</p>
+      <h2 id="ai-system-status-title">Workflow evidence is not physics authority.</h2>
+      <p>
+        The AI system is a research discipline: it makes work inspectable,
+        repeatable, and harder to overstate. Scientific claims still require
+        source artifacts and gates.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {workflowLayers.map((layer) => (
+        <article class="track-status-card">
+          <p>{layer.label}</p>
+          <h3>{layer.title}</h3>
+          <p>{layer.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ai-next-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Where to go next</p>
+      <h2 id="ai-next-title">Inspect source records before treating a workflow claim as current.</h2>
+      <p>
+        The Phase 5 AI research-agent deep-dive routes are available as a
+        coherent first version after source inspection and QA: workflow, roles
+        and skills, memory and registries, and validator/operator workflow.
+      </p>
+    </div>
+
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+
+    <div class="planned-route-grid" aria-label="AI research-agent routes">
+      {projectAiDeepDiveRoutes.map((route) => (
+        <article class="planned-route-card">
+          <p>{route.phase} / {route.status}</p>
+          <h3>{route.title}</h3>
+          {route.status === "implemented" ? (
+            <a class="planned-route-link" href={route.href}>{route.href}</a>
+          ) : (
+            <code>{route.href}</code>
+          )}
+          <span>{route.description}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="ai-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="ai-authority-title">Human accountability remains explicit.</h2>
+      <p>
+        This page can describe the AI-assisted workflow. It cannot expand role
+        authority, change routing behavior, promote physics claims, or replace
+        human-gated publication, authorship, and outreach responsibility.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

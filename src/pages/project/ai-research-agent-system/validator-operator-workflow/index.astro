@@ -1,0 +1,305 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.aiValidatorOperatorWorkflow;
+
+const commandCards = [
+  {
+    label: "Memory and registry refresh",
+    title: "Bootstrap, then validate",
+    body: "Generated registry, wiki, semantic, and memory derivatives refresh through the approved bootstrap path, then validate-only checks the result.",
+  },
+  {
+    label: "Publication page work",
+    title: "Pair checks with screenshots",
+    body: "Public page changes need source grounding, static checks, and rendered desktop/mobile evidence because visual quality is not fully deterministic.",
+  },
+  {
+    label: "Project-system change",
+    title: "Classify and record impact",
+    body: "State-changing project-system work uses classifier, resolver, signal checks, documentation-impact receipts, research-control checks, and checkpoint gates.",
+  },
+  {
+    label: "Tooling change",
+    title: "Run focused tests",
+    body: "Script, validator, schema, role, or memory-tooling changes need focused tests in addition to the relevant control validators.",
+  },
+];
+
+const evidenceCards = [
+  {
+    label: "Documentation impact",
+    title: "Why did this matter?",
+    body: "A documentation-impact receipt covers live source changes, generated derivatives, classifier reason codes, and required validators when project-system state changes.",
+  },
+  {
+    label: "Research-control validation",
+    title: "Did the tracked boundary hold?",
+    body: "Research-control checks validate task records, registries, handoffs, parent-child constraints, write boundaries, and diff allowlists.",
+  },
+  {
+    label: "Sidecar bridge",
+    title: "Was the exact path authorized?",
+    body: "Project-improvement sidecars are accepted only when changed source-bridge metadata names the exact YAML and Markdown pair.",
+  },
+  {
+    label: "Completion evidence",
+    title: "What actually passed?",
+    body: "A completion record owns command evidence for one bounded transaction. Signal closure requires explicit PASS evidence or a documented rejection decision.",
+  },
+];
+
+const passLimitCards = [
+  {
+    label: "Deterministic acceptance",
+    title: "Necessary evidence",
+    body: "A PASS result can show that the named deterministic check accepted the current checked state.",
+  },
+  {
+    label: "No scientific verdict",
+    title: "Not theorem proof",
+    body: "Validator success does not prove ontology, derive GR, promote a benchmark, close a Gate Chair question, or certify a scientific claim.",
+  },
+  {
+    label: "No authority expansion",
+    title: "No hidden permission",
+    body: "A green check does not expand role authority, task-local allowlists, sidecar adoption status, generated-output authority, or routing behavior.",
+  },
+  {
+    label: "Review still matters",
+    title: "Human judgment remains",
+    body: "Publication quality, editorial clarity, and visual fit need screenshot review and source-boundary judgment in addition to deterministic checks.",
+  },
+];
+
+const failureCards = [
+  {
+    label: "Write-path failure",
+    title: "Narrow or stop",
+    body: "If a changed path falls outside the current allowlist, the correct response is a narrower packet or explicit authorization, not bypassing the check.",
+  },
+  {
+    label: "Orphan surface",
+    title: "Synchronize the stack",
+    body: "A public source spec, GitHub page, HTML output, or registry row without its paired source surface is a publication-process problem.",
+  },
+  {
+    label: "Resolver overread",
+    title: "Advisory is not a gate",
+    body: "Resolver output can guide routing, but checkpoint blocking comes from validators and concrete authority-boundary violations.",
+  },
+  {
+    label: "Sidecar overread",
+    title: "No global allowance",
+    body: "Conditional sidecar acceptance does not allow arbitrary changes under the sidecar directory and does not replace the research handoff spine.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to AI research-agent track",
+    href: "/project/ai-research-agent-system/",
+    body: "Return to the AI track landing page for the completed first version of the AI deep-dive family.",
+  },
+  {
+    title: "Research-agent workflow",
+    href: "/project/ai-research-agent-system/workflow/",
+    body: "Read the bounded transaction chain behind command and receipt evidence.",
+  },
+  {
+    title: "Memory and registries",
+    href: "/project/ai-research-agent-system/memory-registries/",
+    body: "Read how memory and registries support source-first routing without replacing source authority.",
+  },
+  {
+    title: "Source authority page",
+    href: "/project/source-authority/",
+    body: "Review the broader boundary between website pages, generated derivatives, and tracked sources.",
+  },
+  {
+    title: "Upstream validator workflow",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/validator-operator-workflow-explainer.md",
+    body: "Generated noncanonical source-backed operator guide for validation and PASS-result limits.",
+  },
+  {
+    title: "Upstream project-system loop",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-system-improvement-explainer.md",
+    body: "Generated noncanonical source-backed guide to project-system classification, signals, receipts, and sidecars.",
+  },
+];
+---
+
+<BaseLayout
+  title="Validator And Operator Workflow"
+  description="Reader-facing validator and operator workflow page explaining deterministic checks, documentation impact, checkpoint gates, screenshots, tests, and PASS-result limits."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="validator-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent deep dive / Phase 5D</p>
+      <h1 id="validator-title">Validator And Operator Workflow</h1>
+      <p class="overview-lead">
+        AEther Flow uses validators and operator receipts to keep changes
+        bounded, reproducible, and reviewable. The central rule is conservative:
+        a PASS result is operational evidence for the checked transaction, not
+        a scientific verdict or authority expansion.
+      </p>
+      <div class="overview-actions" aria-label="Validator and operator workflow page actions">
+        <a class="primary-link" href="/project/ai-research-agent-system/">Back to AI track</a>
+        <a class="secondary-link" href="#command-matrix">Read the command map</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="validator-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="validator-figure-title">
+        <title id="validator-figure-title">Validator and operator evidence map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path signal-path" d="M92 112 H528" />
+        <path class="track-figure-path gold-path" d="M92 184 H528" />
+        <path class="track-figure-path signal-path" d="M92 256 H528" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="112" cy="112" r="15" />
+          <circle cx="250" cy="184" r="15" />
+          <circle cx="390" cy="184" r="15" />
+          <circle cx="508" cy="256" r="15" />
+        </g>
+        <circle class="track-figure-core" cx="310" cy="184" r="42" />
+        <text x="74" y="74">changed surface</text>
+        <text x="242" y="176">check</text>
+        <text x="388" y="176">receipt</text>
+        <text x="398" y="318">bounded PASS</text>
+      </svg>
+      <figcaption id="validator-figure-caption">
+        Visual orientation only: the diagram shows evidence flow, not a
+        certificate of scientific truth or generated-output authority.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="command-matrix" class="track-page-band" aria-labelledby="command-matrix-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Command decision matrix</p>
+      <h2 id="command-matrix-title">Choose checks by changed authority surface.</h2>
+      <p>
+        The operator question is not only which command runs. It is which
+        evidence chain fits the risk of the changed files and the authority
+        surface they touch.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {commandCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="evidence-chain-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Evidence chain</p>
+      <h2 id="evidence-chain-title">Receipts explain what was checked and why.</h2>
+      <p>
+        Classifiers, documentation-impact records, validators, tests, screenshots,
+        completions, and checkpoint gates answer different questions. They
+        should not be collapsed into one generic green status.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {evidenceCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="pass-limits-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">PASS-result limits</p>
+      <h2 id="pass-limits-title">Validator success is bounded evidence, not a scientific verdict.</h2>
+      <p>
+        Deterministic checks are necessary for operational integrity. They do
+        not replace source inspection, human-gated authority, or scientific
+        argument.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {passLimitCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="failure-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Failure boundaries</p>
+      <h2 id="failure-boundaries-title">A failed check is routing evidence, not an invitation to bypass.</h2>
+      <p>
+        Failures protect the record chain. The disciplined response is to
+        narrow the packet, repair the receipt, synchronize the source stack, or
+        stop for the proper authority.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {failureCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="validator-reader-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="validator-reader-title">Read validation with workflow, memory, and source authority.</h2>
+      <p>
+        This page completes the first AI research-agent deep-dive family:
+        workflow explains bounded transactions, roles explain authority,
+        memory explains source finding, and validators explain operational
+        checks.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="validator-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="validator-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can orient readers to validation, deterministic checks,
+        documentation impact, checkpoint boundaries, screenshot evidence, and
+        operator receipts. It cannot change validator behavior, command
+        semantics, routing behavior, checkpoint gates, sidecar adoption status,
+        generated-output authority, or physics claim status.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

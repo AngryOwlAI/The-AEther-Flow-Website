@@ -1,0 +1,203 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsClaimGates;
+
+const lifecycleCards = [
+  {
+    label: "Proposal",
+    title: "A bounded packet",
+    body: "A proposal names a possible construction, selector, witness, audit, or review target. It is not accepted physics by itself.",
+  },
+  {
+    label: "Audit",
+    title: "A hidden-import screen",
+    body: "An audit checks whether a packet imports target-GR structure, role authority, generated-output authority, or hidden assumptions.",
+  },
+  {
+    label: "Stress",
+    title: "A refutation attempt",
+    body: "A stress test may expose fragility, nonuniqueness, missing primitives, or underdetermination. It does not reject the whole ontology.",
+  },
+  {
+    label: "Gate",
+    title: "A protected decision",
+    body: "Human-gated decisions such as Gate Chair approval or benchmark promotion require explicit protected authority, not validator success or public prose.",
+  },
+];
+
+const negativeResultCards = [
+  {
+    label: "Scoped obstruction",
+    title: "Route-local evidence",
+    body: "A scoped obstruction says a specific route failed under stated assumptions and source data. It is narrower than a global no-go theorem.",
+  },
+  {
+    label: "Freeze label",
+    title: "Do not repeat casually",
+    body: "A freeze label preserves a repeated burden or blocked route so future work needs a new payload, redesign, audit, or gate action before reuse.",
+  },
+  {
+    label: "Blocked status",
+    title: "Not success",
+    body: "Blocked or stopped states preserve what remains missing. They should not be rewritten as completion, benchmark promotion, or hidden progress.",
+  },
+  {
+    label: "Validator pass",
+    title: "Operational evidence only",
+    body: "A validator can show a bounded transaction satisfied structural checks. It cannot prove g_eff, matter coupling, equations, or scientific truth.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to physics track",
+    href: "/project/physics/",
+    body: "Return to the completed first version of the physics deep-dive page family.",
+  },
+  {
+    title: "Source authority page",
+    href: "/project/source-authority/",
+    body: "Read how website pages, generated explainers, registries, and tracked sources relate.",
+  },
+  {
+    title: "AI research-agent system",
+    href: "/project/ai-research-agent-system/",
+    body: "Read the implemented AI track landing page for bounded work, role contracts, review, and source-first memory.",
+  },
+  {
+    title: "Upstream workflow explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+    body: "Generated noncanonical workflow explainer for bounded AgentJobs, roles, gates, and handoffs.",
+  },
+];
+---
+
+<BaseLayout
+  title="Claim Gates And Obstructions"
+  description="Reader-facing claim-control page explaining AEther Flow claim gates, negative results, no-go records, obstruction records, and freeze criteria."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="claim-gates-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / Phase 4D</p>
+      <h1 id="claim-gates-title">Claim Gates</h1>
+      <p class="overview-lead">
+        AEther Flow uses claim gates to keep proposals, audits, stress tests,
+        completions, handoffs, freeze labels, and human-gated decisions inside
+        their proper scope. The discipline is conservative: negative results
+        are preserved without turning them into success or global rejection.
+      </p>
+      <div class="overview-actions" aria-label="Claim gates page actions">
+        <a class="primary-link" href="/project/physics/">Back to physics track</a>
+        <a class="secondary-link" href="#claim-lifecycle">Read the lifecycle</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="claim-gates-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="claim-gates-figure-title">
+        <title id="claim-gates-figure-title">Claim gate lifecycle map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M82 188 C156 110, 238 114, 300 184 C374 268, 462 248, 540 156" />
+        <path class="track-figure-path signal-path" d="M84 132 C164 198, 240 252, 320 214 C410 174, 458 98, 544 126" />
+        <circle class="track-figure-core" cx="314" cy="184" r="42" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="114" cy="128" r="13" />
+          <circle cx="180" cy="252" r="13" />
+          <circle cx="442" cy="108" r="13" />
+          <circle cx="514" cy="246" r="13" />
+        </g>
+        <text x="70" y="76">proposal</text>
+        <text x="260" y="72">audit / stress</text>
+        <text x="350" y="310">human gate</text>
+      </svg>
+      <figcaption id="claim-gates-figure-caption">
+        Visual orientation only: the diagram explains scope control, not a
+        physics verdict or Gate Chair decision.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="claim-lifecycle" class="track-page-band" aria-labelledby="claim-lifecycle-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim lifecycle</p>
+      <h2 id="claim-lifecycle-title">Each state narrows what can be said.</h2>
+      <p>
+        A useful packet can still be provisional. A failed packet can still be
+        valuable. Neither condition widens claim authority beyond the tracked
+        source boundary.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {lifecycleCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Negative-result discipline</p>
+      <h2 id="negative-results-title">Stopped, blocked, and frozen states remain scoped.</h2>
+      <p>
+        No-go records and obstruction records help the project avoid repeating
+        weak routes. They do not prove the whole ontology false, and they do
+        not secretly complete the derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {negativeResultCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-reader-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="claim-reader-title">Read gates together with source authority and workflow.</h2>
+      <p>
+        Claim gates connect the physics track to the AI research-agent workflow:
+        bounded jobs, role constraints, validators, completions, and handoffs
+        can organize evidence while remaining separate from physics proof.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="claim-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="claim-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can explain the claim-control model. It cannot create
+        a claim boundary, issue a Gate Chair verdict, promote a benchmark,
+        reject the global ontology, change role authority, treat validator
+        passes as scientific evidence, or supersede tracked source files.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

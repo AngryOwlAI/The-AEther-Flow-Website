@@ -1,0 +1,171 @@
+---
+import SourceNotice from "../../../components/SourceNotice.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {
+  projectPhysicsDeepDiveRoutes,
+  projectSourceNoticeDefaults,
+} from "../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsTrack;
+
+const statusLayers = [
+  {
+    label: "Ontology",
+    title: "AEther / AEther-flow",
+    body: "The ontology gives the project its conceptual vocabulary: a proposed deeper four-dimensional substrate and ordered flow. It is an explanatory frame, not a completed derivation.",
+  },
+  {
+    label: "Benchmark",
+    title: "Exact-GR boundary",
+    body: "The public benchmark keeps observable-scale behavior ordinary: one operative Lorentzian metric, universal matter coupling, and standard causal structure.",
+  },
+  {
+    label: "Open burden",
+    title: "GR derivation remains open",
+    body: "The source-side work must still show how effective Lorentzian geometry, matter coupling, and the field-equation burden arise without importing the target metric by hand.",
+  },
+  {
+    label: "Control",
+    title: "No-go and obstruction records",
+    body: "Negative results, freeze labels, and human gates preserve scoped failures without inflating them into global rejection or success.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Upstream source repository",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow",
+    body: "Canonical source files, registries, and project-control records remain upstream.",
+  },
+  {
+    title: "Physics program explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-physics-program-explainer.md",
+    body: "Reviewed generated noncanonical orientation for the physics track.",
+  },
+  {
+    title: "Exact-GR boundary explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md",
+    body: "Reviewed generated noncanonical boundary map for benchmark compatibility versus derivation.",
+  },
+];
+---
+
+<BaseLayout
+  title="Physics Research"
+  description="Physics track landing page for AEther Flow ontology, exact-GR benchmark boundary, open derivation burden, and obstruction discipline."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="physics-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics research track</p>
+      <h1 id="physics-title">Physics Research</h1>
+      <p class="overview-lead">
+        The physics track studies whether ordinary general relativity can be
+        interpreted, and eventually derived, from an AEther / AEther-flow
+        ontology while keeping the current public benchmark exactly ordinary GR
+        at observable scale.
+      </p>
+      <div class="overview-actions" aria-label="Physics page actions">
+        <a class="primary-link" href="#physics-status">Read the track status</a>
+        <a class="secondary-link" href="/project/overview/">Back to overview</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="physics-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="physics-figure-title">
+        <title id="physics-figure-title">Physics track boundary map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M72 242 C176 156, 276 154, 376 212 C454 258, 520 226, 552 138" />
+        <path class="track-figure-path signal-path" d="M78 128 C184 178, 286 192, 382 142 C456 104, 516 112, 550 170" />
+        <circle class="track-figure-core" cx="312" cy="180" r="42" />
+        <g class="track-figure-nodes">
+          <circle cx="112" cy="108" r="12" />
+          <circle cx="176" cy="252" r="12" />
+          <circle cx="456" cy="102" r="12" />
+          <circle cx="510" cy="246" r="12" />
+        </g>
+        <text x="76" y="72">ontology</text>
+        <text x="380" y="304">open derivation burden</text>
+      </svg>
+      <figcaption id="physics-figure-caption">
+        Visual orientation only: ontology, benchmark, derivation burden, and
+        obstruction records remain separate claim states.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="physics-status" class="track-page-band" aria-labelledby="physics-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Status model</p>
+      <h2 id="physics-status-title">Four boundaries a reader should keep separate.</h2>
+      <p>
+        The safe public reading is conservative. The page can explain the
+        track, but source-side science and claim promotion remain upstream.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {statusLayers.map((layer) => (
+        <article class="track-status-card">
+          <p>{layer.label}</p>
+          <h3>{layer.title}</h3>
+          <p>{layer.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="physics-next-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Where to go next</p>
+      <h2 id="physics-next-title">Use active pages now; treat later routes as planned.</h2>
+      <p>
+        The Phase 4 physics deep-dive routes are available as a coherent first
+        version after source inspection and QA: ontology, exact-GR benchmark,
+        GR derivation roadmap, and claim gates.
+      </p>
+    </div>
+
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+
+    <div class="planned-route-grid" aria-label="Physics routes">
+      {projectPhysicsDeepDiveRoutes.map((route) => (
+        <article class="planned-route-card">
+          <p>{route.phase} / {route.status}</p>
+          <h3>{route.title}</h3>
+          {route.status === "implemented" ? (
+            <a class="planned-route-link" href={route.href}>{route.href}</a>
+          ) : (
+            <code>{route.href}</code>
+          )}
+          <span>{route.description}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="physics-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="physics-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can organize the physics reading path. It cannot
+        promote ontology, certify benchmark recovery, complete the derivation,
+        issue a Gate Chair decision, or turn generated documentation into
+        scientific authority.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

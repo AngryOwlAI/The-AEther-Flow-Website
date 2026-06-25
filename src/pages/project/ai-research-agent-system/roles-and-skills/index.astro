@@ -1,0 +1,298 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.aiRolesAndSkills;
+
+const inspectionSteps = [
+  {
+    label: "Registry row",
+    title: "Check identity and status",
+    body: "Start with the role registry for version, authority level, active or superseded status, human-gate state, default output form, and validators.",
+  },
+  {
+    label: "Contract text",
+    title: "Read the governed source",
+    body: "Role and skill contracts are source files. A public page may summarize them, but the versioned contract remains the inspection target.",
+  },
+  {
+    label: "Execution record",
+    title: "Bind one job",
+    body: "The execution-role record says whether the job uses a registered role, a task overlay, or a one-job provisional role.",
+  },
+  {
+    label: "AgentJob allowlist",
+    title: "Define actual access",
+    body: "Allowed reads, writes, generated paths, validators, and claim boundaries decide what the current transaction may do.",
+  },
+];
+
+const roleFamilies = [
+  {
+    label: "Research routing",
+    title: "Director roles",
+    body: "Director of Research and Project-System Director route one bounded step. Their normal authority is routing or project control, not claim promotion.",
+  },
+  {
+    label: "Physics drafts",
+    title: "Science-draft roles",
+    body: "Ontology Formalizer, Candidate Constructor, Refuter, Smuggling Auditor, and Theoretical Continuation Selector work inside draft/control boundaries.",
+  },
+  {
+    label: "Scientific gate",
+    title: "Gate Chair",
+    body: "The Gate Chair is defined as human-gated. Its existence does not authorize execution or promotion without explicit tracked approval.",
+  },
+  {
+    label: "Project system",
+    title: "Maintenance roles",
+    body: "Project-Control Maintainer, Validator Engineer, Memory-System Maintainer, and Documentation Curator maintain project surfaces without promoting physics claims.",
+  },
+];
+
+const skillCards = [
+  {
+    label: "continue-research",
+    title: "Research continuation",
+    body: "Routes research-control continuation and physics AgentJobs. It is not project-system repair by default.",
+  },
+  {
+    label: "improve-project-system",
+    title: "Project-system repair",
+    body: "Handles classifiers, sidecars, signals, receipts, and one bounded project-system AgentJob. It is not physics derivation.",
+  },
+  {
+    label: "project-memory-system",
+    title: "Memory and derivatives",
+    body: "Bootstraps and validates memory, wiki, registry, and derivative surfaces while keeping generated artifacts non-authoritative.",
+  },
+  {
+    label: "publication skills",
+    title: "Governed public explainers",
+    body: "HTML and visual explainer skills support reader surfaces only through the governed source-spec and publication-brief path.",
+  },
+];
+
+const overreadCards = [
+  {
+    label: "Superseded roles",
+    title: "Historical does not mean active",
+    body: "Old role versions remain visible so old execution records are interpretable. The status field controls the current role state.",
+  },
+  {
+    label: "Skill mentions",
+    title: "Entry point does not equal permission",
+    body: "A skill can define a workflow, but the current AgentJob allowlist still controls actual writes and outputs.",
+  },
+  {
+    label: "Task overlays",
+    title: "One-job adjustments stay local",
+    body: "A task overlay adapts a registered role for one job. It does not become a reusable role version by convention.",
+  },
+  {
+    label: "Public catalog",
+    title: "Navigation, not registration",
+    body: "This website page cannot register roles, supersede roles, change skill contracts, or expand authority.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to AI research-agent track",
+    href: "/project/ai-research-agent-system/",
+    body: "Return to the track landing page for the AI research-agent page family.",
+  },
+  {
+    title: "Research-agent workflow",
+    href: "/project/ai-research-agent-system/workflow/",
+    body: "Read how Director decisions, AgentJobs, completions, and handoffs form the workflow chain.",
+  },
+  {
+    title: "Source authority page",
+    href: "/project/source-authority/",
+    body: "Review how website pages, generated explainers, registries, and tracked sources relate.",
+  },
+  {
+    title: "Upstream roles and skills catalog",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/roles-and-skills-explainer.md",
+    body: "Generated noncanonical source-backed catalog for role and skill inspection order.",
+  },
+];
+---
+
+<BaseLayout
+  title="Roles And Skills"
+  description="Reader-facing roles-and-skills page explaining role contracts, governed skills, task-local authority, allowlists, and source boundaries."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="roles-skills-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent deep dive / Phase 5B</p>
+      <h1 id="roles-skills-title">Roles And Skills</h1>
+      <p class="overview-lead">
+        AEther Flow uses role contracts and governed skills to keep work
+        legible, bounded, and reviewable. A role name or skill entry point is
+        not permission by itself; task-local records and AgentJob allowlists
+        define what the current transaction may actually do.
+      </p>
+      <div class="overview-actions" aria-label="Roles and skills page actions">
+        <a class="primary-link" href="/project/ai-research-agent-system/">Back to AI track</a>
+        <a class="secondary-link" href="#authority-stack">Read the inspection stack</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="roles-skills-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="roles-skills-figure-title">
+        <title id="roles-skills-figure-title">Role and skill authority stack</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path signal-path" d="M118 108 H500" />
+        <path class="track-figure-path gold-path" d="M118 176 H500" />
+        <path class="track-figure-path signal-path" d="M118 244 H500" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="132" cy="108" r="15" />
+          <circle cx="310" cy="108" r="15" />
+          <circle cx="488" cy="108" r="15" />
+          <circle cx="132" cy="176" r="15" />
+          <circle cx="310" cy="176" r="15" />
+          <circle cx="488" cy="176" r="15" />
+          <circle cx="132" cy="244" r="15" />
+          <circle cx="310" cy="244" r="15" />
+          <circle cx="488" cy="244" r="15" />
+        </g>
+        <circle class="track-figure-core" cx="310" cy="176" r="40" />
+        <text x="86" y="66">registry</text>
+        <text x="248" y="66">contract</text>
+        <text x="410" y="66">AgentJob</text>
+        <text x="214" y="302">task-local authority</text>
+      </svg>
+      <figcaption id="roles-skills-figure-caption">
+        Visual orientation only: this stack shows inspection order, not a grant
+        of role authority or write permission.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="authority-stack" class="track-page-band" aria-labelledby="authority-stack-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Authority inspection stack</p>
+      <h2 id="authority-stack-title">A role label is never enough.</h2>
+      <p>
+        The safe inspection order starts with registered source state and ends
+        with the actual AgentJob boundary. Public summaries help readers
+        navigate that stack; they do not replace it.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {inspectionSteps.map((step) => (
+        <article class="track-status-card">
+          <p>{step.label}</p>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="role-families-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Role families</p>
+      <h2 id="role-families-title">Different roles exist for different bounded work.</h2>
+      <p>
+        Role families help classify work, but they still inherit the current
+        transaction boundary. Human-gated and claim-promoting authority remains
+        protected.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {roleFamilies.map((family) => (
+        <article class="track-status-card">
+          <p>{family.label}</p>
+          <h3>{family.title}</h3>
+          <p>{family.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="skills-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Governed skills</p>
+      <h2 id="skills-title">Skills define procedures, not blanket permission.</h2>
+      <p>
+        A skill may tell an operator how to continue research, improve the
+        project system, refresh memory, or publish explainers. It still works
+        inside source authority, role contracts, validators, and allowlists.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {skillCards.map((skill) => (
+        <article class="track-status-card">
+          <p>{skill.label}</p>
+          <h3>{skill.title}</h3>
+          <p>{skill.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="overreads-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Overread prevention</p>
+      <h2 id="overreads-title">Catalog visibility must not become authority drift.</h2>
+      <p>
+        The main risk is reading a visible catalog entry as active permission.
+        The repository prevents that by making status, execution records,
+        allowlists, and gates explicit.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {overreadCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="roles-reader-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="roles-reader-title">Use the catalog with workflow and source authority.</h2>
+      <p>
+        Roles and skills are easiest to read after the workflow page: the
+        workflow explains the transaction chain, while this page explains why
+        role and skill labels remain subordinate to current job authority.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="roles-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="roles-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can orient readers to role families, skill entry points, and
+        the authority inspection order. It cannot register roles, supersede
+        roles, change skill contracts, expand task-local allowlists, change
+        routing behavior, or promote physics claims.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

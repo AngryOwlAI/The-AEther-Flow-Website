@@ -25,7 +25,8 @@
     <text x="790" y="230" text-anchor="middle" font-size="16" fill="#59615e">and direct downloads</text>
   </g>
   <g>
-    <rect x="308" y="294" width="344" height="54" rx="6" fill="#0f6a61"/>
-    <text x="480" y="328" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Website does not become source authority</text>
+    <rect x="318" y="286" width="324" height="76" rx="6" fill="#0f6a61"/>
+    <text x="480" y="320" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Website does not become</text>
+    <text x="480" y="344" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">source authority</text>
   </g>
 </svg>

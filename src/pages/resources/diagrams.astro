@@ -1,29 +1,68 @@
 ---
+import DownloadList from "../../components/DownloadList.astro";
 import Figure from "../../components/Figure.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { approvedDownloads, downloads, sampleDownloads } from "../../lib/manifests";
 import { diagramGalleryItems } from "../../lib/siteContent";
+
+const diagramDownloads = downloads.filter((item) => item.kind === "diagram");
+const approvedDiagramDownloads = approvedDownloads.filter((item) => item.kind === "diagram");
+const sampleDiagramDownloads = sampleDownloads.filter((item) => item.kind === "diagram");
+const sampleDiagramLabel =
+  sampleDiagramDownloads.length === 1 ? "sample diagram fixture file" : "sample diagram fixture files";
+const approvedDiagramLabel =
+  approvedDiagramDownloads.length === 1
+    ? "approved source-backed diagram file"
+    : "approved source-backed diagram files";
 ---
 
 <BaseLayout
-  title="Diagram Gallery"
-  description="Diagram gallery for The AEther Flow website."
+  title="Diagram Sample Gallery"
+  description="Manifest-backed sample diagram gallery for The AEther Flow website."
 >
   <section class="content-band" aria-labelledby="diagrams-title">
     <div class="section-header">
-      <p class="eyebrow">Diagram gallery</p>
+      <p class="eyebrow">Sample fixtures</p>
       <h1 id="diagrams-title">Visual orientation assets</h1>
       <p class="lead">
-        Diagrams are presentation aids. A diagram becomes authoritative only if
-        the source research process explicitly treats it that way.
+        Diagrams are presentation aids. The current gallery asset is a sample
+        fixture for website orientation and manifest validation, not a
+        scientific source artifact.
       </p>
     </div>
     <SourceNotice
       claimStatus="source-index-only"
       sourceRefs={["source_manifest:publication_layer_map"]}
       updated="2026-06-25"
-      note="This page presents website-local visual orientation assets with explicit provenance."
+      note="This page presents website-local visual orientation assets with explicit provenance. It does not make diagrams authoritative."
     />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="diagram-status-title">
+    <div class="section-header">
+      <p class="eyebrow">Manifest audit</p>
+      <h2 id="diagram-status-title">Diagram asset status</h2>
+      <p class="lead">
+        The current manifest contains {sampleDiagramDownloads.length}{" "}
+        {sampleDiagramLabel} and {approvedDiagramDownloads.length}{" "}
+        {approvedDiagramLabel}.
+      </p>
+    </div>
+    <div class="link-grid">
+      <a class="link-card" href="/project/source-authority/">
+        <span>Source authority</span>
+        <small>Read how website visuals, generated material, and manifests relate to upstream authority.</small>
+      </a>
+      <a class="link-card" href="/project/overview/">
+        <span>Project overview</span>
+        <small>Return to the accepted public entry point for the dual-track framing.</small>
+      </a>
+      <a class="link-card" href="/resources/">
+        <span>Resource index</span>
+        <small>Inspect all current manifest-backed sample files and planned-source boundaries.</small>
+      </a>
+    </div>
   </section>
 
   <section class="content-band content-band-tight" aria-label="Diagram list">
@@ -37,5 +76,14 @@ import { diagramGalleryItems } from "../../lib/siteContent";
         />
       ))}
     </div>
+  </section>
+
+  <section class="content-band content-band-tight">
+    <DownloadList
+      items={diagramDownloads}
+      eyebrow="Manifest-backed diagram"
+      title="Current diagram fixture"
+      description="This row is filtered from the asset manifest. Current diagram assets are scaffold fixtures unless the manifest records approved source-backed status."
+    />
   </section>
 </BaseLayout>

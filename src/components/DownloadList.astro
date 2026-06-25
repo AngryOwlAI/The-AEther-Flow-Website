@@ -11,14 +11,23 @@ interface Props {
 const {
   items,
   eyebrow = "Manifest-backed downloads",
-  title = "Published sample files",
-  description = "These rows are rendered from the website manifests. The files are Phase 2 fixtures for path validation and direct static downloads.",
+  title = "Current manifest files",
+  description = "These rows are rendered from the website manifests. Status and notes identify whether each file is a sample fixture, approved asset, draft, historical record, or source-index-only entry.",
 } = Astro.props;
 
 const kindLabels: Record<string, string> = {
   pdf: "PDF",
   tex: "TeX",
   diagram: "Diagram",
+};
+
+const statusLabels: Record<string, string> = {
+  approved: "approved source-backed public asset",
+  sample: "sample fixture",
+  draft: "draft asset",
+  historical: "historical asset",
+  "source-index-only": "source-index-only",
+  unknown: "unknown",
 };
 
 const byteFormatter = new Intl.NumberFormat("en-US");
@@ -48,7 +57,9 @@ const byteFormatter = new Intl.NumberFormat("en-US");
           </div>
           <div>
             <dt>Status</dt>
-            <dd>{item.source?.approval_status ?? "unknown"}</dd>
+            <dd>
+              {statusLabels[item.source?.approval_status ?? "unknown"] ?? item.source?.approval_status ?? "unknown"}
+            </dd>
           </div>
           <div>
             <dt>Source ref</dt>

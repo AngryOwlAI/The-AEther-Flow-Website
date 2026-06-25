@@ -1,0 +1,229 @@
+---
+import SourceNotice from "../../../components/SourceNotice.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.sourceAuthority;
+
+const authorityLayers = [
+  {
+    label: "Canonical science",
+    title: "Registered TeX",
+    body: "Physics and derivational claims belong to registered scientific sources and their stated claim status.",
+  },
+  {
+    label: "Control state",
+    title: "Registries",
+    body: "CSV registries carry routing, provenance, source-object hashes, generated-output tracking, and memory metadata.",
+  },
+  {
+    label: "Guidance",
+    title: "Registered Markdown",
+    body: "README files, AGENTS instructions, publication briefs, source specs, role contracts, skills, and design notes guide public and operator work.",
+  },
+  {
+    label: "Derivatives",
+    title: "Generated surfaces",
+    body: "Website pages, GitHub-facing Markdown, HTML explainers, PDFs, wiki notes, semantic extracts, and local caches orient readers but do not override sources.",
+  },
+];
+
+const readerRules = [
+  {
+    label: "Website pages",
+    title: "Explain and organize",
+    body: "A website page can make the project readable, connect real routes, and state claim status. It cannot create a physics result or change workflow authority.",
+  },
+  {
+    label: "Generated explainers",
+    title: "Use as maps",
+    body: "Generated public material is useful for orientation after its source binding is known. If it conflicts with a registered source, the source wins.",
+  },
+  {
+    label: "Validator passes",
+    title: "Treat as bounded evidence",
+    body: "A validator pass means a deterministic check accepted the checked state. It is not a scientific verdict or role-authority grant.",
+  },
+  {
+    label: "Memory and cache",
+    title: "Search, then inspect",
+    body: "Memory, wiki, semantic extracts, Obsidian mirrors, and local caches help find sources. They are retrieval aids, not citation authority.",
+  },
+];
+
+const pageLinks = [
+  {
+    title: "Project overview",
+    href: "/project/overview/",
+    body: "Return to the public two-track overview.",
+  },
+  {
+    title: "Physics Research",
+    href: "/project/physics/",
+    body: "Read the physics track with the open GR-derivation boundary preserved.",
+  },
+  {
+    title: "AI Research-Agent System",
+    href: "/project/ai-research-agent-system/",
+    body: "Read the AI workflow track without treating workflow evidence as physics proof.",
+  },
+  {
+    title: "Resources",
+    href: "/resources/",
+    body: "Inspect current website resource indexes and scaffold/sample labels.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Upstream source repository",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow",
+    body: "Canonical source files, registries, and control records remain upstream.",
+  },
+  {
+    title: "Source authority explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+    body: "Reviewed generated noncanonical guide to source authority and derivatives.",
+  },
+  {
+    title: "Publication brief registry",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+    body: "Registry surface for reviewed public explainer pages and source-material bindings.",
+  },
+];
+---
+
+<BaseLayout
+  title="Source Authority"
+  description="Public trust and source-boundary page explaining how to read AEther Flow website pages, generated derivatives, and upstream source records."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="source-authority-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Public trust boundary</p>
+      <h1 id="source-authority-title">Source Authority</h1>
+      <p class="overview-lead">
+        The website is a reader-facing presentation layer. It can explain,
+        organize, and link reviewed material, but upstream source files and
+        registries decide scientific, mathematical, governance, and workflow
+        state.
+      </p>
+      <div class="overview-actions" aria-label="Source authority page actions">
+        <a class="primary-link" href="#authority-ladder">Read the boundary</a>
+        <a class="secondary-link" href="/project/overview/">Back to overview</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="source-authority-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="source-authority-figure-title">
+        <title id="source-authority-figure-title">Source authority ladder diagram</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M120 292 L220 224 L320 176 L420 128 L520 72" />
+        <path class="track-figure-path signal-path" d="M118 292 H520" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="120" cy="292" r="18" />
+          <circle cx="220" cy="224" r="18" />
+          <circle cx="320" cy="176" r="18" />
+          <circle cx="420" cy="128" r="18" />
+          <circle cx="520" cy="72" r="18" />
+        </g>
+        <text x="72" y="324">derivative</text>
+        <text x="246" y="208">registry</text>
+        <text x="394" y="112">source</text>
+        <text x="428" y="54">authority</text>
+      </svg>
+      <figcaption id="source-authority-figure-caption">
+        Visual orientation only: readable pages are useful maps, not the
+        authority that defines project state.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="authority-ladder" class="track-page-band" aria-labelledby="authority-ladder-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Authority ladder</p>
+      <h2 id="authority-ladder-title">Start with the source lane that owns the claim.</h2>
+      <p>
+        The public trust rule is simple: use website and generated surfaces to
+        find the right source, then inspect the registered source file and
+        registry row before treating a claim as current.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {authorityLayers.map((layer) => (
+        <article class="track-status-card">
+          <p>{layer.label}</p>
+          <h3>{layer.title}</h3>
+          <p>{layer.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="reader-rules-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader rules</p>
+      <h2 id="reader-rules-title">Clear public material still has limited authority.</h2>
+      <p>
+        A page can be well designed, accurate as a summary, and useful to a
+        reader while still remaining downstream from the source record it
+        describes.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {readerRules.map((rule) => (
+        <article class="track-status-card">
+          <p>{rule.label}</p>
+          <h3>{rule.title}</h3>
+          <p>{rule.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="source-links-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reading path</p>
+      <h2 id="source-links-title">Move between public pages without losing the source boundary.</h2>
+      <p>
+        These links are real current routes or upstream source surfaces. No
+        generated page, including this one, replaces the source material it
+        points toward.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {pageLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="source-authority-notice-title">
+    <div>
+      <p class="eyebrow">Claim status</p>
+      <h2 id="source-authority-notice-title">This page is an orientation surface.</h2>
+      <p>
+        It cannot change the hierarchy, replace a registry, promote ontology,
+        certify a benchmark, issue a Gate Chair verdict, expand roles, modify
+        routing behavior, or make generated outputs authoritative.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

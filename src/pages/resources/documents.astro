@@ -2,39 +2,89 @@
 import DownloadList from "../../components/DownloadList.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { downloads } from "../../lib/manifests";
+import { approvedDownloads, downloads, sampleDownloads } from "../../lib/manifests";
 
 const documentDownloads = downloads.filter((item) => item.kind === "pdf" || item.kind === "tex");
+const approvedDocumentDownloads = approvedDownloads.filter(
+  (item) => item.kind === "pdf" || item.kind === "tex",
+);
+const sampleDocumentDownloads = sampleDownloads.filter(
+  (item) => item.kind === "pdf" || item.kind === "tex",
+);
+const sampleDocumentLabel =
+  sampleDocumentDownloads.length === 1 ? "sample document fixture file" : "sample document fixture files";
+const approvedDocumentLabel =
+  approvedDocumentDownloads.length === 1
+    ? "approved source-backed document file"
+    : "approved source-backed document files";
 ---
 
 <BaseLayout
-  title="Source Document Library"
-  description="Manifest-backed PDF and TeX downloads for The AEther Flow website."
+  title="Document Sample Library"
+  description="Manifest-backed sample PDF and TeX downloads for The AEther Flow website."
 >
   <section class="content-band" aria-labelledby="documents-title">
     <div class="section-header">
-      <p class="eyebrow">Source-index-only</p>
-      <h1 id="documents-title">Source Document Library</h1>
+      <p class="eyebrow">Sample fixtures</p>
+      <h1 id="documents-title">Document Sample Library</h1>
       <p class="lead">
-        This library demonstrates direct website access to PDF and TeX files.
-        Entries are rendered from manifest data rather than copied manually into
-        the page.
+        This library demonstrates direct website access to PDF and TeX files
+        without treating those files as scientific source documents. The current
+        document rows are sample fixtures rendered from manifest data.
       </p>
     </div>
     <SourceNotice
       claimStatus="source-index-only"
       sourceRefs={["source_manifest:sample_pdf", "source_manifest:sample_tex"]}
       updated="2026-06-25"
-      note="This page indexes downloadable sample assets. It does not assert new scientific content."
+      note="This page indexes downloadable sample assets. It does not assert new scientific content or source approval."
     />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="document-path-title">
+    <div class="section-header">
+      <p class="eyebrow">Reading path</p>
+      <h2 id="document-path-title">Use public pages before downloads</h2>
+      <p class="lead">
+        Source-backed explanation is available through the public project pages.
+        Downloadable source documents remain planned until approved provenance
+        is present in the manifest.
+      </p>
+    </div>
+    <div class="link-grid">
+      <a class="link-card" href="/project/physics/">
+        <span>Physics Research</span>
+        <small>Ontology, benchmark, open derivation, and claim-gate explainers.</small>
+      </a>
+      <a class="link-card" href="/project/ai-research-agent-system/">
+        <span>AI Research-Agent System</span>
+        <small>Workflow, roles, memory, registries, and validation explainers.</small>
+      </a>
+      <a class="link-card" href="/project/source-authority/">
+        <span>Source authority</span>
+        <small>How to interpret website pages, manifests, samples, and upstream records.</small>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="document-status-title">
+    <div class="section-header">
+      <p class="eyebrow">Manifest audit</p>
+      <h2 id="document-status-title">Document asset status</h2>
+      <p class="lead">
+        The current manifest contains {sampleDocumentDownloads.length}{" "}
+        {sampleDocumentLabel} and {approvedDocumentDownloads.length}{" "}
+        {approvedDocumentLabel}.
+      </p>
+    </div>
   </section>
 
   <section class="content-band content-band-tight">
     <DownloadList
       items={documentDownloads}
-      eyebrow="Manifest-backed library"
+      eyebrow="Manifest-backed samples"
       title="PDF and TeX sample files"
-      description="The list is filtered from the asset manifest to document-oriented public files."
+      description="The list is filtered from the asset manifest to document-oriented public files. Current entries are scaffold fixtures for validation and direct-download behavior."
     />
   </section>
 </BaseLayout>

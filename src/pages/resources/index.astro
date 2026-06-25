@@ -2,8 +2,20 @@
 import DownloadList from "../../components/DownloadList.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { downloads } from "../../lib/manifests";
+import {
+  approvedDownloads,
+  downloadStatusCounts,
+  downloads,
+  sampleDownloads,
+} from "../../lib/manifests";
 import { resourceGroups } from "../../lib/siteContent";
+
+const sourceRefs = downloads.map((item) => item.source_ref);
+const sampleCount = sampleDownloads.length;
+const approvedCount = approvedDownloads.length;
+const manifestStatusSummary = Object.entries(downloadStatusCounts)
+  .map(([status, count]) => `${status}: ${count}`)
+  .join(", ");
 ---
 
 <BaseLayout
@@ -15,23 +27,27 @@ import { resourceGroups } from "../../lib/siteContent";
       <p class="eyebrow">Source-index-only</p>
       <h1 id="resources-title">Resources</h1>
       <p class="lead">
-        This page demonstrates the Phase 2 publication path for direct website
-        access to public files, including PDFs, TeX files, and diagrams. The
-        listed files are sample fixtures, not scientific source documents.
+        This resource area supports the public reading path while keeping file
+        status explicit. Current downloadable files are sample fixtures unless
+        the manifest marks them as approved source-backed public assets.
       </p>
     </div>
     <SourceNotice
       claimStatus="source-index-only"
-      sourceRefs={downloads.map((item) => item.source_ref)}
+      sourceRefs={sourceRefs}
       updated="2026-06-25"
-      note="This resource index is rendered from website-local manifest data and structured page links."
+      note="This resource index is rendered from website-local manifest data and structured page links. It does not create scientific or workflow authority."
     />
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="resource-groups-title">
     <div class="section-header">
-      <p class="eyebrow">Resource groups</p>
-      <h2 id="resource-groups-title">Libraries and technical checks</h2>
+      <p class="eyebrow">Reader path</p>
+      <h2 id="resource-groups-title">Public pages and sample libraries</h2>
+      <p class="lead">
+        Use the project pages for source-boundary-safe explanation. Use the
+        resource libraries to inspect current manifest-backed fixtures.
+      </p>
     </div>
     <div class="link-grid">
       {resourceGroups.map((group) => (
@@ -43,11 +59,50 @@ import { resourceGroups } from "../../lib/siteContent";
     </div>
   </section>
 
+  <section class="content-band content-band-tight" aria-labelledby="asset-status-title">
+    <div class="section-header">
+      <p class="eyebrow">Manifest audit</p>
+      <h2 id="asset-status-title">Current downloadable asset status</h2>
+      <p class="lead">
+        The current manifest records {sampleCount} sample fixture files and{" "}
+        {approvedCount} approved source-backed public files. Source-backed
+        downloads remain planned until provenance and approval status are
+        available in the manifest.
+      </p>
+    </div>
+    <div class="resource-status-grid">
+      <article>
+        <p>Current files</p>
+        <h3>{manifestStatusSummary}</h3>
+        <span>
+          These counts come from <code>source_manifest.json</code> approval
+          statuses and the asset manifest cross-reference.
+        </span>
+      </article>
+      <article>
+        <p>Sample fixtures</p>
+        <h3>Path and rendering checks</h3>
+        <span>
+          Sample PDF, TeX, and diagram files validate direct static downloads;
+          they are not scientific source documents.
+        </span>
+      </article>
+      <article>
+        <p>Planned material</p>
+        <h3>Approved downloads deferred</h3>
+        <span>
+          Real downloadable assets should be added only after source provenance,
+          approval status, and usage terms are available.
+        </span>
+      </article>
+    </div>
+  </section>
+
   <section class="content-band content-band-tight">
     <DownloadList
       items={downloads}
-      title="Published manifest files"
-      description="This list is generated from asset manifest entries, including sample documents and the first diagram asset."
+      title="Current manifest-backed files"
+      description="This list is generated from asset manifest entries. The current rows are sample fixtures unless their status says otherwise."
     />
   </section>
 </BaseLayout>

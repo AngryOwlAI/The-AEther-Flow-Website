@@ -1,0 +1,196 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsOntology;
+
+const vocabularyCards = [
+  {
+    label: "AEther",
+    title: "Proposed deeper substrate",
+    body: "In the current ontology, AEther names a proposed deeper four-dimensional substrate. It should not be pictured as an ordinary three-dimensional medium flowing through already observed space.",
+  },
+  {
+    label: "AEther-flow",
+    title: "Ordered motion of that substrate",
+    body: "AEther-flow names intrinsic ordered motion in the deeper substrate. It is not a simple wind, river, or detectable current inside preexisting observed space.",
+  },
+  {
+    label: "Observed space",
+    title: "Observer-level slice",
+    body: "Observed three-dimensional space is treated as the local observer-accessible slice or appearance of the deeper order, not the full underlying ontology.",
+  },
+  {
+    label: "S-time",
+    title: "Experienced order of change",
+    body: "S-time is the experienced order among matter, light, and AEther-flow. It is not a second place-like corridor or a substitute for mathematical closure.",
+  },
+];
+
+const layerCards = [
+  {
+    label: "Ontology",
+    title: "What the project is about",
+    body: "The ontology gives the project a vocabulary for substrate, ordered flow, observed space, time-language, and expansion-language.",
+  },
+  {
+    label: "Mathematics",
+    title: "What must still be derived",
+    body: "A source-side bridge would need to recover observer structure, metric behavior, matter coupling, and closure without importing the target result by hand.",
+  },
+  {
+    label: "Benchmark",
+    title: "What remains ordinary GR",
+    body: "The current benchmark keeps observable-scale relativistic behavior in the ordinary GR frame while first-principles substrate derivation remains open.",
+  },
+  {
+    label: "Prediction",
+    title: "What cannot be inferred here",
+    body: "Public website pages cannot create empirical predictions, promote ontology, or certify exact-GR recovery. Those claims require upstream source authority.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to physics track",
+    href: "/project/physics/",
+    body: "Return to the track-level map for ontology, benchmark, open derivation, and obstruction boundaries.",
+  },
+  {
+    title: "Source authority page",
+    href: "/project/source-authority/",
+    body: "Read how the website separates reader-facing explanation from upstream scientific authority.",
+  },
+  {
+    title: "Upstream ontology explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-ontology-explainer.md",
+    body: "Generated noncanonical reader surface used as source evidence for this public orientation page.",
+  },
+];
+---
+
+<BaseLayout
+  title="AEther-Flow Ontology"
+  description="Reader-facing ontology explainer for AEther / AEther-flow vocabulary, with explicit boundaries around GR derivation and upstream source authority."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="ontology-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / Phase 4A</p>
+      <h1 id="ontology-title">AEther-Flow Ontology</h1>
+      <p class="overview-lead">
+        This page explains AEther / AEther-flow as the project's current
+        research ontology: a vocabulary for a proposed deeper four-dimensional
+        substrate, its ordered motion, and observer-level experience. It is an
+        explanatory frame, not an accepted derivation of general relativity.
+      </p>
+      <div class="overview-actions" aria-label="Ontology page actions">
+        <a class="primary-link" href="/project/physics/">Back to physics track</a>
+        <a class="secondary-link" href="#ontology-boundary">Read the boundary</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="ontology-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="ontology-figure-title">
+        <title id="ontology-figure-title">Ontology layer map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M90 248 C166 126, 268 104, 352 176 C414 230, 492 218, 542 112" />
+        <path class="track-figure-path signal-path" d="M78 136 C168 174, 240 258, 338 220 C434 182, 490 106, 552 160" />
+        <circle class="track-figure-core" cx="310" cy="180" r="48" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="122" cy="116" r="14" />
+          <circle cx="174" cy="262" r="14" />
+          <circle cx="462" cy="102" r="14" />
+          <circle cx="512" cy="246" r="14" />
+        </g>
+        <text x="78" y="76">substrate</text>
+        <text x="278" y="72">ordered flow</text>
+        <text x="350" y="310">observer slice</text>
+      </svg>
+      <figcaption id="ontology-figure-caption">
+        Visual orientation only: the diagram does not establish a source-side
+        law, prediction, or GR derivation.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ontology-vocabulary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Vocabulary map</p>
+      <h2 id="ontology-vocabulary-title">The ontology names terms; it does not complete the theory.</h2>
+      <p>
+        The safe public reading is that these terms discipline the conceptual
+        language. They do not replace the registered source-side mathematics.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {vocabularyCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="ontology-boundary" class="track-page-band" aria-labelledby="ontology-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim boundary</p>
+      <h2 id="ontology-boundary-title">Ontology, mathematics, benchmark, and prediction remain separate.</h2>
+      <p>
+        The source materials support a clear distinction. Ontology can say what
+        the model is about. It does not, by itself, force the exact-GR
+        benchmark or certify a first-principles substrate derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {layerCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ontology-sources-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="ontology-sources-title">Continue through source-boundary-safe routes.</h2>
+      <p>
+        Use this page as orientation. For stronger claims, follow upstream
+        sources, registered TeX, and claim-boundary registries.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="ontology-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="ontology-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can explain current ontology vocabulary for public
+        readers. It cannot promote the ontology to established physics,
+        complete the GR derivation, change claim boundaries, replace registered
+        TeX sources, or certify empirical predictions.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

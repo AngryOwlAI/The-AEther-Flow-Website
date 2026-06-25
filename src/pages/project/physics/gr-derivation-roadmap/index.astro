@@ -1,0 +1,199 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsGrDerivationRoadmap;
+
+const roadmapCards = [
+  {
+    label: "Ontology",
+    title: "Source primitives",
+    body: "The roadmap begins with source-side substrate data and ontology rules. This is the conceptual starting point, not a completed GR derivation.",
+  },
+  {
+    label: "Localization",
+    title: "Observer and response burdens",
+    body: "The roadmap separates observer localization from response localization so each witness, obstruction, or source-extension decision can be audited on its own terms.",
+  },
+  {
+    label: "Manifold",
+    title: "Scoped source-only M_src status",
+    body: "The current ledger records scoped source-only M_src adoption. That does not construct g_eff, matter coupling, equations, or benchmark promotion.",
+  },
+  {
+    label: "Metric",
+    title: "Effective metric milestone",
+    body: "The inspected sources support naming effective Lorentzian metric generation as a milestone. The current g_eff row remains blocked before a separate metric-construction packet.",
+  },
+];
+
+const burdenCards = [
+  {
+    label: "g_eff",
+    title: "Metric law not supplied here",
+    body: "The roadmap can identify the source-to-metric burden, but this page does not derive an effective metric or adopt MetricData as a physics result.",
+  },
+  {
+    label: "Matter coupling",
+    title: "Universal coupling remains open",
+    body: "Same-metric matter coupling remains a downstream burden. A reader-facing route cannot infer it from ontology, validators, or roadmap rows.",
+  },
+  {
+    label: "Equations",
+    title: "Field equations remain open",
+    body: "Einstein-equation recovery requires a source-side dynamics, action, or variation theorem. No such theorem is created by this page.",
+  },
+  {
+    label: "Promotion",
+    title: "Benchmark promotion is gated",
+    body: "Benchmark promotion remains blocked until upstream burdens are discharged and the required human gate is explicitly satisfied.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to physics track",
+    href: "/project/physics/",
+    body: "Return to the track-level map for ontology, benchmark, derivation burden, and obstruction discipline.",
+  },
+  {
+    title: "Exact-GR benchmark boundary",
+    href: "/project/physics/exact-gr-benchmark/",
+    body: "Read the Phase 4B boundary between benchmark compatibility and derivation.",
+  },
+  {
+    title: "Upstream roadmap explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md",
+    body: "Generated noncanonical source evidence for the public roadmap explanation.",
+  },
+];
+---
+
+<BaseLayout
+  title="GR Derivation Roadmap"
+  description="Reader-facing GR derivation roadmap page explaining open source-side burdens, effective metric generation status, and source-authority boundaries."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="roadmap-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / Phase 4C</p>
+      <h1 id="roadmap-title">GR Derivation Roadmap</h1>
+      <p class="overview-lead">
+        The roadmap explains the open first-principles derivation burden:
+        source-side AEther / AEther-flow structure would have to recover
+        observer structure, effective Lorentzian metric behavior, matter
+        coupling, field equations, and benchmark promotion without importing
+        the target GR package by hand.
+      </p>
+      <div class="overview-actions" aria-label="Roadmap page actions">
+        <a class="primary-link" href="/project/physics/">Back to physics track</a>
+        <a class="secondary-link" href="#roadmap-status">Read the burden map</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="roadmap-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="roadmap-figure-title">
+        <title id="roadmap-figure-title">GR derivation roadmap burden ladder</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M84 264 C152 214, 200 142, 278 170 C352 196, 408 122, 532 92" />
+        <path class="track-figure-path signal-path" d="M88 108 C152 144, 206 228, 292 220 C392 210, 456 168, 542 234" />
+        <circle class="track-figure-core" cx="314" cy="184" r="42" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="112" cy="250" r="13" />
+          <circle cx="212" cy="150" r="13" />
+          <circle cx="412" cy="132" r="13" />
+          <circle cx="518" cy="230" r="13" />
+        </g>
+        <text x="70" y="78">source burdens</text>
+        <text x="272" y="72">g_eff blocked</text>
+        <text x="332" y="310">promotion gated</text>
+      </svg>
+      <figcaption id="roadmap-figure-caption">
+        Visual orientation only: this diagram names the burden ladder but does
+        not discharge a milestone or promote a benchmark.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="roadmap-status" class="track-page-band" aria-labelledby="roadmap-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Open derivation burden</p>
+      <h2 id="roadmap-status-title">The roadmap names obligations; it does not prove they are solved.</h2>
+      <p>
+        The inspected source materials treat the derivation as an ordered
+        burden chain. Each row needs its own source evidence, audit status, and
+        claim boundary before downstream conclusions can be used.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {roadmapCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="roadmap-downstream-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Downstream blocks</p>
+      <h2 id="roadmap-downstream-title">Metric, matter, equations, and promotion remain separate burdens.</h2>
+      <p>
+        The roadmap is useful precisely because it prevents one controlled
+        packet, validator pass, or ledger row from being treated as the whole
+        derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {burdenCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="roadmap-sources-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="roadmap-sources-title">Use this as a navigation aid, not an evidentiary shortcut.</h2>
+      <p>
+        To evaluate any roadmap row, inspect the upstream source artifact,
+        Distance-to-GR ledger row, claim-boundary record, and any required
+        human-gated decision.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="roadmap-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="roadmap-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can explain the roadmap. It cannot update project
+        physics status, discharge a milestone, construct g_eff, derive matter
+        coupling, derive Einstein equations, promote a benchmark, issue a Gate
+        Chair verdict, or supersede tracked source files.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

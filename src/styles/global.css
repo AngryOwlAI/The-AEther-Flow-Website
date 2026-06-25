@@ -46,6 +46,12 @@ a:focus-visible {
   color: var(--color-ruby);
 }
 
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(15, 106, 97, 0.55);
+  outline-offset: 0.2rem;
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -85,6 +91,12 @@ a:focus-visible {
   gap: 0.75rem;
 }
 
+.nav-links {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 0.45rem;
+}
+
 .brand {
   color: var(--color-ink);
   font-weight: 800;
@@ -113,6 +125,13 @@ a:focus-visible {
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: var(--color-teal-dark);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--color-teal-dark);
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.14em;
+  text-underline-offset: 0.38em;
 }
 
 .hero-band,
@@ -436,6 +455,57 @@ a:focus-visible {
   line-height: 1.55;
 }
 
+.resource-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.resource-status-grid article {
+  min-width: 0;
+  border: 1px solid var(--color-line);
+  border-top: 3px solid var(--color-gold);
+  border-radius: 8px;
+  background: var(--color-surface);
+  padding: 1.1rem;
+}
+
+.resource-status-grid article:nth-child(2) {
+  border-top-color: var(--color-ruby);
+}
+
+.resource-status-grid article:nth-child(3) {
+  border-top-color: var(--color-teal);
+}
+
+.resource-status-grid p {
+  margin: 0;
+  color: var(--color-ruby);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.resource-status-grid h3 {
+  margin: 0.35rem 0 0;
+  color: var(--color-teal-dark);
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.resource-status-grid span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.resource-status-grid code {
+  overflow-wrap: anywhere;
+}
+
 .timeline-list {
   display: grid;
   gap: 1rem;
@@ -658,6 +728,10 @@ a:focus-visible {
   color: var(--overview-gold);
 }
 
+.project-overview-page .nav-links a[aria-current="page"] {
+  color: var(--overview-gold);
+}
+
 .project-overview-page .site-footer p {
   color: var(--overview-muted);
 }
@@ -697,7 +771,7 @@ a:focus-visible {
   max-width: 11ch;
   margin: 0;
   color: var(--overview-text);
-  font-size: clamp(3.2rem, 8vw, 7rem);
+  font-size: 6.6rem;
   line-height: 0.9;
   text-transform: uppercase;
 }
@@ -741,6 +815,12 @@ a:focus-visible {
 .project-overview-page .secondary-link:hover,
 .project-overview-page .secondary-link:focus-visible {
   transform: translateY(-2px);
+}
+
+.project-overview-page a:focus-visible,
+.project-overview-page summary:focus-visible {
+  outline-color: rgba(255, 173, 33, 0.72);
+  box-shadow: 0 0 0 4px rgba(255, 173, 33, 0.14);
 }
 
 .project-overview-page .secondary-link {
@@ -930,7 +1010,7 @@ a:focus-visible {
 .live-state h2 {
   margin: 0;
   color: var(--overview-text);
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: 3.2rem;
   line-height: 1.05;
 }
 
@@ -1055,6 +1135,31 @@ a:focus-visible {
   color: var(--overview-signal);
 }
 
+.track-detail summary:focus-visible {
+  background: rgba(255, 173, 33, 0.14);
+}
+
+.track-card-link {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  border: 1px solid var(--overview-line);
+  border-radius: 6px;
+  background: rgba(255, 173, 33, 0.1);
+  padding: 0.52rem 0.8rem;
+  color: var(--overview-text);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.track-card-link:hover,
+.track-card-link:focus-visible {
+  border-color: var(--overview-signal);
+  color: var(--overview-signal);
+}
+
 .detail-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.8fr);
@@ -1150,6 +1255,261 @@ a:focus-visible {
 
 .project-overview-page .source-notice dd {
   color: var(--overview-text);
+}
+
+.track-page-hero,
+.track-page-band {
+  width: min(100% - 2rem, 1180px);
+  margin: 0 auto;
+}
+
+.track-page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1fr);
+  gap: 2rem;
+  align-items: center;
+  padding: 4rem 0 2rem;
+}
+
+.track-page-hero-copy {
+  min-width: 0;
+}
+
+.track-page-hero-copy h1 {
+  max-width: min(12ch, 100%);
+  margin: 0;
+  color: var(--overview-text);
+  font-size: 5.2rem;
+  line-height: 0.95;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.track-page-figure {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--overview-line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 58% 48%, rgba(255, 173, 33, 0.16), transparent 14rem),
+    #000000;
+  box-shadow: var(--overview-shadow);
+}
+
+.track-page-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.track-page-figure figcaption {
+  border-top: 1px solid var(--overview-white-line);
+  padding: 1rem;
+  color: var(--overview-muted);
+}
+
+.track-figure-bg {
+  fill: #000000;
+}
+
+.track-figure-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 5;
+  vector-effect: non-scaling-stroke;
+  animation: detail-flow-breathe 3.8s ease-in-out infinite alternate;
+}
+
+.gold-path {
+  stroke: var(--overview-gold);
+}
+
+.signal-path {
+  stroke: var(--overview-signal);
+  animation-delay: -1.2s;
+}
+
+.track-figure-core {
+  fill: var(--overview-gold);
+  filter: drop-shadow(0 0 18px rgba(255, 173, 33, 0.8));
+}
+
+.track-figure-nodes {
+  fill: var(--overview-signal);
+  filter: drop-shadow(0 0 12px rgba(232, 221, 193, 0.62));
+}
+
+.track-figure-nodes.hollow-nodes {
+  fill: rgba(0, 0, 0, 0.9);
+  stroke: var(--overview-signal);
+  stroke-width: 4;
+}
+
+.track-page-figure text {
+  fill: var(--overview-muted);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.72);
+  stroke-width: 5px;
+}
+
+.track-page-band {
+  padding: 2.4rem 0;
+}
+
+.track-page-heading {
+  max-width: 820px;
+}
+
+.track-page-heading h2,
+.track-page-notice h2 {
+  margin: 0;
+  color: var(--overview-text);
+  font-size: 3rem;
+  line-height: 1.08;
+}
+
+.track-page-heading p,
+.track-page-notice p {
+  color: var(--overview-muted);
+}
+
+.track-status-grid,
+.source-link-grid,
+.planned-route-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.track-status-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.source-link-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.planned-route-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.track-status-card,
+.source-link-card,
+.planned-route-card {
+  min-width: 0;
+  border: 1px solid var(--overview-white-line);
+  border-radius: 8px;
+  background: rgba(6, 5, 4, 0.82);
+  padding: 1rem;
+}
+
+.track-status-card {
+  border-top: 3px solid var(--overview-gold);
+}
+
+.track-status-card:nth-child(2n) {
+  border-top-color: var(--overview-signal);
+}
+
+.track-status-card p:first-child,
+.planned-route-card p {
+  margin: 0;
+  color: var(--overview-gold);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.track-status-card h3,
+.planned-route-card h3 {
+  margin: 0.35rem 0 0;
+  color: var(--overview-text);
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.track-status-card p,
+.planned-route-card span,
+.source-link-card small {
+  color: var(--overview-muted);
+}
+
+.source-link-card {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  color: var(--overview-text);
+  text-decoration: none;
+}
+
+.source-link-card:hover,
+.source-link-card:focus-visible {
+  border-color: var(--overview-line);
+}
+
+.source-link-card[href^="http"] {
+  border-style: dashed;
+}
+
+.source-link-card[href^="http"]::after {
+  width: fit-content;
+  border: 1px solid var(--overview-white-line);
+  border-radius: 4px;
+  background: rgba(255, 173, 33, 0.12);
+  padding: 0.24rem 0.36rem;
+  color: var(--overview-gold);
+  content: "External source";
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.source-link-card span {
+  color: var(--overview-signal);
+  font-weight: 900;
+}
+
+.source-link-card small,
+.planned-route-card span {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.planned-route-card {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.planned-route-card code,
+.planned-route-link {
+  overflow-wrap: anywhere;
+  border: 1px solid var(--overview-white-line);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.28rem 0.38rem;
+  color: var(--overview-signal);
+  font-size: 0.82rem;
+}
+
+.planned-route-link {
+  text-decoration: none;
+}
+
+.planned-route-link:hover,
+.planned-route-link:focus-visible {
+  border-color: var(--overview-line);
+  color: var(--overview-gold);
+}
+
+.track-page-notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.86fr);
+  gap: 1rem;
+  align-items: start;
+  padding-bottom: 5rem;
 }
 
 @keyframes dust-breathe {
@@ -1266,10 +1626,17 @@ a:focus-visible {
   .project-overview-page *,
   .project-overview-page *::before,
   .project-overview-page *::after {
-    animation-duration: 0.01ms !important;
+    animation: none !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .project-overview-page .primary-link:hover,
+  .project-overview-page .primary-link:focus-visible,
+  .project-overview-page .secondary-link:hover,
+  .project-overview-page .secondary-link:focus-visible {
+    transform: none;
   }
 }
 
@@ -1285,6 +1652,7 @@ a:focus-visible {
   .hero-grid,
   .principle-grid,
   .link-grid,
+  .resource-status-grid,
   .download-item {
     grid-template-columns: 1fr;
   }
@@ -1295,6 +1663,7 @@ a:focus-visible {
 
   .nav-links {
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .hero-band {
@@ -1323,18 +1692,32 @@ a:focus-visible {
   }
 
   .overview-hero,
+  .track-page-hero,
   .track-grid,
   .detail-grid,
-  .live-state {
+  .live-state,
+  .track-status-grid,
+  .source-link-grid,
+  .planned-route-grid,
+  .track-page-notice {
     grid-template-columns: 1fr;
   }
 
-  .overview-hero {
+  .overview-hero,
+  .track-page-hero {
     gap: 1.25rem;
   }
 
-  .overview-hero-copy h1 {
+  .overview-hero-copy h1,
+  .track-page-hero-copy h1 {
     font-size: 3.2rem;
+  }
+
+  .overview-heading h2,
+  .live-state h2,
+  .track-page-heading h2,
+  .track-page-notice h2 {
+    font-size: 2.25rem;
   }
 
   .overview-panel {

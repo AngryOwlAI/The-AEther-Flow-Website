@@ -1,0 +1,198 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
+
+const benchmarkCards = [
+  {
+    label: "Observable scale",
+    title: "Ordinary GR behavior",
+    body: "Under the current benchmark framing, observable-scale physics remains ordinary general relativity rather than a claimed empirical deviation from it.",
+  },
+  {
+    label: "Metric",
+    title: "One operative Lorentzian metric",
+    body: "The benchmark keeps the reader inside the standard metric description. Public pages must not claim a new effective metric has been derived from substrate data.",
+  },
+  {
+    label: "Matter",
+    title: "Universal matter coupling",
+    body: "The conservative benchmark preserves ordinary same-metric matter behavior. A derivation of universal coupling remains part of the open source-side burden.",
+  },
+  {
+    label: "Causality",
+    title: "Standard causal structure",
+    body: "The benchmark keeps standard relativistic causal structure at observable scale. It does not authorize a public claim that substrate equations have forced that structure.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Adoption",
+    title: "What is taken over operationally",
+    body: "Adoption means the project uses exact GR as the current observable-scale benchmark for the public physics track.",
+  },
+  {
+    label: "Compatibility",
+    title: "What can sit beside the ontology",
+    body: "Compatibility means AEther / AEther-flow language is held beside the benchmark without claiming a completed source-side recovery.",
+  },
+  {
+    label: "Derivation",
+    title: "What remains open",
+    body: "Derivation would require source-side construction of metric behavior, matter coupling, equations, and closure without importing the target result by hand.",
+  },
+  {
+    label: "Promotion",
+    title: "What stays gated",
+    body: "Benchmark promotion depends on upstream authority and human gates. Generated website prose cannot issue a Gate Chair decision.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to physics track",
+    href: "/project/physics/",
+    body: "Return to the track-level map for ontology, benchmark, open derivation, and obstruction boundaries.",
+  },
+  {
+    title: "Source authority page",
+    href: "/project/source-authority/",
+    body: "Read how the website separates reader-facing explanation from upstream scientific authority.",
+  },
+  {
+    title: "Upstream benchmark explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md",
+    body: "Generated noncanonical source evidence for the public benchmark-boundary explanation.",
+  },
+];
+---
+
+<BaseLayout
+  title="Exact-GR Benchmark Boundary"
+  description="Reader-facing exact-GR benchmark boundary page separating ordinary-GR observable behavior, compatibility, open derivation, and benchmark promotion."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="benchmark-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / Phase 4B</p>
+      <h1 id="benchmark-title">Exact-GR Benchmark Boundary</h1>
+      <p class="overview-lead">
+        AEther Flow uses exact general relativity as a conservative public
+        benchmark. At observable scale, the current benchmark framing keeps
+        behavior ordinary GR. That is not the same as a first-principles
+        derivation from AEther / AEther-flow substrate structure.
+      </p>
+      <div class="overview-actions" aria-label="Benchmark page actions">
+        <a class="primary-link" href="/project/physics/">Back to physics track</a>
+        <a class="secondary-link" href="#benchmark-boundary">Read the boundary</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="benchmark-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="benchmark-figure-title">
+        <title id="benchmark-figure-title">Exact-GR benchmark boundary map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M78 214 C154 120, 242 116, 318 178 C390 236, 482 236, 546 142" />
+        <path class="track-figure-path signal-path" d="M88 132 C178 194, 246 236, 330 210 C430 178, 476 98, 546 176" />
+        <circle class="track-figure-core" cx="316" cy="184" r="46" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="126" cy="112" r="14" />
+          <circle cx="156" cy="252" r="14" />
+          <circle cx="480" cy="110" r="14" />
+          <circle cx="512" cy="252" r="14" />
+        </g>
+        <text x="72" y="74">adoption</text>
+        <text x="274" y="72">ordinary GR</text>
+        <text x="350" y="310">derivation open</text>
+      </svg>
+      <figcaption id="benchmark-figure-caption">
+        Visual orientation only: the diagram separates benchmark adoption from
+        compatibility, derivation, and promotion.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="benchmark-plain-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Plain-language boundary</p>
+      <h2 id="benchmark-plain-title">The benchmark keeps public physics ordinary at observable scale.</h2>
+      <p>
+        The conservative reader rule is simple: exact GR is the operative
+        benchmark, and no website page should transform that benchmark into a
+        claimed source-side derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {benchmarkCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="benchmark-boundary" class="track-page-band" aria-labelledby="benchmark-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim states</p>
+      <h2 id="benchmark-boundary-title">Adoption, compatibility, derivation, and promotion are different claims.</h2>
+      <p>
+        The source materials keep these states separate. Compatibility with an
+        ontology is weaker than derivation, and derivation is weaker than
+        benchmark promotion by the appropriate upstream authority.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="benchmark-sources-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="benchmark-sources-title">Use this page as a boundary map, not as proof.</h2>
+      <p>
+        Stronger physics claims require upstream source authority, registered
+        TeX, claim-boundary records, and gated review where the source system
+        requires it.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="benchmark-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="benchmark-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can explain the benchmark boundary. It cannot prove
+        GR from AEther-flow, derive universal matter coupling, construct
+        `g_eff`, issue benchmark promotion, announce empirical deviation, or
+        turn generated documentation into scientific authority.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

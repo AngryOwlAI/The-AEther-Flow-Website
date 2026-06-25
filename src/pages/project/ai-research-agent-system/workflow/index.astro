@@ -1,0 +1,250 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.aiResearchAgentWorkflow;
+
+const workflowSteps = [
+  {
+    label: "Request",
+    title: "Classify the work",
+    body: "The system first distinguishes physics continuation, project-system improvement, documentation, validation, or a stop condition.",
+  },
+  {
+    label: "Decision",
+    title: "Select one route",
+    body: "A Director decision narrows the request to one lane, records the selected path, and preserves rejected alternatives where needed.",
+  },
+  {
+    label: "AgentJob",
+    title: "Bind the execution",
+    body: "The AgentJob states allowed reads, allowed writes, expected outputs, validators, and claim boundaries for one transaction.",
+  },
+  {
+    label: "Completion",
+    title: "Record evidence",
+    body: "The completion records changed outputs, command evidence, verdict, uncertainty, and whether a handoff is needed.",
+  },
+];
+
+const recordCards = [
+  {
+    label: "Director Decision Record",
+    title: "Why this route?",
+    body: "Explains the selected role path, rejected alternatives, claim boundary, and checks. It does not create broad future permission.",
+  },
+  {
+    label: "Execution-role record",
+    title: "Which authority applies?",
+    body: "Binds role semantics to exactly one job. Role templates guide work, while task-local records and allowlists control authority.",
+  },
+  {
+    label: "Handoff",
+    title: "What remains next?",
+    body: "Names a future route when continuation is needed. A handoff preserves the boundary rather than silently extending the current job.",
+  },
+  {
+    label: "Registry rows",
+    title: "How is it found?",
+    body: "Make decisions, jobs, roles, and completions discoverable and validator-checkable without becoming scientific proof.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "One bounded job",
+    title: "No hidden second objective",
+    body: "A physics construction should not become benchmark promotion; a documentation repair should not become a schema change.",
+  },
+  {
+    label: "Source inspection",
+    title: "Memory is navigation",
+    body: "Memory, wiki notes, and generated pages may help locate sources. They do not replace canonical files or registry rows.",
+  },
+  {
+    label: "Validator evidence",
+    title: "Operational, not scientific",
+    body: "A PASS result can show the transaction satisfied structural checks. It cannot prove a theorem or promote a physics claim.",
+  },
+  {
+    label: "Human gates",
+    title: "Protected authority stays protected",
+    body: "Ontology adoption, benchmark promotion, Gate Chair decisions, and claim promotion require their own human-gated path.",
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "Back to AI research-agent track",
+    href: "/project/ai-research-agent-system/",
+    body: "Return to the track landing page for bounded tasks, role contracts, review discipline, and memory.",
+  },
+  {
+    title: "Source authority page",
+    href: "/project/source-authority/",
+    body: "Read how website pages, generated explainers, registries, and tracked sources relate.",
+  },
+  {
+    title: "Upstream workflow explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+    body: "Generated noncanonical source-backed workflow explainer for public orientation.",
+  },
+  {
+    title: "Director lifecycle explainer",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
+    body: "Generated noncanonical guide to Director decisions, AgentJobs, execution-role records, completions, and handoffs.",
+  },
+];
+---
+
+<BaseLayout
+  title="Research-Agent Workflow"
+  description="Reader-facing workflow page explaining bounded tasks, Director decisions, AgentJobs, completions, handoffs, and authority boundaries."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="workflow-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent deep dive / Phase 5A</p>
+      <h1 id="workflow-title">Research-Agent Workflow</h1>
+      <p class="overview-lead">
+        AEther Flow treats research-agent work as a controlled record chain:
+        requests narrow into Director decisions, one bounded AgentJob,
+        completion evidence, and handoffs when continuation is needed. The
+        workflow makes research inspectable; it does not turn process evidence
+        into physics proof.
+      </p>
+      <div class="overview-actions" aria-label="Research-agent workflow page actions">
+        <a class="primary-link" href="/project/ai-research-agent-system/">Back to AI track</a>
+        <a class="secondary-link" href="#workflow-lifecycle">Read the lifecycle</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="workflow-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="workflow-figure-title">
+        <title id="workflow-figure-title">Bounded research-agent workflow map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path signal-path" d="M84 184 H198 C238 184, 238 112, 284 112 H522" />
+        <path class="track-figure-path gold-path" d="M84 184 H198 C238 184, 238 256, 284 256 H522" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="88" cy="184" r="18" />
+          <circle cx="198" cy="184" r="18" />
+          <circle cx="306" cy="112" r="18" />
+          <circle cx="306" cy="256" r="18" />
+          <circle cx="522" cy="112" r="18" />
+          <circle cx="522" cy="256" r="18" />
+        </g>
+        <circle class="track-figure-core" cx="198" cy="184" r="34" />
+        <text x="56" y="82">request</text>
+        <text x="160" y="306">Director decision</text>
+        <text x="338" y="82">AgentJob</text>
+        <text x="390" y="306">completion / handoff</text>
+      </svg>
+      <figcaption id="workflow-figure-caption">
+        Visual orientation only: the diagram explains narrowing and evidence
+        flow, not autonomous capability or scientific authority.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="workflow-lifecycle" class="track-page-band" aria-labelledby="workflow-lifecycle-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Workflow lifecycle</p>
+      <h2 id="workflow-lifecycle-title">A request becomes one inspectable transaction.</h2>
+      <p>
+        The public model is simple: classify the request, inspect source
+        authority, select one route, bind one AgentJob, record completion
+        evidence, and hand off only when the next bounded step is separate.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {workflowSteps.map((step) => (
+        <article class="track-status-card">
+          <p>{step.label}</p>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="workflow-records-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Record chain</p>
+      <h2 id="workflow-records-title">Each record narrows authority rather than widening it.</h2>
+      <p>
+        Director decisions, AgentJobs, execution-role records, completions,
+        handoffs, and registry rows form a durable evidence chain. Corrections
+        move through superseding packets rather than quiet historical rewrites.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {recordCards.map((record) => (
+        <article class="track-status-card">
+          <p>{record.label}</p>
+          <h3>{record.title}</h3>
+          <p>{record.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="workflow-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Authority boundaries</p>
+      <h2 id="workflow-boundaries-title">Workflow discipline supports research without promoting claims.</h2>
+      <p>
+        Phase 5A explains the operating model only. It does not add routing
+        behavior, alter role authority, or establish physics conclusions.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((boundary) => (
+        <article class="track-status-card">
+          <p>{boundary.label}</p>
+          <h3>{boundary.title}</h3>
+          <p>{boundary.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="workflow-reader-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="workflow-reader-title">Use this page with source authority and upstream records.</h2>
+      <p>
+        The website can explain the workflow, but the authoritative details
+        remain in tracked source files, registries, schemas, completions, and
+        handoffs in the upstream project.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="workflow-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="workflow-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can orient readers to bounded research-agent workflow. It
+        cannot change routing behavior, mutate control records, expand a role
+        template into task authority, treat validator success as scientific
+        proof, or replace human-gated decisions.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>
