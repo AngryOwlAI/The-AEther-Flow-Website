@@ -23,6 +23,15 @@ manifest-backed downloads, Python/Bash validation tooling, Docker development
 configuration, first reader-facing content pages, and Cloudflare Pages
 configuration files.
 
+Project-local Codex skills live in:
+
+```text
+.codex/skills/
+```
+
+The current local skills include `prototype` for throwaway design exploration
+and `to-prd` for local PRD synthesis.
+
 Build and validation entry points:
 
 ```bash

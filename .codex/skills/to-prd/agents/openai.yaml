@@ -1,0 +1,7 @@
+interface:
+  display_name: "To PRD"
+  short_description: "Synthesize a local website PRD"
+  default_prompt: "Use $to-prd to turn this conversation into a local PRD for The AEther Flow Website."
+
+policy:
+  allow_implicit_invocation: false

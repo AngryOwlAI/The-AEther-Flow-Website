@@ -73,6 +73,7 @@ docker-compose.override.yaml
 *.tmp
 *.temp
 .playwright-cli/
+output/playwright/
 .tmp/
 tmp/
 temp/
