@@ -22,7 +22,7 @@ The current UI prototype compares three information-architecture hypotheses:
 2. Variant B: Public reader journey first.
 3. Variant C: Trust and claim-status first.
 
-The production implementation should either choose one variant or deliberately remix the strongest parts after review.
+Decision: Variant A is the selected production direction. The overview should lead with the two equal first-class tracks, then use reader actions and trust/status framing as supporting sections rather than as the primary structure.
 
 ## User Stories
 
@@ -47,6 +47,7 @@ The production implementation should either choose one variant or deliberately r
 - Hero direction: title "Æther Flow"; subtitle describing a dual physics-and-AI research program exploring an Æther-flow interpretation of relativity and the research-agent system built to pursue it.
 - Primary action: "Understand the project."
 - Secondary actions: "Explore physics research" and "Explore the AI research system."
+- Selected information architecture: Variant A, dual-track program first.
 - Track structure: Physics Research and AI Research-Agent System should be equal first-class paths.
 - Physics path content: ontology, Exact-GR benchmark, open GR-derivation problem, and no-go/obstruction record.
 - AI path content: AI research-agent workflow, role contracts and governed skills, claim gates/review/refutation discipline, and source-first memory/wiki/registries.
@@ -57,12 +58,12 @@ The production implementation should either choose one variant or deliberately r
 - Animation boundary: use SVG for decorative and explanatory animation; use CSS-first motion plus small vanilla JavaScript for light interaction; avoid new production dependencies unless explicitly approved.
 - Progressive disclosure: default content stays clear; "More detail" panels can contain denser diagrams, heavier animation, and more technical language.
 - Link behavior: use real links for existing website resources and the GitHub/source project. Mark missing future pages as planned rather than linking to fake routes.
-- Prototype handling: the current overview prototype is a decision artifact. After selecting or remixing a variant, remove prototype-only labels and switcher behavior before production release unless a development-only mechanism is approved.
+- Prototype handling: the current overview prototype is a decision artifact. Promote the Variant A structure into normal production code, then remove prototype-only switcher behavior and inactive variant panels before production release unless a development-only mechanism is approved.
 
 ## Testing Decisions
 
 - Validate that the overview route renders with one clear `h1`, accessible headings, meaningful links, and no text overlap on desktop or mobile.
-- Verify all three prototype variants during the decision phase: direct URL entry with `?variant=A`, `?variant=B`, and `?variant=C`; switcher next/previous controls; left/right arrow key cycling.
+- Preserve browser evidence for all three prototype variants as design-decision context, then focus production validation on the Variant A-derived overview.
 - Verify "More detail" panels open and reveal the correct track-specific richer diagrams and text.
 - Verify reduced-motion handling for animated SVG/CSS effects.
 - Verify that public CTAs go to real targets or clearly marked planned targets.
@@ -101,7 +102,7 @@ References:
 
 ## Further Notes
 
-- The logical next step is to review Variants A, B, and C in the browser and choose the production information architecture.
-- A likely production remix is: Variant A's equal dual-track structure, Variant B's public reader actions, and Variant C's trust/status framing placed below the hero rather than first.
+- Variant A has been selected. The logical next step is to productionize the dual-track-first overview and remove prototype-only comparison controls.
+- Useful elements from Variant B and Variant C may still be used as supporting sections: public reader actions from Variant B and trust/status framing from Variant C should appear below the primary dual-track explanation.
 - A later PRD should define the source-to-website update workflow once the project is ready to keep website content synchronized with upstream source pushes.
 - If the final overview introduces new source-backed pages for the physics track or AI research-agent track, those pages should each receive their own source provenance requirements and browser QA scope.
