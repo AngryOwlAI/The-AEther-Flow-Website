@@ -990,7 +990,99 @@ The full plan is done when:
 12. The accepted release is committed, pushed if authorized, and deployment is
     verified if deployment is in scope.
 
-## 10. References
+## 10. Operational Hardening Follow-Up
+
+### Cloudflare Git Integration and Auto-Deploy Verification - 2026-06-25
+
+Status: blocked fail-closed before destructive infrastructure change.
+
+Question: connect the deployed website to Cloudflare Pages Git integration so
+future pushes to `main` auto-deploy.
+
+Findings:
+
+1. The current production project `the-aether-flow-website` is a Cloudflare
+   Pages Direct Upload project.
+2. Cloudflare Pages currently does not support converting a Direct Upload
+   project into a Git-integrated project.
+3. The existing production domain
+   `https://the-aether-flow-website.pages.dev/` is tied to that Direct Upload
+   project.
+4. Reusing that exact hostname for true Git integration requires deleting and
+   recreating the Cloudflare Pages project.
+5. Non-destructive API attempts to create a separate Git-integrated Pages
+   project failed with Cloudflare error `8000011`, indicating an issue with the
+   Cloudflare Pages GitHub installation.
+
+Actions executed:
+
+```bash
+npx --yes wrangler@latest pages project list
+npx --yes wrangler@latest whoami
+npx --yes wrangler@latest pages deployment list \
+  --project-name the-aether-flow-website \
+  --environment production
+gh repo view AngryOwlAI/The-AEther-Flow-Website \
+  --json nameWithOwner,visibility,defaultBranchRef,url,viewerPermission,homepageUrl
+gh api repos/AngryOwlAI/The-AEther-Flow-Website/actions/secrets \
+  --jq '{total_count,secrets:[.secrets[].name]}'
+```
+
+API attempts:
+
+- GET existing Pages project:
+  - `source_type: null`;
+  - latest deployment trigger: `ad_hoc`.
+- POST new Git-backed project `the-aether-flow-website-git`:
+  - failed with HTTP `401`;
+  - Cloudflare error code `8000011`.
+- POST new Git-backed project `the-aether-flow-website-auto` with minimal source
+  config:
+  - failed with HTTP `401`;
+  - Cloudflare error code `8000011`.
+
+Verification:
+
+- The production Direct Upload project remained intact.
+- `npx --yes wrangler@latest pages project list` still shows only
+  `the-aether-flow-website` with `Git Provider: No`.
+- No GitHub Actions secrets are configured for direct-upload CI.
+- No destructive Cloudflare project deletion or replacement was performed.
+
+Conclusion:
+
+The true Cloudflare Git integration packet cannot be completed from the current
+local/API authorization state. The logical continuation is to repair or
+authorize the Cloudflare Pages GitHub App for the private GitHub repository,
+then choose one of two routes:
+
+1. Non-destructive canary: create a separate Git-integrated Pages project,
+   verify `main` auto-deploy and preview deployments, then decide whether to
+   migrate the production hostname.
+2. Production replacement: delete and recreate `the-aether-flow-website` as a
+   Git-integrated Pages project, then rerun full production verification.
+
+Smallest exact authorization to continue:
+
+```text
+Authorize or reinstall the Cloudflare Pages GitHub App for
+AngryOwlAI/The-AEther-Flow-Website, then approve either a separate
+Git-integrated canary Pages project or replacement of the existing Direct
+Upload project.
+```
+
+### References
+
+Cloudflare. (2026a, April 21). *Direct Upload*. Cloudflare Pages Docs.
+https://developers.cloudflare.com/pages/get-started/direct-upload/
+
+Cloudflare. (2026b, April 21). *Git integration*. Cloudflare Pages Docs.
+https://developers.cloudflare.com/pages/configuration/git-integration/
+
+Cloudflare. (n.d.). *Create project*. Cloudflare API.
+https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/create/
+
+## 11. References
 
 AEther-Flow Project. (2026). `README.md` [Project front door, dual-track
 research-program framing, source authority, physics benchmark boundary, open

@@ -19,6 +19,65 @@ git provider: No
 Note: the project is deployed with Wrangler Pages direct upload. Cloudflare
 dashboard Git integration remains optional future work.
 
+## Git Integration Hardening Attempt
+
+Status: blocked fail-closed on 2026-06-25.
+
+The current project, `the-aether-flow-website`, is a Direct Upload project.
+Cloudflare's current Pages documentation states that a Direct Upload project
+cannot be switched later to Git integration. Preserving the existing
+`the-aether-flow-website.pages.dev` hostname while changing to true Cloudflare
+Git integration therefore requires a deliberate replacement operation:
+
+1. Preserve current production evidence.
+2. Delete the Direct Upload project.
+3. Recreate `the-aether-flow-website` through Cloudflare Pages Git integration.
+4. Connect `AngryOwlAI/The-AEther-Flow-Website`.
+5. Deploy `main` and rerun production smoke/browser QA.
+
+That replacement was not performed because it is destructive infrastructure
+work and the current production site is healthy.
+
+Non-destructive API attempts to create a separate Git-backed Pages project
+failed with Cloudflare error `8000011`:
+
+```text
+There is an internal issue with your Cloudflare Pages Git installation.
+If this issue persists after reinstalling your installation, contact support:
+https://cfl.re/3WgEyrH.
+```
+
+Observed state:
+
+- Existing Pages project: `the-aether-flow-website`.
+- Existing production domain: `the-aether-flow-website.pages.dev`.
+- Existing Git provider: `No`.
+- Existing deployment trigger: `ad_hoc`.
+- Existing production source shown by Wrangler: `0768944`.
+- Attempted non-destructive Git-backed project names:
+  `the-aether-flow-website-git`,
+  `the-aether-flow-website-auto`.
+- GitHub repository: `AngryOwlAI/The-AEther-Flow-Website`.
+- GitHub token repository permission observed locally: `WRITE`, not
+  `ADMIN` or `MAINTAIN`.
+- GitHub Actions repository secrets observed locally: none.
+
+Required authorization to continue true Cloudflare Git integration:
+
+```text
+Authorize or reinstall the Cloudflare Pages GitHub App for
+AngryOwlAI/The-AEther-Flow-Website, then approve either:
+1. creating a separate Git-integrated Pages project for verification, or
+2. replacing the existing Direct Upload project to preserve the current
+   the-aether-flow-website.pages.dev hostname.
+```
+
+Safe alternative if project replacement is not desired: keep the Direct Upload
+project and use GitHub Actions with `cloudflare/wrangler-action` to deploy on
+push. That achieves automatic deployment from GitHub, but it is not Cloudflare
+Pages dashboard Git integration and the Wrangler project list will still show
+`Git Provider: No`.
+
 Inspect the current production deployment id and source with:
 
 ```bash
@@ -111,3 +170,14 @@ If a local preview is running:
 Direct upload deployment requires an authenticated Wrangler session with Pages
 write access. Dashboard Git integration requires Cloudflare dashboard access and
 the Cloudflare GitHub app connection for this private repository.
+
+## References
+
+Cloudflare. (2026a, April 21). *Direct Upload*. Cloudflare Pages Docs.
+https://developers.cloudflare.com/pages/get-started/direct-upload/
+
+Cloudflare. (2026b, April 21). *Git integration*. Cloudflare Pages Docs.
+https://developers.cloudflare.com/pages/configuration/git-integration/
+
+Cloudflare. (n.d.). *Create project*. Cloudflare API.
+https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/create/
