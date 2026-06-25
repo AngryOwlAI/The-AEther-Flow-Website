@@ -837,6 +837,38 @@ Stop condition:
 - Deployment verified.
 - Any deployment defect becomes a new bounded fix phase.
 
+Deployment record - 2026-06-25:
+
+- Published commit: `bcb9a11f6914d5f214281c7b35ad4006780e7be0`
+  (`Implement public overview follow-on pages`).
+- Push evidence: `origin/main` advanced from `677e38a` to `bcb9a11`.
+- Local pre-push quality passed with `make quality`.
+- GitHub repository evidence:
+  - repository: `https://github.com/AngryOwlAI/The-AEther-Flow-Website`;
+  - visibility: private;
+  - default branch: `main`;
+  - homepage URL: empty;
+  - GitHub Pages API: `404 Not Found`;
+  - GitHub Actions workflow runs: none;
+  - commit check runs for `bcb9a11`: none;
+  - repository deployments API: empty list.
+- Cloudflare Pages evidence:
+  - `docs/deployment/cloudflare-pages.md` states Cloudflare dashboard or API
+    access is required for production/preview verification.
+  - No local Cloudflare, Wrangler, Pages, Vercel, Netlify, or deployment
+    credential environment variables were present.
+  - No local `wrangler.toml`, `wrangler.json`, `.cloudflare*`, or `.env*`
+    deployment configuration was present.
+  - The likely Pages candidate
+    `https://the-aether-flow-website.pages.dev/` did not resolve.
+- Deployment verification result: incomplete. The accepted website packet is
+  pushed to GitHub, but no production deployment URL or build status is
+  available from the current repository and authenticated local state.
+- Required bounded follow-up: connect or expose an authenticated deployment
+  target, then rerun Phase 10 verification against the deployed URL. The
+  smallest sufficient approval is:
+  `Approve connecting this repository to Cloudflare Pages production on main and provide dashboard/API access or the deployed Pages URL.`
+
 ## 7. Phase Ordering Rule
 
 The phases must be executed in order unless a later explicit decision revises
