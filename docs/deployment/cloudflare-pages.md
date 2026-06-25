@@ -8,18 +8,24 @@ Production URL:
 https://the-aether-flow-website.pages.dev/
 ```
 
-Current production deployment:
+Production configuration:
 
 ```text
 project: the-aether-flow-website
-deployment id: b249f679-3bef-4e9a-a770-836775fd8ff7
 branch: main
-source: 62ed309
 git provider: No
 ```
 
 Note: the project is deployed with Wrangler Pages direct upload. Cloudflare
 dashboard Git integration remains optional future work.
+
+Inspect the current production deployment id and source with:
+
+```bash
+npx --yes wrangler@latest pages deployment list \
+  --project-name the-aether-flow-website \
+  --environment production
+```
 
 ## Build Settings
 

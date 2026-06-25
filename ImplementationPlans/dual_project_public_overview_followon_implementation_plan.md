@@ -899,12 +899,13 @@ Deployment completion update - 2026-06-25:
   ```
 
 - Cloudflare production deployment evidence:
-  - deployment id: `b249f679-3bef-4e9a-a770-836775fd8ff7`;
-  - deployment URL:
-    `https://b249f679.the-aether-flow-website.pages.dev`;
-  - Wrangler deployment list environment: `Production`;
-  - Wrangler deployment list branch: `main`;
-  - Wrangler deployment list source: `62ed309`.
+  - canonical production URL:
+    `https://the-aether-flow-website.pages.dev/`;
+  - Wrangler deployment list reported environment `Production`;
+  - Wrangler deployment list reported branch `main`;
+  - deployment ids and source hashes are direct-upload deployment metadata and
+    can be refreshed with
+    `npx --yes wrangler@latest pages deployment list --project-name the-aether-flow-website --environment production`.
 - Canonical production route smoke test passed for 23 routes:
 
   ```bash
