@@ -1,0 +1,46 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SourceNotice from "../components/SourceNotice.astro";
+
+const { frontmatter = {}, title, description } = Astro.props;
+const pageTitle = frontmatter.title ?? title ?? "Technical page";
+const pageDescription =
+  frontmatter.description ??
+  description ??
+  "Technical page for The AEther Flow website.";
+const claimStatus = frontmatter.claim_status ?? "explanatory";
+const sourceRefs = frontmatter.source_refs ?? [];
+const updated = frontmatter.updated;
+const updatedLabel =
+  updated instanceof Date
+    ? updated.toISOString().slice(0, 10)
+    : typeof updated === "string" && /^\d{4}-\d{2}-\d{2}/.test(updated)
+      ? updated.slice(0, 10)
+      : updated;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} bodyClass="technical-page">
+  <article class="technical-shell">
+    <header class="technical-header">
+      <p class="eyebrow">Technical note</p>
+      <h1>{pageTitle}</h1>
+      <p class="page-description">{pageDescription}</p>
+      <dl class="metadata-list">
+        <div>
+          <dt>Claim status</dt>
+          <dd>{claimStatus}</dd>
+        </div>
+        {updatedLabel && (
+          <div>
+            <dt>Updated</dt>
+            <dd>{updatedLabel}</dd>
+          </div>
+        )}
+      </dl>
+      <SourceNotice claimStatus={claimStatus} sourceRefs={sourceRefs} updated={updatedLabel} />
+    </header>
+    <div class="technical-content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

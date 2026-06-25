@@ -1,0 +1,78 @@
+---
+import LandingLayout from "../layouts/LandingLayout.astro";
+
+const principles = [
+  {
+    title: "Static by default",
+    body: "The first website layer builds to static HTML, CSS, and assets so deployment can remain simple and observable.",
+  },
+  {
+    title: "Source-boundary aware",
+    body: "Reader-facing pages explain approved material without turning the website repository into the authority for research claims.",
+  },
+  {
+    title: "Technical writing ready",
+    body: "The scaffold includes MDX, KaTeX, and responsive prose styles for equations, notes, and future resource indexes.",
+  },
+];
+---
+
+<LandingLayout
+  title="The AEther Flow"
+  description="Public website scaffold for The AEther Flow research project."
+>
+  <section class="hero-band" aria-labelledby="home-title">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Controlled publication layer</p>
+        <h1 id="home-title">The AEther Flow</h1>
+        <p class="lead">
+          A public website for reader-facing explanations, technical resources,
+          and reviewed artifacts derived from the source research repository.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-link" href="/project/overview/">Project overview</a>
+          <a class="secondary-link" href="#authority">Source authority</a>
+        </div>
+      </div>
+      <figure class="signal-figure" aria-labelledby="signal-caption">
+        <div class="signal-grid" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <figcaption id="signal-caption">
+          Website pages are presentation artifacts. Scientific authority remains
+          upstream in the research-control repository.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="content-band" id="authority" aria-labelledby="authority-title">
+    <div class="section-header">
+      <p class="eyebrow">Phase 1 scaffold</p>
+      <h2 id="authority-title">Built for explanation without authority drift.</h2>
+      <p class="lead">
+        This initial shell establishes the static site, navigation, global
+        styling, equation rendering, manifest-backed downloads, tooling, and
+        first content surfaces. Future phases can add deployment configuration.
+      </p>
+    </div>
+
+    <div class="principle-grid">
+      {principles.map((principle) => (
+        <article>
+          <h3>{principle.title}</h3>
+          <p>{principle.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</LandingLayout>

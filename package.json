@@ -1,0 +1,37 @@
+{
+  "name": "the-aether-flow-website",
+  "version": "1.0.0",
+  "description": "This repository is the website-development workspace for `/Volumes/P-SSD/AngryOwl/The-AEther-Flow`.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "validate:manifests": "python3 scripts/validate_manifest_paths.py",
+    "validate:content": "python3 scripts/validate_content_sources.py",
+    "validate:cloudflare": "python3 scripts/validate_cloudflare_pages_config.py",
+    "quality": "npm run validate && python3 scripts/quality_gate.py",
+    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:cloudflare && npm run build",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-omegapy:AngryOwlAI/The-AEther-Flow-Website.git"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.0",
+    "@astrojs/mdx": "^7.0.0",
+    "astro": "^7.0.3",
+    "katex": "^0.17.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  }
+}

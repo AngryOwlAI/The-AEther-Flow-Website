@@ -1,0 +1,2 @@
+# Runtime Python dependencies for website tooling.
+# Phase 3 uses the Python standard library only.

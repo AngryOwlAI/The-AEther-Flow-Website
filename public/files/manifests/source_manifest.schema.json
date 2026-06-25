@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether-flow.local/schemas/source_manifest.schema.json",
+  "title": "The AEther Flow Website Source Manifest",
+  "type": "object",
+  "required": ["version", "generated_at", "source_repository", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp for the manifest generation or hand-authored update."
+    },
+    "source_repository": {
+      "type": "string",
+      "description": "Path or repository identifier for the upstream source authority."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "site_path", "kind", "title", "source_path", "approval_status"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]*$"
+          },
+          "site_path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "kind": {
+            "enum": ["pdf", "tex", "image", "diagram", "manifest", "other"]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_commit": {
+            "type": "string"
+          },
+          "approval_status": {
+            "enum": ["approved", "sample", "draft", "historical", "source-index-only"]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "generated_by": {
+            "type": "string"
+          },
+          "generated_at": {
+            "type": "string"
+          },
+          "reviewed_by": {
+            "type": "string"
+          },
+          "license_or_usage_note": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

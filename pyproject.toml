@@ -1,0 +1,28 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [
+  ".astro",
+  ".mypy_cache",
+  ".ruff_cache",
+  ".venv",
+  "dist",
+  "node_modules",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["scripts", "tests"]
+check_untyped_defs = true
+ignore_missing_imports = true
+pretty = true
+show_error_codes = true
+warn_unused_configs = true
+exclude = "(.venv|node_modules|dist|.astro)/"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts"]

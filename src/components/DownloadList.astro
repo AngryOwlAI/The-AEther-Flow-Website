@@ -1,0 +1,65 @@
+---
+import type { DownloadItem } from "../lib/manifests";
+
+interface Props {
+  items: DownloadItem[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+}
+
+const {
+  items,
+  eyebrow = "Manifest-backed downloads",
+  title = "Published sample files",
+  description = "These rows are rendered from the website manifests. The files are Phase 2 fixtures for path validation and direct static downloads.",
+} = Astro.props;
+
+const kindLabels: Record<string, string> = {
+  pdf: "PDF",
+  tex: "TeX",
+  diagram: "Diagram",
+};
+
+const byteFormatter = new Intl.NumberFormat("en-US");
+---
+
+<section class="download-section" aria-labelledby="download-list-title">
+  <div class="section-header">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id="download-list-title">{title}</h2>
+    <p class="lead">{description}</p>
+  </div>
+
+  <div class="download-list">
+    {items.map((item) => (
+      <article class="download-item">
+        <div>
+          <p class="download-kind">{kindLabels[item.kind] ?? item.kind}</p>
+          <h3>
+            <a href={item.path}>{item.title}</a>
+          </h3>
+          {item.source?.notes && <p>{item.source.notes}</p>}
+        </div>
+        <dl class="download-meta">
+          <div>
+            <dt>Bytes</dt>
+            <dd>{byteFormatter.format(item.bytes)}</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>{item.source?.approval_status ?? "unknown"}</dd>
+          </div>
+          <div>
+            <dt>Source ref</dt>
+            <dd>{item.source_ref}</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd>{item.sha256}</dd>
+          </div>
+        </dl>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import Figure from "../../components/Figure.astro";
+import SourceNotice from "../../components/SourceNotice.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { diagramGalleryItems } from "../../lib/siteContent";
+---
+
+<BaseLayout
+  title="Diagram Gallery"
+  description="Diagram gallery for The AEther Flow website."
+>
+  <section class="content-band" aria-labelledby="diagrams-title">
+    <div class="section-header">
+      <p class="eyebrow">Diagram gallery</p>
+      <h1 id="diagrams-title">Visual orientation assets</h1>
+      <p class="lead">
+        Diagrams are presentation aids. A diagram becomes authoritative only if
+        the source research process explicitly treats it that way.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus="source-index-only"
+      sourceRefs={["source_manifest:publication_layer_map"]}
+      updated="2026-06-25"
+      note="This page presents website-local visual orientation assets with explicit provenance."
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-label="Diagram list">
+    <div class="figure-grid">
+      {diagramGalleryItems.map((item) => (
+        <Figure
+          src={item.src}
+          alt={item.alt}
+          caption={item.caption}
+          provenance={item.provenance}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

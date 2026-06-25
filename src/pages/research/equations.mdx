@@ -1,0 +1,50 @@
+---
+layout: ../../layouts/TechnicalPageLayout.astro
+title: Equation Rendering Reference
+description: A math-heavy explanatory page for checking static KaTeX rendering and mobile equation overflow behavior.
+claim_status: explanatory
+updated: 2026-06-25
+---
+
+import EquationBlock from "../../components/EquationBlock.astro";
+
+This page is a rendering reference. The formulas are common notation examples
+used to exercise the website math pipeline; they are not new AEther Flow
+research claims.
+
+<EquationBlock label="A compact energy relation used here as a rendering fixture.">
+
+$$
+E = mc^2
+$$
+
+</EquationBlock>
+
+<EquationBlock label="A standard wave equation form used to verify subscripts and partial derivatives.">
+
+$$
+\frac{\partial^2 u}{\partial t^2}
+= c^2 \nabla^2 u
+$$
+
+</EquationBlock>
+
+<EquationBlock label="A tensor-index expression used to verify longer display equations on narrow screens.">
+
+$$
+G_{\mu\nu} + \Lambda g_{\mu\nu}
+= \frac{8\pi G}{c^4} T_{\mu\nu}
+$$
+
+</EquationBlock>
+
+<EquationBlock label="A finite summation and exponential expression used to verify mixed inline-scale symbols.">
+
+$$
+Z(\beta) = \sum_{i=1}^{n} e^{-\beta E_i}
+$$
+
+</EquationBlock>
+
+The quality requirement is practical: equations must build statically, remain
+readable on small screens, and preserve visible claim status.

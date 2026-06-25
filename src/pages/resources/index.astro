@@ -1,0 +1,53 @@
+---
+import DownloadList from "../../components/DownloadList.astro";
+import SourceNotice from "../../components/SourceNotice.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { downloads } from "../../lib/manifests";
+import { resourceGroups } from "../../lib/siteContent";
+---
+
+<BaseLayout
+  title="Resources"
+  description="Manifest-backed downloadable resources for The AEther Flow website."
+>
+  <section class="content-band" aria-labelledby="resources-title">
+    <div class="section-header">
+      <p class="eyebrow">Source-index-only</p>
+      <h1 id="resources-title">Resources</h1>
+      <p class="lead">
+        This page demonstrates the Phase 2 publication path for direct website
+        access to public files, including PDFs, TeX files, and diagrams. The
+        listed files are sample fixtures, not scientific source documents.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus="source-index-only"
+      sourceRefs={downloads.map((item) => item.source_ref)}
+      updated="2026-06-25"
+      note="This resource index is rendered from website-local manifest data and structured page links."
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="resource-groups-title">
+    <div class="section-header">
+      <p class="eyebrow">Resource groups</p>
+      <h2 id="resource-groups-title">Libraries and technical checks</h2>
+    </div>
+    <div class="link-grid">
+      {resourceGroups.map((group) => (
+        <a class="link-card" href={group.href}>
+          <span>{group.title}</span>
+          <small>{group.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-band content-band-tight">
+    <DownloadList
+      items={downloads}
+      title="Published manifest files"
+      description="This list is generated from asset manifest entries, including sample documents and the first diagram asset."
+    />
+  </section>
+</BaseLayout>

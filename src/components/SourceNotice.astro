@@ -1,0 +1,44 @@
+---
+interface Props {
+  claimStatus?: string;
+  sourceRefs?: string[];
+  updated?: string | Date;
+  note?: string;
+}
+
+const {
+  claimStatus = "explanatory",
+  sourceRefs = [],
+  updated,
+  note = "Source authority remains with the research repository. This page is a reader-facing website surface.",
+} = Astro.props;
+const updatedLabel =
+  updated instanceof Date
+    ? updated.toISOString().slice(0, 10)
+    : typeof updated === "string" && /^\d{4}-\d{2}-\d{2}/.test(updated)
+      ? updated.slice(0, 10)
+      : updated;
+---
+
+<aside class="source-notice" aria-label="Source authority notice">
+  <p class="source-notice-title">Source authority</p>
+  <p>{note}</p>
+  <dl>
+    <div>
+      <dt>Claim status</dt>
+      <dd>{claimStatus}</dd>
+    </div>
+    {updatedLabel && (
+      <div>
+        <dt>Updated</dt>
+        <dd>{updatedLabel}</dd>
+      </div>
+    )}
+    {sourceRefs.length > 0 && (
+      <div>
+        <dt>Source refs</dt>
+        <dd>{sourceRefs.join(", ")}</dd>
+      </div>
+    )}
+  </dl>
+</aside>

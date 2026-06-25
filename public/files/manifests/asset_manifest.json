@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "generated_at": "2026-06-25T00:00:00-06:00",
+  "items": [
+    {
+      "path": "/files/pdf/aether-flow-sample.pdf",
+      "kind": "pdf",
+      "bytes": 754,
+      "sha256": "764a52033973762faf70955f4ec3bb4e57cef96ccfe534f42c3ab0349083a1c9",
+      "title": "The AEther Flow Website Sample PDF",
+      "source_ref": "source_manifest:sample_pdf"
+    },
+    {
+      "path": "/files/tex/aether-flow-sample.tex",
+      "kind": "tex",
+      "bytes": 342,
+      "sha256": "e716a6534934922c51d2f329c42b53da27d2ef2544d438be5d901d7513a0c52d",
+      "title": "The AEther Flow Website Sample TeX",
+      "source_ref": "source_manifest:sample_tex"
+    },
+    {
+      "path": "/assets/diagrams/publication-layer-map.svg",
+      "kind": "diagram",
+      "bytes": 2083,
+      "sha256": "ffcc21aded0495be553cee45043b956a8445c3e83fcb8e0f760e9279a35fb524",
+      "title": "Publication Layer Map",
+      "source_ref": "source_manifest:publication_layer_map"
+    }
+  ]
+}

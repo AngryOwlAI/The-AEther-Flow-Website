@@ -18,8 +18,25 @@ claims.
 
 ## Current Status
 
-The repository has been initialized as an empty website workspace. No frontend
-framework, build system, or deployment target has been selected yet.
+The repository now contains an Astro static-site scaffold with MDX, KaTeX,
+manifest-backed downloads, Python/Bash validation tooling, Docker development
+configuration, first reader-facing content pages, and Cloudflare Pages
+configuration files.
+
+Build and validation entry points:
+
+```bash
+make install
+make validate
+make test
+make lint
+```
+
+Cloudflare Pages settings are documented in:
+
+```text
+docs/deployment/cloudflare-pages.md
+```
 
 ## Source Authority Boundary
 

@@ -1,0 +1,40 @@
+---
+import DownloadList from "../../components/DownloadList.astro";
+import SourceNotice from "../../components/SourceNotice.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { downloads } from "../../lib/manifests";
+
+const documentDownloads = downloads.filter((item) => item.kind === "pdf" || item.kind === "tex");
+---
+
+<BaseLayout
+  title="Source Document Library"
+  description="Manifest-backed PDF and TeX downloads for The AEther Flow website."
+>
+  <section class="content-band" aria-labelledby="documents-title">
+    <div class="section-header">
+      <p class="eyebrow">Source-index-only</p>
+      <h1 id="documents-title">Source Document Library</h1>
+      <p class="lead">
+        This library demonstrates direct website access to PDF and TeX files.
+        Entries are rendered from manifest data rather than copied manually into
+        the page.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus="source-index-only"
+      sourceRefs={["source_manifest:sample_pdf", "source_manifest:sample_tex"]}
+      updated="2026-06-25"
+      note="This page indexes downloadable sample assets. It does not assert new scientific content."
+    />
+  </section>
+
+  <section class="content-band content-band-tight">
+    <DownloadList
+      items={documentDownloads}
+      eyebrow="Manifest-backed library"
+      title="PDF and TeX sample files"
+      description="The list is filtered from the asset manifest to document-oriented public files."
+    />
+  </section>
+</BaseLayout>

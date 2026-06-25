@@ -1,0 +1,18 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption: string;
+  provenance?: string;
+}
+
+const { src, alt, caption, provenance } = Astro.props;
+---
+
+<figure class="content-figure">
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  <figcaption>
+    <span>{caption}</span>
+    {provenance && <small>{provenance}</small>}
+  </figcaption>
+</figure>

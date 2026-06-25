@@ -1,0 +1,44 @@
+---
+import SourceNotice from "../../components/SourceNotice.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { researchMapNodes } from "../../lib/siteContent";
+---
+
+<BaseLayout
+  title="Research Map"
+  description="High-level map of how the website relates to the source research repository."
+>
+  <section class="content-band" aria-labelledby="research-map-title">
+    <div class="section-header">
+      <p class="eyebrow">Research map</p>
+      <h1 id="research-map-title">From source authority to static reader surfaces.</h1>
+      <p class="lead">
+        This map describes publication flow, not scientific derivation. The
+        website consumes reviewed material and publishes reader-facing surfaces.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus="explanatory"
+      updated="2026-06-25"
+      note="This page is an orientation map for the website architecture. Scientific authority remains upstream."
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="research-flow-title">
+    <div class="section-header">
+      <p class="eyebrow">Publication flow</p>
+      <h2 id="research-flow-title">Boundaries are explicit at each step.</h2>
+    </div>
+    <ol class="timeline-list">
+      {researchMapNodes.map((node) => (
+        <li>
+          <article>
+            <p class="download-kind">{node.status}</p>
+            <h3>{node.title}</h3>
+            <p>{node.body}</p>
+          </article>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>

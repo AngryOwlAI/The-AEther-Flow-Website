@@ -1,0 +1,14 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<figure class="equation-block">
+  <div class="equation-scroll">
+    <slot />
+  </div>
+  {label && <figcaption>{label}</figcaption>}
+</figure>

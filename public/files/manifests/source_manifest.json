@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "generated_at": "2026-06-25T00:00:00-06:00",
+  "source_repository": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow",
+  "items": [
+    {
+      "id": "sample_pdf",
+      "site_path": "/files/pdf/aether-flow-sample.pdf",
+      "kind": "pdf",
+      "title": "The AEther Flow Website Sample PDF",
+      "source_path": "website-fixtures/aether-flow-sample.pdf",
+      "approval_status": "sample",
+      "sha256": "764a52033973762faf70955f4ec3bb4e57cef96ccfe534f42c3ab0349083a1c9",
+      "generated_by": "Phase 2 website scaffold",
+      "generated_at": "2026-06-25T00:00:00-06:00",
+      "license_or_usage_note": "Website scaffold fixture for manifest validation.",
+      "notes": "Sample downloadable asset. This is not a scientific source document."
+    },
+    {
+      "id": "sample_tex",
+      "site_path": "/files/tex/aether-flow-sample.tex",
+      "kind": "tex",
+      "title": "The AEther Flow Website Sample TeX",
+      "source_path": "website-fixtures/aether-flow-sample.tex",
+      "approval_status": "sample",
+      "sha256": "e716a6534934922c51d2f329c42b53da27d2ef2544d438be5d901d7513a0c52d",
+      "generated_by": "Phase 2 website scaffold",
+      "generated_at": "2026-06-25T00:00:00-06:00",
+      "license_or_usage_note": "Website scaffold fixture for manifest validation.",
+      "notes": "Sample downloadable asset. This is not a scientific source document."
+    },
+    {
+      "id": "publication_layer_map",
+      "site_path": "/assets/diagrams/publication-layer-map.svg",
+      "kind": "diagram",
+      "title": "Publication Layer Map",
+      "source_path": "website-fixtures/publication-layer-map.svg",
+      "approval_status": "sample",
+      "sha256": "ffcc21aded0495be553cee45043b956a8445c3e83fcb8e0f760e9279a35fb524",
+      "generated_by": "Phase 5 website content buildout",
+      "generated_at": "2026-06-25T00:00:00-06:00",
+      "license_or_usage_note": "Website scaffold fixture for visual orientation.",
+      "notes": "Sample diagram asset. This is not a scientific source document."
+    }
+  ]
+}

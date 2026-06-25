@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Publication Layer Map</title>
+  <desc id="desc">Source repository authority feeds manifests, which feed static reader-facing website pages.</desc>
+  <rect width="960" height="420" fill="#f7faf8"/>
+  <g fill="#ffffff" stroke="#d8e2dc" stroke-width="2">
+    <rect x="60" y="120" width="220" height="150" rx="8"/>
+    <rect x="370" y="120" width="220" height="150" rx="8"/>
+    <rect x="680" y="120" width="220" height="150" rx="8"/>
+  </g>
+  <g fill="none" stroke="#0f6a61" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M285 195h70"/>
+    <path d="m345 177 18 18-18 18"/>
+    <path d="M595 195h70"/>
+    <path d="m655 177 18 18-18 18"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" fill="#151817">
+    <text x="170" y="170" text-anchor="middle" font-size="24" font-weight="700">Source repository</text>
+    <text x="170" y="205" text-anchor="middle" font-size="16" fill="#59615e">authoritative records</text>
+    <text x="170" y="230" text-anchor="middle" font-size="16" fill="#59615e">and validated artifacts</text>
+    <text x="480" y="170" text-anchor="middle" font-size="24" font-weight="700">Manifests</text>
+    <text x="480" y="205" text-anchor="middle" font-size="16" fill="#59615e">paths, hashes, source refs</text>
+    <text x="480" y="230" text-anchor="middle" font-size="16" fill="#59615e">and claim boundaries</text>
+    <text x="790" y="170" text-anchor="middle" font-size="24" font-weight="700">Static website</text>
+    <text x="790" y="205" text-anchor="middle" font-size="16" fill="#59615e">reader-facing pages</text>
+    <text x="790" y="230" text-anchor="middle" font-size="16" fill="#59615e">and direct downloads</text>
+  </g>
+  <g>
+    <rect x="308" y="294" width="344" height="54" rx="6" fill="#0f6a61"/>
+    <text x="480" y="328" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Website does not become source authority</text>
+  </g>
+</svg>

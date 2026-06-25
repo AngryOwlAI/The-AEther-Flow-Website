@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import "../styles/math.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+}
+
+const siteName = "The AEther Flow";
+const {
+  title = siteName,
+  description = "Reader-facing website for The AEther Flow research project.",
+  bodyClass = "",
+} = Astro.props;
+const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label="The AEther Flow home">
+          <span class="brand-mark" aria-hidden="true">AF</span>
+          <span>The AEther Flow</span>
+        </a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/project/overview/">Overview</a>
+          <a href="/research/map/">Research map</a>
+          <a href="/resources/">Resources</a>
+          <a href="/research/equations/">Equations</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>
+        Source authority remains with the research repository. This website is
+        a publication and presentation layer for reviewed, reader-facing
+        material.
+      </p>
+    </footer>
+  </body>
+</html>

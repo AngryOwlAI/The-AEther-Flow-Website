@@ -1,0 +1,57 @@
+---
+import SourceNotice from "../../components/SourceNotice.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { overviewPillars, resourceGroups } from "../../lib/siteContent";
+---
+
+<BaseLayout
+  title="Project Overview"
+  description="Reader-facing project overview for The AEther Flow website."
+>
+  <section class="content-band" aria-labelledby="overview-title">
+    <div class="section-header">
+      <p class="eyebrow">Project overview</p>
+      <h1 id="overview-title">A controlled publication layer for a technical research project.</h1>
+      <p class="lead">
+        The AEther Flow website is designed to explain, organize, and publish
+        reviewed material without becoming a substitute for the source research
+        repository.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus="explanatory"
+      updated="2026-06-25"
+      note="This overview describes the website publication model. It does not introduce scientific claims."
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="overview-pillars">
+    <div class="section-header">
+      <p class="eyebrow">Operating principles</p>
+      <h2 id="overview-pillars">Explanation, resources, and provenance move together.</h2>
+    </div>
+    <div class="principle-grid">
+      {overviewPillars.map((pillar) => (
+        <article>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="overview-routes">
+    <div class="section-header">
+      <p class="eyebrow">Reader paths</p>
+      <h2 id="overview-routes">Initial content surfaces</h2>
+    </div>
+    <div class="link-grid">
+      {resourceGroups.map((group) => (
+        <a class="link-card" href={group.href}>
+          <span>{group.title}</span>
+          <small>{group.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
