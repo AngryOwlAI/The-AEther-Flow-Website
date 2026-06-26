@@ -61,8 +61,8 @@
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0230.yaml",
-        "research_control/handoffs/handoff-0230.md",
+        "research_control/handoffs/handoff-0231.yaml",
+        "research_control/handoffs/handoff-0231.md",
         "registries/DISTANCE_TO_GR_LEDGER.csv",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],

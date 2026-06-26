@@ -1,5 +1,5 @@
 {
-  "active_task_id": "RT-20260614-197",
+  "active_task_id": "RT-20260614-198",
   "blocked_claims": [
     "canonical ontology edit",
     "source-law adoption",
@@ -8,8 +8,8 @@
     "general MetricData(E) inhabitation theorem",
     "arbitrary finite-source-package witness theorem",
     "arbitrary finite-DAG witness theorem",
-    "g_eff definition",
-    "g_eff construction",
+    "g_eff definition by implication",
+    "g_eff construction by implication",
     "g_eff adoption",
     "matter coupling",
     "Einstein equations",
@@ -19,21 +19,21 @@
     "future source-extension impossibility",
     "global theory rejection"
   ],
-  "claim_boundary_summary": "Theoretical Continuation Selector classified the stress-survived draft/control MetricData_src^{GSC-cand}(E;G^beta) candidate route and selected a narrow Gate Chair evidence-status review. MetricData(E) is not adopted by this selector, BranchDisc_src^{GSC} is not adopted, checker proof authority is not granted, no arbitrary finite-DAG theorem is proved, g_eff is not defined or constructed, and downstream GR claims remain blocked.",
-  "current_status": "post_gate_draft_control_metricdata_candidate_selector_requires_narrow_source_extension_gate_no_geff",
+  "claim_boundary_summary": "Gate Chair accepted MetricData_src^{GSC-cand}(E;G^beta) only as scoped source-extension MetricData(E) evidence under declared beta-separated marked finite graph scope. BranchDisc_src^{GSC} is not adopted, checker proof authority is not granted, no arbitrary finite-DAG theorem is proved, g_eff is not defined or constructed, and downstream GR claims remain blocked.",
+  "current_status": "post_gate_metricdata_candidate_accepted_scoped_source_extension_metricdata_evidence_only_no_geff",
   "derivation_burden": {
     "active_burden_id": "g_eff",
     "active_row": {
-      "accept_criteria": "Run one bounded Gate Chair packet with exact tracked approval before any MetricData(E) evidence acceptance or g_eff route",
-      "blocking_burden": "Phase 8 selector selected a narrow Gate Chair review for the audited and stress-survived draft/control MetricData(E) candidate; no MetricData(E) adoption by selector and no g_eff construction have occurred",
+      "accept_criteria": "Run one bounded Phase 9 Theoretical Continuation Selector before any g_eff construction-or-obstruction attempt",
+      "blocking_burden": "Scoped source-extension MetricData(E) evidence accepted under declared beta-separated marked finite graph scope; no g_eff definition construction or adoption has occurred",
       "burden_id": "g_eff",
-      "current_status": "human-gated",
-      "failure_or_freeze_criteria": "Gate readiness is local control routing only; this is not BranchDisc adoption not MetricData(E) adoption not checker proof authority not arbitrary finite-DAG theorem and not g_eff",
-      "last_evidence_path": "research_control/tasks/RT-20260614-197/artifacts/226_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_DRAFT_CONTROL_METRICDATA_CANDIDATE_POST_STRESS_ROUTE_SELECTOR.yaml",
+      "current_status": "accepted",
+      "failure_or_freeze_criteria": "MetricData(E) evidence acceptance is scoped source-extension evidence only; this is not BranchDisc adoption not checker proof authority not arbitrary finite-DAG theorem and not g_eff",
+      "last_evidence_path": "research_control/tasks/RT-20260614-198/artifacts/227_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_DRAFT_CONTROL_METRICDATA_CANDIDATE_SOURCE_EXTENSION_EVIDENCE_GATE_CHAIR_REVIEW.tex",
       "milestone": "effective_metric_g_eff",
-      "notes": "The selector result advances Gate Chair readiness only. BranchDisc_src GSC remains proposal-only; MetricData(E) adoption checker proof authority g_eff and downstream GR promotion remain blocked.",
+      "notes": "The Gate Chair result advances scoped MetricData evidence status only. BranchDisc_src GSC remains proposal-only; checker proof authority g_eff and downstream GR promotion remain blocked.",
       "required_object": "g_eff",
-      "updated_at": "2026-06-26T23:05:00Z"
+      "updated_at": "2026-06-26T23:28:00Z"
     },
     "downstream_rows": [
       {
@@ -86,64 +86,64 @@
       }
     ]
   },
-  "latest_handoff_created_at": "2026-06-26T23:05:00Z",
-  "latest_handoff_id": "handoff-0230",
-  "latest_handoff_next_action": "Run one bounded Gate Chair packet for v9 Phase 8 step 4 using a tracked exact approval record. Decide only whether the audited and stress-survived draft/control MetricData_src^{GSC-cand}(E;G^beta) candidate may be accepted as scoped source-extension MetricData(E) evidence under declared beta-separated marked finite graph scope. Do not define or construct g_eff or promote downstream GR claims.",
-  "latest_handoff_summary": "Theoretical Continuation Selector classified the post-stress draft/control MetricData(E) candidate route and selected one bounded Gate Chair evidence-status review. The selector did not adopt MetricData(E), did not adopt BranchDisc_src^{GSC}, did not grant checker proof authority, did not define or construct g_eff, and did not promote downstream GR claims.",
-  "next_recommended_action": "Run one bounded Gate Chair packet for v9 Phase 8 step 4 using a tracked exact approval record. Decide only whether the audited and stress-survived draft/control MetricData_src^{GSC-cand}(E;G^beta) candidate may be accepted as scoped source-extension MetricData(E) evidence under declared beta-separated marked finite graph scope. Do not define or construct g_eff or promote downstream GR claims.",
-  "source_commit": "797fc6da5d963f5ec689b04f064b874e4b03ccd9",
-  "source_commit_date": "2026-06-26T15:04:01-06:00",
+  "latest_handoff_created_at": "2026-06-26T23:28:00Z",
+  "latest_handoff_id": "handoff-0231",
+  "latest_handoff_next_action": "Run one bounded Theoretical Continuation Selector packet for v9 Phase 9 to classify the next g_eff route after scoped MetricData(E) evidence acceptance: g_eff construction attempt, precise OB-GEFF obstruction, repair packet, route freeze, ontology-law packet, or another bounded non-promotional route. Do not define or construct g_eff by implication.",
+  "latest_handoff_summary": "Gate Chair accepted MetricData_src^{GSC-cand}(E;G^beta) only as scoped source-extension MetricData(E) evidence under declared beta-separated marked finite graph scope. This does not adopt BranchDisc_src^{GSC}, grant checker proof authority, prove arbitrary finite-DAG inhabitation, define or construct g_eff, or promote downstream GR claims.",
+  "next_recommended_action": "Run one bounded Theoretical Continuation Selector packet for v9 Phase 9 to classify the next g_eff route after scoped MetricData(E) evidence acceptance. Do not define or construct g_eff by implication.",
+  "source_commit": "88eb5d5d7f184dd9771fa7e619fa716da0790e3d",
+  "source_commit_date": "2026-06-26T15:12:07-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "d62c27b33c50e2b49e519f30e49e41b9285a2cd24799224fe5d30eec087b468c"
+      "sha256": "71f11de81e26f721dd6179c017f9e439780872bc2976405db3e39e6478725372"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0230.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/research_control/handoffs/handoff-0230.yaml",
-      "path": "research_control/handoffs/handoff-0230.yaml",
-      "sha256": "9de1d461da06fa1328cb650d8f259def6f2932998a88d90fb43f8e0603c46007"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0231.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/research_control/handoffs/handoff-0231.yaml",
+      "path": "research_control/handoffs/handoff-0231.yaml",
+      "sha256": "08af96c5ecaae9efcd0d442b58c1885a274429976496445db8fe41902b7a86a5"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0230.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/research_control/handoffs/handoff-0230.md",
-      "path": "research_control/handoffs/handoff-0230.md",
-      "sha256": "46b64a7a48e496c6b1e09074256d4494d7e4f1bb5660c644bcae4aa0851cf20d"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0231.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/research_control/handoffs/handoff-0231.md",
+      "path": "research_control/handoffs/handoff-0231.md",
+      "sha256": "ec60be26a57e30c8c1f813c811334300d19013c6c3836cd6b9a6e89dbe47fc5b"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
-      "sha256": "a6b6bc9be980559919f407477f44225d1c0cd7c25b34a289d8d76633b6131c69"
+      "sha256": "68abda4171dede903d7189be9a1a165c11d94725d452577499991cc68ddc72eb"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "b04a4ccd85eaafa0fb90e93df61d4566d5de97790b7a9e1c64801f559d54fcde"
+      "sha256": "fe0118c9b318ce7fa5c6d961affd7fe2ea5e4026d9a7a283a952587c47cbf868"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/research_control/handoffs/handoff-0230.yaml",
-      "label": "research_control/handoffs/handoff-0230.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/research_control/handoffs/handoff-0231.yaml",
+      "label": "research_control/handoffs/handoff-0231.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/research_control/handoffs/handoff-0230.md",
-      "label": "research_control/handoffs/handoff-0230.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/research_control/handoffs/handoff-0231.md",
+      "label": "research_control/handoffs/handoff-0231.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/797fc6da5d963f5ec689b04f064b874e4b03ccd9/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/88eb5d5d7f184dd9771fa7e619fa716da0790e3d/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],
