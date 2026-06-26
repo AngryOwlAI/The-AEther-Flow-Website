@@ -10,7 +10,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -188,7 +188,10 @@ def load_distance_to_gr(source_root: Path, active_burden_id: str) -> dict[str, A
         missing = DERIVATION_BURDEN_FIELDS - set(reader.fieldnames or [])
         if missing:
             raise SnapshotError(f"{path}: missing required column(s): {', '.join(sorted(missing))}")
-        rows = [{key: row.get(key, "") for key in sorted(DERIVATION_BURDEN_FIELDS)} for row in reader]
+        rows = [
+            {key: row.get(key, "") for key in sorted(DERIVATION_BURDEN_FIELDS)}
+            for row in reader
+        ]
 
     active_row = next((row for row in rows if row["burden_id"] == active_burden_id), None)
     if active_row is None:
@@ -222,7 +225,11 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def dependency_entry(source_root: Path, relative_path: str, source_commit: str | None) -> dict[str, Any]:
+def dependency_entry(
+    source_root: Path,
+    relative_path: str,
+    source_commit: str | None,
+) -> dict[str, Any]:
     if Path(relative_path).is_absolute() or ".." in Path(relative_path).parts:
         raise SnapshotError(f"dependency path must be source-root-relative: {relative_path!r}")
     source_file = source_root / relative_path
@@ -279,7 +286,7 @@ def build_snapshot(
     source_commit_date = source_commit_date or (
         git_output(source_root, "show", "-s", "--format=%cI", "HEAD") if source_commit else None
     )
-    today = datetime.now(tz=timezone.utc).date().isoformat()
+    today = datetime.now(tz=UTC).date().isoformat()
     dependency_paths = [
         "research_control/program_state.yaml",
         f"research_control/handoffs/{handoff['handoff_id']}.yaml",

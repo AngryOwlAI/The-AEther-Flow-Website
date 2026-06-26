@@ -10,7 +10,7 @@ import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -143,9 +143,16 @@ def merge_dependency(
         existing.approval_status = candidate.approval_status
 
 
-def validate_source_path(source_path: str, label: str) -> None:
+def require_nonempty_string(value: object, label: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise CuratorError(f"{label} must be a nonempty string")
+    return value
+
+
+def validate_source_path(source_path: object, label: str) -> str:
     if not isinstance(source_path, str) or not source_path or not is_safe_relative(source_path):
         raise CuratorError(f"{label}: source path must be a safe relative path")
+    return source_path
 
 
 def parse_ack_value(raw_value: str) -> str | None:
@@ -165,7 +172,9 @@ def parse_acknowledgement_file(path: Path, repo_root: Path) -> Acknowledgement:
         if not raw_line.strip() or raw_line.lstrip().startswith("#"):
             continue
         if raw_line.startswith((" ", "\t")) or ":" not in raw_line:
-            raise CuratorError(f"{path}:{line_number}: acknowledgements support top-level scalars only")
+            raise CuratorError(
+                f"{path}:{line_number}: acknowledgements support top-level scalars only"
+            )
         key, raw_value = raw_line.split(":", 1)
         key = key.strip()
         if key not in ACK_REQUIRED_FIELDS:
@@ -177,18 +186,27 @@ def parse_acknowledgement_file(path: Path, repo_root: Path) -> Acknowledgement:
         raise CuratorError(f"{path}: missing acknowledgement field(s): {', '.join(missing)}")
 
     route_path = values["route_path"]
-    source_path = values["source_path"]
+    source_path = validate_source_path(values["source_path"], f"{path}: source_path")
     severity = values["severity"]
     current_commit = values["current_commit"]
     current_sha256 = values["current_sha256"]
-    acknowledged_by = values["acknowledged_by"]
-    acknowledged_at = values["acknowledged_at"]
-    reason = values["reason"]
+    acknowledged_by = require_nonempty_string(
+        values["acknowledged_by"],
+        f"{path}: acknowledged_by",
+    )
+    acknowledged_at = require_nonempty_string(
+        values["acknowledged_at"],
+        f"{path}: acknowledged_at",
+    )
+    reason = require_nonempty_string(values["reason"], f"{path}: reason")
     expires_at = values["expires_at"]
 
-    if not isinstance(route_path, str) or not route_path.startswith("/") or not route_path.endswith("/"):
+    if (
+        not isinstance(route_path, str)
+        or not route_path.startswith("/")
+        or not route_path.endswith("/")
+    ):
         raise CuratorError(f"{path}: route_path must be a website route ending in '/'")
-    validate_source_path(source_path, f"{path}: source_path")
     if not isinstance(severity, str) or severity not in ALLOWED_SEVERITIES:
         raise CuratorError(f"{path}: unsupported severity {severity!r}")
     if severity == "critical":
@@ -197,13 +215,6 @@ def parse_acknowledgement_file(path: Path, repo_root: Path) -> Acknowledgement:
         raise CuratorError(f"{path}: current_commit must be a 40-character hex commit")
     if not isinstance(current_sha256, str) or not HEX_SHA256_RE.match(current_sha256):
         raise CuratorError(f"{path}: current_sha256 must be a 64-character hex sha256")
-    for key, value in {
-        "acknowledged_by": acknowledged_by,
-        "acknowledged_at": acknowledged_at,
-        "reason": reason,
-    }.items():
-        if not isinstance(value, str) or not value:
-            raise CuratorError(f"{path}: {key} must be a nonempty string")
     if expires_at is not None:
         if not isinstance(expires_at, str) or not expires_at:
             raise CuratorError(f"{path}: expires_at must be null or a nonempty date string")
@@ -211,7 +222,7 @@ def parse_acknowledgement_file(path: Path, repo_root: Path) -> Acknowledgement:
             expires_on = date.fromisoformat(expires_at[:10])
         except ValueError as exc:
             raise CuratorError(f"{path}: expires_at must start with YYYY-MM-DD") from exc
-        if expires_on < datetime.now(tz=timezone.utc).date():
+        if expires_on < datetime.now(tz=UTC).date():
             raise CuratorError(f"{path}: acknowledgement is expired")
 
     relative_path = path.resolve().relative_to(repo_root.resolve()).as_posix()
@@ -230,7 +241,11 @@ def parse_acknowledgement_file(path: Path, repo_root: Path) -> Acknowledgement:
 
 
 def load_acknowledgements(repo_root: Path, acknowledgement_dir: Path) -> list[Acknowledgement]:
-    path = acknowledgement_dir if acknowledgement_dir.is_absolute() else repo_root / acknowledgement_dir
+    path = (
+        acknowledgement_dir
+        if acknowledgement_dir.is_absolute()
+        else repo_root / acknowledgement_dir
+    )
     if not path.exists():
         return []
     acknowledgements = [
@@ -262,13 +277,15 @@ def drift_ack_key(item: dict[str, Any]) -> tuple[str, str, str, str, str] | None
     severity = item.get("severity")
     current_commit = item.get("current_commit")
     current_sha256 = item.get("new_sha256")
-    if not all(isinstance(value, str) for value in (
-        route_path,
-        source_path,
-        severity,
-        current_commit,
-        current_sha256,
-    )):
+    if not isinstance(route_path, str):
+        return None
+    if not isinstance(source_path, str):
+        return None
+    if not isinstance(severity, str):
+        return None
+    if not isinstance(current_commit, str):
+        return None
+    if not isinstance(current_sha256, str):
         return None
     return (route_path, source_path, severity, current_commit, current_sha256)
 
@@ -292,7 +309,9 @@ def collect_page_dependencies(
         if not isinstance(route_path, str) or not route_path.startswith("/"):
             raise CuratorError(f"page_route_map.routes[{index}]: invalid route_path")
         if not isinstance(source_paths, list):
-            raise CuratorError(f"page_route_map.routes[{index}]: upstream_source_paths must be a list")
+            raise CuratorError(
+                f"page_route_map.routes[{index}]: upstream_source_paths must be a list"
+            )
 
         provenance_page = pages_by_route.get(route_path)
         provenance_sources = {
@@ -301,17 +320,19 @@ def collect_page_dependencies(
             if isinstance(source, dict) and isinstance(source.get("path"), str)
         }
         for source_path in source_paths:
-            validate_source_path(source_path, f"{route_path}")
-            source = provenance_sources.get(source_path, {})
+            valid_source_path = validate_source_path(source_path, f"{route_path}")
+            source = provenance_sources.get(valid_source_path, {})
             old_sha = source.get("sha256")
             if old_sha is not None and (
                 not isinstance(old_sha, str) or len(old_sha) != HEX_SHA256_LENGTH
             ):
-                raise CuratorError(f"{route_path}: invalid recorded sha256 for {source_path}")
+                raise CuratorError(
+                    f"{route_path}: invalid recorded sha256 for {valid_source_path}"
+                )
             merge_dependency(
                 dependencies,
                 Dependency(
-                    source_path=source_path,
+                    source_path=valid_source_path,
                     route_path=route_path,
                     old_sha256=old_sha,
                     old_commit=(
@@ -338,8 +359,10 @@ def collect_source_manifest_dependencies(
         source_commit = item.get("source_commit")
         if approval_status != "approved" or not isinstance(source_commit, str):
             continue
-        source_path = item.get("source_path")
-        validate_source_path(source_path, f"source_manifest.items[{index}]")
+        source_path = validate_source_path(
+            item.get("source_path"),
+            f"source_manifest.items[{index}]",
+        )
         old_sha = item.get("sha256")
         if old_sha is not None and (
             not isinstance(old_sha, str) or len(old_sha) != HEX_SHA256_LENGTH
@@ -371,13 +394,17 @@ def collect_snapshot_dependencies(
     for index, item in enumerate(snapshot.get("source_dependencies", [])):
         if not isinstance(item, dict):
             raise CuratorError(f"physics_current_state_snapshot.source_dependencies[{index}]")
-        source_path = item.get("path")
-        validate_source_path(source_path, f"physics_current_state_snapshot.source_dependencies[{index}]")
+        source_path = validate_source_path(
+            item.get("path"),
+            f"physics_current_state_snapshot.source_dependencies[{index}]",
+        )
         old_sha = item.get("sha256")
         if old_sha is not None and (
             not isinstance(old_sha, str) or len(old_sha) != HEX_SHA256_LENGTH
         ):
-            raise CuratorError(f"physics_current_state_snapshot.source_dependencies[{index}]: invalid sha256")
+            raise CuratorError(
+                f"physics_current_state_snapshot.source_dependencies[{index}]: invalid sha256"
+            )
         merge_dependency(
             dependencies,
             Dependency(
@@ -488,7 +515,10 @@ def build_diagnostics(source_root: Path) -> list[dict[str, str | None]]:
                 "diagnostic_type": "source_root_unavailable",
                 "severity": "informational",
                 "source_path": None,
-                "message": "Upstream source root is unavailable; curator cannot compute current hashes.",
+                "message": (
+                    "Upstream source root is unavailable; curator cannot compute "
+                    "current hashes."
+                ),
             }
         ]
 
@@ -547,7 +577,12 @@ def iter_strings(value: Any) -> list[str]:
     return []
 
 
-def validate_private_path_hygiene(data: dict[str, Any], *, repo_root: Path, source_root: Path) -> None:
+def validate_private_path_hygiene(
+    data: dict[str, Any],
+    *,
+    repo_root: Path,
+    source_root: Path,
+) -> None:
     forbidden = [str(repo_root.resolve()), str(source_root.resolve())]
     for value in iter_strings(data):
         for snippet in forbidden:
@@ -669,7 +704,8 @@ def blocking_validation_errors(report: dict[str, Any]) -> list[str]:
             )
         elif severity == "review_required" and acknowledgement_state != "acknowledged":
             errors.append(
-                f"{route}: review-required source drift for {source_path} lacks exact acknowledgement"
+                f"{route}: review-required source drift for {source_path} "
+                "lacks exact acknowledgement"
             )
     return errors
 
@@ -677,6 +713,7 @@ def blocking_validation_errors(report: dict[str, Any]) -> list[str]:
 def markdown_report(report: dict[str, Any]) -> str:
     summary = report["dependency_summary"]
     acknowledgement_summary = report.get("acknowledgement_summary", {})
+    matched_count = acknowledgement_summary.get("matched_acknowledgement_count", 0)
     lines = [
         "# Curator Drift Report",
         "",
@@ -693,7 +730,7 @@ def markdown_report(report: dict[str, Any]) -> str:
         f"- Critical drift: {summary['critical_count']}",
         f"- Review-required drift: {summary['review_required_count']}",
         f"- Informational drift: {summary['informational_count']}",
-        f"- Matched acknowledgements: {acknowledgement_summary.get('matched_acknowledgement_count', 0)}",
+        f"- Matched acknowledgements: {matched_count}",
         "",
         "## Drift Items",
         "",
@@ -749,16 +786,26 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--markdown-report", type=Path, default=DEFAULT_MD_REPORT)
     parser.add_argument("--acknowledgement-dir", type=Path, default=DEFAULT_ACKNOWLEDGEMENT_DIR)
     parser.add_argument("--write", action="store_true", help="Write curator report files.")
-    parser.add_argument("--check", action="store_true", help="Compare fresh report to checked-in files.")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Compare fresh report to checked-in files.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     repo_root = args.repo_root.resolve()
-    json_report_path = args.json_report if args.json_report.is_absolute() else repo_root / args.json_report
+    json_report_path = (
+        args.json_report
+        if args.json_report.is_absolute()
+        else repo_root / args.json_report
+    )
     markdown_report_path = (
-        args.markdown_report if args.markdown_report.is_absolute() else repo_root / args.markdown_report
+        args.markdown_report
+        if args.markdown_report.is_absolute()
+        else repo_root / args.markdown_report
     )
     try:
         report = build_report(repo_root=repo_root, source_root=args.source_root)
