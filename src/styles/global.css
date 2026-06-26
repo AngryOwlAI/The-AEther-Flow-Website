@@ -1257,6 +1257,229 @@ summary:focus-visible {
   color: var(--overview-text);
 }
 
+.project-support-page .content-band {
+  width: min(100% - 2rem, 1180px);
+}
+
+.project-support-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.9fr);
+  gap: 2rem;
+  align-items: start;
+  padding: 4rem 0 2.4rem;
+}
+
+.project-support-copy {
+  min-width: 0;
+}
+
+.project-support-page .section-header h1 {
+  max-width: 13ch;
+  color: var(--overview-text);
+  font-size: 4.9rem;
+  line-height: 0.95;
+}
+
+.project-support-page .section-header h2,
+.project-support-page .download-section h2 {
+  color: var(--overview-text);
+}
+
+.project-support-page .lead,
+.project-support-page .section-header p:not(.eyebrow),
+.project-support-page .download-item p,
+.project-support-page .timeline-list p,
+.project-support-page .resource-status-grid span,
+.project-support-page .link-card small {
+  color: var(--overview-muted);
+}
+
+.project-support-copy .source-notice {
+  margin-top: 1.5rem;
+}
+
+.support-figure {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--overview-line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 56% 48%, rgba(255, 173, 33, 0.16), transparent 13rem),
+    radial-gradient(circle at 24% 22%, rgba(232, 221, 193, 0.08), transparent 12rem),
+    #000000;
+  box-shadow:
+    var(--overview-shadow),
+    inset 0 0 54px rgba(232, 221, 193, 0.05),
+    inset 0 0 82px rgba(255, 151, 28, 0.06);
+}
+
+.support-figure figcaption {
+  border-top: 1px solid var(--overview-white-line);
+  padding: 1rem;
+  color: var(--overview-muted);
+}
+
+.support-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.support-bg {
+  fill: #000000;
+}
+
+.support-dust {
+  fill: var(--overview-text);
+  opacity: 0.56;
+  animation: dust-breathe 5.6s ease-in-out infinite alternate;
+}
+
+.support-line,
+.support-flow-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+  animation: detail-flow-breathe 3.8s ease-in-out infinite alternate;
+}
+
+.support-line.alternate,
+.support-flow-path.alternate {
+  animation-delay: -1.4s;
+}
+
+.gold-line {
+  stroke: var(--overview-gold);
+}
+
+.signal-line {
+  stroke: var(--overview-signal);
+}
+
+.support-core {
+  fill: var(--overview-gold);
+  filter: drop-shadow(0 0 18px rgba(255, 173, 33, 0.82));
+  transform-origin: 260px 170px;
+  animation: core-pulse 2.8s ease-in-out infinite;
+}
+
+.support-nodes,
+.support-node-cores {
+  fill: var(--overview-signal);
+  filter: drop-shadow(0 0 10px rgba(232, 221, 193, 0.56));
+}
+
+.support-flow-nodes {
+  fill: rgba(0, 0, 0, 0.92);
+  stroke: var(--overview-signal);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 12px rgba(232, 221, 193, 0.4));
+}
+
+.support-rings {
+  fill: none;
+  stroke: rgba(255, 224, 156, 0.32);
+  stroke-width: 1.2;
+  transform-origin: center;
+  animation: flare-ray-breathe 4.2s ease-in-out infinite alternate;
+}
+
+.support-labels {
+  fill: var(--overview-muted);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.72);
+  stroke-width: 5px;
+}
+
+.project-support-page main a {
+  color: var(--overview-signal);
+}
+
+.project-support-page main a:hover,
+.project-support-page main a:focus-visible {
+  color: var(--overview-gold);
+}
+
+.project-support-page code {
+  border-color: var(--overview-white-line);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--overview-signal);
+}
+
+.project-support-page .link-card,
+.project-support-page .resource-status-grid article,
+.project-support-page .timeline-list article,
+.project-support-page .download-item {
+  border-color: var(--overview-white-line);
+  background: rgba(6, 5, 4, 0.82);
+  color: var(--overview-text);
+  box-shadow: inset 0 0 34px rgba(255, 173, 33, 0.04);
+}
+
+.project-support-page .link-card {
+  border-top-color: var(--overview-gold);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-support-page .link-card:nth-child(2n) {
+  border-top-color: var(--overview-signal);
+}
+
+.project-support-page .link-card:hover,
+.project-support-page .link-card:focus-visible {
+  border-color: var(--overview-line);
+  box-shadow:
+    inset 0 0 34px rgba(255, 173, 33, 0.08),
+    0 16px 46px rgba(0, 0, 0, 0.34);
+  transform: translateY(-2px);
+}
+
+.project-support-page .link-card span,
+.project-support-page .download-item h3,
+.project-support-page .resource-status-grid h3,
+.project-support-page .timeline-list h3 {
+  color: var(--overview-text);
+}
+
+.project-support-page .resource-status-grid article,
+.project-support-page .download-item {
+  border-top: 3px solid var(--overview-gold);
+}
+
+.project-support-page .resource-status-grid article:nth-child(2n),
+.project-support-page .download-item:nth-child(2n) {
+  border-top-color: var(--overview-signal);
+}
+
+.project-support-page .resource-status-grid p,
+.project-support-page .download-kind {
+  color: var(--overview-gold);
+}
+
+.project-support-page .timeline-list li::before {
+  background: linear-gradient(135deg, #fff2bf, var(--overview-gold));
+  color: #080401;
+  box-shadow: 0 0 22px rgba(255, 173, 33, 0.28);
+}
+
+.project-support-page .download-meta dt {
+  color: var(--overview-muted);
+}
+
+.project-support-page .download-meta dd {
+  color: var(--overview-text);
+}
+
 .track-page-hero,
 .track-page-band {
   width: min(100% - 2rem, 1180px);
@@ -1692,6 +1915,7 @@ summary:focus-visible {
   }
 
   .overview-hero,
+  .project-support-hero,
   .track-page-hero,
   .track-grid,
   .detail-grid,
@@ -1704,13 +1928,16 @@ summary:focus-visible {
   }
 
   .overview-hero,
+  .project-support-hero,
   .track-page-hero {
     gap: 1.25rem;
   }
 
   .overview-hero-copy h1,
+  .project-support-page .section-header h1,
   .track-page-hero-copy h1 {
     font-size: 3.2rem;
+    max-width: min(12ch, 100%);
   }
 
   .overview-heading h2,

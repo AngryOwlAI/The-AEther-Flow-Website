@@ -7,21 +7,83 @@ import { researchMapNodes } from "../../lib/siteContent";
 <BaseLayout
   title="Research Map"
   description="High-level map of how the website relates to the source research repository."
+  bodyClass="project-overview-page project-support-page"
 >
-  <section class="content-band" aria-labelledby="research-map-title">
-    <div class="section-header">
-      <p class="eyebrow">Research map</p>
-      <h1 id="research-map-title">From source authority to static reader surfaces.</h1>
-      <p class="lead">
-        This map describes publication flow, not scientific derivation. The
-        website consumes reviewed material and publishes reader-facing surfaces.
-      </p>
+  <section class="content-band project-support-hero" aria-labelledby="research-map-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">Research map</p>
+        <h1 id="research-map-title">From source authority to static reader surfaces.</h1>
+        <p class="lead">
+          This map describes publication flow, not scientific derivation. The
+          website consumes reviewed material and publishes reader-facing surfaces.
+        </p>
+      </div>
+      <SourceNotice
+        claimStatus="explanatory"
+        updated="2026-06-25"
+        note="This page is an orientation map for the website architecture. Scientific authority remains upstream."
+      />
     </div>
-    <SourceNotice
-      claimStatus="explanatory"
-      updated="2026-06-25"
-      note="This page is an orientation map for the website architecture. Scientific authority remains upstream."
-    />
+
+    <figure class="support-figure research-flow-figure" aria-labelledby="research-flow-caption">
+      <svg
+        class="support-svg"
+        viewBox="0 0 520 340"
+        role="img"
+        aria-labelledby="research-flow-figure-title research-flow-figure-desc"
+      >
+        <title id="research-flow-figure-title">Animated source-to-reader publication flow</title>
+        <desc id="research-flow-figure-desc">
+          A four-node path shows authority moving from source records through
+          manifests into static reader surfaces.
+        </desc>
+        <rect class="support-bg" width="520" height="340" rx="24" />
+        <g class="support-dust" aria-hidden="true">
+          <circle cx="58" cy="78" r="1.1" />
+          <circle cx="110" cy="276" r="0.9" />
+          <circle cx="198" cy="58" r="1.2" />
+          <circle cx="294" cy="284" r="1" />
+          <circle cx="402" cy="66" r="1.1" />
+          <circle cx="464" cy="238" r="0.9" />
+        </g>
+        <path
+          class="support-flow-path gold-line"
+          d="M70 188 C136 96, 196 96, 260 170 C324 244, 384 244, 450 152"
+          aria-hidden="true"
+        />
+        <path
+          class="support-flow-path signal-line alternate"
+          d="M70 188 C138 230, 200 226, 260 170 C318 116, 378 110, 450 152"
+          aria-hidden="true"
+        />
+        <g class="support-flow-nodes" aria-hidden="true">
+          <circle cx="70" cy="188" r="22" />
+          <circle cx="198" cy="116" r="22" />
+          <circle cx="322" cy="224" r="22" />
+          <circle cx="450" cy="152" r="22" />
+        </g>
+        <g class="support-node-cores" aria-hidden="true">
+          <circle cx="70" cy="188" r="8" />
+          <circle cx="198" cy="116" r="8" />
+          <circle cx="322" cy="224" r="8" />
+          <circle cx="450" cy="152" r="8" />
+        </g>
+        <g class="support-rings" aria-hidden="true">
+          <circle cx="70" cy="188" r="38" />
+          <circle cx="450" cy="152" r="38" />
+        </g>
+        <g class="support-labels">
+          <text x="42" y="242">source</text>
+          <text x="148" y="78">manifest</text>
+          <text x="278" y="278">pages</text>
+          <text x="396" y="116">static output</text>
+        </g>
+      </svg>
+      <figcaption id="research-flow-caption">
+        Publication flow stays visible without converting website pages into source authority.
+      </figcaption>
+    </figure>
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="research-flow-title">

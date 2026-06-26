@@ -1,6 +1,7 @@
 # Cloudflare Pages static redirects.
 # Keep static redirects above any future wildcard or dynamic redirects.
 
+/ /project/overview/ 301
 /overview /project/overview/ 301
 /research /research/map/ 302
 /documents /resources/documents/ 301

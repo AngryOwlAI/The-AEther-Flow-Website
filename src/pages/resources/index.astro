@@ -21,23 +21,78 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
 <BaseLayout
   title="Resources"
   description="Manifest-backed downloadable resources for The AEther Flow website."
+  bodyClass="project-overview-page project-support-page"
 >
-  <section class="content-band" aria-labelledby="resources-title">
-    <div class="section-header">
-      <p class="eyebrow">Source-index-only</p>
-      <h1 id="resources-title">Resources</h1>
-      <p class="lead">
-        This resource area supports the public reading path while keeping file
-        status explicit. Current downloadable files are sample fixtures unless
-        the manifest marks them as approved source-backed public assets.
-      </p>
+  <section class="content-band project-support-hero" aria-labelledby="resources-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">Source-index-only</p>
+        <h1 id="resources-title">Resources</h1>
+        <p class="lead">
+          This resource area supports the public reading path while keeping file
+          status explicit. Current downloadable files are sample fixtures unless
+          the manifest marks them as approved source-backed public assets.
+        </p>
+      </div>
+      <SourceNotice
+        claimStatus="source-index-only"
+        sourceRefs={sourceRefs}
+        updated="2026-06-25"
+        note="This resource index is rendered from website-local manifest data and structured page links. It does not create scientific or workflow authority."
+      />
     </div>
-    <SourceNotice
-      claimStatus="source-index-only"
-      sourceRefs={sourceRefs}
-      updated="2026-06-25"
-      note="This resource index is rendered from website-local manifest data and structured page links. It does not create scientific or workflow authority."
-    />
+
+    <figure class="support-figure resource-constellation" aria-labelledby="resources-figure-caption">
+      <svg
+        class="support-svg"
+        viewBox="0 0 520 340"
+        role="img"
+        aria-labelledby="resources-figure-title resources-figure-desc"
+      >
+        <title id="resources-figure-title">Animated resource manifest constellation</title>
+        <desc id="resources-figure-desc">
+          Source references, manifests, and sample files are shown as connected
+          publication nodes.
+        </desc>
+        <rect class="support-bg" width="520" height="340" rx="24" />
+        <g class="support-dust" aria-hidden="true">
+          <circle cx="54" cy="62" r="1.2" />
+          <circle cx="94" cy="264" r="1" />
+          <circle cx="168" cy="86" r="0.9" />
+          <circle cx="238" cy="286" r="1.2" />
+          <circle cx="314" cy="72" r="1" />
+          <circle cx="406" cy="266" r="1.1" />
+          <circle cx="470" cy="110" r="0.9" />
+        </g>
+        <g class="support-link-lines" aria-hidden="true">
+          <path class="support-line gold-line" d="M92 96 C162 126, 194 154, 260 170" />
+          <path class="support-line signal-line" d="M84 238 C150 206, 198 184, 260 170" />
+          <path class="support-line gold-line alternate" d="M260 170 C314 122, 362 96, 434 82" />
+          <path class="support-line signal-line alternate" d="M260 170 C332 182, 376 214, 436 254" />
+        </g>
+        <circle class="support-core" cx="260" cy="170" r="34" aria-hidden="true" />
+        <g class="support-nodes" aria-hidden="true">
+          <circle cx="92" cy="96" r="15" />
+          <circle cx="84" cy="238" r="15" />
+          <circle cx="434" cy="82" r="15" />
+          <circle cx="436" cy="254" r="15" />
+        </g>
+        <g class="support-rings" aria-hidden="true">
+          <circle cx="260" cy="170" r="58" />
+          <circle cx="260" cy="170" r="92" />
+        </g>
+        <g class="support-labels">
+          <text x="52" y="54">source refs</text>
+          <text x="44" y="294">sample files</text>
+          <text x="226" y="158">manifest</text>
+          <text x="364" y="48">reader paths</text>
+          <text x="356" y="302">downloads</text>
+        </g>
+      </svg>
+      <figcaption id="resources-figure-caption">
+        Manifest-backed resources stay indexed and status-labeled before public use.
+      </figcaption>
+    </figure>
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="resource-groups-title">

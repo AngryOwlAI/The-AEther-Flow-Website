@@ -15,6 +15,12 @@ def test_current_cloudflare_pages_config_validates() -> None:
     assert redirect_errors == []
 
 
+def test_root_redirects_to_project_overview() -> None:
+    redirects = [line for _, line in validator.meaningful_lines(REPO_ROOT / "public/_redirects")]
+
+    assert "/ /project/overview/ 301" in redirects
+
+
 def test_redirect_validator_rejects_invalid_status(tmp_path: Path) -> None:
     redirects = tmp_path / "_redirects"
     redirects.write_text("/old /new 999\n", encoding="utf-8")

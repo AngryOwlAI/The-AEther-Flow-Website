@@ -7,10 +7,6 @@ export type SiteNavigationLink = {
 export const siteNavigationLinks: SiteNavigationLink[] = [
   {
     title: "Home",
-    href: "/",
-  },
-  {
-    title: "Project",
     href: "/project/overview/",
   },
   {
