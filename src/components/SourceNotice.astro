@@ -1,4 +1,6 @@
 ---
+import pageProvenance from "../../public/files/manifests/page_provenance.json";
+
 interface Props {
   claimStatus?: string;
   sourceRefs?: string[];
@@ -12,12 +14,54 @@ const {
   updated,
   note = "Source authority remains with the research repository. This page is a reader-facing website surface.",
 } = Astro.props;
+
+type ProvenanceSource = {
+  path: string;
+  github_main_url: string;
+  github_pinned_url?: string | null;
+};
+
+type ProvenancePage = {
+  route_path: string;
+  adapted_from_source_date?: string;
+  upstream_sources?: ProvenanceSource[];
+};
+
+const currentPath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const provenancePages = ((pageProvenance as { pages?: ProvenancePage[] }).pages ?? []);
+const currentPageProvenance = provenancePages.find((page) => page.route_path === currentPath);
+const refreshedFromSource = currentPageProvenance?.adapted_from_source_date;
 const updatedLabel =
-  updated instanceof Date
+  refreshedFromSource ??
+  (updated instanceof Date
     ? updated.toISOString().slice(0, 10)
     : typeof updated === "string" && /^\d{4}-\d{2}-\d{2}/.test(updated)
       ? updated.slice(0, 10)
-      : updated;
+      : updated);
+const dateLabel = refreshedFromSource ? "Last refreshed from source" : "Updated";
+
+const sourceRefToHref = (ref: string) => {
+  if (ref.startsWith("source_manifest:")) {
+    return "/files/manifests/source_manifest.json";
+  }
+  const upstreamMatch = ref.match(/^AEther-Flow Project\. \(2026\)\. ([^ [\]]+)/);
+  if (upstreamMatch) {
+    return `https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/${upstreamMatch[1]}`;
+  }
+  const websiteMatch = ref.match(/^The AEther Flow Website\. \(2026\)\. ([^ [\]]+)/);
+  if (websiteMatch) {
+    return `https://github.com/AngryOwlAI/The-AEther-Flow-Website/blob/main/${websiteMatch[1]}`;
+  }
+  return undefined;
+};
+
+const linkedSourceRefs = sourceRefs.map((ref) => ({
+  label: ref,
+  href: sourceRefToHref(ref),
+}));
+const provenanceSources = currentPageProvenance?.upstream_sources ?? [];
 ---
 
 <aside class="source-notice" aria-label="Source authority notice">
@@ -30,14 +74,42 @@ const updatedLabel =
     </div>
     {updatedLabel && (
       <div>
-        <dt>Updated</dt>
+        <dt>{dateLabel}</dt>
         <dd>{updatedLabel}</dd>
       </div>
     )}
-    {sourceRefs.length > 0 && (
+    {provenanceSources.length > 0 && (
+      <div>
+        <dt>Source links</dt>
+        <dd>
+          <ul class="source-ref-list">
+            {provenanceSources.map((source) => (
+              <li>
+                <a href={source.github_main_url}>{source.path}</a>
+                {source.github_pinned_url && (
+                  <>
+                    {" "}
+                    <a href={source.github_pinned_url}>Pinned source version</a>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        </dd>
+      </div>
+    )}
+    {sourceRefs.length > 0 && provenanceSources.length === 0 && (
       <div>
         <dt>Source refs</dt>
-        <dd>{sourceRefs.join(", ")}</dd>
+        <dd>
+          <ul class="source-ref-list">
+            {linkedSourceRefs.map((ref) => (
+              <li>
+                {ref.href ? <a href={ref.href}>{ref.label}</a> : ref.label}
+              </li>
+            ))}
+          </ul>
+        </dd>
       </div>
     )}
   </dl>

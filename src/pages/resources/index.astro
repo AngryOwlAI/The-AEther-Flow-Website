@@ -6,6 +6,7 @@ import {
   approvedDownloads,
   downloadStatusCounts,
   downloads,
+  ontologyDocuments,
   sampleDownloads,
 } from "../../lib/manifests";
 import { resourceGroups } from "../../lib/siteContent";
@@ -30,8 +31,9 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
         <h1 id="resources-title">Resources</h1>
         <p class="lead">
           This resource area supports the public reading path while keeping file
-          status explicit. Current downloadable files are sample fixtures unless
-          the manifest marks them as approved source-backed public assets.
+          status explicit. Canonical ontology PDF and TeX assets are committed
+          to the website repo with manifest hashes; remaining sample assets are
+          clearly labeled as fixtures.
         </p>
       </div>
       <SourceNotice
@@ -51,7 +53,7 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
       >
         <title id="resources-figure-title">Animated resource manifest constellation</title>
         <desc id="resources-figure-desc">
-          Source references, manifests, and sample files are shown as connected
+          Source references, manifests, and published files are shown as connected
           publication nodes.
         </desc>
         <rect class="support-bg" width="520" height="340" rx="24" />
@@ -83,7 +85,7 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
         </g>
         <g class="support-labels">
           <text x="52" y="54">source refs</text>
-          <text x="44" y="294">sample files</text>
+          <text x="44" y="294">published files</text>
           <text x="226" y="158">manifest</text>
           <text x="364" y="48">reader paths</text>
           <text x="356" y="302">downloads</text>
@@ -98,10 +100,10 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
   <section class="content-band content-band-tight" aria-labelledby="resource-groups-title">
     <div class="section-header">
       <p class="eyebrow">Reader path</p>
-      <h2 id="resource-groups-title">Public pages and sample libraries</h2>
+      <h2 id="resource-groups-title">Public pages and ontology documents</h2>
       <p class="lead">
         Use the project pages for source-boundary-safe explanation. Use the
-        resource libraries to inspect current manifest-backed fixtures.
+        resource libraries to inspect current manifest-backed assets.
       </p>
     </div>
     <div class="link-grid">
@@ -121,8 +123,8 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
       <p class="lead">
         The current manifest records {sampleCount} sample fixture files and{" "}
         {approvedCount} approved source-backed public files. Source-backed
-        downloads remain planned until provenance and approval status are
-        available in the manifest.
+        ontology downloads are grouped into {ontologyDocuments.length} PDF/TeX
+        document pairs.
       </p>
     </div>
     <div class="resource-status-grid">
@@ -138,16 +140,16 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
         <p>Sample fixtures</p>
         <h3>Path and rendering checks</h3>
         <span>
-          Sample PDF, TeX, and diagram files validate direct static downloads;
-          they are not scientific source documents.
+          Remaining sample assets are visual fixtures only; sample PDF and TeX
+          files are no longer part of the public manifest.
         </span>
       </article>
       <article>
-        <p>Planned material</p>
-        <h3>Approved downloads deferred</h3>
+        <p>Ontology package</p>
+        <h3>Approved downloads active</h3>
         <span>
-          Real downloadable assets should be added only after source provenance,
-          approval status, and usage terms are available.
+          Registered TeX files carry source authority; PDFs are generated
+          human-readable derivatives for direct reading.
         </span>
       </article>
     </div>
@@ -157,7 +159,7 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
     <DownloadList
       items={downloads}
       title="Current manifest-backed files"
-      description="This list is generated from asset manifest entries. The current rows are sample fixtures unless their status says otherwise."
+      description="This list is generated from asset manifest entries. Status labels distinguish approved ontology assets from remaining visual fixtures."
     />
   </section>
 </BaseLayout>

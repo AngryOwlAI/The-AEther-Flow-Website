@@ -4,10 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+from pathlib import Path
 from urllib.parse import urljoin
 
 
@@ -20,30 +22,50 @@ class RouteCheck:
 DEFAULT_ROUTES = [
     RouteCheck("/"),
     RouteCheck("/project/overview/"),
-    RouteCheck("/project/physics/"),
-    RouteCheck("/project/physics/ontology/"),
-    RouteCheck("/project/physics/exact-gr-benchmark/"),
-    RouteCheck("/project/physics/gr-derivation-roadmap/"),
-    RouteCheck("/project/physics/claim-gates/"),
-    RouteCheck("/project/ai-research-agent-system/"),
     RouteCheck("/project/ai-research-agent-system/workflow/"),
-    RouteCheck("/project/ai-research-agent-system/roles-and-skills/"),
-    RouteCheck("/project/ai-research-agent-system/memory-registries/"),
-    RouteCheck("/project/ai-research-agent-system/validator-operator-workflow/"),
-    RouteCheck("/project/source-authority/"),
     RouteCheck("/research/map/"),
     RouteCheck("/research/equations/"),
-    RouteCheck("/resources/"),
-    RouteCheck("/resources/documents/"),
     RouteCheck("/resources/diagrams/"),
     RouteCheck("/research/math-sample/"),
-    RouteCheck("/files/pdf/aether-flow-sample.pdf"),
-    RouteCheck("/files/tex/aether-flow-sample.tex"),
-    RouteCheck("/assets/diagrams/publication-layer-map.svg"),
     RouteCheck("/robots.txt"),
 ]
 
 SMOKE_TEST_USER_AGENT = "The-AEther-Flow-Website smoke-test/1.0"
+
+
+def load_manifest_routes(root: Path) -> list[RouteCheck]:
+    routes: list[RouteCheck] = []
+    page_provenance_path = root / "public/files/manifests/page_provenance.json"
+    asset_manifest_path = root / "public/files/manifests/asset_manifest.json"
+    if page_provenance_path.is_file():
+        with page_provenance_path.open("r", encoding="utf-8") as handle:
+            page_provenance = json.load(handle)
+        routes.extend(
+            RouteCheck(page["route_path"])
+            for page in page_provenance.get("pages", [])
+            if isinstance(page, dict) and isinstance(page.get("route_path"), str)
+        )
+    if asset_manifest_path.is_file():
+        with asset_manifest_path.open("r", encoding="utf-8") as handle:
+            asset_manifest = json.load(handle)
+        routes.extend(
+            RouteCheck(asset["path"])
+            for asset in asset_manifest.get("items", [])
+            if isinstance(asset, dict) and isinstance(asset.get("path"), str)
+        )
+    return routes
+
+
+def dedupe_routes(routes: list[RouteCheck]) -> list[RouteCheck]:
+    seen: set[tuple[str, int]] = set()
+    deduped: list[RouteCheck] = []
+    for route in routes:
+        key = (route.path, route.expected_status)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(route)
+    return deduped
 
 
 def check_route(base_url: str, route: RouteCheck, timeout: float) -> str | None:
@@ -69,22 +91,24 @@ def check_route(base_url: str, route: RouteCheck, timeout: float) -> str | None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Smoke-test local static site routes.")
     parser.add_argument("--base-url", required=True, help="Base URL for local dev or preview.")
+    parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--timeout", type=float, default=5.0)
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    routes = dedupe_routes(DEFAULT_ROUTES + load_manifest_routes(args.root.resolve()))
     errors = [
         error
-        for route in DEFAULT_ROUTES
+        for route in routes
         if (error := check_route(args.base_url, route, args.timeout)) is not None
     ]
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    print(f"Smoke test passed for {len(DEFAULT_ROUTES)} route(s).")
+    print(f"Smoke test passed for {len(routes)} route(s).")
     return 0
 
 

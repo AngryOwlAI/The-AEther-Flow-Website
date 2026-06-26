@@ -1,0 +1,277 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+\usepackage{physics}
+
+\geometry{margin=1in}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
+\setlist[enumerate]{topsep=0.4em,itemsep=0.35em}
+\setlist[itemize]{topsep=0.3em,itemsep=0.25em}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\setstretch{1.06}
+
+\newcommand{\Aether}{\AE{}ther}
+\newcommand{\Aflow}{\AE{}ther-flow}
+\newcommand{\TheoryName}{\Aflow{} Interpretation of Relativity}
+\newcommand{\TheoryProgram}{\Aether{} / \Aflow{} framework}
+\newcommand{\Order}{\mathcal{S}}
+\newcommand{\Xord}{\mathcal X}
+\newcommand{\Mpl}{M_*}
+\newcommand{\Ph}{\Phi}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\title{\textbf{The \TheoryName{}}\\[0.4em]
+\large Exact-Closure Note}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper states \TheoryName{} as a standalone scientific position. Its ontological core is fixed as follows: the \Aether{} is the underlying four-dimensional substrate of reality; the \Aflow{} is its intrinsic ordered motion; the observed three-dimensional world is a local experiential slice of that deeper substrate; S-time is the experienced order of change arising from the relation between matter, light, and the \Aflow{}; and observed expansion is the three-dimensional appearance of deeper four-dimensional ordered motion rather than the primary ontology.
+
+Within the broader \TheoryProgram{}, \TheoryName{} is the GR-consistent exact relativistic theory. It does not introduce a distinct low-energy non-GR observable sector. Instead, it retains the ontology while taking the effective gravitational dynamics to be exactly Einsteinian. In this sense \TheoryName{} is the exact-closure theory and the automatic reversion target if any later non-GR proposal fails.
+
+The purpose of the paper is threefold. First, it states the exact dynamical content of \TheoryName{}. Second, it distinguishes the completed exact-closure claim from the still-unfinished foundational ambition to derive that effective relativistic sector from deeper substrate variables. Third, it fixes the theory's role within the active architecture of \TheoryProgram{}: \TheoryName{} is not a temporary placeholder, but a positive scientific deliverable, the exact operational floor of the framework, and the standard to which any later extension must remain answerable. The resulting framework is therefore disciplined in both directions. It preserves the ontological proposal without pretending that a distinct low-energy modification has already earned success, and it preserves a possible route toward deeper derivation without confusing that route with completed low-energy physics.
+
+Within the flagship exact-closure sequence, the companion \emph{Exact-Closure Sequence Overview} is the canonical front door and the present paper is the short standalone anchor. The five companion manuscripts on foundations, dynamics, consistency, relativistic recovery, and flow geometry provide the modular full statement downstream of that anchor, and the flagship public article repackages that ordered core for first-time readers without displacing it. Any later derivational continuation is secondary to this exact-closure benchmark and must be presented as such.
+\end{abstract}
+
+\section{Introduction}
+
+The most durable idea in the development of \TheoryProgram{} is ontological rather than phenomenological. The observed world is not treated as the deepest layer of reality. Instead, it is interpreted as the local experiential appearance of a deeper four-dimensional substrate, the \Aether{}, whose intrinsic ordered motion, the \Aflow{}, underlies temporal ordering, measured spatial separation, light propagation, and relativistic variation in duration and extension.
+
+That idea, however, does not by itself decide the status of the effective gravitational dynamics. A framework may keep its ontology while taking very different scientific positions about what has or has not been established at low energies. The theory language of \TheoryProgram{} was introduced precisely to prevent those positions from being blurred together. In that architecture, \TheoryName{} is the GR-consistent theory. Its content is exact closure rather than deformation. Its role is not to compete observationally with general relativity, but to retain the ontological proposal while adopting Einsteinian metric dynamics as the exact operational description of gravity.
+
+\paragraph{Framework and claim boundary.}
+\TheoryProgram{} denotes the broader \Aether{} / \Aflow{} framework built on the claims that the \Aether{} is the underlying four-dimensional substrate of reality, the \Aflow{} is its intrinsic ordered motion, observed three-dimensional space is the local experiential slice of that deeper substrate, S-time is the experienced order of change arising from matter, light, and the \Aflow{}, and observed expansion is the three-dimensional appearance of deeper four-dimensional ordered motion. Within that framework, \TheoryName{} denotes the exact-closure theory in which the effective gravitational dynamics are adopted to be exactly Einsteinian with universal matter coupling. In the active sequence, \emph{adoption} means use of that established relativistic dynamics without claiming substrate derivation, while \emph{derivation} is reserved for a first-principles recovery from explicit substrate variables.
+
+The present manuscript makes that theory explicit on its own. This matters for two reasons. First, the scientific architecture is not stable if its exact-closure theory is left implicit or treated merely as a fallback sentence. Second, the current stage of \TheoryProgram{} does not justify any stronger low-energy statement than the exact GR-consistent closure already in hand. The correct discipline is therefore to articulate \TheoryName{} in full and to let every later extension be judged against it.
+
+For sequence-level orientation within the flagship exact-closure line, readers should begin with the companion \emph{Exact-Closure Sequence Overview}, which fixes the reading order and claim boundary of the active sequence. Within that fixed order, the present note is the short standalone anchor: it states the benchmark claim boundary in the briefest complete form before the modular full statement of foundations, dynamics, consistency, relativistic recovery, and flow geometry. The separate flagship public article is built on that same order as a release-facing synthesis and does not replace either the overview or this anchor. Exact closure comes first in that sequence, while any later derivational continuation is explicitly secondary.
+
+\input{tex_shared/aether_flow_what_this_package_is_not.tex}
+
+\section{Ontological Core Preserved in \TheoryName{}}
+
+The central idea carried into \TheoryName{} may be summarized as follows:
+\begin{itemize}
+    \item \Aether{}: the underlying four-dimensional substrate of reality.
+    \item \Aflow{}: the intrinsic ordered motion of that substrate.
+    \item observed three-dimensional space: the local experiential slice of the deeper substrate.
+    \item S-time: the experienced order of change arising from matter, light, and the \Aflow{}.
+    \item observed expansion: the three-dimensional appearance of deeper four-dimensional ordered motion.
+\end{itemize}
+
+This formulation excludes two misreadings that earlier language could invite. First, the \Aether{} is not a three-dimensional medium expanding into an external container. Second, the \Aflow{} is not a naive vector wind in observed space. The flow language is disciplined and ontological. Embedded observers do not directly perceive the full substrate motion; they perceive local effects of deeper order.
+
+This ontology is retained in \TheoryName{} without any need to claim a distinct low-energy deformation of general relativity. \TheoryName{} therefore preserves the conceptual thesis while refusing to overstate the present derivational status of the theory.
+
+\section{Definition of \TheoryName{}}
+
+\begin{definition}[\TheoryName{}]
+\TheoryName{} is the GR-consistent theory of \TheoryProgram{} in which the \Aether{} / \Aflow{} ontology is retained, but the effective gravitational dynamics are exactly those of general relativity with ordinary matter coupling.
+\end{definition}
+
+The exact effective action of the theory is
+\begin{equation}
+S_{\mathrm{eff}}
+=
+\frac{c^3}{16\pi G}\int d^4x\,\sqrt{-g}\,R
++
+S_{\mathrm{matter}}[g,\psi].
+\label{eq:SA}
+\end{equation}
+Accordingly, the field equations are the Einstein equations with the usual matter source,
+\begin{equation}
+G_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu},
+\label{eq:einstein}
+\end{equation}
+and the operational structure of the theory is exactly relativistic. Null propagation satisfies
+\begin{equation}
+0 = g_{\mu\nu}\,dx^{\mu}dx^{\nu},
+\label{eq:null}
+\end{equation}
+while proper time along timelike histories satisfies
+\begin{equation}
+d\tau^2 = -\frac{1}{c^2} g_{\mu\nu}\,dx^{\mu}dx^{\nu}.
+\label{eq:propertime}
+\end{equation}
+
+\begin{proposition}
+\TheoryName{} has the predictive content of GR exactly. It therefore carries no independent low-energy non-GR observable signature.
+\end{proposition}
+
+\begin{remark}
+This does not make \TheoryName{} empty. It makes its scientific status precise. The theory is a disciplined interpretive completion within \TheoryProgram{} and a proposed deeper ontology consistent with GR, not a competing low-energy deformation of it.
+\end{remark}
+
+\section{Dark Energy Within Exact Closure}
+
+The exact-closure benchmark also admits the standard late-time cosmological completion required by the observed accelerated expansion \cite{Riess1998,Perlmutter1999,Planck2018Parameters}. The conservative form is the ordinary cosmological constant,
+\begin{equation}
+S_{\mathrm{eff}}^{(\Lambda)}
+=
+\frac{c^3}{16\pi G}\int d^4x\,\sqrt{-g}\,\left(R-2\Lambda\right)
++
+S_{\mathrm{matter}}[g,\psi],
+\label{eq:SA_lambda_note}
+\end{equation}
+with field equations
+\begin{equation}
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=
+\frac{8\pi G}{c^4}T_{\mu\nu}.
+\label{eq:einstein_lambda_note}
+\end{equation}
+Equivalently, one may move the \(\Lambda g_{\mu\nu}\) term to the right-hand side and read it as vacuum stress-energy with equation of state \(p_{\Lambda}=-\rho_{\Lambda}c^2\).
+
+More generally, one may place a covariantly conserved GR-compatible dark-energy sector inside the same one-metric theory,
+\begin{equation}
+G_{\mu\nu}
+=
+\frac{8\pi G}{c^4}\left(T_{\mu\nu}^{\mathrm{ord}}+T_{\mu\nu}^{\mathrm{DE}}\right),
+\qquad
+\nabla_\mu T_{\mathrm{DE}}^{\mu\nu}=0.
+\label{eq:de_sector_note}
+\end{equation}
+If that sector is dynamical, it still belongs to the matter side of the adopted GR theory. It does not derive the Einstein sector from the \Aether{} / \Aflow{} ontology; it completes the cosmological content of the already adopted relativistic sector.
+
+\section{The Role of \Aflow{} in \TheoryName{}}
+
+In \TheoryName{}, the \Aflow{} is not introduced as an additional low-energy observable field that perturbs Einsteinian dynamics. Its role is interpretive, structural, and ontological.
+
+First, it names the intrinsic ordered motion of the four-dimensional substrate posited by the theory. Second, it provides the conceptual basis for interpreting S-time as experienced order of change rather than as a primitive place-like corridor. Third, where congruence or foliation language is useful, it may be employed as a disciplined dictionary for describing how embedded observers relate to the effective relativistic geometry. What it does \emph{not} do in \TheoryName{} is generate an extra preferred-frame signal, a new propagating vector degree of freedom, or an independently measurable weak-field correction.
+
+This restriction is scientifically necessary. A naive physicalized flow variable would generically threaten the observed relativistic symmetry structure and would invite preferred-frame effects already ruled out by experiment. \TheoryName{} therefore preserves the ontological content of \Aflow{} while denying it the status of an additional established low-energy deformation.
+
+\section{Internal Structure of \TheoryName{}}
+
+Although \TheoryName{} is one theory, it contains three logically distinct components. Keeping them separate is essential.
+
+\subsection{Exact closure}
+
+The completed part of \TheoryName{} is the exact-closure claim expressed by \eqref{eq:SA}--\eqref{eq:propertime}. At this level, the theory is finished in the only sense that matters operationally: the effective gravitational theory is GR. The ontology remains available, but predictive responsibility is carried entirely by Einsteinian dynamics.
+
+\subsection{Restricted matched weak-field sector}
+
+Within \TheoryName{} one may still use the standard static weak-field bookkeeping
+\begin{equation}
+ds^2
+=
+-\left(1+2\frac{\Ph}{c^2}\right)c^2dt^2
++
+\left(1-2\gamma\frac{\Ph}{c^2}\right)\delta_{ij}\,dx^i dx^j,
+\label{eq:weakfield}
+\end{equation}
+with the GR-consistent matching condition
+\begin{equation}
+\gamma = 1.
+\label{eq:gamma}
+\end{equation}
+This sector is useful for static weak-field reasoning and for preserving continuity with earlier formulations. But in \TheoryName{} it is not a separate theory and not a derivation from substrate microphysics. It is simply the weak-field face of the exact relativistic closure.
+
+\subsection{Foundational recovery program}
+
+The unfinished part of \TheoryName{} is the deeper program of recovering the effective relativistic sector from explicit substrate variables. In present notation, this would require a concrete substrate action or dynamical law of the schematic form
+\begin{equation}
+S_{\mathcal A}
+=
+\int d^4X\,\mathcal L_{\mathcal A}(Q,\partial Q,\ldots),
+\label{eq:substrateaction}
+\end{equation}
+from which the correct infrared relativistic sector could be shown to emerge.
+
+That ambition remains legitimate, but it is not yet complete. The exact closure of \TheoryName{} should therefore not be confused with a completed derivation of Einsteinian dynamics from substrate first principles. The theory contains a finished operational statement and an unfinished foundational research program aimed at the same GR target.
+
+\section{\TheoryName{} as Benchmark and Reversion Theory}
+
+\begin{proposition}[Benchmark role]
+Any later extension of \TheoryProgram{} that proposes additional low-energy structure must reduce to \TheoryName{} in the appropriate exact-closure limit. \TheoryName{} therefore functions as the internal control theory of the active framework.
+\end{proposition}
+
+This benchmark role is central to the scientific discipline of the project. The framework should never be judged against broad ontology alone or against a weakly specified interpretive narrative. Any future extension must be judged against the exact GR-consistent theory already available inside the same architecture.
+
+\begin{proposition}[Automatic reversion]
+If any later extension fails an essential consistency or viability gate, the theory contracts back to \TheoryName{} rather than collapsing into incoherence.
+\end{proposition}
+
+This reversion rule means that the failure of a later extension would not invalidate the ontological framework. It would instead determine its correct scientific status more narrowly: \TheoryProgram{} would remain a disciplined ontological framework consistent with GR and not a distinct alternative to it.
+
+\section{What \TheoryName{} Does and Does Not Claim}
+
+The theory makes several definite claims.
+\begin{enumerate}
+    \item It claims that the four-dimensional substrate ontology can be maintained without changing the observed low-energy dynamics of gravitation.
+    \item It claims that S-time may be interpreted as experienced order of change while standard relativistic clock and light behavior are retained exactly.
+    \item It claims that the \Aflow{} language can function as disciplined ontology or dictionary without becoming an extra established observable field.
+    \item It claims that late-time accelerated expansion may be represented inside the same exact-GR sector by the ordinary cosmological constant or an equivalent GR-compatible dark-energy stress tensor.
+    \item It claims that exact GR closure is already enough to make \TheoryName{} a scientifically meaningful theory at exact operational scope.
+\end{enumerate}
+
+Here ``scientifically meaningful'' has a deliberately limited meaning. It means that the theory has a definite one-metric operational law, ordinary matter coupling, and exact relativistic recovery at the benchmark level. It does not mean that the \Aether{} / \Aflow{} ontology has already supplied the unique substrate action, observer-localizing map, or infrared theorem that would turn adoption into derivation.
+
+The theory also refuses several stronger claims.
+\begin{enumerate}
+    \item It does not claim a completed derivation of Einsteinian dynamics from explicit substrate microphysics.
+    \item It does not claim that dark energy by itself derives the operative metric or Einsteinian dynamics from the substrate ontology.
+    \item It does not claim a distinct low-energy signature beyond GR.
+    \item It does not claim that the foundational recovery program has already solved mode control, uniqueness, or emergent symmetry in full generality.
+    \item It does not claim that ontology by itself is evidence for new physics.
+\end{enumerate}
+
+This asymmetry is deliberate. A framework becomes more credible, not less, when it states precisely what has been secured and what remains aspirational.
+
+\section{Relation to the Broader Program}
+
+\TheoryName{} does not exhaust \TheoryProgram{}, but it stabilizes it. The broader program still permits deeper work on substrate recovery, flow geometry, and the precise interpretation of the \Aether{} / \Aflow{} ontology. Yet that work can proceed responsibly only because \TheoryName{} already fixes the exact benchmark, exact fallback, and exact operational floor of the framework.
+
+The practical consequence is straightforward. Exact closure comes first. Any later interpretive or formal extension has to be read relative to the exact closure already defined here and must not blur the distinction between established relativistic content and unfinished foundational work.
+
+At the current repository stage, this also fixes the form of any honest future continuation. The bounded primitive-reservoir derivation attempt has now been completed on its frozen bridge object, and the resulting verdict is \texttt{Not Derived On Current Line}. The right question is therefore no longer whether one can go deeper inside the existing same-output relay method. If no concrete new observer-localizing law is available, the correct stance is to stop with that scoped no-go and let the exact benchmark package stand as the positive result already in hand. If derivational work is resumed, it must begin on a genuinely new line that states the new observer-localizing law, new primitive variable, or new symmetry principle explicitly and explains how local observer fields, the operative metric, and Einsteinian recovery are to arise.
+
+By contrast, another same-output deeper-origin relay below the frozen bridge object does not qualify as the next benchmark-facing gain. Once the current line has proved itself observer-law silent, depth alone no longer changes status. Nor may any continuation change the claim boundary by introducing a second operative metric, enlarging the ordinary matter law, or using stronger first-principles promotion language before the remaining derivation gates are met.
+
+\section{Limitations}
+
+The present \TheoryName{} statement has limitations that should be made explicit.
+
+First, the ontology is sharper than the derivation. The theory states what the substrate and \Aflow{} mean, but it does not yet derive Einsteinian gravity from a unique underlying substrate model.
+
+Second, the exact closure is operational rather than microphysical. It secures predictive adequacy by adopting GR exactly, not by proving that GR is the inevitable infrared limit of the substrate.
+
+Third, the foundational recovery program remains open. A completed substrate dynamics, mode analysis, and infrared emergence proof would strengthen the theory conceptually, but are not yet in hand.
+
+These limitations do not undermine the theory's present role. They define it correctly.
+
+\section{Conclusion}
+
+\TheoryName{} should be read as the benchmark interpretive completion of general relativity within \TheoryProgram{}. Its core idea is stable: the \Aether{} is the deeper four-dimensional substrate; the \Aflow{} is its intrinsic ordered motion; the observed world is a local experiential slice of that deeper order; and S-time is the experienced order of change rather than a primitive place-like dimension. None of that requires a low-energy deviation from GR.
+
+The theory is therefore scientifically definite. Its effective dynamics are exactly Einsteinian. Its predictive content is exactly that of GR. Within that same benchmark sector, late-time accelerated expansion is handled conservatively by the ordinary cosmological constant or an equivalent GR-compatible dark-energy stress tensor rather than by a second low-energy gravitational law. Its role inside the total framework is exact closure, benchmark control, and automatic fallback. What remains unfinished is not the operational theory itself, but the deeper foundational ambition to derive that exact relativistic sector from explicit substrate variables.
+
+That is the correct current status of \TheoryName{}. It is not a placeholder waiting to be replaced. It is the completed GR-consistent benchmark and reversion theory of the framework: later extensions must answer to it, and failed extensions contract back to it rather than displacing it. The significance of the present note is to state that benchmark in its briefest complete form without confusing exact closure with the broader foundational program that remains open.
+
+\input{tex_shared/aether_flow_product_a_references.tex}
+
+\end{document}

@@ -1,18 +1,12 @@
 ---
-import DownloadList from "../../components/DownloadList.astro";
+import DocumentActions from "../../components/DocumentActions.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { approvedDownloads, downloads, sampleDownloads } from "../../lib/manifests";
+import { approvedDownloads, ontologyDocuments } from "../../lib/manifests";
 
-const documentDownloads = downloads.filter((item) => item.kind === "pdf" || item.kind === "tex");
 const approvedDocumentDownloads = approvedDownloads.filter(
   (item) => item.kind === "pdf" || item.kind === "tex",
 );
-const sampleDocumentDownloads = sampleDownloads.filter(
-  (item) => item.kind === "pdf" || item.kind === "tex",
-);
-const sampleDocumentLabel =
-  sampleDocumentDownloads.length === 1 ? "sample document fixture file" : "sample document fixture files";
 const approvedDocumentLabel =
   approvedDocumentDownloads.length === 1
     ? "approved source-backed document file"
@@ -20,24 +14,28 @@ const approvedDocumentLabel =
 ---
 
 <BaseLayout
-  title="Document Sample Library"
-  description="Manifest-backed sample PDF and TeX downloads for The AEther Flow website."
+  title="Ontology Documents"
+  description="Canonical ontology PDF and TeX downloads for The AEther Flow website."
 >
   <section class="content-band" aria-labelledby="documents-title">
     <div class="section-header">
-      <p class="eyebrow">Sample fixtures</p>
-      <h1 id="documents-title">Document Sample Library</h1>
+      <p class="eyebrow">Ontology documents</p>
+      <h1 id="documents-title">Ontology Documents</h1>
       <p class="lead">
-        This library demonstrates direct website access to PDF and TeX files
-        without treating those files as scientific source documents. The current
-        document rows are sample fixtures rendered from manifest data.
+        This library serves the current canonical ontology PDF and TeX package
+        directly from the website. Registered TeX files carry source authority;
+        PDFs are generated human-readable derivatives.
       </p>
     </div>
     <SourceNotice
-      claimStatus="source-index-only"
-      sourceRefs={["source_manifest:sample_pdf", "source_manifest:sample_tex"]}
-      updated="2026-06-25"
-      note="This page indexes downloadable sample assets. It does not assert new scientific content or source approval."
+      claimStatus="approved ontology asset index"
+      sourceRefs={[
+        "AEther-Flow Project. (2026). ontology/README.md",
+        "AEther-Flow Project. (2026). ontology/tex/README.md",
+        "AEther-Flow Project. (2026). registries/TEX_SOURCE_REGISTRY.csv",
+      ]}
+      updated="2026-06-26"
+      note="This page indexes committed website copies of the canonical ontology package. It does not create new scientific content or supersede upstream registered TeX authority."
     />
   </section>
 
@@ -47,8 +45,8 @@ const approvedDocumentLabel =
       <h2 id="document-path-title">Use public pages before downloads</h2>
       <p class="lead">
         Source-backed explanation is available through the public project pages.
-        Downloadable source documents remain planned until approved provenance
-        is present in the manifest.
+        The documents below are for direct reading and inspection, with hashes
+        recorded in the public manifests.
       </p>
     </div>
     <div class="link-grid">
@@ -62,7 +60,7 @@ const approvedDocumentLabel =
       </a>
       <a class="link-card" href="/project/source-authority/">
         <span>Source authority</span>
-        <small>How to interpret website pages, manifests, samples, and upstream records.</small>
+        <small>How to interpret website pages, manifests, derivatives, and upstream records.</small>
       </a>
     </div>
   </section>
@@ -72,19 +70,15 @@ const approvedDocumentLabel =
       <p class="eyebrow">Manifest audit</p>
       <h2 id="document-status-title">Document asset status</h2>
       <p class="lead">
-        The current manifest contains {sampleDocumentDownloads.length}{" "}
-        {sampleDocumentLabel} and {approvedDocumentDownloads.length}{" "}
-        {approvedDocumentLabel}.
+        The current manifest contains {approvedDocumentDownloads.length}{" "}
+        {approvedDocumentLabel} across {ontologyDocuments.length} ontology
+        document rows. Sample PDF and TeX fixtures are no longer part of the
+        public document manifest or UI.
       </p>
     </div>
   </section>
 
   <section class="content-band content-band-tight">
-    <DownloadList
-      items={documentDownloads}
-      eyebrow="Manifest-backed samples"
-      title="PDF and TeX sample files"
-      description="The list is filtered from the asset manifest to document-oriented public files. Current entries are scaffold fixtures for validation and direct-download behavior."
-    />
+    <DocumentActions documents={ontologyDocuments} />
   </section>
 </BaseLayout>

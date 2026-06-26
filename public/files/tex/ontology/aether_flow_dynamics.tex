@@ -1,0 +1,353 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+\usepackage{physics}
+
+\geometry{margin=1in}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
+\setlist[enumerate]{topsep=0.4em,itemsep=0.35em}
+\setlist[itemize]{topsep=0.3em,itemsep=0.25em}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\setstretch{1.06}
+
+\newcommand{\Aether}{\AE{}ther}
+\newcommand{\Aflow}{\AE{}ther-flow}
+\newcommand{\TheoryName}{\Aflow{} Interpretation of Relativity}
+\newcommand{\TheoryProgram}{\Aether{} / \Aflow{} framework}
+\newcommand{\Sub}{\mathcal{A}}
+\newcommand{\Order}{\mathcal{S}}
+\newcommand{\Ph}{\Phi}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+
+\title{\textbf{The \TheoryName{}}\\[0.4em]
+\large Dynamics}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper states the dynamical content of \TheoryName{}, the exact-closure theory of \TheoryProgram{}. The choice made here is explicit: this is an exact-closure dynamics manuscript, not a candidate-derivation manuscript. The \Aether{} / \Aflow{} ontology is retained as the conceptual foundation of the framework, but the effective gravitational dynamics are taken to be exactly those of general relativity with universal matter coupling. When late-time cosmology is modeled, that same benchmark sector may be completed by the ordinary cosmological constant or an equivalent GR-compatible dark-energy stress tensor without changing the one-metric claim boundary.
+
+The purpose of the paper is therefore not to claim that Einsteinian gravity has already been derived from substrate microphysics. Its purpose is narrower and more disciplined. First, it states the closed effective action and field equations of \TheoryName{}. Second, it records the matter-coupling and effective-metric rules that define the theory operationally. Third, it explains in what sense \TheoryName{} is already a theory and in what sense the deeper substrate derivation remains open. The result is a clean dynamical benchmark for the wider \Aether{} / \Aflow{} program and the exact reference point for any later extension of the framework.
+
+Within the flagship exact-closure sequence, the overview is the front door, the \emph{Exact-Closure Note} is the short anchor, and the present paper is the dynamics module of the five-paper modular full statement. Its role is to make the effective law explicit after the foundations layer has fixed the vocabulary. That order makes exact closure primary and keeps any later derivational continuation secondary.
+\end{abstract}
+
+\section{Introduction}
+
+The foundations manuscript fixes the ontological core of \TheoryProgram{}: the \Aether{} is the underlying four-dimensional substrate of reality, the \Aflow{} is its intrinsic ordered motion, observed three-dimensional space is the local experiential slice of that deeper substrate, and S-time is the experienced order of change arising from the relation between matter, light, and the \Aflow{}. The present paper adds the next required layer: it states the dynamical content of \TheoryName{}.
+
+\paragraph{Framework and claim boundary.}
+\TheoryProgram{} denotes the broader \Aether{} / \Aflow{} framework built on the claims that the \Aether{} is the underlying four-dimensional substrate of reality, the \Aflow{} is its intrinsic ordered motion, observed three-dimensional space is the local experiential slice of that deeper substrate, S-time is the experienced order of change arising from matter, light, and the \Aflow{}, and observed expansion is the three-dimensional appearance of deeper four-dimensional ordered motion. Within that framework, \TheoryName{} denotes the exact-closure theory in which the effective gravitational dynamics are adopted to be exactly Einsteinian with universal matter coupling. In the active sequence, \emph{adoption} means use of that established relativistic dynamics without claiming substrate derivation, while \emph{derivation} is reserved for a first-principles recovery from explicit substrate variables.
+
+The present manuscript therefore makes one clean choice. Either \TheoryName{} is presented as an exact-closure theory whose effective dynamics are stated directly, or it is presented as a candidate-derivation theory built from one explicit substrate-level model. The present manuscript chooses the first route. That choice is scientifically safer and conceptually cleaner at the current stage of the repository, because the exact benchmark has already been identified while no substrate derivation has yet been established at comparable rigor.
+
+Accordingly, this paper should not be read as a partial derivation paper disguised as a dynamics paper. It is instead the exact-closure dynamics statement of \TheoryName{}. The theory is closed because its effective action, field equations, matter coupling, null structure, proper-time structure, and weak-field limit are all fixed exactly. What remains open is not the effective dynamics of the theory, but the deeper question of whether those dynamics can later be recovered from explicit substrate variables.
+
+The sequence role is therefore explicit. After the overview, the short exact-closure anchor, and the foundations paper, the present manuscript supplies the dynamical core of the modular full statement. The later consistency, relativistic-recovery, and flow-geometry papers are continuations of this exact effective law, not departures from it.
+
+\section{Choice of Dynamical Stance}
+
+\begin{definition}[Exact-closure dynamics manuscript]
+An exact-closure dynamics manuscript is a paper that states the closed effective dynamics of \TheoryName{} directly, while distinguishing those adopted dynamics from any future substrate-level derivation program.
+\end{definition}
+
+\begin{remark}
+This differs from a candidate-derivation manuscript, which would have to specify explicit substrate variables, a substrate action, and a derivational argument showing that the effective relativistic sector follows from them in the infrared.
+\end{remark}
+
+The present manuscript adopts the exact-closure route for three reasons.
+\begin{enumerate}
+    \item The active reference theory of the framework is already \TheoryName{}, not a still-open deviation proposal.
+    \item The foundations layer now carries the ontological and claim-boundary load needed to support a clean dynamical statement.
+    \item A mixed manuscript would blur the line between adopted effective dynamics and unfinished substrate recovery, which is precisely what the current sequence is trying to avoid.
+\end{enumerate}
+
+The operative consequence is straightforward. In \TheoryName{}, the gravitational dynamics are taken to be Einsteinian exactly, and the \Aether{} / \Aflow{} ontology functions as deeper interpretive structure rather than as an extra low-energy propagating sector.
+
+\section{Definition of \TheoryName{} as a Dynamical Theory}
+
+\begin{definition}[\TheoryName{}]
+\TheoryName{} is the exact-closure, GR-consistent theory of \TheoryProgram{} in which the \Aether{} / \Aflow{} ontology is retained while the effective gravitational dynamics are exactly those of general relativity with universal matter coupling.
+\end{definition}
+
+\begin{proposition}
+\TheoryName{} is already a closed dynamical theory at the effective level, because its action principle, field equations, conservation law, null structure, proper-time rule, and weak-field reduction are all fixed without ambiguity.
+\end{proposition}
+
+This proposition should be read with precision. It does not claim that the theory is microphysically complete. It claims that the theory is dynamically complete as an exact effective realization. In other words, the theory is closed where prediction lives, even though the deeper substrate derivation remains open.
+
+\section{Exact Effective Action and Field Equations}
+
+The effective action of \TheoryName{} is
+\begin{equation}
+S_{\mathrm{eff}}
+=
+\frac{c^3}{16\pi G}\int d^4x\,\sqrt{-g}\,R
++
+S_{\mathrm{matter}}[g,\psi].
+\label{eq:SA}
+\end{equation}
+Variation with respect to the effective metric \(g_{\mu\nu}\) yields the Einstein equations
+\begin{equation}
+G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu},
+\label{eq:einstein}
+\end{equation}
+where the matter stress tensor is defined by
+\begin{equation}
+T_{\mu\nu}
+\equiv
+-\frac{2}{\sqrt{-g}}
+\frac{\delta S_{\mathrm{matter}}}{\delta g^{\mu\nu}}.
+\label{eq:stress}
+\end{equation}
+
+\begin{corollary}
+The low-energy predictive content of \TheoryName{} is exactly the predictive content of GR with the same matter sector.
+\end{corollary}
+
+This is the central dynamical statement of the theory. It is not a matching approximation and not a weak-field truncation. It is the exact effective law of gravitation in \TheoryName{}.
+
+\section{Cosmological-Constant and Dark-Energy Completion}
+
+The benchmark exact-closure action already states the one-metric Einsteinian sector. When late-time cosmology is modeled, the conservative completion is the ordinary cosmological constant,
+\begin{equation}
+S_{\mathrm{eff}}^{(\Lambda)}
+=
+\frac{c^3}{16\pi G}\int d^4x\,\sqrt{-g}\,\left(R-2\Lambda\right)
++
+S_{\mathrm{matter}}[g,\psi],
+\label{eq:SA_lambda}
+\end{equation}
+with field equations
+\begin{equation}
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=
+\frac{8\pi G}{c^4}T_{\mu\nu}.
+\label{eq:einstein_lambda}
+\end{equation}
+This is the standard exact-GR route used to model observed late-time acceleration \cite{Riess1998,Perlmutter1999,Planck2018Parameters}. It does not introduce a second gravitational sector. It is the ordinary generally covariant scalar-density completion of the same Einsteinian action.
+
+Equivalently, one may move the \(\Lambda g_{\mu\nu}\) term to the right-hand side and read it as vacuum stress-energy with equation of state \(p_{\Lambda}=-\rho_{\Lambda}c^2\). More generally, the same benchmark theory may contain a covariantly conserved GR-compatible dark-energy sector,
+\begin{equation}
+G_{\mu\nu}
+=
+\frac{8\pi G}{c^4}\left(T_{\mu\nu}^{\mathrm{ord}}+T_{\mu\nu}^{\mathrm{DE}}\right),
+\qquad
+\nabla_\mu T_{\mathrm{DE}}^{\mu\nu}=0.
+\label{eq:de_sector}
+\end{equation}
+If \(T_{\mu\nu}^{\mathrm{DE}}\) arises from a dynamical field, that field belongs to the matter side of the adopted GR theory and must preserve one operative metric and universal matter coupling.
+
+\begin{proposition}[Dark-energy placement]
+Within \TheoryName{}, dark energy may be incorporated either as the cosmological constant or as a GR-compatible covariantly conserved stress tensor minimally coupled to the same metric. In neither case does dark energy by itself provide a substrate derivation of the Einstein sector.
+\end{proposition}
+
+\section{Matter Coupling and Conservation}
+
+The matter-coupling rule of \TheoryName{} is universal minimal coupling to the effective metric \(g_{\mu\nu}\). Matter fields therefore enter the theory through the action \(S_{\mathrm{matter}}[g,\psi]\) and not through direct low-energy couplings to an extra observable \Aflow{} field.
+
+This choice has three immediate consequences.
+\begin{enumerate}
+    \item Test bodies couple to the same effective metric structure that governs gravitational dynamics.
+    \item The contracted Bianchi identity together with \eqref{eq:einstein} implies covariant stress-energy conservation,
+    \begin{equation}
+    \nabla_{\mu}T^{\mu\nu}=0.
+    \label{eq:conservation}
+    \end{equation}
+    \item The operational content of the equivalence principle is preserved in the same sense in which it is preserved in GR.
+\end{enumerate}
+
+In particular, \TheoryName{} does not introduce a second established matter metric, a direct preferred-frame matter coupling, or a low-energy matter interaction proportional to an independently measurable \Aflow{} correction. The ontology is retained, but the effective matter law is the ordinary GR law.
+
+\section{Effective Metric Role}
+
+The effective metric is the object that carries the operational relativistic structure of the theory. Light propagation, causal structure, clock behavior, redshift, and measured duration are all governed by \(g_{\mu\nu}\).
+
+For any nonzero tangent vector \(v^\mu\), the causal classification is fixed by
+\begin{equation}
+g_{\mu\nu}v^\mu v^\nu
+\begin{cases}
+<0, & \text{timelike},\\
+=0, & \text{null},\\
+>0, & \text{spacelike}.
+\end{cases}
+\label{eq:causalclassification}
+\end{equation}
+
+Null propagation satisfies
+\begin{equation}
+0=g_{\mu\nu}\,dx^{\mu}dx^{\nu},
+\label{eq:null}
+\end{equation}
+while proper time along timelike histories satisfies
+\begin{equation}
+d\tau^2=-\frac{1}{c^2}g_{\mu\nu}\,dx^{\mu}dx^{\nu}.
+\label{eq:propertime}
+\end{equation}
+
+\begin{proposition}[Single operational geometry]
+In \TheoryName{}, the same effective metric governs null propagation, proper time, and freely falling low-energy motion.
+\end{proposition}
+
+Because matter is minimally and universally coupled to \(g_{\mu\nu}\), freely falling test bodies satisfy the usual geodesic equation
+\begin{equation}
+u^\nu \nabla_\nu u^\mu = 0,
+\label{eq:geodesic}
+\end{equation}
+where \(u^\mu = dx^\mu/d\tau\) is the four-velocity. At every event \(p\), one may therefore choose local coordinates for which
+\begin{equation}
+g_{\mu\nu}(p)=\eta_{\mu\nu},
+\qquad
+\partial_\alpha g_{\mu\nu}(p)=0.
+\label{eq:localinertial}
+\end{equation}
+
+This is the precise sense in which the observed relativistic structure is exact in \TheoryName{}. The theory does not ask observers to use one geometry for clocks and another for gravity. Nor does it introduce a second universally coupled low-energy cone structure. The effective metric is unique, universal, and Einsteinian.
+
+\begin{remark}
+Within the broader ontology of \TheoryProgram{}, one may still interpret this effective metric as the observer-accessible manifestation of deeper substrate order. But that interpretation does not alter the exact effective equations used in \TheoryName{}.
+\end{remark}
+
+\section{Weak-Field and Local Relativistic Recovery}
+
+Because the effective dynamics are Einsteinian, the weak-field and local special-relativistic structures are inherited exactly. In an asymptotically inertial region one may write the linearized expansion
+\begin{equation}
+g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu},
+\qquad
+|h_{\mu\nu}|\ll 1.
+\label{eq:linearizedmetric}
+\end{equation}
+In the static, slowly moving regime with \(T_{00}\simeq \rho c^2\) dominant and the remaining stress-tensor components subleading, the Einstein equations reduce at leading order to the Poisson equation
+\begin{equation}
+\nabla^2 \Phi = 4\pi G \rho.
+\label{eq:poisson}
+\end{equation}
+The weak-field metric components are then
+\begin{equation}
+h_{00}=-2\frac{\Phi}{c^2},
+\qquad
+h_{ij}=-2\gamma\frac{\Phi}{c^2}\delta_{ij},
+\label{eq:hweakfield}
+\end{equation}
+so that the standard static weak-field line element becomes
+\begin{equation}
+ds^2
+=
+-\left(1+2\frac{\Ph}{c^2}\right)c^2dt^2
++
+\left(1-2\gamma\frac{\Ph}{c^2}\right)\delta_{ij}\,dx^i dx^j,
+\label{eq:weakfield}
+\end{equation}
+with the GR-consistent value
+\begin{equation}
+\gamma = 1.
+\label{eq:gamma}
+\end{equation}
+
+For slowly moving test bodies, \eqref{eq:geodesic} reduces correspondingly to
+\begin{equation}
+\frac{d^2x^i}{dt^2}
+=
+-\partial_i \Phi
++ \mathcal{O}\!\left(\frac{v^2}{c^2},\frac{\Phi^2}{c^4}\right),
+\label{eq:newtonianlimit}
+\end{equation}
+which is the ordinary Newtonian limit. This weak-field form is therefore not a separate subtheory inside \TheoryName{}. It is the explicit static weak-field face of the exact Einsteinian closure already fixed by \eqref{eq:SA}--\eqref{eq:einstein}. Likewise, the local inertial condition \eqref{eq:localinertial} reproduces the standard special-relativistic kinematics of GR because the local effective metric structure is the same.
+
+The conceptual significance is worth stating plainly. The \Aether{} / \Aflow{} ontology does not compete with the operational content of SR or GR in this theory. It is offered as a deeper account of what that exact relativistic structure may ultimately describe, not as a presently established correction to it. The present manuscript fixes the benchmark weak-field and local-causal structure needed for the exact dynamical statement. A fuller treatment of redshift, light-deflection observables, and the explicit SR relation belongs to the relativistic-recovery manuscript in the active sequence.
+
+\section{The Role of the \Aflow{} in the Dynamics of \TheoryName{}}
+
+In \TheoryName{}, the \Aflow{} does not appear as an additional low-energy propagating degree of freedom in the effective action \eqref{eq:SA}. Its role is ontological, structural, and interpretive.
+
+This means:
+\begin{itemize}
+    \item the \Aflow{} names the intrinsic ordered motion of the deeper substrate posited by the framework;
+    \item it supports the interpretation of S-time as experienced order of change;
+    \item it may motivate foliation or congruence language as a dictionary between ontology and observed relativistic structure;
+    \item it does not generate an extra established preferred-frame signal, independent weak-field correction, or separate radiative sector in the exact-closure theory.
+\end{itemize}
+
+This restriction is not incidental. If the \Aflow{} were naively promoted to an extra observable low-energy field in the present theory, the theory would cease to be exact closure and would move into a deviation sector. The whole point of \TheoryName{} is to retain the ontology without pretending that such a deformation has already been justified.
+
+\section{Exact Closure, Benchmark Role, and Reversion Rule}
+
+\begin{proposition}[Benchmark role]
+Any admissible future extension of \TheoryProgram{} must reduce to \TheoryName{} in the appropriate limit. \TheoryName{} is therefore the internal control theory of \TheoryProgram{}.
+\end{proposition}
+
+\begin{proposition}[Automatic reversion]
+If a controlled deviation theory fails an essential consistency or viability gate, the correct scientific status of the framework contracts back to \TheoryName{}.
+\end{proposition}
+
+These statements are not merely architectural. They carry direct dynamical meaning. Any future deviation sector must be compared against the exact dynamical benchmark already stated here, not against ontology alone. The theory \TheoryName{} is therefore the benchmark action, benchmark field equation set, benchmark matter law, benchmark weak-field limit, and benchmark operational causal structure of the total framework.
+
+\section{What Is Adopted and What Remains To Be Derived}
+
+The present manuscript adopts the following statements exactly.
+\begin{enumerate}
+    \item The effective metric \(g_{\mu\nu}\) is the unique metric governing low-energy gravitational dynamics, matter coupling, null propagation, and proper time.
+    \item The effective action is the Einstein--Hilbert action plus ordinary matter, with the ordinary cosmological-constant completion or equivalent GR-compatible dark-energy sector available when late-time cosmology is under discussion, as in \eqref{eq:SA} and \eqref{eq:SA_lambda}.
+    \item The field equations are the Einstein equations \eqref{eq:einstein}, or equivalently \eqref{eq:einstein_lambda} when the conservative cosmological completion is written explicitly.
+    \item The weak-field and local relativistic limits are the ordinary GR limits.
+\end{enumerate}
+
+The present manuscript does \emph{not} claim the following.
+\begin{enumerate}
+    \item It does not claim a completed substrate derivation of \(g_{\mu\nu}\) from explicit variables on \(\Sub\).
+    \item It does not claim that a candidate substrate action has already been shown to reproduce \eqref{eq:SA}.
+    \item It does not claim a surviving non-GR low-energy observable sector inside \TheoryName{}.
+\end{enumerate}
+
+What remains open is the derivational program. In schematic form, a future substrate manuscript would have to specify explicit variables \(Q\) on the deeper substrate and an action of the form
+\begin{equation}
+S_{\Sub}
+=
+\int d^4X\,\mathcal{L}_{\Sub}(Q,\partial Q,\ldots),
+\label{eq:substrateaction}
+\end{equation}
+together with a definite map from those variables to the effective relativistic sector. One possible class of candidate ideas was already sketched in the source manuscript through a positive-definite substrate metric \(G_{AB}\), an order field \(S(X)\), and an induced effective Lorentzian metric. But none of that is being used here as a completed derivation. In the present paper, it remains a future target rather than part of the adopted dynamics.
+
+\section{Limitations}
+
+The current exact-closure dynamics statement has limits that should be made explicit.
+
+First, it is exact at the effective level, not at the microphysical level. The theory closes the observed dynamics of gravitation, but it does not yet close the substrate derivation problem.
+
+Second, it secures the relation to GR by adoption rather than by proof of emergence. That is legitimate at the current stage, but it is not the end of the deeper theory program.
+
+Third, the manuscript does not attempt here to derive or analyze a specific substrate action, count substrate degrees of freedom, or prove infrared emergence. Those tasks belong to a later derivational and consistency sequence.
+
+These limitations do not weaken the current paper's main result. They define its scope correctly.
+
+\section{Conclusion}
+
+This paper makes one clean choice: \TheoryName{} is formulated here as the exact-closure dynamics theory of \TheoryProgram{}. The dynamical content of that theory is exact and explicit. Its effective action is Einstein--Hilbert plus ordinary matter, with the ordinary cosmological-constant completion or equivalent GR-compatible dark-energy sector available inside the same one-metric law. Its field equations are the Einstein equations. Its matter law is universal minimal coupling to a single effective metric. Its null, timelike, and freely falling structures are exactly relativistic. Its weak-field, Newtonian, and local inertial limits are exactly those of GR.
+
+What the paper does \emph{not} do is equally important. It does not present a completed substrate derivation of those dynamics. It does not smuggle an unfinished candidate model into the exact theory as if it were already established. It does not confuse ontology with derivation. The result is therefore a disciplined dynamical benchmark: \TheoryName{} is a closed effective theory, a reference theory, and the exact fallback statement for the wider \Aether{} / \Aflow{} program.
+
+\input{tex_shared/aether_flow_product_a_references.tex}
+
+\end{document}

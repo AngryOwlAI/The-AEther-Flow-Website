@@ -31,21 +31,21 @@ const statusLayers = [
   },
 ];
 
-const sourceLinks = [
+const journeyLinks = [
   {
-    title: "Upstream source repository",
-    href: "https://github.com/AngryOwlAI/The-AEther-Flow",
-    body: "Canonical source files, registries, and project-control records remain upstream.",
+    title: "Ontology Documents",
+    href: "/resources/documents/",
+    body: "Read PDF derivatives and download registered TeX source files for the canonical ontology package.",
   },
   {
-    title: "Physics program explainer",
-    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-physics-program-explainer.md",
-    body: "Reviewed generated noncanonical orientation for the physics track.",
+    title: "AEther / AEther-flow ontology",
+    href: "/project/physics/ontology/",
+    body: "Vocabulary and source-authority boundary for the ontology track.",
   },
   {
-    title: "Exact-GR boundary explainer",
-    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md",
-    body: "Reviewed generated noncanonical boundary map for benchmark compatibility versus derivation.",
+    title: "Exact-GR benchmark boundary",
+    href: "/project/physics/exact-gr-benchmark/",
+    body: "Benchmark compatibility and first-principles derivation remain separate.",
   },
 ];
 ---
@@ -119,14 +119,13 @@ const sourceLinks = [
       <p class="eyebrow">Where to go next</p>
       <h2 id="physics-next-title">Use active pages now; treat later routes as planned.</h2>
       <p>
-        The Phase 4 physics deep-dive routes are available as a coherent first
-        version after source inspection and QA: ontology, exact-GR benchmark,
-        GR derivation roadmap, and claim gates.
+        The physics reading path stays inside the website first. Source links
+        remain available in boundary and provenance sections for inspection.
       </p>
     </div>
 
     <div class="source-link-grid">
-      {sourceLinks.map((link) => (
+      {journeyLinks.map((link) => (
         <a class="source-link-card" href={link.href}>
           <span>{link.title}</span>
           <small>{link.body}</small>

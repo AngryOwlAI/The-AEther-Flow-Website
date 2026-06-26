@@ -414,6 +414,20 @@ summary:focus-visible {
   font-weight: 800;
 }
 
+.source-ref-list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.1rem 0 0;
+  padding-left: 1rem;
+}
+
+.source-ref-list a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-gold), transparent 35%);
+  text-underline-offset: 0.16em;
+}
+
 .link-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -559,6 +573,22 @@ summary:focus-visible {
   display: grid;
   gap: 1rem;
   margin-top: 1.5rem;
+}
+
+.document-action-list {
+  gap: 1.25rem;
+}
+
+.document-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.document-actions a {
+  min-width: 8.75rem;
+  text-align: center;
 }
 
 .download-item {

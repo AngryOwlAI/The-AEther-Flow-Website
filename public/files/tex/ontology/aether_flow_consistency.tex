@@ -1,0 +1,316 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+\usepackage{physics}
+
+\geometry{margin=1in}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
+\setlist[enumerate]{topsep=0.4em,itemsep=0.35em}
+\setlist[itemize]{topsep=0.3em,itemsep=0.25em}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\setstretch{1.06}
+
+\newcommand{\Aether}{\AE{}ther}
+\newcommand{\Aflow}{\AE{}ther-flow}
+\newcommand{\TheoryName}{\Aflow{} Interpretation of Relativity}
+\newcommand{\TheoryProgram}{\Aether{} / \Aflow{} framework}
+\newcommand{\TT}{\mathrm{TT}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+
+\title{\textbf{The \TheoryName{}}\\[0.4em]
+\large Consistency}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper states the consistency status of the adopted GR sector of \TheoryName{}, the exact-closure theory of \TheoryProgram{}. The scope is deliberately narrow. The manuscript does not claim a substrate-level proof of emergence from explicit \Aether{} variables. It analyzes only the adopted effective theory already fixed in the \TheoryName{} dynamics paper: Einstein--Hilbert gravity with universal matter coupling.
+
+With that scope made explicit, the consistency result is also explicit. Around admissible backgrounds, the linearized gravitational sector of \TheoryName{} has the ordinary diffeomorphism gauge redundancy, the ordinary constraint structure, and the ordinary two tensor propagating degrees of freedom of GR. At the effective level there is no extra gravitational scalar sector, no extra vector sector, no independent preferred-frame propagating field, no ghost kinetic term, and no tachyonic mass term introduced by the exact-closure theory itself. Subject to the standard health assumptions on the adopted matter sector, \TheoryName{} is therefore mathematically healthy at the effective level and can serve as the reference and fallback theory of the wider \Aether{} / \Aflow{} program.
+
+Within the flagship exact-closure package, the overview is the front door, the \emph{Exact-Closure Note} is the short anchor, and the present paper is the consistency module of the five-paper modular full statement. Its role is to show that the adopted exact law is internally controlled before the sequence turns to observer-facing relativistic recovery and flow geometry. That ordering keeps exact closure first and derivational continuation secondary.
+\end{abstract}
+
+\section{Introduction}
+
+The active sequence fixes the status of \TheoryName{} in a disciplined way. \TheoryName{} is the exact-closure, GR-consistent theory of the \TheoryProgram{}. It is the active reference theory of the repository and the internal exact standard for any later extension of the framework. The dynamics manuscript already made the decisive theoretical choice: the effective theory of \TheoryName{} is adopted exactly as GR with universal matter coupling.
+
+\paragraph{Framework and claim boundary.}
+\TheoryProgram{} denotes the broader \Aether{} / \Aflow{} framework built on the claims that the \Aether{} is the underlying four-dimensional substrate of reality, the \Aflow{} is its intrinsic ordered motion, observed three-dimensional space is the local experiential slice of that deeper substrate, S-time is the experienced order of change arising from matter, light, and the \Aflow{}, and observed expansion is the three-dimensional appearance of deeper four-dimensional ordered motion. Within that framework, \TheoryName{} denotes the exact-closure theory in which the effective gravitational dynamics are adopted to be exactly Einsteinian with universal matter coupling. In the active sequence, \emph{adoption} means use of that established relativistic dynamics without claiming substrate derivation, while \emph{derivation} is reserved for a first-principles recovery from explicit substrate variables.
+
+The present paper performs the next task in that sequence. It asks whether the adopted GR sector of the exact-closure formulation is internally controlled. The point is not to rediscover a new non-GR mode structure hidden inside the theory. The point is to make explicit that, once the theory statement is fixed as exact Einsteinian closure, the effective consistency problem is also fixed.
+
+The sequence role is therefore explicit. After the overview, the short exact-closure anchor, and the foundations and dynamics modules, the present manuscript supplies the consistency step of the modular full statement. The later relativistic-recovery and flow-geometry papers then read that same exact law at observer and interpretive level rather than reopening the low-energy theory.
+
+\begin{definition}[Exact-closure consistency manuscript]
+An exact-closure consistency manuscript analyzes the internal health of the adopted GR sector of the effective \TheoryName{} theory statement, while distinguishing that analysis from the still-open problem of substrate derivation.
+\end{definition}
+
+\begin{remark}
+This distinction is essential. The present paper addresses the effective gravitational theory actually adopted in \TheoryName{}. It does not claim a completed degree-of-freedom analysis of hypothetical substrate variables and does not pretend that the \Aether{} / \Aflow{} ontology has already been turned into a microphysical completion.
+\end{remark}
+
+\section{Consistency Target and Background Choice}
+
+The exact-closure action adopted in \TheoryName{} is
+\begin{equation}
+S_{\mathrm{eff}}
+=
+\frac{c^3}{16\pi G}\int d^4x\,\sqrt{-g}\,R
++
+S_{\mathrm{matter}}[g,\psi].
+\label{eq:SA}
+\end{equation}
+Its field equations are
+\begin{equation}
+G_{\mu\nu}
+=
+\frac{8\pi G}{c^4}T_{\mu\nu}.
+\label{eq:einstein}
+\end{equation}
+
+\begin{proposition}[Effective consistency target]
+Because \TheoryName{} adopts the Einstein--Hilbert action with universal matter coupling exactly, the effective consistency status of \TheoryName{} is the consistency status of GR with the same matter sector.
+\end{proposition}
+
+This proposition is the organizing principle of the manuscript. It means that the present paper is a consistency analysis of the adopted GR sector of the benchmark package. The relevant internal questions are therefore the standard ones: what background is linearized about, what gauge redundancy is present, what variables are physical, how many degrees of freedom propagate, and whether the quadratic theory contains ghosts, tachyons, gradient instabilities, or extra universal low-energy cones.
+
+\begin{definition}[Admissible background]
+An admissible background for the present analysis is a smooth pair \((\bar g_{\mu\nu},\bar\psi)\) solving the adopted \TheoryName{} field equations and matter equations on the region of interest. When causal evolution is discussed, the background is assumed to be globally hyperbolic on that region.
+\end{definition}
+
+Two background choices play distinct roles.
+\begin{enumerate}
+    \item For clean mode counting, the canonical benchmark background is vacuum Minkowski spacetime, \(\bar g_{\mu\nu}=\eta_{\mu\nu}\), with vanishing background matter.
+    \item For covariant perturbative control, one may also consider a general admissible Einstein background and ask whether the same gauge structure and constraint counting persist locally.
+\end{enumerate}
+
+The first choice is the sharpest setting for identifying propagating gravitational modes. The second choice is the correct statement that the result is not tied only to flat space.
+
+\section{Linearization About an Admissible Background}
+
+Write the metric and matter perturbations as
+\begin{equation}
+g_{\mu\nu}=\bar g_{\mu\nu}+h_{\mu\nu},
+\qquad
+\psi=\bar\psi+\delta\psi.
+\label{eq:split}
+\end{equation}
+Linearizing \eqref{eq:einstein} gives
+\begin{equation}
+\delta G_{\mu\nu}[h]
+=
+\frac{8\pi G}{c^4}\,\delta T_{\mu\nu}[h,\delta\psi].
+\label{eq:linearizedeinstein}
+\end{equation}
+
+At first order, the diffeomorphism gauge redundancy acts as
+\begin{equation}
+h_{\mu\nu}
+\mapsto
+h_{\mu\nu}+2\bar\nabla_{(\mu}\xi_{\nu)},
+\label{eq:gaugetransform}
+\end{equation}
+where \(\bar\nabla\) is the covariant derivative of the background metric \(\bar g_{\mu\nu}\).
+
+Define the trace and trace-reversed perturbation by
+\begin{equation}
+h\equiv \bar g^{\mu\nu}h_{\mu\nu},
+\qquad
+\widetilde h_{\mu\nu}
+\equiv
+h_{\mu\nu}-\frac{1}{2}\bar g_{\mu\nu}h.
+\label{eq:tracereverse}
+\end{equation}
+In de Donder gauge,
+\begin{equation}
+\bar\nabla^\mu \widetilde h_{\mu\nu}=0,
+\label{eq:dedonder}
+\end{equation}
+the vacuum linearized equations on a Ricci-flat background take the standard form
+\begin{equation}
+\bar\nabla^\rho\bar\nabla_\rho \widetilde h_{\mu\nu}
++
+2\bar R_{\mu\rho\nu\sigma}\widetilde h^{\rho\sigma}
+=
+0.
+\label{eq:curvedwave}
+\end{equation}
+On the Minkowski benchmark background, \eqref{eq:curvedwave} reduces to
+\begin{equation}
+\Box \widetilde h_{\mu\nu}=0.
+\label{eq:minkwave}
+\end{equation}
+
+This linearization already shows the key structural point. The exact-closure theory carries the ordinary massless spin-2 gauge redundancy of GR. The effective field equations are second order, and no extra \Aflow{} perturbation appears as an independent low-energy field in the adopted action \eqref{eq:SA}.
+
+\section{Gauge Structure and Physical Variables}
+
+On the Minkowski benchmark background, the metric perturbation may be decomposed under spatial rotations as
+\begin{equation}
+h_{00}=-2\phi,
+\qquad
+h_{0i}=S_i+\partial_i B,
+\label{eq:decomp1}
+\end{equation}
+\begin{equation}
+h_{ij}
+=
+h_{ij}^{\TT}
++
+\partial_{(i}F_{j)}
++
+\left(\partial_i\partial_j-\frac{1}{3}\delta_{ij}\nabla^2\right)E
++
+\frac{1}{3}\delta_{ij}H,
+\label{eq:decomp2}
+\end{equation}
+with
+\begin{equation}
+\partial^i S_i=0,
+\qquad
+\partial^i F_i=0,
+\qquad
+\partial^i h_{ij}^{\TT}=0,
+\qquad
+\delta^{ij}h_{ij}^{\TT}=0.
+\label{eq:ttconditions}
+\end{equation}
+
+This decomposition separates the perturbation into scalar pieces \((\phi,B,E,H)\), transverse vector pieces \((S_i,F_i)\), and the transverse-traceless tensor \(h_{ij}^{\TT}\). The diffeomorphism symmetry \eqref{eq:gaugetransform} and the linearized constraint equations remove the pure-gauge and nondynamical parts. In vacuum, one may impose TT gauge so that
+\begin{equation}
+h_{00}=0,
+\qquad
+h_{0i}=0,
+\qquad
+\partial^i h_{ij}=0,
+\qquad
+h=0,
+\label{eq:ttgauge}
+\end{equation}
+leaving only the tensor amplitude \(h_{ij}^{\TT}\).
+
+\begin{proposition}[Physical gravitational variable]
+In the pure gravitational sector of exact-closure \TheoryName{} linearized about Minkowski spacetime, the radiative physical variable is the transverse-traceless tensor \(h_{ij}^{\TT}\). No extra propagating scalar or vector gravitational mode appears.
+\end{proposition}
+
+\begin{remark}
+Ordinary matter fields may of course possess their own physical perturbations. Those are matter-sector degrees of freedom of the adopted theory, not new gravitational polarizations generated by \TheoryName{} itself.
+\end{remark}
+
+\section{Degree-of-Freedom Counting}
+
+The cleanest count is the standard Hamiltonian one \cite{ADM1962}. In \(3+1\) form, the spatial metric \(g_{ij}\) and its conjugate momenta \(\pi^{ij}\) provide \(12\) phase-space variables per spatial point. The lapse and shift act as Lagrange multipliers rather than new propagating variables. The Hamiltonian and momentum constraints are four first-class constraints, so they remove
+\begin{equation}
+2\times 4 = 8
+\label{eq:firstclassremoval}
+\end{equation}
+phase-space variables. The remaining phase-space dimension is therefore
+\begin{equation}
+12-8=4,
+\label{eq:phasespacecount}
+\end{equation}
+which corresponds to
+\begin{equation}
+\frac{4}{2}=2
+\label{eq:configcount}
+\end{equation}
+propagating configuration-space degrees of freedom.
+
+\begin{corollary}[Tensor-only graviton sector]
+The exact-closure gravitational sector of \TheoryName{} contains exactly two propagating tensor polarizations, just as in GR.
+\end{corollary}
+
+This is the decisive mode-counting result. There is no hidden third scalar graviton, no propagating vector graviton, and no extra low-energy field supplied by the \Aflow{} in the adopted exact-closure theory.
+
+\section{Stability and Pathology Analysis}
+
+\subsection{Ghost Absence}
+
+After gauge fixing and elimination of nondynamical pieces, the quadratic action on the Minkowski benchmark background reduces schematically to
+\begin{equation}
+S_{\TT}^{(2)}
+=
+\frac{c^3}{64\pi G}
+\int d^4x
+\left[
+\frac{1}{c^2}\dot h_{ij}^{\TT}\dot h_{ij}^{\TT}
+-
+\partial_k h_{ij}^{\TT}\partial_k h_{ij}^{\TT}
+\right],
+\label{eq:ttaction}
+\end{equation}
+up to boundary terms and conventional normalization choices. The kinetic term has the standard positive sign. Thus the exact-closure theory does not introduce a ghostlike graviton at quadratic order.
+
+\subsection{Absence of Tachyonic Mass Terms}
+
+The linearized vacuum equation \eqref{eq:minkwave} is the equation of a massless spin-2 field. No term of the form \(m_g^2 h_{\mu\nu}h^{\mu\nu}\) is present in the adopted action. Therefore the exact-closure theory does not generate a tachyonic graviton mass instability.
+
+\subsection{Hyperbolicity and Causal Structure}
+
+The principal part of the linearized field equation is the wave operator built from the background metric. On Minkowski spacetime it is simply \(\Box\); on a general admissible background it is the normally hyperbolic operator appearing in \eqref{eq:curvedwave}. The characteristics are therefore the null surfaces of the effective metric, not those of a second independent low-energy cone.
+
+This matters for the interpretation of \Aflow{} language. In \TheoryName{}, the \Aflow{} remains ontological and interpretive. It is not promoted to an extra universal propagating field whose characteristics compete with those of \(g_{\mu\nu}\). The exact-closure theory therefore carries the same causal structure as GR at the effective level.
+
+\subsection{Absence of Extra Preferred-Frame or Vector/Scalar Gravitational Sectors}
+
+Because the adopted exact-closure action is exactly Einstein--Hilbert plus ordinary matter, the theory contains no additional low-energy vector field, no preferred-frame kinetic term, and no independent scalar graviton sector. Any such sector would require a modified action and would belong to a deviation theory rather than to \TheoryName{}.
+
+\begin{proposition}[Effective health of the exact-closure theory]
+On admissible backgrounds and assuming a standard healthy adopted matter sector, \TheoryName{} is mathematically healthy at the effective level. Its linearized gravitational sector has the ordinary diffeomorphism gauge symmetry, exactly two propagating tensor degrees of freedom, no extra gravitational scalar or vector mode, no ghost kinetic term, no tachyonic mass term, and the ordinary metric causal structure.
+\end{proposition}
+
+\section{Consistency Status of \TheoryName{}}
+
+The manuscript can now state its main result directly. The chosen \TheoryName{} formulation is internally controlled at the effective level. No hidden unresolved mode issue is being buried in prose. The theory inherits the standard consistency of GR because the theory \emph{is} GR at the effective dynamical level, supplemented only by the deeper \Aether{} / \Aflow{} ontology as interpretive structure.
+
+The status statement should therefore be read in the following precise way.
+\begin{enumerate}
+    \item The adopted exact-closure theory is a mathematically healthy effective gravitational theory.
+    \item Its propagating gravitational content is the ordinary massless spin-2 content of GR.
+    \item It is free of theory-specific ghost, tachyonic, gradient, extra-vector, and extra-scalar pathologies at that level.
+    \item It remains the reference and fallback theory of the wider \Aether{} / \Aflow{} program.
+\end{enumerate}
+
+\section{What This Manuscript Does Not Establish}
+
+The present result has a strict boundary.
+\begin{enumerate}
+    \item It does not provide a substrate-level degree-of-freedom count for explicit \Aether{} variables.
+    \item It does not prove that Einsteinian exact closure has already emerged from a completed microphysical action.
+    \item It does not analyze every possible exotic matter sector one could couple to GR; the consistency statement assumes the standard healthy matter sector already adopted in \TheoryName{}.
+    \item It does not replace the later relativistic-recovery manuscript, which should discuss observer-level weak-field phenomenology, redshift, time dilation, light propagation, and the explicit SR relation in fuller detail.
+\end{enumerate}
+
+These limitations do not weaken the present result. They define it correctly. The purpose of this manuscript is to establish whether the chosen exact-closure formulation is internally healthy. That purpose can be fulfilled without pretending that the deeper derivational program is already finished.
+
+\section{Conclusion}
+
+This paper completes the consistency analysis of the adopted GR sector in the exact-closure reading of \TheoryName{}. Once the theory is stated exactly as Einstein--Hilbert gravity with universal matter coupling, its effective consistency structure is no longer ambiguous. Linearization about admissible backgrounds yields the ordinary diffeomorphism gauge redundancy. The physical radiative sector reduces to the transverse-traceless tensor modes. The degree count is two. The quadratic theory carries no theory-specific ghost, no tachyonic graviton mass, no extra gravitational scalar or vector mode, and no second universal low-energy causal cone.
+
+That conclusion is not a substrate derivation. It is the correct effective consistency statement of the theory that the flagship sequence already declares to be the active exact reference. \TheoryName{} is therefore mathematically healthy as an exact-closure effective theory and can legitimately function as the reference and fallback theory of the \TheoryProgram{} while the deeper \Aether{} derivation remains open.
+
+\input{tex_shared/aether_flow_product_a_references.tex}
+
+\end{document}

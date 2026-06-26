@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether-flow.example/files/manifests/page_provenance.schema.json",
+  "title": "The AEther Flow Website page provenance manifest",
+  "type": "object",
+  "required": ["version", "generated_at", "source_repository", "pages"],
+  "properties": {
+    "version": { "const": 1 },
+    "generated_at": { "type": "string" },
+    "source_repository": { "type": "string" },
+    "source_commit": { "type": ["string", "null"] },
+    "source_commit_date": { "type": ["string", "null"] },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "route_path",
+          "local_page_source",
+          "local_page_sha256",
+          "adaptation_type",
+          "upstream_source_repository",
+          "upstream_sources",
+          "upstream_source_commit",
+          "upstream_source_commit_date",
+          "adapted_from_source_date",
+          "upstream_authority_status",
+          "website_publication_status",
+          "boundary_type"
+        ],
+        "properties": {
+          "route_path": { "type": "string" },
+          "local_page_source": { "type": "string" },
+          "local_page_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "title": { "type": "string" },
+          "adaptation_type": {
+            "enum": [
+              "one_to_one_adaptation",
+              "curated_synthesis",
+              "asset_index",
+              "curated_index"
+            ]
+          },
+          "upstream_source_repository": { "type": "string" },
+          "upstream_sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "github_main_url"],
+              "properties": {
+                "path": { "type": "string" },
+                "sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+                "github_main_url": { "type": "string" },
+                "github_pinned_url": { "type": ["string", "null"] },
+                "omission_reason": { "type": ["string", "null"] }
+              }
+            }
+          },
+          "upstream_source_commit": { "type": ["string", "null"] },
+          "upstream_source_commit_date": { "type": ["string", "null"] },
+          "adapted_from_source_date": { "type": "string" },
+          "github_main_urls": { "type": "array", "items": { "type": "string" } },
+          "github_pinned_urls": { "type": "array", "items": { "type": "string" } },
+          "upstream_authority_status": {
+            "enum": [
+              "canonical",
+              "generated_noncanonical",
+              "draft_control_artifact",
+              "archival_noncanonical"
+            ]
+          },
+          "website_publication_status": {
+            "enum": [
+              "published",
+              "approved_asset",
+              "provenance_only",
+              "planned",
+              "excluded_first_release"
+            ]
+          },
+          "boundary_type": {
+            "enum": [
+              "claim_boundary",
+              "authority_boundary",
+              "operational_boundary",
+              "trust_boundary"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

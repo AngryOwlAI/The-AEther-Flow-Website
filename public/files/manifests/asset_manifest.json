@@ -1,23 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-06-25T00:00:00-06:00",
+  "generated_at": "2026-06-26T15:52:42.004086+00:00",
   "items": [
-    {
-      "path": "/files/pdf/aether-flow-sample.pdf",
-      "kind": "pdf",
-      "bytes": 754,
-      "sha256": "764a52033973762faf70955f4ec3bb4e57cef96ccfe534f42c3ab0349083a1c9",
-      "title": "The AEther Flow Website Sample PDF",
-      "source_ref": "source_manifest:sample_pdf"
-    },
-    {
-      "path": "/files/tex/aether-flow-sample.tex",
-      "kind": "tex",
-      "bytes": 342,
-      "sha256": "e716a6534934922c51d2f329c42b53da27d2ef2544d438be5d901d7513a0c52d",
-      "title": "The AEther Flow Website Sample TeX",
-      "source_ref": "source_manifest:sample_tex"
-    },
     {
       "path": "/assets/diagrams/publication-layer-map.svg",
       "kind": "diagram",
@@ -25,6 +9,134 @@
       "sha256": "4a443bd5395e33b6fc30e178b675bbfcaa15d00199cd383d3477d820ec1e4efa",
       "title": "Publication Layer Map",
       "source_ref": "source_manifest:publication_layer_map"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_foundations.pdf",
+      "kind": "pdf",
+      "bytes": 226163,
+      "sha256": "2aee525d1493734c1ea63ff6caf5acb3693bc5c7d26d3a90623930ee72b25ba8",
+      "title": "AEther Flow Foundations PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_foundations"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_foundations.tex",
+      "kind": "tex",
+      "bytes": 22552,
+      "sha256": "c754ac32f4db4e3cd1a4cac5b15048b24c3d9965819c843857c6851e3242fb00",
+      "title": "AEther Flow Foundations TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_foundations"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_dynamics.pdf",
+      "kind": "pdf",
+      "bytes": 232064,
+      "sha256": "8e398858b81055855b3da2b23fadd145a7894db127fffbdd02bbabb00a809e54",
+      "title": "AEther Flow Dynamics PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_dynamics"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_dynamics.tex",
+      "kind": "tex",
+      "bytes": 22959,
+      "sha256": "66cbb5c56694abcaff2e3679bc8f5899076acc5b4a1b9bbb4a55871f7a0ad0f4",
+      "title": "AEther Flow Dynamics TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_dynamics"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_geometry.pdf",
+      "kind": "pdf",
+      "bytes": 245136,
+      "sha256": "fe782bc8d7b3144ef5842330052abd79cb3b1e402ed4f78b860b9db2530d8859",
+      "title": "AEther Flow Geometry PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_geometry"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_geometry.tex",
+      "kind": "tex",
+      "bytes": 27936,
+      "sha256": "839074e6fefa9ef4e7ea5635118d808593dfcd5f58c778285293c8194624ba10",
+      "title": "AEther Flow Geometry TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_geometry"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_relativistic_recovery.pdf",
+      "kind": "pdf",
+      "bytes": 238463,
+      "sha256": "d8beb9c07ced4df5f5146af4b32c6feb759ef8abe96419e713fa3afb860aef88",
+      "title": "AEther Flow Relativistic Recovery PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_relativistic_recovery"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_relativistic_recovery.tex",
+      "kind": "tex",
+      "bytes": 21842,
+      "sha256": "1cc7d93547083adcf3d5fd80ec927c7c0e0288f9e42a3959f814532d32e6038f",
+      "title": "AEther Flow Relativistic Recovery TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_relativistic_recovery"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_consistency.pdf",
+      "kind": "pdf",
+      "bytes": 232139,
+      "sha256": "2ae5b31098d75fe6eb889452d9e5bd198a759c474c816dfb2550713732c94209",
+      "title": "AEther Flow Consistency PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_consistency"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_consistency.tex",
+      "kind": "tex",
+      "bytes": 18427,
+      "sha256": "e751e7f4c4867d5e3d697e3a21e34367da1dbeacc32b6b3a32658d5df1a991e8",
+      "title": "AEther Flow Consistency TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_consistency"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_exact_closure_note.pdf",
+      "kind": "pdf",
+      "bytes": 251904,
+      "sha256": "1e35f468e7c8982ce808e7acca02637777705c6c877ed3d2dde6cf499b08b044",
+      "title": "AEther Flow Exact Closure Note PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_exact_closure_note"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_exact_closure_note.tex",
+      "kind": "tex",
+      "bytes": 22522,
+      "sha256": "0d954fa44d238b6f14d04f82873b4e117925e5920e87c408525dc451a2662100",
+      "title": "AEther Flow Exact Closure Note TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_exact_closure_note"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_exact_closure_sequence_overview.pdf",
+      "kind": "pdf",
+      "bytes": 247228,
+      "sha256": "6d5686b3a6ba35787b870fdd6645571ff662b27fd83e24886e16340083b9ffe5",
+      "title": "AEther Flow Exact Closure Sequence Overview PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_exact_closure_sequence_overview"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_exact_closure_sequence_overview.tex",
+      "kind": "tex",
+      "bytes": 23443,
+      "sha256": "5cdb51f8d16d53c3a64d7e0c6e2c140fde2020e33d90177e50b2f98b8ba71fbf",
+      "title": "AEther Flow Exact Closure Sequence Overview TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_exact_closure_sequence_overview"
+    },
+    {
+      "path": "/files/pdf/ontology/aether_flow_exact_closure_flagship_article.pdf",
+      "kind": "pdf",
+      "bytes": 253690,
+      "sha256": "cf892f9c139a133fab6afb46e277936a4b0716d19684b8d6cb30f782b5ac0c3a",
+      "title": "AEther Flow Exact Closure Flagship Article PDF",
+      "source_ref": "source_manifest:ontology_pdf_aether_flow_exact_closure_flagship_article"
+    },
+    {
+      "path": "/files/tex/ontology/aether_flow_exact_closure_flagship_article.tex",
+      "kind": "tex",
+      "bytes": 25787,
+      "sha256": "ec4ea642009a242e8d030d7d59a174d20a82f6f693a6144cd1cc95ad778543ef",
+      "title": "AEther Flow Exact Closure Flagship Article TeX",
+      "source_ref": "source_manifest:ontology_tex_aether_flow_exact_closure_flagship_article"
     }
   ]
 }

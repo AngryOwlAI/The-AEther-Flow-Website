@@ -11,9 +11,11 @@
     "preview": "astro preview",
     "validate:manifests": "python3 scripts/validate_manifest_paths.py",
     "validate:content": "python3 scripts/validate_content_sources.py",
+    "validate:links": "python3 scripts/validate_internal_first_links.py",
+    "validate:provenance": "python3 scripts/validate_page_provenance.py",
     "validate:cloudflare": "python3 scripts/validate_cloudflare_pages_config.py",
     "quality": "npm run validate && python3 scripts/quality_gate.py",
-    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:cloudflare && npm run build",
+    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:links && npm run validate:provenance && npm run validate:cloudflare && npm run build",
     "astro": "astro"
   },
   "repository": {

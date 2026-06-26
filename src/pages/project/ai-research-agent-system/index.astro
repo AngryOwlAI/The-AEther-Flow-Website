@@ -31,21 +31,21 @@ const workflowLayers = [
   },
 ];
 
-const sourceLinks = [
+const journeyLinks = [
   {
-    title: "Upstream source repository",
-    href: "https://github.com/AngryOwlAI/The-AEther-Flow",
-    body: "Canonical source files, registries, role contracts, and control records remain upstream.",
+    title: "Roles and skills",
+    href: "/project/ai-research-agent-system/roles-and-skills/",
+    body: "Role contracts, governed skills, task-local authority, and allowlist boundaries.",
   },
   {
-    title: "Research-agent workflow explainer",
-    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
-    body: "Reviewed generated noncanonical orientation for bounded research workflow.",
+    title: "Memory and registries",
+    href: "/project/ai-research-agent-system/memory-registries/",
+    body: "Source-first memory, registries, semantic extracts, and retrieval limits.",
   },
   {
-    title: "Roles and skills catalog",
-    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/roles-and-skills-explainer.md",
-    body: "Reviewed generated noncanonical guide to role and skill inspection order.",
+    title: "Operations",
+    href: "/project/operations/",
+    body: "Operational guides for lifecycle, role routing, validation, publication, improvement, and tools.",
   },
 ];
 ---
@@ -119,16 +119,15 @@ const sourceLinks = [
   <section class="track-page-band" aria-labelledby="ai-next-title">
     <div class="track-page-heading">
       <p class="eyebrow">Where to go next</p>
-      <h2 id="ai-next-title">Inspect source records before treating a workflow claim as current.</h2>
+      <h2 id="ai-next-title">Move through internal pages before source inspection.</h2>
       <p>
-        The Phase 5 AI research-agent deep-dive routes are available as a
-        coherent first version after source inspection and QA: workflow, roles
-        and skills, memory and registries, and validator/operator workflow.
+        The AI research-agent track now routes to internal pages first. GitHub
+        links remain available in provenance and source-authority contexts.
       </p>
     </div>
 
     <div class="source-link-grid">
-      {sourceLinks.map((link) => (
+      {journeyLinks.map((link) => (
         <a class="source-link-card" href={link.href}>
           <span>{link.title}</span>
           <small>{link.body}</small>

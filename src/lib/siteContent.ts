@@ -6,7 +6,7 @@ export type SiteNavigationLink = {
 
 export const siteNavigationLinks: SiteNavigationLink[] = [
   {
-    title: "Home",
+    title: "Overview",
     href: "/project/overview/",
   },
   {
@@ -20,6 +20,11 @@ export const siteNavigationLinks: SiteNavigationLink[] = [
     matchPrefixes: ["/project/ai-research-agent-system/"],
   },
   {
+    title: "Operations",
+    href: "/project/operations/",
+    matchPrefixes: ["/project/operations/"],
+  },
+  {
     title: "Source authority",
     href: "/project/source-authority/",
   },
@@ -27,10 +32,6 @@ export const siteNavigationLinks: SiteNavigationLink[] = [
     title: "Resources",
     href: "/resources/",
     matchPrefixes: ["/resources/"],
-  },
-  {
-    title: "Research map",
-    href: "/research/map/",
   },
 ];
 
@@ -105,9 +106,14 @@ export const resourceGroups = [
     body: "Trust boundary for website pages, generated derivatives, manifests, and upstream records.",
   },
   {
-    title: "Document sample library",
+    title: "Ontology Documents",
     href: "/resources/documents/",
-    body: "Current PDF and TeX fixture downloads rendered from the public asset manifest.",
+    body: "Canonical ontology PDF derivatives and registered TeX source files served from the website.",
+  },
+  {
+    title: "Operations",
+    href: "/project/operations/",
+    body: "Operational guides for routing, roles, validation, publication, improvement, and tool requirements.",
   },
   {
     title: "Diagram sample gallery",
@@ -176,6 +182,19 @@ export const projectSourceNoticeDefaults = {
       "AEther-Flow Project. (2026). github-facing/research-agent-workflow-explainer.md",
       "AEther-Flow Project. (2026). github-facing/roles-and-skills-explainer.md",
       "AEther-Flow Project. (2026). github-facing/memory-system-explainer.md",
+    ],
+  },
+  operationsTrack: {
+    claimStatus: "operational synthesis",
+    updated: "2026-06-26",
+    note: "This page family explains project operations. It cannot change routing behavior, validators, role authority, publication requirements, project-system signals, or physics status.",
+    sourceRefs: [
+      "AEther-Flow Project. (2026). github-facing/director-agentjob-lifecycle-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/role-routing-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/validator-operator-workflow-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/documentation-curator-publication-process-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/project-system-improvement-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/technical-requirements-explainer.md",
     ],
   },
   sourceAuthority: {
@@ -343,13 +362,6 @@ export const projectPhysicsDeepDiveRoutes = [
 
 export const projectAiDeepDiveRoutes = [
   {
-    title: "Research-agent workflow",
-    href: "/project/ai-research-agent-system/workflow/",
-    phase: "Phase 5A",
-    status: "implemented",
-    description: "Workflow explainer for bounded tasks, Director decisions, AgentJobs, completions, and handoffs.",
-  },
-  {
     title: "Roles and skills",
     href: "/project/ai-research-agent-system/roles-and-skills/",
     phase: "Phase 5B",
@@ -364,11 +376,63 @@ export const projectAiDeepDiveRoutes = [
     description: "Source-first memory, wiki, registry, and retrieval-surface explainer.",
   },
   {
-    title: "Validator and operator workflow",
-    href: "/project/ai-research-agent-system/validator-operator-workflow/",
+    title: "Parent-child synthesis",
+    href: "/project/ai-research-agent-system/parent-child-synthesis/",
     phase: "Phase 5D",
     status: "implemented",
-    description: "Validator and operator guide that treats PASS results as bounded operational evidence.",
+    description: "One-AgentJob perspective-synthesis explainer preserving a single outer authority frame.",
+  },
+  {
+    title: "Validator and operator workflow",
+    href: "/project/operations/validator-operator-workflow/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Operational guide that treats PASS results as bounded evidence, not authority expansion.",
+  },
+];
+
+export const projectOperationsRoutes = [
+  {
+    title: "Director and AgentJob lifecycle",
+    href: "/project/operations/director-agentjob-lifecycle/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Task, decision, AgentJob, completion, handoff, and registry evidence chain.",
+  },
+  {
+    title: "Role routing",
+    href: "/project/operations/role-routing/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Role templates, execution-role records, task overlays, provisional roles, and allowlists.",
+  },
+  {
+    title: "Validator and operator workflow",
+    href: "/project/operations/validator-operator-workflow/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Command selection, documentation-impact receipts, screenshots, tests, and PASS limits.",
+  },
+  {
+    title: "Publication process",
+    href: "/project/operations/publication-process/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Brief, source spec, public page, screenshot evidence, and review discipline.",
+  },
+  {
+    title: "Project-system improvement",
+    href: "/project/operations/project-system-improvement/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Classifier, resolver, signals, sidecars, one bounded AgentJob, and resolution evidence.",
+  },
+  {
+    title: "Technical requirements",
+    href: "/project/operations/technical-requirements/",
+    phase: "Operations",
+    status: "implemented",
+    description: "Local tool tiers for reproducible operation without confusing tools with authorization.",
   },
 ];
 
@@ -400,6 +464,15 @@ export const projectReadingPathRoutes: ProjectRouteMetadata[] = [
     plannedChildren: projectAiDeepDiveRoutes,
   },
   {
+    title: "Operations",
+    href: "/project/operations/",
+    phase: "PRD release",
+    status: "implemented",
+    description: "Operational route family for lifecycle, role routing, validation, publication, project-system repair, and tool requirements.",
+    sourceNotice: projectSourceNoticeDefaults.operationsTrack,
+    plannedChildren: projectOperationsRoutes,
+  },
+  {
     title: "Source Authority",
     href: "/project/source-authority/",
     phase: "Phase 3",
@@ -413,13 +486,20 @@ export const projectInformationArchitectureDecision = {
   firstFamilyRoutes: [
     "/project/physics/",
     "/project/ai-research-agent-system/",
+    "/project/operations/",
     "/project/source-authority/",
   ],
   navigationChange: {
     status: "implemented",
     phase: "Phase 7",
     rationale:
-      "Primary navigation now exposes the public project reading path: project overview, both track pages, source authority, resources, and research map.",
+      "Primary navigation now exposes the public project reading path: overview, physics, AI system, operations, source authority, and resources.",
+  },
+  internalFirstLinkDecision: {
+    status: "implemented",
+    phase: "Internal explainer/source asset release",
+    rationale:
+      "Mapped explainer source links are kept in provenance sections while primary journey cards point to internal website routes.",
   },
   reusableComponentDecision: {
     status: "defer",

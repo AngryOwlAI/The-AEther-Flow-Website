@@ -1,0 +1,123 @@
+---
+import SourceNotice from "./SourceNotice.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { InternalExplainer } from "../lib/internalExplainers";
+
+interface Props {
+  page: InternalExplainer;
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={page.title} description={page.description} bodyClass="project-overview-page project-track-page">
+  <section class="track-page-hero" aria-labelledby="internal-explainer-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1 id="internal-explainer-title">{page.title}</h1>
+      <p class="overview-lead">{page.lead}</p>
+      <div class="overview-actions" aria-label={`${page.title} page actions`}>
+        <a class="primary-link" href={page.actionHref}>{page.actionLabel}</a>
+        <a class="secondary-link" href={page.secondaryHref}>{page.secondaryLabel}</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="internal-explainer-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="internal-explainer-figure-title">
+        <title id="internal-explainer-figure-title">{page.visualTitle}</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path signal-path" d="M88 180 H214 C254 180, 254 110, 306 110 H532" />
+        <path class="track-figure-path gold-path" d="M88 180 H214 C254 180, 254 250, 306 250 H532" />
+        <path class="track-figure-path signal-path" d="M306 110 C386 130, 430 172, 532 250" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="88" cy="180" r="20" />
+          <circle cx="306" cy="110" r="20" />
+          <circle cx="306" cy="250" r="20" />
+          <circle cx="532" cy="110" r="20" />
+          <circle cx="532" cy="250" r="20" />
+        </g>
+        <circle class="track-figure-core" cx="306" cy="180" r="42" />
+        <text x="62" y="86">{page.visualTerms[0]}</text>
+        <text x="244" y="178">{page.visualTerms[1]}</text>
+        <text x="394" y="306">{page.visualTerms[2]}</text>
+      </svg>
+      <figcaption id="internal-explainer-figure-caption">{page.visualCaption}</figcaption>
+    </figure>
+  </section>
+
+  {page.sections.map((section, sectionIndex) => (
+    <section
+      id={sectionIndex === 0 ? page.actionHref.replace("#", "") : undefined}
+      class="track-page-band"
+      aria-labelledby={`section-${sectionIndex}-title`}
+    >
+      <div class="track-page-heading">
+        <p class="eyebrow">{section.eyebrow}</p>
+        <h2 id={`section-${sectionIndex}-title`}>{section.title}</h2>
+        <p>{section.body}</p>
+      </div>
+      <div class="track-status-grid">
+        {section.cards.map((card) => (
+          <article class="track-status-card">
+            <p>{card.label}</p>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section class="track-page-band" aria-labelledby="related-reading-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Related reading</p>
+      <h2 id="related-reading-title">Continue through internal routes first.</h2>
+      <p>
+        These links keep the primary reader journey inside the website. Source
+        links remain visible in the provenance section.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {page.relatedLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="source-provenance-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source provenance</p>
+      <h2 id="source-provenance-title">Source links are for inspection, not primary navigation.</h2>
+      <p>
+        The links below point to reviewed upstream source surfaces. This website
+        adaptation remains downstream from those sources and from the registered
+        authority records they cite.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {page.sourceLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="boundary-title">
+    <div>
+      <p class="eyebrow">{page.boundaryLabel}</p>
+      <h2 id="boundary-title">{page.boundaryTitle}</h2>
+      <p>{page.boundaryBody}</p>
+    </div>
+    <SourceNotice
+      claimStatus={page.claimStatus}
+      updated={page.updated}
+      note={page.boundaryBody}
+      sourceRefs={page.sourceRefs}
+    />
+  </section>
+</BaseLayout>

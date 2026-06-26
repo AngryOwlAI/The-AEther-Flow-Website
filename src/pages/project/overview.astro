@@ -16,6 +16,34 @@ const aiDetails = [
   "Source-first memory, wiki, and registries",
 ];
 
+const readerJourneys = [
+  {
+    title: "Start with physics",
+    href: "/project/physics/",
+    body: "Ontology, exact-GR benchmark boundary, open derivation roadmap, and claim gates.",
+  },
+  {
+    title: "Understand the AI system",
+    href: "/project/ai-research-agent-system/",
+    body: "Research-agent workflow, roles, memory, registries, and parent-child synthesis.",
+  },
+  {
+    title: "Inspect operations",
+    href: "/project/operations/",
+    body: "Routing, AgentJobs, validators, publication process, project-system improvement, and tools.",
+  },
+  {
+    title: "Check source authority",
+    href: "/project/source-authority/",
+    body: "How website pages, source records, registries, generated surfaces, and derivatives differ.",
+  },
+  {
+    title: "Read ontology documents",
+    href: "/resources/documents/",
+    body: "Direct PDF reading and TeX downloads for the canonical ontology package.",
+  },
+];
+
 const physicsMap = `
   <svg class="detail-svg physics-svg" viewBox="0 0 420 220" role="img" aria-label="Animated physics detail map">
     <rect width="420" height="220" rx="18"></rect>
@@ -255,6 +283,25 @@ const agentMap = `
         </details>
         <a class="track-card-link" href="/project/ai-research-agent-system/">Open AI track</a>
       </article>
+    </div>
+  </section>
+
+  <section class="overview-panel" aria-labelledby="reader-journeys-title">
+    <div class="overview-heading">
+      <p class="eyebrow">Reader journeys</p>
+      <h2 id="reader-journeys-title">Choose the path that matches your question.</h2>
+      <p>
+        The website now keeps the primary reading journey internal. Source
+        repositories remain available for provenance and inspection.
+      </p>
+    </div>
+    <div class="link-grid">
+      {readerJourneys.map((journey) => (
+        <a class="link-card" href={journey.href}>
+          <span>{journey.title}</span>
+          <small>{journey.body}</small>
+        </a>
+      ))}
     </div>
   </section>
 

@@ -1,0 +1,79 @@
+---
+import type { OntologyDocument } from "../lib/manifests";
+
+interface Props {
+  documents: OntologyDocument[];
+}
+
+const { documents } = Astro.props;
+const byteFormatter = new Intl.NumberFormat("en-US");
+---
+
+<section class="download-section" aria-labelledby="ontology-documents-list-title">
+  <div class="section-header">
+    <p class="eyebrow">Canonical ontology package</p>
+    <h2 id="ontology-documents-list-title">PDF readers and TeX sources</h2>
+    <p class="lead">
+      TeX files are the registered source-authority artifacts. PDFs are
+      generated human-readable derivatives for direct reading.
+    </p>
+  </div>
+
+  <div class="download-list document-action-list">
+    {documents.map((document) => (
+      <article class="download-item document-action-item">
+        <div>
+          <p class="download-kind">Ontology document</p>
+          <h3>{document.title}</h3>
+          <p>
+            Use the PDF for reading. Use the TeX file for source inspection when
+            comparing authority-bearing text and registry metadata.
+          </p>
+          <div class="document-actions" aria-label={`${document.title} actions`}>
+            {document.pdf && <a class="primary-link" href={document.pdf.path}>Read PDF</a>}
+            {document.pdf && <a class="secondary-link" href={document.pdf.path} download>Download PDF</a>}
+            {document.tex && <a class="secondary-link" href={document.tex.path} download>Download TeX</a>}
+          </div>
+        </div>
+        <dl class="download-meta">
+          {document.pdf && (
+            <div>
+              <dt>PDF bytes</dt>
+              <dd>{byteFormatter.format(document.pdf.bytes)}</dd>
+            </div>
+          )}
+          {document.tex && (
+            <div>
+              <dt>TeX bytes</dt>
+              <dd>{byteFormatter.format(document.tex.bytes)}</dd>
+            </div>
+          )}
+          {document.tex?.source?.source_authority_status && (
+            <div>
+              <dt>TeX authority</dt>
+              <dd>{document.tex.source.source_authority_status}</dd>
+            </div>
+          )}
+          {document.tex?.source?.claim_status && (
+            <div>
+              <dt>Claim status</dt>
+              <dd>{document.tex.source.claim_status}</dd>
+            </div>
+          )}
+          {document.tex?.source?.sha256 && (
+            <div>
+              <dt>TeX SHA-256</dt>
+              <dd>{document.tex.source.sha256}</dd>
+            </div>
+          )}
+          {document.pdf?.source?.sha256 && (
+            <div>
+              <dt>PDF SHA-256</dt>
+              <dd>{document.pdf.source.sha256}</dd>
+            </div>
+          )}
+        </dl>
+      </article>
+    ))}
+  </div>
+</section>

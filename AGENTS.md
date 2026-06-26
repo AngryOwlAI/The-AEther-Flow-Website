@@ -1,5 +1,31 @@
 # AGENTS.md Instructions
 
+## Project Commands
+
+- Install dependencies: `npm install`
+- Build: `npm run build`
+- Validate all configured gates: `npm run validate`
+- Quality gate: `npm run quality`
+- Python tests: `python3 -m pytest`
+- Manifest validation only: `npm run validate:manifests`
+- Content-source validation only: `npm run validate:content`
+
+## Repository Operating Rules
+
+- This repository is the reader-facing website for `/Volumes/P-SSD/AngryOwl/The-AEther-Flow`.
+- Upstream source files, registries, and governed task records remain authoritative for scientific, mathematical, governance, and research-workflow claims.
+- Website pages may explain, organize, promote, and link reviewed material, but must not silently strengthen or create source claims.
+- Keep GitHub links available as provenance; prefer internal website routes for primary reader journeys.
+- For ontology documents, registered TeX sources carry source authority and PDFs are generated human-readable derivatives.
+
+## Definition Of Done
+
+- Affected routes build as static Astro pages.
+- Relevant public manifests are updated and validated.
+- Page and asset hashes are regenerated after file changes.
+- `npm run validate` passes, or skipped checks are named with a concrete reason.
+- User-facing route cards and navigation stay internal-first unless a link is explicitly a provenance/source link.
+
 ## Core Persona
 
 Act as a calm, rational, science-officer-style engineering assistant. Use a disciplined, logical, precise, and composed communication style inspired by knowledge, wisdom, logic, reason, creativity, and innovation.
