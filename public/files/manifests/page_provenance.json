@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-26T21:50:26.776603+00:00",
+  "generated_at": "2026-06-26T22:16:32.018342+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "d430f5970d033096922823c428264ebb031eeff0",
   "source_commit_date": "2026-06-26T15:43:32-06:00",
@@ -153,7 +153,7 @@
     {
       "route_path": "/project/physics/current-state/",
       "local_page_source": "src/pages/project/physics/current-state/index.astro",
-      "local_page_sha256": "9fde5903ac35ed35c8f6402d6013e8d75754bb9cfc1278d9277f39f7f168e881",
+      "local_page_sha256": "4bc22388df02d4ea5e1b74674075c37ce5f61420c92780a41262190bf3fb4577",
       "title": "Current Physics State",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

@@ -121,7 +121,7 @@ const distanceStateCards = [
         scientific authority.
       </p>
       <div class="overview-actions" aria-label="Current-state page actions">
-        <a class="primary-link" href="#snapshot-status">Read status</a>
+        <a class="primary-link" href="#snapshot-status">Project State Snapshot</a>
         <a class="secondary-link" href="/project/physics/">Back to physics track</a>
       </div>
     </div>
@@ -147,6 +147,62 @@ const distanceStateCards = [
         authority remain distinct.
       </figcaption>
     </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="distance-to-gr-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Distance-to-GR state</p>
+      <h2 id="distance-to-gr-title">Distance from GR derivation or hard fail</h2>
+      <p>
+        The active Distance-to-GR burden is g_eff, blocked by missing
+        signature, scale-normalization, and continuum-transition primitive
+        work. Matter coupling and Einstein equations are not started;
+        benchmark promotion remains blocked, Gate Chair status remains
+        human-gated, and this page reports burden state rather than a
+        numerical completion score.
+      </p>
+    </div>
+
+    <div class="track-status-grid snapshot-status-grid">
+      {distanceMechanisms.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="snapshot-two-column">
+      <article class="snapshot-data-card">
+        <p class="snapshot-card-label">Reader rule</p>
+        <h3>Distance means burden state.</h3>
+        <p>
+          A row can move, stay blocked, freeze locally, or require human gate
+          authority. The page should therefore be read as a status map, not as
+          a numerical completion score.
+        </p>
+      </article>
+      <article class="snapshot-data-card">
+        <p class="snapshot-card-label">Current boundary</p>
+        <h3>Scoped progress does not unlock GR.</h3>
+        <p>
+          The current public state preserves the negative boundary: no adopted
+          or constructed g_eff, no matter coupling, no Einstein equations, no
+          benchmark promotion, and no completed derivation.
+        </p>
+      </article>
+    </div>
+
+    <div class="track-status-grid snapshot-status-grid">
+      {distanceStateCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
   </section>
 
   <section id="snapshot-status" class="track-page-band" aria-labelledby="snapshot-status-title">
@@ -225,59 +281,6 @@ const distanceStateCards = [
           <p>{row.burden_id}</p>
           <h3>{row.required_object}</h3>
           <p>{row.current_status}. {row.notes}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="distance-to-gr-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Distance-to-GR state</p>
-      <h2 id="distance-to-gr-title">The project does not measure progress as a percentage.</h2>
-      <p>
-        The controlled measure is a burden map: each required GR-derivation
-        object is accepted, blocked, frozen, human-gated, or not started. That
-        keeps "task passed validation" separate from "physics advanced."
-      </p>
-    </div>
-
-    <div class="track-status-grid snapshot-status-grid">
-      {distanceMechanisms.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
-
-    <div class="snapshot-two-column">
-      <article class="snapshot-data-card">
-        <p class="snapshot-card-label">Reader rule</p>
-        <h3>Distance means burden state.</h3>
-        <p>
-          A row can move, stay blocked, freeze locally, or require human gate
-          authority. The page should therefore be read as a status map, not as
-          a numerical completion score.
-        </p>
-      </article>
-      <article class="snapshot-data-card">
-        <p class="snapshot-card-label">Current boundary</p>
-        <h3>Scoped progress does not unlock GR.</h3>
-        <p>
-          The current public state preserves the negative boundary: no adopted
-          or constructed g_eff, no matter coupling, no Einstein equations, no
-          benchmark promotion, and no completed derivation.
-        </p>
-      </article>
-    </div>
-
-    <div class="track-status-grid snapshot-status-grid">
-      {distanceStateCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
         </article>
       ))}
     </div>
