@@ -8,6 +8,8 @@ repository.
 - `project-explainer-frontend/`: build AEther-aware informational frontend
   plans and audits from website and upstream source evidence while preserving
   the source-authority boundary.
+- `push-and-deploy/`: push a clean accepted `main` commit and deploy the
+  pushed commit to Cloudflare Pages using the current Direct Upload project.
 - `prototype/`: build throwaway logic or UI prototypes to answer a specific
   design question before production implementation.
 - `to-prd/`: synthesize the current conversation and repository evidence into a
