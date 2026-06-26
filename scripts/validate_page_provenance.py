@@ -21,6 +21,7 @@ REQUIRED_ROUTE_PATHS = {
     "/project/physics/ontology/",
     "/project/physics/exact-gr-benchmark/",
     "/project/physics/gr-derivation-roadmap/",
+    "/project/physics/current-state/",
     "/project/physics/claim-gates/",
     "/project/ai-research-agent-system/",
     "/project/ai-research-agent-system/roles-and-skills/",

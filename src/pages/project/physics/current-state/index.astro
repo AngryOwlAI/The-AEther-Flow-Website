@@ -1,0 +1,237 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import snapshot from "../../../../data/physics_current_state_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsCurrentState;
+const activeBurden = snapshot.derivation_burden.active_row;
+const downstreamRows = snapshot.derivation_burden.downstream_rows;
+const shortCommit = snapshot.source_commit
+  ? `${snapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+
+const metadata = [
+  {
+    label: "Last refreshed from source",
+    value: snapshot.source_refresh_date,
+  },
+  {
+    label: "Source commit",
+    value: shortCommit,
+  },
+  {
+    label: "Source commit date",
+    value: snapshot.source_commit_date ?? "Unavailable",
+  },
+  {
+    label: "Website publication date",
+    value: snapshot.website_publication_date,
+  },
+];
+
+const statusCards = [
+  {
+    label: "Active task",
+    title: snapshot.active_task_id,
+    body: "This is the upstream task id reported by program_state.yaml when the website snapshot was refreshed.",
+  },
+  {
+    label: "Latest handoff",
+    title: snapshot.latest_handoff_id,
+    body: `Created ${snapshot.latest_handoff_created_at}. The handoff is a source-side control record, not a public claim expansion.`,
+  },
+  {
+    label: "Current status",
+    title: snapshot.current_status,
+    body: "The status is copied from upstream control state and should be read with the blocked claims below.",
+  },
+  {
+    label: "Active burden",
+    title: activeBurden.milestone,
+    body: `${activeBurden.current_status}. ${activeBurden.blocking_burden}`,
+  },
+];
+---
+
+<BaseLayout
+  title="Current Physics State"
+  description="Curated current-state physics snapshot for active task, latest handoff, derivation burden, blocked claims, and next action."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="current-state-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics current-state snapshot</p>
+      <h1 id="current-state-title">Current Physics State</h1>
+      <p class="overview-lead">
+        This page is a reviewed website snapshot of upstream physics control
+        state. It helps readers see the active derivation burden, blocked
+        claims, and next source-side action without treating the website as
+        scientific authority.
+      </p>
+      <div class="overview-actions" aria-label="Current-state page actions">
+        <a class="primary-link" href="#snapshot-status">Read status</a>
+        <a class="secondary-link" href="/project/physics/">Back to physics track</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="current-state-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="current-state-figure-title">
+        <title id="current-state-figure-title">Current physics state boundary map</title>
+        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-path gold-path" d="M78 214 C150 118, 248 112, 318 178 C398 252, 486 234, 546 126" />
+        <path class="track-figure-path signal-path" d="M88 132 C178 188, 250 244, 344 200 C420 164, 478 156, 542 214" />
+        <circle class="track-figure-core" cx="318" cy="186" r="42" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="116" cy="220" r="13" />
+          <circle cx="220" cy="118" r="13" />
+          <circle cx="438" cy="146" r="13" />
+          <circle cx="520" cy="238" r="13" />
+        </g>
+        <text x="76" y="76">source snapshot</text>
+        <text x="320" y="306">claim boundaries preserved</text>
+      </svg>
+      <figcaption id="current-state-figure-caption">
+        Visual orientation only: source state, website snapshot, and claim
+        authority remain distinct.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="snapshot-status" class="track-page-band" aria-labelledby="snapshot-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot metadata</p>
+      <h2 id="snapshot-status-title">What source state this page reflects.</h2>
+      <p>
+        The page imports a checked-in JSON snapshot. Normal Astro builds do not
+        read the upstream repository or silently refresh public physics text.
+      </p>
+    </div>
+
+    <dl class="snapshot-meta-grid">
+      {metadata.map((item) => (
+        <div>
+          <dt>{item.label}</dt>
+          <dd>{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="track-status-grid snapshot-status-grid">
+      {statusCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="snapshot-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim boundary</p>
+      <h2 id="snapshot-boundary-title">Stress survival is not adoption.</h2>
+      <p>{snapshot.claim_boundary_summary}</p>
+    </div>
+
+    <div class="snapshot-two-column">
+      <article class="snapshot-data-card">
+        <p class="snapshot-card-label">Latest handoff summary</p>
+        <h3>{snapshot.latest_handoff_id}</h3>
+        <p>{snapshot.latest_handoff_summary}</p>
+      </article>
+      <article class="snapshot-data-card">
+        <p class="snapshot-card-label">Next recommended action</p>
+        <h3>Bounded selector packet</h3>
+        <p>{snapshot.next_recommended_action}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="snapshot-burden-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Derivation burden</p>
+      <h2 id="snapshot-burden-title">The active burden remains upstream and gated.</h2>
+      <p>
+        The active Distance-to-GR row is shown for reader orientation. It does
+        not by itself construct an effective metric, matter coupling, field
+        equations, or benchmark promotion.
+      </p>
+    </div>
+
+    <article class="snapshot-data-card snapshot-wide-card">
+      <p class="snapshot-card-label">{activeBurden.burden_id}</p>
+      <h3>{activeBurden.required_object}</h3>
+      <p>{activeBurden.accept_criteria}</p>
+      <p>{activeBurden.failure_or_freeze_criteria}</p>
+      <small>Evidence: {activeBurden.last_evidence_path}</small>
+    </article>
+
+    <div class="track-status-grid snapshot-status-grid">
+      {downstreamRows.map((row) => (
+        <article class="track-status-card">
+          <p>{row.burden_id}</p>
+          <h3>{row.required_object}</h3>
+          <p>{row.current_status}. {row.notes}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="snapshot-blocked-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Blocked claims</p>
+      <h2 id="snapshot-blocked-title">What this snapshot explicitly does not authorize.</h2>
+      <p>
+        These strings are preserved from the latest upstream handoff. They are
+        displayed because the negative boundary is part of the reader-facing
+        status, not an incidental footnote.
+      </p>
+    </div>
+
+    <ul class="snapshot-claim-list">
+      {snapshot.blocked_claims.map((claim) => (
+        <li>{claim}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="snapshot-sources-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source provenance</p>
+      <h2 id="snapshot-sources-title">Inspect source records without making them the primary journey.</h2>
+      <p>
+        Primary reading stays inside the website. These pinned links are
+        provided for provenance and review.
+      </p>
+    </div>
+    <div class="source-link-grid snapshot-source-grid">
+      {snapshot.source_provenance_links.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.label}</span>
+          <small>Pinned upstream source dependency for this reviewed snapshot.</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="snapshot-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="snapshot-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can report a reviewed snapshot of upstream control
+        state. It cannot adopt MetricData(E), define or construct g_eff,
+        derive matter coupling, derive Einstein equations, promote the
+        benchmark, close a Gate Chair review, or complete the derivation.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

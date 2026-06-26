@@ -246,6 +246,19 @@ export const projectSourceNoticeDefaults = {
       "AEther-Flow Project. (2026). research_control/README.md",
     ],
   },
+  physicsCurrentState: {
+    claimStatus: "curated current-state snapshot",
+    updated: "2026-06-26",
+    note: "This page presents a checked-in website snapshot of upstream physics control state. It is not source authority, does not auto-refresh during build, and cannot promote draft/control data into adopted physics claims.",
+    sourceRefs: [
+      "AEther-Flow Project. (2026). research_control/program_state.yaml",
+      "AEther-Flow Project. (2026). research_control/handoffs/handoff-0229.yaml",
+      "AEther-Flow Project. (2026). research_control/handoffs/handoff-0229.md",
+      "AEther-Flow Project. (2026). registries/DISTANCE_TO_GR_LEDGER.csv",
+      "AEther-Flow Project. (2026). registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "The AEther Flow Website. (2026). src/data/physics_current_state_snapshot.json",
+    ],
+  },
   physicsClaimGates: {
     claimStatus: "claim-control orientation",
     updated: "2026-06-25",
@@ -330,6 +343,13 @@ export const projectSourceNoticeDefaults = {
 } satisfies Record<string, ProjectSourceNoticeDefaults>;
 
 export const projectPhysicsDeepDiveRoutes = [
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    phase: "Current snapshot",
+    status: "implemented",
+    description: "Reviewed source-state snapshot for active task, latest handoff, open burden, blocked claims, and next action.",
+  },
   {
     title: "AEther / AEther-flow ontology",
     href: "/project/physics/ontology/",

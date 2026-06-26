@@ -1800,6 +1800,100 @@ summary:focus-visible {
   padding-bottom: 5rem;
 }
 
+.snapshot-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.4rem 0 0;
+}
+
+.snapshot-meta-grid div,
+.snapshot-data-card {
+  min-width: 0;
+  border: 1px solid var(--overview-white-line);
+  border-radius: 8px;
+  background: rgba(6, 5, 4, 0.82);
+  padding: 1rem;
+}
+
+.snapshot-meta-grid dt,
+.snapshot-card-label {
+  margin: 0;
+  color: var(--overview-gold);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.snapshot-meta-grid dd {
+  margin: 0.35rem 0 0;
+  overflow-wrap: anywhere;
+  color: var(--overview-text);
+  font-weight: 900;
+}
+
+.snapshot-status-grid .track-status-card h3 {
+  overflow-wrap: anywhere;
+}
+
+.snapshot-two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.snapshot-data-card {
+  border-top: 3px solid var(--overview-gold);
+}
+
+.snapshot-data-card h3 {
+  margin: 0.35rem 0 0;
+  color: var(--overview-text);
+  font-size: 1.18rem;
+  line-height: 1.22;
+}
+
+.snapshot-data-card p {
+  color: var(--overview-muted);
+}
+
+.snapshot-data-card small {
+  display: block;
+  margin-top: 0.75rem;
+  overflow-wrap: anywhere;
+  color: var(--overview-muted);
+  font-size: 0.9rem;
+}
+
+.snapshot-wide-card {
+  margin-top: 1.4rem;
+}
+
+.snapshot-claim-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.snapshot-claim-list li {
+  min-width: 0;
+  border: 1px solid var(--overview-white-line);
+  border-left: 3px solid var(--overview-gold);
+  border-radius: 8px;
+  background: rgba(6, 5, 4, 0.82);
+  padding: 0.8rem 0.9rem;
+  color: var(--overview-muted);
+  overflow-wrap: anywhere;
+}
+
+.snapshot-source-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @keyframes dust-breathe {
   from {
     opacity: 0.38;
@@ -1988,6 +2082,10 @@ summary:focus-visible {
   .track-status-grid,
   .source-link-grid,
   .planned-route-grid,
+  .snapshot-meta-grid,
+  .snapshot-two-column,
+  .snapshot-claim-list,
+  .snapshot-source-grid,
   .track-page-notice {
     grid-template-columns: 1fr;
   }

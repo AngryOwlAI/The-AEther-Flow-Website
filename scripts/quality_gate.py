@@ -14,6 +14,7 @@ from urllib.parse import unquote, urlparse
 
 HTML_ROUTES_REQUIRING_SOURCE_NOTICE = {
     "/project/overview/",
+    "/project/physics/current-state/",
     "/research/map/",
     "/research/equations/",
     "/research/math-sample/",
