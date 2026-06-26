@@ -13,7 +13,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
 DOCUMENT_ORDER = [
     "aether_flow_foundations",
@@ -162,7 +161,9 @@ def import_assets(
                     "sha256": file_hash,
                     "generated_by": "scripts/import_ontology_assets.py",
                     "generated_at": generated_at,
-                    "license_or_usage_note": "Website publication of canonical ontology package assets.",
+                    "license_or_usage_note": (
+                        "Website publication of canonical ontology package assets."
+                    ),
                     "notes": notes,
                     "source_authority_status": registry_row.get("authority_status", "canonical"),
                     "claim_status": registry_row.get("claim_status"),
@@ -223,10 +224,14 @@ def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
     source_manifest_path = (
-        args.source_manifest if args.source_manifest.is_absolute() else repo_root / args.source_manifest
+        args.source_manifest
+        if args.source_manifest.is_absolute()
+        else repo_root / args.source_manifest
     )
     asset_manifest_path = (
-        args.asset_manifest if args.asset_manifest.is_absolute() else repo_root / args.asset_manifest
+        args.asset_manifest
+        if args.asset_manifest.is_absolute()
+        else repo_root / args.asset_manifest
     )
     source_manifest, asset_manifest, messages = import_assets(
         repo_root=repo_root,

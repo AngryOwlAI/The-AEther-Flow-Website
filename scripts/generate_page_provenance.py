@@ -11,7 +11,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
 
 
@@ -140,12 +139,16 @@ def generate_provenance(
         if not isinstance(local_page_source, str):
             raise ValueError(f"routes[{index}].local_page_source is required")
         validate_relative_path(local_page_source, "local page source")
-        if not isinstance(source_paths, list) or not all(isinstance(path, str) for path in source_paths):
+        if not isinstance(source_paths, list) or not all(
+            isinstance(path, str) for path in source_paths
+        ):
             raise ValueError(f"routes[{index}].upstream_source_paths must be a string list")
 
         page_file = repo_root / local_page_source
         if not page_file.is_file():
-            raise FileNotFoundError(f"missing local page source for {route_path}: {local_page_source}")
+            raise FileNotFoundError(
+                f"missing local page source for {route_path}: {local_page_source}"
+            )
 
         upstream_sources = build_source_entries(
             source_paths,

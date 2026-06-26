@@ -11,7 +11,6 @@ import sys
 from pathlib import Path
 from typing import Any
 
-
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
 HEX_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 HEX_COMMIT = re.compile(r"^[0-9a-f]{40}$")
@@ -121,7 +120,11 @@ def validate_route_map(route_map: dict[str, Any]) -> list[str]:
         route_path = route.get("route_path")
         local_page_source = route.get("local_page_source")
         source_paths = route.get("upstream_source_paths")
-        if not isinstance(route_path, str) or not route_path.startswith("/") or not route_path.endswith("/"):
+        if (
+            not isinstance(route_path, str)
+            or not route_path.startswith("/")
+            or not route_path.endswith("/")
+        ):
             errors.append(f"{label}: route_path must start and end with '/'")
         elif route_path in seen:
             errors.append(f"{label}: duplicate route_path {route_path!r}")
@@ -293,8 +296,12 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
-    route_map_path = args.route_map if args.route_map.is_absolute() else repo_root / args.route_map
-    provenance_path = args.provenance if args.provenance.is_absolute() else repo_root / args.provenance
+    route_map_path = (
+        args.route_map if args.route_map.is_absolute() else repo_root / args.route_map
+    )
+    provenance_path = (
+        args.provenance if args.provenance.is_absolute() else repo_root / args.provenance
+    )
     route_map = load_json(route_map_path)
     provenance = load_json(provenance_path)
     forbidden_substrings = [str(repo_root), str(args.source_root)]

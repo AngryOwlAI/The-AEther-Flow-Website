@@ -8,7 +8,6 @@ import re
 import sys
 from pathlib import Path
 
-
 MAPPED_SOURCE_URL = re.compile(
     r"https://github\.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/[^\"')\s]+"
 )
