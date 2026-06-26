@@ -7,11 +7,12 @@ import argparse
 import hashlib
 import json
 import subprocess
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
+UTC = timezone.utc  # noqa: UP017 - npm scripts may run on system Python 3.9.
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -50,6 +51,18 @@ def git_output(repo: Path, *args: str) -> str | None:
     return result.stdout.strip() or None
 
 
+def git_blob_bytes(repo: Path, ref: str, source_path: str) -> bytes | None:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo), "show", f"{ref}:{source_path}"],
+            check=True,
+            capture_output=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+    return result.stdout
+
+
 def public_github_url(base_url: str, ref: str, source_path: str) -> str:
     return f"{base_url.rstrip('/')}/blob/{ref}/{source_path}"
 
@@ -73,7 +86,14 @@ def build_source_entries(
         source_file = source_root / source_path
         sha256: str | None = None
         omission_reason: str | None = None
-        if source_file.is_file():
+        committed_blob = (
+            git_blob_bytes(source_root, source_commit, source_path)
+            if source_commit
+            else None
+        )
+        if committed_blob is not None:
+            sha256 = hashlib.sha256(committed_blob).hexdigest()
+        elif source_file.is_file():
             sha256 = sha256_file(source_file)
         elif source_root.exists():
             omission_reason = "source_file_missing"

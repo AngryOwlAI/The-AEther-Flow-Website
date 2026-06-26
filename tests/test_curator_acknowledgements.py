@@ -42,6 +42,29 @@ def init_source_git(source_root: Path) -> str:
     ).stdout.strip()
 
 
+def commit_source_changes(source_root: Path, message: str) -> str:
+    subprocess.run(["git", "add", "."], cwd=source_root, check=True)
+    env = {
+        **os.environ,
+        "GIT_AUTHOR_DATE": "2026-06-26T00:01:00Z",
+        "GIT_COMMITTER_DATE": "2026-06-26T00:01:00Z",
+    }
+    subprocess.run(
+        ["git", "commit", "-m", message],
+        cwd=source_root,
+        check=True,
+        env=env,
+        capture_output=True,
+    )
+    return subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=source_root,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+
 def write_ack(
     repo_root: Path,
     *,
@@ -100,8 +123,9 @@ def check_reports(repo_root: Path, source_root: Path) -> int:
 
 def test_critical_drift_fails_even_with_acknowledgement(tmp_path: Path) -> None:
     repo_root, source_root = write_fixture_repo(tmp_path)
-    current_commit = init_source_git(source_root)
+    init_source_git(source_root)
     (source_root / "snapshot.yaml").write_text("snapshot v2\n", encoding="utf-8")
+    current_commit = commit_source_changes(source_root, "critical drift")
 
     assert write_reports(repo_root, source_root) == 0
     write_ack(
@@ -120,6 +144,7 @@ def test_review_required_drift_fails_without_acknowledgement(tmp_path: Path) -> 
     repo_root, source_root = write_fixture_repo(tmp_path)
     init_source_git(source_root)
     (source_root / "source.md").write_text("source v2\n", encoding="utf-8")
+    commit_source_changes(source_root, "review-required drift")
 
     assert write_reports(repo_root, source_root) == 0
 
@@ -128,8 +153,9 @@ def test_review_required_drift_fails_without_acknowledgement(tmp_path: Path) -> 
 
 def test_review_required_drift_passes_with_exact_acknowledgement(tmp_path: Path) -> None:
     repo_root, source_root = write_fixture_repo(tmp_path)
-    current_commit = init_source_git(source_root)
+    init_source_git(source_root)
     (source_root / "source.md").write_text("source v2\n", encoding="utf-8")
+    current_commit = commit_source_changes(source_root, "acknowledged drift")
     write_ack(
         repo_root,
         current_commit=current_commit,
@@ -161,8 +187,9 @@ def test_malformed_acknowledgement_fails_closed(tmp_path: Path) -> None:
 
 def test_stale_acknowledgement_fails_closed(tmp_path: Path) -> None:
     repo_root, source_root = write_fixture_repo(tmp_path)
-    current_commit = init_source_git(source_root)
+    init_source_git(source_root)
     (source_root / "source.md").write_text("source v2\n", encoding="utf-8")
+    current_commit = commit_source_changes(source_root, "stale acknowledged drift")
     write_ack(
         repo_root,
         current_commit=current_commit,

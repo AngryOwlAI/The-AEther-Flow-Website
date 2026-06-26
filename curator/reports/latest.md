@@ -6,9 +6,9 @@ and does not rewrite website content.
 
 ## Summary
 
-- Source commit: `88eb5d5d7f184dd9771fa7e619fa716da0790e3d`
-- Source commit date: `2026-06-26T15:12:07-06:00`
-- Declared dependencies: 50
+- Source commit: `d430f5970d033096922823c428264ebb031eeff0`
+- Source commit date: `2026-06-26T15:43:32-06:00`
+- Declared dependencies: 53
 - Drift items: 0
 - Critical drift: 0
 - Review-required drift: 0
@@ -21,5 +21,5 @@ No declared source dependency drift detected.
 
 ## Diagnostics
 
-- `source_summary_lag` (informational): current_frontier.md does not mention the latest program_state handoff handoff-0231. Source: `research_control/current_frontier.md`
-- `source_summary_lag` (informational): current_frontier.md does not mention the active program_state task RT-20260614-198. Source: `research_control/current_frontier.md`
+- `source_summary_lag` (informational): current_frontier.md does not mention the latest program_state handoff handoff-0234. Source: `research_control/current_frontier.md`
+- `source_summary_lag` (informational): current_frontier.md does not mention the active program_state task RT-20260614-201. Source: `research_control/current_frontier.md`

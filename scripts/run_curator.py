@@ -10,7 +10,7 @@ import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
-from datetime import UTC, date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -35,6 +35,7 @@ ACK_REQUIRED_FIELDS = {
     "reason",
     "expires_at",
 }
+UTC = timezone.utc  # noqa: UP017 - npm scripts may run on system Python 3.9.
 
 
 class CuratorError(ValueError):
@@ -114,6 +115,25 @@ def git_output(repo: Path, *args: str) -> str | None:
     except (FileNotFoundError, subprocess.CalledProcessError):
         return None
     return result.stdout.strip() or None
+
+
+def git_blob_bytes(repo: Path, ref: str, source_path: str) -> bytes | None:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo), "show", f"{ref}:{source_path}"],
+            check=True,
+            capture_output=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return None
+    return result.stdout
+
+
+def git_blob_text(repo: Path, ref: str, source_path: str) -> str | None:
+    blob = git_blob_bytes(repo, ref, source_path)
+    if blob is None:
+        return None
+    return blob.decode("utf-8")
 
 
 def dependency_key(dependency: Dependency) -> tuple[str, str | None]:
@@ -478,8 +498,20 @@ def dependency_report_entry(
     current_commit: str | None,
 ) -> dict[str, Any]:
     source_file = source_root / dependency.source_path
-    source_missing = not source_root.exists() or not source_file.is_file()
-    new_sha = None if source_missing else sha256_file(source_file)
+    committed_blob = (
+        git_blob_bytes(source_root, current_commit, dependency.source_path)
+        if current_commit
+        else None
+    )
+    source_missing = (
+        not source_root.exists()
+        or (committed_blob is None and not source_file.is_file())
+    )
+    new_sha: str | None
+    if committed_blob is not None:
+        new_sha = hashlib.sha256(committed_blob).hexdigest()
+    else:
+        new_sha = None if source_missing else sha256_file(source_file)
     drift_detected = dependency.old_sha256 != new_sha
     severity, impact_class, recommended_action = classify_severity(
         dependency,
@@ -507,7 +539,10 @@ def dependency_report_entry(
     }
 
 
-def build_diagnostics(source_root: Path) -> list[dict[str, str | None]]:
+def build_diagnostics(
+    source_root: Path,
+    current_commit: str | None,
+) -> list[dict[str, str | None]]:
     diagnostics: list[dict[str, str | None]] = []
     if not source_root.exists():
         return [
@@ -522,11 +557,23 @@ def build_diagnostics(source_root: Path) -> list[dict[str, str | None]]:
             }
         ]
 
+    program_text = (
+        git_blob_text(source_root, current_commit, "research_control/program_state.yaml")
+        if current_commit
+        else None
+    )
+    frontier_text = (
+        git_blob_text(source_root, current_commit, "research_control/current_frontier.md")
+        if current_commit
+        else None
+    )
     program_state = source_root / "research_control/program_state.yaml"
     current_frontier = source_root / "research_control/current_frontier.md"
-    if program_state.is_file() and current_frontier.is_file():
+    if program_text is None and program_state.is_file():
         program_text = program_state.read_text(encoding="utf-8")
+    if frontier_text is None and current_frontier.is_file():
         frontier_text = current_frontier.read_text(encoding="utf-8")
+    if program_text is not None and frontier_text is not None:
         latest_handoff = None
         active_task = None
         for raw_line in program_text.splitlines():
@@ -626,7 +673,7 @@ def build_report(*, repo_root: Path, source_root: Path) -> dict[str, Any]:
         },
         "dependencies": entries,
         "drift_items": drift_items,
-        "diagnostics": build_diagnostics(source_root),
+        "diagnostics": build_diagnostics(source_root, current_commit),
     }
     validate_private_path_hygiene(report, repo_root=repo_root, source_root=source_root)
     return report

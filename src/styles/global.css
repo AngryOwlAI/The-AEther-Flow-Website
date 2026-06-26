@@ -1742,10 +1742,12 @@ summary:focus-visible {
 .source-link-card span {
   color: var(--overview-signal);
   font-weight: 900;
+  overflow-wrap: anywhere;
 }
 
 .source-link-card small,
 .planned-route-card span {
+  overflow-wrap: anywhere;
   font-size: 0.95rem;
   line-height: 1.55;
 }

@@ -10,7 +10,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -44,6 +44,7 @@ DOWNSTREAM_BURDEN_IDS = {
     "gate_chair_status",
 }
 SCALAR_RE = re.compile(r"^([A-Za-z0-9_]+):\s*(.*)$")
+UTC = timezone.utc  # noqa: UP017 - npm scripts may run on system Python 3.9.
 
 
 class SnapshotError(ValueError):
@@ -275,8 +276,15 @@ def build_snapshot(
     source_commit_date: str | None = None,
     source_refresh_date: str | None = None,
     website_publication_date: str | None = None,
+    allow_dirty_source: bool = False,
 ) -> dict[str, Any]:
     source_root = source_root.resolve()
+    dirty_status = git_output(source_root, "status", "--porcelain")
+    if dirty_status and not allow_dirty_source:
+        raise SnapshotError(
+            "source repository has uncommitted changes; commit upstream source "
+            "state or rerun with --allow-dirty-source"
+        )
     program_state = parse_program_state(source_root)
     handoff = parse_handoff(source_root, program_state["latest_handoff_id"])
     if handoff["handoff_id"] != program_state["latest_handoff_id"]:
@@ -347,6 +355,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--source-commit-date")
     parser.add_argument("--source-refresh-date")
     parser.add_argument("--website-publication-date")
+    parser.add_argument(
+        "--allow-dirty-source",
+        action="store_true",
+        help="Allow refreshing from a dirty upstream working tree.",
+    )
     return parser.parse_args(argv)
 
 
@@ -359,6 +372,7 @@ def main(argv: list[str] | None = None) -> int:
             source_commit_date=args.source_commit_date,
             source_refresh_date=args.source_refresh_date,
             website_publication_date=args.website_publication_date,
+            allow_dirty_source=args.allow_dirty_source,
         )
     except SnapshotError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

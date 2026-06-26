@@ -52,6 +52,57 @@ const statusCards = [
     body: `${activeBurden.current_status}. ${activeBurden.blocking_burden}`,
   },
 ];
+
+const distanceMechanisms = [
+  {
+    label: "Milestone chain",
+    title: "Burden ladder",
+    body: "The control map names source ontology, EqSrc, ObsLoc_lc, Resp_lc, M_src, g_eff, matter coupling, Einstein equations, benchmark promotion, and finite toy response as separate obligations.",
+  },
+  {
+    label: "Ledger",
+    title: "Persistent row state",
+    body: "The Distance-to-GR ledger records each burden's status, blocking burden, acceptance criteria, freeze or failure criteria, evidence path, timestamp, and notes.",
+  },
+  {
+    label: "Task accounting",
+    title: "Milestone declared per packet",
+    body: "Physics AgentJobs must state the target derivation milestone and exact milestone burden before a task can be treated as derivation work.",
+  },
+  {
+    label: "Delta fields",
+    title: "Validation separated from progress",
+    body: "Completion records distinguish task validation from physics progress through explicit progress status, distance-to-GR delta, payload manifest, and forbidden conclusions.",
+  },
+  {
+    label: "Freeze control",
+    title: "Repeated gaps are classified",
+    body: "Obstruction and freeze control prevents repeated orbit around the same gap by requiring route, repair, freeze, or human-gate decisions when a burden recurs.",
+  },
+];
+
+const distanceStateCards = [
+  {
+    label: "M_src",
+    title: "Scoped source-side acceptance",
+    body: "The committed ledger records scoped source-only M_src acceptance. That is progress inside the burden chain, not a downstream metric, coupling, equation, or benchmark promotion.",
+  },
+  {
+    label: "g_eff",
+    title: "Metric not constructed or adopted",
+    body: "The active metric burden must be read through its row notes and the blocked-claim list. Scoped MetricData(E) evidence does not define, construct, or adopt g_eff.",
+  },
+  {
+    label: "Matter and equations",
+    title: "Downstream burdens remain separate",
+    body: "Matter coupling and Einstein-equation recovery require their own source-side derivations. They cannot be inferred from M_src status, validator success, or roadmap placement.",
+  },
+  {
+    label: "Benchmark",
+    title: "Promotion remains gated",
+    body: "Exact-GR benchmark promotion remains a controlled downstream state requiring upstream burdens and explicit gate authority, not a percentage threshold.",
+  },
+];
 ---
 
 <BaseLayout
@@ -143,7 +194,7 @@ const statusCards = [
       </article>
       <article class="snapshot-data-card">
         <p class="snapshot-card-label">Next recommended action</p>
-        <h3>Bounded selector packet</h3>
+        <h3>Bounded next packet</h3>
         <p>{snapshot.next_recommended_action}</p>
       </article>
     </div>
@@ -174,6 +225,59 @@ const statusCards = [
           <p>{row.burden_id}</p>
           <h3>{row.required_object}</h3>
           <p>{row.current_status}. {row.notes}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="distance-to-gr-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Distance-to-GR state</p>
+      <h2 id="distance-to-gr-title">The project does not measure progress as a percentage.</h2>
+      <p>
+        The controlled measure is a burden map: each required GR-derivation
+        object is accepted, blocked, frozen, human-gated, or not started. That
+        keeps "task passed validation" separate from "physics advanced."
+      </p>
+    </div>
+
+    <div class="track-status-grid snapshot-status-grid">
+      {distanceMechanisms.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="snapshot-two-column">
+      <article class="snapshot-data-card">
+        <p class="snapshot-card-label">Reader rule</p>
+        <h3>Distance means burden state.</h3>
+        <p>
+          A row can move, stay blocked, freeze locally, or require human gate
+          authority. The page should therefore be read as a status map, not as
+          a numerical completion score.
+        </p>
+      </article>
+      <article class="snapshot-data-card">
+        <p class="snapshot-card-label">Current boundary</p>
+        <h3>Scoped progress does not unlock GR.</h3>
+        <p>
+          The current public state preserves the negative boundary: no adopted
+          or constructed g_eff, no matter coupling, no Einstein equations, no
+          benchmark promotion, and no completed derivation.
+        </p>
+      </article>
+    </div>
+
+    <div class="track-status-grid snapshot-status-grid">
+      {distanceStateCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
         </article>
       ))}
     </div>

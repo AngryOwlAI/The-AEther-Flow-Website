@@ -9,11 +9,12 @@ import hashlib
 import json
 import shutil
 import subprocess
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
+UTC = timezone.utc  # noqa: UP017 - npm scripts may run on system Python 3.9.
 DOCUMENT_ORDER = [
     "aether_flow_foundations",
     "aether_flow_dynamics",
