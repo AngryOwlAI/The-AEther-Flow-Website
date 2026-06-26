@@ -128,8 +128,11 @@ const agentMap = `
       </div>
 
       <figure class="field-stage" aria-labelledby="field-stage-caption">
-        <svg viewBox="0 0 680 420" role="img" aria-labelledby="field-stage-title">
+        <svg class="field-map-svg" viewBox="0 0 680 420" role="img" aria-labelledby="field-stage-title field-stage-desc">
           <title id="field-stage-title">Animated two-track Æther Flow luminous field map</title>
+          <desc id="field-stage-desc">
+            A luminous central field with animated tracers moving along two connected research paths.
+          </desc>
           <defs>
             <radialGradient id="field-flare" cx="52%" cy="49%" r="58%">
               <stop offset="0%" stop-color="#fff9d9" />
@@ -209,6 +212,12 @@ const agentMap = `
             <path d="M108 28 C220 70, 306 146, 404 216 C516 296, 608 280, 724 188" />
             <path d="M308 392 C392 314, 448 254, 498 218 C572 162, 636 106, 724 8" />
             <path d="M468 414 C532 330, 564 248, 612 178 C646 128, 678 88, 724 42" />
+          </g>
+          <g class="field-trace-system" filter="url(#field-bloom)" aria-hidden="true">
+            <path class="field-trace gold-trace trace-a" d="M-20 110 C142 162, 260 204, 404 216 C520 226, 608 162, 714 70" />
+            <path class="field-trace smoke-trace trace-b" d="M-12 306 C130 246, 244 224, 404 216 C498 212, 596 184, 710 118" />
+            <path class="field-trace gold-trace trace-c" d="M30 392 C150 302, 278 242, 404 216 C516 194, 604 260, 718 378" />
+            <path class="field-trace smoke-trace trace-d" d="M64 172 C182 172, 294 184, 404 216 C512 248, 602 270, 720 282" />
           </g>
           <g class="flare-system" filter="url(#flare-bloom)" aria-hidden="true">
             <circle class="field-flare" cx="404" cy="216" r="116" fill="url(#field-flare)" />

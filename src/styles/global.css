@@ -976,6 +976,45 @@ summary:focus-visible {
   stroke: rgba(255, 147, 24, 0.58);
 }
 
+.field-trace-system {
+  mix-blend-mode: screen;
+}
+
+.field-trace {
+  fill: none;
+  opacity: 0.82;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.2;
+  stroke-dasharray: 2 74;
+  vector-effect: non-scaling-stroke;
+  animation:
+    field-trace-flow 4.8s linear infinite,
+    field-trace-breathe 2.6s ease-in-out infinite alternate;
+}
+
+.gold-trace {
+  stroke: rgba(255, 229, 156, 0.88);
+  filter: drop-shadow(0 0 8px rgba(255, 173, 33, 0.72));
+}
+
+.smoke-trace {
+  stroke: rgba(232, 221, 193, 0.7);
+  filter: drop-shadow(0 0 8px rgba(232, 221, 193, 0.5));
+}
+
+.trace-b {
+  animation-delay: -1.2s, -0.4s;
+}
+
+.trace-c {
+  animation-delay: -2.4s, -0.8s;
+}
+
+.trace-d {
+  animation-delay: -3.6s, -1.2s;
+}
+
 .flare-system {
   animation: flare-pulse 4.8s ease-in-out infinite;
   transform-origin: 404px 216px;
@@ -983,6 +1022,8 @@ summary:focus-visible {
 
 .field-flare {
   opacity: 0.96;
+  transform-origin: 404px 216px;
+  animation: field-flare-glow 4.2s ease-in-out infinite;
 }
 
 .flare-rays {
@@ -991,7 +1032,7 @@ summary:focus-visible {
   stroke-linecap: round;
   stroke-width: 1.1;
   transform-origin: 404px 216px;
-  animation: flare-ray-breathe 3.8s ease-in-out infinite alternate;
+  animation: flare-ray-orbit 6.2s ease-in-out infinite alternate;
 }
 
 .flare-cross,
@@ -1954,6 +1995,24 @@ summary:focus-visible {
   }
 }
 
+@keyframes field-trace-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -228;
+  }
+}
+
+@keyframes field-trace-breathe {
+  from {
+    opacity: 0.34;
+  }
+  to {
+    opacity: 0.95;
+  }
+}
+
 @keyframes core-pulse {
   0%,
   100% {
@@ -1966,6 +2025,18 @@ summary:focus-visible {
   }
 }
 
+@keyframes field-flare-glow {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(0.965);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.035);
+  }
+}
+
 @keyframes flare-pulse {
   0%,
   100% {
@@ -1975,6 +2046,17 @@ summary:focus-visible {
   50% {
     opacity: 1;
     transform: scale(1.025);
+  }
+}
+
+@keyframes flare-ray-orbit {
+  from {
+    opacity: 0.34;
+    transform: rotate(-1.6deg) scale(0.96);
+  }
+  to {
+    opacity: 0.74;
+    transform: rotate(1.6deg) scale(1.05);
   }
 }
 
