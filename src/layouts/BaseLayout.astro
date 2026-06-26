@@ -10,6 +10,8 @@ interface Props {
 }
 
 const siteName = "The AEther Flow";
+const brandName = "Angry Owl";
+const brandLogoPath = "/assets/brand/main_angryowl_round.png";
 const {
   title = siteName,
   description = "Reader-facing website for The AEther Flow research project.",
@@ -32,16 +34,25 @@ const isActiveNavLink = (href: string, matchPrefixes: string[] = []) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href={brandLogoPath} />
+    <link rel="apple-touch-icon" href={brandLogoPath} />
     <title>{pageTitle}</title>
   </head>
   <body class={bodyClass}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="site-nav" aria-label="Primary navigation">
-        <a class="brand" href="/project/overview/" aria-label="Æther Flow home">
-          <span class="brand-mark" aria-hidden="true">ÆF</span>
-          <span>Æther Flow</span>
+        <a class="brand" href="/project/overview/" aria-label={`${brandName} home`}>
+          <img
+            class="brand-mark"
+            src={brandLogoPath}
+            alt=""
+            width="40"
+            height="40"
+            decoding="async"
+            aria-hidden="true"
+          />
+          <span>{brandName}</span>
         </a>
         <div class="nav-links">
           {siteNavigationLinks.map((link) => {
