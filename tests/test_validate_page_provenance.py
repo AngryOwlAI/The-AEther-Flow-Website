@@ -49,3 +49,35 @@ def test_page_hash_drift_fails_closed() -> None:
     )
 
     assert any("local page sha256 drift" in error for error in errors)
+
+
+def test_upstream_hash_drift_is_left_to_curator() -> None:
+    route_map = validator.load_json(ROUTE_MAP)
+    provenance = validator.load_json(PAGE_PROVENANCE)
+    first_source = provenance["pages"][0]["upstream_sources"][0]
+    broken = {
+        **provenance,
+        "pages": [
+            {
+                **provenance["pages"][0],
+                "upstream_sources": [
+                    {
+                        **first_source,
+                        "sha256": "0" * 64,
+                    },
+                    *provenance["pages"][0]["upstream_sources"][1:],
+                ],
+            },
+            *provenance["pages"][1:],
+        ],
+    }
+
+    errors = validator.validate_page_provenance(
+        broken,
+        route_map,
+        repo_root=REPO_ROOT,
+        source_root=SOURCE_ROOT,
+    )
+
+    assert not any("upstream sha256 drift" in error for error in errors)
+    assert errors == []

@@ -262,10 +262,11 @@ def validate_page_provenance(
                 continue
             source_file = source_root / source_path
             source_sha = source.get("sha256")
-            if source_file.is_file():
-                if not isinstance(source_sha, str) or sha256_file(source_file) != source_sha:
-                    errors.append(f"{source_label}: upstream sha256 drift for {source_path}")
-            elif source.get("omission_reason") is None:
+            if source_sha is not None and (
+                not isinstance(source_sha, str) or not HEX_SHA256.match(source_sha)
+            ):
+                errors.append(f"{source_label}: sha256 must be 64 hex characters or null")
+            if not source_file.is_file() and source.get("omission_reason") is None:
                 errors.append(f"{source_label}: missing omission_reason for unavailable source")
 
     missing = sorted(set(route_map_entries) - seen)

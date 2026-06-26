@@ -10,7 +10,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -279,7 +279,7 @@ def build_snapshot(
     source_commit_date = source_commit_date or (
         git_output(source_root, "show", "-s", "--format=%cI", "HEAD") if source_commit else None
     )
-    today = datetime.now(tz=UTC).date().isoformat()
+    today = datetime.now(tz=timezone.utc).date().isoformat()
     dependency_paths = [
         "research_control/program_state.yaml",
         f"research_control/handoffs/{handoff['handoff_id']}.yaml",

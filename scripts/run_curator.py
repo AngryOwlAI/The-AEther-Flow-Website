@@ -6,22 +6,53 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
 DEFAULT_JSON_REPORT = Path("curator/reports/latest.json")
 DEFAULT_MD_REPORT = Path("curator/reports/latest.md")
+DEFAULT_ACKNOWLEDGEMENT_DIR = Path("curator/acknowledgements")
 CURRENT_STATE_ROUTE = "/project/physics/current-state/"
 HEX_SHA256_LENGTH = 64
+HEX_COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
+HEX_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 REPORT_VERSION = 1
+ALLOWED_SEVERITIES = {"critical", "review_required", "informational"}
+ACK_REQUIRED_FIELDS = {
+    "route_path",
+    "source_path",
+    "severity",
+    "current_commit",
+    "current_sha256",
+    "acknowledged_by",
+    "acknowledged_at",
+    "reason",
+    "expires_at",
+}
 
 
 class CuratorError(ValueError):
     """Raised when curator input files are malformed."""
+
+
+@dataclass(frozen=True)
+class Acknowledgement:
+    route_path: str
+    source_path: str
+    severity: str
+    current_commit: str
+    current_sha256: str
+    acknowledged_by: str
+    acknowledged_at: str
+    reason: str
+    expires_at: str | None
+    path: str
 
 
 @dataclass
@@ -115,6 +146,131 @@ def merge_dependency(
 def validate_source_path(source_path: str, label: str) -> None:
     if not isinstance(source_path, str) or not source_path or not is_safe_relative(source_path):
         raise CuratorError(f"{label}: source path must be a safe relative path")
+
+
+def parse_ack_value(raw_value: str) -> str | None:
+    value = raw_value.strip()
+    if value == "null":
+        return None
+    if (value.startswith('"') and value.endswith('"')) or (
+        value.startswith("'") and value.endswith("'")
+    ):
+        return value[1:-1]
+    return value
+
+
+def parse_acknowledgement_file(path: Path, repo_root: Path) -> Acknowledgement:
+    values: dict[str, str | None] = {}
+    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not raw_line.strip() or raw_line.lstrip().startswith("#"):
+            continue
+        if raw_line.startswith((" ", "\t")) or ":" not in raw_line:
+            raise CuratorError(f"{path}:{line_number}: acknowledgements support top-level scalars only")
+        key, raw_value = raw_line.split(":", 1)
+        key = key.strip()
+        if key not in ACK_REQUIRED_FIELDS:
+            raise CuratorError(f"{path}:{line_number}: unsupported acknowledgement field {key!r}")
+        values[key] = parse_ack_value(raw_value)
+
+    missing = sorted(ACK_REQUIRED_FIELDS - values.keys())
+    if missing:
+        raise CuratorError(f"{path}: missing acknowledgement field(s): {', '.join(missing)}")
+
+    route_path = values["route_path"]
+    source_path = values["source_path"]
+    severity = values["severity"]
+    current_commit = values["current_commit"]
+    current_sha256 = values["current_sha256"]
+    acknowledged_by = values["acknowledged_by"]
+    acknowledged_at = values["acknowledged_at"]
+    reason = values["reason"]
+    expires_at = values["expires_at"]
+
+    if not isinstance(route_path, str) or not route_path.startswith("/") or not route_path.endswith("/"):
+        raise CuratorError(f"{path}: route_path must be a website route ending in '/'")
+    validate_source_path(source_path, f"{path}: source_path")
+    if not isinstance(severity, str) or severity not in ALLOWED_SEVERITIES:
+        raise CuratorError(f"{path}: unsupported severity {severity!r}")
+    if severity == "critical":
+        raise CuratorError(f"{path}: acknowledgements cannot target critical drift")
+    if not isinstance(current_commit, str) or not HEX_COMMIT_RE.match(current_commit):
+        raise CuratorError(f"{path}: current_commit must be a 40-character hex commit")
+    if not isinstance(current_sha256, str) or not HEX_SHA256_RE.match(current_sha256):
+        raise CuratorError(f"{path}: current_sha256 must be a 64-character hex sha256")
+    for key, value in {
+        "acknowledged_by": acknowledged_by,
+        "acknowledged_at": acknowledged_at,
+        "reason": reason,
+    }.items():
+        if not isinstance(value, str) or not value:
+            raise CuratorError(f"{path}: {key} must be a nonempty string")
+    if expires_at is not None:
+        if not isinstance(expires_at, str) or not expires_at:
+            raise CuratorError(f"{path}: expires_at must be null or a nonempty date string")
+        try:
+            expires_on = date.fromisoformat(expires_at[:10])
+        except ValueError as exc:
+            raise CuratorError(f"{path}: expires_at must start with YYYY-MM-DD") from exc
+        if expires_on < datetime.now(tz=timezone.utc).date():
+            raise CuratorError(f"{path}: acknowledgement is expired")
+
+    relative_path = path.resolve().relative_to(repo_root.resolve()).as_posix()
+    return Acknowledgement(
+        route_path=route_path,
+        source_path=source_path,
+        severity=severity,
+        current_commit=current_commit,
+        current_sha256=current_sha256,
+        acknowledged_by=acknowledged_by,
+        acknowledged_at=acknowledged_at,
+        reason=reason,
+        expires_at=expires_at,
+        path=relative_path,
+    )
+
+
+def load_acknowledgements(repo_root: Path, acknowledgement_dir: Path) -> list[Acknowledgement]:
+    path = acknowledgement_dir if acknowledgement_dir.is_absolute() else repo_root / acknowledgement_dir
+    if not path.exists():
+        return []
+    acknowledgements = [
+        parse_acknowledgement_file(candidate, repo_root)
+        for candidate in sorted(path.glob("*.yaml"))
+    ]
+    seen: set[tuple[str, str, str, str, str]] = set()
+    for acknowledgement in acknowledgements:
+        key = acknowledgement_key(acknowledgement)
+        if key in seen:
+            raise CuratorError(f"{acknowledgement.path}: duplicate acknowledgement")
+        seen.add(key)
+    return acknowledgements
+
+
+def acknowledgement_key(acknowledgement: Acknowledgement) -> tuple[str, str, str, str, str]:
+    return (
+        acknowledgement.route_path,
+        acknowledgement.source_path,
+        acknowledgement.severity,
+        acknowledgement.current_commit,
+        acknowledgement.current_sha256,
+    )
+
+
+def drift_ack_key(item: dict[str, Any]) -> tuple[str, str, str, str, str] | None:
+    route_path = item.get("route_path")
+    source_path = item.get("source_path")
+    severity = item.get("severity")
+    current_commit = item.get("current_commit")
+    current_sha256 = item.get("new_sha256")
+    if not all(isinstance(value, str) for value in (
+        route_path,
+        source_path,
+        severity,
+        current_commit,
+        current_sha256,
+    )):
+        return None
+    return (route_path, source_path, severity, current_commit, current_sha256)
 
 
 def collect_page_dependencies(
@@ -441,8 +597,86 @@ def build_report(*, repo_root: Path, source_root: Path) -> dict[str, Any]:
     return report
 
 
+def apply_acknowledgements(
+    report: dict[str, Any],
+    *,
+    repo_root: Path,
+    acknowledgement_dir: Path,
+) -> None:
+    acknowledgements = load_acknowledgements(repo_root, acknowledgement_dir)
+    acknowledgement_index = {
+        acknowledgement_key(acknowledgement): acknowledgement
+        for acknowledgement in acknowledgements
+    }
+    matched_acknowledgements: set[tuple[str, str, str, str, str]] = set()
+
+    for item in report["drift_items"]:
+        severity = item["severity"]
+        if severity == "critical":
+            item["acknowledgement_state"] = "not_allowed"
+            continue
+        if severity == "informational":
+            item["acknowledgement_state"] = "not_required"
+            continue
+        key = drift_ack_key(item)
+        acknowledgement = acknowledgement_index.get(key) if key else None
+        if acknowledgement is None:
+            item["acknowledgement_state"] = "missing"
+        else:
+            item["acknowledgement_state"] = "acknowledged"
+            item["acknowledgement_path"] = acknowledgement.path
+            item["acknowledgement_reason"] = acknowledgement.reason
+            matched_acknowledgements.add(acknowledgement_key(acknowledgement))
+
+    for item in report["dependencies"]:
+        if not item["drift_detected"]:
+            item["acknowledgement_state"] = "not_required"
+
+    unmatched = [
+        acknowledgement
+        for acknowledgement in acknowledgements
+        if acknowledgement_key(acknowledgement) not in matched_acknowledgements
+    ]
+    if unmatched:
+        names = ", ".join(acknowledgement.path for acknowledgement in unmatched)
+        raise CuratorError(
+            "stale acknowledgement(s) do not match current review-required drift: "
+            f"{names}"
+        )
+
+    report["acknowledgement_summary"] = {
+        "acknowledgement_count": len(acknowledgements),
+        "matched_acknowledgement_count": len(matched_acknowledgements),
+        "missing_review_required_count": sum(
+            1
+            for item in report["drift_items"]
+            if item["severity"] == "review_required"
+            and item["acknowledgement_state"] == "missing"
+        ),
+    }
+
+
+def blocking_validation_errors(report: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    for item in report["drift_items"]:
+        route = item["route_path"] or item["source_manifest_id"] or "repo-internal dependency"
+        source_path = item["source_path"]
+        severity = item["severity"]
+        acknowledgement_state = item["acknowledgement_state"]
+        if severity == "critical":
+            errors.append(
+                f"{route}: critical source drift for {source_path}; {item['recommended_action']}"
+            )
+        elif severity == "review_required" and acknowledgement_state != "acknowledged":
+            errors.append(
+                f"{route}: review-required source drift for {source_path} lacks exact acknowledgement"
+            )
+    return errors
+
+
 def markdown_report(report: dict[str, Any]) -> str:
     summary = report["dependency_summary"]
+    acknowledgement_summary = report.get("acknowledgement_summary", {})
     lines = [
         "# Curator Drift Report",
         "",
@@ -459,6 +693,7 @@ def markdown_report(report: dict[str, Any]) -> str:
         f"- Critical drift: {summary['critical_count']}",
         f"- Review-required drift: {summary['review_required_count']}",
         f"- Informational drift: {summary['informational_count']}",
+        f"- Matched acknowledgements: {acknowledgement_summary.get('matched_acknowledgement_count', 0)}",
         "",
         "## Drift Items",
         "",
@@ -512,6 +747,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--source-root", type=Path, default=DEFAULT_SOURCE_ROOT)
     parser.add_argument("--json-report", type=Path, default=DEFAULT_JSON_REPORT)
     parser.add_argument("--markdown-report", type=Path, default=DEFAULT_MD_REPORT)
+    parser.add_argument("--acknowledgement-dir", type=Path, default=DEFAULT_ACKNOWLEDGEMENT_DIR)
     parser.add_argument("--write", action="store_true", help="Write curator report files.")
     parser.add_argument("--check", action="store_true", help="Compare fresh report to checked-in files.")
     return parser.parse_args(argv)
@@ -526,6 +762,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     try:
         report = build_report(repo_root=repo_root, source_root=args.source_root)
+        apply_acknowledgements(
+            report,
+            repo_root=repo_root,
+            acknowledgement_dir=args.acknowledgement_dir,
+        )
         json_text = stable_json(report)
         md_text = markdown_report(report)
     except CuratorError as exc:
@@ -543,6 +784,7 @@ def main(argv: list[str] | None = None) -> int:
         errors = []
         errors.extend(compare_report_file(json_report_path, json_text))
         errors.extend(compare_report_file(markdown_report_path, md_text))
+        errors.extend(blocking_validation_errors(report))
         if errors:
             for error in errors:
                 print(f"ERROR: {error}", file=sys.stderr)
