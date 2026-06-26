@@ -28,7 +28,6 @@ export interface InternalExplainer {
   secondaryLabel: string;
   visualTitle: string;
   visualCaption: string;
-  visualTerms: [string, string, string];
   boundaryLabel: string;
   boundaryTitle: string;
   boundaryBody: string;
@@ -135,7 +134,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Operations control map",
     visualCaption:
       "Visual orientation only: the operational family explains control evidence, not physics truth or claim promotion.",
-    visualTerms: ["route", "check", "receipt"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "Operations explain how work is controlled.",
     boundaryBody:
@@ -217,7 +215,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Parent-child synthesis frame",
     visualCaption:
       "Visual orientation only: child perspectives remain inside one outer AgentJob and do not create independent authority.",
-    visualTerms: ["parent", "child views", "fused output"],
     boundaryLabel: "Authority boundary",
     boundaryTitle: "Parallel perspective does not create parallel authority.",
     boundaryBody:
@@ -324,7 +321,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Director and AgentJob lifecycle",
     visualCaption:
       "Visual orientation only: each state narrows authority for one bounded transaction.",
-    visualTerms: ["decision", "AgentJob", "completion"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "The record chain is evidence, not permission expansion.",
     boundaryBody:
@@ -425,7 +421,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Role routing contract stack",
     visualCaption:
       "Visual orientation only: role labels become current authority only through task-local records and allowlists.",
-    visualTerms: ["role", "record", "allowlist"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "Role labels must not smuggle permissions.",
     boundaryBody:
@@ -506,7 +501,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Validator evidence flow",
     visualCaption:
       "Visual orientation only: checks and receipts are bounded operational evidence.",
-    visualTerms: ["change", "check", "PASS"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "PASS is not a scientific verdict.",
     boundaryBody:
@@ -605,7 +599,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Publication lifecycle",
     visualCaption:
       "Visual orientation only: publication evidence improves readability without changing source authority.",
-    visualTerms: ["brief", "page", "review"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "Publication quality is downstream from source authority.",
     boundaryBody:
@@ -677,7 +670,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Project-system improvement loop",
     visualCaption:
       "Visual orientation only: improvement routing controls project machinery, not scientific claim status.",
-    visualTerms: ["signal", "job", "receipt"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "A repair packet is one bounded project-system action.",
     boundaryBody:
@@ -754,7 +746,6 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     visualTitle: "Technical requirement tiers",
     visualCaption:
       "Visual orientation only: working tools support reproducibility without creating source authority.",
-    visualTerms: ["tool", "source", "check"],
     boundaryLabel: "Operational boundary",
     boundaryTitle: "A working tool is not authorization.",
     boundaryBody:

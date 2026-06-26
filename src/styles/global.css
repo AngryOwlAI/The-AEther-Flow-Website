@@ -1017,16 +1017,6 @@ summary:focus-visible {
   animation: grain-shimmer 3.4s ease-in-out infinite alternate;
 }
 
-.field-labels {
-  fill: var(--overview-muted);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 0;
-  paint-order: stroke;
-  stroke: rgba(0, 1, 7, 0.64);
-  stroke-width: 5px;
-}
-
 .overview-panel {
   margin-top: 2rem;
   border: 1px solid var(--overview-white-line);
@@ -1223,18 +1213,15 @@ summary:focus-visible {
   stroke: var(--overview-white-line);
 }
 
-.detail-svg text {
-  fill: var(--overview-muted);
-  font-size: 15px;
-  font-weight: 800;
-}
-
 .metric-grid,
 .agent-route {
   fill: none;
   stroke-linecap: round;
   stroke-width: 3;
-  animation: detail-flow-breathe 3.6s ease-in-out infinite alternate;
+  stroke-dasharray: 18 24;
+  animation:
+    detail-flow-breathe 3.6s ease-in-out infinite alternate,
+    svg-line-flow 7s linear infinite;
 }
 
 .metric-grid {
@@ -1256,6 +1243,9 @@ summary:focus-visible {
 .detail-nodes {
   fill: var(--overview-signal);
   filter: drop-shadow(0 0 10px rgba(232, 221, 193, 0.58));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-shimmer 3.2s ease-in-out infinite alternate;
 }
 
 .agent-route {
@@ -1272,6 +1262,9 @@ summary:focus-visible {
   stroke: var(--overview-signal);
   stroke-width: 3;
   filter: drop-shadow(0 0 10px rgba(232, 221, 193, 0.42));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-shimmer 3.4s ease-in-out infinite alternate;
 }
 
 .live-state {
@@ -1388,7 +1381,10 @@ summary:focus-visible {
   stroke-linejoin: round;
   stroke-width: 4;
   vector-effect: non-scaling-stroke;
-  animation: detail-flow-breathe 3.8s ease-in-out infinite alternate;
+  stroke-dasharray: 20 28;
+  animation:
+    detail-flow-breathe 3.8s ease-in-out infinite alternate,
+    svg-line-flow 7.6s linear infinite;
 }
 
 .support-line.alternate,
@@ -1415,6 +1411,9 @@ summary:focus-visible {
 .support-node-cores {
   fill: var(--overview-signal);
   filter: drop-shadow(0 0 10px rgba(232, 221, 193, 0.56));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-shimmer 3.6s ease-in-out infinite alternate;
 }
 
 .support-flow-nodes {
@@ -1422,6 +1421,9 @@ summary:focus-visible {
   stroke: var(--overview-signal);
   stroke-width: 3;
   filter: drop-shadow(0 0 12px rgba(232, 221, 193, 0.4));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-shimmer 3.8s ease-in-out infinite alternate;
 }
 
 .support-rings {
@@ -1430,16 +1432,6 @@ summary:focus-visible {
   stroke-width: 1.2;
   transform-origin: center;
   animation: flare-ray-breathe 4.2s ease-in-out infinite alternate;
-}
-
-.support-labels {
-  fill: var(--overview-muted);
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 0;
-  paint-order: stroke;
-  stroke: rgba(0, 0, 0, 0.72);
-  stroke-width: 5px;
 }
 
 .project-support-page main a {
@@ -1603,7 +1595,10 @@ summary:focus-visible {
   stroke-linecap: round;
   stroke-width: 5;
   vector-effect: non-scaling-stroke;
-  animation: detail-flow-breathe 3.8s ease-in-out infinite alternate;
+  stroke-dasharray: 22 30;
+  animation:
+    detail-flow-breathe 3.8s ease-in-out infinite alternate,
+    svg-line-flow 8.2s linear infinite;
 }
 
 .gold-path {
@@ -1618,27 +1613,23 @@ summary:focus-visible {
 .track-figure-core {
   fill: var(--overview-gold);
   filter: drop-shadow(0 0 18px rgba(255, 173, 33, 0.8));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: core-pulse 2.9s ease-in-out infinite;
 }
 
 .track-figure-nodes {
   fill: var(--overview-signal);
   filter: drop-shadow(0 0 12px rgba(232, 221, 193, 0.62));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-shimmer 3.5s ease-in-out infinite alternate;
 }
 
 .track-figure-nodes.hollow-nodes {
   fill: rgba(0, 0, 0, 0.9);
   stroke: var(--overview-signal);
   stroke-width: 4;
-}
-
-.track-page-figure text {
-  fill: var(--overview-muted);
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: 0;
-  paint-order: stroke;
-  stroke: rgba(0, 0, 0, 0.72);
-  stroke-width: 5px;
 }
 
 .track-page-band {
@@ -2006,6 +1997,28 @@ summary:focus-visible {
   to {
     opacity: 0.95;
     transform: translateY(-1.5px);
+  }
+}
+
+@keyframes svg-line-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -96;
+  }
+}
+
+@keyframes node-shimmer {
+  from {
+    opacity: 0.64;
+    filter: drop-shadow(0 0 5px rgba(232, 221, 193, 0.38));
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(255, 230, 172, 0.76));
+    transform: scale(1.04);
   }
 }
 

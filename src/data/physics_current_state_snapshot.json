@@ -1,12 +1,17 @@
 {
-  "active_task_id": "RT-20260614-201",
+  "active_task_id": "RT-20260614-210",
   "blocked_claims": [
     "canonical ontology edit",
     "source-law adoption",
+    "MetricFormAssign_src^{GSC} adoption",
+    "SigScaleCont_src^{GSC} source-law adoption",
+    "MetricData(E) adoption",
     "BranchDisc_src^{GSC} adoption",
     "checker proof authority",
     "arbitrary finite-source-package witness theorem",
     "arbitrary finite-DAG witness theorem",
+    "g_eff definition",
+    "g_eff construction",
     "g_eff adoption",
     "matter coupling",
     "Einstein equations",
@@ -16,21 +21,21 @@
     "future source-extension impossibility",
     "global theory rejection"
   ],
-  "claim_boundary_summary": "Theoretical Continuation Selector classified OB-GEFF-SIGNATURE-SCALE-CONTINUUM-UNDERDETERMINED as derivation-critical missing source-side law/selector work. The current ontology does not derive SigScaleCont_src^{GSC}; adoption remains blocked while same-milestone continuation remains open through an ontology-law-research-packet. No g_eff was constructed or adopted, and downstream GR claims remain blocked.",
-  "current_status": "phase9_geff_obstruction_selector_selects_ontology_law_packet_no_geff",
+  "claim_boundary_summary": "Ontology Formalizer drafted proposal-only MetricFormAssign_src^{GSC} source metric-form assignment source-extension data pending Smuggling Auditor audit. The packet did not adopt any source law, did not adopt MetricData(E), did not adopt SigScaleCont_src^{GSC}, did not construct or adopt g_eff, and did not promote downstream GR claims.",
+  "current_status": "metricformassign_source_metric_form_candidate_constructed_pending_audit_no_geff",
   "derivation_burden": {
     "active_burden_id": "g_eff",
     "active_row": {
-      "accept_criteria": "Run one bounded obstruction-route Theoretical Continuation Selector before repair freeze ontology-law packet or another route",
-      "blocking_burden": "OB-GEFF-SIGNATURE-SCALE-CONTINUUM-UNDERDETERMINED: accepted scoped MetricData(E) evidence does not determine source-only signature scale normalization or continuum transition structure for g_eff",
+      "accept_criteria": "Run one bounded Smuggling Auditor packet to audit proposal-only MetricFormAssign_src GSC for hidden target metric target-atlas proper-time detector benchmark process-authority transition-covariance nondegeneracy and premature g_eff import",
+      "blocking_burden": "Accepted scoped MetricData(E) evidence plus scoped SigScaleCont_src GSC selector evidence/precondition now has only a proposal-only unaudited MetricFormAssign_src GSC candidate for source metric-form assignment",
       "burden_id": "g_eff",
       "current_status": "blocked by missing primitive",
-      "failure_or_freeze_criteria": "Scoped MetricData(E) evidence remains upstream accepted context but no source-side signature-scale-continuum primitive and no g_eff object is supplied",
-      "last_evidence_path": "research_control/tasks/RT-20260614-200/artifacts/229_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_GEFF_CANDIDATE_OR_OBSTRUCTION.tex",
+      "failure_or_freeze_criteria": "OB-GEFF-SOURCE-METRIC-FORM-UNDERDETERMINED remains current post-SigScaleCont obstruction until MetricFormAssign_src GSC survives audit stress and later construction-or-obstruction work",
+      "last_evidence_path": "research_control/tasks/RT-20260614-210/artifacts/239_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_SIGSCALECONT_METRICFORMASSIGN_ONTOLOGY_LAW_PACKET.tex",
       "milestone": "effective_metric_g_eff",
-      "notes": "Current Phase 9 construction route is obstructed locally; no g_eff adoption no matter coupling no Einstein equations no benchmark promotion no completed derivation no future source-extension impossibility and no global theory rejection.",
+      "notes": "Proposal-only MetricFormAssign_src GSC source-extension candidate drafted pending audit. No source-law adoption no MetricData(E) adoption no SigScaleCont adoption no g_eff construction/adoption no matter coupling no Einstein equations no benchmark promotion no completed derivation no future source-extension impossibility and no global theory rejection.",
       "required_object": "g_eff",
-      "updated_at": "2026-06-26T23:58:00Z"
+      "updated_at": "2026-06-27T02:54:00Z"
     },
     "downstream_rows": [
       {
@@ -83,64 +88,64 @@
       }
     ]
   },
-  "latest_handoff_created_at": "2026-06-27T00:12:00Z",
-  "latest_handoff_id": "handoff-0234",
-  "latest_handoff_next_action": "Run one bounded ontology-formalizer@0.2.0 packet under ontology-law-research-packet to draft a proposal-only/draft-control SigScaleCont_src^{GSC} source-side selector-law interface for signature, scale normalization, and source-continuum/transition obligations.",
-  "latest_handoff_summary": "Theoretical Continuation Selector classified OB-GEFF-SIGNATURE-SCALE-CONTINUUM-UNDERDETERMINED as derivation-critical missing source-side law/selector work and selected one bounded ontology-law-research-packet for SigScaleCont_src^{GSC}. Adoption remains blocked while same-milestone continuation remains open.",
-  "next_recommended_action": "Run one bounded ontology-formalizer@0.2.0 packet under ontology-law-research-packet to draft a proposal-only/draft-control source-side SigScaleCont_src^{GSC} selector-law interface for signature, scale normalization, and continuum/transition structure. Do not adopt the law, edit canonical ontology, construct g_eff, derive matter coupling or Einstein equations, promote benchmark status, or claim completed derivation.",
-  "source_commit": "d430f5970d033096922823c428264ebb031eeff0",
-  "source_commit_date": "2026-06-26T15:43:32-06:00",
+  "latest_handoff_created_at": "2026-06-27T02:54:00Z",
+  "latest_handoff_id": "handoff-0243",
+  "latest_handoff_next_action": "Run one bounded smuggling-auditor@0.2.0 packet to audit proposal-only MetricFormAssign_src^{GSC} for hidden target metric import target-atlas import proper-time or detector import benchmark import process-authority laundering transition-covariance overread nondegeneracy overread fail-closed behavior and premature g_eff promotion.",
+  "latest_handoff_summary": "Ontology Formalizer drafted a proposal-only/draft-control MetricFormAssign_src^{GSC} source-side metric-form assignment interface as source-extension data. The candidate is unaudited and unadopted. Adoption remains blocked while same-milestone continuation remains open.",
+  "next_recommended_action": "Run one bounded smuggling-auditor@0.2.0 packet to audit proposal-only MetricFormAssign_src^{GSC} for hidden target metric import target-atlas import proper-time or detector import benchmark import process-authority laundering transition-covariance overread nondegeneracy overread fail-closed behavior and premature g_eff promotion. Do not adopt the law, construct g_eff, or promote downstream GR claims.",
+  "source_commit": "8d227c0a9095641665aff2e0d471732611a4597a",
+  "source_commit_date": "2026-06-26T17:33:13-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "a47dbcd4c830259840ed026b579d95e06643864a3754c163327fbe7ff6e8429b"
+      "sha256": "97587a74c09d181525898ba4f2fd84969cdc5e4ca3bda00be4a2fa4510df8545"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0234.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/research_control/handoffs/handoff-0234.yaml",
-      "path": "research_control/handoffs/handoff-0234.yaml",
-      "sha256": "b3fd5869d5d552a111ee62bd9ba0a7237a3c96a7a9afa212e007009b0d65bf77"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.yaml",
+      "path": "research_control/handoffs/handoff-0243.yaml",
+      "sha256": "799e5c3c580355e01c2d82dd4d71b4d6b80b1ae1551f3ce5ce185ba7c9eb4720"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0234.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/research_control/handoffs/handoff-0234.md",
-      "path": "research_control/handoffs/handoff-0234.md",
-      "sha256": "65b0a5d9d4a0adc4832b54ee18288fab9dfaed45b1a6791b8db9c36ceb6dfbe7"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.md",
+      "path": "research_control/handoffs/handoff-0243.md",
+      "sha256": "8f0a98ce59faf4b557e7b6324adff689a342c4a5fbcf5cf9229cb78ab5f8512d"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
-      "sha256": "bd8d9dd92664f51546bd690f38b730ce8ea284f7c179e23a02177c399e2d301b"
+      "sha256": "a852b0c2fe1a84c785b9be692095c3d0d43b75a34fa988e417c3873ea84927b7"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "5f40493e8679cf0b71fd0082e9146a9764772f674e814b8b289871c607c9e0b1"
+      "sha256": "477d875910b589e36d5072fc1a48396f695b58f74c59773b44889e59dd61f10a"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/research_control/handoffs/handoff-0234.yaml",
-      "label": "research_control/handoffs/handoff-0234.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.yaml",
+      "label": "research_control/handoffs/handoff-0243.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/research_control/handoffs/handoff-0234.md",
-      "label": "research_control/handoffs/handoff-0234.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.md",
+      "label": "research_control/handoffs/handoff-0243.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/d430f5970d033096922823c428264ebb031eeff0/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],

@@ -5,8 +5,8 @@
     {
       "path": "/assets/diagrams/publication-layer-map.svg",
       "kind": "diagram",
-      "bytes": 2224,
-      "sha256": "4a443bd5395e33b6fc30e178b675bbfcaa15d00199cd383d3477d820ec1e4efa",
+      "bytes": 5023,
+      "sha256": "8ab78cb9e866f3ed1ce4078befdbf4146b9cf2642319f580c6b24e2db8137def",
       "title": "Publication Layer Map",
       "source_ref": "source_manifest:publication_layer_map"
     },

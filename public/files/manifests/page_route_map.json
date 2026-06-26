@@ -61,8 +61,8 @@
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0234.yaml",
-        "research_control/handoffs/handoff-0234.md",
+        "research_control/handoffs/handoff-0243.yaml",
+        "research_control/handoffs/handoff-0243.md",
         "research_control/design/gr_derivation_burden_map.md",
         "research_control/design/mathematical_decisiveness_completion_contract.md",
         "research_control/design/obstruction_and_freeze_control.md",

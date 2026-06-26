@@ -252,8 +252,8 @@ export const projectSourceNoticeDefaults = {
     note: "This page presents a checked-in website snapshot of upstream physics control state. It is not source authority, does not auto-refresh during build, and cannot promote draft/control data into adopted physics claims.",
     sourceRefs: [
       "AEther-Flow Project. (2026). research_control/program_state.yaml",
-      "AEther-Flow Project. (2026). research_control/handoffs/handoff-0234.yaml",
-      "AEther-Flow Project. (2026). research_control/handoffs/handoff-0234.md",
+      "AEther-Flow Project. (2026). research_control/handoffs/handoff-0243.yaml",
+      "AEther-Flow Project. (2026). research_control/handoffs/handoff-0243.md",
       "AEther-Flow Project. (2026). research_control/design/gr_derivation_burden_map.md",
       "AEther-Flow Project. (2026). research_control/design/mathematical_decisiveness_completion_contract.md",
       "AEther-Flow Project. (2026). research_control/design/obstruction_and_freeze_control.md",

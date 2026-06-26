@@ -17,6 +17,7 @@
 - Website pages may explain, organize, promote, and link reviewed material, but must not silently strengthen or create source claims.
 - Keep GitHub links available as provenance; prefer internal website routes for primary reader journeys.
 - For ontology documents, registered TeX sources carry source authority and PDFs are generated human-readable derivatives.
+- Visual SVG figures must be animated and must not contain visible embedded text. Put labels and explanations in HTML headings, captions, body copy, ARIA labels, `<title>`, or `<desc>` instead.
 
 ## Definition Of Done
 
@@ -25,6 +26,7 @@
 - Page and asset hashes are regenerated after file changes.
 - `npm run validate` passes, or skipped checks are named with a concrete reason.
 - User-facing route cards and navigation stay internal-first unless a link is explicitly a provenance/source link.
+- SVG policy validation passes for all website SVG artwork in `src/` and `public/assets/`.
 
 ## Core Persona
 
