@@ -1,0 +1,7 @@
+interface:
+  display_name: "PRD to Implementation Plan"
+  short_description: "Convert PRDs into Codex-ready plans"
+  default_prompt: "Use $prd-to-implementation-plan to convert this PRD into a Codex-ready implementation plan."
+
+policy:
+  allow_implicit_invocation: false
