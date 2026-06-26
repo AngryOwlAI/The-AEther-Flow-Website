@@ -25,9 +25,20 @@ ROUTES_REQUIRING_KATEX = {
     "/research/equations/",
     "/research/math-sample/",
 }
+ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT = {
+    "/project/physics/",
+    "/project/ai-research-agent-system/",
+}
+RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA = {
+    "/resources/documents/",
+    "/resources/diagrams/",
+}
 FORBIDDEN_RENDERED_SNIPPETS = {
     "/Volumes/P-SSD/AngryOwl/The-AEther-Flow",
 }
+VISIBLE_ROUTE_PATH_RE = re.compile(
+    r"/project/(?:physics|ai-research-agent-system|operations)/[a-z0-9-]+/"
+)
 
 
 @dataclass(frozen=True)
@@ -49,6 +60,29 @@ class LinkCollector(HTMLParser):
                 continue
             if name in {"href", "src"}:
                 self.links.append(LinkRef(self.source, name, value))
+
+
+class VisibleTextCollector(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self._skip_depth = 0
+        self.text_parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in {"script", "style"}:
+            self._skip_depth += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"script", "style"} and self._skip_depth:
+            self._skip_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if not self._skip_depth:
+            self.text_parts.append(data)
+
+    @property
+    def visible_text(self) -> str:
+        return " ".join(part.strip() for part in self.text_parts if part.strip())
 
 
 def route_for_html(dist_dir: Path, html_path: Path) -> str:
@@ -159,6 +193,36 @@ def validate_no_local_path_leaks(dist_dir: Path) -> list[str]:
     return errors
 
 
+def validate_no_visible_route_path_text(dist_dir: Path) -> list[str]:
+    errors: list[str] = []
+    for route in sorted(ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT):
+        html_path = url_path_to_dist_path(dist_dir, route)
+        parser = VisibleTextCollector()
+        parser.feed(html_path.read_text(encoding="utf-8"))
+        matches = sorted(set(VISIBLE_ROUTE_PATH_RE.findall(parser.visible_text)))
+        if matches:
+            errors.append(f"{route}: visible raw route path text: {', '.join(matches)}")
+    return errors
+
+
+def validate_resource_support_schema(dist_dir: Path) -> list[str]:
+    errors: list[str] = []
+    required_snippets = [
+        'class="project-overview-page project-support-page"',
+        'class="content-band project-support-hero"',
+        'class="support-svg"',
+        "Source authority",
+        "Claim status",
+    ]
+    for route in sorted(RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA):
+        html_path = url_path_to_dist_path(dist_dir, route)
+        text = html_path.read_text(encoding="utf-8")
+        for snippet in required_snippets:
+            if snippet not in text:
+                errors.append(f"{route}: missing resource support schema snippet {snippet!r}")
+    return errors
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run local static-site quality gate checks.")
     parser.add_argument("--dist-dir", type=Path, default=Path("dist"))
@@ -178,6 +242,8 @@ def main() -> int:
     errors.extend(validate_source_notices(dist_dir))
     errors.extend(validate_equation_rendering(dist_dir))
     errors.extend(validate_no_local_path_leaks(dist_dir))
+    errors.extend(validate_no_visible_route_path_text(dist_dir))
+    errors.extend(validate_resource_support_schema(dist_dir))
 
     if errors:
         for error in errors:

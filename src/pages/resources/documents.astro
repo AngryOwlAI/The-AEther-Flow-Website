@@ -16,27 +16,83 @@ const approvedDocumentLabel =
 <BaseLayout
   title="Ontology Documents"
   description="Canonical ontology PDF and TeX downloads for The AEther Flow website."
+  bodyClass="project-overview-page project-support-page"
 >
-  <section class="content-band" aria-labelledby="documents-title">
-    <div class="section-header">
-      <p class="eyebrow">Ontology documents</p>
-      <h1 id="documents-title">Ontology Documents</h1>
-      <p class="lead">
-        This library serves the current canonical ontology PDF and TeX package
-        directly from the website. Registered TeX files carry source authority;
-        PDFs are generated human-readable derivatives.
-      </p>
+  <section class="content-band project-support-hero" aria-labelledby="documents-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">Ontology documents</p>
+        <h1 id="documents-title">Ontology Documents</h1>
+        <p class="lead">
+          This library serves the current canonical ontology PDF and TeX package
+          directly from the website. Registered TeX files carry source authority;
+          PDFs are generated human-readable derivatives.
+        </p>
+      </div>
+      <SourceNotice
+        claimStatus="approved ontology asset index"
+        sourceRefs={[
+          "AEther-Flow Project. (2026). ontology/README.md",
+          "AEther-Flow Project. (2026). ontology/tex/README.md",
+          "AEther-Flow Project. (2026). registries/TEX_SOURCE_REGISTRY.csv",
+        ]}
+        updated="2026-06-26"
+        note="This page indexes committed website copies of the canonical ontology package. It does not create new scientific content or supersede upstream registered TeX authority."
+      />
     </div>
-    <SourceNotice
-      claimStatus="approved ontology asset index"
-      sourceRefs={[
-        "AEther-Flow Project. (2026). ontology/README.md",
-        "AEther-Flow Project. (2026). ontology/tex/README.md",
-        "AEther-Flow Project. (2026). registries/TEX_SOURCE_REGISTRY.csv",
-      ]}
-      updated="2026-06-26"
-      note="This page indexes committed website copies of the canonical ontology package. It does not create new scientific content or supersede upstream registered TeX authority."
-    />
+
+    <figure class="support-figure document-release-flow" aria-labelledby="documents-figure-caption">
+      <svg
+        class="support-svg"
+        viewBox="0 0 520 340"
+        role="img"
+        aria-labelledby="documents-figure-title documents-figure-desc"
+      >
+        <title id="documents-figure-title">Animated ontology document release flow</title>
+        <desc id="documents-figure-desc">
+          Registered TeX sources flow through manifests into public PDF and TeX
+          downloads while source authority stays attached to the source record.
+        </desc>
+        <rect class="support-bg" width="520" height="340" rx="24" />
+        <g class="support-dust" aria-hidden="true">
+          <circle cx="62" cy="74" r="1.2" />
+          <circle cx="120" cy="274" r="1" />
+          <circle cx="186" cy="94" r="0.9" />
+          <circle cx="250" cy="288" r="1.2" />
+          <circle cx="332" cy="68" r="1" />
+          <circle cx="418" cy="262" r="1.1" />
+          <circle cx="474" cy="116" r="0.9" />
+        </g>
+        <g class="support-link-lines" aria-hidden="true">
+          <path class="support-line gold-line" d="M92 92 C154 114, 196 142, 246 170" />
+          <path class="support-line signal-line" d="M92 248 C152 220, 196 198, 246 170" />
+          <path class="support-line gold-line alternate" d="M274 170 C326 126, 368 102, 432 88" />
+          <path class="support-line signal-line alternate" d="M274 170 C334 194, 374 222, 432 252" />
+        </g>
+        <circle class="support-core" cx="260" cy="170" r="34" aria-hidden="true" />
+        <g class="support-nodes" aria-hidden="true">
+          <circle cx="92" cy="92" r="15" />
+          <circle cx="92" cy="248" r="15" />
+          <circle cx="432" cy="88" r="15" />
+          <circle cx="432" cy="252" r="15" />
+        </g>
+        <g class="support-rings" aria-hidden="true">
+          <circle cx="260" cy="170" r="58" />
+          <circle cx="260" cy="170" r="92" />
+        </g>
+        <g class="support-labels">
+          <text x="48" y="52">TeX source</text>
+          <text x="42" y="298">source hash</text>
+          <text x="218" y="158">manifest</text>
+          <text x="370" y="52">PDF reader</text>
+          <text x="368" y="300">TeX download</text>
+        </g>
+      </svg>
+      <figcaption id="documents-figure-caption">
+        Visual orientation only: registered TeX authority, generated PDFs, and
+        website manifests remain distinct.
+      </figcaption>
+    </figure>
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="document-path-title">

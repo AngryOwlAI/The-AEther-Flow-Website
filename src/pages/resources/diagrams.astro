@@ -20,23 +20,77 @@ const approvedDiagramLabel =
 <BaseLayout
   title="Diagram Sample Gallery"
   description="Manifest-backed sample diagram gallery for The AEther Flow website."
+  bodyClass="project-overview-page project-support-page"
 >
-  <section class="content-band" aria-labelledby="diagrams-title">
-    <div class="section-header">
-      <p class="eyebrow">Sample fixtures</p>
-      <h1 id="diagrams-title">Visual orientation assets</h1>
-      <p class="lead">
-        Diagrams are presentation aids. The current gallery asset is a sample
-        fixture for website orientation and manifest validation, not a
-        scientific source artifact.
-      </p>
+  <section class="content-band project-support-hero" aria-labelledby="diagrams-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">Sample fixtures</p>
+        <h1 id="diagrams-title">Visual orientation assets</h1>
+        <p class="lead">
+          Diagrams are presentation aids. The current gallery asset is a sample
+          fixture for website orientation and manifest validation, not a
+          scientific source artifact.
+        </p>
+      </div>
+      <SourceNotice
+        claimStatus="source-index-only"
+        sourceRefs={["source_manifest:publication_layer_map"]}
+        updated="2026-06-25"
+        note="This page presents website-local visual orientation assets with explicit provenance. It does not make diagrams authoritative."
+      />
     </div>
-    <SourceNotice
-      claimStatus="source-index-only"
-      sourceRefs={["source_manifest:publication_layer_map"]}
-      updated="2026-06-25"
-      note="This page presents website-local visual orientation assets with explicit provenance. It does not make diagrams authoritative."
-    />
+
+    <figure class="support-figure diagram-release-flow" aria-labelledby="diagrams-figure-caption">
+      <svg
+        class="support-svg"
+        viewBox="0 0 520 340"
+        role="img"
+        aria-labelledby="diagrams-figure-title diagrams-figure-desc"
+      >
+        <title id="diagrams-figure-title">Animated diagram publication filter</title>
+        <desc id="diagrams-figure-desc">
+          Diagram files move from fixture status through manifest review before
+          they become reader-facing visual aids.
+        </desc>
+        <rect class="support-bg" width="520" height="340" rx="24" />
+        <g class="support-dust" aria-hidden="true">
+          <circle cx="54" cy="64" r="1.1" />
+          <circle cx="106" cy="252" r="0.9" />
+          <circle cx="170" cy="84" r="1" />
+          <circle cx="236" cy="292" r="1.2" />
+          <circle cx="318" cy="74" r="1" />
+          <circle cx="408" cy="270" r="1.1" />
+          <circle cx="470" cy="104" r="0.9" />
+        </g>
+        <g class="support-link-lines" aria-hidden="true">
+          <path class="support-line signal-line" d="M86 180 C148 136, 196 132, 250 162" />
+          <path class="support-line gold-line" d="M86 180 C148 226, 196 220, 250 178" />
+          <path class="support-line signal-line alternate" d="M270 162 C328 128, 374 118, 440 116" />
+          <path class="support-line gold-line alternate" d="M270 178 C330 214, 378 224, 440 228" />
+        </g>
+        <circle class="support-core" cx="260" cy="170" r="34" aria-hidden="true" />
+        <g class="support-flow-nodes" aria-hidden="true">
+          <circle cx="86" cy="180" r="18" />
+          <circle cx="440" cy="116" r="18" />
+          <circle cx="440" cy="228" r="18" />
+        </g>
+        <g class="support-rings" aria-hidden="true">
+          <circle cx="260" cy="170" r="54" />
+          <circle cx="260" cy="170" r="88" />
+        </g>
+        <g class="support-labels">
+          <text x="44" y="116">diagram file</text>
+          <text x="218" y="158">manifest</text>
+          <text x="368" y="84">reader aid</text>
+          <text x="354" y="280">source label</text>
+        </g>
+      </svg>
+      <figcaption id="diagrams-figure-caption">
+        Visual orientation only: diagrams support explanation but do not become
+        source authority.
+      </figcaption>
+    </figure>
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="diagram-status-title">

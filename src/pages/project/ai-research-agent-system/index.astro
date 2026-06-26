@@ -1,5 +1,6 @@
 ---
 import SourceNotice from "../../../components/SourceNotice.astro";
+import ProjectRouteGrid from "../../../components/ProjectRouteGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import {
   projectAiDeepDiveRoutes,
@@ -135,20 +136,7 @@ const journeyLinks = [
       ))}
     </div>
 
-    <div class="planned-route-grid" aria-label="AI research-agent routes">
-      {projectAiDeepDiveRoutes.map((route) => (
-        <article class="planned-route-card">
-          <p>{route.phase} / {route.status}</p>
-          <h3>{route.title}</h3>
-          {route.status === "implemented" ? (
-            <a class="planned-route-link" href={route.href}>{route.href}</a>
-          ) : (
-            <code>{route.href}</code>
-          )}
-          <span>{route.description}</span>
-        </article>
-      ))}
-    </div>
+    <ProjectRouteGrid routes={projectAiDeepDiveRoutes} ariaLabel="AI research-agent routes" />
   </section>
 
   <section class="track-page-band track-page-notice" aria-labelledby="ai-authority-title">

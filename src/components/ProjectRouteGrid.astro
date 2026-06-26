@@ -1,0 +1,36 @@
+---
+interface ProjectRouteCard {
+  title: string;
+  href: string;
+  phase: string;
+  status: string;
+  description: string;
+}
+
+interface Props {
+  routes: ProjectRouteCard[];
+  ariaLabel: string;
+}
+
+const { routes, ariaLabel } = Astro.props;
+---
+
+<div class="planned-route-grid" aria-label={ariaLabel}>
+  {routes.map((route) => (
+    route.status === "implemented" ? (
+      <a class="planned-route-card planned-route-card-link" href={route.href}>
+        <p>{route.phase} / {route.status}</p>
+        <h3>{route.title}</h3>
+        <span>{route.description}</span>
+        <span class="planned-route-action">Open page</span>
+      </a>
+    ) : (
+      <article class="planned-route-card">
+        <p>{route.phase} / {route.status}</p>
+        <h3>{route.title}</h3>
+        <span>{route.description}</span>
+        <span class="planned-route-action planned-route-action-muted">Planned page</span>
+      </article>
+    )
+  ))}
+</div>

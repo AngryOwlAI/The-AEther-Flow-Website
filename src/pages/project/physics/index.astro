@@ -1,5 +1,6 @@
 ---
 import SourceNotice from "../../../components/SourceNotice.astro";
+import ProjectRouteGrid from "../../../components/ProjectRouteGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import {
   projectPhysicsDeepDiveRoutes,
@@ -133,20 +134,7 @@ const journeyLinks = [
       ))}
     </div>
 
-    <div class="planned-route-grid" aria-label="Physics routes">
-      {projectPhysicsDeepDiveRoutes.map((route) => (
-        <article class="planned-route-card">
-          <p>{route.phase} / {route.status}</p>
-          <h3>{route.title}</h3>
-          {route.status === "implemented" ? (
-            <a class="planned-route-link" href={route.href}>{route.href}</a>
-          ) : (
-            <code>{route.href}</code>
-          )}
-          <span>{route.description}</span>
-        </article>
-      ))}
-    </div>
+    <ProjectRouteGrid routes={projectPhysicsDeepDiveRoutes} ariaLabel="Physics routes" />
   </section>
 
   <section class="track-page-band track-page-notice" aria-labelledby="physics-authority-title">
