@@ -66,6 +66,23 @@ Cloudflare Pages settings are documented in:
 docs/deployment/cloudflare-pages.md
 ```
 
+## Documentation
+
+Maintainer-facing documentation starts at:
+
+```text
+docs/README.md
+```
+
+The project feature and functionality operating map is:
+
+```text
+docs/project-features-and-functionality.md
+```
+
+These repository documents are for maintainers and implementation agents. They
+are not exposed in the public website navigation.
+
 ## Local Development
 
 Install dependencies and run the local Astro development server:

@@ -44,6 +44,34 @@ const readerJourneys = [
   },
 ];
 
+const projectCapabilities = [
+  {
+    title: "Follow the physics program",
+    href: "/project/physics/",
+    body: "Move through ontology, exact-GR benchmark boundaries, the open derivation roadmap, current status, and claim gates.",
+  },
+  {
+    title: "Understand the AI research-agent workflow",
+    href: "/project/ai-research-agent-system/",
+    body: "See how bounded tasks, roles, skills, memory, registries, and review discipline organize the research process.",
+  },
+  {
+    title: "Inspect claim boundaries and source authority",
+    href: "/project/source-authority/",
+    body: "Check how website explanations, generated derivatives, validators, registries, and source files differ.",
+  },
+  {
+    title: "Read canonical ontology documents",
+    href: "/resources/documents/",
+    body: "Open PDF derivatives and download registered TeX source files for the current ontology package.",
+  },
+  {
+    title: "Track the current research state",
+    href: "/project/physics/current-state/",
+    body: "Review the checked-in status snapshot for active task, latest handoff, blocked claims, burden, and next action.",
+  },
+];
+
 const physicsMap = `
   <svg class="detail-svg physics-svg" viewBox="0 0 420 220" role="img" aria-label="Animated physics detail map">
     <rect width="420" height="220" rx="18"></rect>
@@ -284,6 +312,32 @@ const agentMap = `
         <a class="track-card-link" href="/project/ai-research-agent-system/">Open AI track</a>
       </article>
     </div>
+  </section>
+
+  <section id="project-capabilities" class="overview-panel" aria-labelledby="project-capabilities-title">
+    <div class="overview-heading">
+      <p class="eyebrow">Project capabilities</p>
+      <h2 id="project-capabilities-title">What the website helps readers do.</h2>
+      <p>
+        These entry points turn the project into practical reader actions:
+        follow the physics program, understand the AI workflow, inspect
+        authority boundaries, read source-backed documents, and track current
+        research state.
+      </p>
+    </div>
+    <div class="link-grid">
+      {projectCapabilities.map((capability) => (
+        <a class="link-card" href={capability.href}>
+          <span>{capability.title}</span>
+          <small>{capability.body}</small>
+        </a>
+      ))}
+    </div>
+    <p class="capability-boundary-note">
+      These capabilities help readers follow the project, inspect documents,
+      and understand workflow. They do not create scientific authority, prove a
+      GR derivation, or replace upstream source records.
+    </p>
   </section>
 
   <section class="overview-panel" aria-labelledby="reader-journeys-title">

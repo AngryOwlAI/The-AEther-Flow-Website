@@ -457,6 +457,14 @@ summary:focus-visible {
   border-top-color: var(--color-gold);
 }
 
+.link-card:nth-child(4) {
+  border-top-color: var(--color-teal);
+}
+
+.link-card:nth-child(5) {
+  border-top-color: var(--color-ruby);
+}
+
 .link-card span {
   color: var(--color-teal-dark);
   font-size: 1.05rem;
@@ -1188,6 +1196,16 @@ summary:focus-visible {
 .track-card-link:focus-visible {
   border-color: var(--overview-signal);
   color: var(--overview-signal);
+}
+
+.capability-boundary-note {
+  margin: 1rem 0 0;
+  border-left: 3px solid var(--overview-gold);
+  background: rgba(255, 173, 33, 0.08);
+  padding: 0.85rem 1rem;
+  color: var(--overview-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 .detail-grid {
