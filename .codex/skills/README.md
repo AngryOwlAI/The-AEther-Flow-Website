@@ -8,6 +8,10 @@ repository.
 - `project-explainer-frontend/`: build AEther-aware informational frontend
   plans and audits from website and upstream source evidence while preserving
   the source-authority boundary.
+- `system-analysis/`: analyze upstream AEther Flow systems, functionality,
+  workflows, roles, or topics into source-grounded Markdown files under
+  `docs/system-analyses/` with embedded styled Mermaid diagrams and explicit
+  claim boundaries.
 - `mermaid-diagram-style/`: create or migrate Mermaid diagrams with the
   website's Angry Owl palette, Inter font stack, dark canvas, semantic classes,
   static PNG rendering workflow, and source-authority boundary.
