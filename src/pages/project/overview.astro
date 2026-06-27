@@ -135,23 +135,23 @@ const agentMap = `
           </desc>
           <defs>
             <radialGradient id="field-flare" cx="52%" cy="49%" r="58%">
-              <stop offset="0%" stop-color="#fff9d9" />
-              <stop offset="14%" stop-color="#ffd56a" stop-opacity="0.96" />
-              <stop offset="34%" stop-color="#ff8b1d" stop-opacity="0.72" />
-              <stop offset="58%" stop-color="#c9bda0" stop-opacity="0.22" />
-              <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+              <stop offset="0%" stop-color="var(--owl-orange-100)" />
+              <stop offset="14%" stop-color="var(--owl-orange-500)" stop-opacity="0.96" />
+              <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.72" />
+              <stop offset="58%" stop-color="var(--owl-cyan-400)" stop-opacity="0.22" />
+              <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
             </radialGradient>
             <linearGradient id="smoke-ribbon" x1="0%" x2="100%" y1="50%" y2="50%">
-              <stop offset="0%" stop-color="#050403" stop-opacity="0" />
-              <stop offset="38%" stop-color="#8c8069" stop-opacity="0.52" />
-              <stop offset="58%" stop-color="#fff4d2" stop-opacity="0.82" />
-              <stop offset="100%" stop-color="#6f6048" stop-opacity="0.12" />
+              <stop offset="0%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+              <stop offset="38%" stop-color="var(--owl-cyan-400)" stop-opacity="0.52" />
+              <stop offset="58%" stop-color="var(--owl-orange-100)" stop-opacity="0.82" />
+              <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
             </linearGradient>
-            <linearGradient id="gold-ribbon" x1="0%" x2="100%" y1="50%" y2="50%">
-              <stop offset="0%" stop-color="#120400" stop-opacity="0" />
-              <stop offset="35%" stop-color="#ff7a00" stop-opacity="0.72" />
-              <stop offset="57%" stop-color="#fff5c4" stop-opacity="0.92" />
-              <stop offset="100%" stop-color="#ff9d00" stop-opacity="0.2" />
+            <linearGradient id="orange-ribbon" x1="0%" x2="100%" y1="50%" y2="50%">
+              <stop offset="0%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+              <stop offset="35%" stop-color="var(--owl-orange-500)" stop-opacity="0.72" />
+              <stop offset="57%" stop-color="var(--owl-orange-100)" stop-opacity="0.92" />
+              <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0.2" />
             </linearGradient>
             <filter id="field-bloom" x="-18%" y="-34%" width="136%" height="168%">
               <feGaussianBlur stdDeviation="7" result="bloom" />
@@ -193,7 +193,7 @@ const agentMap = `
             <path class="ribbon fine" d="M34 338 C166 254, 276 228, 404 218 C516 210, 604 244, 704 308" />
             <path class="ribbon fine alternate" d="M88 124 C196 132, 300 162, 404 216 C512 272, 604 306, 708 318" />
           </g>
-          <g class="field-ribbons gold-field" filter="url(#field-bloom)" aria-hidden="true">
+          <g class="field-ribbons orange-field" filter="url(#field-bloom)" aria-hidden="true">
             <path class="ribbon wash" d="M-28 96 C136 150, 252 202, 404 216 C516 226, 594 150, 724 44" />
             <path class="ribbon bright" d="M-20 110 C142 162, 260 204, 404 216 C520 226, 608 162, 714 70" />
             <path class="ribbon fine" d="M8 376 C142 286, 260 238, 404 218 C522 202, 610 278, 710 372" />
@@ -206,7 +206,7 @@ const agentMap = `
             <path d="M138 82 C238 120, 324 172, 404 216 C494 266, 594 304, 714 342" />
             <path d="M34 356 C168 272, 286 234, 404 216 C496 202, 590 224, 706 270" />
           </g>
-          <g class="plasma-filaments gold-filaments" filter="url(#field-bloom)" aria-hidden="true">
+          <g class="plasma-filaments orange-filaments" filter="url(#field-bloom)" aria-hidden="true">
             <path d="M-24 68 C122 132, 246 188, 404 216 C516 238, 616 168, 724 68" />
             <path d="M30 392 C150 302, 278 242, 404 216 C516 194, 604 260, 718 378" />
             <path d="M108 28 C220 70, 306 146, 404 216 C516 296, 608 280, 724 188" />
@@ -214,9 +214,9 @@ const agentMap = `
             <path d="M468 414 C532 330, 564 248, 612 178 C646 128, 678 88, 724 42" />
           </g>
           <g class="field-trace-system" filter="url(#field-bloom)" aria-hidden="true">
-            <path class="field-trace gold-trace trace-a" d="M-20 110 C142 162, 260 204, 404 216 C520 226, 608 162, 714 70" />
+            <path class="field-trace orange-trace trace-a" d="M-20 110 C142 162, 260 204, 404 216 C520 226, 608 162, 714 70" />
             <path class="field-trace smoke-trace trace-b" d="M-12 306 C130 246, 244 224, 404 216 C498 212, 596 184, 710 118" />
-            <path class="field-trace gold-trace trace-c" d="M30 392 C150 302, 278 242, 404 216 C516 194, 604 260, 718 378" />
+            <path class="field-trace orange-trace trace-c" d="M30 392 C150 302, 278 242, 404 216 C516 194, 604 260, 718 378" />
             <path class="field-trace smoke-trace trace-d" d="M64 172 C182 172, 294 184, 404 216 C512 248, 602 270, 720 282" />
           </g>
           <g class="flare-system" filter="url(#flare-bloom)" aria-hidden="true">

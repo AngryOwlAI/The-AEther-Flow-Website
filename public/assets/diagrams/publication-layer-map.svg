@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
   <title id="title">Publication Layer Map</title>
   <desc id="desc">Animated textless diagram showing source authority, manifests, and reader-facing pages as distinct connected layers.</desc>
+  <!-- Standalone SVG palette maps to owl black, cyan 400, orange 500, orange 600, orange 100, and ivory tokens. -->
   <style>
     .void {
-      fill: #020302;
+      fill: #180000;
     }
 
     .aura {
@@ -14,16 +15,16 @@
     }
 
     .layer {
-      fill: rgba(255, 255, 255, 0.035);
-      stroke: rgba(232, 221, 193, 0.38);
+      fill: rgba(255, 248, 239, 0.035);
+      stroke: rgba(72, 160, 192, 0.38);
       stroke-width: 2;
       transform-box: fill-box;
       transform-origin: center;
       animation: layer-breathe 4.8s ease-in-out infinite alternate;
     }
 
-    .layer.gold {
-      stroke: rgba(229, 183, 69, 0.74);
+    .layer.orange {
+      stroke: rgba(248, 120, 0, 0.74);
       animation-delay: -1.2s;
     }
 
@@ -40,17 +41,17 @@
     }
 
     .flow.signal {
-      stroke: #e8ddc1;
+      stroke: #48a0c0;
     }
 
-    .flow.gold {
-      stroke: #e5b745;
+    .flow.orange {
+      stroke: #f87800;
       animation-delay: -1.4s, -1.4s;
     }
 
     .node {
-      fill: #020302;
-      stroke: #e8ddc1;
+      fill: #180000;
+      stroke: #48a0c0;
       stroke-width: 5;
       filter: url("#bloom");
       transform-box: fill-box;
@@ -58,15 +59,15 @@
       animation: node-shimmer 3.4s ease-in-out infinite alternate;
     }
 
-    .node.gold {
-      fill: #e5b745;
-      stroke: rgba(255, 245, 198, 0.94);
+    .node.orange {
+      fill: #e15c02;
+      stroke: rgba(244, 214, 161, 0.94);
       animation-delay: -0.8s;
     }
 
     .boundary {
       fill: none;
-      stroke: rgba(229, 183, 69, 0.52);
+      stroke: rgba(248, 120, 0, 0.52);
       stroke-width: 1.4;
       stroke-dasharray: 8 14;
       animation: boundary-drift 12s linear infinite;
@@ -141,13 +142,13 @@
   </style>
   <defs>
     <radialGradient id="center-aura" cx="50%" cy="50%" r="58%">
-      <stop offset="0%" stop-color="#fff3bd" stop-opacity="0.52" />
-      <stop offset="42%" stop-color="#e5b745" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#e5b745" stop-opacity="0" />
+      <stop offset="0%" stop-color="#f4d6a1" stop-opacity="0.52" />
+      <stop offset="42%" stop-color="#f87800" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#f87800" stop-opacity="0" />
     </radialGradient>
     <radialGradient id="side-aura" cx="50%" cy="50%" r="56%">
-      <stop offset="0%" stop-color="#e8ddc1" stop-opacity="0.32" />
-      <stop offset="100%" stop-color="#e8ddc1" stop-opacity="0" />
+      <stop offset="0%" stop-color="#48a0c0" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#48a0c0" stop-opacity="0" />
     </radialGradient>
     <filter id="bloom" x="-70%" y="-70%" width="240%" height="240%">
       <feGaussianBlur stdDeviation="5" result="blur" />
@@ -163,17 +164,17 @@
     <ellipse class="aura" cx="170" cy="206" rx="132" ry="88" fill="url(#side-aura)" />
     <ellipse class="aura" cx="790" cy="206" rx="132" ry="88" fill="url(#side-aura)" />
     <rect class="layer" x="66" y="128" width="210" height="152" rx="18" />
-    <rect class="layer gold" x="375" y="128" width="210" height="152" rx="18" />
+    <rect class="layer orange" x="375" y="128" width="210" height="152" rx="18" />
     <rect class="layer" x="684" y="128" width="210" height="152" rx="18" />
     <path class="boundary" d="M56 314 C246 260, 314 326, 480 302 C642 278, 714 336, 904 286" />
     <path class="flow signal" d="M170 204 C246 150, 324 150, 402 204 C482 258, 558 258, 636 204 C704 158, 774 158, 848 204" />
-    <path class="flow gold" d="M166 214 C252 276, 330 276, 410 214 C486 154, 560 154, 638 214 C714 274, 784 274, 852 214" />
+    <path class="flow orange" d="M166 214 C252 276, 330 276, 410 214 C486 154, 560 154, 638 214 C714 274, 784 274, 852 214" />
     <circle class="node" cx="170" cy="204" r="34" />
-    <circle class="node gold" cx="480" cy="210" r="48" />
+    <circle class="node orange" cx="480" cy="210" r="48" />
     <circle class="node" cx="790" cy="204" r="34" />
     <circle class="node" cx="324" cy="151" r="16" />
     <circle class="node" cx="636" cy="269" r="16" />
-    <circle class="node gold" cx="324" cy="270" r="14" />
-    <circle class="node gold" cx="636" cy="151" r="14" />
+    <circle class="node orange" cx="324" cy="270" r="14" />
+    <circle class="node orange" cx="636" cy="151" r="14" />
   </g>
 </svg>

@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generated_at": "2026-06-26T15:52:42.004086+00:00",
+  "generated_at": "2026-06-27T02:46:24+00:00",
   "items": [
     {
       "path": "/assets/diagrams/publication-layer-map.svg",
       "kind": "diagram",
-      "bytes": 5023,
-      "sha256": "8ab78cb9e866f3ed1ce4078befdbf4146b9cf2642319f580c6b24e2db8137def",
+      "bytes": 5178,
+      "sha256": "b07b5e3d549c952c8967f87084915605c8b8c658b3df7a471f681b194b9c64e7",
       "title": "Publication Layer Map",
       "source_ref": "source_manifest:publication_layer_map"
     },

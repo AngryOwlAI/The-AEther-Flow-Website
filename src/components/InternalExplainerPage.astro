@@ -39,16 +39,16 @@ const isOperationsVisual = visualVariant === "operations";
           </desc>
           <defs>
             <radialGradient id="operations-glow" cx="50%" cy="48%" r="70%">
-              <stop offset="0%" stop-color="#fff2c4" stop-opacity="0.68" />
-              <stop offset="36%" stop-color="#ffad21" stop-opacity="0.24" />
-              <stop offset="76%" stop-color="#11100d" stop-opacity="0.16" />
-              <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+              <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.68" />
+              <stop offset="36%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+              <stop offset="76%" stop-color="var(--color-dark-page)" stop-opacity="0.16" />
+              <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
             </radialGradient>
             <linearGradient id="operations-rail" x1="8%" x2="92%" y1="50%" y2="50%">
-              <stop offset="0%" stop-color="#ffad21" stop-opacity="0" />
-              <stop offset="28%" stop-color="#ffad21" stop-opacity="0.84" />
-              <stop offset="66%" stop-color="#fff0bd" stop-opacity="0.78" />
-              <stop offset="100%" stop-color="#e8ddc1" stop-opacity="0" />
+              <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+              <stop offset="28%" stop-color="var(--owl-orange-500)" stop-opacity="0.84" />
+              <stop offset="66%" stop-color="var(--owl-orange-100)" stop-opacity="0.78" />
+              <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
             </linearGradient>
             <filter id="operations-bloom" x="-20%" y="-24%" width="140%" height="148%">
               <feGaussianBlur stdDeviation="4.5" result="operationsBlur" />
@@ -87,9 +87,9 @@ const isOperationsVisual = visualVariant === "operations";
             <path d="M264 244 C286 268, 326 268, 348 244" />
           </g>
           <g class="operations-flow" filter="url(#operations-bloom)" aria-hidden="true">
-            <path class="track-figure-path gold-path operations-flow-path primary" d="M186 118 C228 118, 246 116, 306 116 C370 116, 394 118, 434 118" />
+            <path class="track-figure-path orange-path operations-flow-path primary" d="M186 118 C228 118, 246 116, 306 116 C370 116, 394 118, 434 118" />
             <path class="track-figure-path signal-path operations-flow-path" d="M186 242 C230 242, 250 244, 306 244 C370 244, 394 242, 434 242" />
-            <path class="track-figure-path gold-path operations-flow-path alternate" d="M132 142 C170 178, 228 176, 306 180 C384 184, 446 178, 488 142" />
+            <path class="track-figure-path orange-path operations-flow-path alternate" d="M132 142 C170 178, 228 176, 306 180 C384 184, 446 178, 488 142" />
           </g>
           <circle class="track-figure-core operations-core" cx="306" cy="180" r="38" aria-hidden="true" />
           <g class="track-figure-nodes hollow-nodes operations-nodes" aria-hidden="true">
@@ -106,7 +106,7 @@ const isOperationsVisual = visualVariant === "operations";
           <title id="internal-explainer-figure-title">{page.visualTitle}</title>
           <path class="track-figure-bg" d="M0 0H620V360H0Z" />
           <path class="track-figure-path signal-path" d="M88 180 H214 C254 180, 254 110, 306 110 H532" />
-          <path class="track-figure-path gold-path" d="M88 180 H214 C254 180, 254 250, 306 250 H532" />
+          <path class="track-figure-path orange-path" d="M88 180 H214 C254 180, 254 250, 306 250 H532" />
           <path class="track-figure-path signal-path" d="M306 110 C386 130, 430 172, 532 250" />
           <g class="track-figure-nodes hollow-nodes">
             <circle cx="88" cy="180" r="20" />
