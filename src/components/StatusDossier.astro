@@ -1,0 +1,37 @@
+---
+export interface StatusDossierItem {
+  label: string;
+  title?: string;
+  value?: string | number | null;
+  body?: string;
+  href?: string;
+}
+
+interface Props {
+  items: StatusDossierItem[];
+  ariaLabel: string;
+  className?: string;
+}
+
+const { items, ariaLabel, className = "" } = Astro.props;
+---
+
+<dl class={`status-dossier ${className}`.trim()} aria-label={ariaLabel}>
+  {items.map((item) => (
+    <div class="status-dossier-row">
+      <dt>{item.label}</dt>
+      <dd>
+        {item.href ? (
+          <a href={item.href}>{item.title ?? item.value}</a>
+        ) : (
+          <>
+            {(item.title || item.value !== undefined) && (
+              <strong>{item.title ?? item.value}</strong>
+            )}
+          </>
+        )}
+        {item.body && <span>{item.body}</span>}
+      </dd>
+    </div>
+  ))}
+</dl>

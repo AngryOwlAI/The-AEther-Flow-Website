@@ -1,5 +1,7 @@
 ---
+import EvidenceRail from "./EvidenceRail.astro";
 import SourceNotice from "./SourceNotice.astro";
+import StatusDossier from "./StatusDossier.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import type { InternalExplainer } from "../lib/internalExplainers";
 
@@ -133,15 +135,15 @@ const isOperationsVisual = visualVariant === "operations";
         <h2 id={`section-${sectionIndex}-title`}>{section.title}</h2>
         <p>{section.body}</p>
       </div>
-      <div class="track-status-grid">
-        {section.cards.map((card) => (
-          <article class="track-status-card">
-            <p>{card.label}</p>
-            <h3>{card.title}</h3>
-            <p>{card.body}</p>
-          </article>
-        ))}
-      </div>
+      <StatusDossier
+        items={section.cards.map((card) => ({
+          label: card.label,
+          title: card.title,
+          body: card.body,
+        }))}
+        ariaLabel={`${section.title} status dossier`}
+        className="track-status-grid track-section-dossier"
+      />
     </section>
   ))}
 
@@ -154,14 +156,14 @@ const isOperationsVisual = visualVariant === "operations";
         links remain visible in the provenance section.
       </p>
     </div>
-    <div class="source-link-grid">
-      {page.relatedLinks.map((link) => (
-        <a class="source-link-card" href={link.href}>
-          <span>{link.title}</span>
-          <small>{link.body}</small>
-        </a>
-      ))}
-    </div>
+    <EvidenceRail
+      items={page.relatedLinks.map((link) => ({
+        ...link,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel={`${page.title} related internal routes`}
+      className="source-link-grid route-evidence-rail"
+    />
   </section>
 
   <section class="track-page-band" aria-labelledby="source-provenance-title">
@@ -174,14 +176,14 @@ const isOperationsVisual = visualVariant === "operations";
         authority records they cite.
       </p>
     </div>
-    <div class="source-link-grid">
-      {page.sourceLinks.map((link) => (
-        <a class="source-link-card" href={link.href}>
-          <span>{link.title}</span>
-          <small>{link.body}</small>
-        </a>
-      ))}
-    </div>
+    <EvidenceRail
+      items={page.sourceLinks.map((link) => ({
+        ...link,
+        actionLabel: "Inspect source",
+      }))}
+      ariaLabel={`${page.title} source provenance links`}
+      className="source-link-grid source-evidence-rail"
+    />
   </section>
 
   <section class="track-page-band track-page-notice" aria-labelledby="boundary-title">

@@ -1,5 +1,6 @@
 ---
 import DocumentActions from "../../components/DocumentActions.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { approvedDownloads, ontologyDocuments } from "../../lib/manifests";
@@ -11,6 +12,24 @@ const approvedDocumentLabel =
   approvedDocumentDownloads.length === 1
     ? "approved source-backed document file"
     : "approved source-backed document files";
+
+const documentPathLinks = [
+  {
+    title: "Physics Research",
+    href: "/project/physics/",
+    body: "Ontology, benchmark, open derivation, and claim-gate explainers.",
+  },
+  {
+    title: "AI Research-Agent System",
+    href: "/project/ai-research-agent-system/",
+    body: "Workflow, roles, memory, registries, and validation explainers.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "How to interpret website pages, manifests, derivatives, and upstream records.",
+  },
+];
 ---
 
 <BaseLayout
@@ -98,20 +117,15 @@ const approvedDocumentLabel =
         recorded in the public manifests.
       </p>
     </div>
-    <div class="link-grid">
-      <a class="link-card" href="/project/physics/">
-        <span>Physics Research</span>
-        <small>Ontology, benchmark, open derivation, and claim-gate explainers.</small>
-      </a>
-      <a class="link-card" href="/project/ai-research-agent-system/">
-        <span>AI Research-Agent System</span>
-        <small>Workflow, roles, memory, registries, and validation explainers.</small>
-      </a>
-      <a class="link-card" href="/project/source-authority/">
-        <span>Source authority</span>
-        <small>How to interpret website pages, manifests, derivatives, and upstream records.</small>
-      </a>
-    </div>
+    <EvidenceRail
+      items={documentPathLinks.map((link) => ({
+        ...link,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Document reading path"
+      className="link-grid document-path-rail"
+      ordered
+    />
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="document-status-title">

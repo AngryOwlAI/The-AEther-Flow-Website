@@ -1,5 +1,8 @@
 ---
+import CommandBand from "../../components/CommandBand.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
+import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const physicsDetails = [
@@ -72,6 +75,49 @@ const projectCapabilities = [
   },
 ];
 
+const trackRailItems = [
+  {
+    label: "Physics Research",
+    title: "Exploring an Æther-flow interpretation of relativity.",
+    body: "The physics track studies an ontology, keeps an Exact-GR benchmark as a reference point, and treats the GR-derivation problem as open.",
+    points: [
+      ...physicsDetails,
+      "Public language preserves the distinction between interpretation, benchmark compatibility, open derivation work, and obstruction records.",
+    ],
+    href: "/project/physics/",
+    actionLabel: "Open physics track",
+  },
+  {
+    label: "AI Research-Agent System",
+    title: "Building the AI-assisted workflow used to pursue the research.",
+    body: "The AI track organizes research work through bounded tasks, roles, review discipline, claim gates, and source-first memory.",
+    points: [
+      ...aiDetails,
+      "Public copy explains the system in plain language before internal terms such as AgentJobs, registries, and role contracts.",
+    ],
+    href: "/project/ai-research-agent-system/",
+    actionLabel: "Open AI track",
+  },
+];
+
+const livingProjectDossier = [
+  {
+    label: "Layer",
+    title: "Presentation",
+    body: "The website explains selected public project structure without becoming scientific authority.",
+  },
+  {
+    label: "Refresh model",
+    title: "Reviewed outputs",
+    body: "Public pages should be refreshed from reviewed project outputs, PDFs, source records, and documentation updates.",
+  },
+  {
+    label: "Boundary",
+    title: "No claim promotion",
+    body: "The overview does not prove a GR derivation or replace upstream source records.",
+  },
+];
+
 const physicsMap = `
   <svg class="detail-svg physics-svg" viewBox="0 0 420 220" role="img" aria-label="Animated physics detail map">
     <rect width="420" height="220" rx="18"></rect>
@@ -108,25 +154,23 @@ const agentMap = `
   description="General-public overview for Æther Flow as a dual physics-and-AI research program."
   bodyClass="project-overview-page"
 >
-  <section class="overview-shell" aria-labelledby="overview-title">
-    <div class="overview-hero">
-      <div class="overview-hero-copy">
-        <p class="eyebrow">Dual research program</p>
-        <h1 id="overview-title">Æther Flow</h1>
-        <p class="overview-lead">
-          A dual physics-and-AI research program exploring an Æther-flow
-          interpretation of relativity and the research-agent system built to
-          pursue it.
-        </p>
-        <div class="overview-actions" aria-label="Primary reader actions">
-          <a class="primary-link" href="#overview-paths">Understand the project</a>
-          <a class="secondary-link" href="/project/physics/">Explore physics research</a>
-          <a class="secondary-link" href="/project/ai-research-agent-system/">
-            Explore the AI research system
-          </a>
-        </div>
-      </div>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Dual research program"
+    title="Æther Flow"
+    lead="A dual physics-and-AI research program exploring an Æther-flow interpretation of relativity and the research-agent system built to pursue it."
+    headingLevel="h1"
+    ariaLabelledby="overview-title"
+  >
+    <div class="overview-actions" aria-label="Primary reader actions">
+      <a class="primary-link" href="#overview-paths">Understand the project</a>
+      <a class="secondary-link" href="/project/physics/">Explore physics research</a>
+      <a class="secondary-link" href="/project/ai-research-agent-system/">
+        Explore the AI research system
+      </a>
+    </div>
 
+    <Fragment slot="visual">
       <figure class="field-stage" aria-labelledby="field-stage-caption">
         <svg class="field-map-svg" viewBox="0 0 680 420" role="img" aria-labelledby="field-stage-title field-stage-desc">
           <title id="field-stage-title">Animated two-track Æther Flow luminous field map</title>
@@ -245,136 +289,95 @@ const agentMap = `
           develops the AI-assisted research discipline.
         </figcaption>
       </figure>
-    </div>
-  </section>
+    </Fragment>
+  </CommandBand>
 
-  <div id="overview-paths" class="overview-anchor" aria-hidden="true"></div>
-
-  <section
-    class="overview-panel"
-    aria-labelledby="overview-paths-title"
+  <CommandBand
+    id="overview-paths"
+    className="overview-panel overview-command-band overview-track-command"
+    eyebrow="Two first-class tracks"
+    title="Two paths, one research program."
+    lead="The project structure is the first thing a general reader sees: physics research and the AI research-agent system are equal first-class paths."
   >
-    <div class="overview-heading">
-      <p class="eyebrow">Two first-class tracks</p>
-      <h2 id="overview-paths-title">Two paths, one research program.</h2>
-      <p>
-        The project structure is the first thing a general reader sees:
-        physics research and the AI research-agent system are equal first-class
-        paths.
-      </p>
-    </div>
-    <div class="track-grid">
-      <article class="track-card physics-card">
-        <p class="track-label">Physics Research</p>
-        <h3>Exploring an Æther-flow interpretation of relativity.</h3>
-        <p>
-          The physics track studies an ontology, keeps an Exact-GR benchmark as
-          a reference point, and treats the GR-derivation problem as open.
-        </p>
-        <ul>
-          {physicsDetails.map((item) => <li>{item}</li>)}
-        </ul>
-        <details class="track-detail">
-          <summary>More detail</summary>
-          <div class="detail-grid">
-            <Fragment set:html={physicsMap} />
-            <p>
-              Current public language should preserve the distinction between
-              interpretation, benchmark compatibility, open derivation work, and
-              obstruction records.
-            </p>
-          </div>
-        </details>
-        <a class="track-card-link" href="/project/physics/">Open physics track</a>
-      </article>
+    <EvidenceRail
+      items={trackRailItems}
+      ariaLabel="Primary research tracks"
+      className="overview-track-rail"
+    />
 
-      <article class="track-card ai-card">
-        <p class="track-label">AI Research-Agent System</p>
-        <h3>Building the AI-assisted workflow used to pursue the research.</h3>
-        <p>
-          The AI track organizes research work through bounded tasks, roles,
-          review discipline, claim gates, and source-first memory.
-        </p>
-        <ul>
-          {aiDetails.map((item) => <li>{item}</li>)}
-        </ul>
-        <details class="track-detail">
-          <summary>More detail</summary>
-          <div class="detail-grid">
-            <Fragment set:html={agentMap} />
-            <p>
-              Public copy should explain the system in plain language before
-              introducing internal terms such as AgentJobs, registries, and role
-              contracts.
-            </p>
-          </div>
-        </details>
-        <a class="track-card-link" href="/project/ai-research-agent-system/">Open AI track</a>
-      </article>
-    </div>
-  </section>
+    <Fragment slot="visual">
+      <div class="overview-track-scenes" aria-label="Track detail maps">
+        <figure class="track-scene physics-scene" aria-label="Physics detail map">
+          <Fragment set:html={physicsMap} />
+        </figure>
+        <figure class="track-scene ai-scene" aria-label="AI research-agent detail map">
+          <Fragment set:html={agentMap} />
+        </figure>
+      </div>
+    </Fragment>
+  </CommandBand>
 
-  <section id="project-capabilities" class="overview-panel" aria-labelledby="project-capabilities-title">
-    <div class="overview-heading">
-      <p class="eyebrow">Project capabilities</p>
-      <h2 id="project-capabilities-title">What the website helps readers do.</h2>
-      <p>
-        These entry points turn the project into practical reader actions:
-        follow the physics program, understand the AI workflow, inspect
-        authority boundaries, read source-backed documents, and track current
-        research state.
-      </p>
-    </div>
-    <div class="link-grid">
-      {projectCapabilities.map((capability) => (
-        <a class="link-card" href={capability.href}>
-          <span>{capability.title}</span>
-          <small>{capability.body}</small>
-        </a>
-      ))}
-    </div>
+  <CommandBand
+    id="project-capabilities"
+    className="overview-panel overview-command-band"
+    eyebrow="Project capabilities"
+    title="What the website helps readers do."
+    lead="These entry points turn the project into practical reader actions: follow the physics program, understand the AI workflow, inspect authority boundaries, read source-backed documents, and track current research state."
+  >
+    <EvidenceRail
+      items={projectCapabilities.map((capability) => ({
+        ...capability,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Project capability routes"
+      className="overview-capability-rail"
+      ordered
+    />
     <p class="capability-boundary-note">
       These capabilities help readers follow the project, inspect documents,
       and understand workflow. They do not create scientific authority, prove a
       GR derivation, or replace upstream source records.
     </p>
-  </section>
+  </CommandBand>
 
-  <section class="overview-panel" aria-labelledby="reader-journeys-title">
-    <div class="overview-heading">
-      <p class="eyebrow">Reader journeys</p>
-      <h2 id="reader-journeys-title">Choose the path that matches your question.</h2>
-      <p>
-        The website now keeps the primary reading journey internal. Source
-        repositories remain available for provenance and inspection.
-      </p>
-    </div>
-    <div class="link-grid">
-      {readerJourneys.map((journey) => (
-        <a class="link-card" href={journey.href}>
-          <span>{journey.title}</span>
-          <small>{journey.body}</small>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="overview-panel live-state" aria-labelledby="live-state-title">
-    <div>
-      <p class="eyebrow">Living project</p>
-      <h2 id="live-state-title">The website should follow the source project.</h2>
-      <p>
-        The Æther Flow project changes as the source research repository
-        advances. This website is a public presentation layer intended to be
-        refreshed from reviewed project outputs, PDFs, source records, and
-        documentation updates.
-      </p>
-      <a class="track-card-link" href="/project/source-authority/">Read source authority</a>
-    </div>
-    <SourceNotice
-      claimStatus="explanatory overview"
-      updated="2026-06-25"
-      note="This overview explains the selected public project structure. Future production work should define a sync/update workflow from The-AEther-Flow pushes into website content and manifests."
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Reader journeys"
+    title="Choose the path that matches your question."
+    lead="The website now keeps the primary reading journey internal. Source repositories remain available for provenance and inspection."
+  >
+    <EvidenceRail
+      items={readerJourneys.map((journey) => ({
+        ...journey,
+        actionLabel: "Follow path",
+      }))}
+      ariaLabel="Reader journey routes"
+      className="overview-journey-rail"
+      ordered
     />
-  </section>
+  </CommandBand>
+
+  <CommandBand
+    className="overview-panel overview-command-band live-state"
+    eyebrow="Living project"
+    title="The website should follow the source project."
+    lead="The Æther Flow project changes as the source research repository advances. This website is a public presentation layer intended to be refreshed from reviewed project outputs, PDFs, source records, and documentation updates."
+  >
+    <a class="track-card-link" href="/project/source-authority/">Read source authority</a>
+
+    <Fragment slot="aside">
+      <div class="overview-authority-stack">
+        <StatusDossier
+          items={livingProjectDossier}
+          ariaLabel="Living project status dossier"
+          className="overview-authority-dossier"
+        />
+        <SourceNotice
+          claimStatus="explanatory overview"
+          updated="2026-06-25"
+          note="This overview explains the selected public project structure. Future production work should define a sync/update workflow from The-AEther-Flow pushes into website content and manifests."
+        />
+      </div>
+    </Fragment>
+  </CommandBand>
 </BaseLayout>

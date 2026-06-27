@@ -1,0 +1,47 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  headingLevel?: "h1" | "h2";
+  className?: string;
+  ariaLabelledby?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  lead,
+  headingLevel = "h2",
+  className = "",
+  ariaLabelledby,
+} = Astro.props;
+const fallbackTitleId = `command-band-${title
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-|-$/g, "")}`;
+const titleId = ariaLabelledby ?? (id ? `${id}-title` : fallbackTitleId);
+---
+
+<section
+  id={id}
+  class={`command-band ${className}`.trim()}
+  aria-labelledby={titleId}
+>
+  <div class="command-band-layout">
+    <div class="command-band-copy">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      {headingLevel === "h1" ? (
+        <h1 id={titleId}>{title}</h1>
+      ) : (
+        <h2 id={titleId}>{title}</h2>
+      )}
+      {lead && <p class="command-band-lead">{lead}</p>}
+      <slot />
+    </div>
+    <slot name="visual" />
+    <slot name="aside" />
+  </div>
+</section>

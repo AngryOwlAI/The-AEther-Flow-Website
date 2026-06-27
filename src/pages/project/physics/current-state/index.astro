@@ -1,5 +1,7 @@
 ---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import snapshot from "../../../../data/physics_current_state_snapshot.json";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -161,15 +163,12 @@ const distanceStateCards = [
       </p>
     </div>
 
-    <div class="track-status-grid snapshot-status-grid">
-      {distanceMechanisms.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
+    <EvidenceRail
+      items={distanceMechanisms}
+      ariaLabel="Distance-to-GR mechanism rail"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
 
     <div class="snapshot-two-column">
       <article class="snapshot-data-card">
@@ -192,15 +191,11 @@ const distanceStateCards = [
       </article>
     </div>
 
-    <div class="track-status-grid snapshot-status-grid">
-      {distanceStateCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
+    <StatusDossier
+      items={distanceStateCards}
+      ariaLabel="Current Distance-to-GR state dossier"
+      className="track-status-grid snapshot-status-grid"
+    />
   </section>
 
   <section id="snapshot-status" class="track-page-band" aria-labelledby="snapshot-status-title">
@@ -213,24 +208,17 @@ const distanceStateCards = [
       </p>
     </div>
 
-    <dl class="snapshot-meta-grid">
-      {metadata.map((item) => (
-        <div>
-          <dt>{item.label}</dt>
-          <dd>{item.value}</dd>
-        </div>
-      ))}
-    </dl>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="Snapshot metadata dossier"
+      className="snapshot-meta-grid"
+    />
 
-    <div class="track-status-grid snapshot-status-grid">
-      {statusCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
+    <StatusDossier
+      items={statusCards}
+      ariaLabel="Snapshot status dossier"
+      className="track-status-grid snapshot-status-grid"
+    />
   </section>
 
   <section class="track-page-band" aria-labelledby="snapshot-boundary-title">
@@ -273,15 +261,15 @@ const distanceStateCards = [
       <small>Evidence: {activeBurden.last_evidence_path}</small>
     </article>
 
-    <div class="track-status-grid snapshot-status-grid">
-      {downstreamRows.map((row) => (
-        <article class="track-status-card">
-          <p>{row.burden_id}</p>
-          <h3>{row.required_object}</h3>
-          <p>{row.current_status}. {row.notes}</p>
-        </article>
-      ))}
-    </div>
+    <EvidenceRail
+      items={downstreamRows.map((row) => ({
+        label: row.burden_id,
+        title: row.required_object,
+        body: `${row.current_status}. ${row.notes}`,
+      }))}
+      ariaLabel="Downstream derivation burden rail"
+      className="snapshot-status-grid burden-evidence-rail"
+    />
   </section>
 
   <section class="track-page-band" aria-labelledby="snapshot-blocked-title">
@@ -311,14 +299,16 @@ const distanceStateCards = [
         provided for provenance and review.
       </p>
     </div>
-    <div class="source-link-grid snapshot-source-grid">
-      {snapshot.source_provenance_links.map((link) => (
-        <a class="source-link-card" href={link.href}>
-          <span>{link.label}</span>
-          <small>Pinned upstream source dependency for this reviewed snapshot.</small>
-        </a>
-      ))}
-    </div>
+    <EvidenceRail
+      items={snapshot.source_provenance_links.map((link) => ({
+        title: link.label,
+        href: link.href,
+        body: "Pinned upstream source dependency for this reviewed snapshot.",
+        actionLabel: "Inspect source",
+      }))}
+      ariaLabel="Current-state source provenance rail"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
   </section>
 
   <section class="track-page-band track-page-notice" aria-labelledby="snapshot-authority-title">

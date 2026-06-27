@@ -1,6 +1,8 @@
 ---
 import DownloadList from "../../components/DownloadList.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
+import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   approvedDownloads,
@@ -17,6 +19,24 @@ const approvedCount = approvedDownloads.length;
 const manifestStatusSummary = Object.entries(downloadStatusCounts)
   .map(([status, count]) => `${status}: ${count}`)
   .join(", ");
+
+const assetStatusDossier = [
+  {
+    label: "Current files",
+    title: manifestStatusSummary,
+    body: "These counts come from source_manifest.json approval statuses and the asset manifest cross-reference.",
+  },
+  {
+    label: "Sample fixtures",
+    title: "Path and rendering checks",
+    body: "Remaining sample assets are visual fixtures only; sample PDF and TeX files are no longer part of the public manifest.",
+  },
+  {
+    label: "Ontology package",
+    title: "Approved downloads active",
+    body: "Registered TeX files carry source authority; PDFs are generated human-readable derivatives for direct reading.",
+  },
+];
 ---
 
 <BaseLayout
@@ -142,14 +162,15 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
         resource libraries to inspect current manifest-backed assets.
       </p>
     </div>
-    <div class="link-grid">
-      {resourceGroups.map((group) => (
-        <a class="link-card" href={group.href}>
-          <span>{group.title}</span>
-          <small>{group.body}</small>
-        </a>
-      ))}
-    </div>
+    <EvidenceRail
+      items={resourceGroups.map((group) => ({
+        ...group,
+        actionLabel: "Open resource",
+      }))}
+      ariaLabel="Resource reader paths"
+      className="link-grid resource-path-rail"
+      ordered
+    />
   </section>
 
   <section class="content-band content-band-tight" aria-labelledby="asset-status-title">
@@ -163,32 +184,11 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
         document pairs.
       </p>
     </div>
-    <div class="resource-status-grid">
-      <article>
-        <p>Current files</p>
-        <h3>{manifestStatusSummary}</h3>
-        <span>
-          These counts come from <code>source_manifest.json</code> approval
-          statuses and the asset manifest cross-reference.
-        </span>
-      </article>
-      <article>
-        <p>Sample fixtures</p>
-        <h3>Path and rendering checks</h3>
-        <span>
-          Remaining sample assets are visual fixtures only; sample PDF and TeX
-          files are no longer part of the public manifest.
-        </span>
-      </article>
-      <article>
-        <p>Ontology package</p>
-        <h3>Approved downloads active</h3>
-        <span>
-          Registered TeX files carry source authority; PDFs are generated
-          human-readable derivatives for direct reading.
-        </span>
-      </article>
-    </div>
+    <StatusDossier
+      items={assetStatusDossier}
+      ariaLabel="Downloadable asset status dossier"
+      className="resource-status-grid resource-status-dossier"
+    />
   </section>
 
   <section class="content-band content-band-tight">

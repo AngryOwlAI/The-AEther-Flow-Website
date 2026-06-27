@@ -1,4 +1,5 @@
 ---
+import StatusDossier from "./StatusDossier.astro";
 import type { OntologyDocument } from "../lib/manifests";
 
 interface Props {
@@ -7,6 +8,54 @@ interface Props {
 
 const { documents } = Astro.props;
 const byteFormatter = new Intl.NumberFormat("en-US");
+
+type DossierItem = {
+  label: string;
+  title?: string;
+  value?: string | number | null;
+  body?: string;
+};
+
+const buildDocumentDossier = (document: OntologyDocument): DossierItem[] => {
+  const items: DossierItem[] = [];
+  if (document.pdf) {
+    items.push({
+      label: "PDF bytes",
+      value: byteFormatter.format(document.pdf.bytes),
+    });
+  }
+  if (document.tex) {
+    items.push({
+      label: "TeX bytes",
+      value: byteFormatter.format(document.tex.bytes),
+    });
+  }
+  if (document.tex?.source?.source_authority_status) {
+    items.push({
+      label: "TeX authority",
+      value: document.tex.source.source_authority_status,
+    });
+  }
+  if (document.tex?.source?.claim_status) {
+    items.push({
+      label: "Claim status",
+      value: document.tex.source.claim_status,
+    });
+  }
+  if (document.tex?.source?.sha256) {
+    items.push({
+      label: "TeX SHA-256",
+      value: document.tex.source.sha256,
+    });
+  }
+  if (document.pdf?.source?.sha256) {
+    items.push({
+      label: "PDF SHA-256",
+      value: document.pdf.source.sha256,
+    });
+  }
+  return items;
+};
 ---
 
 <section class="download-section" aria-labelledby="ontology-documents-list-title">
@@ -35,44 +84,11 @@ const byteFormatter = new Intl.NumberFormat("en-US");
             {document.tex && <a class="secondary-link" href={document.tex.path} download>Download TeX</a>}
           </div>
         </div>
-        <dl class="download-meta">
-          {document.pdf && (
-            <div>
-              <dt>PDF bytes</dt>
-              <dd>{byteFormatter.format(document.pdf.bytes)}</dd>
-            </div>
-          )}
-          {document.tex && (
-            <div>
-              <dt>TeX bytes</dt>
-              <dd>{byteFormatter.format(document.tex.bytes)}</dd>
-            </div>
-          )}
-          {document.tex?.source?.source_authority_status && (
-            <div>
-              <dt>TeX authority</dt>
-              <dd>{document.tex.source.source_authority_status}</dd>
-            </div>
-          )}
-          {document.tex?.source?.claim_status && (
-            <div>
-              <dt>Claim status</dt>
-              <dd>{document.tex.source.claim_status}</dd>
-            </div>
-          )}
-          {document.tex?.source?.sha256 && (
-            <div>
-              <dt>TeX SHA-256</dt>
-              <dd>{document.tex.source.sha256}</dd>
-            </div>
-          )}
-          {document.pdf?.source?.sha256 && (
-            <div>
-              <dt>PDF SHA-256</dt>
-              <dd>{document.pdf.source.sha256}</dd>
-            </div>
-          )}
-        </dl>
+        <StatusDossier
+          items={buildDocumentDossier(document)}
+          ariaLabel={`${document.title} document metadata`}
+          className="download-meta document-download-dossier"
+        />
       </article>
     ))}
   </div>

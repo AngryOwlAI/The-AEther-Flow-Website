@@ -44,6 +44,19 @@
   --color-dark-line: color-mix(in srgb, var(--owl-orange-100) 28%, transparent);
   --color-dark-cyan: var(--owl-cyan-400);
   --color-dark-orange: var(--owl-orange-500);
+  --content-card-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-dark-panel) 90%, var(--owl-cyan-900) 10%),
+    color-mix(in srgb, var(--color-dark-panel-strong) 88%, var(--owl-orange-900) 12%)
+  );
+  --content-card-bg-soft: color-mix(in srgb, var(--color-dark-panel) 86%, transparent);
+  --content-card-border: color-mix(in srgb, var(--color-dark-text) 18%, transparent);
+  --content-card-border-strong: color-mix(in srgb, var(--color-dark-orange) 42%, transparent);
+  --content-card-text: var(--color-dark-text);
+  --content-card-muted: var(--color-dark-muted);
+  --content-card-link: var(--color-dark-cyan);
+  --content-card-accent: var(--color-dark-orange);
+  --content-card-shadow: 0 20px 70px color-mix(in srgb, var(--owl-black) 32%, transparent);
 
   /* Temporary compatibility aliases for older route styles during migration. */
   --color-teal: var(--color-primary);
@@ -343,10 +356,10 @@ summary:focus-visible {
 
 .signal-figure {
   margin: 0;
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--content-card-border);
   border-radius: 8px;
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  background: var(--content-card-bg);
+  box-shadow: var(--content-card-shadow);
   overflow: hidden;
 }
 
@@ -355,32 +368,32 @@ summary:focus-visible {
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   min-height: 290px;
-  background: var(--color-line);
+  background: var(--content-card-border);
 }
 
 .signal-grid span {
   display: block;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 58%),
-    var(--color-surface);
+    linear-gradient(135deg, color-mix(in srgb, var(--content-card-link) 24%, transparent), transparent 58%),
+    var(--content-card-bg-soft);
 }
 
 .signal-grid span:nth-child(2n) {
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 58%),
-    var(--color-surface);
+    linear-gradient(135deg, color-mix(in srgb, var(--content-card-accent) 24%, transparent), transparent 58%),
+    var(--content-card-bg-soft);
 }
 
 .signal-grid span:nth-child(3n) {
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--color-accent-vivid) 18%, transparent), transparent 58%),
-    var(--color-surface);
+    linear-gradient(135deg, color-mix(in srgb, var(--owl-orange-100) 18%, transparent), transparent 58%),
+    var(--content-card-bg-soft);
 }
 
 .signal-figure figcaption {
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--content-card-border);
   padding: 1rem;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.95rem;
 }
 
@@ -416,25 +429,33 @@ summary:focus-visible {
 }
 
 .principle-grid article {
-  border-top: 3px solid var(--color-primary);
-  background: var(--color-surface);
+  border: 1px solid var(--content-card-border);
+  border-top: 3px solid var(--content-card-link);
+  border-radius: 8px;
+  background: var(--content-card-bg);
   padding: 1.2rem;
+  box-shadow: var(--content-card-shadow);
 }
 
 .principle-grid article:nth-child(2) {
-  border-color: var(--color-accent);
+  border-top-color: var(--content-card-accent);
 }
 
 .principle-grid article:nth-child(3) {
-  border-color: var(--color-accent-vivid);
+  border-top-color: var(--owl-orange-100);
 }
 
 .principle-grid h3 {
   margin: 0 0 0.45rem;
+  color: var(--content-card-text);
   font-size: 1.05rem;
 }
 
-.principle-grid p,
+.principle-grid p {
+  margin: 0.5rem 0 0;
+  color: var(--content-card-muted);
+}
+
 .technical-content p {
   margin: 0.5rem 0 0;
   color: var(--color-muted);
@@ -457,14 +478,15 @@ summary:focus-visible {
 }
 
 .metadata-list div {
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--content-card-border);
   border-radius: 6px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
   padding: 0.65rem 0.8rem;
+  box-shadow: var(--content-card-shadow);
 }
 
 .metadata-list dt {
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -472,6 +494,7 @@ summary:focus-visible {
 
 .metadata-list dd {
   margin: 0.15rem 0 0;
+  color: var(--content-card-text);
   font-weight: 800;
 }
 
@@ -503,21 +526,23 @@ summary:focus-visible {
 .source-notice {
   max-width: 850px;
   margin-top: 1.5rem;
-  border: 1px solid var(--color-line);
-  border-left: 4px solid var(--color-primary);
+  border: 1px solid var(--content-card-border);
+  border-left: 4px solid var(--content-card-link);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
   padding: 1rem;
+  box-shadow: var(--content-card-shadow);
+  color: var(--content-card-text);
 }
 
 .source-notice p {
   margin: 0.4rem 0 0;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
 }
 
 .source-notice-title {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--content-card-accent);
   font-size: 0.75rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -530,7 +555,7 @@ summary:focus-visible {
 }
 
 .source-notice dt {
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -539,6 +564,7 @@ summary:focus-visible {
 .source-notice dd {
   margin: 0.1rem 0 0;
   overflow-wrap: anywhere;
+  color: var(--content-card-text);
   font-weight: 800;
 }
 
@@ -550,10 +576,15 @@ summary:focus-visible {
 }
 
 .source-ref-list a {
-  color: inherit;
+  color: var(--content-card-link);
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--color-accent-vivid), transparent 35%);
+  text-decoration-color: color-mix(in srgb, var(--content-card-accent), transparent 35%);
   text-underline-offset: 0.16em;
+}
+
+.source-ref-list a:hover,
+.source-ref-list a:focus-visible {
+  color: var(--content-card-accent);
 }
 
 .link-grid {
@@ -568,41 +599,47 @@ summary:focus-visible {
   gap: 0.45rem;
   min-height: 9rem;
   align-content: start;
-  border: 1px solid var(--color-line);
-  border-top: 3px solid var(--color-primary);
+  border: 1px solid var(--content-card-border);
+  border-top: 3px solid var(--content-card-link);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
   padding: 1.1rem;
-  color: var(--color-ink);
+  color: var(--content-card-text);
+  box-shadow: var(--content-card-shadow);
   text-decoration: none;
 }
 
 .link-card:nth-child(2) {
-  border-top-color: var(--color-accent);
+  border-top-color: var(--content-card-accent);
 }
 
 .link-card:nth-child(3) {
-  border-top-color: var(--color-accent-vivid);
+  border-top-color: var(--owl-orange-100);
 }
 
 .link-card:nth-child(4) {
-  border-top-color: var(--color-primary);
+  border-top-color: var(--content-card-link);
 }
 
 .link-card:nth-child(5) {
-  border-top-color: var(--color-accent);
+  border-top-color: var(--content-card-accent);
 }
 
 .link-card span {
-  color: var(--color-primary-hover);
+  color: var(--content-card-link);
   font-size: 1.05rem;
   font-weight: 900;
 }
 
 .link-card small {
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.95rem;
   line-height: 1.55;
+}
+
+.link-card:hover,
+.link-card:focus-visible {
+  border-color: var(--content-card-border-strong);
 }
 
 .resource-status-grid {
@@ -614,24 +651,25 @@ summary:focus-visible {
 
 .resource-status-grid article {
   min-width: 0;
-  border: 1px solid var(--color-line);
-  border-top: 3px solid var(--color-accent-vivid);
+  border: 1px solid var(--content-card-border);
+  border-top: 3px solid var(--owl-orange-100);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
   padding: 1.1rem;
+  box-shadow: var(--content-card-shadow);
 }
 
 .resource-status-grid article:nth-child(2) {
-  border-top-color: var(--color-accent);
+  border-top-color: var(--content-card-accent);
 }
 
 .resource-status-grid article:nth-child(3) {
-  border-top-color: var(--color-primary);
+  border-top-color: var(--content-card-link);
 }
 
 .resource-status-grid p {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--content-card-accent);
   font-size: 0.75rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -639,7 +677,7 @@ summary:focus-visible {
 
 .resource-status-grid h3 {
   margin: 0.35rem 0 0;
-  color: var(--color-primary-hover);
+  color: var(--content-card-text);
   font-size: 1.08rem;
   line-height: 1.25;
 }
@@ -647,7 +685,7 @@ summary:focus-visible {
 .resource-status-grid span {
   display: block;
   margin-top: 0.5rem;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.95rem;
   line-height: 1.55;
 }
@@ -686,19 +724,21 @@ summary:focus-visible {
 }
 
 .timeline-list article {
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--content-card-border);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
   padding: 1rem;
+  box-shadow: var(--content-card-shadow);
 }
 
 .timeline-list h3 {
   margin: 0.2rem 0 0;
+  color: var(--content-card-text);
 }
 
 .timeline-list p {
   margin: 0.45rem 0 0;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
 }
 
 .download-section > .section-header {
@@ -731,10 +771,12 @@ summary:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
   gap: 1.25rem;
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--content-card-border);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
   padding: 1.2rem;
+  box-shadow: var(--content-card-shadow);
+  color: var(--content-card-text);
 }
 
 .download-item h3 {
@@ -742,14 +784,23 @@ summary:focus-visible {
   font-size: 1.2rem;
 }
 
+.download-item h3 a {
+  color: var(--content-card-link);
+}
+
+.download-item h3 a:hover,
+.download-item h3 a:focus-visible {
+  color: var(--content-card-accent);
+}
+
 .download-item p {
   margin: 0.5rem 0 0;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
 }
 
 .download-kind {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--content-card-accent);
   font-size: 0.75rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -766,7 +817,7 @@ summary:focus-visible {
 }
 
 .download-meta dt {
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -775,6 +826,7 @@ summary:focus-visible {
 .download-meta dd {
   margin: 0.1rem 0 0;
   overflow-wrap: anywhere;
+  color: var(--content-card-text);
   font-family:
     "SFMono-Regular", Consolas, "Liberation Mono", ui-monospace, monospace;
   font-size: 0.82rem;
@@ -789,9 +841,10 @@ summary:focus-visible {
 .content-figure {
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--content-card-border);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
+  box-shadow: var(--content-card-shadow);
 }
 
 .content-figure img {
@@ -803,13 +856,13 @@ summary:focus-visible {
 .content-figure figcaption {
   display: grid;
   gap: 0.35rem;
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--content-card-border);
   padding: 1rem;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
 }
 
 .content-figure figcaption span {
-  color: var(--color-ink);
+  color: var(--content-card-text);
   font-weight: 800;
 }
 
@@ -820,9 +873,11 @@ summary:focus-visible {
 .equation-block {
   margin: 1.4rem 0;
   overflow: hidden;
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--content-card-border);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: var(--content-card-bg);
+  box-shadow: var(--content-card-shadow);
+  color: var(--content-card-text);
 }
 
 .equation-scroll {
@@ -831,9 +886,9 @@ summary:focus-visible {
 }
 
 .equation-block figcaption {
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--content-card-border);
   padding: 0.85rem 1rem;
-  color: var(--color-muted);
+  color: var(--content-card-muted);
   font-size: 0.94rem;
 }
 
@@ -848,6 +903,10 @@ summary:focus-visible {
   padding: 1.25rem 0;
   color: var(--color-dark-muted);
   font-size: 0.94rem;
+}
+
+html:has(body.project-overview-page) {
+  overflow-x: clip;
 }
 
 .project-overview-page {
@@ -871,6 +930,7 @@ summary:focus-visible {
     radial-gradient(circle at 82% 72%, color-mix(in srgb, var(--color-dark-orange) 8%, transparent), transparent 24rem),
     linear-gradient(120deg, var(--overview-bg) 0%, var(--color-dark-panel) 48%, var(--color-dark-panel-strong) 100%);
   color: var(--overview-text);
+  overflow-x: clip;
 }
 
 .project-overview-page .site-header,
@@ -2586,6 +2646,319 @@ summary:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.command-band {
+  scroll-margin-top: 5rem;
+}
+
+.command-band-layout {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.command-band-copy {
+  min-width: 0;
+}
+
+.command-band-copy h1,
+.command-band-copy h2 {
+  margin: 0;
+  color: var(--overview-text);
+  line-height: 1;
+}
+
+.command-band-copy h1 {
+  max-width: 11ch;
+  font-size: 6.6rem;
+  text-transform: uppercase;
+}
+
+.command-band-copy h2 {
+  max-width: 14ch;
+  font-size: 3.2rem;
+  line-height: 1.05;
+}
+
+.command-band-lead {
+  max-width: 64ch;
+  margin: 1.2rem 0 0;
+  color: var(--overview-muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.overview-command-hero .command-band-layout {
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.overview-command-band {
+  overflow: hidden;
+  border: 0;
+  border-top: 1px solid var(--overview-white-line);
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--overview-orange) 10%, transparent), transparent 24%, color-mix(in srgb, var(--overview-cyan) 7%, transparent)),
+    color-mix(in srgb, var(--overview-bg) 54%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--overview-orange) 24%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--overview-cyan) 18%, transparent);
+  padding: 2rem 0;
+}
+
+.overview-command-band .command-band-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.overview-track-command .command-band-layout,
+.live-state .command-band-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  align-items: start;
+}
+
+.overview-command-hero .field-stage {
+  border-color: color-mix(in srgb, var(--overview-orange) 24%, transparent);
+  background:
+    radial-gradient(circle at 64% 48%, color-mix(in srgb, var(--overview-orange) 18%, transparent), transparent 15rem),
+    radial-gradient(circle at 32% 46%, color-mix(in srgb, var(--overview-cyan) 9%, transparent), transparent 18rem),
+    transparent;
+}
+
+.overview-track-scenes {
+  display: grid;
+  gap: 1rem;
+}
+
+.track-scene {
+  margin: 0;
+  overflow: hidden;
+  border-left: 2px solid var(--overview-line);
+  background:
+    radial-gradient(circle at 48% 50%, color-mix(in srgb, var(--overview-orange) 10%, transparent), transparent 11rem),
+    color-mix(in srgb, var(--overview-text) 4%, transparent);
+  padding: 0.75rem;
+}
+
+.track-scene.ai-scene {
+  border-left-color: var(--overview-cyan-line);
+}
+
+.track-scene .detail-svg rect {
+  rx: 0;
+  stroke: color-mix(in srgb, var(--overview-text) 10%, transparent);
+}
+
+.evidence-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+  margin-top: 1.4rem;
+  border-top: 1px solid var(--overview-white-line);
+  border-bottom: 1px solid var(--overview-white-line);
+}
+
+.evidence-rail::before {
+  position: absolute;
+  inset: -1px auto -1px 0;
+  width: 2px;
+  background: linear-gradient(var(--overview-orange), var(--overview-cyan));
+  content: "";
+}
+
+.evidence-rail-item {
+  position: relative;
+  min-width: 0;
+  border-right: 1px solid var(--overview-white-line);
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--overview-orange) 9%, transparent), transparent 44%),
+    color-mix(in srgb, var(--color-dark-panel) 58%, transparent);
+  padding: 1rem 1rem 1rem 1.2rem;
+}
+
+.evidence-rail-item::before {
+  position: absolute;
+  top: 1rem;
+  left: -0.34rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  border: 1px solid var(--overview-orange);
+  border-radius: 999px;
+  background: var(--overview-bg);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--overview-orange) 58%, transparent);
+  content: "";
+}
+
+.evidence-rail-item:nth-child(2n)::before {
+  border-color: var(--overview-cyan);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--overview-cyan) 46%, transparent);
+}
+
+.evidence-rail-link {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.evidence-rail-link:hover,
+.evidence-rail-link:focus-visible {
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--overview-orange) 13%, transparent), transparent 44%),
+    color-mix(in srgb, var(--color-dark-panel) 76%, transparent);
+  transform: translateY(-2px);
+}
+
+.evidence-rail-link[href^="http"] {
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--overview-cyan) 9%, transparent), transparent 44%),
+    color-mix(in srgb, var(--color-dark-panel) 54%, transparent);
+}
+
+.evidence-rail-label,
+.evidence-rail-item p:first-child {
+  margin: 0;
+  color: var(--overview-orange);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.evidence-rail-item h3 {
+  margin: 0.38rem 0 0;
+  color: var(--overview-text);
+  font-size: 1.1rem;
+  line-height: 1.22;
+}
+
+.evidence-rail-item p:not(:first-child),
+.evidence-rail-item li {
+  color: var(--overview-muted);
+  line-height: 1.55;
+}
+
+.evidence-rail-item ul {
+  display: grid;
+  gap: 0.38rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evidence-rail-item li {
+  border-left: 2px solid color-mix(in srgb, var(--overview-cyan) 42%, transparent);
+  padding-left: 0.55rem;
+}
+
+.evidence-rail-action {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 0.85rem;
+  border: 1px solid var(--overview-white-line);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--overview-orange) 12%, transparent);
+  padding: 0.28rem 0.42rem;
+  color: var(--overview-orange);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.status-dossier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1px;
+  margin-top: 1.4rem;
+  overflow: hidden;
+  border-top: 1px solid var(--overview-white-line);
+  border-bottom: 1px solid var(--overview-white-line);
+  background: var(--overview-white-line);
+}
+
+.status-dossier-row {
+  min-width: 0;
+  border-left: 2px solid color-mix(in srgb, var(--overview-orange) 58%, transparent);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--overview-orange) 8%, transparent), transparent 56%),
+    color-mix(in srgb, var(--color-dark-panel) 72%, transparent);
+  padding: 0.85rem 0.9rem;
+}
+
+.status-dossier-row:nth-child(2n) {
+  border-left-color: color-mix(in srgb, var(--overview-cyan) 50%, transparent);
+}
+
+.status-dossier dt {
+  margin: 0;
+  color: var(--overview-orange);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.status-dossier dd {
+  display: grid;
+  gap: 0.38rem;
+  margin: 0.3rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.status-dossier strong,
+.status-dossier a {
+  color: var(--overview-text);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.status-dossier span {
+  color: var(--overview-muted);
+  line-height: 1.5;
+}
+
+.overview-authority-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.overview-authority-dossier {
+  margin-top: 0;
+}
+
+.track-section-dossier,
+.status-dossier.track-status-grid,
+.status-dossier.snapshot-status-grid,
+.status-dossier.resource-status-grid,
+.status-dossier.download-meta {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.evidence-rail.source-link-grid,
+.evidence-rail.planned-route-grid,
+.evidence-rail.link-grid,
+.evidence-rail.snapshot-status-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.source-link-card,
+.planned-route-card,
+.track-status-card {
+  border-width: 0 1px 1px 2px;
+  border-left-color: color-mix(in srgb, var(--overview-orange) 58%, transparent);
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--overview-orange) 8%, transparent), transparent 58%),
+    color-mix(in srgb, var(--color-dark-panel) 64%, transparent);
+}
+
+.source-link-card:nth-child(2n),
+.planned-route-card:nth-child(2n),
+.track-status-card:nth-child(2n) {
+  border-left-color: color-mix(in srgb, var(--overview-cyan) 48%, transparent);
+}
+
 @keyframes dust-breathe {
   from {
     opacity: 0.38;
@@ -2846,7 +3219,9 @@ summary:focus-visible {
   .project-overview-page .primary-link:hover,
   .project-overview-page .primary-link:focus-visible,
   .project-overview-page .secondary-link:hover,
-  .project-overview-page .secondary-link:focus-visible {
+  .project-overview-page .secondary-link:focus-visible,
+  .project-overview-page .evidence-rail-link:hover,
+  .project-overview-page .evidence-rail-link:focus-visible {
     transform: none;
   }
 }
@@ -2941,6 +3316,9 @@ summary:focus-visible {
   .overview-hero,
   .project-support-hero,
   .track-page-hero,
+  .overview-command-hero .command-band-layout,
+  .overview-track-command .command-band-layout,
+  .live-state .command-band-layout,
   .track-grid,
   .detail-grid,
   .live-state,
@@ -2962,6 +3340,7 @@ summary:focus-visible {
   }
 
   .overview-hero-copy h1,
+  .command-band-copy h1,
   .project-support-page .section-header h1,
   .track-page-hero-copy h1 {
     font-size: 3.2rem;
@@ -2969,14 +3348,34 @@ summary:focus-visible {
   }
 
   .overview-heading h2,
+  .command-band-copy h2,
   .live-state h2,
   .track-page-heading h2,
   .track-page-notice h2 {
     font-size: 2.25rem;
   }
 
-  .overview-panel {
+  .overview-panel,
+  .overview-command-band {
     padding: 1rem;
+  }
+
+  .evidence-rail,
+  .status-dossier,
+  .evidence-rail.source-link-grid,
+  .evidence-rail.planned-route-grid,
+  .evidence-rail.link-grid,
+  .evidence-rail.snapshot-status-grid,
+  .status-dossier.track-status-grid,
+  .status-dossier.snapshot-status-grid,
+  .status-dossier.resource-status-grid,
+  .status-dossier.download-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .evidence-rail-item {
+    border-right: 0;
+    border-bottom: 1px solid var(--overview-white-line);
   }
 
   .track-card {
