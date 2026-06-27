@@ -2704,7 +2704,7 @@ html:has(body.project-overview-page) {
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--overview-orange) 24%, transparent),
     inset 0 -1px 0 color-mix(in srgb, var(--overview-cyan) 18%, transparent);
-  padding: 2rem 0;
+  padding-block: 2rem;
 }
 
 .overview-command-band .command-band-layout {
