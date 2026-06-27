@@ -4,7 +4,7 @@
   <!-- Standalone SVG palette maps to owl black, cyan 400, orange 500, orange 600, orange 100, and ivory tokens. -->
   <style>
     .void {
-      fill: #180000;
+      fill: #020302;
     }
 
     .aura {
@@ -50,7 +50,7 @@
     }
 
     .node {
-      fill: #180000;
+      fill: #020302;
       stroke: #48a0c0;
       stroke-width: 5;
       filter: url("#bloom");

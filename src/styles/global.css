@@ -12,7 +12,7 @@
   --owl-orange-500: #f87800;
   --owl-orange-100: #f4d6a1;
   --owl-ink: #270b01;
-  --owl-black: #180000;
+  --owl-black: #000000;
   --owl-ivory: #fff8ef;
   --owl-white: #ffffff;
 
@@ -37,8 +37,8 @@
   --color-accent-soft: color-mix(in srgb, var(--owl-orange-500) 16%, transparent);
   --color-cyan-soft: color-mix(in srgb, var(--owl-cyan-400) 14%, transparent);
   --color-dark-page: var(--owl-black);
-  --color-dark-panel: #0f0805;
-  --color-dark-panel-strong: #160b06;
+  --color-dark-panel: #050403;
+  --color-dark-panel-strong: #080401;
   --color-dark-text: var(--owl-ivory);
   --color-dark-muted: #d6c3b4;
   --color-dark-line: color-mix(in srgb, var(--owl-orange-100) 28%, transparent);

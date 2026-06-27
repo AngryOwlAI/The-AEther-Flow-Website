@@ -10,7 +10,7 @@
       "title": "Publication Layer Map",
       "source_path": "website-fixtures/publication-layer-map.svg",
       "approval_status": "sample",
-      "sha256": "b07b5e3d549c952c8967f87084915605c8b8c658b3df7a471f681b194b9c64e7",
+      "sha256": "f693017f6d3f683d2a4362d6338175d1ee2b4738f9595c9bda06e1e1bd02084d",
       "generated_by": "Phase 5 website content buildout",
       "generated_at": "2026-06-25T00:00:00-06:00",
       "license_or_usage_note": "Website scaffold fixture for visual orientation.",

@@ -2,15 +2,15 @@
   "acknowledgement_summary": {
     "acknowledgement_count": 0,
     "matched_acknowledgement_count": 0,
-    "missing_review_required_count": 0
+    "missing_review_required_count": 2
   },
-  "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
-  "current_commit_date": "2026-06-26T20:37:31-06:00",
+  "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
+  "current_commit_date": "2026-06-26T20:49:38-06:00",
   "dependencies": [
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -31,7 +31,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -52,7 +52,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -73,7 +73,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -94,7 +94,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -115,7 +115,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -136,7 +136,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -157,7 +157,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -178,7 +178,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -199,7 +199,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -220,7 +220,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -241,7 +241,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -262,7 +262,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -283,7 +283,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -304,7 +304,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -325,7 +325,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": "approved",
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "source_manifest"
       ],
@@ -346,7 +346,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -368,7 +368,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -390,7 +390,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -412,7 +412,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -434,7 +434,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -456,7 +456,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -478,7 +478,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -500,7 +500,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -522,7 +522,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -544,7 +544,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -566,7 +566,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -588,7 +588,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -610,7 +610,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -632,7 +632,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -654,7 +654,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -676,7 +676,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -698,7 +698,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -720,7 +720,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -742,7 +742,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -764,7 +764,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -784,18 +784,18 @@
       "title": "Claim Gates"
     },
     {
-      "acknowledgement_state": "not_required",
+      "acknowledgement_state": "not_allowed",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map",
         "physics_current_state_snapshot"
       ],
       "dependency_type": "page_route_source",
-      "drift_detected": false,
+      "drift_detected": true,
       "impact_class": "current_state_source",
-      "new_sha256": "cdc4625d009801b57ef56f81c4f22bc9c9315b4174f2143166347a371b0f3711",
+      "new_sha256": "2f7e4b987a92d52c2cb8b5453a6d200568b552ab5d0f79feaa867b34930b1b00",
       "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
       "old_sha256": "cdc4625d009801b57ef56f81c4f22bc9c9315b4174f2143166347a371b0f3711",
       "recommended_action": "Refresh the current-state snapshot and review the public page boundary.",
@@ -803,22 +803,22 @@
       "severity": "critical",
       "source_manifest_id": null,
       "source_path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "status": "in_sync",
+      "status": "drift",
       "title": "Current Physics State"
     },
     {
-      "acknowledgement_state": "not_required",
+      "acknowledgement_state": "not_allowed",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map",
         "physics_current_state_snapshot"
       ],
       "dependency_type": "page_route_source",
-      "drift_detected": false,
+      "drift_detected": true,
       "impact_class": "current_state_source",
-      "new_sha256": "3f2636a03420ccd15ee75b234e5ed80535ef514d96a21e65e9af17d897366080",
+      "new_sha256": "ce18062e5e12f0c68b39d21cf5fd27a0268ab8c9b2ba49cd53aedd89a5bd4c01",
       "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
       "old_sha256": "3f2636a03420ccd15ee75b234e5ed80535ef514d96a21e65e9af17d897366080",
       "recommended_action": "Refresh the current-state snapshot and review the public page boundary.",
@@ -826,13 +826,13 @@
       "severity": "critical",
       "source_manifest_id": null,
       "source_path": "registries/DISTANCE_TO_GR_LEDGER.csv",
-      "status": "in_sync",
+      "status": "drift",
       "title": "Current Physics State"
     },
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -854,7 +854,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -876,7 +876,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -898,7 +898,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -920,7 +920,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -942,7 +942,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "physics_current_state_snapshot"
       ],
@@ -963,7 +963,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "physics_current_state_snapshot"
       ],
@@ -982,18 +982,18 @@
       "title": "Current Physics State"
     },
     {
-      "acknowledgement_state": "not_required",
+      "acknowledgement_state": "not_allowed",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map",
         "physics_current_state_snapshot"
       ],
       "dependency_type": "page_route_source",
-      "drift_detected": false,
+      "drift_detected": true,
       "impact_class": "current_state_source",
-      "new_sha256": "e3de09d2298d9e4d7c65a1067457293668d3763650caf536d3281afa0d5bddf6",
+      "new_sha256": "a71f4d611eb68adb41a5dcaf6ab7ee28ff418149feaf40c5a5a86bd11be03b2d",
       "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
       "old_sha256": "e3de09d2298d9e4d7c65a1067457293668d3763650caf536d3281afa0d5bddf6",
       "recommended_action": "Refresh the current-state snapshot and review the public page boundary.",
@@ -1001,13 +1001,13 @@
       "severity": "critical",
       "source_manifest_id": null,
       "source_path": "research_control/program_state.yaml",
-      "status": "in_sync",
+      "status": "drift",
       "title": "Current Physics State"
     },
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1029,7 +1029,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1051,7 +1051,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1073,7 +1073,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1095,7 +1095,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1117,7 +1117,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1137,17 +1137,17 @@
       "title": "Resources"
     },
     {
-      "acknowledgement_state": "not_required",
+      "acknowledgement_state": "missing",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
       ],
       "dependency_type": "page_route_source",
-      "drift_detected": false,
+      "drift_detected": true,
       "impact_class": "mapped_route_source",
-      "new_sha256": "8be681630cd1dc60af944aa8ec44c0cc3e741ad744e46a57912d86532b4fb66d",
+      "new_sha256": "9ad30eb6854529d6420a8523400b7dd23bbbad90965a25266a120388b62df3b0",
       "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
       "old_sha256": "8be681630cd1dc60af944aa8ec44c0cc3e741ad744e46a57912d86532b4fb66d",
       "recommended_action": "Review the affected internal page against its upstream source dependency.",
@@ -1155,13 +1155,13 @@
       "severity": "review_required",
       "source_manifest_id": null,
       "source_path": "registries/TEX_SOURCE_REGISTRY.csv",
-      "status": "in_sync",
+      "status": "drift",
       "title": "Resources"
     },
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1183,7 +1183,7 @@
     {
       "acknowledgement_state": "not_required",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
@@ -1203,17 +1203,17 @@
       "title": "Ontology Documents"
     },
     {
-      "acknowledgement_state": "not_required",
+      "acknowledgement_state": "missing",
       "approval_status": null,
-      "current_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
       "declared_in": [
         "page_provenance",
         "page_route_map"
       ],
       "dependency_type": "page_route_source",
-      "drift_detected": false,
+      "drift_detected": true,
       "impact_class": "mapped_route_source",
-      "new_sha256": "8be681630cd1dc60af944aa8ec44c0cc3e741ad744e46a57912d86532b4fb66d",
+      "new_sha256": "9ad30eb6854529d6420a8523400b7dd23bbbad90965a25266a120388b62df3b0",
       "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
       "old_sha256": "8be681630cd1dc60af944aa8ec44c0cc3e741ad744e46a57912d86532b4fb66d",
       "recommended_action": "Review the affected internal page against its upstream source dependency.",
@@ -1221,33 +1221,147 @@
       "severity": "review_required",
       "source_manifest_id": null,
       "source_path": "registries/TEX_SOURCE_REGISTRY.csv",
-      "status": "in_sync",
+      "status": "drift",
       "title": "Ontology Documents"
     }
   ],
   "dependency_summary": {
-    "critical_count": 0,
+    "critical_count": 3,
     "declared_dependency_count": 56,
-    "drift_count": 0,
+    "drift_count": 5,
     "informational_count": 0,
-    "review_required_count": 0
+    "review_required_count": 2
   },
   "diagnostics": [
     {
       "diagnostic_type": "source_summary_lag",
-      "message": "current_frontier.md does not mention the latest program_state handoff handoff-0257.",
+      "message": "current_frontier.md does not mention the latest program_state handoff handoff-0258.",
       "severity": "informational",
       "source_path": "research_control/current_frontier.md"
     },
     {
       "diagnostic_type": "source_summary_lag",
-      "message": "current_frontier.md does not mention the active program_state task RT-20260614-224.",
+      "message": "current_frontier.md does not mention the active program_state task RT-20260614-225.",
       "severity": "informational",
       "source_path": "research_control/current_frontier.md"
     }
   ],
-  "drift_items": [],
-  "generated_at": "2026-06-26T20:37:31-06:00",
+  "drift_items": [
+    {
+      "acknowledgement_state": "not_allowed",
+      "approval_status": null,
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map",
+        "physics_current_state_snapshot"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": true,
+      "impact_class": "current_state_source",
+      "new_sha256": "2f7e4b987a92d52c2cb8b5453a6d200568b552ab5d0f79feaa867b34930b1b00",
+      "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "old_sha256": "cdc4625d009801b57ef56f81c4f22bc9c9315b4174f2143166347a371b0f3711",
+      "recommended_action": "Refresh the current-state snapshot and review the public page boundary.",
+      "route_path": "/project/physics/current-state/",
+      "severity": "critical",
+      "source_manifest_id": null,
+      "source_path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "status": "drift",
+      "title": "Current Physics State"
+    },
+    {
+      "acknowledgement_state": "not_allowed",
+      "approval_status": null,
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map",
+        "physics_current_state_snapshot"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": true,
+      "impact_class": "current_state_source",
+      "new_sha256": "ce18062e5e12f0c68b39d21cf5fd27a0268ab8c9b2ba49cd53aedd89a5bd4c01",
+      "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "old_sha256": "3f2636a03420ccd15ee75b234e5ed80535ef514d96a21e65e9af17d897366080",
+      "recommended_action": "Refresh the current-state snapshot and review the public page boundary.",
+      "route_path": "/project/physics/current-state/",
+      "severity": "critical",
+      "source_manifest_id": null,
+      "source_path": "registries/DISTANCE_TO_GR_LEDGER.csv",
+      "status": "drift",
+      "title": "Current Physics State"
+    },
+    {
+      "acknowledgement_state": "not_allowed",
+      "approval_status": null,
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map",
+        "physics_current_state_snapshot"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": true,
+      "impact_class": "current_state_source",
+      "new_sha256": "a71f4d611eb68adb41a5dcaf6ab7ee28ff418149feaf40c5a5a86bd11be03b2d",
+      "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "old_sha256": "e3de09d2298d9e4d7c65a1067457293668d3763650caf536d3281afa0d5bddf6",
+      "recommended_action": "Refresh the current-state snapshot and review the public page boundary.",
+      "route_path": "/project/physics/current-state/",
+      "severity": "critical",
+      "source_manifest_id": null,
+      "source_path": "research_control/program_state.yaml",
+      "status": "drift",
+      "title": "Current Physics State"
+    },
+    {
+      "acknowledgement_state": "missing",
+      "approval_status": null,
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": true,
+      "impact_class": "mapped_route_source",
+      "new_sha256": "9ad30eb6854529d6420a8523400b7dd23bbbad90965a25266a120388b62df3b0",
+      "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "old_sha256": "8be681630cd1dc60af944aa8ec44c0cc3e741ad744e46a57912d86532b4fb66d",
+      "recommended_action": "Review the affected internal page against its upstream source dependency.",
+      "route_path": "/resources/",
+      "severity": "review_required",
+      "source_manifest_id": null,
+      "source_path": "registries/TEX_SOURCE_REGISTRY.csv",
+      "status": "drift",
+      "title": "Resources"
+    },
+    {
+      "acknowledgement_state": "missing",
+      "approval_status": null,
+      "current_commit": "61dd2ec11ca2fad09431b50d223559c02f05e634",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": true,
+      "impact_class": "mapped_route_source",
+      "new_sha256": "9ad30eb6854529d6420a8523400b7dd23bbbad90965a25266a120388b62df3b0",
+      "old_commit": "44013a3ea0cb4fc35553e3e1b29288724a879ba3",
+      "old_sha256": "8be681630cd1dc60af944aa8ec44c0cc3e741ad744e46a57912d86532b4fb66d",
+      "recommended_action": "Review the affected internal page against its upstream source dependency.",
+      "route_path": "/resources/documents/",
+      "severity": "review_required",
+      "source_manifest_id": null,
+      "source_path": "registries/TEX_SOURCE_REGISTRY.csv",
+      "status": "drift",
+      "title": "Ontology Documents"
+    }
+  ],
+  "generated_at": "2026-06-26T20:49:38-06:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "version": 1
 }
