@@ -77,18 +77,83 @@ const journeyLinks = [
       </div>
     </div>
 
-    <figure class="track-page-figure" aria-labelledby="physics-figure-caption">
-      <svg viewBox="0 0 620 360" role="img" aria-labelledby="physics-figure-title">
-        <title id="physics-figure-title">Physics track boundary map</title>
+    <figure class="track-page-figure physics-figure" aria-labelledby="physics-figure-caption">
+      <svg
+        class="track-map-svg physics-boundary-svg"
+        viewBox="0 0 620 360"
+        role="img"
+        aria-labelledby="physics-figure-title physics-figure-desc"
+      >
+        <title id="physics-figure-title">Animated physics claim boundary map</title>
+        <desc id="physics-figure-desc">
+          Ontology substrate, exact-GR benchmark boundary, open derivation burden,
+          and obstruction control records are shown as separate animated layers.
+        </desc>
+        <defs>
+          <radialGradient id="physics-glow" cx="50%" cy="48%" r="70%">
+            <stop offset="0%" stop-color="#fff3c3" stop-opacity="0.72" />
+            <stop offset="34%" stop-color="#ffad21" stop-opacity="0.24" />
+            <stop offset="76%" stop-color="#13110d" stop-opacity="0.16" />
+            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="physics-gold-rail" x1="12%" x2="88%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#ffad21" stop-opacity="0" />
+            <stop offset="34%" stop-color="#ffad21" stop-opacity="0.9" />
+            <stop offset="64%" stop-color="#fff0bc" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#e8ddc1" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="physics-signal-rail" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#e8ddc1" stop-opacity="0" />
+            <stop offset="28%" stop-color="#e8ddc1" stop-opacity="0.78" />
+            <stop offset="72%" stop-color="#fff6dc" stop-opacity="0.72" />
+            <stop offset="100%" stop-color="#ffad21" stop-opacity="0" />
+          </linearGradient>
+          <filter id="physics-bloom" x="-20%" y="-24%" width="140%" height="148%">
+            <feGaussianBlur stdDeviation="4.5" result="physicsBlur" />
+            <feMerge>
+              <feMergeNode in="physicsBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
         <rect class="track-figure-bg" width="620" height="360" rx="24" />
-        <path class="track-figure-path gold-path" d="M72 242 C176 156, 276 154, 376 212 C454 258, 520 226, 552 138" />
-        <path class="track-figure-path signal-path" d="M78 128 C184 178, 286 192, 382 142 C456 104, 516 112, 550 170" />
-        <circle class="track-figure-core" cx="312" cy="180" r="42" />
-        <g class="track-figure-nodes">
-          <circle cx="112" cy="108" r="12" />
-          <circle cx="176" cy="252" r="12" />
-          <circle cx="456" cy="102" r="12" />
-          <circle cx="510" cy="246" r="12" />
+        <circle class="physics-glow" cx="310" cy="178" r="194" />
+        <g class="physics-grid" aria-hidden="true">
+          <path d="M72 72 H548" />
+          <path d="M72 144 H548" />
+          <path d="M72 216 H548" />
+          <path d="M72 288 H548" />
+          <path d="M148 50 V310" />
+          <path d="M310 50 V310" />
+          <path d="M472 50 V310" />
+        </g>
+        <g class="physics-substrate" filter="url(#physics-bloom)" aria-hidden="true">
+          <path d="M70 232 C142 170, 214 256, 300 184 C386 112, 454 188, 552 116" />
+          <path d="M76 126 C156 190, 230 106, 312 170 C392 232, 466 142, 548 202" />
+          <path d="M110 282 C184 230, 260 240, 336 274 C414 310, 488 272, 548 236" />
+        </g>
+        <g class="physics-benchmark" aria-hidden="true">
+          <ellipse cx="310" cy="178" rx="146" ry="82" />
+          <ellipse cx="310" cy="178" rx="196" ry="118" />
+        </g>
+        <g class="physics-burden-rails" filter="url(#physics-bloom)" aria-hidden="true">
+          <path class="track-figure-path gold-path physics-flow-path primary" d="M92 238 C168 190, 224 172, 310 178 C398 184, 454 162, 528 108" />
+          <path class="track-figure-path signal-path physics-flow-path" d="M92 122 C176 160, 242 206, 310 178 C384 148, 452 156, 528 218" />
+          <path class="track-figure-path gold-path physics-flow-path alternate" d="M146 286 C228 248, 270 222, 310 178 C354 130, 404 94, 486 78" />
+        </g>
+        <g class="physics-control-markers" aria-hidden="true">
+          <path d="M94 88 L126 72 L158 88 L158 124 L126 140 L94 124 Z" />
+          <path d="M462 232 L494 216 L526 232 L526 268 L494 284 L462 268 Z" />
+        </g>
+        <circle class="track-figure-core physics-burden-core" cx="310" cy="178" r="40" aria-hidden="true" />
+        <g class="track-figure-nodes physics-boundary-nodes" aria-hidden="true">
+          <circle cx="92" cy="238" r="7" />
+          <circle cx="92" cy="122" r="7" />
+          <circle cx="146" cy="286" r="7" />
+          <circle cx="310" cy="178" r="9" />
+          <circle cx="528" cy="108" r="7" />
+          <circle cx="528" cy="218" r="7" />
+          <circle cx="486" cy="78" r="7" />
         </g>
       </svg>
       <figcaption id="physics-figure-caption">

@@ -72,18 +72,80 @@ const journeyLinks = [
       </div>
     </div>
 
-    <figure class="track-page-figure" aria-labelledby="ai-figure-caption">
-      <svg viewBox="0 0 620 360" role="img" aria-labelledby="ai-figure-title">
-        <title id="ai-figure-title">AI research-agent workflow map</title>
+    <figure class="track-page-figure ai-system-figure" aria-labelledby="ai-figure-caption">
+      <svg
+        class="track-map-svg ai-system-svg"
+        viewBox="0 0 620 360"
+        role="img"
+        aria-labelledby="ai-figure-title ai-figure-desc"
+      >
+        <title id="ai-figure-title">Animated governed AI workflow map</title>
+        <desc id="ai-figure-desc">
+          Bounded task frame, role routing, validators, memory retrieval, review
+          gates, and human accountability are shown as separate workflow layers.
+        </desc>
+        <defs>
+          <radialGradient id="ai-system-glow" cx="48%" cy="48%" r="70%">
+            <stop offset="0%" stop-color="#fff2c3" stop-opacity="0.66" />
+            <stop offset="36%" stop-color="#ffad21" stop-opacity="0.22" />
+            <stop offset="76%" stop-color="#11100d" stop-opacity="0.16" />
+            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="ai-system-rail" x1="8%" x2="92%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#e8ddc1" stop-opacity="0" />
+            <stop offset="28%" stop-color="#e8ddc1" stop-opacity="0.82" />
+            <stop offset="60%" stop-color="#fff4d1" stop-opacity="0.74" />
+            <stop offset="100%" stop-color="#ffad21" stop-opacity="0" />
+          </linearGradient>
+          <filter id="ai-system-bloom" x="-20%" y="-24%" width="140%" height="148%">
+            <feGaussianBlur stdDeviation="4.5" result="aiSystemBlur" />
+            <feMerge>
+              <feMergeNode in="aiSystemBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
         <rect class="track-figure-bg" width="620" height="360" rx="24" />
-        <path class="track-figure-path signal-path" d="M82 180 H194 C242 180, 242 104, 292 104 H528" />
-        <path class="track-figure-path gold-path" d="M82 180 H194 C242 180, 242 256, 292 256 H528" />
-        <g class="track-figure-nodes hollow-nodes">
-          <circle cx="82" cy="180" r="24" />
-          <circle cx="292" cy="104" r="24" />
-          <circle cx="292" cy="256" r="24" />
-          <circle cx="528" cy="104" r="24" />
-          <circle cx="528" cy="256" r="24" />
+        <circle class="ai-system-glow" cx="304" cy="178" r="194" />
+        <g class="ai-system-grid" aria-hidden="true">
+          <path d="M72 84 H548" />
+          <path d="M72 180 H548" />
+          <path d="M72 276 H548" />
+          <path d="M154 54 V306" />
+          <path d="M304 54 V306" />
+          <path d="M458 54 V306" />
+        </g>
+        <g class="ai-system-frame" aria-hidden="true">
+          <rect x="118" y="76" width="374" height="210" rx="26" />
+          <rect x="144" y="102" width="322" height="158" rx="18" />
+        </g>
+        <g class="ai-memory-stack" aria-hidden="true">
+          <rect x="74" y="92" width="86" height="34" rx="9" />
+          <rect x="74" y="152" width="86" height="34" rx="9" />
+          <rect x="74" y="212" width="86" height="34" rx="9" />
+        </g>
+        <g class="ai-review-gates" aria-hidden="true">
+          <path d="M306 84 L346 108 L346 156 L306 180 L266 156 L266 108 Z" />
+          <path d="M306 180 L346 204 L346 252 L306 276 L266 252 L266 204 Z" />
+        </g>
+        <g class="ai-human-boundary" aria-hidden="true">
+          <rect x="474" y="96" width="72" height="56" rx="14" />
+          <rect x="474" y="208" width="72" height="56" rx="14" />
+        </g>
+        <g class="ai-system-routes" filter="url(#ai-system-bloom)" aria-hidden="true">
+          <path class="track-figure-path signal-path ai-system-flow-path primary" d="M160 109 C214 110, 242 130, 306 132 C370 134, 412 118, 474 124" />
+          <path class="track-figure-path gold-path ai-system-flow-path" d="M160 169 C220 170, 248 190, 306 228 C360 264, 412 240, 474 236" />
+          <path class="track-figure-path signal-path ai-system-flow-path alternate" d="M160 229 C220 214, 242 164, 306 132 C370 100, 418 174, 474 236" />
+        </g>
+        <circle class="track-figure-core ai-system-core" cx="306" cy="180" r="38" aria-hidden="true" />
+        <g class="track-figure-nodes hollow-nodes ai-system-nodes" aria-hidden="true">
+          <circle cx="160" cy="109" r="14" />
+          <circle cx="160" cy="169" r="14" />
+          <circle cx="160" cy="229" r="14" />
+          <circle cx="306" cy="132" r="14" />
+          <circle cx="306" cy="228" r="14" />
+          <circle cx="474" cy="124" r="14" />
+          <circle cx="474" cy="236" r="14" />
         </g>
       </svg>
       <figcaption id="ai-figure-caption">

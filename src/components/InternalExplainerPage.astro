@@ -5,9 +5,11 @@ import type { InternalExplainer } from "../lib/internalExplainers";
 
 interface Props {
   page: InternalExplainer;
+  visualVariant?: "operations";
 }
 
-const { page } = Astro.props;
+const { page, visualVariant } = Astro.props;
+const isOperationsVisual = visualVariant === "operations";
 ---
 
 <BaseLayout title={page.title} description={page.description} bodyClass="project-overview-page project-track-page">
@@ -22,22 +24,99 @@ const { page } = Astro.props;
       </div>
     </div>
 
-    <figure class="track-page-figure" aria-labelledby="internal-explainer-figure-caption">
-      <svg viewBox="0 0 620 360" role="img" aria-labelledby="internal-explainer-figure-title">
-        <title id="internal-explainer-figure-title">{page.visualTitle}</title>
-        <rect class="track-figure-bg" width="620" height="360" rx="24" />
-        <path class="track-figure-path signal-path" d="M88 180 H214 C254 180, 254 110, 306 110 H532" />
-        <path class="track-figure-path gold-path" d="M88 180 H214 C254 180, 254 250, 306 250 H532" />
-        <path class="track-figure-path signal-path" d="M306 110 C386 130, 430 172, 532 250" />
-        <g class="track-figure-nodes hollow-nodes">
-          <circle cx="88" cy="180" r="20" />
-          <circle cx="306" cy="110" r="20" />
-          <circle cx="306" cy="250" r="20" />
-          <circle cx="532" cy="110" r="20" />
-          <circle cx="532" cy="250" r="20" />
-        </g>
-        <circle class="track-figure-core" cx="306" cy="180" r="42" />
-      </svg>
+    <figure class={`track-page-figure ${isOperationsVisual ? "operations-figure" : ""}`} aria-labelledby="internal-explainer-figure-caption">
+      {isOperationsVisual ? (
+        <svg
+          class="track-map-svg operations-control-svg"
+          viewBox="0 0 620 360"
+          role="img"
+          aria-labelledby="internal-explainer-figure-title internal-explainer-figure-desc"
+        >
+          <title id="internal-explainer-figure-title">{page.visualTitle}</title>
+          <desc id="internal-explainer-figure-desc">
+            Director decision, AgentJob allowlist, validators, completion record,
+            and handoff evidence are shown as a bounded operational control map.
+          </desc>
+          <defs>
+            <radialGradient id="operations-glow" cx="50%" cy="48%" r="70%">
+              <stop offset="0%" stop-color="#fff2c4" stop-opacity="0.68" />
+              <stop offset="36%" stop-color="#ffad21" stop-opacity="0.24" />
+              <stop offset="76%" stop-color="#11100d" stop-opacity="0.16" />
+              <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="operations-rail" x1="8%" x2="92%" y1="50%" y2="50%">
+              <stop offset="0%" stop-color="#ffad21" stop-opacity="0" />
+              <stop offset="28%" stop-color="#ffad21" stop-opacity="0.84" />
+              <stop offset="66%" stop-color="#fff0bd" stop-opacity="0.78" />
+              <stop offset="100%" stop-color="#e8ddc1" stop-opacity="0" />
+            </linearGradient>
+            <filter id="operations-bloom" x="-20%" y="-24%" width="140%" height="148%">
+              <feGaussianBlur stdDeviation="4.5" result="operationsBlur" />
+              <feMerge>
+                <feMergeNode in="operationsBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <rect class="track-figure-bg" width="620" height="360" rx="24" />
+          <circle class="operations-glow" cx="306" cy="180" r="190" />
+          <g class="operations-grid" aria-hidden="true">
+            <path d="M74 78 H546" />
+            <path d="M74 146 H546" />
+            <path d="M74 214 H546" />
+            <path d="M74 282 H546" />
+            <path d="M176 52 V308" />
+            <path d="M306 52 V308" />
+            <path d="M436 52 V308" />
+          </g>
+          <g class="operations-records" aria-hidden="true">
+            <rect x="78" y="94" width="108" height="48" rx="11" />
+            <rect x="78" y="218" width="108" height="48" rx="11" />
+            <rect x="434" y="94" width="108" height="48" rx="11" />
+            <rect x="434" y="218" width="108" height="48" rx="11" />
+          </g>
+          <g class="operations-job-frame" aria-hidden="true">
+            <rect x="228" y="92" width="156" height="174" rx="22" />
+            <path d="M252 124 H360" />
+            <path d="M252 180 H360" />
+            <path d="M252 236 H360" />
+          </g>
+          <g class="operations-gates" aria-hidden="true">
+            <path d="M306 64 L348 90 L348 142 L306 168 L264 142 L264 90 Z" />
+            <path d="M306 192 L348 218 L348 270 L306 296 L264 270 L264 218 Z" />
+          </g>
+          <g class="operations-flow" filter="url(#operations-bloom)" aria-hidden="true">
+            <path class="track-figure-path gold-path operations-flow-path primary" d="M186 118 C228 118, 246 116, 306 116 C370 116, 394 118, 434 118" />
+            <path class="track-figure-path signal-path operations-flow-path" d="M186 242 C230 242, 250 244, 306 244 C370 244, 394 242, 434 242" />
+            <path class="track-figure-path gold-path operations-flow-path alternate" d="M132 142 C170 178, 228 176, 306 180 C384 184, 446 178, 488 142" />
+          </g>
+          <circle class="track-figure-core operations-core" cx="306" cy="180" r="38" aria-hidden="true" />
+          <g class="track-figure-nodes hollow-nodes operations-nodes" aria-hidden="true">
+            <circle cx="186" cy="118" r="13" />
+            <circle cx="186" cy="242" r="13" />
+            <circle cx="306" cy="116" r="13" />
+            <circle cx="306" cy="244" r="13" />
+            <circle cx="434" cy="118" r="13" />
+            <circle cx="434" cy="242" r="13" />
+          </g>
+        </svg>
+      ) : (
+        <svg viewBox="0 0 620 360" role="img" aria-labelledby="internal-explainer-figure-title">
+          <title id="internal-explainer-figure-title">{page.visualTitle}</title>
+          <rect class="track-figure-bg" width="620" height="360" rx="24" />
+          <path class="track-figure-path signal-path" d="M88 180 H214 C254 180, 254 110, 306 110 H532" />
+          <path class="track-figure-path gold-path" d="M88 180 H214 C254 180, 254 250, 306 250 H532" />
+          <path class="track-figure-path signal-path" d="M306 110 C386 130, 430 172, 532 250" />
+          <g class="track-figure-nodes hollow-nodes">
+            <circle cx="88" cy="180" r="20" />
+            <circle cx="306" cy="110" r="20" />
+            <circle cx="306" cy="250" r="20" />
+            <circle cx="532" cy="110" r="20" />
+            <circle cx="532" cy="250" r="20" />
+          </g>
+          <circle class="track-figure-core" cx="306" cy="180" r="42" />
+        </svg>
+      )}
       <figcaption id="internal-explainer-figure-caption">{page.visualCaption}</figcaption>
     </figure>
   </section>

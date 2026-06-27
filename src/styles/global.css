@@ -1405,8 +1405,73 @@ summary:focus-visible {
   height: auto;
 }
 
+.resources-manifest-figure {
+  background:
+    radial-gradient(circle at 48% 48%, rgba(255, 173, 33, 0.16), transparent 13rem),
+    radial-gradient(circle at 78% 34%, rgba(232, 221, 193, 0.09), transparent 11rem),
+    #000000;
+}
+
+.resources-manifest-svg {
+  overflow: visible;
+}
+
 .support-bg {
   fill: #000000;
+}
+
+.resources-glow {
+  fill: url("#resources-glow");
+  transform-origin: 260px 170px;
+  animation: authority-glow-pulse 5.2s ease-in-out infinite;
+}
+
+.resources-manifest-stack rect,
+.resources-approved-docs path,
+.resources-fixture-lane rect {
+  fill: rgba(5, 4, 3, 0.9);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.resources-manifest-stack rect {
+  stroke: rgba(255, 173, 33, 0.62);
+  animation: authority-source-breathe 4.8s ease-in-out infinite alternate;
+}
+
+.resources-manifest-stack rect:nth-child(2) {
+  animation-delay: -1.4s;
+}
+
+.resources-manifest-stack rect:nth-child(3) {
+  animation-delay: -2.8s;
+}
+
+.resources-approved-docs path {
+  stroke: rgba(232, 221, 193, 0.52);
+  animation: authority-reader-breathe 5.2s ease-in-out infinite alternate;
+}
+
+.resources-approved-docs path:nth-child(2) {
+  animation-delay: -2.2s;
+}
+
+.resources-fixture-lane rect {
+  stroke: rgba(232, 221, 193, 0.24);
+  stroke-dasharray: 7 10;
+  animation: authority-boundary-scan 7.4s linear infinite;
+}
+
+.resources-flow-path {
+  stroke-dasharray: 10 30;
+  stroke-width: 4.5;
+  animation:
+    detail-flow-breathe 3.8s ease-in-out infinite alternate,
+    authority-flow-dash 6.4s linear infinite;
+}
+
+.resources-flow-path.primary {
+  stroke: url("#resources-rail");
 }
 
 .support-dust {
@@ -1634,6 +1699,29 @@ summary:focus-visible {
     #000000;
 }
 
+.physics-figure,
+.ai-system-figure,
+.operations-figure {
+  background:
+    radial-gradient(circle at 45% 48%, rgba(255, 173, 33, 0.16), transparent 13rem),
+    radial-gradient(circle at 76% 42%, rgba(232, 221, 193, 0.09), transparent 12rem),
+    #000000;
+}
+
+.ai-system-figure {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(232, 221, 193, 0.12), transparent 12rem),
+    radial-gradient(circle at 78% 40%, rgba(255, 173, 33, 0.13), transparent 12rem),
+    #000000;
+}
+
+.operations-figure {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 173, 33, 0.15), transparent 13rem),
+    radial-gradient(circle at 30% 34%, rgba(232, 221, 193, 0.08), transparent 11rem),
+    #000000;
+}
+
 .track-figure-bg {
   fill: #000000;
 }
@@ -1682,6 +1770,208 @@ summary:focus-visible {
 
 .source-authority-svg {
   overflow: visible;
+}
+
+.track-map-svg {
+  overflow: visible;
+}
+
+.physics-glow,
+.ai-system-glow,
+.operations-glow {
+  animation: authority-glow-pulse 5.2s ease-in-out infinite;
+}
+
+.physics-glow {
+  fill: url("#physics-glow");
+  transform-origin: 310px 178px;
+}
+
+.ai-system-glow {
+  fill: url("#ai-system-glow");
+  transform-origin: 304px 178px;
+}
+
+.operations-glow {
+  fill: url("#operations-glow");
+  transform-origin: 306px 180px;
+}
+
+.physics-grid path,
+.ai-system-grid path,
+.operations-grid path {
+  fill: none;
+  stroke: rgba(232, 221, 193, 0.08);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.physics-substrate path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.physics-substrate path:nth-child(1) {
+  stroke: rgba(255, 173, 33, 0.38);
+  stroke-width: 14;
+  animation: field-drift-gold 7.4s ease-in-out infinite alternate;
+}
+
+.physics-substrate path:nth-child(2) {
+  stroke: rgba(232, 221, 193, 0.24);
+  stroke-width: 9;
+  animation: field-drift-smoke 6.8s ease-in-out infinite alternate;
+}
+
+.physics-substrate path:nth-child(3) {
+  stroke: rgba(255, 225, 153, 0.2);
+  stroke-dasharray: 3 24;
+  stroke-width: 3;
+  animation:
+    field-trace-flow 5.8s linear infinite,
+    field-trace-breathe 3s ease-in-out infinite alternate;
+}
+
+.physics-benchmark ellipse {
+  fill: none;
+  stroke: rgba(232, 221, 193, 0.3);
+  stroke-dasharray: 9 13;
+  stroke-linecap: round;
+  stroke-width: 1.7;
+  transform-origin: 310px 178px;
+  vector-effect: non-scaling-stroke;
+  animation: authority-boundary-scan 8s linear infinite;
+}
+
+.physics-benchmark ellipse:nth-child(2) {
+  opacity: 0.62;
+  animation-delay: -2.8s;
+}
+
+.physics-flow-path,
+.ai-system-flow-path,
+.operations-flow-path {
+  stroke-dasharray: 9 30;
+  stroke-width: 4;
+  animation:
+    detail-flow-breathe 3.8s ease-in-out infinite alternate,
+    authority-flow-dash 6.2s linear infinite;
+}
+
+.physics-flow-path.primary {
+  stroke: url("#physics-gold-rail");
+}
+
+.physics-flow-path.signal-path {
+  stroke: url("#physics-signal-rail");
+}
+
+.physics-flow-path.alternate,
+.ai-system-flow-path.alternate,
+.operations-flow-path.alternate {
+  animation-delay: -2.2s, -2.2s;
+}
+
+.physics-control-markers path,
+.ai-review-gates path,
+.operations-gates path {
+  fill: rgba(255, 173, 33, 0.08);
+  stroke: rgba(255, 236, 184, 0.72);
+  stroke-linejoin: round;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 13px rgba(255, 173, 33, 0.34));
+  transform-box: fill-box;
+  transform-origin: center;
+  vector-effect: non-scaling-stroke;
+  animation: authority-gate-pulse 4.2s ease-in-out infinite alternate;
+}
+
+.physics-control-markers path:nth-child(2),
+.ai-review-gates path:nth-child(2),
+.operations-gates path:nth-child(2) {
+  animation-delay: -2.1s;
+}
+
+.physics-burden-core,
+.ai-system-core,
+.operations-core {
+  transform-origin: center;
+}
+
+.physics-boundary-nodes,
+.ai-system-nodes,
+.operations-nodes {
+  animation-duration: 3.8s;
+}
+
+.ai-system-frame rect,
+.operations-job-frame rect {
+  fill: rgba(5, 4, 3, 0.58);
+  stroke: rgba(232, 221, 193, 0.22);
+  stroke-dasharray: 9 12;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+  animation: authority-boundary-scan 8.4s linear infinite;
+}
+
+.ai-system-frame rect:nth-child(2) {
+  stroke: rgba(255, 173, 33, 0.3);
+  animation-delay: -2.2s;
+}
+
+.ai-memory-stack rect,
+.ai-human-boundary rect,
+.operations-records rect {
+  fill: rgba(5, 4, 3, 0.9);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.ai-memory-stack rect,
+.operations-records rect {
+  stroke: rgba(255, 173, 33, 0.58);
+  animation: authority-source-breathe 4.8s ease-in-out infinite alternate;
+}
+
+.ai-memory-stack rect:nth-child(2),
+.operations-records rect:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+.ai-memory-stack rect:nth-child(3),
+.operations-records rect:nth-child(3) {
+  animation-delay: -3s;
+}
+
+.operations-records rect:nth-child(4) {
+  animation-delay: -4.5s;
+}
+
+.ai-human-boundary rect {
+  stroke: rgba(232, 221, 193, 0.44);
+  animation: authority-reader-breathe 5.2s ease-in-out infinite alternate;
+}
+
+.ai-human-boundary rect:nth-child(2) {
+  animation-delay: -2.6s;
+}
+
+.ai-system-flow-path.primary {
+  stroke: url("#ai-system-rail");
+}
+
+.operations-flow-path.primary {
+  stroke: url("#operations-rail");
+}
+
+.operations-job-frame path {
+  fill: none;
+  stroke: rgba(232, 221, 193, 0.18);
+  stroke-linecap: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
 }
 
 .authority-glow {

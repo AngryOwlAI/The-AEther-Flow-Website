@@ -44,19 +44,42 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
       />
     </div>
 
-    <figure class="support-figure resource-constellation" aria-labelledby="resources-figure-caption">
+    <figure class="support-figure resource-constellation resources-manifest-figure" aria-labelledby="resources-figure-caption">
       <svg
-        class="support-svg"
+        class="support-svg resources-manifest-svg"
         viewBox="0 0 520 340"
         role="img"
         aria-labelledby="resources-figure-title resources-figure-desc"
       >
         <title id="resources-figure-title">Animated resource manifest constellation</title>
         <desc id="resources-figure-desc">
-          Source references, manifests, and published files are shown as connected
-          publication nodes.
+          Source manifest, asset manifest, approved PDF and TeX document nodes,
+          hash rings, and fixture separation are shown as connected publication
+          layers.
         </desc>
+        <defs>
+          <radialGradient id="resources-glow" cx="50%" cy="48%" r="70%">
+            <stop offset="0%" stop-color="#fff2c3" stop-opacity="0.7" />
+            <stop offset="34%" stop-color="#ffad21" stop-opacity="0.24" />
+            <stop offset="76%" stop-color="#11100d" stop-opacity="0.16" />
+            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="resources-rail" x1="8%" x2="92%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#ffad21" stop-opacity="0" />
+            <stop offset="28%" stop-color="#ffad21" stop-opacity="0.86" />
+            <stop offset="64%" stop-color="#fff0bd" stop-opacity="0.76" />
+            <stop offset="100%" stop-color="#e8ddc1" stop-opacity="0" />
+          </linearGradient>
+          <filter id="resources-bloom" x="-20%" y="-24%" width="140%" height="148%">
+            <feGaussianBlur stdDeviation="4.2" result="resourcesBlur" />
+            <feMerge>
+              <feMergeNode in="resourcesBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
         <rect class="support-bg" width="520" height="340" rx="24" />
+        <circle class="resources-glow" cx="260" cy="170" r="160" aria-hidden="true" />
         <g class="support-dust" aria-hidden="true">
           <circle cx="54" cy="62" r="1.2" />
           <circle cx="94" cy="264" r="1" />
@@ -66,22 +89,38 @@ const manifestStatusSummary = Object.entries(downloadStatusCounts)
           <circle cx="406" cy="266" r="1.1" />
           <circle cx="470" cy="110" r="0.9" />
         </g>
-        <g class="support-link-lines" aria-hidden="true">
-          <path class="support-line gold-line" d="M92 96 C162 126, 194 154, 260 170" />
-          <path class="support-line signal-line" d="M84 238 C150 206, 198 184, 260 170" />
-          <path class="support-line gold-line alternate" d="M260 170 C314 122, 362 96, 434 82" />
-          <path class="support-line signal-line alternate" d="M260 170 C332 182, 376 214, 436 254" />
+        <g class="resources-manifest-stack" aria-hidden="true">
+          <rect x="62" y="76" width="98" height="42" rx="10" />
+          <rect x="62" y="146" width="98" height="42" rx="10" />
+          <rect x="62" y="216" width="98" height="42" rx="10" />
+        </g>
+        <g class="resources-approved-docs" aria-hidden="true">
+          <path d="M376 72 H452 L474 94 V148 H376 Z" />
+          <path d="M376 192 H452 L474 214 V268 H376 Z" />
+        </g>
+        <g class="resources-fixture-lane" aria-hidden="true">
+          <rect x="192" y="262" width="136" height="36" rx="18" />
+        </g>
+        <g class="support-link-lines" filter="url(#resources-bloom)" aria-hidden="true">
+          <path class="support-line gold-line resources-flow-path primary" d="M160 97 C200 96, 218 130, 260 170 C308 216, 336 110, 376 100" />
+          <path class="support-line signal-line resources-flow-path" d="M160 167 C204 168, 224 168, 260 170 C306 172, 336 220, 376 220" />
+          <path class="support-line gold-line alternate resources-flow-path" d="M160 237 C206 222, 226 194, 260 170 C310 134, 338 96, 376 100" />
+          <path class="support-line signal-line alternate resources-flow-path" d="M260 170 C258 212, 258 238, 260 280" />
         </g>
         <circle class="support-core" cx="260" cy="170" r="34" aria-hidden="true" />
         <g class="support-nodes" aria-hidden="true">
-          <circle cx="92" cy="96" r="15" />
-          <circle cx="84" cy="238" r="15" />
-          <circle cx="434" cy="82" r="15" />
-          <circle cx="436" cy="254" r="15" />
+          <circle cx="160" cy="97" r="8" />
+          <circle cx="160" cy="167" r="8" />
+          <circle cx="160" cy="237" r="8" />
+          <circle cx="260" cy="170" r="10" />
+          <circle cx="376" cy="100" r="8" />
+          <circle cx="376" cy="220" r="8" />
+          <circle cx="260" cy="280" r="8" />
         </g>
         <g class="support-rings" aria-hidden="true">
           <circle cx="260" cy="170" r="58" />
           <circle cx="260" cy="170" r="92" />
+          <circle cx="260" cy="170" r="126" />
         </g>
       </svg>
       <figcaption id="resources-figure-caption">
