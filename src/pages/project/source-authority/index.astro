@@ -119,18 +119,76 @@ const sourceLinks = [
       </div>
     </div>
 
-    <figure class="track-page-figure" aria-labelledby="source-authority-figure-caption">
-      <svg viewBox="0 0 620 360" role="img" aria-labelledby="source-authority-figure-title">
-        <title id="source-authority-figure-title">Source authority ladder diagram</title>
+    <figure class="track-page-figure source-authority-figure" aria-labelledby="source-authority-figure-caption">
+      <svg class="source-authority-svg" viewBox="0 0 620 360" role="img" aria-labelledby="source-authority-figure-title source-authority-figure-desc">
+        <title id="source-authority-figure-title">Animated source authority boundary map</title>
+        <desc id="source-authority-figure-desc">
+          Source records, review gates, and reader surfaces are shown as separate animated layers.
+        </desc>
+        <defs>
+          <radialGradient id="authority-glow" cx="45%" cy="48%" r="68%">
+            <stop offset="0%" stop-color="#fff4ca" stop-opacity="0.72" />
+            <stop offset="34%" stop-color="#ffad21" stop-opacity="0.28" />
+            <stop offset="72%" stop-color="#11100d" stop-opacity="0.18" />
+            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="authority-rail" x1="0%" x2="100%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#ffad21" stop-opacity="0" />
+            <stop offset="24%" stop-color="#ffad21" stop-opacity="0.84" />
+            <stop offset="62%" stop-color="#fff1c1" stop-opacity="0.78" />
+            <stop offset="100%" stop-color="#e8ddc1" stop-opacity="0" />
+          </linearGradient>
+          <filter id="authority-bloom" x="-20%" y="-30%" width="140%" height="160%">
+            <feGaussianBlur stdDeviation="5" result="authorityBlur" />
+            <feMerge>
+              <feMergeNode in="authorityBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
         <rect class="track-figure-bg" width="620" height="360" rx="24" />
-        <path class="track-figure-path gold-path" d="M120 292 L220 224 L320 176 L420 128 L520 72" />
-        <path class="track-figure-path signal-path" d="M118 292 H520" />
-        <g class="track-figure-nodes hollow-nodes">
-          <circle cx="120" cy="292" r="18" />
-          <circle cx="220" cy="224" r="18" />
-          <circle cx="320" cy="176" r="18" />
-          <circle cx="420" cy="128" r="18" />
-          <circle cx="520" cy="72" r="18" />
+        <circle class="authority-glow" cx="304" cy="174" r="190" />
+        <g class="authority-grid" aria-hidden="true">
+          <path d="M70 72 H552" />
+          <path d="M70 144 H552" />
+          <path d="M70 216 H552" />
+          <path d="M70 288 H552" />
+          <path d="M148 46 V314" />
+          <path d="M304 46 V314" />
+          <path d="M462 46 V314" />
+        </g>
+        <g class="authority-records" filter="url(#authority-bloom)" aria-hidden="true">
+          <rect x="82" y="78" width="108" height="46" rx="10" />
+          <rect x="82" y="158" width="108" height="46" rx="10" />
+          <rect x="82" y="238" width="108" height="46" rx="10" />
+        </g>
+        <g class="authority-gates" aria-hidden="true">
+          <path d="M304 82 L348 108 L348 160 L304 186 L260 160 L260 108 Z" />
+          <path d="M304 174 L344 198 L344 246 L304 270 L264 246 L264 198 Z" />
+        </g>
+        <g class="authority-reader-stack" aria-hidden="true">
+          <rect x="442" y="76" width="104" height="42" rx="10" />
+          <rect x="424" y="144" width="122" height="42" rx="10" />
+          <rect x="442" y="212" width="104" height="42" rx="10" />
+        </g>
+        <g class="authority-flow" filter="url(#authority-bloom)" aria-hidden="true">
+          <path class="track-figure-path gold-path authority-flow-path primary" d="M190 101 C236 102, 256 126, 304 134 C356 142, 392 118, 442 97" />
+          <path class="track-figure-path signal-path authority-flow-path" d="M190 181 C238 181, 262 198, 304 222 C354 248, 396 228, 442 233" />
+          <path class="track-figure-path gold-path authority-flow-path alternate" d="M190 261 C238 244, 264 168, 304 134 C346 98, 390 156, 424 165" />
+        </g>
+        <g class="track-figure-nodes authority-node-ring" aria-hidden="true">
+          <circle cx="190" cy="101" r="7" />
+          <circle cx="190" cy="181" r="7" />
+          <circle cx="190" cy="261" r="7" />
+          <circle cx="304" cy="134" r="9" />
+          <circle cx="304" cy="222" r="9" />
+          <circle cx="442" cy="97" r="7" />
+          <circle cx="424" cy="165" r="7" />
+          <circle cx="442" cy="233" r="7" />
+        </g>
+        <g class="authority-boundary" aria-hidden="true">
+          <path d="M236 56 V304" />
+          <path d="M382 56 V304" />
         </g>
       </svg>
       <figcaption id="source-authority-figure-caption">

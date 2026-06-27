@@ -1627,6 +1627,13 @@ summary:focus-visible {
   color: var(--overview-muted);
 }
 
+.source-authority-figure {
+  background:
+    radial-gradient(circle at 34% 46%, rgba(255, 173, 33, 0.16), transparent 13rem),
+    radial-gradient(circle at 74% 48%, rgba(232, 221, 193, 0.09), transparent 12rem),
+    #000000;
+}
+
 .track-figure-bg {
   fill: #000000;
 }
@@ -1671,6 +1678,105 @@ summary:focus-visible {
   fill: rgba(0, 0, 0, 0.9);
   stroke: var(--overview-signal);
   stroke-width: 4;
+}
+
+.source-authority-svg {
+  overflow: visible;
+}
+
+.authority-glow {
+  fill: url("#authority-glow");
+  transform-origin: 304px 174px;
+  animation: authority-glow-pulse 5.4s ease-in-out infinite;
+}
+
+.authority-grid path {
+  fill: none;
+  stroke: rgba(232, 221, 193, 0.08);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.authority-records rect,
+.authority-reader-stack rect {
+  fill: rgba(5, 4, 3, 0.9);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.authority-records rect {
+  stroke: rgba(255, 173, 33, 0.66);
+  animation: authority-source-breathe 4.8s ease-in-out infinite alternate;
+}
+
+.authority-records rect:nth-child(2) {
+  animation-delay: -1.6s;
+}
+
+.authority-records rect:nth-child(3) {
+  animation-delay: -3.2s;
+}
+
+.authority-reader-stack rect {
+  stroke: rgba(232, 221, 193, 0.42);
+  animation: authority-reader-breathe 5.2s ease-in-out infinite alternate;
+}
+
+.authority-reader-stack rect:nth-child(2) {
+  animation-delay: -1.7s;
+}
+
+.authority-reader-stack rect:nth-child(3) {
+  animation-delay: -3.4s;
+}
+
+.authority-gates path {
+  fill: rgba(255, 173, 33, 0.08);
+  stroke: rgba(255, 236, 184, 0.72);
+  stroke-linejoin: round;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 13px rgba(255, 173, 33, 0.34));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: authority-gate-pulse 4.2s ease-in-out infinite alternate;
+  vector-effect: non-scaling-stroke;
+}
+
+.authority-gates path:nth-child(2) {
+  animation-delay: -2.1s;
+}
+
+.authority-flow-path {
+  stroke-dasharray: 9 30;
+  stroke-width: 4;
+  animation:
+    detail-flow-breathe 3.8s ease-in-out infinite alternate,
+    authority-flow-dash 6.2s linear infinite;
+}
+
+.authority-flow-path.primary {
+  stroke: url("#authority-rail");
+}
+
+.authority-flow-path.alternate {
+  animation-delay: -2.2s, -2.2s;
+}
+
+.authority-node-ring {
+  fill: rgba(255, 246, 214, 0.96);
+  filter: drop-shadow(0 0 12px rgba(255, 201, 89, 0.68));
+  transform-origin: center;
+  animation: authority-node-flicker 3.6s ease-in-out infinite alternate;
+}
+
+.authority-boundary path {
+  fill: none;
+  stroke: rgba(232, 221, 193, 0.28);
+  stroke-dasharray: 8 12;
+  stroke-linecap: round;
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+  animation: authority-boundary-scan 7s linear infinite;
 }
 
 .track-page-band {
@@ -2112,6 +2218,80 @@ summary:focus-visible {
   to {
     opacity: 1;
     filter: drop-shadow(0 0 10px currentColor);
+  }
+}
+
+@keyframes authority-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.96;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes authority-source-breathe {
+  from {
+    opacity: 0.62;
+    filter: drop-shadow(0 0 5px rgba(255, 173, 33, 0.2));
+  }
+  to {
+    opacity: 1;
+    filter: drop-shadow(0 0 17px rgba(255, 173, 33, 0.46));
+  }
+}
+
+@keyframes authority-reader-breathe {
+  from {
+    opacity: 0.42;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0.82;
+    transform: translateX(2px);
+  }
+}
+
+@keyframes authority-gate-pulse {
+  from {
+    opacity: 0.62;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes authority-flow-dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -156;
+  }
+}
+
+@keyframes authority-node-flicker {
+  from {
+    opacity: 0.58;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes authority-boundary-scan {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -80;
   }
 }
 
