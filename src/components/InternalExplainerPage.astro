@@ -58,32 +58,33 @@ const isOperationsVisual = visualVariant === "operations";
               </feMerge>
             </filter>
           </defs>
-          <rect class="track-figure-bg" width="620" height="360" rx="24" />
+          <path class="track-figure-bg" d="M0 0H620V360H0Z" />
           <circle class="operations-glow" cx="306" cy="180" r="190" />
           <g class="operations-grid" aria-hidden="true">
-            <path d="M74 78 H546" />
-            <path d="M74 146 H546" />
-            <path d="M74 214 H546" />
-            <path d="M74 282 H546" />
-            <path d="M176 52 V308" />
-            <path d="M306 52 V308" />
-            <path d="M436 52 V308" />
+            <ellipse cx="306" cy="180" rx="234" ry="122" />
+            <ellipse cx="306" cy="180" rx="166" ry="78" />
+            <path d="M76 180 C154 118, 224 100, 306 112 C388 100, 458 118, 536 180" />
+            <path d="M76 180 C154 242, 224 260, 306 248 C388 260, 458 242, 536 180" />
           </g>
-          <g class="operations-records" aria-hidden="true">
-            <rect x="78" y="94" width="108" height="48" rx="11" />
-            <rect x="78" y="218" width="108" height="48" rx="11" />
-            <rect x="434" y="94" width="108" height="48" rx="11" />
-            <rect x="434" y="218" width="108" height="48" rx="11" />
+          <g class="operations-record-currents" aria-hidden="true">
+            <circle cx="132" cy="118" r="28" />
+            <circle cx="132" cy="242" r="28" />
+            <circle cx="488" cy="118" r="28" />
+            <circle cx="488" cy="242" r="28" />
+            <path d="M104 118 C118 96, 146 96, 160 118" />
+            <path d="M460 242 C474 264, 502 264, 516 242" />
           </g>
-          <g class="operations-job-frame" aria-hidden="true">
-            <rect x="228" y="92" width="156" height="174" rx="22" />
-            <path d="M252 124 H360" />
-            <path d="M252 180 H360" />
-            <path d="M252 236 H360" />
+          <g class="operations-job-envelope" aria-hidden="true">
+            <path d="M226 180 C226 126, 262 88, 306 88 C350 88, 386 126, 386 180 C386 234, 350 272, 306 272 C262 272, 226 234, 226 180Z" />
+            <path d="M252 128 C284 142, 328 142, 360 128" />
+            <path d="M252 180 C284 194, 328 194, 360 180" />
+            <path d="M252 232 C284 246, 328 246, 360 232" />
           </g>
-          <g class="operations-gates" aria-hidden="true">
-            <path d="M306 64 L348 90 L348 142 L306 168 L264 142 L264 90 Z" />
-            <path d="M306 192 L348 218 L348 270 L306 296 L264 270 L264 218 Z" />
+          <g class="operations-apertures" aria-hidden="true">
+            <circle cx="306" cy="116" r="42" />
+            <circle cx="306" cy="244" r="42" />
+            <path d="M264 116 C286 92, 326 92, 348 116" />
+            <path d="M264 244 C286 268, 326 268, 348 244" />
           </g>
           <g class="operations-flow" filter="url(#operations-bloom)" aria-hidden="true">
             <path class="track-figure-path gold-path operations-flow-path primary" d="M186 118 C228 118, 246 116, 306 116 C370 116, 394 118, 434 118" />
@@ -103,7 +104,7 @@ const isOperationsVisual = visualVariant === "operations";
       ) : (
         <svg viewBox="0 0 620 360" role="img" aria-labelledby="internal-explainer-figure-title">
           <title id="internal-explainer-figure-title">{page.visualTitle}</title>
-          <rect class="track-figure-bg" width="620" height="360" rx="24" />
+          <path class="track-figure-bg" d="M0 0H620V360H0Z" />
           <path class="track-figure-path signal-path" d="M88 180 H214 C254 180, 254 110, 306 110 H532" />
           <path class="track-figure-path gold-path" d="M88 180 H214 C254 180, 254 250, 306 250 H532" />
           <path class="track-figure-path signal-path" d="M306 110 C386 130, 430 172, 532 250" />

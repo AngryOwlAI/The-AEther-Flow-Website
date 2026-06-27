@@ -116,16 +116,14 @@ const journeyLinks = [
             </feMerge>
           </filter>
         </defs>
-        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
         <circle class="physics-glow" cx="310" cy="178" r="194" />
         <g class="physics-grid" aria-hidden="true">
-          <path d="M72 72 H548" />
-          <path d="M72 144 H548" />
-          <path d="M72 216 H548" />
-          <path d="M72 288 H548" />
-          <path d="M148 50 V310" />
-          <path d="M310 50 V310" />
-          <path d="M472 50 V310" />
+          <ellipse cx="310" cy="178" rx="238" ry="128" />
+          <ellipse cx="310" cy="178" rx="184" ry="92" />
+          <ellipse cx="310" cy="178" rx="112" ry="54" />
+          <path d="M74 178 C154 124, 230 104, 310 114 C390 104, 466 124, 546 178" />
+          <path d="M74 178 C154 232, 230 252, 310 242 C390 252, 466 232, 546 178" />
         </g>
         <g class="physics-substrate" filter="url(#physics-bloom)" aria-hidden="true">
           <path d="M70 232 C142 170, 214 256, 300 184 C386 112, 454 188, 552 116" />
@@ -141,9 +139,11 @@ const journeyLinks = [
           <path class="track-figure-path signal-path physics-flow-path" d="M92 122 C176 160, 242 206, 310 178 C384 148, 452 156, 528 218" />
           <path class="track-figure-path gold-path physics-flow-path alternate" d="M146 286 C228 248, 270 222, 310 178 C354 130, 404 94, 486 78" />
         </g>
-        <g class="physics-control-markers" aria-hidden="true">
-          <path d="M94 88 L126 72 L158 88 L158 124 L126 140 L94 124 Z" />
-          <path d="M462 232 L494 216 L526 232 L526 268 L494 284 L462 268 Z" />
+        <g class="physics-control-arcs" aria-hidden="true">
+          <path d="M90 106 C104 76, 146 68, 166 94 C180 112, 172 138, 150 150 C126 164, 94 150, 86 124" />
+          <path d="M454 250 C468 220, 510 212, 530 238 C544 256, 536 282, 514 294 C490 308, 458 294, 450 268" />
+          <circle cx="126" cy="112" r="11" />
+          <circle cx="490" cy="256" r="11" />
         </g>
         <circle class="track-figure-core physics-burden-core" cx="310" cy="178" r="40" aria-hidden="true" />
         <g class="track-figure-nodes physics-boundary-nodes" aria-hidden="true">

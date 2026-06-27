@@ -1,17 +1,15 @@
 {
-  "active_task_id": "RT-20260614-210",
+  "active_task_id": "RT-20260614-217",
   "blocked_claims": [
     "canonical ontology edit",
     "source-law adoption",
-    "MetricFormAssign_src^{GSC} adoption",
+    "MetricFormAssign_src^{GSC} source-law adoption",
     "SigScaleCont_src^{GSC} source-law adoption",
     "MetricData(E) adoption",
-    "BranchDisc_src^{GSC} adoption",
-    "checker proof authority",
+    "general MetricData(E) inhabitation theorem",
     "arbitrary finite-source-package witness theorem",
     "arbitrary finite-DAG witness theorem",
-    "g_eff definition",
-    "g_eff construction",
+    "checker proof authority",
     "g_eff adoption",
     "matter coupling",
     "Einstein equations",
@@ -21,21 +19,21 @@
     "future source-extension impossibility",
     "global theory rejection"
   ],
-  "claim_boundary_summary": "Ontology Formalizer drafted proposal-only MetricFormAssign_src^{GSC} source metric-form assignment source-extension data pending Smuggling Auditor audit. The packet did not adopt any source law, did not adopt MetricData(E), did not adopt SigScaleCont_src^{GSC}, did not construct or adopt g_eff, and did not promote downstream GR claims.",
-  "current_status": "metricformassign_source_metric_form_candidate_constructed_pending_audit_no_geff",
+  "claim_boundary_summary": "Smuggling Auditor audited the draft/control source-side g_eff candidate record as source-pure as written pending Refuter stress. The audit is local source-purity only. No source law, MetricData(E), MetricFormAssign_src^{GSC}, SigScaleCont_src^{GSC}, or g_eff adoption occurred, and no downstream GR claims were promoted.",
+  "current_status": "post_metricformassign_geff_candidate_audited_pending_refuter_stress_no_adoption",
   "derivation_burden": {
     "active_burden_id": "g_eff",
     "active_row": {
-      "accept_criteria": "Run one bounded Smuggling Auditor packet to audit proposal-only MetricFormAssign_src GSC for hidden target metric target-atlas proper-time detector benchmark process-authority transition-covariance nondegeneracy and premature g_eff import",
-      "blocking_burden": "Accepted scoped MetricData(E) evidence plus scoped SigScaleCont_src GSC selector evidence/precondition now has only a proposal-only unaudited MetricFormAssign_src GSC candidate for source metric-form assignment",
+      "accept_criteria": "Run one bounded Refuter stress packet against the audited draft/control g_eff candidate for target import pressure form-token ambiguity signature-scale ambiguity transition inverse and cocycle behavior nondegeneracy and bottom behavior finite-scope overread process-authority overread MetricData(E) adoption laundering g_eff adoption laundering matter-coupling pressure Einstein-equation pressure and benchmark-promotion pressure",
+      "blocking_burden": "Draft/control g_eff candidate audited as source-pure as written from accepted scoped evidence stack as bounded source-extension inputs only",
       "burden_id": "g_eff",
-      "current_status": "blocked by missing primitive",
-      "failure_or_freeze_criteria": "OB-GEFF-SOURCE-METRIC-FORM-UNDERDETERMINED remains current post-SigScaleCont obstruction until MetricFormAssign_src GSC survives audit stress and later construction-or-obstruction work",
-      "last_evidence_path": "research_control/tasks/RT-20260614-210/artifacts/239_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_SIGSCALECONT_METRICFORMASSIGN_ONTOLOGY_LAW_PACKET.tex",
+      "current_status": "smuggling audit passed",
+      "failure_or_freeze_criteria": "Stress failure repair obstruction route freeze or selector route if stress fails",
+      "last_evidence_path": "research_control/tasks/RT-20260614-217/artifacts/246_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_METRICFORMASSIGN_GEFF_CANDIDATE_SMUGGLING_AUDIT.tex",
       "milestone": "effective_metric_g_eff",
-      "notes": "Proposal-only MetricFormAssign_src GSC source-extension candidate drafted pending audit. No source-law adoption no MetricData(E) adoption no SigScaleCont adoption no g_eff construction/adoption no matter coupling no Einstein equations no benchmark promotion no completed derivation no future source-extension impossibility and no global theory rejection.",
+      "notes": "Smuggling Auditor audit passed for local source purity only pending Refuter stress. No source-law adoption no MetricData(E) adoption no SigScaleCont source-law adoption no MetricFormAssign source-law adoption no g_eff adoption no matter coupling no Einstein equations no benchmark promotion no completed derivation no future source-extension impossibility and no global theory rejection.",
       "required_object": "g_eff",
-      "updated_at": "2026-06-27T02:54:00Z"
+      "updated_at": "2026-06-27T05:08:00Z"
     },
     "downstream_rows": [
       {
@@ -88,69 +86,69 @@
       }
     ]
   },
-  "latest_handoff_created_at": "2026-06-27T02:54:00Z",
-  "latest_handoff_id": "handoff-0243",
-  "latest_handoff_next_action": "Run one bounded smuggling-auditor@0.2.0 packet to audit proposal-only MetricFormAssign_src^{GSC} for hidden target metric import target-atlas import proper-time or detector import benchmark import process-authority laundering transition-covariance overread nondegeneracy overread fail-closed behavior and premature g_eff promotion.",
-  "latest_handoff_summary": "Ontology Formalizer drafted a proposal-only/draft-control MetricFormAssign_src^{GSC} source-side metric-form assignment interface as source-extension data. The candidate is unaudited and unadopted. Adoption remains blocked while same-milestone continuation remains open.",
-  "next_recommended_action": "Run one bounded smuggling-auditor@0.2.0 packet to audit proposal-only MetricFormAssign_src^{GSC} for hidden target metric import target-atlas import proper-time or detector import benchmark import process-authority laundering transition-covariance overread nondegeneracy overread fail-closed behavior and premature g_eff promotion. Do not adopt the law, construct g_eff, or promote downstream GR claims.",
-  "source_commit": "8d227c0a9095641665aff2e0d471732611a4597a",
-  "source_commit_date": "2026-06-26T17:33:13-06:00",
+  "latest_handoff_created_at": "2026-06-27T05:08:00Z",
+  "latest_handoff_id": "handoff-0250",
+  "latest_handoff_next_action": "Run one bounded Refuter stress packet against the audited draft/control g_eff candidate, stressing target import pressure, form-token ambiguity, signature-scale ambiguity, transition inverse and cocycle behavior, nondegeneracy and bottom behavior, finite-scope overread, process-authority overread, MetricData(E) adoption laundering, g_eff adoption laundering, matter-coupling pressure, Einstein-equation pressure, and benchmark-promotion pressure.",
+  "latest_handoff_summary": "Smuggling Auditor audited the draft/control source-side g_eff candidate g_eff^{GSC-cand}(E;G^beta,T_src(E)) as source-pure as written pending Refuter stress. This is not g_eff adoption, not MetricData(E) adoption, not MetricFormAssign_src^{GSC} source-law adoption, not SigScaleCont_src^{GSC} source-law adoption, not matter coupling, not Einstein equations, and not downstream GR promotion.",
+  "next_recommended_action": "Run one bounded refuter@0.2.0 packet against the audited draft/control g_eff candidate for target import pressure, form-token ambiguity, signature-scale ambiguity, transition inverse and cocycle behavior, nondegeneracy and bottom behavior, finite-scope overread, process-authority overread, MetricData(E) adoption laundering, g_eff adoption laundering, matter-coupling pressure, Einstein-equation pressure, and benchmark-promotion pressure. Do not adopt g_eff, adopt source laws, adopt MetricData(E), derive matter coupling, derive Einstein equations, promote benchmark status, or claim completed derivation.",
+  "source_commit": "66b9bb6d99540b704f08d0a32ed0b893e60861cd",
+  "source_commit_date": "2026-06-26T19:03:55-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "97587a74c09d181525898ba4f2fd84969cdc5e4ca3bda00be4a2fa4510df8545"
+      "sha256": "75eeb16ca33e68f5fd3211ed5942ca435144ba73911367bfb63e28887129a86c"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.yaml",
-      "path": "research_control/handoffs/handoff-0243.yaml",
-      "sha256": "799e5c3c580355e01c2d82dd4d71b4d6b80b1ae1551f3ce5ce185ba7c9eb4720"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0250.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/research_control/handoffs/handoff-0250.yaml",
+      "path": "research_control/handoffs/handoff-0250.yaml",
+      "sha256": "6870bdfe753c00c105ad02624716c711141c3afdbcdb348994d7b4816dd749cf"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.md",
-      "path": "research_control/handoffs/handoff-0243.md",
-      "sha256": "8f0a98ce59faf4b557e7b6324adff689a342c4a5fbcf5cf9229cb78ab5f8512d"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0250.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/research_control/handoffs/handoff-0250.md",
+      "path": "research_control/handoffs/handoff-0250.md",
+      "sha256": "a7bcbbf4a884c4186e3298448e79faa1bd0d67bbb3daa784208c361508e7c180"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
-      "sha256": "a852b0c2fe1a84c785b9be692095c3d0d43b75a34fa988e417c3873ea84927b7"
+      "sha256": "babec916d6e01baf0de6713a8aa79855a353b5207be3a208e5b3caa36693c1b7"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "477d875910b589e36d5072fc1a48396f695b58f74c59773b44889e59dd61f10a"
+      "sha256": "8068406e62309fd63bb52ddefd9bf1b69647078458f3cae7b00fdf67bdea44a8"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.yaml",
-      "label": "research_control/handoffs/handoff-0243.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/research_control/handoffs/handoff-0250.yaml",
+      "label": "research_control/handoffs/handoff-0250.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/research_control/handoffs/handoff-0243.md",
-      "label": "research_control/handoffs/handoff-0243.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/research_control/handoffs/handoff-0250.md",
+      "label": "research_control/handoffs/handoff-0250.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8d227c0a9095641665aff2e0d471732611a4597a/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/66b9bb6d99540b704f08d0a32ed0b893e60861cd/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],
-  "source_refresh_date": "2026-06-26",
+  "source_refresh_date": "2026-06-27",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "version": 1,
-  "website_publication_date": "2026-06-26"
+  "website_publication_date": "2026-06-27"
 }

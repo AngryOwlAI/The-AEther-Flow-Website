@@ -24,6 +24,7 @@ REQUIRED_ROUTE_PATHS = {
     "/project/physics/current-state/",
     "/project/physics/claim-gates/",
     "/project/ai-research-agent-system/",
+    "/project/ai-research-agent-system/workflow/",
     "/project/ai-research-agent-system/roles-and-skills/",
     "/project/ai-research-agent-system/memory-registries/",
     "/project/ai-research-agent-system/parent-child-synthesis/",

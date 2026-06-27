@@ -22,8 +22,15 @@ const currentPath = Astro.url.pathname.endsWith("/")
   ? Astro.url.pathname
   : `${Astro.url.pathname}/`;
 
-const isActiveNavLink = (href: string, matchPrefixes: string[] = []) => {
-  return currentPath === href || matchPrefixes.some((prefix) => currentPath.startsWith(prefix));
+const isExactNavPath = (href: string) => currentPath === href;
+
+const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
+  const childHrefs = link.children?.map((child) => child.href) ?? [];
+  return (
+    currentPath === link.href ||
+    childHrefs.includes(currentPath) ||
+    (link.matchPrefixes ?? []).some((prefix) => currentPath.startsWith(prefix))
+  );
 };
 ---
 
@@ -55,10 +62,41 @@ const isActiveNavLink = (href: string, matchPrefixes: string[] = []) => {
           <span>{brandName}</span>
         </a>
         <div class="nav-links">
-          {siteNavigationLinks.map((link) => {
-            const isActive = isActiveNavLink(link.href, link.matchPrefixes);
+          {siteNavigationLinks.map((link, index) => {
+            const children = link.children ?? [];
+            const isActive = isActiveNavLink(link);
+            const menuId = `primary-nav-menu-${index}`;
+            if (children.length > 0) {
+              return (
+                <div class="nav-menu" data-nav-menu>
+                  <button
+                    class="nav-menu-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls={menuId}
+                    data-active={isActive ? "true" : undefined}
+                    data-nav-menu-trigger
+                  >
+                    <span>{link.title}</span>
+                    <span class="nav-menu-caret" aria-hidden="true"></span>
+                  </button>
+                  <div class="nav-menu-panel" id={menuId} hidden data-nav-menu-panel>
+                    {children.map((child) => (
+                      <a
+                        class="nav-menu-link"
+                        href={child.href}
+                        aria-current={isExactNavPath(child.href) ? "page" : undefined}
+                      >
+                        <span>{child.title}</span>
+                        <small>{child.description}</small>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
             return (
-              <a href={link.href} aria-current={isActive ? "page" : undefined}>
+              <a class="nav-link" href={link.href} aria-current={isActive ? "page" : undefined}>
                 {link.title}
               </a>
             );
@@ -76,5 +114,76 @@ const isActiveNavLink = (href: string, matchPrefixes: string[] = []) => {
         material.
       </p>
     </footer>
+    <script>
+      const navigationMenus = Array.from(document.querySelectorAll("[data-nav-menu]"));
+
+      const getMenuParts = (menu) => {
+        const trigger = menu.querySelector("[data-nav-menu-trigger]");
+        const panel = menu.querySelector("[data-nav-menu-panel]");
+        return { trigger, panel };
+      };
+
+      const setMenuExpanded = (menu, expanded, returnFocus = false) => {
+        const { trigger, panel } = getMenuParts(menu);
+        if (!(trigger instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) {
+          return;
+        }
+
+        trigger.setAttribute("aria-expanded", String(expanded));
+        panel.hidden = !expanded;
+
+        if (!expanded && returnFocus) {
+          trigger.focus();
+        }
+      };
+
+      const closeMenus = (exceptMenu = null) => {
+        navigationMenus.forEach((menu) => {
+          if (menu !== exceptMenu) {
+            setMenuExpanded(menu, false);
+          }
+        });
+      };
+
+      navigationMenus.forEach((menu) => {
+        const { trigger } = getMenuParts(menu);
+        if (!(trigger instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        trigger.addEventListener("click", () => {
+          const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+          closeMenus(menu);
+          setMenuExpanded(menu, !isExpanded);
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) {
+          return;
+        }
+
+        if (!navigationMenus.some((menu) => menu.contains(target))) {
+          closeMenus();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+          return;
+        }
+
+        const openMenu = navigationMenus.find((menu) => {
+          const { trigger } = getMenuParts(menu);
+          return trigger instanceof HTMLButtonElement && trigger.getAttribute("aria-expanded") === "true";
+        });
+
+        if (openMenu) {
+          event.preventDefault();
+          setMenuExpanded(openMenu, false, true);
+        }
+      });
+    </script>
   </body>
 </html>

@@ -94,6 +94,16 @@
       "boundary_type": "authority_boundary"
     },
     {
+      "route_path": "/project/ai-research-agent-system/workflow/",
+      "local_page_source": "src/pages/project/ai-research-agent-system/workflow/index.astro",
+      "title": "Research-Agent Workflow",
+      "adaptation_type": "one_to_one_adaptation",
+      "upstream_source_paths": ["github-facing/research-agent-workflow-explainer.md"],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "authority_boundary"
+    },
+    {
       "route_path": "/project/ai-research-agent-system/roles-and-skills/",
       "local_page_source": "src/pages/project/ai-research-agent-system/roles-and-skills/index.astro",
       "title": "Roles And Skills",

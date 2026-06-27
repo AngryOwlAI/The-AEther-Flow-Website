@@ -1,39 +1,15 @@
+export type SiteNavigationChild = {
+  title: string;
+  href: string;
+  description: string;
+};
+
 export type SiteNavigationLink = {
   title: string;
   href: string;
   matchPrefixes?: string[];
+  children?: SiteNavigationChild[];
 };
-
-export const siteNavigationLinks: SiteNavigationLink[] = [
-  {
-    title: "Overview",
-    href: "/project/overview/",
-  },
-  {
-    title: "Physics",
-    href: "/project/physics/",
-    matchPrefixes: ["/project/physics/"],
-  },
-  {
-    title: "AI system",
-    href: "/project/ai-research-agent-system/",
-    matchPrefixes: ["/project/ai-research-agent-system/"],
-  },
-  {
-    title: "Operations",
-    href: "/project/operations/",
-    matchPrefixes: ["/project/operations/"],
-  },
-  {
-    title: "Source authority",
-    href: "/project/source-authority/",
-  },
-  {
-    title: "Resources",
-    href: "/resources/",
-    matchPrefixes: ["/resources/"],
-  },
-];
 
 export const overviewPillars = [
   {
@@ -385,6 +361,13 @@ export const projectPhysicsDeepDiveRoutes = [
 
 export const projectAiDeepDiveRoutes = [
   {
+    title: "Research-agent workflow",
+    href: "/project/ai-research-agent-system/workflow/",
+    phase: "Phase 5A",
+    status: "implemented",
+    description: "Request classification, Director decisions, one bounded AgentJob, completion evidence, handoffs, and authority limits.",
+  },
+  {
     title: "Roles and skills",
     href: "/project/ai-research-agent-system/roles-and-skills/",
     phase: "Phase 5B",
@@ -404,13 +387,6 @@ export const projectAiDeepDiveRoutes = [
     phase: "Phase 5D",
     status: "implemented",
     description: "One-AgentJob perspective-synthesis explainer preserving a single outer authority frame.",
-  },
-  {
-    title: "Validator and operator workflow",
-    href: "/project/operations/validator-operator-workflow/",
-    phase: "Operations",
-    status: "implemented",
-    description: "Operational guide that treats PASS results as bounded evidence, not authority expansion.",
   },
 ];
 
@@ -456,6 +432,88 @@ export const projectOperationsRoutes = [
     phase: "Operations",
     status: "implemented",
     description: "Local tool tiers for reproducible operation without confusing tools with authorization.",
+  },
+];
+
+const toNavigationChild = (route: {
+  title: string;
+  href: string;
+  description: string;
+}): SiteNavigationChild => ({
+  title: route.title,
+  href: route.href,
+  description: route.description,
+});
+
+export const siteNavigationLinks: SiteNavigationLink[] = [
+  {
+    title: "Overview",
+    href: "/project/overview/",
+  },
+  {
+    title: "Physics Research",
+    href: "/project/physics/",
+    matchPrefixes: ["/project/physics/"],
+    children: [
+      {
+        title: "Physics Research",
+        href: "/project/physics/",
+        description: "Track landing for ontology, benchmark, derivation roadmap, and claim-gate context.",
+      },
+      ...projectPhysicsDeepDiveRoutes.map(toNavigationChild),
+    ],
+  },
+  {
+    title: "AI Research System",
+    href: "/project/ai-research-agent-system/",
+    matchPrefixes: ["/project/ai-research-agent-system/"],
+    children: [
+      {
+        title: "AI Research System",
+        href: "/project/ai-research-agent-system/",
+        description: "Track landing for bounded research-agent workflow, roles, memory, and synthesis.",
+      },
+      ...projectAiDeepDiveRoutes.map(toNavigationChild),
+    ],
+  },
+  {
+    title: "Research Ops",
+    href: "/project/operations/",
+    matchPrefixes: ["/project/operations/"],
+    children: [
+      {
+        title: "Research Ops",
+        href: "/project/operations/",
+        description: "Operational landing for lifecycle, routing, validation, publication, improvement, and tools.",
+      },
+      ...projectOperationsRoutes.map(toNavigationChild),
+    ],
+  },
+  {
+    title: "Source Authority",
+    href: "/project/source-authority/",
+  },
+  {
+    title: "Library",
+    href: "/resources/",
+    matchPrefixes: ["/resources/"],
+    children: [
+      {
+        title: "Library",
+        href: "/resources/",
+        description: "Manifest-backed resource index for public pages and approved ontology documents.",
+      },
+      {
+        title: "Ontology Documents",
+        href: "/resources/documents/",
+        description: "Canonical ontology PDF derivatives and registered TeX source files served from the website.",
+      },
+      {
+        title: "Diagram Gallery",
+        href: "/resources/diagrams/",
+        description: "Website-local visual orientation fixtures with explicit provenance and non-authority status.",
+      },
+    ],
   },
 ];
 

@@ -123,7 +123,7 @@ const sourceLinks = [
       <svg class="source-authority-svg" viewBox="0 0 620 360" role="img" aria-labelledby="source-authority-figure-title source-authority-figure-desc">
         <title id="source-authority-figure-title">Animated source authority boundary map</title>
         <desc id="source-authority-figure-desc">
-          Source records, review gates, and reader surfaces are shown as separate animated layers.
+          Source records, review gates, and reader surfaces are shown as separate animated curved layers.
         </desc>
         <defs>
           <radialGradient id="authority-glow" cx="45%" cy="48%" r="68%">
@@ -146,30 +146,33 @@ const sourceLinks = [
             </feMerge>
           </filter>
         </defs>
-        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
         <circle class="authority-glow" cx="304" cy="174" r="190" />
         <g class="authority-grid" aria-hidden="true">
-          <path d="M70 72 H552" />
-          <path d="M70 144 H552" />
-          <path d="M70 216 H552" />
-          <path d="M70 288 H552" />
-          <path d="M148 46 V314" />
-          <path d="M304 46 V314" />
-          <path d="M462 46 V314" />
+          <ellipse cx="304" cy="174" rx="238" ry="124" />
+          <ellipse cx="304" cy="174" rx="170" ry="82" />
+          <path d="M72 174 C150 114, 224 96, 304 108 C384 96, 458 114, 536 174" />
+          <path d="M72 174 C150 234, 224 252, 304 240 C384 252, 458 234, 536 174" />
         </g>
-        <g class="authority-records" filter="url(#authority-bloom)" aria-hidden="true">
-          <rect x="82" y="78" width="108" height="46" rx="10" />
-          <rect x="82" y="158" width="108" height="46" rx="10" />
-          <rect x="82" y="238" width="108" height="46" rx="10" />
+        <g class="authority-record-currents" filter="url(#authority-bloom)" aria-hidden="true">
+          <circle cx="136" cy="101" r="25" />
+          <circle cx="136" cy="181" r="25" />
+          <circle cx="136" cy="261" r="25" />
+          <path d="M136 126 C122 146, 122 164, 136 181 C150 198, 150 220, 136 236" />
         </g>
-        <g class="authority-gates" aria-hidden="true">
-          <path d="M304 82 L348 108 L348 160 L304 186 L260 160 L260 108 Z" />
-          <path d="M304 174 L344 198 L344 246 L304 270 L264 246 L264 198 Z" />
+        <g class="authority-apertures" aria-hidden="true">
+          <circle cx="304" cy="134" r="40" />
+          <circle cx="304" cy="222" r="40" />
+          <path d="M264 134 C286 110, 322 110, 344 134" />
+          <path d="M264 222 C286 246, 322 246, 344 222" />
         </g>
-        <g class="authority-reader-stack" aria-hidden="true">
-          <rect x="442" y="76" width="104" height="42" rx="10" />
-          <rect x="424" y="144" width="122" height="42" rx="10" />
-          <rect x="442" y="212" width="104" height="42" rx="10" />
+        <g class="authority-reader-halo" aria-hidden="true">
+          <circle cx="494" cy="97" r="28" />
+          <circle cx="484" cy="165" r="28" />
+          <circle cx="494" cy="233" r="28" />
+          <ellipse cx="494" cy="97" rx="48" ry="18" />
+          <ellipse cx="484" cy="165" rx="54" ry="18" />
+          <ellipse cx="494" cy="233" rx="48" ry="18" />
         </g>
         <g class="authority-flow" filter="url(#authority-bloom)" aria-hidden="true">
           <path class="track-figure-path gold-path authority-flow-path primary" d="M190 101 C236 102, 256 126, 304 134 C356 142, 392 118, 442 97" />
@@ -187,8 +190,8 @@ const sourceLinks = [
           <circle cx="442" cy="233" r="7" />
         </g>
         <g class="authority-boundary" aria-hidden="true">
-          <path d="M236 56 V304" />
-          <path d="M382 56 V304" />
+          <path d="M236 56 C218 114, 218 246, 236 304" />
+          <path d="M382 56 C400 114, 400 246, 382 304" />
         </g>
       </svg>
       <figcaption id="source-authority-figure-caption">

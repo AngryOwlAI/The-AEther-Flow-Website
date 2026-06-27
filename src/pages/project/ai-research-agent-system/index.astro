@@ -81,7 +81,7 @@ const journeyLinks = [
       >
         <title id="ai-figure-title">Animated governed AI workflow map</title>
         <desc id="ai-figure-desc">
-          Bounded task frame, role routing, validators, memory retrieval, review
+          Bounded task envelope, role routing, validators, memory retrieval, review
           gates, and human accountability are shown as separate workflow layers.
         </desc>
         <defs>
@@ -105,32 +105,35 @@ const journeyLinks = [
             </feMerge>
           </filter>
         </defs>
-        <rect class="track-figure-bg" width="620" height="360" rx="24" />
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
         <circle class="ai-system-glow" cx="304" cy="178" r="194" />
         <g class="ai-system-grid" aria-hidden="true">
-          <path d="M72 84 H548" />
-          <path d="M72 180 H548" />
-          <path d="M72 276 H548" />
-          <path d="M154 54 V306" />
-          <path d="M304 54 V306" />
-          <path d="M458 54 V306" />
+          <ellipse cx="306" cy="180" rx="242" ry="126" />
+          <ellipse cx="306" cy="180" rx="178" ry="82" />
+          <path d="M72 180 C154 120, 226 102, 306 112 C386 102, 458 120, 540 180" />
+          <path d="M72 180 C154 240, 226 258, 306 248 C386 258, 458 240, 540 180" />
         </g>
-        <g class="ai-system-frame" aria-hidden="true">
-          <rect x="118" y="76" width="374" height="210" rx="26" />
-          <rect x="144" y="102" width="322" height="158" rx="18" />
+        <g class="ai-system-envelope" aria-hidden="true">
+          <path d="M116 180 C116 96, 210 62, 306 76 C402 62, 496 96, 496 180 C496 264, 402 298, 306 284 C210 298, 116 264, 116 180Z" />
+          <path d="M148 180 C148 122, 226 96, 306 106 C386 96, 464 122, 464 180 C464 238, 386 264, 306 254 C226 264, 148 238, 148 180Z" />
         </g>
-        <g class="ai-memory-stack" aria-hidden="true">
-          <rect x="74" y="92" width="86" height="34" rx="9" />
-          <rect x="74" y="152" width="86" height="34" rx="9" />
-          <rect x="74" y="212" width="86" height="34" rx="9" />
+        <g class="ai-memory-cluster" aria-hidden="true">
+          <circle cx="114" cy="108" r="22" />
+          <circle cx="104" cy="180" r="18" />
+          <circle cx="120" cy="246" r="22" />
+          <path d="M114 130 C106 148, 104 160, 104 180 C104 202, 110 224, 120 224" />
         </g>
-        <g class="ai-review-gates" aria-hidden="true">
-          <path d="M306 84 L346 108 L346 156 L306 180 L266 156 L266 108 Z" />
-          <path d="M306 180 L346 204 L346 252 L306 276 L266 252 L266 204 Z" />
+        <g class="ai-review-apertures" aria-hidden="true">
+          <circle cx="306" cy="132" r="38" />
+          <circle cx="306" cy="228" r="38" />
+          <path d="M268 132 C284 112, 328 112, 344 132" />
+          <path d="M268 228 C284 248, 328 248, 344 228" />
         </g>
-        <g class="ai-human-boundary" aria-hidden="true">
-          <rect x="474" y="96" width="72" height="56" rx="14" />
-          <rect x="474" y="208" width="72" height="56" rx="14" />
+        <g class="ai-human-halo" aria-hidden="true">
+          <circle cx="504" cy="124" r="30" />
+          <circle cx="504" cy="236" r="30" />
+          <ellipse cx="504" cy="124" rx="46" ry="18" />
+          <ellipse cx="504" cy="236" rx="46" ry="18" />
         </g>
         <g class="ai-system-routes" filter="url(#ai-system-bloom)" aria-hidden="true">
           <path class="track-figure-path signal-path ai-system-flow-path primary" d="M160 109 C214 110, 242 130, 306 132 C370 134, 412 118, 474 124" />
