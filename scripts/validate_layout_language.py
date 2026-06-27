@@ -16,7 +16,12 @@ REQUIRED_PRIMITIVE_FILES = {
 MIGRATED_SURFACES = {
     "src/pages/project/overview.astro": {
         "required": ("CommandBand", "EvidenceRail", "StatusDossier"),
-        "forbidden": ('class="track-grid"', 'class="link-grid"', 'class="track-card"', 'class="link-card"'),
+        "forbidden": (
+            'class="track-grid"',
+            'class="link-grid"',
+            'class="track-card"',
+            'class="link-card"',
+        ),
     },
     "src/components/InternalExplainerPage.astro": {
         "required": ("EvidenceRail", "StatusDossier"),
