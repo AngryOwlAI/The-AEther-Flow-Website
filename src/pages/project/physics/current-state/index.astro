@@ -1,9 +1,11 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import snapshot from "../../../../data/physics_current_state_snapshot.json";
+import { physicsCurrentStateComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsCurrentState;
@@ -148,6 +150,8 @@ const distanceStateCards = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={physicsCurrentStateComprehension} />
 
   <section class="track-page-band" aria-labelledby="distance-to-gr-title">
     <div class="track-page-heading">

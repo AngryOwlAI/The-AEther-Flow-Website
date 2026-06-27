@@ -1,0 +1,174 @@
+---
+import EvidenceRail from "./EvidenceRail.astro";
+import Figure from "./Figure.astro";
+import StatusDossier from "./StatusDossier.astro";
+import type { ComprehensionContent } from "../lib/comprehensionContent";
+
+interface Props {
+  content: ComprehensionContent;
+  className?: string;
+}
+
+const { content, className = "" } = Astro.props;
+---
+
+<section
+  id={content.id}
+  class={`track-page-band comprehension-blocks ${className}`.trim()}
+  aria-labelledby={`${content.id}-title`}
+>
+  <div class="track-page-heading comprehension-heading">
+    <p class="eyebrow">{content.eyebrow}</p>
+    <h2 id={`${content.id}-title`}>{content.title}</h2>
+    <p>{content.summary}</p>
+  </div>
+
+  {content.diagram && (
+    <div class="comprehension-diagram-wrap">
+      <Figure
+        src={content.diagram.src}
+        alt={content.diagram.alt}
+        caption={content.diagram.caption}
+        provenance={content.diagram.provenance}
+        className="comprehension-figure"
+      />
+      <p class="comprehension-diagram-note">
+        The diagram is a static reader aid. It does not replace the source
+        files, route dossiers, or claim-status records that govern the topic.
+      </p>
+    </div>
+  )}
+
+  {content.mechanismSteps && content.mechanismSteps.length > 0 && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-steps-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Mechanism</p>
+        <h3 id={`${content.id}-steps-title`}>How to read this surface.</h3>
+      </div>
+      <EvidenceRail
+        items={content.mechanismSteps.map((step) => ({
+          title: step.title,
+          body: step.body,
+        }))}
+        ariaLabel={`${content.title} mechanism steps`}
+        className="source-link-grid comprehension-rail"
+        ordered
+      />
+    </section>
+  )}
+
+  {content.terms && content.terms.length > 0 && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-terms-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Terms</p>
+        <h3 id={`${content.id}-terms-title`}>Define the loaded words before using them.</h3>
+      </div>
+      <StatusDossier
+        items={content.terms.map((item) => ({
+          label: item.term,
+          title: item.definition,
+          body: item.boundary,
+        }))}
+        ariaLabel={`${content.title} glossary terms`}
+        className="track-status-grid comprehension-term-grid"
+      />
+    </section>
+  )}
+
+  {content.boundaries && content.boundaries.length > 0 && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-boundaries-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Boundaries</p>
+        <h3 id={`${content.id}-boundaries-title`}>What this page must not imply.</h3>
+      </div>
+      <StatusDossier
+        items={content.boundaries}
+        ariaLabel={`${content.title} boundaries`}
+        className="track-status-grid comprehension-boundary-grid"
+      />
+    </section>
+  )}
+
+  {content.equations && content.equations.length > 0 && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-equations-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Equation walkthrough</p>
+        <h3 id={`${content.id}-equations-title`}>Read formulas with their assumptions and limits.</h3>
+      </div>
+      <StatusDossier
+        items={content.equations.map((item) => ({
+          label: "Equation",
+          title: item.label,
+          body: `${item.expression} Source status: ${item.sourceStatus}`,
+        }))}
+        ariaLabel={`${content.title} equation walkthroughs`}
+        className="track-status-grid comprehension-equation-grid"
+      />
+    </section>
+  )}
+
+  {content.safeUnsafe && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-safe-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Safe reading</p>
+        <h3 id={`${content.id}-safe-title`}>A useful summary also names the unsafe one.</h3>
+      </div>
+      <StatusDossier
+        items={[
+          {
+            label: "Safe summary",
+            title: "Supported reading",
+            body: content.safeUnsafe.safe,
+          },
+          {
+            label: "Unsafe summary",
+            title: "Forbidden shortcut",
+            body: content.safeUnsafe.unsafe,
+          },
+        ]}
+        ariaLabel={`${content.title} safe and unsafe summaries`}
+        className="track-status-grid safe-unsafe-grid"
+      />
+    </section>
+  )}
+
+  {content.relatedRoutes && content.relatedRoutes.length > 0 && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-related-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Related routes</p>
+        <h3 id={`${content.id}-related-title`}>Continue through internal pages first.</h3>
+      </div>
+      <EvidenceRail
+        items={content.relatedRoutes.map((item) => ({
+          label: item.label,
+          title: item.title,
+          href: item.href,
+          body: item.body,
+          actionLabel: "Open route",
+        }))}
+        ariaLabel={`${content.title} related internal routes`}
+        className="source-link-grid comprehension-related-grid"
+      />
+    </section>
+  )}
+
+  {content.sourceBasis && content.sourceBasis.length > 0 && (
+    <section class="comprehension-subsection" aria-labelledby={`${content.id}-source-title`}>
+      <div class="track-page-heading">
+        <p class="eyebrow">Source basis</p>
+        <h3 id={`${content.id}-source-title`}>Use these as provenance, not primary navigation.</h3>
+      </div>
+      <EvidenceRail
+        items={content.sourceBasis.map((item) => ({
+          label: item.label,
+          title: item.title,
+          href: item.href,
+          body: item.body,
+          actionLabel: item.href?.startsWith("/") ? "Open route" : "Inspect source",
+        }))}
+        ariaLabel={`${content.title} source basis`}
+        className="source-link-grid comprehension-source-grid"
+      />
+    </section>
+  )}
+</section>

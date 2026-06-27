@@ -51,12 +51,40 @@ export const researchMapNodes = [
 
 export const diagramGalleryItems = [
   {
-    title: "Publication Layer Map sample",
-    src: "/assets/diagrams/publication-layer-map.svg",
-    alt: "Diagram showing source repository authority flowing into website manifests and static reader pages.",
+    title: "Project overview two-track map",
+    src: "/assets/diagrams/comprehension/project-overview-two-track-map.png",
+    alt: "Diagram showing The AEther Flow overview as physics research and AI research-agent workflow downstream from source authority.",
     caption:
-      "A sample, non-authoritative orientation diagram for the website publication layer.",
-    provenance: "Website scaffold fixture; not a scientific source artifact.",
+      "Public comprehension diagram for the overview route; it orients readers without promoting scientific claims.",
+    provenance:
+      "Mermaid source: docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd.",
+  },
+  {
+    title: "Physics derivation burden ladder",
+    src: "/assets/diagrams/comprehension/physics-roadmap-burden-ladder.png",
+    alt: "Diagram showing the GR derivation roadmap as separate source, metric, matter-coupling, equation, and promotion burdens.",
+    caption:
+      "Public comprehension diagram for the GR derivation roadmap; it names burdens rather than discharging them.",
+    provenance:
+      "Mermaid source: docs/content-dossiers/physics-gr-derivation-roadmap/diagrams/burden-ladder.mmd.",
+  },
+  {
+    title: "AI workflow bounded AgentJob chain",
+    src: "/assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png",
+    alt: "Diagram showing a request flowing through Director decision, AgentJob allowlist, execution, validators, completion, handoff, and bounded PASS.",
+    caption:
+      "Public comprehension diagram for the workflow route; PASS remains bounded to the checked state.",
+    provenance:
+      "Mermaid source: docs/content-dossiers/ai-workflow/diagrams/bounded-agentjob-chain.mmd.",
+  },
+  {
+    title: "Source authority ladder",
+    src: "/assets/diagrams/comprehension/source-authority-ladder.png",
+    alt: "Diagram showing source files and registries upstream from generated derivatives, website pages, and reader orientation.",
+    caption:
+      "Public comprehension diagram for the source-authority route; if derivatives and sources conflict, source records win.",
+    provenance:
+      "Mermaid source: docs/content-dossiers/source-authority/diagrams/source-authority-ladder.mmd.",
   },
 ];
 

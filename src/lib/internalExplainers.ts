@@ -1,3 +1,15 @@
+import type { ComprehensionContent } from "./comprehensionContent";
+import { parentChildComprehension } from "./comprehensionContent";
+import {
+  directorAgentjobLifecycleComprehension,
+  operationsComprehension,
+  projectSystemImprovementComprehension,
+  publicationProcessComprehension,
+  roleRoutingComprehension,
+  technicalRequirementsComprehension,
+  validatorOperatorWorkflowComprehension,
+} from "./operationsComprehensionContent";
+
 export interface ExplainerCard {
   label: string;
   title: string;
@@ -37,6 +49,7 @@ export interface InternalExplainer {
   sections: ExplainerSection[];
   relatedLinks: ExplainerLink[];
   sourceLinks: ExplainerLink[];
+  comprehension?: ComprehensionContent;
 }
 
 const upstream = (path: string) =>
@@ -141,6 +154,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "curated operational synthesis",
     updated: "2026-06-26",
     sourceRefs: operationsSourceRefs,
+    comprehension: operationsComprehension,
     sections: [
       {
         eyebrow: "Operating model",
@@ -222,6 +236,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "workflow orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/parent-child-synthesis-explainer.md")],
+    comprehension: parentChildComprehension,
     sections: [
       {
         eyebrow: "Single outer frame",
@@ -328,6 +343,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "operational orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/director-agentjob-lifecycle-explainer.md")],
+    comprehension: directorAgentjobLifecycleComprehension,
     sections: [
       {
         eyebrow: "Lifecycle map",
@@ -428,6 +444,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "operational orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/role-routing-explainer.md")],
+    comprehension: roleRoutingComprehension,
     sections: [
       {
         eyebrow: "Contract stack",
@@ -508,6 +525,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "validator-operator orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/validator-operator-workflow-explainer.md")],
+    comprehension: validatorOperatorWorkflowComprehension,
     sections: [
       {
         eyebrow: "Command map",
@@ -606,6 +624,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "publication-process orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/documentation-curator-publication-process-explainer.md")],
+    comprehension: publicationProcessComprehension,
     sections: [
       {
         eyebrow: "Publication lifecycle",
@@ -677,6 +696,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "project-system orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/project-system-improvement-explainer.md")],
+    comprehension: projectSystemImprovementComprehension,
     sections: [
       {
         eyebrow: "Improvement loop",
@@ -753,6 +773,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "technical-requirements orientation",
     updated: "2026-06-26",
     sourceRefs: [upstreamRef("github-facing/technical-requirements-explainer.md")],
+    comprehension: technicalRequirementsComprehension,
     sections: [
       {
         eyebrow: "Tool tiers",

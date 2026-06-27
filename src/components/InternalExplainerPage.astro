@@ -1,4 +1,5 @@
 ---
+import ComprehensionBlocks from "./ComprehensionBlocks.astro";
 import EvidenceRail from "./EvidenceRail.astro";
 import SourceNotice from "./SourceNotice.astro";
 import StatusDossier from "./StatusDossier.astro";
@@ -123,6 +124,8 @@ const isOperationsVisual = visualVariant === "operations";
       <figcaption id="internal-explainer-figure-caption">{page.visualCaption}</figcaption>
     </figure>
   </section>
+
+  {page.comprehension && <ComprehensionBlocks content={page.comprehension} />}
 
   {page.sections.map((section, sectionIndex) => (
     <section

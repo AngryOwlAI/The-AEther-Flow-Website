@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { physicsClaimGatesComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsClaimGates;
@@ -116,6 +118,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={physicsClaimGatesComprehension} />
 
   <section id="claim-lifecycle" class="track-page-band" aria-labelledby="claim-lifecycle-title">
     <div class="track-page-heading">

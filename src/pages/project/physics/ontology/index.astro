@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { physicsOntologyComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsOntology;
@@ -111,6 +113,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={physicsOntologyComprehension} />
 
   <section class="track-page-band" aria-labelledby="ontology-vocabulary-title">
     <div class="track-page-heading">

@@ -1,9 +1,11 @@
 ---
 import CommandBand from "../../components/CommandBand.astro";
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { overviewComprehension } from "../../lib/comprehensionContent";
 
 const physicsDetails = [
   "Æther / Æther-flow ontology",
@@ -291,6 +293,8 @@ const agentMap = `
       </figure>
     </Fragment>
   </CommandBand>
+
+  <ComprehensionBlocks content={overviewComprehension} className="overview-comprehension-system" />
 
   <CommandBand
     id="overview-paths"

@@ -1,0 +1,14 @@
+flowchart LR
+  sourceManifest["Source manifest"] --> assetManifest["Asset manifest"]
+  assetManifest --> resources["Resource index"]
+  resources --> documents["Document downloads"]
+  resources --> diagrams["Diagram gallery"]
+  sourceManifest --> hashes["Hashes and status labels"]
+  resources --> boundary["Index does not create authority"]
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class sourceManifest,assetManifest,hashes source;
+  class resources,documents,diagrams control;
+  class boundary boundary;

@@ -1,0 +1,16 @@
+flowchart TD
+  Source["source_ontology"]
+  EqSrc["EqSrc and retention/generator burdens"]
+  Obs["ObsLoc_lc"]
+  Resp["Resp_lc"]
+  Msrc["M_src"]
+  Geff["g_eff"]
+  Matter["matter_coupling"]
+  Einstein["einstein_equations"]
+  Promotion["benchmark_promotion"]
+  Boundary["Forbidden: earlier row implies downstream GR"]
+
+  Source --> EqSrc --> Obs --> Resp --> Msrc --> Geff --> Matter --> Einstein --> Promotion
+  Geff --> Boundary
+  Matter --> Boundary
+  Einstein --> Boundary

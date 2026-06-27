@@ -1,8 +1,10 @@
 ---
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import Figure from "../../components/Figure.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
 import { approvedDownloads, downloads, sampleDownloads } from "../../lib/manifests";
 import { diagramGalleryItems } from "../../lib/siteContent";
 
@@ -10,32 +12,35 @@ const diagramDownloads = downloads.filter((item) => item.kind === "diagram");
 const approvedDiagramDownloads = approvedDownloads.filter((item) => item.kind === "diagram");
 const sampleDiagramDownloads = sampleDownloads.filter((item) => item.kind === "diagram");
 const sampleDiagramLabel =
-  sampleDiagramDownloads.length === 1 ? "sample diagram fixture file" : "sample diagram fixture files";
+  sampleDiagramDownloads.length === 1 ? "sample or legacy diagram file" : "sample or legacy diagram files";
 const approvedDiagramLabel =
   approvedDiagramDownloads.length === 1
-    ? "approved source-backed diagram file"
-    : "approved source-backed diagram files";
+    ? "approved public-comprehension diagram file"
+    : "approved public-comprehension diagram files";
 ---
 
 <BaseLayout
-  title="Diagram Sample Gallery"
-  description="Manifest-backed sample diagram gallery for The AEther Flow website."
+  title="Diagram Gallery"
+  description="Manifest-backed diagram gallery for The AEther Flow website."
   bodyClass="project-overview-page project-support-page"
 >
   <section class="content-band project-support-hero" aria-labelledby="diagrams-title">
     <div class="project-support-copy">
       <div class="section-header">
-        <p class="eyebrow">Sample fixtures</p>
-        <h1 id="diagrams-title">Visual orientation assets</h1>
+        <p class="eyebrow">Visual assets</p>
+        <h1 id="diagrams-title">Diagram Gallery</h1>
         <p class="lead">
-          Diagrams are presentation aids. The current gallery asset is a sample
-          fixture for website orientation and manifest validation, not a
-          scientific source artifact.
+          Diagrams are presentation aids. Current comprehension diagrams are
+          generated from tracked Mermaid sources and recorded in the manifests;
+          they orient readers but do not become scientific or workflow authority.
         </p>
       </div>
       <SourceNotice
         claimStatus="source-index-only"
-        sourceRefs={["source_manifest:publication_layer_map"]}
+        sourceRefs={[
+          "The AEther Flow Website. (2026). docs/content-dossiers/README.md",
+          "The AEther Flow Website. (2026). public/files/manifests/source_manifest.json",
+        ]}
         updated="2026-06-25"
         note="This page presents website-local visual orientation assets with explicit provenance. It does not make diagrams authoritative."
       />
@@ -87,6 +92,8 @@ const approvedDiagramLabel =
     </figure>
   </section>
 
+  <ComprehensionBlocks content={resourcesDiagramsComprehension} />
+
   <section class="content-band content-band-tight" aria-labelledby="diagram-status-title">
     <div class="section-header">
       <p class="eyebrow">Manifest audit</p>
@@ -94,7 +101,8 @@ const approvedDiagramLabel =
       <p class="lead">
         The current manifest contains {sampleDiagramDownloads.length}{" "}
         {sampleDiagramLabel} and {approvedDiagramDownloads.length}{" "}
-        {approvedDiagramLabel}.
+        {approvedDiagramLabel}. Approved here means approved for website
+        comprehension use, not source-claim authority.
       </p>
     </div>
     <div class="link-grid">
@@ -121,6 +129,7 @@ const approvedDiagramLabel =
           alt={item.alt}
           caption={item.caption}
           provenance={item.provenance}
+          loading="eager"
         />
       ))}
     </div>
@@ -132,6 +141,7 @@ const approvedDiagramLabel =
       eyebrow="Manifest-backed diagram"
       title="Current diagram fixture"
       description="This row is filtered from the asset manifest. Current diagram assets are scaffold fixtures unless the manifest records approved source-backed status."
+      description="This row is filtered from the asset manifest. Diagram assets are reader aids; manifest approval records website publication status, not source-claim authority."
     />
   </section>
 </BaseLayout>

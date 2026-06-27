@@ -1,0 +1,15 @@
+flowchart LR
+  observe["Diff or signal"] --> classify["Classifier"]
+  classify --> resolve["Resolver"]
+  resolve --> job["One project-system AgentJob"]
+  job --> receipt["Receipt evidence"]
+  receipt --> close["Close or defer signal"]
+  job --> boundary["No hidden physics continuation"]
+  resolve -. "sidecars are inputs" .-> boundary
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class observe,receipt,close source;
+  class classify,resolve,job control;
+  class boundary boundary;

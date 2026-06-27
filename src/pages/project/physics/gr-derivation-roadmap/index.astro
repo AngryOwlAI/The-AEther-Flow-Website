@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { physicsRoadmapComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsGrDerivationRoadmap;
@@ -117,6 +119,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={physicsRoadmapComprehension} />
 
   <section id="roadmap-status" class="track-page-band" aria-labelledby="roadmap-status-title">
     <div class="track-page-heading">

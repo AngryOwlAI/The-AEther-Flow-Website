@@ -1,0 +1,15 @@
+flowchart LR
+  request["Request"] --> director["Director decision"]
+  director --> job["AgentJob"]
+  job --> role["Execution role"]
+  role --> validators["Validators"]
+  validators --> completion["Completion"]
+  completion --> handoff["Handoff or registry evidence"]
+  validators --> boundary["Operational evidence is not physics proof"]
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class request,completion,handoff source;
+  class director,job,role,validators control;
+  class boundary boundary;

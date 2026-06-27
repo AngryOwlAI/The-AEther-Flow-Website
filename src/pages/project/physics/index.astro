@@ -1,7 +1,9 @@
 ---
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../components/SourceNotice.astro";
 import ProjectRouteGrid from "../../../components/ProjectRouteGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { physicsTrackComprehension } from "../../../lib/comprehensionContent";
 import {
   projectPhysicsDeepDiveRoutes,
   projectSourceNoticeDefaults,
@@ -162,6 +164,8 @@ const journeyLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={physicsTrackComprehension} />
 
   <section id="physics-status" class="track-page-band" aria-labelledby="physics-status-title">
     <div class="track-page-heading">

@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "generated_at": "2026-06-27T14:18:29.763221+00:00",
+  "generated_at": "2026-06-27T16:36:41.847527+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
-  "source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-  "source_commit_date": "2026-06-26T22:14:37-06:00",
+  "source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+  "source_commit_date": "2026-06-27T09:50:05-06:00",
   "pages": [
     {
       "route_path": "/project/overview/",
       "local_page_source": "src/pages/project/overview.astro",
-      "local_page_sha256": "e2bdf8f90fafcf4c9619a63896be282f53dc48d61eb614bc72f67fca4ae19df5",
+      "local_page_sha256": "7505d962334423ae172f6dbaa82ef16dd0717e301580f85e832581177fd59ffe",
       "title": "Project Overview",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -17,18 +17,18 @@
           "path": "github-facing/project-overview-explainer.md",
           "sha256": "29011d3201de1731056858bdb90996a05cbf95697f9d9a679cdff411a1c7ad8b",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-overview-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/project-overview-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/project-overview-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-overview-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/project-overview-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/project-overview-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -37,7 +37,7 @@
     {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
-      "local_page_sha256": "219d89db41e8cd45b2f77b19e3fd632eb6f2bd9ddabbfdfc3224097e5402bfbc",
+      "local_page_sha256": "acc809d7ab3b3946aaa6a58c3515c5dba2477e06ebe3fbd6bce83b21265d9491",
       "title": "Physics Research",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -46,18 +46,18 @@
           "path": "github-facing/aether-flow-physics-program-explainer.md",
           "sha256": "dfa00bd2dfcaf69bf3d81199a0358b5f884c99fb72cf08443d0c61c2863c536b",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-physics-program-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/aether-flow-physics-program-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/aether-flow-physics-program-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-physics-program-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/aether-flow-physics-program-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/aether-flow-physics-program-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -66,7 +66,7 @@
     {
       "route_path": "/project/physics/ontology/",
       "local_page_source": "src/pages/project/physics/ontology/index.astro",
-      "local_page_sha256": "a3f1e59015cffacd01230757f30c3fbaa92dc5edb534aa594db5ac5f4cd725c6",
+      "local_page_sha256": "5a23851af61eae4deed6c37af96f819b4a2fee435e221974b65c20266b590dda",
       "title": "AEther / AEther-Flow Ontology",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -75,18 +75,18 @@
           "path": "github-facing/aether-flow-ontology-explainer.md",
           "sha256": "f384d798ec4e891081fd8c0618561c3505d19640d5a003d11a6062382abaa4b4",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-ontology-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/aether-flow-ontology-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/aether-flow-ontology-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-ontology-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/aether-flow-ontology-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/aether-flow-ontology-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -95,7 +95,7 @@
     {
       "route_path": "/project/physics/exact-gr-benchmark/",
       "local_page_source": "src/pages/project/physics/exact-gr-benchmark/index.astro",
-      "local_page_sha256": "787bae065304476941226fa894f0d2dd993658f5d2149556479590d6bc5caf46",
+      "local_page_sha256": "adad806d69cf4d6e50881cefaa922a470c78c204debddfd1dd27a9429ce66e91",
       "title": "Exact-GR Benchmark Boundary",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -104,18 +104,18 @@
           "path": "github-facing/exact-gr-benchmark-boundary-explainer.md",
           "sha256": "df259165eaeb38a4ca07d977007a1d6ecb395cad8260aa0144d153397d38314e",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/exact-gr-benchmark-boundary-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/exact-gr-benchmark-boundary-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/exact-gr-benchmark-boundary-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/exact-gr-benchmark-boundary-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -124,7 +124,7 @@
     {
       "route_path": "/project/physics/gr-derivation-roadmap/",
       "local_page_source": "src/pages/project/physics/gr-derivation-roadmap/index.astro",
-      "local_page_sha256": "2de06d0574ee83e252d1dc0370fc9bf20b1aad7270084efb87ee4f14b7253498",
+      "local_page_sha256": "f7427ce04984d7fe148e95d0876c14cf3e4c72d59c950c1df05ce35960d570f8",
       "title": "GR Derivation Roadmap",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -133,18 +133,18 @@
           "path": "github-facing/gr-derivation-roadmap-explainer.md",
           "sha256": "0de7f2a9c03670f07e0ecfed1e6933fef07ab2e549a1fd9c93325a5abe7922dc",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/gr-derivation-roadmap-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/gr-derivation-roadmap-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/gr-derivation-roadmap-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/gr-derivation-roadmap-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -153,7 +153,7 @@
     {
       "route_path": "/project/physics/current-state/",
       "local_page_source": "src/pages/project/physics/current-state/index.astro",
-      "local_page_sha256": "f7191b6570717e1b8ef34c2bc532f592e53f197d79b235deacf825391486bf7e",
+      "local_page_sha256": "4866c1b575b2ea6838c81d00f55a2523ce8058153f84828429b380380d9d8d79",
       "title": "Current Physics State",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -162,62 +162,62 @@
           "path": "research_control/program_state.yaml",
           "sha256": "bafee9657c34f7963140b8b2362d28361fc240b2d290f818e3ff701c8cde006b",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/program_state.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/program_state.yaml",
           "omission_reason": null
         },
         {
           "path": "research_control/handoffs/handoff-0243.yaml",
           "sha256": "799e5c3c580355e01c2d82dd4d71b4d6b80b1ae1551f3ce5ce185ba7c9eb4720",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/handoffs/handoff-0243.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/handoffs/handoff-0243.yaml",
           "omission_reason": null
         },
         {
           "path": "research_control/handoffs/handoff-0243.md",
           "sha256": "8f0a98ce59faf4b557e7b6324adff689a342c4a5fbcf5cf9229cb78ab5f8512d",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/handoffs/handoff-0243.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/handoffs/handoff-0243.md",
           "omission_reason": null
         },
         {
           "path": "research_control/design/gr_derivation_burden_map.md",
           "sha256": "6d1df3488be163b72296cf34ee07b979e29b061d508e6a4c271ac3305373aa1f",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/design/gr_derivation_burden_map.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/design/gr_derivation_burden_map.md",
           "omission_reason": null
         },
         {
           "path": "research_control/design/mathematical_decisiveness_completion_contract.md",
           "sha256": "562405dd78a03efde831806323081285c7850ee18dbeb2a6b6ecf900417c814c",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/mathematical_decisiveness_completion_contract.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/design/mathematical_decisiveness_completion_contract.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/design/mathematical_decisiveness_completion_contract.md",
           "omission_reason": null
         },
         {
           "path": "research_control/design/obstruction_and_freeze_control.md",
           "sha256": "52f24fc04f0f8e4a6716cb8ef78538566a332b3b4e27d4b939125e5648ea1e96",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/obstruction_and_freeze_control.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/design/obstruction_and_freeze_control.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/design/obstruction_and_freeze_control.md",
           "omission_reason": null
         },
         {
           "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
           "sha256": "094eb8716cc8d150555c5a27bee6dc7851a6c5c56812b75efb064aa2f72b1b48",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/DISTANCE_TO_GR_LEDGER.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/DISTANCE_TO_GR_LEDGER.csv",
           "omission_reason": null
         },
         {
           "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-          "sha256": "a63b97e188f5364d8a4d2ae0b38a3b94fe55ad436d296b0f6135b92703e24b9e",
+          "sha256": "d67d076dc9ebe0b8a30e8f01e6ef9f1c483b920df906313c11a2c0fbc205cee2",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/CLAIM_BOUNDARY_REGISTRY.csv",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0243.yaml",
@@ -229,14 +229,14 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/handoffs/handoff-0243.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/handoffs/handoff-0243.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/design/gr_derivation_burden_map.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/design/mathematical_decisiveness_completion_contract.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/research_control/design/obstruction_and_freeze_control.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/DISTANCE_TO_GR_LEDGER.csv",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/program_state.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/handoffs/handoff-0243.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/handoffs/handoff-0243.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/design/mathematical_decisiveness_completion_contract.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/research_control/design/obstruction_and_freeze_control.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/DISTANCE_TO_GR_LEDGER.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
@@ -245,7 +245,7 @@
     {
       "route_path": "/project/physics/claim-gates/",
       "local_page_source": "src/pages/project/physics/claim-gates/index.astro",
-      "local_page_sha256": "4da9954da52962307a22448d048d4f25cba8c8c1907669a5c30857f3526e261c",
+      "local_page_sha256": "17fea851d501ca0eac2cf5867f72c7d665001e5e59137ff65e76215a44f30098",
       "title": "Claim Gates",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -254,18 +254,18 @@
           "path": "github-facing/claim-gates-explainer.md",
           "sha256": "8af0f20cb1d9a31c39f9b0077bc07cf07d73e67035da99330704b159f590c5c6",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/claim-gates-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/claim-gates-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/claim-gates-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/claim-gates-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/claim-gates-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/claim-gates-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -274,7 +274,7 @@
     {
       "route_path": "/project/ai-research-agent-system/",
       "local_page_source": "src/pages/project/ai-research-agent-system/index.astro",
-      "local_page_sha256": "85c3dd175e07af424b544b3ddeeb3c892b84395065b1f04371dd0cdf862af6fb",
+      "local_page_sha256": "b8f4498841fcdcccd48163758cbc56abcfe9fa4248396bce8c8bc504279f545b",
       "title": "AI Research-Agent System",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -283,18 +283,18 @@
           "path": "github-facing/research-agent-workflow-explainer.md",
           "sha256": "1031b04c2936096382f1b6fe30d52207ef68641b9edc4d0a619780b83c8d24e1",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/research-agent-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/research-agent-workflow-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/research-agent-workflow-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/research-agent-workflow-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -303,7 +303,7 @@
     {
       "route_path": "/project/ai-research-agent-system/workflow/",
       "local_page_source": "src/pages/project/ai-research-agent-system/workflow/index.astro",
-      "local_page_sha256": "fd11a4e9c61f22a2c8e4ed84f39ff7f60d41ea0bf5930defb271dea803e9c039",
+      "local_page_sha256": "2cf9cb04140d8a85df2cd571a470610a2a08b856620c23f38344d74213411658",
       "title": "Research-Agent Workflow",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -312,18 +312,18 @@
           "path": "github-facing/research-agent-workflow-explainer.md",
           "sha256": "1031b04c2936096382f1b6fe30d52207ef68641b9edc4d0a619780b83c8d24e1",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/research-agent-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/research-agent-workflow-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/research-agent-workflow-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/research-agent-workflow-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -332,27 +332,27 @@
     {
       "route_path": "/project/ai-research-agent-system/roles-and-skills/",
       "local_page_source": "src/pages/project/ai-research-agent-system/roles-and-skills/index.astro",
-      "local_page_sha256": "8abe67319010aa0ec38730bcc56206bdac9758b197640a37543f682c1b8573e5",
+      "local_page_sha256": "ea0b5107d199329d890f990edc06c7e96aec03064208a3bdde52a246cba2da00",
       "title": "Roles And Skills",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [
         {
           "path": "github-facing/roles-and-skills-explainer.md",
-          "sha256": "c08b232678f2a3829a50e781414eaf638f94d406481ae324c1286ef751c485c6",
+          "sha256": "df9644c1e86a6b7f7656e28827141e30df8ae68f6caf67a80dd0294a5d6eb02e",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/roles-and-skills-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/roles-and-skills-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/roles-and-skills-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/roles-and-skills-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/roles-and-skills-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/roles-and-skills-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -361,7 +361,7 @@
     {
       "route_path": "/project/ai-research-agent-system/memory-registries/",
       "local_page_source": "src/pages/project/ai-research-agent-system/memory-registries/index.astro",
-      "local_page_sha256": "c69e2d8a7587a87016b710b605c158a743d866b1d63986e5d8842839d906df14",
+      "local_page_sha256": "61237120ccd002b19f3f4107fd6b036c1020274d56d92bc5644e5c5b4eff244c",
       "title": "Memory And Registries",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -370,18 +370,18 @@
           "path": "github-facing/memory-system-explainer.md",
           "sha256": "4fa6b32169a9e529382149348d36a65d3a6f81134cc18311a0db8ad40810f94b",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/memory-system-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/memory-system-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/memory-system-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/memory-system-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/memory-system-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/memory-system-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -399,18 +399,18 @@
           "path": "github-facing/parent-child-synthesis-explainer.md",
           "sha256": "d722d42ef0b994da20399867b135bc79f0cf4e8fd74ed5428d880bef83a9e991",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/parent-child-synthesis-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/parent-child-synthesis-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/parent-child-synthesis-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/parent-child-synthesis-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/parent-child-synthesis-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/parent-child-synthesis-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -428,48 +428,48 @@
           "path": "github-facing/director-agentjob-lifecycle-explainer.md",
           "sha256": "c7c4bcf8aac5754ef9366cc90444acc58bfe090a838938c57ad3f4487e74d10b",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/director-agentjob-lifecycle-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/director-agentjob-lifecycle-explainer.md",
           "omission_reason": null
         },
         {
           "path": "github-facing/role-routing-explainer.md",
           "sha256": "02b9f3570119f7143a0a9cab1e218f937e0f4321149f76f07cb3866b112480bf",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/role-routing-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/role-routing-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/role-routing-explainer.md",
           "omission_reason": null
         },
         {
           "path": "github-facing/validator-operator-workflow-explainer.md",
           "sha256": "6d92fb7801fea1775ea2539d1fbbca2511993cea6608296052497e32316c8c85",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/validator-operator-workflow-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/validator-operator-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/validator-operator-workflow-explainer.md",
           "omission_reason": null
         },
         {
           "path": "github-facing/documentation-curator-publication-process-explainer.md",
-          "sha256": "2a846a01cb6d8347496becdc08e96469541a7a49ad098dad1ca4e62114a19df5",
+          "sha256": "84175f52a7ec4d6d8f9924919cc48ded4c0c39a6675ea99607a59ae7f36cb92f",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/documentation-curator-publication-process-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/documentation-curator-publication-process-explainer.md",
           "omission_reason": null
         },
         {
           "path": "github-facing/project-system-improvement-explainer.md",
-          "sha256": "6b3776a6ce85a75cdba4a639a009901e019824e3dd1ebfab3a29d3f3a0b41ba9",
+          "sha256": "bba95eac6d05b36ff918a698f3e4835b67f5fcf6c299ad49ddbad19f1e24efba",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-system-improvement-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/project-system-improvement-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/project-system-improvement-explainer.md",
           "omission_reason": null
         },
         {
           "path": "github-facing/technical-requirements-explainer.md",
           "sha256": "8ce46064849224289885f256379e8433d760963ca205a02c57c2e6b8afe62929",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/technical-requirements-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/technical-requirements-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/technical-requirements-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/role-routing-explainer.md",
@@ -479,12 +479,12 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/technical-requirements-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/director-agentjob-lifecycle-explainer.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/role-routing-explainer.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/validator-operator-workflow-explainer.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/documentation-curator-publication-process-explainer.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/project-system-improvement-explainer.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/technical-requirements-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/director-agentjob-lifecycle-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/role-routing-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/validator-operator-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/project-system-improvement-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/technical-requirements-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -502,18 +502,18 @@
           "path": "github-facing/director-agentjob-lifecycle-explainer.md",
           "sha256": "c7c4bcf8aac5754ef9366cc90444acc58bfe090a838938c57ad3f4487e74d10b",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/director-agentjob-lifecycle-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/director-agentjob-lifecycle-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/director-agentjob-lifecycle-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/director-agentjob-lifecycle-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -531,18 +531,18 @@
           "path": "github-facing/role-routing-explainer.md",
           "sha256": "02b9f3570119f7143a0a9cab1e218f937e0f4321149f76f07cb3866b112480bf",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/role-routing-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/role-routing-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/role-routing-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/role-routing-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/role-routing-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/role-routing-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -560,18 +560,18 @@
           "path": "github-facing/validator-operator-workflow-explainer.md",
           "sha256": "6d92fb7801fea1775ea2539d1fbbca2511993cea6608296052497e32316c8c85",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/validator-operator-workflow-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/validator-operator-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/validator-operator-workflow-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/validator-operator-workflow-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/validator-operator-workflow-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/validator-operator-workflow-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -587,20 +587,20 @@
       "upstream_sources": [
         {
           "path": "github-facing/documentation-curator-publication-process-explainer.md",
-          "sha256": "2a846a01cb6d8347496becdc08e96469541a7a49ad098dad1ca4e62114a19df5",
+          "sha256": "84175f52a7ec4d6d8f9924919cc48ded4c0c39a6675ea99607a59ae7f36cb92f",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/documentation-curator-publication-process-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/documentation-curator-publication-process-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/documentation-curator-publication-process-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/documentation-curator-publication-process-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -616,20 +616,20 @@
       "upstream_sources": [
         {
           "path": "github-facing/project-system-improvement-explainer.md",
-          "sha256": "6b3776a6ce85a75cdba4a639a009901e019824e3dd1ebfab3a29d3f3a0b41ba9",
+          "sha256": "bba95eac6d05b36ff918a698f3e4835b67f5fcf6c299ad49ddbad19f1e24efba",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-system-improvement-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/project-system-improvement-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/project-system-improvement-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-system-improvement-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/project-system-improvement-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/project-system-improvement-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -647,18 +647,18 @@
           "path": "github-facing/technical-requirements-explainer.md",
           "sha256": "8ce46064849224289885f256379e8433d760963ca205a02c57c2e6b8afe62929",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/technical-requirements-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/technical-requirements-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/technical-requirements-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/technical-requirements-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/technical-requirements-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/technical-requirements-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -667,7 +667,7 @@
     {
       "route_path": "/project/source-authority/",
       "local_page_source": "src/pages/project/source-authority/index.astro",
-      "local_page_sha256": "93e915102ab01768ffbbf424574189075c7e4e8c765fd085cdca838e5d2fb33a",
+      "local_page_sha256": "8d2f68ee3e773448b56fa56ae55a1f6b0f4bbd29ffed64ac88efe722d24382b7",
       "title": "Source Authority",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -676,18 +676,18 @@
           "path": "github-facing/source-authority-explainer.md",
           "sha256": "b3d9145c6e9cfebe1dfa5ec59e5905eeec636fa188cc8b65562689337a2a8ebf",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/source-authority-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/source-authority-explainer.md",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/github-facing/source-authority-explainer.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/github-facing/source-authority-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -696,7 +696,7 @@
     {
       "route_path": "/resources/documents/",
       "local_page_source": "src/pages/resources/documents.astro",
-      "local_page_sha256": "d56360731d991d76b8b59ac78a5783d599efb15d18fbb7330cb033dd390d95e7",
+      "local_page_sha256": "0c5c9a46b29c7d57e51204e18be6d93bf8e5a8384edfa9858fd71a19484b1cb2",
       "title": "Ontology Documents",
       "adaptation_type": "asset_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -705,45 +705,92 @@
           "path": "ontology/README.md",
           "sha256": "52b955ef422e31902ec98192dca281f82bfa1fd1182f513fc6e01cc28a849a71",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/README.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/README.md",
           "omission_reason": null
         },
         {
           "path": "ontology/tex/README.md",
           "sha256": "92989a1ebe7118b59eccb9376e9d687e9af638caa9414dcd3cc01eed52e1b1af",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/README.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/tex/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/tex/README.md",
           "omission_reason": null
         },
         {
           "path": "registries/TEX_SOURCE_REGISTRY.csv",
           "sha256": "99ddac18f608904179f4e6ee84550973c8cfb642efb2a39269e727cb9aef8b32",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/TEX_SOURCE_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/TEX_SOURCE_REGISTRY.csv",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/README.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/tex/README.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/TEX_SOURCE_REGISTRY.csv"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/tex/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/TEX_SOURCE_REGISTRY.csv"
       ],
       "upstream_authority_status": "canonical",
       "website_publication_status": "approved_asset",
       "boundary_type": "authority_boundary"
     },
     {
+      "route_path": "/resources/diagrams/",
+      "local_page_source": "src/pages/resources/diagrams.astro",
+      "local_page_sha256": "61f41c839a16e6a35f26dc964e38d0608bc0ec22c59b190b6bc7d84914497052",
+      "title": "Diagram Gallery",
+      "adaptation_type": "curated_index",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "docs/content-dossiers/README.md",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/docs/content-dossiers/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/docs/content-dossiers/README.md",
+          "omission_reason": "source_file_missing"
+        },
+        {
+          "path": "public/files/manifests/source_manifest.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/source_manifest.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/public/files/manifests/source_manifest.json",
+          "omission_reason": "source_file_missing"
+        },
+        {
+          "path": "scripts/render_mermaid_diagrams.py",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/scripts/render_mermaid_diagrams.py",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/scripts/render_mermaid_diagrams.py",
+          "omission_reason": "source_file_missing"
+        }
+      ],
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/docs/content-dossiers/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/source_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/scripts/render_mermaid_diagrams.py"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/docs/content-dossiers/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/public/files/manifests/source_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/scripts/render_mermaid_diagrams.py"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
       "route_path": "/resources/",
       "local_page_source": "src/pages/resources/index.astro",
-      "local_page_sha256": "f728f2c1b4d7dba5e8b1f80197bd5ee01e7477720b11798f2297f7e721420635",
+      "local_page_sha256": "598f323fbc1da4dedf258990dfec7f427d5aae82eed010ba055166d4b5481c0c",
       "title": "Resources",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -752,36 +799,36 @@
           "path": "ontology/README.md",
           "sha256": "52b955ef422e31902ec98192dca281f82bfa1fd1182f513fc6e01cc28a849a71",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/README.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/README.md",
           "omission_reason": null
         },
         {
           "path": "ontology/tex/README.md",
           "sha256": "92989a1ebe7118b59eccb9376e9d687e9af638caa9414dcd3cc01eed52e1b1af",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/README.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/tex/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/tex/README.md",
           "omission_reason": null
         },
         {
           "path": "registries/TEX_SOURCE_REGISTRY.csv",
           "sha256": "99ddac18f608904179f4e6ee84550973c8cfb642efb2a39269e727cb9aef8b32",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/TEX_SOURCE_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/TEX_SOURCE_REGISTRY.csv",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "7d5ab705de5c6f614d2ce3e2a610a8cff9925c13",
-      "upstream_source_commit_date": "2026-06-26T22:14:37-06:00",
-      "adapted_from_source_date": "2026-06-26",
+      "upstream_source_commit": "8a9283178f02f91958971b8ad6bbd884998da175",
+      "upstream_source_commit_date": "2026-06-27T09:50:05-06:00",
+      "adapted_from_source_date": "2026-06-27",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/README.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/ontology/tex/README.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/7d5ab705de5c6f614d2ce3e2a610a8cff9925c13/registries/TEX_SOURCE_REGISTRY.csv"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/ontology/tex/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/8a9283178f02f91958971b8ad6bbd884998da175/registries/TEX_SOURCE_REGISTRY.csv"
       ],
       "upstream_authority_status": "canonical",
       "website_publication_status": "published",

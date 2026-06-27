@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { physicsBenchmarkComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
@@ -111,6 +113,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={physicsBenchmarkComprehension} />
 
   <section class="track-page-band" aria-labelledby="benchmark-plain-title">
     <div class="track-page-heading">

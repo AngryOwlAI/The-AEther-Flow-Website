@@ -1,0 +1,14 @@
+flowchart LR
+  brief["Publication brief"] --> sourceSpec["Source spec"]
+  sourceSpec --> page["Reader page"]
+  page --> screenshots["Screenshots"]
+  screenshots --> review["Human comprehension review"]
+  review --> manifests["Manifests and provenance"]
+  page --> boundary["Readable page is downstream"]
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class brief,sourceSpec,manifests source;
+  class page,screenshots,review control;
+  class boundary boundary;

@@ -1,0 +1,15 @@
+flowchart LR
+  Proposal["Proposal"]
+  Audit["Audit"]
+  Stress["Refutation or stress"]
+  Completion["Completion"]
+  Handoff["Handoff"]
+  Freeze["Freeze"]
+  Gate["Human gate"]
+  Boundary["Forbidden: validator or generated page promotes claim"]
+
+  Proposal --> Audit --> Stress --> Completion --> Handoff
+  Stress --> Freeze
+  Completion --> Gate
+  Freeze --> Boundary
+  Gate --> Boundary

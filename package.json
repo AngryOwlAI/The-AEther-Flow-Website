@@ -14,6 +14,7 @@
     "validate:links": "python3 scripts/validate_internal_first_links.py",
     "validate:layout": "python3 scripts/validate_layout_language.py",
     "validate:svg": "python3 scripts/validate_svg_policy.py",
+    "validate:comprehension": "python3 scripts/validate_public_comprehension.py",
     "validate:provenance": "python3 scripts/validate_page_provenance.py",
     "validate:curator": "python3 scripts/run_curator.py --check",
     "validate:cloudflare": "python3 scripts/validate_cloudflare_pages_config.py",

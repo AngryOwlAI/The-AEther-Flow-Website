@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../components/SourceNotice.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { sourceAuthorityComprehension } from "../../../lib/supportComprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.sourceAuthority;
@@ -200,6 +202,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={sourceAuthorityComprehension} />
 
   <section id="authority-ladder" class="track-page-band" aria-labelledby="authority-ladder-title">
     <div class="track-page-heading">

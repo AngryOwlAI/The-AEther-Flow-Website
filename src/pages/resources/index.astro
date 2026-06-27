@@ -1,9 +1,11 @@
 ---
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { resourcesIndexComprehension } from "../../lib/supportComprehensionContent";
 import {
   approvedDownloads,
   downloadStatusCounts,
@@ -152,6 +154,8 @@ const assetStatusDossier = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={resourcesIndexComprehension} />
 
   <section class="content-band content-band-tight" aria-labelledby="resource-groups-title">
     <div class="section-header">

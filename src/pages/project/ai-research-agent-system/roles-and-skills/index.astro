@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { aiRolesAndSkillsComprehension } from "../../../../lib/aiComprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.aiRolesAndSkills;
@@ -168,6 +170,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={aiRolesAndSkillsComprehension} />
 
   <section id="authority-stack" class="track-page-band" aria-labelledby="authority-stack-title">
     <div class="track-page-heading">

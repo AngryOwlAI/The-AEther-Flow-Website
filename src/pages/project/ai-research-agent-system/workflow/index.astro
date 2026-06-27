@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { aiWorkflowComprehension } from "../../../../lib/aiComprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.aiResearchAgentWorkflow;
@@ -142,6 +144,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={aiWorkflowComprehension} />
 
   <section id="workflow-lifecycle" class="track-page-band" aria-labelledby="workflow-lifecycle-title">
     <div class="track-page-heading">

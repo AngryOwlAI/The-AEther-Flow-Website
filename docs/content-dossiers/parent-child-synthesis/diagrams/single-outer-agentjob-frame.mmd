@@ -1,0 +1,21 @@
+flowchart TD
+  Director["One Director decision"]
+  Outer["One outer AgentJob: reads, writes, validators, stop conditions"]
+  Parent["Parent review and fusion"]
+  ChildA["Child perspective A: draft/control"]
+  ChildB["Child perspective B: draft/control"]
+  Conflict["Conflict review: blocking issues must resolve"]
+  Fused["One fused output"]
+  Completion["One completion record and downstream reference"]
+  Boundary["No extra jobs, role records, write authority, or child verdicts"]
+
+  Director --> Outer
+  Outer --> Parent
+  Parent --> ChildA
+  Parent --> ChildB
+  ChildA --> Conflict
+  ChildB --> Conflict
+  Conflict --> Parent
+  Parent --> Fused
+  Fused --> Completion
+  Outer --> Boundary

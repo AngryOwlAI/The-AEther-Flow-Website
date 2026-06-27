@@ -886,10 +886,45 @@ summary:focus-visible {
 }
 
 .equation-block figcaption {
+  display: grid;
+  gap: 0.65rem;
   border-top: 1px solid var(--content-card-border);
   padding: 0.85rem 1rem;
   color: var(--content-card-muted);
   font-size: 0.94rem;
+}
+
+.equation-block figcaption p {
+  margin: 0;
+}
+
+.equation-walkthrough-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.equation-walkthrough-list div {
+  display: grid;
+  grid-template-columns: minmax(4rem, max-content) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.equation-walkthrough-list dt {
+  color: var(--content-card-text);
+  font-family:
+    "SFMono-Regular", Consolas, "Liberation Mono", ui-monospace, monospace;
+  font-weight: 800;
+}
+
+.equation-walkthrough-list dd {
+  margin: 0;
+}
+
+.equation-walkthrough-notes ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
 }
 
 .site-footer {
@@ -2379,6 +2414,62 @@ html:has(body.project-overview-page) {
 
 .track-page-band {
   padding: 2.4rem 0;
+}
+
+.comprehension-blocks {
+  display: grid;
+  gap: 1.6rem;
+  padding-top: 2.7rem;
+}
+
+.comprehension-heading {
+  max-width: 920px;
+}
+
+.comprehension-diagram-wrap {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 940px;
+}
+
+.content-figure.comprehension-figure {
+  background: color-mix(in srgb, var(--color-dark-panel) 74%, var(--overview-bg) 26%);
+}
+
+.content-figure.comprehension-figure img {
+  background: #fff8ef;
+}
+
+.comprehension-diagram-note {
+  max-width: 760px;
+  margin: 0;
+  color: var(--overview-muted);
+}
+
+.comprehension-subsection {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.comprehension-subsection .track-page-heading h3 {
+  margin: 0;
+  color: var(--overview-text);
+  font-size: 1.8rem;
+  line-height: 1.12;
+}
+
+.comprehension-term-grid,
+.comprehension-boundary-grid,
+.safe-unsafe-grid {
+  margin-top: 0;
+}
+
+.safe-unsafe-grid .status-dossier-row:first-child {
+  border-left-color: color-mix(in srgb, var(--overview-cyan) 58%, transparent);
+}
+
+.safe-unsafe-grid .status-dossier-row:nth-child(2) {
+  border-left-color: color-mix(in srgb, var(--overview-orange) 68%, transparent);
 }
 
 .track-page-heading {

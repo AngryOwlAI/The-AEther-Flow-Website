@@ -1,0 +1,14 @@
+flowchart TB
+  inspect["Inspect tools"] --> validate["Validation tools"]
+  validate --> render["Astro and browser QA"]
+  render --> derive["TeX and PDF derivative tools"]
+  inspect --> boundary["Tool availability is not authorization"]
+  validate --> boundary
+  render --> boundary
+  derive --> boundary
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class inspect,validate,render,derive control;
+  class boundary boundary;

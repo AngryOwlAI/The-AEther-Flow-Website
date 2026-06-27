@@ -1,0 +1,14 @@
+flowchart LR
+  mermaid["Mermaid source"] --> png["Generated PNG"]
+  png --> manifest["Manifest entry"]
+  manifest --> gallery["Diagram gallery"]
+  gallery --> prose["Nearby prose and caption"]
+  gallery --> boundary["Diagram is not source authority"]
+  manifest --> hashes["Hash-backed asset status"]
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class mermaid,manifest,hashes source;
+  class png,gallery,prose control;
+  class boundary boundary;

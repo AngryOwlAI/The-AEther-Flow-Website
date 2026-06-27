@@ -1,14 +1,49 @@
 ---
 interface Props {
   label?: string;
+  sourceStatus?: string;
+  assumptions?: string[];
+  limits?: string[];
+  symbols?: { symbol: string; meaning: string }[];
 }
 
-const { label } = Astro.props;
+const { label, sourceStatus, assumptions = [], limits = [], symbols = [] } = Astro.props;
 ---
 
 <figure class="equation-block">
   <div class="equation-scroll">
     <slot />
   </div>
-  {label && <figcaption>{label}</figcaption>}
+  {(label || sourceStatus || assumptions.length > 0 || limits.length > 0 || symbols.length > 0) && (
+    <figcaption>
+      {label && <p>{label}</p>}
+      {sourceStatus && <p><strong>Source status:</strong> {sourceStatus}</p>}
+      {symbols.length > 0 && (
+        <dl class="equation-walkthrough-list">
+          {symbols.map((item) => (
+            <div>
+              <dt>{item.symbol}</dt>
+              <dd>{item.meaning}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      {assumptions.length > 0 && (
+        <div class="equation-walkthrough-notes">
+          <strong>Assumptions:</strong>
+          <ul>
+            {assumptions.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      )}
+      {limits.length > 0 && (
+        <div class="equation-walkthrough-notes">
+          <strong>Limits:</strong>
+          <ul>
+            {limits.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      )}
+    </figcaption>
+  )}
 </figure>

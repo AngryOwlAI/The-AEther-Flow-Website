@@ -1,0 +1,14 @@
+flowchart TB
+  role["Registered role"] --> overlay["Task overlay or provisional role"]
+  overlay --> execution["Execution-role record"]
+  execution --> allowlist["AgentJob allowlist"]
+  allowlist --> outputs["Allowed outputs"]
+  allowlist --> validators["Required validators"]
+  role -. "template only" .-> boundary["Role name is not live permission"]
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class role,outputs,validators source;
+  class overlay,execution,allowlist control;
+  class boundary boundary;

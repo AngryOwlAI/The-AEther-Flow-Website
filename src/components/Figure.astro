@@ -4,13 +4,15 @@ interface Props {
   alt: string;
   caption: string;
   provenance?: string;
+  className?: string;
+  loading?: "lazy" | "eager";
 }
 
-const { src, alt, caption, provenance } = Astro.props;
+const { src, alt, caption, provenance, className = "", loading = "lazy" } = Astro.props;
 ---
 
-<figure class="content-figure">
-  <img src={src} alt={alt} loading="lazy" decoding="async" />
+<figure class={`content-figure ${className}`.trim()}>
+  <img src={src} alt={alt} loading={loading} decoding="async" />
   <figcaption>
     <span>{caption}</span>
     {provenance && <small>{provenance}</small>}

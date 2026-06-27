@@ -1,8 +1,10 @@
 ---
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DocumentActions from "../../components/DocumentActions.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { resourcesDocumentsComprehension } from "../../lib/supportComprehensionContent";
 import { approvedDownloads, ontologyDocuments } from "../../lib/manifests";
 
 const approvedDocumentDownloads = approvedDownloads.filter(
@@ -106,6 +108,8 @@ const documentPathLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={resourcesDocumentsComprehension} />
 
   <section class="content-band content-band-tight" aria-labelledby="document-path-title">
     <div class="section-header">

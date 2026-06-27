@@ -1,6 +1,8 @@
 ---
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../../components/SourceNotice.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { aiMemoryRegistriesComprehension } from "../../../../lib/aiComprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.aiMemoryRegistries;
@@ -149,6 +151,8 @@ const sourceLinks = [
       </figcaption>
     </figure>
   </section>
+
+  <ComprehensionBlocks content={aiMemoryRegistriesComprehension} />
 
   <section id="authority-layers" class="track-page-band" aria-labelledby="authority-layers-title">
     <div class="track-page-heading">

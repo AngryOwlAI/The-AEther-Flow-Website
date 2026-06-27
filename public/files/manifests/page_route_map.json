@@ -2,14 +2,16 @@
   "version": 1,
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "github_base_url": "https://github.com/AngryOwlAI/The-AEther-Flow",
-  "adapted_at": "2026-06-26",
+  "adapted_at": "2026-06-27",
   "routes": [
     {
       "route_path": "/project/overview/",
       "local_page_source": "src/pages/project/overview.astro",
       "title": "Project Overview",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/project-overview-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/project-overview-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
@@ -19,7 +21,9 @@
       "local_page_source": "src/pages/project/physics/index.astro",
       "title": "Physics Research",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/aether-flow-physics-program-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/aether-flow-physics-program-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
@@ -29,7 +33,9 @@
       "local_page_source": "src/pages/project/physics/ontology/index.astro",
       "title": "AEther / AEther-Flow Ontology",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/aether-flow-ontology-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/aether-flow-ontology-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
@@ -39,7 +45,9 @@
       "local_page_source": "src/pages/project/physics/exact-gr-benchmark/index.astro",
       "title": "Exact-GR Benchmark Boundary",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/exact-gr-benchmark-boundary-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/exact-gr-benchmark-boundary-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
@@ -49,7 +57,9 @@
       "local_page_source": "src/pages/project/physics/gr-derivation-roadmap/index.astro",
       "title": "GR Derivation Roadmap",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/gr-derivation-roadmap-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/gr-derivation-roadmap-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
@@ -78,7 +88,9 @@
       "local_page_source": "src/pages/project/physics/claim-gates/index.astro",
       "title": "Claim Gates",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/claim-gates-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/claim-gates-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
@@ -88,7 +100,9 @@
       "local_page_source": "src/pages/project/ai-research-agent-system/index.astro",
       "title": "AI Research-Agent System",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/research-agent-workflow-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/research-agent-workflow-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "authority_boundary"
@@ -98,7 +112,9 @@
       "local_page_source": "src/pages/project/ai-research-agent-system/workflow/index.astro",
       "title": "Research-Agent Workflow",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/research-agent-workflow-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/research-agent-workflow-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "authority_boundary"
@@ -108,7 +124,9 @@
       "local_page_source": "src/pages/project/ai-research-agent-system/roles-and-skills/index.astro",
       "title": "Roles And Skills",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/roles-and-skills-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/roles-and-skills-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "authority_boundary"
@@ -118,7 +136,9 @@
       "local_page_source": "src/pages/project/ai-research-agent-system/memory-registries/index.astro",
       "title": "Memory And Registries",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/memory-system-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/memory-system-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "authority_boundary"
@@ -128,7 +148,9 @@
       "local_page_source": "src/pages/project/ai-research-agent-system/parent-child-synthesis/index.astro",
       "title": "Parent-Child Parallel Synthesis",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/parent-child-synthesis-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/parent-child-synthesis-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "authority_boundary"
@@ -155,7 +177,9 @@
       "local_page_source": "src/pages/project/operations/director-agentjob-lifecycle/index.astro",
       "title": "Director Decisions And AgentJob Lifecycle",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/director-agentjob-lifecycle-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/director-agentjob-lifecycle-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
@@ -165,7 +189,9 @@
       "local_page_source": "src/pages/project/operations/role-routing/index.astro",
       "title": "Role Routing And Execution Contracts",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/role-routing-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/role-routing-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
@@ -175,7 +201,9 @@
       "local_page_source": "src/pages/project/operations/validator-operator-workflow/index.astro",
       "title": "Validator And Operator Workflow",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/validator-operator-workflow-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/validator-operator-workflow-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
@@ -185,7 +213,9 @@
       "local_page_source": "src/pages/project/operations/publication-process/index.astro",
       "title": "Documentation Curator Publication Process",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/documentation-curator-publication-process-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/documentation-curator-publication-process-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
@@ -195,7 +225,9 @@
       "local_page_source": "src/pages/project/operations/project-system-improvement/index.astro",
       "title": "Project-System Improvement",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/project-system-improvement-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/project-system-improvement-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
@@ -205,7 +237,9 @@
       "local_page_source": "src/pages/project/operations/technical-requirements/index.astro",
       "title": "Technical Requirements",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/technical-requirements-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/technical-requirements-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
@@ -215,7 +249,9 @@
       "local_page_source": "src/pages/project/source-authority/index.astro",
       "title": "Source Authority",
       "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": ["github-facing/source-authority-explainer.md"],
+      "upstream_source_paths": [
+        "github-facing/source-authority-explainer.md"
+      ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "trust_boundary"
@@ -233,6 +269,20 @@
       "upstream_authority_status": "canonical",
       "website_publication_status": "approved_asset",
       "boundary_type": "authority_boundary"
+    },
+    {
+      "route_path": "/resources/diagrams/",
+      "local_page_source": "src/pages/resources/diagrams.astro",
+      "title": "Diagram Gallery",
+      "adaptation_type": "curated_index",
+      "upstream_source_paths": [
+        "docs/content-dossiers/README.md",
+        "public/files/manifests/source_manifest.json",
+        "scripts/render_mermaid_diagrams.py"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
     },
     {
       "route_path": "/resources/",

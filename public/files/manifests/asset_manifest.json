@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-27T02:46:24+00:00",
+  "generated_at": "2026-06-27T16:21:54Z",
   "items": [
     {
       "path": "/assets/diagrams/publication-layer-map.svg",
@@ -137,6 +137,190 @@
       "sha256": "ec4ea642009a242e8d030d7d59a174d20a82f6f693a6144cd1cc95ad778543ef",
       "title": "AEther Flow Exact Closure Flagship Article TeX",
       "source_ref": "source_manifest:ontology_tex_aether_flow_exact_closure_flagship_article"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/project-overview-two-track-map.png",
+      "kind": "diagram",
+      "bytes": 55735,
+      "sha256": "190db5f3e3dc06ff6352a4e168cb0270cd2b143647b23c026c880bcfab148b22",
+      "title": "Project Overview Two-Track Comprehension Map",
+      "source_ref": "source_manifest:comprehension_project_overview_two_track_map"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/parent-child-single-outer-agentjob.png",
+      "kind": "diagram",
+      "bytes": 98514,
+      "sha256": "701bde05a11bc1168c82580193a47aa43ef8d83d9274be8949f0f6ce0e7a5501",
+      "title": "Parent-Child Single Outer AgentJob Comprehension Map",
+      "source_ref": "source_manifest:comprehension_parent_child_single_outer_agentjob"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-track-status-map.png",
+      "kind": "diagram",
+      "bytes": 51660,
+      "sha256": "7e1ee0a02bce16f96f101f7f63e9c7255e7eb4bca6b781bcfb34740a057ad1be",
+      "title": "Physics Track Status Layer Comprehension Map",
+      "source_ref": "source_manifest:comprehension_physics_track_status_map"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-ontology-boundary-map.png",
+      "kind": "diagram",
+      "bytes": 40044,
+      "sha256": "2660fbe822d1af40ccccc133106c96a3147e910c0031524f5a00669dc6267826",
+      "title": "Physics Ontology Boundary Comprehension Map",
+      "source_ref": "source_manifest:comprehension_physics_ontology_boundary_map"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-benchmark-boundary-ladder.png",
+      "kind": "diagram",
+      "bytes": 53351,
+      "sha256": "c0bc5340020a036015345341afb4f031a9a7be54ebd9feefbbbf1428387fd3c0",
+      "title": "Physics Exact-GR Benchmark Boundary Ladder",
+      "source_ref": "source_manifest:comprehension_physics_benchmark_boundary_ladder"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-roadmap-burden-ladder.png",
+      "kind": "diagram",
+      "bytes": 83980,
+      "sha256": "2be9d44a95077618e58b46b3627605c55dab77d43f50728602eb4d8348b30e92",
+      "title": "Physics GR Derivation Burden Ladder",
+      "source_ref": "source_manifest:comprehension_physics_roadmap_burden_ladder"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-claim-gates-lifecycle.png",
+      "kind": "diagram",
+      "bytes": 32412,
+      "sha256": "889e7d74d06441511b096f7b0d30f4478f1efc15db7f6f6f0b5fe12a832b959f",
+      "title": "Physics Claim Gates Lifecycle Map",
+      "source_ref": "source_manifest:comprehension_physics_claim_gates_lifecycle"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-current-state-snapshot-boundary.png",
+      "kind": "diagram",
+      "bytes": 39889,
+      "sha256": "6f454819f516b7980686219509f5692bdd6ad0e735d68a045976b1a6bf3c9eff",
+      "title": "Physics Current-State Snapshot Boundary Map",
+      "source_ref": "source_manifest:comprehension_physics_current_state_snapshot_boundary"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/ai-system-task-authority-map.png",
+      "kind": "diagram",
+      "bytes": 28172,
+      "sha256": "9d3c6e63d50781ab665459824e9bb69962fb2b88d7a915d1f68a5504ab25535b",
+      "title": "AI System Task Authority Review Map",
+      "source_ref": "source_manifest:comprehension_ai_system_task_authority_map"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png",
+      "kind": "diagram",
+      "bytes": 25626,
+      "sha256": "170aae128bcfa4d6d09706207986512467fe207005b85fa5cd77e5734014eaf1",
+      "title": "AI Workflow Bounded AgentJob Chain",
+      "source_ref": "source_manifest:comprehension_ai_workflow_bounded_agentjob_chain"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/ai-roles-authority-stack.png",
+      "kind": "diagram",
+      "bytes": 75380,
+      "sha256": "47085712c20c7c627ce0a0171c01de90e79bd903ab2c47395d5b11a3049a6461",
+      "title": "AI Roles Authority Stack",
+      "source_ref": "source_manifest:comprehension_ai_roles_authority_stack"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/ai-memory-source-first-layers.png",
+      "kind": "diagram",
+      "bytes": 82417,
+      "sha256": "46d273f9f93373ac9a1c82c6f46f02e18db7bc3d00af0cec4ff8f11f1edb0d27",
+      "title": "AI Memory Source-First Layers",
+      "source_ref": "source_manifest:comprehension_ai_memory_source_first_layers"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-control-spine.png",
+      "kind": "diagram",
+      "bytes": 27099,
+      "sha256": "771bb40f951a3d10ff140154cea492e9686ef8bbda2da01c67989be4a17b004a",
+      "title": "Operations Control Spine",
+      "source_ref": "source_manifest:comprehension_operations_control_spine"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-director-agentjob-record-chain.png",
+      "kind": "diagram",
+      "bytes": 24731,
+      "sha256": "e148be994873fb80a1d1f418755f046643ff719413dc9e75b6e42158e2fa374d",
+      "title": "Operations Director AgentJob Record Chain",
+      "source_ref": "source_manifest:comprehension_operations_director_agentjob_record_chain"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-role-routing-allowlist-stack.png",
+      "kind": "diagram",
+      "bytes": 67881,
+      "sha256": "8209fb29959879f8a582010f5a1309e3f18353adc96d2e121d9d748e70b29260",
+      "title": "Operations Role Routing Allowlist Stack",
+      "source_ref": "source_manifest:comprehension_operations_role_routing_allowlist_stack"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-validator-pass-boundary.png",
+      "kind": "diagram",
+      "bytes": 30683,
+      "sha256": "8631fb73431e1675051f53691fd65c567e3b5612db58dd7853b1441b55e7b83c",
+      "title": "Operations Validator PASS Boundary",
+      "source_ref": "source_manifest:comprehension_operations_validator_pass_boundary"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-publication-review-flow.png",
+      "kind": "diagram",
+      "bytes": 27634,
+      "sha256": "4b098af68be4976197e4eeb7bc928a0ba75939767a9fa6292cde369572cf168d",
+      "title": "Operations Publication Review Flow",
+      "source_ref": "source_manifest:comprehension_operations_publication_review_flow"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-project-system-improvement-loop.png",
+      "kind": "diagram",
+      "bytes": 33743,
+      "sha256": "e147bfa3c641e70d1bd7ce9f47e3b43f98792426b35eb570b856199a398e69a6",
+      "title": "Operations Project-System Improvement Loop",
+      "source_ref": "source_manifest:comprehension_operations_project_system_improvement_loop"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/operations-technical-tool-tiers.png",
+      "kind": "diagram",
+      "bytes": 62842,
+      "sha256": "a53db18703681e3efdf9c07d9548beccdd858c597e99e05910ecf623a6ef5092",
+      "title": "Operations Technical Tool Authority Tiers",
+      "source_ref": "source_manifest:comprehension_operations_technical_tool_tiers"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/source-authority-ladder.png",
+      "kind": "diagram",
+      "bytes": 72057,
+      "sha256": "e123224d3c1c97a5a8786e9590a4558c1a7b41f8b1b89d079316ca7bdb723b78",
+      "title": "Source Authority Ladder",
+      "source_ref": "source_manifest:comprehension_source_authority_ladder"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/resources-manifest-chain.png",
+      "kind": "diagram",
+      "bytes": 48083,
+      "sha256": "a34664b4aee4228c48826d07bec61ed1be58d875f771e6075ebe4a29a87e362b",
+      "title": "Resources Manifest Chain",
+      "source_ref": "source_manifest:comprehension_resources_manifest_chain"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/resources-tex-pdf-derivative-chain.png",
+      "kind": "diagram",
+      "bytes": 43881,
+      "sha256": "8f051a979909afb0076e1c1840fec506d319be02cbd724d420e71a266815c97e",
+      "title": "Resources TeX PDF Derivative Chain",
+      "source_ref": "source_manifest:comprehension_resources_tex_pdf_derivative_chain"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/resources-diagram-publication-boundary.png",
+      "kind": "diagram",
+      "bytes": 37295,
+      "sha256": "d3fd4767b9873018f66aa431b6471a311d8f6f775817b4307d81bdf712c30bff",
+      "title": "Resources Diagram Publication Boundary",
+      "source_ref": "source_manifest:comprehension_resources_diagram_publication_boundary"
     }
   ]
 }

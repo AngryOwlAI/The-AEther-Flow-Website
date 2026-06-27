@@ -1,0 +1,16 @@
+flowchart TB
+  source["Canonical source files"] --> registries["Registries"]
+  registries --> memory["Memory and wiki retrieval"]
+  registries --> semantic["Semantic extracts and indexes"]
+  memory --> inspect["Inspect source before relying"]
+  semantic --> inspect
+  inspect --> receipt["Record evidence when used"]
+  memory -. "drift warning" .-> boundary["Retrieval is not authority"]
+  semantic -. "cache limit" .-> boundary
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class source,registries,receipt source;
+  class memory,semantic,inspect control;
+  class boundary boundary;

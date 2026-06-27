@@ -1,0 +1,13 @@
+flowchart LR
+  Upstream["Upstream program state, handoff, ledgers, registries"]
+  Snapshot["Checked-in website JSON snapshot"]
+  Page["Current-state public page"]
+  Blocked["Blocked claims preserved"]
+  Review["Curator and maintainer review"]
+  Boundary["Forbidden: auto-refresh or claim promotion"]
+
+  Upstream --> Snapshot --> Page
+  Snapshot --> Blocked
+  Review --> Snapshot
+  Page --> Boundary
+  Blocked --> Boundary

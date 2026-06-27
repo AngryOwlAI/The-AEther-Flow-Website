@@ -1,0 +1,15 @@
+flowchart LR
+  change["Changed surface"] --> choose["Choose focused checks"]
+  choose --> run["Run validators or tests"]
+  run --> receipt["Record command evidence"]
+  receipt --> pass["PASS for checked state"]
+  pass --> boundary["No theorem, gate, or role promotion"]
+  choose --> screenshot["Rendered evidence when public UI changed"]
+  screenshot --> receipt
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class change,receipt,pass source;
+  class choose,run,screenshot control;
+  class boundary boundary;

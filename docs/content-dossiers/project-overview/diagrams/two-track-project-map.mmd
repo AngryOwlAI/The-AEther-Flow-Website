@@ -1,0 +1,20 @@
+flowchart LR
+  Reader["Reader question"]
+  Overview["Project overview route"]
+  Source["Source-authority spine"]
+  Physics["Physics research lane"]
+  AI["AI research-agent workflow lane"]
+  Operations["Operations and validation lane"]
+  Documents["Ontology documents and resources"]
+  Boundary["Claim boundary: no derivation, no role expansion"]
+
+  Reader --> Overview
+  Overview --> Physics
+  Overview --> AI
+  Overview --> Operations
+  Overview --> Documents
+  Physics --> Source
+  AI --> Source
+  Operations --> Source
+  Documents --> Source
+  Source --> Boundary

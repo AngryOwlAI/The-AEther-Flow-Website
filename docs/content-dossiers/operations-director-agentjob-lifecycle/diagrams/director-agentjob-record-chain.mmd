@@ -1,0 +1,15 @@
+flowchart LR
+  task["Task row"] --> decision["Director decision"]
+  decision --> job["AgentJob"]
+  job --> execution["Execution-role evidence"]
+  execution --> validation["Command evidence"]
+  validation --> completion["Completion record"]
+  completion --> handoff["Handoff if needed"]
+  decision -. "selected and rejected routes" .-> boundary["No silent authority expansion"]
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class task,completion,handoff source;
+  class decision,job,execution,validation control;
+  class boundary boundary;

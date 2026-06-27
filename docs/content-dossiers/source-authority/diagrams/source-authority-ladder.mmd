@@ -1,0 +1,13 @@
+flowchart TB
+  tex["Registered TeX and source files"] --> registries["Registries and claim boundaries"]
+  registries --> generated["Generated explainers and derivatives"]
+  generated --> website["Website pages and diagrams"]
+  website --> reader["Reader orientation"]
+  generated -. "if conflict" .-> sourceWins["Source wins"]
+  website -. "if conflict" .-> sourceWins
+
+  classDef source fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px;
+  classDef control fill:#1f2937,stroke:#f59e0b,color:#fff7ed,stroke-width:2px;
+  classDef boundary fill:#111827,stroke:#f97316,color:#ffedd5,stroke-width:3px;
+  class tex,registries,sourceWins source;
+  class generated,website,reader control;
