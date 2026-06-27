@@ -940,6 +940,18 @@ summary:focus-visible {
   margin-top: 1.7rem;
 }
 
+.overview-actions:has(> a:nth-child(3):last-child) {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  justify-content: start;
+}
+
+.overview-actions:has(> a:nth-child(3):last-child) > .primary-link:first-child {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
 .project-overview-page .primary-link,
 .project-overview-page .secondary-link {
   border-radius: 6px;
@@ -2793,6 +2805,19 @@ summary:focus-visible {
   }
 }
 
+@media (max-width: 1140px) and (min-width: 781px) {
+  .overview-actions:has(> a:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    max-width: 100%;
+  }
+
+  .overview-actions:has(> a:nth-child(3):last-child) > .secondary-link {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 780px) {
   .site-nav,
   .brand,
@@ -2910,5 +2935,18 @@ summary:focus-visible {
 
   .track-card {
     min-height: auto;
+  }
+
+  .overview-actions,
+  .overview-actions:has(> a:nth-child(3):last-child) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .overview-actions > a,
+  .overview-actions:has(> a:nth-child(3):last-child) > .primary-link:first-child {
+    width: 100%;
+    justify-self: stretch;
   }
 }
