@@ -44,13 +44,16 @@ inspection cannot resolve the ambiguity.
    system-analyst role prompt. If no sub-agent tool is available or policy does
    not permit delegation, perform the same workflow in the main agent and state
    in the final response that no sub-agent was spawned.
-6. Draft the analysis from repository evidence, not memory or generated
+6. Define the Mermaid diagram's visual grammar before drafting it. Decide what
+   shapes, borders, arrows, edge labels, groups, and palette classes mean for
+   this specific system, functionality, workflow, role, or topic.
+7. Draft the analysis from repository evidence, not memory or generated
    summaries.
-7. Read `references/analysis-template.md` from this skill and use its section
+8. Read `references/analysis-template.md` from this skill and use its section
    order for the output file.
-8. Write the Markdown file to `docs/system-analyses/<topic-slug>.md` unless the
+9. Write the Markdown file to `docs/system-analyses/<topic-slug>.md` unless the
    user provided a different path.
-9. Run a no-ai-slop pass/repair/block gate before finalizing. Repair ordinary
+10. Run a no-ai-slop pass/repair/block gate before finalizing. Repair ordinary
    weaknesses directly. Block instead of writing unsupported claims.
 
 ## Evidence Hierarchy
@@ -77,7 +80,7 @@ bounded analysis task. Do not ask the sub-agent to modify files. Ask for:
 - summary of the system/functionality/topic,
 - interfaces, inputs, outputs, and dependent components,
 - risks, failure modes, and claim boundaries,
-- Mermaid diagram concept,
+- Mermaid diagram concept with visual grammar,
 - open questions and logical next step,
 - APA-style reference candidates.
 
@@ -92,9 +95,11 @@ Act as a system analyst for The AEther Flow project. Analyze <topic> using
 tracked upstream evidence from /Volumes/P-SSD/AngryOwl/The-AEther-Flow. Do not
 modify files. Return concise analysis notes with exact local paths reviewed,
 system context, interfaces, risks, claim boundaries, a Mermaid diagram concept,
-open questions, a logical next step, and APA-style reference candidates. Treat
-website docs and generated layers as orientation only unless verified against
-tracked upstream files.
+the diagram's proposed visual grammar, open questions, a logical next step, and
+APA-style reference candidates. For the visual grammar, state what node shapes,
+border styles, arrow styles, edge labels, groups, and palette classes should
+mean in this analysis. Treat website docs and generated layers as orientation
+only unless verified against tracked upstream files.
 ```
 
 ## Diagram Contract
@@ -103,6 +108,19 @@ Embed one Mermaid diagram directly in the analysis Markdown. Use the
 `mermaid-diagram-style` palette contract: Mermaid frontmatter config,
 `theme: base`, dark canvas, ivory text, Angry Owl cyan/orange semantic roles,
 reusable `classDef` classes, shape plus color, and thicker arrows.
+
+The diagram must be designed as analysis, not decoration. The system analyst
+may use the Mermaid flowchart shapes, edge types, edge labels, subgraphs,
+border styles, and class definitions that best encode the specific system
+meaning, provided the colors stay inside the project palette. Do not force all
+nodes into one shape, one border, or one arrow type when the evidence supports
+meaningful distinctions.
+
+Document non-obvious visual grammar in nearby prose, a compact legend, or
+Mermaid comments. At minimum, make clear what colors/classes, shapes, dashed or
+solid borders, and dashed, solid, bidirectional, or labeled arrows mean when
+those distinctions carry analytical meaning. Color must never be the only
+meaning carrier.
 
 Do not create `.mmd`, PNG, or manifest files by default. If the user later asks
 to promote the analysis into a public comprehension route or diagram gallery,

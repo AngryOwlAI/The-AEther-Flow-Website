@@ -52,6 +52,11 @@ Preserve exact claim-status language when relevant, such as `proposal-only`,
 
 ## Mermaid Diagram
 
+State the diagram's visual grammar before the Mermaid block when the meanings
+are not self-evident. Explain what shapes, borders, arrow styles, edge labels,
+groups, and color classes mean for this analysis. Adapt the starter diagram
+below instead of preserving it mechanically.
+
 ```mermaid
 ---
 config:
@@ -71,17 +76,19 @@ config:
 ---
 flowchart TD
   source["Source evidence"]
-  context["System context"]
-  analysis["Analyzed functionality or topic"]
+  context(["System context"])
+  analysis[["Analyzed functionality or topic"]]
   boundary{"Authority boundary?"}
-  output["Website-maintained explanation"]
+  output(["Website-maintained explanation"])
   risk["Open risk or unresolved claim"]
+  external[("External provenance link")]
 
   source --> context
   context --> analysis
   analysis --> boundary
   boundary --> output
   boundary -.-> risk
+  external -. provenance only .-> source
 
   classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
   classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
@@ -97,9 +104,10 @@ flowchart TD
   class source source;
   class context control;
   class analysis bridge;
-  class boundary decision;
+  class boundary boundary;
   class output target;
   class risk risk;
+  class external external;
 
   linkStyle default stroke:#d6c3b4,stroke-width:2.25px;
 ```

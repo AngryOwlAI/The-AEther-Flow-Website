@@ -10,14 +10,15 @@ repository.
   the source-authority boundary.
 - `system-analysis/`: analyze upstream AEther Flow systems, functionality,
   workflows, roles, or topics into source-grounded Markdown files under
-  `docs/system-analyses/` with embedded styled Mermaid diagrams and explicit
+  `docs/system-analyses/` with embedded Mermaid diagrams whose shapes, borders,
+  arrows, colors, and labels carry explicit analytical meaning, plus explicit
   claim boundaries.
 - `to-web-page/`: turn one completed system-analysis artifact into one
   integrated public explainer route with dossier, manifests, optional static
   diagram, validation, and no-ai-slop gates.
 - `mermaid-diagram-style/`: create or migrate Mermaid diagrams with the
-  website's Angry Owl palette, Inter font stack, dark canvas, semantic classes,
-  static PNG rendering workflow, and source-authority boundary.
+  website's Angry Owl palette, Inter font stack, dark canvas, semantic visual
+  grammar, static PNG rendering workflow, and source-authority boundary.
 - `no-ai-slop/`: apply a pass/repair/block quality gate so substantial
   AI-assisted artifacts stay specific, evidenced, audience-fit, and useful.
 - `push-and-deploy/`: push a clean accepted `main` commit and deploy the

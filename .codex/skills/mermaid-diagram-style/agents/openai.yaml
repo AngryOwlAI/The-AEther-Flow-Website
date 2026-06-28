@@ -1,4 +1,4 @@
 interface:
   display_name: "Mermaid Diagram Style"
   short_description: "Style AEther Mermaid diagrams"
-  default_prompt: "Use $mermaid-diagram-style to create or migrate Mermaid diagrams with the project palette and font."
+  default_prompt: "Use $mermaid-diagram-style to create or migrate Mermaid diagrams with the project palette, font, and meaningful shape, border, and arrow grammar."

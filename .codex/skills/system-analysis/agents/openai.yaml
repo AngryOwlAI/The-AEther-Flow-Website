@@ -1,7 +1,7 @@
 interface:
   display_name: "System Analysis"
   short_description: "Analyze AEther systems with evidence, Mermaid, and claim boundaries."
-  default_prompt: "Use $system-analysis to analyze this AEther Flow system, functionality, or topic and write a Markdown analysis with an embedded styled Mermaid diagram."
+  default_prompt: "Use $system-analysis to analyze this AEther Flow system, functionality, or topic and write a Markdown analysis with an embedded styled Mermaid diagram whose shapes, borders, arrows, and colors have explicit analytical meaning."
 
 policy:
   allow_implicit_invocation: true

@@ -4,6 +4,29 @@ Use this contract for The AEther Flow Website Mermaid diagrams. Values are
 derived from the live `src/styles/global.css` tokens and written as literal hex
 colors because Mermaid theme variables are not CSS variable aware.
 
+The palette contract constrains color, typography, canvas, and baseline
+readability. It does not constrain the analyst to one node shape, one border
+meaning, or one arrow type. Shapes, borders, arrows, edge labels, and groups
+are part of each diagram's semantic grammar and should be selected from the
+Mermaid syntax that best explains the system.
+
+## Palette Boundary
+
+Use only the project palette for fills, strokes, text, edge lines, and edge
+labels:
+
+- black canvas: `#000000`
+- near-black node fill: `#050403`
+- elevated near-black fill: `#080401`
+- ivory text: `#fff8ef`
+- muted ivory stroke: `#d6c3b4`
+- cyan fill and stroke family: `#0f364d`, `#164964`, `#2d7ea0`, `#48a0c0`
+- orange fill and stroke family: `#270b01`, `#702000`, `#f87800`
+- warm highlight stroke: `#f4d6a1`
+- white target text when needed for contrast: `#ffffff`
+
+New colors require an explicit design-token update outside this skill.
+
 ## Theme Frontmatter
 
 ```mermaid
@@ -42,6 +65,11 @@ classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
 linkStyle default stroke:#d6c3b4,stroke-width:2.25px;
 ```
 
+These classes are a reusable starter library, not an exhaustive ontology. A
+diagram may define additional semantic classes when the class names and visual
+treatments are specific to that diagram and all colors come from the palette
+boundary above.
+
 ## Role Meanings
 
 - `source`: source documents, registries, manifests, and authoritative inputs.
@@ -56,3 +84,22 @@ linkStyle default stroke:#d6c3b4,stroke-width:2.25px;
 
 Color is never the only meaning carrier. Use shape, label wording, dashed
 boundaries, and nearby prose to preserve accessibility and source discipline.
+
+## Visual Grammar
+
+Define the visual grammar before writing or reviewing the Mermaid:
+
+- shapes should encode node type, such as source artifact, process, review
+  gate, data store, output, external system, loop, or terminal state;
+- borders should encode status, such as normal, emphasized, blocked,
+  unresolved, forbidden, or authority-limited;
+- arrows should encode relationship type, such as primary flow, dependency,
+  optional path, feedback loop, provenance-only link, failure path, or
+  candidate/provisional route;
+- edge labels should name relationships when direction alone is ambiguous;
+- groups or subgraphs should encode scope only when the group boundary is part
+  of the explanation.
+
+Do not use shape, border, arrow, or color variation as decoration. Every visual
+distinction should either be self-evident from the labels or explained in
+nearby prose, a caption, a Mermaid comment, or a compact legend.
