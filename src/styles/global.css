@@ -3010,6 +3010,15 @@ html:has(body.project-overview-page) {
   line-height: 1.55;
 }
 
+.ontology-video-band {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.ontology-context-video {
+  width: min(940px, 100%);
+}
+
 .evidence-rail {
   position: relative;
   display: grid;
