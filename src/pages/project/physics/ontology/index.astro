@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { physicsOntologyComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -259,22 +259,5 @@ const sourceLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="ontology-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="ontology-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can explain current ontology vocabulary for public
-        readers. It cannot promote the ontology to established physics,
-        complete the GR derivation, change claim boundaries, replace registered
-        TeX sources, or certify empirical predictions.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

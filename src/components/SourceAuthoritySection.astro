@@ -1,0 +1,35 @@
+---
+import SourceNotice from "./SourceNotice.astro";
+
+interface Props {
+  claimStatus?: string;
+  sourceRefs?: string[];
+  updated?: string | Date;
+  note?: string;
+  preferSourceRefs?: boolean;
+  className?: string;
+}
+
+const {
+  claimStatus,
+  sourceRefs,
+  updated,
+  note,
+  preferSourceRefs = false,
+  className = "track-page-band",
+} = Astro.props;
+
+const sectionClass = `${className} source-authority-section`.trim();
+---
+
+<section class={sectionClass} aria-label="Source authority">
+  <p class="eyebrow">Source authority</p>
+  <SourceNotice
+    claimStatus={claimStatus}
+    sourceRefs={sourceRefs}
+    updated={updated}
+    note={note}
+    preferSourceRefs={preferSourceRefs}
+    showTitle={false}
+  />
+</section>

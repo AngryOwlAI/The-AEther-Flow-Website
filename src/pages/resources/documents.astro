@@ -2,7 +2,7 @@
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DocumentActions from "../../components/DocumentActions.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
-import SourceNotice from "../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDocumentsComprehension } from "../../lib/supportComprehensionContent";
@@ -169,16 +169,6 @@ const sourceStatusGuide = [
           generated human-readable derivatives.
         </p>
       </div>
-      <SourceNotice
-        claimStatus="approved ontology asset index"
-        sourceRefs={[
-          "AEther-Flow Project. (2026). ontology/README.md",
-          "AEther-Flow Project. (2026). ontology/tex/README.md",
-          "AEther-Flow Project. (2026). registries/TEX_SOURCE_REGISTRY.csv",
-        ]}
-        updated="2026-06-28"
-        note="This page indexes manifest-backed website copies of ontology assets. It does not create new scientific content, supersede upstream registered TeX authority, or resolve curator source-drift review."
-      />
     </div>
 
     <figure class="support-figure document-release-flow" aria-labelledby="documents-figure-caption">
@@ -227,6 +217,18 @@ const sourceStatusGuide = [
       </figcaption>
     </figure>
   </section>
+
+  <SourceAuthoritySection
+    claimStatus="approved ontology asset index"
+    sourceRefs={[
+      "AEther-Flow Project. (2026). ontology/README.md",
+      "AEther-Flow Project. (2026). ontology/tex/README.md",
+      "AEther-Flow Project. (2026). registries/TEX_SOURCE_REGISTRY.csv",
+    ]}
+    updated="2026-06-28"
+    note="This page indexes manifest-backed website copies of ontology assets. It does not create new scientific content, supersede upstream registered TeX authority, or resolve curator source-drift review."
+    className="content-band content-band-tight"
+  />
 
   <ComprehensionBlocks content={resourcesDocumentsComprehension} />
 

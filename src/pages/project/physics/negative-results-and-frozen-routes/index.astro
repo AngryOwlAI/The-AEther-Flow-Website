@@ -1,6 +1,6 @@
 ---
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import distanceSnapshot from "../../../../data/distance_to_gr_snapshot.json";
@@ -469,11 +469,5 @@ const relatedLinks = [
     />
   </section>
 
-  <section class="track-page-band" aria-labelledby="negative-results-source-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Source authority</p>
-      <h2 id="negative-results-source-title">The website explains negative evidence; source records control claim status.</h2>
-    </div>
-    <SourceNotice {...sourceNotice} />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

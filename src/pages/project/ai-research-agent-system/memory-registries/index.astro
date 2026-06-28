@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { aiMemoryRegistriesComprehension } from "../../../../lib/aiComprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -237,24 +237,5 @@ const sourceLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="memory-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="memory-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This page can orient readers to memory preflight, source-first
-        retrieval, registry inspection, wiki notes, semantic extracts,
-        Obsidian mirrors, SQLite indexes, and local caches. It cannot expose
-        private memory contents, change memory behavior, change registry
-        schema, override tracked files, promote generated derivatives, or
-        establish physics or workflow authority.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

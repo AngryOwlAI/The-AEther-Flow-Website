@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { physicsRoadmapComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -184,22 +184,5 @@ const sourceLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="roadmap-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="roadmap-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can explain the roadmap. It cannot update project
-        physics status, discharge a milestone, construct g_eff, derive matter
-        coupling, derive Einstein equations, promote a benchmark, issue a Gate
-        Chair verdict, or supersede tracked source files.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

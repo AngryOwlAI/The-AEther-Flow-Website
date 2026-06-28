@@ -2,7 +2,7 @@
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
-import SourceNotice from "../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesIndexComprehension } from "../../lib/supportComprehensionContent";
@@ -58,12 +58,6 @@ const assetStatusDossier = [
           clearly labeled as fixtures.
         </p>
       </div>
-      <SourceNotice
-        claimStatus="source-index-only"
-        sourceRefs={sourceRefs}
-        updated="2026-06-25"
-        note="This resource index is rendered from website-local manifest data and structured page links. It does not create scientific or workflow authority."
-      />
     </div>
 
     <figure class="support-figure resource-constellation resources-manifest-figure" aria-labelledby="resources-figure-caption">
@@ -154,6 +148,14 @@ const assetStatusDossier = [
       </figcaption>
     </figure>
   </section>
+
+  <SourceAuthoritySection
+    claimStatus="source-index-only"
+    sourceRefs={sourceRefs}
+    updated="2026-06-25"
+    note="This resource index is rendered from website-local manifest data and structured page links. It does not create scientific or workflow authority."
+    className="content-band content-band-tight"
+  />
 
   <ComprehensionBlocks content={resourcesIndexComprehension} />
 

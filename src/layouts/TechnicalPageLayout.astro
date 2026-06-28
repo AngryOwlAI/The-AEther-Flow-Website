@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import SourceNotice from "../components/SourceNotice.astro";
+import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
 
 const { frontmatter = {}, title, description } = Astro.props;
 const pageTitle = frontmatter.title ?? title ?? "Technical page";
@@ -37,8 +37,8 @@ const updatedLabel =
           </div>
         )}
       </dl>
-      <SourceNotice claimStatus={claimStatus} sourceRefs={sourceRefs} updated={updatedLabel} />
     </header>
+    <SourceAuthoritySection claimStatus={claimStatus} sourceRefs={sourceRefs} updated={updatedLabel} className="technical-source-authority" />
     <div class="technical-content">
       <slot />
     </div>

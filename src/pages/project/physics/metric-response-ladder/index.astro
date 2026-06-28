@@ -1,6 +1,6 @@
 ---
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import claimSnapshot from "../../../../data/claim_boundary_snapshot.json";
@@ -521,22 +521,5 @@ const relatedLinks = [
     />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="metric-ladder-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="metric-ladder-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can explain checked-in ladder status. It cannot adopt
-        MetricData(E), expand scoped g_eff, adopt a coupling law, derive matter
-        coupling, import stress-energy semantics, derive Einstein equations,
-        promote the benchmark, or complete GR derivation.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

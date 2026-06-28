@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import ProjectRouteGrid from "../../../components/ProjectRouteGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { aiSystemComprehension } from "../../../lib/aiComprehensionContent";
@@ -205,21 +205,5 @@ const journeyLinks = [
     <ProjectRouteGrid routes={projectAiDeepDiveRoutes} ariaLabel="AI research-agent routes" />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="ai-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="ai-authority-title">Human accountability remains explicit.</h2>
-      <p>
-        This page can describe the AI-assisted workflow. It cannot expand role
-        authority, change routing behavior, promote physics claims, or replace
-        human-gated publication, authorship, and outreach responsibility.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

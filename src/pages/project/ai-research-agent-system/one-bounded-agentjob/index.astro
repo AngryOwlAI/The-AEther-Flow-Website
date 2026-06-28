@@ -1,5 +1,5 @@
 ---
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
@@ -382,22 +382,5 @@ const relatedLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="agentjob-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="agentjob-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This page can explain one committed AgentJob for readers. It cannot
-        authorize a new job, reuse a past allowlist as permission, mutate
-        completion evidence, treat PASS as scientific proof, or promote a
-        physics claim.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

@@ -2,7 +2,7 @@
 import ComprehensionBlocks from "./ComprehensionBlocks.astro";
 import EvidenceRail from "./EvidenceRail.astro";
 import ProjectRouteGrid from "./ProjectRouteGrid.astro";
-import SourceNotice from "./SourceNotice.astro";
+import SourceAuthoritySection from "./SourceAuthoritySection.astro";
 import StatusDossier from "./StatusDossier.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import type { InternalExplainer } from "../lib/internalExplainers";
@@ -214,17 +214,11 @@ const isOperationsVisual = visualVariant === "operations";
     />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="boundary-title">
-    <div>
-      <p class="eyebrow">{page.boundaryLabel}</p>
-      <h2 id="boundary-title">{page.boundaryTitle}</h2>
-      <p>{page.boundaryBody}</p>
-    </div>
-    <SourceNotice
-      claimStatus={page.claimStatus}
-      updated={page.updated}
-      note={page.boundaryBody}
-      sourceRefs={page.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection
+    claimStatus={page.claimStatus}
+    updated={page.updated}
+    note={page.boundaryBody}
+    sourceRefs={page.sourceRefs}
+    className="track-page-band"
+  />
 </BaseLayout>

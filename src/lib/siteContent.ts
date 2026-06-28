@@ -552,10 +552,12 @@ export const projectSourceNoticeDefaults = {
   home: {
     claimStatus: "public orientation",
     updated: "2026-06-28",
-    note: "The Home page explains the accepted public project structure. Source authority remains with The-AEther-Flow.",
+    note: "The Home page is a reader-entry surface derived from the public overview and source-authority contract. It does not add scientific, mathematical, governance, or workflow authority.",
     sourceRefs: [
-      "The AEther Flow Website. (2026). PRDs/dual-project-public-overview-prd.md",
       "The AEther Flow Website. (2026). src/pages/index.astro",
+      "The AEther Flow Website. (2026). docs/architecture/website-feature-and-functionality.md",
+      "AEther-Flow Project. (2026). github-facing/project-overview-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/source-authority-explainer.md",
     ],
   },
   physicsTrack: {

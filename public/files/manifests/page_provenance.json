@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-28T13:10:10.129835+00:00",
+  "generated_at": "2026-06-28T14:09:49.343073+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "aad9baeb29bc5891667f926bd6a0616044ac93e5",
   "source_commit_date": "2026-06-28T01:49:41-06:00",
@@ -8,7 +8,7 @@
     {
       "route_path": "/",
       "local_page_source": "src/pages/index.astro",
-      "local_page_sha256": "c3c0111449896b72dd6363bc4a64a447b6167cce6dd46c24a22e71642072c345",
+      "local_page_sha256": "7723905bdb2f9b874d3bb7311a99fb8e1f1d7d814eeed6a05ed10476711ef9ee",
       "title": "The \u00c6ther Flow Project",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -46,7 +46,7 @@
     {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
-      "local_page_sha256": "f591c6de1a67dbad36c9c7cbd197830f6763bd2a2cba97995400c96a0201fe30",
+      "local_page_sha256": "38d5f6b81d71cec23b8e4f66d6126e5341067fbcd7f2b0adb892dd7928f38804",
       "title": "Physics Research",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -75,7 +75,7 @@
     {
       "route_path": "/project/physics/ontology/",
       "local_page_source": "src/pages/project/physics/ontology/index.astro",
-      "local_page_sha256": "927350e4dd44dfb7cc8a57ff57fe7824b28c8169afeeeff19b8eedcca6949124",
+      "local_page_sha256": "362fd685f39f478477adcf4f1e388b3a3939080e5c64fe95ce922099839249b7",
       "title": "AEther / AEther-Flow Ontology",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -140,7 +140,7 @@
     {
       "route_path": "/project/physics/exact-gr-benchmark/",
       "local_page_source": "src/pages/project/physics/exact-gr-benchmark/index.astro",
-      "local_page_sha256": "2a6f57434b90ec55ba6fa0764614172350ae6a181f4bdff169e3fa555781871f",
+      "local_page_sha256": "4a45c008765b35065a078479cf3201826bddca3c750cfe8aefae44887f14fcb7",
       "title": "Exact-GR Benchmark Boundary",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -223,7 +223,7 @@
     {
       "route_path": "/project/physics/gr-derivation-roadmap/",
       "local_page_source": "src/pages/project/physics/gr-derivation-roadmap/index.astro",
-      "local_page_sha256": "f7427ce04984d7fe148e95d0876c14cf3e4c72d59c950c1df05ce35960d570f8",
+      "local_page_sha256": "562315475803c1e7f3cc6ecb1125e47dcd23c09715084e34e58e8affaf9ed2a4",
       "title": "GR Derivation Roadmap",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -252,7 +252,7 @@
     {
       "route_path": "/project/physics/current-state/",
       "local_page_source": "src/pages/project/physics/current-state/index.astro",
-      "local_page_sha256": "7f08d7ff02d75048d5fe89f9e593d224c58f70833f8744cdc49710aa8adc2915",
+      "local_page_sha256": "05330536bae4f5df3aebdf10a4f72d26a014c5f794860d38553f659d7a5534ee",
       "title": "Current Physics State",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -344,7 +344,7 @@
     {
       "route_path": "/project/physics/distance-to-gr/",
       "local_page_source": "src/pages/project/physics/distance-to-gr/index.astro",
-      "local_page_sha256": "3a20b288cb010adb5e811d6df746350cb0e70b43245205646dac93ae7167979d",
+      "local_page_sha256": "5cbd55b7715ff2d276ed273920c9badcc324032af74130452bc79b97ef27da23",
       "title": "Distance To GR Dashboard",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -436,7 +436,7 @@
     {
       "route_path": "/project/physics/metric-response-ladder/",
       "local_page_source": "src/pages/project/physics/metric-response-ladder/index.astro",
-      "local_page_sha256": "9a0c890dff057d1094362a26c6897b476a93f054fea3a7566dd954c5727ef9aa",
+      "local_page_sha256": "1fd0d2a61a81297335fe93e556e2fd3d8de631de8ad1878e8aa9f0e4c77e1876",
       "title": "Metric Response Ladder",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -510,7 +510,7 @@
     {
       "route_path": "/project/physics/finite-toy-models/",
       "local_page_source": "src/pages/project/physics/finite-toy-models/index.astro",
-      "local_page_sha256": "7856c1e30adff7324766187ea727351342ba9dd3c68e762439ecf6e4b13b7cf9",
+      "local_page_sha256": "064925ce8f1be5d11c50b898c3b4f025fcee3ae90274212c5bfd167f0c42c3a7",
       "title": "Finite Toy Models",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -629,7 +629,7 @@
     {
       "route_path": "/project/physics/no-target-import-discipline/",
       "local_page_source": "src/pages/project/physics/no-target-import-discipline/index.astro",
-      "local_page_sha256": "a3ac0f6bdfaf6f1149fa8ea68ef4e6177ec609488eb641cba545e845219c1ded",
+      "local_page_sha256": "8c3f5e4d0b39d87a636ad5eaac9629e970df39e1e462fe26951971daddc73479",
       "title": "No-Target-Import Discipline",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -730,7 +730,7 @@
     {
       "route_path": "/project/physics/negative-results-and-frozen-routes/",
       "local_page_source": "src/pages/project/physics/negative-results-and-frozen-routes/index.astro",
-      "local_page_sha256": "2c60af2cbf4b8e187a08f32eb5a0045df83fe036438d6226f6d1e0d17681b8a2",
+      "local_page_sha256": "f2004320d20b2cac0f8f8878ebc896dd3b6706ed52571e924e5ad946f582425e",
       "title": "Negative Results And Frozen Routes",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -804,7 +804,7 @@
     {
       "route_path": "/project/physics/claim-gates/",
       "local_page_source": "src/pages/project/physics/claim-gates/index.astro",
-      "local_page_sha256": "76d85606199c4eef9ab804a30b92f39862975c29787265771e6f1af5d171c518",
+      "local_page_sha256": "c7eebbf5361372aacab66c18e0b0fb0b7e27c25858717f84dd0f66a4106bb4d8",
       "title": "Claim Gates",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -833,7 +833,7 @@
     {
       "route_path": "/project/physics/source-extension-pipeline/",
       "local_page_source": "src/pages/project/physics/source-extension-pipeline/index.astro",
-      "local_page_sha256": "9bb7f8ae590673521be52a74f42f27cbbdfcc62843136d957716a6ea5790633c",
+      "local_page_sha256": "0aa93bbb0e222622b88d33f54dcc20aac641fe303d82f03f602554b1c2a981c5",
       "title": "Source Extension Pipeline",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -880,7 +880,7 @@
     {
       "route_path": "/project/physics/gate-chair-and-human-gates/",
       "local_page_source": "src/pages/project/physics/gate-chair-and-human-gates/index.astro",
-      "local_page_sha256": "48a574fb90c2ba0471cc4f2f1e47a70a41baa82d79de0dd8d6416f89d18b7b9d",
+      "local_page_sha256": "9b0d95fdad67cba600e637b437cf7ac759bbc3b08c8383016f59d2d1e7192323",
       "title": "Gate Chair And Human-Gated Decisions",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -981,7 +981,7 @@
     {
       "route_path": "/project/ai-research-agent-system/",
       "local_page_source": "src/pages/project/ai-research-agent-system/index.astro",
-      "local_page_sha256": "b300c5010570ccd95b2109f1c51e67aba7edf82b14994497866822d0e7c7af50",
+      "local_page_sha256": "b0ff06b4d1c93b9fdc63a91b38b829904c13a435efe0542d87d459d5e5f3de16",
       "title": "AI Research-Agent System",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1010,7 +1010,7 @@
     {
       "route_path": "/project/ai-research-agent-system/workflow/",
       "local_page_source": "src/pages/project/ai-research-agent-system/workflow/index.astro",
-      "local_page_sha256": "e679d3ffa57320a41473b5c250defed0b0378e02c23b44c9362eee2b547c99e0",
+      "local_page_sha256": "402bd6ae304d2428a1b659b0189c9f86a464c5a4c2eea7c4ffe1b5d9a171c2db",
       "title": "Research-Agent Workflow",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1138,7 +1138,7 @@
     {
       "route_path": "/project/ai-research-agent-system/one-bounded-agentjob/",
       "local_page_source": "src/pages/project/ai-research-agent-system/one-bounded-agentjob/index.astro",
-      "local_page_sha256": "44e977aa42ea97fdaff6cc77f67678cf7c097a695bb8aa9dd7051699c770fbb5",
+      "local_page_sha256": "b6138e585faf193dd7759a8480d09001689debb72c4e1cb163f64f1defe3299d",
       "title": "One Bounded AgentJob In Practice",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1239,7 +1239,7 @@
     {
       "route_path": "/project/ai-research-agent-system/roles-and-skills/",
       "local_page_source": "src/pages/project/ai-research-agent-system/roles-and-skills/index.astro",
-      "local_page_sha256": "ea0b5107d199329d890f990edc06c7e96aec03064208a3bdde52a246cba2da00",
+      "local_page_sha256": "0915fef7fddbd6c0f918a52ee73041bba5f45020a4856cf6a4d6312dfe57e401",
       "title": "Roles And Skills",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1268,7 +1268,7 @@
     {
       "route_path": "/project/ai-research-agent-system/role-authority-inspector/",
       "local_page_source": "src/pages/project/ai-research-agent-system/role-authority-inspector/index.astro",
-      "local_page_sha256": "0f2d77b055ace5516f6c828237cfbf7be1e99f9aa744d351a1af8868d112dd5c",
+      "local_page_sha256": "6d83311a0bee99adb5a633fc8d3def6a4ed8d59057c45b2cd01905ec1cc51702",
       "title": "Role Authority Inspector",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1342,7 +1342,7 @@
     {
       "route_path": "/project/ai-research-agent-system/memory-registries/",
       "local_page_source": "src/pages/project/ai-research-agent-system/memory-registries/index.astro",
-      "local_page_sha256": "b482cc8ae5496bb78b545216f1b8bba4199993ebb2dcb4d449edf851ceb9d072",
+      "local_page_sha256": "9fb6dc5a8acd7fcd36db98f1ceea41b22301adee77a55e8c4b9ad43fb80f0c15",
       "title": "Memory Preflight And Source-First Retrieval",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1434,7 +1434,7 @@
     {
       "route_path": "/project/ai-research-agent-system/parent-child-synthesis/",
       "local_page_source": "src/pages/project/ai-research-agent-system/parent-child-synthesis/index.astro",
-      "local_page_sha256": "8d7ebce700f5b2cc2aa81e693ea371652a8f77669f0484c3253e362c04d414bd",
+      "local_page_sha256": "74c695f19cfc7a4566dec6ac7cb8f2480c30301eb833bf67eeabb1a216c8d0e3",
       "title": "Parent-Child Parallel Synthesis",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2377,7 +2377,7 @@
     {
       "route_path": "/project/source-authority/",
       "local_page_source": "src/pages/project/source-authority/index.astro",
-      "local_page_sha256": "41ac718150833dbb8329bd7b5f994eaf200d662aa3c04c850a33840013f26b59",
+      "local_page_sha256": "040869e1bc5a240d75ba5785e2b0b1d684781a032cce30f4c59afbe84231310b",
       "title": "Source Authority",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2424,7 +2424,7 @@
     {
       "route_path": "/project/source-authority/claim-boundary-explorer/",
       "local_page_source": "src/pages/project/source-authority/claim-boundary-explorer/index.astro",
-      "local_page_sha256": "495daba756d677ed58d5649a68ab4464226d8897f0dfeec0183baa8ee2c76961",
+      "local_page_sha256": "2052c497a3adef42a857c06a403c33b33c26423707ddb42ffe4a5c3990058f65",
       "title": "Claim Boundary Explorer",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2507,7 +2507,7 @@
     {
       "route_path": "/project/source-authority/publication-and-provenance-system/",
       "local_page_source": "src/pages/project/source-authority/publication-and-provenance-system/index.astro",
-      "local_page_sha256": "8dfd790aa0ab682432045f3288565cf97113243edfd48f893fc086d32d444e3e",
+      "local_page_sha256": "4f1fbf341b3812457b61f10ec9767404c67e8b81301e05fa0fa189e9ad18d37e",
       "title": "Publication And Provenance System",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2608,7 +2608,7 @@
     {
       "route_path": "/resources/guided-starts/general-public/",
       "local_page_source": "src/pages/resources/guided-starts/general-public/index.astro",
-      "local_page_sha256": "41b53fe36d71ea9ac67aa247d95bf8b405e1720feae658b5dbd2d1955390079a",
+      "local_page_sha256": "2571102d894d23f13e1946f0482d7bba9103b4b52d74d54c55f05f17af834bd0",
       "title": "General-Public Guided Start",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2682,7 +2682,7 @@
     {
       "route_path": "/resources/guided-starts/",
       "local_page_source": "src/pages/resources/guided-starts/index.astro",
-      "local_page_sha256": "17102409633f4f8202b4052df7d60b4be426fefe4f05cc6e840c183aa5895acb",
+      "local_page_sha256": "920356d77d7651cc5cd9af6439104c11a11dafb122988e770e3fbf63df5ecfc4",
       "title": "Specialist Guided Starts",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2801,7 +2801,7 @@
     {
       "route_path": "/resources/reviewer-packet/",
       "local_page_source": "src/pages/resources/reviewer-packet/index.astro",
-      "local_page_sha256": "3bf4d09a9f767bf87462d572ec4d959fc3d9fbfbfad042b9313daaec22e8cbcc",
+      "local_page_sha256": "f3a6f299c920e34bd65dfaaadbe2ebebaa0f79fdf0b7c0ed16b3b564affcd113",
       "title": "External Reviewer Packet",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2938,7 +2938,7 @@
     {
       "route_path": "/resources/documents/",
       "local_page_source": "src/pages/resources/documents.astro",
-      "local_page_sha256": "746efa5bcada265d741a8a142d9347f662072aff6cf58ec7f2c780c8782b45a9",
+      "local_page_sha256": "5cf3eb4a7621901c25e81d122a757fc58cbf184768f7657fe629f7dff7819f7e",
       "title": "Ontology Documents",
       "adaptation_type": "asset_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2994,7 +2994,7 @@
     {
       "route_path": "/resources/diagrams/",
       "local_page_source": "src/pages/resources/diagrams.astro",
-      "local_page_sha256": "afa6454c32a7c547a602c274010f6e702631e62c32e65702c2d5bf2f9b2a89ac",
+      "local_page_sha256": "fc028e226bb96158fc0c4d618420314755ebd20ad2d3dcc02fbe10f3bb435691",
       "title": "Diagram Gallery",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -3041,7 +3041,7 @@
     {
       "route_path": "/resources/",
       "local_page_source": "src/pages/resources/index.astro",
-      "local_page_sha256": "598f323fbc1da4dedf258990dfec7f427d5aae82eed010ba055166d4b5481c0c",
+      "local_page_sha256": "287211617e023f0f42907f05aab9ef768a713ca6422601f746085febe70c15d8",
       "title": "Resources",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

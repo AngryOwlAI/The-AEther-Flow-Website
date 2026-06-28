@@ -1,5 +1,5 @@
 ---
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
@@ -304,23 +304,5 @@ const readerLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="gate-chair-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="gate-chair-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This page can explain why Gate Chair and human-gated authority exist.
-        It cannot execute a gate, issue a Gate Chair verdict, adopt source law,
-        reverse no MetricData(E), reverse no g_eff, derive matter coupling or
-        Einstein equations, promote a benchmark, or authorize downstream GR
-        claims.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

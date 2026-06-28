@@ -1,7 +1,7 @@
 ---
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
 import Figure from "../../../../components/Figure.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -311,22 +311,5 @@ const provenanceLinks = [
     />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="notice-title">
-    <div>
-      <p class="eyebrow">Claim status</p>
-      <h2 id="notice-title">This page explains publication evidence.</h2>
-      <p>
-        It cannot change source authority, approve a route, validate a
-        scientific claim, or hide source inspection. Manifest rows and hashes
-        are useful because their authority is deliberately narrow.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-      preferSourceRefs
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} preferSourceRefs className="track-page-band" />
 </BaseLayout>

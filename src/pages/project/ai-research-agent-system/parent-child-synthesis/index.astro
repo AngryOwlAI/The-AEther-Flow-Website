@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { parentChildComprehension } from "../../../../lib/comprehensionContent";
 import { internalExplainers } from "../../../../lib/internalExplainers";
@@ -311,22 +311,11 @@ const relatedLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="parent-child-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="parent-child-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This page can explain the parent-child synthesis pattern for readers.
-        It cannot change the one-job rule, AgentJob schema, execution-role
-        schema, validators, routing behavior, role authority, write
-        permissions, or physics claim status.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.boundaryBody}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection
+    claimStatus={sourceNotice.claimStatus}
+    updated={sourceNotice.updated}
+    note={sourceNotice.boundaryBody}
+    sourceRefs={sourceNotice.sourceRefs}
+    className="track-page-band"
+  />
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -138,12 +138,6 @@ const provenancePath = [
         <a class="primary-link" href="#what-is-this">Start reading</a>
         <a class="secondary-link" href="/project/physics/current-state/">Current state</a>
       </div>
-      <SourceNotice
-        claimStatus={sourceNotice.claimStatus}
-        updated={sourceNotice.updated}
-        note={sourceNotice.note}
-        sourceRefs={sourceNotice.sourceRefs}
-      />
     </div>
 
     <figure class="support-figure" aria-labelledby="guided-start-figure-caption">
@@ -190,6 +184,8 @@ const provenancePath = [
       </figcaption>
     </figure>
   </section>
+
+  <SourceAuthoritySection {...sourceNotice} className="content-band content-band-tight" />
 
   <section class="content-band content-band-tight" aria-labelledby="guided-summary-title">
     <div class="section-header">

@@ -7,6 +7,7 @@ interface Props {
   updated?: string | Date;
   note?: string;
   preferSourceRefs?: boolean;
+  showTitle?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   updated,
   note = "Source authority remains with the research repository. This page is a reader-facing website surface.",
   preferSourceRefs = false,
+  showTitle = true,
 } = Astro.props;
 
 type ProvenanceSource = {
@@ -69,7 +71,7 @@ const showSourceRefs = sourceRefs.length > 0 && (provenanceSources.length === 0 
 ---
 
 <aside class="source-notice" aria-label="Source authority notice">
-  <p class="source-notice-title">Source authority</p>
+  {showTitle && <p class="source-notice-title">Source authority</p>}
   <p>{note}</p>
   <dl>
     <div>

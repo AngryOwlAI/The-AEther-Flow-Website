@@ -1,7 +1,7 @@
 ---
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import snapshot from "../../../../data/physics_current_state_snapshot.json";
@@ -317,22 +317,5 @@ const distanceStateCards = [
     />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="snapshot-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="snapshot-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can report a reviewed snapshot of upstream control
-        state. It cannot adopt MetricData(E), change g_eff scope, adopt or
-        derive matter coupling, derive Einstein equations, promote the
-        benchmark, close a Gate Chair review, or complete the derivation.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

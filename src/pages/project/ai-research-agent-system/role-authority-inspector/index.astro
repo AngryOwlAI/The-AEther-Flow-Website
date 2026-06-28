@@ -1,5 +1,5 @@
 ---
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
@@ -359,21 +359,5 @@ const relatedLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="role-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="role-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This page can explain role inspection. It cannot register roles,
-        supersede roles, change schemas, change routing behavior, change
-        AgentJob allowlists, bypass human gates, or authorize claim promotion.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import snapshot from "../../../../data/claim_boundary_snapshot.json";
@@ -357,21 +357,5 @@ const relatedLinks = [
     />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can make boundary language legible. It cannot edit
-        the registry, certify a claim, execute a gate, treat metadata as proof,
-        or promote downstream physics claims.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

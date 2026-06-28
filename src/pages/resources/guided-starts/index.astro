@@ -1,7 +1,7 @@
 ---
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import Figure from "../../../components/Figure.astro";
-import SourceNotice from "../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../components/StatusDossier.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
@@ -262,13 +262,6 @@ const relatedRoutes = [
         <a class="primary-link" href="#audience-paths">Choose a path</a>
         <a class="secondary-link" href="/resources/guided-starts/general-public/">General-public start</a>
       </div>
-      <SourceNotice
-        claimStatus={sourceNotice.claimStatus}
-        updated={sourceNotice.updated}
-        note={sourceNotice.note}
-        sourceRefs={sourceNotice.sourceRefs}
-        preferSourceRefs
-      />
     </div>
 
     <Figure
@@ -280,6 +273,8 @@ const relatedRoutes = [
       loading="eager"
     />
   </section>
+
+  <SourceAuthoritySection {...sourceNotice} preferSourceRefs className="content-band content-band-tight" />
 
   <section class="content-band content-band-tight" aria-labelledby="summary-title">
     <div class="section-header">

@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { physicsClaimGatesComprehension } from "../../../../lib/comprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
@@ -188,22 +188,5 @@ const sourceLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="claim-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="claim-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can explain the claim-control model. It cannot create
-        a claim boundary, issue a Gate Chair verdict, promote a benchmark,
-        reject the global ontology, change role authority, treat validator
-        passes as scientific evidence, or supersede tracked source files.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

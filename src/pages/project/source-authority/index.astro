@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { sourceAuthorityComprehension } from "../../../lib/supportComprehensionContent";
 import { projectSourceAuthorityRoutes, projectSourceNoticeDefaults } from "../../../lib/siteContent";
@@ -308,21 +308,5 @@ const sourceLinks = [
     </div>
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="source-authority-notice-title">
-    <div>
-      <p class="eyebrow">Claim status</p>
-      <h2 id="source-authority-notice-title">This page is an orientation surface.</h2>
-      <p>
-        It cannot change the hierarchy, replace a registry, promote ontology,
-        certify a benchmark, issue a Gate Chair verdict, expand roles, modify
-        routing behavior, or make generated outputs authoritative.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

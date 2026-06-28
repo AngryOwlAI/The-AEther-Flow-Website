@@ -1,7 +1,7 @@
 ---
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import Figure from "../../../components/Figure.astro";
-import SourceNotice from "../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../components/StatusDossier.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import snapshot from "../../../data/physics_current_state_snapshot.json";
@@ -190,13 +190,6 @@ const reviewerQuestions = [
         <a class="primary-link" href="#claim-boundaries">Read boundaries</a>
         <a class="secondary-link" href="/resources/guided-starts/">Specialist starts</a>
       </div>
-      <SourceNotice
-        claimStatus={sourceNotice.claimStatus}
-        updated={sourceNotice.updated}
-        note={sourceNotice.note}
-        sourceRefs={sourceNotice.sourceRefs}
-        preferSourceRefs
-      />
     </div>
 
     <Figure
@@ -208,6 +201,8 @@ const reviewerQuestions = [
       loading="eager"
     />
   </section>
+
+  <SourceAuthoritySection {...sourceNotice} preferSourceRefs className="content-band content-band-tight" />
 
   <section class="content-band content-band-tight" aria-labelledby="packet-status-title">
     <div class="section-header">

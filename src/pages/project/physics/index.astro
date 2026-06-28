@@ -1,6 +1,6 @@
 ---
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
-import SourceNotice from "../../../components/SourceNotice.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import ProjectRouteGrid from "../../../components/ProjectRouteGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { physicsTrackComprehension } from "../../../lib/comprehensionContent";
@@ -219,22 +219,5 @@ const journeyLinks = [
     <ProjectRouteGrid routes={projectPhysicsDeepDiveRoutes} ariaLabel="Physics routes" />
   </section>
 
-  <section class="track-page-band track-page-notice" aria-labelledby="physics-authority-title">
-    <div>
-      <p class="eyebrow">Source authority</p>
-      <h2 id="physics-authority-title">What this page can and cannot establish.</h2>
-      <p>
-        This website page can organize the physics reading path. It cannot
-        promote ontology, certify benchmark recovery, complete the derivation,
-        issue a Gate Chair decision, or turn generated documentation into
-        scientific authority.
-      </p>
-    </div>
-    <SourceNotice
-      claimStatus={sourceNotice.claimStatus}
-      updated={sourceNotice.updated}
-      note={sourceNotice.note}
-      sourceRefs={sourceNotice.sourceRefs}
-    />
-  </section>
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

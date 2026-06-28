@@ -1,9 +1,12 @@
 ---
 import CommandBand from "../components/CommandBand.astro";
 import EvidenceRail from "../components/EvidenceRail.astro";
-import SourceNotice from "../components/SourceNotice.astro";
+import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
 import StatusDossier from "../components/StatusDossier.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.home;
 
 const physicsDetails = [
   "Æther / Æther-flow ontology",
@@ -44,44 +47,21 @@ const trackRailItems = [
   },
 ];
 
-const projectCapabilities = [
+const readerCapabilityRoutes = [
   {
-    title: "Follow the physics program",
+    title: "Start with physics",
     href: "/project/physics/",
     body: "Move through ontology, exact-GR benchmark boundaries, the open derivation roadmap, current status, and claim gates.",
   },
   {
-    title: "Understand the AI research-agent workflow",
-    href: "/project/ai-research-agent-system/",
-    body: "See how bounded tasks, roles, skills, memory, registries, and review discipline organize the research process.",
-  },
-  {
-    title: "Inspect claim boundaries and source authority",
-    href: "/project/source-authority/",
-    body: "Check how website explanations, generated derivatives, validators, registries, and source files differ.",
-  },
-  {
-    title: "Read canonical ontology documents",
-    href: "/resources/documents/",
-    body: "Open PDF derivatives and download registered TeX source files for the current ontology package.",
-  },
-  {
     title: "Track the current research state",
     href: "/project/physics/current-state/",
-    body: "Review the checked-in status snapshot for active task, latest handoff, blocked claims, burden, and next action.",
-  },
-];
-
-const readerJourneys = [
-  {
-    title: "Start with physics",
-    href: "/project/physics/",
-    body: "Ontology, exact-GR benchmark boundary, open derivation roadmap, and claim gates.",
+    body: "Review the checked-in status snapshot for active task, latest handoff, blocked claims, derivation burden, and next action.",
   },
   {
     title: "Understand the AI system",
     href: "/project/ai-research-agent-system/",
-    body: "Research-agent workflow, roles, memory, registries, and parent-child synthesis.",
+    body: "See how bounded tasks, roles, skills, memory, registries, and review discipline organize the research process.",
   },
   {
     title: "Inspect operations",
@@ -143,24 +123,6 @@ const firstWaveStatus = [
     label: "Implemented",
     title: "Guided starts",
     body: "The guided starts assemble validated internal pages without introducing new scientific claims.",
-  },
-];
-
-const livingProjectDossier = [
-  {
-    label: "Layer",
-    title: "Presentation",
-    body: "The website explains selected public project structure without becoming scientific authority.",
-  },
-  {
-    label: "Refresh model",
-    title: "Reviewed outputs",
-    body: "Public pages should be refreshed from reviewed project outputs, PDFs, source records, and documentation updates.",
-  },
-  {
-    label: "Boundary",
-    title: "No claim promotion",
-    body: "The Home page does not prove a GR derivation, adopt a physics candidate, or replace upstream source records.",
   },
 ];
 
@@ -323,13 +285,6 @@ const agentMap = `
     lead="A reader-facing guide to a speculative physics program and the governed AI research-agent system used to pursue it. The website explains and organizes; upstream source records remain authoritative."
     headingLevel="h1"
   >
-    <div class="overview-actions" aria-label="Homepage primary actions">
-      <a class="primary-link" href="#overview-paths">Understand the project</a>
-      <a class="secondary-link" href="/project/physics/current-state/">Current state</a>
-      <a class="secondary-link" href="/resources/guided-starts/general-public/">Guided start</a>
-      <a class="secondary-link" href="/project/source-authority/">Check source authority</a>
-    </div>
-
     <Fragment slot="visual">
       <figure class="field-stage" aria-labelledby="home-field-stage-caption">
         <Fragment set:html={heroFieldMap} />
@@ -340,6 +295,13 @@ const agentMap = `
       </figure>
     </Fragment>
   </CommandBand>
+
+  <nav class="home-action-row" aria-label="Homepage primary actions">
+    <a class="primary-link" href="#overview-paths">Understand the project</a>
+    <a class="secondary-link" href="/project/physics/current-state/">Current state</a>
+    <a class="secondary-link" href="/resources/guided-starts/general-public/">Guided start</a>
+    <a class="secondary-link" href="/project/source-authority/">Check source authority</a>
+  </nav>
 
   <CommandBand
     id="overview-paths"
@@ -369,41 +331,25 @@ const agentMap = `
   <CommandBand
     id="project-capabilities"
     className="overview-panel overview-command-band"
-    eyebrow="Project capabilities"
-    title="What the website helps readers do."
-    lead="These entry points turn the project into practical reader actions: follow the physics program, understand the AI workflow, inspect authority boundaries, read source-backed documents, and track current research state."
+    eyebrow="Reader capability routes"
+    title="Choose the route that matches your question."
+    lead="One route map now combines practical capabilities with reader journeys: start with physics, inspect current status, understand the AI workflow, review operations, check source authority, or read registered documents."
   >
     <EvidenceRail
-      items={projectCapabilities.map((capability) => ({
-        ...capability,
+      items={readerCapabilityRoutes.map((route) => ({
+        ...route,
         actionLabel: "Open route",
       }))}
-      ariaLabel="Project capability routes"
+      ariaLabel="Reader capability routes"
       className="overview-capability-rail"
       ordered
     />
     <p class="capability-boundary-note">
-      These capabilities help readers follow the project, inspect documents,
-      and understand workflow. They do not create scientific authority, prove a
-      GR derivation, or replace upstream source records.
+      These routes help readers follow the project, inspect documents, and
+      understand workflow. They do not create scientific authority, prove a GR
+      derivation, adopt a physics candidate, or replace upstream source
+      records.
     </p>
-  </CommandBand>
-
-  <CommandBand
-    className="overview-panel overview-command-band"
-    eyebrow="Reader journeys"
-    title="Choose the path that matches your question."
-    lead="The website keeps the primary reading journey internal. Source repositories remain available for provenance and inspection."
-  >
-    <EvidenceRail
-      items={readerJourneys.map((journey) => ({
-        ...journey,
-        actionLabel: "Follow path",
-      }))}
-      ariaLabel="Reader journey routes"
-      className="overview-journey-rail"
-      ordered
-    />
   </CommandBand>
 
   <CommandBand
@@ -430,40 +376,8 @@ const agentMap = `
       ariaLabel="First-wave revamp status"
       className="track-status-grid"
     />
-    <p class="capability-boundary-note">
-      Planned route names are not proof of progress. They identify future work
-      packets and remain subject to source-analysis, provenance, validation,
-      and browser-QA gates.
-    </p>
   </CommandBand>
 
-  <CommandBand
-    className="overview-panel overview-command-band live-state"
-    eyebrow="Source boundary"
-    title="Trust the source lane that owns the claim."
-    lead="The Æther Flow project changes as the source research repository advances. The website can help a reader understand the project; it cannot adopt a physics candidate, complete a derivation, expand role authority, or turn a validator PASS into proof."
-  >
-    <a class="track-card-link" href="/project/source-authority/">Read source authority</a>
+  <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
 
-    <Fragment slot="aside">
-      <div class="overview-authority-stack">
-        <StatusDossier
-          items={livingProjectDossier}
-          ariaLabel="Living project status dossier"
-          className="overview-authority-dossier"
-        />
-        <SourceNotice
-          claimStatus="public orientation"
-          updated="2026-06-28"
-          note="The Home page is a reader-entry surface derived from the public overview and source-authority contract. It does not add scientific, mathematical, governance, or workflow authority."
-          sourceRefs={[
-            "The AEther Flow Website. (2026). src/pages/index.astro",
-            "The AEther Flow Website. (2026). docs/architecture/website-feature-and-functionality.md",
-            "AEther-Flow Project. (2026). github-facing/project-overview-explainer.md",
-            "AEther-Flow Project. (2026). github-facing/source-authority-explainer.md",
-          ]}
-        />
-      </div>
-    </Fragment>
-  </CommandBand>
 </BaseLayout>
