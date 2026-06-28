@@ -65,13 +65,13 @@ export const overviewComprehension: ComprehensionContent = {
   eyebrow: "Public comprehension",
   title: "Read the project as two linked tracks under one source-authority spine.",
   summary:
-    "The overview is the front door. It separates the physics research lane from the governed AI research-agent workflow, then routes readers to source-authority context before any claim is treated as evidence.",
+    "Home is the front door. It separates the physics research lane from the governed AI research-agent workflow, then routes readers to source-authority context before any claim is treated as evidence.",
   diagram: {
     src: "/assets/diagrams/comprehension/project-overview-two-track-map.png",
     alt:
-      "Diagram showing The AEther Flow overview as two linked tracks: physics research and AI research-agent workflow, both downstream from source authority.",
+      "Diagram showing The AEther Flow Home page as two linked tracks: physics research and AI research-agent workflow, both downstream from source authority.",
     caption:
-      "Static comprehension diagram: the overview routes readers through the physics lane, AI research-agent lane, and source-authority spine without promoting claims.",
+      "Static comprehension diagram: Home routes readers through the physics lane, AI research-agent lane, and source-authority spine without promoting claims.",
     provenance:
       "Mermaid source: docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd. Manifest id: comprehension_project_overview_two_track_map.",
   },
@@ -79,7 +79,7 @@ export const overviewComprehension: ComprehensionContent = {
     {
       title: "Choose the lane",
       body:
-        "Use the overview to decide whether the question is about physics status, AI research workflow, operations, source authority, or public resources.",
+        "Use Home to decide whether the question is about physics status, AI research workflow, operations, source authority, or public resources.",
     },
     {
       title: "Read internally first",
@@ -145,7 +145,7 @@ export const overviewComprehension: ComprehensionContent = {
   sourceBasis: [
     {
       label: sourceLabel,
-      title: "Project overview explainer",
+      title: "Project Home explainer",
       body:
         "Generated noncanonical upstream explainer: github-facing/project-overview-explainer.md.",
     },
@@ -158,9 +158,9 @@ export const overviewComprehension: ComprehensionContent = {
   ],
   safeUnsafe: {
     safe:
-      "The AEther Flow is a source-first research project with a physics program and a governed research-agent workflow; the overview helps readers choose the right internal route and source lane.",
+      "The AEther Flow is a source-first research project with a physics program and a governed research-agent workflow; Home helps readers choose the right internal route and source lane.",
     unsafe:
-      "The overview proves a substrate derivation, makes generated website material authoritative, grants role or validator authority, or turns the AI workflow into autonomous scientific ownership.",
+      "Home proves a substrate derivation, makes generated website material authoritative, grants role or validator authority, or turns the AI workflow into autonomous scientific ownership.",
   },
 };
 

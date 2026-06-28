@@ -201,8 +201,8 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "Operations are the control surfaces that make the project auditable: route one bounded task, bind authority to records, run the right checks, and preserve evidence without turning operational success into scientific proof.",
     actionHref: "#operations-map",
     actionLabel: "Read the operating model",
-    secondaryHref: "/project/overview/",
-    secondaryLabel: "Back to overview",
+    secondaryHref: "/",
+    secondaryLabel: "Back to Home",
     visualTitle: "Operations control map",
     visualCaption:
       "Visual orientation only: the operational family explains control evidence, not physics truth or claim promotion.",

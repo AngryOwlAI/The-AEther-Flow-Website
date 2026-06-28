@@ -17,7 +17,6 @@ HEX_COMMIT = re.compile(r"^[0-9a-f]{40}$")
 
 REQUIRED_ROUTE_PATHS = {
     "/",
-    "/project/overview/",
     "/project/physics/",
     "/project/physics/ontology/",
     "/project/physics/exact-gr-benchmark/",

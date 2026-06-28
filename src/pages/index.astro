@@ -5,31 +5,98 @@ import SourceNotice from "../components/SourceNotice.astro";
 import StatusDossier from "../components/StatusDossier.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const publicStarts = [
+const physicsDetails = [
+  "Æther / Æther-flow ontology",
+  "Exact-GR benchmark package",
+  "Open GR-derivation problem",
+  "No-go and obstruction record",
+];
+
+const aiDetails = [
+  "AI research-agent workflow",
+  "Role contracts and governed skills",
+  "Claim gates, review, and refutation discipline",
+  "Source-first memory, wiki, and registries",
+];
+
+const trackRailItems = [
   {
-    title: "General-public guided start",
-    href: "/resources/guided-starts/general-public/",
-    body: "Follow the first reading path: what this is, what is currently claimed, and what not to infer.",
+    label: "Physics Research",
+    title: "Exploring an Æther-flow interpretation of relativity.",
+    body: "The physics track studies an ontology, keeps an Exact-GR benchmark as a reference point, and treats the GR-derivation problem as open.",
+    points: [
+      ...physicsDetails,
+      "Public language preserves the distinction between interpretation, benchmark compatibility, open derivation work, and obstruction records.",
+    ],
+    href: "/project/physics/",
+    actionLabel: "Open physics track",
   },
   {
-    title: "Current research state",
-    href: "/project/physics/current-state/",
-    body: "Start with the checked-in snapshot before reading deeper physics pages.",
+    label: "AI Research-Agent System",
+    title: "Building the AI-assisted workflow used to pursue the research.",
+    body: "The AI track organizes research work through bounded tasks, roles, review discipline, claim gates, and source-first memory.",
+    points: [
+      ...aiDetails,
+      "Public copy explains the system in plain language before internal terms such as AgentJobs, registries, and role contracts.",
+    ],
+    href: "/project/ai-research-agent-system/",
+    actionLabel: "Open AI track",
+  },
+];
+
+const projectCapabilities = [
+  {
+    title: "Follow the physics program",
+    href: "/project/physics/",
+    body: "Move through ontology, exact-GR benchmark boundaries, the open derivation roadmap, current status, and claim gates.",
   },
   {
-    title: "Project overview",
-    href: "/project/overview/",
-    body: "Understand the two-track structure: physics research and the AI research-agent workflow.",
+    title: "Understand the AI research-agent workflow",
+    href: "/project/ai-research-agent-system/",
+    body: "See how bounded tasks, roles, skills, memory, registries, and review discipline organize the research process.",
   },
   {
-    title: "Source authority",
+    title: "Inspect claim boundaries and source authority",
     href: "/project/source-authority/",
-    body: "Read how website explanations, generated derivatives, registries, and source records differ.",
+    body: "Check how website explanations, generated derivatives, validators, registries, and source files differ.",
   },
   {
-    title: "Ontology documents",
+    title: "Read canonical ontology documents",
     href: "/resources/documents/",
-    body: "Inspect registered TeX sources and generated PDF derivatives with their authority boundary visible.",
+    body: "Open PDF derivatives and download registered TeX source files for the current ontology package.",
+  },
+  {
+    title: "Track the current research state",
+    href: "/project/physics/current-state/",
+    body: "Review the checked-in status snapshot for active task, latest handoff, blocked claims, burden, and next action.",
+  },
+];
+
+const readerJourneys = [
+  {
+    title: "Start with physics",
+    href: "/project/physics/",
+    body: "Ontology, exact-GR benchmark boundary, open derivation roadmap, and claim gates.",
+  },
+  {
+    title: "Understand the AI system",
+    href: "/project/ai-research-agent-system/",
+    body: "Research-agent workflow, roles, memory, registries, and parent-child synthesis.",
+  },
+  {
+    title: "Inspect operations",
+    href: "/project/operations/",
+    body: "Routing, AgentJobs, validators, publication process, project-system improvement, and tools.",
+  },
+  {
+    title: "Check source authority",
+    href: "/project/source-authority/",
+    body: "How website pages, source records, registries, generated surfaces, and derivatives differ.",
+  },
+  {
+    title: "Read ontology documents",
+    href: "/resources/documents/",
+    body: "Direct PDF reading and TeX downloads for the canonical ontology package.",
   },
 ];
 
@@ -47,12 +114,12 @@ const specialistStarts = [
   {
     title: "Operations",
     href: "/project/operations/",
-    body: "Director decisions, validation, publication, improvement loops, and technical requirements.",
+    body: "Director decisions, validation, publication loops, project-system improvement, and technical requirements.",
   },
   {
     title: "Resources",
     href: "/resources/",
-    body: "Documents, diagrams, and guided-start material for reader navigation.",
+    body: "Documents, diagrams, guided-start material, and reviewer packets for reader navigation.",
   },
 ];
 
@@ -60,7 +127,7 @@ const firstWaveStatus = [
   {
     label: "Active",
     title: "Current state",
-    body: "The current-state route is already public and should anchor later physics pages.",
+    body: "The current-state route is public and should anchor later physics reading.",
   },
   {
     label: "Implemented",
@@ -75,119 +142,265 @@ const firstWaveStatus = [
   {
     label: "Implemented",
     title: "Guided starts",
-    body: "The general-public guided start assembles validated internal pages without introducing new scientific claims.",
+    body: "The guided starts assemble validated internal pages without introducing new scientific claims.",
   },
 ];
+
+const livingProjectDossier = [
+  {
+    label: "Layer",
+    title: "Presentation",
+    body: "The website explains selected public project structure without becoming scientific authority.",
+  },
+  {
+    label: "Refresh model",
+    title: "Reviewed outputs",
+    body: "Public pages should be refreshed from reviewed project outputs, PDFs, source records, and documentation updates.",
+  },
+  {
+    label: "Boundary",
+    title: "No claim promotion",
+    body: "The Home page does not prove a GR derivation, adopt a physics candidate, or replace upstream source records.",
+  },
+];
+
+const heroFieldMap = `
+  <svg class="field-map-svg" viewBox="0 0 680 420" role="img" aria-labelledby="home-field-stage-title home-field-stage-desc">
+    <title id="home-field-stage-title">Animated two-track Æther Flow luminous field map</title>
+    <desc id="home-field-stage-desc">
+      A luminous central field with animated tracers moving along two connected research paths.
+    </desc>
+    <defs>
+      <radialGradient id="home-field-flare" cx="52%" cy="49%" r="58%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" />
+        <stop offset="14%" stop-color="var(--owl-orange-500)" stop-opacity="0.96" />
+        <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.72" />
+        <stop offset="58%" stop-color="var(--owl-cyan-400)" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="home-smoke-ribbon" x1="0%" x2="100%" y1="50%" y2="50%">
+        <stop offset="0%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+        <stop offset="38%" stop-color="var(--owl-cyan-400)" stop-opacity="0.52" />
+        <stop offset="58%" stop-color="var(--owl-orange-100)" stop-opacity="0.82" />
+        <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+      </linearGradient>
+      <linearGradient id="home-orange-ribbon" x1="0%" x2="100%" y1="50%" y2="50%">
+        <stop offset="0%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+        <stop offset="35%" stop-color="var(--owl-orange-500)" stop-opacity="0.72" />
+        <stop offset="57%" stop-color="var(--owl-orange-100)" stop-opacity="0.92" />
+        <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0.2" />
+      </linearGradient>
+      <filter id="home-field-bloom" x="-18%" y="-34%" width="136%" height="168%">
+        <feGaussianBlur stdDeviation="7" result="bloom" />
+        <feMerge>
+          <feMergeNode in="bloom" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <filter id="home-flare-bloom" x="-90%" y="-90%" width="280%" height="280%">
+        <feGaussianBlur stdDeviation="10" result="flareBlur" />
+        <feColorMatrix
+          in="flareBlur"
+          type="matrix"
+          values="1.2 0 0 0 0  0 1.02 0 0 0  0 0 0.72 0 0  0 0 0 1 0"
+          result="warmBlur"
+        />
+        <feMerge>
+          <feMergeNode in="warmBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <rect class="stage-void" width="680" height="420" rx="28" />
+    <g class="cosmic-dust" aria-hidden="true">
+      <circle cx="54" cy="82" r="0.9" />
+      <circle cx="92" cy="306" r="1.1" />
+      <circle cx="132" cy="148" r="0.7" />
+      <circle cx="190" cy="64" r="1.3" />
+      <circle cx="250" cy="340" r="0.8" />
+      <circle cx="316" cy="108" r="0.9" />
+      <circle cx="384" cy="320" r="1" />
+      <circle cx="498" cy="88" r="1.1" />
+      <circle cx="566" cy="270" r="0.9" />
+      <circle cx="620" cy="142" r="1.2" />
+    </g>
+    <g class="field-ribbons smoke-field" filter="url(#home-field-bloom)" aria-hidden="true">
+      <path class="ribbon wash" d="M-18 286 C124 218, 236 206, 402 216 C505 222, 594 188, 720 106" stroke="url(#home-smoke-ribbon)" />
+      <path class="ribbon bright" d="M-10 272 C128 218, 244 208, 404 216 C516 222, 596 198, 714 132" stroke="url(#home-smoke-ribbon)" />
+      <path class="ribbon fine" d="M34 338 C166 254, 276 228, 404 218 C516 210, 604 244, 704 308" stroke="url(#home-smoke-ribbon)" />
+      <path class="ribbon fine alternate" d="M88 124 C196 132, 300 162, 404 216 C512 272, 604 306, 708 318" stroke="url(#home-smoke-ribbon)" />
+    </g>
+    <g class="field-ribbons orange-field" filter="url(#home-field-bloom)" aria-hidden="true">
+      <path class="ribbon wash" d="M-28 96 C136 150, 252 202, 404 216 C516 226, 594 150, 724 44" stroke="url(#home-orange-ribbon)" />
+      <path class="ribbon bright" d="M-20 110 C142 162, 260 204, 404 216 C520 226, 608 162, 714 70" stroke="url(#home-orange-ribbon)" />
+      <path class="ribbon fine" d="M8 376 C142 286, 260 238, 404 218 C522 202, 610 278, 710 372" stroke="url(#home-orange-ribbon)" />
+      <path class="ribbon fine alternate" d="M116 34 C220 66, 306 142, 404 216 C520 304, 608 282, 714 206" stroke="url(#home-orange-ribbon)" />
+    </g>
+    <g class="plasma-filaments smoke-filaments" filter="url(#home-field-bloom)" aria-hidden="true">
+      <path d="M-12 306 C130 246, 244 224, 404 216 C498 212, 596 184, 710 118" />
+      <path d="M-4 248 C116 214, 252 204, 404 216 C506 230, 598 220, 704 166" />
+      <path d="M64 172 C182 172, 294 184, 404 216 C512 248, 602 270, 720 282" />
+      <path d="M138 82 C238 120, 324 172, 404 216 C494 266, 594 304, 714 342" />
+      <path d="M34 356 C168 272, 286 234, 404 216 C496 202, 590 224, 706 270" />
+    </g>
+    <g class="plasma-filaments orange-filaments" filter="url(#home-field-bloom)" aria-hidden="true">
+      <path d="M-24 68 C122 132, 246 188, 404 216 C516 238, 616 168, 724 68" />
+      <path d="M30 392 C150 302, 278 242, 404 216 C516 194, 604 260, 718 378" />
+      <path d="M108 28 C220 70, 306 146, 404 216 C516 296, 608 280, 724 188" />
+      <path d="M308 392 C392 314, 448 254, 498 218 C572 162, 636 106, 724 8" />
+      <path d="M468 414 C532 330, 564 248, 612 178 C646 128, 678 88, 724 42" />
+    </g>
+    <g class="field-trace-system" filter="url(#home-field-bloom)" aria-hidden="true">
+      <path class="field-trace orange-trace trace-a" d="M-20 110 C142 162, 260 204, 404 216 C520 226, 608 162, 714 70" />
+      <path class="field-trace smoke-trace trace-b" d="M-12 306 C130 246, 244 224, 404 216 C498 212, 596 184, 710 118" />
+      <path class="field-trace orange-trace trace-c" d="M30 392 C150 302, 278 242, 404 216 C516 194, 604 260, 718 378" />
+      <path class="field-trace smoke-trace trace-d" d="M64 172 C182 172, 294 184, 404 216 C512 248, 602 270, 720 282" />
+    </g>
+    <g class="flare-system" filter="url(#home-flare-bloom)" aria-hidden="true">
+      <circle class="field-flare" cx="404" cy="216" r="116" fill="url(#home-field-flare)" />
+      <g class="flare-rays">
+        <path d="M280 216 H528" />
+        <path d="M404 92 V340" />
+        <path d="M316 132 L492 300" />
+        <path d="M314 302 L496 130" />
+      </g>
+      <path class="flare-cross" d="M348 216 H462 M404 160 V272" />
+      <path class="lens-arc upper" d="M308 176 C356 132, 430 132, 492 174" />
+      <path class="lens-arc lower" d="M304 254 C360 302, 446 294, 506 242" />
+    </g>
+    <g class="charged-grain" aria-hidden="true">
+      <circle cx="354" cy="205" r="1.4" />
+      <circle cx="372" cy="232" r="1" />
+      <circle cx="390" cy="186" r="1.2" />
+      <circle cx="424" cy="236" r="1.1" />
+      <circle cx="446" cy="202" r="1.3" />
+      <circle cx="468" cy="224" r="0.9" />
+    </g>
+  </svg>
+`;
+
+const physicsMap = `
+  <svg class="detail-svg physics-svg" viewBox="0 0 420 220" role="img" aria-label="Animated physics detail map">
+    <rect width="420" height="220" rx="18"></rect>
+    <path class="metric-grid" d="M30 154 C92 108, 142 108, 208 150 C274 190, 338 166, 390 104"></path>
+    <path class="metric-grid second" d="M30 88 C96 128, 146 132, 208 98 C280 58, 342 70, 390 120"></path>
+    <circle class="detail-core" cx="210" cy="112" r="28"></circle>
+    <g class="detail-nodes">
+      <circle cx="84" cy="82" r="7"></circle>
+      <circle cx="158" cy="154" r="7"></circle>
+      <circle cx="282" cy="70" r="7"></circle>
+      <circle cx="338" cy="146" r="7"></circle>
+    </g>
+  </svg>
+`;
+
+const agentMap = `
+  <svg class="detail-svg agent-svg" viewBox="0 0 420 220" role="img" aria-label="Animated AI research-agent detail map">
+    <rect width="420" height="220" rx="18"></rect>
+    <path class="agent-route" d="M54 112 H132 C168 112, 168 64, 204 64 H360"></path>
+    <path class="agent-route second" d="M54 112 H132 C168 112, 168 160, 204 160 H360"></path>
+    <g class="agent-node-group">
+      <circle cx="54" cy="112" r="18"></circle>
+      <circle cx="204" cy="64" r="18"></circle>
+      <circle cx="204" cy="160" r="18"></circle>
+      <circle cx="360" cy="64" r="18"></circle>
+      <circle cx="360" cy="160" r="18"></circle>
+    </g>
+  </svg>
+`;
 ---
 
 <BaseLayout
-  title="The AEther Flow"
-  description="Public entry page for The AEther Flow website, with source-boundary-safe routes into physics, AI research workflow, operations, and resources."
-  bodyClass="project-overview-page"
+  title="The Æther Flow Project"
+  description="Canonical Home page for The Æther Flow website, with source-boundary-safe routes into physics, AI research workflow, operations, and resources."
+  bodyClass="project-overview-page home-page"
+  exactTitle
 >
   <CommandBand
     className="overview-shell overview-command-hero"
-    eyebrow="Public science field guide"
-    title="The AEther Flow"
+    eyebrow="Dual research program"
+    title="The Æther Flow Project"
     lead="A reader-facing guide to a speculative physics program and the governed AI research-agent system used to pursue it. The website explains and organizes; upstream source records remain authoritative."
     headingLevel="h1"
   >
     <div class="overview-actions" aria-label="Homepage primary actions">
-      <a class="primary-link" href="/resources/guided-starts/general-public/">Start guided path</a>
+      <a class="primary-link" href="#overview-paths">Understand the project</a>
       <a class="secondary-link" href="/project/physics/current-state/">Current state</a>
-      <a class="secondary-link" href="/project/overview/">Read the overview</a>
+      <a class="secondary-link" href="/resources/guided-starts/general-public/">Guided start</a>
       <a class="secondary-link" href="/project/source-authority/">Check source authority</a>
     </div>
 
     <Fragment slot="visual">
-      <figure class="field-stage" aria-labelledby="home-field-caption">
-        <svg
-          class="field-map-svg"
-          viewBox="0 0 680 420"
-          role="img"
-          aria-labelledby="home-field-title home-field-desc"
-        >
-          <title id="home-field-title">Animated public field-guide route map</title>
-          <desc id="home-field-desc">
-            A central guide point connects physics, AI workflow, operations, and source-authority routes.
-          </desc>
-          <defs>
-            <radialGradient id="home-core-glow" cx="50%" cy="50%" r="62%">
-              <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.88" />
-              <stop offset="32%" stop-color="var(--owl-orange-500)" stop-opacity="0.38" />
-              <stop offset="70%" stop-color="var(--owl-cyan-400)" stop-opacity="0.16" />
-              <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
-            </radialGradient>
-            <linearGradient id="home-route-cyan" x1="0%" x2="100%" y1="50%" y2="50%">
-              <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
-              <stop offset="46%" stop-color="var(--owl-cyan-400)" stop-opacity="0.84" />
-              <stop offset="100%" stop-color="var(--owl-orange-100)" stop-opacity="0.12" />
-            </linearGradient>
-            <linearGradient id="home-route-orange" x1="0%" x2="100%" y1="50%" y2="50%">
-              <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
-              <stop offset="52%" stop-color="var(--owl-orange-500)" stop-opacity="0.9" />
-              <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0.14" />
-            </linearGradient>
-            <filter id="home-route-bloom" x="-24%" y="-28%" width="148%" height="156%">
-              <feGaussianBlur stdDeviation="5" result="homeRouteBlur" />
-              <feMerge>
-                <feMergeNode in="homeRouteBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <rect class="stage-void" width="680" height="420" rx="28" />
-          <g class="cosmic-dust" aria-hidden="true">
-            <circle cx="64" cy="86" r="1" />
-            <circle cx="118" cy="316" r="1.2" />
-            <circle cx="198" cy="58" r="0.9" />
-            <circle cx="294" cy="344" r="1.1" />
-            <circle cx="402" cy="82" r="1" />
-            <circle cx="540" cy="302" r="0.9" />
-            <circle cx="616" cy="134" r="1.2" />
-          </g>
-          <g class="field-ribbons smoke-field" filter="url(#home-route-bloom)" aria-hidden="true">
-            <path class="ribbon wash" d="M64 104 C164 72, 244 124, 340 210 C436 296, 522 336, 628 300" stroke="url(#home-route-cyan)" />
-            <path class="ribbon bright" d="M64 314 C170 340, 252 294, 340 210 C430 126, 514 88, 622 118" stroke="url(#home-route-cyan)" />
-            <path class="ribbon fine" d="M88 210 C172 172, 252 172, 340 210 C432 252, 506 250, 594 210" stroke="url(#home-route-cyan)" />
-          </g>
-          <g class="field-ribbons orange-field" filter="url(#home-route-bloom)" aria-hidden="true">
-            <path class="ribbon bright" d="M118 84 C206 144, 274 176, 340 210 C420 252, 494 296, 566 348" stroke="url(#home-route-orange)" />
-            <path class="ribbon fine" d="M112 344 C194 278, 266 242, 340 210 C420 176, 504 132, 572 70" stroke="url(#home-route-orange)" />
-          </g>
-          <g class="flare-system" filter="url(#home-route-bloom)" aria-hidden="true">
-            <circle class="field-flare" cx="340" cy="210" r="118" fill="url(#home-core-glow)" />
-            <path class="flare-cross" d="M284 210 H396 M340 154 V266" />
-            <path class="lens-arc upper" d="M248 168 C296 124, 388 124, 438 168" />
-            <path class="lens-arc lower" d="M246 252 C300 302, 390 300, 442 252" />
-          </g>
-          <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
-            <circle cx="64" cy="104" r="14" />
-            <circle cx="64" cy="314" r="14" />
-            <circle cx="118" cy="84" r="14" />
-            <circle cx="340" cy="210" r="18" />
-            <circle cx="622" cy="118" r="14" />
-            <circle cx="628" cy="300" r="14" />
-            <circle cx="566" cy="348" r="14" />
-          </g>
-        </svg>
-        <figcaption id="home-field-caption">
-          Visual orientation only: the site connects public routes while source authority remains upstream.
+      <figure class="field-stage" aria-labelledby="home-field-stage-caption">
+        <Fragment set:html={heroFieldMap} />
+        <figcaption id="home-field-stage-caption">
+          Two connected tracks: one explores the physics interpretation; one
+          develops the AI-assisted research discipline.
         </figcaption>
       </figure>
     </Fragment>
   </CommandBand>
 
   <CommandBand
-    id="start"
-    className="overview-panel overview-command-band"
-    eyebrow="Reader start"
-    title="Begin with boundaries before claims."
-    lead="The safest path is current state, overview, source authority, then deeper topic pages. That order keeps open derivation work, workflow evidence, and provenance in the correct roles."
+    id="overview-paths"
+    className="overview-panel overview-command-band overview-track-command"
+    eyebrow="Two first-class tracks"
+    title="Two paths, one research program."
+    lead="The project structure is the first thing a general reader sees: physics research and the AI research-agent system are equal first-class paths."
   >
     <EvidenceRail
-      items={publicStarts.map((item) => ({ ...item, actionLabel: "Open route" }))}
-      ariaLabel="Public starting routes"
+      items={trackRailItems}
+      ariaLabel="Primary research tracks"
+      className="overview-track-rail"
+    />
+
+    <Fragment slot="visual">
+      <div class="overview-track-scenes" aria-label="Track detail maps">
+        <figure class="track-scene physics-scene" aria-label="Physics detail map">
+          <Fragment set:html={physicsMap} />
+        </figure>
+        <figure class="track-scene ai-scene" aria-label="AI research-agent detail map">
+          <Fragment set:html={agentMap} />
+        </figure>
+      </div>
+    </Fragment>
+  </CommandBand>
+
+  <CommandBand
+    id="project-capabilities"
+    className="overview-panel overview-command-band"
+    eyebrow="Project capabilities"
+    title="What the website helps readers do."
+    lead="These entry points turn the project into practical reader actions: follow the physics program, understand the AI workflow, inspect authority boundaries, read source-backed documents, and track current research state."
+  >
+    <EvidenceRail
+      items={projectCapabilities.map((capability) => ({
+        ...capability,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Project capability routes"
+      className="overview-capability-rail"
+      ordered
+    />
+    <p class="capability-boundary-note">
+      These capabilities help readers follow the project, inspect documents,
+      and understand workflow. They do not create scientific authority, prove a
+      GR derivation, or replace upstream source records.
+    </p>
+  </CommandBand>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Reader journeys"
+    title="Choose the path that matches your question."
+    lead="The website keeps the primary reading journey internal. Source repositories remain available for provenance and inspection."
+  >
+    <EvidenceRail
+      items={readerJourneys.map((journey) => ({
+        ...journey,
+        actionLabel: "Follow path",
+      }))}
+      ariaLabel="Reader journey routes"
       className="overview-journey-rail"
       ordered
     />
@@ -228,21 +441,29 @@ const firstWaveStatus = [
     className="overview-panel overview-command-band live-state"
     eyebrow="Source boundary"
     title="Trust the source lane that owns the claim."
-    lead="The website can help a reader understand the project. It cannot adopt a physics candidate, complete a derivation, expand role authority, or turn a validator PASS into proof."
+    lead="The Æther Flow project changes as the source research repository advances. The website can help a reader understand the project; it cannot adopt a physics candidate, complete a derivation, expand role authority, or turn a validator PASS into proof."
   >
     <a class="track-card-link" href="/project/source-authority/">Read source authority</a>
 
     <Fragment slot="aside">
-      <SourceNotice
-        claimStatus="public orientation"
-        updated="2026-06-27"
-        note="The homepage is a reader-entry surface derived from the public overview and source-authority contract. It does not add scientific, mathematical, governance, or workflow authority."
-        sourceRefs={[
-          "The AEther Flow Website. (2026). src/pages/index.astro",
-          "The AEther Flow Website. (2026). docs/architecture/website-feature-and-functionality.md",
-          "AEther-Flow Project. (2026). github-facing/project-overview-explainer.md",
-        ]}
-      />
+      <div class="overview-authority-stack">
+        <StatusDossier
+          items={livingProjectDossier}
+          ariaLabel="Living project status dossier"
+          className="overview-authority-dossier"
+        />
+        <SourceNotice
+          claimStatus="public orientation"
+          updated="2026-06-28"
+          note="The Home page is a reader-entry surface derived from the public overview and source-authority contract. It does not add scientific, mathematical, governance, or workflow authority."
+          sourceRefs={[
+            "The AEther Flow Website. (2026). src/pages/index.astro",
+            "The AEther Flow Website. (2026). docs/architecture/website-feature-and-functionality.md",
+            "AEther-Flow Project. (2026). github-facing/project-overview-explainer.md",
+            "AEther-Flow Project. (2026). github-facing/source-authority-explainer.md",
+          ]}
+        />
+      </div>
     </Fragment>
   </CommandBand>
 </BaseLayout>

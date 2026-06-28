@@ -24,7 +24,7 @@ and external reviewers without creating new scientific or workflow claims?
 
 Reviewed website and source-bound route families:
 
-- `/project/overview/`: public two-track orientation.
+- `/`: public two-track Home orientation.
 - `/project/physics/`: physics route family for ontology, exact-GR benchmark,
   current state, Distance-to-GR, source extension, frozen routes, and claim
   gates.
@@ -134,7 +134,7 @@ safe reading order for specialist audiences.
 
 ## References
 
-The AEther Flow Website. (2026). `/project/overview/`.
+The AEther Flow Website. (2026). `/`.
 
 The AEther Flow Website. (2026). `/project/physics/`.
 

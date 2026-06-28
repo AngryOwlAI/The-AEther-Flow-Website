@@ -67,8 +67,8 @@ export const sourceAuthorityComprehension: ComprehensionContent = {
   relatedRoutes: [
     {
       label: routeLabel,
-      title: "Project overview",
-      href: "/project/overview/",
+      title: "Home",
+      href: "/",
       body: "Return to the public two-track entry point.",
     },
     {

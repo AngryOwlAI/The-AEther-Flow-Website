@@ -7,7 +7,7 @@
     {
       "route_path": "/",
       "local_page_source": "src/pages/index.astro",
-      "title": "The AEther Flow",
+      "title": "The Æther Flow Project",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "github-facing/project-overview-explainer.md",
@@ -16,18 +16,6 @@
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "trust_boundary"
-    },
-    {
-      "route_path": "/project/overview/",
-      "local_page_source": "src/pages/project/overview.astro",
-      "title": "Project Overview",
-      "adaptation_type": "one_to_one_adaptation",
-      "upstream_source_paths": [
-        "github-facing/project-overview-explainer.md"
-      ],
-      "upstream_authority_status": "generated_noncanonical",
-      "website_publication_status": "published",
-      "boundary_type": "claim_boundary"
     },
     {
       "route_path": "/project/physics/",

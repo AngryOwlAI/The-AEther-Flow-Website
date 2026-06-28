@@ -22,7 +22,7 @@ its own.
 
 | Source path | Status | Use in page |
 | --- | --- | --- |
-| `github-facing/project-overview-explainer.md` | generated noncanonical explainer | Overview route source basis. |
+| `github-facing/project-overview-explainer.md` | generated noncanonical explainer | Home route source basis. |
 | `github-facing/source-authority-explainer.md` | generated noncanonical explainer | Source-authority reading rule. |
 | `research_control/program_state.yaml` | upstream control state | Current-state route context. |
 | `research_control/handoffs/handoff-0280.yaml` | upstream handoff | Current handoff context. |
@@ -77,7 +77,7 @@ its own.
 | Diagram | yes | Static PNG generated from dossier Mermaid source. |
 | Equation walkthrough | no | No equation walkthrough required. |
 | Safe/unsafe summary | yes | General-public overread prevention. |
-| Related internal routes | yes | Overview, current state, source authority, claim boundaries, documents. |
+| Related internal routes | yes | Home, current state, source authority, claim boundaries, documents. |
 
 ## Diagram contract
 
@@ -86,7 +86,7 @@ its own.
 | Mermaid source | `docs/content-dossiers/guided-start-general-public/diagrams/general-public-guided-start.mmd` |
 | Public PNG path | `/assets/diagrams/comprehension/general-public-guided-start.png` |
 | Manifest id | `comprehension_general_public_guided_start` |
-| Alt text | Diagram showing a general-public reader moving through overview, current state, source authority, claim boundaries, and provenance without creating new claims. |
+| Alt text | Diagram showing a general-public reader moving through Home, current state, source authority, claim boundaries, and provenance without creating new claims. |
 | Caption | Static comprehension diagram: the guided start assembles existing internal pages and preserves source authority. |
 | Nearby prose requirement | Explain that the diagram is a reader aid, not a source-state update or scientific proof. |
 | Review status | Human review status: pending maintainer review. |
@@ -112,7 +112,7 @@ current source state, or converts public explanation into proof.
 - Reason a new route is justified: PG-006 requires the first guided-start path
   for the accepted primary audience, and the resources area is the established
   reader-support location.
-- Existing related routes: `/`, `/project/overview/`,
+- Existing related routes: `/`,
   `/project/physics/current-state/`, `/project/source-authority/`,
   `/project/source-authority/claim-boundary-explorer/`, and `/resources/`.
 

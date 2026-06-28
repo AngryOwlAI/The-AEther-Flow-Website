@@ -66,11 +66,11 @@ export const diagramConceptGroups: Array<{
 export const diagramGalleryItems = [
   {
     group: "source-authority",
-    title: "Project overview two-track map",
+    title: "Home two-track map",
     src: "/assets/diagrams/comprehension/project-overview-two-track-map.png",
-    alt: "Diagram showing The AEther Flow overview as physics research and AI research-agent workflow downstream from source authority.",
+    alt: "Diagram showing The AEther Flow Home page as physics research and AI research-agent workflow downstream from source authority.",
     caption:
-      "Public comprehension diagram for the overview route; it orients readers without promoting scientific claims.",
+      "Public comprehension diagram for the Home route; it orients readers without promoting scientific claims.",
     provenance:
       "Mermaid source: docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd.",
   },
@@ -360,7 +360,7 @@ export const diagramGalleryItems = [
     group: "source-authority",
     title: "General-public guided start",
     src: "/assets/diagrams/comprehension/general-public-guided-start.png",
-    alt: "Diagram showing a general-public reader moving through overview, current state, source authority, claim boundaries, and provenance without creating new claims.",
+    alt: "Diagram showing a general-public reader moving through Home, current state, source authority, claim boundaries, and provenance without creating new claims.",
     caption:
       "Public comprehension diagram for the general-public guided start; it assembles existing sourced pages without adding claims.",
     provenance:
@@ -487,9 +487,9 @@ export const resourceGroups = [
     body: "A first reading path that answers what this is, what is currently claimed, and what not to infer.",
   },
   {
-    title: "Project overview",
-    href: "/project/overview/",
-    body: "Accepted public entry point for the dual physics-and-AI research program framing.",
+    title: "Home",
+    href: "/",
+    body: "Canonical public entry point for the dual physics-and-AI research program framing.",
   },
   {
     title: "Physics Research",
@@ -549,13 +549,13 @@ export interface ProjectRouteMetadata {
 }
 
 export const projectSourceNoticeDefaults = {
-  overview: {
-    claimStatus: "explanatory overview",
-    updated: "2026-06-25",
-    note: "This overview explains the accepted public project structure. Source authority remains with The-AEther-Flow.",
+  home: {
+    claimStatus: "public orientation",
+    updated: "2026-06-28",
+    note: "The Home page explains the accepted public project structure. Source authority remains with The-AEther-Flow.",
     sourceRefs: [
       "The AEther Flow Website. (2026). PRDs/dual-project-public-overview-prd.md",
-      "The AEther Flow Website. (2026). src/pages/project/overview.astro",
+      "The AEther Flow Website. (2026). src/pages/index.astro",
     ],
   },
   physicsTrack: {
@@ -1182,12 +1182,8 @@ const toNavigationChild = (route: {
 
 export const siteNavigationLinks: SiteNavigationLink[] = [
   {
-    title: "Start",
+    title: "Home",
     href: "/",
-  },
-  {
-    title: "Overview",
-    href: "/project/overview/",
   },
   {
     title: "Physics Research",
@@ -1282,12 +1278,12 @@ export const siteNavigationLinks: SiteNavigationLink[] = [
 
 export const projectReadingPathRoutes: ProjectRouteMetadata[] = [
   {
-    title: "Project overview",
-    href: "/project/overview/",
-    phase: "Accepted overview",
+    title: "Home",
+    href: "/",
+    phase: "Canonical Home",
     status: "accepted",
-    description: "Accepted public overview introducing AEther Flow as a dual physics-and-AI research program.",
-    sourceNotice: projectSourceNoticeDefaults.overview,
+    description: "Canonical public Home introducing AEther Flow as a dual physics-and-AI research program.",
+    sourceNotice: projectSourceNoticeDefaults.home,
   },
   {
     title: "Physics Research",
@@ -1338,7 +1334,7 @@ export const projectInformationArchitectureDecision = {
     status: "implemented",
     phase: "Phase 7",
     rationale:
-      "Primary navigation now exposes the public project reading path: overview, physics, AI system, operations, source authority, and resources.",
+      "Primary navigation now exposes the public project reading path: Home, physics, AI system, operations, source authority, and resources.",
   },
   internalFirstLinkDecision: {
     status: "implemented",

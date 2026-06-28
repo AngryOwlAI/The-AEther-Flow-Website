@@ -2852,6 +2852,11 @@ html:has(body.project-overview-page) {
   text-transform: uppercase;
 }
 
+.home-page .overview-command-hero .command-band-copy h1 {
+  max-width: 12ch;
+  text-transform: none;
+}
+
 .command-band-copy h2 {
   max-width: 14ch;
   font-size: 3.2rem;

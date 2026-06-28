@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 HTML_ROUTES_REQUIRING_SOURCE_NOTICE = {
-    "/project/overview/",
+    "/",
     "/project/physics/current-state/",
     "/resources/",
     "/resources/documents/",

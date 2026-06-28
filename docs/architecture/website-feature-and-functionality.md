@@ -55,7 +55,7 @@ Operational conclusions:
 
 ## User-Facing Route Families
 
-The primary site navigation is organized around six route families: Overview,
+The primary site navigation is organized around six route families: Home,
 Physics, AI System, Operations, Source Authority, and Resources. This keeps the
 reader journey internal-first while preserving explicit provenance and source
 inspection paths.
@@ -63,14 +63,14 @@ inspection paths.
 ```mermaid
 flowchart TD
   site["Website"]
-  overview["Overview<br/>/project/overview/"]
+  home["Home<br/>/"]
   physics["Physics<br/>/project/physics/"]
   ai["AI System<br/>/project/ai-research-agent-system/"]
   ops["Operations<br/>/project/operations/"]
   authority["Source Authority<br/>/project/source-authority/"]
   resources["Resources<br/>/resources/"]
 
-  site --> overview
+  site --> home
   site --> physics
   site --> ai
   site --> ops
@@ -101,7 +101,7 @@ flowchart TD
 
 Current route behavior:
 
-- `/project/overview/` is the public entry point for the dual physics-and-AI
+- `/` is the public entry point for the dual physics-and-AI
   research framing.
 - `/project/physics/` is the physics track landing page. Its child pages orient
   readers to ontology, current state, benchmark boundaries, roadmap status, and
@@ -289,7 +289,7 @@ is a maintainer contract, not a public claim, and it is governed by
 The revamp uses the existing route families unless a later approved packet
 creates a narrower internal route:
 
-- `/` and `/project/overview/` are public orientation routes.
+- `/` is the canonical public Home route; `/project/overview/` redirects to it.
 - `/project/physics/` owns physics-status, ontology, benchmark, obstruction,
   gate, and derivation-burden explanation.
 - `/project/ai-research-agent-system/` owns governed AI workflow, role, memory,

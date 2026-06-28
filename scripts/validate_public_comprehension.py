@@ -50,9 +50,9 @@ class RemediatedRoute:
 
 ROUTES = [
     RemediatedRoute(
-        route_path="/project/overview/",
+        route_path="/",
         dossier=Path("docs/content-dossiers/project-overview/dossier.md"),
-        local_page_source=Path("src/pages/project/overview.astro"),
+        local_page_source=Path("src/pages/index.astro"),
         diagram_source=Path(
             "docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd"
         ),

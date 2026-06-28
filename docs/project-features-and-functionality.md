@@ -25,7 +25,7 @@ not a source-authority record and does not promote any physics claim.
 
 | Route family | Reader function | Maintainer note |
 | --- | --- | --- |
-| `/project/overview/` | Public entry point for the dual physics-and-AI research program. | Includes the reader capability map at `#project-capabilities`. |
+| `/` | Canonical Home entry point for the dual physics-and-AI research program. | Includes the reader capability map at `#project-capabilities`; `/project/overview/` redirects here. |
 | `/project/physics/` | Physics track landing page for ontology, benchmark boundary, GR-derivation roadmap, current state, and claim gates. | Keep GR derivation, benchmark compatibility, and ontology status separate. |
 | `/project/ai-research-agent-system/` | AI research-agent track for workflow, roles, skills, memory, registries, and parent-child synthesis. | Explain workflow evidence without treating it as physics proof. |
 | `/project/operations/` | Operational synthesis for AgentJobs, role routing, validation, publication, project-system improvement, and technical requirements. | Operational success is bounded evidence, not scientific authority. |
@@ -35,7 +35,7 @@ not a source-authority record and does not promote any physics claim.
 | `/project/source-authority/publication-and-provenance-system/` | Publication/provenance route replacing the old research-map prototype. | Use this when readers need route-map, page-provenance, source-manifest, asset-manifest, and hash-boundary context. |
 | `/resources/guided-starts/`, `/resources/reviewer-packet/` | Specialist guided starts and human-review-pending reviewer packet. | These assemble existing sourced pages and must not create new claims. |
 
-Primary navigation should remain concise: Overview, Physics, AI system,
+Primary navigation should remain concise: Home, Physics, AI system,
 Operations, Source authority, and Resources.
 
 ## Public Assets And Manifests

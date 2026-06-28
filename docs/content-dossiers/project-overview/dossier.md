@@ -5,7 +5,7 @@ Human review status: pending maintainer review.
 
 ## Route and reader job
 
-- Public route: `/project/overview/`
+- Public route: `/`
 - Reader job: understand The AEther Flow as one source-first research program
   with two linked tracks, then choose the correct internal route family.
 - Primary audience: public readers and technical readers entering the project
@@ -16,7 +16,7 @@ Human review status: pending maintainer review.
 
 ## Current page summary
 
-The current overview already presents the dual physics-and-AI structure and
+The current Home page presents the dual physics-and-AI structure and
 uses internal route links as primary actions. It is visually strong, but it
 does not yet use a dossier-backed comprehension block model or a static
 Mermaid-authored public diagram asset. The rewrite should keep the command
@@ -27,7 +27,7 @@ safe/unsafe summary, and a manifest-backed diagram.
 
 | Source path | Status | Use in page |
 | --- | --- | --- |
-| `github-facing/project-overview-explainer.md` | generated noncanonical reader surface | Primary source-derived overview framing, page families, boundaries, and safe/unsafe summary. |
+| `github-facing/project-overview-explainer.md` | generated noncanonical reader surface | Primary source-derived Home framing, page families, boundaries, and safe/unsafe summary. |
 | `README.md` | upstream project front door | Supports two-track project identity and first-entry framing referenced by the generated explainer. |
 | `AGENTS.md` | upstream operating instructions | Supports source-authority and generated-output boundary language referenced by the generated explainer. |
 | `research_control/README.md` | upstream research-control guide | Supports bounded task, AgentJob, validation, memory, completion, and handoff concepts referenced by the generated explainer. |
@@ -44,7 +44,7 @@ safe/unsafe summary, and a manifest-backed diagram.
 4. Explain the source-authority spine: website explanations route readers back
    to source files, registries, and reviewed records.
 5. Give internal route families by reader question before provenance links.
-6. State what the overview cannot do.
+6. State what Home cannot do.
 7. Provide safe and unsafe summaries.
 
 ## Glossary
@@ -63,7 +63,7 @@ safe/unsafe summary, and a manifest-backed diagram.
 
 - Exact-GR benchmark compatibility is not the same as a completed substrate
   derivation.
-- The overview is a route map and public explanation, not a scientific source
+- Home is a route map and public explanation, not a scientific source
   document.
 - AI workflow evidence is operational evidence, not physics proof.
 - Generated pages, screenshots, and diagrams are reader aids downstream from
@@ -73,7 +73,7 @@ safe/unsafe summary, and a manifest-backed diagram.
 
 ### Forbidden implications
 
-- Do not imply that the overview proves general relativity from the ontology.
+- Do not imply that Home proves general relativity from the ontology.
 - Do not imply that AI agents autonomously own research decisions, authorship,
   or release accountability.
 - Do not imply that a role, skill, or tool expands current task-local
@@ -104,35 +104,35 @@ safe/unsafe summary, and a manifest-backed diagram.
 | Mermaid source | `docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd` |
 | Public PNG path | `/assets/diagrams/comprehension/project-overview-two-track-map.png` |
 | Manifest id | `comprehension_project_overview_two_track_map` |
-| Alt text | Diagram showing The AEther Flow overview as two linked tracks: physics research and AI research-agent workflow, both downstream from source authority. |
-| Caption | Static comprehension diagram: the overview routes readers through the physics lane, AI research-agent lane, and source-authority spine without promoting claims. |
+| Alt text | Diagram showing The AEther Flow Home page as two linked tracks: physics research and AI research-agent workflow, both downstream from source authority. |
+| Caption | Static comprehension diagram: Home routes readers through the physics lane, AI research-agent lane, and source-authority spine without promoting claims. |
 | Nearby prose requirement | Explain that the diagram is an orientation aid and that source files and registries remain authoritative. |
 | Review status | pending maintainer review |
 
 ## Equation walkthrough contract
 
-No equation walkthrough required for this route. The overview does not display
+No equation walkthrough required for this route. Home does not display
 or substantively derive equations.
 
 ## Safe summary
 
 Safe summary: The AEther Flow is a source-first research project with a physics
-program and a governed research-agent workflow; the overview helps readers
+program and a governed research-agent workflow; Home helps readers
 choose the right internal route and source lane.
 
 ## Unsafe summary
 
-Unsafe summary: The overview proves a substrate derivation, makes generated
+Unsafe summary: Home proves a substrate derivation, makes generated
 website material authoritative, grants role or validator authority, or turns
 the AI workflow into autonomous scientific ownership.
 
 ## New-page audit
 
 - Is a new public page proposed? No.
-- Existing route that should be used instead: `/project/overview/`.
-- Reason a new route is or is not justified: The accepted overview route
-  already carries the first-entry reader job. The Phase 1 work should deepen
-  this existing route rather than add a parallel public entry point.
+- Existing route that should be used instead: `/`.
+- Reason a new route is or is not justified: The canonical Home route now
+  carries the first-entry reader job. The work should deepen this route rather
+  than add a parallel public entry point.
 
 ## Human review checklist
 

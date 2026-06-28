@@ -141,9 +141,9 @@
     {
       "path": "/assets/diagrams/comprehension/project-overview-two-track-map.png",
       "kind": "diagram",
-      "bytes": 64192,
-      "sha256": "b582aa9e0cca3120df7109f86939ce11c43e498561bfc5ad5730205294570406",
-      "title": "Project Overview Two-Track Comprehension Map",
+      "bytes": 65223,
+      "sha256": "fc5a56849871d89fa9135ead55e1e5b9a97e0885b145ed742d65955219a7ab89",
+      "title": "Home Two-Track Comprehension Map",
       "source_ref": "source_manifest:comprehension_project_overview_two_track_map"
     },
     {
@@ -205,8 +205,8 @@
     {
       "path": "/assets/diagrams/comprehension/physics-gate-chair-human-gates.png",
       "kind": "diagram",
-      "bytes": 67431,
-      "sha256": "2660687e72a7694091fd3979783ec170cb15cd269d3df7040ce55ef058da6127",
+      "bytes": 67430,
+      "sha256": "c1d87c76ff36c6780a2b7610b1ea83227cca1150c7f6b98a43e70eae6a315400",
       "title": "Physics Gate Chair Human Gates",
       "source_ref": "source_manifest:comprehension_physics_gate_chair_human_gates"
     },

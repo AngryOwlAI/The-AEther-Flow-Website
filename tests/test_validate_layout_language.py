@@ -12,13 +12,13 @@ def write(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def write_minimal_layout_contract(root: Path, *, overview: str | None = None) -> None:
+def write_minimal_layout_contract(root: Path, *, home: str | None = None) -> None:
     for relative in validator.REQUIRED_PRIMITIVE_FILES:
         write(root / relative, "---\n---\n")
 
     for relative, contract in validator.MIGRATED_SURFACES.items():
-        if relative == "src/pages/project/overview.astro" and overview is not None:
-            write(root / relative, overview)
+        if relative == "src/pages/index.astro" and home is not None:
+            write(root / relative, home)
             continue
         write(root / relative, " ".join(contract["required"]))
 
@@ -39,10 +39,10 @@ def test_missing_primitive_fails(tmp_path: Path) -> None:
     assert any("EvidenceRail.astro: missing" in error for error in errors)
 
 
-def test_overview_card_grid_antipattern_fails(tmp_path: Path) -> None:
+def test_home_card_grid_antipattern_fails(tmp_path: Path) -> None:
     write_minimal_layout_contract(
         tmp_path,
-        overview='CommandBand EvidenceRail StatusDossier <div class="link-grid">',
+        home='CommandBand EvidenceRail StatusDossier <div class="link-grid">',
     )
 
     errors = validator.validate_layout_language(tmp_path)

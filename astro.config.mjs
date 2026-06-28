@@ -6,6 +6,12 @@ import remarkMath from "remark-math";
 
 export default defineConfig({
   output: "static",
+  redirects: {
+    "/project/overview/": {
+      status: 301,
+      destination: "/",
+    },
+  },
   integrations: [mdx()],
   markdown: {
     processor: unified({
