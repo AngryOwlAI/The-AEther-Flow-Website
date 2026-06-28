@@ -1127,6 +1127,18 @@ html:has(body.project-overview-page) {
   margin: 0 auto 2rem;
 }
 
+.home-action-row:has(> a:nth-child(3):last-child) {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  justify-content: start;
+}
+
+.home-action-row:has(> a:nth-child(3):last-child) > .primary-link:first-child {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
 .home-action-row > a {
   min-width: 0;
   text-align: center;
@@ -3461,7 +3473,13 @@ html:has(body.project-overview-page) {
     max-width: 100%;
   }
 
-  .overview-actions:has(> a:nth-child(3):last-child) > .secondary-link {
+  .home-action-row:has(> a:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .overview-actions:has(> a:nth-child(3):last-child) > .secondary-link,
+  .home-action-row:has(> a:nth-child(3):last-child) > .secondary-link {
     width: 100%;
     min-width: 0;
   }
@@ -3609,6 +3627,7 @@ html:has(body.project-overview-page) {
 
   .overview-actions,
   .home-action-row,
+  .home-action-row:has(> a:nth-child(3):last-child),
   .overview-actions:has(> a:nth-child(3):last-child) {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -3617,6 +3636,7 @@ html:has(body.project-overview-page) {
 
   .overview-actions > a,
   .home-action-row > a,
+  .home-action-row:has(> a:nth-child(3):last-child) > .primary-link:first-child,
   .overview-actions:has(> a:nth-child(3):last-child) > .primary-link:first-child {
     width: 100%;
     justify-self: stretch;
