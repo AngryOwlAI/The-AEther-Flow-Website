@@ -2,7 +2,6 @@
 import CommandBand from "../components/CommandBand.astro";
 import EvidenceRail from "../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
-import StatusDossier from "../components/StatusDossier.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { projectSourceNoticeDefaults } from "../lib/siteContent";
 
@@ -80,49 +79,16 @@ const readerCapabilityRoutes = [
   },
 ];
 
-const specialistStarts = [
+const ontologyStatusRoutes = [
   {
-    title: "Physics research",
-    href: "/project/physics/",
-    body: "Ontology, exact-GR benchmark, open derivation burden, current state, and claim gates.",
+    title: "Æther Flow ontology",
+    href: "/project/physics/ontology/",
+    body: "Plain vocabulary for AEther, AEther-flow, observed space, S-time, expansion, and gravity-language, with boundaries around what those terms do not prove.",
   },
   {
-    title: "AI research-agent system",
-    href: "/project/ai-research-agent-system/",
-    body: "Bounded AgentJobs, role contracts, memory, validators, and parent-child synthesis.",
-  },
-  {
-    title: "Operations",
-    href: "/project/operations/",
-    body: "Director decisions, validation, publication loops, project-system improvement, and technical requirements.",
-  },
-  {
-    title: "Resources",
-    href: "/resources/",
-    body: "Documents, diagrams, guided-start material, and reviewer packets for reader navigation.",
-  },
-];
-
-const firstWaveStatus = [
-  {
-    label: "Active",
-    title: "Current state",
-    body: "The current-state route is public and should anchor later physics reading.",
-  },
-  {
-    label: "Implemented",
-    title: "Distance-to-GR",
-    body: "The dashboard is source-pinned and ledger-backed; it maps burden rows without turning them into proof or percentage progress.",
-  },
-  {
-    label: "Implemented",
-    title: "Source extension and gates",
-    body: "Source-extension, Gate Chair, and claim-boundary pages are implemented as internal boundary references.",
-  },
-  {
-    label: "Implemented",
-    title: "Guided starts",
-    body: "The guided starts assemble validated internal pages without introducing new scientific claims.",
+    title: "GR derivation roadmap",
+    href: "/project/physics/gr-derivation-roadmap/",
+    body: "A burden map for the still-open derivation path: effective geometry, matter coupling, field equations, and benchmark promotion each require source-side evidence.",
   },
 ];
 
@@ -282,7 +248,7 @@ const agentMap = `
     className="overview-shell overview-command-hero"
     eyebrow="Dual research program"
     title="The Æther Flow Project"
-    lead="A reader-facing guide to a speculative physics program and the governed AI research-agent system used to pursue it. The website explains and organizes; upstream source records remain authoritative."
+    lead="Start here to orient yourself: the project pairs a proposed Æther-flow physics ontology with a governed AI research workflow. This site explains the routes and boundaries; source files, registries, and reviewed records remain the authority."
     headingLevel="h1"
   >
     <Fragment slot="visual">
@@ -297,9 +263,9 @@ const agentMap = `
   </CommandBand>
 
   <nav class="home-action-row" aria-label="Homepage primary actions">
-    <a class="primary-link" href="#overview-paths">Understand the project</a>
-    <a class="secondary-link" href="/project/physics/current-state/">Current state</a>
-    <a class="secondary-link" href="/resources/guided-starts/general-public/">Guided start</a>
+    <a class="primary-link" href="#project-capabilities">Choose the route</a>
+    <a class="secondary-link" href="/resources/guided-starts/general-public/">Guided Start</a>
+    <a class="secondary-link" href="/project/physics/current-state/">Current State</a>
     <a class="secondary-link" href="/project/source-authority/">Check source authority</a>
   </nav>
 
@@ -354,27 +320,14 @@ const agentMap = `
 
   <CommandBand
     className="overview-panel overview-command-band"
-    eyebrow="Specialist paths"
-    title="Choose a route family after orientation."
-    lead="Specialist paths stay inside the website first. Source links remain available in provenance sections when the reader needs to inspect evidence directly."
+    eyebrow="Physics status"
+    title="Ontology and GR derivation status"
+    lead="The ontology page gives the project vocabulary and model orientation. The GR derivation remains an open burden roadmap, not a completed proof or benchmark promotion."
   >
     <EvidenceRail
-      items={specialistStarts.map((item) => ({ ...item, actionLabel: "Open route" }))}
-      ariaLabel="Specialist route families"
+      items={ontologyStatusRoutes.map((item) => ({ ...item, actionLabel: "Open route" }))}
+      ariaLabel="Ontology and GR derivation status routes"
       className="overview-track-rail"
-    />
-  </CommandBand>
-
-  <CommandBand
-    className="overview-panel overview-command-band"
-    eyebrow="First-wave revamp"
-    title="Some pages are active; others are deliberately staged."
-    lead="The sitewide plan prioritizes authority and orientation first. High-risk pages stay staged until their system-analysis artifacts and no-ai-slop gates pass."
-  >
-    <StatusDossier
-      items={firstWaveStatus}
-      ariaLabel="First-wave revamp status"
-      className="track-status-grid"
     />
   </CommandBand>
 

@@ -11,7 +11,9 @@
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "github-facing/project-overview-explainer.md",
-        "github-facing/source-authority-explainer.md"
+        "github-facing/source-authority-explainer.md",
+        "github-facing/aether-flow-ontology-explainer.md",
+        "github-facing/gr-derivation-roadmap-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
