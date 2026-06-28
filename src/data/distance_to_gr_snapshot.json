@@ -1,0 +1,327 @@
+{
+  "active_task_id": "RT-20260614-248",
+  "current_status": "recovery_bridge_candidate_accepted_scoped_source_extension_evidence_only_no_adoption",
+  "groups": [
+    {
+      "burden_ids": [
+        "source_ontology_primitives",
+        "source_equivalence_eqsrc",
+        "retain_h",
+        "gen_h",
+        "obsloc_lc",
+        "resp_lc"
+      ],
+      "description": "Ontology, source equivalence, retention, generation, localization, and response rows.",
+      "id": "source_foundation",
+      "rows": [
+        {
+          "accept_criteria": "source-only definitions with explicit claim boundaries",
+          "blocking_burden": "canonical adoption rules",
+          "burden_id": "source_ontology_primitives",
+          "current_status": "draft object exists",
+          "failure_or_freeze_criteria": "human-gated ontology change",
+          "last_evidence_path": "AGENTS.md",
+          "milestone": "source_ontology",
+          "notes": "research ontology remains open and non-promotional",
+          "required_object": "primitive substrate data",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "theorem plus stress pass",
+          "blocking_burden": "general equivalence under variations",
+          "burden_id": "source_equivalence_eqsrc",
+          "current_status": "draft object exists",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/program_state.yaml",
+          "milestone": "source_equivalence_eqsrc",
+          "notes": "general EqSrc remains undischarged",
+          "required_object": "EqSrc",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "retention theorem plus audit",
+          "blocking_burden": "canonical retention proof",
+          "burden_id": "retain_h",
+          "current_status": "blocked by missing primitive",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/program_state.yaml",
+          "milestone": "source_equivalence_eqsrc",
+          "notes": "no canonical RetainH adoption",
+          "required_object": "RetainH",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "generator theorem plus audit",
+          "blocking_burden": "canonical generator proof",
+          "burden_id": "gen_h",
+          "current_status": "blocked by missing primitive",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/program_state.yaml",
+          "milestone": "source_equivalence_eqsrc",
+          "notes": "no canonical GenH adoption",
+          "required_object": "GenH",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "concrete witness plus smuggling audit and Refuter stress",
+          "blocking_burden": "robustness and exact-branch limits",
+          "burden_id": "obsloc_lc",
+          "current_status": "constructive witness exists",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/tasks/RT-20260614-037/artifacts/58_LOCALIZATION_SOURCE_BASIS_AXIOM_SELECTOR_DOMAIN_EQSRC_ALTERNATIVE_BRANCH_FAMILY_GUARD_STABILITY_SOURCE_PACKET_SMUGGLING_AUDIT.tex",
+          "milestone": "source_localization_obsloc_lc",
+          "notes": "local exact-branch witness only",
+          "required_object": "ObsLoc_lc",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "source-only witness or admissible extension",
+          "blocking_burden": "response selector sign scale and token semantics",
+          "burden_id": "resp_lc",
+          "current_status": "accepted",
+          "failure_or_freeze_criteria": "NDCL-RESP-LC-SELECTOR-UNDERDETERMINATION",
+          "last_evidence_path": "research_control/tasks/RT-20260614-060/artifacts/101_RESP_LC_SOURCE_EXTENSION_HUMAN_GATE_ADOPTION_DECISION.tex",
+          "milestone": "response_localization_resp_lc",
+          "notes": "Xi_X^R adopted only as admissible source-extension data for Resp_lc continuation through S_X^+; old S_X selector obstruction remains valid and downstream M_src g_eff matter coupling Einstein equations benchmark and completed-derivation claims remain blocked",
+          "required_object": "Resp_lc",
+          "updated_at": "2026-06-18T03:11:32Z"
+        }
+      ],
+      "title": "Source foundation"
+    },
+    {
+      "burden_ids": [
+        "m_src",
+        "g_eff"
+      ],
+      "description": "Source manifold and effective metric rows that remain narrower than downstream GR promotion.",
+      "id": "metric_bridge",
+      "rows": [
+        {
+          "accept_criteria": "Bounded effective_metric_g_eff preflight selector only before any metric-law construction",
+          "blocking_burden": "Scoped source-only M_src adoption granted for audited and stressed M_src^{GSC-cand}(E) under H1-H13 and fail-closed no-target-import discipline",
+          "burden_id": "m_src",
+          "current_status": "accepted",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/tasks/RT-20260614-134/artifacts/165_M_SRC_GSC_INTEGRATED_SOURCE_ONLY_ADOPTION_THEOREM_GATE_CHAIR_REVIEW.tex",
+          "milestone": "source_manifold_m_src",
+          "notes": "Updated by RT-20260614-134 Phase 9 Gate Chair review to record scoped M_src adoption while g_eff matter coupling Einstein equations benchmark promotion and completed derivation remain blocked",
+          "required_object": "M_src",
+          "updated_at": "2026-06-24T22:49:32Z"
+        },
+        {
+          "accept_criteria": "Run one bounded Theoretical Continuation Selector packet to classify post-scoped-g_eff route before matter-coupling precondition work",
+          "blocking_burden": "Scoped source-extension g_eff object adopted under declared source-side scope but downstream matter coupling Einstein equations benchmark promotion and completed derivation remain blocked",
+          "burden_id": "g_eff",
+          "current_status": "accepted",
+          "failure_or_freeze_criteria": "Selector or downstream gate must find repair freeze obstruction or next bounded non-promotional route if scoped g_eff cannot support later burdens",
+          "last_evidence_path": "research_control/tasks/RT-20260614-222/artifacts/251_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_GEFF_CANDIDATE_SCOPED_SOURCE_EXTENSION_ADOPTION_GATE_CHAIR_REVIEW.tex",
+          "milestone": "effective_metric_g_eff",
+          "notes": "Gate Chair adopted g_eff^{GSC-cand}(E;G^beta",
+          "required_object": "g_eff",
+          "updated_at": "2026-06-27T06:48:00Z"
+        }
+      ],
+      "title": "Metric and bridge rows"
+    },
+    {
+      "burden_ids": [
+        "matter_coupling",
+        "einstein_equations",
+        "benchmark_promotion",
+        "gate_chair_status"
+      ],
+      "description": "Matter coupling, Einstein equations, benchmark promotion, and protected Gate Chair status.",
+      "id": "downstream_gr",
+      "rows": [
+        {
+          "accept_criteria": "Run one bounded Theoretical Continuation Selector packet to classify post-recovery-bridge-candidate-evidence route before any adoption stress-energy Einstein-equation benchmark or completed-derivation work",
+          "blocking_burden": "Recovery-bridge candidate B_E rec and BridgeCert cand accepted only as scoped source-extension recovery-bridge-candidate evidence/precondition under finite/local source-side scope; no coupling law or matter coupling is adopted",
+          "burden_id": "matter_coupling",
+          "current_status": "accepted",
+          "failure_or_freeze_criteria": "A recovery-bridge candidate evidence acceptance must not be treated as coupling-law adoption matter coupling stress-energy semantics Einstein equations benchmark promotion or completed derivation; freeze if later packets repeat same evidence-status selection without new repair obstruction freeze broader protected question or bounded non-promotional route",
+          "last_evidence_path": "research_control/tasks/RT-20260614-248/artifacts/277_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_MATTER_COUPLING_RECOVERY_BRIDGE_CANDIDATE_SOURCE_EXTENSION_EVIDENCE_GATE_CHAIR_REVIEW.tex",
+          "milestone": "matter_coupling",
+          "notes": "Gate Chair accepted recovery-bridge candidate only as scoped source-extension evidence precondition with no source-law adoption no MetricData(E) adoption no g_eff scope change no coupling-law adoption no matter-coupling derivation or adoption no stress-energy semantics no Einstein equations no benchmark promotion and no completed derivation.",
+          "required_object": "universal coupling",
+          "updated_at": "2026-06-28T03:00:00Z"
+        },
+        {
+          "accept_criteria": "derivation theorem",
+          "blocking_burden": "dynamics action or variation",
+          "burden_id": "einstein_equations",
+          "current_status": "not started",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/program_state.yaml",
+          "milestone": "einstein_equations",
+          "notes": "no Einstein-equation derivation supplied",
+          "required_object": "field equations",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "Gate Chair approval",
+          "blocking_burden": "all upstream derivation burdens",
+          "burden_id": "benchmark_promotion",
+          "current_status": "blocked by missing primitive",
+          "failure_or_freeze_criteria": "human gate",
+          "last_evidence_path": "research_control/program_state.yaml",
+          "milestone": "benchmark_promotion",
+          "notes": "benchmark promotion remains blocked",
+          "required_object": "exact-GR benchmark",
+          "updated_at": "2026-06-17T15:46:25Z"
+        },
+        {
+          "accept_criteria": "explicit human-gated Gate Chair review",
+          "blocking_burden": "protected verdict authority",
+          "burden_id": "gate_chair_status",
+          "current_status": "human-gated",
+          "failure_or_freeze_criteria": "human gate",
+          "last_evidence_path": "research_control/approvals/README.md",
+          "milestone": "benchmark_promotion",
+          "notes": "Gate Chair review remains blocked",
+          "required_object": "Gate Chair status",
+          "updated_at": "2026-06-17T15:46:25Z"
+        }
+      ],
+      "title": "Downstream GR burdens"
+    },
+    {
+      "burden_ids": [
+        "finite_variation_robustness",
+        "finite_toy_metric_response"
+      ],
+      "description": "Finite robustness and frozen toy-model rows that guide routing without proving global failure.",
+      "id": "negative_and_control",
+      "rows": [
+        {
+          "accept_criteria": "Phase 9 typed specification plus Var_reg_src preservation theorem and human gate before adoption",
+          "blocking_burden": "arbitrary finite-variation preservation beyond fail-closed proposal-only FVR_src^GSC interface",
+          "burden_id": "finite_variation_robustness",
+          "current_status": "Refuter stress passed",
+          "failure_or_freeze_criteria": "freeze route",
+          "last_evidence_path": "research_control/tasks/RT-20260614-101/artifacts/142_RESP_LC_M_SRC_GSC_FINITE_VARIATION_ROBUSTNESS_LAW_REFUTER_STRESS_TEST.tex",
+          "milestone": "source_equivalence_eqsrc",
+          "notes": "Proposal-only FVR_src^GSC survives named Refuter stress as fail-closed source-extension data while arbitrary robustness adoption M_src and downstream GR claims remain blocked",
+          "required_object": "finite variation robustness",
+          "updated_at": "2026-06-23T02:46:16Z"
+        },
+        {
+          "accept_criteria": "source set response relation toy metric analogue and invariance checks",
+          "blocking_burden": "minimal finite response analogue",
+          "burden_id": "finite_toy_metric_response",
+          "current_status": "frozen negative",
+          "failure_or_freeze_criteria": "route frozen or redesigned before full GR",
+          "last_evidence_path": "research_control/tasks/RT-20260614-055/artifacts/96_RESP_LC_FINITE_TOY_METRIC_RESPONSE_MODEL_REFUTER_STRESS_TEST.tex",
+          "milestone": "finite_toy_metric_response",
+          "notes": "explicit-tag-only finite toy route failed tag-removal stress and is frozen locally",
+          "required_object": "finite source-to-response toy model",
+          "updated_at": "2026-06-18T01:24:12Z"
+        }
+      ],
+      "title": "Negative and control rows"
+    }
+  ],
+  "latest_handoff_id": "handoff-0281",
+  "next_recommended_action": "Run one bounded Theoretical Continuation Selector packet to classify the next matter_coupling route after scoped recovery-bridge-candidate evidence/precondition acceptance. Do not adopt a coupling law, do not derive or adopt matter coupling, do not import stress-energy semantics, do not adopt MetricData(E), do not change scoped g_eff, do not derive Einstein equations, and do not promote downstream GR claims.",
+  "row_count": 14,
+  "source_commit": "9da622653a3faf60a8c478328223eb17215769fa",
+  "source_commit_date": "2026-06-27T21:39:03-06:00",
+  "source_dependencies": [
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
+      "sha256": "1548ee32c606a6554b8a057d2e90d015ecaa00ac4857b8a1d2ada83701b44c8e"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/gr_derivation_burden_map.md",
+      "path": "research_control/design/gr_derivation_burden_map.md",
+      "sha256": "6d1df3488be163b72296cf34ee07b979e29b061d508e6a4c271ac3305373aa1f"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/mathematical_decisiveness_completion_contract.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/mathematical_decisiveness_completion_contract.md",
+      "path": "research_control/design/mathematical_decisiveness_completion_contract.md",
+      "sha256": "562405dd78a03efde831806323081285c7850ee18dbeb2a6b6ecf900417c814c"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/obstruction_and_freeze_control.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/obstruction_and_freeze_control.md",
+      "path": "research_control/design/obstruction_and_freeze_control.md",
+      "sha256": "52f24fc04f0f8e4a6716cb8ef78538566a332b3b4e27d4b939125e5648ea1e96"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "sha256": "b75a743144a20e6d9d2711bde1eec921920b4e60d985516dc4c50a8ea97ff5ce"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/program_state.yaml",
+      "path": "research_control/program_state.yaml",
+      "sha256": "d57158ff7953e6a249da49877becac3022c55ddf6a78a7622eb800b824d8e0af"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0281.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.yaml",
+      "path": "research_control/handoffs/handoff-0281.yaml",
+      "sha256": "c0d10ac08698a61b961f4bbdddf09c8f2df534df4cec8298120d376e147902bc"
+    },
+    {
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0281.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.md",
+      "path": "research_control/handoffs/handoff-0281.md",
+      "sha256": "fd4ea2285c891e8689ae6a48c63ad550043fa1e5a036b1f3308f656c61b402ac"
+    }
+  ],
+  "source_provenance_links": [
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/gr_derivation_burden_map.md",
+      "label": "research_control/design/gr_derivation_burden_map.md"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/mathematical_decisiveness_completion_contract.md",
+      "label": "research_control/design/mathematical_decisiveness_completion_contract.md"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/obstruction_and_freeze_control.md",
+      "label": "research_control/design/obstruction_and_freeze_control.md"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/program_state.yaml",
+      "label": "research_control/program_state.yaml"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.yaml",
+      "label": "research_control/handoffs/handoff-0281.yaml"
+    },
+    {
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.md",
+      "label": "research_control/handoffs/handoff-0281.md"
+    }
+  ],
+  "source_refresh_date": "2026-06-28",
+  "source_repository": "AngryOwlAI/The-AEther-Flow",
+  "status_counts": {
+    "Refuter stress passed": 1,
+    "accepted": 4,
+    "blocked by missing primitive": 3,
+    "constructive witness exists": 1,
+    "draft object exists": 2,
+    "frozen negative": 1,
+    "human-gated": 1,
+    "not started": 1
+  },
+  "version": 1,
+  "website_publication_date": "2026-06-28"
+}

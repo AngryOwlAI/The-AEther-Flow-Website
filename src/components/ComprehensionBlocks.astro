@@ -31,6 +31,7 @@ const { content, className = "" } = Astro.props;
         caption={content.diagram.caption}
         provenance={content.diagram.provenance}
         className="comprehension-figure"
+        loading="eager"
       />
       <p class="comprehension-diagram-note">
         The diagram is a static reader aid. It does not replace the source

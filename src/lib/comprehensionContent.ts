@@ -384,9 +384,19 @@ export const physicsOntologyComprehension: ComprehensionContent = {
       boundary: "Not a directly observed wind, river, or current.",
     },
     {
+      term: "Observed space",
+      definition: "The observer-accessible local appearance of the deeper substrate.",
+      boundary: "Not the full underlying ontology.",
+    },
+    {
       term: "S-time",
       definition: "Experienced order of change involving matter, light, and AEther-flow.",
       boundary: "Not a second place-like corridor or mathematical closure by itself.",
+    },
+    {
+      term: "Observed expansion",
+      definition: "Three-dimensional appearance of deeper four-dimensional ordered motion.",
+      boundary: "Not a claim that measured expansion is unreal.",
     },
   ],
   boundaries: [
@@ -416,7 +426,7 @@ export const physicsBenchmarkComprehension: ComprehensionContent = {
   eyebrow: "Benchmark comprehension",
   title: "Adoption, compatibility, derivation, and promotion are different claim states.",
   summary:
-    "The exact-GR benchmark keeps public observable-scale behavior ordinary while the substrate derivation remains open. Public pages must not collapse compatibility or adoption into promotion.",
+    "The exact-GR benchmark keeps public observable-scale behavior ordinary while the substrate derivation remains open. Matching a benchmark is weaker than deriving it from source ontology, and public pages must not collapse either state into promotion.",
   diagram: {
     src: "/assets/diagrams/comprehension/physics-benchmark-boundary-ladder.png",
     alt:
@@ -453,6 +463,11 @@ export const physicsBenchmarkComprehension: ComprehensionContent = {
       term: "Compatibility",
       definition: "Holding ontology language beside the benchmark without contradiction.",
       boundary: "Weaker than derivation.",
+    },
+    {
+      term: "Derivation",
+      definition: "Source-side mathematics that recovers metric behavior, matter coupling, equations, and closure.",
+      boundary: "Not established by benchmark matching or public explanation.",
     },
     {
       term: "Promotion",
@@ -629,7 +644,7 @@ export const physicsCurrentStateComprehension: ComprehensionContent = {
   eyebrow: "Current-state comprehension",
   title: "A snapshot reports source state; it does not refresh or promote claims.",
   summary:
-    "The current-state page presents checked-in upstream control data for readers. It must preserve snapshot date, drift limits, blocked claims, and the distinction between local audit survival and downstream GR promotion.",
+    "The current-state page presents checked-in upstream control data for readers. It must preserve snapshot date, drift limits, blocked claims, and the distinction between scoped evidence/precondition acceptance and downstream GR promotion.",
   diagram: {
     src: "/assets/diagrams/comprehension/physics-current-state-snapshot-boundary.png",
     alt:
@@ -648,7 +663,7 @@ export const physicsCurrentStateComprehension: ComprehensionContent = {
     {
       title: "Preserve blocked claims",
       body:
-        "No source-law adoption, MetricData(E) adoption, g_eff adoption, matter coupling, Einstein equations, or benchmark promotion follows from the snapshot.",
+        "No source-law adoption, MetricData(E) adoption, g_eff scope change, matter-coupling adoption, Einstein equations, or benchmark promotion follows from the snapshot.",
     },
     {
       title: "Use pinned provenance",
@@ -668,9 +683,9 @@ export const physicsCurrentStateComprehension: ComprehensionContent = {
       boundary: "It must not be softened into implied progress.",
     },
     {
-      term: "Local source-purity audit",
-      definition: "A bounded audit result for a candidate as written.",
-      boundary: "Not adoption of g_eff or downstream GR structure.",
+      term: "Gate readiness",
+      definition: "A selector or source record may route evidence to a future protected review.",
+      boundary: "Not a Gate Chair verdict, coupling-law adoption, matter-coupling adoption, or downstream GR promotion.",
     },
   ],
   boundaries: [
@@ -684,13 +699,13 @@ export const physicsCurrentStateComprehension: ComprehensionContent = {
       label: "No promotion",
       title: "Draft/control stays draft/control",
       body:
-        "The snapshot cannot promote MetricData(E), g_eff, matter coupling, equations, or benchmark status.",
+        "The snapshot cannot promote MetricData(E), g_eff scope change, matter coupling, equations, or benchmark status.",
     },
   ],
   safeUnsafe: {
     safe:
       "The current-state page is a checked-in website snapshot of upstream physics control state with blocked downstream claims preserved.",
     unsafe:
-      "The website snapshot auto-refreshes, adopts draft/control data, constructs g_eff, derives matter coupling or Einstein equations, or promotes the benchmark.",
+      "The website snapshot auto-refreshes, adopts draft/control data, adopts a coupling law, adopts matter coupling, derives Einstein equations, or promotes the benchmark.",
   },
 };

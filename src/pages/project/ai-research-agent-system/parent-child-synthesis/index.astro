@@ -1,6 +1,332 @@
 ---
-import InternalExplainerPage from "../../../../components/InternalExplainerPage.astro";
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { parentChildComprehension } from "../../../../lib/comprehensionContent";
 import { internalExplainers } from "../../../../lib/internalExplainers";
+
+const sourceNotice = internalExplainers.parentChildSynthesis;
+
+const invariantCards = [
+  {
+    label: "One decision",
+    title: "The Director selects one route",
+    body:
+      "The parent-child mode starts after one Director decision selects one bounded outer AgentJob.",
+  },
+  {
+    label: "One AgentJob",
+    title: "The outer job owns authority",
+    body:
+      "The read paths, write paths, validators, expected outputs, claim boundary, and stop conditions remain on the outer job.",
+  },
+  {
+    label: "One role record",
+    title: "Children do not get separate roles",
+    body:
+      "Child labels describe analytical perspective only. They do not create child execution-role records.",
+  },
+  {
+    label: "One completion",
+    title: "PASS closes the outer job",
+    body:
+      "A child output cannot independently certify PASS. Completion evidence belongs to the outer transaction.",
+  },
+  {
+    label: "One fused output",
+    title: "Only the fused artifact travels downstream",
+    body:
+      "Child drafts support review. The parent-fused artifact is the downstream output for completion and handoff.",
+  },
+];
+
+const lifecycleCards = [
+  {
+    label: "Parent",
+    title: "Review and fusion",
+    body:
+      "The parent enforces the shared boundary, reviews child outputs, preserves conflicts, and fuses the final artifact.",
+  },
+  {
+    label: "Children",
+    title: "Draft/control perspectives",
+    body:
+      "Child units inspect the same problem from bounded angles. Their outputs are supporting draft/control artifacts.",
+  },
+  {
+    label: "Conflict",
+    title: "Blocking disagreements must be handled",
+    body:
+      "A declared blocking conflict must be reviewed and resolved within policy, or the job remains blocked.",
+  },
+  {
+    label: "Fusion",
+    title: "Shared consensus plus limits",
+    body:
+      "The fused output preserves shared consensus, unique contributions, and unresolved limitations.",
+  },
+];
+
+const inheritedCards = [
+  {
+    label: "Claim boundary",
+    title: "Same forbidden conclusions",
+    body:
+      "Child units inherit the outer job's claim boundary. They cannot promote claims independently.",
+  },
+  {
+    label: "Source restrictions",
+    title: "Same evidence surface",
+    body:
+      "Child perspectives inspect the allowed sources; they do not add new source classes.",
+  },
+  {
+    label: "Write allowlist",
+    title: "Same path boundary",
+    body:
+      "Child outputs, conflict notes, fusion notes, and final artifacts must remain inside the outer job write paths.",
+  },
+  {
+    label: "Validators",
+    title: "Same receipt burden",
+    body:
+      "The outer completion must account for the required checks; children do not define independent validators.",
+  },
+  {
+    label: "Human gates",
+    title: "No protected bypass",
+    body:
+      "Parent-child synthesis cannot bypass ontology adoption, benchmark promotion, Gate Chair, or claim-promotion gates.",
+  },
+  {
+    label: "Stop conditions",
+    title: "Same fail-closed behavior",
+    body:
+      "Unresolved blocking conflict, write-path drift, or authority expansion should stop or route a new packet.",
+  },
+];
+
+const safeUnsafeCards = [
+  {
+    label: "Safe summary",
+    title: "More perspectives inside one job.",
+    body:
+      "Parent-child synthesis improves review coverage while preserving one outer AgentJob, one role boundary, one completion, and one fused output.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "Parallel perspectives create parallel authority.",
+    body:
+      "It would be unsafe to infer extra jobs, child role records, independent child verdicts, conflict bypass, or human-gate bypass.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Research-agent workflow",
+    href: "/project/ai-research-agent-system/workflow/",
+    body: "Read the full request-to-record-chain workflow that parent-child synthesis must preserve.",
+  },
+  {
+    title: "One bounded AgentJob",
+    href: "/project/ai-research-agent-system/one-bounded-agentjob/",
+    body: "Inspect the permission envelope that the parent and children must stay inside.",
+  },
+  {
+    title: "Roles and skills",
+    href: "/project/ai-research-agent-system/roles-and-skills/",
+    body: "Review why role labels do not become task authority by themselves.",
+  },
+  {
+    title: "Director and AgentJob lifecycle",
+    href: "/project/operations/director-agentjob-lifecycle/",
+    body: "Review the operational record chain: task, decision, job, completion, and handoff.",
+  },
+  {
+    title: "Validator and operator workflow",
+    href: "/project/operations/validator-operator-workflow/",
+    body: "Read why PASS is blocked while declared blocking conflict remains unresolved.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Keep generated explainers and website pages below tracked source authority.",
+  },
+];
 ---
 
-<InternalExplainerPage page={internalExplainers.parentChildSynthesis} />
+<BaseLayout
+  title="Parent-Child Parallel Synthesis"
+  description="Reader-facing parent-child synthesis walkthrough preserving one outer AgentJob, inherited authority, conflict review, and one fused output."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="parent-child-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent deep dive / PG-016</p>
+      <h1 id="parent-child-title">Parent-Child Parallel Synthesis</h1>
+      <p class="overview-lead">
+        Parent-child synthesis adds internal analytical perspectives inside one
+        outer physics AgentJob. It improves review coverage without creating
+        extra jobs, child role records, child write authority, or independent
+        child verdicts.
+      </p>
+      <div class="overview-actions" aria-label="Parent-child synthesis page actions">
+        <a class="primary-link" href="#single-frame">Read the one-job rule</a>
+        <a class="secondary-link" href="/project/ai-research-agent-system/one-bounded-agentjob/">AgentJob envelope</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="parent-child-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="parent-child-figure-title parent-child-figure-desc">
+        <title id="parent-child-figure-title">Parent-child synthesis inside one outer AgentJob</title>
+        <desc id="parent-child-figure-desc">
+          Parent and child internal units sit inside one outer job boundary,
+          then fuse into one completion path.
+        </desc>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <path class="track-figure-path signal-path" d="M96 180 H214 C258 180, 258 116, 312 116 H518" />
+        <path class="track-figure-path orange-path" d="M96 180 H214 C258 180, 258 244, 312 244 H518" />
+        <path class="track-figure-path" d="M214 96 V264" />
+        <path class="track-figure-path" d="M398 116 V244" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="96" cy="180" r="18" />
+          <circle cx="214" cy="116" r="18" />
+          <circle cx="214" cy="244" r="18" />
+          <circle cx="398" cy="116" r="18" />
+          <circle cx="398" cy="244" r="18" />
+          <circle cx="518" cy="180" r="18" />
+        </g>
+        <circle class="track-figure-core" cx="214" cy="180" r="42" />
+        <circle class="track-figure-accent" cx="398" cy="116" r="9" />
+        <circle class="track-figure-accent" cx="398" cy="244" r="9" />
+      </svg>
+      <figcaption id="parent-child-figure-caption">
+        Visual orientation only: child perspectives remain inside one outer
+        AgentJob and do not create independent authority.
+      </figcaption>
+    </figure>
+  </section>
+
+  <ComprehensionBlocks content={parentChildComprehension} />
+
+  <section id="single-frame" class="track-page-band" aria-labelledby="single-frame-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Single outer frame</p>
+      <h2 id="single-frame-title">Parallel analysis preserves a singular control record.</h2>
+      <p>
+        The mode is useful only if the external control frame remains singular.
+        Multiple perspectives are internal review coverage, not extra
+        authority.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {invariantCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="lifecycle-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Lifecycle</p>
+      <h2 id="lifecycle-title">Parent review, child drafts, conflict review, and fusion stay inside the job.</h2>
+      <p>
+        Child units surface pressure from bounded angles. The parent preserves
+        disagreement long enough to inspect it, then fuses one downstream
+        artifact.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {lifecycleCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="inherited-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Inherited authority</p>
+      <h2 id="inherited-title">Every internal unit inherits the same boundary.</h2>
+      <p>
+        If actual authority expansion is needed, parent-child synthesis is the
+        wrong mechanism. The project must route a new decision, job, or
+        protected human gate.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {inheritedCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="parent-child-safe-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe summaries</p>
+      <h2 id="parent-child-safe-title">The useful reading also names the forbidden shortcut.</h2>
+      <p>
+        The pattern is stricter than a loose parallel draft. PASS is invalid
+        while a declared blocking parent-child conflict remains unresolved.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {safeUnsafeCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="parent-child-related-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="parent-child-related-title">Use related internal routes before source inspection.</h2>
+      <p>
+        Internal pages explain the workflow first. Source links remain
+        provenance for readers who need to inspect the committed materials.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {relatedLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="parent-child-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="parent-child-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can explain the parent-child synthesis pattern for readers.
+        It cannot change the one-job rule, AgentJob schema, execution-role
+        schema, validators, routing behavior, role authority, write
+        permissions, or physics claim status.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.boundaryBody}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

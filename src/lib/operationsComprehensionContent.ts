@@ -262,31 +262,35 @@ export const roleRoutingComprehension: ComprehensionContent = {
 
 export const validatorOperatorWorkflowComprehension: ComprehensionContent = {
   id: "validator-operator-comprehension",
-  eyebrow: "Validator comprehension",
-  title: "A PASS result is bounded to the changed surface and check.",
+  eyebrow: "Validator PASS comprehension",
+  title: "PASS is checked-state evidence, not physics proof.",
   summary:
-    "The validator/operator route explains how operators choose checks, record command evidence, add screenshots for public UI, and avoid overreading PASS.",
+    "The validator/operator route explains how operators choose focused checks, record command evidence, add screenshots for public UI, and avoid turning PASS into theorem proof or claim promotion.",
   diagram: {
     src: "/assets/diagrams/comprehension/operations-validator-pass-boundary.png",
     alt:
-      "Diagram showing changed surface, focused checks, validators, receipts, screenshots, PASS, and no theorem, gate, or role promotion.",
+      "Diagram showing changed authority surface, focused checks, validator or test, command or screenshot receipt, PASS for checked state, claim-promotion decision, and no theorem, Gate Chair, role, or physics promotion.",
     caption:
-      "Static comprehension diagram: validation evidence is necessary for checked state, not sufficient for broader claims.",
+      "Static comprehension diagram: PASS is operational checked-state evidence; claim promotion requires separate source and authority paths.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-validator-operator-workflow/diagrams/validator-pass-boundary.mmd. Manifest id: comprehension_operations_validator_pass_boundary.",
   },
   mechanismSteps: [
     {
       title: "Classify the changed surface",
-      body: "Different surfaces need different validators, tests, receipts, or rendered screenshots.",
+      body: "Different authority surfaces need different validators, tests, documentation-impact receipts, or rendered screenshots.",
     },
     {
       title: "Record evidence",
-      body: "Commands, outputs, screenshots, and receipts preserve what was checked.",
+      body: "Commands, outputs, screenshots, and receipts preserve what was checked and what was not checked.",
     },
     {
       title: "Read PASS narrowly",
       body: "PASS means a named check accepted a checked state, not a broader truth.",
+    },
+    {
+      title: "Route promotion separately",
+      body: "Theorem proof, ontology adoption, benchmark promotion, and Gate Chair closure require source evidence and protected authority paths.",
     },
   ],
   terms: [
@@ -298,24 +302,34 @@ export const validatorOperatorWorkflowComprehension: ComprehensionContent = {
     {
       term: "Receipt",
       definition: "A durable record of command evidence or review status.",
-      boundary: "Not claim promotion.",
+      boundary: "Not claim promotion by itself.",
     },
     {
       term: "Screenshot evidence",
       definition: "Rendered browser evidence for public UI changes.",
       boundary: "Still requires human comprehension review.",
     },
+    {
+      term: "Human gate",
+      definition: "Explicit protected decision path for claim promotion or closure.",
+      boundary: "Cannot be replaced by PASS.",
+    },
   ],
   boundaries: [
     {
       label: "No theorem proof",
       title: "PASS does not prove physics",
-      body: "Mathematical and scientific claims require source evidence and gates.",
+      body: "Mathematical and scientific claims require source evidence, derivation, and any required gates.",
     },
     {
       label: "No authority expansion",
       title: "Validation does not grant writes",
       body: "A passing check cannot expand role authority or AgentJob scope.",
+    },
+    {
+      label: "No gate shortcut",
+      title: "Human-gated decisions stay separate",
+      body: "Validators cannot issue Gate Chair approval, adopt ontology, or promote a benchmark.",
     },
   ],
   relatedRoutes: [
@@ -331,6 +345,18 @@ export const validatorOperatorWorkflowComprehension: ComprehensionContent = {
       href: "/project/operations/publication-process/",
       body: "How screenshot and review evidence fit public pages.",
     },
+    {
+      label: routeLabel,
+      title: "Gate Chair and human gates",
+      href: "/project/physics/gate-chair-and-human-gates/",
+      body: "Why protected scientific decisions remain separate from validation.",
+    },
+    {
+      label: routeLabel,
+      title: "Claim-boundary explorer",
+      href: "/project/source-authority/claim-boundary-explorer/",
+      body: "Inspect how allowed and forbidden claim forms are represented for readers.",
+    },
   ],
   sourceBasis: [
     {
@@ -338,12 +364,22 @@ export const validatorOperatorWorkflowComprehension: ComprehensionContent = {
       title: "Validator and operator workflow explainer",
       body: "Generated noncanonical upstream explainer: github-facing/validator-operator-workflow-explainer.md.",
     },
+    {
+      label: sourceLabel,
+      title: "Mathematical decisiveness contract",
+      body: "Committed control source: research_control/design/mathematical_decisiveness_completion_contract.md.",
+    },
+    {
+      label: sourceLabel,
+      title: "Research control guide",
+      body: "Committed control source: research_control/README.md.",
+    },
   ],
   safeUnsafe: {
     safe:
-      "Validators and tests provide bounded evidence for the surface they checked, with screenshot evidence for public UI where needed.",
+      "Validators and tests provide bounded evidence for the surface they checked, with screenshots and receipts where needed; scientific promotion still requires source evidence and any required human gate.",
     unsafe:
-      "PASS proves physics, promotes claims, changes roles, replaces human review, or resolves unchecked surfaces.",
+      "PASS proves physics, promotes claims, changes roles, replaces human review, resolves unchecked surfaces, or issues Gate Chair approval.",
   },
 };
 
@@ -438,30 +474,34 @@ export const publicationProcessComprehension: ComprehensionContent = {
 export const projectSystemImprovementComprehension: ComprehensionContent = {
   id: "project-system-improvement-comprehension",
   eyebrow: "Improvement comprehension",
-  title: "Project-system repair executes one bounded improvement packet.",
+  title: "Project-system repair is maintenance, not physics continuation.",
   summary:
-    "The improvement route starts from observed diff state, signals, or repeated workflow problems, then classifies, resolves, executes, receipts, and closes or defers explicitly.",
+    "The improvement route starts from observed diff state, registered signals, sidecar input, or repeated workflow problems, then classifies, resolves, executes one bounded packet, receipts, and closes, defers, or rejects explicitly.",
   diagram: {
     src: "/assets/diagrams/comprehension/operations-project-system-improvement-loop.png",
     alt:
-      "Diagram showing diff or signal, classifier, resolver, one project-system AgentJob, receipt evidence, close or defer signal, and no hidden physics continuation.",
+      "Diagram showing observed diff or registered signal, classifier, advisory resolver, source-bridged sidecar input, one project-system AgentJob, documentation-impact and PASS evidence, close defer or reject signal, and no hidden physics continuation or signal closure by prose.",
     caption:
-      "Static comprehension diagram: project-system improvement repairs machinery without becoming physics continuation.",
+      "Static comprehension diagram: project-system improvement repairs research machinery through one bounded packet and explicit evidence.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-project-system-improvement/diagrams/project-system-improvement-loop.mmd. Manifest id: comprehension_operations_project_system_improvement_loop.",
   },
   mechanismSteps: [
     {
       title: "Observe live state",
-      body: "Start from a diff, signal, repeated failure, or documented project-system problem.",
+      body: "Start from a diff, registered signal, repeated failure, source-bridged sidecar, or documented project-system problem.",
     },
     {
       title: "Classify and resolve",
-      body: "The classifier and resolver determine whether the next packet is project-system work and how to rank it.",
+      body: "The classifier names impact and reason codes; the resolver ranks current diff state, open signals, and sidecar context as advisory routing evidence.",
     },
     {
-      title: "Close with a receipt",
-      body: "A signal closes only with matching evidence, or it remains deferred or rejected.",
+      title: "Execute one packet",
+      body: "The selected repair runs as one bounded project-system AgentJob with write-path and claim boundaries.",
+    },
+    {
+      title: "Close with evidence",
+      body: "Signals close only with matching PASS completion evidence or a documented rejection decision.",
     },
   ],
   terms: [
@@ -472,13 +512,18 @@ export const projectSystemImprovementComprehension: ComprehensionContent = {
     },
     {
       term: "Sidecar",
-      definition: "A project-improvement support artifact.",
-      boundary: "Input to routing, not replacement handoff.",
+      definition: "A project-improvement support artifact generated from qualifying source-bridge evidence.",
+      boundary: "Input to routing, not replacement research handoff.",
     },
     {
       term: "Resolver",
       definition: "A mechanism for ranking or choosing the next project-system packet.",
-      boundary: "Not a physics continuation selector.",
+      boundary: "Advisory unless validators or concrete authority violations fail.",
+    },
+    {
+      term: "Documentation impact",
+      definition: "Receipt for source and generated-surface impact in state-changing project-system work.",
+      boundary: "Operational evidence, not physics status.",
     },
   ],
   boundaries: [
@@ -491,6 +536,11 @@ export const projectSystemImprovementComprehension: ComprehensionContent = {
       label: "No signal closure by assertion",
       title: "Receipts are required",
       body: "Signals need matching PASS evidence or a documented rejection/defer decision.",
+    },
+    {
+      label: "No global sidecar allowlist",
+      title: "Sidecar acceptance is exact-path scoped",
+      body: "Conditional sidecar acceptance applies only to the YAML/Markdown pair named by source-bridge metadata.",
     },
   ],
   relatedRoutes: [
@@ -506,6 +556,12 @@ export const projectSystemImprovementComprehension: ComprehensionContent = {
       href: "/project/ai-research-agent-system/memory-registries/",
       body: "How retrieval drift and generated surfaces remain source-subordinate.",
     },
+    {
+      label: routeLabel,
+      title: "Validator PASS limits",
+      href: "/project/operations/validator-operator-workflow/",
+      body: "Why signal closure evidence remains bounded operational evidence.",
+    },
   ],
   sourceBasis: [
     {
@@ -513,12 +569,22 @@ export const projectSystemImprovementComprehension: ComprehensionContent = {
       title: "Project-system improvement explainer",
       body: "Generated noncanonical upstream explainer: github-facing/project-system-improvement-explainer.md.",
     },
+    {
+      label: sourceLabel,
+      title: "Research control guide",
+      body: "Committed control source: research_control/README.md.",
+    },
+    {
+      label: sourceLabel,
+      title: "Project-control scripts",
+      body: "Committed tooling source: scripts/project_control/README.md.",
+    },
   ],
   safeUnsafe: {
     safe:
-      "Project-system improvement classifies a live problem, routes one bounded project-system packet, records evidence, and closes or defers explicitly.",
+      "Project-system improvement classifies a live problem, routes one bounded project-system packet, records documentation-impact and PASS evidence, and closes, defers, or rejects signals explicitly.",
     unsafe:
-      "A project-system repair silently changes physics route, closes signals without evidence, replaces handoffs, or expands role authority.",
+      "A project-system repair silently changes physics route, closes signals without evidence, replaces handoffs, globally allowlists sidecars, or expands role authority.",
   },
 };
 

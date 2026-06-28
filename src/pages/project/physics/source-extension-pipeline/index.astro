@@ -1,0 +1,297 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsSourceExtensionPipeline;
+
+const pipelineCards = [
+  {
+    label: "Proposal",
+    title: "proposal-only candidate",
+    body: "A bounded packet names a possible source-side construction, selector, witness, audit, or review target. It is not accepted physics.",
+  },
+  {
+    label: "Audit",
+    title: "Hidden-import screen",
+    body: "A smuggling audit checks whether the candidate imports target-GR structure, generated-output authority, role authority, or hidden assumptions.",
+  },
+  {
+    label: "Stress",
+    title: "draft/control under pressure",
+    body: "A stress or refuter packet tries to expose fragility, nonuniqueness, missing primitives, or underdetermination.",
+  },
+  {
+    label: "Selector",
+    title: "Next route selection",
+    body: "A selector can choose the next bounded packet or gate route. That selection is not a Gate Chair verdict.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Validator",
+    title: "PASS is operational",
+    body: "A validator can show that a bounded record preserved required structure. It cannot prove source truth or promote physics.",
+  },
+  {
+    label: "Stress survival",
+    title: "Still not adoption",
+    body: "A candidate that survives stress can be useful evidence for a next route while remaining outside adopted ontology.",
+  },
+  {
+    label: "Gate precondition",
+    title: "Prepared is not decided",
+    body: "Gate readiness can prepare a protected decision. It does not issue the decision or authorize downstream claims.",
+  },
+  {
+    label: "Fail-closed",
+    title: "Unclear authority narrows the claim",
+    body: "If evidence is dirty, ambiguous, or missing a protected decision, the public page must narrow or block the claim.",
+  },
+];
+
+const readerLinks = [
+  {
+    title: "Claim gates and obstructions",
+    href: "/project/physics/claim-gates/",
+    body: "Read the broader lifecycle for proposals, audits, stress tests, freezes, and human gates.",
+  },
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Check the current checked-in status snapshot before reading any source-extension packet as current.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Review how website pages, generated explainers, registries, and tracked sources differ.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Inspect source-pinned allowed, forbidden, and gate-required wording for registry rows.",
+  },
+  {
+    title: "Gate Chair and human gates",
+    href: "/project/physics/gate-chair-and-human-gates/",
+    body: "Review why gate readiness is not a protected verdict.",
+  },
+  {
+    title: "GR derivation roadmap",
+    href: "/project/physics/gr-derivation-roadmap/",
+    body: "See where source extension fits inside the broader derivation burden.",
+  },
+];
+---
+
+<BaseLayout
+  title="Source Extension Pipeline"
+  description="Reader-facing source-extension workflow page explaining proposal-only, draft/control, audit, stress, selector, and human-gated precondition states."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="source-extension-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-003</p>
+      <h1 id="source-extension-title">Source Extension Pipeline</h1>
+      <p class="overview-lead">
+        Source extension is the controlled way AEther Flow can test candidate
+        source-side additions without turning them into adopted physics. A
+        candidate can be useful, auditable, and route-worthy while still
+        remaining narrower than a derivation.
+      </p>
+      <div class="overview-actions" aria-label="Source-extension page actions">
+        <a class="primary-link" href="#source-extension-flow">Read the pipeline</a>
+        <a class="secondary-link" href="/project/physics/">Back to physics track</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="source-extension-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="source-extension-figure-title source-extension-figure-desc">
+        <title id="source-extension-figure-title">Animated source-extension workflow map</title>
+        <desc id="source-extension-figure-desc">
+          A candidate moves through audit, stress, selector, and human gate
+          layers while blocked promotion paths remain separate.
+        </desc>
+        <defs>
+          <radialGradient id="physics-glow" cx="50%" cy="48%" r="70%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.7" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+            <stop offset="76%" stop-color="var(--color-dark-page)" stop-opacity="0.16" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="physics-orange-rail" x1="12%" x2="88%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.9" />
+            <stop offset="64%" stop-color="var(--owl-orange-100)" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="physics-signal-rail" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="28%" stop-color="var(--owl-cyan-400)" stop-opacity="0.78" />
+            <stop offset="72%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="184" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="226" ry="122" />
+          <ellipse cx="310" cy="180" rx="164" ry="82" />
+          <path d="M82 180 C160 128, 232 112, 310 124 C388 112, 460 128, 538 180" />
+          <path d="M82 180 C160 232, 232 248, 310 236 C388 248, 460 232, 538 180" />
+        </g>
+        <g class="physics-substrate" aria-hidden="true">
+          <path d="M88 216 C158 142, 240 144, 310 180 C386 220, 456 204, 532 132" />
+          <path d="M88 144 C160 196, 232 230, 310 180 C390 128, 464 146, 532 226" />
+        </g>
+        <g class="physics-control-arcs" aria-hidden="true">
+          <path d="M110 110 C124 82, 164 78, 184 104 C200 126, 190 154, 164 164 C136 174, 108 154, 102 128" />
+          <path d="M436 250 C450 222, 490 218, 510 244 C526 266, 516 294, 490 304 C462 314, 434 294, 428 268" />
+        </g>
+        <g class="physics-burden-rails" aria-hidden="true">
+          <path class="track-figure-path orange-path physics-flow-path primary" d="M94 216 C172 170, 232 160, 310 180 C388 198, 452 174, 528 116" />
+          <path class="track-figure-path signal-path physics-flow-path" d="M94 144 C170 168, 236 208, 310 180 C386 150, 452 164, 528 238" />
+          <path class="track-figure-path orange-path physics-flow-path alternate" d="M150 286 C220 244, 270 220, 310 180 C354 136, 410 98, 488 78" />
+        </g>
+        <circle class="track-figure-core physics-burden-core" cx="310" cy="180" r="40" aria-hidden="true" />
+        <g class="track-figure-nodes physics-boundary-nodes" aria-hidden="true">
+          <circle cx="94" cy="216" r="7" />
+          <circle cx="94" cy="144" r="7" />
+          <circle cx="150" cy="286" r="7" />
+          <circle cx="310" cy="180" r="9" />
+          <circle cx="528" cy="116" r="7" />
+          <circle cx="528" cy="238" r="7" />
+          <circle cx="488" cy="78" r="7" />
+        </g>
+      </svg>
+      <figcaption id="source-extension-figure-caption">
+        Visual orientation only: movement through the pipeline is not source-law
+        adoption, benchmark promotion, or a Gate Chair verdict.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="source-extension-flow" class="track-page-band" aria-labelledby="source-extension-flow-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Pipeline states</p>
+      <h2 id="source-extension-flow-title">A candidate can advance without being adopted.</h2>
+      <p>
+        Each state has a narrower meaning than a tempting summary suggests. The
+        pipeline is useful because it lets work continue while claim authority
+        remains bounded.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {pipelineCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-laundering-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim laundering guard</p>
+      <h2 id="claim-laundering-title">Readiness, routing, and validation do not promote the claim.</h2>
+      <p>
+        The source-extension workflow is fail-closed: unclear authority,
+        missing audit, or absent human-gated approval narrows the public claim.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="source-extension-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="source-extension-diagram-title">The controlled path and the blocked overreads.</h2>
+      <p>
+        The static diagram shows the intended public reading: audit, stress,
+        selector, and gate states can preserve evidence, but dashed paths mark
+        forbidden promotion.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="source-extension-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-source-extension-pipeline.png"
+        alt="Diagram showing proposal-only candidate, audit, stress, selector, human gate, scoped source-extension evidence, and blocked promotion paths."
+        loading="lazy"
+      />
+      <figcaption id="source-extension-diagram-caption">
+        Static comprehension diagram: source-extension candidates can advance
+        through review without becoming adopted physics.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="safe-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe summary</p>
+      <h2 id="safe-summary-title">A narrow process for disciplined novelty.</h2>
+      <p>
+        Safe summary: The source-extension pipeline lets AEther Flow test
+        candidate source-side additions through proposal, audit, stress,
+        selector, and human-gated review while preserving narrow claim status.
+      </p>
+    </div>
+    <div class="track-page-heading">
+      <p class="eyebrow">Unsafe summary</p>
+      <h2>Do not convert workflow progress into physics adoption.</h2>
+      <p>
+        Unsafe summary: A candidate that passed a validator, survived stress,
+        or reached selector review has been adopted as physics or unlocks
+        downstream GR claims.
+      </p>
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="source-extension-reader-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="source-extension-reader-title">Use the dedicated gate and boundary pages beside this pipeline.</h2>
+      <p>
+        Source-extension work should be read beside claim gates, source
+        authority, the claim-boundary explorer, and human-gated decision pages.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {readerLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="source-extension-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="source-extension-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can explain the source-extension workflow. It cannot adopt a
+        source law, issue a Gate Chair verdict, reverse no MetricData(E),
+        reverse no g_eff, change matter-coupling status, derive Einstein
+        equations, promote a benchmark, or claim completed derivation.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

@@ -4,8 +4,11 @@
 / /project/overview/ 301
 /overview /project/overview/ 301
 /project/ai-research-agent-system/validator-operator-workflow/ /project/operations/validator-operator-workflow/ 301
-/research /research/map/ 302
+/research /project/source-authority/publication-and-provenance-system/ 302
+/research/map/ /project/source-authority/publication-and-provenance-system/ 301
 /documents /resources/documents/ 301
 /diagrams /resources/diagrams/ 301
-/equations /research/equations/ 301
+/equations /resources/documents/ 301
+/research/equations/ /resources/documents/ 301
+/research/math-sample/ /resources/documents/ 301
 /downloads /resources/ 301

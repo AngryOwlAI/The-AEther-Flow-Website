@@ -16,13 +16,21 @@ HEX_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 HEX_COMMIT = re.compile(r"^[0-9a-f]{40}$")
 
 REQUIRED_ROUTE_PATHS = {
+    "/",
     "/project/overview/",
     "/project/physics/",
     "/project/physics/ontology/",
     "/project/physics/exact-gr-benchmark/",
     "/project/physics/gr-derivation-roadmap/",
     "/project/physics/current-state/",
+    "/project/physics/distance-to-gr/",
+    "/project/physics/metric-response-ladder/",
+    "/project/physics/finite-toy-models/",
+    "/project/physics/no-target-import-discipline/",
+    "/project/physics/negative-results-and-frozen-routes/",
     "/project/physics/claim-gates/",
+    "/project/physics/source-extension-pipeline/",
+    "/project/physics/gate-chair-and-human-gates/",
     "/project/ai-research-agent-system/",
     "/project/ai-research-agent-system/workflow/",
     "/project/ai-research-agent-system/roles-and-skills/",
@@ -36,6 +44,11 @@ REQUIRED_ROUTE_PATHS = {
     "/project/operations/project-system-improvement/",
     "/project/operations/technical-requirements/",
     "/project/source-authority/",
+    "/project/source-authority/claim-boundary-explorer/",
+    "/project/source-authority/publication-and-provenance-system/",
+    "/resources/guided-starts/",
+    "/resources/guided-starts/general-public/",
+    "/resources/reviewer-packet/",
     "/resources/documents/",
     "/resources/",
 }

@@ -1,0 +1,542 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import claimSnapshot from "../../../../data/claim_boundary_snapshot.json";
+import distanceSnapshot from "../../../../data/distance_to_gr_snapshot.json";
+import currentSnapshot from "../../../../data/physics_current_state_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsMetricResponseLadder;
+const shortCommit = distanceSnapshot.source_commit
+  ? `${distanceSnapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+
+type DistanceRow = (typeof distanceSnapshot.groups)[number]["rows"][number];
+const distanceRows = distanceSnapshot.groups.flatMap((group) => group.rows) as DistanceRow[];
+const findRow = (burdenId: string) =>
+  distanceRows.find((row) => row.burden_id === burdenId);
+
+const respRow = findRow("resp_lc");
+const mSrcRow = findRow("m_src");
+const gEffRow = findRow("g_eff");
+const matterCouplingRow = findRow("matter_coupling");
+const equationsRow = findRow("einstein_equations");
+const benchmarkRow = findRow("benchmark_promotion");
+
+const metadata = [
+  {
+    label: "Snapshot refresh date",
+    value: distanceSnapshot.source_refresh_date,
+  },
+  {
+    label: "Source commit",
+    value: shortCommit,
+  },
+  {
+    label: "Latest handoff",
+    value: currentSnapshot.latest_handoff_id,
+  },
+  {
+    label: "Claim-boundary rows",
+    value: String(claimSnapshot.row_count),
+  },
+];
+
+const readerRules = [
+  {
+    label: "Reader rule",
+    title: "A ladder is not a progress meter",
+    body: "The route separates objects and obligations. It does not calculate a percentage, issue a verdict, or promote downstream GR claims.",
+  },
+  {
+    label: "Scope rule",
+    title: "Scoped source-extension status stays scoped",
+    body: "Accepted row status for a source-side object does not become MetricData(E), universal matter coupling, Einstein equations, or benchmark promotion.",
+  },
+  {
+    label: "Gate rule",
+    title: "Accepted evidence is not adopted coupling",
+    body: "The recovery bridge is accepted only as scoped source-extension evidence/precondition. No coupling law, matter-coupling derivation, or matter-coupling adoption is established here.",
+  },
+  {
+    label: "Boundary rule",
+    title: "Hard phrases remain explicit",
+    body: "The page preserves no MetricData(E) adoption, no g_eff scope change, no matter-coupling derivation, and no downstream GR promotion.",
+  },
+];
+
+const glossaryItems = [
+  {
+    label: "01",
+    title: "Resp_lc",
+    body: "A response-localization lane. In the checked-in snapshot it has accepted source-extension continuation data, but it is not a metric or matter-coupling result.",
+  },
+  {
+    label: "02",
+    title: "M_src",
+    body: "A scoped source-side manifold object. The current row is accepted under source-only scope, not as a completed GR derivation.",
+  },
+  {
+    label: "03",
+    title: "MetricData(E)",
+    body: "A stronger metric-data object that would require separate source adoption. Current state preserves no MetricData(E) adoption.",
+  },
+  {
+    label: "04",
+    title: "scoped g_eff",
+    body: "A source-extension effective-metric object under declared source-side scope. Current state preserves no g_eff scope change.",
+  },
+  {
+    label: "05",
+    title: "matter coupling",
+    body: "A universal same-metric matter behavior burden. Current state preserves no coupling-law adoption and no matter-coupling derivation.",
+  },
+];
+
+const ladderObjects = [
+  {
+    label: "Accepted row",
+    title: "Resp_lc",
+    body: respRow?.notes ?? "Snapshot row unavailable.",
+    points: [
+      `Burden: ${respRow?.burden_id ?? "resp_lc"}`,
+      `Status: ${respRow?.current_status ?? "unavailable"}`,
+      `Evidence: ${respRow?.last_evidence_path ?? "unavailable"}`,
+    ],
+  },
+  {
+    label: "Accepted row",
+    title: "M_src",
+    body: mSrcRow?.notes ?? "Snapshot row unavailable.",
+    points: [
+      `Burden: ${mSrcRow?.burden_id ?? "m_src"}`,
+      `Status: ${mSrcRow?.current_status ?? "unavailable"}`,
+      `Evidence: ${mSrcRow?.last_evidence_path ?? "unavailable"}`,
+    ],
+  },
+  {
+    label: "Not adopted",
+    title: "MetricData(E)",
+    body: "The current boundary summary and matter-coupling row preserve no MetricData(E) adoption. The website cannot promote this object from explanatory prose.",
+    points: [
+      "Status phrase: no MetricData(E) adoption",
+      `Evidence: ${currentSnapshot.latest_handoff_id}`,
+      "Boundary: stronger metric data remains a separate obligation.",
+    ],
+  },
+  {
+    label: "Scoped row",
+    title: "scoped g_eff",
+    body: "The checked-in row records accepted scoped source-extension g_eff status. The page therefore treats g_eff as source-side scoped status, not unqualified physical metric derivation.",
+    points: [
+      `Burden: ${gEffRow?.burden_id ?? "g_eff"}`,
+      `Status: ${gEffRow?.current_status ?? "unavailable"}`,
+      "Boundary phrase: no g_eff scope change",
+    ],
+  },
+  {
+    label: "Scoped evidence",
+    title: "matter coupling",
+    body: matterCouplingRow?.notes ?? "Matter coupling remains underived and unadopted in the checked-in snapshot.",
+    points: [
+      `Burden: ${matterCouplingRow?.burden_id ?? "matter_coupling"}`,
+      `Status: ${matterCouplingRow?.current_status ?? "unavailable"}`,
+      "Boundary phrases: no coupling-law adoption; no matter-coupling derivation",
+    ],
+  },
+  {
+    label: "Downstream",
+    title: "Einstein equations",
+    body: equationsRow?.notes ?? "No Einstein-equation derivation is supplied in the checked-in snapshot.",
+    points: [
+      `Burden: ${equationsRow?.burden_id ?? "einstein_equations"}`,
+      `Status: ${equationsRow?.current_status ?? "unavailable"}`,
+      "Boundary phrase: no Einstein equations",
+    ],
+  },
+  {
+    label: "Blocked",
+    title: "benchmark promotion",
+    body: benchmarkRow?.notes ?? "Benchmark promotion remains blocked in the checked-in snapshot.",
+    points: [
+      `Burden: ${benchmarkRow?.burden_id ?? "benchmark_promotion"}`,
+      `Status: ${benchmarkRow?.current_status ?? "unavailable"}`,
+      "Boundary phrases: no benchmark promotion; no completed derivation",
+    ],
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Metric data",
+    title: "no MetricData(E) adoption",
+    body: "The current state does not adopt the stronger metric-data object. Public copy must not imply it has crossed a source-authority gate.",
+  },
+  {
+    label: "Effective metric",
+    title: "no g_eff scope change",
+    body: "The page may describe scoped g_eff source-extension status, but it must not expand that into unqualified physical metric derivation.",
+  },
+  {
+    label: "Matter",
+    title: "no coupling-law adoption",
+    body: "The recovery-bridge candidate is accepted only as scoped source-extension evidence/precondition, not as an adopted matter-coupling law.",
+  },
+  {
+    label: "Matter",
+    title: "no matter-coupling derivation",
+    body: "Universal same-metric matter behavior remains a protected downstream burden.",
+  },
+  {
+    label: "Semantics",
+    title: "no stress-energy semantics",
+    body: "The source-side bridge does not import stress-energy semantics by public explanation or diagram.",
+  },
+  {
+    label: "Downstream GR",
+    title: "no Einstein equations",
+    body: "The equation burden remains downstream and is not supplied by the current ladder state.",
+  },
+  {
+    label: "Promotion",
+    title: "no benchmark promotion",
+    body: "Exact-GR benchmark promotion remains blocked by missing upstream burdens and protected authority.",
+  },
+  {
+    label: "Closure",
+    title: "no completed derivation",
+    body: "The ladder is a status explanation, not a claim that GR has been derived from AEther-flow.",
+  },
+];
+
+const specialistCards = [
+  {
+    label: "Ledger",
+    title: "Distance-to-GR rows",
+    body: "The route imports checked-in row status from the Distance-to-GR snapshot rather than reading live upstream state during build.",
+  },
+  {
+    label: "Boundary registry",
+    title: "Forbidden overreads",
+    body: "The claim-boundary snapshot contains source-pinned language patterns for blocked and gate-required wording.",
+  },
+  {
+    label: "Current state",
+    title: "Active handoff frame",
+    body: currentSnapshot.claim_boundary_summary,
+  },
+  {
+    label: "Gate discipline",
+    title: "Future human review only",
+    body: currentSnapshot.latest_handoff_next_action,
+  },
+];
+
+const summaryCards = [
+  {
+    label: "Safe summary",
+    title: "Scoped object status does not promote downstream claims.",
+    body: "The metric-response ladder names current source-side object status while preserving no MetricData(E) adoption, no g_eff scope change, no matter-coupling derivation, no Einstein equations, no benchmark promotion, and no completed derivation.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "Object names must not be read as completed GR derivation.",
+    body: "It would be unsafe to infer that Resp_lc, M_src, or scoped g_eff status unlocks MetricData(E), matter coupling, Einstein equations, benchmark promotion, or completed GR derivation.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/project/physics/distance-to-gr/",
+    body: "Inspect the full ledger grouping behind these object statuses.",
+  },
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Read the latest checked-in status snapshot before interpreting the ladder.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Review allowed, forbidden, and gate-required language from the claim-boundary registry.",
+  },
+  {
+    title: "Gate Chair and human gates",
+    href: "/project/physics/gate-chair-and-human-gates/",
+    body: "Understand why future evidence-status review is not adoption by website copy.",
+  },
+  {
+    title: "Exact-GR benchmark boundary",
+    href: "/project/physics/exact-gr-benchmark/",
+    body: "Separate benchmark compatibility from source-side derivation and protected promotion.",
+  },
+];
+---
+
+<BaseLayout
+  title="Metric Response Ladder"
+  description="Reader-facing metric-response ladder explaining Resp_lc, M_src, MetricData(E), scoped g_eff, and matter-coupling status without downstream GR promotion."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="metric-ladder-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-009</p>
+      <h1 id="metric-ladder-title">Metric Response Ladder</h1>
+      <p class="overview-lead">
+        The metric-response ladder names separate source-side objects and
+        downstream obligations: Resp_lc, M_src, MetricData(E), scoped g_eff,
+        matter coupling, Einstein equations, and benchmark promotion. The
+        central rule is conservative: a row can be accepted under scoped
+        source authority while later GR claims remain blocked.
+      </p>
+      <div class="overview-actions" aria-label="Metric response ladder page actions">
+        <a class="primary-link" href="#metric-ladder-objects">Read the ladder</a>
+        <a class="secondary-link" href="/project/physics/distance-to-gr/">Distance-to-GR</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="metric-ladder-figure-caption">
+      <svg
+        viewBox="0 0 620 360"
+        role="img"
+        aria-labelledby="metric-ladder-figure-title metric-ladder-figure-desc"
+      >
+        <title id="metric-ladder-figure-title">Animated metric response ladder boundary</title>
+        <desc id="metric-ladder-figure-desc">
+          Separate response, source, metric, matter, equation, and benchmark
+          layers remain inside a guarded boundary.
+        </desc>
+        <defs>
+          <radialGradient id="metric-ladder-glow" cx="50%" cy="50%" r="68%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.28" />
+            <stop offset="76%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="metric-ladder-rail" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="24%" stop-color="var(--owl-cyan-400)" stop-opacity="0.82" />
+            <stop offset="66%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="metric-ladder-guard" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="50%" stop-color="var(--owl-orange-500)" stop-opacity="0.92" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="190" fill="url(#metric-ladder-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="230" ry="124" />
+          <ellipse cx="310" cy="180" rx="168" ry="88" />
+          <path d="M86 238 C160 194, 230 176, 310 180 C390 184, 462 166, 534 112" />
+          <path d="M86 122 C162 160, 232 206, 310 180 C388 152, 462 164, 534 244" />
+        </g>
+        <path class="track-figure-path signal-path" d="M84 246 C158 202, 230 184, 310 180 C390 176, 462 150, 536 106" stroke="url(#metric-ladder-rail)" />
+        <path class="track-figure-path orange-path" d="M86 114 C160 154, 230 206, 310 180 C390 154, 462 170, 536 250" stroke="url(#metric-ladder-guard)" />
+        <path class="track-figure-core" d="M310 122 L366 180 L310 238 L254 180 Z" />
+        <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+          <circle cx="108" cy="246" r="13" />
+          <circle cx="184" cy="126" r="13" />
+          <circle cx="310" cy="180" r="15" />
+          <circle cx="442" cy="130" r="13" />
+          <circle cx="520" cy="250" r="13" />
+        </g>
+      </svg>
+      <figcaption id="metric-ladder-figure-caption">
+        Visual orientation only: the ladder separates source-side status from
+        downstream metric, matter, equation, and benchmark claims.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reading rule</p>
+      <h2 id="metric-ladder-boundary-title">Each object has its own burden and authority boundary.</h2>
+      <p>
+        The ladder matters because the object names are close enough to sound
+        like progress through a proof. They are not interchangeable. The safe
+        reading preserves scope, gate status, and blocked downstream promotion.
+      </p>
+    </div>
+    <EvidenceRail
+      items={readerRules}
+      ariaLabel="Metric response ladder reader rules"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-metadata-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot metadata</p>
+      <h2 id="metric-ladder-metadata-title">What source state this route reflects.</h2>
+      <p>
+        This page imports committed website snapshots generated from upstream
+        source at commit {distanceSnapshot.source_commit}. It does not read the
+        source repository during normal Astro builds.
+      </p>
+    </div>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="Metric response ladder snapshot metadata"
+      className="snapshot-meta-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-glossary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Plain glossary</p>
+      <h2 id="metric-ladder-glossary-title">Read the object names before the technical layer.</h2>
+      <p>
+        These terms are useful only if their boundaries remain visible. The
+        page therefore starts with the ordinary-language status of each object.
+      </p>
+    </div>
+    <EvidenceRail
+      items={glossaryItems}
+      ariaLabel="Metric response ladder glossary"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="metric-ladder-diagram-title">The diagram is a reader aid, not source authority.</h2>
+      <p>
+        The static diagram shows separate ladder objects and blocked overreads.
+        It is not a proof, Gate Chair verdict, or downstream GR promotion.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="metric-ladder-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-metric-response-ladder.png"
+        alt="Diagram showing Resp_lc, M_src, MetricData(E), scoped g_eff, matter coupling, Einstein equations, and benchmark promotion as separate ladder objects with blocked overreads."
+        loading="lazy"
+      />
+      <figcaption id="metric-ladder-diagram-caption">
+        Static comprehension diagram: each object has its own source status
+        and downstream claims remain blocked.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="metric-ladder-objects" class="track-page-band" aria-labelledby="metric-ladder-objects-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Specialist ladder</p>
+      <h2 id="metric-ladder-objects-title">Object status stays narrower than derivation status.</h2>
+      <p>
+        The cards below name the current row status, evidence path, and blocked
+        promotions. They are intentionally explicit because shorthand is the
+        main failure mode for this topic.
+      </p>
+    </div>
+    <EvidenceRail
+      items={ladderObjects}
+      ariaLabel="Metric response ladder object status"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-hard-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Hard boundaries</p>
+      <h2 id="metric-ladder-hard-boundaries-title">What the ladder does not authorize.</h2>
+      <p>
+        Current state preserves no MetricData(E) adoption, no g_eff scope
+        change, no coupling-law adoption, no matter-coupling derivation, no
+        stress-energy semantics, no Einstein equations, no benchmark promotion,
+        no downstream GR promotion, and no completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-specialist-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Specialist source layer</p>
+      <h2 id="metric-ladder-specialist-title">The source records name the active gate and blocked promotions.</h2>
+      <p>
+        Technical readers should compare ledger rows, current-state summary,
+        and claim-boundary records before interpreting any object name as a
+        completed derivation step.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {specialistCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe readings</p>
+      <h2 id="metric-ladder-summary-title">The permitted summary is narrower than the tempting one.</h2>
+      <p>
+        This topic is high-risk because the notation can make an upstream row
+        sound like downstream GR promotion. The explicit contrast prevents that
+        overread.
+      </p>
+    </div>
+    <EvidenceRail
+      items={summaryCards}
+      ariaLabel="Metric response ladder safe and unsafe summaries"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="metric-ladder-reader-path-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="metric-ladder-reader-path-title">Use adjacent pages before treating the ladder as decisive.</h2>
+      <p>
+        Primary reading stays inside the website. Provenance links remain
+        available in source-authority sections for direct inspection.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedLinks}
+      ariaLabel="Metric response ladder related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="metric-ladder-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="metric-ladder-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can explain checked-in ladder status. It cannot adopt
+        MetricData(E), expand scoped g_eff, adopt a coupling law, derive matter
+        coupling, import stress-energy semantics, derive Einstein equations,
+        promote the benchmark, or complete GR derivation.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

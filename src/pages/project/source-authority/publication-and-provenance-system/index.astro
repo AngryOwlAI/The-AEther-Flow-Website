@@ -1,0 +1,332 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import Figure from "../../../../components/Figure.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.sourceAuthorityPublicationProvenance;
+
+const manifestRoles = [
+  {
+    label: "Route map",
+    title: "page_route_map.json",
+    body:
+      "Declares each public route, its local page source, source basis, publication status, and boundary type.",
+    href: "/files/manifests/page_route_map.json",
+  },
+  {
+    label: "Page provenance",
+    title: "page_provenance.json",
+    body:
+      "Records generated page hashes, source dependency hashes where available, commit metadata, and provenance URLs.",
+    href: "/files/manifests/page_provenance.json",
+  },
+  {
+    label: "Source manifest",
+    title: "source_manifest.json",
+    body:
+      "Records public asset source paths, approval status, notes, and asset-level claim-status boundaries.",
+    href: "/files/manifests/source_manifest.json",
+  },
+  {
+    label: "Asset manifest",
+    title: "asset_manifest.json",
+    body:
+      "Indexes served public files with byte counts, hashes, kinds, titles, and source-manifest references.",
+    href: "/files/manifests/asset_manifest.json",
+  },
+];
+
+const mechanismSteps = [
+  {
+    title: "Declare the route",
+    body:
+      "A route-map row states what a public page adapts and which boundary type applies before provenance is generated.",
+  },
+  {
+    title: "Hash the page and sources",
+    body:
+      "Page provenance records the local page hash and source hashes where source files are available to the generator.",
+  },
+  {
+    title: "Register public assets",
+    body:
+      "Source-manifest rows state source path, approval status, claim status, and notes for public diagrams, PDFs, TeX files, and other files.",
+  },
+  {
+    title: "Verify served bytes",
+    body:
+      "Asset-manifest validation checks that published files exist and that byte counts and hashes match the manifest.",
+  },
+  {
+    title: "Keep reader routes internal-first",
+    body:
+      "When an internal route exists, primary reading stays on the website while source and manifest links remain provenance.",
+  },
+];
+
+const hashBoundaries = [
+  {
+    label: "Page hash",
+    title: "Identifies rendered source state",
+    body:
+      "Useful for detecting page drift. It does not prove that the explanation is complete or conceptually correct.",
+  },
+  {
+    label: "Source hash",
+    title: "Identifies a dependency version",
+    body:
+      "Useful for source audit. It does not promote a claim, resolve a gate, or replace source review.",
+  },
+  {
+    label: "Asset hash",
+    title: "Identifies served bytes",
+    body:
+      "Useful for verifying that a file matches the manifest. It does not make a diagram, PDF, or image authoritative.",
+  },
+  {
+    label: "Validator pass",
+    title: "Confirms a bounded check",
+    body:
+      "Useful as build evidence. It does not become scientific proof, release approval, or human review.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    title: "Source Authority",
+    href: "/project/source-authority/",
+    body:
+      "Read the broader trust boundary for website pages, generated derivatives, and upstream records.",
+  },
+  {
+    title: "Publication process",
+    href: "/project/operations/publication-process/",
+    body:
+      "Review the maintainer workflow for briefs, source specs, screenshots, human review, and manifest updates.",
+  },
+  {
+    title: "Resources",
+    href: "/resources/",
+    body:
+      "Inspect the public resource index that links manifests, ontology documents, diagrams, and downloads.",
+  },
+  {
+    title: "Ontology Documents",
+    href: "/resources/documents/",
+    body:
+      "See how registered TeX source and generated PDF derivatives are presented with explicit boundaries.",
+  },
+  {
+    title: "Diagram Gallery",
+    href: "/resources/diagrams/",
+    body:
+      "Inspect website-local visual aids with source paths, captions, and non-authority status.",
+  },
+];
+
+const provenanceLinks = [
+  {
+    title: "Website architecture note",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow-Website/blob/main/docs/architecture/website-feature-and-functionality.md",
+    body:
+      "Maintainer-facing architecture source for route families, publication surfaces, manifests, and validation gates.",
+    actionLabel: "Inspect source",
+  },
+  {
+    title: "Page provenance generator",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow-Website/blob/main/scripts/generate_page_provenance.py",
+    body:
+      "Script that builds page provenance from the route map and available source state.",
+    actionLabel: "Inspect source",
+  },
+  {
+    title: "Page provenance validator",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow-Website/blob/main/scripts/validate_page_provenance.py",
+    body:
+      "Script that validates route coverage, page hashes, source dependency records, and path safety.",
+    actionLabel: "Inspect source",
+  },
+  {
+    title: "Manifest path validator",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow-Website/blob/main/scripts/validate_manifest_paths.py",
+    body:
+      "Script that validates source-manifest and asset-manifest file existence, hashes, and source references.",
+    actionLabel: "Inspect source",
+  },
+];
+---
+
+<BaseLayout
+  title="Publication And Provenance System"
+  description="Source-authority child route explaining page provenance, source manifests, asset manifests, route maps, hashes, and internal-first routing without turning publication into source truth."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="publication-provenance-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Source authority / PG-024</p>
+      <h1
+        id="publication-provenance-title"
+        class="publication-provenance-heading"
+        aria-label="Publication And Provenance System"
+      >
+        <span>Publication</span>{" "}
+        <span>And</span>{" "}
+        <span>Provenance</span>{" "}
+        <span>System</span>
+      </h1>
+      <p class="overview-lead">
+        The website publishes static pages and public assets through manifests,
+        hashes, and validation gates. Those records make publication auditable.
+        They do not make the website a source of scientific truth.
+      </p>
+      <div class="overview-actions" aria-label="Publication provenance actions">
+        <a class="primary-link" href="#manifest-roles">Read the manifests</a>
+        <a class="secondary-link" href="/project/source-authority/">Source authority</a>
+      </div>
+    </div>
+
+    <Figure
+      src="/assets/diagrams/comprehension/source-authority-publication-provenance-system.png"
+      alt="Diagram showing source basis feeding page route map, page provenance, source manifest, asset manifest, static build, internal reader routes, provenance links, and a publication-is-not-source-truth boundary."
+      caption="Publication manifests make routes and assets auditable without making publication source truth."
+      provenance="Mermaid source: docs/content-dossiers/source-authority-publication-and-provenance-system/diagrams/publication-provenance-system.mmd. Manifest id: comprehension_source_authority_publication_provenance_system."
+      className="track-page-figure comprehension-figure"
+      loading="eager"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="why-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Why provenance exists</p>
+      <h2 id="why-title">Publication needs audit evidence, not authority inflation.</h2>
+      <p>
+        A static page can drift, a public asset can be regenerated, and a
+        source dependency can change. The provenance system records enough
+        structure to inspect those changes while preserving the rule that
+        upstream sources and governed records own project claims.
+      </p>
+    </div>
+    <EvidenceRail
+      items={mechanismSteps}
+      ariaLabel="Publication provenance mechanism steps"
+      className="source-link-grid"
+      ordered
+    />
+  </section>
+
+  <section id="manifest-roles" class="track-page-band" aria-labelledby="manifest-roles-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Manifest roles</p>
+      <h2 id="manifest-roles-title">Each manifest answers a different audit question.</h2>
+      <p>
+        The manifests are not interchangeable. One declares route intent, one
+        records page provenance, one records asset source/status metadata, and
+        one verifies the files served from the public build.
+      </p>
+    </div>
+    <StatusDossier
+      items={manifestRoles}
+      ariaLabel="Publication manifest roles"
+      className="track-status-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="hash-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Hash boundaries</p>
+      <h2 id="hash-boundaries-title">Hashes identify state; they do not certify meaning.</h2>
+      <p>
+        The useful question is narrow: did this page, dependency, or asset
+        match the recorded bytes? The stronger question, whether the page is
+        conceptually complete or a claim is true, remains outside hash
+        authority.
+      </p>
+    </div>
+    <StatusDossier
+      items={hashBoundaries}
+      ariaLabel="Publication hash boundary meanings"
+      className="track-status-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="internal-first-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Internal-first routing</p>
+      <h2 id="internal-first-title">Primary reading stays on reviewed internal routes.</h2>
+      <p>
+        Internal-first routing is a readability rule. It keeps readers on
+        curated website explanations when those routes exist, while keeping
+        manifest and source links visible as provenance for inspection.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedRoutes}
+      ariaLabel="Publication provenance related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="safe-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe reading</p>
+      <h2 id="safe-title">A useful summary names the forbidden shortcut.</h2>
+    </div>
+    <StatusDossier
+      items={[
+        {
+          label: "Safe summary",
+          title: "Auditable publication state",
+          body:
+            "Publication provenance records which routes, sources, manifests, and public assets were checked for a static website state.",
+        },
+        {
+          label: "Unsafe summary",
+          title: "Manifest equals truth",
+          body:
+            "A route-map row, page hash, source hash, asset hash, or internal-first link proves a scientific claim, grants release approval, or replaces source authority.",
+        },
+      ]}
+      ariaLabel="Publication provenance safe and unsafe summaries"
+      className="track-status-grid safe-unsafe-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="provenance-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source provenance</p>
+      <h2 id="provenance-title">Use source links for audit, not as the primary reading path.</h2>
+      <p>
+        The links below expose implementation evidence for maintainers. Public
+        reading should start with the internal routes above, then inspect these
+        files when an audit trail is needed.
+      </p>
+    </div>
+    <EvidenceRail
+      items={provenanceLinks}
+      ariaLabel="Publication provenance source implementation links"
+      className="source-link-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="notice-title">
+    <div>
+      <p class="eyebrow">Claim status</p>
+      <h2 id="notice-title">This page explains publication evidence.</h2>
+      <p>
+        It cannot change source authority, approve a route, validate a
+        scientific claim, or hide source inspection. Manifest rows and hashes
+        are useful because their authority is deliberately narrow.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+      preferSourceRefs
+    />
+  </section>
+</BaseLayout>

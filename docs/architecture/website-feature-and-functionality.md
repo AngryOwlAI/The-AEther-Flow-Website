@@ -277,6 +277,122 @@ The logical next step before any non-trivial content or route change is:
 6. Use `npm run quality` before deployment readiness.
 7. Deploy only when explicitly authorized.
 
+## Sitewide Revamp Contract
+
+This section records the foundation contract for the sitewide page revamp. It
+is a maintainer contract, not a public claim, and it is governed by
+`ImplementationPlans/sitewide_page_revamp_implementation_plan.md` and
+`ImplementationPlans/sitewide_page_revamp_task_packets.md`.
+
+### Route Families
+
+The revamp uses the existing route families unless a later approved packet
+creates a narrower internal route:
+
+- `/` and `/project/overview/` are public orientation routes.
+- `/project/physics/` owns physics-status, ontology, benchmark, obstruction,
+  gate, and derivation-burden explanation.
+- `/project/ai-research-agent-system/` owns governed AI workflow, role, memory,
+  registry, AgentJob, and synthesis explanation.
+- `/project/operations/` owns operator, validator, publication, lifecycle,
+  maintenance, and technical-requirement explanation.
+- `/project/source-authority/` owns trust, provenance, claim-boundary, and
+  publication-authority explanation.
+- `/resources/` owns reader resources, ontology documents, diagrams, guided
+  starts, and staged reviewer utilities.
+
+### Page Layers
+
+Every claim-bearing topic page should use the same layered model:
+
+1. Public layer: plain-language topic, why it matters, and what it does not
+   claim.
+2. Mechanism layer: the workflow, mathematical object, source object, or
+   operational interface being explained.
+3. Evidence layer: source-analysis artifact, source basis, manifests, and
+   provenance.
+4. Specialist layer: physicist, mathematician, system engineer, software
+   engineer, AI developer, reviewer, or maintainer detail where relevant.
+5. Navigation layer: internal-first next routes, with GitHub/source links used
+   as provenance rather than the primary reader journey.
+
+### Source-Analysis Gate
+
+Every claim-bearing page packet requires a completed
+`docs/system-analyses/*.md` artifact before public page conversion. If the
+analysis is absent, has unclear authority, or cannot distinguish established
+source status from hypothesis, conjecture, proposal, `draft/control`,
+`proposal-only`, `source-extension`, `fail-closed`, `frozen negative`,
+`no MetricData(E)`, `no g_eff`, or `no downstream GR promotion`, the page packet
+must close as `block` or remain staged. Scaffold-only or navigation-only copy
+may proceed only when it does not create new scientific, mathematical,
+governance, or research-workflow claims.
+
+### Anti-Slop And Review Status
+
+The `no-ai-slop` gate is mandatory for public-facing, substantial, or
+claim-bearing artifacts:
+
+- `pass`: the page or dossier is specific, source-grounded, audience-fit, and
+  ready for the stated review status.
+- `repair`: the artifact is flawed but fixable from available evidence; repair
+  before publishing or closing the packet.
+- `block`: the artifact lacks source evidence, authority, thesis, or enough
+  context for truthful public copy.
+
+Use `technical validation passed` only after relevant automated checks pass.
+Use `human review pending` for high-risk physics, live-state, coupling-law,
+reviewer-packet, or claim-heavy pages even when automated checks pass.
+
+### SVG And Diagram Rule
+
+Animated SVG artwork may be preserved when it improves comprehension. Public
+SVG artwork must remain animated and must not contain visible embedded text.
+Visible labels belong in HTML headings, captions, body copy, ARIA labels,
+`<title>`, or `<desc>`. Mermaid diagrams promoted to public pages must use the
+existing static PNG workflow, public captions, alt text, manifest coverage, and
+no runtime Mermaid dependency.
+
+### Validation Tiers
+
+Page-minimum validation is:
+
+```bash
+npm run validate:comprehension
+npm run validate:manifests
+npm run validate:content
+npm run validate:provenance
+npm run build
+```
+
+Add `npm run validate:svg` when SVG or diagram assets change. Add
+`npm run validate:links` when navigation, route cards, or route retirement
+changes. Foundation, shared-component, or release-candidate work should run
+`npm run validate`; release readiness should also run `npm run quality` and
+`python3 -m pytest` when Python behavior is in scope.
+
+### Browser QA Convention
+
+Every page packet requires desktop and mobile browser QA against
+`127.0.0.1`, with screenshots or a concise QA note under `output/playwright/`
+or `docs/quality/`. Browser QA should confirm readable first viewport,
+internal-first navigation, non-overlapping text, visible claim boundaries, and
+nonblank visual assets.
+
+### Route Retirement
+
+Prototype or sample routes such as `/research/map/`, `/research/equations/`,
+and `/research/math-sample/` should be removed from primary navigation unless
+converted into inventory-backed, source-analyzed public routes. Retirement
+requires internal-link search, route-map and provenance consistency, build
+validation, and a replacement internal reader path where needed.
+
+### No-Deploy Boundary
+
+The revamp branch must not deploy automatically. Deployment requires a separate
+user approval after validation, browser QA, and human review of any
+`human review pending` pages.
+
 ## Planned Or Accepted Follow-Up Work
 
 The following items are accepted or planned work, not additional current-state

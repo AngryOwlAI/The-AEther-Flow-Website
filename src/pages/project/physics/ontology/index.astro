@@ -10,31 +10,41 @@ const sourceNotice = projectSourceNoticeDefaults.physicsOntology;
 const vocabularyCards = [
   {
     label: "AEther",
-    title: "Proposed deeper substrate",
-    body: "In the current ontology, AEther names a proposed deeper four-dimensional substrate. It should not be pictured as an ordinary three-dimensional medium flowing through already observed space.",
+    title: "Deeper substrate",
+    body: "AEther names the proposed deeper four-dimensional substrate of reality. It is not an ordinary three-dimensional medium sitting inside observed space.",
   },
   {
     label: "AEther-flow",
-    title: "Ordered motion of that substrate",
-    body: "AEther-flow names intrinsic ordered motion in the deeper substrate. It is not a simple wind, river, or detectable current inside preexisting observed space.",
+    title: "Intrinsic ordered motion",
+    body: "AEther-flow names ordered motion of that deeper substrate. It is not a wind, river, or directly detectable current through preexisting observed space.",
   },
   {
     label: "Observed space",
-    title: "Observer-level slice",
-    body: "Observed three-dimensional space is treated as the local observer-accessible slice or appearance of the deeper order, not the full underlying ontology.",
+    title: "Observer-accessible slice",
+    body: "Observed three-dimensional space is the local appearance through which embedded observers encounter the deeper order. It does not exhaust the ontology.",
   },
   {
     label: "S-time",
-    title: "Experienced order of change",
-    body: "S-time is the experienced order among matter, light, and AEther-flow. It is not a second place-like corridor or a substitute for mathematical closure.",
+    title: "Order of change",
+    body: "S-time names experienced order among matter, light, and AEther-flow. It is not a second place-like corridor or a substitute for mathematical closure.",
+  },
+  {
+    label: "Observed expansion",
+    title: "Appearance of deeper motion",
+    body: "Observed expansion is read as a three-dimensional appearance of deeper four-dimensional ordered motion. That does not mean measured expansion is unreal.",
+  },
+  {
+    label: "Gravity language",
+    title: "Heuristic reorganization",
+    body: "Gravity may be described ontologically as matter reorganizing surrounding AEther-flow. That remains heuristic until registered sources state stronger mathematics.",
   },
 ];
 
 const layerCards = [
   {
     label: "Ontology",
-    title: "What the project is about",
-    body: "The ontology gives the project a vocabulary for substrate, ordered flow, observed space, time-language, and expansion-language.",
+    title: "What the model is about",
+    body: "Ontology gives the project disciplined language for substrate, flow, observed space, time-language, expansion-language, and gravity interpretation.",
   },
   {
     label: "Mathematics",
@@ -53,6 +63,39 @@ const layerCards = [
   },
 ];
 
+const sourceStatusCards = [
+  {
+    label: "Registered TeX",
+    title: "Scientific source authority",
+    body: "Current ontology TeX files under ontology/tex/ are registered canonical source files for ontology and benchmark material.",
+  },
+  {
+    label: "PDF derivatives",
+    title: "Readable, not independent",
+    body: "PDFs under ontology/pdfs/ are generated human-readable derivatives. They do not outrank the registered TeX source.",
+  },
+  {
+    label: "Markdown ontology notes",
+    title: "Context and vocabulary",
+    body: "Markdown sources such as ontology/aether-and-aether-flow.md explain context and vocabulary without superseding TeX authority.",
+  },
+  {
+    label: "Generated explainers",
+    title: "Reader surfaces",
+    body: "GitHub-facing explainers and website pages orient readers. They do not promote ontology or create derivation authority.",
+  },
+  {
+    label: "Claim boundaries",
+    title: "Overread controls",
+    body: "Claim-boundary rows block overreads such as ontology alone forcing GR, generated pages as proof, or benchmark compatibility as derivation.",
+  },
+  {
+    label: "Open derivation",
+    title: "Still downstream",
+    body: "Observer-response law, same-metric matter, mode control, and Einsteinian closure remain downstream source-side burdens.",
+  },
+];
+
 const sourceLinks = [
   {
     title: "Back to physics track",
@@ -63,6 +106,21 @@ const sourceLinks = [
     title: "Ontology Documents",
     href: "/resources/documents/",
     body: "Read the canonical ontology PDFs and download registered TeX source files.",
+  },
+  {
+    title: "Exact-GR benchmark boundary",
+    href: "/project/physics/exact-gr-benchmark/",
+    body: "Distinguish exact-GR compatibility and benchmark status from first-principles derivation.",
+  },
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/project/physics/distance-to-gr/",
+    body: "Inspect the burden ledger that keeps ontology, metric, matter coupling, equations, and promotion separate.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Read source-pinned allowed, forbidden, and gate-required wording beside ontology vocabulary.",
   },
   {
     title: "Source authority page",
@@ -82,13 +140,15 @@ const sourceLinks = [
       <p class="eyebrow">Physics deep dive / Phase 4A</p>
       <h1 id="ontology-title">AEther-Flow Ontology</h1>
       <p class="overview-lead">
-        This page explains AEther / AEther-flow as the project's current
-        research ontology: a vocabulary for a proposed deeper four-dimensional
-        substrate, its ordered motion, and observer-level experience. It is an
-        explanatory frame, not an accepted derivation of general relativity.
+        Start here for the plain vocabulary. AEther, AEther-flow, observed
+        space, S-time, expansion, and gravity-language name the project's
+        ontology. They do not, by themselves, complete a first-principles
+        derivation of general relativity. It is not an accepted derivation of
+        general relativity.
       </p>
       <div class="overview-actions" aria-label="Ontology page actions">
-        <a class="primary-link" href="/project/physics/">Back to physics track</a>
+        <a class="primary-link" href="#ontology-vocabulary">Read the vocabulary</a>
+        <a class="secondary-link" href="/resources/documents/">Ontology documents</a>
         <a class="secondary-link" href="#ontology-boundary">Read the boundary</a>
       </div>
     </div>
@@ -119,10 +179,11 @@ const sourceLinks = [
   <section class="track-page-band" aria-labelledby="ontology-vocabulary-title">
     <div class="track-page-heading">
       <p class="eyebrow">Vocabulary map</p>
-      <h2 id="ontology-vocabulary-title">The ontology names terms; it does not complete the theory.</h2>
+      <h2 id="ontology-vocabulary-title">Start with the public terms.</h2>
       <p>
-        The safe public reading is that these terms discipline the conceptual
-        language. They do not replace the registered source-side mathematics.
+        The safe public reading is simple: these terms discipline the
+        conceptual language. They do not replace registered source-side
+        mathematics or claim-boundary records.
       </p>
     </div>
     <div class="track-status-grid">
@@ -157,14 +218,35 @@ const sourceLinks = [
     </div>
   </section>
 
+  <section class="track-page-band" aria-labelledby="ontology-source-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Specialist source status</p>
+      <h2 id="ontology-source-status-title">After the public vocabulary, inspect source authority.</h2>
+      <p>
+        The live ontology lane separates registered TeX sources, generated PDF
+        derivatives, explanatory Markdown, generated reader surfaces, and
+        claim-boundary controls.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {sourceStatusCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
   <section class="track-page-band" aria-labelledby="ontology-sources-title">
     <div class="track-page-heading">
       <p class="eyebrow">Reader path</p>
       <h2 id="ontology-sources-title">Continue through source-boundary-safe routes.</h2>
       <p>
         Use this page as orientation. For stronger claims, inspect the
-        document library, upstream registered TeX, and claim-boundary
-        registries.
+        document library, benchmark boundary, Distance-to-GR dashboard, and
+        claim-boundary explorer.
       </p>
     </div>
     <div class="source-link-grid">

@@ -1,0 +1,326 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import snapshot from "../../../../data/distance_to_gr_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsDistanceToGr;
+const shortCommit = snapshot.source_commit
+  ? `${snapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+
+const statusCountItems = Object.entries(snapshot.status_counts)
+  .sort(([left], [right]) => left.localeCompare(right))
+  .map(([status, count]) => ({
+    label: `${count} row${count === 1 ? "" : "s"}`,
+    title: status,
+    body: "Ledger status count in the checked-in dashboard snapshot.",
+  }));
+
+const metadata = [
+  {
+    label: "Snapshot refresh date",
+    value: snapshot.source_refresh_date,
+  },
+  {
+    label: "Source commit",
+    value: shortCommit,
+  },
+  {
+    label: "Latest handoff",
+    value: snapshot.latest_handoff_id,
+  },
+  {
+    label: "Ledger rows",
+    value: String(snapshot.row_count),
+  },
+];
+
+const dashboardRules = [
+  {
+    label: "Reader rule",
+    title: "No percentage score",
+    body: "The ledger records burden states. It does not compute a scalar distance, proof score, or completion percentage.",
+  },
+  {
+    label: "Snapshot rule",
+    title: "Checked-in, not live",
+    body: "The page imports committed JSON generated from clean upstream source. Normal builds do not silently refresh it.",
+  },
+  {
+    label: "Promotion rule",
+    title: "Rows stay scoped",
+    body: "A scoped source-extension row cannot unlock matter coupling, equations, benchmark promotion, or completed derivation by itself.",
+  },
+  {
+    label: "Gate rule",
+    title: "Accepted evidence is not adoption",
+    body: "The recovery-bridge candidate is accepted only as scoped source-extension evidence/precondition. That is not coupling-law adoption or matter-coupling derivation.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Read the latest checked-in source-state snapshot before interpreting dashboard rows as current status.",
+  },
+  {
+    title: "GR derivation roadmap",
+    href: "/project/physics/gr-derivation-roadmap/",
+    body: "Read the conceptual burden ladder that this dashboard renders from ledger rows.",
+  },
+  {
+    title: "Metric response ladder",
+    href: "/project/physics/metric-response-ladder/",
+    body: "Read the glossary-first object ladder for Resp_lc, M_src, MetricData(E), scoped g_eff, and matter-coupling status.",
+  },
+  {
+    title: "Source extension pipeline",
+    href: "/project/physics/source-extension-pipeline/",
+    body: "Understand proposal-only, draft/control, audit, stress, selector, and precondition states.",
+  },
+  {
+    title: "Gate Chair and human gates",
+    href: "/project/physics/gate-chair-and-human-gates/",
+    body: "Review why gate readiness cannot be read as a protected verdict.",
+  },
+];
+---
+
+<BaseLayout
+  title="Distance To GR Dashboard"
+  description="Ledger-backed Distance-to-GR dashboard explaining derivation burdens without turning rows into proof, percentage progress, or downstream claim promotion."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="distance-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-002</p>
+      <h1 id="distance-title">Distance To GR Dashboard</h1>
+      <p class="overview-lead">
+        This dashboard maps the current derivation-burden ledger. It shows
+        which rows exist, which are blocked or human-gated, and why no row
+        should be read as a percentage of completed GR derivation.
+      </p>
+      <div class="overview-actions" aria-label="Distance-to-GR page actions">
+        <a class="primary-link" href="#dashboard-rows">Read the burden rows</a>
+        <a class="secondary-link" href="/project/physics/current-state/">Check current state</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="distance-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="distance-figure-title distance-figure-desc">
+        <title id="distance-figure-title">Animated Distance-to-GR burden map</title>
+        <desc id="distance-figure-desc">
+          Separate source, metric, downstream, and control rows orbit a guarded
+          dashboard boundary while promotion paths remain blocked.
+        </desc>
+        <defs>
+          <radialGradient id="distance-glow" cx="50%" cy="50%" r="66%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.76" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.28" />
+            <stop offset="76%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="distance-orange-rail" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="48%" stop-color="var(--owl-orange-500)" stop-opacity="0.92" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="distance-cyan-rail" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="50%" stop-color="var(--owl-cyan-400)" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="var(--owl-orange-100)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#distance-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="226" ry="122" />
+          <ellipse cx="310" cy="180" rx="154" ry="78" />
+          <path d="M82 180 C148 118, 236 102, 310 122 C386 102, 472 118, 538 180" />
+          <path d="M82 180 C148 242, 236 258, 310 238 C386 258, 472 242, 538 180" />
+        </g>
+        <path class="track-figure-path orange-path" d="M86 238 C170 184, 226 158, 310 180 C394 202, 452 176, 534 112" stroke="url(#distance-orange-rail)" />
+        <path class="track-figure-path signal-path" d="M88 122 C170 166, 226 214, 310 180 C394 146, 452 168, 534 248" stroke="url(#distance-cyan-rail)" />
+        <path class="track-figure-core" d="M310 128 L360 180 L310 232 L260 180 Z" />
+        <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+          <circle cx="108" cy="238" r="13" />
+          <circle cx="170" cy="122" r="13" />
+          <circle cx="450" cy="132" r="13" />
+          <circle cx="520" cy="246" r="13" />
+        </g>
+      </svg>
+      <figcaption id="distance-figure-caption">
+        Visual orientation only: rows can move or freeze, but this page does
+        not prove a derivation or promote a benchmark.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="dashboard-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Dashboard boundary</p>
+      <h2 id="dashboard-boundary-title">A burden map is not a proof meter.</h2>
+      <p>
+        The source ledger is useful because it keeps obligations separate.
+        Earlier rows can carry scoped evidence while matter coupling, field
+        equations, benchmark promotion, and Gate Chair status remain protected
+        downstream decisions.
+      </p>
+    </div>
+    <EvidenceRail
+      items={dashboardRules}
+      ariaLabel="Distance-to-GR dashboard rules"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="snapshot-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot metadata</p>
+      <h2 id="snapshot-title">What source state this dashboard reflects.</h2>
+      <p>
+        The dashboard uses a checked-in snapshot generated from clean upstream
+        source at commit {snapshot.source_commit}. It does not read the source
+        repository during normal Astro builds.
+      </p>
+    </div>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="Distance-to-GR snapshot metadata"
+      className="snapshot-meta-grid"
+    />
+    <StatusDossier
+      items={statusCountItems}
+      ariaLabel="Distance-to-GR status counts"
+      className="track-status-grid snapshot-status-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="diagram-title">Ledger rows become reader groups, not promotion claims.</h2>
+      <p>
+        The static diagram separates source evidence, checked-in snapshot data,
+        dashboard groups, and forbidden overreads.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-distance-to-gr-dashboard.png"
+        alt="Diagram showing the Distance-to-GR ledger, burden map, claim boundaries, checked-in snapshot, dashboard groups, and forbidden overreads."
+        loading="lazy"
+      />
+      <figcaption id="diagram-caption">
+        Static comprehension diagram: the dashboard groups ledger rows while
+        preserving the no-promotion boundary.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="dashboard-rows" class="track-page-band" aria-labelledby="rows-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Ledger rows</p>
+      <h2 id="rows-title">Each burden row stays narrower than the full derivation.</h2>
+      <p>
+        Status labels are copied from the source-pinned snapshot. They should
+        be read as row state, not as proof that later burdens are solved.
+      </p>
+    </div>
+
+    {snapshot.groups.map((group) => (
+      <section class="track-page-subsection" aria-labelledby={`${group.id}-title`}>
+        <div class="track-page-heading">
+          <p class="eyebrow">{group.rows.length} row{group.rows.length === 1 ? "" : "s"}</p>
+          <h3 id={`${group.id}-title`}>{group.title}</h3>
+          <p>{group.description}</p>
+        </div>
+        <div class="track-status-grid">
+          {group.rows.map((row) => (
+            <article class="track-status-card">
+              <p>{row.current_status}</p>
+              <h4>{row.required_object}</h4>
+              <p>{row.notes}</p>
+              <p><strong>Burden:</strong> {row.burden_id}</p>
+              <p><strong>Blocks on:</strong> {row.blocking_burden}</p>
+              <small>Evidence: {row.last_evidence_path}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+
+  <section class="track-page-band" aria-labelledby="blocked-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Forbidden overreads</p>
+      <h2 id="blocked-title">What the dashboard does not authorize.</h2>
+      <p>
+        The page does not adopt MetricData(E), change g_eff scope, adopt a
+        coupling law, derive matter coupling, import stress-energy semantics,
+        derive Einstein equations, promote the benchmark, issue a Gate Chair
+        verdict, or complete the derivation.
+      </p>
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="reader-path-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="reader-path-title">Read adjacent pages before treating any row as decisive.</h2>
+      <p>
+        The dashboard is most useful when read beside current state, roadmap,
+        source-extension, and human-gate pages.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedLinks}
+      ariaLabel="Distance-to-GR related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="sources-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source provenance</p>
+      <h2 id="sources-title">Inspect the pinned source records.</h2>
+      <p>
+        Primary reading stays inside the website. These links are provenance
+        for the checked-in dashboard snapshot.
+      </p>
+    </div>
+    <EvidenceRail
+      items={snapshot.source_provenance_links.map((link) => ({
+        title: link.label,
+        href: link.href,
+        body: "Pinned upstream source dependency for this dashboard snapshot.",
+        actionLabel: "Inspect source",
+      }))}
+      ariaLabel="Distance-to-GR source provenance"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can organize ledger state for readers. It cannot
+        silently strengthen row status, execute a gate, or promote downstream
+        physics claims.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

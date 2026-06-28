@@ -1,6 +1,6 @@
 # Role Routing And Execution Contracts Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -14,12 +14,27 @@ Status: draft dossier.
 
 The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
 
+## PG-021 route-family evidence review
+
+- Review artifact: `docs/system-analyses/remaining-operations-route-family.md`.
+- Review decision: Preserve the existing role-routing route and make the
+  registry/schema source basis explicit.
+- Source state: Committed upstream source at
+  `01efc4f180221caf9425fbb24683eb54927b553e`.
+- Boundary: Role templates, overlays, and provisional roles do not grant live
+  permission without a task-local execution-role record and AgentJob allowlist.
+
 ## Upstream source basis
 
 | Source path | Status | Use in page |
 | --- | --- | --- |
 | `github-facing/role-routing-explainer.md` | upstream source | Source basis for this route. |
 | `github-facing/roles-and-skills-explainer.md` | upstream source | Source basis for this route. |
+| `research_control/README.md` | upstream control source | Source basis for route and evidence boundaries. |
+| `registries/AGENT_ROLE_REGISTRY.csv` | upstream registry | Source basis for registered role state and fields. |
+| `registries/ROLE_EXECUTION_REGISTRY.csv` | upstream registry | Source basis for task-local execution-role discovery. |
+| `.agents/schemas/ROLE_SCHEMA.md` | upstream schema | Source basis for role contract fields. |
+| `.agents/schemas/EXECUTION_ROLE_SCHEMA.md` | upstream schema | Source basis for execution-role record fields. |
 
 ## Source-derived topic outline
 
@@ -105,10 +120,15 @@ Unsafe summary: A role label, task overlay, provisional role, or public page gra
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-021.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg021-remaining-operations-family-qa.md`.
 
 ## References
 
 - AEther-Flow Project. (2026). `github-facing/role-routing-explainer.md`.
 - AEther-Flow Project. (2026). `github-facing/roles-and-skills-explainer.md`.
+- AEther-Flow Project. (2026). `research_control/README.md`.
+- AEther-Flow Project. (2026). `registries/AGENT_ROLE_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `registries/ROLE_EXECUTION_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `.agents/schemas/ROLE_SCHEMA.md`.
+- AEther-Flow Project. (2026). `.agents/schemas/EXECUTION_ROLE_SCHEMA.md`.

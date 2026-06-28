@@ -864,10 +864,14 @@ summary:focus-visible {
 .content-figure figcaption span {
   color: var(--content-card-text);
   font-weight: 800;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .content-figure figcaption small {
   font-size: 0.88rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .equation-block {
@@ -941,6 +945,7 @@ summary:focus-visible {
 }
 
 html:has(body.project-overview-page) {
+  background: var(--color-dark-page);
   overflow-x: clip;
 }
 
@@ -1961,6 +1966,16 @@ html:has(body.project-overview-page) {
   text-transform: uppercase;
 }
 
+.track-page-hero-copy h1.publication-provenance-heading {
+  max-width: min(11ch, 100%);
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.publication-provenance-heading span {
+  display: block;
+}
+
 .track-page-figure {
   overflow: hidden;
   margin: 0;
@@ -2437,7 +2452,7 @@ html:has(body.project-overview-page) {
 }
 
 .content-figure.comprehension-figure img {
-  background: #fff8ef;
+  background: #000000;
 }
 
 .comprehension-diagram-note {
@@ -2486,6 +2501,7 @@ html:has(body.project-overview-page) {
 
 .track-page-heading p,
 .track-page-notice p {
+  overflow-wrap: anywhere;
   color: var(--overview-muted);
 }
 
@@ -2537,6 +2553,7 @@ html:has(body.project-overview-page) {
 }
 
 .track-status-card h3,
+.track-status-card h4,
 .planned-route-card h3 {
   margin: 0.35rem 0 0;
   color: var(--overview-text);
@@ -2548,6 +2565,77 @@ html:has(body.project-overview-page) {
 .planned-route-card span,
 .source-link-card small {
   color: var(--overview-muted);
+}
+
+.track-status-card small {
+  display: block;
+  margin-top: 0.65rem;
+  overflow-wrap: anywhere;
+  color: var(--overview-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.claim-boundary-row-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.claim-boundary-row-card {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.claim-boundary-row-card h3 {
+  overflow-wrap: anywhere;
+  font-size: 1rem;
+}
+
+.claim-boundary-row-card h4 {
+  margin-top: 0.3rem;
+  color: var(--overview-text);
+}
+
+.claim-boundary-row-card dl {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.claim-boundary-row-card dt {
+  color: var(--overview-orange);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.claim-boundary-row-card dd {
+  margin: 0.18rem 0 0;
+  overflow-wrap: anywhere;
+  color: var(--overview-muted);
+  line-height: 1.45;
+}
+
+.claim-boundary-row-card ul {
+  display: grid;
+  gap: 0.38rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.claim-boundary-row-card li {
+  border-left: 2px solid color-mix(in srgb, var(--overview-cyan) 42%, transparent);
+  padding-left: 0.55rem;
+  color: var(--overview-muted);
+  line-height: 1.48;
+}
+
+.claim-boundary-example-rail,
+.claim-boundary-phrase-rail {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .source-link-card {
@@ -2862,6 +2950,7 @@ html:has(body.project-overview-page) {
 .evidence-rail-item {
   position: relative;
   min-width: 0;
+  overflow-wrap: anywhere;
   border-right: 1px solid var(--overview-white-line);
   background:
     linear-gradient(160deg, color-mix(in srgb, var(--overview-orange) 9%, transparent), transparent 44%),
@@ -2920,6 +3009,7 @@ html:has(body.project-overview-page) {
 
 .evidence-rail-item h3 {
   margin: 0.38rem 0 0;
+  overflow-wrap: anywhere;
   color: var(--overview-text);
   font-size: 1.1rem;
   line-height: 1.22;
@@ -2927,6 +3017,7 @@ html:has(body.project-overview-page) {
 
 .evidence-rail-item p:not(:first-child),
 .evidence-rail-item li {
+  overflow-wrap: anywhere;
   color: var(--overview-muted);
   line-height: 1.55;
 }
@@ -3024,6 +3115,23 @@ html:has(body.project-overview-page) {
 .status-dossier.resource-status-grid,
 .status-dossier.download-meta {
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.status-dossier.track-section-dossier {
+  gap: 1rem;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+
+.status-dossier.track-section-dossier .status-dossier-row {
+  border: 1px solid var(--overview-white-line);
+  border-left: 2px solid color-mix(in srgb, var(--overview-orange) 58%, transparent);
+  border-radius: 8px;
+}
+
+.status-dossier.track-section-dossier .status-dossier-row:nth-child(2n) {
+  border-left-color: color-mix(in srgb, var(--overview-cyan) 50%, transparent);
 }
 
 .evidence-rail.source-link-grid,
@@ -3420,6 +3528,7 @@ html:has(body.project-overview-page) {
   .snapshot-two-column,
   .snapshot-claim-list,
   .snapshot-source-grid,
+  .claim-boundary-row-grid,
   .track-page-notice {
     grid-template-columns: 1fr;
   }

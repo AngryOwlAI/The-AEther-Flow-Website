@@ -121,6 +121,28 @@ ROUTES = [
         manifest_id="comprehension_physics_claim_gates_lifecycle",
     ),
     RemediatedRoute(
+        route_path="/project/physics/source-extension-pipeline/",
+        dossier=Path("docs/content-dossiers/physics-source-extension-pipeline/dossier.md"),
+        local_page_source=Path("src/pages/project/physics/source-extension-pipeline/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-source-extension-pipeline/diagrams/"
+            "source-extension-pipeline.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/physics-source-extension-pipeline.png",
+        manifest_id="comprehension_physics_source_extension_pipeline",
+    ),
+    RemediatedRoute(
+        route_path="/project/physics/gate-chair-and-human-gates/",
+        dossier=Path("docs/content-dossiers/physics-gate-chair-and-human-gates/dossier.md"),
+        local_page_source=Path("src/pages/project/physics/gate-chair-and-human-gates/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-gate-chair-and-human-gates/diagrams/"
+            "human-gate-authority.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/physics-gate-chair-human-gates.png",
+        manifest_id="comprehension_physics_gate_chair_human_gates",
+    ),
+    RemediatedRoute(
         route_path="/project/physics/current-state/",
         dossier=Path("docs/content-dossiers/physics-current-state/dossier.md"),
         local_page_source=Path("src/pages/project/physics/current-state/index.astro"),
@@ -129,6 +151,67 @@ ROUTES = [
         ),
         diagram_public_path="/assets/diagrams/comprehension/physics-current-state-snapshot-boundary.png",
         manifest_id="comprehension_physics_current_state_snapshot_boundary",
+    ),
+    RemediatedRoute(
+        route_path="/project/physics/distance-to-gr/",
+        dossier=Path("docs/content-dossiers/physics-distance-to-gr/dossier.md"),
+        local_page_source=Path("src/pages/project/physics/distance-to-gr/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-distance-to-gr/diagrams/"
+            "distance-dashboard-boundary.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/physics-distance-to-gr-dashboard.png",
+        manifest_id="comprehension_physics_distance_to_gr_dashboard",
+    ),
+    RemediatedRoute(
+        route_path="/project/physics/metric-response-ladder/",
+        dossier=Path("docs/content-dossiers/physics-metric-response-ladder/dossier.md"),
+        local_page_source=Path("src/pages/project/physics/metric-response-ladder/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-metric-response-ladder/diagrams/"
+            "metric-response-ladder.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/physics-metric-response-ladder.png",
+        manifest_id="comprehension_physics_metric_response_ladder",
+    ),
+    RemediatedRoute(
+        route_path="/project/physics/finite-toy-models/",
+        dossier=Path("docs/content-dossiers/physics-finite-toy-models/dossier.md"),
+        local_page_source=Path("src/pages/project/physics/finite-toy-models/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-finite-toy-models/diagrams/"
+            "finite-toy-freeze.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/physics-finite-toy-models.png",
+        manifest_id="comprehension_physics_finite_toy_models",
+    ),
+    RemediatedRoute(
+        route_path="/project/physics/no-target-import-discipline/",
+        dossier=Path("docs/content-dossiers/physics-no-target-import-discipline/dossier.md"),
+        local_page_source=Path(
+            "src/pages/project/physics/no-target-import-discipline/index.astro"
+        ),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-no-target-import-discipline/diagrams/"
+            "no-target-import-discipline.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/physics-no-target-import-discipline.png",
+        manifest_id="comprehension_physics_no_target_import_discipline",
+    ),
+    RemediatedRoute(
+        route_path="/project/physics/negative-results-and-frozen-routes/",
+        dossier=Path("docs/content-dossiers/physics-negative-results-and-frozen-routes/dossier.md"),
+        local_page_source=Path(
+            "src/pages/project/physics/negative-results-and-frozen-routes/index.astro"
+        ),
+        diagram_source=Path(
+            "docs/content-dossiers/physics-negative-results-and-frozen-routes/diagrams/"
+            "negative-results-freeze-flow.mmd"
+        ),
+        diagram_public_path=(
+            "/assets/diagrams/comprehension/physics-negative-results-and-frozen-routes.png"
+        ),
+        manifest_id="comprehension_physics_negative_results_frozen_routes",
     ),
     RemediatedRoute(
         route_path="/project/ai-research-agent-system/",
@@ -150,6 +233,19 @@ ROUTES = [
         manifest_id="comprehension_ai_workflow_bounded_agentjob_chain",
     ),
     RemediatedRoute(
+        route_path="/project/ai-research-agent-system/one-bounded-agentjob/",
+        dossier=Path("docs/content-dossiers/ai-one-bounded-agentjob/dossier.md"),
+        local_page_source=Path(
+            "src/pages/project/ai-research-agent-system/one-bounded-agentjob/index.astro"
+        ),
+        diagram_source=Path(
+            "docs/content-dossiers/ai-one-bounded-agentjob/diagrams/"
+            "one-agentjob-envelope.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/ai-one-bounded-agentjob-envelope.png",
+        manifest_id="comprehension_ai_one_bounded_agentjob_envelope",
+    ),
+    RemediatedRoute(
         route_path="/project/ai-research-agent-system/roles-and-skills/",
         dossier=Path("docs/content-dossiers/ai-roles-and-skills/dossier.md"),
         local_page_source=Path(
@@ -160,6 +256,19 @@ ROUTES = [
         ),
         diagram_public_path="/assets/diagrams/comprehension/ai-roles-authority-stack.png",
         manifest_id="comprehension_ai_roles_authority_stack",
+    ),
+    RemediatedRoute(
+        route_path="/project/ai-research-agent-system/role-authority-inspector/",
+        dossier=Path("docs/content-dossiers/ai-role-authority-inspector/dossier.md"),
+        local_page_source=Path(
+            "src/pages/project/ai-research-agent-system/role-authority-inspector/index.astro"
+        ),
+        diagram_source=Path(
+            "docs/content-dossiers/ai-role-authority-inspector/diagrams/"
+            "role-authority-inspection-stack.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/ai-role-authority-inspector-stack.png",
+        manifest_id="comprehension_ai_role_authority_inspector_stack",
     ),
     RemediatedRoute(
         route_path="/project/ai-research-agent-system/memory-registries/",
@@ -255,6 +364,67 @@ ROUTES = [
         diagram_source=Path("docs/content-dossiers/source-authority/diagrams/source-authority-ladder.mmd"),
         diagram_public_path="/assets/diagrams/comprehension/source-authority-ladder.png",
         manifest_id="comprehension_source_authority_ladder",
+    ),
+    RemediatedRoute(
+        route_path="/project/source-authority/claim-boundary-explorer/",
+        dossier=Path("docs/content-dossiers/source-authority-claim-boundary-explorer/dossier.md"),
+        local_page_source=Path(
+            "src/pages/project/source-authority/claim-boundary-explorer/index.astro"
+        ),
+        diagram_source=Path(
+            "docs/content-dossiers/source-authority-claim-boundary-explorer/diagrams/"
+            "claim-boundary-explorer.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/source-authority-claim-boundary-explorer.png",
+        manifest_id="comprehension_source_authority_claim_boundary_explorer",
+    ),
+    RemediatedRoute(
+        route_path="/project/source-authority/publication-and-provenance-system/",
+        dossier=Path("docs/content-dossiers/source-authority-publication-and-provenance-system/dossier.md"),
+        local_page_source=Path(
+            "src/pages/project/source-authority/publication-and-provenance-system/index.astro"
+        ),
+        diagram_source=Path(
+            "docs/content-dossiers/source-authority-publication-and-provenance-system/"
+            "diagrams/publication-provenance-system.mmd"
+        ),
+        diagram_public_path=(
+            "/assets/diagrams/comprehension/"
+            "source-authority-publication-provenance-system.png"
+        ),
+        manifest_id="comprehension_source_authority_publication_provenance_system",
+    ),
+    RemediatedRoute(
+        route_path="/resources/guided-starts/general-public/",
+        dossier=Path("docs/content-dossiers/guided-start-general-public/dossier.md"),
+        local_page_source=Path("src/pages/resources/guided-starts/general-public/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/guided-start-general-public/diagrams/"
+            "general-public-guided-start.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/general-public-guided-start.png",
+        manifest_id="comprehension_general_public_guided_start",
+    ),
+    RemediatedRoute(
+        route_path="/resources/guided-starts/",
+        dossier=Path("docs/content-dossiers/guided-start-specialists/dossier.md"),
+        local_page_source=Path("src/pages/resources/guided-starts/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/guided-start-specialists/diagrams/"
+            "specialist-guided-starts.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/specialist-guided-starts.png",
+        manifest_id="comprehension_specialist_guided_starts",
+    ),
+    RemediatedRoute(
+        route_path="/resources/reviewer-packet/",
+        dossier=Path("docs/content-dossiers/reviewer-packet/dossier.md"),
+        local_page_source=Path("src/pages/resources/reviewer-packet/index.astro"),
+        diagram_source=Path(
+            "docs/content-dossiers/reviewer-packet/diagrams/reviewer-inspection-order.mmd"
+        ),
+        diagram_public_path="/assets/diagrams/comprehension/reviewer-inspection-order.png",
+        manifest_id="comprehension_reviewer_inspection_order",
     ),
     RemediatedRoute(
         route_path="/resources/",

@@ -9,138 +9,256 @@ const sourceNotice = projectSourceNoticeDefaults.aiResearchAgentWorkflow;
 
 const workflowSteps = [
   {
-    label: "Request",
-    title: "Classify the work",
-    body: "The system first distinguishes physics continuation, project-system improvement, documentation, validation, or a stop condition.",
+    label: "1. Request",
+    title: "Classify before acting",
+    body:
+      "The operator separates research continuation, project-system repair, documentation, validation, and stop conditions before any write authority exists.",
   },
   {
-    label: "Decision",
+    label: "2. Memory",
+    title: "Use retrieval as navigation",
+    body:
+      "Memory preflight can find prior decisions and likely sources, but every useful hit must be verified against a canonical file or registry row.",
+  },
+  {
+    label: "3. Decision",
     title: "Select one route",
-    body: "A Director decision narrows the request to one lane, records the selected path, and preserves rejected alternatives where needed.",
+    body:
+      "A Director Decision Record chooses one role path, records the rationale, and keeps rejected alternatives visible when they matter.",
   },
   {
-    label: "AgentJob",
-    title: "Bind the execution",
-    body: "The AgentJob states allowed reads, allowed writes, expected outputs, validators, and claim boundaries for one transaction.",
+    label: "4. AgentJob",
+    title: "Bind one transaction",
+    body:
+      "The AgentJob names allowed reads, writes, generated paths, forbidden paths, validators, expected outputs, and claim boundary.",
   },
   {
-    label: "Completion",
-    title: "Record evidence",
-    body: "The completion records changed outputs, command evidence, verdict, uncertainty, and whether a handoff is needed.",
+    label: "5. Completion",
+    title: "Close with evidence",
+    body:
+      "The completion records outputs, command results, validation status, verdict, uncertainty, and the next recommendation.",
+  },
+  {
+    label: "6. Handoff",
+    title: "Separate the next packet",
+    body:
+      "A handoff can recommend the next bounded packet. It does not extend the current job after completion.",
   },
 ];
 
-const recordCards = [
+const exampleMeta = [
   {
-    label: "Director Decision Record",
-    title: "Why this route?",
-    body: "Explains the selected role path, rejected alternatives, claim boundary, and checks. It does not create broad future permission.",
+    label: "Example task",
+    value: "RT-20260614-249",
   },
   {
-    label: "Execution-role record",
-    title: "Which authority applies?",
-    body: "Binds role semantics to exactly one job. Role templates guide work, while task-local records and allowlists control authority.",
+    label: "Decision",
+    value: "DDR-20260614-249",
+  },
+  {
+    label: "AgentJob",
+    value: "AJ-RT-20260614-249-001",
+  },
+  {
+    label: "Completion",
+    value: "AJC-AJ-RT-20260614-249-001",
   },
   {
     label: "Handoff",
-    title: "What remains next?",
-    body: "Names a future route when continuation is needed. A handoff preserves the boundary rather than silently extending the current job.",
+    value: "handoff-0282",
   },
   {
-    label: "Registry rows",
-    title: "How is it found?",
-    body: "Make decisions, jobs, roles, and completions discoverable and validator-checkable without becoming scientific proof.",
+    label: "Verdict",
+    value: "selector_selected_stress_energy_interface_criteria_no_adoption",
+  },
+];
+
+const recordChain = [
+  {
+    label: "Task",
+    path: "research_control/tasks/RT-20260614-249/00_TASK.yaml",
+    title: "One objective and closure state",
+    body:
+      "The task names the objective, parent task, current decision, current job, completion, claim boundary, and closure status.",
+    boundary: "It does not authorize adjacent future packets.",
+  },
+  {
+    label: "Director decision",
+    path: "research_control/tasks/RT-20260614-249/DDR-20260614-249.md",
+    title: "One selected route",
+    body:
+      "The decision selects a Theoretical Continuation Selector packet and explains why broader routes were not selected.",
+    boundary: "It authorizes route classification only.",
+  },
+  {
+    label: "AgentJob",
+    path: "research_control/tasks/RT-20260614-249/jobs/AJ-RT-20260614-249-001.yaml",
+    title: "Allowed surface",
+    body:
+      "The job binds reads, writes, generated paths, forbidden paths, validators, outputs, and claim boundary.",
+    boundary: "The allowlist is not reusable general permission.",
+  },
+  {
+    label: "Completion",
+    path: "research_control/tasks/RT-20260614-249/jobs/completions/AJC-AJ-RT-20260614-249-001.yaml",
+    title: "Command and verdict evidence",
+    body:
+      "The completion records output paths, command results, PASS status, verdict, distance-to-GR notes, and forbidden conclusions.",
+    boundary: "PASS is operational evidence for this transaction only.",
+  },
+  {
+    label: "Handoff",
+    path: "research_control/handoffs/handoff-0282.yaml",
+    title: "Separate next action",
+    body:
+      "The handoff recommends one future Ontology Formalizer packet and repeats the blocked claims.",
+    boundary: "It is not silent extension of the closed job.",
+  },
+  {
+    label: "Registries",
+    path: "registries/RESEARCH_TASK_REGISTRY.csv; registries/DIRECTOR_DECISION_REGISTRY.csv; registries/AGENT_JOB_REGISTRY.csv",
+    title: "Discovery and checks",
+    body:
+      "Registry rows make the task, decision, AgentJob, completion, and status discoverable for validators and maintainers.",
+    boundary: "Registry metadata is not theorem proof.",
   },
 ];
 
 const boundaryCards = [
   {
-    label: "One bounded job",
-    title: "No hidden second objective",
-    body: "A physics construction should not become benchmark promotion; a documentation repair should not become a schema change.",
+    label: "AI boundary",
+    title: "Workflow is not autonomous science",
+    body:
+      "The page describes governed tool use and source inspection. It does not present model behavior as independent understanding or scientific authority.",
   },
   {
-    label: "Source inspection",
-    title: "Memory is navigation",
-    body: "Memory, wiki notes, and generated pages may help locate sources. They do not replace canonical files or registry rows.",
+    label: "PASS boundary",
+    title: "Validation is scoped",
+    body:
+      "A PASS receipt says a deterministic check accepted the named state. It does not prove physics, adopt ontology, or promote a benchmark.",
   },
   {
-    label: "Validator evidence",
-    title: "Operational, not scientific",
-    body: "A PASS result can show the transaction satisfied structural checks. It cannot prove a theorem or promote a physics claim.",
+    label: "Memory boundary",
+    title: "Retrieval is not authority",
+    body:
+      "Memory, wiki notes, generated pages, and local caches can help find records. They cannot replace canonical source inspection.",
   },
   {
-    label: "Human gates",
-    title: "Protected authority stays protected",
-    body: "Ontology adoption, benchmark promotion, Gate Chair decisions, and claim promotion require their own human-gated path.",
+    label: "Role boundary",
+    title: "Templates are not permissions",
+    body:
+      "A role contract guides reasoning. The execution-role record and AgentJob allowlist define authority for the current transaction.",
+  },
+  {
+    label: "Handoff boundary",
+    title: "Next is separate",
+    body:
+      "A handoff names a possible future packet after the current job closes. It is not a hidden continuation of the same job.",
+  },
+  {
+    label: "Physics boundary",
+    title: "Process evidence is not derivation",
+    body:
+      "The RT-249 example does not adopt a coupling law, derive matter coupling, define Einstein equations, or claim completed derivation.",
   },
 ];
 
-const sourceLinks = [
+const safeUnsafeCards = [
   {
-    title: "Back to AI research-agent track",
-    href: "/project/ai-research-agent-system/",
-    body: "Return to the track landing page for bounded tasks, role contracts, review discipline, and memory.",
+    label: "Safe reading",
+    title: "One request becomes one auditable transaction.",
+    body:
+      "RT-20260614-249 shows a request narrowed through task, Director decision, AgentJob, completion, handoff, and registries while preserving claim blocks.",
   },
   {
-    title: "Source authority page",
-    href: "/project/source-authority/",
-    body: "Read how website pages, generated explainers, registries, and tracked sources relate.",
+    label: "Unsafe reading",
+    title: "The workflow proves the scientific claim.",
+    body:
+      "It would be unsafe to treat PASS, role labels, registry rows, generated pages, memory hits, or handoffs as proof of a physics result.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "AI research-agent track",
+    href: "/project/ai-research-agent-system/",
+    body: "Return to the track landing page for bounded tasks, role contracts, memory, and validators.",
+  },
+  {
+    title: "Roles and skills",
+    href: "/project/ai-research-agent-system/roles-and-skills/",
+    body: "Read how role labels, contracts, execution records, and allowlists differ.",
+  },
+  {
+    title: "Memory and registries",
+    href: "/project/ai-research-agent-system/memory-registries/",
+    body: "Read why retrieval support must resolve back to tracked sources.",
   },
   {
     title: "Director and AgentJob lifecycle",
     href: "/project/operations/director-agentjob-lifecycle/",
-    body: "Read the operational record chain for Director decisions, AgentJobs, completions, and handoffs.",
+    body: "Inspect the operational lifecycle for tasks, decisions, jobs, completions, and handoffs.",
   },
   {
     title: "Validator and operator workflow",
     href: "/project/operations/validator-operator-workflow/",
-    body: "Read how PASS results, receipts, and validators are interpreted as bounded evidence.",
+    body: "Read how command evidence and PASS results should be interpreted.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "See how website pages, generated explainers, registries, and source records relate.",
   },
 ];
 ---
 
 <BaseLayout
   title="Research-Agent Workflow"
-  description="Reader-facing workflow page explaining bounded tasks, Director decisions, AgentJobs, completions, handoffs, and authority boundaries."
+  description="Concrete record-chain walkthrough showing how a request narrows into one bounded AgentJob, completion evidence, and handoff without becoming physics proof."
   bodyClass="project-overview-page project-track-page"
 >
   <section class="track-page-hero" aria-labelledby="workflow-title">
     <div class="track-page-hero-copy">
-      <p class="eyebrow">AI research-agent deep dive / Phase 5A</p>
+      <p class="eyebrow">AI research-agent deep dive / PG-014</p>
       <h1 id="workflow-title">Research-Agent Workflow</h1>
       <p class="overview-lead">
-        AEther Flow treats research-agent work as a controlled record chain:
-        requests narrow into Director decisions, one bounded AgentJob,
-        completion evidence, and handoffs when continuation is needed. The
-        workflow makes research inspectable; it does not turn process evidence
-        into physics proof.
+        AEther Flow treats research-agent work as a record chain, not as
+        autonomous scientific authority. A request narrows into memory/source
+        checks, one Director decision, one AgentJob, completion evidence, and a
+        handoff only when the next step is separate.
       </p>
       <div class="overview-actions" aria-label="Research-agent workflow page actions">
-        <a class="primary-link" href="/project/ai-research-agent-system/">Back to AI track</a>
-        <a class="secondary-link" href="#workflow-lifecycle">Read the lifecycle</a>
+        <a class="primary-link" href="#workflow-example">Walk the record chain</a>
+        <a class="secondary-link" href="/project/operations/validator-operator-workflow/">PASS limits</a>
       </div>
     </div>
 
     <figure class="track-page-figure" aria-labelledby="workflow-figure-caption">
-      <svg viewBox="0 0 620 360" role="img" aria-labelledby="workflow-figure-title">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="workflow-figure-title workflow-figure-desc">
         <title id="workflow-figure-title">Bounded research-agent workflow map</title>
+        <desc id="workflow-figure-desc">
+          A request narrows through source checks, a decision point, one
+          bounded job, completion evidence, and a separate handoff boundary.
+        </desc>
         <path class="track-figure-bg" d="M0 0H620V360H0Z" />
-        <path class="track-figure-path signal-path" d="M84 184 H198 C238 184, 238 112, 284 112 H522" />
-        <path class="track-figure-path orange-path" d="M84 184 H198 C238 184, 238 256, 284 256 H522" />
+        <path class="track-figure-path signal-path" d="M70 180 H190 C230 180, 230 116, 276 116 H532" />
+        <path class="track-figure-path orange-path" d="M70 180 H190 C230 180, 230 244, 276 244 H532" />
+        <path class="track-figure-path" d="M310 116 V244" />
         <g class="track-figure-nodes hollow-nodes">
-          <circle cx="88" cy="184" r="18" />
-          <circle cx="198" cy="184" r="18" />
-          <circle cx="306" cy="112" r="18" />
-          <circle cx="306" cy="256" r="18" />
-          <circle cx="522" cy="112" r="18" />
-          <circle cx="522" cy="256" r="18" />
+          <circle cx="74" cy="180" r="18" />
+          <circle cx="190" cy="180" r="18" />
+          <circle cx="310" cy="116" r="18" />
+          <circle cx="310" cy="244" r="18" />
+          <circle cx="532" cy="116" r="18" />
+          <circle cx="532" cy="244" r="18" />
         </g>
-        <circle class="track-figure-core" cx="198" cy="184" r="34" />
+        <circle class="track-figure-core" cx="190" cy="180" r="34" />
+        <circle class="track-figure-accent" cx="310" cy="116" r="9" />
+        <circle class="track-figure-accent" cx="532" cy="244" r="9" />
       </svg>
       <figcaption id="workflow-figure-caption">
-        Visual orientation only: the diagram explains narrowing and evidence
-        flow, not autonomous capability or scientific authority.
+        Visual orientation only: the public page explains a governed record
+        chain, not independent AI understanding or scientific proof.
       </figcaption>
     </figure>
   </section>
@@ -150,11 +268,12 @@ const sourceLinks = [
   <section id="workflow-lifecycle" class="track-page-band" aria-labelledby="workflow-lifecycle-title">
     <div class="track-page-heading">
       <p class="eyebrow">Workflow lifecycle</p>
-      <h2 id="workflow-lifecycle-title">A request becomes one inspectable transaction.</h2>
+      <h2 id="workflow-lifecycle-title">The transaction gets narrower at each step.</h2>
       <p>
-        The public model is simple: classify the request, inspect source
-        authority, select one route, bind one AgentJob, record completion
-        evidence, and hand off only when the next bounded step is separate.
+        The safe model is not "ask the agent and accept the answer." The safe
+        model is classification, retrieval support, source inspection, one
+        route decision, one job boundary, completion evidence, and a separate
+        handoff if more work remains.
       </p>
     </div>
     <div class="track-status-grid">
@@ -168,22 +287,35 @@ const sourceLinks = [
     </div>
   </section>
 
-  <section class="track-page-band" aria-labelledby="workflow-records-title">
+  <section id="workflow-example" class="track-page-band" aria-labelledby="workflow-example-title">
     <div class="track-page-heading">
-      <p class="eyebrow">Record chain</p>
-      <h2 id="workflow-records-title">Each record narrows authority rather than widening it.</h2>
+      <p class="eyebrow">Concrete committed example</p>
+      <h2 id="workflow-example-title">RT-20260614-249 shows the chain without promoting the physics.</h2>
       <p>
-        Director decisions, AgentJobs, execution-role records, completions,
-        handoffs, and registry rows form a durable evidence chain. Corrections
-        move through superseding packets rather than quiet historical rewrites.
+        This example is useful because every important control surface has a
+        committed record: task, decision, AgentJob, completion, handoff, and
+        registry rows. The example demonstrates workflow accountability; it
+        does not establish the scientific conclusion.
       </p>
     </div>
+
+    <div class="metric-strip" aria-label="RT-20260614-249 record identifiers">
+      {exampleMeta.map((item) => (
+        <article>
+          <span>{item.label}</span>
+          <strong>{item.value}</strong>
+        </article>
+      ))}
+    </div>
+
     <div class="track-status-grid">
-      {recordCards.map((record) => (
+      {recordChain.map((record) => (
         <article class="track-status-card">
           <p>{record.label}</p>
           <h3>{record.title}</h3>
           <p>{record.body}</p>
+          <p><code>{record.path}</code></p>
+          <p>{record.boundary}</p>
         </article>
       ))}
     </div>
@@ -192,10 +324,11 @@ const sourceLinks = [
   <section class="track-page-band" aria-labelledby="workflow-boundaries-title">
     <div class="track-page-heading">
       <p class="eyebrow">Authority boundaries</p>
-      <h2 id="workflow-boundaries-title">Workflow discipline supports research without promoting claims.</h2>
+      <h2 id="workflow-boundaries-title">The records make the work inspectable, not automatically true.</h2>
       <p>
-        Phase 5A explains the operating model only. It does not add routing
-        behavior, alter role authority, or establish physics conclusions.
+        The route must keep operational evidence and scientific evidence
+        separate. That separation is especially important when a workflow
+        example mentions live physics labels.
       </p>
     </div>
     <div class="track-status-grid">
@@ -209,18 +342,40 @@ const sourceLinks = [
     </div>
   </section>
 
+  <section class="track-page-band" aria-labelledby="workflow-safe-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe readings</p>
+      <h2 id="workflow-safe-title">The page explains process discipline, not claim promotion.</h2>
+      <p>
+        The concrete example selected a next bounded packet while preserving
+        no coupling-law adoption, no matter-coupling derivation or adoption,
+        no <code>MetricData(E)</code>, no <code>g_eff</code> scope change, no Einstein
+        equations, no benchmark promotion, and no completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {safeUnsafeCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
   <section class="track-page-band" aria-labelledby="workflow-reader-title">
     <div class="track-page-heading">
       <p class="eyebrow">Reader path</p>
-      <h2 id="workflow-reader-title">Use this page with source authority and upstream records.</h2>
+      <h2 id="workflow-reader-title">Read the workflow with the surrounding authority pages.</h2>
       <p>
-        The website can explain the workflow, but the authoritative details
-        remain in tracked source files, registries, schemas, completions, and
-        handoffs in the upstream project.
+        Internal pages carry the main reader journey. Source links remain
+        provenance for readers who want to inspect the committed control
+        records directly.
       </p>
     </div>
     <div class="source-link-grid">
-      {sourceLinks.map((link) => (
+      {relatedLinks.map((link) => (
         <a class="source-link-card" href={link.href}>
           <span>{link.title}</span>
           <small>{link.body}</small>
@@ -234,10 +389,10 @@ const sourceLinks = [
       <p class="eyebrow">Source authority</p>
       <h2 id="workflow-authority-title">What this page can and cannot establish.</h2>
       <p>
-        This page can orient readers to bounded research-agent workflow. It
-        cannot change routing behavior, mutate control records, expand a role
-        template into task authority, treat validator success as scientific
-        proof, or replace human-gated decisions.
+        This page can orient readers to a committed workflow record chain. It
+        cannot change routing behavior, mutate control records, expand role
+        authority, treat validator success as scientific proof, or replace
+        human-gated decisions.
       </p>
     </div>
     <SourceNotice

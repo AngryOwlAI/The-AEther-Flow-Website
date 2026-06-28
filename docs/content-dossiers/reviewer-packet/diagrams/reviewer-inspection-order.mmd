@@ -1,0 +1,48 @@
+---
+config:
+  theme: base
+  themeVariables:
+    darkMode: true
+    background: "#000000"
+    primaryColor: "#050403"
+    primaryTextColor: "#fff8ef"
+    primaryBorderColor: "#d6c3b4"
+    lineColor: "#d6c3b4"
+    fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    fontSize: "16px"
+    clusterBkg: "#080401"
+    clusterBorder: "#d6c3b4"
+    edgeLabelBackground: "#000000"
+---
+
+flowchart LR
+  packet["Reviewer packet"] --> boundaries["Claim boundaries first"]
+  boundaries --> current["Current-state snapshot"]
+  boundaries --> distance["Distance-to-GR burdens"]
+  boundaries --> ontology["Ontology documents"]
+  current --> source["Source inspection"]
+  distance --> source
+  ontology --> source
+  source --> questions["Reviewer questions"]
+  questions --> pending["Human review pending"]
+  boundaries --> blocked["No completed derivation"]
+  blocked --> pending
+
+  classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
+  classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
+  classDef control fill:#270b01,stroke:#f87800,color:#fff8ef,stroke-width:2px;
+  classDef bridge fill:#164964,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
+  classDef decision fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2.25px;
+  classDef target fill:#2d7ea0,stroke:#f4d6a1,color:#ffffff,stroke-width:2px;
+  classDef success fill:#164964,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
+  classDef risk fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2px,stroke-dasharray: 5 5;
+  classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
+  classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
+
+  class packet source;
+  class boundaries,blocked boundary;
+  class current,distance,ontology control;
+  class source,questions bridge;
+  class pending risk;
+
+  linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

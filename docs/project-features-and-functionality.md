@@ -32,7 +32,8 @@ not a source-authority record and does not promote any physics claim.
 | `/project/source-authority/` | Trust-boundary page for source records, derivatives, generated surfaces, validators, and memory. | Use this route when public copy needs to clarify authority levels. |
 | `/resources/` | Manifest-backed resource index. | Keep resource cards internal-first and status-labeled. |
 | `/resources/documents/` | Ontology document library with direct PDF reading and TeX downloads. | Registered TeX carries source authority; PDFs are generated human-readable derivatives. |
-| `/research/equations/`, `/research/math-sample/`, `/research/map/` | Secondary research and rendering support routes. | Do not make these the primary public project journey without a new approval. |
+| `/project/source-authority/publication-and-provenance-system/` | Publication/provenance route replacing the old research-map prototype. | Use this when readers need route-map, page-provenance, source-manifest, asset-manifest, and hash-boundary context. |
+| `/resources/guided-starts/`, `/resources/reviewer-packet/` | Specialist guided starts and human-review-pending reviewer packet. | These assemble existing sourced pages and must not create new claims. |
 
 Primary navigation should remain concise: Overview, Physics, AI system,
 Operations, Source authority, and Resources.

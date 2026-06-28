@@ -1,0 +1,551 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import distanceSnapshot from "../../../../data/distance_to_gr_snapshot.json";
+import currentSnapshot from "../../../../data/physics_current_state_snapshot.json";
+import claimSnapshot from "../../../../data/claim_boundary_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsFiniteToyModels;
+const shortCommit = distanceSnapshot.source_commit
+  ? `${distanceSnapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+
+type DistanceRow = (typeof distanceSnapshot.groups)[number]["rows"][number];
+const distanceRows = distanceSnapshot.groups.flatMap((group) => group.rows) as DistanceRow[];
+const findRow = (burdenId: string) =>
+  distanceRows.find((row) => row.burden_id === burdenId);
+
+const toyRow = findRow("finite_toy_metric_response");
+const respRow = findRow("resp_lc");
+const variationRow = findRow("finite_variation_robustness");
+
+const metadata = [
+  {
+    label: "Finite toy row",
+    value: toyRow?.current_status ?? "unavailable",
+  },
+  {
+    label: "Source commit",
+    value: shortCommit,
+  },
+  {
+    label: "Latest current-state handoff",
+    value: currentSnapshot.latest_handoff_id,
+  },
+  {
+    label: "Claim-boundary rows",
+    value: String(claimSnapshot.row_count),
+  },
+];
+
+const plainRules = [
+  {
+    label: "Reader rule",
+    title: "A toy model is a controlled probe",
+    body: "It can expose whether a proposed source-to-response mechanism survives a small test. It is not a physical derivation.",
+  },
+  {
+    label: "Scope rule",
+    title: "frozen negative is local",
+    body: "The explicit-tag-only finite toy route is frozen locally. That is not a global theory rejection and not future source-extension impossibility.",
+  },
+  {
+    label: "Authority rule",
+    title: "draft/control stays below adoption",
+    body: "The construction, audit, and stress artifacts are controlled research records. They do not adopt toy tags as canonical ontology.",
+  },
+  {
+    label: "Promotion rule",
+    title: "Toy success or failure does not promote GR claims",
+    body: "The route authorizes no MetricData(E), no g_eff, no matter coupling, no Einstein equations, and no downstream GR promotion.",
+  },
+];
+
+const routeSequence = [
+  {
+    label: "RT-052",
+    title: "Selector chose the finite toy packet",
+    body: "A bounded selector picked a finite source set, source-to-response relation, toy metric-response analogue, and invariance-check target.",
+    points: [
+      "Status: packet selection only",
+      "Boundary: no adoption and no derivation claim",
+    ],
+  },
+  {
+    label: "RT-053",
+    title: "Construction produced draft/control scaffolding",
+    body: "The candidate used explicit source-side toy tags and a partial response relation. That made the mechanism inspectable but also exposed the tag dependence.",
+    points: [
+      "Toy terms: X_empty, R_toy, D_toy, A_toy",
+      "Boundary: not Resp_lc, not M_src, not g_eff",
+    ],
+  },
+  {
+    label: "RT-054",
+    title: "Audit passed only conditionally",
+    body: "The hidden-import audit found no target metric import only if the tags were treated as explicit toy source data. It left a tag-ontology block in place.",
+    points: [
+      "Status: conditional source-purity pass",
+      "Boundary: toy tags were not adopted as ontology",
+    ],
+  },
+  {
+    label: "RT-055",
+    title: "Refuter stress erased the tags",
+    body: "The tag-removal variation sent tagged objects to X_empty. The response relation became undefined, producing a scoped obstruction.",
+    points: [
+      "Freeze label: NDCL-RESP-LC-SELECTOR-UNDERDETERMINATION",
+      "Status: explicit-tag-only finite toy route frozen locally",
+    ],
+  },
+  {
+    label: "RT-056",
+    title: "Continuation moved to source-extension candidate work",
+    body: "The next selector did not promote the toy route. It chose a lower-authority constructive source-extension candidate route.",
+    points: [
+      "Status: source-extension candidate route selection",
+      "Boundary: source-extension selection is not source-extension adoption",
+    ],
+  },
+];
+
+const statusCards = [
+  {
+    label: "Distance-to-GR row",
+    title: "finite_toy_metric_response",
+    body: toyRow?.notes ?? "Snapshot row unavailable.",
+    points: [
+      `Status: ${toyRow?.current_status ?? "unavailable"}`,
+      `Blocking burden: ${toyRow?.blocking_burden ?? "unavailable"}`,
+      `Evidence: ${toyRow?.last_evidence_path ?? "unavailable"}`,
+    ],
+  },
+  {
+    label: "Related response row",
+    title: "resp_lc remains separate",
+    body:
+      respRow?.notes ??
+      "Resp_lc row unavailable. The finite toy freeze must still not be read as Resp_lc adoption.",
+    points: [
+      `Status: ${respRow?.current_status ?? "unavailable"}`,
+      "Boundary: old selector obstruction remains valid where source records preserve it",
+    ],
+  },
+  {
+    label: "Robustness context",
+    title: "finite variation remains a separate burden",
+    body:
+      variationRow?.notes ??
+      "Finite-variation robustness row unavailable. Robustness and adoption remain separate obligations.",
+    points: [
+      `Status: ${variationRow?.current_status ?? "unavailable"}`,
+      "Boundary: robustness evidence is not downstream GR promotion",
+    ],
+  },
+];
+
+const mechanismCards = [
+  {
+    label: "Construction",
+    title: "Explicit tags made the response visible",
+    body: "The construction used explicit source-side toy tags to define a partial readout. That visibility made the candidate auditable.",
+  },
+  {
+    label: "Stress",
+    title: "Tag removal exposed dependence",
+    body: "When the tags were erased, the tagged object collapsed to the untagged case and the response relation no longer returned a triple.",
+  },
+  {
+    label: "Conclusion",
+    title: "The tested route froze",
+    body: "The result is a scoped obstruction for the explicit-tag-only route, not a claim that all future finite toy routes are impossible.",
+  },
+];
+
+const hardBoundaries = [
+  {
+    label: "Ontology",
+    title: "toy tags are not canonical ontology",
+    body: "The audit allowed tags only as explicit toy source data. Website prose must not adopt them.",
+  },
+  {
+    label: "Metric",
+    title: "no MetricData(E)",
+    body: "The finite toy route does not construct or adopt the stronger MetricData(E) object.",
+  },
+  {
+    label: "Effective metric",
+    title: "no g_eff",
+    body: "The finite toy route does not construct, adopt, or expand g_eff status.",
+  },
+  {
+    label: "Matter",
+    title: "no matter coupling",
+    body: "The route does not derive same-metric matter behavior or adopt a coupling law.",
+  },
+  {
+    label: "Equations",
+    title: "no Einstein equations",
+    body: "The finite toy route does not derive Einstein equations.",
+  },
+  {
+    label: "Promotion",
+    title: "no downstream GR promotion",
+    body: "The route does not promote benchmark status or completed GR derivation.",
+  },
+  {
+    label: "Failure scope",
+    title: "not a global theory rejection",
+    body: "The frozen negative status applies to the explicit-tag-only toy route under the tested stress conditions.",
+  },
+  {
+    label: "Future routes",
+    title: "not future source-extension impossibility",
+    body: "The next selector preserved a source-extension continuation path rather than closing all future work.",
+  },
+];
+
+const specialistCards = [
+  {
+    label: "Selector evidence",
+    title: "RT-20260614-052",
+    body: "Finite toy route selection named the target components while preserving one bounded packet authority.",
+  },
+  {
+    label: "Construction evidence",
+    title: "RT-20260614-053",
+    body: "The model was explicitly `draft/control` scaffolding, not a canonical Resp_lc witness.",
+  },
+  {
+    label: "Audit evidence",
+    title: "RT-20260614-054",
+    body: "The audit reached a conditional source-purity pass with tag-ontology block.",
+  },
+  {
+    label: "Stress evidence",
+    title: "RT-20260614-055",
+    body: "The Refuter stress supplied tag-removal collapse and equivariant totalization obstructions.",
+  },
+  {
+    label: "Continuation evidence",
+    title: "RT-20260614-056",
+    body: "The next packet selected source_extension_candidate instead of promoting the frozen toy route.",
+  },
+];
+
+const summaryCards = [
+  {
+    label: "Safe summary",
+    title: "A local route froze because explicit tags did too much work.",
+    body: "The explicit-tag-only finite toy route is a frozen negative result. It shows a scoped obstruction under tag-removal stress while preserving draft/control and source-extension boundaries.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "The toy model proved or disproved the whole project.",
+    body: "It would be unsafe to infer physical metric derivation, toy-tag ontology adoption, future source-extension impossibility, global theory rejection, or completed GR derivation.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/project/physics/distance-to-gr/",
+    body: "Read the ledger row that records finite_toy_metric_response as frozen negative.",
+  },
+  {
+    title: "Metric response ladder",
+    href: "/project/physics/metric-response-ladder/",
+    body: "Separate Resp_lc, M_src, MetricData(E), scoped g_eff, matter coupling, equations, and benchmark obligations.",
+  },
+  {
+    title: "Source extension pipeline",
+    href: "/project/physics/source-extension-pipeline/",
+    body: "Understand why a later source-extension candidate route is not automatic adoption.",
+  },
+  {
+    title: "Gate Chair and human gates",
+    href: "/project/physics/gate-chair-and-human-gates/",
+    body: "Review why protected adoption decisions cannot be issued by website copy.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Inspect source-pinned allowed, forbidden, and gate-required wording.",
+  },
+];
+---
+
+<BaseLayout
+  title="Finite Toy Models"
+  description="Reader-facing finite toy model page explaining the explicit-tag-only frozen negative route without treating it as physical derivation or global theory rejection."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="finite-toy-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-010</p>
+      <h1 id="finite-toy-title">Finite Toy Models</h1>
+      <p class="overview-lead">
+        Finite toy models are small controlled probes. In this case, the
+        explicit-tag-only route was useful because it failed cleanly: tag-removal
+        stress exposed a scoped obstruction, so the route is `frozen negative`
+        without becoming a global theory rejection.
+      </p>
+      <div class="overview-actions" aria-label="Finite toy models page actions">
+        <a class="primary-link" href="#finite-toy-sequence">Read the route</a>
+        <a class="secondary-link" href="/project/physics/distance-to-gr/">Distance-to-GR</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="finite-toy-figure-caption">
+      <svg
+        viewBox="0 0 620 360"
+        role="img"
+        aria-labelledby="finite-toy-figure-title finite-toy-figure-desc"
+      >
+        <title id="finite-toy-figure-title">Animated finite toy stress boundary</title>
+        <desc id="finite-toy-figure-desc">
+          A small source-side test passes through audit and stress, then freezes
+          locally while downstream promotion remains outside the boundary.
+        </desc>
+        <defs>
+          <radialGradient id="finite-toy-glow" cx="50%" cy="50%" r="68%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.7" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.25" />
+            <stop offset="76%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="finite-toy-rail" x1="8%" x2="92%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="28%" stop-color="var(--owl-cyan-400)" stop-opacity="0.78" />
+            <stop offset="62%" stop-color="var(--owl-orange-100)" stop-opacity="0.82" />
+            <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="finite-toy-freeze" x1="12%" x2="88%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="50%" stop-color="var(--owl-orange-500)" stop-opacity="0.92" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="188" fill="url(#finite-toy-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="230" ry="124" />
+          <ellipse cx="310" cy="180" rx="156" ry="82" />
+          <path d="M88 220 C150 170, 224 154, 310 180 C396 206, 470 190, 532 140" />
+          <path d="M88 140 C154 190, 226 208, 310 180 C394 152, 466 170, 532 222" />
+        </g>
+        <path class="track-figure-path signal-path" d="M82 226 C152 166, 232 150, 310 180 C390 210, 466 190, 540 118" stroke="url(#finite-toy-rail)" />
+        <path class="track-figure-path orange-path" d="M84 126 C156 178, 234 218, 310 180 C390 140, 468 164, 540 250" stroke="url(#finite-toy-freeze)" />
+        <path class="track-figure-core" d="M310 118 L372 180 L310 242 L248 180 Z" />
+        <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+          <circle cx="112" cy="226" r="13" />
+          <circle cx="190" cy="132" r="13" />
+          <circle cx="310" cy="180" r="15" />
+          <circle cx="444" cy="132" r="13" />
+          <circle cx="522" cy="250" r="13" />
+        </g>
+      </svg>
+      <figcaption id="finite-toy-figure-caption">
+        Visual orientation only: a local toy-route freeze is not source-law
+        adoption, physical metric derivation, or rejection of the whole program.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-reading-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reading rule</p>
+      <h2 id="finite-toy-reading-title">A small model can be useful because it fails narrowly.</h2>
+      <p>
+        The finite toy result is valuable because it makes a hidden dependence
+        visible. The public reading must preserve both facts: the explicit-tag
+        route froze, and the freeze is local.
+      </p>
+    </div>
+    <EvidenceRail
+      items={plainRules}
+      ariaLabel="Finite toy model reader rules"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-metadata-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot metadata</p>
+      <h2 id="finite-toy-metadata-title">What source state this route reflects.</h2>
+      <p>
+        This page uses checked-in website snapshots generated from upstream
+        source at commit {distanceSnapshot.source_commit}. It does not read the
+        source repository during normal Astro builds.
+      </p>
+    </div>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="Finite toy model snapshot metadata"
+      className="snapshot-meta-grid"
+    />
+  </section>
+
+  <section id="finite-toy-sequence" class="track-page-band" aria-labelledby="finite-toy-sequence-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Route sequence</p>
+      <h2 id="finite-toy-sequence-title">From selector to frozen negative route.</h2>
+      <p>
+        The source records form a bounded packet chain. Each step is useful only
+        if its authority remains narrower than adoption.
+      </p>
+    </div>
+    <EvidenceRail
+      items={routeSequence}
+      ariaLabel="Finite toy model route sequence"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="finite-toy-diagram-title">The diagram shows sequence, not proof.</h2>
+      <p>
+        The static diagram is a reader aid. It is not source authority, not
+        physical metric derivation, and not rejection of the whole program.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="finite-toy-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-finite-toy-models.png"
+        alt="Diagram showing a finite toy route moving through selector, draft/control construction, conditional audit, tag-removal stress, frozen negative local route status, and source-extension continuation while blocked overreads remain separate."
+        loading="lazy"
+      />
+      <figcaption id="finite-toy-diagram-caption">
+        Static comprehension diagram: the explicit-tag-only finite toy route
+        froze locally without becoming a global theory rejection or downstream
+        GR promotion.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Ledger status</p>
+      <h2 id="finite-toy-status-title">The frozen row is one burden, not the whole ladder.</h2>
+      <p>
+        The cards below use checked-in snapshot rows to show the frozen finite
+        toy status beside related response and robustness obligations.
+      </p>
+    </div>
+    <EvidenceRail
+      items={statusCards}
+      ariaLabel="Finite toy model ledger status"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-mechanism-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Mechanism</p>
+      <h2 id="finite-toy-mechanism-title">The failure mode is tag dependence.</h2>
+      <p>
+        The route did not freeze because small models are useless. It froze
+        because this route depended on explicit tags that the stress test was
+        allowed to remove.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {mechanismCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-hard-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Hard boundaries</p>
+      <h2 id="finite-toy-hard-boundaries-title">What the frozen route does not authorize.</h2>
+      <p>
+        The finite toy route preserves no MetricData(E), no g_eff, no matter
+        coupling, no Einstein equations, no benchmark promotion, no downstream
+        GR promotion, and no completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {hardBoundaries.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-specialist-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Specialist source layer</p>
+      <h2 id="finite-toy-specialist-title">The technical result is a scoped obstruction.</h2>
+      <p>
+        Technical readers should read the task chain as a controlled negative
+        result: construction, audit, and stress supplied evidence for a local
+        route freeze, then the selector moved to a source-extension continuation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {specialistCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe readings</p>
+      <h2 id="finite-toy-summary-title">The safe summary is narrower than the dramatic one.</h2>
+      <p>
+        This page intentionally refuses both overread directions: it does not
+        turn a toy model into proof, and it does not turn a frozen route into
+        fatalism.
+      </p>
+    </div>
+    <EvidenceRail
+      items={summaryCards}
+      ariaLabel="Finite toy model safe and unsafe summaries"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-reader-path-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="finite-toy-reader-path-title">Use adjacent pages to keep the freeze in scale.</h2>
+      <p>
+        Primary reading stays inside the website. Provenance links remain
+        available in the source notice for direct source inspection.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedLinks}
+      ariaLabel="Finite toy model related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="finite-toy-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source authority</p>
+      <h2 id="finite-toy-source-title">The website explains the source records; it does not replace them.</h2>
+    </div>
+    <SourceNotice {...sourceNotice} />
+  </section>
+</BaseLayout>

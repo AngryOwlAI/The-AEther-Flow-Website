@@ -15,9 +15,10 @@ Human review status: pending maintainer review.
 
 ## Current page summary
 
-The page already states the conservative exact-GR benchmark boundary. The
-remediation adds a static ladder diagram and safe/unsafe comprehension blocks
-so readers do not treat benchmark compatibility as derivation.
+The page states the conservative exact-GR benchmark boundary and PG-008
+strengthens the public contrast between matching a benchmark, deriving that
+benchmark from source ontology, and promoting benchmark status through
+protected authority.
 
 ## Upstream source basis
 
@@ -26,14 +27,20 @@ so readers do not treat benchmark compatibility as derivation.
 | `github-facing/exact-gr-benchmark-boundary-explainer.md` | generated noncanonical reader surface | Benchmark matrix, forbidden conclusions, and safe summary. |
 | `registries/TEX_SOURCE_REGISTRY.csv` | registry | Registered TeX status and canonical/derivative distinctions. |
 | `registries/CLAIM_BOUNDARY_REGISTRY.csv` | registry | Forbidden benchmark-promotion claims. |
+| `registries/DISTANCE_TO_GR_LEDGER.csv` | registry | Current burden row status. |
 | `research_control/design/gr_derivation_burden_map.md` | control note | Source-side derivation burden chain. |
+| `research_control/program_state.yaml` | control state | Current task and latest handoff context. |
+| `research_control/handoffs/handoff-0280.yaml` | control handoff | Current downstream GR boundary context. |
 
 ## Source-derived topic outline
 
-1. Explain ordinary-GR observable-scale benchmark.
-2. Separate adoption, compatibility, derivation, and promotion.
-3. State forbidden conclusions.
-4. Provide safe and unsafe summary.
+1. Explain matching or using ordinary GR as the observable-scale benchmark.
+2. Contrast benchmark matching with first-principles source derivation.
+3. Separate adoption, compatibility, derivation, and promotion.
+4. Identify burden map, Distance-to-GR ledger, TeX registry, and claim-boundary
+   records.
+5. State forbidden conclusions.
+6. Provide safe and unsafe summary.
 
 ## Glossary
 
@@ -41,6 +48,7 @@ so readers do not treat benchmark compatibility as derivation.
 | --- | --- | --- |
 | Adoption | Ordinary GR behavior used as benchmark. | Not source derivation. |
 | Compatibility | Ontology held beside benchmark. | Weaker than derivation. |
+| Derivation | Source-side recovery of metric behavior, matter coupling, equations, and closure. | Not established by matching the benchmark. |
 | Promotion | Protected source-authority change. | Generated pages cannot issue it. |
 
 ## Claim boundaries and forbidden implications
@@ -50,6 +58,9 @@ so readers do not treat benchmark compatibility as derivation.
 - Observable-scale behavior remains ordinary GR.
 - Substrate derivation remains open.
 - Benchmark promotion remains gated.
+- Matching a benchmark is weaker than deriving it.
+- Specialist source records name limitations before public pages can be read as
+  current status.
 
 ### Forbidden implications
 
@@ -57,6 +68,8 @@ so readers do not treat benchmark compatibility as derivation.
 - Do not claim empirical deviation from ordinary GR at benchmark boundary.
 - Do not make public pages, PDFs, or generated derivatives scientific
   authority.
+- Do not claim benchmark promotion, Gate Chair approval, or completed
+  derivation from route clarity.
 
 ## Required comprehension blocks
 
@@ -66,7 +79,7 @@ so readers do not treat benchmark compatibility as derivation.
 | Plain summary | Yes | Conservative benchmark answer. |
 | Mechanism steps | Yes | Read answer, avoid derivation inference, reserve gates. |
 | Term group | Yes | Adoption, compatibility, promotion. |
-| Source basis | Optional | Existing SourceNotice covers refs. |
+| Source basis | Yes | Specialist source layer identifies burden map, Distance-to-GR ledger, TeX registry, and claim-boundary records. |
 | Boundary block | Yes | No empirical deviation, no source-to-metric claim. |
 | Diagram | Yes | Static boundary ladder. |
 | Equation walkthrough | No | No equation walkthrough required for this route. |
@@ -92,12 +105,14 @@ No equation walkthrough required for this route.
 ## Safe summary
 
 Safe summary: AEther Flow keeps ordinary GR as an exact operational benchmark
-while the substrate derivation remains open and claim-gated.
+while first-principles substrate derivation and benchmark promotion remain
+open, source-bound, and claim-gated.
 
 ## Unsafe summary
 
-Unsafe summary: The public page, ontology note, or a generated derivative
-proves GR from AEther-flow.
+Unsafe summary: The public page, ontology note, PDF derivative, validator,
+handoff, or generated derivative proves GR from AEther-flow or issues
+benchmark promotion.
 
 ## New-page audit
 
@@ -124,3 +139,18 @@ proves GR from AEther-flow.
 AEther-Flow Project. (2026).
 `github-facing/exact-gr-benchmark-boundary-explainer.md` [Generated
 noncanonical reader surface].
+
+AEther-Flow Project. (2026). `research_control/design/gr_derivation_burden_map.md`
+[GR derivation burden map].
+
+AEther-Flow Project. (2026). `registries/DISTANCE_TO_GR_LEDGER.csv`
+[Distance-to-GR ledger].
+
+AEther-Flow Project. (2026). `registries/TEX_SOURCE_REGISTRY.csv` [Registered
+TeX source registry].
+
+AEther-Flow Project. (2026). `registries/CLAIM_BOUNDARY_REGISTRY.csv`
+[Claim-boundary registry].
+
+The AEther Flow Website. (2026).
+`docs/system-analyses/exact-gr-benchmark-versus-derivation.md`.

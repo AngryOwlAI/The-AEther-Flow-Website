@@ -17,12 +17,10 @@ Human review status: pending maintainer review.
 
 ## Current page summary
 
-The current route renders through `InternalExplainerPage` and already explains
-the one-job frame, inherited authority, child `draft/control` status, blocking
-conflicts, and fused output. The rewrite should make the one-outer-AgentJob
-invariant the first substantive comprehension block, add a static
-Mermaid-authored diagram, add term definitions, and keep safe/unsafe summaries
-visible.
+The current route now renders as a direct Astro page. PG-016 makes the
+one-outer-AgentJob invariant the first substantive route boundary, preserves
+the static Mermaid-authored diagram, defines parent/child/fusion/conflict
+terms, and keeps safe/unsafe summaries visible.
 
 ## Upstream source basis
 
@@ -36,6 +34,7 @@ visible.
 | `.agents/schemas/AGENT_JOB_SCHEMA.md` | upstream schema | Supports AgentJob contract, conflict policy, and bounded write concepts referenced by the generated explainer. |
 | `.agents/schemas/EXECUTION_ROLE_SCHEMA.md` | upstream schema | Supports execution-role singularity and role-boundary concepts referenced by the generated explainer. |
 | `registries/AGENT_JOB_REGISTRY.csv` | upstream registry | Supports AgentJob registry evidence path referenced by the generated explainer. |
+| `docs/system-analyses/parent-child-parallel-synthesis-walkthrough.md` | website analysis | PG-016 route-specific review of lifecycle, inherited authority, and conflict boundaries. |
 
 ## Source-derived topic outline
 
@@ -155,11 +154,11 @@ review, or a mandatory mode for all non-physics work.
 
 ## References
 
-AEther-Flow Project. (2026).
-`github-facing/parent-child-synthesis-explainer.md` [Generated noncanonical
-reader surface].
+The AEther Flow. (2026a). *Parent-child parallel synthesis*
+[`github-facing/parent-child-synthesis-explainer.md`].
 
-The AEther Flow Website. (2026). `AGENTS.md` [Repository operating rules].
+The AEther Flow. (2026b). *Research control*
+[`research_control/README.md`].
 
-The AEther Flow Website. (2026).
-`public/files/manifests/page_route_map.json` [Route-to-source mapping contract].
+The AEther Flow Website. (2026a). *Parent-child parallel synthesis walkthrough system analysis*
+[`docs/system-analyses/parent-child-parallel-synthesis-walkthrough.md`].

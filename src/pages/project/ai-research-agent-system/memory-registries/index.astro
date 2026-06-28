@@ -9,32 +9,32 @@ const sourceNotice = projectSourceNoticeDefaults.aiMemoryRegistries;
 
 const layerCards = [
   {
-    label: "Canonical science",
-    title: "Registered TeX",
-    body: "Physics and derivational claims live in registered TeX sources and their claim-boundary context, not in search mirrors or generated notes.",
+    label: "Authority",
+    title: "Canonical source files",
+    body: "Tracked TeX, Markdown, and control files remain the material that must be inspected before claims or routing decisions rely on retrieval hits.",
   },
   {
-    label: "Control metadata",
-    title: "Registries",
-    body: "CSV registries carry routing, provenance, source-object hashes, generated-output tracking, and agent-queryable memory metadata.",
+    label: "Metadata",
+    title: "Registry rows",
+    body: "Registries carry provenance, source-object hashes, generated-output tracking, and memory metadata, but they do not replace the source files they describe.",
   },
   {
-    label: "Project guidance",
-    title: "Registered Markdown",
-    body: "README files, AGENTS guidance, role contracts, skill contracts, source specs, publication briefs, and design notes carry project-control guidance.",
+    label: "Retrieval",
+    title: "Memory surfaces",
+    body: "Wiki notes, semantic extracts, Obsidian mirrors, SQLite indexes, and local caches speed lookup and expose drift; they remain below tracked sources.",
   },
   {
-    label: "Retrieval layers",
-    title: "Wiki, semantic, local",
-    body: "Wiki notes, semantic extracts, Obsidian mirrors, SQLite indexes, and .local caches speed lookup but cannot override tracked source authority.",
+    label: "Receipt",
+    title: "Preflight evidence",
+    body: "A receipt can record status, query commands, returned IDs, canonical inspections, registries, paths, and hashes for later audit.",
   },
 ];
 
 const workflowCards = [
   {
     label: "Status",
-    title: "Check freshness",
-    body: "Memory status and freshness warnings reveal retrieval drift. A warning is a maintenance signal, not a new source claim.",
+    title: "Check retrieval freshness",
+    body: "Memory status and freshness warnings reveal retrieval drift. A warning is a maintenance signal, not a source claim.",
   },
   {
     label: "Lookup",
@@ -49,7 +49,7 @@ const workflowCards = [
   {
     label: "Receipt",
     title: "Record evidence",
-    body: "New control transactions that use memory preflight record status, queries, returned IDs, inspected paths, registries, and hashes.",
+    body: "Controlled transactions that use memory preflight record status, queries, returned IDs, inspected paths, registries, hashes, and authority notes.",
   },
 ];
 
@@ -70,9 +70,9 @@ const driftCards = [
     body: "Validate-only commands can show generated-state problems, but they do not refresh stale derivatives or promote generated artifacts.",
   },
   {
-    label: "Local cache",
-    title: "Never cite as authority",
-    body: ".local prompts, previews, run caches, and local retrieval indexes are convenience state, not committed evidence or scientific authority.",
+    label: "Private contents",
+    title: "Do not publish local memory",
+    body: "Public pages should explain the method and surface classes without exposing private prompt caches, local memory results, or uncommitted vault contents.",
   },
 ];
 
@@ -88,9 +88,9 @@ const sourceLinks = [
     body: "Read how memory preflight fits into bounded Director decisions and AgentJobs.",
   },
   {
-    title: "Roles and skills",
-    href: "/project/ai-research-agent-system/roles-and-skills/",
-    body: "Read how the memory skill remains subordinate to source authority and task-local permissions.",
+    title: "One bounded AgentJob",
+    href: "/project/ai-research-agent-system/one-bounded-agentjob/",
+    body: "Read how the preflight receipt fits into one auditable AgentJob boundary.",
   },
   {
     title: "Source authority page",
@@ -111,23 +111,23 @@ const sourceLinks = [
 ---
 
 <BaseLayout
-  title="Memory And Registries"
-  description="Reader-facing memory and registries page explaining source-first memory, wiki surfaces, registries, semantic extracts, and retrieval limits."
+  title="Memory Preflight And Source-First Retrieval"
+  description="Reader-facing memory preflight page explaining source-first retrieval, registry inspection, receipt evidence, and retrieval-layer limits."
   bodyClass="project-overview-page project-track-page"
 >
   <section class="track-page-hero" aria-labelledby="memory-title">
     <div class="track-page-hero-copy">
-      <p class="eyebrow">AI research-agent deep dive / Phase 5C</p>
-      <h1 id="memory-title">Memory And Registries</h1>
+      <p class="eyebrow">AI research-agent deep dive / PG-018</p>
+      <h1 id="memory-title">Memory Preflight And Source-First Retrieval</h1>
       <p class="overview-lead">
-        AEther Flow uses memory, registries, wiki notes, semantic extracts, and
-        local retrieval surfaces to find source evidence quickly. Their purpose
-        is navigation and orientation. They do not replace tracked source files,
-        registry rows, or source authority.
+        AEther Flow uses memory preflight to find likely source evidence before
+        controlled work begins. The useful result is not the memory hit itself;
+        it is the later inspection of tracked source files, registry rows, and
+        receipt evidence.
       </p>
       <div class="overview-actions" aria-label="Memory and registries page actions">
-        <a class="primary-link" href="/project/ai-research-agent-system/">Back to AI track</a>
-        <a class="secondary-link" href="#authority-layers">Read the layers</a>
+        <a class="primary-link" href="#query-workflow">Trace the preflight</a>
+        <a class="secondary-link" href="/project/source-authority/">Source authority</a>
       </div>
     </div>
 
@@ -146,8 +146,8 @@ const sourceLinks = [
         <circle class="track-figure-core" cx="310" cy="180" r="42" />
       </svg>
       <figcaption id="memory-figure-caption">
-        Visual orientation only: the diagram shows memory routing attention to
-        sources, not memory becoming a source of truth.
+        Visual orientation only: memory routes attention to sources; it does
+        not become a source of truth.
       </figcaption>
     </figure>
   </section>
@@ -157,11 +157,10 @@ const sourceLinks = [
   <section id="authority-layers" class="track-page-band" aria-labelledby="authority-layers-title">
     <div class="track-page-heading">
       <p class="eyebrow">Authority and retrieval layers</p>
-      <h2 id="authority-layers-title">Find with memory; verify with source.</h2>
+      <h2 id="authority-layers-title">Find with memory; decide with source.</h2>
       <p>
-        The memory system is useful because it is not asked to be authority.
-        It points readers and agents toward the tracked layer that owns the
-        question.
+        Memory is useful because it is not asked to be authority. It points
+        readers and agents toward the tracked layer that owns the question.
       </p>
     </div>
     <div class="track-status-grid">
@@ -178,11 +177,12 @@ const sourceLinks = [
   <section class="track-page-band" aria-labelledby="query-workflow-title">
     <div class="track-page-heading">
       <p class="eyebrow">Query workflow</p>
-      <h2 id="query-workflow-title">Memory preflight is a disciplined navigation step.</h2>
+      <h2 id="query-workflow-title">Memory preflight is a bounded navigation step.</h2>
       <p>
         The pattern is two-stage: use memory status and targeted lookup to find
         likely evidence, then inspect the named canonical source or registry
-        row before relying on it.
+        row before relying on it for routing, claim language, source selection,
+        or project-control changes.
       </p>
     </div>
     <div class="track-status-grid">
@@ -220,11 +220,11 @@ const sourceLinks = [
   <section class="track-page-band" aria-labelledby="memory-reader-title">
     <div class="track-page-heading">
       <p class="eyebrow">Reader path</p>
-      <h2 id="memory-reader-title">Read memory with workflow, roles, and source authority.</h2>
+      <h2 id="memory-reader-title">Read memory with workflow, AgentJobs, and source authority.</h2>
       <p>
         Memory and registries connect the AI workflow to source evidence:
-        workflow says when memory is used, roles and skills say who may use it,
-        and source authority says what must be inspected before claims move.
+        workflow says when memory is used, AgentJobs preserve the receipt, and
+        source authority says what must be inspected before claims move.
       </p>
     </div>
     <div class="source-link-grid">
@@ -242,11 +242,12 @@ const sourceLinks = [
       <p class="eyebrow">Source authority</p>
       <h2 id="memory-authority-title">What this page can and cannot establish.</h2>
       <p>
-        This page can orient readers to source-first memory, registry rows,
-        wiki notes, semantic extracts, Obsidian mirrors, SQLite indexes, and
-        local caches. It cannot change memory behavior, change registry schema,
-        override tracked files, promote generated derivatives, or establish
-        physics or workflow authority.
+        This page can orient readers to memory preflight, source-first
+        retrieval, registry inspection, wiki notes, semantic extracts,
+        Obsidian mirrors, SQLite indexes, and local caches. It cannot expose
+        private memory contents, change memory behavior, change registry
+        schema, override tracked files, promote generated derivatives, or
+        establish physics or workflow authority.
       </p>
     </div>
     <SourceNotice

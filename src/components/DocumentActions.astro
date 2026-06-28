@@ -4,10 +4,13 @@ import type { OntologyDocument } from "../lib/manifests";
 
 interface Props {
   documents: OntologyDocument[];
+  guidanceBySlug?: Record<string, { order: number; reason: string }>;
 }
 
-const { documents } = Astro.props;
+const { documents, guidanceBySlug = {} } = Astro.props;
 const byteFormatter = new Intl.NumberFormat("en-US");
+const shortCommit = (value?: string) => (value ? value.slice(0, 12) : undefined);
+const dateOnly = (value?: string) => (value ? value.slice(0, 10) : undefined);
 
 type DossierItem = {
   label: string;
@@ -18,10 +21,22 @@ type DossierItem = {
 
 const buildDocumentDossier = (document: OntologyDocument): DossierItem[] => {
   const items: DossierItem[] = [];
+  const guidance = guidanceBySlug[document.slug];
+  if (guidance) {
+    items.push({
+      label: "Reading order",
+      value: guidance.order,
+      body: guidance.reason,
+    });
+  }
   if (document.pdf) {
     items.push({
       label: "PDF bytes",
       value: byteFormatter.format(document.pdf.bytes),
+    });
+    items.push({
+      label: "PDF role",
+      value: "human-readable derivative",
     });
   }
   if (document.tex) {
@@ -40,6 +55,32 @@ const buildDocumentDossier = (document: OntologyDocument): DossierItem[] => {
     items.push({
       label: "Claim status",
       value: document.tex.source.claim_status,
+    });
+  }
+  if (document.tex?.source?.research_status) {
+    items.push({
+      label: "Research status",
+      value: document.tex.source.research_status,
+    });
+  }
+  if (document.tex?.source?.ontology_promotion_status) {
+    items.push({
+      label: "Ontology status",
+      value: document.tex.source.ontology_promotion_status,
+    });
+  }
+  const texSourceCommit = shortCommit(document.tex?.source?.source_commit);
+  if (texSourceCommit) {
+    items.push({
+      label: "TeX source commit",
+      value: texSourceCommit,
+    });
+  }
+  const importedAt = dateOnly(document.tex?.source?.generated_at ?? document.pdf?.source?.generated_at);
+  if (importedAt) {
+    items.push({
+      label: "Website import",
+      value: importedAt,
     });
   }
   if (document.tex?.source?.sha256) {
@@ -75,8 +116,9 @@ const buildDocumentDossier = (document: OntologyDocument): DossierItem[] => {
           <p class="download-kind">Ontology document</p>
           <h3>{document.title}</h3>
           <p>
-            Use the PDF for reading. Use the TeX file for source inspection when
-            comparing authority-bearing text and registry metadata.
+            {guidanceBySlug[document.slug]?.reason ?? "Use the PDF for reading."} Use the TeX
+            file for source inspection when comparing authority-bearing text,
+            source commits, and registry metadata.
           </p>
           <div class="document-actions" aria-label={`${document.title} actions`}>
             {document.pdf && <a class="primary-link" href={document.pdf.path}>Read PDF</a>}

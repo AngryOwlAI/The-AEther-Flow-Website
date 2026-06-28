@@ -3,6 +3,7 @@ import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DocumentActions from "../../components/DocumentActions.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
+import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDocumentsComprehension } from "../../lib/supportComprehensionContent";
 import { approvedDownloads, ontologyDocuments } from "../../lib/manifests";
@@ -17,19 +18,136 @@ const approvedDocumentLabel =
 
 const documentPathLinks = [
   {
-    title: "Physics Research",
-    href: "/project/physics/",
-    body: "Ontology, benchmark, open derivation, and claim-gate explainers.",
+    title: "Ontology vocabulary",
+    href: "/project/physics/ontology/",
+    body: "Start here for AEther, AEther-flow, vocabulary, and derivation boundaries.",
   },
   {
-    title: "AI Research-Agent System",
-    href: "/project/ai-research-agent-system/",
-    body: "Workflow, roles, memory, registries, and validation explainers.",
+    title: "Exact-GR benchmark boundary",
+    href: "/project/physics/exact-gr-benchmark/",
+    body: "Read why exact-GR benchmark material is not a full first-principles derivation.",
+  },
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Read where ontology documents sit relative to open derivation burdens and claim gates.",
   },
   {
     title: "Source authority",
     href: "/project/source-authority/",
     body: "How to interpret website pages, manifests, derivatives, and upstream records.",
+  },
+];
+
+const documentReadingGuide = [
+  {
+    label: "1",
+    title: "Read the vocabulary first",
+    body:
+      "Use the ontology page before opening PDFs so terms and claim boundaries are already visible.",
+    href: "/project/physics/ontology/",
+  },
+  {
+    label: "2",
+    title: "Check benchmark status",
+    body:
+      "Use the exact-GR benchmark page to keep canonical ontology material separate from completed derivation language.",
+    href: "/project/physics/exact-gr-benchmark/",
+  },
+  {
+    label: "3",
+    title: "Inspect source authority",
+    body:
+      "Use the source-authority page before relying on a website copy, PDF derivative, manifest row, or hash.",
+    href: "/project/source-authority/",
+  },
+  {
+    label: "4",
+    title: "Then open documents",
+    body:
+      "Use PDFs for reading and TeX downloads for source inspection against registry metadata.",
+  },
+];
+
+const specialistReadingOrder = [
+  {
+    slug: "aether_flow_foundations",
+    label: "1",
+    title: "Foundations",
+    body: "Start with the source vocabulary, core ontology terms, and baseline assumptions.",
+  },
+  {
+    slug: "aether_flow_dynamics",
+    label: "2",
+    title: "Dynamics",
+    body: "Read next for evolution and response structure after the foundations are clear.",
+  },
+  {
+    slug: "aether_flow_geometry",
+    label: "3",
+    title: "Geometry",
+    body: "Read after dynamics to inspect the geometric interpretation layer.",
+  },
+  {
+    slug: "aether_flow_relativistic_recovery",
+    label: "4",
+    title: "Relativistic Recovery",
+    body: "Read when comparing the ontology package with relativistic benchmark behavior.",
+  },
+  {
+    slug: "aether_flow_consistency",
+    label: "5",
+    title: "Consistency",
+    body: "Read after the main structure to inspect internal compatibility claims.",
+  },
+  {
+    slug: "aether_flow_exact_closure_note",
+    label: "6",
+    title: "Exact Closure Note",
+    body: "Read as a compact closure-oriented note after the baseline package.",
+  },
+  {
+    slug: "aether_flow_exact_closure_sequence_overview",
+    label: "7",
+    title: "Exact Closure Sequence Overview",
+    body: "Use as a guide to the closure-sequence material, not as independent proof.",
+  },
+  {
+    slug: "aether_flow_exact_closure_flagship_article",
+    label: "8",
+    title: "Exact Closure Flagship Article",
+    body: "Read last as the broadest synthesis after inspecting the narrower source files.",
+  },
+];
+
+const documentGuidanceBySlug = Object.fromEntries(
+  specialistReadingOrder.map((item) => [
+    item.slug,
+    {
+      order: Number(item.label),
+      reason: item.body,
+    },
+  ]),
+);
+
+const sourceStatusGuide = [
+  {
+    label: "TeX",
+    title: "Source-inspection target",
+    body:
+      "Registered TeX files carry source authority for their registered version, with claim status governed by upstream registry metadata.",
+  },
+  {
+    label: "PDF",
+    title: "Readable derivative",
+    body:
+      "PDFs are generated for human reading. Use them to understand the document, not to override TeX or registry status.",
+  },
+  {
+    label: "Website copy",
+    title: "Manifest-backed asset",
+    body:
+      "The website copy has a source commit, hash, and import timestamp. Release readiness still depends on curator source-drift review.",
   },
 ];
 ---
@@ -45,9 +163,10 @@ const documentPathLinks = [
         <p class="eyebrow">Ontology documents</p>
         <h1 id="documents-title">Ontology Documents</h1>
         <p class="lead">
-          This library serves the current canonical ontology PDF and TeX package
-          directly from the website. Registered TeX files carry source authority;
-          PDFs are generated human-readable derivatives.
+          This library serves approved website copies of ontology TeX and PDF
+          assets with a reading guide. Registered TeX files are the
+          source-inspection target for their registered version; PDFs are
+          generated human-readable derivatives.
         </p>
       </div>
       <SourceNotice
@@ -57,8 +176,8 @@ const documentPathLinks = [
           "AEther-Flow Project. (2026). ontology/tex/README.md",
           "AEther-Flow Project. (2026). registries/TEX_SOURCE_REGISTRY.csv",
         ]}
-        updated="2026-06-26"
-        note="This page indexes committed website copies of the canonical ontology package. It does not create new scientific content or supersede upstream registered TeX authority."
+        updated="2026-06-28"
+        note="This page indexes manifest-backed website copies of ontology assets. It does not create new scientific content, supersede upstream registered TeX authority, or resolve curator source-drift review."
       />
     </div>
 
@@ -113,12 +232,13 @@ const documentPathLinks = [
 
   <section class="content-band content-band-tight" aria-labelledby="document-path-title">
     <div class="section-header">
-      <p class="eyebrow">Reading path</p>
-      <h2 id="document-path-title">Use public pages before downloads</h2>
+      <p class="eyebrow">Read this first</p>
+      <h2 id="document-path-title">Use public pages before downloads.</h2>
       <p class="lead">
-        Source-backed explanation is available through the public project pages.
-        The documents below are for direct reading and inspection, with hashes
-        recorded in the public manifests.
+        Source-backed explanation is available through the public project pages
+        before the raw document files. The documents below are for direct
+        reading and inspection, with hashes and source commits recorded in the
+        public manifests.
       </p>
     </div>
     <EvidenceRail
@@ -132,20 +252,59 @@ const documentPathLinks = [
     />
   </section>
 
+  <section class="content-band content-band-tight" aria-labelledby="document-guide-title">
+    <div class="section-header">
+      <p class="eyebrow">Reader sequence</p>
+      <h2 id="document-guide-title">Follow the reading guide before treating files as evidence.</h2>
+      <p class="lead">
+        The guide below is a reader aid. It is not a new scientific dependency
+        proof, and it does not promote any document beyond its registry status.
+      </p>
+    </div>
+    <StatusDossier
+      items={documentReadingGuide}
+      ariaLabel="Ontology document read-this-first guide"
+      className="track-status-grid"
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="specialist-reading-title">
+    <div class="section-header">
+      <p class="eyebrow">Specialist order</p>
+      <h2 id="specialist-reading-title">Read narrow source files before broad synthesis.</h2>
+      <p class="lead">
+        This order follows the website ontology document order so specialists
+        can move from foundations toward closure-oriented synthesis with the
+        source-status boundary still visible.
+      </p>
+    </div>
+    <StatusDossier
+      items={specialistReadingOrder}
+      ariaLabel="Specialist ontology document reading order"
+      className="track-status-grid"
+    />
+  </section>
+
   <section class="content-band content-band-tight" aria-labelledby="document-status-title">
     <div class="section-header">
-      <p class="eyebrow">Manifest audit</p>
-      <h2 id="document-status-title">Document asset status</h2>
+      <p class="eyebrow">Source status</p>
+      <h2 id="document-status-title">Document asset status is not one flat label.</h2>
       <p class="lead">
         The current manifest contains {approvedDocumentDownloads.length}{" "}
         {approvedDocumentLabel} across {ontologyDocuments.length} ontology
-        document rows. Sample PDF and TeX fixtures are no longer part of the
-        public document manifest or UI.
+        document rows. Each card below exposes TeX authority, claim status,
+        promotion status, source commit, website import date, and hashes where
+        available.
       </p>
     </div>
+    <StatusDossier
+      items={sourceStatusGuide}
+      ariaLabel="Ontology document source-status guide"
+      className="track-status-grid"
+    />
   </section>
 
   <section class="content-band content-band-tight">
-    <DocumentActions documents={ontologyDocuments} />
+    <DocumentActions documents={ontologyDocuments} guidanceBySlug={documentGuidanceBySlug} />
   </section>
 </BaseLayout>

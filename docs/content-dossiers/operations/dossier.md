@@ -1,6 +1,6 @@
 # Operations Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -14,6 +14,18 @@ Status: draft dossier.
 
 The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
 
+## PG-021 route-family evidence review
+
+- Review artifact: `docs/system-analyses/remaining-operations-route-family.md`.
+- Review decision: Use the existing layered page model and tighten source
+  basis/provenance instead of creating a new route or changing operational
+  contracts.
+- Source state: Committed upstream source at
+  `01efc4f180221caf9425fbb24683eb54927b553e`.
+- Boundary: This route synthesizes the operations family and cannot authorize
+  work, change validators, change roles, close signals, or promote physics
+  claims.
+
 ## Upstream source basis
 
 | Source path | Status | Use in page |
@@ -24,6 +36,10 @@ The current page is an implemented reader-facing route. This dossier records the
 | `github-facing/documentation-curator-publication-process-explainer.md` | upstream source | Source basis for this route. |
 | `github-facing/project-system-improvement-explainer.md` | upstream source | Source basis for this route. |
 | `github-facing/technical-requirements-explainer.md` | upstream source | Source basis for this route. |
+| `research_control/README.md` | upstream control source | Source basis for routing, validation, and evidence boundaries. |
+| `research_control/design/documentation_curator_publication_process.md` | upstream control source | Source basis for publication discipline. |
+| `scripts/project_control/README.md` | upstream tooling source | Source basis for project-system classifier, resolver, sidecar, and receipt workflows. |
+| `tests/README.md` | upstream tooling source | Source basis for test evidence boundaries. |
 
 ## Source-derived topic outline
 
@@ -109,8 +125,8 @@ Unsafe summary: Operations pages authorize work, promote claims, prove physics, 
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-021.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg021-remaining-operations-family-qa.md`.
 
 ## References
 
@@ -120,3 +136,7 @@ Unsafe summary: Operations pages authorize work, promote claims, prove physics, 
 - AEther-Flow Project. (2026). `github-facing/documentation-curator-publication-process-explainer.md`.
 - AEther-Flow Project. (2026). `github-facing/project-system-improvement-explainer.md`.
 - AEther-Flow Project. (2026). `github-facing/technical-requirements-explainer.md`.
+- AEther-Flow Project. (2026). `research_control/README.md`.
+- AEther-Flow Project. (2026). `research_control/design/documentation_curator_publication_process.md`.
+- AEther-Flow Project. (2026). `scripts/project_control/README.md`.
+- AEther-Flow Project. (2026). `tests/README.md`.

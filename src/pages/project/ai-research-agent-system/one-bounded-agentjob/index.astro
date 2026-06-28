@@ -1,0 +1,403 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.aiOneBoundedAgentJob;
+
+const diagram = {
+  src: "/assets/diagrams/comprehension/ai-one-bounded-agentjob-envelope.png",
+  alt:
+    "One AgentJob envelope showing inputs, allowed reads, allowed writes, forbidden classes, validators, expected outputs, completion, handoff, and bounded PASS.",
+  caption:
+    "One AgentJob is an auditable permission envelope, not reusable authority or scientific proof.",
+};
+
+const identityCards = [
+  {
+    label: "AgentJob",
+    value: "AJ-RT-20260614-249-001",
+  },
+  {
+    label: "Task",
+    value: "RT-20260614-249",
+  },
+  {
+    label: "Decision",
+    value: "DDR-20260614-249",
+  },
+  {
+    label: "Role",
+    value: "theoretical-continuation-selector@0.1.0",
+  },
+  {
+    label: "Completion",
+    value: "AJC-AJ-RT-20260614-249-001",
+  },
+  {
+    label: "Handoff",
+    value: "handoff-0282",
+  },
+];
+
+const jobSurfaces = [
+  {
+    label: "Objective",
+    title: "One transaction",
+    body:
+      "Classify the post-Gate route and select exactly one next bounded packet while preserving adoption and downstream-claim blocks.",
+    boundary: "An objective is not broad permission to settle the topic.",
+  },
+  {
+    label: "Allowed reads",
+    title: "Evidence surface",
+    body:
+      "The job names prior tasks, handoffs, artifacts, roles, schemas, ledgers, and registries that may be inspected.",
+    boundary: "Read access does not adopt every possible claim in a source.",
+  },
+  {
+    label: "Allowed writes",
+    title: "Change surface",
+    body:
+      "The write list is limited to the task directory, selected control state, handoff records, and specific registries.",
+    boundary: "Anything outside the allowlist is out of scope.",
+  },
+  {
+    label: "Forbidden classes",
+    title: "Stop conditions",
+    body:
+      "The job forbids ontology writes, source-law adoption, target imports, role authority, validation authority, and downstream promotion.",
+    boundary: "A forbidden class needs a new route, stop, or human gate.",
+  },
+  {
+    label: "Validators",
+    title: "Receipt evidence",
+    body:
+      "Memory, project-control, research-control, generated-derivative, diff, and hygiene checks are named before completion.",
+    boundary: "PASS is operational evidence, not theorem proof.",
+  },
+  {
+    label: "Expected outputs",
+    title: "Closeout obligations",
+    body:
+      "The job lists child outputs, a fused artifact, completion YAML, and handoff files that the completion must account for.",
+    boundary: "Output existence is not claim adoption.",
+  },
+];
+
+const completionCards = [
+  {
+    label: "Completion",
+    title: "Command results and verdict",
+    body:
+      "The completion records output paths, command evidence, validation status, verdict, uncertainty, and next recommendation.",
+  },
+  {
+    label: "Handoff",
+    title: "Separate next packet",
+    body:
+      "The handoff recommends one future criteria-formalization packet and repeats the claims that remain blocked.",
+  },
+  {
+    label: "Registry",
+    title: "Discovery and checkability",
+    body:
+      "The AgentJob registry links the job to the task, decision, completion path, status, timestamps, and concise summary.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Permission",
+    title: "not reusable authority",
+    body: "A historical AgentJob does not grant future write permission.",
+  },
+  {
+    label: "Truth",
+    title: "not broad project truth",
+    body: "One transaction can record what it did; it cannot settle the whole project.",
+  },
+  {
+    label: "Validation",
+    title: "not proof by PASS",
+    body: "Validators can accept a checked state without proving physics.",
+  },
+  {
+    label: "Output",
+    title: "not adoption by existence",
+    body: "An expected output can exist as evidence without becoming an adopted claim.",
+  },
+  {
+    label: "Privacy",
+    title: "no private local details",
+    body: "The page uses repo-relative committed paths and avoids local runtime context.",
+  },
+  {
+    label: "Handoff",
+    title: "not current-job extension",
+    body: "The next packet requires its own decision and job.",
+  },
+];
+
+const safeUnsafeCards = [
+  {
+    label: "Safe summary",
+    title: "One bounded AgentJob makes one transaction auditable.",
+    body:
+      "The job names its objective, inputs, allowed paths, forbidden classes, validators, expected outputs, completion record, and handoff boundary.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "One AgentJob settles broad project truth.",
+    body:
+      "It would be unsafe to treat one job as reusable permission, theorem proof, benchmark promotion, or adoption of expected outputs.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Research-agent workflow",
+    href: "/project/ai-research-agent-system/workflow/",
+    body: "See the full request-to-decision-to-job-to-handoff record chain.",
+  },
+  {
+    title: "Roles and skills",
+    href: "/project/ai-research-agent-system/roles-and-skills/",
+    body: "Read why a role template is not current task authority by itself.",
+  },
+  {
+    title: "Memory and registries",
+    href: "/project/ai-research-agent-system/memory-registries/",
+    body: "Read how retrieval and registry rows support source inspection.",
+  },
+  {
+    title: "Director and AgentJob lifecycle",
+    href: "/project/operations/director-agentjob-lifecycle/",
+    body: "Inspect how AgentJobs fit with decisions, completions, and handoffs.",
+  },
+  {
+    title: "Validator and operator workflow",
+    href: "/project/operations/validator-operator-workflow/",
+    body: "Read why PASS is bounded operational evidence.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Review why source files remain authoritative over reader surfaces.",
+  },
+];
+---
+
+<BaseLayout
+  title="One Bounded AgentJob In Practice"
+  description="Concrete AgentJob walkthrough explaining inputs, allowed paths, forbidden classes, validators, outputs, completion, and handoff without treating one job as broad proof."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="one-agentjob-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent deep dive / PG-015</p>
+      <h1 id="one-agentjob-title">One Bounded AgentJob In Practice</h1>
+      <p class="overview-lead">
+        An AgentJob is a permission envelope for one auditable transaction. It
+        names the objective, inputs, allowed paths, forbidden classes,
+        validators, expected outputs, completion record, and handoff boundary.
+      </p>
+      <div class="overview-actions" aria-label="One bounded AgentJob page actions">
+        <a class="primary-link" href="#agentjob-example">Inspect the example</a>
+        <a class="secondary-link" href="/project/ai-research-agent-system/workflow/">Workflow context</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="one-agentjob-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="one-agentjob-figure-title one-agentjob-figure-desc">
+        <title id="one-agentjob-figure-title">Bounded AgentJob permission envelope</title>
+        <desc id="one-agentjob-figure-desc">
+          One central job envelope receives input, separates allowed and
+          forbidden surfaces, runs validators, and closes with completion and a
+          separate handoff.
+        </desc>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <path class="track-figure-path signal-path" d="M82 180 H212 C250 180, 250 118, 308 118 H530" />
+        <path class="track-figure-path orange-path" d="M82 180 H212 C250 180, 250 242, 308 242 H530" />
+        <path class="track-figure-path" d="M212 104 V256" />
+        <path class="track-figure-path" d="M408 118 V242" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="82" cy="180" r="18" />
+          <circle cx="212" cy="118" r="18" />
+          <circle cx="212" cy="242" r="18" />
+          <circle cx="408" cy="118" r="18" />
+          <circle cx="408" cy="242" r="18" />
+          <circle cx="530" cy="118" r="18" />
+          <circle cx="530" cy="242" r="18" />
+        </g>
+        <circle class="track-figure-core" cx="212" cy="180" r="42" />
+        <circle class="track-figure-accent" cx="408" cy="118" r="9" />
+        <circle class="track-figure-accent" cx="408" cy="242" r="9" />
+      </svg>
+      <figcaption id="one-agentjob-figure-caption">
+        Visual orientation only: the AgentJob narrows authority for one
+        transaction and does not create reusable permission.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="one-agentjob-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Static comprehension diagram</p>
+      <h2 id="one-agentjob-diagram-title">Read the job as an envelope, not an answer machine.</h2>
+      <p>
+        The diagram is a static reader aid generated from the dossier Mermaid
+        source. It does not replace the committed AgentJob, completion, handoff,
+        or registry records.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure">
+      <img src={diagram.src} alt={diagram.alt} loading="lazy" decoding="async" />
+      <figcaption>{diagram.caption}</figcaption>
+    </figure>
+  </section>
+
+  <section id="agentjob-example" class="track-page-band" aria-labelledby="agentjob-example-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Concrete committed example</p>
+      <h2 id="agentjob-example-title">AJ-RT-20260614-249-001 shows one bounded job.</h2>
+      <p>
+        This example is source-approved and committed. It is shown as an
+        operations pattern, not as proof of the physics topic it worked near.
+      </p>
+    </div>
+
+    <div class="metric-strip" aria-label="AJ-RT-20260614-249-001 record identifiers">
+      {identityCards.map((item) => (
+        <article>
+          <span>{item.label}</span>
+          <strong>{item.value}</strong>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-surfaces-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">AgentJob surfaces</p>
+      <h2 id="agentjob-surfaces-title">The job states what is allowed, required, and forbidden.</h2>
+      <p>
+        A bounded job is useful because it is inspectable at transaction scale.
+        The same record names what may be read, what may be written, what must
+        be produced, and what must remain outside scope.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {jobSurfaces.map((surface) => (
+        <article class="track-status-card">
+          <p>{surface.label}</p>
+          <h3>{surface.title}</h3>
+          <p>{surface.body}</p>
+          <p>{surface.boundary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-closeout-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Closeout chain</p>
+      <h2 id="agentjob-closeout-title">Completion and handoff close this job rather than widening it.</h2>
+      <p>
+        The completion records what happened. The handoff recommends what may
+        happen next. Neither one turns the past AgentJob into live authority for
+        another task.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {completionCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Boundaries</p>
+      <h2 id="agentjob-boundary-title">One job is intentionally small.</h2>
+      <p>
+        Small scope is the control mechanism. It prevents a workflow receipt
+        from becoming broad project truth, reusable permission, or physics
+        promotion.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((boundary) => (
+        <article class="track-status-card">
+          <p>{boundary.label}</p>
+          <h3>{boundary.title}</h3>
+          <p>{boundary.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-safe-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe summaries</p>
+      <h2 id="agentjob-safe-title">Safe summary also names the unsafe one.</h2>
+      <p>
+        The RT-249 AgentJob preserved no coupling-law adoption, no
+        matter-coupling derivation or adoption, no <code>MetricData(E)</code>, no
+        {" "}<code>g_eff</code>, no Einstein equations, no benchmark promotion, and no
+        completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {safeUnsafeCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-related-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="agentjob-related-title">Use related internal routes before source inspection.</h2>
+      <p>
+        Internal routes give the reading path. Source links remain provenance
+        for readers who want to inspect committed records directly.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {relatedLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="agentjob-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="agentjob-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can explain one committed AgentJob for readers. It cannot
+        authorize a new job, reuse a past allowlist as permission, mutate
+        completion evidence, treat PASS as scientific proof, or promote a
+        physics claim.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

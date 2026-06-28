@@ -56,9 +56,63 @@ DIAGRAMS = [
         output=Path("public/assets/diagrams/comprehension/physics-claim-gates-lifecycle.png"),
     ),
     DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-source-extension-pipeline/diagrams/"
+            "source-extension-pipeline.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/physics-source-extension-pipeline.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-gate-chair-and-human-gates/diagrams/"
+            "human-gate-authority.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/physics-gate-chair-human-gates.png"),
+    ),
+    DiagramTarget(
         source=Path("docs/content-dossiers/physics-current-state/diagrams/snapshot-boundary.mmd"),
         output=Path(
             "public/assets/diagrams/comprehension/physics-current-state-snapshot-boundary.png"
+        ),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-distance-to-gr/diagrams/"
+            "distance-dashboard-boundary.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/physics-distance-to-gr-dashboard.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-metric-response-ladder/diagrams/"
+            "metric-response-ladder.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/physics-metric-response-ladder.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-finite-toy-models/diagrams/"
+            "finite-toy-freeze.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/physics-finite-toy-models.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-no-target-import-discipline/diagrams/"
+            "no-target-import-discipline.mmd"
+        ),
+        output=Path(
+            "public/assets/diagrams/comprehension/physics-no-target-import-discipline.png"
+        ),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/physics-negative-results-and-frozen-routes/diagrams/"
+            "negative-results-freeze-flow.mmd"
+        ),
+        output=Path(
+            "public/assets/diagrams/comprehension/"
+            "physics-negative-results-and-frozen-routes.png"
         ),
     ),
     DiagramTarget(
@@ -73,8 +127,26 @@ DIAGRAMS = [
         output=Path("public/assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png"),
     ),
     DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/ai-one-bounded-agentjob/diagrams/"
+            "one-agentjob-envelope.mmd"
+        ),
+        output=Path(
+            "public/assets/diagrams/comprehension/ai-one-bounded-agentjob-envelope.png"
+        ),
+    ),
+    DiagramTarget(
         source=Path("docs/content-dossiers/ai-roles-and-skills/diagrams/role-authority-stack.mmd"),
         output=Path("public/assets/diagrams/comprehension/ai-roles-authority-stack.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/ai-role-authority-inspector/diagrams/"
+            "role-authority-inspection-stack.mmd"
+        ),
+        output=Path(
+            "public/assets/diagrams/comprehension/ai-role-authority-inspector-stack.png"
+        ),
     ),
     DiagramTarget(
         source=Path(
@@ -133,6 +205,43 @@ DIAGRAMS = [
     DiagramTarget(
         source=Path("docs/content-dossiers/source-authority/diagrams/source-authority-ladder.mmd"),
         output=Path("public/assets/diagrams/comprehension/source-authority-ladder.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/source-authority-claim-boundary-explorer/diagrams/"
+            "claim-boundary-explorer.mmd"
+        ),
+        output=Path(
+            "public/assets/diagrams/comprehension/source-authority-claim-boundary-explorer.png"
+        ),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/source-authority-publication-and-provenance-system/"
+            "diagrams/publication-provenance-system.mmd"
+        ),
+        output=Path(
+            "public/assets/diagrams/comprehension/"
+            "source-authority-publication-provenance-system.png"
+        ),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/guided-start-general-public/diagrams/"
+            "general-public-guided-start.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/general-public-guided-start.png"),
+    ),
+    DiagramTarget(
+        source=Path(
+            "docs/content-dossiers/guided-start-specialists/diagrams/"
+            "specialist-guided-starts.mmd"
+        ),
+        output=Path("public/assets/diagrams/comprehension/specialist-guided-starts.png"),
+    ),
+    DiagramTarget(
+        source=Path("docs/content-dossiers/reviewer-packet/diagrams/reviewer-inspection-order.mmd"),
+        output=Path("public/assets/diagrams/comprehension/reviewer-inspection-order.png"),
     ),
     DiagramTarget(
         source=Path("docs/content-dossiers/resources-index/diagrams/resource-manifest-chain.mmd"),

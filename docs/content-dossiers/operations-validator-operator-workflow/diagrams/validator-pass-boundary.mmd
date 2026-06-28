@@ -15,14 +15,23 @@ config:
     edgeLabelBackground: "#000000"
 ---
 
-flowchart LR
-  change["Changed surface"] --> choose["Choose focused checks"]
-  choose --> run["Run validators or tests"]
-  run --> receipt["Record command evidence"]
-  receipt --> pass["PASS for checked state"]
-  pass --> boundary["No theorem, gate, or role promotion"]
-  choose --> screenshot["Rendered evidence when public UI changed"]
-  screenshot --> receipt
+flowchart TB
+  change["Changed authority surface"]
+  choose["Choose focused checks"]
+  run["Run validator or test"]
+  receipt["Command or screenshot receipt"]
+  pass["PASS for checked state"]
+  gate{"Claim promotion needed?"}
+  boundary["No theorem, Gate Chair, role, or physics promotion"]
+
+  change --> choose
+  choose --> run
+  choose -. "public UI" .-> receipt
+  run --> receipt
+  receipt --> pass
+  pass --> gate
+  gate -. "protected path" .-> boundary
+  pass -. "forbidden overread" .-> boundary
 
   classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
   classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
@@ -35,8 +44,10 @@ flowchart LR
   classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
   classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
 
+  class change,choose,run control;
+  class receipt source;
+  class pass success;
+  class gate decision;
   class boundary boundary;
-  class choose,run,screenshot control;
-  class change,pass,receipt source;
 
   linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

@@ -1,6 +1,7 @@
 ---
 import ComprehensionBlocks from "./ComprehensionBlocks.astro";
 import EvidenceRail from "./EvidenceRail.astro";
+import ProjectRouteGrid from "./ProjectRouteGrid.astro";
 import SourceNotice from "./SourceNotice.astro";
 import StatusDossier from "./StatusDossier.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -9,9 +10,22 @@ import type { InternalExplainer } from "../lib/internalExplainers";
 interface Props {
   page: InternalExplainer;
   visualVariant?: "operations";
+  routeGrid?: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    routes: Array<{
+      title: string;
+      href: string;
+      phase: string;
+      status: string;
+      description: string;
+    }>;
+    ariaLabel: string;
+  };
 }
 
-const { page, visualVariant } = Astro.props;
+const { page, visualVariant, routeGrid } = Astro.props;
 const isOperationsVisual = visualVariant === "operations";
 ---
 
@@ -149,6 +163,17 @@ const isOperationsVisual = visualVariant === "operations";
       />
     </section>
   ))}
+
+  {routeGrid && (
+    <section class="track-page-band" aria-labelledby="internal-route-grid-title">
+      <div class="track-page-heading">
+        <p class="eyebrow">{routeGrid.eyebrow}</p>
+        <h2 id="internal-route-grid-title">{routeGrid.title}</h2>
+        <p>{routeGrid.body}</p>
+      </div>
+      <ProjectRouteGrid routes={routeGrid.routes} ariaLabel={routeGrid.ariaLabel} />
+    </section>
+  )}
 
   <section class="track-page-band" aria-labelledby="related-reading-title">
     <div class="track-page-heading">

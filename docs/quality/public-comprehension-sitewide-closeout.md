@@ -42,15 +42,24 @@ Supporting surfaces:
 - `/resources/documents/`
 - `/resources/diagrams/`
 
-## Routes Deferred Or Left As Support
+## Retired Prototype Routes
 
-The secondary research routes remain support and QA surfaces rather than public-comprehension remediation targets in this rollout:
+RT-001 retired the secondary research prototype routes from the public Astro
+route tree:
 
 - `/research/equations/`
 - `/research/map/`
 - `/research/math-sample/`
 
-Decision: keep these routes as technical support pages for KaTeX, map, and sample rendering behavior. Do not promote them into the primary reader journey without a future content-gap audit and route-specific dossier.
+Replacement routes:
+
+- `/research` and `/research/map/` redirect to
+  `/project/source-authority/publication-and-provenance-system/`.
+- `/equations`, `/research/equations/`, and `/research/math-sample/` redirect
+  to `/resources/documents/`.
+
+Decision: remove sample/demo routes from public exposure rather than promote
+them into the primary reader journey.
 
 ## Evidence
 

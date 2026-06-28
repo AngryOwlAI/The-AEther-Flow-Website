@@ -1,0 +1,494 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import claimSnapshot from "../../../../data/claim_boundary_snapshot.json";
+import currentSnapshot from "../../../../data/physics_current_state_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsNoTargetImportDiscipline;
+
+const metadata = [
+  {
+    label: "Criterion status",
+    value: "criterion_formalized_pending_audit",
+  },
+  {
+    label: "Guard source",
+    value: "no_target_import_guard_map.md",
+  },
+  {
+    label: "Current-state handoff",
+    value: currentSnapshot.latest_handoff_id,
+  },
+  {
+    label: "Claim-boundary rows",
+    value: String(claimSnapshot.row_count),
+  },
+];
+
+const readerRules = [
+  {
+    label: "Reader rule",
+    title: "Do not borrow the target geometry",
+    body: "A source-side derivation cannot quietly use the target topology, target atlas, target metric, proper time, detector semantics, or benchmark behavior it is supposed to recover.",
+  },
+  {
+    label: "Audit rule",
+    title: "The target context is a diagnostic handle",
+    body: "The formal criterion writes C_src(E; T) only to test whether target context changes the construction. T is not an allowed proof input.",
+  },
+  {
+    label: "Process rule",
+    title: "Receipts are not proof",
+    body: "Validator PASS, registry rows, role identity, handoffs, generated derivatives, local caches, file order, and commits can document process; they cannot prove physics.",
+  },
+  {
+    label: "Scope rule",
+    title: "The guardrail is not completed proof",
+    body: "No-target-import discipline is necessary methodology. It does not show that all future work is target-import-free or that any candidate is adopted.",
+  },
+];
+
+const importClasses = [
+  {
+    label: "Target topology",
+    title: "Open sets and neighborhoods",
+    body: "Target open sets, target neighborhoods, or target manifold topology cannot enter as source premises.",
+  },
+  {
+    label: "Target atlas",
+    title: "Charts and differentiability",
+    body: "Target coordinate charts, smooth atlases, differentiability classes, and target transition maps cannot be smuggled into source tokens.",
+  },
+  {
+    label: "Target metric",
+    title: "Metric, signature, and proper time",
+    body: "Metric tensors, Lorentzian signature, causal cones, line elements, distances, and proper-time semantics cannot be used as proof inputs.",
+  },
+  {
+    label: "Observer semantics",
+    title: "Detector behavior is not source data",
+    body: "Detector response, clock behavior, and empirical observer protocol cannot be treated as source-side proof.",
+  },
+  {
+    label: "Benchmark success",
+    title: "Exact-GR behavior is not source evidence",
+    body: "Benchmark compatibility can be a later test. It cannot be inserted as a premise for a source construction.",
+  },
+  {
+    label: "Process authority",
+    title: "Metadata is not mathematics",
+    body: "Validators, registries, roles, handoffs, generated surfaces, local cache state, file order, commits, and recency do not prove a theorem.",
+  },
+];
+
+const sourceSideCards = [
+  {
+    label: "Allowed basis",
+    title: "Use explicit source data",
+    body: "A candidate can use source supports, overlap predicates, transition tokens, certificates, and bottom guards when those are explicitly licensed by the source record.",
+  },
+  {
+    label: "Factorization",
+    title: "Route proof steps through S(E)",
+    body: "Every non-bottom premise and conclusion should be expressible from source data rather than target or process context.",
+  },
+  {
+    label: "Replacement",
+    title: "Change T without changing the proof",
+    body: "If target context replacement changes the non-bottom construction, the proof has depended on a forbidden import.",
+  },
+  {
+    label: "Fail-closed",
+    title: "Record an obstruction instead of continuing",
+    body: "A failed branch should return Bottom_src or record OB-MSRC-TARGET-IMPORT, OB-MSRC-PROCESS-AUTHORITY-LAUNDERING, or OB-MSRC-LOCAL-GLOBAL-GAP.",
+  },
+];
+
+const equationCards = [
+  {
+    label: "C_src(E; T)",
+    title: "Candidate with an audit slot",
+    body: "The semicolon marks diagnostic target context: topology, atlas, metric, proper time, detector semantics, benchmark success, and process metadata.",
+  },
+  {
+    label: "F_src(E)",
+    title: "Source-only construction",
+    body: "This side depends on source data alone. If a proof step cannot be written this way, the criterion fails at that step.",
+  },
+  {
+    label: "Meaning",
+    title: "Invariance under target-context replacement",
+    body: "Changing the target context should not change the non-bottom construction or proof-step content.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Scope",
+    title: "not proof that all future work is clean",
+    body: "The page explains a discipline. It cannot imply all target imports have been eliminated from all future work.",
+  },
+  {
+    label: "M_src",
+    title: "no M_src adoption",
+    body: "RT-20260614-128 formalized a criterion pending audit. It did not adopt full M_src.",
+  },
+  {
+    label: "Metric",
+    title: "no g_eff",
+    body: "No-target-import discipline does not define, construct, adopt, or expand g_eff.",
+  },
+  {
+    label: "Matter",
+    title: "no matter coupling",
+    body: "The guardrail does not derive matter coupling or adopt a coupling law.",
+  },
+  {
+    label: "Equations",
+    title: "no Einstein equations",
+    body: "Blocking target imports does not derive Einstein equations.",
+  },
+  {
+    label: "Promotion",
+    title: "no downstream GR promotion",
+    body: "The criterion does not promote benchmark status or completed derivation.",
+  },
+];
+
+const specialistCards = [
+  {
+    label: "RT-105",
+    title: "Guard map control surface",
+    body: "The no-target-import guard map was created as project-system control evidence with no physics claim status change.",
+  },
+  {
+    label: "RT-128",
+    title: "Criterion formalized pending audit",
+    body: "The artifact defines source-only factorization and target-context replacement invariance for the M_src candidate route.",
+  },
+  {
+    label: "Review",
+    title: "Criterion theorem is not adoption",
+    body: "The parent conflict review fused mathematical and philosophical views while preserving no M_src adoption and no downstream promotion.",
+  },
+  {
+    label: "Registry",
+    title: "Boundary language remains upstream",
+    body: "Claim-boundary rows forbid target topology, atlas, metric, proper time, detector semantics, benchmark success as proof, and process authority as proof.",
+  },
+];
+
+const summaryCards = [
+  {
+    label: "Safe summary",
+    title: "A necessary filter, not a finished derivation.",
+    body: "No-target-import discipline blocks hidden target and process inputs by requiring source-only factorization and fail-closed handling. The current criterion is formalized pending audit.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "The guardrail proves all candidates are clean.",
+    body: "It would be unsafe to infer all future target imports are eliminated, M_src is adopted, benchmark success is source evidence, or validators and registries can prove physics.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Source extension pipeline",
+    href: "/project/physics/source-extension-pipeline/",
+    body: "Understand where hidden-import audits sit inside proposal, stress, selector, and human-gated review.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Inspect source-pinned allowed, forbidden, and gate-required language.",
+  },
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/project/physics/distance-to-gr/",
+    body: "Read why methodology criteria do not unlock downstream burdens.",
+  },
+  {
+    title: "Metric response ladder",
+    href: "/project/physics/metric-response-ladder/",
+    body: "Separate M_src, MetricData(E), g_eff, matter coupling, equations, and benchmark promotion.",
+  },
+  {
+    title: "Gate Chair and human gates",
+    href: "/project/physics/gate-chair-and-human-gates/",
+    body: "Review why protected adoption cannot be issued by validators or website prose.",
+  },
+];
+---
+
+<BaseLayout
+  title="No-Target-Import Discipline"
+  description="Reader-facing methodology page explaining hidden target-import and process-authority guards without presenting them as completed physics proof."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="no-target-import-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-011</p>
+      <h1 id="no-target-import-title">No-Target-Import Discipline</h1>
+      <p class="overview-lead">
+        No-target-import discipline prevents a source-side derivation from
+        quietly borrowing the target topology, target atlas, target metric,
+        benchmark success, or process authority it is supposed to justify. It
+        is a guardrail, not completed physics proof.
+      </p>
+      <div class="overview-actions" aria-label="No-target-import page actions">
+        <a class="primary-link" href="#no-target-import-classes">Read the guardrail</a>
+        <a class="secondary-link" href="/project/source-authority/claim-boundary-explorer/">Claim boundaries</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="no-target-import-figure-caption">
+      <svg
+        viewBox="0 0 620 360"
+        role="img"
+        aria-labelledby="no-target-import-figure-title no-target-import-figure-desc"
+      >
+        <title id="no-target-import-figure-title">Animated no-target-import boundary</title>
+        <desc id="no-target-import-figure-desc">
+          Source data moves through an audit boundary while target-context and
+          process-authority lanes are blocked into fail-closed outcomes.
+        </desc>
+        <defs>
+          <radialGradient id="no-target-import-glow" cx="50%" cy="50%" r="68%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.28" />
+            <stop offset="76%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="no-target-source-rail" x1="8%" x2="92%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="30%" stop-color="var(--owl-cyan-400)" stop-opacity="0.8" />
+            <stop offset="70%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="no-target-guard-rail" x1="12%" x2="88%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="50%" stop-color="var(--owl-orange-500)" stop-opacity="0.95" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="190" fill="url(#no-target-import-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="230" ry="124" />
+          <ellipse cx="310" cy="180" rx="160" ry="84" />
+          <path d="M80 180 C150 118, 232 114, 310 156 C390 200, 468 194, 540 132" />
+          <path d="M80 180 C150 242, 232 246, 310 204 C390 160, 468 166, 540 228" />
+        </g>
+        <path class="track-figure-path signal-path" d="M86 184 C160 150, 234 150, 310 180 C390 210, 462 198, 536 146" stroke="url(#no-target-source-rail)" />
+        <path class="track-figure-path orange-path" d="M112 96 C192 128, 250 150, 310 180 C372 210, 428 232, 508 264" stroke="url(#no-target-guard-rail)" />
+        <path class="track-figure-core" d="M310 118 L372 180 L310 242 L248 180 Z" />
+        <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+          <circle cx="104" cy="184" r="13" />
+          <circle cx="176" cy="118" r="13" />
+          <circle cx="310" cy="180" r="15" />
+          <circle cx="444" cy="132" r="13" />
+          <circle cx="514" cy="264" r="13" />
+        </g>
+      </svg>
+      <figcaption id="no-target-import-figure-caption">
+        Visual orientation only: a guardrail can block forbidden inputs without
+        proving adoption or eliminating every future target-import risk.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-reading-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reading rule</p>
+      <h2 id="no-target-import-reading-title">The guardrail protects derivation integrity.</h2>
+      <p>
+        The discipline is simple: do not use the target structure as a hidden
+        premise, and do not use project-control metadata as mathematical
+        evidence.
+      </p>
+    </div>
+    <EvidenceRail
+      items={readerRules}
+      ariaLabel="No-target-import reader rules"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-metadata-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Status metadata</p>
+      <h2 id="no-target-import-metadata-title">What source state this route reflects.</h2>
+      <p>
+        The page explains a control surface and a formal criterion. The current
+        criterion status is `criterion_formalized_pending_audit`.
+      </p>
+    </div>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="No-target-import status metadata"
+      className="snapshot-meta-grid"
+    />
+  </section>
+
+  <section id="no-target-import-classes" class="track-page-band" aria-labelledby="no-target-import-classes-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Forbidden imports</p>
+      <h2 id="no-target-import-classes-title">What cannot enter as source evidence.</h2>
+      <p>
+        These categories are blocked because each one can make a source-side
+        proof look stronger than it is by importing target structure or process
+        authority.
+      </p>
+    </div>
+    <EvidenceRail
+      items={importClasses}
+      ariaLabel="No-target-import forbidden import classes"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-source-side-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-side construction</p>
+      <h2 id="no-target-import-source-side-title">The acceptable path is source-only and fail-closed.</h2>
+      <p>
+        The discipline does not forbid construction. It requires construction
+        to stay inside licensed source data and to stop cleanly when a forbidden
+        dependency appears.
+      </p>
+    </div>
+    <EvidenceRail
+      items={sourceSideCards}
+      ariaLabel="No-target-import source-side construction rules"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="no-target-import-diagram-title">The diagram shows filtering, not proof.</h2>
+      <p>
+        The static diagram shows source-only factorization and fail-closed
+        blocking. It is not proof that all future work is target-import-free.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="no-target-import-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-no-target-import-discipline.png"
+        alt="Diagram showing source data entering a source-only factorization check while target topology, target atlas, target metric, benchmark success, and process authority are blocked into fail-closed obstruction labels."
+        loading="lazy"
+      />
+      <figcaption id="no-target-import-diagram-caption">
+        Static comprehension diagram: no-target-import discipline blocks
+        target-context and process-authority imports without proving candidate
+        adoption.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-equation-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Criterion walkthrough</p>
+      <h2 id="no-target-import-equation-title">Read C_src(E; T)=F_src(E) as an audit criterion.</h2>
+      <p>
+        The expression does not prove adoption. It states the test: the
+        candidate written with a diagnostic target-context slot must factor
+        through a source-only construction, or each non-bottom proof step must
+        be expressible without target context.
+      </p>
+    </div>
+    <EvidenceRail
+      items={equationCards}
+      ariaLabel="No-target-import criterion equation walkthrough"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-hard-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Hard boundaries</p>
+      <h2 id="no-target-import-hard-boundaries-title">What the discipline does not authorize.</h2>
+      <p>
+        The guardrail preserves no `M_src` adoption, no g_eff, no matter
+        coupling, no Einstein equations, no benchmark promotion, no downstream
+        GR promotion, and no completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-specialist-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Specialist source layer</p>
+      <h2 id="no-target-import-specialist-title">The source records separate guardrail, criterion, audit, and adoption.</h2>
+      <p>
+        Specialist readers should inspect the guard map, criterion artifact,
+        completion record, and claim-boundary rows before treating any
+        no-target-import statement as proof.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {specialistCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe readings</p>
+      <h2 id="no-target-import-summary-title">A guardrail can be necessary without being sufficient.</h2>
+      <p>
+        This route should improve trust by making the discipline visible, not
+        by pretending the discipline has already solved every future case.
+      </p>
+    </div>
+    <EvidenceRail
+      items={summaryCards}
+      ariaLabel="No-target-import safe and unsafe summaries"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-reader-path-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="no-target-import-reader-path-title">Use adjacent pages to separate method from promotion.</h2>
+      <p>
+        Primary reading stays inside the website. Provenance links remain
+        available in the source notice for direct source inspection.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedLinks}
+      ariaLabel="No-target-import related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-target-import-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source authority</p>
+      <h2 id="no-target-import-source-title">The website explains the guardrail; source records control its authority.</h2>
+    </div>
+    <SourceNotice {...sourceNotice} />
+  </section>
+</BaseLayout>

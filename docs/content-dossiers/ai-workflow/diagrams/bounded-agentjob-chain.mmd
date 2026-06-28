@@ -16,27 +16,26 @@ config:
 ---
 
 flowchart LR
-  request["Request"] --> decision["Director decision"]
-  decision --> agentjob["AgentJob allowlist"]
-  agentjob --> execute["Execute one transaction"]
-  execute --> validate["Validators and evidence"]
-  validate --> completion["Completion record"]
-  completion --> handoff["Handoff only if next step is separate"]
-  validate --> limit["PASS remains bounded"]
+  request["Request classified"] --> memory["Memory preflight"]
+  memory --> source["Canonical source check"]
+  source --> decision["Director decision"]
+  decision --> job["One AgentJob allowlist"]
+  job --> work["Execute bounded work"]
+  work --> completion["Completion evidence"]
+  completion --> handoff["Handoff if next step is separate"]
+  completion --> registry["Registry rows"]
+  completion -.-> pass["PASS is bounded"]
 
   classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
   classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
   classDef control fill:#270b01,stroke:#f87800,color:#fff8ef,stroke-width:2px;
   classDef bridge fill:#164964,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
   classDef decision fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2.25px;
-  classDef target fill:#2d7ea0,stroke:#f4d6a1,color:#ffffff,stroke-width:2px;
-  classDef success fill:#164964,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
-  classDef risk fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2px,stroke-dasharray: 5 5;
-  classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
-  classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
+  classDef risk fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
 
-  class limit boundary;
-  class agentjob,decision,execute,validate control;
-  class completion,handoff,request source;
+  class request,memory,source source;
+  class decision,job,work control;
+  class completion,handoff,registry bridge;
+  class pass risk;
 
   linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

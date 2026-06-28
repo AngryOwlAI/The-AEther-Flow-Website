@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-27T17:27:16Z",
+  "generated_at": "2026-06-28T03:43:22Z",
   "items": [
     {
       "path": "/assets/diagrams/publication-layer-map.svg",
@@ -195,12 +195,68 @@
       "source_ref": "source_manifest:comprehension_physics_claim_gates_lifecycle"
     },
     {
+      "path": "/assets/diagrams/comprehension/physics-source-extension-pipeline.png",
+      "kind": "diagram",
+      "bytes": 45806,
+      "sha256": "09af9cc499ec2d6c5dcc79c8d122edf268f7a11341d7efb9e45df16583da58bf",
+      "title": "Physics Source Extension Pipeline",
+      "source_ref": "source_manifest:comprehension_physics_source_extension_pipeline"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-gate-chair-human-gates.png",
+      "kind": "diagram",
+      "bytes": 67431,
+      "sha256": "2660687e72a7694091fd3979783ec170cb15cd269d3df7040ce55ef058da6127",
+      "title": "Physics Gate Chair Human Gates",
+      "source_ref": "source_manifest:comprehension_physics_gate_chair_human_gates"
+    },
+    {
       "path": "/assets/diagrams/comprehension/physics-current-state-snapshot-boundary.png",
       "kind": "diagram",
       "bytes": 48446,
       "sha256": "cd673173b866931a0dd37b60b348f2a81d4ad928992bb5ad985676182bda6995",
       "title": "Physics Current-State Snapshot Boundary Map",
       "source_ref": "source_manifest:comprehension_physics_current_state_snapshot_boundary"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-distance-to-gr-dashboard.png",
+      "kind": "diagram",
+      "bytes": 75202,
+      "sha256": "66debb3ce5f02e63c4724ecc1d9af421c0770b4728221ef1bb257e0d47420382",
+      "title": "Physics Distance-To-GR Dashboard Boundary",
+      "source_ref": "source_manifest:comprehension_physics_distance_to_gr_dashboard"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-metric-response-ladder.png",
+      "kind": "diagram",
+      "bytes": 38525,
+      "sha256": "86002feba51b6c58d061c1bf45a98bdde87d8808e38f25e31160fcc87bb9a2d2",
+      "title": "Physics Metric Response Ladder",
+      "source_ref": "source_manifest:comprehension_physics_metric_response_ladder"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-finite-toy-models.png",
+      "kind": "diagram",
+      "bytes": 32010,
+      "sha256": "abe09ea51eb0478f5038e49da7759d213df1cd93ae7379c3499409e75a9be2d0",
+      "title": "Physics Finite Toy Model Frozen Route",
+      "source_ref": "source_manifest:comprehension_physics_finite_toy_models"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-no-target-import-discipline.png",
+      "kind": "diagram",
+      "bytes": 43300,
+      "sha256": "6400c2678a07326f4bc4253628562a4a3029d359b424dd13c625072a87ab003a",
+      "title": "Physics No-Target-Import Discipline",
+      "source_ref": "source_manifest:comprehension_physics_no_target_import_discipline"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/physics-negative-results-and-frozen-routes.png",
+      "kind": "diagram",
+      "bytes": 26068,
+      "sha256": "65b09a0d4191edc97643f2d4d2e095d77e54a9d44971a2d854f3439e49a835ef",
+      "title": "Physics Negative Results And Frozen Routes",
+      "source_ref": "source_manifest:comprehension_physics_negative_results_frozen_routes"
     },
     {
       "path": "/assets/diagrams/comprehension/ai-system-task-authority-map.png",
@@ -213,10 +269,18 @@
     {
       "path": "/assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png",
       "kind": "diagram",
-      "bytes": 24125,
-      "sha256": "78058d9550af0dd58cc6ae61ac6f905613192b813eb7b939f5da4e38faa7dc71",
+      "bytes": 27080,
+      "sha256": "2eff327a67c5a3c6eee65b5c254359662902d5e42b2b9fecce64403d47ad1da7",
       "title": "AI Workflow Bounded AgentJob Chain",
       "source_ref": "source_manifest:comprehension_ai_workflow_bounded_agentjob_chain"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/ai-one-bounded-agentjob-envelope.png",
+      "kind": "diagram",
+      "bytes": 102412,
+      "sha256": "5e3d1e23c663c773d98c64daa1eaf276d1da70c43f8a20b81c1096b74b9cd2a8",
+      "title": "AI One Bounded AgentJob Envelope",
+      "source_ref": "source_manifest:comprehension_ai_one_bounded_agentjob_envelope"
     },
     {
       "path": "/assets/diagrams/comprehension/ai-roles-authority-stack.png",
@@ -227,10 +291,18 @@
       "source_ref": "source_manifest:comprehension_ai_roles_authority_stack"
     },
     {
+      "path": "/assets/diagrams/comprehension/ai-role-authority-inspector-stack.png",
+      "kind": "diagram",
+      "bytes": 102564,
+      "sha256": "a1b9647ef60eba825f9b11f21a1f71b6106faab85eeef2977732eaba66ec9224",
+      "title": "AI Role Authority Inspector Stack",
+      "source_ref": "source_manifest:comprehension_ai_role_authority_inspector_stack"
+    },
+    {
       "path": "/assets/diagrams/comprehension/ai-memory-source-first-layers.png",
       "kind": "diagram",
-      "bytes": 84514,
-      "sha256": "1f082d06a8800997082092f47c75043cdfe6f85b848b0eb1b0c9c365786529ff",
+      "bytes": 103516,
+      "sha256": "b61f2f756d0be8fee4b0804dc97e959520d5bcb86720908be8471476dc4cb988",
       "title": "AI Memory Source-First Layers",
       "source_ref": "source_manifest:comprehension_ai_memory_source_first_layers"
     },
@@ -261,8 +333,8 @@
     {
       "path": "/assets/diagrams/comprehension/operations-validator-pass-boundary.png",
       "kind": "diagram",
-      "bytes": 30598,
-      "sha256": "f53c437ee0f84bd1e7ecc2478de426ac45c53335c993c75a77b2f75d21bf8b90",
+      "bytes": 102155,
+      "sha256": "f540d8985f8f1c64a8d0699ae3cfcc0c86bad86b2753c8988ea0a0f0726c5a50",
       "title": "Operations Validator PASS Boundary",
       "source_ref": "source_manifest:comprehension_operations_validator_pass_boundary"
     },
@@ -277,8 +349,8 @@
     {
       "path": "/assets/diagrams/comprehension/operations-project-system-improvement-loop.png",
       "kind": "diagram",
-      "bytes": 33500,
-      "sha256": "2fe61e6c7494465d893079cf0574fe31700883c2c12796ff9fbde008225728e5",
+      "bytes": 124168,
+      "sha256": "b5e166d390f0b56aae720260c242292035c022f77c04d9925deee8a81f766e09",
       "title": "Operations Project-System Improvement Loop",
       "source_ref": "source_manifest:comprehension_operations_project_system_improvement_loop"
     },
@@ -297,6 +369,46 @@
       "sha256": "7e77ceac409ae414efa7226b67b02197d3cd4c7eae6f17ba8feaf193cae358b4",
       "title": "Source Authority Ladder",
       "source_ref": "source_manifest:comprehension_source_authority_ladder"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/source-authority-claim-boundary-explorer.png",
+      "kind": "diagram",
+      "bytes": 82278,
+      "sha256": "96ffb9443fb15c167975d4c6d4f508e616b417a30fe2d30e0e68b2e763517e57",
+      "title": "Source Authority Claim Boundary Explorer",
+      "source_ref": "source_manifest:comprehension_source_authority_claim_boundary_explorer"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/source-authority-publication-provenance-system.png",
+      "kind": "diagram",
+      "bytes": 38218,
+      "sha256": "670f63de582fd837c1644aa1fe3a2a24ba40611b8add5e9761f832ebbf50c88c",
+      "title": "Source Authority Publication Provenance System",
+      "source_ref": "source_manifest:comprehension_source_authority_publication_provenance_system"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/general-public-guided-start.png",
+      "kind": "diagram",
+      "bytes": 43975,
+      "sha256": "e09a8d98bbcbeaed2027c43a7cde663c88748f288b54df8871b2fb877bc68444",
+      "title": "General-Public Guided Start",
+      "source_ref": "source_manifest:comprehension_general_public_guided_start"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/specialist-guided-starts.png",
+      "kind": "diagram",
+      "bytes": 113202,
+      "sha256": "80a7dd8b88c89d5a3674815c961266e9b4f3bee74b12b1ca88643f1156cb73e8",
+      "title": "Specialist Guided Starts",
+      "source_ref": "source_manifest:comprehension_specialist_guided_starts"
+    },
+    {
+      "path": "/assets/diagrams/comprehension/reviewer-inspection-order.png",
+      "kind": "diagram",
+      "bytes": 51825,
+      "sha256": "e31c4c393728a7bb259133f4e4e04d34cb4264a41adc7190459cdb8c5d3967b1",
+      "title": "Reviewer Inspection Order",
+      "source_ref": "source_manifest:comprehension_reviewer_inspection_order"
     },
     {
       "path": "/assets/diagrams/comprehension/resources-manifest-chain.png",

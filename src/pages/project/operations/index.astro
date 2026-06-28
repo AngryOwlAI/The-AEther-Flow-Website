@@ -1,6 +1,17 @@
 ---
 import InternalExplainerPage from "../../../components/InternalExplainerPage.astro";
 import { internalExplainers } from "../../../lib/internalExplainers";
+import { projectOperationsRoutes } from "../../../lib/siteContent";
 ---
 
-<InternalExplainerPage page={internalExplainers.operations} visualVariant="operations" />
+<InternalExplainerPage
+  page={internalExplainers.operations}
+  visualVariant="operations"
+  routeGrid={{
+    eyebrow: "Operations routes",
+    title: "Use the route that matches the operational question.",
+    body: "The operations landing now exposes the internal route family directly: lifecycle, routing, validation, publication, system improvement, and tool requirements.",
+    routes: projectOperationsRoutes,
+    ariaLabel: "Operations route family",
+  }}
+/>

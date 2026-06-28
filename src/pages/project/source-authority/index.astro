@@ -3,7 +3,7 @@ import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import SourceNotice from "../../../components/SourceNotice.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { sourceAuthorityComprehension } from "../../../lib/supportComprehensionContent";
-import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+import { projectSourceAuthorityRoutes, projectSourceNoticeDefaults } from "../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.sourceAuthority;
 
@@ -55,6 +55,11 @@ const readerRules = [
 
 const pageLinks = [
   {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Inspect a source-pinned registry snapshot showing allowed, forbidden, and gate-required wording.",
+  },
+  {
     title: "Project overview",
     href: "/project/overview/",
     body: "Return to the public two-track overview.",
@@ -96,6 +101,11 @@ const sourceLinks = [
     title: "Publication brief registry",
     href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PUBLICATION_BRIEF_REGISTRY.csv",
     body: "Registry surface for reviewed public explainer pages and source-material bindings.",
+  },
+  {
+    title: "Claim boundary registry",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+    body: "Registry source for allowed, forbidden, and gate-required claim language.",
   },
 ];
 ---
@@ -243,6 +253,29 @@ const sourceLinks = [
           <h3>{rule.title}</h3>
           <p>{rule.body}</p>
         </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-boundary-explorer-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim boundaries</p>
+      <h2 id="claim-boundary-explorer-title">Make allowed and forbidden wording inspectable.</h2>
+      <p>
+        The claim-boundary explorer is now the internal route for reading a
+        checked-in registry snapshot. It helps readers see what a row permits,
+        what it blocks, and what remains gated without turning the website into
+        registry authority.
+      </p>
+    </div>
+    <div class="planned-route-grid">
+      {projectSourceAuthorityRoutes.map((route) => (
+        <a class="planned-route-card planned-route-card-link" href={route.href}>
+          <p>{route.phase}</p>
+          <h3>{route.title}</h3>
+          <span>{route.description}</span>
+          <span class="planned-route-action">Open route</span>
+        </a>
       ))}
     </div>
   </section>

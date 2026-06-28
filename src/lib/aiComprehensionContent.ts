@@ -115,13 +115,13 @@ export const aiWorkflowComprehension: ComprehensionContent = {
   eyebrow: "Workflow comprehension",
   title: "A research request becomes one inspectable transaction.",
   summary:
-    "The workflow page explains classification, Director decision, AgentJob allowlist, execution evidence, completion, and handoff as a record chain.",
+    "The workflow page explains classification, memory/source checks, Director decision, AgentJob allowlist, completion evidence, handoff, and registry rows as a record chain.",
   diagram: {
     src: "/assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png",
     alt:
-      "Diagram showing a request flowing through Director decision, AgentJob allowlist, execution, validators, completion, handoff, and a bounded PASS limit.",
+      "Diagram showing a request narrowing through memory preflight, canonical source check, Director decision, one AgentJob, completion, handoff, registry rows, and a bounded PASS limit.",
     caption:
-      "Static comprehension diagram: each workflow record narrows the current transaction instead of broadening authority.",
+      "Static comprehension diagram: each workflow record narrows the current transaction; PASS remains bounded to the checked state.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-workflow/diagrams/bounded-agentjob-chain.mmd. Manifest id: comprehension_ai_workflow_bounded_agentjob_chain.",
   },
@@ -129,7 +129,12 @@ export const aiWorkflowComprehension: ComprehensionContent = {
     {
       title: "Classify before executing",
       body:
-        "The request must be sorted into the correct lane before any job can claim authority to read, write, or validate.",
+        "The request must be sorted into research continuation, project-system repair, documentation, validation, or a stop condition before write authority exists.",
+    },
+    {
+      title: "Verify retrieval against sources",
+      body:
+        "Memory preflight can locate prior decisions, but any useful hit must resolve back to a canonical source file or registry row.",
     },
     {
       title: "Bind the allowlist",
@@ -143,6 +148,11 @@ export const aiWorkflowComprehension: ComprehensionContent = {
     },
   ],
   terms: [
+    {
+      term: "Memory preflight",
+      definition: "A retrieval step that finds likely prior records and source objects.",
+      boundary: "Navigation only; not source authority.",
+    },
     {
       term: "Director decision",
       definition: "A routing record that selects one path and may preserve rejected alternatives.",
@@ -158,6 +168,11 @@ export const aiWorkflowComprehension: ComprehensionContent = {
       definition: "A separate continuation recommendation when another bounded step is needed.",
       boundary: "Not a silent extension of the current job.",
     },
+    {
+      term: "Registry row",
+      definition: "A discoverability and validation reference for tracked records.",
+      boundary: "Not theorem proof by itself.",
+    },
   ],
   boundaries: [
     {
@@ -170,8 +185,25 @@ export const aiWorkflowComprehension: ComprehensionContent = {
       title: "Command success is scoped",
       body: "Validator PASS accepts a checked state; it does not prove a theorem or issue a human-gated decision.",
     },
+    {
+      label: "AI limit",
+      title: "No autonomous proof claim",
+      body: "The workflow records governed tool use and source inspection; it does not make model behavior scientific authority.",
+    },
   ],
   relatedRoutes: [
+    {
+      label: routeLabel,
+      title: "Memory and registries",
+      href: "/project/ai-research-agent-system/memory-registries/",
+      body: "Why retrieval support remains subordinate to tracked sources.",
+    },
+    {
+      label: routeLabel,
+      title: "Roles and skills",
+      href: "/project/ai-research-agent-system/roles-and-skills/",
+      body: "How role labels, contracts, execution records, and allowlists differ.",
+    },
     {
       label: routeLabel,
       title: "Director and AgentJob lifecycle",
@@ -191,12 +223,17 @@ export const aiWorkflowComprehension: ComprehensionContent = {
       title: "Research-agent workflow explainer",
       body: "Generated noncanonical upstream explainer: github-facing/research-agent-workflow-explainer.md.",
     },
+    {
+      label: sourceLabel,
+      title: "RT-20260614-249 record chain",
+      body: "Committed control records used as the concrete example: task, Director decision, AgentJob, completion, handoff, and registry rows.",
+    },
   ],
   safeUnsafe: {
     safe:
-      "Research-agent workflow makes one transaction inspectable through classification, a Director decision, one AgentJob, validation evidence, completion, and handoff when needed.",
+      "Research-agent workflow makes one transaction inspectable through classification, memory/source checks, a Director decision, one AgentJob, completion evidence, handoff when needed, and registry discovery.",
     unsafe:
-      "A workflow page can expand scope, treat PASS as theorem proof, bypass human gates, or let memory and generated pages replace source inspection.",
+      "A workflow page can expand scope, treat PASS as theorem proof, bypass human gates, anthropomorphize model behavior, or let memory and generated pages replace source inspection.",
   },
 };
 
@@ -297,63 +334,78 @@ export const aiRolesAndSkillsComprehension: ComprehensionContent = {
 
 export const aiMemoryRegistriesComprehension: ComprehensionContent = {
   id: "ai-memory-registries-comprehension",
-  eyebrow: "Memory comprehension",
-  title: "Find with retrieval layers; rely on tracked sources.",
+  eyebrow: "Memory preflight comprehension",
+  title: "Use memory to find sources; use sources to decide.",
   summary:
-    "Memory, registries, wiki notes, semantic extracts, local indexes, and caches accelerate lookup. They remain navigation surfaces unless checked against canonical source records.",
+    "Memory preflight checks retrieval freshness, performs targeted lookup, and records evidence. Its hits become usable only after canonical source files and registry rows are inspected.",
   diagram: {
     src: "/assets/diagrams/comprehension/ai-memory-source-first-layers.png",
     alt:
-      "Diagram showing canonical source files and registries upstream from memory, wiki, semantic extracts, inspection, receipts, and a retrieval-is-not-authority boundary.",
+      "Diagram showing memory status, targeted lookup, likely source object, canonical source file, source registry row, preflight receipt, retrieval layers, and a retrieval-is-not-authority boundary.",
     caption:
-      "Static comprehension diagram: retrieval layers point back to source authority rather than replacing it.",
+      "Static comprehension diagram: memory preflight can find evidence; source inspection decides whether it may be relied on.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-memory-registries/diagrams/source-first-memory-layers.mmd. Manifest id: comprehension_ai_memory_source_first_layers.",
   },
   mechanismSteps: [
     {
-      title: "Check freshness",
+      title: "Check retrieval freshness",
       body:
-        "Memory status and warnings identify retrieval drift; they do not change source authority.",
+        "Memory status and warnings identify retrieval drift. Drift is a maintenance signal, not a new source claim.",
     },
     {
       title: "Search narrowly",
       body:
-        "Use lookup to find likely object IDs, source paths, registry rows, or prior tasks.",
+        "Use targeted lookup or search to find likely source objects, paths, registry rows, or prior tasks.",
     },
     {
       title: "Inspect the source",
       body:
-        "Any claim-affecting use of memory must be confirmed against tracked files or registry rows.",
+        "Any hit that affects routing, claim language, source selection, or project-control changes must be checked against tracked files and registry rows.",
+    },
+    {
+      title: "Record the receipt",
+      body:
+        "Controlled work records status, query commands, returned IDs, canonical inspections, registries, paths, hashes, and the retrieval-is-not-authority note.",
     },
   ],
   terms: [
     {
-      term: "Registry",
-      definition: "A tracked CSV source for provenance, source objects, roles, generated outputs, or memory metadata.",
-      boundary: "Its meaning is limited to its schema and current row state.",
+      term: "Memory preflight",
+      definition: "A bounded status and lookup step before controlled routing or AgentJob creation.",
+      boundary: "Navigation and receipt evidence only.",
     },
     {
-      term: "Wiki note",
-      definition: "A generated retrieval surface derived from source material.",
-      boundary: "If it conflicts with a registered source, the source wins.",
+      term: "Canonical inspection",
+      definition: "Direct review of a tracked source file and relevant registry row.",
+      boundary: "Required before retrieval hits affect claims or routing.",
     },
     {
-      term: "Local cache",
-      definition: "Uncommitted or convenience state used for speed.",
+      term: "Retrieval layer",
+      definition: "Wiki note, semantic extract, Obsidian mirror, SQLite index, or local cache used to find evidence.",
       boundary: "Never citation authority.",
+    },
+    {
+      term: "Preflight receipt",
+      definition: "Recorded status, query, source inspection, registry, path, and hash evidence.",
+      boundary: "Operational audit record, not proof or permission.",
     },
   ],
   boundaries: [
     {
       label: "No memory authority",
       title: "Retrieval is not source status",
-      body: "Memory hits may guide inspection but cannot authorize routing, claims, or publication by themselves.",
+      body: "Memory hits may guide inspection but cannot authorize routing, claims, citation, or publication by themselves.",
     },
     {
-      label: "No silent refresh",
-      title: "Derivative drift must be explicit",
-      body: "Stale wiki, semantic, Obsidian, or SQLite surfaces require refresh or direct source inspection.",
+      label: "No private leak",
+      title: "Publish method, not local contents",
+      body: "A public page can describe source-finding mechanics without exposing private memory results, prompt caches, or local vault content.",
+    },
+    {
+      label: "No receipt overreach",
+      title: "Receipts are operational",
+      body: "A memory-preflight receipt records what was checked; it does not prove a theorem, promote a claim, or bypass an AgentJob boundary.",
     },
   ],
   relatedRoutes: [
@@ -362,6 +414,12 @@ export const aiMemoryRegistriesComprehension: ComprehensionContent = {
       title: "Source authority",
       href: "/project/source-authority/",
       body: "Trust map for sources, derivatives, generated pages, and retrieval aids.",
+    },
+    {
+      label: routeLabel,
+      title: "Research-agent workflow",
+      href: "/project/ai-research-agent-system/workflow/",
+      body: "Where memory preflight appears in the request-to-AgentJob record chain.",
     },
     {
       label: routeLabel,
@@ -378,14 +436,24 @@ export const aiMemoryRegistriesComprehension: ComprehensionContent = {
     },
     {
       label: sourceLabel,
+      title: "Research control guide",
+      body: "Committed upstream control source: research_control/README.md.",
+    },
+    {
+      label: sourceLabel,
+      title: "AgentJob schema",
+      body: "Committed upstream schema: .agents/schemas/AGENT_JOB_SCHEMA.md.",
+    },
+    {
+      label: sourceLabel,
       title: "Source authority explainer",
       body: "Generated noncanonical upstream explainer: github-facing/source-authority-explainer.md.",
     },
   ],
   safeUnsafe: {
     safe:
-      "Memory and registries make source lookup faster; claim-affecting work still requires direct inspection of tracked files, registry rows, and current control records.",
+      "Memory preflight accelerates source lookup; claim-affecting work still requires direct inspection of tracked files, registry rows, current control records, and receipt evidence.",
     unsafe:
-      "A memory hit, wiki note, semantic extract, Obsidian mirror, SQLite index, or local cache overrides tracked source authority.",
+      "A memory hit, wiki note, semantic extract, Obsidian mirror, SQLite index, local cache, or receipt overrides tracked source authority or proves a claim.",
   },
 };

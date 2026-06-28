@@ -7,6 +7,24 @@ import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
 
+const contrastCards = [
+  {
+    label: "Matching a benchmark",
+    title: "Use ordinary GR as the reference",
+    body: "The page can say observable-scale behavior is held against exact GR: one operative metric, ordinary causal structure, and ordinary same-metric matter behavior.",
+  },
+  {
+    label: "Deriving a benchmark",
+    title: "Force it from source ontology",
+    body: "A derivation would need source-side mathematics that recovers metric behavior, universal matter coupling, equations, and closure without importing GR by hand.",
+  },
+  {
+    label: "Promoting a benchmark",
+    title: "Require protected authority",
+    body: "Benchmark promotion is a gated source-authority change. A public page, validator, handoff, or generated derivative cannot issue it.",
+  },
+];
+
 const benchmarkCards = [
   {
     label: "Observable scale",
@@ -53,11 +71,54 @@ const boundaryCards = [
   },
 ];
 
+const specialistCards = [
+  {
+    label: "Burden map",
+    title: "Required derivation chain",
+    body: "The GR derivation burden map separates source ontology, localization, response, M_src, g_eff, matter coupling, equations, and promotion.",
+  },
+  {
+    label: "Distance ledger",
+    title: "Current row status",
+    body: "The Distance-to-GR ledger tracks which burdens are accepted, blocked, human-gated, frozen, or still downstream.",
+  },
+  {
+    label: "TeX registry",
+    title: "Registered source status",
+    body: "The TeX registry names canonical ontology package files and their claim status; PDFs remain generated derivatives.",
+  },
+  {
+    label: "Claim boundaries",
+    title: "Forbidden promotion",
+    body: "Claim-boundary rows block completed-derivation, g_eff, matter-coupling, Einstein-equation, and benchmark-promotion overreads.",
+  },
+];
+
 const sourceLinks = [
   {
     title: "Back to physics track",
     href: "/project/physics/",
     body: "Return to the track-level map for ontology, benchmark, open derivation, and obstruction boundaries.",
+  },
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Check the latest source-state snapshot before treating benchmark language as current status.",
+  },
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/project/physics/distance-to-gr/",
+    body: "Inspect the burden ledger that separates source, metric, matter, equations, and promotion rows.",
+  },
+  {
+    title: "AEther / AEther-flow ontology",
+    href: "/project/physics/ontology/",
+    body: "Read the ontology vocabulary without treating it as a completed derivation.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Inspect source-pinned allowed, forbidden, and gate-required benchmark wording.",
   },
   {
     title: "Ontology Documents",
@@ -84,11 +145,13 @@ const sourceLinks = [
       <p class="overview-lead">
         AEther Flow uses exact general relativity as a conservative public
         benchmark. At observable scale, the current benchmark framing keeps
-        behavior ordinary GR. That is not the same as a first-principles
-        derivation from AEther / AEther-flow substrate structure.
+        behavior ordinary GR. Matching or using that benchmark is not the same
+        as deriving it from AEther / AEther-flow source ontology, and it is not
+        benchmark promotion.
       </p>
       <div class="overview-actions" aria-label="Benchmark page actions">
-        <a class="primary-link" href="/project/physics/">Back to physics track</a>
+        <a class="primary-link" href="#benchmark-contrast">Compare the claims</a>
+        <a class="secondary-link" href="/project/physics/distance-to-gr/">Distance-to-GR</a>
         <a class="secondary-link" href="#benchmark-boundary">Read the boundary</a>
       </div>
     </div>
@@ -115,6 +178,27 @@ const sourceLinks = [
   </section>
 
   <ComprehensionBlocks content={physicsBenchmarkComprehension} />
+
+  <section id="benchmark-contrast" class="track-page-band" aria-labelledby="benchmark-contrast-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public contrast</p>
+      <h2 id="benchmark-contrast-title">Matching the benchmark is weaker than deriving it.</h2>
+      <p>
+        This is the central reading rule. Exact GR can be the public benchmark
+        while first-principles substrate derivation and protected promotion
+        remain open.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {contrastCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
 
   <section class="track-page-band" aria-labelledby="benchmark-plain-title">
     <div class="track-page-heading">
@@ -149,6 +233,27 @@ const sourceLinks = [
     </div>
     <div class="track-status-grid">
       {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="benchmark-specialist-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Specialist source layer</p>
+      <h2 id="benchmark-specialist-title">The source records name what remains open.</h2>
+      <p>
+        Technical readers should inspect the burden map, Distance-to-GR
+        ledger, TeX registry, and claim-boundary registry before treating any
+        benchmark sentence as proof.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {specialistCards.map((card) => (
         <article class="track-status-card">
           <p>{card.label}</p>
           <h3>{card.title}</h3>

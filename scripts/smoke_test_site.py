@@ -23,10 +23,9 @@ DEFAULT_ROUTES = [
     RouteCheck("/"),
     RouteCheck("/project/overview/"),
     RouteCheck("/project/ai-research-agent-system/workflow/"),
-    RouteCheck("/research/map/"),
-    RouteCheck("/research/equations/"),
+    RouteCheck("/project/source-authority/publication-and-provenance-system/"),
     RouteCheck("/resources/diagrams/"),
-    RouteCheck("/research/math-sample/"),
+    RouteCheck("/resources/documents/"),
     RouteCheck("/robots.txt"),
 ]
 

@@ -12,7 +12,7 @@ Status: draft dossier.
 
 ## Current page summary
 
-The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
+The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, internal-first related routes, and the PG-005 claim-boundary explorer child route.
 
 ## Upstream source basis
 
@@ -20,6 +20,7 @@ The current page is an implemented reader-facing route. This dossier records the
 | --- | --- | --- |
 | `github-facing/source-authority-explainer.md` | upstream source | Source basis for this route. |
 | `registries/PUBLICATION_BRIEF_REGISTRY.csv` | upstream source | Source basis for this route. |
+| `registries/CLAIM_BOUNDARY_REGISTRY.csv` | upstream registry | Source basis for the claim-boundary explorer link and boundary language. |
 
 ## Source-derived topic outline
 
@@ -28,6 +29,7 @@ The current page is an implemented reader-facing route. This dossier records the
 3. Source-first checklist
 4. Failure modes
 5. Safe and unsafe source reading
+6. Claim-boundary explorer route
 
 ## Glossary
 
@@ -92,9 +94,11 @@ Unsafe summary: A generated explainer, public page, diagram, PDF, memory hit, or
 
 ## New-page audit
 
-- Is a new public page proposed? No.
-- Existing route that should be used instead: `/project/source-authority/`.
-- Reason a new route is or is not justified: The existing route is the correct public surface for this content.
+- Is a new public page proposed? Yes, as a child route.
+- New child route: `/project/source-authority/claim-boundary-explorer/`.
+- Reason a new route is justified: The source-authority landing explains the
+  authority ladder, while PG-005 requires a dedicated, source-pinned reader
+  surface for allowed, forbidden, and gate-required registry language.
 
 ## Human review checklist
 
@@ -112,3 +116,4 @@ Unsafe summary: A generated explainer, public page, diagram, PDF, memory hit, or
 
 - AEther-Flow Project. (2026). `github-facing/source-authority-explainer.md`.
 - AEther-Flow Project. (2026). `registries/PUBLICATION_BRIEF_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `registries/CLAIM_BOUNDARY_REGISTRY.csv`.

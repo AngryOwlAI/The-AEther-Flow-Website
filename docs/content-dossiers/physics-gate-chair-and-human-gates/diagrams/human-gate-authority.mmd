@@ -1,0 +1,54 @@
+---
+config:
+  theme: base
+  themeVariables:
+    darkMode: true
+    background: "#000000"
+    primaryColor: "#050403"
+    primaryTextColor: "#fff8ef"
+    primaryBorderColor: "#d6c3b4"
+    lineColor: "#d6c3b4"
+    fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    fontSize: "16px"
+    clusterBkg: "#080401"
+    clusterBorder: "#d6c3b4"
+    edgeLabelBackground: "#000000"
+---
+flowchart LR
+  draft["draft/control evidence"]
+  validators["validators: operational receipts"]
+  completion["completion and handoff"]
+  boundary["claim-boundary registry"]
+  gate{"explicit tracked human gate?"}
+  verdict["Gate Chair output if approved"]
+  publicPage(["website explanation"])
+  blocked["Forbidden overread: readiness as verdict"]
+
+  draft --> validators --> completion --> gate
+  boundary --> gate
+  gate --> verdict
+  publicPage -. orientation only .-> boundary
+  validators -. proof overread .-> blocked
+  completion -. adoption overread .-> blocked
+  boundary -. metadata as proof .-> blocked
+  publicPage -. website as authority .-> blocked
+
+  classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
+  classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
+  classDef control fill:#270b01,stroke:#f87800,color:#fff8ef,stroke-width:2px;
+  classDef bridge fill:#164964,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
+  classDef decision fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2.25px;
+  classDef target fill:#2d7ea0,stroke:#f4d6a1,color:#ffffff,stroke-width:2px;
+  classDef success fill:#164964,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
+  classDef risk fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2px,stroke-dasharray: 5 5;
+  classDef boundaryClass fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
+  classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
+
+  class draft,boundary source;
+  class validators,completion control;
+  class gate decision;
+  class verdict target;
+  class publicPage bridge;
+  class blocked boundaryClass;
+
+  linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

@@ -1,6 +1,6 @@
 # Documentation Curator Publication Process Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -14,11 +14,29 @@ Status: draft dossier.
 
 The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
 
+## PG-021 route-family evidence review
+
+- Review artifact: `docs/system-analyses/remaining-operations-route-family.md`.
+- Review decision: Preserve the existing publication-process route and expose
+  the committed publication standard, role contract, registry, validator, and
+  pilot review evidence behind the reader page.
+- Source state: Committed upstream source at
+  `01efc4f180221caf9425fbb24683eb54927b553e`.
+- Boundary: Publication quality, screenshots, and validator output improve
+  readability evidence but cannot change source authority or promote claims.
+
 ## Upstream source basis
 
 | Source path | Status | Use in page |
 | --- | --- | --- |
 | `github-facing/documentation-curator-publication-process-explainer.md` | upstream source | Source basis for this route. |
+| `research_control/design/documentation_curator_publication_process.md` | upstream control source | Source basis for active publication standard and pilot discipline. |
+| `.agents/roles/research_ops/documentation-curator.v2.0.0.md` | upstream role contract | Source basis for Documentation Curator role boundaries. |
+| `markdown/publication-briefs/README.md` | upstream publication source | Source basis for brief quality guidance. |
+| `registries/PUBLICATION_BRIEF_REGISTRY.csv` | upstream registry | Source basis for reviewed page/evidence paths. |
+| `scripts/validate_publication_process.py` | upstream validator source | Source basis for mechanical publication checks. |
+| `research_control/tasks/RT-20260618-007/artifacts/publication_process_requirement_audit.md` | upstream review artifact | Source basis for replacing retired publication patterns. |
+| `research_control/tasks/RT-20260618-007/artifacts/publication_pilot_before_after_review.md` | upstream review artifact | Source basis for pilot before/after review evidence. |
 
 ## Source-derived topic outline
 
@@ -104,9 +122,16 @@ Unsafe summary: A public page or screenshot changes source authority, proves com
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-021.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg021-remaining-operations-family-qa.md`.
 
 ## References
 
 - AEther-Flow Project. (2026). `github-facing/documentation-curator-publication-process-explainer.md`.
+- AEther-Flow Project. (2026). `research_control/design/documentation_curator_publication_process.md`.
+- AEther-Flow Project. (2026). `.agents/roles/research_ops/documentation-curator.v2.0.0.md`.
+- AEther-Flow Project. (2026). `markdown/publication-briefs/README.md`.
+- AEther-Flow Project. (2026). `registries/PUBLICATION_BRIEF_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `scripts/validate_publication_process.py`.
+- AEther-Flow Project. (2026). `research_control/tasks/RT-20260618-007/artifacts/publication_process_requirement_audit.md`.
+- AEther-Flow Project. (2026). `research_control/tasks/RT-20260618-007/artifacts/publication_pilot_before_after_review.md`.

@@ -1,26 +1,248 @@
 ---
-const homePath = "/project/overview/";
+import CommandBand from "../components/CommandBand.astro";
+import EvidenceRail from "../components/EvidenceRail.astro";
+import SourceNotice from "../components/SourceNotice.astro";
+import StatusDossier from "../components/StatusDossier.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const publicStarts = [
+  {
+    title: "General-public guided start",
+    href: "/resources/guided-starts/general-public/",
+    body: "Follow the first reading path: what this is, what is currently claimed, and what not to infer.",
+  },
+  {
+    title: "Current research state",
+    href: "/project/physics/current-state/",
+    body: "Start with the checked-in snapshot before reading deeper physics pages.",
+  },
+  {
+    title: "Project overview",
+    href: "/project/overview/",
+    body: "Understand the two-track structure: physics research and the AI research-agent workflow.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Read how website explanations, generated derivatives, registries, and source records differ.",
+  },
+  {
+    title: "Ontology documents",
+    href: "/resources/documents/",
+    body: "Inspect registered TeX sources and generated PDF derivatives with their authority boundary visible.",
+  },
+];
+
+const specialistStarts = [
+  {
+    title: "Physics research",
+    href: "/project/physics/",
+    body: "Ontology, exact-GR benchmark, open derivation burden, current state, and claim gates.",
+  },
+  {
+    title: "AI research-agent system",
+    href: "/project/ai-research-agent-system/",
+    body: "Bounded AgentJobs, role contracts, memory, validators, and parent-child synthesis.",
+  },
+  {
+    title: "Operations",
+    href: "/project/operations/",
+    body: "Director decisions, validation, publication, improvement loops, and technical requirements.",
+  },
+  {
+    title: "Resources",
+    href: "/resources/",
+    body: "Documents, diagrams, and guided-start material for reader navigation.",
+  },
+];
+
+const firstWaveStatus = [
+  {
+    label: "Active",
+    title: "Current state",
+    body: "The current-state route is already public and should anchor later physics pages.",
+  },
+  {
+    label: "Implemented",
+    title: "Distance-to-GR",
+    body: "The dashboard is source-pinned and ledger-backed; it maps burden rows without turning them into proof or percentage progress.",
+  },
+  {
+    label: "Implemented",
+    title: "Source extension and gates",
+    body: "Source-extension, Gate Chair, and claim-boundary pages are implemented as internal boundary references.",
+  },
+  {
+    label: "Implemented",
+    title: "Guided starts",
+    body: "The general-public guided start assembles validated internal pages without introducing new scientific claims.",
+  },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <meta http-equiv="refresh" content={`0; url=${homePath}`} />
-    <link rel="canonical" href={homePath} />
-    <title>Redirecting to Æther Flow</title>
-  </head>
-  <body>
-    <main>
-      <h1>Redirecting to Æther Flow</h1>
-      <p>
-        Redirecting to <a href={homePath}>the Æther Flow project overview</a>.
-      </p>
-    </main>
-    <script is:inline>
-      window.location.replace("/project/overview/");
-    </script>
-  </body>
-</html>
+<BaseLayout
+  title="The AEther Flow"
+  description="Public entry page for The AEther Flow website, with source-boundary-safe routes into physics, AI research workflow, operations, and resources."
+  bodyClass="project-overview-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Public science field guide"
+    title="The AEther Flow"
+    lead="A reader-facing guide to a speculative physics program and the governed AI research-agent system used to pursue it. The website explains and organizes; upstream source records remain authoritative."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Homepage primary actions">
+      <a class="primary-link" href="/resources/guided-starts/general-public/">Start guided path</a>
+      <a class="secondary-link" href="/project/physics/current-state/">Current state</a>
+      <a class="secondary-link" href="/project/overview/">Read the overview</a>
+      <a class="secondary-link" href="/project/source-authority/">Check source authority</a>
+    </div>
+
+    <Fragment slot="visual">
+      <figure class="field-stage" aria-labelledby="home-field-caption">
+        <svg
+          class="field-map-svg"
+          viewBox="0 0 680 420"
+          role="img"
+          aria-labelledby="home-field-title home-field-desc"
+        >
+          <title id="home-field-title">Animated public field-guide route map</title>
+          <desc id="home-field-desc">
+            A central guide point connects physics, AI workflow, operations, and source-authority routes.
+          </desc>
+          <defs>
+            <radialGradient id="home-core-glow" cx="50%" cy="50%" r="62%">
+              <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.88" />
+              <stop offset="32%" stop-color="var(--owl-orange-500)" stop-opacity="0.38" />
+              <stop offset="70%" stop-color="var(--owl-cyan-400)" stop-opacity="0.16" />
+              <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="home-route-cyan" x1="0%" x2="100%" y1="50%" y2="50%">
+              <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+              <stop offset="46%" stop-color="var(--owl-cyan-400)" stop-opacity="0.84" />
+              <stop offset="100%" stop-color="var(--owl-orange-100)" stop-opacity="0.12" />
+            </linearGradient>
+            <linearGradient id="home-route-orange" x1="0%" x2="100%" y1="50%" y2="50%">
+              <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+              <stop offset="52%" stop-color="var(--owl-orange-500)" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0.14" />
+            </linearGradient>
+            <filter id="home-route-bloom" x="-24%" y="-28%" width="148%" height="156%">
+              <feGaussianBlur stdDeviation="5" result="homeRouteBlur" />
+              <feMerge>
+                <feMergeNode in="homeRouteBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <rect class="stage-void" width="680" height="420" rx="28" />
+          <g class="cosmic-dust" aria-hidden="true">
+            <circle cx="64" cy="86" r="1" />
+            <circle cx="118" cy="316" r="1.2" />
+            <circle cx="198" cy="58" r="0.9" />
+            <circle cx="294" cy="344" r="1.1" />
+            <circle cx="402" cy="82" r="1" />
+            <circle cx="540" cy="302" r="0.9" />
+            <circle cx="616" cy="134" r="1.2" />
+          </g>
+          <g class="field-ribbons smoke-field" filter="url(#home-route-bloom)" aria-hidden="true">
+            <path class="ribbon wash" d="M64 104 C164 72, 244 124, 340 210 C436 296, 522 336, 628 300" stroke="url(#home-route-cyan)" />
+            <path class="ribbon bright" d="M64 314 C170 340, 252 294, 340 210 C430 126, 514 88, 622 118" stroke="url(#home-route-cyan)" />
+            <path class="ribbon fine" d="M88 210 C172 172, 252 172, 340 210 C432 252, 506 250, 594 210" stroke="url(#home-route-cyan)" />
+          </g>
+          <g class="field-ribbons orange-field" filter="url(#home-route-bloom)" aria-hidden="true">
+            <path class="ribbon bright" d="M118 84 C206 144, 274 176, 340 210 C420 252, 494 296, 566 348" stroke="url(#home-route-orange)" />
+            <path class="ribbon fine" d="M112 344 C194 278, 266 242, 340 210 C420 176, 504 132, 572 70" stroke="url(#home-route-orange)" />
+          </g>
+          <g class="flare-system" filter="url(#home-route-bloom)" aria-hidden="true">
+            <circle class="field-flare" cx="340" cy="210" r="118" fill="url(#home-core-glow)" />
+            <path class="flare-cross" d="M284 210 H396 M340 154 V266" />
+            <path class="lens-arc upper" d="M248 168 C296 124, 388 124, 438 168" />
+            <path class="lens-arc lower" d="M246 252 C300 302, 390 300, 442 252" />
+          </g>
+          <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+            <circle cx="64" cy="104" r="14" />
+            <circle cx="64" cy="314" r="14" />
+            <circle cx="118" cy="84" r="14" />
+            <circle cx="340" cy="210" r="18" />
+            <circle cx="622" cy="118" r="14" />
+            <circle cx="628" cy="300" r="14" />
+            <circle cx="566" cy="348" r="14" />
+          </g>
+        </svg>
+        <figcaption id="home-field-caption">
+          Visual orientation only: the site connects public routes while source authority remains upstream.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <CommandBand
+    id="start"
+    className="overview-panel overview-command-band"
+    eyebrow="Reader start"
+    title="Begin with boundaries before claims."
+    lead="The safest path is current state, overview, source authority, then deeper topic pages. That order keeps open derivation work, workflow evidence, and provenance in the correct roles."
+  >
+    <EvidenceRail
+      items={publicStarts.map((item) => ({ ...item, actionLabel: "Open route" }))}
+      ariaLabel="Public starting routes"
+      className="overview-journey-rail"
+      ordered
+    />
+  </CommandBand>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Specialist paths"
+    title="Choose a route family after orientation."
+    lead="Specialist paths stay inside the website first. Source links remain available in provenance sections when the reader needs to inspect evidence directly."
+  >
+    <EvidenceRail
+      items={specialistStarts.map((item) => ({ ...item, actionLabel: "Open route" }))}
+      ariaLabel="Specialist route families"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="First-wave revamp"
+    title="Some pages are active; others are deliberately staged."
+    lead="The sitewide plan prioritizes authority and orientation first. High-risk pages stay staged until their system-analysis artifacts and no-ai-slop gates pass."
+  >
+    <StatusDossier
+      items={firstWaveStatus}
+      ariaLabel="First-wave revamp status"
+      className="track-status-grid"
+    />
+    <p class="capability-boundary-note">
+      Planned route names are not proof of progress. They identify future work
+      packets and remain subject to source-analysis, provenance, validation,
+      and browser-QA gates.
+    </p>
+  </CommandBand>
+
+  <CommandBand
+    className="overview-panel overview-command-band live-state"
+    eyebrow="Source boundary"
+    title="Trust the source lane that owns the claim."
+    lead="The website can help a reader understand the project. It cannot adopt a physics candidate, complete a derivation, expand role authority, or turn a validator PASS into proof."
+  >
+    <a class="track-card-link" href="/project/source-authority/">Read source authority</a>
+
+    <Fragment slot="aside">
+      <SourceNotice
+        claimStatus="public orientation"
+        updated="2026-06-27"
+        note="The homepage is a reader-entry surface derived from the public overview and source-authority contract. It does not add scientific, mathematical, governance, or workflow authority."
+        sourceRefs={[
+          "The AEther Flow Website. (2026). src/pages/index.astro",
+          "The AEther Flow Website. (2026). docs/architecture/website-feature-and-functionality.md",
+          "AEther-Flow Project. (2026). github-facing/project-overview-explainer.md",
+        ]}
+      />
+    </Fragment>
+  </CommandBand>
+</BaseLayout>

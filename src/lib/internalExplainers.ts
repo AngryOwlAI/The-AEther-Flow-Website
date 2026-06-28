@@ -90,13 +90,57 @@ export const operationsLinks: ExplainerLink[] = [
   },
 ];
 
-const operationsSourceRefs = [
+const directorLifecycleSourceRefs = [
   upstreamRef("github-facing/director-agentjob-lifecycle-explainer.md"),
+  upstreamRef("research_control/README.md"),
+  upstreamRef("research_control/AGENTS.md"),
+  upstreamRef(".agents/schemas/DIRECTOR_DECISION_SCHEMA.md"),
+  upstreamRef(".agents/schemas/AGENT_JOB_SCHEMA.md"),
+  upstreamRef(".agents/schemas/EXECUTION_ROLE_SCHEMA.md"),
+  upstreamRef("registries/DIRECTOR_DECISION_REGISTRY.csv"),
+  upstreamRef("registries/AGENT_JOB_REGISTRY.csv"),
+  upstreamRef("registries/ROLE_EXECUTION_REGISTRY.csv"),
+];
+
+const roleRoutingSourceRefs = [
   upstreamRef("github-facing/role-routing-explainer.md"),
-  upstreamRef("github-facing/validator-operator-workflow-explainer.md"),
+  upstreamRef("github-facing/roles-and-skills-explainer.md"),
+  upstreamRef("research_control/README.md"),
+  upstreamRef("registries/AGENT_ROLE_REGISTRY.csv"),
+  upstreamRef("registries/ROLE_EXECUTION_REGISTRY.csv"),
+  upstreamRef(".agents/schemas/ROLE_SCHEMA.md"),
+  upstreamRef(".agents/schemas/EXECUTION_ROLE_SCHEMA.md"),
+];
+
+const publicationProcessSourceRefs = [
   upstreamRef("github-facing/documentation-curator-publication-process-explainer.md"),
-  upstreamRef("github-facing/project-system-improvement-explainer.md"),
+  upstreamRef("research_control/design/documentation_curator_publication_process.md"),
+  upstreamRef(".agents/roles/research_ops/documentation-curator.v2.0.0.md"),
+  upstreamRef("markdown/publication-briefs/README.md"),
+  upstreamRef("registries/PUBLICATION_BRIEF_REGISTRY.csv"),
+  upstreamRef("scripts/validate_publication_process.py"),
+  upstreamRef("research_control/tasks/RT-20260618-007/artifacts/publication_process_requirement_audit.md"),
+  upstreamRef("research_control/tasks/RT-20260618-007/artifacts/publication_pilot_before_after_review.md"),
+];
+
+const technicalRequirementsSourceRefs = [
   upstreamRef("github-facing/technical-requirements-explainer.md"),
+  upstreamRef("README.md"),
+  upstreamRef("AGENTS.md"),
+  upstreamRef("research_control/README.md"),
+  upstreamRef("requirements.txt"),
+  upstreamRef("Makefile"),
+  upstreamRef("scripts/README.md"),
+  upstreamRef("tests/README.md"),
+];
+
+const operationsSourceRefs = [
+  ...directorLifecycleSourceRefs,
+  ...roleRoutingSourceRefs,
+  upstreamRef("github-facing/validator-operator-workflow-explainer.md"),
+  ...publicationProcessSourceRefs,
+  upstreamRef("github-facing/project-system-improvement-explainer.md"),
+  ...technicalRequirementsSourceRefs,
 ];
 
 const operationsSourceLinks = [
@@ -130,6 +174,21 @@ const operationsSourceLinks = [
     href: upstream("github-facing/technical-requirements-explainer.md"),
     body: "Reviewed generated noncanonical source for local operation requirements.",
   },
+  {
+    title: "Research-control guide",
+    href: upstream("research_control/README.md"),
+    body: "Committed control source for routing, validation, and operational evidence boundaries.",
+  },
+  {
+    title: "Publication process standard",
+    href: upstream("research_control/design/documentation_curator_publication_process.md"),
+    body: "Committed source for brief-first publication and human review discipline.",
+  },
+  {
+    title: "Project-control script guide",
+    href: upstream("scripts/project_control/README.md"),
+    body: "Committed tooling source for project-system classifier, resolver, sidecar, and receipt workflows.",
+  },
 ];
 
 export const internalExplainers: Record<string, InternalExplainer> = {
@@ -152,7 +211,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryBody:
       "This landing page synthesizes reviewed operational explainers. It cannot change routing behavior, validators, role authority, publication requirements, project-system signals, or physics status.",
     claimStatus: "curated operational synthesis",
-    updated: "2026-06-26",
+    updated: "2026-06-28",
     sourceRefs: operationsSourceRefs,
     comprehension: operationsComprehension,
     sections: [
@@ -234,8 +293,15 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryBody:
       "This page explains a future physics AgentJob pattern. It cannot change the one-job rule, AgentJob schema, execution-role schema, validators, routing behavior, role authority, write permissions, or physics claim status.",
     claimStatus: "workflow orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/parent-child-synthesis-explainer.md")],
+    updated: "2026-06-28",
+    sourceRefs: [
+      "The AEther Flow. (2026). github-facing/parent-child-synthesis-explainer.md",
+      "The AEther Flow. (2026). research_control/README.md",
+      "The AEther Flow. (2026). .agents/schemas/AGENT_JOB_SCHEMA.md",
+      "The AEther Flow. (2026). .agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+      "The AEther Flow. (2026). registries/AGENT_JOB_REGISTRY.csv",
+      "The AEther Flow Website. (2026). docs/system-analyses/parent-child-parallel-synthesis-walkthrough.md",
+    ],
     comprehension: parentChildComprehension,
     sections: [
       {
@@ -341,8 +407,8 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryBody:
       "This page cannot edit activated records, broaden an allowlist, change a role, issue a gate decision, promote ontology, or convert completion evidence into a broader scientific claim.",
     claimStatus: "operational orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/director-agentjob-lifecycle-explainer.md")],
+    updated: "2026-06-28",
+    sourceRefs: directorLifecycleSourceRefs,
     comprehension: directorAgentjobLifecycleComprehension,
     sections: [
       {
@@ -395,6 +461,12 @@ export const internalExplainers: Record<string, InternalExplainer> = {
             body:
               "Gate Chair verdicts, benchmark promotion, ontology adoption, and source edits require their own authority paths.",
           },
+          {
+            label: "Limit",
+            title: "Completion evidence stays transaction-local",
+            body:
+              "A completion can close or hand off one job, but it cannot make the checked operation a scientific result.",
+          },
         ],
       },
     ],
@@ -421,6 +493,16 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         href: upstream("github-facing/director-agentjob-lifecycle-explainer.md"),
         body: "Reviewed generated noncanonical upstream source for this page.",
       },
+      {
+        title: "AgentJob schema",
+        href: upstream(".agents/schemas/AGENT_JOB_SCHEMA.md"),
+        body: "Committed schema source for allowed paths, outputs, validators, and stop conditions.",
+      },
+      {
+        title: "Research-control scoped guidance",
+        href: upstream("research_control/AGENTS.md"),
+        body: "Committed guidance for immutable activated records and supersession.",
+      },
     ],
   },
   roleRouting: {
@@ -442,8 +524,8 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryBody:
       "This page cannot register roles, supersede roles, expand role authority, execute a Gate Chair path, change skill contracts, or authorize generated outputs as source authority.",
     claimStatus: "operational orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/role-routing-explainer.md")],
+    updated: "2026-06-28",
+    sourceRefs: roleRoutingSourceRefs,
     comprehension: roleRoutingComprehension,
     sections: [
       {
@@ -478,6 +560,26 @@ export const internalExplainers: Record<string, InternalExplainer> = {
           },
         ],
       },
+      {
+        eyebrow: "Overread prevention",
+        title: "Operational labels are useful only when they remain bounded.",
+        body:
+          "The route family uses roles to make work reviewable. It does not turn labels, overlays, or provisional roles into durable permission grants.",
+        cards: [
+          {
+            label: "Template",
+            title: "A role is descriptive until routed",
+            body:
+              "The role registry and contract describe normal capability; the current task still needs an execution-role record and AgentJob.",
+          },
+          {
+            label: "Gate",
+            title: "Human-gated roles remain gated",
+            body:
+              "A role contract can describe gate authority without making a normal route able to execute that gate.",
+          },
+        ],
+      },
     ],
     relatedLinks: [
       {
@@ -502,15 +604,25 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         href: upstream("github-facing/role-routing-explainer.md"),
         body: "Reviewed generated noncanonical upstream source for this page.",
       },
+      {
+        title: "Agent role registry",
+        href: upstream("registries/AGENT_ROLE_REGISTRY.csv"),
+        body: "Committed registry source for role status, defaults, and boundaries.",
+      },
+      {
+        title: "Execution-role schema",
+        href: upstream(".agents/schemas/EXECUTION_ROLE_SCHEMA.md"),
+        body: "Committed schema source for task-local execution role records.",
+      },
     ],
   },
   validatorOperatorWorkflow: {
-    title: "Validator And Operator Workflow",
+    title: "Validator PASS Does Not Mean Physics Proof",
     eyebrow: "Operations explainer",
     description:
-      "Reader-facing explanation of command selection, validation evidence, screenshots, receipts, and PASS-result limits.",
+      "Reader-facing explanation of command selection, validation evidence, screenshots, receipts, and why PASS does not prove physics.",
     lead:
-      "The operator question is which evidence chain fits the changed authority surface. A PASS result is bounded acceptance for a named check, not scientific truth or permission expansion.",
+      "A PASS result says a named check accepted the checked state. It is useful operational evidence, but it is not theorem proof, ontology adoption, benchmark promotion, Gate Chair approval, or permission expansion.",
     actionHref: "#command-map",
     actionLabel: "Read the command map",
     secondaryHref: "/project/operations/",
@@ -521,15 +633,24 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryLabel: "Operational boundary",
     boundaryTitle: "PASS is not a scientific verdict.",
     boundaryBody:
-      "This page cannot change validator behavior, command semantics, routing behavior, documentation-impact requirements, research-control requirements, checkpoint gates, sidecar adoption status, generated-output authority, or physics status.",
-    claimStatus: "validator-operator orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/validator-operator-workflow-explainer.md")],
+      "This page cannot change validator behavior, command semantics, routing behavior, documentation-impact requirements, research-control requirements, checkpoint gates, sidecar adoption status, generated-output authority, Gate Chair status, or physics status.",
+    claimStatus: "validator-pass boundary orientation",
+    updated: "2026-06-28",
+    sourceRefs: [
+      upstreamRef("github-facing/validator-operator-workflow-explainer.md"),
+      upstreamRef("github-facing/claim-gates-explainer.md"),
+      upstreamRef("research_control/README.md"),
+      upstreamRef("research_control/design/mathematical_decisiveness_completion_contract.md"),
+      upstreamRef("scripts/research_control/README.md"),
+      upstreamRef("scripts/project_control/README.md"),
+      upstreamRef("tests/README.md"),
+      "The AEther Flow Website. (2026). docs/system-analyses/validator-pass-does-not-mean-physics-proof.md",
+    ],
     comprehension: validatorOperatorWorkflowComprehension,
     sections: [
       {
         eyebrow: "Command map",
-        title: "Choose checks by changed surface.",
+        title: "Choose checks by changed authority surface.",
         body:
           "Memory refresh, publication pages, project-system state, source-bridged sidecars, tooling changes, and research-control records require different evidence.",
         cards: [
@@ -563,7 +684,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         eyebrow: "PASS limits",
         title: "Deterministic acceptance has a bounded meaning.",
         body:
-          "A green check does not promote claims, expand roles, adopt sidecars, or make generated outputs authoritative.",
+          "A green check does not promote claims, prove theorems, expand roles, adopt sidecars, issue Gate Chair approval, or make generated outputs authoritative.",
         cards: [
           {
             label: "Necessary",
@@ -574,6 +695,11 @@ export const internalExplainers: Record<string, InternalExplainer> = {
             label: "Insufficient",
             title: "No theorem proof",
             body: "It does not prove ontology, derive GR, promote a benchmark, or issue a Gate Chair verdict.",
+          },
+          {
+            label: "Protected",
+            title: "Human gates remain separate",
+            body: "Ontology adoption, benchmark promotion, Gate Chair closure, and protected authority changes need their own source and approval path.",
           },
         ],
       },
@@ -590,6 +716,21 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         body: "How signals and improvement packets are routed and closed.",
       },
       {
+        title: "Gate Chair and human gates",
+        href: "/project/physics/gate-chair-and-human-gates/",
+        body: "Why protected decisions remain outside validator authority.",
+      },
+      {
+        title: "Claim-boundary explorer",
+        href: "/project/source-authority/claim-boundary-explorer/",
+        body: "How allowed and forbidden claim forms are exposed for readers.",
+      },
+      {
+        title: "Research-agent workflow",
+        href: "/project/ai-research-agent-system/workflow/",
+        body: "Where validators fit in the bounded AgentJob record chain.",
+      },
+      {
         title: "Source Authority",
         href: "/project/source-authority/",
         body: "The broader source and derivative boundary.",
@@ -600,6 +741,16 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         title: "Validator workflow source",
         href: upstream("github-facing/validator-operator-workflow-explainer.md"),
         body: "Reviewed generated noncanonical upstream source for this page.",
+      },
+      {
+        title: "Mathematical decisiveness contract",
+        href: upstream("research_control/design/mathematical_decisiveness_completion_contract.md"),
+        body: "Committed control source separating PASS from physics progress.",
+      },
+      {
+        title: "Claim gates source",
+        href: upstream("github-facing/claim-gates-explainer.md"),
+        body: "Generated noncanonical source for claim-promotion and Gate Chair boundaries.",
       },
     ],
   },
@@ -622,8 +773,8 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryBody:
       "This page cannot make generated reader surfaces authoritative, change publication validators, replace source specs, or alter scientific, mathematical, governance, or workflow source claims.",
     claimStatus: "publication-process orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/documentation-curator-publication-process-explainer.md")],
+    updated: "2026-06-28",
+    sourceRefs: publicationProcessSourceRefs,
     comprehension: publicationProcessComprehension,
     sections: [
       {
@@ -654,6 +805,26 @@ export const internalExplainers: Record<string, InternalExplainer> = {
           },
         ],
       },
+      {
+        eyebrow: "Review boundary",
+        title: "A readable page is not an authority upgrade.",
+        body:
+          "Publication work can improve the reader journey, expose provenance, and record screenshots. It still remains downstream from the source basis.",
+        cards: [
+          {
+            label: "Human",
+            title: "Review covers comprehension",
+            body:
+              "Screenshots and review notes capture public readability risks that deterministic checks cannot fully decide.",
+          },
+          {
+            label: "Source",
+            title: "Claims remain bound",
+            body:
+              "A source spec prevents the page from silently strengthening mathematical, scientific, governance, or workflow claims.",
+          },
+        ],
+      },
     ],
     relatedLinks: [
       {
@@ -673,6 +844,16 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         href: upstream("github-facing/documentation-curator-publication-process-explainer.md"),
         body: "Reviewed generated noncanonical upstream source for this page.",
       },
+      {
+        title: "Publication process standard",
+        href: upstream("research_control/design/documentation_curator_publication_process.md"),
+        body: "Committed control source for brief-first publication discipline.",
+      },
+      {
+        title: "Publication process validator",
+        href: upstream("scripts/validate_publication_process.py"),
+        body: "Committed script source for mechanical publication-process checks.",
+      },
     ],
   },
   projectSystemImprovement: {
@@ -681,7 +862,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     description:
       "Reader-facing explanation of project-system signals, classification, resolver output, sidecars, receipts, and one bounded improvement AgentJob.",
     lead:
-      "Project-system improvement starts from observed diff state, registered signals, or repeated workflow problems. It routes one bounded repair without smuggling physics continuation or broad system rewrites.",
+      "Project-system improvement starts from observed diff state, registered signals, source-bridged sidecars, or repeated workflow problems. It routes one bounded repair without smuggling physics continuation or broad system rewrites.",
     actionHref: "#improvement-loop",
     actionLabel: "Read the loop",
     secondaryHref: "/project/operations/",
@@ -692,10 +873,18 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryLabel: "Operational boundary",
     boundaryTitle: "A repair packet is one bounded project-system action.",
     boundaryBody:
-      "This page cannot create or close signals, create sidecars, replace normal research handoffs, change routing or validator behavior, expand role authority, change checkpoint behavior, or authorize physics claim promotion.",
+      "This page cannot create or close signals, create sidecars, replace normal research handoffs, change routing or validator behavior, expand role authority, change checkpoint behavior, globally allowlist sidecars, or authorize physics claim promotion.",
     claimStatus: "project-system orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/project-system-improvement-explainer.md")],
+    updated: "2026-06-28",
+    sourceRefs: [
+      upstreamRef("github-facing/project-system-improvement-explainer.md"),
+      upstreamRef("research_control/README.md"),
+      upstreamRef("scripts/project_control/README.md"),
+      upstreamRef(".agents/schemas/PROJECT_IMPROVEMENT_HANDOFF_SCHEMA.md"),
+      upstreamRef("registries/PROJECT_IMPROVEMENT_SIGNAL_TYPE_REGISTRY.csv"),
+      upstreamRef("registries/PROJECT_IMPROVEMENT_SIGNAL_REGISTRY.csv"),
+      "The AEther Flow Website. (2026). docs/system-analyses/project-system-improvement-loop.md",
+    ],
     comprehension: projectSystemImprovementComprehension,
     sections: [
       {
@@ -724,6 +913,11 @@ export const internalExplainers: Record<string, InternalExplainer> = {
             title: "Receipt or rejection",
             body: "Signals close only with matching PASS completion evidence or a documented rejection decision.",
           },
+          {
+            label: "Boundary",
+            title: "No physics promotion",
+            body: "Maintenance packets do not adopt ontology, promote benchmarks, issue Gate Chair decisions, or continue derivation work.",
+          },
         ],
       },
     ],
@@ -739,6 +933,16 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         body: "How checks and receipts are interpreted.",
       },
       {
+        title: "Memory preflight",
+        href: "/project/ai-research-agent-system/memory-registries/",
+        body: "How memory and retrieval drift remain source-finding support.",
+      },
+      {
+        title: "Source Authority",
+        href: "/project/source-authority/",
+        body: "Why generated surfaces and maintenance evidence remain below source authority.",
+      },
+      {
         title: "Technical requirements",
         href: "/project/operations/technical-requirements/",
         body: "Tooling needed for reproducible operations.",
@@ -749,6 +953,16 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         title: "Project-system improvement source",
         href: upstream("github-facing/project-system-improvement-explainer.md"),
         body: "Reviewed generated noncanonical upstream source for this page.",
+      },
+      {
+        title: "Research control guide",
+        href: upstream("research_control/README.md"),
+        body: "Committed control source for signal routing, documentation impact, and resolver limits.",
+      },
+      {
+        title: "Project-control script guide",
+        href: upstream("scripts/project_control/README.md"),
+        body: "Committed tooling source for classifier, resolver, sidecar, and validation boundaries.",
       },
     ],
   },
@@ -771,8 +985,8 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     boundaryBody:
       "This page cannot change dependencies, validators, Makefile targets, command semantics, harness policy, role authority, routing behavior, checkpoint behavior, generated-output authority, or physics status.",
     claimStatus: "technical-requirements orientation",
-    updated: "2026-06-26",
-    sourceRefs: [upstreamRef("github-facing/technical-requirements-explainer.md")],
+    updated: "2026-06-28",
+    sourceRefs: technicalRequirementsSourceRefs,
     comprehension: technicalRequirementsComprehension,
     sections: [
       {
@@ -803,6 +1017,26 @@ export const internalExplainers: Record<string, InternalExplainer> = {
           },
         ],
       },
+      {
+        eyebrow: "Authority boundary",
+        title: "Capability and authorization are separate questions.",
+        body:
+          "A complete local toolchain can make a check reproducible. It still cannot create permission, alter command policy, or promote a scientific claim.",
+        cards: [
+          {
+            label: "Capability",
+            title: "The tool can run",
+            body:
+              "Successful execution shows the local environment can perform the operation that was requested.",
+          },
+          {
+            label: "Authority",
+            title: "The source records decide scope",
+            body:
+              "Tasks, roles, AgentJobs, validators, and source registries still decide whether the operation is allowed.",
+          },
+        ],
+      },
     ],
     relatedLinks: [
       {
@@ -826,6 +1060,16 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         title: "Technical requirements source",
         href: upstream("github-facing/technical-requirements-explainer.md"),
         body: "Reviewed generated noncanonical upstream source for this page.",
+      },
+      {
+        title: "Repository README",
+        href: upstream("README.md"),
+        body: "Committed source for local operating environment and command families.",
+      },
+      {
+        title: "Tests guide",
+        href: upstream("tests/README.md"),
+        body: "Committed source for test areas and command evidence boundaries.",
       },
     ],
   },

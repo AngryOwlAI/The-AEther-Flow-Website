@@ -15,14 +15,24 @@ config:
     edgeLabelBackground: "#000000"
 ---
 
-flowchart LR
-  observe["Diff or signal"] --> classify["Classifier"]
-  classify --> resolve["Resolver"]
-  resolve --> job["One project-system AgentJob"]
-  job --> receipt["Receipt evidence"]
-  receipt --> close["Close or defer signal"]
-  job --> boundary["No hidden physics continuation"]
-  resolve -. "sidecars are inputs" .-> boundary
+flowchart TB
+  observe["Observed diff or registered signal"]
+  classify["Classifier"]
+  resolve["Advisory resolver"]
+  sidecar["Source-bridged sidecar input"]
+  job["One project-system AgentJob"]
+  receipt["Documentation impact and PASS evidence"]
+  close{"Close, defer, or reject signal?"}
+  boundary["No hidden physics continuation or signal closure by prose"]
+
+  observe --> classify
+  classify --> resolve
+  sidecar -. "exact bridge only" .-> resolve
+  resolve --> job
+  job --> receipt
+  receipt --> close
+  job -. "forbidden shortcut" .-> boundary
+  close -. "evidence required" .-> boundary
 
   classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
   classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
@@ -35,8 +45,10 @@ flowchart LR
   classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
   classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
 
+  class observe,receipt source;
+  class classify,resolve,job control;
+  class sidecar bridge;
+  class close decision;
   class boundary boundary;
-  class classify,job,resolve control;
-  class close,observe,receipt source;
 
   linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

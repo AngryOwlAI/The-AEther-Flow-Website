@@ -16,14 +16,24 @@ config:
 ---
 
 flowchart TB
-  source["Canonical source files"] --> registries["Registries"]
-  registries --> memory["Memory and wiki retrieval"]
-  registries --> semantic["Semantic extracts and indexes"]
-  memory --> inspect["Inspect source before relying"]
-  semantic --> inspect
-  inspect --> receipt["Record evidence when used"]
-  memory -. "drift warning" .-> boundary["Retrieval is not authority"]
-  semantic -. "cache limit" .-> boundary
+  status["Memory status"]
+  lookup["Targeted lookup or search"]
+  hit["Likely source object"]
+  source["Canonical source file"]
+  registry["Source registry row"]
+  receipt["Preflight receipt"]
+  retrieval["Wiki, semantic, Obsidian, SQLite, .local"]
+  boundary["Retrieval is not authority"]
+
+  status --> lookup
+  lookup --> hit
+  hit --> source
+  hit --> registry
+  source --> receipt
+  registry --> receipt
+  retrieval -. "freshness warning" .-> status
+  retrieval -. "forbidden shortcut" .-> boundary
+  hit -. "must verify" .-> boundary
 
   classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
   classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
@@ -36,8 +46,9 @@ flowchart TB
   classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;
   classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
 
+  class source,registry source;
+  class status,lookup,hit,retrieval control;
+  class receipt bridge;
   class boundary boundary;
-  class inspect,memory,semantic control;
-  class receipt,registries,source source;
 
   linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

@@ -1,0 +1,377 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import snapshot from "../../../../data/claim_boundary_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.sourceAuthorityClaimBoundaryExplorer;
+const shortCommit = snapshot.source_commit
+  ? `${snapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+
+const metadata = [
+  {
+    label: "Snapshot refresh date",
+    value: snapshot.source_refresh_date,
+  },
+  {
+    label: "Source commit",
+    value: shortCommit,
+  },
+  {
+    label: "Latest handoff",
+    value: snapshot.latest_handoff_id,
+  },
+  {
+    label: "Registry rows",
+    value: String(snapshot.row_count),
+  },
+];
+
+const scopeItems = Object.entries(snapshot.scope_counts)
+  .sort(([left], [right]) => left.localeCompare(right))
+  .map(([scope, count]) => ({
+    label: `${count} row${count === 1 ? "" : "s"}`,
+    title: scope,
+    body: "Scope label copied from the checked-in registry snapshot.",
+  }));
+
+const statusItems = Object.entries(snapshot.status_counts)
+  .sort(([left], [right]) => left.localeCompare(right))
+  .map(([status, count]) => ({
+    label: `${count} row${count === 1 ? "" : "s"}`,
+    title: status,
+    body: "Status count copied from the checked-in registry snapshot.",
+  }));
+
+const forbiddenItems = snapshot.recurring_forbidden_claims.slice(0, 8).map((item) => ({
+  label: `${item.count} row${item.count === 1 ? "" : "s"}`,
+  title: item.phrase,
+  body: "Recurring forbidden implication in the source-pinned registry snapshot.",
+}));
+
+const gateItems = snapshot.recurring_gate_requirements.slice(0, 6).map((item) => ({
+  label: `${item.count} row${item.count === 1 ? "" : "s"}`,
+  title: item.phrase,
+  body: "Recurring stronger claim form that remains gated in the registry snapshot.",
+}));
+
+const currentRows = snapshot.current_task_rows.length > 0
+  ? snapshot.current_task_rows
+  : snapshot.latest_rows.slice(0, 1);
+
+const recentRows = snapshot.latest_rows.slice(0, 6);
+
+const relatedLinks = [
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Return to the page that explains source lanes, generated derivatives, and reader authority.",
+  },
+  {
+    title: "Claim gates",
+    href: "/project/physics/claim-gates/",
+    body: "Read the claim-control lifecycle beside the registry language shown here.",
+  },
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Check the latest source-state snapshot before treating any row as current project state.",
+  },
+  {
+    title: "Gate Chair and human gates",
+    href: "/project/physics/gate-chair-and-human-gates/",
+    body: "Review why readiness, validator passes, and boundary rows are not protected verdicts.",
+  },
+];
+---
+
+<BaseLayout
+  title="Claim Boundary Explorer"
+  description="Source-pinned claim-boundary explorer showing allowed, forbidden, and gate-required wording without replacing upstream authority."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="claim-boundary-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Source authority / PG-005</p>
+      <h1 id="claim-boundary-title">Claim Boundary Explorer</h1>
+      <p class="overview-lead">
+        This page makes registry language readable. It shows what a row allows,
+        forbids, or keeps behind a gate, while preserving the rule that the
+        upstream registry and source records remain authoritative.
+      </p>
+      <div class="overview-actions" aria-label="Claim boundary explorer actions">
+        <a class="primary-link" href="#wording-examples">Compare wording</a>
+        <a class="secondary-link" href="/project/source-authority/">Source authority</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="claim-boundary-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="claim-boundary-figure-title claim-boundary-figure-desc">
+        <title id="claim-boundary-figure-title">Animated claim-boundary explorer map</title>
+        <desc id="claim-boundary-figure-desc">
+          Registry rows, source state, and checked-in snapshots feed a public
+          explorer while overread paths remain blocked.
+        </desc>
+        <defs>
+          <radialGradient id="claim-boundary-glow" cx="50%" cy="50%" r="68%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.74" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.28" />
+            <stop offset="74%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="claim-boundary-rail" x1="0%" x2="100%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="45%" stop-color="var(--owl-orange-500)" stop-opacity="0.86" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#claim-boundary-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="226" ry="122" />
+          <ellipse cx="310" cy="180" rx="152" ry="78" />
+          <path d="M82 180 C148 118, 236 102, 310 122 C386 102, 472 118, 538 180" />
+          <path d="M82 180 C148 242, 236 258, 310 238 C386 258, 472 242, 538 180" />
+        </g>
+        <path class="track-figure-path orange-path" d="M86 112 C172 154, 220 196, 310 180 C402 164, 452 206, 534 248" stroke="url(#claim-boundary-rail)" />
+        <path class="track-figure-path signal-path" d="M86 248 C172 206, 220 164, 310 180 C402 196, 452 154, 534 112" />
+        <path class="track-figure-core" d="M310 126 L362 180 L310 234 L258 180 Z" />
+        <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+          <circle cx="118" cy="112" r="13" />
+          <circle cx="118" cy="248" r="13" />
+          <circle cx="310" cy="180" r="15" />
+          <circle cx="504" cy="112" r="13" />
+          <circle cx="504" cy="248" r="13" />
+        </g>
+        <g class="authority-boundary" aria-hidden="true">
+          <path d="M232 58 C214 116, 214 244, 232 302" />
+          <path d="M388 58 C406 116, 406 244, 388 302" />
+        </g>
+      </svg>
+      <figcaption id="claim-boundary-figure-caption">
+        Visual orientation only: the explorer exposes boundary language, not
+        registry edit authority or scientific certification.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="snapshot-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot metadata</p>
+      <h2 id="snapshot-title">What source state this explorer reflects.</h2>
+      <p>
+        The explorer uses a checked-in JSON snapshot generated from clean
+        upstream source at commit {snapshot.source_commit}. It does not read or
+        rewrite the source repository during normal Astro builds.
+      </p>
+    </div>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="Claim boundary snapshot metadata"
+      className="snapshot-meta-grid"
+    />
+    <EvidenceRail
+      items={statusItems}
+      ariaLabel="Claim boundary status counts"
+      className="snapshot-status-grid"
+    />
+    <EvidenceRail
+      items={scopeItems.slice(0, 6)}
+      ariaLabel="Claim boundary scope counts"
+      className="snapshot-status-grid"
+    />
+  </section>
+
+  <section id="wording-examples" class="track-page-band" aria-labelledby="wording-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Allowed vs forbidden</p>
+      <h2 id="wording-title">A boundary row narrows what can be said.</h2>
+      <p>
+        The current active-task row is useful because it permits a narrow
+        selector-to-Gate-Chair review path while blocking adoption, matter
+        coupling, equations, benchmark promotion, and completion overreads.
+      </p>
+    </div>
+    <EvidenceRail
+      items={snapshot.language_examples}
+      ariaLabel="Current claim-boundary wording examples"
+      className="claim-boundary-example-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="current-row-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Current active task</p>
+      <h2 id="current-row-title">The active row is not broader than its source scope.</h2>
+      <p>
+        Current active task: {snapshot.active_task_id}. Latest handoff:
+        {snapshot.latest_handoff_id}. Current status: {snapshot.current_status}.
+      </p>
+    </div>
+    <div class="claim-boundary-row-grid">
+      {currentRows.map((row) => (
+        <article class="track-status-card claim-boundary-row-card">
+          <p>{row.scope}</p>
+          <h3>{row.claim_boundary_id}</h3>
+          <p>{row.notes}</p>
+          <dl>
+            <div>
+              <dt>Applies to</dt>
+              <dd>{row.applies_to_path}</dd>
+            </div>
+            <div>
+              <dt>Authority source</dt>
+              <dd>{row.authority_source_path}</dd>
+            </div>
+          </dl>
+          <h4>Allowed wording</h4>
+          <ul>
+            {row.allowed_summary.map((item) => <li>{item}</li>)}
+          </ul>
+          <h4>Forbidden overreads</h4>
+          <ul>
+            {row.forbidden_summary.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="recurring-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Recurring patterns</p>
+      <h2 id="recurring-title">Phrase counts expose repeated guardrails, not proof scores.</h2>
+      <p>
+        These counts help readers recognize common overreads. They are
+        descriptive frequencies in the source-pinned snapshot and do not rank
+        scientific importance.
+      </p>
+    </div>
+    <section class="track-page-subsection" aria-labelledby="forbidden-patterns-title">
+      <div class="track-page-heading">
+        <p class="eyebrow">Forbidden phrases</p>
+        <h3 id="forbidden-patterns-title">Frequent blocked implications.</h3>
+      </div>
+      <EvidenceRail
+        items={forbiddenItems}
+        ariaLabel="Recurring forbidden claim phrases"
+        className="claim-boundary-phrase-rail"
+      />
+    </section>
+    <section class="track-page-subsection" aria-labelledby="gate-patterns-title">
+      <div class="track-page-heading">
+        <p class="eyebrow">Gate-required phrases</p>
+        <h3 id="gate-patterns-title">Stronger statements that remain protected.</h3>
+      </div>
+      <EvidenceRail
+        items={gateItems}
+        ariaLabel="Recurring gate-required claim phrases"
+        className="claim-boundary-phrase-rail"
+      />
+    </section>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="diagram-title">Registry language becomes orientation, not authority transfer.</h2>
+      <p>
+        The static diagram shows the source registry and control state feeding
+        a checked-in snapshot and public explorer while overread paths remain
+        blocked.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/source-authority-claim-boundary-explorer.png"
+        alt="Diagram showing the claim-boundary registry feeding a checked-in snapshot and public explorer while forbidden overreads remain blocked."
+        loading="lazy"
+      />
+      <figcaption id="diagram-caption">
+        Static comprehension diagram: the explorer makes registry language
+        readable without replacing source authority.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="recent-rows-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Representative rows</p>
+      <h2 id="recent-rows-title">Recent rows show the same narrow-reading rule.</h2>
+      <p>
+        The page shows recent rows as examples. For full source authority,
+        inspect the pinned registry link in the provenance section.
+      </p>
+    </div>
+    <div class="claim-boundary-row-grid">
+      {recentRows.map((row) => (
+        <article class="track-status-card claim-boundary-row-card">
+          <p>{row.status}</p>
+          <h3>{row.claim_boundary_id}</h3>
+          <p>{row.notes}</p>
+          <small>Updated: {row.updated_at}</small>
+          <small>Source: {row.authority_source_path}</small>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="reader-path-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="reader-path-title">Read the explorer beside the authority pages.</h2>
+      <p>
+        Claim-boundary rows are easiest to interpret when read beside source
+        authority, claim gates, current state, and human-gated decision pages.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedLinks}
+      ariaLabel="Claim boundary explorer related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="sources-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source provenance</p>
+      <h2 id="sources-title">Inspect the pinned source records.</h2>
+      <p>
+        Primary reading stays inside the website. These links are provenance
+        for the checked-in snapshot and open pinned upstream files.
+      </p>
+    </div>
+    <EvidenceRail
+      items={snapshot.source_provenance_links.map((link) => ({
+        title: link.label,
+        href: link.href,
+        body: "Pinned upstream source dependency for this claim-boundary snapshot.",
+        actionLabel: "Inspect source",
+      }))}
+      ariaLabel="Claim boundary source provenance"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This website page can make boundary language legible. It cannot edit
+        the registry, certify a claim, execute a gate, treat metadata as proof,
+        or promote downstream physics claims.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

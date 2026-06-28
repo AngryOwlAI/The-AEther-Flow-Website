@@ -1,0 +1,57 @@
+---
+config:
+  theme: base
+  themeVariables:
+    darkMode: true
+    background: "#000000"
+    primaryColor: "#050403"
+    primaryTextColor: "#fff8ef"
+    primaryBorderColor: "#d6c3b4"
+    lineColor: "#d6c3b4"
+    fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    fontSize: "16px"
+    clusterBkg: "#080401"
+    clusterBorder: "#d6c3b4"
+    edgeLabelBackground: "#000000"
+---
+flowchart LR
+  Ledger[("Distance-to-GR ledger")]
+  Burden[("Burden map")]
+  Claims[("Claim-boundary registry")]
+  Snapshot["Checked-in dashboard snapshot"]
+  SourceRows["Source foundation rows"]
+  MetricRows["Metric and bridge rows"]
+  DownstreamRows["Downstream GR rows"]
+  ControlRows["Negative and control rows"]
+  Dashboard["Public dashboard"]
+  Overread["Forbidden overread"]
+
+  Ledger --> Snapshot
+  Burden --> Snapshot
+  Claims --> Snapshot
+  Snapshot --> SourceRows
+  Snapshot --> MetricRows
+  Snapshot --> DownstreamRows
+  Snapshot --> ControlRows
+  SourceRows --> Dashboard
+  MetricRows --> Dashboard
+  DownstreamRows --> Dashboard
+  ControlRows --> Dashboard
+  Dashboard -. no progress-bar proof .-> Overread
+  Dashboard -. no downstream promotion .-> Overread
+
+  classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;
+  classDef source fill:#0f364d,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;
+  classDef control fill:#270b01,stroke:#f87800,color:#fff8ef,stroke-width:2px;
+  classDef bridge fill:#164964,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;
+  classDef target fill:#2d7ea0,stroke:#f4d6a1,color:#ffffff,stroke-width:2px;
+  classDef risk fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2px,stroke-dasharray: 5 5;
+
+  class Ledger,Burden,Claims source;
+  class Snapshot control;
+  class SourceRows,MetricRows,ControlRows bridge;
+  class DownstreamRows control;
+  class Dashboard target;
+  class Overread risk;
+
+  linkStyle default stroke:#d6c3b4,stroke-width:2.25px;

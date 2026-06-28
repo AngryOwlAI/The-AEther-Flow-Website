@@ -1,6 +1,6 @@
 # Diagram Gallery Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -8,11 +8,24 @@ Status: draft dossier.
 - Reader job: Read diagrams as visual orientation aids with tracked sources and non-authority status.
 - Primary audience: public readers and maintainers reviewing source-boundary language.
 - Maintainer owner: Documentation Curator / website maintainer.
-- Review status: Human review status: pending maintainer review.
+- Review status: Technical validation passed; known ontology source-drift blocker remains.
+- Source analysis path: `docs/system-analyses/visual-diagram-gallery-by-concept.md`.
 
 ## Current page summary
 
-The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
+The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, internal-first related routes, and PG-023 concept grouping.
+
+## PG-023 evidence review
+
+- Review artifact: `docs/system-analyses/visual-diagram-gallery-by-concept.md`.
+- Review decision: Revise the existing route rather than create a new page or
+  generate new diagram assets.
+- Boundary: Concept groups organize reader navigation. They do not make
+  diagrams authoritative, prove claims, change workflow authority, or replace
+  source inspection.
+- Implementation note: The route preserves existing static PNG assets and
+  repairs the duplicate `description` prop on the manifest-backed
+  `DownloadList`.
 
 ## Upstream source basis
 
@@ -29,6 +42,7 @@ The current page is an implemented reader-facing route. This dossier records the
 3. Manifest entry
 4. Caption and nearby prose
 5. No diagram authority
+6. Concept group navigation
 
 ## Glossary
 
@@ -37,6 +51,7 @@ The current page is an implemented reader-facing route. This dossier records the
 | Static diagram | Generated public image rendered from tracked diagram source. | Not a source claim. |
 | Diagram provenance | Source path, manifest id, and generation path. | Supports audit, not promotion. |
 | Runtime Mermaid | Browser rendering dependency. | Out of scope for public pages. |
+| Concept group | Reader-facing group such as physics, AI workflow, operations, or source authority. | Organizes diagrams without changing claim status. |
 
 ## Claim boundaries and forbidden implications
 
@@ -45,12 +60,14 @@ The current page is an implemented reader-facing route. This dossier records the
 - Visual clarity is not evidence.
 - Public pages use static PNGs.
 - Claims remain in source and prose.
+- Concept grouping is navigation, not authority.
 
 ### Forbidden implications
 
 - Diagram proves science.
 - Diagram replaces source inspection.
 - Mermaid runtime is needed in the public browser.
+- Concept group proves a claim or workflow.
 
 ## Required comprehension blocks
 
@@ -85,11 +102,34 @@ No equation walkthrough required for this route.
 
 ## Safe summary
 
-Safe summary: The diagram gallery shows manifest-backed visual aids with editable sources, static PNG outputs, captions, provenance, and non-authority boundaries.
+Safe summary: The diagram gallery shows manifest-backed visual aids grouped by concept, with editable sources, static PNG outputs, captions, provenance, and non-authority boundaries.
 
 ## Unsafe summary
 
-Unsafe summary: A diagram proves science, changes workflow authority, replaces source inspection, or needs Mermaid in the public browser runtime.
+Unsafe summary: A diagram or concept group proves science, changes workflow authority, replaces source inspection, or needs Mermaid in the public browser runtime.
+
+## Concept group contract
+
+| Group | Reader job |
+| --- | --- |
+| Physics concepts | Understand ontology, benchmark status, derivation burdens, frozen routes, and claim gates. |
+| AI workflow concepts | Understand bounded AgentJobs, role authority, memory, task authority, and parent-child synthesis. |
+| Operations concepts | Understand routing, validation, publication, project-system improvement, and tool boundaries. |
+| Source authority concepts | Understand source boundaries, manifests, reader routes, TeX/PDF derivatives, and diagram-publication status. |
+
+Each rendered figure must retain alt text, caption, and provenance.
+
+## Compact page-publication brief
+
+| Field | Value |
+| --- | --- |
+| Route | `/resources/diagrams/` |
+| Source analysis path | `docs/system-analyses/visual-diagram-gallery-by-concept.md` |
+| Claim status | source-index-only diagram gallery |
+| Diagram decision | Reuse existing static PNG assets; no new diagram generated for PG-023. |
+| Files changed | Route, site content diagram metadata, support comprehension content, dossier, QA note. |
+| Validation commands | `npm run validate:comprehension`, `npm run validate:manifests`, `npm run validate:svg`, `npm run build`, browser QA. |
+| Review status | Technical validation passed; known ontology source-drift blocker remains. |
 
 ## New-page audit
 
@@ -106,11 +146,12 @@ Unsafe summary: A diagram proves science, changes workflow authority, replaces s
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-023.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg023-diagram-gallery-by-concept-qa.md`.
 
 ## References
 
 - The AEther Flow Website. (2026). `docs/content-dossiers/README.md`.
 - The AEther Flow Website. (2026). `public/files/manifests/source_manifest.json`.
 - The AEther Flow Website. (2026). `scripts/render_mermaid_diagrams.py`.
+- The AEther Flow Website. (2026). `docs/system-analyses/visual-diagram-gallery-by-concept.md`.

@@ -1,6 +1,6 @@
 # Director Decisions And AgentJob Lifecycle Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -14,11 +14,29 @@ Status: draft dossier.
 
 The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
 
+## PG-021 route-family evidence review
+
+- Review artifact: `docs/system-analyses/remaining-operations-route-family.md`.
+- Review decision: Preserve the existing lifecycle route and bind its claims to
+  committed schemas, registries, and immutable-record guidance.
+- Source state: Committed upstream source at
+  `01efc4f180221caf9425fbb24683eb54927b553e`.
+- Boundary: Lifecycle records narrow and evidence one transaction; completion
+  evidence does not promote scientific claims or expand authority.
+
 ## Upstream source basis
 
 | Source path | Status | Use in page |
 | --- | --- | --- |
 | `github-facing/director-agentjob-lifecycle-explainer.md` | upstream source | Source basis for this route. |
+| `research_control/README.md` | upstream control source | Source basis for research-control operating model. |
+| `research_control/AGENTS.md` | upstream scoped guidance | Source basis for immutable activated-record and supersession rules. |
+| `.agents/schemas/DIRECTOR_DECISION_SCHEMA.md` | upstream schema | Source basis for Director decision fields. |
+| `.agents/schemas/AGENT_JOB_SCHEMA.md` | upstream schema | Source basis for AgentJob allowlist and stop conditions. |
+| `.agents/schemas/EXECUTION_ROLE_SCHEMA.md` | upstream schema | Source basis for execution-role records. |
+| `registries/DIRECTOR_DECISION_REGISTRY.csv` | upstream registry | Source basis for Director decision discovery. |
+| `registries/AGENT_JOB_REGISTRY.csv` | upstream registry | Source basis for AgentJob discovery. |
+| `registries/ROLE_EXECUTION_REGISTRY.csv` | upstream registry | Source basis for execution-role discovery. |
 
 ## Source-derived topic outline
 
@@ -104,9 +122,17 @@ Unsafe summary: A lifecycle diagram expands authority, rewrites activated record
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-021.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg021-remaining-operations-family-qa.md`.
 
 ## References
 
 - AEther-Flow Project. (2026). `github-facing/director-agentjob-lifecycle-explainer.md`.
+- AEther-Flow Project. (2026). `research_control/README.md`.
+- AEther-Flow Project. (2026). `research_control/AGENTS.md`.
+- AEther-Flow Project. (2026). `.agents/schemas/DIRECTOR_DECISION_SCHEMA.md`.
+- AEther-Flow Project. (2026). `.agents/schemas/AGENT_JOB_SCHEMA.md`.
+- AEther-Flow Project. (2026). `.agents/schemas/EXECUTION_ROLE_SCHEMA.md`.
+- AEther-Flow Project. (2026). `registries/DIRECTOR_DECISION_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `registries/AGENT_JOB_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `registries/ROLE_EXECUTION_REGISTRY.csv`.

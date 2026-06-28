@@ -1,0 +1,326 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsGateChairAndHumanGates;
+
+const authorityCards = [
+  {
+    label: "Role",
+    title: "Gate Chair is human-gated",
+    body: "The role is defined for protected promotion, closure, or suspension decisions, but execution and promotion require explicit tracked approval.",
+  },
+  {
+    label: "Readiness",
+    title: "Prepared is not decided",
+    body: "A selector, handoff, or claim-boundary row can prepare a gate context. It does not issue the protected verdict.",
+  },
+  {
+    label: "Validation",
+    title: "PASS is operational",
+    body: "Validators can check records, receipts, and boundary preservation. They cannot prove physics or promote a claim.",
+  },
+  {
+    label: "Publication",
+    title: "The website explains only",
+    body: "This page can make the authority model readable. It cannot become source authority or approve a Gate Chair action.",
+  },
+];
+
+const cannotDecide = [
+  {
+    title: "Validators cannot decide",
+    body: "Validator success cannot adopt source law, prove a theorem, authorize MetricData(E), change g_eff scope, or promote downstream GR claims.",
+  },
+  {
+    title: "Handoffs cannot decide",
+    body: "A handoff records status and next action. The next action is not already executed, even when it names a gate or future packet.",
+  },
+  {
+    title: "Role rows cannot decide",
+    body: "A role registry row helps inspect default authority. The live transaction still needs explicit tracked gate approval.",
+  },
+  {
+    title: "Public pages cannot decide",
+    body: "Generated or website pages orient readers. They do not supersede source records, registries, role contracts, or human-gated decisions.",
+  },
+];
+
+const currentBoundary = [
+  "no source-law adoption",
+  "no MetricData(E) adoption",
+  "no g_eff scope change",
+  "no coupling-law adoption",
+  "no matter-coupling derivation or adoption",
+  "no stress-energy semantics",
+  "no Einstein equations",
+  "no benchmark promotion",
+  "no downstream GR promotion",
+];
+
+const readerLinks = [
+  {
+    title: "Source extension pipeline",
+    href: "/project/physics/source-extension-pipeline/",
+    body: "See how proposal-only, audit, stress, selector, and gate precondition states remain narrower than adoption.",
+  },
+  {
+    title: "Claim gates and obstructions",
+    href: "/project/physics/claim-gates/",
+    body: "Read the broader lifecycle for proposals, audits, stress tests, freezes, and human gates.",
+  },
+  {
+    title: "Current physics state",
+    href: "/project/physics/current-state/",
+    body: "Use the current-state page for checked-in status snapshots before reading any gate-related claim as current.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Review why upstream source records and registries remain authoritative for claim status.",
+  },
+];
+---
+
+<BaseLayout
+  title="Gate Chair And Human-Gated Decisions"
+  description="Reader-facing authority explainer for Gate Chair status, human-gated decisions, validator limits, and protected claim promotion boundaries."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="gate-chair-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-004</p>
+      <h1 id="gate-chair-title">Gate Chair And Human-Gated Decisions</h1>
+      <p class="overview-lead">
+        Some scientific decisions are deliberately protected. Gate Chair
+        authority is the human-gated path for promotion, closure, or suspension
+        decisions after required evidence exists; readiness signals do not make
+        the decision themselves.
+      </p>
+      <div class="overview-actions" aria-label="Gate Chair page actions">
+        <a class="primary-link" href="#authority-stack">Read the authority stack</a>
+        <a class="secondary-link" href="/project/physics/">Back to physics track</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="gate-chair-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="gate-chair-figure-title gate-chair-figure-desc">
+        <title id="gate-chair-figure-title">Animated human-gate authority map</title>
+        <desc id="gate-chair-figure-desc">
+          Operational records converge on a protected gate while blocked
+          overread paths remain outside the decision boundary.
+        </desc>
+        <defs>
+          <radialGradient id="gate-glow" cx="50%" cy="48%" r="70%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.68" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.22" />
+            <stop offset="72%" stop-color="var(--owl-cyan-400)" stop-opacity="0.14" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="gate-orange-rail" x1="12%" x2="88%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="35%" stop-color="var(--owl-orange-500)" stop-opacity="0.9" />
+            <stop offset="68%" stop-color="var(--owl-orange-100)" stop-opacity="0.76" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="gate-signal-rail" x1="10%" x2="90%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="28%" stop-color="var(--owl-cyan-400)" stop-opacity="0.74" />
+            <stop offset="70%" stop-color="var(--owl-orange-100)" stop-opacity="0.7" />
+            <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#gate-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="226" ry="122" />
+          <ellipse cx="310" cy="180" rx="154" ry="78" />
+          <path d="M86 180 C158 122, 230 108, 310 126 C390 108, 462 122, 534 180" />
+          <path d="M86 180 C158 238, 230 252, 310 234 C390 252, 462 238, 534 180" />
+        </g>
+        <g class="physics-control-arcs" aria-hidden="true">
+          <path d="M118 96 C154 70, 204 80, 220 124 C238 174, 196 214, 150 202 C108 190, 86 128, 118 96" />
+          <path d="M402 94 C442 64, 500 84, 516 132 C532 178, 492 218, 448 202 C408 186, 374 130, 402 94" />
+          <path d="M212 282 C250 246, 304 248, 326 292 C292 322, 246 326, 212 282" />
+        </g>
+        <g class="physics-burden-rails" aria-hidden="true">
+          <path class="track-figure-path orange-path physics-flow-path primary" d="M96 216 C172 174, 230 162, 310 180 C390 198, 450 174, 524 116" />
+          <path class="track-figure-path signal-path physics-flow-path" d="M96 144 C168 168, 236 210, 310 180 C386 150, 452 164, 524 238" />
+          <path class="track-figure-path orange-path physics-flow-path alternate" d="M160 286 C218 238, 268 216, 310 180 C350 140, 404 94, 480 76" />
+        </g>
+        <path
+          class="track-figure-core physics-burden-core"
+          d="M310 126 L358 180 L310 234 L262 180 Z"
+          aria-hidden="true"
+        />
+        <g class="track-figure-nodes physics-boundary-nodes" aria-hidden="true">
+          <circle cx="96" cy="216" r="7" />
+          <circle cx="96" cy="144" r="7" />
+          <circle cx="160" cy="286" r="7" />
+          <circle cx="310" cy="180" r="9" />
+          <circle cx="524" cy="116" r="7" />
+          <circle cx="524" cy="238" r="7" />
+          <circle cx="480" cy="76" r="7" />
+        </g>
+      </svg>
+      <figcaption id="gate-chair-figure-caption">
+        Visual orientation only: operational evidence can prepare a human gate,
+        but it does not issue the protected decision.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="authority-stack" class="track-page-band" aria-labelledby="authority-stack-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Authority stack</p>
+      <h2 id="authority-stack-title">A protected verdict requires more than a ready packet.</h2>
+      <p>
+        The Gate Chair role is designed for protected scientific decisions.
+        It may promote claims only under human-gated status, and the role
+        contract is paused without explicit tracked approval.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {authorityCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="limits-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Validator and routing limits</p>
+      <h2 id="limits-title">Several surfaces can record evidence; none can silently promote it.</h2>
+      <p>
+        The public failure mode is claim laundering: reading an operational
+        receipt, registry row, or next-action note as if it were a protected
+        scientific decision.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {cannotDecide.map((card) => (
+        <article class="track-status-card">
+          <p>Cannot decide</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="current-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Current handoff example</p>
+      <h2 id="current-boundary-title">The latest inspected handoff preserves blocked claims.</h2>
+      <p>
+        The current source-state example is bounded: Gate Chair accepted the
+        recovery-bridge candidate only as scoped source-extension
+        evidence/precondition. That is a protected evidence-status decision,
+        not coupling-law adoption, matter-coupling derivation, benchmark
+        promotion, or completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {currentBoundary.map((item) => (
+        <article class="track-status-card">
+          <p>Preserved boundary</p>
+          <h3>{item}</h3>
+          <p>
+            This boundary remains in force for the public reading of the
+            current handoff unless upstream source authority explicitly changes it.
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="gate-chair-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="gate-chair-diagram-title">The decision point and the blocked overreads.</h2>
+      <p>
+        The static diagram separates lawful preparation from protected
+        authority. Dashed paths mark places where records, validators, or
+        public explanation could be overread as a verdict.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="gate-chair-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-gate-chair-human-gates.png"
+        alt="Diagram showing draft evidence, validators, completion, handoff, claim boundary, explicit human gate, Gate Chair output, and blocked overreads."
+        loading="lazy"
+      />
+      <figcaption id="gate-chair-diagram-caption">
+        Static comprehension diagram: human-gated decisions require explicit
+        tracked approval; readiness signals remain non-verdict evidence.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="safe-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe summary</p>
+      <h2 id="safe-summary-title">Human gates preserve accountability for high-risk claims.</h2>
+      <p>
+        Safe summary: Gate Chair authority is a protected human-gated decision
+        path. Draft/control evidence, validators, completions, handoffs, and
+        registries can prepare or record context, but only explicit tracked
+        approval can authorize a Gate Chair execution or protected promotion.
+      </p>
+    </div>
+    <div class="track-page-heading">
+      <p class="eyebrow">Unsafe summary</p>
+      <h2>Do not convert readiness into a verdict.</h2>
+      <p>
+        Unsafe summary: A validator passed, a selector routed toward a gate, a
+        handoff named a next action, or a role row exists; therefore a Gate
+        Chair verdict has occurred or downstream GR claims are promoted.
+      </p>
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="gate-chair-reader-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="gate-chair-reader-title">Read this page with adjacent claim-control routes.</h2>
+      <p>
+        Human-gated status is easiest to understand when read beside the
+        source-extension pipeline, claim gates, current state, and source
+        authority route.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {readerLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="gate-chair-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="gate-chair-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can explain why Gate Chair and human-gated authority exist.
+        It cannot execute a gate, issue a Gate Chair verdict, adopt source law,
+        reverse no MetricData(E), reverse no g_eff, derive matter coupling or
+        Einstein equations, promote a benchmark, or authorize downstream GR
+        claims.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

@@ -87,24 +87,24 @@ const distanceMechanisms = [
 
 const distanceStateCards = [
   {
-    label: "M_src",
-    title: "Scoped source-side acceptance",
-    body: "The committed ledger records scoped source-only M_src acceptance. That is progress inside the burden chain, not a downstream metric, coupling, equation, or benchmark promotion.",
+    label: "Active burden",
+    title: activeBurden.required_object,
+    body: `${activeBurden.current_status}. ${activeBurden.notes}`,
   },
   {
-    label: "g_eff",
-    title: "Metric not constructed or adopted",
-    body: "The active metric burden must be read through its row notes and the blocked-claim list. Scoped MetricData(E) evidence does not define, construct, or adopt g_eff.",
+    label: "Scoped evidence",
+    title: "Accepted evidence is not adopted coupling",
+    body: "The Gate Chair accepted the recovery-bridge candidate only as scoped source-extension evidence/precondition. It does not adopt a coupling law, derive matter coupling, or adopt matter coupling.",
   },
   {
-    label: "Matter and equations",
+    label: "Downstream",
     title: "Downstream burdens remain separate",
-    body: "Matter coupling and Einstein-equation recovery require their own source-side derivations. They cannot be inferred from M_src status, validator success, or roadmap placement.",
+    body: "Einstein-equation recovery and benchmark promotion require their own source-side derivations and protected review. They cannot be inferred from stress survival.",
   },
   {
-    label: "Benchmark",
-    title: "Promotion remains gated",
-    body: "Exact-GR benchmark promotion remains a controlled downstream state requiring upstream burdens and explicit gate authority, not a percentage threshold.",
+    label: "Human gate",
+    title: "Gate Chair status remains protected",
+    body: "The downstream Gate Chair row remains human-gated. Validator PASS, selector routing, and website publication do not issue a protected verdict.",
   },
 ];
 ---
@@ -158,11 +158,11 @@ const distanceStateCards = [
       <p class="eyebrow">Distance-to-GR state</p>
       <h2 id="distance-to-gr-title">Distance from GR derivation or hard fail</h2>
       <p>
-        The active Distance-to-GR burden is g_eff, blocked by missing
-        signature, scale-normalization, and continuum-transition primitive
-        work. Matter coupling and Einstein equations are not started;
-        benchmark promotion remains blocked, Gate Chair status remains
-        human-gated, and this page reports burden state rather than a
+        The active Distance-to-GR burden is {activeBurden.burden_id}. The
+        checked-in snapshot reports {activeBurden.current_status.toLowerCase()}
+        and preserves the current human-gate boundary. Downstream equations,
+        benchmark promotion, and any Gate Chair verdict remain separate
+        controlled states, so this page reports burden state rather than a
         numerical completion score.
       </p>
     </div>
@@ -188,9 +188,10 @@ const distanceStateCards = [
         <p class="snapshot-card-label">Current boundary</p>
         <h3>Scoped progress does not unlock GR.</h3>
         <p>
-          The current public state preserves the negative boundary: no adopted
-          or constructed g_eff, no matter coupling, no Einstein equations, no
-          benchmark promotion, and no completed derivation.
+          The current public state preserves the negative boundary: no source-law
+          adoption, no MetricData(E) adoption, no g_eff scope change, no adopted
+          matter coupling, no Einstein equations, no benchmark promotion, and no
+          completed derivation.
         </p>
       </article>
     </div>
@@ -228,7 +229,7 @@ const distanceStateCards = [
   <section class="track-page-band" aria-labelledby="snapshot-boundary-title">
     <div class="track-page-heading">
       <p class="eyebrow">Claim boundary</p>
-      <h2 id="snapshot-boundary-title">Stress survival is not adoption.</h2>
+      <h2 id="snapshot-boundary-title">Scoped evidence is not adoption.</h2>
       <p>{snapshot.claim_boundary_summary}</p>
     </div>
 
@@ -249,11 +250,12 @@ const distanceStateCards = [
   <section class="track-page-band" aria-labelledby="snapshot-burden-title">
     <div class="track-page-heading">
       <p class="eyebrow">Derivation burden</p>
-      <h2 id="snapshot-burden-title">The active burden remains upstream and gated.</h2>
+      <h2 id="snapshot-burden-title">The active burden remains upstream and scoped.</h2>
       <p>
         The active Distance-to-GR row is shown for reader orientation. It does
-        not by itself construct an effective metric, matter coupling, field
-        equations, or benchmark promotion.
+        not by itself adopt a coupling law, derive or adopt matter coupling,
+        import stress-energy semantics, derive field equations, or promote a
+        benchmark.
       </p>
     </div>
 
@@ -321,7 +323,7 @@ const distanceStateCards = [
       <h2 id="snapshot-authority-title">What this page can and cannot establish.</h2>
       <p>
         This website page can report a reviewed snapshot of upstream control
-        state. It cannot adopt MetricData(E), define or construct g_eff,
+        state. It cannot adopt MetricData(E), change g_eff scope, adopt or
         derive matter coupling, derive Einstein equations, promote the
         benchmark, close a Gate Chair review, or complete the derivation.
       </p>

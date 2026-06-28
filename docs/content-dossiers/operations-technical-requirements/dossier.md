@@ -1,6 +1,6 @@
 # Technical Requirements Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -14,11 +14,29 @@ Status: draft dossier.
 
 The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
 
+## PG-021 route-family evidence review
+
+- Review artifact: `docs/system-analyses/remaining-operations-route-family.md`.
+- Review decision: Preserve the existing technical-requirements route and
+  expose the committed environment, dependency, script, and test sources behind
+  the tool-tier explanation.
+- Source state: Committed upstream source at
+  `01efc4f180221caf9425fbb24683eb54927b553e`.
+- Boundary: Tool availability supports reproducibility; it does not authorize
+  work, change dependency policy, or promote scientific claims.
+
 ## Upstream source basis
 
 | Source path | Status | Use in page |
 | --- | --- | --- |
 | `github-facing/technical-requirements-explainer.md` | upstream source | Source basis for this route. |
+| `README.md` | upstream project source | Source basis for local environment and command-family guidance. |
+| `AGENTS.md` | upstream project source | Source basis for authority hierarchy and generated-output boundaries. |
+| `research_control/README.md` | upstream control source | Source basis for memory preflight, project-system, and research-control checks. |
+| `requirements.txt` | upstream dependency ledger | Source basis for Python dependency requirements. |
+| `Makefile` | upstream command source | Source basis for grouped command targets. |
+| `scripts/README.md` | upstream script guide | Source basis for script groups and tooling authority boundary. |
+| `tests/README.md` | upstream test guide | Source basis for unit-test areas and command shape. |
 
 ## Source-derived topic outline
 
@@ -104,9 +122,16 @@ Unsafe summary: Installed tools, passing commands, or local capability authorize
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-021.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg021-remaining-operations-family-qa.md`.
 
 ## References
 
 - AEther-Flow Project. (2026). `github-facing/technical-requirements-explainer.md`.
+- AEther-Flow Project. (2026). `README.md`.
+- AEther-Flow Project. (2026). `AGENTS.md`.
+- AEther-Flow Project. (2026). `research_control/README.md`.
+- AEther-Flow Project. (2026). `requirements.txt`.
+- AEther-Flow Project. (2026). `Makefile`.
+- AEther-Flow Project. (2026). `scripts/README.md`.
+- AEther-Flow Project. (2026). `tests/README.md`.

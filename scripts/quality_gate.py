@@ -15,17 +15,12 @@ from urllib.parse import unquote, urlparse
 HTML_ROUTES_REQUIRING_SOURCE_NOTICE = {
     "/project/overview/",
     "/project/physics/current-state/",
-    "/research/map/",
-    "/research/equations/",
-    "/research/math-sample/",
     "/resources/",
     "/resources/documents/",
     "/resources/diagrams/",
+    "/project/source-authority/publication-and-provenance-system/",
 }
-ROUTES_REQUIRING_KATEX = {
-    "/research/equations/",
-    "/research/math-sample/",
-}
+ROUTES_REQUIRING_KATEX = set()
 ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT = {
     "/project/physics/",
     "/project/ai-research-agent-system/",

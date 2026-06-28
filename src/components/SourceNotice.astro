@@ -6,6 +6,7 @@ interface Props {
   sourceRefs?: string[];
   updated?: string | Date;
   note?: string;
+  preferSourceRefs?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   sourceRefs = [],
   updated,
   note = "Source authority remains with the research repository. This page is a reader-facing website surface.",
+  preferSourceRefs = false,
 } = Astro.props;
 
 type ProvenanceSource = {
@@ -62,6 +64,8 @@ const linkedSourceRefs = sourceRefs.map((ref) => ({
   href: sourceRefToHref(ref),
 }));
 const provenanceSources = currentPageProvenance?.upstream_sources ?? [];
+const showProvenanceSources = provenanceSources.length > 0 && !preferSourceRefs;
+const showSourceRefs = sourceRefs.length > 0 && (provenanceSources.length === 0 || preferSourceRefs);
 ---
 
 <aside class="source-notice" aria-label="Source authority notice">
@@ -78,7 +82,7 @@ const provenanceSources = currentPageProvenance?.upstream_sources ?? [];
         <dd>{updatedLabel}</dd>
       </div>
     )}
-    {provenanceSources.length > 0 && (
+    {showProvenanceSources && (
       <div>
         <dt>Source links</dt>
         <dd>
@@ -98,7 +102,7 @@ const provenanceSources = currentPageProvenance?.upstream_sources ?? [];
         </dd>
       </div>
     )}
-    {sourceRefs.length > 0 && provenanceSources.length === 0 && (
+    {showSourceRefs && (
       <div>
         <dt>Source refs</dt>
         <dd>

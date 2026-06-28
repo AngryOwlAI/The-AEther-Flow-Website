@@ -1,0 +1,379 @@
+---
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.aiRoleAuthorityInspector;
+
+const diagram = {
+  src: "/assets/diagrams/comprehension/ai-role-authority-inspector-stack.png",
+  alt:
+    "Role authority inspection stack from role label to registry row, contract, execution-role record, AgentJob allowlist, completion evidence, and human gate boundary.",
+  caption:
+    "Role labels and registry rows support inspection; live authority comes from task-local execution records and AgentJob allowlists.",
+};
+
+const inspectionSteps = [
+  {
+    label: "1. Registry",
+    title: "Read status and gate fields",
+    body:
+      "Start with role id, version, authority level, status, human-gate state, may/may-not fields, output form, validators, and notes.",
+  },
+  {
+    label: "2. Contract",
+    title: "Open the versioned role source",
+    body:
+      "The role contract is the governed text. A public page can summarize it, but cannot replace it.",
+  },
+  {
+    label: "3. Execution role",
+    title: "Check the one-job binding",
+    body:
+      "The current job must bind the role through `registered_role`, `task_overlay`, or `one_job_provisional_role`.",
+  },
+  {
+    label: "4. AgentJob",
+    title: "Inspect the allowlist",
+    body:
+      "Actual transaction authority comes from allowed reads, writes, outputs, validators, source classes, and claim boundary.",
+  },
+  {
+    label: "5. Completion",
+    title: "Read the receipt",
+    body:
+      "Completion evidence records what changed, which commands passed, what verdict was reached, and what remains blocked.",
+  },
+  {
+    label: "6. Human gate",
+    title: "Protected actions need approval",
+    body:
+      "A human-gated role or claim-promotion path requires explicit tracked approval, not just a visible registry row.",
+  },
+];
+
+const roleRows = [
+  {
+    role: "director-of-research@0.3.0",
+    status: "active",
+    authority: "routing_control",
+    gate: "not human-gated",
+    fields: "may modify sources: false; may promote claims: false",
+    safe:
+      "Can route bounded work under the current control process when a task and AgentJob authorize it.",
+    unsafe: "Director label grants all write authority.",
+  },
+  {
+    role: "ontology-formalizer@0.2.0",
+    status: "active",
+    authority: "science_draft",
+    gate: "not human-gated",
+    fields: "may modify sources: false; may promote claims: false",
+    safe:
+      "Can produce bounded draft/control formalization only when the AgentJob allows that work.",
+    unsafe: "Role name adopts ontology or source law.",
+  },
+  {
+    role: "gate-chair@0.1.0",
+    status: "status_defined",
+    authority: "human_gated",
+    gate: "requires human gate",
+    fields: "may promote claims: true; may execute autonomously: false",
+    safe:
+      "The role exists, but execution and promotion require explicit tracked approval.",
+    unsafe: "Gate Chair row visibility authorizes promotion.",
+  },
+  {
+    role: "project-control-maintainer@0.2.0",
+    status: "active",
+    authority: "project_control",
+    gate: "not human-gated",
+    fields: "may modify sources: true; may promote claims: false",
+    safe:
+      "Can maintain project-control surfaces inside the current AgentJob allowlist.",
+    unsafe: "Project-control role can promote physics.",
+  },
+  {
+    role: "director-of-research@0.1.0",
+    status: "superseded",
+    authority: "routing_control",
+    gate: "not human-gated",
+    fields: "historical row retained for old execution records",
+    safe: "Visible for audit history and old-record interpretation.",
+    unsafe: "Superseded visibility means current active authority.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Registry",
+    title: "not permission",
+    body: "A registry row establishes source-visible status; it does not authorize a live transaction.",
+  },
+  {
+    label: "Contract",
+    title: "not allowlist",
+    body: "A role contract explains normal scope; the AgentJob controls current reads and writes.",
+  },
+  {
+    label: "Active",
+    title: "not enough",
+    body: "Active status still needs a task-local execution-role record and AgentJob.",
+  },
+  {
+    label: "Superseded",
+    title: "history only",
+    body: "Superseded rows stay visible so older task records remain interpretable.",
+  },
+  {
+    label: "Gate",
+    title: "not bypassed",
+    body: "A human-gated role requires explicit tracked approval before protected action.",
+  },
+  {
+    label: "Catalog",
+    title: "not registration",
+    body: "This website page cannot register roles, supersede roles, or promote claims.",
+  },
+];
+
+const safeUnsafeCards = [
+  {
+    label: "Safe summary",
+    title: "Inspect the stack before concluding authority.",
+    body:
+      "Read registry row, role contract, execution-role record, AgentJob allowlist, completion evidence, and any human gate.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "A visible role label grants permission.",
+    body:
+      "It would be unsafe to treat a role name, catalog card, active status, or historical row as current write or claim authority.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Roles and skills",
+    href: "/project/ai-research-agent-system/roles-and-skills/",
+    body: "Return to the role and skill catalog overview.",
+  },
+  {
+    title: "Role routing",
+    href: "/project/operations/role-routing/",
+    body: "Read the operational role-routing and execution-role contract page.",
+  },
+  {
+    title: "One bounded AgentJob",
+    href: "/project/ai-research-agent-system/one-bounded-agentjob/",
+    body: "Inspect how an AgentJob allowlist becomes the current transaction boundary.",
+  },
+  {
+    title: "Research-agent workflow",
+    href: "/project/ai-research-agent-system/workflow/",
+    body: "See where role inspection fits in the request-to-completion workflow.",
+  },
+  {
+    title: "Source authority",
+    href: "/project/source-authority/",
+    body: "Review why public pages remain below tracked source authority.",
+  },
+  {
+    title: "Validator and operator workflow",
+    href: "/project/operations/validator-operator-workflow/",
+    body: "Read why validator PASS does not grant physics claim authority.",
+  },
+];
+---
+
+<BaseLayout
+  title="Role Authority Inspector"
+  description="Static role authority inspector explaining why role labels, registry rows, and public catalog visibility do not grant live permissions."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="role-inspector-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">AI research-agent deep dive / PG-017</p>
+      <h1 id="role-inspector-title">Role Authority Inspector</h1>
+      <p class="overview-lead">
+        A role label is not live permission. To inspect authority, read the
+        role registry, role contract, execution-role record, AgentJob
+        allowlist, completion evidence, and any required human gate.
+      </p>
+      <div class="overview-actions" aria-label="Role authority inspector page actions">
+        <a class="primary-link" href="#role-inspection-stack">Inspect the stack</a>
+        <a class="secondary-link" href="/project/operations/role-routing/">Role routing</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="role-inspector-figure-caption">
+      <svg viewBox="0 0 620 360" role="img" aria-labelledby="role-inspector-figure-title role-inspector-figure-desc">
+        <title id="role-inspector-figure-title">Role authority inspection stack</title>
+        <desc id="role-inspector-figure-desc">
+          A role label narrows through registry status, contract source,
+          execution-role record, AgentJob allowlist, completion evidence, and
+          human-gate boundary.
+        </desc>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <path class="track-figure-path signal-path" d="M102 112 H518" />
+        <path class="track-figure-path orange-path" d="M102 180 H518" />
+        <path class="track-figure-path signal-path" d="M102 248 H518" />
+        <g class="track-figure-nodes hollow-nodes">
+          <circle cx="116" cy="112" r="15" />
+          <circle cx="310" cy="112" r="15" />
+          <circle cx="504" cy="112" r="15" />
+          <circle cx="116" cy="180" r="15" />
+          <circle cx="310" cy="180" r="15" />
+          <circle cx="504" cy="180" r="15" />
+          <circle cx="116" cy="248" r="15" />
+          <circle cx="310" cy="248" r="15" />
+          <circle cx="504" cy="248" r="15" />
+        </g>
+        <circle class="track-figure-core" cx="310" cy="180" r="40" />
+        <circle class="track-figure-accent" cx="504" cy="248" r="9" />
+      </svg>
+      <figcaption id="role-inspector-figure-caption">
+        Visual orientation only: inspection order is not role activation or
+        write permission.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="role-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Static comprehension diagram</p>
+      <h2 id="role-diagram-title">Inspection moves from visible label to task-local authority.</h2>
+      <p>
+        The diagram is a static reader aid generated from the dossier Mermaid
+        source. It does not replace the registry, contracts, execution-role
+        records, AgentJobs, completions, or human gates.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure">
+      <img src={diagram.src} alt={diagram.alt} loading="lazy" decoding="async" />
+      <figcaption>{diagram.caption}</figcaption>
+    </figure>
+  </section>
+
+  <section id="role-inspection-stack" class="track-page-band" aria-labelledby="role-inspection-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Authority inspection stack</p>
+      <h2 id="role-inspection-title">A role row starts the inspection; it does not finish it.</h2>
+      <p>
+        The safe reading path starts with source-visible role status and ends
+        with a current AgentJob boundary and completion evidence.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {inspectionSteps.map((step) => (
+        <article class="track-status-card">
+          <p>{step.label}</p>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="role-rows-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Representative registry readings</p>
+      <h2 id="role-rows-title">Static examples show how status should be read.</h2>
+      <p>
+        These examples are representative committed rows, not a live permission
+        console. Source inspection remains in the upstream registry.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {roleRows.map((row) => (
+        <article class="track-status-card">
+          <p>{row.status}</p>
+          <h3>{row.role}</h3>
+          <p><strong>Authority:</strong> {row.authority}</p>
+          <p><strong>Gate:</strong> {row.gate}</p>
+          <p>{row.fields}</p>
+          <p><strong>Safe:</strong> {row.safe}</p>
+          <p><strong>Unsafe:</strong> {row.unsafe}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="role-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Boundaries</p>
+      <h2 id="role-boundaries-title">Visibility must not become authority drift.</h2>
+      <p>
+        The inspector is useful only if it keeps catalog display, registry
+        status, role contracts, and live transaction authority separate.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="role-safe-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe summaries</p>
+      <h2 id="role-safe-title">Safe inspection names the forbidden shortcut.</h2>
+      <p>
+        A public role inspector can orient readers. It cannot register roles,
+        activate roles, change role status, change write permission, or promote
+        physics claims.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {safeUnsafeCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="role-related-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="role-related-title">Use related internal routes before provenance inspection.</h2>
+      <p>
+        The route is a reader layer. Source links remain provenance for readers
+        who need to inspect the committed registry and contracts.
+      </p>
+    </div>
+    <div class="source-link-grid">
+      {relatedLinks.map((link) => (
+        <a class="source-link-card" href={link.href}>
+          <span>{link.title}</span>
+          <small>{link.body}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band track-page-notice" aria-labelledby="role-authority-title">
+    <div>
+      <p class="eyebrow">Source authority</p>
+      <h2 id="role-authority-title">What this page can and cannot establish.</h2>
+      <p>
+        This page can explain role inspection. It cannot register roles,
+        supersede roles, change schemas, change routing behavior, change
+        AgentJob allowlists, bypass human gates, or authorize claim promotion.
+      </p>
+    </div>
+    <SourceNotice
+      claimStatus={sourceNotice.claimStatus}
+      updated={sourceNotice.updated}
+      note={sourceNotice.note}
+      sourceRefs={sourceNotice.sourceRefs}
+    />
+  </section>
+</BaseLayout>

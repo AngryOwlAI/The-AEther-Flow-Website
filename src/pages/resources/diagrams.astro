@@ -3,10 +3,11 @@ import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import Figure from "../../components/Figure.astro";
 import SourceNotice from "../../components/SourceNotice.astro";
+import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
 import { approvedDownloads, downloads, sampleDownloads } from "../../lib/manifests";
-import { diagramGalleryItems } from "../../lib/siteContent";
+import { diagramConceptGroups, diagramGalleryItems } from "../../lib/siteContent";
 
 const diagramDownloads = downloads.filter((item) => item.kind === "diagram");
 const approvedDiagramDownloads = approvedDownloads.filter((item) => item.kind === "diagram");
@@ -17,6 +18,27 @@ const approvedDiagramLabel =
   approvedDiagramDownloads.length === 1
     ? "approved public-comprehension diagram file"
     : "approved public-comprehension diagram files";
+
+const galleryStatusCards = [
+  {
+    label: "Static PNG",
+    title: "Browser-safe publication",
+    body:
+      "Public diagram figures use committed PNG assets generated from tracked Mermaid sources.",
+  },
+  {
+    label: "Caption",
+    title: "Interpretation stays in prose",
+    body:
+      "Each figure keeps meaning in alt text, caption, nearby copy, and source provenance.",
+  },
+  {
+    label: "Boundary",
+    title: "No diagram authority",
+    body:
+      "A diagram can explain a relationship, but it cannot prove science, change workflow authority, or replace source inspection.",
+  },
+];
 ---
 
 <BaseLayout
@@ -30,9 +52,10 @@ const approvedDiagramLabel =
         <p class="eyebrow">Visual assets</p>
         <h1 id="diagrams-title">Diagram Gallery</h1>
         <p class="lead">
-          Diagrams are presentation aids. Current comprehension diagrams are
-          generated from tracked Mermaid sources and recorded in the manifests;
-          they orient readers but do not become scientific or workflow authority.
+          Diagrams are presentation aids grouped by reader concept. Current
+          comprehension diagrams are generated from tracked Mermaid sources and
+          recorded in the manifests; they orient readers but do not become
+          scientific or workflow authority.
         </p>
       </div>
       <SourceNotice
@@ -41,7 +64,7 @@ const approvedDiagramLabel =
           "The AEther Flow Website. (2026). docs/content-dossiers/README.md",
           "The AEther Flow Website. (2026). public/files/manifests/source_manifest.json",
         ]}
-        updated="2026-06-25"
+        updated="2026-06-28"
         note="This page presents website-local visual orientation assets with explicit provenance. It does not make diagrams authoritative."
       />
     </div>
@@ -105,6 +128,11 @@ const approvedDiagramLabel =
         comprehension use, not source-claim authority.
       </p>
     </div>
+    <StatusDossier
+      items={galleryStatusCards}
+      ariaLabel="Diagram gallery publication status"
+      className="track-status-grid"
+    />
     <div class="link-grid">
       <a class="link-card" href="/project/source-authority/">
         <span>Source authority</span>
@@ -121,26 +149,37 @@ const approvedDiagramLabel =
     </div>
   </section>
 
-  <section class="content-band content-band-tight" aria-label="Diagram list">
-    <div class="figure-grid">
-      {diagramGalleryItems.map((item) => (
-        <Figure
-          src={item.src}
-          alt={item.alt}
-          caption={item.caption}
-          provenance={item.provenance}
-          loading="eager"
-        />
-      ))}
-    </div>
-  </section>
+  {diagramConceptGroups.map((group) => (
+    <section
+      class="content-band content-band-tight"
+      aria-labelledby={`diagram-group-${group.id}-title`}
+    >
+      <div class="section-header">
+        <p class="eyebrow">Concept group</p>
+        <h2 id={`diagram-group-${group.id}-title`}>{group.title}</h2>
+        <p class="lead">{group.body}</p>
+      </div>
+      <div class="figure-grid">
+        {diagramGalleryItems
+          .filter((item) => item.group === group.id)
+          .map((item) => (
+            <Figure
+              src={item.src}
+              alt={item.alt}
+              caption={item.caption}
+              provenance={item.provenance}
+              loading="eager"
+            />
+          ))}
+      </div>
+    </section>
+  ))}
 
   <section class="content-band content-band-tight">
     <DownloadList
       items={diagramDownloads}
       eyebrow="Manifest-backed diagram"
       title="Current diagram fixture"
-      description="This row is filtered from the asset manifest. Current diagram assets are scaffold fixtures unless the manifest records approved source-backed status."
       description="This row is filtered from the asset manifest. Diagram assets are reader aids; manifest approval records website publication status, not source-claim authority."
     />
   </section>

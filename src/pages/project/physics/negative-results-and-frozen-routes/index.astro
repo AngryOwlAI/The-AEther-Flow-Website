@@ -1,0 +1,479 @@
+---
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import SourceNotice from "../../../../components/SourceNotice.astro";
+import StatusDossier from "../../../../components/StatusDossier.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import distanceSnapshot from "../../../../data/distance_to_gr_snapshot.json";
+import claimSnapshot from "../../../../data/claim_boundary_snapshot.json";
+import currentSnapshot from "../../../../data/physics_current_state_snapshot.json";
+import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsNegativeResultsFrozenRoutes;
+
+type DistanceRow = (typeof distanceSnapshot.groups)[number]["rows"][number];
+const distanceRows = distanceSnapshot.groups.flatMap((group) => group.rows) as DistanceRow[];
+const findRow = (burdenId: string) =>
+  distanceRows.find((row) => row.burden_id === burdenId);
+
+const finiteToyRow = findRow("finite_toy_metric_response");
+const retainRow = findRow("retain_h");
+const genRow = findRow("gen_h");
+const equationsRow = findRow("einstein_equations");
+const benchmarkRow = findRow("benchmark_promotion");
+const respRow = findRow("resp_lc");
+
+const metadata = [
+  {
+    label: "Snapshot refresh date",
+    value: distanceSnapshot.source_refresh_date,
+  },
+  {
+    label: "Latest handoff",
+    value: currentSnapshot.latest_handoff_id,
+  },
+  {
+    label: "Claim-boundary rows",
+    value: String(claimSnapshot.row_count),
+  },
+  {
+    label: "Finite toy status",
+    value: finiteToyRow?.current_status ?? "unavailable",
+  },
+];
+
+const readerRules = [
+  {
+    label: "Evidence rule",
+    title: "A negative result is source-backed evidence",
+    body: "It records that a specific route, primitive, source tuple, or construction attempt did not meet its burden.",
+  },
+  {
+    label: "Scope rule",
+    title: "scoped obstruction is not global theory rejection",
+    body: "A scoped obstruction is local to stated assumptions unless a separate authorized no-go theorem proves a stronger claim.",
+  },
+  {
+    label: "Freeze rule",
+    title: "locally_frozen means route control",
+    body: "A local freeze tells future work not to repeat the same route casually. It does not prove future source-extension impossibility.",
+  },
+  {
+    label: "Promotion rule",
+    title: "Negative evidence does not promote downstream GR",
+    body: "A failed route, stress survival, audit pass, selector choice, or freeze label cannot become benchmark promotion or completed derivation.",
+  },
+];
+
+const anatomyCards = [
+  {
+    label: "01",
+    title: "Failed object",
+    body: "Name the exact route, primitive, construction, selector, witness, or proof step that failed.",
+  },
+  {
+    label: "02",
+    title: "Scope",
+    body: "State whether the result is local finite example, current ontology only, source-extension candidate, downstream metric, matter coupling, equations, or benchmark promotion.",
+  },
+  {
+    label: "03",
+    title: "Consequence",
+    body: "Record whether repair is allowed, a selector is required, the route is frozen, a human gate is required, or downstream blocks are preserved.",
+  },
+  {
+    label: "04",
+    title: "forbidden_overread",
+    body: "State the tempting claim that the record does not authorize, such as global rejection or future source-extension impossibility.",
+  },
+  {
+    label: "05",
+    title: "Next route",
+    body: "Name the next bounded role, freeze review, repair target, or stop condition so the record changes future behavior.",
+  },
+];
+
+const exampleCards = [
+  {
+    label: "frozen negative",
+    title: "finite_toy_metric_response",
+    body: finiteToyRow?.notes ?? "Finite toy row unavailable.",
+    points: [
+      `Status: ${finiteToyRow?.current_status ?? "unavailable"}`,
+      `Evidence: ${finiteToyRow?.last_evidence_path ?? "unavailable"}`,
+      "Boundary: local route freeze, not global rejection.",
+    ],
+  },
+  {
+    label: "old obstruction",
+    title: "Resp_lc selector underdetermination",
+    body:
+      respRow?.notes ??
+      "Resp_lc row unavailable. The old selector obstruction remains a scoped record where source evidence preserves it.",
+    points: [
+      `Failure label: ${respRow?.failure_or_freeze_criteria ?? "NDCL-RESP-LC-SELECTOR-UNDERDETERMINATION"}`,
+      "Boundary: later source-extension status does not erase the historical obstruction.",
+    ],
+  },
+  {
+    label: "missing primitive",
+    title: "RetainH and GenH",
+    body: "The checked-in snapshot records retention and generator burdens as blocked by missing primitive.",
+    points: [
+      `RetainH: ${retainRow?.current_status ?? "unavailable"}`,
+      `GenH: ${genRow?.current_status ?? "unavailable"}`,
+      "Boundary: missing primitive does not adopt the primitive.",
+    ],
+  },
+  {
+    label: "downstream",
+    title: "Equations and benchmark",
+    body: "Downstream obligations stay separate from obstruction records and source-side route status.",
+    points: [
+      `Einstein equations: ${equationsRow?.current_status ?? "unavailable"}`,
+      `Benchmark promotion: ${benchmarkRow?.current_status ?? "unavailable"}`,
+      "Boundary: no downstream GR promotion.",
+    ],
+  },
+];
+
+const lifecycleCards = [
+  {
+    label: "Proposal",
+    title: "A possible path is named",
+    body: "A proposal can be worth testing while remaining below adoption.",
+  },
+  {
+    label: "Audit",
+    title: "Hidden imports are screened",
+    body: "An audit pass or failure is evidence about the checked text, not adoption.",
+  },
+  {
+    label: "Stress",
+    title: "The candidate is pressured",
+    body: "A Refuter can expose fragility, nonuniqueness, target import, or underdetermination.",
+  },
+  {
+    label: "Freeze",
+    title: "The route may stop locally",
+    body: "A repeated failure can become `route_frozen` or `locally_frozen` without rejecting the whole theory.",
+  },
+];
+
+const boundaryCards = [
+  {
+    label: "Scope",
+    title: "not global theory rejection",
+    body: "A scoped obstruction or frozen route does not reject the whole ontology.",
+  },
+  {
+    label: "Future work",
+    title: "not future source-extension impossibility",
+    body: "A local freeze leaves future routes open when new payload, redesign, freeze review, or human gate is available.",
+  },
+  {
+    label: "Gate",
+    title: "not a Gate Chair verdict",
+    body: "A freeze label, validator pass, or website page cannot issue protected human-gated decisions.",
+  },
+  {
+    label: "Metric",
+    title: "no g_eff",
+    body: "Negative evidence does not construct, adopt, or expand g_eff.",
+  },
+  {
+    label: "Matter",
+    title: "no matter coupling",
+    body: "Negative evidence does not derive matter coupling or adopt a coupling law.",
+  },
+  {
+    label: "Promotion",
+    title: "no downstream GR promotion",
+    body: "Frozen routes do not promote benchmark status, Einstein equations, or completed derivation.",
+  },
+];
+
+const summaryCards = [
+  {
+    label: "Safe summary",
+    title: "A precise negative result improves the map.",
+    body: "Negative results and frozen routes preserve rigorous evidence when they name the failed object, scope, consequence, forbidden_overread, and next route.",
+  },
+  {
+    label: "Unsafe summary",
+    title: "A frozen route proves the whole theory false.",
+    body: "It would be unsafe to infer global theory rejection, future source-extension impossibility, benchmark promotion, or hidden success from a scoped obstruction.",
+  },
+];
+
+const relatedLinks = [
+  {
+    title: "Finite toy models",
+    href: "/project/physics/finite-toy-models/",
+    body: "Read the explicit-tag-only frozen negative route in detail.",
+  },
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/project/physics/distance-to-gr/",
+    body: "Inspect ledger-backed burden status without treating it as a progress bar.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/project/source-authority/claim-boundary-explorer/",
+    body: "Review allowed, forbidden, and gate-required wording from source-pinned rows.",
+  },
+  {
+    title: "No-target-import discipline",
+    href: "/project/physics/no-target-import-discipline/",
+    body: "Understand target-import and process-authority failure labels.",
+  },
+  {
+    title: "Claim gates and obstructions",
+    href: "/project/physics/claim-gates/",
+    body: "Read the broader lifecycle for proposals, audits, stress, freeze labels, and gates.",
+  },
+];
+---
+
+<BaseLayout
+  title="Negative Results And Frozen Routes"
+  description="Reader-facing page explaining scoped obstructions, frozen negative routes, route_frozen records, and why negative evidence is useful without becoming global rejection."
+  bodyClass="project-overview-page project-track-page"
+>
+  <section class="track-page-hero" aria-labelledby="negative-results-title">
+    <div class="track-page-hero-copy">
+      <p class="eyebrow">Physics deep dive / PG-012</p>
+      <h1 id="negative-results-title">Negative Results And Frozen Routes</h1>
+      <p class="overview-lead">
+        Negative results are not failure theater. They are useful when they
+        preserve exact scope: what failed, under which assumptions, what route
+        follows, and which overreads remain forbidden.
+      </p>
+      <div class="overview-actions" aria-label="Negative results page actions">
+        <a class="primary-link" href="#negative-results-anatomy">Read the anatomy</a>
+        <a class="secondary-link" href="/project/physics/finite-toy-models/">Finite toy example</a>
+      </div>
+    </div>
+
+    <figure class="track-page-figure" aria-labelledby="negative-results-figure-caption">
+      <svg
+        viewBox="0 0 620 360"
+        role="img"
+        aria-labelledby="negative-results-figure-title negative-results-figure-desc"
+      >
+        <title id="negative-results-figure-title">Animated negative result boundary</title>
+        <desc id="negative-results-figure-desc">
+          A tested route becomes a scoped obstruction, local route decision, and
+          preserved evidence while global rejection and promotion are blocked.
+        </desc>
+        <defs>
+          <radialGradient id="negative-results-glow" cx="50%" cy="50%" r="68%">
+            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.28" />
+            <stop offset="76%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="negative-results-rail" x1="8%" x2="92%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+            <stop offset="30%" stop-color="var(--owl-cyan-400)" stop-opacity="0.8" />
+            <stop offset="70%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+            <stop offset="100%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="negative-results-block" x1="12%" x2="88%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
+            <stop offset="50%" stop-color="var(--owl-orange-500)" stop-opacity="0.95" />
+            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+        <circle class="physics-glow" cx="310" cy="180" r="190" fill="url(#negative-results-glow)" />
+        <g class="physics-grid" aria-hidden="true">
+          <ellipse cx="310" cy="180" rx="230" ry="124" />
+          <ellipse cx="310" cy="180" rx="160" ry="84" />
+          <path d="M86 238 C160 194, 230 176, 310 180 C390 184, 462 166, 534 112" />
+          <path d="M86 122 C162 160, 232 206, 310 180 C388 152, 462 164, 534 244" />
+        </g>
+        <path class="track-figure-path signal-path" d="M84 238 C158 196, 232 182, 310 180 C390 178, 466 154, 536 112" stroke="url(#negative-results-rail)" />
+        <path class="track-figure-path orange-path" d="M90 116 C166 154, 238 206, 310 180 C386 154, 462 172, 532 250" stroke="url(#negative-results-block)" />
+        <path class="track-figure-core" d="M310 118 L372 180 L310 242 L248 180 Z" />
+        <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+          <circle cx="108" cy="238" r="13" />
+          <circle cx="184" cy="126" r="13" />
+          <circle cx="310" cy="180" r="15" />
+          <circle cx="444" cy="132" r="13" />
+          <circle cx="522" cy="250" r="13" />
+        </g>
+      </svg>
+      <figcaption id="negative-results-figure-caption">
+        Visual orientation only: preserved negative evidence is not global
+        rejection, future impossibility, or downstream GR promotion.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-reading-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reading rule</p>
+      <h2 id="negative-results-reading-title">A frozen route is useful only when its scope remains visible.</h2>
+      <p>
+        Negative evidence earns trust by being specific. The page therefore
+        names the useful part and the forbidden overread together.
+      </p>
+    </div>
+    <EvidenceRail
+      items={readerRules}
+      ariaLabel="Negative results reader rules"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-metadata-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot metadata</p>
+      <h2 id="negative-results-metadata-title">What source state this route reflects.</h2>
+      <p>
+        This page uses checked-in website snapshots generated from upstream
+        source at commit {distanceSnapshot.source_commit}. It does not read the
+        source repository during normal Astro builds.
+      </p>
+    </div>
+    <StatusDossier
+      items={metadata}
+      ariaLabel="Negative results snapshot metadata"
+      className="snapshot-meta-grid"
+    />
+  </section>
+
+  <section id="negative-results-anatomy" class="track-page-band" aria-labelledby="negative-results-anatomy-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Obstruction anatomy</p>
+      <h2 id="negative-results-anatomy-title">A useful negative record has five visible parts.</h2>
+      <p>
+        If any part is missing, the public summary becomes easier to inflate
+        into global rejection or hide inside positive framing.
+      </p>
+    </div>
+    <EvidenceRail
+      items={anatomyCards}
+      ariaLabel="Negative result obstruction anatomy"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public comprehension diagram</p>
+      <h2 id="negative-results-diagram-title">The diagram shows preservation, not promotion.</h2>
+      <p>
+        The static diagram is a reader aid. It does not issue a freeze,
+        establish a global no-go theorem, or promote downstream GR claims.
+      </p>
+    </div>
+    <figure class="content-figure comprehension-figure" aria-labelledby="negative-results-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/physics-negative-results-and-frozen-routes.png"
+        alt="Diagram showing a failed route becoming a scoped obstruction, obstruction receipt, local freeze or selector route, and preserved evidence while global rejection and downstream promotion remain blocked."
+        loading="lazy"
+      />
+      <figcaption id="negative-results-diagram-caption">
+        Static comprehension diagram: negative results become useful only when
+        scope, consequence, and forbidden overread remain visible.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-examples-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Ledger examples</p>
+      <h2 id="negative-results-examples-title">Concrete rows show why scope matters.</h2>
+      <p>
+        The cards below use checked-in Distance-to-GR snapshot rows as examples
+        of frozen, blocked, and not-started status without turning any row into
+        a global verdict.
+      </p>
+    </div>
+    <EvidenceRail
+      items={exampleCards}
+      ariaLabel="Negative results ledger examples"
+      className="source-link-grid snapshot-source-grid source-evidence-rail"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-lifecycle-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Lifecycle</p>
+      <h2 id="negative-results-lifecycle-title">The path from proposal to freeze is not a progress ladder.</h2>
+      <p>
+        A route can move through proposal, audit, stress, and freeze while
+        remaining narrower than adoption or proof.
+      </p>
+    </div>
+    <EvidenceRail
+      items={lifecycleCards}
+      ariaLabel="Negative results lifecycle"
+      className="snapshot-status-grid burden-evidence-rail"
+      ordered
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-hard-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Hard boundaries</p>
+      <h2 id="negative-results-hard-boundaries-title">What negative evidence does not authorize.</h2>
+      <p>
+        Negative results preserve no g_eff construction, no matter-coupling
+        derivation, no Einstein equations, no benchmark promotion, no downstream
+        GR promotion, and no completed derivation.
+      </p>
+    </div>
+    <div class="track-status-grid">
+      {boundaryCards.map((card) => (
+        <article class="track-status-card">
+          <p>{card.label}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe readings</p>
+      <h2 id="negative-results-summary-title">Preserved evidence is rigorous because it is bounded.</h2>
+      <p>
+        The safe summary names the limit. The unsafe summary turns the limit
+        into either theatrical failure or hidden proof.
+      </p>
+    </div>
+    <EvidenceRail
+      items={summaryCards}
+      ariaLabel="Negative results safe and unsafe summaries"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-reader-path-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader path</p>
+      <h2 id="negative-results-reader-path-title">Read the example, then inspect the claim boundaries.</h2>
+      <p>
+        Primary reading stays inside the website. Provenance links remain
+        available in the source notice for direct source inspection.
+      </p>
+    </div>
+    <EvidenceRail
+      items={relatedLinks}
+      ariaLabel="Negative results related internal routes"
+      className="source-link-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="negative-results-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source authority</p>
+      <h2 id="negative-results-source-title">The website explains negative evidence; source records control claim status.</h2>
+    </div>
+    <SourceNotice {...sourceNotice} />
+  </section>
+</BaseLayout>

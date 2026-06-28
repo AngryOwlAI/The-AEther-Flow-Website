@@ -190,7 +190,7 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
   eyebrow: "Document comprehension",
   title: "Registered TeX carries source authority; PDFs are derivatives.",
   summary:
-    "The ontology documents page serves website copies of canonical TeX sources and generated PDFs while keeping TeX registry status and derivative status explicit.",
+    "The ontology documents page serves manifest-backed website copies of ontology TeX sources and generated PDFs while keeping TeX registry status, source commit, and derivative status explicit.",
   diagram: {
     src: "/assets/diagrams/comprehension/resources-tex-pdf-derivative-chain.png",
     alt:
@@ -211,7 +211,8 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
     },
     {
       title: "Preserve claim status",
-      body: "Document availability does not prove a broader derivation or promote a benchmark.",
+      body:
+        "Document availability does not prove a broader derivation, promote a benchmark, or prove that a website copy is current after upstream changes.",
     },
   ],
   terms: [
@@ -225,6 +226,11 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
       definition: "A generated human-readable rendering of TeX material.",
       boundary: "Not independent authority when TeX is available.",
     },
+    {
+      term: "Website copy",
+      definition: "The public file served from this site with a manifest hash and source commit.",
+      boundary: "Requires curator review when upstream source drift is reported.",
+    },
   ],
   boundaries: [
     {
@@ -237,13 +243,24 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
       title: "Canonical ontology is not full GR derivation",
       body: "The document package does not solve the broader first-principles derivation burden by being downloadable.",
     },
+    {
+      label: "No currentness shortcut",
+      title: "Manifests expose status",
+      body: "A website copy remains inspectable by hash and source commit; release readiness still depends on source-drift review.",
+    },
   ],
   relatedRoutes: [
     {
       label: routeLabel,
-      title: "Physics Research",
-      href: "/project/physics/",
-      body: "Read the source-boundary-safe physics route family before inspecting documents.",
+      title: "Ontology vocabulary",
+      href: "/project/physics/ontology/",
+      body: "Read the vocabulary and derivation boundary before inspecting documents.",
+    },
+    {
+      label: routeLabel,
+      title: "Exact-GR benchmark boundary",
+      href: "/project/physics/exact-gr-benchmark/",
+      body: "Read why benchmark material is not a completed first-principles derivation.",
     },
     {
       label: routeLabel,
@@ -268,12 +285,17 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
       title: "TeX source registry",
       body: "Upstream registry: registries/TEX_SOURCE_REGISTRY.csv.",
     },
+    {
+      label: sourceLabel,
+      title: "PDF derivative registry",
+      body: "Upstream registry: registries/PDF_DERIVATIVE_REGISTRY.csv.",
+    },
   ],
   safeUnsafe: {
     safe:
-      "The documents page makes canonical ontology TeX and generated PDF derivatives easier to inspect while preserving the TeX/PDF authority boundary.",
+      "The documents page makes ontology TeX and generated PDF derivatives easier to inspect while preserving TeX/PDF, source-commit, manifest, and source-drift boundaries.",
     unsafe:
-      "A PDF download, document list, or website copy independently proves or promotes a scientific claim.",
+      "A PDF download, document list, or website copy independently proves a scientific claim, promotes a benchmark, or supersedes current upstream TeX.",
   },
 };
 
@@ -282,7 +304,7 @@ export const resourcesDiagramsComprehension: ComprehensionContent = {
   eyebrow: "Diagram comprehension",
   title: "Diagrams explain relationships; they do not own claims.",
   summary:
-    "The diagram gallery presents visual orientation assets with source paths, manifest hashes, captions, provenance, and nearby prose.",
+    "The diagram gallery groups visual orientation assets by physics, AI workflow, operations, and source authority while preserving source paths, manifest hashes, captions, provenance, and nearby prose.",
   diagram: {
     src: "/assets/diagrams/comprehension/resources-diagram-publication-boundary.png",
     alt:
@@ -294,8 +316,9 @@ export const resourcesDiagramsComprehension: ComprehensionContent = {
   },
   mechanismSteps: [
     {
-      title: "Keep source editable",
-      body: "Mermaid sources live in content dossiers so diagram intent remains reviewable.",
+      title: "Choose the concept group",
+      body:
+        "Start from the reader question: physics status, AI workflow, operations, or source authority.",
     },
     {
       title: "Serve static PNGs",
@@ -316,6 +339,11 @@ export const resourcesDiagramsComprehension: ComprehensionContent = {
       term: "Diagram provenance",
       definition: "The source path, manifest id, and generation path for the public image.",
       boundary: "Provenance supports audit, not promotion.",
+    },
+    {
+      term: "Concept group",
+      definition: "A reader-facing grouping such as physics, AI workflow, operations, or source authority.",
+      boundary: "Organizes diagrams; does not change claim status.",
     },
   ],
   boundaries: [
@@ -358,7 +386,7 @@ export const resourcesDiagramsComprehension: ComprehensionContent = {
   ],
   safeUnsafe: {
     safe:
-      "The diagram gallery shows manifest-backed visual aids with editable sources, static PNG outputs, captions, provenance, and non-authority boundaries.",
+      "The diagram gallery shows manifest-backed visual aids grouped by concept, with editable sources, static PNG outputs, captions, provenance, and non-authority boundaries.",
     unsafe:
       "A diagram proves science, changes workflow authority, replaces source inspection, or needs Mermaid in the public browser runtime.",
   },

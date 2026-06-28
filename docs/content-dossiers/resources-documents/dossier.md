@@ -1,6 +1,6 @@
 # Ontology Documents Content Dossier
 
-Status: draft dossier.
+Status: evidence-reviewed draft dossier.
 
 ## Route and reader job
 
@@ -8,11 +8,23 @@ Status: draft dossier.
 - Reader job: Distinguish registered TeX source authority from PDF derivative readability.
 - Primary audience: public readers and maintainers reviewing source-boundary language.
 - Maintainer owner: Documentation Curator / website maintainer.
-- Review status: Human review status: pending maintainer review.
+- Review status: Technical validation passed; known ontology source-drift blocker remains.
+- Source analysis path: `docs/system-analyses/ontology-document-library-reading-guide.md`.
 
 ## Current page summary
 
-The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, and internal-first related routes.
+The current page is an implemented reader-facing route. This dossier records the public-comprehension contract used to add diagram-backed explanation, glossary terms, boundaries, safe/unsafe summaries, source basis, internal-first related routes, and the PG-022 reading guide.
+
+## PG-022 evidence review
+
+- Review artifact: `docs/system-analyses/ontology-document-library-reading-guide.md`.
+- Review decision: Revise the existing route rather than create a new page.
+- Source state: Committed upstream source at
+  `01efc4f180221caf9425fbb24683eb54927b553e`.
+- Boundary: The document library may expose website copies, source commits,
+  hashes, and reading order. It cannot re-import assets, supersede upstream
+  registered TeX, promote benchmark claims, or resolve curator source-drift
+  review.
 
 ## Upstream source basis
 
@@ -21,6 +33,8 @@ The current page is an implemented reader-facing route. This dossier records the
 | `ontology/README.md` | upstream source | Source basis for this route. |
 | `ontology/tex/README.md` | upstream source | Source basis for this route. |
 | `registries/TEX_SOURCE_REGISTRY.csv` | upstream source | Source basis for this route. |
+| `registries/PDF_DERIVATIVE_REGISTRY.csv` | upstream source | Source basis for PDF derivative status. |
+| `public/files/manifests/source_manifest.json` | website manifest | Source basis for website copy status, source commit, hashes, and import metadata. |
 
 ## Source-derived topic outline
 
@@ -29,6 +43,8 @@ The current page is an implemented reader-facing route. This dossier records the
 3. Generated PDF derivative
 4. Website copies
 5. Claim-status limits
+6. Public read-this-first route path
+7. Specialist reading order
 
 ## Glossary
 
@@ -37,6 +53,8 @@ The current page is an implemented reader-facing route. This dossier records the
 | Registered TeX | TeX source recorded in upstream registry. | Claim status still depends on metadata and gates. |
 | PDF derivative | Generated human-readable rendering. | Not independent authority when TeX is available. |
 | Canonical ontology package | Current approved ontology asset set. | Not full first-principles GR derivation by availability alone. |
+| Website copy | Public file served by this site with manifest hash and source commit. | Release readiness still depends on curator source-drift review. |
+| Reading guide | Suggested reader sequence for interpretation. | Not a new scientific dependency claim. |
 
 ## Claim boundaries and forbidden implications
 
@@ -45,12 +63,16 @@ The current page is an implemented reader-facing route. This dossier records the
 - PDF does not supersede TeX.
 - Download availability does not promote derivation.
 - Registry metadata remains relevant.
+- Source commit and import metadata remain visible.
+- Reading order does not create source authority.
 
 ### Forbidden implications
 
 - PDF download proves a scientific claim.
 - Website copy supersedes upstream TeX.
 - Canonical ontology package solves all downstream GR burdens.
+- All files are equally current after upstream source changes.
+- Reading order proves a dependency theorem.
 
 ## Required comprehension blocks
 
@@ -85,11 +107,48 @@ No equation walkthrough required for this route.
 
 ## Safe summary
 
-Safe summary: The documents page makes canonical ontology TeX and generated PDF derivatives easier to inspect while preserving the TeX/PDF authority boundary.
+Safe summary: The documents page makes ontology TeX and generated PDF derivatives easier to inspect while preserving TeX/PDF, source-commit, manifest, and source-drift boundaries.
 
 ## Unsafe summary
 
-Unsafe summary: A PDF download, document list, or website copy independently proves or promotes a scientific claim.
+Unsafe summary: A PDF download, document list, reading order, or website copy independently proves a scientific claim, promotes a benchmark, or supersedes current upstream TeX.
+
+## Reading guide contract
+
+### Read this first
+
+1. `/project/physics/ontology/` for vocabulary and derivation boundary.
+2. `/project/physics/exact-gr-benchmark/` for benchmark status and burden.
+3. `/project/source-authority/` for source, derivative, manifest, and website-copy boundaries.
+4. `/project/physics/current-state/` for current research state and open derivation burdens.
+
+### Specialist order
+
+| Order | Document | Reason |
+| --- | --- | --- |
+| 1 | Foundations | Source vocabulary, core ontology terms, and baseline assumptions. |
+| 2 | Dynamics | Evolution and response structure after foundations. |
+| 3 | Geometry | Geometric interpretation layer. |
+| 4 | Relativistic Recovery | Relativistic benchmark comparison. |
+| 5 | Consistency | Internal compatibility checks. |
+| 6 | Exact Closure Note | Compact closure-oriented note. |
+| 7 | Exact Closure Sequence Overview | Guide to closure-sequence material. |
+| 8 | Exact Closure Flagship Article | Broad synthesis after narrower source files. |
+
+The specialist order is a reader aid derived from the website document order,
+not a scientific dependency theorem.
+
+## Compact page-publication brief
+
+| Field | Value |
+| --- | --- |
+| Route | `/resources/documents/` |
+| Source analysis path | `docs/system-analyses/ontology-document-library-reading-guide.md` |
+| Claim status | approved ontology asset index with source-drift boundary visible |
+| Diagram decision | Reuse existing TeX/PDF derivative-chain static PNG; no new diagram required. |
+| Files changed | Route, component, support comprehension content, dossier, page route map, provenance, QA note. |
+| Validation commands | `npm run validate:comprehension`, `npm run validate:manifests`, `npm run validate:content`, `npm run build`, browser QA. |
+| Review status | Technical validation passed; known ontology source-drift blocker remains. |
 
 ## New-page audit
 
@@ -106,11 +165,13 @@ Unsafe summary: A PDF download, document list, or website copy independently pro
 - [x] Diagrams have source, public image, alt text, caption, and nearby prose.
 - [x] Equation references have walkthroughs where needed.
 - [x] Safe and unsafe summaries are present for high-risk topics.
-- [ ] Mobile layout and desktop layout were reviewed.
-- [ ] Human review note is recorded under `docs/quality/`.
+- [x] Mobile layout and desktop layout were reviewed for PG-022.
+- [x] Human review note is recorded under `docs/quality/sitewide-revamp-pg022-ontology-documents-reading-guide-qa.md`.
 
 ## References
 
 - AEther-Flow Project. (2026). `ontology/README.md`.
 - AEther-Flow Project. (2026). `ontology/tex/README.md`.
 - AEther-Flow Project. (2026). `registries/TEX_SOURCE_REGISTRY.csv`.
+- AEther-Flow Project. (2026). `registries/PDF_DERIVATIVE_REGISTRY.csv`.
+- The AEther Flow Website. (2026). `public/files/manifests/source_manifest.json`.
