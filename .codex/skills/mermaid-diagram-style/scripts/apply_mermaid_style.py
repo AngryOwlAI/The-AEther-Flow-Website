@@ -9,27 +9,36 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[4]
 DIAGRAM_ROOT = REPO_ROOT / "docs/content-dossiers"
 
-THEME_FRONTMATTER = """---
-config:
-  theme: base
-  themeVariables:
-    darkMode: true
-    background: "#000000"
-    primaryColor: "#050403"
-    primaryTextColor: "#fff8ef"
-    primaryBorderColor: "#d6c3b4"
-    lineColor: "#d6c3b4"
-    fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: "16px"
-    clusterBkg: "#080401"
-    clusterBorder: "#d6c3b4"
-    edgeLabelBackground: "#000000"
----
-"""
+FONT_FAMILY = (
+    "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "
+    "Segoe UI, sans-serif"
+)
+THEME_FRONTMATTER = (
+    "\n".join(
+        [
+            "---",
+            "config:",
+            "  theme: base",
+            "  themeVariables:",
+            "    darkMode: true",
+            '    background: "#000000"',
+            '    primaryColor: "#050403"',
+            '    primaryTextColor: "#fff8ef"',
+            '    primaryBorderColor: "#d6c3b4"',
+            '    lineColor: "#d6c3b4"',
+            f'    fontFamily: "{FONT_FAMILY}"',
+            '    fontSize: "16px"',
+            '    clusterBkg: "#080401"',
+            '    clusterBorder: "#d6c3b4"',
+            '    edgeLabelBackground: "#000000"',
+            "---",
+        ]
+    )
+    + "\n"
+)
 
 CLASS_DEFS = [
     "  classDef default fill:#050403,stroke:#d6c3b4,color:#fff8ef,stroke-width:1.5px;",
@@ -39,8 +48,14 @@ CLASS_DEFS = [
     "  classDef decision fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2.25px;",
     "  classDef target fill:#2d7ea0,stroke:#f4d6a1,color:#ffffff,stroke-width:2px;",
     "  classDef success fill:#164964,stroke:#48a0c0,color:#fff8ef,stroke-width:2px;",
-    "  classDef risk fill:#702000,stroke:#f87800,color:#fff8ef,stroke-width:2px,stroke-dasharray: 5 5;",
-    "  classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,stroke-width:3px,stroke-dasharray: 5 5;",
+    (
+        "  classDef risk fill:#702000,stroke:#f87800,color:#fff8ef,"
+        "stroke-width:2px,stroke-dasharray: 5 5;"
+    ),
+    (
+        "  classDef boundary fill:#000000,stroke:#f87800,color:#fff8ef,"
+        "stroke-width:3px,stroke-dasharray: 5 5;"
+    ),
     "  classDef external fill:#080401,stroke:#f4d6a1,color:#fff8ef,stroke-width:2px;",
 ]
 LINK_STYLE = "  linkStyle default stroke:#d6c3b4,stroke-width:2.25px;"
@@ -115,7 +130,9 @@ def infer_class(node_id: str, label: str, *, shape_line: str) -> str:
         return "risk"
     if any(term in text for term in ["approved", "accepted", "complete", "pass", "success"]):
         return "success"
-    if "{" in shape_line or any(term in text for term in ["gate", "review", "decision", "choose", "classify"]):
+    if "{" in shape_line or any(
+        term in text for term in ["gate", "review", "decision", "choose", "classify"]
+    ):
         return "decision"
     if any(term in text for term in ["bridge", "candidate", "adapt", "generated", "derivative"]):
         return "bridge"
@@ -195,7 +212,10 @@ def parse_diagram(text: str) -> ParsedDiagram:
                 infer_class(node_id, extract_label(segment), shape_line=segment),
             )
 
-    return ParsedDiagram(body_lines=trim_blank_edges(body_lines), class_assignments=class_assignments)
+    return ParsedDiagram(
+        body_lines=trim_blank_edges(body_lines),
+        class_assignments=class_assignments,
+    )
 
 
 def trim_blank_edges(lines: list[str]) -> list[str]:
@@ -210,7 +230,10 @@ def class_lines(assignments: dict[str, str]) -> list[str]:
     grouped: dict[str, list[str]] = {}
     for node_id, class_name in sorted(assignments.items()):
         grouped.setdefault(class_name, []).append(node_id)
-    return [f"  class {','.join(nodes)} {class_name};" for class_name, nodes in sorted(grouped.items())]
+    return [
+        f"  class {','.join(nodes)} {class_name};"
+        for class_name, nodes in sorted(grouped.items())
+    ]
 
 
 def format_diagram(text: str) -> str:

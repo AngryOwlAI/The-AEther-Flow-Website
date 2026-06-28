@@ -5,7 +5,6 @@ import sys
 from pathlib import Path
 from types import ModuleType
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / ".codex/skills/mermaid-diagram-style/scripts/apply_mermaid_style.py"
 

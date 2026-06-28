@@ -11,7 +11,6 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-
 MERMAID_CLI_PACKAGE = "@mermaid-js/mermaid-cli@11.15.0"
 
 

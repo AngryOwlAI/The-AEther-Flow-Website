@@ -11,7 +11,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-
 REQUIRED_DOSSIER_HEADINGS = [
     "## Route and reader job",
     "## Current page summary",
