@@ -318,7 +318,7 @@ const agentMap = `
   </CommandBand>
 
   <CommandBand
-    className="overview-panel overview-command-band"
+    className="overview-panel overview-command-band overview-physics-status-command"
     eyebrow="Physics status"
     title="Ontology and GR derivation status"
     lead="The ontology page gives the project vocabulary and model orientation. The GR derivation remains an open burden roadmap, not a completed proof or benchmark promotion."
@@ -328,6 +328,25 @@ const agentMap = `
       ariaLabel="Ontology and GR derivation status routes"
       className="overview-track-rail"
     />
+
+    <Fragment slot="visual">
+      <figure class="physics-status-video" aria-labelledby="physics-status-video-caption">
+        <div class="physics-status-video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/psbk97rd9T8?start=2&rel=0"
+            title="Supplemental video context for the AEther Flow physics status"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <figcaption id="physics-status-video-caption">
+          Supplemental video context. Upstream source records remain
+          authoritative for project claims and status.
+        </figcaption>
+      </figure>
+    </Fragment>
   </CommandBand>
 
   <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
