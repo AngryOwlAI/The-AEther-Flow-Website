@@ -672,6 +672,18 @@
       "upstream_authority_status": "canonical",
       "website_publication_status": "published",
       "boundary_type": "authority_boundary"
+    },
+    {
+      "route_path": "/license/",
+      "local_page_source": "src/pages/license/index.astro",
+      "title": "Project License",
+      "adaptation_type": "one_to_one_adaptation",
+      "upstream_source_paths": [
+        "LICENSE"
+      ],
+      "upstream_authority_status": "canonical",
+      "website_publication_status": "published",
+      "boundary_type": "authority_boundary"
     }
   ]
 }

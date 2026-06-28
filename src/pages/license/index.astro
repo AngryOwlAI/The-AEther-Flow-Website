@@ -1,0 +1,148 @@
+---
+import EvidenceRail from "../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
+import StatusDossier from "../../components/StatusDossier.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const licenseSummary = [
+  {
+    label: "Research and documentation",
+    title: "CC BY 4.0 unless narrowed by a closer notice",
+    body:
+      "The upstream license summary applies Creative Commons Attribution 4.0 International to physics research, ontology material, GR-derivation material, manuscripts, generated manuscript PDFs, research-path articles, explanatory diagrams, and non-code research documentation unless a file or directory says otherwise.",
+  },
+  {
+    label: "Code and tooling",
+    title: "Apache-2.0 unless narrowed by a closer notice",
+    body:
+      "The upstream license summary applies Apache License, Version 2.0 to scripts, tests, workflow configuration, schemas, validation tools, equation-verification software, repo-local agent tooling, and AI research-control implementation unless a file or directory says otherwise.",
+  },
+  {
+    label: "Mixed files",
+    title: "Nearest explicit notice controls",
+    body:
+      "For mixed prose and executable material, use the nearest explicit file or directory notice. Without a narrower notice, prose defaults to CC BY 4.0 and executable or validation material defaults to Apache-2.0.",
+  },
+];
+
+const boundaryItems = [
+  {
+    label: "Third-party material",
+    title: "Separate licenses still apply",
+    body:
+      "Third-party material, vendored assets, and externally licensed references remain under their own licenses and notices.",
+  },
+  {
+    label: "Claim boundary",
+    title: "Reuse permission is not scientific approval",
+    body:
+      "The upstream license explicitly separates reuse permissions from scientific status. It does not imply completion of the first-principles derivation of GR from the AEther / AEther-flow ontology.",
+  },
+  {
+    label: "Authoritative source",
+    title: "Read the upstream LICENSE before reuse",
+    body:
+      "This page summarizes the public license orientation for readers. The controlling license texts and narrower notices remain in the source repository.",
+  },
+];
+
+const sourceRefs = [
+  "AEther-Flow Project. (2026). LICENSE",
+];
+---
+
+<BaseLayout
+  title="License"
+  description="License orientation for The AEther Flow project and website reader layer."
+  bodyClass="project-overview-page project-support-page license-page"
+>
+  <section class="content-band project-support-hero license-hero" aria-labelledby="license-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">License</p>
+        <h1 id="license-title">Project License</h1>
+        <p class="lead">
+          The AEther Flow source repository is split-licensed. Research and
+          documentation content are generally licensed under CC BY 4.0, while
+          code and tooling are generally licensed under Apache-2.0, unless a
+          closer file or directory notice says otherwise.
+        </p>
+      </div>
+    </div>
+
+    <aside class="license-summary-card" aria-label="Authoritative license source">
+      <p class="eyebrow">Authoritative source</p>
+      <h2>Upstream LICENSE controls reuse terms.</h2>
+      <p>
+        This website page is a reader-facing orientation layer. Before reuse,
+        inspect the upstream license file and any narrower notices in the source
+        repository.
+      </p>
+      <a
+        href="https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/LICENSE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open LICENSE on GitHub
+      </a>
+    </aside>
+  </section>
+
+  <SourceAuthoritySection
+    claimStatus="license orientation"
+    sourceRefs={sourceRefs}
+    updated="2026-06-28"
+    note="This page orients readers to the upstream split-license summary. It does not replace the upstream LICENSE file, narrower notices, or source-repository authority."
+    className="content-band content-band-tight"
+  />
+
+  <section class="content-band content-band-tight" aria-labelledby="license-summary-title">
+    <div class="section-header">
+      <p class="eyebrow">Split license summary</p>
+      <h2 id="license-summary-title">What the upstream license summary says</h2>
+      <p class="lead">
+        The practical reading rule is simple: identify whether the material is
+        research/documentation or code/tooling, then check for a narrower notice
+        before relying on the default.
+      </p>
+    </div>
+    <StatusDossier
+      items={licenseSummary}
+      ariaLabel="License summary categories"
+      className="license-status-grid"
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="license-boundary-title">
+    <div class="section-header">
+      <p class="eyebrow">Boundaries</p>
+      <h2 id="license-boundary-title">Reuse permission stays separate from claim status.</h2>
+      <p class="lead">
+        Licensing grants reuse permissions. It does not promote a scientific,
+        mathematical, governance, or workflow claim.
+      </p>
+    </div>
+    <EvidenceRail
+      items={boundaryItems}
+      ariaLabel="License boundary notes"
+      className="source-link-grid license-boundary-grid"
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="license-references-title">
+    <div class="section-header">
+      <p class="eyebrow">Reference</p>
+      <h2 id="license-references-title">APA 7 citation</h2>
+      <p>
+        AngryOwlAI. (2026). <em>LICENSE</em>. GitHub.
+        <a
+          href="https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/LICENSE
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

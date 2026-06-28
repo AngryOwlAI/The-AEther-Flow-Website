@@ -110,11 +110,100 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
       <slot />
     </main>
     <footer class="site-footer">
-      <p>
-        Source authority remains with the research repository. This website is
-        a publication and presentation layer for reviewed, reader-facing
-        material.
-      </p>
+      <div class="site-footer-inner">
+        <section class="footer-block footer-authority" aria-label="Source authority and copyright">
+          <p>
+            Source authority remains with the research repository. This website is
+            a publication and presentation layer for reviewed, reader-facing
+            material.
+          </p>
+          <p class="footer-copyright">
+            Copyright &copy; 2026 Angry Owl. Reuse is governed by the project license.
+          </p>
+        </section>
+        <section class="footer-block footer-project" aria-label="Project links">
+          <h2>Project</h2>
+          <nav class="footer-link-list" aria-label="Footer project links">
+            <a
+              href="https://github.com/AngryOwlAI/The-AEther-Flow"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AngryOwlAI/The-AEther-Flow
+            </a>
+            <a href="/license/">License</a>
+          </nav>
+        </section>
+        <section class="footer-block footer-creator" aria-label="Project creator">
+          <h2>Project Creator</h2>
+          <div class="footer-creator-line">
+            <a
+              class="footer-creator-avatar"
+              href="https://www.alexomegapy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Alexander Ricciardi website"
+            >
+              <img
+                src="https://github.com/user-attachments/assets/a8e0ea66-5d8f-43b3-8fff-2c3d74d57f53"
+                alt="Alexander Ricciardi"
+                width="30"
+                height="30"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <strong>Alexander Ricciardi</strong>
+          </div>
+          <div class="footer-social-links" aria-label="Creator profile links">
+            <a
+              href="https://github.com/Omegapy"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile for Omega.py"
+            >
+              <img
+                src="https://img.shields.io/badge/Omegapy-181717?style=for-the-badge&logo=github&logoColor=white"
+                alt="GitHub - Omega.py"
+                width="111"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://medium.com/@alex.omegapy"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Medium profile for Alexander Ricciardi"
+            >
+              <img
+                src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white"
+                alt="Medium"
+                width="105"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://linkedin.com/in/alex-ricciardi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile for Alexander Ricciardi"
+            >
+              <img
+                src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"
+                alt="LinkedIn"
+                width="119"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+        </section>
+      </div>
     </footer>
     <script>
       const navigationMenus = Array.from(document.querySelectorAll("[data-nav-menu]"));

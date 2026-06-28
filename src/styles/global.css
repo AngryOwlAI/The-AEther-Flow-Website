@@ -955,12 +955,151 @@ summary:focus-visible {
   background: var(--color-dark-page);
 }
 
-.site-footer p {
+.site-footer-inner {
   width: min(100% - 2rem, var(--max-width));
   margin: 0 auto;
-  padding: 1.25rem 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(12rem, 0.55fr) minmax(17rem, 0.8fr);
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.footer-block {
+  min-width: 0;
+}
+
+.site-footer p,
+.site-footer h2 {
+  margin: 0;
+}
+
+.site-footer p {
   color: var(--color-dark-muted);
   font-size: 0.94rem;
+}
+
+.footer-copyright {
+  margin-top: 0.65rem;
+}
+
+.site-footer h2 {
+  color: var(--color-dark-orange);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.footer-link-list,
+.footer-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.footer-link-list {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.site-footer a {
+  color: var(--color-dark-cyan);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  text-decoration-color: color-mix(in srgb, var(--color-dark-cyan) 48%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--color-dark-orange);
+  text-decoration-color: currentColor;
+}
+
+.footer-creator-line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+  color: var(--color-dark-text);
+}
+
+.footer-creator-avatar {
+  display: inline-flex;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  line-height: 0;
+}
+
+.footer-creator-avatar img {
+  border-radius: 999px;
+}
+
+.footer-social-links {
+  align-items: center;
+}
+
+.footer-social-links a {
+  display: inline-flex;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.footer-social-links img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.license-summary-card {
+  min-width: 0;
+  border: 1px solid var(--overview-white-line);
+  border-left: 3px solid var(--overview-orange);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--overview-orange) 10%, transparent), transparent 58%),
+    color-mix(in srgb, var(--color-dark-panel) 78%, transparent);
+  padding: 1.2rem;
+  box-shadow: var(--overview-shadow);
+}
+
+.license-summary-card h2 {
+  margin: 0.35rem 0 0;
+  color: var(--overview-text);
+  font-size: 1.4rem;
+  line-height: 1.15;
+}
+
+.license-summary-card p:not(.eyebrow) {
+  color: var(--overview-muted);
+}
+
+.license-summary-card a {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 0.8rem;
+  border: 1px solid var(--overview-white-line);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--overview-orange) 12%, transparent);
+  padding: 0.42rem 0.58rem;
+  color: var(--overview-orange);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.license-summary-card a:hover,
+.license-summary-card a:focus-visible {
+  border-color: var(--overview-orange);
+  color: var(--overview-cyan);
+}
+
+.status-dossier.license-status-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.license-boundary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 html:has(body.project-overview-page) {
@@ -3511,6 +3650,14 @@ html:has(body.project-overview-page) {
 }
 
 @media (max-width: 1140px) and (min-width: 781px) {
+  .site-footer-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.8fr);
+  }
+
+  .footer-authority {
+    grid-column: 1 / -1;
+  }
+
   .overview-capability-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3539,6 +3686,25 @@ html:has(body.project-overview-page) {
   .nav-links,
   .hero-actions {
     align-items: flex-start;
+  }
+
+  .site-footer-inner,
+  .status-dossier.license-status-grid,
+  .license-boundary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer-inner {
+    gap: 1.1rem;
+  }
+
+  .footer-social-links {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-social-links a {
+    width: fit-content;
   }
 
   .site-nav,
