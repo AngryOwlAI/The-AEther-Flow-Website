@@ -12,6 +12,9 @@ repository.
   workflows, roles, or topics into source-grounded Markdown files under
   `docs/system-analyses/` with embedded styled Mermaid diagrams and explicit
   claim boundaries.
+- `to-web-page/`: turn one completed system-analysis artifact into one
+  integrated public explainer route with dossier, manifests, optional static
+  diagram, validation, and no-ai-slop gates.
 - `mermaid-diagram-style/`: create or migrate Mermaid diagrams with the
   website's Angry Owl palette, Inter font stack, dark canvas, semantic classes,
   static PNG rendering workflow, and source-authority boundary.
