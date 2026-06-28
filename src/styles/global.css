@@ -2904,6 +2904,20 @@ html:has(body.project-overview-page) {
   padding-block: 2rem;
 }
 
+.source-authority-section {
+  overflow: hidden;
+  border: 0;
+  border-block: 1px solid var(--overview-white-line);
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--overview-orange) 10%, transparent), transparent 24%, color-mix(in srgb, var(--overview-cyan) 7%, transparent)),
+    color-mix(in srgb, var(--overview-bg) 54%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--overview-orange) 24%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--overview-cyan) 18%, transparent);
+  padding: 2rem;
+}
+
 .overview-command-band .command-band-layout {
   position: relative;
   z-index: 1;
@@ -3571,7 +3585,8 @@ html:has(body.project-overview-page) {
   }
 
   .overview-panel,
-  .overview-command-band {
+  .overview-command-band,
+  .source-authority-section {
     padding: 1rem;
   }
 
