@@ -182,7 +182,36 @@ def parse_handoff(source_root: Path, handoff_id: str) -> dict[str, Any]:
     }
 
 
-def load_distance_to_gr(source_root: Path, active_burden_id: str) -> dict[str, Any]:
+def fallback_non_burden_row(handoff_distance_to_gr: dict[str, str]) -> dict[str, str]:
+    return {
+        "burden_id": handoff_distance_to_gr["burden_id"],
+        "milestone": handoff_distance_to_gr["milestone"],
+        "required_object": "No active Distance-to-GR ledger burden",
+        "current_status": handoff_distance_to_gr["status"],
+        "blocking_burden": (
+            "The latest handoff is a project-control packet and reports no "
+            "physics-burden movement."
+        ),
+        "accept_criteria": (
+            "No Distance-to-GR acceptance criterion is asserted by this handoff."
+        ),
+        "failure_or_freeze_criteria": (
+            "No Distance-to-GR failure or freeze criterion is changed by this handoff."
+        ),
+        "last_evidence_path": "research_control/program_state.yaml",
+        "updated_at": "",
+        "notes": (
+            "The latest handoff preserves downstream boundaries without changing "
+            "the Distance-to-GR ledger state."
+        ),
+    }
+
+
+def load_distance_to_gr(
+    source_root: Path,
+    handoff_distance_to_gr: dict[str, str],
+) -> dict[str, Any]:
+    active_burden_id = handoff_distance_to_gr["burden_id"]
     path = source_root / "registries/DISTANCE_TO_GR_LEDGER.csv"
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -196,7 +225,10 @@ def load_distance_to_gr(source_root: Path, active_burden_id: str) -> dict[str, A
 
     active_row = next((row for row in rows if row["burden_id"] == active_burden_id), None)
     if active_row is None:
-        raise SnapshotError(f"{path}: active burden {active_burden_id!r} not found")
+        if active_burden_id == "none":
+            active_row = fallback_non_burden_row(handoff_distance_to_gr)
+        else:
+            raise SnapshotError(f"{path}: active burden {active_burden_id!r} not found")
     downstream_rows = [row for row in rows if row["burden_id"] in DOWNSTREAM_BURDEN_IDS]
     return {
         "active_burden_id": active_burden_id,
@@ -320,7 +352,7 @@ def build_snapshot(
         "claim_boundary_summary": program_state["claim_boundary_summary"],
         "derivation_burden": load_distance_to_gr(
             source_root,
-            handoff["distance_to_gr"]["burden_id"],
+            handoff["distance_to_gr"],
         ),
         "blocked_claims": handoff["blocked_claims"],
         "next_recommended_action": program_state["next_recommended_action"],

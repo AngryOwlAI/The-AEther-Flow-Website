@@ -128,6 +128,33 @@ def test_snapshot_generation_from_fixture_source(tmp_path: Path) -> None:
     }
 
 
+def test_project_control_handoff_without_active_burden_is_represented(tmp_path: Path) -> None:
+    source_root = tmp_path / "source"
+    write_fixture_source(source_root)
+    handoff = source_root / "research_control/handoffs/handoff-0001.yaml"
+    handoff.write_text(
+        handoff.read_text(encoding="utf-8")
+        .replace('  milestone: "effective_metric_g_eff"', '  milestone: "none"')
+        .replace('  burden_id: "g_eff"', '  burden_id: "none"')
+        .replace(
+            '  status: "No MetricData(E) adoption and no g_eff construction"',
+            '  status: "unchanged_final_validation_only"',
+        ),
+        encoding="utf-8",
+    )
+
+    data = snapshot.build_snapshot(source_root=source_root)
+
+    assert data["derivation_burden"]["active_burden_id"] == "none"
+    assert (
+        data["derivation_burden"]["active_row"]["required_object"]
+        == "No active Distance-to-GR ledger burden"
+    )
+    assert data["derivation_burden"]["active_row"]["current_status"] == (
+        "unchanged_final_validation_only"
+    )
+
+
 def test_missing_latest_handoff_fails_closed(tmp_path: Path) -> None:
     source_root = tmp_path / "source"
     write_fixture_source(source_root)

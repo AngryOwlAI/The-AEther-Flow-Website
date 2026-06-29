@@ -28,8 +28,8 @@ scientific results.
 | --- | --- | --- |
 | `README.md` | upstream project source | Project-level source context. |
 | `research_control/program_state.yaml` | upstream control state | Current active state and task context. |
-| `research_control/handoffs/handoff-0281.yaml` | upstream handoff | Latest handoff state. |
-| `research_control/handoffs/handoff-0281.md` | upstream handoff | Public-readable boundary summary. |
+| `research_control/handoffs/handoff-0321.yaml` | upstream handoff | Latest handoff state. |
+| `research_control/handoffs/handoff-0321.md` | upstream handoff | Public-readable boundary summary. |
 | `registries/DISTANCE_TO_GR_LEDGER.csv` | upstream registry | Burden and blocker context. |
 | `registries/CLAIM_BOUNDARY_REGISTRY.csv` | upstream registry | Claim-boundary and forbidden wording context. |
 | `ontology/README.md` | upstream ontology source | Ontology document orientation. |
@@ -149,8 +149,8 @@ Einstein equations, benchmark promotion, or downstream GR promotion.
 
 - The AEther Flow. (2026). `README.md`.
 - The AEther Flow. (2026). `research_control/program_state.yaml`.
-- The AEther Flow. (2026). `research_control/handoffs/handoff-0281.yaml`.
-- The AEther Flow. (2026). `research_control/handoffs/handoff-0281.md`.
+- The AEther Flow. (2026). `research_control/handoffs/handoff-0321.yaml`.
+- The AEther Flow. (2026). `research_control/handoffs/handoff-0321.md`.
 - The AEther Flow. (2026). `registries/DISTANCE_TO_GR_LEDGER.csv`.
 - The AEther Flow. (2026). `registries/CLAIM_BOUNDARY_REGISTRY.csv`.
 - The AEther Flow. (2026). `ontology/README.md`.

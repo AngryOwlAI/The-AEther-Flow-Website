@@ -1,6 +1,6 @@
 {
-  "active_task_id": "RT-20260614-248",
-  "current_status": "recovery_bridge_candidate_accepted_scoped_source_extension_evidence_only_no_adoption",
+  "active_task_id": "RT-20260614-288",
+  "current_status": "p8_t02_final_validation_checkpoint_completed_no_promotion",
   "groups": [
     {
       "burden_ids": [
@@ -135,16 +135,16 @@
       "id": "downstream_gr",
       "rows": [
         {
-          "accept_criteria": "Run one bounded Theoretical Continuation Selector packet to classify post-recovery-bridge-candidate-evidence route before any adoption stress-energy Einstein-equation benchmark or completed-derivation work",
-          "blocking_burden": "Recovery-bridge candidate B_E rec and BridgeCert cand accepted only as scoped source-extension recovery-bridge-candidate evidence/precondition under finite/local source-side scope; no coupling law or matter coupling is adopted",
+          "accept_criteria": "Run one bounded P5-T01 support-only mechanization boundary and checker design packet without proof authority",
+          "blocking_burden": "ParamFiniteLocalWitness_v1(E) BridgeSlot_n(E) and NoTargetImport_n accepted only as scoped source-extension parameterized-witness evidence/precondition for Matter-Coupling Bridge Target v1 while no source-law adoption coupling-law adoption matter-coupling derivation stress-energy semantics stress-energy tensor matter action detector semantics MetricData(E) adoption g_eff scope expansion Einstein-equation premise benchmark fit or downstream promotion is imported",
           "burden_id": "matter_coupling",
           "current_status": "accepted",
-          "failure_or_freeze_criteria": "A recovery-bridge candidate evidence acceptance must not be treated as coupling-law adoption matter coupling stress-energy semantics Einstein equations benchmark promotion or completed derivation; freeze if later packets repeat same evidence-status selection without new repair obstruction freeze broader protected question or bounded non-promotional route",
-          "last_evidence_path": "research_control/tasks/RT-20260614-248/artifacts/277_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_POST_GATE_MATTER_COUPLING_RECOVERY_BRIDGE_CANDIDATE_SOURCE_EXTENSION_EVIDENCE_GATE_CHAIR_REVIEW.tex",
+          "failure_or_freeze_criteria": "Parameterized witness evidence/precondition acceptance must not be treated as source-law adoption coupling-law adoption matter coupling stress-energy semantics stress-energy tensor matter action detector semantics Einstein equations benchmark promotion completed derivation or checker proof authority; freeze if later packets repeat target formalization witness construction audit stress or gate review without support-only boundary design repair obstruction freeze or materially new payload",
+          "last_evidence_path": "research_control/tasks/RT-20260614-269/artifacts/298_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_P4_PARAMETERIZED_FINITE_LOCAL_SOURCE_FAMILY_WITNESS_V1_SOURCE_EXTENSION_EVIDENCE_GATE_CHAIR_REVIEW.tex",
           "milestone": "matter_coupling",
-          "notes": "Gate Chair accepted recovery-bridge candidate only as scoped source-extension evidence precondition with no source-law adoption no MetricData(E) adoption no g_eff scope change no coupling-law adoption no matter-coupling derivation or adoption no stress-energy semantics no Einstein equations no benchmark promotion and no completed derivation.",
+          "notes": "Gate Chair accepted ParamFiniteLocalWitness_v1(E) BridgeSlot_n(E) and NoTargetImport_n only as scoped source-extension parameterized-witness evidence/precondition while no source-law adoption no coupling-law adoption no matter-coupling derivation no stress-energy semantics no stress-energy tensor no matter action no detector semantics no MetricData(E) adoption no g_eff scope change no Einstein equations no benchmark promotion and no completed derivation occurred.",
           "required_object": "universal coupling",
-          "updated_at": "2026-06-28T03:00:00Z"
+          "updated_at": "2026-06-28T18:23:39Z"
         },
         {
           "accept_criteria": "derivation theorem",
@@ -221,96 +221,96 @@
       "title": "Negative and control rows"
     }
   ],
-  "latest_handoff_id": "handoff-0281",
-  "next_recommended_action": "Run one bounded Theoretical Continuation Selector packet to classify the next matter_coupling route after scoped recovery-bridge-candidate evidence/precondition acceptance. Do not adopt a coupling law, do not derive or adopt matter coupling, do not import stress-energy semantics, do not adopt MetricData(E), do not change scoped g_eff, do not derive Einstein equations, and do not promote downstream GR claims.",
+  "latest_handoff_id": "handoff-0321",
+  "next_recommended_action": "Run one bounded P8-T03 final continuation handoff packet for local research agents.",
   "row_count": 14,
-  "source_commit": "9da622653a3faf60a8c478328223eb17215769fa",
-  "source_commit_date": "2026-06-27T21:39:03-06:00",
+  "source_commit": "c7369577a7e5f96c3f4c4c6c6982e723cd3cc751",
+  "source_commit_date": "2026-06-28T18:20:06-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
-      "sha256": "1548ee32c606a6554b8a057d2e90d015ecaa00ac4857b8a1d2ada83701b44c8e"
+      "sha256": "e4c86503ff36901b3a894e41cca43c6195a2b3f053d8848292f4ddb9469e8f94"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/gr_derivation_burden_map.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/design/gr_derivation_burden_map.md",
       "path": "research_control/design/gr_derivation_burden_map.md",
       "sha256": "6d1df3488be163b72296cf34ee07b979e29b061d508e6a4c271ac3305373aa1f"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/mathematical_decisiveness_completion_contract.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/mathematical_decisiveness_completion_contract.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/design/mathematical_decisiveness_completion_contract.md",
       "path": "research_control/design/mathematical_decisiveness_completion_contract.md",
       "sha256": "562405dd78a03efde831806323081285c7850ee18dbeb2a6b6ecf900417c814c"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/obstruction_and_freeze_control.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/obstruction_and_freeze_control.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/design/obstruction_and_freeze_control.md",
       "path": "research_control/design/obstruction_and_freeze_control.md",
       "sha256": "52f24fc04f0f8e4a6716cb8ef78538566a332b3b4e27d4b939125e5648ea1e96"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "b75a743144a20e6d9d2711bde1eec921920b4e60d985516dc4c50a8ea97ff5ce"
+      "sha256": "0d538a010d65a99357003312f496d868a6002dfadbb99266e60bc4f56159936d"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "d57158ff7953e6a249da49877becac3022c55ddf6a78a7622eb800b824d8e0af"
+      "sha256": "01dba4a23afcc7bb8a73452711a38bf547a030cac81b41c7dab5fc87d5616b6d"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0281.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.yaml",
-      "path": "research_control/handoffs/handoff-0281.yaml",
-      "sha256": "c0d10ac08698a61b961f4bbdddf09c8f2df534df4cec8298120d376e147902bc"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.yaml",
+      "path": "research_control/handoffs/handoff-0321.yaml",
+      "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0281.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.md",
-      "path": "research_control/handoffs/handoff-0281.md",
-      "sha256": "fd4ea2285c891e8689ae6a48c63ad550043fa1e5a036b1f3308f656c61b402ac"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.md",
+      "path": "research_control/handoffs/handoff-0321.md",
+      "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/gr_derivation_burden_map.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/design/gr_derivation_burden_map.md",
       "label": "research_control/design/gr_derivation_burden_map.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/mathematical_decisiveness_completion_contract.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/design/mathematical_decisiveness_completion_contract.md",
       "label": "research_control/design/mathematical_decisiveness_completion_contract.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/design/obstruction_and_freeze_control.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/design/obstruction_and_freeze_control.md",
       "label": "research_control/design/obstruction_and_freeze_control.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.yaml",
-      "label": "research_control/handoffs/handoff-0281.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.yaml",
+      "label": "research_control/handoffs/handoff-0321.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/9da622653a3faf60a8c478328223eb17215769fa/research_control/handoffs/handoff-0281.md",
-      "label": "research_control/handoffs/handoff-0281.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.md",
+      "label": "research_control/handoffs/handoff-0321.md"
     }
   ],
-  "source_refresh_date": "2026-06-28",
+  "source_refresh_date": "2026-06-29",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "status_counts": {
     "Refuter stress passed": 1,
@@ -323,5 +323,5 @@
     "not started": 1
   },
   "version": 1,
-  "website_publication_date": "2026-06-28"
+  "website_publication_date": "2026-06-29"
 }
