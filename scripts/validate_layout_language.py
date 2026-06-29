@@ -53,6 +53,14 @@ EXPLICIT_EXCEPTIONS = {
     "src/pages/resources/diagrams.astro": "diagram inspection remains framed by design",
 }
 
+RESOURCE_SOURCE_AUTHORITY_FORBIDDEN = {
+    "SourceAuthoritySection": "SourceAuthoritySection component",
+    "SourceNotice": "direct SourceNotice component",
+    "source-authority-section": "source authority section class",
+    'aria-label="Source authority"': "source authority section aria label",
+    "aria-label='Source authority'": "source authority section aria label",
+}
+
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -83,6 +91,18 @@ def validate_layout_language(root: Path) -> list[str]:
     for relative in EXPLICIT_EXCEPTIONS:
         if not (root / relative).is_file():
             errors.append(f"{relative}: missing explicit layout exception surface")
+
+    resources_root = root / "src/pages/resources"
+    if resources_root.exists():
+        for path in sorted(resources_root.rglob("*.astro")):
+            relative = path.relative_to(root).as_posix()
+            text = read_text(path)
+            for token, reason in RESOURCE_SOURCE_AUTHORITY_FORBIDDEN.items():
+                if token in text:
+                    errors.append(
+                        f"{relative}: Library resource pages must not render "
+                        f"dedicated Source authority sections ({reason})"
+                    )
 
     return errors
 

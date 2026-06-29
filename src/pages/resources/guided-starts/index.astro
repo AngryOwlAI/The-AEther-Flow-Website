@@ -1,12 +1,8 @@
 ---
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import Figure from "../../../components/Figure.astro";
-import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../components/StatusDossier.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
-
-const sourceNotice = projectSourceNoticeDefaults.specialistGuidedStarts;
 
 const pathSummary = [
   {
@@ -273,8 +269,6 @@ const relatedRoutes = [
       loading="eager"
     />
   </section>
-
-  <SourceAuthoritySection {...sourceNotice} preferSourceRefs className="content-band content-band-tight" />
 
   <section class="content-band content-band-tight" aria-labelledby="summary-title">
     <div class="section-header">

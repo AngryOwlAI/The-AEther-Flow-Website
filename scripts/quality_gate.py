@@ -15,9 +15,6 @@ from urllib.parse import unquote, urlparse
 HTML_ROUTES_REQUIRING_SOURCE_NOTICE = {
     "/",
     "/project/physics/current-state/",
-    "/resources/",
-    "/resources/documents/",
-    "/resources/diagrams/",
     "/project/source-authority/publication-and-provenance-system/",
 }
 ROUTES_REQUIRING_KATEX: set[str] = set()
@@ -28,6 +25,11 @@ ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT = {
 RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA = {
     "/resources/documents/",
     "/resources/diagrams/",
+}
+RESOURCE_SOURCE_AUTHORITY_SECTION_SNIPPETS = {
+    'class="source-notice"',
+    "source-authority-section",
+    'aria-label="Source authority notice"',
 }
 FORBIDDEN_RENDERED_SNIPPETS = {
     "/Volumes/P-SSD/AngryOwl/The-AEther-Flow",
@@ -207,8 +209,6 @@ def validate_resource_support_schema(dist_dir: Path) -> list[str]:
         'class="project-overview-page project-support-page"',
         'class="content-band project-support-hero"',
         'class="support-svg"',
-        "Source authority",
-        "Claim status",
     ]
     for route in sorted(RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA):
         html_path = url_path_to_dist_path(dist_dir, route)
@@ -216,6 +216,24 @@ def validate_resource_support_schema(dist_dir: Path) -> list[str]:
         for snippet in required_snippets:
             if snippet not in text:
                 errors.append(f"{route}: missing resource support schema snippet {snippet!r}")
+    return errors
+
+
+def validate_no_resource_source_authority_sections(dist_dir: Path) -> list[str]:
+    errors: list[str] = []
+    resources_root = dist_dir / "resources"
+    if not resources_root.exists():
+        return errors
+    for html_path in sorted(resources_root.rglob("*.html")):
+        text = html_path.read_text(encoding="utf-8")
+        route = route_for_html(dist_dir, html_path)
+        for snippet in sorted(RESOURCE_SOURCE_AUTHORITY_SECTION_SNIPPETS):
+            if snippet in text:
+                errors.append(
+                    f"{route}: Library resource pages must not render "
+                    f"dedicated Source authority sections"
+                )
+                break
     return errors
 
 
@@ -240,6 +258,7 @@ def main() -> int:
     errors.extend(validate_no_local_path_leaks(dist_dir))
     errors.extend(validate_no_visible_route_path_text(dist_dir))
     errors.extend(validate_resource_support_schema(dist_dir))
+    errors.extend(validate_no_resource_source_authority_sections(dist_dir))
 
     if errors:
         for error in errors:

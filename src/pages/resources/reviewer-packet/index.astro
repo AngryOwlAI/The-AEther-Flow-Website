@@ -1,13 +1,10 @@
 ---
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import Figure from "../../../components/Figure.astro";
-import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../components/StatusDossier.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import snapshot from "../../../data/physics_current_state_snapshot.json";
-import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
 
-const sourceNotice = projectSourceNoticeDefaults.reviewerPacket;
 const shortCommit = snapshot.source_commit
   ? `${snapshot.source_commit.slice(0, 12)}...`
   : "Unavailable";
@@ -201,8 +198,6 @@ const reviewerQuestions = [
       loading="eager"
     />
   </section>
-
-  <SourceAuthoritySection {...sourceNotice} preferSourceRefs className="content-band content-band-tight" />
 
   <section class="content-band content-band-tight" aria-labelledby="packet-status-title">
     <div class="section-header">

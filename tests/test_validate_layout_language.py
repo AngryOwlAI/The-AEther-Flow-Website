@@ -48,3 +48,47 @@ def test_home_card_grid_antipattern_fails(tmp_path: Path) -> None:
     errors = validator.validate_layout_language(tmp_path)
 
     assert any("forbidden overview anti-pattern" in error for error in errors)
+
+
+def test_resource_source_authority_section_fails(tmp_path: Path) -> None:
+    write_minimal_layout_contract(tmp_path)
+    write(
+        tmp_path / "src/pages/resources/reviewer-packet/index.astro",
+        '---\nimport SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";\n---\n<SourceAuthoritySection />',
+    )
+
+    errors = validator.validate_layout_language(tmp_path)
+
+    assert any(
+        "Library resource pages must not render dedicated Source authority sections" in error
+        and "SourceAuthoritySection component" in error
+        for error in errors
+    )
+
+
+def test_nested_resource_direct_source_notice_fails(tmp_path: Path) -> None:
+    write_minimal_layout_contract(tmp_path)
+    write(
+        tmp_path / "src/pages/resources/guided-starts/general-public/index.astro",
+        '---\nimport SourceNotice from "../../../../components/SourceNotice.astro";\n---\n<SourceNotice />',
+    )
+
+    errors = validator.validate_layout_language(tmp_path)
+
+    assert any(
+        "Library resource pages must not render dedicated Source authority sections" in error
+        and "direct SourceNotice component" in error
+        for error in errors
+    )
+
+
+def test_resource_source_authority_prose_is_allowed(tmp_path: Path) -> None:
+    write_minimal_layout_contract(tmp_path)
+    write(
+        tmp_path / "src/pages/resources/guided-starts/general-public/index.astro",
+        "EvidenceRail StatusDossier source authority remains a contextual prose boundary.",
+    )
+
+    errors = validator.validate_layout_language(tmp_path)
+
+    assert errors == []

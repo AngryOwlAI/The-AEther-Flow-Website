@@ -2,7 +2,6 @@
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import Figure from "../../components/Figure.astro";
-import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
@@ -105,17 +104,6 @@ const galleryStatusCards = [
       </figcaption>
     </figure>
   </section>
-
-  <SourceAuthoritySection
-    claimStatus="source-index-only"
-    sourceRefs={[
-      "The AEther Flow Website. (2026). docs/content-dossiers/README.md",
-      "The AEther Flow Website. (2026). public/files/manifests/source_manifest.json",
-    ]}
-    updated="2026-06-28"
-    note="This page presents website-local visual orientation assets with explicit provenance. It does not make diagrams authoritative."
-    className="content-band content-band-tight"
-  />
 
   <ComprehensionBlocks content={resourcesDiagramsComprehension} />
 

@@ -1,11 +1,7 @@
 ---
 import EvidenceRail from "../../../../components/EvidenceRail.astro";
-import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../../../components/StatusDossier.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
-
-const sourceNotice = projectSourceNoticeDefaults.generalPublicGuidedStart;
 
 const pathSummary = [
   {
@@ -184,8 +180,6 @@ const provenancePath = [
       </figcaption>
     </figure>
   </section>
-
-  <SourceAuthoritySection {...sourceNotice} className="content-band content-band-tight" />
 
   <section class="content-band content-band-tight" aria-labelledby="guided-summary-title">
     <div class="section-header">
