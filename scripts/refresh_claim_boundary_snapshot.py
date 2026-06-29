@@ -33,6 +33,13 @@ REGISTRY_FIELDS = [
     "notes",
 ]
 
+PROGRAM_STATE_FIELDS = {
+    "active_task_id",
+    "latest_handoff_id",
+    "current_status",
+    "next_recommended_action",
+}
+
 
 class SnapshotError(ValueError):
     """Raised when source evidence cannot produce a safe public snapshot."""
@@ -97,14 +104,9 @@ def parse_program_state(source_root: Path) -> dict[str, str]:
             continue
         key, raw_value = raw_line.split(":", 1)
         value = raw_value.strip().strip("\"'")
-        if key in {"active_task_id", "latest_handoff_id", "current_status", "next_recommended_action"}:
+        if key in PROGRAM_STATE_FIELDS:
             values[key] = value
-    missing = {
-        "active_task_id",
-        "latest_handoff_id",
-        "current_status",
-        "next_recommended_action",
-    } - values.keys()
+    missing = PROGRAM_STATE_FIELDS - values.keys()
     if missing:
         raise SnapshotError(
             "program_state.yaml missing required field(s): "
@@ -180,7 +182,11 @@ def build_language_examples(current_row: dict[str, str] | None) -> list[dict[str
         {
             "label": "Allowed explanation",
             "title": "Describe the bounded action",
-            "body": allowed[0] if allowed else "No allowed wording was available in the current row.",
+            "body": (
+                allowed[0]
+                if allowed
+                else "No allowed wording was available in the current row."
+            ),
         },
         {
             "label": "Forbidden promotion",

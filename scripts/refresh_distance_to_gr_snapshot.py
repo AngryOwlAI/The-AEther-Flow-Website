@@ -31,11 +31,21 @@ LEDGER_FIELDS = [
     "notes",
 ]
 
+PROGRAM_STATE_FIELDS = {
+    "active_task_id",
+    "latest_handoff_id",
+    "current_status",
+    "next_recommended_action",
+}
+
 GROUPS = [
     {
         "id": "source_foundation",
         "title": "Source foundation",
-        "description": "Ontology, source equivalence, retention, generation, localization, and response rows.",
+        "description": (
+            "Ontology, source equivalence, retention, generation, localization, "
+            "and response rows."
+        ),
         "burden_ids": [
             "source_ontology_primitives",
             "source_equivalence_eqsrc",
@@ -48,13 +58,19 @@ GROUPS = [
     {
         "id": "metric_bridge",
         "title": "Metric and bridge rows",
-        "description": "Source manifold and effective metric rows that remain narrower than downstream GR promotion.",
+        "description": (
+            "Source manifold and effective metric rows that remain narrower than "
+            "downstream GR promotion."
+        ),
         "burden_ids": ["m_src", "g_eff"],
     },
     {
         "id": "downstream_gr",
         "title": "Downstream GR burdens",
-        "description": "Matter coupling, Einstein equations, benchmark promotion, and protected Gate Chair status.",
+        "description": (
+            "Matter coupling, Einstein equations, benchmark promotion, and protected "
+            "Gate Chair status."
+        ),
         "burden_ids": [
             "matter_coupling",
             "einstein_equations",
@@ -65,7 +81,10 @@ GROUPS = [
     {
         "id": "negative_and_control",
         "title": "Negative and control rows",
-        "description": "Finite robustness and frozen toy-model rows that guide routing without proving global failure.",
+        "description": (
+            "Finite robustness and frozen toy-model rows that guide routing without "
+            "proving global failure."
+        ),
         "burden_ids": ["finite_variation_robustness", "finite_toy_metric_response"],
     },
 ]
@@ -96,7 +115,11 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def dependency_entry(source_root: Path, relative_path: str, source_commit: str | None) -> dict[str, str | None]:
+def dependency_entry(
+    source_root: Path,
+    relative_path: str,
+    source_commit: str | None,
+) -> dict[str, str | None]:
     path = source_root / relative_path
     if not path.is_file():
         raise SnapshotError(f"required source file is missing: {path}")
@@ -127,11 +150,13 @@ def parse_program_state(source_root: Path) -> dict[str, str]:
             continue
         key, raw_value = raw_line.split(":", 1)
         value = raw_value.strip().strip("\"'")
-        if key in {"active_task_id", "latest_handoff_id", "current_status", "next_recommended_action"}:
+        if key in PROGRAM_STATE_FIELDS:
             values[key] = value
-    missing = {"active_task_id", "latest_handoff_id", "current_status", "next_recommended_action"} - values.keys()
+    missing = PROGRAM_STATE_FIELDS - values.keys()
     if missing:
-        raise SnapshotError(f"program_state.yaml missing required field(s): {', '.join(sorted(missing))}")
+        raise SnapshotError(
+            f"program_state.yaml missing required field(s): {', '.join(sorted(missing))}"
+        )
     return values
 
 
@@ -141,8 +166,13 @@ def load_ledger_rows(source_root: Path) -> list[dict[str, str]]:
         reader = csv.DictReader(handle)
         missing = set(LEDGER_FIELDS) - set(reader.fieldnames or [])
         if missing:
-            raise SnapshotError(f"{path}: missing required column(s): {', '.join(sorted(missing))}")
-        return [{field: (row.get(field) or "").strip() for field in LEDGER_FIELDS} for row in reader]
+            raise SnapshotError(
+                f"{path}: missing required column(s): {', '.join(sorted(missing))}"
+            )
+        return [
+            {field: (row.get(field) or "").strip() for field in LEDGER_FIELDS}
+            for row in reader
+        ]
 
 
 def group_rows(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
@@ -150,7 +180,11 @@ def group_rows(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
     groups: list[dict[str, Any]] = []
     seen: set[str] = set()
     for group in GROUPS:
-        group_rows = [row_by_id[burden_id] for burden_id in group["burden_ids"] if burden_id in row_by_id]
+        group_rows = [
+            row_by_id[burden_id]
+            for burden_id in group["burden_ids"]
+            if burden_id in row_by_id
+        ]
         seen.update(row["burden_id"] for row in group_rows)
         groups.append({**group, "rows": group_rows})
     uncategorized = [row for row in rows if row["burden_id"] not in seen]
@@ -159,7 +193,10 @@ def group_rows(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
             {
                 "id": "uncategorized",
                 "title": "Uncategorized ledger rows",
-                "description": "Rows present in the ledger but not yet assigned to a dashboard group.",
+                "description": (
+                    "Rows present in the ledger but not yet assigned to a dashboard "
+                    "group."
+                ),
                 "burden_ids": [row["burden_id"] for row in uncategorized],
                 "rows": uncategorized,
             }

@@ -20,7 +20,7 @@ HTML_ROUTES_REQUIRING_SOURCE_NOTICE = {
     "/resources/diagrams/",
     "/project/source-authority/publication-and-provenance-system/",
 }
-ROUTES_REQUIRING_KATEX = set()
+ROUTES_REQUIRING_KATEX: set[str] = set()
 ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT = {
     "/project/physics/",
     "/project/ai-research-agent-system/",
