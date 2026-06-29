@@ -54,7 +54,15 @@ def test_resource_source_authority_section_fails(tmp_path: Path) -> None:
     write_minimal_layout_contract(tmp_path)
     write(
         tmp_path / "src/pages/resources/reviewer-packet/index.astro",
-        '---\nimport SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";\n---\n<SourceAuthoritySection />',
+        "\n".join(
+            [
+                "---",
+                "import SourceAuthoritySection from "
+                '"../../../components/SourceAuthoritySection.astro";',
+                "---",
+                "<SourceAuthoritySection />",
+            ]
+        ),
     )
 
     errors = validator.validate_layout_language(tmp_path)
@@ -70,7 +78,14 @@ def test_nested_resource_direct_source_notice_fails(tmp_path: Path) -> None:
     write_minimal_layout_contract(tmp_path)
     write(
         tmp_path / "src/pages/resources/guided-starts/general-public/index.astro",
-        '---\nimport SourceNotice from "../../../../components/SourceNotice.astro";\n---\n<SourceNotice />',
+        "\n".join(
+            [
+                "---",
+                'import SourceNotice from "../../../../components/SourceNotice.astro";',
+                "---",
+                "<SourceNotice />",
+            ]
+        ),
     )
 
     errors = validator.validate_layout_language(tmp_path)

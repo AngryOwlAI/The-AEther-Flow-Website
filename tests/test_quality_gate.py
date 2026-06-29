@@ -29,7 +29,10 @@ def test_resource_source_authority_section_markup_fails(tmp_path: Path) -> None:
     dist = tmp_path / "dist"
     page = dist / "resources/diagrams/index.html"
     page.parent.mkdir(parents=True)
-    page.write_text('<section class="source-authority-section">Source authority</section>', encoding="utf-8")
+    page.write_text(
+        '<section class="source-authority-section">Source authority</section>',
+        encoding="utf-8",
+    )
 
     errors = quality_gate.validate_no_resource_source_authority_sections(dist)
 
