@@ -2,7 +2,6 @@
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
-import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesIndexComprehension } from "../../lib/supportComprehensionContent";
@@ -15,7 +14,6 @@ import {
 } from "../../lib/manifests";
 import { resourceGroups } from "../../lib/siteContent";
 
-const sourceRefs = downloads.map((item) => item.source_ref);
 const sampleCount = sampleDownloads.length;
 const approvedCount = approvedDownloads.length;
 const manifestStatusSummary = Object.entries(downloadStatusCounts)
@@ -148,14 +146,6 @@ const assetStatusDossier = [
       </figcaption>
     </figure>
   </section>
-
-  <SourceAuthoritySection
-    claimStatus="source-index-only"
-    sourceRefs={sourceRefs}
-    updated="2026-06-25"
-    note="This resource index is rendered from website-local manifest data and structured page links. It does not create scientific or workflow authority."
-    className="content-band content-band-tight"
-  />
 
   <ComprehensionBlocks content={resourcesIndexComprehension} />
 
