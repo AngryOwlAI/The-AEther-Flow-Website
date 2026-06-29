@@ -42,7 +42,7 @@ const galleryStatusCards = [
 
 <BaseLayout
   title="Diagram Gallery"
-  description="Manifest-backed diagram gallery for The AEther Flow website."
+  description="Diagram gallery for The AEther Flow website with manifest-backed asset records."
   bodyClass="project-overview-page project-support-page"
 >
   <section class="content-band project-support-hero" aria-labelledby="diagrams-title">
@@ -123,6 +123,12 @@ const galleryStatusCards = [
       ariaLabel="Diagram gallery publication status"
       className="track-status-grid"
     />
+    <DownloadList
+      items={diagramDownloads}
+      eyebrow="Manifest audit rows"
+      title="Current diagram fixture"
+      description="These rows are filtered from the asset manifest. Diagram assets are reader aids; manifest approval records website publication status, not source-claim authority."
+    />
     <div class="link-grid">
       <a class="link-card" href="/project/source-authority/">
         <span>Source authority</span>
@@ -164,13 +170,4 @@ const galleryStatusCards = [
       </div>
     </section>
   ))}
-
-  <section class="content-band content-band-tight">
-    <DownloadList
-      items={diagramDownloads}
-      eyebrow="Manifest-backed diagram"
-      title="Current diagram fixture"
-      description="This row is filtered from the asset manifest. Diagram assets are reader aids; manifest approval records website publication status, not source-claim authority."
-    />
-  </section>
 </BaseLayout>
