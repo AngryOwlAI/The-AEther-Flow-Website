@@ -23,9 +23,10 @@ The current page is an implemented reader-facing route. This dossier records the
 - Boundary: Concept groups organize reader navigation. They do not make
   diagrams authoritative, prove claims, change workflow authority, or replace
   source inspection.
-- Implementation note: The route preserves existing static PNG assets and
-  repairs the duplicate `description` prop on the manifest-backed
-  `DownloadList`.
+- Implementation note: The route preserves existing static PNG assets, removes
+  the generic manifest-download row from this gallery view, and renders each
+  approved public-comprehension PNG once in a category card with the diagram
+  image replacing the former metric column.
 
 ## Upstream source basis
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-29T02:06:20.776220+00:00",
+  "generated_at": "2026-06-29T02:37:43.207103+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "53aea4bfed312d874cad328496c8f9e0e3a844c5",
   "source_commit_date": "2026-06-28T20:01:23-06:00",
@@ -206,10 +206,10 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         }
       ],
@@ -223,7 +223,7 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml"
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/exact-gr-benchmark-boundary-explainer.md",
@@ -232,7 +232,7 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/TEX_SOURCE_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -270,7 +270,7 @@
     {
       "route_path": "/project/physics/current-state/",
       "local_page_source": "src/pages/project/physics/current-state/index.astro",
-      "local_page_sha256": "05330536bae4f5df3aebdf10a4f72d26a014c5f794860d38553f659d7a5534ee",
+      "local_page_sha256": "8e474c7305bc9f3600157cf8f1c91b084baa72eaa2411b5d08ec31de2a650bc9",
       "title": "Current Physics State",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -283,17 +283,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         },
         {
@@ -337,8 +337,8 @@
       "adapted_from_source_date": "2026-06-29",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/mathematical_decisiveness_completion_contract.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/obstruction_and_freeze_control.md",
@@ -347,8 +347,8 @@
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/design/gr_derivation_burden_map.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/design/mathematical_decisiveness_completion_contract.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/design/obstruction_and_freeze_control.md",
@@ -410,17 +410,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         }
       ],
@@ -434,8 +434,8 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/obstruction_and_freeze_control.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md"
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
@@ -444,8 +444,8 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/design/obstruction_and_freeze_control.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md"
       ],
       "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
@@ -488,17 +488,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         }
       ],
@@ -510,16 +510,16 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md"
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/design/gr_derivation_burden_map.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md"
       ],
       "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
@@ -911,17 +911,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         },
         {
@@ -972,8 +972,8 @@
       "adapted_from_source_date": "2026-06-29",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/AGENT_ROLE_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/roles/physics/gate-chair.v0.1.0.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
@@ -983,8 +983,8 @@
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/AGENT_ROLE_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/.agents/roles/physics/gate-chair.v0.1.0.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
@@ -2462,17 +2462,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         },
         {
@@ -2503,8 +2503,8 @@
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/claim-gates-explainer.md"
@@ -2512,8 +2512,8 @@
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/source-authority-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/claim-gates-explainer.md"
@@ -2653,17 +2653,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         },
         {
@@ -2681,16 +2681,16 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-overview-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/project-overview-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/source-authority-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "upstream_authority_status": "draft_control_artifact",
@@ -2839,17 +2839,17 @@
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.yaml",
-          "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
+          "path": "research_control/handoffs/handoff-0323.yaml",
+          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0321.md",
-          "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+          "path": "research_control/handoffs/handoff-0323.md",
+          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
           "omission_reason": null
         },
         {
@@ -2922,8 +2922,8 @@
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/README.md",
@@ -2937,8 +2937,8 @@
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/README.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0321.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/ontology/README.md",
@@ -3012,7 +3012,7 @@
     {
       "route_path": "/resources/diagrams/",
       "local_page_source": "src/pages/resources/diagrams.astro",
-      "local_page_sha256": "0f8f6a4c1f9d92d5cc55cb73d7139e5323eac6bb5427c657f34c1fc237b2d32c",
+      "local_page_sha256": "25c762ec10ec2663aa8918570ae138193076cbe6570407bdde6a1856aeea931b",
       "title": "Diagram Gallery",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -3106,7 +3106,7 @@
     {
       "route_path": "/license/",
       "local_page_source": "src/pages/license/index.astro",
-      "local_page_sha256": "802ab1d8efa176d3e941265f170b1f5d61bf171f9145ea9b98c9e6deb5615229",
+      "local_page_sha256": "08fd91c5d93716ec93b8fc18498fd21702de73bd322bb890715b21fc40f2a717",
       "title": "Project License",
       "adaptation_type": "one_to_one_adaptation",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

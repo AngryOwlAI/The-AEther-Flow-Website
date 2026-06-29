@@ -1,29 +1,33 @@
 ---
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
-import DownloadList from "../../components/DownloadList.astro";
-import Figure from "../../components/Figure.astro";
+import DiagramGalleryList from "../../components/DiagramGalleryList.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
-import { approvedDownloads, downloads, sampleDownloads } from "../../lib/manifests";
+import { approvedDownloads } from "../../lib/manifests";
 import { diagramConceptGroups, diagramGalleryItems } from "../../lib/siteContent";
 
-const diagramDownloads = downloads.filter((item) => item.kind === "diagram");
 const approvedDiagramDownloads = approvedDownloads.filter((item) => item.kind === "diagram");
-const sampleDiagramDownloads = sampleDownloads.filter((item) => item.kind === "diagram");
-const sampleDiagramLabel =
-  sampleDiagramDownloads.length === 1 ? "sample or legacy diagram file" : "sample or legacy diagram files";
+const approvedDiagramPaths = new Set(approvedDiagramDownloads.map((item) => item.path));
+const seenDiagramPaths = new Set<string>();
+const approvedGalleryItems = diagramGalleryItems.filter((item) => {
+  if (!approvedDiagramPaths.has(item.src) || seenDiagramPaths.has(item.src)) {
+    return false;
+  }
+  seenDiagramPaths.add(item.src);
+  return true;
+});
 const approvedDiagramLabel =
-  approvedDiagramDownloads.length === 1
-    ? "approved public-comprehension diagram file"
-    : "approved public-comprehension diagram files";
+  approvedGalleryItems.length === 1
+    ? "approved public-comprehension PNG"
+    : "approved public-comprehension PNGs";
 
 const galleryStatusCards = [
   {
-    label: "Static PNG",
-    title: "Browser-safe publication",
+    label: "Approved PNGs",
+    title: `${approvedGalleryItems.length} displayed once`,
     body:
-      "Public diagram figures use committed PNG assets generated from tracked Mermaid sources.",
+      "The gallery renders only approved comprehension PNGs generated from tracked Mermaid sources.",
   },
   {
     label: "Caption",
@@ -112,9 +116,9 @@ const galleryStatusCards = [
       <p class="eyebrow">Manifest audit</p>
       <h2 id="diagram-status-title">Diagram asset status</h2>
       <p class="lead">
-        The current manifest contains {sampleDiagramDownloads.length}{" "}
-        {sampleDiagramLabel} and {approvedDiagramDownloads.length}{" "}
-        {approvedDiagramLabel}. Approved here means approved for website
+        This gallery displays {approvedGalleryItems.length}{" "}
+        {approvedDiagramLabel} from the approved diagram manifest rows. Sample
+        fixtures remain outside this page view; approval here means website
         comprehension use, not source-claim authority.
       </p>
     </div>
@@ -122,12 +126,6 @@ const galleryStatusCards = [
       items={galleryStatusCards}
       ariaLabel="Diagram gallery publication status"
       className="track-status-grid"
-    />
-    <DownloadList
-      items={diagramDownloads}
-      eyebrow="Manifest audit rows"
-      title="Current diagram fixture"
-      description="These rows are filtered from the asset manifest. Diagram assets are reader aids; manifest approval records website publication status, not source-claim authority."
     />
     <div class="link-grid">
       <a class="link-card" href="/project/source-authority/">
@@ -155,19 +153,7 @@ const galleryStatusCards = [
         <h2 id={`diagram-group-${group.id}-title`}>{group.title}</h2>
         <p class="lead">{group.body}</p>
       </div>
-      <div class="figure-grid">
-        {diagramGalleryItems
-          .filter((item) => item.group === group.id)
-          .map((item) => (
-            <Figure
-              src={item.src}
-              alt={item.alt}
-              caption={item.caption}
-              provenance={item.provenance}
-              loading="eager"
-            />
-          ))}
-      </div>
+      <DiagramGalleryList items={approvedGalleryItems.filter((item) => item.group === group.id)} />
     </section>
   ))}
 </BaseLayout>

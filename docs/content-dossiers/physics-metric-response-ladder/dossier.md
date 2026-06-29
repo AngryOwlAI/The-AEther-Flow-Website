@@ -27,7 +27,7 @@ source state at build time.
 | `registries/CLAIM_BOUNDARY_REGISTRY.csv` | upstream registry | Source basis for forbidden overreads. |
 | `research_control/design/gr_derivation_burden_map.md` | upstream control note | Ladder ordering and burden separation. |
 | `research_control/program_state.yaml` | upstream control state | Active task and current status context. |
-| `research_control/handoffs/handoff-0321.yaml` | upstream handoff | Latest structured handoff and blocked downstream claims. |
+| `research_control/handoffs/handoff-0323.yaml` | upstream handoff | Latest structured handoff and blocked downstream claims. |
 | `src/data/distance_to_gr_snapshot.json` | website snapshot | Checked-in dashboard data used by the route. |
 | `src/data/physics_current_state_snapshot.json` | website snapshot | Checked-in current-state boundary language. |
 | `src/data/claim_boundary_snapshot.json` | website snapshot | Checked-in claim-boundary phrase patterns. |
@@ -144,7 +144,7 @@ completed GR derivation.
 - The AEther Flow. (n.d.-b). `registries/CLAIM_BOUNDARY_REGISTRY.csv`.
 - The AEther Flow. (n.d.-c). `research_control/design/gr_derivation_burden_map.md`.
 - The AEther Flow. (n.d.-d). `research_control/program_state.yaml`.
-- The AEther Flow. (n.d.-e). `research_control/handoffs/handoff-0321.yaml`.
+- The AEther Flow. (n.d.-e). `research_control/handoffs/handoff-0323.yaml`.
 - The AEther Flow Website. (2026). `src/data/distance_to_gr_snapshot.json`.
 - The AEther Flow Website. (2026). `src/data/physics_current_state_snapshot.json`.
 - The AEther Flow Website. (2026). `src/data/claim_boundary_snapshot.json`.

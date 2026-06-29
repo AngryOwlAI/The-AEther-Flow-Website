@@ -1,0 +1,37 @@
+---
+interface DiagramGalleryItem {
+  title: string;
+  src: string;
+  alt: string;
+  caption: string;
+  provenance: string;
+}
+
+interface Props {
+  items: DiagramGalleryItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="diagram-gallery-list">
+  {items.map((item) => (
+    <article class="diagram-gallery-item">
+      <div class="diagram-gallery-copy">
+        <p class="download-kind">Diagram</p>
+        <h3>
+          <a href={item.src}>{item.title}</a>
+        </h3>
+        <p>{item.caption}</p>
+        <p class="diagram-gallery-provenance">{item.provenance}</p>
+        <p class="diagram-gallery-boundary">
+          Visual orientation only. This diagram is a reader aid, not source
+          authority or claim-promotion evidence.
+        </p>
+      </div>
+      <a class="diagram-gallery-image-link" href={item.src} aria-label={`Open ${item.title}`}>
+        <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+      </a>
+    </article>
+  ))}
+</div>

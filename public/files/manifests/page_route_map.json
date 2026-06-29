@@ -59,7 +59,7 @@
         "registries/TEX_SOURCE_REGISTRY.csv",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml"
+        "research_control/handoffs/handoff-0323.yaml"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
@@ -84,8 +84,8 @@
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md",
         "research_control/design/gr_derivation_burden_map.md",
         "research_control/design/mathematical_decisiveness_completion_contract.md",
         "research_control/design/obstruction_and_freeze_control.md",
@@ -108,8 +108,8 @@
         "research_control/design/obstruction_and_freeze_control.md",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md"
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md"
       ],
       "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
@@ -125,8 +125,8 @@
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "research_control/design/gr_derivation_burden_map.md",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md"
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md"
       ],
       "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
@@ -224,8 +224,8 @@
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md",
         "registries/AGENT_ROLE_REGISTRY.csv",
         ".agents/roles/physics/gate-chair.v0.1.0.md",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
@@ -537,8 +537,8 @@
       "upstream_source_paths": [
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md",
         "research_control/README.md",
         "github-facing/source-authority-explainer.md",
         "github-facing/claim-gates-explainer.md"
@@ -576,8 +576,8 @@
         "github-facing/project-overview-explainer.md",
         "github-facing/source-authority-explainer.md",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "upstream_authority_status": "draft_control_artifact",
@@ -614,8 +614,8 @@
       "upstream_source_paths": [
         "README.md",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0321.yaml",
-        "research_control/handoffs/handoff-0321.md",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md",
         "registries/DISTANCE_TO_GR_LEDGER.csv",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "ontology/README.md",

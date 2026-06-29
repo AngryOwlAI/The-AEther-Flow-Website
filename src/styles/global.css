@@ -802,6 +802,80 @@ summary:focus-visible {
   color: var(--content-card-text);
 }
 
+.diagram-gallery-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.diagram-gallery-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  border: 1px solid var(--content-card-border);
+  border-radius: 8px;
+  background: var(--content-card-bg);
+  padding: 1.2rem;
+  box-shadow: var(--content-card-shadow);
+  color: var(--content-card-text);
+}
+
+.diagram-gallery-copy {
+  min-width: 0;
+}
+
+.diagram-gallery-item h3 {
+  margin: 0.25rem 0 0;
+  font-size: 1.2rem;
+}
+
+.diagram-gallery-item h3 a {
+  color: var(--content-card-link);
+}
+
+.diagram-gallery-item h3 a:hover,
+.diagram-gallery-item h3 a:focus-visible {
+  color: var(--content-card-accent);
+}
+
+.diagram-gallery-item p {
+  margin: 0.5rem 0 0;
+  color: var(--content-card-muted);
+}
+
+.diagram-gallery-provenance {
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+}
+
+.diagram-gallery-boundary {
+  max-width: 54rem;
+  font-weight: 700;
+}
+
+.diagram-gallery-image-link {
+  display: grid;
+  min-width: 0;
+  min-height: 13rem;
+  align-items: center;
+  justify-items: start;
+  overflow: auto;
+  border: 1px solid var(--content-card-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-dark-page) 76%, transparent);
+}
+
+.diagram-gallery-image-link img {
+  display: block;
+  width: auto;
+  min-width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: 32rem;
+  object-fit: contain;
+}
+
 .download-item h3 {
   margin: 0.25rem 0 0;
   font-size: 1.2rem;
@@ -2073,6 +2147,7 @@ html:has(body.project-overview-page) {
 .project-support-page .link-card,
 .project-support-page .resource-status-grid article,
 .project-support-page .timeline-list article,
+.project-support-page .diagram-gallery-item,
 .project-support-page .download-item {
   border-color: var(--overview-white-line);
   background: color-mix(in srgb, var(--color-dark-panel) 82%, transparent);
@@ -2102,6 +2177,7 @@ html:has(body.project-overview-page) {
 }
 
 .project-support-page .link-card span,
+.project-support-page .diagram-gallery-item h3,
 .project-support-page .download-item h3,
 .project-support-page .resource-status-grid h3,
 .project-support-page .timeline-list h3 {
@@ -2109,16 +2185,19 @@ html:has(body.project-overview-page) {
 }
 
 .project-support-page .resource-status-grid article,
+.project-support-page .diagram-gallery-item,
 .project-support-page .download-item {
   border-top: 3px solid var(--overview-orange);
 }
 
 .project-support-page .resource-status-grid article:nth-child(2n),
+.project-support-page .diagram-gallery-item:nth-child(2n),
 .project-support-page .download-item:nth-child(2n) {
   border-top-color: var(--overview-cyan);
 }
 
 .project-support-page .resource-status-grid p,
+.project-support-page .diagram-gallery-item .download-kind,
 .project-support-page .download-kind {
   color: var(--overview-orange);
 }
@@ -2135,6 +2214,19 @@ html:has(body.project-overview-page) {
 
 .project-support-page .download-meta dd {
   color: var(--overview-text);
+}
+
+.project-support-page .diagram-gallery-item p {
+  color: var(--overview-muted);
+}
+
+.project-support-page .diagram-gallery-boundary {
+  color: var(--overview-text);
+}
+
+.project-support-page .diagram-gallery-image-link {
+  border-color: var(--overview-white-line);
+  background: color-mix(in srgb, var(--owl-black) 88%, transparent);
 }
 
 .project-support-page .content-figure {
@@ -3765,8 +3857,17 @@ html:has(body.project-overview-page) {
   .principle-grid,
   .link-grid,
   .resource-status-grid,
+  .diagram-gallery-item,
   .download-item {
     grid-template-columns: 1fr;
+  }
+
+  .diagram-gallery-image-link {
+    min-height: 11rem;
+  }
+
+  .diagram-gallery-image-link img {
+    max-height: 24rem;
   }
 
   .site-nav {

@@ -1,5 +1,5 @@
 {
-  "active_task_id": "RT-20260614-288",
+  "active_task_id": "RT-20260614-290",
   "blocked_claims": [
     "canonical ontology edit",
     "source-law adoption",
@@ -18,18 +18,22 @@
     "completed derivation",
     "future source-extension impossibility",
     "global theory rejection",
-    "validator output as scientific proof",
-    "checkpoint or commit status as scientific proof"
+    "handoff as scientific proof",
+    "implementation-plan tracking as scientific proof",
+    "baseline snapshot as scientific proof",
+    "generated graph as scientific proof",
+    "checker output as proof",
+    "metrics output as proof"
   ],
-  "claim_boundary_summary": "P8-T02 ran the required final validation suite and prepared the checkpoint transaction for v11 recommendations 1 through 7. No physics claims were promoted.",
-  "current_status": "p8_t02_final_validation_checkpoint_completed_no_promotion",
+  "claim_boundary_summary": "P0 evidence closure created standalone implementation-plan intake and baseline snapshot receipts, and the v11 plan file is tracked through a narrow ignore exception. No physics claims were promoted.",
+  "current_status": "v11_p0_evidence_closure_completed_all_plan_tasks_proven_no_promotion",
   "derivation_burden": {
     "active_burden_id": "none",
     "active_row": {
       "accept_criteria": "No Distance-to-GR acceptance criterion is asserted by this handoff.",
       "blocking_burden": "The latest handoff is a project-control packet and reports no physics-burden movement.",
       "burden_id": "none",
-      "current_status": "unchanged_final_validation_only",
+      "current_status": "unchanged_p0_evidence_closure_only",
       "failure_or_freeze_criteria": "No Distance-to-GR failure or freeze criterion is changed by this handoff.",
       "last_evidence_path": "research_control/program_state.yaml",
       "milestone": "none",
@@ -88,64 +92,64 @@
       }
     ]
   },
-  "latest_handoff_created_at": "2026-06-29T00:06:04Z",
-  "latest_handoff_id": "handoff-0321",
-  "latest_handoff_next_action": "Run one bounded P8-T03 final continuation handoff packet for local research agents.",
-  "latest_handoff_summary": "P8-T02 final validation and checkpoint preparation completed. Required validators passed and the transaction routes to P8-T03 final continuation handoff.",
-  "next_recommended_action": "Run one bounded P8-T03 final continuation handoff packet for local research agents.",
-  "source_commit": "c7369577a7e5f96c3f4c4c6c6982e723cd3cc751",
-  "source_commit_date": "2026-06-28T18:20:06-06:00",
+  "latest_handoff_created_at": "2026-06-29T00:44:00Z",
+  "latest_handoff_id": "handoff-0323",
+  "latest_handoff_next_action": "No v11 implementation-plan task remains after checkpoint; resume ordinary research-control continuation only under a new tracked objective.",
+  "latest_handoff_summary": "P0 evidence closure completed. The v11 implementation plan file is tracked through a narrow ignore exception, standalone P0-T01 and P0-T02 receipts exist, and all applicable v11 plan tasks are proven without physics promotion.",
+  "next_recommended_action": "No v11 implementation-plan task remains after checkpoint; resume ordinary research-control continuation only under a new tracked objective.",
+  "source_commit": "53aea4bfed312d874cad328496c8f9e0e3a844c5",
+  "source_commit_date": "2026-06-28T20:01:23-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "01dba4a23afcc7bb8a73452711a38bf547a030cac81b41c7dab5fc87d5616b6d"
+      "sha256": "3e475708c222a035ce9caafdc4eea6bf4380e3947159a339e1d66739240e6a2e"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.yaml",
-      "path": "research_control/handoffs/handoff-0321.yaml",
-      "sha256": "fd2e9aa71b98ea1bcc995629627e4e46532a1ed1cd274747b912851a64c2b45c"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+      "path": "research_control/handoffs/handoff-0323.yaml",
+      "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0321.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.md",
-      "path": "research_control/handoffs/handoff-0321.md",
-      "sha256": "cb8b01aaa0d22d972843cc133f5f5b7a73d2c8fc9e8bec181281cba4f7353fa6"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
+      "path": "research_control/handoffs/handoff-0323.md",
+      "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
       "sha256": "e4c86503ff36901b3a894e41cca43c6195a2b3f053d8848292f4ddb9469e8f94"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "0d538a010d65a99357003312f496d868a6002dfadbb99266e60bc4f56159936d"
+      "sha256": "dff2b7472bc558a38f21e6f723a538774c076638e8b42eb28f55e4eaf157ae8c"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.yaml",
-      "label": "research_control/handoffs/handoff-0321.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
+      "label": "research_control/handoffs/handoff-0323.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/research_control/handoffs/handoff-0321.md",
-      "label": "research_control/handoffs/handoff-0321.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
+      "label": "research_control/handoffs/handoff-0323.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c7369577a7e5f96c3f4c4c6c6982e723cd3cc751/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],
