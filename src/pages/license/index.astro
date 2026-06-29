@@ -1,5 +1,4 @@
 ---
-import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -22,27 +21,6 @@ const licenseSummary = [
     title: "Nearest explicit notice controls",
     body:
       "For mixed prose and executable material, use the nearest explicit file or directory notice. Without a narrower notice, prose defaults to CC BY 4.0 and executable or validation material defaults to Apache-2.0.",
-  },
-];
-
-const boundaryItems = [
-  {
-    label: "Third-party material",
-    title: "Separate licenses still apply",
-    body:
-      "Third-party material, vendored assets, and externally licensed references remain under their own licenses and notices.",
-  },
-  {
-    label: "Claim boundary",
-    title: "Reuse permission is not scientific approval",
-    body:
-      "The upstream license explicitly separates reuse permissions from scientific status. It does not imply completion of the first-principles derivation of GR from the AEther / AEther-flow ontology.",
-  },
-  {
-    label: "Authoritative source",
-    title: "Read the upstream LICENSE before reuse",
-    body:
-      "This page summarizes the public license orientation for readers. The controlling license texts and narrower notices remain in the source repository.",
   },
 ];
 
@@ -110,22 +88,6 @@ const sourceRefs = [
       items={licenseSummary}
       ariaLabel="License summary categories"
       className="license-status-grid"
-    />
-  </section>
-
-  <section class="content-band content-band-tight" aria-labelledby="license-boundary-title">
-    <div class="section-header">
-      <p class="eyebrow">Boundaries</p>
-      <h2 id="license-boundary-title">Reuse permission stays separate from claim status.</h2>
-      <p class="lead">
-        Licensing grants reuse permissions. It does not promote a scientific,
-        mathematical, governance, or workflow claim.
-      </p>
-    </div>
-    <EvidenceRail
-      items={boundaryItems}
-      ariaLabel="License boundary notes"
-      className="source-link-grid license-boundary-grid"
     />
   </section>
 

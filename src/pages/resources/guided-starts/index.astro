@@ -214,28 +214,6 @@ const audiencePaths = [
   },
 ];
 
-const relatedRoutes = [
-  {
-    title: "General-public guided start",
-    href: "/resources/guided-starts/general-public/",
-    body: "Use this first if the project frame is unfamiliar.",
-  },
-  {
-    title: "Source authority",
-    href: "/project/source-authority/",
-    body: "Read the shared trust boundary behind all guided starts.",
-  },
-  {
-    title: "Claim Boundary Explorer",
-    href: "/project/source-authority/claim-boundary-explorer/",
-    body: "Inspect allowed, forbidden, and gate-required wording.",
-  },
-  {
-    title: "Diagram Gallery",
-    href: "/resources/diagrams/",
-    body: "Browse visual aids by concept with non-authority captions.",
-  },
-];
 ---
 
 <BaseLayout
@@ -326,44 +304,4 @@ const relatedRoutes = [
     </section>
   ))}
 
-  <section class="content-band content-band-tight" aria-labelledby="safe-title">
-    <div class="section-header">
-      <p class="eyebrow">Safe reading</p>
-      <h2 id="safe-title">The guide is useful because its authority is narrow.</h2>
-    </div>
-    <StatusDossier
-      items={[
-        {
-          label: "Safe summary",
-          title: "Audience-specific route order",
-          body:
-            "Specialist guided starts tell each audience which existing internal pages to read first and what overreads to avoid.",
-        },
-        {
-          label: "Unsafe summary",
-          title: "Guided start equals proof",
-          body:
-            "A guided start creates claims, updates current source state, proves physics or mathematics, grants AI/role authority, or replaces the future reviewer packet.",
-        },
-      ]}
-      ariaLabel="Specialist guided-start safe and unsafe summaries"
-      className="resource-status-grid resource-status-dossier safe-unsafe-grid"
-    />
-  </section>
-
-  <section class="content-band content-band-tight" aria-labelledby="related-title">
-    <div class="section-header">
-      <p class="eyebrow">Related routes</p>
-      <h2 id="related-title">Return to shared authority pages when a path feels too narrow.</h2>
-      <p class="lead">
-        The general-public guide and source-authority pages remain the common
-        baseline for every specialist path.
-      </p>
-    </div>
-    <EvidenceRail
-      items={relatedRoutes}
-      ariaLabel="Specialist guided-start related routes"
-      className="link-grid resource-path-rail"
-    />
-  </section>
 </BaseLayout>

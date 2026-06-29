@@ -1,7 +1,6 @@
 ---
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DiagramGalleryList from "../../components/DiagramGalleryList.astro";
-import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
 import { approvedDownloads } from "../../lib/manifests";
@@ -17,31 +16,6 @@ const approvedGalleryItems = diagramGalleryItems.filter((item) => {
   seenDiagramPaths.add(item.src);
   return true;
 });
-const approvedDiagramLabel =
-  approvedGalleryItems.length === 1
-    ? "approved public-comprehension PNG"
-    : "approved public-comprehension PNGs";
-
-const galleryStatusCards = [
-  {
-    label: "Approved PNGs",
-    title: `${approvedGalleryItems.length} displayed once`,
-    body:
-      "The gallery renders only approved comprehension PNGs generated from tracked Mermaid sources.",
-  },
-  {
-    label: "Caption",
-    title: "Interpretation stays in prose",
-    body:
-      "Each figure keeps meaning in alt text, caption, nearby copy, and source provenance.",
-  },
-  {
-    label: "Boundary",
-    title: "No diagram authority",
-    body:
-      "A diagram can explain a relationship, but it cannot prove science, change workflow authority, or replace source inspection.",
-  },
-];
 ---
 
 <BaseLayout
@@ -110,38 +84,6 @@ const galleryStatusCards = [
   </section>
 
   <ComprehensionBlocks content={resourcesDiagramsComprehension} />
-
-  <section class="content-band content-band-tight" aria-labelledby="diagram-status-title">
-    <div class="section-header">
-      <p class="eyebrow">Manifest audit</p>
-      <h2 id="diagram-status-title">Diagram asset status</h2>
-      <p class="lead">
-        This gallery displays {approvedGalleryItems.length}{" "}
-        {approvedDiagramLabel} from the approved diagram manifest rows. Sample
-        fixtures remain outside this page view; approval here means website
-        comprehension use, not source-claim authority.
-      </p>
-    </div>
-    <StatusDossier
-      items={galleryStatusCards}
-      ariaLabel="Diagram gallery publication status"
-      className="track-status-grid"
-    />
-    <div class="link-grid">
-      <a class="link-card" href="/project/source-authority/">
-        <span>Source authority</span>
-        <small>Read how website visuals, generated material, and manifests relate to upstream authority.</small>
-      </a>
-      <a class="link-card" href="/">
-        <span>Home</span>
-        <small>Return to the canonical public entry point for the dual-track framing.</small>
-      </a>
-      <a class="link-card" href="/resources/">
-        <span>Resource index</span>
-        <small>Inspect all current manifest-backed sample files and planned-source boundaries.</small>
-      </a>
-    </div>
-  </section>
 
   {diagramConceptGroups.map((group) => (
     <section

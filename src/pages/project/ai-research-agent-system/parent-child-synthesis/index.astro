@@ -106,21 +106,6 @@ const inheritedCards = [
   },
 ];
 
-const safeUnsafeCards = [
-  {
-    label: "Safe summary",
-    title: "More perspectives inside one job.",
-    body:
-      "Parent-child synthesis improves review coverage while preserving one outer AgentJob, one role boundary, one completion, and one fused output.",
-  },
-  {
-    label: "Unsafe summary",
-    title: "Parallel perspectives create parallel authority.",
-    body:
-      "It would be unsafe to infer extra jobs, child role records, independent child verdicts, conflict bypass, or human-gate bypass.",
-  },
-];
-
 const relatedLinks = [
   {
     title: "Research-agent workflow",
@@ -263,26 +248,6 @@ const relatedLinks = [
     </div>
     <div class="track-status-grid">
       {inheritedCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="parent-child-safe-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Safe and unsafe summaries</p>
-      <h2 id="parent-child-safe-title">The useful reading also names the forbidden shortcut.</h2>
-      <p>
-        The pattern is stricter than a loose parallel draft. PASS is invalid
-        while a declared blocking parent-child conflict remains unresolved.
-      </p>
-    </div>
-    <div class="track-status-grid">
-      {safeUnsafeCards.map((card) => (
         <article class="track-status-card">
           <p>{card.label}</p>
           <h3>{card.title}</h3>

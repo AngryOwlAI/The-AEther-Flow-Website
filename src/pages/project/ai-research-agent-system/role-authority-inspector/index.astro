@@ -104,54 +104,6 @@ const roleRows = [
   },
 ];
 
-const boundaryCards = [
-  {
-    label: "Registry",
-    title: "not permission",
-    body: "A registry row establishes source-visible status; it does not authorize a live transaction.",
-  },
-  {
-    label: "Contract",
-    title: "not allowlist",
-    body: "A role contract explains normal scope; the AgentJob controls current reads and writes.",
-  },
-  {
-    label: "Active",
-    title: "not enough",
-    body: "Active status still needs a task-local execution-role record and AgentJob.",
-  },
-  {
-    label: "Superseded",
-    title: "history only",
-    body: "Superseded rows stay visible so older task records remain interpretable.",
-  },
-  {
-    label: "Gate",
-    title: "not bypassed",
-    body: "A human-gated role requires explicit tracked approval before protected action.",
-  },
-  {
-    label: "Catalog",
-    title: "not registration",
-    body: "This website page cannot register roles, supersede roles, or promote claims.",
-  },
-];
-
-const safeUnsafeCards = [
-  {
-    label: "Safe summary",
-    title: "Inspect the stack before concluding authority.",
-    body:
-      "Read registry row, role contract, execution-role record, AgentJob allowlist, completion evidence, and any human gate.",
-  },
-  {
-    label: "Unsafe summary",
-    title: "A visible role label grants permission.",
-    body:
-      "It would be unsafe to treat a role name, catalog card, active status, or historical row as current write or claim authority.",
-  },
-];
-
 const relatedLinks = [
   {
     title: "Roles and skills",
@@ -294,47 +246,6 @@ const relatedLinks = [
           <p>{row.fields}</p>
           <p><strong>Safe:</strong> {row.safe}</p>
           <p><strong>Unsafe:</strong> {row.unsafe}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="role-boundaries-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Boundaries</p>
-      <h2 id="role-boundaries-title">Visibility must not become authority drift.</h2>
-      <p>
-        The inspector is useful only if it keeps catalog display, registry
-        status, role contracts, and live transaction authority separate.
-      </p>
-    </div>
-    <div class="track-status-grid">
-      {boundaryCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="role-safe-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Safe and unsafe summaries</p>
-      <h2 id="role-safe-title">Safe inspection names the forbidden shortcut.</h2>
-      <p>
-        A public role inspector can orient readers. It cannot register roles,
-        activate roles, change role status, change write permission, or promote
-        physics claims.
-      </p>
-    </div>
-    <div class="track-status-grid">
-      {safeUnsafeCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
         </article>
       ))}
     </div>

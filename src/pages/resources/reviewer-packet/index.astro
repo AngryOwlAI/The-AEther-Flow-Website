@@ -279,28 +279,4 @@ const reviewerQuestions = [
     />
   </section>
 
-  <section class="content-band content-band-tight" aria-labelledby="safe-title">
-    <div class="section-header">
-      <p class="eyebrow">Safe reading</p>
-      <h2 id="safe-title">The packet is safe only if the unsafe shortcut remains visible.</h2>
-    </div>
-    <StatusDossier
-      items={[
-        {
-          label: "Safe summary",
-          title: "Source-first inspection order",
-          body:
-            "The reviewer packet gives an external reviewer a source-first inspection order and visible claim boundaries.",
-        },
-        {
-          label: "Unsafe summary",
-          title: "Review packet equals validation",
-          body:
-            "The reviewer packet proves scientific viability, external validation, completed GR derivation, MetricData(E), g_eff, matter coupling, Einstein equations, benchmark promotion, or downstream GR promotion.",
-        },
-      ]}
-      ariaLabel="External reviewer packet safe and unsafe summaries"
-      className="resource-status-grid resource-status-dossier safe-unsafe-grid"
-    />
-  </section>
 </BaseLayout>

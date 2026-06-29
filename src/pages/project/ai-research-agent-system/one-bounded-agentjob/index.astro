@@ -106,54 +106,6 @@ const completionCards = [
   },
 ];
 
-const boundaryCards = [
-  {
-    label: "Permission",
-    title: "not reusable authority",
-    body: "A historical AgentJob does not grant future write permission.",
-  },
-  {
-    label: "Truth",
-    title: "not broad project truth",
-    body: "One transaction can record what it did; it cannot settle the whole project.",
-  },
-  {
-    label: "Validation",
-    title: "not proof by PASS",
-    body: "Validators can accept a checked state without proving physics.",
-  },
-  {
-    label: "Output",
-    title: "not adoption by existence",
-    body: "An expected output can exist as evidence without becoming an adopted claim.",
-  },
-  {
-    label: "Privacy",
-    title: "no private local details",
-    body: "The page uses repo-relative committed paths and avoids local runtime context.",
-  },
-  {
-    label: "Handoff",
-    title: "not current-job extension",
-    body: "The next packet requires its own decision and job.",
-  },
-];
-
-const safeUnsafeCards = [
-  {
-    label: "Safe summary",
-    title: "One bounded AgentJob makes one transaction auditable.",
-    body:
-      "The job names its objective, inputs, allowed paths, forbidden classes, validators, expected outputs, completion record, and handoff boundary.",
-  },
-  {
-    label: "Unsafe summary",
-    title: "One AgentJob settles broad project truth.",
-    body:
-      "It would be unsafe to treat one job as reusable permission, theorem proof, benchmark promotion, or adoption of expected outputs.",
-  },
-];
-
 const relatedLinks = [
   {
     title: "Research-agent workflow",
@@ -311,49 +263,6 @@ const relatedLinks = [
     </div>
     <div class="track-status-grid">
       {completionCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="agentjob-boundary-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Boundaries</p>
-      <h2 id="agentjob-boundary-title">One job is intentionally small.</h2>
-      <p>
-        Small scope is the control mechanism. It prevents a workflow receipt
-        from becoming broad project truth, reusable permission, or physics
-        promotion.
-      </p>
-    </div>
-    <div class="track-status-grid">
-      {boundaryCards.map((boundary) => (
-        <article class="track-status-card">
-          <p>{boundary.label}</p>
-          <h3>{boundary.title}</h3>
-          <p>{boundary.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="agentjob-safe-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Safe and unsafe summaries</p>
-      <h2 id="agentjob-safe-title">Safe summary also names the unsafe one.</h2>
-      <p>
-        The RT-249 AgentJob preserved no coupling-law adoption, no
-        matter-coupling derivation or adoption, no <code>MetricData(E)</code>, no
-        {" "}<code>g_eff</code>, no Einstein equations, no benchmark promotion, and no
-        completed derivation.
-      </p>
-    </div>
-    <div class="track-status-grid">
-      {safeUnsafeCards.map((card) => (
         <article class="track-status-card">
           <p>{card.label}</p>
           <h3>{card.title}</h3>

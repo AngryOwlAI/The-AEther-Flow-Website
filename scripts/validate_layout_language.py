@@ -40,7 +40,7 @@ MIGRATED_SURFACES = {
         "forbidden": (),
     },
     "src/pages/resources/index.astro": {
-        "required": ("EvidenceRail", "StatusDossier"),
+        "required": ("EvidenceRail",),
         "forbidden": (),
     },
     "src/pages/resources/documents.astro": {

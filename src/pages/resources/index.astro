@@ -2,41 +2,12 @@
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DownloadList from "../../components/DownloadList.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
-import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesIndexComprehension } from "../../lib/supportComprehensionContent";
 import {
-  approvedDownloads,
-  downloadStatusCounts,
   downloads,
-  ontologyDocuments,
-  sampleDownloads,
 } from "../../lib/manifests";
 import { resourceGroups } from "../../lib/siteContent";
-
-const sampleCount = sampleDownloads.length;
-const approvedCount = approvedDownloads.length;
-const manifestStatusSummary = Object.entries(downloadStatusCounts)
-  .map(([status, count]) => `${status}: ${count}`)
-  .join(", ");
-
-const assetStatusDossier = [
-  {
-    label: "Current files",
-    title: manifestStatusSummary,
-    body: "These counts come from source_manifest.json approval statuses and the asset manifest cross-reference.",
-  },
-  {
-    label: "Sample fixtures",
-    title: "Path and rendering checks",
-    body: "Remaining sample assets are visual fixtures only; sample PDF and TeX files are no longer part of the public manifest.",
-  },
-  {
-    label: "Ontology package",
-    title: "Approved downloads active",
-    body: "Registered TeX files carry source authority; PDFs are generated human-readable derivatives for direct reading.",
-  },
-];
 ---
 
 <BaseLayout
@@ -166,24 +137,6 @@ const assetStatusDossier = [
       ariaLabel="Resource reader paths"
       className="link-grid resource-path-rail"
       ordered
-    />
-  </section>
-
-  <section class="content-band content-band-tight" aria-labelledby="asset-status-title">
-    <div class="section-header">
-      <p class="eyebrow">Manifest audit</p>
-      <h2 id="asset-status-title">Current downloadable asset status</h2>
-      <p class="lead">
-        The current manifest records {sampleCount} sample fixture files and{" "}
-        {approvedCount} approved source-backed public files. Source-backed
-        ontology downloads are grouped into {ontologyDocuments.length} PDF/TeX
-        document pairs.
-      </p>
-    </div>
-    <StatusDossier
-      items={assetStatusDossier}
-      ariaLabel="Downloadable asset status dossier"
-      className="resource-status-grid resource-status-dossier"
     />
   </section>
 

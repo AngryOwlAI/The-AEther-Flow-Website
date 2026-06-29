@@ -163,21 +163,6 @@ const boundaryCards = [
   },
 ];
 
-const safeUnsafeCards = [
-  {
-    label: "Safe reading",
-    title: "One request becomes one auditable transaction.",
-    body:
-      "RT-20260614-249 shows a request narrowed through task, Director decision, AgentJob, completion, handoff, and registries while preserving claim blocks.",
-  },
-  {
-    label: "Unsafe reading",
-    title: "The workflow proves the scientific claim.",
-    body:
-      "It would be unsafe to treat PASS, role labels, registry rows, generated pages, memory hits, or handoffs as proof of a physics result.",
-  },
-];
-
 const relatedLinks = [
   {
     title: "AI research-agent track",
@@ -337,28 +322,6 @@ const relatedLinks = [
           <p>{boundary.label}</p>
           <h3>{boundary.title}</h3>
           <p>{boundary.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="workflow-safe-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Safe and unsafe readings</p>
-      <h2 id="workflow-safe-title">The page explains process discipline, not claim promotion.</h2>
-      <p>
-        The concrete example selected a next bounded packet while preserving
-        no coupling-law adoption, no matter-coupling derivation or adoption,
-        no <code>MetricData(E)</code>, no <code>g_eff</code> scope change, no Einstein
-        equations, no benchmark promotion, and no completed derivation.
-      </p>
-    </div>
-    <div class="track-status-grid">
-      {safeUnsafeCards.map((card) => (
-        <article class="track-status-card">
-          <p>{card.label}</p>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
         </article>
       ))}
     </div>

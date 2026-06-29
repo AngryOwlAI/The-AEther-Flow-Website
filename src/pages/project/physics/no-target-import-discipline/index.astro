@@ -181,19 +181,6 @@ const specialistCards = [
   },
 ];
 
-const summaryCards = [
-  {
-    label: "Safe summary",
-    title: "A necessary filter, not a finished derivation.",
-    body: "No-target-import discipline blocks hidden target and process inputs by requiring source-only factorization and fail-closed handling. The current criterion is formalized pending audit.",
-  },
-  {
-    label: "Unsafe summary",
-    title: "The guardrail proves all candidates are clean.",
-    body: "It would be unsafe to infer all future target imports are eliminated, M_src is adopted, benchmark success is source evidence, or validators and registries can prove physics.",
-  },
-];
-
 const relatedLinks = [
   {
     title: "Source extension pipeline",
@@ -450,22 +437,6 @@ const relatedLinks = [
         </article>
       ))}
     </div>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="no-target-import-summary-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Safe and unsafe readings</p>
-      <h2 id="no-target-import-summary-title">A guardrail can be necessary without being sufficient.</h2>
-      <p>
-        This route should improve trust by making the discipline visible, not
-        by pretending the discipline has already solved every future case.
-      </p>
-    </div>
-    <EvidenceRail
-      items={summaryCards}
-      ariaLabel="No-target-import safe and unsafe summaries"
-      className="source-link-grid"
-    />
   </section>
 
   <section class="track-page-band" aria-labelledby="no-target-import-reader-path-title">
