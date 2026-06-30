@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260630-041"
 title: "Regenerate Manifests Redirects And Retire Obsolete Old Routes"
 created_utc: "2026-06-30T20:14:48Z"
-updated_utc: "2026-06-30T20:24:09Z"
-status: "active"
+updated_utc: "2026-06-30T20:29:06Z"
+status: "completed"
 
 source_context:
   task_packet: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"

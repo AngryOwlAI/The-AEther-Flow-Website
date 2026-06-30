@@ -4,8 +4,8 @@ job_id: "WJ-20260630-041-A"
 task_id: "WI-20260630-041"
 title: "Regenerate manifests redirects and retire obsolete old routes"
 created_utc: "2026-06-30T20:14:48Z"
-updated_utc: "2026-06-30T20:24:09Z"
-status: "active"
+updated_utc: "2026-06-30T20:29:06Z"
+status: "completed"
 
 objective: "Implement GF-013 redirect, manifest, and internal route cleanup for the new short route model."
 

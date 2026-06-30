@@ -1,0 +1,151 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-042"
+title: "Run Owner Review Loop And Release-Candidate QA"
+created_utc: "2026-06-30T20:29:06Z"
+updated_utc: "2026-06-30T20:36:38Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
+  canonical_sitewide_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  review_ledger: "docs/quality/sitewide-greenfield-review-ledger.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-041.yaml"
+
+requirements:
+  - "Present the rebuilt route set for owner review without marking owner acceptance."
+  - "Run release-candidate validation and quality checks locally."
+  - "Run local smoke and browser QA for representative Home, Physics, AI Research System, Resources, and Diagram Gallery routes."
+  - "Produce a release-candidate QA report that records owner-review status, residual risk, validation evidence, and deployment authorization state."
+  - "Record failed full validate/quality attempts as release-candidate blockers when source-drift policy or quality-gate defects prevent a green RC result."
+  - "Do not deploy, push, mutate upstream, mark owner acceptance, or claim deployment readiness without explicit owner review."
+  - "Do not implement feedback changes inside this packet; any requested changes require bounded follow-up feedback packets."
+
+goal: "Complete GF-014 by recording release-candidate QA and the owner-review decision state without deploying."
+
+allowed_reads:
+  website_repository:
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "package.json"
+    - "scripts/smoke_test_site.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-041.yaml"
+    - "implementation_control/handoffs/WH-20260630-041.md"
+    - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-041.yaml"
+    - "implementation_control/handoffs/WH-20260630-041.md"
+    - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-042.yaml"
+    - "implementation_control/handoffs/WH-20260630-042.md"
+    - "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
+    - "implementation_control/tasks/WI-20260630-042/jobs/completions/WJC-20260630-042-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "GF-014 records QA and owner-review status only; no public page claim changes are in scope."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot, upstream refresh, generated derivative refresh, wiki regeneration, or retrieval refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "Route implementation and retirement were completed in prior packets; GF-014 is release-candidate QA."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No visual system changes are in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset addition, deletion, or regeneration is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "GF-014 inspects manifests but does not change public authority records unless QA discovers a defect requiring a new packet."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "content"
+    command: "npm run validate:content"
+    required: true
+  - id: "links"
+    command: "npm run validate:links"
+    required: true
+  - id: "layout"
+    command: "npm run validate:layout"
+    required: true
+  - id: "svg-policy"
+    command: "npm run validate:svg"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "cloudflare"
+    command: "npm run validate:cloudflare"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "smoke-test"
+    command: "python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "browser-qa"
+    command: "manual inspection of release-candidate routes at desktop and mobile viewport"
+    required: true
+
+stop_conditions:
+  - "Owner requests page, content, route, source, manifest, asset, or visual changes."
+  - "Any additional validator, smoke test, or browser QA failure appears outside the documented curator/source-drift and diagram-support-schema blockers."
+  - "Any push, deploy, source refresh, generated derivative refresh, public asset mutation, upstream write, dependency addition, or owner-acceptance claim becomes necessary."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Write release-candidate QA evidence, then use npm run checkpoint:implementation. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-042-A"
+  path: "implementation_control/tasks/WI-20260630-042/jobs/completions/WJC-20260630-042-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "Bounded follow-up QA blocker packet"
+  summary: "Resolve the Diagram Gallery support-schema mismatch and curator/source-drift blocker before owner acceptance or deployment."
+  do_not_skip: "Do not mark owner acceptance or deployment readiness without explicit owner review."

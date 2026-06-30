@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T20:24:09Z"
+updated_utc: "2026-06-30T20:36:38Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-041.yaml"
+  - "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-042.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,34 +24,37 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-041"
-  title: "Regenerate Manifests Redirects And Retire Obsolete Old Routes"
+  task_id: "WI-20260630-042"
+  title: "Run Owner Review Loop And Release-Candidate QA"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"
+    task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-041-A"
+  job_id: "WJ-20260630-042-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-041"
+  handoff_id: "WH-20260630-042"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-041.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-041.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-042.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-042.md"
 
 latest_completion:
-  completion_id: "WJC-20260630-041-A"
-  path: "implementation_control/tasks/WI-20260630-041/jobs/completions/WJC-20260630-041-A.yaml"
+  completion_id: "WJC-20260630-042-A"
+  path: "implementation_control/tasks/WI-20260630-042/jobs/completions/WJC-20260630-042-A.yaml"
   status: "completed"
 
 required_validators:
   - id: "git-diff-check"
     command: "git diff --check"
+    required_for_current_job: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
     required_for_current_job: true
   - id: "content"
     command: "npm run validate:content"
@@ -62,35 +65,35 @@ required_validators:
   - id: "layout"
     command: "npm run validate:layout"
     required_for_current_job: true
-  - id: "comprehension"
-    command: "npm run validate:comprehension"
+  - id: "svg-policy"
+    command: "npm run validate:svg"
     required_for_current_job: true
   - id: "provenance"
     command: "npm run validate:provenance"
     required_for_current_job: true
-  - id: "manifests"
-    command: "npm run validate:manifests"
-    required_for_current_job: true
-  - id: "svg-policy"
-    command: "npm run validate:svg"
-    required_for_current_job: true
-  - id: "build"
-    command: "npm run build"
+  - id: "cloudflare"
+    command: "npm run validate:cloudflare"
     required_for_current_job: true
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     required_for_current_job: true
+  - id: "build"
+    command: "npm run build"
+    required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
+    required_for_current_job: true
+  - id: "smoke-test"
+    command: "python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321"
     required_for_current_job: true
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required_for_current_job: true
   - id: "browser-qa"
-    command: "manual inspection of redirect smoke checks and rendered new short routes at desktop and mobile viewport"
+    command: "manual inspection of release-candidate routes at desktop and mobile viewport"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
-  summary: "After checkpoint, open the owner review and release-candidate QA packet without deploying."
+  task_packet: "Bounded follow-up QA blocker packet"
+  summary: "Resolve the Diagram Gallery support-schema mismatch and curator/source-drift blocker before owner acceptance or deployment."
   do_not_skip: "Do not mark deployment ready, push, deploy, or mark owner acceptance without explicit owner review."

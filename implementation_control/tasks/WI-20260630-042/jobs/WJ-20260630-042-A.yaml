@@ -1,0 +1,146 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260630-042-A"
+task_id: "WI-20260630-042"
+title: "Run owner review loop and release-candidate QA"
+created_utc: "2026-06-30T20:29:06Z"
+updated_utc: "2026-06-30T20:36:38Z"
+status: "active"
+
+objective: "Run GF-014 release-candidate QA, record owner-review status, and report whether deployment is authorized without deploying."
+
+execution_boundary:
+  invocation_limit: "one bounded implementation packet"
+  live_state_priority: "implementation_control records outrank PRDs, task packets, memory, and conversation summaries"
+  upstream_write_status: "forbidden"
+  owner_acceptance_status: "not_granted"
+  deployment_status: "not_authorized"
+  feedback_change_status: "forbidden_without_follow_up_packet"
+
+allowed_reads:
+  - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "package.json"
+  - "scripts/smoke_test_site.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.md"
+  - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+  - "git status output"
+
+allowed_writes:
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.md"
+  - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-042.yaml"
+  - "implementation_control/handoffs/WH-20260630-042.md"
+  - "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
+  - "implementation_control/tasks/WI-20260630-042/jobs/completions/WJC-20260630-042-A.yaml"
+
+required_outputs:
+  - "Release-candidate QA report records route inventory status, validator evidence, browser/smoke evidence, residual risk, and deployment authorization state."
+  - "Review ledger records GF-014 completion without marking owner acceptance."
+  - "Owner-review status remains human review pending until explicit owner review accepts or requests changes."
+
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public route content changes are in scope."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh in scope."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route or navigation changes in scope."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No visual system changes in scope."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No downloadable asset changes in scope."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "Manifests are inspected but not mutated in GF-014 unless a new packet is opened."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "content"
+    command: "npm run validate:content"
+    required: true
+  - id: "links"
+    command: "npm run validate:links"
+    required: true
+  - id: "layout"
+    command: "npm run validate:layout"
+    required: true
+  - id: "svg-policy"
+    command: "npm run validate:svg"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "cloudflare"
+    command: "npm run validate:cloudflare"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "smoke-test"
+    command: "python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "browser-qa"
+    command: "manual inspection of release-candidate routes at desktop and mobile viewport"
+    required: true
+
+stop_conditions:
+  - "Owner requests changes."
+  - "Any additional validator or QA check fails outside the documented curator/source-drift and diagram-support-schema blockers."
+  - "Any undeclared write path is needed."
+  - "Any owner acceptance, deployment, push, upstream write, source refresh, generated derivative refresh, public asset mutation, dependency addition, or feedback implementation becomes necessary."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after release-candidate QA evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-042-A"
+  path: "implementation_control/tasks/WI-20260630-042/jobs/completions/WJC-20260630-042-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "Bounded follow-up QA blocker packet"
+  summary: "Resolve the Diagram Gallery support-schema mismatch and curator/source-drift blocker before owner acceptance or deployment."
+  do_not_skip: "Do not mark owner acceptance or deployment readiness without explicit owner review."
