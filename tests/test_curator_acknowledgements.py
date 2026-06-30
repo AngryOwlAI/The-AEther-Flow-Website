@@ -130,7 +130,7 @@ def test_critical_drift_fails_even_with_acknowledgement(tmp_path: Path) -> None:
     assert write_reports(repo_root, source_root) == 0
     write_ack(
         repo_root,
-        route_path="/project/physics/current-state/",
+        route_path=run_curator.CURRENT_STATE_ROUTE,
         source_path="snapshot.yaml",
         severity="critical",
         current_commit=current_commit,

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T20:45:38Z"
+updated_utc: "2026-06-30T21:00:08Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-043.yaml"
+  - "implementation_control/tasks/WI-20260630-044/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-044/jobs/WJ-20260630-044-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-044.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,79 +24,52 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-043"
-  title: "Resolve Diagram Gallery Quality Gate Contract"
+  task_id: "WI-20260630-044"
+  title: "Refresh Curator Source Drift Artifacts"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-044/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-014 Follow-up: Diagram Gallery Quality Gate Contract"
+    task_packet: "GF-014 Follow-up: Curator Source Drift Refresh"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-043-A"
+  job_id: "WJ-20260630-044-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-044/jobs/WJ-20260630-044-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-043"
+  handoff_id: "WH-20260630-044"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-043.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-043.md"
-
-latest_completion:
-  completion_id: "WJC-20260630-043-A"
-  path: "implementation_control/tasks/WI-20260630-043/jobs/completions/WJC-20260630-043-A.yaml"
-  status: "completed"
+  yaml_path: "implementation_control/handoffs/WH-20260630-044.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-044.md"
 
 required_validators:
   - id: "git-diff-check"
     command: "git diff --check"
     required_for_current_job: true
-  - id: "manifests"
-    command: "npm run validate:manifests"
+  - id: "validate"
+    command: "npm run validate"
     required_for_current_job: true
-  - id: "content"
-    command: "npm run validate:content"
-    required_for_current_job: true
-  - id: "links"
-    command: "npm run validate:links"
-    required_for_current_job: true
-  - id: "layout"
-    command: "npm run validate:layout"
-    required_for_current_job: true
-  - id: "svg-policy"
-    command: "npm run validate:svg"
-    required_for_current_job: true
-  - id: "provenance"
-    command: "npm run validate:provenance"
-    required_for_current_job: true
-  - id: "cloudflare"
-    command: "npm run validate:cloudflare"
-    required_for_current_job: true
-  - id: "implementation-control"
-    command: "npm run validate:implementation-control"
-    required_for_current_job: true
-  - id: "quality-gate"
-    command: "python3 scripts/quality_gate.py"
-    required_for_current_job: true
-  - id: "build"
-    command: "npm run build"
+  - id: "quality"
+    command: "npm run quality"
     required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required_for_current_job: true
-  - id: "smoke-test"
-    command: "python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
     required_for_current_job: true
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required_for_current_job: true
-  - id: "browser-qa"
-    command: "manual inspection of release-candidate routes at desktop and mobile viewport"
-    required_for_current_job: true
+
+latest_completion:
+  completion_id: "WJC-20260630-044-A"
+  path: "implementation_control/tasks/WI-20260630-044/jobs/completions/WJC-20260630-044-A.yaml"
+  status: "completed"
 
 next_recommended_action:
-  task_packet: "Bounded curator/source-drift packet"
-  summary: "After the Diagram Gallery quality-gate blocker is resolved, address curator/source-drift before owner acceptance or deployment."
+  task_packet: "Owner review decision"
+  summary: "After source-drift validation is green, owner must accept the rebuilt route set or request bounded feedback packets."
   do_not_skip: "Do not mark deployment ready, push, deploy, or mark owner acceptance without explicit owner review."

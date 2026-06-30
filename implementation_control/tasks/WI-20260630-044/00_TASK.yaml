@@ -1,0 +1,140 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-044"
+title: "Refresh Curator Source Drift Artifacts"
+created_utc: "2026-06-30T20:49:37Z"
+updated_utc: "2026-06-30T21:00:08Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-014 Follow-up Curator Source Drift Refresh"
+  release_candidate_report: "docs/quality/sitewide-greenfield-release-candidate-report.md"
+  review_ledger: "docs/quality/sitewide-greenfield-review-ledger.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-043.yaml"
+
+requirements:
+  - "Refresh website-side provenance, current-state snapshot, and curator reports from a clean committed upstream source view."
+  - "Do not use or write upstream uncommitted source changes."
+  - "Align curator current-state snapshot routing with the greenfield public route set if the retired project route remains hardcoded."
+  - "Make curator validation, full validation, and quality pass if the clean committed upstream source view supports it."
+  - "Record owner review as still pending and deployment as not authorized."
+  - "Do not deploy, push, mutate upstream, change public route copy, regenerate diagrams, or mark owner acceptance."
+
+goal: "Resolve the curator/source-drift release-candidate blocker using website-local generated artifacts derived from committed upstream source state."
+
+allowed_reads:
+  website_repository:
+    - "scripts/run_curator.py"
+    - "scripts/generate_page_provenance.py"
+    - "scripts/refresh_physics_current_state_snapshot.py"
+    - "tests/test_curator_reports.py"
+    - "tests/test_curator_acknowledgements.py"
+    - "tests/test_physics_current_state_snapshot.py"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-043.yaml"
+    - "implementation_control/handoffs/WH-20260630-043.md"
+    - "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
+    - "git status output"
+  upstream_source_repository:
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow committed HEAD only"
+
+allowed_writes:
+  website_repository:
+    - "scripts/run_curator.py"
+    - "tests/test_curator_reports.py"
+    - "tests/test_curator_acknowledgements.py"
+    - "public/files/manifests/page_provenance.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-043.yaml"
+    - "implementation_control/handoffs/WH-20260630-043.md"
+    - "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-044.yaml"
+    - "implementation_control/handoffs/WH-20260630-044.md"
+    - "implementation_control/tasks/WI-20260630-044/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-044/jobs/WJ-20260630-044-A.yaml"
+    - "implementation_control/tasks/WI-20260630-044/jobs/completions/WJC-20260630-044-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public route copy changes are in scope."
+  source_refresh_uncertainty:
+    status: "approved"
+    reason: "This packet refreshes website-side generated artifacts from a clean committed upstream source view."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No public routes or redirects are changed."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No visual system changes are in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset addition, deletion, regeneration, or diagram rendering is in scope."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Page provenance is a public manifest authority record and must be refreshed to match committed upstream source hashes."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "validate"
+    command: "npm run validate"
+    required: true
+  - id: "quality"
+    command: "npm run quality"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "Clean committed upstream source view cannot be created or validated."
+  - "Curator refresh requires writing to the upstream source repository."
+  - "Refreshing source-derived artifacts reveals public route copy changes are necessary."
+  - "Any deploy, push, public asset mutation, diagram regeneration, dependency addition, or owner-acceptance claim becomes necessary."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Write completion evidence, then use npm run checkpoint:implementation. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-044-A"
+  path: "implementation_control/tasks/WI-20260630-044/jobs/completions/WJC-20260630-044-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "Owner review decision"
+  summary: "After checkpoint and green validation, owner must accept the rebuilt route set or request bounded feedback packets."
+  do_not_skip: "Do not mark owner acceptance or deployment readiness without explicit owner review."

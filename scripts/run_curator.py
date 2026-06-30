@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -15,10 +16,11 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
+SOURCE_ROOT_ENV_VAR = "AETHER_FLOW_SOURCE_ROOT"
 DEFAULT_JSON_REPORT = Path("curator/reports/latest.json")
 DEFAULT_MD_REPORT = Path("curator/reports/latest.md")
 DEFAULT_ACKNOWLEDGEMENT_DIR = Path("curator/acknowledgements")
-CURRENT_STATE_ROUTE = "/project/physics/current-state/"
+CURRENT_STATE_ROUTE = "/physics/claim-status/"
 HEX_SHA256_LENGTH = 64
 HEX_COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 HEX_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -36,6 +38,10 @@ ACK_REQUIRED_FIELDS = {
     "expires_at",
 }
 UTC = timezone.utc  # noqa: UP017 - npm scripts may run on system Python 3.9.
+
+
+def default_source_root() -> Path:
+    return Path(os.environ.get(SOURCE_ROOT_ENV_VAR, DEFAULT_SOURCE_ROOT.as_posix()))
 
 
 class CuratorError(ValueError):
@@ -828,7 +834,7 @@ def compare_report_file(path: Path, expected: str) -> list[str]:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
-    parser.add_argument("--source-root", type=Path, default=DEFAULT_SOURCE_ROOT)
+    parser.add_argument("--source-root", type=Path, default=default_source_root())
     parser.add_argument("--json-report", type=Path, default=DEFAULT_JSON_REPORT)
     parser.add_argument("--markdown-report", type=Path, default=DEFAULT_MD_REPORT)
     parser.add_argument("--acknowledgement-dir", type=Path, default=DEFAULT_ACKNOWLEDGEMENT_DIR)

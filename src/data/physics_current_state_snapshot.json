@@ -1,58 +1,58 @@
 {
-  "active_task_id": "RT-20260614-290",
+  "active_task_id": "RT-20260630-049",
   "blocked_claims": [
+    "stable partition as matter semantics",
+    "stable partition as detector semantics",
+    "RR_E as detector semantics",
+    "RR_E as matter semantics",
+    "RR_E as coupling-law data",
+    "selector gate readiness as Gate Chair verdict",
     "canonical ontology edit",
+    "canonical-ontology candidate status",
     "source-law adoption",
+    "source-extension data adoption",
     "MetricData(E) adoption",
     "g_eff adoption or scope expansion",
     "coupling-law adoption",
+    "matter-coupling derivation or adoption",
     "stress-energy semantics",
     "stress-energy tensor",
-    "matter action",
     "detector semantics",
-    "matter coupling derivation",
-    "matter coupling adoption",
+    "matter action",
     "Einstein equations",
     "benchmark promotion",
-    "benchmark Gate Chair closure",
     "completed derivation",
     "future source-extension impossibility",
-    "global theory rejection",
-    "handoff as scientific proof",
-    "implementation-plan tracking as scientific proof",
-    "baseline snapshot as scientific proof",
-    "generated graph as scientific proof",
-    "checker output as proof",
-    "metrics output as proof"
+    "global theory rejection"
   ],
-  "claim_boundary_summary": "P0 evidence closure created standalone implementation-plan intake and baseline snapshot receipts, and the v11 plan file is tracked through a narrow ignore exception. No physics claims were promoted.",
-  "current_status": "v11_p0_evidence_closure_completed_all_plan_tasks_proven_no_promotion",
+  "claim_boundary_summary": "RT-20260630-049 selected a future narrow Gate Chair source-extension evidence/precondition review for MSStablePartitionPrecondition_v1 after RT-046 formalization RT-047 audit and RT-048 guarded stress survival. The selector itself did not issue Gate Chair authority, adopt a source law, adopt source-extension data, adopt MetricData(E), change g_eff, adopt a coupling law, derive matter coupling, import stress-energy semantics, detector semantics, or matter action, derive Einstein equations, promote a benchmark, claim completed derivation, claim future source-extension impossibility, or reject the global theory.",
+  "current_status": "v12_p7_t03_repair_msirrel_stable_partition_precondition_post_stress_selector_routes_to_source_extension_human_gate_no_adoption",
   "derivation_burden": {
-    "active_burden_id": "none",
+    "active_burden_id": "matter_coupling",
     "active_row": {
-      "accept_criteria": "No Distance-to-GR acceptance criterion is asserted by this handoff.",
-      "blocking_burden": "The latest handoff is a project-control packet and reports no physics-burden movement.",
-      "burden_id": "none",
-      "current_status": "unchanged_p0_evidence_closure_only",
-      "failure_or_freeze_criteria": "No Distance-to-GR failure or freeze criterion is changed by this handoff.",
-      "last_evidence_path": "research_control/program_state.yaml",
-      "milestone": "none",
-      "notes": "The latest handoff preserves downstream boundaries without changing the Distance-to-GR ledger state.",
-      "required_object": "No active Distance-to-GR ledger burden",
-      "updated_at": ""
+      "accept_criteria": "Run one bounded smuggling-auditor@0.2.0 P5-T04 packet to audit MatterSemanticsCandidate^cand_v1(E;B_current) for hidden target matter semantics empirical detector protocols stress-energy tensors matter actions conservation-law import target metric dependence coupling-law adoption laundering downstream promotion support-only proof laundering and process-authority proof laundering before any adoption matter-coupling stress-energy detector-semantics matter-action Einstein-equation benchmark or promotion route",
+      "blocking_burden": "MatterSemanticsCandidate^cand_v1(E;B_current) is constructed only as draft/control audit-pending source-side matter-semantics candidate while SourceCouplingLawCandidate^cand_v1(E) remains scoped evidence/precondition only and no source-law adoption no MCPA adoption no source-extension data adoption beyond exact scoped gate result no coupling-law adoption no matter-coupling derivation no stress-energy semantics no detector semantics no matter action no MetricData(E) adoption no g_eff scope expansion no Einstein-equation premise no benchmark fit and no downstream promotion occurred",
+      "burden_id": "matter_coupling",
+      "current_status": "accepted",
+      "failure_or_freeze_criteria": "Do not treat scoped evidence acceptance P5-T01 target selection P5-T02 target formalization or P5-T03 candidate construction as source-law adoption MCPA adoption source-extension data adoption beyond exact scoped gate result coupling-law adoption matter coupling stress-energy semantics stress-energy tensor matter action detector semantics Einstein equations benchmark promotion completed derivation future source-extension impossibility global theory rejection or checker proof authority; freeze if later packets repeat construction selector or gate review without audit stress repair freeze or materially new payload",
+      "last_evidence_path": "research_control/tasks/RT-20260630-023/artifacts/matter_semantics_candidate_v1.tex",
+      "milestone": "matter_coupling",
+      "notes": "P5-T03 constructed MatterSemanticsCandidate^cand_v1(E;B_current) as finite/local source-side matter-semantics candidate pending audit while preserving SourceCouplingLawCandidate^cand_v1(E) only as scoped evidence/precondition. No source-law MCPA source-extension-data coupling-law matter-coupling stress-energy detector-semantics matter-action MetricData(E) g_eff Einstein-equation benchmark or completed-derivation adoption or promotion occurred.",
+      "required_object": "universal coupling",
+      "updated_at": "2026-06-30T10:42:07Z"
     },
     "downstream_rows": [
       {
-        "accept_criteria": "Run one bounded P5-T01 support-only mechanization boundary and checker design packet without proof authority",
-        "blocking_burden": "ParamFiniteLocalWitness_v1(E) BridgeSlot_n(E) and NoTargetImport_n accepted only as scoped source-extension parameterized-witness evidence/precondition for Matter-Coupling Bridge Target v1 while no source-law adoption coupling-law adoption matter-coupling derivation stress-energy semantics stress-energy tensor matter action detector semantics MetricData(E) adoption g_eff scope expansion Einstein-equation premise benchmark fit or downstream promotion is imported",
+        "accept_criteria": "Run one bounded smuggling-auditor@0.2.0 P5-T04 packet to audit MatterSemanticsCandidate^cand_v1(E;B_current) for hidden target matter semantics empirical detector protocols stress-energy tensors matter actions conservation-law import target metric dependence coupling-law adoption laundering downstream promotion support-only proof laundering and process-authority proof laundering before any adoption matter-coupling stress-energy detector-semantics matter-action Einstein-equation benchmark or promotion route",
+        "blocking_burden": "MatterSemanticsCandidate^cand_v1(E;B_current) is constructed only as draft/control audit-pending source-side matter-semantics candidate while SourceCouplingLawCandidate^cand_v1(E) remains scoped evidence/precondition only and no source-law adoption no MCPA adoption no source-extension data adoption beyond exact scoped gate result no coupling-law adoption no matter-coupling derivation no stress-energy semantics no detector semantics no matter action no MetricData(E) adoption no g_eff scope expansion no Einstein-equation premise no benchmark fit and no downstream promotion occurred",
         "burden_id": "matter_coupling",
         "current_status": "accepted",
-        "failure_or_freeze_criteria": "Parameterized witness evidence/precondition acceptance must not be treated as source-law adoption coupling-law adoption matter coupling stress-energy semantics stress-energy tensor matter action detector semantics Einstein equations benchmark promotion completed derivation or checker proof authority; freeze if later packets repeat target formalization witness construction audit stress or gate review without support-only boundary design repair obstruction freeze or materially new payload",
-        "last_evidence_path": "research_control/tasks/RT-20260614-269/artifacts/298_NONBOTTOM_METRICDATA_WITNESS_SRC_GSC_P4_PARAMETERIZED_FINITE_LOCAL_SOURCE_FAMILY_WITNESS_V1_SOURCE_EXTENSION_EVIDENCE_GATE_CHAIR_REVIEW.tex",
+        "failure_or_freeze_criteria": "Do not treat scoped evidence acceptance P5-T01 target selection P5-T02 target formalization or P5-T03 candidate construction as source-law adoption MCPA adoption source-extension data adoption beyond exact scoped gate result coupling-law adoption matter coupling stress-energy semantics stress-energy tensor matter action detector semantics Einstein equations benchmark promotion completed derivation future source-extension impossibility global theory rejection or checker proof authority; freeze if later packets repeat construction selector or gate review without audit stress repair freeze or materially new payload",
+        "last_evidence_path": "research_control/tasks/RT-20260630-023/artifacts/matter_semantics_candidate_v1.tex",
         "milestone": "matter_coupling",
-        "notes": "Gate Chair accepted ParamFiniteLocalWitness_v1(E) BridgeSlot_n(E) and NoTargetImport_n only as scoped source-extension parameterized-witness evidence/precondition while no source-law adoption no coupling-law adoption no matter-coupling derivation no stress-energy semantics no stress-energy tensor no matter action no detector semantics no MetricData(E) adoption no g_eff scope change no Einstein equations no benchmark promotion and no completed derivation occurred.",
+        "notes": "P5-T03 constructed MatterSemanticsCandidate^cand_v1(E;B_current) as finite/local source-side matter-semantics candidate pending audit while preserving SourceCouplingLawCandidate^cand_v1(E) only as scoped evidence/precondition. No source-law MCPA source-extension-data coupling-law matter-coupling stress-energy detector-semantics matter-action MetricData(E) g_eff Einstein-equation benchmark or completed-derivation adoption or promotion occurred.",
         "required_object": "universal coupling",
-        "updated_at": "2026-06-28T18:23:39Z"
+        "updated_at": "2026-06-30T10:42:07Z"
       },
       {
         "accept_criteria": "derivation theorem",
@@ -92,69 +92,69 @@
       }
     ]
   },
-  "latest_handoff_created_at": "2026-06-29T00:44:00Z",
-  "latest_handoff_id": "handoff-0323",
-  "latest_handoff_next_action": "No v11 implementation-plan task remains after checkpoint; resume ordinary research-control continuation only under a new tracked objective.",
-  "latest_handoff_summary": "P0 evidence closure completed. The v11 implementation plan file is tracked through a narrow ignore exception, standalone P0-T01 and P0-T02 receipts exist, and all applicable v11 plan tasks are proven without physics promotion.",
-  "next_recommended_action": "No v11 implementation-plan task remains after checkpoint; resume ordinary research-control continuation only under a new tracked objective.",
-  "source_commit": "53aea4bfed312d874cad328496c8f9e0e3a844c5",
-  "source_commit_date": "2026-06-28T20:01:23-06:00",
+  "latest_handoff_created_at": "2026-06-30T20:34:48Z",
+  "latest_handoff_id": "handoff-0401",
+  "latest_handoff_next_action": "Run one bounded gate-chair@0.1.0 source-extension human-gate packet to decide the narrow MSStablePartitionPrecondition_v1 evidence/precondition status question under the exact human authorization already supplied by the user, with no source-law adoption no source-extension data adoption beyond any exact future gate scope no matter-coupling derivation no Einstein-equation route no benchmark promotion and no completed derivation.",
+  "latest_handoff_summary": "RT-20260630-049 selected a future narrow Gate Chair source-extension evidence/precondition review for MSStablePartitionPrecondition_v1 after RT-046 formalization RT-047 source-purity audit and RT-048 guarded stress survival. The selector does not consume Gate Chair authority and does not adopt a source law source-extension data MetricData(E) g_eff coupling law matter coupling stress-energy detector semantics matter action Einstein equations benchmark status or completed derivation.",
+  "next_recommended_action": "Run one bounded gate-chair@0.1.0 source-extension human-gate packet to decide the narrow MSStablePartitionPrecondition_v1 evidence/precondition status question under the exact human authorization already supplied by the user, with no source-law adoption no source-extension data adoption beyond any exact future gate scope no matter-coupling derivation no Einstein-equation route no benchmark promotion and no completed derivation.",
+  "source_commit": "2a934c29b58e84aa913a5088a8388bd259f6370b",
+  "source_commit_date": "2026-06-30T14:57:31-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "3e475708c222a035ce9caafdc4eea6bf4380e3947159a339e1d66739240e6a2e"
+      "sha256": "f5d638be8bd869685020ddfe9479f5844de233afba3013309d96e7df1226503f"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
-      "path": "research_control/handoffs/handoff-0323.yaml",
-      "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0401.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/research_control/handoffs/handoff-0401.yaml",
+      "path": "research_control/handoffs/handoff-0401.yaml",
+      "sha256": "f6846772f94328cade3f3b2749032757f4d955c54a7f897aff1a28d84005591a"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
-      "path": "research_control/handoffs/handoff-0323.md",
-      "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0401.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/research_control/handoffs/handoff-0401.md",
+      "path": "research_control/handoffs/handoff-0401.md",
+      "sha256": "d334dc2483e27e8ae2066029df081cb40388b5cd931182a25dcf7113cdc5e905"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
-      "sha256": "e4c86503ff36901b3a894e41cca43c6195a2b3f053d8848292f4ddb9469e8f94"
+      "sha256": "82d4f38fbfc7d305b7151686b7df5fd235bb52f41f687c6e3072f065e08d90b7"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "dff2b7472bc558a38f21e6f723a538774c076638e8b42eb28f55e4eaf157ae8c"
+      "sha256": "e85cf244f133531cba72d96f443731819869237639316bb7db64c5987befa75b"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
-      "label": "research_control/handoffs/handoff-0323.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/research_control/handoffs/handoff-0401.yaml",
+      "label": "research_control/handoffs/handoff-0401.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
-      "label": "research_control/handoffs/handoff-0323.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/research_control/handoffs/handoff-0401.md",
+      "label": "research_control/handoffs/handoff-0401.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/2a934c29b58e84aa913a5088a8388bd259f6370b/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],
-  "source_refresh_date": "2026-06-29",
+  "source_refresh_date": "2026-06-30",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "version": 1,
-  "website_publication_date": "2026-06-29"
+  "website_publication_date": "2026-06-30"
 }

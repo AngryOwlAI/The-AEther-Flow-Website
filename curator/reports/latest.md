@@ -6,9 +6,9 @@ and does not rewrite website content.
 
 ## Summary
 
-- Source commit: `53aea4bfed312d874cad328496c8f9e0e3a844c5`
-- Source commit date: `2026-06-28T20:01:23-06:00`
-- Declared dependencies: 279
+- Source commit: `2a934c29b58e84aa913a5088a8388bd259f6370b`
+- Source commit date: `2026-06-30T14:57:31-06:00`
+- Declared dependencies: 242
 - Drift items: 0
 - Critical drift: 0
 - Review-required drift: 0

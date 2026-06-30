@@ -4,6 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 
+import pytest
+
 import run_curator
 
 
@@ -108,6 +110,23 @@ def test_report_generation_is_deterministic_for_unchanged_dependencies(tmp_path:
     assert run_curator.stable_json(first) == run_curator.stable_json(second)
     assert first["dependency_summary"]["drift_count"] == 0
     assert first["dependency_summary"]["declared_dependency_count"] == 3
+    snapshot_dependency = next(
+        item
+        for item in first["dependencies"]
+        if item["dependency_type"] == "current_state_snapshot_source"
+    )
+    assert snapshot_dependency["route_path"] == "/physics/claim-status/"
+
+
+def test_parse_args_uses_source_root_environment(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    monkeypatch.setenv(run_curator.SOURCE_ROOT_ENV_VAR, str(tmp_path))
+
+    args = run_curator.parse_args(["--check"])
+
+    assert args.source_root == tmp_path
 
 
 def test_changed_declared_dependency_creates_drift_item(tmp_path: Path) -> None:
