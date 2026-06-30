@@ -1,0 +1,162 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-041"
+title: "Regenerate Manifests Redirects And Retire Obsolete Old Routes"
+created_utc: "2026-06-30T20:14:48Z"
+updated_utc: "2026-06-30T20:24:09Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"
+  canonical_sitewide_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  review_ledger: "docs/quality/sitewide-greenfield-review-ledger.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-040.yaml"
+
+requirements:
+  - "Redirect obsolete `/project/*` presentation routes to the new short route model after all replacement routes have validated."
+  - "Update internal navigation and route-card data so primary reader journeys no longer point to the old `/project/*` route scheme."
+  - "Remove obsolete `/project/*` routes from public route/provenance manifests and regenerate page provenance."
+  - "Document why old route source files are preserved as legacy validator evidence rather than deleted in this packet."
+  - "Do not delete preserved footer, hero direction, SVG language, diagram workflow, public assets, or generated diagram files."
+  - "Do not push, deploy, mutate upstream sources, or mark owner acceptance."
+
+goal: "Complete GF-013 by making the new short route model the internal-first public journey while redirecting obsolete old routes safely."
+
+allowed_reads:
+  website_repository:
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "src/pages/project/"
+    - "src/pages/resources/"
+    - "src/pages/ai-research-system/"
+    - "src/lib/"
+    - "public/_redirects"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "scripts/generate_page_provenance.py"
+    - "scripts/validate_page_provenance.py"
+    - "scripts/run_curator.py"
+    - "scripts/validate_public_comprehension.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-040.yaml"
+    - "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "public/_redirects"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "docs/quality/sitewide-greenfield-route-retirement.md"
+    - "scripts/validate_page_provenance.py"
+    - "src/pages/project"
+    - "src/pages/resources"
+    - "src/pages/ai-research-system"
+    - "src/lib"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-040.yaml"
+    - "implementation_control/handoffs/WH-20260630-040.md"
+    - "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-041.yaml"
+    - "implementation_control/handoffs/WH-20260630-041.md"
+    - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+    - "implementation_control/tasks/WI-20260630-041/jobs/completions/WJC-20260630-041-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "approved"
+    reason: "GF-013 changes route plumbing, redirects, and internal route-card targets without strengthening scientific or workflow claims."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot, upstream refresh, generated publication refresh, wiki regeneration, diagram regeneration, or retrieval refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "GF-013 exists to retire old route presentation paths through redirects and manifest cleanup after replacement routes validate."
+  shared_visual_systems:
+    status: "approved"
+    reason: "GF-013 may update shared route-card data but must not alter preserved visual language."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public PDF, TeX, image, diagram, or downloadable asset addition, deletion, or regeneration is in scope."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "GF-013 must update public route/provenance manifests to match the new route inventory."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "content"
+    command: "npm run validate:content"
+    required: true
+  - id: "links"
+    command: "npm run validate:links"
+    required: true
+  - id: "layout"
+    command: "npm run validate:layout"
+    required: true
+  - id: "comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "svg-policy"
+    command: "npm run validate:svg"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "browser-qa"
+    command: "manual inspection of redirect smoke checks and rendered new short routes at desktop and mobile viewport"
+    required: true
+
+stop_conditions:
+  - "Any upstream source-project write is proposed."
+  - "Any public asset deletion, generated diagram change, dependency addition, push, deploy, or owner-acceptance claim becomes necessary."
+  - "Any old route lacks either a redirect or a documented preservation rationale."
+  - "Any primary route-card or navigation data still points to the old `/project/*` scheme after cleanup."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Write completion evidence, then use npm run checkpoint:implementation. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-041-A"
+  path: "implementation_control/tasks/WI-20260630-041/jobs/completions/WJC-20260630-041-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
+  summary: "After checkpoint, open owner review and release-candidate QA without deployment."
+  do_not_skip: "Do not mark the rebuilt site accepted or deployment-ready without owner review."

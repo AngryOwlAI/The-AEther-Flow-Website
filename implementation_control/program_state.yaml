@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T20:07:33Z"
+updated_utc: "2026-06-30T20:24:09Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-040.yaml"
+  - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,29 +24,29 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-040"
-  title: "Build Reading Paths Repository Map Site Builder Guide And Diagram Gallery"
+  task_id: "WI-20260630-041"
+  title: "Regenerate Manifests Redirects And Retire Obsolete Old Routes"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-012 Build Reading Paths, Repository Map, Site Builder Guide, And Diagram Gallery"
+    task_packet: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-040-A"
+  job_id: "WJ-20260630-041-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-040"
-  status: "completed"
-  yaml_path: "implementation_control/handoffs/WH-20260630-040.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-040.md"
+  handoff_id: "WH-20260630-041"
+  status: "active"
+  yaml_path: "implementation_control/handoffs/WH-20260630-041.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-041.md"
 
 latest_completion:
-  completion_id: "WJC-20260630-040-A"
-  path: "implementation_control/tasks/WI-20260630-040/jobs/completions/WJC-20260630-040-A.yaml"
+  completion_id: "WJC-20260630-041-A"
+  path: "implementation_control/tasks/WI-20260630-041/jobs/completions/WJC-20260630-041-A.yaml"
   status: "completed"
 
 required_validators:
@@ -87,10 +87,10 @@ required_validators:
     command: "manual inspection of implementation_control YAML and Markdown records"
     required_for_current_job: true
   - id: "browser-qa"
-    command: "manual inspection of rendered Reading Paths, Repository Map, Site Builder Guide, and Diagram Gallery routes at desktop and mobile viewport"
+    command: "manual inspection of redirect smoke checks and rendered new short routes at desktop and mobile viewport"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"
-  summary: "After checkpoint, open the next fresh implementation-control packet for redirects, obsolete route retirement, and final manifest reconciliation."
-  do_not_skip: "Do not implement redirects, retire old routes, push, deploy, mutate upstream, or broaden scope beyond the active GF-012 Resources reading paths, repository map, site-builder guide, and diagram gallery packet without fresh live control records."
+  task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
+  summary: "After checkpoint, open the owner review and release-candidate QA packet without deploying."
+  do_not_skip: "Do not mark deployment ready, push, deploy, or mark owner acceptance without explicit owner review."

@@ -1,0 +1,152 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260630-041-A"
+task_id: "WI-20260630-041"
+title: "Regenerate manifests redirects and retire obsolete old routes"
+created_utc: "2026-06-30T20:14:48Z"
+updated_utc: "2026-06-30T20:24:09Z"
+status: "active"
+
+objective: "Implement GF-013 redirect, manifest, and internal route cleanup for the new short route model."
+
+execution_boundary:
+  invocation_limit: "one bounded implementation packet"
+  live_state_priority: "implementation_control records outrank PRDs, task packets, memory, and conversation summaries"
+  upstream_write_status: "forbidden"
+  old_route_retirement_status: "approved_for_redirects_manifest_cleanup_and_primary_link_updates"
+  old_route_file_deletion_status: "defer_unless_validator_migration_is_also_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "src/pages/project/"
+  - "src/pages/resources/"
+  - "src/pages/ai-research-system/"
+  - "src/lib/"
+  - "public/_redirects"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "scripts/generate_page_provenance.py"
+  - "scripts/validate_page_provenance.py"
+  - "scripts/run_curator.py"
+  - "scripts/validate_public_comprehension.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-040.yaml"
+  - "implementation_control/handoffs/WH-20260630-040.md"
+  - "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
+  - "git status output"
+
+allowed_writes:
+  - "public/_redirects"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "docs/quality/sitewide-greenfield-route-retirement.md"
+  - "scripts/validate_page_provenance.py"
+  - "src/pages/project"
+  - "src/pages/resources"
+  - "src/pages/ai-research-system"
+  - "src/lib"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-040.yaml"
+  - "implementation_control/handoffs/WH-20260630-040.md"
+  - "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.yaml"
+  - "implementation_control/handoffs/WH-20260630-041.md"
+  - "implementation_control/tasks/WI-20260630-041/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-041/jobs/WJ-20260630-041-A.yaml"
+  - "implementation_control/tasks/WI-20260630-041/jobs/completions/WJC-20260630-041-A.yaml"
+
+approval_gates:
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Route plumbing and redirect cleanup constrained to existing replacement routes."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh in scope."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "GF-013 route cleanup and redirects."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "Shared route-card data may change; visual language must be preserved."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No downloadable asset change."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Route and provenance manifests must match new route inventory."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "content"
+    command: "npm run validate:content"
+    required: true
+  - id: "links"
+    command: "npm run validate:links"
+    required: true
+  - id: "layout"
+    command: "npm run validate:layout"
+    required: true
+  - id: "comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "svg-policy"
+    command: "npm run validate:svg"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "browser-qa"
+    command: "manual inspection of redirect smoke checks and rendered new short routes at desktop and mobile viewport"
+    required: true
+
+stop_conditions:
+  - "Any undeclared write path is needed."
+  - "Any public asset mutation, diagram regeneration, source refresh, push, deploy, or owner-acceptance claim becomes necessary."
+  - "Validation or redirect smoke checks fail."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-041-A"
+  path: "implementation_control/tasks/WI-20260630-041/jobs/completions/WJC-20260630-041-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
+  summary: "After checkpoint, open the owner review and release-candidate QA packet."
+  do_not_skip: "Do not mark owner acceptance or deploy without explicit owner review."

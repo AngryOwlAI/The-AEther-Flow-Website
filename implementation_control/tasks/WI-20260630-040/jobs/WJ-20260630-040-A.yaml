@@ -4,8 +4,8 @@ job_id: "WJ-20260630-040-A"
 task_id: "WI-20260630-040"
 title: "Build reading paths repository map site builder guide and diagram gallery"
 created_utc: "2026-06-30T19:53:28Z"
-updated_utc: "2026-06-30T20:07:33Z"
-status: "active"
+updated_utc: "2026-06-30T20:14:48Z"
+status: "completed"
 
 objective: "Implement the GF-012 `/resources/reading-paths/`, `/resources/repository-map/`, `/resources/site-builder-guide/`, and reset `/resources/diagrams/` routes with manifest, ledger, validation, and browser-QA evidence."
 

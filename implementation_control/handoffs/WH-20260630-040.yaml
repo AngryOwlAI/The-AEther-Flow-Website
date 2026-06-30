@@ -2,18 +2,19 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-040"
 created_utc: "2026-06-30T19:53:28Z"
-updated_utc: "2026-06-30T20:07:33Z"
+updated_utc: "2026-06-30T20:14:48Z"
 status: "completed"
 
 task_id: "WI-20260630-040"
 job_id: "WJ-20260630-040-A"
 
-summary: "Completed GF-012 for the Resources reading paths, repository map, site-builder guide, and diagram gallery slice."
+summary: "Completed GF-012 for the Resources reading paths, repository map, site-builder guide, and diagram gallery slice; checkpointed and superseded by GF-013."
 
 current_state:
   - "GF-011 is completed, checkpointed, and superseded."
   - "This packet authorizes one public route implementation slice for `/resources/reading-paths/`, `/resources/repository-map/`, `/resources/site-builder-guide/`, and `/resources/diagrams/`."
   - "The four GF-012 routes are technically ready with human review pending."
+  - "GF-012 is checkpointed and superseded by active packet WI-20260630-041 for GF-013."
   - "Public Resources reading-path, repository-map, site-builder-guide, diagram-gallery, route-local SVG/style, and public route/provenance manifest writes are approved only inside the GF-012 allowlist."
   - "The diagram gallery must preserve workflow/provenance/non-authority behavior and reset visible inventory unless individual diagrams have explicit reapproval evidence."
   - "Resources pages must not render a dedicated source-authority section component; authority boundaries must appear in contextual copy, manifests, internal route links, or footer/provenance surfaces."

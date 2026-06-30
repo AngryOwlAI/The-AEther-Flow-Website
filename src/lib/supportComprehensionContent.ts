@@ -253,19 +253,19 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
     {
       label: routeLabel,
       title: "Ontology vocabulary",
-      href: "/project/physics/ontology/",
+      href: "/physics/ontology/",
       body: "Read the vocabulary and derivation boundary before inspecting documents.",
     },
     {
       label: routeLabel,
       title: "Exact-GR benchmark boundary",
-      href: "/project/physics/exact-gr-benchmark/",
+      href: "/physics/exact-gr-benchmark/",
       body: "Read why benchmark material is not a completed first-principles derivation.",
     },
     {
       label: routeLabel,
       title: "Source authority",
-      href: "/project/source-authority/",
+      href: "/resources/source-authority/",
       body: "Read how documents, derivatives, and registries relate.",
     },
   ],
@@ -368,7 +368,7 @@ export const resourcesDiagramsComprehension: ComprehensionContent = {
     {
       label: routeLabel,
       title: "Source authority",
-      href: "/project/source-authority/",
+      href: "/resources/source-authority/",
       body: "Read the broader trust boundary for generated and visual material.",
     },
   ],

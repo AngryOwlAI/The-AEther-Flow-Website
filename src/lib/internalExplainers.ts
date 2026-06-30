@@ -60,32 +60,32 @@ const upstreamRef = (path: string) => `AEther-Flow Project. (2026). ${path}`;
 export const operationsLinks: ExplainerLink[] = [
   {
     title: "Director and AgentJob lifecycle",
-    href: "/project/operations/director-agentjob-lifecycle/",
+    href: "/ai-research-system/agentjob-lifecycle/",
     body: "How tasks narrow into decisions, jobs, completions, handoffs, and registry evidence.",
   },
   {
     title: "Role routing",
-    href: "/project/operations/role-routing/",
+    href: "/ai-research-system/roles-and-schemas/",
     body: "Why role names are templates, while execution records and AgentJobs control one transaction.",
   },
   {
     title: "Validator and operator workflow",
-    href: "/project/operations/validator-operator-workflow/",
+    href: "/ai-research-system/validators-and-handoffs/",
     body: "How checks, receipts, screenshots, and PASS results should be interpreted.",
   },
   {
     title: "Publication process",
-    href: "/project/operations/publication-process/",
+    href: "/resources/publication-process/",
     body: "How public explainers move from brief to source spec, page, screenshots, and review.",
   },
   {
     title: "Project-system improvement",
-    href: "/project/operations/project-system-improvement/",
+    href: "/ai-research-system/project-system-improvement/",
     body: "How classifiers, signals, sidecars, receipts, and one bounded AgentJob structure repairs.",
   },
   {
     title: "Technical requirements",
-    href: "/project/operations/technical-requirements/",
+    href: "/ai-research-system/runtime-requirements/",
     body: "Local tool tiers for reproducible operation without confusing tools with authorization.",
   },
 ];
@@ -263,12 +263,12 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       ...operationsLinks,
       {
         title: "AI Research-Agent System",
-        href: "/project/ai-research-agent-system/",
+        href: "/ai-research-system/",
         body: "Conceptual track landing page for the governed AI research-agent system.",
       },
       {
         title: "Source Authority",
-        href: "/project/source-authority/",
+        href: "/resources/source-authority/",
         body: "How to read website pages, generated derivatives, registries, and source records.",
       },
     ],
@@ -283,7 +283,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "Parent-child synthesis lets one future physics AgentJob inspect a problem from multiple internal perspectives while preserving one outer decision, one allowlist, one completion, and one fused output.",
     actionHref: "#single-frame",
     actionLabel: "Read the one-job rule",
-    secondaryHref: "/project/ai-research-agent-system/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to AI system",
     visualTitle: "Parent-child synthesis frame",
     visualCaption:
@@ -366,17 +366,17 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "AI Research-Agent System",
-        href: "/project/ai-research-agent-system/",
+        href: "/ai-research-system/",
         body: "Return to the AI track landing page.",
       },
       {
         title: "Roles and skills",
-        href: "/project/ai-research-agent-system/roles-and-skills/",
+        href: "/ai-research-system/roles-and-schemas/",
         body: "Inspect why labels and role templates are not permission by themselves.",
       },
       {
         title: "Director and AgentJob lifecycle",
-        href: "/project/operations/director-agentjob-lifecycle/",
+        href: "/ai-research-system/agentjob-lifecycle/",
         body: "Read the operational record chain that parent-child synthesis must preserve.",
       },
     ],
@@ -397,7 +397,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "The lifecycle makes controlled work inspectable. A task narrows into a Director decision, an AgentJob, role execution evidence, completion, and handoff or registry rows when needed.",
     actionHref: "#lifecycle-map",
     actionLabel: "Read the lifecycle",
-    secondaryHref: "/project/operations/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to operations",
     visualTitle: "Director and AgentJob lifecycle",
     visualCaption:
@@ -473,17 +473,17 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "Role routing",
-        href: "/project/operations/role-routing/",
+        href: "/ai-research-system/roles-and-schemas/",
         body: "Read how role templates bind to one execution record.",
       },
       {
         title: "Validator and operator workflow",
-        href: "/project/operations/validator-operator-workflow/",
+        href: "/ai-research-system/validators-and-handoffs/",
         body: "Read how evidence is checked and interpreted.",
       },
       {
         title: "Parent-child synthesis",
-        href: "/project/ai-research-agent-system/parent-child-synthesis/",
+        href: "/ai-research-system/workflow/",
         body: "Read how internal perspectives preserve one outer AgentJob.",
       },
     ],
@@ -514,7 +514,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "A role name is not live permission. Role contracts describe normal capabilities, while the execution-role record and AgentJob allowlist decide what one transaction may do.",
     actionHref: "#contract-stack",
     actionLabel: "Read the contract stack",
-    secondaryHref: "/project/operations/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to operations",
     visualTitle: "Role routing contract stack",
     visualCaption:
@@ -584,17 +584,17 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "Roles and skills",
-        href: "/project/ai-research-agent-system/roles-and-skills/",
+        href: "/ai-research-system/roles-and-schemas/",
         body: "Reader-facing catalog for role and skill inspection.",
       },
       {
         title: "Director and AgentJob lifecycle",
-        href: "/project/operations/director-agentjob-lifecycle/",
+        href: "/ai-research-system/agentjob-lifecycle/",
         body: "How a decision narrows into one executable job.",
       },
       {
         title: "Source Authority",
-        href: "/project/source-authority/",
+        href: "/resources/source-authority/",
         body: "How public summaries relate to registered sources.",
       },
     ],
@@ -625,7 +625,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "A PASS result says a named check accepted the checked state. It is useful operational evidence, but it is not theorem proof, ontology adoption, benchmark promotion, Gate Chair approval, or permission expansion.",
     actionHref: "#command-map",
     actionLabel: "Read the command map",
-    secondaryHref: "/project/operations/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to operations",
     visualTitle: "Validator evidence flow",
     visualCaption:
@@ -707,32 +707,32 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "Technical requirements",
-        href: "/project/operations/technical-requirements/",
+        href: "/ai-research-system/runtime-requirements/",
         body: "Tool tiers needed to reproduce operations.",
       },
       {
         title: "Project-system improvement",
-        href: "/project/operations/project-system-improvement/",
+        href: "/ai-research-system/project-system-improvement/",
         body: "How signals and improvement packets are routed and closed.",
       },
       {
         title: "Gate Chair and human gates",
-        href: "/project/physics/gate-chair-and-human-gates/",
+        href: "/ai-research-system/human-gated-promotion/",
         body: "Why protected decisions remain outside validator authority.",
       },
       {
         title: "Claim-boundary explorer",
-        href: "/project/source-authority/claim-boundary-explorer/",
+        href: "/physics/claim-status/",
         body: "How allowed and forbidden claim forms are exposed for readers.",
       },
       {
         title: "Research-agent workflow",
-        href: "/project/ai-research-agent-system/workflow/",
+        href: "/ai-research-system/workflow/",
         body: "Where validators fit in the bounded AgentJob record chain.",
       },
       {
         title: "Source Authority",
-        href: "/project/source-authority/",
+        href: "/resources/source-authority/",
         body: "The broader source and derivative boundary.",
       },
     ],
@@ -763,7 +763,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "The publication process exists because a mechanically valid page can still be weak. It preserves source basis, authority boundary, readability, visual evidence, and review evidence.",
     actionHref: "#publication-lifecycle",
     actionLabel: "Read the lifecycle",
-    secondaryHref: "/project/operations/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to operations",
     visualTitle: "Publication lifecycle",
     visualCaption:
@@ -829,12 +829,12 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "Validator and operator workflow",
-        href: "/project/operations/validator-operator-workflow/",
+        href: "/ai-research-system/validators-and-handoffs/",
         body: "How publication checks and screenshot evidence are interpreted.",
       },
       {
         title: "Source Authority",
-        href: "/project/source-authority/",
+        href: "/resources/source-authority/",
         body: "Why generated surfaces remain downstream from sources.",
       },
     ],
@@ -865,7 +865,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "Project-system improvement starts from observed diff state, registered signals, source-bridged sidecars, or repeated workflow problems. It routes one bounded repair without smuggling physics continuation or broad system rewrites.",
     actionHref: "#improvement-loop",
     actionLabel: "Read the loop",
-    secondaryHref: "/project/operations/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to operations",
     visualTitle: "Project-system improvement loop",
     visualCaption:
@@ -924,27 +924,27 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "Director and AgentJob lifecycle",
-        href: "/project/operations/director-agentjob-lifecycle/",
+        href: "/ai-research-system/agentjob-lifecycle/",
         body: "How one bounded job is authorized and closed.",
       },
       {
         title: "Validator and operator workflow",
-        href: "/project/operations/validator-operator-workflow/",
+        href: "/ai-research-system/validators-and-handoffs/",
         body: "How checks and receipts are interpreted.",
       },
       {
         title: "Memory preflight",
-        href: "/project/ai-research-agent-system/memory-registries/",
+        href: "/ai-research-system/memory-preflight/",
         body: "How memory and retrieval drift remain source-finding support.",
       },
       {
         title: "Source Authority",
-        href: "/project/source-authority/",
+        href: "/resources/source-authority/",
         body: "Why generated surfaces and maintenance evidence remain below source authority.",
       },
       {
         title: "Technical requirements",
-        href: "/project/operations/technical-requirements/",
+        href: "/ai-research-system/runtime-requirements/",
         body: "Tooling needed for reproducible operations.",
       },
     ],
@@ -975,7 +975,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       "Technical requirements define which tools are needed to perform an operation. They do not decide whether the operation is authorized.",
     actionHref: "#tool-tiers",
     actionLabel: "Read the tool tiers",
-    secondaryHref: "/project/operations/",
+    secondaryHref: "/ai-research-system/",
     secondaryLabel: "Back to operations",
     visualTitle: "Technical requirement tiers",
     visualCaption:
@@ -1041,7 +1041,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     relatedLinks: [
       {
         title: "Validator and operator workflow",
-        href: "/project/operations/validator-operator-workflow/",
+        href: "/ai-research-system/validators-and-handoffs/",
         body: "Which checks fit each changed authority surface.",
       },
       {
@@ -1051,7 +1051,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       },
       {
         title: "Source Authority",
-        href: "/project/source-authority/",
+        href: "/resources/source-authority/",
         body: "How tools, validators, generated pages, and source records differ.",
       },
     ],

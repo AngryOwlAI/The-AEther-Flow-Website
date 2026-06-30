@@ -3,9 +3,41 @@
 
 /project/overview/ / 301
 /overview / 301
-/project/ai-research-agent-system/validator-operator-workflow/ /project/operations/validator-operator-workflow/ 301
-/research /project/source-authority/publication-and-provenance-system/ 302
-/research/map/ /project/source-authority/publication-and-provenance-system/ 301
+
+# Sitewide greenfield route retirement.
+/project/physics/ontology/ /physics/ontology/ 301
+/project/physics/exact-gr-benchmark/ /physics/exact-gr-benchmark/ 301
+/project/physics/gr-derivation-roadmap/ /physics/derivation-roadmap/ 301
+/project/physics/current-state/ /physics/claim-status/ 301
+/project/physics/distance-to-gr/ /physics/open-burdens/ 301
+/project/physics/metric-response-ladder/ /physics/open-burdens/ 301
+/project/physics/finite-toy-models/ /physics/open-burdens/ 301
+/project/physics/no-target-import-discipline/ /physics/open-burdens/ 301
+/project/physics/negative-results-and-frozen-routes/ /physics/open-burdens/ 301
+/project/physics/claim-gates/ /physics/claim-status/ 301
+/project/physics/source-extension-pipeline/ /physics/derivation-roadmap/ 301
+/project/physics/gate-chair-and-human-gates/ /ai-research-system/human-gated-promotion/ 301
+/project/physics/ /physics/ 301
+/project/ai-research-agent-system/workflow/ /ai-research-system/workflow/ 301
+/project/ai-research-agent-system/one-bounded-agentjob/ /ai-research-system/agentjob-lifecycle/ 301
+/project/ai-research-agent-system/roles-and-skills/ /ai-research-system/roles-and-schemas/ 301
+/project/ai-research-agent-system/role-authority-inspector/ /ai-research-system/roles-and-schemas/ 301
+/project/ai-research-agent-system/memory-registries/ /ai-research-system/memory-preflight/ 301
+/project/ai-research-agent-system/parent-child-synthesis/ /ai-research-system/workflow/ 301
+/project/ai-research-agent-system/validator-operator-workflow/ /ai-research-system/validators-and-handoffs/ 301
+/project/ai-research-agent-system/ /ai-research-system/ 301
+/project/operations/director-agentjob-lifecycle/ /ai-research-system/agentjob-lifecycle/ 301
+/project/operations/role-routing/ /ai-research-system/roles-and-schemas/ 301
+/project/operations/validator-operator-workflow/ /ai-research-system/validators-and-handoffs/ 301
+/project/operations/publication-process/ /resources/publication-process/ 301
+/project/operations/project-system-improvement/ /ai-research-system/project-system-improvement/ 301
+/project/operations/technical-requirements/ /ai-research-system/runtime-requirements/ 301
+/project/operations/ /ai-research-system/ 301
+/project/source-authority/claim-boundary-explorer/ /physics/claim-status/ 301
+/project/source-authority/publication-and-provenance-system/ /resources/publication-process/ 301
+/project/source-authority/ /resources/source-authority/ 301
+/research /resources/publication-process/ 302
+/research/map/ /resources/publication-process/ 301
 /documents /resources/documents/ 301
 /diagrams /resources/diagrams/ 301
 /equations /resources/documents/ 301

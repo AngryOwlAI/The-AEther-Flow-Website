@@ -152,7 +152,7 @@ export const overviewComprehension: ComprehensionContent = {
     {
       label: sourceLabel,
       title: "Source authority page",
-      href: "/project/source-authority/",
+      href: "/resources/source-authority/",
       body: "Internal trust-boundary route for source records, generated surfaces, and derivatives.",
     },
   ],
@@ -256,7 +256,7 @@ export const parentChildComprehension: ComprehensionContent = {
     {
       label: sourceLabel,
       title: "Director and AgentJob lifecycle",
-      href: "/project/operations/director-agentjob-lifecycle/",
+      href: "/ai-research-system/agentjob-lifecycle/",
       body: "Internal route explaining the operational record chain this mode must preserve.",
     },
   ],
