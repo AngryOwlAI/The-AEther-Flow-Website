@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T03:55:00Z"
+updated_utc: "2026-06-30T04:05:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,10 +9,10 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-005/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-005/jobs/WJ-20260630-005-A.yaml"
-  - "implementation_control/tasks/WI-20260630-005/jobs/completions/WJC-20260630-005-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-005.yaml"
+  - "implementation_control/tasks/WI-20260630-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-006/jobs/WJ-20260630-006-A.yaml"
+  - "implementation_control/tasks/WI-20260630-006/jobs/completions/WJC-20260630-006-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-006.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -25,30 +25,30 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-005"
-  title: "Create Documentation Publication And Website Components PRD"
+  task_id: "WI-20260630-006"
+  title: "Create High-Level Components PRD"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-005/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-006/00_TASK.yaml"
   planning_context:
     source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
     prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-    task_packet: "PRD-06 documentation publication and website components"
+    task_packet: "PRD-01 high-level components"
 
 current_job:
-  job_id: "WJ-20260630-005-A"
+  job_id: "WJ-20260630-006-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-005/jobs/WJ-20260630-005-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-006/jobs/WJ-20260630-006-A.yaml"
 
 latest_completion:
-  completion_id: "WJC-20260630-005-A"
+  completion_id: "WJC-20260630-006-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260630-005/jobs/completions/WJC-20260630-005-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-006/jobs/completions/WJC-20260630-006-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-005"
+  handoff_id: "WH-20260630-006"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-005.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-005.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-006.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-006.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -65,6 +65,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PRD-01 high-level components"
-  summary: "After the documentation, publication, and website components PRD checkpoint, create the high-level project explanation PRD as the next bounded packet."
+  task_packet: "PRD-02 physics and mathematical components"
+  summary: "After the high-level components PRD checkpoint, create the physics and mathematical components PRD as the next bounded packet."
   do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or begin a broader packet without fresh live control records."

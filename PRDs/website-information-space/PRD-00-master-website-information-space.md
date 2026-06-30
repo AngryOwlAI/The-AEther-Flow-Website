@@ -460,7 +460,7 @@ validation checklist.
 
 | PRD | File | Status | Launch role |
 | --- | --- | --- | --- |
-| PRD-01 | `PRD-01-high-level-components.md` | pending | Public story and primary journeys. |
+| PRD-01 | `PRD-01-high-level-components.md` | complete | Public story and primary journeys. |
 | PRD-02 | `PRD-02-physics-and-mathematical-components.md` | pending | Physics, benchmark, ontology, and derivation pages. |
 | PRD-03 | `PRD-03-research-control-and-agent-workflow.md` | pending | AI workflow and research-control pages. |
 | PRD-04 | `PRD-04-role-and-schema-components.md` | pending | Role and schema authority pages. |
