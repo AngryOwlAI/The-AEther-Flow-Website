@@ -1410,14 +1410,14 @@ html:has(body.project-overview-page) {
   background:
     linear-gradient(90deg, color-mix(in srgb, var(--overview-orange) 8%, transparent), transparent 34%),
     color-mix(in srgb, var(--overview-bg) 62%, transparent);
-  padding: 1.15rem 0;
+  padding: 1.15rem clamp(1.1rem, 2vw, 2rem);
 }
 
 .home-intro-panel p {
   max-width: 78ch;
   margin: 0;
   color: var(--overview-muted);
-  font-size: 1.03rem;
+  font-size: 1.18rem;
   line-height: 1.72;
 }
 
@@ -1428,14 +1428,14 @@ html:has(body.project-overview-page) {
   background:
     linear-gradient(90deg, color-mix(in srgb, var(--overview-cyan) 8%, transparent), transparent 34%),
     color-mix(in srgb, var(--overview-bg) 62%, transparent);
-  padding: 1.15rem 0;
+  padding: 1.15rem clamp(1.1rem, 2vw, 2rem);
 }
 
 .greenfield-intro-panel p {
   max-width: 82ch;
   margin: 0;
   color: var(--overview-muted);
-  font-size: 1.03rem;
+  font-size: 1.18rem;
   line-height: 1.72;
 }
 
@@ -4134,20 +4134,22 @@ html:has(body.project-overview-page) {
   .home-intro-panel {
     margin-bottom: 1rem;
     padding-block: 0.9rem;
+    padding-inline: 1rem;
   }
 
   .home-intro-panel p {
-    font-size: 0.96rem;
+    font-size: 1.06rem;
     line-height: 1.58;
   }
 
   .greenfield-intro-panel {
     margin-bottom: 1rem;
     padding-block: 0.9rem;
+    padding-inline: 1rem;
   }
 
   .greenfield-intro-panel p {
-    font-size: 0.96rem;
+    font-size: 1.06rem;
     line-height: 1.58;
   }
 
