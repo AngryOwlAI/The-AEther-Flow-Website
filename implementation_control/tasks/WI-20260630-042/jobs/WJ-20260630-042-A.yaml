@@ -4,8 +4,8 @@ job_id: "WJ-20260630-042-A"
 task_id: "WI-20260630-042"
 title: "Run owner review loop and release-candidate QA"
 created_utc: "2026-06-30T20:29:06Z"
-updated_utc: "2026-06-30T20:36:38Z"
-status: "active"
+updated_utc: "2026-06-30T20:40:15Z"
+status: "completed"
 
 objective: "Run GF-014 release-candidate QA, record owner-review status, and report whether deployment is authorized without deploying."
 

@@ -1,6 +1,6 @@
 # Sitewide Greenfield Release-Candidate QA Report
 
-Status: release-candidate QA completed with blockers.
+Status: release-candidate QA completed with remaining blockers.
 Date: 2026-06-30.
 Packet: GF-014, `WI-20260630-042`.
 
@@ -16,8 +16,9 @@ does not pass under the current source-drift and quality-gate state.
 
 Owner acceptance: not granted.
 Deployment readiness: not granted.
-Feedback queue: no owner-requested changes yet; two QA blockers are recorded
-below for bounded follow-up packets.
+Feedback queue: no owner-requested changes yet. The Diagram Gallery
+quality-gate contract blocker was resolved in packet `WI-20260630-043`;
+curator/source drift remains open.
 
 ## Route Set For Review
 
@@ -47,12 +48,12 @@ Passed:
 - `.venv/bin/python -m pytest`: 75 passed.
 - `python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321`: 92 routes passed.
 - Browser QA: Home, Physics, AI Research System, Resources, and Diagram Gallery returned HTTP 200 on desktop and mobile, exposed expected `h1` text, and showed no document-level horizontal overflow.
+- `python3 scripts/quality_gate.py`: passed after `WI-20260630-043` updated the quality gate to validate `/resources/diagrams/` against the greenfield Diagram Gallery contract while keeping `/resources/documents/` on the support-page schema.
 
 Failed or blocked:
 
 - `npm run quality` failed because `npm run validate` fails at `npm run validate:curator`.
 - `npm run validate:curator` reports stale checked-in curator reports and source-drift acknowledgement failures. Concrete records include `curator/reports/latest.json`, `curator/reports/latest.md`, review-required drift for `registries/CLAIM_BOUNDARY_REGISTRY.csv` across multiple greenfield routes, and critical drift on `/project/physics/current-state/` for `registries/CLAIM_BOUNDARY_REGISTRY.csv`, `registries/DISTANCE_TO_GR_LEDGER.csv`, and `research_control/program_state.yaml`.
-- `python3 scripts/quality_gate.py` failed for `/resources/diagrams/` because the built route lacks the required resource-support schema snippets `class="project-overview-page project-support-page"`, `class="content-band project-support-hero"`, and `class="support-svg"`.
 
 ## Browser QA Artifacts
 
@@ -73,20 +74,16 @@ Screenshots were captured under ignored local QA output:
 
 - Owner review has not accepted the rebuilt route set.
 - Curator/source-drift policy prevents a green full validate or quality result.
-- The Diagram Gallery route and the resource-support quality gate disagree on the required support-page schema.
 - Old `/project/*` source files remain in the build for validator continuity even though the public route/provenance manifests now expose the short-route inventory.
 
 ## Recommendation
 
 Do not deploy. Do not mark the rebuild accepted.
 
-The logical next step is a bounded follow-up packet that either fixes the
-Diagram Gallery support-schema mismatch or updates the quality gate if the new
-greenfield track layout is the intended contract. A separate bounded packet
-should address curator/source-drift acknowledgement and stale curator reports.
-After those blockers are resolved, rerun `npm run validate`, `npm run quality`,
-Python tests, smoke testing, and owner review. Deployment remains a separate
-explicit request.
+The logical next step is a bounded packet for curator/source-drift
+acknowledgement and stale curator reports. After that blocker is resolved,
+rerun `npm run validate`, `npm run quality`, Python tests, smoke testing, and
+owner review. Deployment remains a separate explicit request.
 
 ## References
 

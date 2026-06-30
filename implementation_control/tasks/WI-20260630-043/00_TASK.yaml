@@ -1,0 +1,126 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-043"
+title: "Resolve Diagram Gallery Quality Gate Contract"
+created_utc: "2026-06-30T20:40:15Z"
+updated_utc: "2026-06-30T20:45:38Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-014 Follow-up: Diagram Gallery Quality Gate Contract"
+  release_candidate_report: "docs/quality/sitewide-greenfield-release-candidate-report.md"
+  review_ledger: "docs/quality/sitewide-greenfield-review-ledger.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-042.yaml"
+
+requirements:
+  - "Resolve the `/resources/diagrams/` quality-gate mismatch without changing public route claims or owner-review status."
+  - "Keep `/resources/documents/` on the legacy support-page schema check."
+  - "Validate `/resources/diagrams/` against greenfield body classes, command-band hero, route-local SVG, empty gallery reset copy, static comprehension diagram, and no dedicated source-authority section."
+  - "Update tests for the split quality-gate behavior."
+  - "Record that curator/source-drift remains a separate blocker."
+  - "Do not deploy, push, mutate upstream, refresh sources, regenerate diagrams, or mark owner acceptance."
+
+goal: "Remove the Diagram Gallery support-schema quality-gate blocker while preserving the greenfield route contract."
+
+allowed_reads:
+  website_repository:
+    - "scripts/quality_gate.py"
+    - "tests/test_quality_gate.py"
+    - "src/pages/resources/diagrams.astro"
+    - "src/pages/resources/documents.astro"
+    - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-042.yaml"
+    - "implementation_control/handoffs/WH-20260630-042.md"
+    - "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "scripts/quality_gate.py"
+    - "tests/test_quality_gate.py"
+    - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-042.yaml"
+    - "implementation_control/handoffs/WH-20260630-042.md"
+    - "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-043.yaml"
+    - "implementation_control/handoffs/WH-20260630-043.md"
+    - "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
+    - "implementation_control/tasks/WI-20260630-043/jobs/completions/WJC-20260630-043-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "Validator logic and QA documentation only; no public route claim copy changes are in scope."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot, upstream refresh, generated derivative refresh, wiki regeneration, or retrieval refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route or navigation changes are in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No public visual system or route styling changes are in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset addition, deletion, regeneration, or diagram rendering is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest mutation is in scope."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "quality-gate"
+    command: "python3 scripts/quality_gate.py"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "Fixing the quality gate requires public route content, visual, source, manifest, asset, or dependency changes."
+  - "Any validator fails outside the known curator/source-drift blocker."
+  - "Any owner acceptance, deployment, push, upstream write, source refresh, generated derivative refresh, public asset mutation, dependency addition, or feedback implementation becomes necessary."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Write completion evidence, then use npm run checkpoint:implementation. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-043-A"
+  path: "implementation_control/tasks/WI-20260630-043/jobs/completions/WJC-20260630-043-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "Bounded curator/source-drift packet"
+  summary: "After checkpoint, address curator/source-drift before owner acceptance or deployment."
+  do_not_skip: "Do not mark owner acceptance or deployment readiness without explicit owner review."

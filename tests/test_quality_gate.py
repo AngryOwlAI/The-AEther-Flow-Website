@@ -51,3 +51,53 @@ def test_resource_source_authority_prose_is_allowed(tmp_path: Path) -> None:
     errors = quality_gate.validate_no_resource_source_authority_sections(dist)
 
     assert errors == []
+
+
+def test_resource_support_schema_is_required_for_documents_not_diagrams(tmp_path: Path) -> None:
+    dist = tmp_path / "dist"
+    documents_page = dist / "resources/documents/index.html"
+    diagrams_page = dist / "resources/diagrams/index.html"
+    documents_page.parent.mkdir(parents=True)
+    diagrams_page.parent.mkdir(parents=True)
+    documents_page.write_text("<main>Missing support schema</main>", encoding="utf-8")
+    diagrams_page.write_text("<main>Greenfield diagram route</main>", encoding="utf-8")
+
+    errors = quality_gate.validate_resource_support_schema(dist)
+
+    assert any("/resources/documents/" in error for error in errors)
+    assert not any("/resources/diagrams/" in error for error in errors)
+
+
+def test_resource_greenfield_schema_is_required_for_diagrams(tmp_path: Path) -> None:
+    dist = tmp_path / "dist"
+    page = dist / "resources/diagrams/index.html"
+    page.parent.mkdir(parents=True)
+    page.write_text(
+        '<body class="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page">'
+        '<section class="command-band overview-shell overview-command-hero">'
+        '<svg class="track-map-svg physics-greenfield-svg"></svg>'
+        "Greenfield diagram inventory is empty."
+        '<h2 id="comprehension-diagram-title">Static diagram contract</h2>'
+        "</section></body>",
+        encoding="utf-8",
+    )
+
+    errors = quality_gate.validate_resource_greenfield_schema(dist)
+
+    assert errors == []
+
+
+def test_resource_greenfield_schema_reports_missing_diagram_contract(tmp_path: Path) -> None:
+    dist = tmp_path / "dist"
+    page = dist / "resources/diagrams/index.html"
+    page.parent.mkdir(parents=True)
+    page.write_text(
+        '<body class="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page">'
+        '<section class="command-band overview-shell overview-command-hero"></section>'
+        "</body>",
+        encoding="utf-8",
+    )
+
+    errors = quality_gate.validate_resource_greenfield_schema(dist)
+
+    assert any("missing resource greenfield schema snippet" in error for error in errors)

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T20:36:38Z"
+updated_utc: "2026-06-30T20:45:38Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-042.yaml"
+  - "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-043.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,29 +24,29 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-042"
-  title: "Run Owner Review Loop And Release-Candidate QA"
+  task_id: "WI-20260630-043"
+  title: "Resolve Diagram Gallery Quality Gate Contract"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-042/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-043/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-014 Run Owner Review Loop And Release-Candidate QA"
+    task_packet: "GF-014 Follow-up: Diagram Gallery Quality Gate Contract"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-042-A"
+  job_id: "WJ-20260630-043-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-042/jobs/WJ-20260630-042-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-043/jobs/WJ-20260630-043-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-042"
+  handoff_id: "WH-20260630-043"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-042.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-042.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-043.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-043.md"
 
 latest_completion:
-  completion_id: "WJC-20260630-042-A"
-  path: "implementation_control/tasks/WI-20260630-042/jobs/completions/WJC-20260630-042-A.yaml"
+  completion_id: "WJC-20260630-043-A"
+  path: "implementation_control/tasks/WI-20260630-043/jobs/completions/WJC-20260630-043-A.yaml"
   status: "completed"
 
 required_validators:
@@ -77,6 +77,9 @@ required_validators:
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     required_for_current_job: true
+  - id: "quality-gate"
+    command: "python3 scripts/quality_gate.py"
+    required_for_current_job: true
   - id: "build"
     command: "npm run build"
     required_for_current_job: true
@@ -94,6 +97,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "Bounded follow-up QA blocker packet"
-  summary: "Resolve the Diagram Gallery support-schema mismatch and curator/source-drift blocker before owner acceptance or deployment."
+  task_packet: "Bounded curator/source-drift packet"
+  summary: "After the Diagram Gallery quality-gate blocker is resolved, address curator/source-drift before owner acceptance or deployment."
   do_not_skip: "Do not mark deployment ready, push, deploy, or mark owner acceptance without explicit owner review."

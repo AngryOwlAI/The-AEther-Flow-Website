@@ -24,7 +24,15 @@ ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT = {
 }
 RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA = {
     "/resources/documents/",
-    "/resources/diagrams/",
+}
+RESOURCE_ROUTES_REQUIRING_GREENFIELD_SCHEMA = {
+    "/resources/diagrams/": [
+        'class="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"',
+        'class="command-band overview-shell overview-command-hero"',
+        'class="track-map-svg physics-greenfield-svg"',
+        "Greenfield diagram inventory is empty.",
+        'id="comprehension-diagram-title"',
+    ],
 }
 RESOURCE_SOURCE_AUTHORITY_SECTION_SNIPPETS = {
     'class="source-notice"',
@@ -219,6 +227,17 @@ def validate_resource_support_schema(dist_dir: Path) -> list[str]:
     return errors
 
 
+def validate_resource_greenfield_schema(dist_dir: Path) -> list[str]:
+    errors: list[str] = []
+    for route, required_snippets in sorted(RESOURCE_ROUTES_REQUIRING_GREENFIELD_SCHEMA.items()):
+        html_path = url_path_to_dist_path(dist_dir, route)
+        text = html_path.read_text(encoding="utf-8")
+        for snippet in required_snippets:
+            if snippet not in text:
+                errors.append(f"{route}: missing resource greenfield schema snippet {snippet!r}")
+    return errors
+
+
 def validate_no_resource_source_authority_sections(dist_dir: Path) -> list[str]:
     errors: list[str] = []
     resources_root = dist_dir / "resources"
@@ -258,6 +277,7 @@ def main() -> int:
     errors.extend(validate_no_local_path_leaks(dist_dir))
     errors.extend(validate_no_visible_route_path_text(dist_dir))
     errors.extend(validate_resource_support_schema(dist_dir))
+    errors.extend(validate_resource_greenfield_schema(dist_dir))
     errors.extend(validate_no_resource_source_authority_sections(dist_dir))
 
     if errors:

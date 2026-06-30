@@ -2,13 +2,13 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-042"
 created_utc: "2026-06-30T20:29:06Z"
-updated_utc: "2026-06-30T20:36:38Z"
-status: "active"
+updated_utc: "2026-06-30T20:40:15Z"
+status: "completed"
 
 task_id: "WI-20260630-042"
 job_id: "WJ-20260630-042-A"
 
-summary: "Completed GF-014 release-candidate QA reporting with owner review pending and QA blockers open."
+summary: "Completed GF-014 release-candidate QA reporting with owner review pending and QA blockers open; superseded by WI-20260630-043."
 
 current_state:
   - "GF-013 is completed, checkpointed, and superseded."
@@ -18,6 +18,7 @@ current_state:
   - "Release-candidate QA report exists at `docs/quality/sitewide-greenfield-release-candidate-report.md`."
   - "Targeted validation, smoke testing, and browser QA passed, but full quality is blocked by curator/source drift and a Diagram Gallery support-schema mismatch."
   - "Requested changes, if any, must be handled in follow-up bounded feedback packets."
+  - "GF-014 is superseded by active packet WI-20260630-043 for the Diagram Gallery quality-gate contract blocker."
   - "No deployment, push, public page content change, source refresh, upstream source-project write, generated derivative refresh, public asset mutation, or dependency addition is authorized."
 
 source_authority_boundary:
