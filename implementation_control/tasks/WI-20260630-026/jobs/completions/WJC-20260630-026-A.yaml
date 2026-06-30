@@ -1,0 +1,73 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260630-026-A"
+task_id: "WI-20260630-026"
+job_id: "WJ-20260630-026-A"
+created_utc: "2026-06-30T16:25:28Z"
+updated_utc: "2026-06-30T16:25:28Z"
+status: "completed"
+
+summary: "Converted PRD-11-quick-source-map-for-site-builders.md into a sub implementation plan."
+
+outputs:
+  - path: "ImplementationPlans/website-information-space/PRD-11-quick-source-map-for-site-builders-implementation-plan.md"
+    status: "created"
+    description: "Maps the source PRD to future greenfield implementation work."
+  - path: "ImplementationPlans/website-information-space/PRD-11-quick-source-map-for-site-builders-task-packets.md"
+    status: "created"
+    description: "Defines future Codex-ready route and validation task packets."
+  - path: "ImplementationPlans/website-information-space/README.md"
+    status: "updated"
+    description: "Marks the PRD conversion as complete."
+
+changed_files:
+  - "ImplementationPlans/website-information-space/README.md"
+  - "ImplementationPlans/website-information-space/PRD-11-quick-source-map-for-site-builders-implementation-plan.md"
+  - "ImplementationPlans/website-information-space/PRD-11-quick-source-map-for-site-builders-task-packets.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-025.yaml"
+  - "implementation_control/handoffs/WH-20260630-025.md"
+  - "implementation_control/tasks/WI-20260630-025/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-025/jobs/WJ-20260630-025-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-026.yaml"
+  - "implementation_control/handoffs/WH-20260630-026.md"
+  - "implementation_control/tasks/WI-20260630-026/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-026/jobs/WJ-20260630-026-A.yaml"
+  - "implementation_control/tasks/WI-20260630-026/jobs/completions/WJC-20260630-026-A.yaml"
+
+requirements_satisfied:
+  - "Converted exactly one sub PRD into implementation-planning outputs."
+  - "Treated the sitewide greenfield rebuild plan and task packets as canonical constraints."
+  - "Preserved the display-spelling rule for Æther in reader-facing text and aether in machine-facing identifiers."
+  - "Preserved the Source Authority Boundary and did not create public website surfaces."
+  - "Prepared the next governed packet recommendation."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "none_authorized"
+  proof_or_science_authority: "not_granted"
+  readiness_claims: "implementation_planning_only_not_public_claim_change"
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    checked_utc: "2026-06-30T16:25:28Z"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    checked_utc: "2026-06-30T16:25:28Z"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked_utc: "2026-06-30T16:25:28Z"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    checked_utc: "2026-06-30T16:25:28Z"
+
+next_recommended_action:
+  task_packet: "complete planning-family review"
+  summary: "Open the next fresh implementation-control packet after checkpoint."
+  do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."
