@@ -42,6 +42,7 @@ mathematical, governance, or research-workflow authority.
 | `PRD-05-memory-registry-and-retrieval-components.md` | complete | Defines source authority, registry, generated derivative, memory, retrieval, provenance, and source/provenance footer requirements. |
 | `PRD-06-documentation-publication-and-website-components.md` | complete | Defines the publication workflow, documentation layers, page templates, library surfaces, parity expectations, and source-backed footer design. |
 | `PRD-01-high-level-components.md` | complete | Defines the high-level project explanation, homepage and overview requirements, dual-track framing, trust panel, and primary reader journeys. |
+| `PRD-02-physics-and-mathematical-components.md` | complete | Defines ontology, exact-GR benchmark, flow-geometry, derivation-roadmap, claim-status, and open-burden requirements for physics pages. |
 | Remaining sub-PRDs | pending | Create one bounded packet at a time in dependency order. |
 
 ## Source Authority Boundary
@@ -177,8 +178,9 @@ Before the PRD family is treated as ready for implementation planning:
 ## Next Packet
 
 The next bounded implementation-control packet should create
-`PRD-02-physics-and-mathematical-components.md`. It should not create additional sub-PRDs in
-the same packet unless fresh live control records authorize a wider scope.
+`PRD-09-current-research-frontier-for-website-use.md`. It should not create
+additional sub-PRDs in the same packet unless fresh live control records
+authorize a wider scope.
 
 ## References
 
