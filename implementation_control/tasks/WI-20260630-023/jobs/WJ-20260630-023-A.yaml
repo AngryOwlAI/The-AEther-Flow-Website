@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260630-022-A"
-task_id: "WI-20260630-022"
-title: "Convert PRD-03-research-control-and-agent-workflow to sub implementation plan"
-created_utc: "2026-06-30T16:25:04Z"
+job_id: "WJ-20260630-023-A"
+task_id: "WI-20260630-023"
+title: "Convert PRD-04-role-and-schema-components to sub implementation plan"
+created_utc: "2026-06-30T16:25:10Z"
 updated_utc: "2026-06-30T16:25:10Z"
-status: "completed"
+status: "active"
 
-objective: "Use prd-to-implementation-plan to convert PRD-03-research-control-and-agent-workflow.md into a sub implementation plan and task-packet set."
+objective: "Use prd-to-implementation-plan to convert PRD-04-role-and-schema-components.md into a sub implementation plan and task-packet set."
 
 execution_boundary:
   invocation_limit: "one bounded implementation packet"
@@ -45,23 +45,23 @@ allowed_reads:
   - "package.json"
   - "implementation_control/program_state.yaml"
   - "git status output"
-  - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
-  - "implementation_control/handoffs/WH-20260630-021.yaml"
+  - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
+  - "implementation_control/handoffs/WH-20260630-022.yaml"
 
 allowed_writes:
   - "ImplementationPlans/website-information-space/README.md"
-  - "ImplementationPlans/website-information-space/PRD-03-research-control-and-agent-workflow-implementation-plan.md"
-  - "ImplementationPlans/website-information-space/PRD-03-research-control-and-agent-workflow-task-packets.md"
+  - "ImplementationPlans/website-information-space/PRD-04-role-and-schema-components-implementation-plan.md"
+  - "ImplementationPlans/website-information-space/PRD-04-role-and-schema-components-task-packets.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-021.yaml"
-  - "implementation_control/handoffs/WH-20260630-021.md"
-  - "implementation_control/tasks/WI-20260630-021/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-021/jobs/WJ-20260630-021-A.yaml"
   - "implementation_control/handoffs/WH-20260630-022.yaml"
   - "implementation_control/handoffs/WH-20260630-022.md"
   - "implementation_control/tasks/WI-20260630-022/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260630-022/jobs/WJ-20260630-022-A.yaml"
-  - "implementation_control/tasks/WI-20260630-022/jobs/completions/WJC-20260630-022-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-023.yaml"
+  - "implementation_control/handoffs/WH-20260630-023.md"
+  - "implementation_control/tasks/WI-20260630-023/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-023/jobs/WJ-20260630-023-A.yaml"
+  - "implementation_control/tasks/WI-20260630-023/jobs/completions/WJC-20260630-023-A.yaml"
 
 required_outputs:
   - "The sub implementation plan exists."
@@ -127,10 +127,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-022-A"
-  path: "implementation_control/tasks/WI-20260630-022/jobs/completions/WJC-20260630-022-A.yaml"
+  completion_id: "WJC-20260630-023-A"
+  path: "implementation_control/tasks/WI-20260630-023/jobs/completions/WJC-20260630-023-A.yaml"
 
 next_recommended_action:
-  task_packet: "convert PRD-04 sub implementation plan"
+  task_packet: "convert PRD-07 sub implementation plan"
   summary: "After checkpoint, open the next fresh implementation-control packet."
   do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."

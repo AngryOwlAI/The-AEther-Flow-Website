@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T16:25:04Z"
+updated_utc: "2026-06-30T16:25:10Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-022/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-022/jobs/WJ-20260630-022-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-022.yaml"
+  - "implementation_control/tasks/WI-20260630-023/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-023/jobs/WJ-20260630-023-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-023.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,26 +24,26 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-022"
-  title: "Convert PRD-03-research-control-and-agent-workflow To Sub Implementation Plan"
+  task_id: "WI-20260630-023"
+  title: "Convert PRD-04-role-and-schema-components To Sub Implementation Plan"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-022/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-023/00_TASK.yaml"
   planning_context:
-    source_prd: "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
+    source_prd: "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
     master_plan: "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     task_packet: "sub implementation plan conversion"
 
 current_job:
-  job_id: "WJ-20260630-022-A"
+  job_id: "WJ-20260630-023-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-022/jobs/WJ-20260630-022-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-023/jobs/WJ-20260630-023-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-022"
+  handoff_id: "WH-20260630-023"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-022.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-022.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-023.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-023.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -61,5 +61,5 @@ required_validators:
 
 next_recommended_action:
   task_packet: "convert current sub PRD implementation plan"
-  summary: "Convert PRD-03-research-control-and-agent-workflow.md into a sub implementation plan and task-packet set."
+  summary: "Convert PRD-04-role-and-schema-components.md into a sub implementation plan and task-packet set."
   do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."
