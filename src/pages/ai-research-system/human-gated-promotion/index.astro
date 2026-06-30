@@ -1,0 +1,370 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const gateRows = [
+  {
+    layer: "Draft/control evidence",
+    canPrepare: "Candidate, audit, refutation, selector, or documentation artifacts can prepare the question.",
+    cannotDecide: "Preparation does not promote a source law, benchmark, ontology claim, or downstream physics result.",
+  },
+  {
+    layer: "Validators and tests",
+    canPrepare: "Checks can confirm structure, state, provenance, and boundary preservation for the checked surface.",
+    cannotDecide: "PASS does not issue Gate Chair approval or prove theorem correctness.",
+  },
+  {
+    layer: "Completion and handoff",
+    canPrepare: "Receipts can preserve evidence, uncertainty, blocked conclusions, and the next route.",
+    cannotDecide: "A handoff that names a gate has not executed that gate.",
+  },
+  {
+    layer: "Registry and claim-boundary rows",
+    canPrepare: "Rows can make status, provenance, and blocked overreads discoverable.",
+    cannotDecide: "Registry metadata is not protected promotion.",
+  },
+  {
+    layer: "Explicit human gate",
+    canPrepare: "Tracked human approval can authorize protected execution when the source process requires it.",
+    cannotDecide: "No website page can create or simulate that approval.",
+  },
+];
+
+const protectedRows = [
+  {
+    protectedAction: "Canonical ontology adoption",
+    automatedOutcome: "A role output, validator PASS, or completion may prepare evidence.",
+    requiredGate: "Explicit tracked source authority must authorize adoption.",
+  },
+  {
+    protectedAction: "Benchmark promotion",
+    automatedOutcome: "Tests, screenshots, and completion receipts may show operational readiness.",
+    requiredGate: "Protected promotion remains a separate source and human-gated path.",
+  },
+  {
+    protectedAction: "Gate Chair verdict",
+    automatedOutcome: "A role registry row can define the role; a handoff can recommend a gate.",
+    requiredGate: "Gate Chair authority is not active without explicit tracked approval.",
+  },
+  {
+    protectedAction: "Scientific claim closure",
+    automatedOutcome: "Local obstructions, freezes, and validations can sharpen routing.",
+    requiredGate: "Closure needs the source-side authority required by the claim class.",
+  },
+  {
+    protectedAction: "Publication acceptance",
+    automatedOutcome: "A local checkpoint and page validation can prove technical readiness.",
+    requiredGate: "Owner acceptance and deployment remain separate from automated checks.",
+  },
+];
+
+const blockedRows = [
+  {
+    overread: "A validator passed, therefore the claim is promoted.",
+    correction: "Validator PASS means operational consistency for the checked state, not claim promotion.",
+  },
+  {
+    overread: "A handoff names a gate, therefore the gate happened.",
+    correction: "Handoff language transfers state and recommends a next packet; execution requires a later tracked authorization.",
+  },
+  {
+    overread: "Gate Chair exists in the registry, therefore it can execute now.",
+    correction: "The role is human-gated and paused unless explicit tracked approval exists.",
+  },
+  {
+    overread: "A website page explains promotion, therefore it approves promotion.",
+    correction: "The website explains the authority model and cannot become source authority.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Role and schema requirements",
+    use: "Gate Chair status, role authority, and active-versus-paused language.",
+    boundary: "Planning and website copy cannot activate a protected role.",
+  },
+  {
+    source: "Workflow and validator requirements",
+    use: "Completion, handoff, PASS, and checkpoint boundaries.",
+    boundary: "Operational receipts prepare evidence; they are not protected verdicts.",
+  },
+  {
+    source: "Claim-boundary registry and current-state rules",
+    use: "Blocked overreads and dated examples when current source status is shown.",
+    boundary: "Moving source status requires dated snapshot behavior.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Roles",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    body: "Read the Gate Chair and role-authority model before promotion language.",
+  },
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "See how handoffs separate a future gate from the current job.",
+  },
+  {
+    label: "Checks",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Inspect why PASS and receipts remain operational evidence.",
+  },
+  {
+    label: "Current",
+    title: "Current State",
+    href: "/ai-research-system/current-state/",
+    body: "Use dated snapshots for moving implementation-control examples.",
+  },
+  {
+    label: "Physics",
+    title: "Physics Claim Status",
+    href: "/physics/claim-status/",
+    body: "Read blocked and open physics claims beside any progress language.",
+  },
+  {
+    label: "Burdens",
+    title: "Open Burdens",
+    href: "/physics/open-burdens/",
+    body: "Review missing derivation work without progress-bar proof.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "human-gated promotion authority explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains protected promotion boundaries. It cannot issue Gate Chair approval, activate a paused role, promote scientific claims, adopt ontology, promote benchmarks, or convert validators, handoffs, registries, commits, or completions into proof.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Claim gates, negative results, and freeze criteria [Source file: github-facing/claim-gates-explainer.md].",
+    "The AEther Flow Project. (2026b). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026c). Mathematical decisiveness completion contract [Internal control note].",
+    "The AEther Flow Project. (2026d). Claim boundary registry [Registry: registries/CLAIM_BOUNDARY_REGISTRY.csv].",
+    "The AEther Flow Website. (2026a). Role and Schema Components [Product requirements document: PRD-04].",
+    "The AEther Flow Website. (2026b). Research-Control and Agent Workflow [Product requirements document: PRD-03].",
+  ],
+};
+
+const gateSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-human-gate-title ai-human-gate-desc">
+    <title id="ai-human-gate-title">Animated human-gated promotion boundary map</title>
+    <desc id="ai-human-gate-desc">Draft evidence, validators, completions, handoffs, and registries approach a protected human gate without crossing it automatically.</desc>
+    <defs>
+      <radialGradient id="ai-human-gate-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.68" />
+        <stop offset="40%" stop-color="var(--owl-cyan-400)" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-human-gate-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ai-human-gate-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="232" ry="118" />
+      <ellipse cx="310" cy="180" rx="142" ry="76" />
+      <path d="M84 180 H248" />
+      <path d="M372 180 H536" />
+      <path d="M310 88 V272" />
+    </g>
+    <g filter="url(#ai-human-gate-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M88 118 C164 146, 216 172, 270 180" />
+      <path class="track-figure-path orange-path" d="M88 242 C164 214, 216 188, 270 180" />
+      <path class="track-figure-path signal-path alternate" d="M350 180 C404 172, 456 146, 532 118" />
+      <path class="track-figure-path orange-path alternate" d="M350 180 C404 188, 456 214, 532 242" />
+    </g>
+    <path class="track-figure-core" d="M310 116 L374 180 L310 244 L246 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="88" cy="118" r="13" />
+      <circle cx="88" cy="242" r="13" />
+      <circle cx="270" cy="180" r="13" />
+      <circle cx="350" cy="180" r="13" />
+      <circle cx="532" cy="118" r="13" />
+      <circle cx="532" cy="242" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Human-Gated Promotion"
+  description="AI Research System human-gated promotion route separating protected decisions from automated validators, completions, handoffs, registries, and commits."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Human-Gated Promotion"
+    title="Human-Gated Promotion"
+    lead="Protected promotion is separate authority: automated workflow can prepare evidence, but it cannot issue the verdict."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Human-gated promotion page actions">
+      <a class="primary-link" href="#human-gate-stack">Read gate stack</a>
+      <a class="secondary-link" href="/ai-research-system/roles-and-schemas/">Roles and schemas</a>
+      <a class="secondary-link" href="/ai-research-system/validators-and-handoffs/">Validator limits</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-human-gate-caption">
+        <Fragment set:html={gateSvg} />
+        <figcaption id="ai-human-gate-caption">
+          Visual orientation only: evidence can approach a protected gate, but
+          it does not cross automatically.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Human-gated promotion introduction">
+    <p>
+      Human-gated promotion requires explicit tracked authority. Gate Chair
+      authority is not active just because a role exists, a validator passed,
+      a handoff named a next action, or a commit was checkpointed. Protected
+      decisions remain separate from automated outcomes.
+    </p>
+  </section>
+
+  <section id="human-gate-stack" class="track-page-band" aria-labelledby="human-gate-stack-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Gate stack</p>
+      <h2 id="human-gate-stack-title">Preparation is not promotion.</h2>
+      <p>
+        The gate model protects high-risk claims from being laundered through
+        operational signals. Evidence can accumulate without becoming a
+        verdict.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Can prepare</th>
+          <th scope="col">Cannot decide</th>
+        </tr>
+      </thead>
+      <tbody>
+        {gateRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.canPrepare}</td>
+            <td>{row.cannotDecide}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="protected-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Protected actions</p>
+      <h2 id="protected-title">Automated outcomes stay below protected authority.</h2>
+      <p>
+        This page deliberately places promotion language after the gate
+        explanation. That order prevents validators, completions, and handoffs
+        from reading like hidden promotion paths.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Protected action</th>
+          <th scope="col">Automated outcome may show</th>
+          <th scope="col">Required gate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {protectedRows.map((row) => (
+          <tr>
+            <th scope="row">{row.protectedAction}</th>
+            <td>{row.automatedOutcome}</td>
+            <td>{row.requiredGate}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="overread-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Blocked overreads</p>
+      <h2 id="overread-title">The public reading must not confuse readiness with verdict.</h2>
+      <p>
+        The same records that make the project auditable can become misleading
+        if their scope is not stated beside them.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Unsafe overread</th>
+          <th scope="col">Correct reading</th>
+        </tr>
+      </thead>
+      <tbody>
+        {blockedRows.map((row) => (
+          <tr>
+            <th scope="row">{row.overread}</th>
+            <td>{row.correction}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="gate-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="gate-source-title">Gate language is source-bound.</h2>
+      <p>
+        A public explainer can state the rule. It cannot make the protected
+        decision or substitute for the tracked approval record.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Keep gate decisions beside their evidence boundaries."
+    lead="Promotion language should be read with roles, workflow, validators, current-state freshness, and physics claim-status pages."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related human-gated promotion routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

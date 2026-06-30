@@ -2,18 +2,19 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-035"
 created_utc: "2026-06-30T18:22:58Z"
-updated_utc: "2026-06-30T18:32:31Z"
+updated_utc: "2026-06-30T18:36:07Z"
 status: "completed"
 
 task_id: "WI-20260630-035"
 job_id: "WJ-20260630-035-A"
 
-summary: "Completed GF-007 for the AI workflow and AgentJob lifecycle slice."
+summary: "Completed GF-007 for the AI workflow and AgentJob lifecycle slice; checkpointed and superseded by GF-008."
 
 current_state:
   - "The GF-006 AI overview and current-state packet is completed and superseded."
   - "This packet implemented one public route implementation slice for `/ai-research-system/workflow/` and `/ai-research-system/agentjob-lifecycle/`."
   - "The two GF-007 routes are technically ready with human review pending."
+  - "This packet is checkpointed and superseded by the GF-008 AI roles, human gates, validators, and handoffs packet."
   - "Public workflow-claim changes, route-local SVG/style changes, and public route/provenance manifest writes are approved only inside the GF-007 allowlist."
   - "No roles, human gates, validator/handoff, memory, runtime, improvement, Resources, old route retirement, public downloadable asset change, deployment, push, source refresh, generated derivative refresh, retrieval refresh, or upstream write is authorized."
 
@@ -72,7 +73,7 @@ completion_record:
 
 next_recommended_action:
   task_packet: "GF-008 Build AI Roles, Human Gates, Validators, And Handoffs Slice"
-  summary: "After checkpoint, open the next fresh implementation-control packet for AI roles, human gates, validators, and handoffs."
+  summary: "Open the AI roles, human gates, validators, and handoffs packet."
   do_not_skip: "Do not implement additional route families, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active AI workflow and AgentJob lifecycle packet without fresh live control records."
 
 stop_before:

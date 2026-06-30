@@ -1,0 +1,390 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const authorityRows = [
+  {
+    role: "Director of Research",
+    authority: "Routing control",
+    canDo: "Select one bounded next step and create or reuse one AgentJob when no human gate is required.",
+    cannotDo: "Modify sources, promote claims, or prove a scientific result by identity.",
+  },
+  {
+    role: "Science-draft roles",
+    authority: "Draft/control construction, audit, stress, or routing",
+    canDo: "Construct candidates, formalize assumptions, refute candidates, audit smuggling, or select one theoretical continuation inside the job boundary.",
+    cannotDo: "Adopt ontology, promote benchmarks, derive GR, or create proof authority by role label.",
+  },
+  {
+    role: "Documentation and project-control roles",
+    authority: "Project documentation, validators, memory, or controlled repair",
+    canDo: "Maintain allowed project surfaces, public documentation, memory tooling, and deterministic validators inside an owning AgentJob.",
+    cannotDo: "Change physics claim status or treat generated surfaces as source authority.",
+  },
+  {
+    role: "Gate Chair",
+    authority: "Human-gated scientific decision path",
+    canDo: "Render protected promotion, closure, or suspension decisions only after explicit tracked approval.",
+    cannotDo: "Execute autonomously or become active because a page, registry row, handoff, or validator mentions it.",
+  },
+];
+
+const schemaRows = [
+  {
+    schema: "Role Schema",
+    controls: "Registered role contracts",
+    explanation: "Defines role identity, version, authority fields, validators, outputs, and human-gate status.",
+    boundary: "A registered contract is a template until a task-local record binds it.",
+  },
+  {
+    schema: "Director Decision Schema",
+    controls: "Director Decision Records",
+    explanation: "Makes routing reasoning inspectable and superseded rather than silently rewritten.",
+    boundary: "A decision routes one job; it does not settle scientific truth.",
+  },
+  {
+    schema: "AgentJob Schema",
+    controls: "Bounded executable contracts",
+    explanation: "Defines objective, allowed reads, allowed writes, validators, memory preflight, expected outputs, and claim boundary.",
+    boundary: "The AgentJob is one transaction, not reusable permission.",
+  },
+  {
+    schema: "Execution Role Schema",
+    controls: "Task-local role bindings",
+    explanation: "Distinguishes registered role, task overlay, and one-job provisional role semantics for one AgentJob.",
+    boundary: "Task overlays and provisional roles expire with the owning job unless separately registered.",
+  },
+  {
+    schema: "Documentation Impact Schema",
+    controls: "Project-system documentation receipts",
+    explanation: "Records whether project-system changes require documentation updates and how generated derivatives were handled.",
+    boundary: "A receipt accounts for effects; it does not make derivatives authoritative.",
+  },
+];
+
+const claimRows = [
+  {
+    claim: "Can route work",
+    safeReading: "Some roles may classify, select, or recommend one bounded next step.",
+    proofBoundary: "Routing is not proof and does not grant writes outside the AgentJob.",
+  },
+  {
+    claim: "Can create draft/control artifacts",
+    safeReading: "Roles may create candidates, audits, refutations, documentation, validators, or repair receipts inside an allowlist.",
+    proofBoundary: "Output creation does not adopt source claims or prove the artifact's target.",
+  },
+  {
+    claim: "Can modify project-control files",
+    safeReading: "Project-control roles may modify allowed control surfaces inside a tracked job.",
+    proofBoundary: "Project-control authority does not modify physics source status.",
+  },
+  {
+    claim: "Can promote protected scientific claims",
+    safeReading: "Only explicit human-gated authority can promote, close, or suspend protected claims.",
+    proofBoundary: "The default answer for automated roles is no.",
+  },
+  {
+    claim: "Creates proof authority",
+    safeReading: "No role, schema, registry row, execution record, validator, or website page creates proof authority by itself.",
+    proofBoundary: "Proof still depends on source mathematics, tracked approvals, and applicable governance records.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Role contracts and role registry",
+    use: "Active-version resolution, role status, authority level, outputs, and human-gate state.",
+    boundary: "Registry visibility supports provenance; it is not proof or execution authority.",
+  },
+  {
+    source: "Schema contracts",
+    use: "Role, Director decision, AgentJob, execution-role, and documentation-impact artifact shapes.",
+    boundary: "Schema shape is control contract behavior, not claim adoption.",
+  },
+  {
+    source: "Workflow and claim-boundary records",
+    use: "Execution-role binding, one-job allowlist, completion evidence, and blocked-overread language.",
+    boundary: "The current job boundary governs any actual execution.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Read how roles enter one bounded workflow through task-local records.",
+  },
+  {
+    label: "AgentJob",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "Inspect the job envelope that constrains role execution.",
+  },
+  {
+    label: "Gate",
+    title: "Human-Gated Promotion",
+    href: "/ai-research-system/human-gated-promotion/",
+    body: "See why protected promotion remains separate from automated outcomes.",
+  },
+  {
+    label: "Checks",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Read how validators and handoffs preserve evidence without becoming proof.",
+  },
+  {
+    label: "Current",
+    title: "Current State",
+    href: "/ai-research-system/current-state/",
+    body: "Use dated snapshots for moving role or task examples.",
+  },
+  {
+    label: "Memory",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Resolve retrieval hints back to source role contracts and registries.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "role and schema authority explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains role and schema authority conservatively. It cannot register roles, activate Gate Chair authority, expand role permissions, treat registries or validators as proof, or supersede upstream role and schema contracts.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Roles and skills explainer [Source file: github-facing/roles-and-skills-explainer.md].",
+    "The AEther Flow Project. (2026b). Role routing explainer [Source file: github-facing/role-routing-explainer.md].",
+    "The AEther Flow Project. (2026c). Agent role registry [Registry: registries/AGENT_ROLE_REGISTRY.csv].",
+    "The AEther Flow Project. (2026d). Execution role schema [Schema contract: .agents/schemas/EXECUTION_ROLE_SCHEMA.md].",
+    "The AEther Flow Website. (2026a). Role and Schema Components [Product requirements document: PRD-04].",
+    "The AEther Flow Website. (2026b). Research-Control and Agent Workflow [Product requirements document: PRD-03].",
+  ],
+};
+
+const rolesSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-roles-title ai-roles-desc">
+    <title id="ai-roles-title">Animated role and schema authority stack</title>
+    <desc id="ai-roles-desc">Role registry, schema contracts, execution-role binding, AgentJob allowlist, validators, and human gates form a bounded authority stack.</desc>
+    <defs>
+      <radialGradient id="ai-roles-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.5" />
+        <stop offset="38%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-roles-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ai-roles-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="230" ry="118" />
+      <ellipse cx="310" cy="180" rx="150" ry="76" />
+      <path d="M96 112 H524" />
+      <path d="M96 180 H524" />
+      <path d="M96 248 H524" />
+    </g>
+    <g filter="url(#ai-roles-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M116 112 C190 164, 238 164, 310 112 C382 164, 430 164, 504 112" />
+      <path class="track-figure-path orange-path" d="M116 248 C190 196, 238 196, 310 248 C382 196, 430 196, 504 248" />
+      <path class="track-figure-path signal-path alternate" d="M154 180 H466" />
+    </g>
+    <path class="track-figure-core" d="M310 128 L362 180 L310 232 L258 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="116" cy="112" r="13" />
+      <circle cx="116" cy="248" r="13" />
+      <circle cx="214" cy="180" r="13" />
+      <circle cx="310" cy="112" r="13" />
+      <circle cx="310" cy="248" r="13" />
+      <circle cx="406" cy="180" r="13" />
+      <circle cx="504" cy="112" r="13" />
+      <circle cx="504" cy="248" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Roles and Schemas"
+  description="AI Research System roles and schemas route explaining active authority, schema contracts, execution-role records, human gates, and no-proof boundaries."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Roles and Schemas"
+    title="Roles and Schemas"
+    lead="Roles classify responsibilities and schemas constrain records; neither creates proof or live permission without the task-local workflow boundary."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Roles and schemas page actions">
+      <a class="primary-link" href="#role-authority">Read matrix</a>
+      <a class="secondary-link" href="/ai-research-system/workflow/">Workflow context</a>
+      <a class="secondary-link" href="/ai-research-system/human-gated-promotion/">Human gates</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-roles-caption">
+        <Fragment set:html={rolesSvg} />
+        <figcaption id="ai-roles-caption">
+          Visual orientation only: registry rows, schemas, and role labels help
+          inspect authority, but the current job allowlist still governs.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Roles and schemas introduction">
+    <p>
+      The conservative reading is simple: role identity is not proof, schema
+      compliance is not claim adoption, and registry visibility is not live
+      authority. A registered role becomes current execution authority only
+      when a task-local execution-role record and one AgentJob allowlist bind
+      it.
+    </p>
+  </section>
+
+  <section id="role-authority" class="track-page-band" aria-labelledby="role-authority-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim-authority matrix</p>
+      <h2 id="role-authority-title">Authority starts narrow and stays record-bound.</h2>
+      <p>
+        This matrix groups roles by stable authority class. It does not replace
+        active-version resolution from the upstream role registry.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Role family</th>
+          <th scope="col">Primary authority</th>
+          <th scope="col">Can do</th>
+          <th scope="col">Cannot do</th>
+        </tr>
+      </thead>
+      <tbody>
+        {authorityRows.map((row) => (
+          <tr>
+            <th scope="row">{row.role}</th>
+            <td>{row.authority}</td>
+            <td>{row.canDo}</td>
+            <td>{row.cannotDo}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="schema-map-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Schema map</p>
+      <h2 id="schema-map-title">Schemas are control contracts, not decorative references.</h2>
+      <p>
+        Each schema matters because it defines required fields, validators, and
+        authority consequences for a record class.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Schema</th>
+          <th scope="col">Controls</th>
+          <th scope="col">Reader explanation</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {schemaRows.map((row) => (
+          <tr>
+            <th scope="row">{row.schema}</th>
+            <td>{row.controls}</td>
+            <td>{row.explanation}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-map-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">No-proof status</p>
+      <h2 id="claim-map-title">The proof-authority column is always no.</h2>
+      <p>
+        Roles can contribute routing, construction, audit, refutation,
+        documentation, validation, or human-gated decision records. Proof still
+        depends on source mathematics and tracked governance.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <th scope="col">Safe reading</th>
+          <th scope="col">Proof boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {claimRows.map((row) => (
+          <tr>
+            <th scope="row">{row.claim}</th>
+            <td>{row.safeReading}</td>
+            <td>{row.proofBoundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="roles-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="roles-source-title">Active authority belongs upstream.</h2>
+      <p>
+        This route explains how to read roles and schemas. It does not resolve
+        a fresh registry snapshot, register a role, or activate a human gate.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read role authority inside the workflow chain."
+    lead="The current job boundary, human gate, validator receipts, and current-state snapshot rules keep role language from drifting into permission."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related roles and schemas routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

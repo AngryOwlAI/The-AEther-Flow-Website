@@ -1,0 +1,384 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const validationRows = [
+  {
+    surface: "Changed file surface",
+    checkedScope: "Focused validators and tests check the files, manifests, links, layout language, SVG policy, build output, or control records in scope.",
+    nonScope: "They do not validate unmodified surfaces or future route families.",
+  },
+  {
+    surface: "Command evidence",
+    checkedScope: "Command output records whether a named check accepted the checked state.",
+    nonScope: "Command PASS does not prove scientific claims, authorize roles, or issue human approval.",
+  },
+  {
+    surface: "Screenshot or browser QA",
+    checkedScope: "Rendered evidence can catch layout overflow, missing headings, broken navigation, or visual-policy issues.",
+    nonScope: "Screenshots do not make copy source authority or prove underlying source claims.",
+  },
+  {
+    surface: "Completion record",
+    checkedScope: "The completion records outputs, validation, uncertainty, browser QA, and next recommendation for one job.",
+    nonScope: "Completion does not widen the job or promote the result.",
+  },
+  {
+    surface: "Handoff",
+    checkedScope: "The handoff preserves durable state and recommends one separate next packet.",
+    nonScope: "A handoff does not silently continue the closed job.",
+  },
+  {
+    surface: "Local checkpoint",
+    checkedScope: "A commit can seal the allowed transaction after completion evidence exists.",
+    nonScope: "A checkpoint is not deployment, owner acceptance, source adoption, or proof.",
+  },
+];
+
+const passRows = [
+  {
+    signal: "Validator PASS",
+    says: "The named deterministic check accepted the checked state.",
+    doesNotSay: "Theorem proof, ontology adoption, benchmark promotion, Gate Chair approval, or role expansion.",
+  },
+  {
+    signal: "Registry row",
+    says: "A tracked record is discoverable with metadata.",
+    doesNotSay: "The metadata proves the scientific content.",
+  },
+  {
+    signal: "Handoff complete",
+    says: "Durable state was transferred with next-route context.",
+    doesNotSay: "The next route has already executed.",
+  },
+  {
+    signal: "Commit exists",
+    says: "Repository history preserves the local transaction.",
+    doesNotSay: "Publication acceptance, deployment, or upstream source mutation.",
+  },
+  {
+    signal: "Rendered page passes QA",
+    says: "The reader surface behaved correctly for checked viewports.",
+    doesNotSay: "The reader surface became source authority.",
+  },
+];
+
+const handoffRows = [
+  {
+    artifact: "Completion",
+    purpose: "Close one job with outputs, validation, uncertainty, and forbidden conclusions.",
+    boundary: "Receipt, not proof or future permission.",
+  },
+  {
+    artifact: "Handoff YAML",
+    purpose: "Transfer state, stop conditions, next route, and validation evidence.",
+    boundary: "Routing evidence below live program state.",
+  },
+  {
+    artifact: "Handoff Markdown",
+    purpose: "Make continuation state readable for maintainers.",
+    boundary: "Human-readable summary, not new source authority.",
+  },
+  {
+    artifact: "Program state",
+    purpose: "Point to the active task, current job, latest handoff, and next action.",
+    boundary: "Compact live pointer, not proof surface.",
+  },
+  {
+    artifact: "Checkpoint",
+    purpose: "Commit the allowed packet after evidence exists.",
+    boundary: "Local audit history, not push, deploy, or owner acceptance.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Validator/operator workflow",
+    use: "PASS-result limits, evidence receipts, screenshot QA, and checked-surface classification.",
+    boundary: "Operational validation cannot promote claims.",
+  },
+  {
+    source: "Research-control workflow",
+    use: "Completion, handoff, one-job rule, program-state pointer, and checkpoint expectations.",
+    boundary: "Workflow records preserve state; they do not prove science.",
+  },
+  {
+    source: "Tooling/runtime requirements",
+    use: "Command purpose, evidence produced, validates, does-not-validate, and failure interpretation.",
+    boundary: "Runtime capability is separate from write authority.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Read the full state-to-handoff lifecycle.",
+  },
+  {
+    label: "AgentJob",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "Inspect where validators sit inside the job envelope.",
+  },
+  {
+    label: "Roles",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    body: "Keep validator evidence below role and schema authority.",
+  },
+  {
+    label: "Gate",
+    title: "Human-Gated Promotion",
+    href: "/ai-research-system/human-gated-promotion/",
+    body: "Read why PASS cannot issue protected decisions.",
+  },
+  {
+    label: "Runtime",
+    title: "Runtime Requirements",
+    href: "/ai-research-system/runtime-requirements/",
+    body: "Review planned command and environment requirements.",
+  },
+  {
+    label: "Improve",
+    title: "Project-System Improvement",
+    href: "/ai-research-system/project-system-improvement/",
+    body: "Separate validator repair from scientific continuation.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "validator and handoff operational-boundary explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains validators, receipts, handoffs, screenshots, and checkpoints as operational evidence. It cannot change validator behavior, prove physics, issue Gate Chair approval, expand roles, promote claims, deploy the site, or mutate upstream source state.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Validator and operator workflow [Source file: github-facing/validator-operator-workflow-explainer.md].",
+    "The AEther Flow Project. (2026b). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026c). Research-control scripts [Technical documentation: scripts/research_control/README.md].",
+    "The AEther Flow Project. (2026d). Project-control scripts [Technical documentation: scripts/project_control/README.md].",
+    "The AEther Flow Website. (2026a). Tooling, Skills, Scripts, and Runtime Components [Product requirements document: PRD-07].",
+    "The AEther Flow Website. (2026b). Research-Control and Agent Workflow [Product requirements document: PRD-03].",
+  ],
+};
+
+const validatorsSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-validators-title ai-validators-desc">
+    <title id="ai-validators-title">Animated validator and handoff evidence map</title>
+    <desc id="ai-validators-desc">Changed surfaces flow through focused checks, command receipts, completion, handoff, and checkpoint while proof and promotion remain outside scope.</desc>
+    <defs>
+      <radialGradient id="ai-validators-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.56" />
+        <stop offset="42%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-validators-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="178" fill="url(#ai-validators-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="232" ry="116" />
+      <ellipse cx="310" cy="180" rx="150" ry="72" />
+      <path d="M92 180 H528" />
+      <path d="M310 84 V276" />
+    </g>
+    <g filter="url(#ai-validators-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M92 180 C166 122, 244 126, 310 180 C376 234, 454 238, 528 180" />
+      <path class="track-figure-path orange-path" d="M92 180 C166 238, 244 234, 310 180 C376 126, 454 122, 528 180" />
+      <path class="track-figure-path signal-path alternate" d="M150 112 C220 158, 400 158, 470 112" />
+      <path class="track-figure-path orange-path alternate" d="M150 248 C220 202, 400 202, 470 248" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="42" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="92" cy="180" r="13" />
+      <circle cx="150" cy="112" r="13" />
+      <circle cx="150" cy="248" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="470" cy="112" r="13" />
+      <circle cx="470" cy="248" r="13" />
+      <circle cx="528" cy="180" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Validators and Handoffs"
+  description="AI Research System validators and handoffs route explaining checked scope, operational PASS limits, completions, handoffs, and checkpoint boundaries."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Validators and Handoffs"
+    title="Validators and Handoffs"
+    lead="Validators, completions, handoffs, screenshots, and commits are checked-state receipts, not proof or permission expansion."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Validators and handoffs page actions">
+      <a class="primary-link" href="#validator-scope">Read checked scope</a>
+      <a class="secondary-link" href="/ai-research-system/human-gated-promotion/">Human gates</a>
+      <a class="secondary-link" href="/ai-research-system/agentjob-lifecycle/">AgentJob lifecycle</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-validators-caption">
+        <Fragment set:html={validatorsSvg} />
+        <figcaption id="ai-validators-caption">
+          Visual orientation only: checks and handoffs preserve evidence;
+          proof and promotion stay separate.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Validators and handoffs introduction">
+    <p>
+      Validator PASS means a named check accepted the checked state. It does
+      not prove physics, expand roles, issue Gate Chair approval, adopt source
+      claims, or make generated pages authoritative. Handoffs transfer state;
+      they do not silently continue a closed job.
+    </p>
+  </section>
+
+  <section id="validator-scope" class="track-page-band" aria-labelledby="validator-scope-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Checked scope</p>
+      <h2 id="validator-scope-title">Every validation statement needs a non-scope.</h2>
+      <p>
+        A useful operator page says what was checked and what was not checked.
+        This prevents green checks from being read as broad authority.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Surface</th>
+          <th scope="col">Checked scope</th>
+          <th scope="col">Non-scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        {validationRows.map((row) => (
+          <tr>
+            <th scope="row">{row.surface}</th>
+            <td>{row.checkedScope}</td>
+            <td>{row.nonScope}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="pass-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">PASS limits</p>
+      <h2 id="pass-title">Positive signals remain scoped signals.</h2>
+      <p>
+        Validators, registries, handoffs, commits, and screenshots are all
+        valuable when interpreted at their proper grain.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Signal</th>
+          <th scope="col">What it says</th>
+          <th scope="col">What it does not say</th>
+        </tr>
+      </thead>
+      <tbody>
+        {passRows.map((row) => (
+          <tr>
+            <th scope="row">{row.signal}</th>
+            <td>{row.says}</td>
+            <td>{row.doesNotSay}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="handoff-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Completion and handoff chain</p>
+      <h2 id="handoff-title">Receipts close the current packet and protect the next one.</h2>
+      <p>
+        Good handoff practice does not hide continuation. It records exactly
+        where the current job ends and what a future live packet must reopen.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Artifact</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {handoffRows.map((row) => (
+          <tr>
+            <th scope="row">{row.artifact}</th>
+            <td>{row.purpose}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="validator-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="validator-source-title">Operational evidence stays below source authority.</h2>
+      <p>
+        This route explains how to read checks and receipts. It does not alter
+        command semantics, validator behavior, or the upstream workflow.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read validation evidence with job, role, and gate boundaries."
+    lead="The validator route is intentionally connected to the workflow lifecycle, AgentJob envelope, role model, and human-gated promotion route."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related validators and handoffs routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

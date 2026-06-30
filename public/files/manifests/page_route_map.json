@@ -203,6 +203,66 @@
       "boundary_type": "operational_boundary"
     },
     {
+      "route_path": "/ai-research-system/roles-and-schemas/",
+      "local_page_source": "src/pages/ai-research-system/roles-and-schemas/index.astro",
+      "title": "Roles and Schemas",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/roles-and-skills-explainer.md",
+        "github-facing/role-routing-explainer.md",
+        "research_control/README.md",
+        ".agents/schemas/ROLE_SCHEMA.md",
+        ".agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+        ".agents/schemas/AGENT_JOB_SCHEMA.md",
+        ".agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+        ".agents/schemas/DOCUMENTATION_IMPACT_SCHEMA.md",
+        "registries/AGENT_ROLE_REGISTRY.csv",
+        "registries/ROLE_EXECUTION_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/human-gated-promotion/",
+      "local_page_source": "src/pages/ai-research-system/human-gated-promotion/index.astro",
+      "title": "Human-Gated Promotion",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/claim-gates-explainer.md",
+        "github-facing/roles-and-skills-explainer.md",
+        "github-facing/validator-operator-workflow-explainer.md",
+        "research_control/README.md",
+        "research_control/design/mathematical_decisiveness_completion_contract.md",
+        "registries/AGENT_ROLE_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/validators-and-handoffs/",
+      "local_page_source": "src/pages/ai-research-system/validators-and-handoffs/index.astro",
+      "title": "Validators and Handoffs",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/validator-operator-workflow-explainer.md",
+        "github-facing/director-agentjob-lifecycle-explainer.md",
+        "research_control/README.md",
+        "research_control/design/mathematical_decisiveness_completion_contract.md",
+        "scripts/research_control/README.md",
+        "scripts/project_control/README.md",
+        "tests/README.md",
+        "registries/AGENT_JOB_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
       "title": "Physics Research",
