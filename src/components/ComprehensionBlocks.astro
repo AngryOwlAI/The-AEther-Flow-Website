@@ -8,6 +8,15 @@ interface Props {
 }
 
 const { content, className = "" } = Astro.props;
+const diagramFit = content.diagramFit ?? "default";
+const diagramFitClass =
+  diagramFit === "default" ? "" : `comprehension-diagram-wrap--${diagramFit}`;
+const figureFitClass =
+  diagramFit === "default" ? "" : `comprehension-figure--${diagramFit}`;
+const defaultDiagramNote =
+  "The diagram is a static reader aid. It does not replace the source files, route dossiers, or claim-status records that govern the topic.";
+const diagramNote =
+  content.diagramNote === false ? "" : content.diagramNote ?? defaultDiagramNote;
 ---
 
 <section
@@ -22,19 +31,18 @@ const { content, className = "" } = Astro.props;
   </div>
 
   {content.diagram && (
-    <div class="comprehension-diagram-wrap">
+    <div class={`comprehension-diagram-wrap ${diagramFitClass}`.trim()}>
       <Figure
+        id={`${content.id}-figure`}
         src={content.diagram.src}
         alt={content.diagram.alt}
         caption={content.diagram.caption}
         provenance={content.diagram.provenance}
-        className="comprehension-figure"
+        className={`comprehension-figure ${figureFitClass}`.trim()}
         loading="eager"
+        expandable={content.diagramExpandable}
       />
-      <p class="comprehension-diagram-note">
-        The diagram is a static reader aid. It does not replace the source
-        files, route dossiers, or claim-status records that govern the topic.
-      </p>
+      {diagramNote && <p class="comprehension-diagram-note">{diagramNote}</p>}
     </div>
   )}
   {content.equations && content.equations.length > 0 && (

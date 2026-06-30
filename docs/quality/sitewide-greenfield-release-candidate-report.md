@@ -28,6 +28,10 @@ Owner-requested static diagram wiring was resolved in packet
 routes. The optional `/license/` split-license decision map remains out of the
 core release-candidate route set because no existing source-backed static
 diagram asset matches that lower-priority concept.
+Owner-requested diagram fit feedback was resolved in the same packet by
+expanding the diagram frames to the route content width, containing oversized
+vertical diagrams, adding an in-page larger-view dialog, and removing the
+repeated visible post-diagram note.
 
 ## Route Set For Review
 
@@ -70,6 +74,10 @@ Passed:
 - Browser diagram QA after `WI-20260630-045`: 28 changed routes passed desktop
   and mobile checks for nonzero loaded diagram dimensions and no document-level
   horizontal overflow.
+- `WI-20260630-045` diagram fit refinement: all 28 greenfield diagram routes
+  passed desktop/mobile checks for full-width figure frames, contained oversized
+  diagrams, absent repeated note text, no horizontal overflow, and working
+  larger-view dialogs.
 
 Failed or blocked:
 

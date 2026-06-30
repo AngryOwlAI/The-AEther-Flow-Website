@@ -3,7 +3,7 @@ record_type: "implementation_task"
 task_id: "WI-20260630-045"
 title: "Add Greenfield Route Comprehension Diagrams"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-06-30T22:19:26Z"
+updated_utc: "2026-06-30T23:01:38Z"
 status: "active"
 
 completion_record:
@@ -25,6 +25,7 @@ requirements:
   - "Prefer reusing existing diagram concepts and PNG assets when the existing dossier/diagram accurately matches the greenfield route."
   - "Create new dossier-backed Mermaid and PNG diagrams only where no adequate existing diagram exists."
   - "Wire diagrams into route pages with alt text, captions, provenance, and nearby non-authority boundary prose."
+  - "Refine greenfield diagram presentation when owner review identifies layout, sizing, expansion, or repeated-note issues."
   - "Regenerate diagram PNGs and asset manifests when Mermaid or public assets change."
   - "Do not write to the upstream source repository, deploy, push, add dependencies, mark owner acceptance, or treat diagrams as source authority."
 
@@ -181,6 +182,6 @@ checkpoint_expectations:
   closeout: "Write completion evidence, then use npm run checkpoint:implementation. Do not push or deploy."
 
 next_recommended_action:
-  task_packet: "Greenfield diagram rollout closeout"
-  summary: "After validation, record diagrams added, changed files, manifest updates, and owner-review status."
+  task_packet: "Owner review decision"
+  summary: "Owner must review the greenfield route set with refined static diagrams and either accept it or request another bounded feedback packet."
   do_not_skip: "Do not mark owner acceptance, push, deploy, or mutate upstream."

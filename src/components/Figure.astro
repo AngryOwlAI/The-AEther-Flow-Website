@@ -1,20 +1,94 @@
 ---
 interface Props {
+  id?: string;
   src: string;
   alt: string;
   caption: string;
   provenance?: string;
   className?: string;
   loading?: "lazy" | "eager";
+  expandable?: boolean;
+  expandLabel?: string;
 }
 
-const { src, alt, caption, provenance, className = "", loading = "lazy" } = Astro.props;
+const {
+  id,
+  src,
+  alt,
+  caption,
+  provenance,
+  className = "",
+  loading = "lazy",
+  expandable = false,
+  expandLabel = "Open larger",
+} = Astro.props;
+const dialogId = expandable && id ? `${id}-dialog` : undefined;
 ---
 
-<figure class={`content-figure ${className}`.trim()}>
-  <img src={src} alt={alt} loading={loading} decoding="async" />
+<figure id={id} class={`content-figure ${className}`.trim()}>
+  <div class="content-figure-media">
+    <img src={src} alt={alt} loading={loading} decoding="async" />
+    {expandable && dialogId && (
+      <div class="figure-actions">
+        <a
+          class="figure-expand-link"
+          href={src}
+          target="_blank"
+          rel="noreferrer"
+          data-figure-expand={`#${dialogId}`}
+          aria-haspopup="dialog"
+        >
+          {expandLabel}
+        </a>
+      </div>
+    )}
+  </div>
   <figcaption>
     <span>{caption}</span>
     {provenance && <small>{provenance}</small>}
   </figcaption>
+  {expandable && dialogId && (
+    <dialog id={dialogId} class="figure-dialog" aria-label={`Expanded diagram: ${caption}`}>
+      <div class="figure-dialog-shell">
+        <div class="figure-dialog-toolbar">
+          <p>{caption}</p>
+          <form method="dialog">
+            <button type="submit">Close</button>
+          </form>
+        </div>
+        <img src={src} alt={alt} loading="lazy" decoding="async" />
+        {provenance && <p class="figure-dialog-provenance">{provenance}</p>}
+      </div>
+    </dialog>
+  )}
 </figure>
+
+<script>
+  const figureWindow = window as Window & { __aetherFigureDialogs?: boolean };
+
+  if (!figureWindow.__aetherFigureDialogs) {
+    figureWindow.__aetherFigureDialogs = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const opener = target.closest("[data-figure-expand]");
+      if (opener instanceof HTMLAnchorElement) {
+        const selector = opener.dataset.figureExpand;
+        const dialog = selector ? document.querySelector(selector) : null;
+        if (dialog instanceof HTMLDialogElement && typeof dialog.showModal === "function") {
+          event.preventDefault();
+          dialog.showModal();
+        }
+        return;
+      }
+
+      if (target instanceof HTMLDialogElement && target.open) {
+        target.close();
+      }
+    });
+  }
+</script>

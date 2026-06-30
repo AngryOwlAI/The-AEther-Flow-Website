@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-06-30T22:19:26Z"
+updated_utc: "2026-06-30T23:01:38Z"
 status: "active"
 
 task_id: "WI-20260630-045"
@@ -12,13 +12,14 @@ completion_record:
   completion_id: "WJC-20260630-045-A"
   path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
 
-summary: "Opened the owner-requested greenfield diagram rollout packet."
+summary: "Completed and refined the owner-requested greenfield diagram rollout packet."
 
 current_state:
   - "WI-20260630-044 is completed, checkpointed, and superseded."
   - "The rebuilt greenfield route set remains technically ready with owner review pending."
   - "The owner requested implementation of the Greenfield Diagram Opportunity Review."
   - "This packet authorizes source-backed static comprehension diagrams, route-level figure wiring, diagram PNG assets, and manifest updates for the greenfield route set."
+  - "Owner feedback on diagram fit was addressed with route-width diagram frames, viewport-contained vertical diagrams, in-page larger-view dialogs, and suppressed repeated visible post-diagram notes."
   - "Diagrams must remain reader aids and must not create source authority, proof authority, claim promotion, owner acceptance, deployment readiness, or upstream source changes."
   - "No deployment, push, upstream source-project write, source refresh, dependency addition, route retirement, redirect change, or owner acceptance is authorized."
 
@@ -61,6 +62,11 @@ required_validators:
     status: "passed"
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+
+browser_qa:
+  - id: "browser-diagram-fit-and-dialog-qa"
+    command: "Playwright route loop for 28 greenfield diagram routes at 1440x1000 and 390x844"
     status: "passed"
 
 next_recommended_action:

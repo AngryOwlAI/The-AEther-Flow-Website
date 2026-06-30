@@ -4,7 +4,7 @@ job_id: "WJ-20260630-045-A"
 task_id: "WI-20260630-045"
 title: "Wire source-backed diagrams into greenfield routes"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-06-30T22:19:26Z"
+updated_utc: "2026-06-30T23:01:38Z"
 status: "active"
 
 completion_record:
@@ -102,6 +102,7 @@ required_outputs:
   - "Priority 1 routes receive route-level static diagrams or explicitly reused diagram assets when the source-backed concept already exists."
   - "Priority 2 routes receive route-level static diagrams where low-risk reuse is available or an optional lower-priority diagram is useful."
   - "New diagrams, if any, have tracked Mermaid sources, rendered PNGs, alt text, captions, provenance, and source-authority boundary copy."
+  - "Greenfield diagram blocks address owner feedback on route-width fit, oversized diagram containment, larger-view inspection, and repeated visible note removal."
   - "Changed public assets are reflected in `asset_manifest.json`; source/provenance manifests are updated if route wiring changes require it."
   - "Owner review remains pending and deployment remains unauthorized."
 
@@ -178,6 +179,6 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 next_recommended_action:
-  task_packet: "Greenfield diagram rollout closeout"
-  summary: "After validation, record diagrams added, changed files, manifest updates, and owner-review status."
+  task_packet: "Owner review decision"
+  summary: "Owner must review the greenfield route set with refined static diagrams and either accept it or request another bounded feedback packet."
   do_not_skip: "Do not mark owner acceptance, push, deploy, or mutate upstream."

@@ -936,6 +936,7 @@ summary:focus-visible {
 }
 
 .content-figure {
+  position: relative;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--content-card-border);
@@ -944,10 +945,117 @@ summary:focus-visible {
   box-shadow: var(--content-card-shadow);
 }
 
+.content-figure-media {
+  position: relative;
+  display: grid;
+  min-width: 0;
+}
+
 .content-figure img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.figure-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.figure-expand-link,
+.figure-dialog button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  border: 1px solid var(--content-card-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--color-dark-panel) 92%, transparent);
+  padding: 0.45rem 0.7rem;
+  color: var(--color-dark-text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--owl-black) 38%, transparent);
+  cursor: pointer;
+}
+
+.figure-expand-link:hover,
+.figure-expand-link:focus-visible,
+.figure-dialog button:hover,
+.figure-dialog button:focus-visible {
+  border-color: var(--color-dark-orange);
+  color: var(--color-dark-cyan);
+}
+
+.figure-dialog {
+  width: min(100vw - 2rem, 1280px);
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-dark-text) 22%, transparent);
+  border-radius: 8px;
+  background: var(--color-dark-page);
+  padding: 0;
+  color: var(--color-dark-text);
+  box-shadow: 0 30px 100px color-mix(in srgb, var(--owl-black) 72%, transparent);
+}
+
+.figure-dialog::backdrop {
+  background: color-mix(in srgb, var(--owl-black) 72%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.figure-dialog-shell {
+  display: grid;
+  max-height: inherit;
+  overflow: auto;
+}
+
+.figure-dialog-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-dark-text) 16%, transparent);
+  background: color-mix(in srgb, var(--color-dark-panel) 96%, transparent);
+  padding: 0.85rem 1rem;
+}
+
+.figure-dialog-toolbar p,
+.figure-dialog-provenance {
+  margin: 0;
+  color: var(--color-dark-muted);
+}
+
+.figure-dialog-toolbar p {
+  overflow-wrap: anywhere;
+  font-weight: 800;
+}
+
+.figure-dialog img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 11rem);
+  object-fit: contain;
+  background: #000000;
+}
+
+.figure-dialog-provenance {
+  border-top: 1px solid color-mix(in srgb, var(--color-dark-text) 16%, transparent);
+  padding: 0.85rem 1rem;
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
 }
 
 .content-figure figcaption {
@@ -2793,12 +2901,30 @@ html:has(body.project-overview-page) {
   max-width: 940px;
 }
 
+.comprehension-diagram-wrap--full-width,
+.comprehension-diagram-wrap--viewport-contained {
+  width: 100%;
+  max-width: none;
+}
+
 .content-figure.comprehension-figure {
   background: color-mix(in srgb, var(--color-dark-panel) 74%, var(--overview-bg) 26%);
 }
 
 .content-figure.comprehension-figure img {
   background: #000000;
+}
+
+.content-figure.comprehension-figure--viewport-contained .content-figure-media {
+  justify-items: center;
+  background: #000000;
+}
+
+.content-figure.comprehension-figure--viewport-contained .content-figure-media > img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(70vh, 760px);
+  object-fit: contain;
 }
 
 .comprehension-diagram-note {

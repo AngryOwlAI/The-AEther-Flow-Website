@@ -491,7 +491,22 @@ const requireDiagram = (title: string): DiagramGalleryItem => {
   return diagram;
 };
 
-export const greenfieldRouteDiagramBlocks = {
+const withGreenfieldDiagramDefaults = <T extends Record<string, ComprehensionContent>>(
+  blocks: T,
+): { [K in keyof T]: ComprehensionContent } =>
+  Object.fromEntries(
+    Object.entries(blocks).map(([key, block]) => [
+      key,
+      {
+        diagramExpandable: true,
+        diagramFit: "full-width",
+        diagramNote: false,
+        ...block,
+      },
+    ]),
+  ) as { [K in keyof T]: ComprehensionContent };
+
+export const greenfieldRouteDiagramBlocks = withGreenfieldDiagramDefaults({
   home: {
     id: "home-static-diagram",
     eyebrow: "Static diagram",
@@ -528,6 +543,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "physics-roadmap-static-diagram",
     eyebrow: "Static diagram",
     title: "Read the derivation roadmap as a burden ladder.",
+    diagramFit: "viewport-contained",
     summary:
       "The ladder names the open sequence from ontology primitives through metric behavior, matter coupling, equations, and benchmark promotion without discharging those burdens.",
     diagram: requireDiagram("Physics derivation burden ladder"),
@@ -584,6 +600,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "ai-roles-schemas-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep role labels below schema and job authority.",
+    diagramFit: "viewport-contained",
     summary:
       "The role stack shows that labels, schemas, execution-role records, AgentJob allowlists, and validators occupy distinct authority layers.",
     diagram: requireDiagram("AI roles authority stack"),
@@ -600,6 +617,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "ai-validators-handoffs-static-diagram",
     eyebrow: "Static diagram",
     title: "Read PASS as scoped checked-state evidence.",
+    diagramFit: "viewport-contained",
     summary:
       "The validator boundary diagram shows the changed surface, focused check, receipt, PASS scope, handoff, and the no-claim-promotion boundary.",
     diagram: requireDiagram("Validator PASS boundary"),
@@ -608,6 +626,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "ai-memory-preflight-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep retrieval below source inspection.",
+    diagramFit: "viewport-contained",
     summary:
       "The source-first layers diagram shows memory, generated retrieval layers, registries, handoffs, and source inspection without allowing retrieval to become authority.",
     diagram: requireDiagram("Memory source-first layers"),
@@ -616,6 +635,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "ai-project-improvement-static-diagram",
     eyebrow: "Static diagram",
     title: "Read project-system improvement as a bounded repair loop.",
+    diagramFit: "viewport-contained",
     summary:
       "The improvement diagram shows signal, classification, sidecar input, one AgentJob, evidence receipts, and close/defer/reject outcomes.",
     diagram: requireDiagram("Project-system improvement loop"),
@@ -632,6 +652,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "ai-runtime-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep tool capability separate from authorization.",
+    diagramFit: "viewport-contained",
     summary:
       "The technical tiers diagram shows Node, Python, validators, browser checks, build tools, and the boundary that tool availability does not grant permission.",
     diagram: requireDiagram("Technical tool authority tiers"),
@@ -648,6 +669,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "resources-source-authority-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep website pages downstream from source authority.",
+    diagramFit: "viewport-contained",
     summary:
       "The source-authority ladder shows source files and registries above generated derivatives, public pages, diagrams, and reader orientation.",
     diagram: requireDiagram("Source authority ladder"),
@@ -672,6 +694,7 @@ export const greenfieldRouteDiagramBlocks = {
     id: "resources-retrieval-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep retrieval layers below canonical source inspection.",
+    diagramFit: "viewport-contained",
     summary:
       "The source-first memory diagram shows memory, semantic extracts, mirrors, caches, registries, handoffs, and the final source-inspection boundary.",
     diagram: requireDiagram("Memory source-first layers"),
@@ -716,7 +739,7 @@ export const greenfieldRouteDiagramBlocks = {
       "The specialist guided-starts diagram shows audience-specific paths into internal pages before provenance links or source inspection.",
     diagram: requireDiagram("Specialist guided starts"),
   },
-} satisfies Record<string, ComprehensionContent>;
+} satisfies Record<string, ComprehensionContent>);
 
 export const resourceGroups = [
   {
