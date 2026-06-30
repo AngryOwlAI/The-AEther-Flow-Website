@@ -1,0 +1,181 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-028"
+title: "Open Fresh Greenfield Control Packet"
+created_utc: "2026-06-30T16:42:45Z"
+updated_utc: "2026-06-30T16:42:45Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-000 Open Fresh Greenfield Control Packet"
+  canonical_sitewide_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  implementation_plan_index: "ImplementationPlans/website-information-space/README.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-027.yaml"
+
+requirements:
+  - "Resolve the current implementation-control boundary before route work."
+  - "Close the completed implementation-plan family validation packet as superseded."
+  - "Prepare a fresh, narrow authorization path for GF-001 only."
+  - "Do not implement public routes, delete old routes, push, deploy, refresh upstream sources, or mutate the upstream research repository."
+  - "Record that the old implementation remains preservation evidence only."
+
+goal: "Complete GF-000 by opening the greenfield-control path for the GF-001 foundation contract and review-ledger slice."
+
+scope:
+  in_scope:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "ImplementationPlans/website-information-space/README.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-027.yaml"
+    - "implementation_control/handoffs/WH-20260630-027.md"
+    - "implementation_control/tasks/WI-20260630-027/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-027/jobs/WJ-20260630-027-A.yaml"
+    - "implementation_control/tasks/WI-20260630-027/jobs/completions/WJC-20260630-027-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.md"
+    - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/completions/WJC-20260630-028-A.yaml"
+    - "git status output"
+  out_of_scope:
+    - "Public routes."
+    - "Public route copy."
+    - "Public assets."
+    - "Public manifests."
+    - "Source snapshots."
+    - "Source bundle datasets."
+    - "Generated HTML, Markdown, wiki, PDF, diagram, or retrieval-layer refreshes."
+    - "Source-derived public claim changes."
+    - "Upstream source-project writes."
+    - "Git push."
+    - "Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260630-028-A"
+  next_packet_after_this_task: "GF-001 Create Greenfield Shell Contract And Review Ledger"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "ImplementationPlans/website-information-space/README.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-027.yaml"
+    - "implementation_control/handoffs/WH-20260630-027.md"
+    - "implementation_control/tasks/WI-20260630-027/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-027/jobs/WJ-20260630-027-A.yaml"
+    - "implementation_control/tasks/WI-20260630-027/jobs/completions/WJC-20260630-027-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-027.yaml"
+    - "implementation_control/handoffs/WH-20260630-027.md"
+    - "implementation_control/tasks/WI-20260630-027/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-027/jobs/WJ-20260630-027-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.md"
+    - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/completions/WJC-20260630-028-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This packet writes control records only and does not change public route copy."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot or upstream claim refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No public navigation or route retirement change is in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No CSS, component, layout, SVG, or visual asset change is in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public file publication is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest write is in scope."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+next_packet_authorization:
+  task_packet: "GF-001 Create Greenfield Shell Contract And Review Ledger"
+  intended_allowed_writes:
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.md"
+    - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-029.yaml"
+    - "implementation_control/handoffs/WH-20260630-029.md"
+    - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+    - "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
+  forbidden_this_packet:
+    - "src/pages/**"
+    - "src/components/**"
+    - "src/layouts/**"
+    - "src/lib/**"
+    - "src/styles/**"
+    - "public/**"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/**"
+
+stop_conditions:
+  - "Any public route implementation is proposed in GF-000."
+  - "Any write outside the explicit GF-000 control-record allowlist becomes necessary."
+  - "Any upstream source-project write is proposed."
+  - "Any source snapshot, public asset, public manifest, push, deploy, generated output, wiki, or local retrieval change becomes necessary."
+  - "A source-derived public claim would be changed."
+  - "Required validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-028-A"
+  path: "implementation_control/tasks/WI-20260630-028/jobs/completions/WJC-20260630-028-A.yaml"
+
+handoff:
+  latest_handoff_id: "WH-20260630-028"
+  yaml_path: "implementation_control/handoffs/WH-20260630-028.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-028.md"

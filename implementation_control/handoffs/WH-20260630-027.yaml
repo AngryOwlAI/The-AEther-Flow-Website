@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-027"
 created_utc: "2026-06-30T16:29:00Z"
-updated_utc: "2026-06-30T16:29:00Z"
-status: "active"
+updated_utc: "2026-06-30T16:42:45Z"
+status: "completed"
 
 task_id: "WI-20260630-027"
 job_id: "WJ-20260630-027-A"
@@ -18,6 +18,7 @@ current_state:
   - "All website information-space PRDs now have implementation-plan outputs."
   - "The sitewide greenfield planning inputs are tracked in this packet."
   - "The implementation-plan index records every PRD conversion as complete."
+  - "This packet is checkpointed and superseded by the GF-000 greenfield-control packet."
   - "No public route, public asset, public manifest, deployment, push, or upstream write is authorized."
 
 source_authority_boundary:
@@ -60,6 +61,6 @@ validation_results:
     checked_utc: "2026-06-30T16:29:00Z"
 
 next_recommended_action:
-  task_packet: "first greenfield route implementation packet"
-  summary: "Open a fresh implementation-control packet for one greenfield route or route-family implementation slice."
+  task_packet: "GF-000 Open Fresh Greenfield Control Packet"
+  summary: "Open the greenfield-control packet that prepares the GF-001 foundation contract and review-ledger slice."
   do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."
