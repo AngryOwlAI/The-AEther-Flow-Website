@@ -1,0 +1,380 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const lifecycleRows = [
+  {
+    stage: "Current state pointer",
+    artifact: "program_state.yaml",
+    explanation:
+      "Names the active task, latest handoff, status, and next route so the operator starts from tracked state.",
+    boundary: "Compact pointer, not a proof surface or permanent website truth.",
+  },
+  {
+    stage: "Memory preflight",
+    artifact: "Memory receipt and source inspections",
+    explanation:
+      "Finds likely prior decisions and source paths before work begins. Memory preflight helps navigation; canonical sources remain authority.",
+    boundary: "Retrieval support only; useful hits must resolve back to tracked files.",
+  },
+  {
+    stage: "Director decision",
+    artifact: "Director Decision Record",
+    explanation:
+      "Selects one route, records why alternatives were not selected, and defines the authority surfaces used.",
+    boundary: "Routing record, not a scientific verdict.",
+  },
+  {
+    stage: "Execution-role binding",
+    artifact: "Execution-role record",
+    explanation:
+      "The execution-role record is the task-local authority contract that binds the selected role semantics to the job.",
+    boundary: "Role identity alone grants no permission.",
+  },
+  {
+    stage: "AgentJob contract",
+    artifact: "AgentJob YAML",
+    explanation:
+      "Defines one objective, allowed reads, allowed writes, expected outputs, validators, and claim boundary.",
+    boundary: "One bounded job; not reusable permission.",
+  },
+  {
+    stage: "One bounded execution",
+    artifact: "Tool and file actions inside the allowlist",
+    explanation:
+      "One invocation, one bounded AgentJob. Execution may use parent-child synthesis only as internal analysis inside one outer AgentJob.",
+    boundary: "Parent-child synthesis does not expand authority or create multiple independent jobs.",
+  },
+  {
+    stage: "Completion record",
+    artifact: "Completion YAML",
+    explanation:
+      "Records outputs, command evidence, validator results, uncertainty, forbidden conclusions, and next recommendation.",
+    boundary: "Validator PASS means operational consistency, not scientific proof.",
+  },
+  {
+    stage: "Handoff",
+    artifact: "Handoff YAML and Markdown",
+    explanation:
+      "Transfers durable state and names a separate next packet when more work remains.",
+    boundary: "A handoff is future routing context, not a silent extension of a closed job.",
+  },
+  {
+    stage: "Checkpoint",
+    artifact: "Local commit",
+    explanation:
+      "Seals the website-local transaction after evidence and validators are recorded.",
+    boundary: "Repository history is useful audit evidence, not proof or publication acceptance.",
+  },
+];
+
+const boundaryRows = [
+  {
+    claim: "One request can be made inspectable.",
+    safeUse:
+      "Route the request through tracked state, source inspection, one decision, one job, completion, handoff, and checkpoint.",
+    blocked:
+      "Do not treat the workflow as autonomous scientific judgment or proof of a physics result.",
+  },
+  {
+    claim: "Parent-child synthesis can compare perspectives.",
+    safeUse:
+      "Use Parent-child synthesis as internal decomposition inside one outer AgentJob when the source workflow allows it.",
+    blocked:
+      "Do not present child artifacts as separate independent AgentJobs or expanded authority.",
+  },
+  {
+    claim: "Validation can protect operational boundaries.",
+    safeUse:
+      "Read PASS as evidence that named checks accepted the checked repository state.",
+    blocked:
+      "Do not infer theorem proof, ontology adoption, benchmark promotion, or model understanding.",
+  },
+  {
+    claim: "Local obstruction can improve routing.",
+    safeUse:
+      "A local obstruction sharpens routing; it is not global theory rejection.",
+    blocked:
+      "Do not convert a scoped failure into a global no-go claim without tracked authority.",
+  },
+  {
+    claim: "Human gates can promote protected claims.",
+    safeUse:
+      "Human-gated promotion requires explicit tracked authority and remains separate from automated execution.",
+    blocked:
+      "Do not treat completions, handoffs, commits, registries, or role labels as promotion.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Research-control workflow",
+    use: "One-job rule, Director decisions, AgentJob contracts, completions, handoffs, and validator limits.",
+    boundary: "Workflow authority stays in tracked upstream control files.",
+  },
+  {
+    source: "AgentJob and execution-role schemas",
+    use: "Artifact-class explanation for role binding, allowlists, outputs, validators, and claim boundaries.",
+    boundary: "Schemas explain shape; a live job still needs a tracked task-local record.",
+  },
+  {
+    source: "Current-frontier rules",
+    use: "Dated snapshot and stale-data behavior for any moving implementation-control example.",
+    boundary: "Transient task or handoff IDs are not stable website truth.",
+  },
+  {
+    source: "Validator and handoff explainers",
+    use: "PASS limits, completion receipts, handoff separation, and blocked-overread language.",
+    boundary: "Operational validation is not scientific proof.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Current",
+    title: "Current State",
+    href: "/ai-research-system/current-state/",
+    body: "Read dated implementation-control context before interpreting live-looking workflow status.",
+  },
+  {
+    label: "AgentJob",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "Inspect one permission envelope from inputs through completion and handoff.",
+  },
+  {
+    label: "Roles",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    body: "See how role labels differ from task-local execution authority.",
+  },
+  {
+    label: "Validators",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Read PASS, completion, and handoff boundaries beside their non-proof limits.",
+  },
+  {
+    label: "Memory",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Follow retrieval support back to source inspection and authority boundaries.",
+  },
+  {
+    label: "Runtime",
+    title: "Runtime Requirements",
+    href: "/ai-research-system/runtime-requirements/",
+    body: "Review tool, validator, and checkpoint requirements as operational evidence.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "AI workflow artifact-class explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains the governed workflow as auditable infrastructure. It cannot treat model behavior, validator PASS, generated artifacts, handoffs, role labels, commits, or registries as scientific proof or source authority.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Research-agent workflow [Source file: github-facing/research-agent-workflow-explainer.md].",
+    "The AEther Flow Project. (2026b). Director decisions and AgentJob lifecycle [Source file: github-facing/director-agentjob-lifecycle-explainer.md].",
+    "The AEther Flow Project. (2026c). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026d). Validator and operator workflow [Source file: github-facing/validator-operator-workflow-explainer.md].",
+    "The AEther Flow Website. (2026a). Research-Control and Agent Workflow [Product requirements document: PRD-03].",
+    "The AEther Flow Website. (2026b). Current Research Frontier for Website Use [Product requirements document: PRD-09].",
+  ],
+};
+
+const workflowSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-workflow-title ai-workflow-desc">
+    <title id="ai-workflow-title">Animated bounded workflow lifecycle map</title>
+    <desc id="ai-workflow-desc">A request narrows through tracked state, memory and source checks, one decision, one AgentJob, completion, handoff, and checkpoint.</desc>
+    <defs>
+      <radialGradient id="ai-workflow-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.54" />
+        <stop offset="42%" stop-color="var(--owl-orange-500)" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-workflow-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="176" fill="url(#ai-workflow-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="238" ry="112" />
+      <ellipse cx="310" cy="180" rx="156" ry="72" />
+      <path d="M84 180 C150 116, 224 108, 310 132 C396 108, 470 116, 536 180" />
+      <path d="M84 180 C150 244, 224 252, 310 228 C396 252, 470 244, 536 180" />
+    </g>
+    <g filter="url(#ai-workflow-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M86 180 H166 C202 180, 202 112, 248 112 H372 C420 112, 420 180, 534 180" />
+      <path class="track-figure-path orange-path" d="M86 180 H166 C202 180, 202 248, 248 248 H372 C420 248, 420 180, 534 180" />
+      <path class="track-figure-path signal-path alternate" d="M248 112 C278 152, 342 152, 372 112" />
+      <path class="track-figure-path orange-path alternate" d="M248 248 C278 208, 342 208, 372 248" />
+    </g>
+    <path class="track-figure-core" d="M310 128 L362 180 L310 232 L258 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="86" cy="180" r="13" />
+      <circle cx="166" cy="180" r="13" />
+      <circle cx="248" cy="112" r="13" />
+      <circle cx="248" cy="248" r="13" />
+      <circle cx="372" cy="112" r="13" />
+      <circle cx="372" cy="248" r="13" />
+      <circle cx="534" cy="180" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Workflow"
+  description="AI Research System workflow route explaining how one request becomes one bounded, source-inspected, validator-checked transaction without becoming proof."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Workflow"
+    title="Workflow"
+    lead="One research or implementation request becomes one bounded workflow only after source state, authority boundaries, and validation obligations are made explicit."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Workflow page actions">
+      <a class="primary-link" href="#workflow-lifecycle">Read lifecycle</a>
+      <a class="secondary-link" href="/ai-research-system/agentjob-lifecycle/">AgentJob lifecycle</a>
+      <a class="secondary-link" href="/ai-research-system/current-state/">Current state</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-workflow-caption">
+        <Fragment set:html={workflowSvg} />
+        <figcaption id="ai-workflow-caption">
+          Visual orientation only: each record narrows the transaction, and
+          validation remains operational evidence rather than proof.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Workflow introduction">
+    <p>
+      One invocation, one bounded AgentJob. Memory preflight helps navigation;
+      canonical sources remain authority. Validator PASS means operational
+      consistency, not scientific proof. The workflow is valuable because it
+      preserves boundaries while moving from request to handoff.
+    </p>
+  </section>
+
+  <section id="workflow-lifecycle" class="track-page-band" aria-labelledby="workflow-lifecycle-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Lifecycle</p>
+      <h2 id="workflow-lifecycle-title">The route from tracked state to handoff narrows authority.</h2>
+      <p>
+        Each artifact answers one operational question: what state was read,
+        which route was chosen, what one job may do, how it closed, and where
+        the next separate packet begins.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Stage</th>
+          <th scope="col">Artifact</th>
+          <th scope="col">Reader explanation</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {lifecycleRows.map((row) => (
+          <tr>
+            <th scope="row">{row.stage}</th>
+            <td>{row.artifact}</td>
+            <td>{row.explanation}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="workflow-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Blocked overreads</p>
+      <h2 id="workflow-boundary-title">Workflow evidence helps reasoning only when it stays scoped.</h2>
+      <p>
+        The strongest safeguard is adjacency: claim-boundary language appears
+        next to workflow-power language, especially near validation, handoff,
+        and parent-child synthesis.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Workflow claim</th>
+          <th scope="col">Safe use</th>
+          <th scope="col">Blocked overread</th>
+        </tr>
+      </thead>
+      <tbody>
+        {boundaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.claim}</th>
+            <td>{row.safeUse}</td>
+            <td>{row.blocked}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="workflow-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="workflow-source-title">This page explains source-backed artifact classes.</h2>
+      <p>
+        Stable workflow copy should describe record classes. If a future page
+        shows task or handoff identifiers, they must be dated snapshot data
+        under the current-state rules.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Follow the model before inspecting lower-level records."
+    lead="Internal routes keep the reader journey stable; source links remain provenance and authority references."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related AI workflow routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

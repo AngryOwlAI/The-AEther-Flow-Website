@@ -164,6 +164,45 @@
       "boundary_type": "operational_boundary"
     },
     {
+      "route_path": "/ai-research-system/workflow/",
+      "local_page_source": "src/pages/ai-research-system/workflow/index.astro",
+      "title": "Workflow",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/research-agent-workflow-explainer.md",
+        "github-facing/director-agentjob-lifecycle-explainer.md",
+        "github-facing/validator-operator-workflow-explainer.md",
+        "research_control/README.md",
+        "research_control/program_state.yaml",
+        ".agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+        ".agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+        ".agents/schemas/AGENT_JOB_SCHEMA.md",
+        "registries/AGENT_JOB_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/agentjob-lifecycle/",
+      "local_page_source": "src/pages/ai-research-system/agentjob-lifecycle/index.astro",
+      "title": "AgentJob Lifecycle",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/director-agentjob-lifecycle-explainer.md",
+        "github-facing/research-agent-workflow-explainer.md",
+        "research_control/README.md",
+        ".agents/schemas/AGENT_JOB_SCHEMA.md",
+        "research_control/templates/COMPLETION_TEMPLATE.yaml",
+        "registries/AGENT_JOB_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
       "title": "Physics Research",

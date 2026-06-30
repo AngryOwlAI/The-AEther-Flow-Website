@@ -2,18 +2,19 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-034"
 created_utc: "2026-06-30T18:07:57Z"
-updated_utc: "2026-06-30T18:17:31Z"
+updated_utc: "2026-06-30T18:22:58Z"
 status: "completed"
 
 task_id: "WI-20260630-034"
 job_id: "WJ-20260630-034-A"
 
-summary: "Completed GF-006 for the AI Research System overview and current-state slice."
+summary: "Completed GF-006 for the AI Research System overview and current-state slice; checkpointed and superseded by GF-007."
 
 current_state:
   - "The GF-005 Physics claim-status and open-burdens packet is completed and superseded."
   - "This packet implemented one public route implementation slice for `/ai-research-system/` and `/ai-research-system/current-state/`."
   - "The two GF-006 routes are technically ready with human review pending."
+  - "This packet is checkpointed and superseded by the GF-007 AI workflow and AgentJob lifecycle packet."
   - "Public workflow-claim changes, route-local SVG/style changes, and public route/provenance manifest writes are approved only inside the GF-006 allowlist."
   - "No workflow route, AgentJob lifecycle route, role/schema route, validator/handoff route, memory route, runtime route, improvement route, Resources route, old route retirement, public downloadable asset change, deployment, push, source refresh, generated derivative refresh, retrieval refresh, or upstream write is authorized."
 
@@ -72,7 +73,7 @@ completion_record:
 
 next_recommended_action:
   task_packet: "GF-007 Build AI Workflow And AgentJob Lifecycle Slice"
-  summary: "After checkpoint, open the next fresh implementation-control packet for the AI workflow and AgentJob lifecycle slice."
+  summary: "Open the AI workflow and AgentJob lifecycle packet."
   do_not_skip: "Do not implement additional route families, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active AI overview and current-state packet without fresh live control records."
 
 stop_before:

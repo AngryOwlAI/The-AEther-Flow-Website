@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-30T18:14:47.111725+00:00",
+  "generated_at": "2026-06-30T18:30:21.040827+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "e0e484e6b62528ece2a084aab9d27e84a5bb43b5",
   "source_commit_date": "2026-06-30T12:11:28-06:00",
@@ -643,6 +643,199 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "upstream_authority_status": "draft_control_artifact",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/workflow/",
+      "local_page_source": "src/pages/ai-research-system/workflow/index.astro",
+      "local_page_sha256": "f1e4d191406c907046319217a59564ba03d48cf2b92e60cf4c764088285bf9fc",
+      "title": "Workflow",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/research-agent-workflow-explainer.md",
+          "sha256": "1031b04c2936096382f1b6fe30d52207ef68641b9edc4d0a619780b83c8d24e1",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/research-agent-workflow-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/director-agentjob-lifecycle-explainer.md",
+          "sha256": "c7c4bcf8aac5754ef9366cc90444acc58bfe090a838938c57ad3f4487e74d10b",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/director-agentjob-lifecycle-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/validator-operator-workflow-explainer.md",
+          "sha256": "6d92fb7801fea1775ea2539d1fbbca2511993cea6608296052497e32316c8c85",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/validator-operator-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/validator-operator-workflow-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/README.md",
+          "sha256": "60b7b72b17f28d4e5d68bce994b0378a14093c9b6da8eafc88042976615ce741",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/README.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/program_state.yaml",
+          "sha256": "7c3439d1ec071a9dd31a8d285e4cae37c82ca7dcca5d4c35b7af5a9eb13a8b77",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/program_state.yaml",
+          "omission_reason": null
+        },
+        {
+          "path": ".agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+          "sha256": "8163f5dbe8e231dc61f1d78032edc972f61c286ce5bf417031937e56e9849a17",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+          "omission_reason": null
+        },
+        {
+          "path": ".agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+          "sha256": "85dec5d4de43738bb3f87c64c6d059b509706288bb298a571161cbb2ab437c41",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+          "omission_reason": null
+        },
+        {
+          "path": ".agents/schemas/AGENT_JOB_SCHEMA.md",
+          "sha256": "df2ecfd073de5fba78d0c079d9abb493e320492005c037aa70854c6477d1990a",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/AGENT_JOB_SCHEMA.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/AGENT_JOB_SCHEMA.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/AGENT_JOB_REGISTRY.csv",
+          "sha256": "d8e81e09e5a55281a965f7c9b7ff36834625e37181853241a45e2d9c9a94c66f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/AGENT_JOB_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/AGENT_JOB_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "19f8f9e66349c24f47d2430794ade0bf52dbf967198ae0009a9c618e3ae3b898",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        }
+      ],
+      "upstream_source_commit": "e0e484e6b62528ece2a084aab9d27e84a5bb43b5",
+      "upstream_source_commit_date": "2026-06-30T12:11:28-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/validator-operator-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/AGENT_JOB_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/AGENT_JOB_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/research-agent-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/director-agentjob-lifecycle-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/validator-operator-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/program_state.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/DIRECTOR_DECISION_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/EXECUTION_ROLE_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/AGENT_JOB_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/AGENT_JOB_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/agentjob-lifecycle/",
+      "local_page_source": "src/pages/ai-research-system/agentjob-lifecycle/index.astro",
+      "local_page_sha256": "83db8c11599540b7d75a693b06334c82c0ed8dcd7d8bd4b047288b4c5167fec9",
+      "title": "AgentJob Lifecycle",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/director-agentjob-lifecycle-explainer.md",
+          "sha256": "c7c4bcf8aac5754ef9366cc90444acc58bfe090a838938c57ad3f4487e74d10b",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/director-agentjob-lifecycle-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/research-agent-workflow-explainer.md",
+          "sha256": "1031b04c2936096382f1b6fe30d52207ef68641b9edc4d0a619780b83c8d24e1",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/research-agent-workflow-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/README.md",
+          "sha256": "60b7b72b17f28d4e5d68bce994b0378a14093c9b6da8eafc88042976615ce741",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/README.md",
+          "omission_reason": null
+        },
+        {
+          "path": ".agents/schemas/AGENT_JOB_SCHEMA.md",
+          "sha256": "df2ecfd073de5fba78d0c079d9abb493e320492005c037aa70854c6477d1990a",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/AGENT_JOB_SCHEMA.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/AGENT_JOB_SCHEMA.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/templates/COMPLETION_TEMPLATE.yaml",
+          "sha256": "8efb2169b3f5d505a67ea866fbd65020a3293046ecb663868efb2a4c87ccef21",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/templates/COMPLETION_TEMPLATE.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/templates/COMPLETION_TEMPLATE.yaml",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/AGENT_JOB_REGISTRY.csv",
+          "sha256": "d8e81e09e5a55281a965f7c9b7ff36834625e37181853241a45e2d9c9a94c66f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/AGENT_JOB_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/AGENT_JOB_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "19f8f9e66349c24f47d2430794ade0bf52dbf967198ae0009a9c618e3ae3b898",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        }
+      ],
+      "upstream_source_commit": "e0e484e6b62528ece2a084aab9d27e84a5bb43b5",
+      "upstream_source_commit_date": "2026-06-30T12:11:28-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/director-agentjob-lifecycle-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/research-agent-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/.agents/schemas/AGENT_JOB_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/templates/COMPLETION_TEMPLATE.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/AGENT_JOB_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/director-agentjob-lifecycle-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/github-facing/research-agent-workflow-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/.agents/schemas/AGENT_JOB_SCHEMA.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/research_control/templates/COMPLETION_TEMPLATE.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/AGENT_JOB_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/e0e484e6b62528ece2a084aab9d27e84a5bb43b5/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
       "boundary_type": "operational_boundary"
     },

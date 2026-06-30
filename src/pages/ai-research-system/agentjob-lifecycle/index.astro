@@ -1,0 +1,411 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const envelopeRows = [
+  {
+    part: "Input and objective",
+    purpose:
+      "State the exact request, task context, source boundary, and expected transaction result.",
+    boundary: "An objective is not broad permission to solve adjacent problems.",
+  },
+  {
+    part: "Allowed reads",
+    purpose:
+      "Name the source files, registries, schemas, tasks, handoffs, and prior records that may be inspected.",
+    boundary: "Allowed reads are evidence inputs, not claim promotions.",
+  },
+  {
+    part: "Allowed writes",
+    purpose:
+      "Name the exact website or control-record paths that may change during this one job.",
+    boundary: "Allowed writes do not authorize unlisted routes, source refreshes, or upstream mutation.",
+  },
+  {
+    part: "Forbidden classes",
+    purpose:
+      "Make stop conditions explicit before execution begins.",
+    boundary: "A forbidden class requires a stop, a new packet, or a tracked human gate.",
+  },
+  {
+    part: "Validators",
+    purpose:
+      "Declare required checks for changed files, manifests, links, build output, browser behavior, and control records.",
+    boundary: "Validator PASS means operational consistency, not scientific proof.",
+  },
+  {
+    part: "Expected outputs",
+    purpose:
+      "List the route files, manifests, ledger updates, and control evidence that completion must account for.",
+    boundary: "Output existence is not source adoption or publication acceptance.",
+  },
+  {
+    part: "Completion",
+    purpose:
+      "Record changed files, command evidence, verdict, uncertainty, browser QA, and requirements satisfied.",
+    boundary: "A completion closes the job; it does not widen the job.",
+  },
+  {
+    part: "Handoff",
+    purpose:
+      "Transfer durable state and recommend a separate next packet.",
+    boundary: "Handoff is not reusable permission or silent continuation.",
+  },
+];
+
+const lifecycleRows = [
+  {
+    event: "Job opened",
+    receipt: "Task, job, and handoff records exist with one active job.",
+    nonScope: "The open job does not authorize adjacent route families.",
+  },
+  {
+    event: "Execution bounded",
+    receipt: "Reads, writes, expected outputs, validators, and stop conditions are inspectable before edits.",
+    nonScope: "The model behavior inside the job does not become source authority.",
+  },
+  {
+    event: "Validation recorded",
+    receipt: "Required validators are run and attached to completion evidence.",
+    nonScope: "PASS is not theorem proof, benchmark promotion, ontology adoption, or human acceptance.",
+  },
+  {
+    event: "Completion written",
+    receipt: "The completion records files changed, evidence, uncertainties, and next recommendation.",
+    nonScope: "Completion does not convert expected outputs into adopted source claims.",
+  },
+  {
+    event: "Handoff separated",
+    receipt: "The handoff names what can happen next under a future packet.",
+    nonScope: "The closed AgentJob cannot be reused as permission for the next job.",
+  },
+  {
+    event: "Checkpoint sealed",
+    receipt: "A local commit may preserve the allowed transaction after completion evidence exists.",
+    nonScope: "A checkpoint is not deployment, publication acceptance, upstream mutation, or proof.",
+  },
+];
+
+const proofRows = [
+  {
+    signal: "Allowed reads",
+    says: "These are sources the job may inspect.",
+    doesNotSay: "The job adopts every strong claim found in those sources.",
+  },
+  {
+    signal: "Allowed writes",
+    says: "These are the only files the job may change.",
+    doesNotSay: "The job has general project permission.",
+  },
+  {
+    signal: "Validator PASS",
+    says: "Named checks accepted the checked operational state.",
+    doesNotSay: "The science is proven, a theorem is established, or a benchmark is promoted.",
+  },
+  {
+    signal: "Completion",
+    says: "The transaction closed with evidence, outputs, uncertainty, and next recommendation.",
+    doesNotSay: "The result becomes broad truth or future write authority.",
+  },
+  {
+    signal: "Handoff",
+    says: "A separate next packet can be opened if live control records authorize it.",
+    doesNotSay: "The current AgentJob silently continues.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Research-control documentation",
+    use: "One-job rule, lifecycle order, completion evidence, handoff separation, and checkpoint boundary.",
+    boundary: "Control records govern; website pages explain.",
+  },
+  {
+    source: "AgentJob schema",
+    use: "The stable envelope parts: inputs, allowed reads, allowed writes, validators, outputs, and claim boundary.",
+    boundary: "A schema is not an active job without tracked task-local instantiation.",
+  },
+  {
+    source: "Current-frontier and workflow PRDs",
+    use: "Dated snapshot behavior, blocked overreads, and validation-as-operations language.",
+    boundary: "Planning artifacts do not grant scientific or upstream authority.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Read the full state-to-handoff record chain around the job envelope.",
+  },
+  {
+    label: "Current",
+    title: "Current State",
+    href: "/ai-research-system/current-state/",
+    body: "See how moving implementation-control examples must be dated.",
+  },
+  {
+    label: "Roles",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    body: "Understand why role labels need task-local execution authority.",
+  },
+  {
+    label: "Validators",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Inspect PASS, completion, and handoff limits in more detail.",
+  },
+  {
+    label: "Memory",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Read why retrieval support must return to source inspection.",
+  },
+  {
+    label: "Improve",
+    title: "Project-System Improvement",
+    href: "/ai-research-system/project-system-improvement/",
+    body: "Separate workflow repair from scientific continuation.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "AgentJob lifecycle artifact-class explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains one AgentJob as a bounded permission envelope. It cannot make a historical or current job reusable permission, treat completion or handoff as proof, or authorize source refresh, upstream mutation, publication, or claim promotion.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Director decisions and AgentJob lifecycle [Source file: github-facing/director-agentjob-lifecycle-explainer.md].",
+    "The AEther Flow Project. (2026b). Research-agent workflow [Source file: github-facing/research-agent-workflow-explainer.md].",
+    "The AEther Flow Project. (2026c). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026d). AgentJob schema [Schema contract: .agents/schemas/AGENT_JOB_SCHEMA.md].",
+    "The AEther Flow Website. (2026a). Research-Control and Agent Workflow [Product requirements document: PRD-03].",
+    "The AEther Flow Website. (2026b). Current Research Frontier for Website Use [Product requirements document: PRD-09].",
+  ],
+};
+
+const agentJobSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-agentjob-title ai-agentjob-desc">
+    <title id="ai-agentjob-title">Animated AgentJob permission envelope map</title>
+    <desc id="ai-agentjob-desc">A central AgentJob envelope separates inputs, allowed reads, allowed writes, forbidden classes, validators, completion, and handoff.</desc>
+    <defs>
+      <radialGradient id="ai-agentjob-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.68" />
+        <stop offset="36%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-agentjob-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ai-agentjob-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="224" ry="120" />
+      <ellipse cx="310" cy="180" rx="126" ry="74" />
+      <path d="M98 180 C158 104, 246 96, 310 126 C374 96, 462 104, 522 180" />
+      <path d="M98 180 C158 256, 246 264, 310 234 C374 264, 462 256, 522 180" />
+    </g>
+    <g filter="url(#ai-agentjob-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M104 180 H216 C252 180, 252 112, 310 112 C368 112, 368 180, 516 180" />
+      <path class="track-figure-path orange-path" d="M104 180 H216 C252 180, 252 248, 310 248 C368 248, 368 180, 516 180" />
+      <path class="track-figure-path signal-path alternate" d="M216 112 V248" />
+      <path class="track-figure-path orange-path alternate" d="M404 112 V248" />
+    </g>
+    <rect class="track-figure-core" x="258" y="128" width="104" height="104" rx="12" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="104" cy="180" r="13" />
+      <circle cx="216" cy="112" r="13" />
+      <circle cx="216" cy="248" r="13" />
+      <circle cx="404" cy="112" r="13" />
+      <circle cx="404" cy="248" r="13" />
+      <circle cx="516" cy="180" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="AgentJob Lifecycle"
+  description="AI Research System AgentJob lifecycle route explaining one bounded permission envelope from inputs and allowlists through validators, completion, and handoff."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / AgentJob Lifecycle"
+    title="AgentJob Lifecycle"
+    lead="An AgentJob is one auditable permission envelope for one transaction, not reusable permission and not scientific proof."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="AgentJob lifecycle page actions">
+      <a class="primary-link" href="#agentjob-envelope">Read envelope</a>
+      <a class="secondary-link" href="/ai-research-system/workflow/">Workflow context</a>
+      <a class="secondary-link" href="/ai-research-system/validators-and-handoffs/">Validator limits</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-agentjob-caption">
+        <Fragment set:html={agentJobSvg} />
+        <figcaption id="ai-agentjob-caption">
+          Visual orientation only: the envelope separates allowed surfaces,
+          forbidden classes, validators, Completion, and Handoff.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="AgentJob lifecycle introduction">
+    <p>
+      One AgentJob is one auditable permission envelope. It names inputs,
+      Allowed reads, Allowed writes, validators, expected outputs,
+      Completion, and Handoff before work can be closed. The same envelope is
+      not reusable permission, not publication acceptance, and not scientific
+      proof.
+    </p>
+  </section>
+
+  <section id="agentjob-envelope" class="track-page-band" aria-labelledby="agentjob-envelope-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Permission envelope</p>
+      <h2 id="agentjob-envelope-title">The contract states what may happen and what must not happen.</h2>
+      <p>
+        The useful abstraction is small: one job, one allowlist, one validator
+        set, one closeout. Anything outside the envelope requires a stop,
+        handoff, or fresh tracked authorization.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Envelope part</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {envelopeRows.map((row) => (
+          <tr>
+            <th scope="row">{row.part}</th>
+            <td>{row.purpose}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-lifecycle-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Lifecycle receipts</p>
+      <h2 id="agentjob-lifecycle-title">A closed AgentJob leaves evidence, not open-ended authority.</h2>
+      <p>
+        The lifecycle is intentionally transactional. Opening, executing,
+        validating, completing, handing off, and checkpointing each have a
+        receipt and a non-scope.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Lifecycle event</th>
+          <th scope="col">Receipt</th>
+          <th scope="col">Non-scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        {lifecycleRows.map((row) => (
+          <tr>
+            <th scope="row">{row.event}</th>
+            <td>{row.receipt}</td>
+            <td>{row.nonScope}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-proof-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Validation limits</p>
+      <h2 id="agentjob-proof-title">Operational signals must not be overread.</h2>
+      <p>
+        The AgentJob lifecycle is a strong audit pattern precisely because it
+        separates operational evidence from source, scientific, and human-gate
+        authority.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Signal</th>
+          <th scope="col">What it says</th>
+          <th scope="col">What it does not say</th>
+        </tr>
+      </thead>
+      <tbody>
+        {proofRows.map((row) => (
+          <tr>
+            <th scope="row">{row.signal}</th>
+            <td>{row.says}</td>
+            <td>{row.doesNotSay}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="agentjob-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="agentjob-source-title">The page explains the stable contract shape.</h2>
+      <p>
+        Historical examples are useful only when presented as dated examples.
+        This greenfield page keeps the durable reader model focused on the
+        AgentJob artifact class.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Place the envelope inside the wider workflow."
+    lead="Read the workflow first, then inspect roles, validators, memory, and improvement boundaries as separate route families."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related AgentJob lifecycle routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>
