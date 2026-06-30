@@ -49,7 +49,7 @@ one packet at a time.
 | 2 | `PRD-10-website-positioning-guidance.md` | `PRD-10-website-positioning-guidance-implementation-plan.md` and `PRD-10-website-positioning-guidance-task-packets.md` | complete |
 | 3 | `PRD-05-memory-registry-and-retrieval-components.md` | `PRD-05-memory-registry-and-retrieval-components-implementation-plan.md` and `PRD-05-memory-registry-and-retrieval-components-task-packets.md` | complete |
 | 4 | `PRD-06-documentation-publication-and-website-components.md` | `PRD-06-documentation-publication-and-website-components-implementation-plan.md` and `PRD-06-documentation-publication-and-website-components-task-packets.md` | complete |
-| 5 | `PRD-01-high-level-components.md` | `PRD-01-high-level-components-implementation-plan.md` and `PRD-01-high-level-components-task-packets.md` | pending fresh packet |
+| 5 | `PRD-01-high-level-components.md` | `PRD-01-high-level-components-implementation-plan.md` and `PRD-01-high-level-components-task-packets.md` | complete |
 | 6 | `PRD-02-physics-and-mathematical-components.md` | `PRD-02-physics-and-mathematical-components-implementation-plan.md` and `PRD-02-physics-and-mathematical-components-task-packets.md` | pending fresh packet |
 | 7 | `PRD-09-current-research-frontier-for-website-use.md` | `PRD-09-current-research-frontier-for-website-use-implementation-plan.md` and `PRD-09-current-research-frontier-for-website-use-task-packets.md` | pending fresh packet |
 | 8 | `PRD-03-research-control-and-agent-workflow.md` | `PRD-03-research-control-and-agent-workflow-implementation-plan.md` and `PRD-03-research-control-and-agent-workflow-task-packets.md` | pending fresh packet |
@@ -68,6 +68,8 @@ one packet at a time.
 - `PRD-05-memory-registry-and-retrieval-components-task-packets.md`
 - `PRD-06-documentation-publication-and-website-components-implementation-plan.md`
 - `PRD-06-documentation-publication-and-website-components-task-packets.md`
+- `PRD-01-high-level-components-implementation-plan.md`
+- `PRD-01-high-level-components-task-packets.md`
 
 ## Validation Profile
 

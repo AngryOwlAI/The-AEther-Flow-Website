@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260630-018-A"
-task_id: "WI-20260630-018"
-title: "Convert PRD-06-documentation-publication-and-website-components to sub implementation plan"
-created_utc: "2026-06-30T16:24:39Z"
+job_id: "WJ-20260630-019-A"
+task_id: "WI-20260630-019"
+title: "Convert PRD-01-high-level-components to sub implementation plan"
+created_utc: "2026-06-30T16:24:45Z"
 updated_utc: "2026-06-30T16:24:45Z"
-status: "completed"
+status: "active"
 
-objective: "Use prd-to-implementation-plan to convert PRD-06-documentation-publication-and-website-components.md into a sub implementation plan and task-packet set."
+objective: "Use prd-to-implementation-plan to convert PRD-01-high-level-components.md into a sub implementation plan and task-packet set."
 
 execution_boundary:
   invocation_limit: "one bounded implementation packet"
@@ -45,23 +45,23 @@ allowed_reads:
   - "package.json"
   - "implementation_control/program_state.yaml"
   - "git status output"
-  - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
-  - "implementation_control/handoffs/WH-20260630-017.yaml"
+  - "PRDs/website-information-space/PRD-01-high-level-components.md"
+  - "implementation_control/handoffs/WH-20260630-018.yaml"
 
 allowed_writes:
   - "ImplementationPlans/website-information-space/README.md"
-  - "ImplementationPlans/website-information-space/PRD-06-documentation-publication-and-website-components-implementation-plan.md"
-  - "ImplementationPlans/website-information-space/PRD-06-documentation-publication-and-website-components-task-packets.md"
+  - "ImplementationPlans/website-information-space/PRD-01-high-level-components-implementation-plan.md"
+  - "ImplementationPlans/website-information-space/PRD-01-high-level-components-task-packets.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-017.yaml"
-  - "implementation_control/handoffs/WH-20260630-017.md"
-  - "implementation_control/tasks/WI-20260630-017/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-017/jobs/WJ-20260630-017-A.yaml"
   - "implementation_control/handoffs/WH-20260630-018.yaml"
   - "implementation_control/handoffs/WH-20260630-018.md"
   - "implementation_control/tasks/WI-20260630-018/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260630-018/jobs/WJ-20260630-018-A.yaml"
-  - "implementation_control/tasks/WI-20260630-018/jobs/completions/WJC-20260630-018-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-019.yaml"
+  - "implementation_control/handoffs/WH-20260630-019.md"
+  - "implementation_control/tasks/WI-20260630-019/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-019/jobs/WJ-20260630-019-A.yaml"
+  - "implementation_control/tasks/WI-20260630-019/jobs/completions/WJC-20260630-019-A.yaml"
 
 required_outputs:
   - "The sub implementation plan exists."
@@ -127,10 +127,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-018-A"
-  path: "implementation_control/tasks/WI-20260630-018/jobs/completions/WJC-20260630-018-A.yaml"
+  completion_id: "WJC-20260630-019-A"
+  path: "implementation_control/tasks/WI-20260630-019/jobs/completions/WJC-20260630-019-A.yaml"
 
 next_recommended_action:
-  task_packet: "convert PRD-01 sub implementation plan"
+  task_packet: "convert PRD-02 sub implementation plan"
   summary: "After checkpoint, open the next fresh implementation-control packet."
   do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."

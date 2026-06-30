@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T16:24:39Z"
+updated_utc: "2026-06-30T16:24:45Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-018/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-018/jobs/WJ-20260630-018-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-018.yaml"
+  - "implementation_control/tasks/WI-20260630-019/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-019/jobs/WJ-20260630-019-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-019.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,26 +24,26 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-018"
-  title: "Convert PRD-06-documentation-publication-and-website-components To Sub Implementation Plan"
+  task_id: "WI-20260630-019"
+  title: "Convert PRD-01-high-level-components To Sub Implementation Plan"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-018/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-019/00_TASK.yaml"
   planning_context:
-    source_prd: "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    source_prd: "PRDs/website-information-space/PRD-01-high-level-components.md"
     master_plan: "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     task_packet: "sub implementation plan conversion"
 
 current_job:
-  job_id: "WJ-20260630-018-A"
+  job_id: "WJ-20260630-019-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-018/jobs/WJ-20260630-018-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-019/jobs/WJ-20260630-019-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-018"
+  handoff_id: "WH-20260630-019"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-018.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-018.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-019.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-019.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -61,5 +61,5 @@ required_validators:
 
 next_recommended_action:
   task_packet: "convert current sub PRD implementation plan"
-  summary: "Convert PRD-06-documentation-publication-and-website-components.md into a sub implementation plan and task-packet set."
+  summary: "Convert PRD-01-high-level-components.md into a sub implementation plan and task-packet set."
   do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."
