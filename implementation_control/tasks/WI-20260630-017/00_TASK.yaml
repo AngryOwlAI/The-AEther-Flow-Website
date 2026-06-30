@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-016"
-title: "Convert PRD-10-website-positioning-guidance To Sub Implementation Plan"
-created_utc: "2026-06-30T16:20:10Z"
+task_id: "WI-20260630-017"
+title: "Convert PRD-05-memory-registry-and-retrieval-components To Sub Implementation Plan"
+created_utc: "2026-06-30T16:24:33Z"
 updated_utc: "2026-06-30T16:24:33Z"
-status: "completed"
+status: "active"
 
 source_context:
-  source_prd: "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+  source_prd: "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
   master_plan: "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
   prd_family_index: "PRDs/website-information-space/README.md"
   prd_family_review: "PRDs/website-information-space/PRD-FAMILY-VALIDATION-REVIEW.md"
@@ -15,13 +15,13 @@ source_context:
   canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 requirements:
-  - "Use the prd-to-implementation-plan workflow to convert PRD-10-website-positioning-guidance.md into a sub implementation plan."
+  - "Use the prd-to-implementation-plan workflow to convert PRD-05-memory-registry-and-retrieval-components.md into a sub implementation plan."
   - "Treat the sitewide greenfield rebuild plan and task packets as canonical route and validation constraints."
   - "Preserve the display-spelling rule for Æther in reader-facing text and aether in machine-facing identifiers."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
   - "Convert only this PRD in this packet."
 
-goal: "Convert PRD-10-website-positioning-guidance.md into the sub implementation-plan layer for Website Positioning Guidance."
+goal: "Convert PRD-05-memory-registry-and-retrieval-components.md into the sub implementation-plan layer for Memory, Registry, and Retrieval Components."
 
 scope:
   in_scope:
@@ -47,21 +47,21 @@ scope:
     - "package.json"
     - "implementation_control/program_state.yaml"
     - "git status output"
-    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
-    - "implementation_control/handoffs/WH-20260630-015.yaml"
+    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "implementation_control/handoffs/WH-20260630-016.yaml"
     - "ImplementationPlans/website-information-space/README.md"
-    - "ImplementationPlans/website-information-space/PRD-10-website-positioning-guidance-implementation-plan.md"
-    - "ImplementationPlans/website-information-space/PRD-10-website-positioning-guidance-task-packets.md"
+    - "ImplementationPlans/website-information-space/PRD-05-memory-registry-and-retrieval-components-implementation-plan.md"
+    - "ImplementationPlans/website-information-space/PRD-05-memory-registry-and-retrieval-components-task-packets.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-015.yaml"
-    - "implementation_control/handoffs/WH-20260630-015.md"
-    - "implementation_control/tasks/WI-20260630-015/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-015/jobs/WJ-20260630-015-A.yaml"
     - "implementation_control/handoffs/WH-20260630-016.yaml"
     - "implementation_control/handoffs/WH-20260630-016.md"
     - "implementation_control/tasks/WI-20260630-016/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-016/jobs/WJ-20260630-016-A.yaml"
-    - "implementation_control/tasks/WI-20260630-016/jobs/completions/WJC-20260630-016-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-017.yaml"
+    - "implementation_control/handoffs/WH-20260630-017.md"
+    - "implementation_control/tasks/WI-20260630-017/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-017/jobs/WJ-20260630-017-A.yaml"
+    - "implementation_control/tasks/WI-20260630-017/jobs/completions/WJC-20260630-017-A.yaml"
   out_of_scope:
     - "Additional PRD conversions."
     - "Public routes."
@@ -78,8 +78,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-016-A"
-  next_packet_after_this_task: "convert PRD-05 sub implementation plan"
+  active_job_id: "WJ-20260630-017-A"
+  next_packet_after_this_task: "convert PRD-06 sub implementation plan"
 
 allowed_reads:
   website_repository:
@@ -105,25 +105,25 @@ allowed_reads:
     - "package.json"
     - "implementation_control/program_state.yaml"
     - "git status output"
-    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
-    - "implementation_control/handoffs/WH-20260630-015.yaml"
+    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "implementation_control/handoffs/WH-20260630-016.yaml"
   upstream_source_repository: []
 
 allowed_writes:
   website_repository:
     - "ImplementationPlans/website-information-space/README.md"
-    - "ImplementationPlans/website-information-space/PRD-10-website-positioning-guidance-implementation-plan.md"
-    - "ImplementationPlans/website-information-space/PRD-10-website-positioning-guidance-task-packets.md"
+    - "ImplementationPlans/website-information-space/PRD-05-memory-registry-and-retrieval-components-implementation-plan.md"
+    - "ImplementationPlans/website-information-space/PRD-05-memory-registry-and-retrieval-components-task-packets.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-015.yaml"
-    - "implementation_control/handoffs/WH-20260630-015.md"
-    - "implementation_control/tasks/WI-20260630-015/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-015/jobs/WJ-20260630-015-A.yaml"
     - "implementation_control/handoffs/WH-20260630-016.yaml"
     - "implementation_control/handoffs/WH-20260630-016.md"
     - "implementation_control/tasks/WI-20260630-016/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-016/jobs/WJ-20260630-016-A.yaml"
-    - "implementation_control/tasks/WI-20260630-016/jobs/completions/WJC-20260630-016-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-017.yaml"
+    - "implementation_control/handoffs/WH-20260630-017.md"
+    - "implementation_control/tasks/WI-20260630-017/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-017/jobs/WJ-20260630-017-A.yaml"
+    - "implementation_control/tasks/WI-20260630-017/jobs/completions/WJC-20260630-017-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -183,10 +183,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 handoff:
-  latest_handoff_id: "WH-20260630-016"
-  yaml_path: "implementation_control/handoffs/WH-20260630-016.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-016.md"
+  latest_handoff_id: "WH-20260630-017"
+  yaml_path: "implementation_control/handoffs/WH-20260630-017.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-017.md"
 
 completion_record:
-  completion_id: "WJC-20260630-016-A"
-  path: "implementation_control/tasks/WI-20260630-016/jobs/completions/WJC-20260630-016-A.yaml"
+  completion_id: "WJC-20260630-017-A"
+  path: "implementation_control/tasks/WI-20260630-017/jobs/completions/WJC-20260630-017-A.yaml"
