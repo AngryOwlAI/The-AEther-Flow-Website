@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T01:10:04Z"
+updated_utc: "2026-06-30T03:03:08Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,10 +9,10 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260629-001/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260629-001/jobs/WJ-20260629-001-A.yaml"
-  - "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
-  - "implementation_control/handoffs/WH-20260629-002.yaml"
+  - "implementation_control/tasks/WI-20260630-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-001/jobs/WJ-20260630-001-A.yaml"
+  - "implementation_control/tasks/WI-20260630-001/jobs/completions/WJC-20260630-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-001.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -25,30 +25,30 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260629-001"
-  title: "Bootstrap Implementation-Control Records"
+  task_id: "WI-20260630-001"
+  title: "Create Website Information Space PRD Index"
   status: "active"
-  path: "implementation_control/tasks/WI-20260629-001/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-001/00_TASK.yaml"
   planning_context:
-    prd: "PRDs/continue-implementation-control-system-prd.md"
-    plan: "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
-    task_packet: "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+    source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
+    prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
+    task_packet: "README.md first packet"
 
 current_job:
-  job_id: "WJ-20260629-001-A"
+  job_id: "WJ-20260630-001-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260629-001/jobs/WJ-20260629-001-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-001/jobs/WJ-20260630-001-A.yaml"
 
 latest_completion:
-  completion_id: "WJC-20260629-001-A"
+  completion_id: "WJC-20260630-001-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-001/jobs/completions/WJC-20260630-001-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260629-002"
+  handoff_id: "WH-20260630-001"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260629-002.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260629-002.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-001.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -65,6 +65,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "Post-bootstrap governed implementation"
-  summary: "After the bootstrap checkpoint commit, run the resolver before any future website implementation packet and create a fresh task/job when new work is authorized."
-  do_not_skip: "Do not push, deploy, mutate upstream, or begin a new packet without explicit instruction and live control records."
+  task_packet: "PRD-00 master website information space"
+  summary: "After the README/index checkpoint, create the master website information-space PRD as the next bounded packet."
+  do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or begin a broader packet without fresh live control records."

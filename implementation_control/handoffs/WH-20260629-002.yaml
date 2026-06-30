@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260629-002"
 created_utc: "2026-06-30T01:10:04Z"
-updated_utc: "2026-06-30T01:13:47Z"
-status: "active"
+updated_utc: "2026-06-30T03:03:08Z"
+status: "completed"
 
 task_id: "WI-20260629-001"
 job_id: "WJ-20260629-001-A"
@@ -12,7 +12,7 @@ completion_record:
   completion_id: "WJC-20260629-001-A"
   path: "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
 
-summary: "The website-local implementation-control bootstrap is complete and ready for checkpoint commit."
+summary: "The website-local implementation-control bootstrap was checkpointed and superseded by the website information-space PRD index packet."
 
 current_state:
   - "The resolver command reports the active implementation boundary in JSON or summary output."
@@ -61,9 +61,9 @@ validation_results:
     reason: "The command passed validate:manifests, validate:content, validate:links, validate:layout, validate:svg, and validate:provenance, then failed at validate:curator because checked-in curator reports are stale and source-drift acknowledgements are missing."
 
 next_recommended_action:
-  task_packet: "Post-bootstrap governed implementation"
-  summary: "After the bootstrap checkpoint commit, future website implementation should begin by running npm run continue:implementation and creating a fresh task/job for the next authorized packet."
-  do_not_skip: "Do not push, deploy, mutate upstream, or begin a new packet without explicit instruction and live control records."
+  task_packet: "Create Website Information Space PRD Index"
+  summary: "The next authorized packet creates PRDs/website-information-space/README.md and new implementation-control records for the PRD-system lane."
+  do_not_skip: "Do not push, deploy, mutate upstream, or create additional PRD files without fresh live control records."
 
 stop_before:
   - "public route changes"
