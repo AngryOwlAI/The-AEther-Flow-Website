@@ -463,7 +463,7 @@ validation checklist.
 | PRD-01 | `PRD-01-high-level-components.md` | complete | Public story and primary journeys. |
 | PRD-02 | `PRD-02-physics-and-mathematical-components.md` | complete | Physics, benchmark, ontology, and derivation pages. |
 | PRD-03 | `PRD-03-research-control-and-agent-workflow.md` | complete | AI workflow and research-control pages. |
-| PRD-04 | `PRD-04-role-and-schema-components.md` | pending | Role and schema authority pages. |
+| PRD-04 | `PRD-04-role-and-schema-components.md` | complete | Role and schema authority pages. |
 | PRD-05 | `PRD-05-memory-registry-and-retrieval-components.md` | complete | Source authority, registries, memory, and provenance. |
 | PRD-06 | `PRD-06-documentation-publication-and-website-components.md` | complete | Publication, library, and website-component requirements. |
 | PRD-07 | `PRD-07-tooling-skills-scripts-and-runtime-components.md` | pending | Tooling, scripts, validators, runtime, and cache boundaries. |

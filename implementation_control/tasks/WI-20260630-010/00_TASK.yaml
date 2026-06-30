@@ -1,41 +1,41 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-009"
-title: "Create Research-Control And Agent Workflow PRD"
-created_utc: "2026-06-30T04:45:00Z"
+task_id: "WI-20260630-010"
+title: "Create Role And Schema Components PRD"
+created_utc: "2026-06-30T05:00:00Z"
 updated_utc: "2026-06-30T05:00:00Z"
-status: "completed"
+status: "active"
 
 source_context:
   source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
   prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-  task_packet_section: "Phase 4: Current frontier and AI workflow pages"
+  task_packet_section: "PRD-04: Role and Schema Components"
 
 requirements:
-  - "Create PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md."
-  - "Use the shared sub-PRD template and PRD-03 specification from the PRD-system plan."
-  - "Define Director decision, AgentJob, execution-role, memory-preflight, parent-child synthesis, completion, handoff, Distance-to-GR, validator, and proof-boundary requirements."
+  - "Create PRDs/website-information-space/PRD-04-role-and-schema-components.md."
+  - "Use the shared sub-PRD template and PRD-04 specification from the PRD-system plan."
+  - "Define role catalogue, role authority inspector, schema reference map, claim-authority matrix, human-gated role explainer, and registered-role versus execution-role boundaries."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
 
-goal: "Create the research-control and agent workflow PRD as the next bounded PRD-system packet."
+goal: "Create the role and schema components PRD as the next bounded PRD-system packet."
 
 scope:
   in_scope:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
+    - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-008.yaml"
-    - "implementation_control/handoffs/WH-20260630-008.md"
     - "implementation_control/handoffs/WH-20260630-009.yaml"
     - "implementation_control/handoffs/WH-20260630-009.md"
-    - "implementation_control/tasks/WI-20260630-008/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-008/jobs/WJ-20260630-008-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-010.yaml"
+    - "implementation_control/handoffs/WH-20260630-010.md"
     - "implementation_control/tasks/WI-20260630-009/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-009/jobs/WJ-20260630-009-A.yaml"
-    - "implementation_control/tasks/WI-20260630-009/jobs/completions/WJC-20260630-009-A.yaml"
+    - "implementation_control/tasks/WI-20260630-010/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-010/jobs/WJ-20260630-010-A.yaml"
+    - "implementation_control/tasks/WI-20260630-010/jobs/completions/WJC-20260630-010-A.yaml"
   out_of_scope:
-    - "Any sub-PRD file beyond PRD-03."
+    - "Any sub-PRD file beyond PRD-04."
     - "Public routes."
     - "Public assets."
     - "Public manifests."
@@ -51,8 +51,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-009-A"
-  next_packet_after_this_task: "PRD-04 role and schema components"
+  active_job_id: "WJ-20260630-010-A"
+  next_packet_after_this_task: "PRD-07 tooling, skills, scripts, and runtime components"
 
 allowed_reads:
   website_repository:
@@ -62,45 +62,38 @@ allowed_reads:
     - "ImplementationPlans/aether_flow_website_prd_system.md"
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
     - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
-    - "PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md"
     - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-008.yaml"
+    - "implementation_control/handoffs/WH-20260630-009.yaml"
     - "git status output"
   upstream_source_repository:
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/README.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/program_state.yaml"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/current_frontier.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/tasks/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/handoffs/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/templates/COMPLETION_TEMPLATE.yaml"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/design/gr_derivation_burden_map.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/design/mathematical_decisiveness_completion_contract.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.codex/skills/continue-research/SKILL.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/roles/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/ROLE_SCHEMA.md"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/DIRECTOR_DECISION_SCHEMA.md"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/AGENT_JOB_SCHEMA.md"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/EXECUTION_ROLE_SCHEMA.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/AGENT_JOB_REGISTRY.csv"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/DOCUMENTATION_IMPACT_SCHEMA.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/AGENT_ROLE_REGISTRY.csv"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/ROLE_EXECUTION_REGISTRY.csv"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/DISTANCE_TO_GR_LEDGER.csv"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/CLAIM_BOUNDARY_REGISTRY.csv"
 
 allowed_writes:
   website_repository:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
+    - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-008.yaml"
-    - "implementation_control/handoffs/WH-20260630-008.md"
     - "implementation_control/handoffs/WH-20260630-009.yaml"
     - "implementation_control/handoffs/WH-20260630-009.md"
-    - "implementation_control/tasks/WI-20260630-008/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-008/jobs/WJ-20260630-008-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-010.yaml"
+    - "implementation_control/handoffs/WH-20260630-010.md"
     - "implementation_control/tasks/WI-20260630-009/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-009/jobs/WJ-20260630-009-A.yaml"
-    - "implementation_control/tasks/WI-20260630-009/jobs/completions/WJC-20260630-009-A.yaml"
+    - "implementation_control/tasks/WI-20260630-010/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-010/jobs/WJ-20260630-010-A.yaml"
+    - "implementation_control/tasks/WI-20260630-010/jobs/completions/WJC-20260630-010-A.yaml"
   upstream_source_repository: []
 
 forbidden_write_patterns:
@@ -160,7 +153,7 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "A write outside the explicit PRD-03 allowlist becomes necessary."
+  - "A write outside the explicit PRD-04 allowlist becomes necessary."
   - "Any upstream source-project write is proposed."
   - "Any role contract, schema contract, source snapshot, ontology, TeX, public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
   - "A source-derived public claim would be changed."
@@ -173,10 +166,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-009-A"
-  path: "implementation_control/tasks/WI-20260630-009/jobs/completions/WJC-20260630-009-A.yaml"
+  completion_id: "WJC-20260630-010-A"
+  path: "implementation_control/tasks/WI-20260630-010/jobs/completions/WJC-20260630-010-A.yaml"
 
 handoff:
-  latest_handoff_id: "WH-20260630-009"
-  yaml_path: "implementation_control/handoffs/WH-20260630-009.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-009.md"
+  latest_handoff_id: "WH-20260630-010"
+  yaml_path: "implementation_control/handoffs/WH-20260630-010.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-010.md"
