@@ -32,6 +32,14 @@ The PRD family is based on two planning inputs:
 The PRDs are requirements-planning artifacts. They do not create scientific,
 mathematical, governance, or research-workflow authority.
 
+## Current Progress
+
+| Artifact | Status | Notes |
+| --- | --- | --- |
+| `README.md` | complete | Index packet checkpointed before the master PRD packet. |
+| `PRD-00-master-website-information-space.md` | complete | Defines the website mission, source-authority model, information architecture, launch phases, and sub-PRD map. |
+| Remaining sub-PRDs | pending | Create one bounded packet at a time in dependency order. |
+
 ## Source Authority Boundary
 
 Website PRDs may specify reader-facing explanations, routes, content models,

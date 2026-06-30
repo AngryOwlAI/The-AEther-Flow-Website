@@ -1,23 +1,23 @@
 schema_version: "0.1"
 record_type: "implementation_handoff"
-handoff_id: "WH-20260630-001"
-created_utc: "2026-06-30T03:03:08Z"
+handoff_id: "WH-20260630-002"
+created_utc: "2026-06-30T03:32:00Z"
 updated_utc: "2026-06-30T03:32:00Z"
-status: "completed"
+status: "active"
 
-task_id: "WI-20260630-001"
-job_id: "WJ-20260630-001-A"
+task_id: "WI-20260630-002"
+job_id: "WJ-20260630-002-A"
 
 completion_record:
-  completion_id: "WJC-20260630-001-A"
-  path: "implementation_control/tasks/WI-20260630-001/jobs/completions/WJC-20260630-001-A.yaml"
+  completion_id: "WJC-20260630-002-A"
+  path: "implementation_control/tasks/WI-20260630-002/jobs/completions/WJC-20260630-002-A.yaml"
 
-summary: "The website information-space PRD README/index packet was checkpointed and superseded by the master PRD packet."
+summary: "The master website information-space PRD packet is complete and ready for local checkpoint."
 
 current_state:
-  - "The bootstrap implementation-control packet has been checkpointed and superseded."
-  - "The PRD-system lane now has a README/index under PRDs/website-information-space/."
-  - "No detailed PRD files beyond README.md are included in this packet."
+  - "The README/index packet has been checkpointed and superseded."
+  - "PRD-00 now defines the website information-space mission, IA, source-authority model, claim-boundary policy, freshness policy, launch phases, and sub-PRD map."
+  - "No sub-PRD files beyond PRD-00 are included in this packet."
   - "No public route, public asset, public manifest, deployment, push, or upstream write is authorized."
 
 source_authority_boundary:
@@ -44,23 +44,23 @@ validation_results:
   - id: "git-diff-check"
     command: "git diff --check"
     status: "passed"
-    checked_utc: "2026-06-30T03:03:08Z"
+    checked_utc: "2026-06-30T03:32:00Z"
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     status: "passed"
-    checked_utc: "2026-06-30T03:03:08Z"
+    checked_utc: "2026-06-30T03:32:00Z"
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     status: "passed"
-    checked_utc: "2026-06-30T03:03:08Z"
+    checked_utc: "2026-06-30T03:32:00Z"
 
 next_recommended_action:
-  task_packet: "Create Master Website Information Space PRD"
-  summary: "The next authorized packet creates PRDs/website-information-space/PRD-00-master-website-information-space.md and updates the PRD index."
+  task_packet: "PRD-10 website positioning guidance"
+  summary: "Create PRDs/website-information-space/PRD-10-website-positioning-guidance.md as the next bounded packet."
   do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or broaden the packet without fresh live control records."
 
 stop_before:
-  - "additional PRD files beyond README.md"
+  - "additional PRD files beyond PRD-00"
   - "public route changes"
   - "public asset changes"
   - "public manifest changes"
