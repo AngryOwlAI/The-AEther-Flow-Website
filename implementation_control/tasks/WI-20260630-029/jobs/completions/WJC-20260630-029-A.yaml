@@ -1,0 +1,79 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260630-029-A"
+task_id: "WI-20260630-029"
+job_id: "WJ-20260630-029-A"
+created_utc: "2026-06-30T16:48:42Z"
+updated_utc: "2026-06-30T16:48:42Z"
+status: "completed"
+
+summary: "Created the greenfield foundation contract and route review ledger."
+
+outputs:
+  - path: "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    status: "created"
+    description: "Defines the greenfield page contract, source-bundle requirement, page grammar, preserved footer and SVG rules, validation profiles, and review-ledger requirement."
+  - path: "docs/quality/sitewide-greenfield-review-ledger.md"
+    status: "created"
+    description: "Records all planned greenfield routes with initial implementation and review statuses."
+  - path: "implementation_control/handoffs/WH-20260630-029.yaml"
+    status: "created"
+    description: "Names GF-002 as the next fresh implementation-control packet."
+
+changed_files:
+  - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-028.yaml"
+  - "implementation_control/handoffs/WH-20260630-028.md"
+  - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.md"
+  - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
+
+requirements_satisfied:
+  - "Foundation contract states the old implementation is reference evidence only."
+  - "Route inventory and review statuses are recorded."
+  - "Preserved footer, hero, SVG, diagram, source-authority, and validation rules are explicit."
+  - "Content contract requires page family, source anchors, claim status, navigation role, validation gates, and intro paragraph."
+  - "Validation profile for future packets is documented."
+  - "Preserved the Source Authority Boundary and did not create public website surfaces."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "none_authorized"
+  proof_or_science_authority: "not_granted"
+  readiness_claims: "implementation_contract_only_not_public_claim_change"
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    checked_utc: "2026-06-30T16:48:42Z"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    checked_utc: "2026-06-30T16:48:42Z"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked_utc: "2026-06-30T16:48:42Z"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    checked_utc: "2026-06-30T16:48:42Z"
+
+skipped_checks:
+  - command: "npm run validate"
+    reason: "Runtime code, public routes, styles, assets, and manifests were not changed in this documentation/control packet."
+  - command: "desktop/mobile browser QA"
+    reason: "No rendered public route changed in this packet."
+
+next_recommended_action:
+  task_packet: "GF-002 Build Home And Primary Navigation Slice"
+  summary: "Open the next fresh implementation-control packet for the Home and primary navigation slice."
+  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the next authorized route packet without fresh live control records."

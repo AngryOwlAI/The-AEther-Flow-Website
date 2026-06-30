@@ -1,0 +1,168 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-029"
+title: "Create Greenfield Shell Contract And Review Ledger"
+created_utc: "2026-06-30T16:48:42Z"
+updated_utc: "2026-06-30T16:48:42Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-001 Create Greenfield Shell Contract And Review Ledger"
+  canonical_sitewide_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  public_comprehension_standard: "docs/quality/public-comprehension-review-standard.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-028.yaml"
+
+requirements:
+  - "Create a foundation contract for greenfield page packets."
+  - "Create a route review ledger with every planned route and initial review status."
+  - "Define source-bundle fields required before claim-bearing copy is written."
+  - "Define card-use rules and preferred page forms."
+  - "Preserve footer, hero, SVG, diagram, source-authority, and validation expectations."
+  - "Do not implement public routes, public assets, public manifests, push, deploy, source refreshes, or upstream writes."
+
+goal: "Complete GF-001 by adding the greenfield foundation contract, review ledger, and control closeout."
+
+scope:
+  in_scope:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "docs/quality/public-comprehension-review-standard.md"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "src/layouts/BaseLayout.astro"
+    - "src/lib/siteContent.ts"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.md"
+    - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/handoffs/WH-20260630-029.yaml"
+    - "implementation_control/handoffs/WH-20260630-029.md"
+    - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+    - "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
+    - "git status output"
+  out_of_scope:
+    - "Public route implementation."
+    - "Public route copy changes."
+    - "Public assets."
+    - "Public manifests."
+    - "Source snapshots."
+    - "Source bundle datasets."
+    - "Generated HTML, Markdown, wiki, PDF, diagram, or retrieval-layer refreshes."
+    - "Source-derived public claim changes."
+    - "Upstream source-project writes."
+    - "Git push."
+    - "Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260630-029-A"
+  next_packet_after_this_task: "GF-002 Build Home And Primary Navigation Slice"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "docs/quality/public-comprehension-review-standard.md"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "src/layouts/BaseLayout.astro"
+    - "src/lib/siteContent.ts"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.md"
+    - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.yaml"
+    - "implementation_control/handoffs/WH-20260630-028.md"
+    - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-029.yaml"
+    - "implementation_control/handoffs/WH-20260630-029.md"
+    - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+    - "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This packet writes maintainer-facing docs and control records only."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot or upstream claim refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No public navigation, route, redirect, or route-retirement change is in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No CSS, component, layout, SVG, or visual asset change is in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public file publication is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest write is in scope."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "Any public route, public route copy, or public navigation implementation is proposed in GF-001."
+  - "Any write outside the explicit GF-001 allowlist becomes necessary."
+  - "Any upstream source-project write is proposed."
+  - "Any source snapshot, public asset, public manifest, push, deploy, generated output, wiki, or local retrieval change becomes necessary."
+  - "A source-derived public claim would be changed."
+  - "Required validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-029-A"
+  path: "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
+
+handoff:
+  latest_handoff_id: "WH-20260630-029"
+  yaml_path: "implementation_control/handoffs/WH-20260630-029.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-029.md"

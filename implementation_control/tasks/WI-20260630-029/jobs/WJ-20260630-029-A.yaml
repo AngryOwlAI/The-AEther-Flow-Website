@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260630-028-A"
-task_id: "WI-20260630-028"
-title: "Open fresh greenfield control packet"
-created_utc: "2026-06-30T16:42:45Z"
+job_id: "WJ-20260630-029-A"
+task_id: "WI-20260630-029"
+title: "Create greenfield shell contract and review ledger"
+created_utc: "2026-06-30T16:48:42Z"
 updated_utc: "2026-06-30T16:48:42Z"
-status: "completed"
+status: "active"
 
-objective: "Complete GF-000 by preparing a narrow, auditable control boundary for GF-001 without implementing public routes."
+objective: "Create the GF-001 foundation contract and review ledger without changing public website runtime files."
 
 execution_boundary:
   invocation_limit: "one bounded implementation packet"
@@ -16,6 +16,7 @@ execution_boundary:
   canonical_rebuild_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
   upstream_write_status: "forbidden"
   public_route_write_status: "forbidden_for_this_job"
+  public_manifest_write_status: "forbidden_for_this_job"
   source_snapshot_write_status: "forbidden_for_this_job"
   generated_derivative_write_status: "forbidden_for_this_job"
   deployment_status: "not_authorized"
@@ -26,32 +27,37 @@ allowed_reads:
   - ".codex/skills/implementation-control/SKILL.md"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
-  - "ImplementationPlans/website-information-space/README.md"
+  - "PRDs/sitewide-greenfield-rebuild-prd.md"
+  - "docs/quality/public-comprehension-review-standard.md"
+  - "docs/architecture/website-feature-and-functionality.md"
+  - "src/layouts/BaseLayout.astro"
+  - "src/lib/siteContent.ts"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-027.yaml"
-  - "implementation_control/handoffs/WH-20260630-027.md"
-  - "implementation_control/tasks/WI-20260630-027/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-027/jobs/WJ-20260630-027-A.yaml"
-  - "implementation_control/tasks/WI-20260630-027/jobs/completions/WJC-20260630-027-A.yaml"
-  - "git status output"
-
-allowed_writes:
-  - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-027.yaml"
-  - "implementation_control/handoffs/WH-20260630-027.md"
-  - "implementation_control/tasks/WI-20260630-027/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-027/jobs/WJ-20260630-027-A.yaml"
   - "implementation_control/handoffs/WH-20260630-028.yaml"
   - "implementation_control/handoffs/WH-20260630-028.md"
   - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
-  - "implementation_control/tasks/WI-20260630-028/jobs/completions/WJC-20260630-028-A.yaml"
+  - "git status output"
+
+allowed_writes:
+  - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-028.yaml"
+  - "implementation_control/handoffs/WH-20260630-028.md"
+  - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.md"
+  - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
 
 required_outputs:
-  - "The completed WI-20260630-027 packet is marked superseded."
-  - "The GF-000 control packet records the next GF-001 scope."
-  - "The old implementation is recorded as preservation evidence only."
-  - "No public route, public asset, public manifest, source refresh, push, deploy, or upstream write is authorized."
+  - "Greenfield foundation contract exists."
+  - "Route review ledger records every planned route and initial status."
+  - "Source-bundle fields, card rules, footer rules, hero rules, SVG rules, and validation profiles are documented."
+  - "Control records preserve website-local scope and no public route implementation."
 
 approval_gates:
   - id: "public_claim_changes"
@@ -97,8 +103,8 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "Allowed write paths need to expand outside the explicit GF-000 control-record allowlist."
-  - "Any public route implementation is proposed before GF-001 records are opened."
+  - "Allowed write paths need to expand outside the explicit GF-001 allowlist."
+  - "Any public route implementation is proposed before GF-002 records are opened."
   - "Any upstream write is proposed."
   - "Any public claim, route, asset, manifest, push, deploy, source snapshot, generated output, wiki, or local retrieval change becomes necessary."
   - "Validation fails."
@@ -109,10 +115,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-028-A"
-  path: "implementation_control/tasks/WI-20260630-028/jobs/completions/WJC-20260630-028-A.yaml"
+  completion_id: "WJC-20260630-029-A"
+  path: "implementation_control/tasks/WI-20260630-029/jobs/completions/WJC-20260630-029-A.yaml"
 
 next_recommended_action:
-  task_packet: "GF-001 Create Greenfield Shell Contract And Review Ledger"
-  summary: "Open the next fresh implementation-control packet for the GF-001 foundation contract and review-ledger slice."
-  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond GF-001 without fresh live control records."
+  task_packet: "GF-002 Build Home And Primary Navigation Slice"
+  summary: "After checkpoint, open the next fresh implementation-control packet for the Home and primary navigation slice."
+  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the next authorized route packet without fresh live control records."

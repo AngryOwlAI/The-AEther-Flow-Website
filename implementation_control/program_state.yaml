@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T16:42:45Z"
+updated_utc: "2026-06-30T16:48:42Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-028.yaml"
+  - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,25 +24,25 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-028"
-  title: "Open Fresh Greenfield Control Packet"
+  task_id: "WI-20260630-029"
+  title: "Create Greenfield Shell Contract And Review Ledger"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-028/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-000 Open Fresh Greenfield Control Packet"
+    task_packet: "GF-001 Create Greenfield Shell Contract And Review Ledger"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-028-A"
+  job_id: "WJ-20260630-029-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-028/jobs/WJ-20260630-028-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-028"
+  handoff_id: "WH-20260630-029"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-028.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-028.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-029.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-029.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -59,6 +59,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "GF-001 Create Greenfield Shell Contract And Review Ledger"
-  summary: "Open the next fresh implementation-control packet for the GF-001 foundation contract and review-ledger slice."
-  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the GF-001 foundation packet without fresh live control records."
+  task_packet: "GF-002 Build Home And Primary Navigation Slice"
+  summary: "Open the next fresh implementation-control packet for the Home and primary navigation slice."
+  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the next authorized route packet without fresh live control records."
