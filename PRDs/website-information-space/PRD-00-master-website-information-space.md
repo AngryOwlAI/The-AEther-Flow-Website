@@ -470,7 +470,7 @@ validation checklist.
 | PRD-08 | `PRD-08-folder-and-repository-topology-components.md` | complete | Repository topology and folder-family orientation. |
 | PRD-09 | `PRD-09-current-research-frontier-for-website-use.md` | complete | Dated current-state snapshots and stale-data behavior. |
 | PRD-10 | `PRD-10-website-positioning-guidance.md` | complete | Safe public messaging and forbidden claims. |
-| PRD-11 | `PRD-11-quick-source-map-for-site-builders.md` | pending | Source map for future page builders. |
+| PRD-11 | `PRD-11-quick-source-map-for-site-builders.md` | complete | Source map for future page builders. |
 
 ## References
 

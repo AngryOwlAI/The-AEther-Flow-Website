@@ -48,7 +48,8 @@ mathematical, governance, or research-workflow authority.
 | `PRD-04-role-and-schema-components.md` | complete | Defines role catalogue, authority inspector, schema map, claim-authority matrix, and human-gated role requirements. |
 | `PRD-07-tooling-skills-scripts-and-runtime-components.md` | complete | Defines technical requirements, skills, scripts, validators, Makefile, runtime, reproducibility, and local-cache boundary requirements. |
 | `PRD-08-folder-and-repository-topology-components.md` | complete | Defines repository topology, folder explorer, source-lane diagram, edit/read guides, and generated-versus-canonical folder legend requirements. |
-| Remaining sub-PRDs | pending | Create one bounded packet at a time in dependency order. |
+| `PRD-11-quick-source-map-for-site-builders.md` | complete | Defines site-builder guide, source bundle index, page-to-source mapping table, build-first checklist, contributor handoff guide, and staleness handling requirements. |
+| PRD-family validation review | pending | Review the full PRD set against the validation checklist before treating it as ready for implementation planning. |
 
 ## Source Authority Boundary
 
@@ -183,9 +184,9 @@ Before the PRD family is treated as ready for implementation planning:
 ## Next Packet
 
 The next bounded implementation-control packet should create
-`PRD-11-quick-source-map-for-site-builders.md`. It should not create
-additional sub-PRDs in the same packet unless fresh live control records
-authorize a wider scope.
+a final PRD-family validation review and handoff. It should not implement
+public routes, push, deploy, mutate upstream sources, refresh source snapshots,
+or broaden scope unless fresh live control records authorize that work.
 
 ## References
 

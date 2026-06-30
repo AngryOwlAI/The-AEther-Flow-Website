@@ -1,0 +1,72 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260630-013-A"
+task_id: "WI-20260630-013"
+job_id: "WJ-20260630-013-A"
+created_utc: "2026-06-30T05:45:00Z"
+updated_utc: "2026-06-30T05:45:00Z"
+status: "completed"
+
+summary: "Create the quick source map for site builders PRD and update the PRD-system indexes."
+
+changed_files:
+  - "PRDs/website-information-space/README.md"
+  - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+  - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-012.yaml"
+  - "implementation_control/handoffs/WH-20260630-012.md"
+  - "implementation_control/handoffs/WH-20260630-013.yaml"
+  - "implementation_control/handoffs/WH-20260630-013.md"
+  - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+  - "implementation_control/tasks/WI-20260630-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-013/jobs/WJ-20260630-013-A.yaml"
+  - "implementation_control/tasks/WI-20260630-013/jobs/completions/WJC-20260630-013-A.yaml"
+
+outputs:
+  - "PRD-11 defines site-builder guide, source bundle index, page-to-source mapping table, build-first checklist, contributor handoff guide, and staleness handling guide requirements."
+  - "PRD-11 provides source bundles for project overview, physics, AI research-agent, source-authority, current-frontier, operator/contributor, and website publication pages."
+  - "PRD index and master PRD status table mark PRD-11 complete."
+  - "Implementation-control state points to final PRD-family validation review as the next bounded packet."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "none_authorized"
+  proof_or_science_authority: "not_granted"
+  source_map_claims: "requirements_only_not_public_claim_change"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    checked_utc: "2026-06-30T05:45:00Z"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    checked_utc: "2026-06-30T05:45:00Z"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked_utc: "2026-06-30T05:45:00Z"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    checked_utc: "2026-06-30T05:45:00Z"
+
+remaining_risk:
+  - "PRD-11 is a planning artifact only; public website pages, source bundle datasets, source snapshots, generated derivatives, local retrieval layers, and upstream control files have not been changed."
+  - "Generated HTML, GitHub-facing Markdown, wiki, PDF, and .local retrieval layers were intentionally not refreshed in this packet."
+  - "The final PRD-family validation review remains pending."
+  - "The upstream source repository remains read-only."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  status: "ready"
+  expected_effect: "stage only completion-listed PRD-11 packet files and create one local commit"
+
+next_recommended_action:
+  task_packet: "final PRD-family validation review"
+  summary: "Review all PRDs against the validation checklist and produce the final readiness handoff as the next bounded packet."
+  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, refresh generated publication outputs, refresh retrieval layers, or broaden the packet without fresh live control records."
