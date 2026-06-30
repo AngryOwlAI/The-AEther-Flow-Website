@@ -1,10 +1,10 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-004"
-title: "Create Memory Registry And Retrieval PRD"
-created_utc: "2026-06-30T03:45:00Z"
+task_id: "WI-20260630-005"
+title: "Create Documentation Publication And Website Components PRD"
+created_utc: "2026-06-30T03:55:00Z"
 updated_utc: "2026-06-30T03:55:00Z"
-status: "completed"
+status: "active"
 
 source_context:
   source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
@@ -12,34 +12,34 @@ source_context:
   task_packet_section: "Phase 2: Source authority and publication process"
 
 requirements:
-  - "Create PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md."
-  - "Use the shared sub-PRD template and PRD-05 specification from the PRD-system plan."
-  - "Explain source-first memory, registries, retrieval layers, generated derivatives, and provenance graph requirements."
+  - "Create PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md."
+  - "Use the shared sub-PRD template and PRD-06 specification from the PRD-system plan."
+  - "Explain documentation layers, publication workflow, source specs, publication briefs, GitHub Markdown and website parity, visual strategy, page templates, library surfaces, and source-backed footer requirements."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
 
-goal: "Create the memory, registry, and retrieval PRD as the next bounded PRD-system packet."
+goal: "Create the documentation, publication, and website components PRD as the next bounded PRD-system packet."
 
 scope:
   in_scope:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-003.yaml"
-    - "implementation_control/handoffs/WH-20260630-003.md"
     - "implementation_control/handoffs/WH-20260630-004.yaml"
     - "implementation_control/handoffs/WH-20260630-004.md"
-    - "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-005.yaml"
+    - "implementation_control/handoffs/WH-20260630-005.md"
     - "implementation_control/tasks/WI-20260630-004/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-004/jobs/WJ-20260630-004-A.yaml"
-    - "implementation_control/tasks/WI-20260630-004/jobs/completions/WJC-20260630-004-A.yaml"
+    - "implementation_control/tasks/WI-20260630-005/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-005/jobs/WJ-20260630-005-A.yaml"
+    - "implementation_control/tasks/WI-20260630-005/jobs/completions/WJC-20260630-005-A.yaml"
   out_of_scope:
-    - "Any sub-PRD file beyond PRD-05."
+    - "Any sub-PRD file beyond PRD-06."
     - "Public routes."
     - "Public assets."
     - "Public manifests."
-    - "Generated retrieval layer refreshes."
+    - "Generated HTML, Markdown, wiki, PDF, or retrieval-layer refreshes."
     - "Source-derived public claim changes."
     - "Upstream source-project writes."
     - "Git push."
@@ -47,8 +47,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-004-A"
-  next_packet_after_this_task: "PRD-06 documentation publication and website components"
+  active_job_id: "WJ-20260630-005-A"
+  next_packet_after_this_task: "PRD-01 high-level components"
 
 allowed_reads:
   website_repository:
@@ -59,26 +59,37 @@ allowed_reads:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
     - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-003.yaml"
+    - "implementation_control/handoffs/WH-20260630-004.yaml"
     - "git status output"
-  upstream_source_repository: []
+  upstream_source_repository:
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/README.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/CONTEXT.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/markdown/publication-briefs/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/markdown/html-explainer-specs/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/github-facing/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/html/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/PUBLICATION_BRIEF_REGISTRY.csv"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/HTML_EXPLAINER_REGISTRY.csv"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.codex/skills/html-visual-explainer/SKILL.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/roles/research_ops/documentation-curator.v0.7.0.md"
 
 allowed_writes:
   website_repository:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-003.yaml"
-    - "implementation_control/handoffs/WH-20260630-003.md"
     - "implementation_control/handoffs/WH-20260630-004.yaml"
     - "implementation_control/handoffs/WH-20260630-004.md"
-    - "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-005.yaml"
+    - "implementation_control/handoffs/WH-20260630-005.md"
     - "implementation_control/tasks/WI-20260630-004/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-004/jobs/WJ-20260630-004-A.yaml"
-    - "implementation_control/tasks/WI-20260630-004/jobs/completions/WJC-20260630-004-A.yaml"
+    - "implementation_control/tasks/WI-20260630-005/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-005/jobs/WJ-20260630-005-A.yaml"
+    - "implementation_control/tasks/WI-20260630-005/jobs/completions/WJC-20260630-005-A.yaml"
   upstream_source_repository: []
 
 forbidden_write_patterns:
@@ -100,7 +111,7 @@ approval_gates:
     reason: "The packet writes planning material only and does not change public route copy."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "No source snapshot, upstream claim refresh, or local retrieval refresh is in scope."
+    reason: "No source snapshot, upstream claim refresh, generated publication refresh, wiki refresh, or local retrieval refresh is in scope."
   broad_navigation_or_route_retirement:
     status: "not_required"
     reason: "No public navigation or route change is in scope."
@@ -138,9 +149,9 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "A write outside the explicit PRD-05 allowlist becomes necessary."
+  - "A write outside the explicit PRD-06 allowlist becomes necessary."
   - "Any upstream source-project write is proposed."
-  - "Any public route, public asset, public manifest, push, deploy, wiki, or .local retrieval-layer change becomes necessary."
+  - "Any public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
   - "A source-derived public claim would be changed."
   - "Required validation fails."
   - "The active job cannot be completed within one bounded packet."
@@ -151,10 +162,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-004-A"
-  path: "implementation_control/tasks/WI-20260630-004/jobs/completions/WJC-20260630-004-A.yaml"
+  completion_id: "WJC-20260630-005-A"
+  path: "implementation_control/tasks/WI-20260630-005/jobs/completions/WJC-20260630-005-A.yaml"
 
 handoff:
-  latest_handoff_id: "WH-20260630-004"
-  yaml_path: "implementation_control/handoffs/WH-20260630-004.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-004.md"
+  latest_handoff_id: "WH-20260630-005"
+  yaml_path: "implementation_control/handoffs/WH-20260630-005.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-005.md"
