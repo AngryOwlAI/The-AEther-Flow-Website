@@ -2,18 +2,19 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-039"
 created_utc: "2026-06-30T19:32:32Z"
-updated_utc: "2026-06-30T19:46:17Z"
+updated_utc: "2026-06-30T19:53:28Z"
 status: "completed"
 
 task_id: "WI-20260630-039"
 job_id: "WJ-20260630-039-A"
 
-summary: "Completed GF-011 for the Resources generated derivatives, retrieval layers, publication process, and library slice."
+summary: "Completed GF-011 for the Resources generated derivatives, retrieval layers, publication process, and library slice; checkpointed and superseded by GF-012."
 
 current_state:
   - "GF-010 is completed, checkpointed, and superseded."
   - "This packet authorizes one public route implementation slice for `/resources/generated-derivatives/`, `/resources/retrieval-layers/`, `/resources/publication-process/`, and `/resources/library/`."
   - "The four GF-011 routes are technically ready with human review pending."
+  - "GF-011 is checkpointed and superseded by active packet WI-20260630-040 for GF-012."
   - "Public Resources derivative, retrieval, publication, library, route-local SVG/style, and public route/provenance manifest writes are approved only inside the GF-011 allowlist."
   - "Resources pages must not render a dedicated source-authority section component; authority boundaries must appear in contextual copy, manifests, internal route links, or footer/provenance surfaces."
   - "Generated derivatives, retrieval layers, publication briefs, validation, and library rows may support navigation and provenance, but they do not prove physics or promote claims."

@@ -1,101 +1,380 @@
 ---
-import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
+import CommandBand from "../../components/CommandBand.astro";
 import DiagramGalleryList from "../../components/DiagramGalleryList.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
-import { approvedDownloads } from "../../lib/manifests";
-import { diagramConceptGroups, diagramGalleryItems } from "../../lib/siteContent";
 
-const approvedDiagramDownloads = approvedDownloads.filter((item) => item.kind === "diagram");
-const approvedDiagramPaths = new Set(approvedDiagramDownloads.map((item) => item.path));
-const seenDiagramPaths = new Set<string>();
-const approvedGalleryItems = diagramGalleryItems.filter((item) => {
-  if (!approvedDiagramPaths.has(item.src) || seenDiagramPaths.has(item.src)) {
-    return false;
-  }
-  seenDiagramPaths.add(item.src);
-  return true;
-});
+const inventoryRows = [
+  {
+    status: "Greenfield inventory",
+    current: "Empty in GF-012.",
+    reason: "The active packet contains no individual diagram reapproval evidence.",
+    next: "Reapprove diagrams one by one with tracked source, static output, manifest status, caption, and provenance.",
+  },
+  {
+    status: "Static comprehension diagram",
+    current: "Retained as this route's diagram-publication contract.",
+    reason: "The validator requires the existing manifest-backed comprehension diagram and dossier contract.",
+    next: "Keep it as nearby explanatory material, not as gallery inventory.",
+  },
+  {
+    status: "Legacy gallery records",
+    current: "Not rendered as the GF-012 gallery inventory.",
+    reason: "The greenfield reset rule removes old inventory unless explicitly reapproved.",
+    next: "Review candidates in a future packet before restoring any public list item.",
+  },
+];
+
+const workflowRows = [
+  {
+    step: "Editable diagram source",
+    requirement: "Track the Mermaid or source file used to generate the visual.",
+    boundary: "Source for a visual is still not proof of the claim it explains.",
+  },
+  {
+    step: "Static generated output",
+    requirement: "Publish committed PNG or equivalent static output; do not depend on browser Mermaid runtime.",
+    boundary: "Static output improves reliability and accessibility, not authority.",
+  },
+  {
+    step: "Manifest and hash",
+    requirement: "Record the public asset path, manifest id, status, and hash-backed identity.",
+    boundary: "A hash proves file identity only, not scientific correctness.",
+  },
+  {
+    step: "Caption and nearby prose",
+    requirement: "Put interpretation, labels, and claim boundaries in HTML text around the visual.",
+    boundary: "The reader should not infer authority from visual polish.",
+  },
+  {
+    step: "Explicit reapproval",
+    requirement: "Name the packet or owner decision that approves the diagram for the greenfield gallery.",
+    boundary: "Old inventory remains excluded until that evidence exists.",
+  },
+];
+
+const safeRows = [
+  {
+    label: "Safe summary",
+    text: "The diagram gallery shows manifest-backed visual aids grouped by concept, with editable sources, static PNG outputs, captions, provenance, and non-authority boundaries.",
+  },
+  {
+    label: "Unsafe summary",
+    text: "A diagram proves science, changes workflow authority, replaces source inspection, or needs Mermaid in the public browser runtime.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Resources",
+    title: "Resources Overview",
+    href: "/resources/",
+    body: "Return to the Resources route map and manifest status summary.",
+  },
+  {
+    label: "Derivatives",
+    title: "Generated Derivatives",
+    href: "/resources/generated-derivatives/",
+    body: "Compare static diagrams with other generated reader aids.",
+  },
+  {
+    label: "Publication",
+    title: "Publication Process",
+    href: "/resources/publication-process/",
+    body: "Read how source specs, briefs, validation, and review constrain reader surfaces.",
+  },
+  {
+    label: "Authority",
+    title: "Source Authority",
+    href: "/resources/source-authority/",
+    body: "Review why visual material remains below source and registry authority.",
+  },
+  {
+    label: "Reading",
+    title: "Reading Paths",
+    href: "/resources/reading-paths/",
+    body: "Use route sequences before visual or source archaeology.",
+  },
+  {
+    label: "Builder",
+    title: "Site Builder Guide",
+    href: "/resources/site-builder-guide/",
+    body: "Use source bundles before adding or restoring diagram inventory.",
+  },
+];
+
+const provenanceRows = [
+  {
+    reference: "The AEther Flow Website. (2026a). Diagram Gallery Content Dossier [Content dossier].",
+    use: "Defines the diagram route job, diagram-publication contract, safe/unsafe summaries, and non-authority boundary.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026b). Sitewide Greenfield Rebuild Implementation Plan [Implementation plan].",
+    use: "Defines the greenfield Diagram Gallery reset rule and GF-012 route requirement.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026c). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
+    use: "Defines visual brief, publication, static diagram, and page-type constraints.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026d). `scripts/render_mermaid_diagrams.py` [Website maintainer source].",
+    use: "Provides the static Mermaid rendering workflow referenced by the diagram route.",
+  },
+];
+
+const diagramSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-diagrams-title resources-diagrams-desc">
+    <title id="resources-diagrams-title">Animated diagram gallery reset map</title>
+    <desc id="resources-diagrams-desc">Diagram source, static output, manifest status, caption, provenance, and approval gate lead to a future gallery inventory.</desc>
+    <defs>
+      <radialGradient id="resources-diagrams-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.58" />
+        <stop offset="44%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="resources-diagrams-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#resources-diagrams-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="230" ry="114" />
+      <ellipse cx="310" cy="180" rx="152" ry="74" />
+      <path d="M104 112 H516" />
+      <path d="M104 248 H516" />
+      <path d="M310 72 V288" />
+    </g>
+    <g filter="url(#resources-diagrams-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M106 112 C178 160, 240 180, 310 180 C380 180, 442 160, 514 112" />
+      <path class="track-figure-path orange-path" d="M106 248 C178 200, 240 180, 310 180 C380 180, 442 200, 514 248" />
+      <path class="track-figure-path signal-path alternate" d="M142 180 C210 104, 410 104, 478 180" />
+      <path class="track-figure-path orange-path alternate" d="M142 180 C210 256, 410 256, 478 180" />
+    </g>
+    <path class="track-figure-core" d="M310 136 L352 180 L310 224 L268 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="106" cy="112" r="13" />
+      <circle cx="106" cy="248" r="13" />
+      <circle cx="142" cy="180" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="478" cy="180" r="13" />
+      <circle cx="514" cy="112" r="13" />
+      <circle cx="514" cy="248" r="13" />
+    </g>
+  </svg>
+`;
 ---
 
 <BaseLayout
   title="Diagram Gallery"
-  description="Diagram gallery for The AEther Flow website with manifest-backed asset records."
-  bodyClass="project-overview-page project-support-page"
+  description="Diagram gallery for The AEther Flow Website, preserving static diagram publication discipline while resetting the greenfield inventory until individual diagrams are reapproved."
+  bodyClass="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"
 >
-  <section class="content-band project-support-hero" aria-labelledby="diagrams-title">
-    <div class="project-support-copy">
-      <div class="section-header">
-        <p class="eyebrow">Visual assets</p>
-        <h1 id="diagrams-title">Diagram Gallery</h1>
-        <p class="lead">
-          Diagrams are presentation aids grouped by reader concept. Current
-          comprehension diagrams are generated from tracked Mermaid sources and
-          recorded in the manifests; they orient readers but do not become
-          scientific or workflow authority.
-        </p>
-      </div>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Resources / Diagram Gallery"
+    title="Diagram Gallery"
+    lead="The gallery publishes diagrams only after source, static output, manifest status, caption, provenance, and approval evidence are present. In GF-012, the visible inventory is reset."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Diagram gallery page actions">
+      <a class="primary-link" href="#inventory-status">Inventory status</a>
+      <a class="secondary-link" href="/resources/publication-process/">Publication</a>
+      <a class="secondary-link" href="/resources/">Resources</a>
     </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="resources-diagrams-caption">
+        <Fragment set:html={diagramSvg} />
+        <figcaption id="resources-diagrams-caption">
+          Visual orientation only: a diagram can explain relationships; it cannot own claims.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
 
-    <figure class="support-figure diagram-release-flow" aria-labelledby="diagrams-figure-caption">
-      <svg
-        class="support-svg"
-        viewBox="0 0 520 340"
-        role="img"
-        aria-labelledby="diagrams-figure-title diagrams-figure-desc"
-      >
-        <title id="diagrams-figure-title">Animated diagram publication filter</title>
-        <desc id="diagrams-figure-desc">
-          Diagram files move from fixture status through manifest review before
-          they become reader-facing visual aids.
-        </desc>
-        <path class="support-bg" d="M0 0H520V340H0Z" />
-        <g class="support-dust" aria-hidden="true">
-          <circle cx="54" cy="64" r="1.1" />
-          <circle cx="106" cy="252" r="0.9" />
-          <circle cx="170" cy="84" r="1" />
-          <circle cx="236" cy="292" r="1.2" />
-          <circle cx="318" cy="74" r="1" />
-          <circle cx="408" cy="270" r="1.1" />
-          <circle cx="470" cy="104" r="0.9" />
-        </g>
-        <g class="support-link-lines" aria-hidden="true">
-          <path class="support-line signal-line" d="M86 180 C148 136, 196 132, 250 162" />
-          <path class="support-line orange-line" d="M86 180 C148 226, 196 220, 250 178" />
-          <path class="support-line signal-line alternate" d="M270 162 C328 128, 374 118, 440 116" />
-          <path class="support-line orange-line alternate" d="M270 178 C330 214, 378 224, 440 228" />
-        </g>
-        <circle class="support-core" cx="260" cy="170" r="34" aria-hidden="true" />
-        <g class="support-flow-nodes" aria-hidden="true">
-          <circle cx="86" cy="180" r="18" />
-          <circle cx="440" cy="116" r="18" />
-          <circle cx="440" cy="228" r="18" />
-        </g>
-        <g class="support-rings" aria-hidden="true">
-          <circle cx="260" cy="170" r="54" />
-          <circle cx="260" cy="170" r="88" />
-        </g>
-      </svg>
-      <figcaption id="diagrams-figure-caption">
-        Visual orientation only: diagrams support explanation but do not become
-        source authority.
+  <section class="greenfield-intro-panel" aria-label="Diagram gallery introduction">
+    <p>
+      The greenfield rule is conservative: old diagram inventory is not
+      republished unless an individual diagram has explicit reapproval
+      evidence. The route still documents the static diagram workflow and
+      keeps the existing comprehension diagram as explanatory material, not as
+      a restored gallery list.
+    </p>
+  </section>
+
+  <section id="inventory-status" class="track-page-band" aria-labelledby="inventory-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Inventory status</p>
+      <h2 id="inventory-status-title">The GF-012 gallery inventory starts empty.</h2>
+      <p>
+        This packet authorizes a route reset, not diagram regeneration or asset
+        publication. Future candidates need explicit reapproval before they
+        appear as gallery entries.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Surface</th>
+          <th scope="col">Current state</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Next requirement</th>
+        </tr>
+      </thead>
+      <tbody>
+        {inventoryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.status}</th>
+            <td>{row.current}</td>
+            <td>{row.reason}</td>
+            <td>{row.next}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="gallery-empty-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Gallery inventory</p>
+      <h2 id="gallery-empty-title">No diagram entries are visible until reapproval exists.</h2>
+      <p>
+        The empty state is intentional and accessible. It is safer than
+        carrying old inventory forward without a packet-level approval trail.
+      </p>
+    </div>
+    <DiagramGalleryList
+      items={[]}
+      emptyTitle="Greenfield diagram inventory is empty."
+      emptyBody="GF-012 contains no individual diagram reapproval evidence, so the gallery format remains but no legacy item is republished."
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="comprehension-diagram-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Diagram-publication contract</p>
+      <h2 id="comprehension-diagram-title">The route keeps one static comprehension diagram as workflow evidence.</h2>
+      <p>
+        This image is the manifest-backed route diagram from the content
+        dossier. It explains the publication boundary; it is not a gallery
+        inventory item and not source authority.
+      </p>
+    </div>
+    <figure class="support-figure diagram-release-flow" aria-labelledby="comprehension-diagram-caption">
+      <img
+        src="/assets/diagrams/comprehension/resources-diagram-publication-boundary.png"
+        alt="Mermaid source, generated PNG, manifest entry, diagram gallery, nearby prose and caption, hash-backed asset status, and diagram is not source authority."
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption id="comprehension-diagram-caption">
+        Static comprehension diagram: a diagram becomes public only as a
+        manifest-backed reader aid.
       </figcaption>
     </figure>
   </section>
 
-  <ComprehensionBlocks content={resourcesDiagramsComprehension} />
+  <section class="track-page-band" aria-labelledby="workflow-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Static diagram workflow</p>
+      <h2 id="workflow-title">Every future gallery item needs a complete publication chain.</h2>
+      <p>
+        The chain keeps diagram work deterministic and auditable without
+        implying that diagrams prove the content they depict.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Step</th>
+          <th scope="col">Requirement</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {workflowRows.map((row) => (
+          <tr>
+            <th scope="row">{row.step}</th>
+            <td>{row.requirement}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
 
-  {diagramConceptGroups.map((group) => (
-    <section
-      class="content-band content-band-tight"
-      aria-labelledby={`diagram-group-${group.id}-title`}
-    >
-      <div class="section-header">
-        <p class="eyebrow">Concept group</p>
-        <h2 id={`diagram-group-${group.id}-title`}>{group.title}</h2>
-        <p class="lead">{group.body}</p>
-      </div>
-      <DiagramGalleryList items={approvedGalleryItems.filter((item) => item.group === group.id)} />
-    </section>
-  ))}
+  <section class="track-page-band" aria-labelledby="safe-unsafe-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Safe and unsafe readings</p>
+      <h2 id="safe-unsafe-title">The boundary is about interpretation, not image quality.</h2>
+      <p>
+        The dossier summary remains visible because diagram overreads are a
+        high-risk failure mode.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col">Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {safeRows.map((row) => (
+          <tr>
+            <th scope="row">{row.label}</th>
+            <td>{row.text}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Use diagrams beside publication, derivatives, reading paths, and builder guidance."
+    lead="Internal routes remain the primary explanation; diagrams remain visual aids with provenance and non-authority status."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related diagram gallery routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <section class="track-page-band" aria-labelledby="diagram-provenance-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Provenance and limits</p>
+      <h2 id="diagram-provenance-title">Diagram publication is an audit trail, not claim authority.</h2>
+      <p>
+        The references below are cited in APA 7 style as implementation basis.
+        The manifest id for the retained comprehension diagram is
+        `comprehension_resources_diagram_publication_boundary`.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Reference</th>
+          <th scope="col">Used here for</th>
+        </tr>
+      </thead>
+      <tbody>
+        {provenanceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.reference}</th>
+            <td>{row.use}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
 </BaseLayout>

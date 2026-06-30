@@ -1,0 +1,405 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const folderRows = [
+  {
+    folder: "ontology/",
+    className: "Canonical scientific source plus derivatives",
+    edit: "Edit active source Markdown or registered TeX through governed source workflows; treat PDFs as derivatives.",
+    read: "Read ontology and TeX sources for claim-bearing material before generated explainers.",
+  },
+  {
+    folder: "research_control/",
+    className: "Tracked control authority",
+    edit: "Edit through bounded Director decisions, AgentJobs, completions, validators, and handoffs.",
+    read: "Read program state, frontier, tasks, approvals, design records, and handoffs for workflow state.",
+  },
+  {
+    folder: "registries/",
+    className: "CSV authority and metadata ledger",
+    edit: "Edit through governed workflows with validation receipts.",
+    read: "Use for source, derivative, role, job, decision, claim, relationship, and provenance rows.",
+  },
+  {
+    folder: "markdown/",
+    className: "Canonical documentation and publication source",
+    edit: "Edit briefs and source specs through documentation-curator or governed workflows.",
+    read: "Use publication briefs and HTML explainer specs as source-bundle inputs.",
+  },
+  {
+    folder: "github-facing/",
+    className: "Generated source-backed Markdown derivative",
+    edit: "Regenerate from source-backed publication process; do not hand-edit as source authority.",
+    read: "Use as reader-friendly seed material after source inspection.",
+  },
+  {
+    folder: "html/",
+    className: "Tracked generated HTML derivative",
+    edit: "Regenerate through the governed HTML explainer workflow.",
+    read: "Use as closest existing analogue for public website explanations.",
+  },
+  {
+    folder: "wiki/ and .local/",
+    className: "Generated navigation and local retrieval support",
+    edit: "Refresh or clean locally; never cite ignored cache state as authority.",
+    read: "Use for search, object browsing, QA, and retrieval hints only.",
+  },
+  {
+    folder: ".agents/ and .codex/",
+    className: "Control contracts and tooling/runtime",
+    edit: "Edit through project-control, role/schema, or skill-maintenance packets.",
+    read: "Use for role contracts, schema boundaries, skills, prompts, and workflow procedures.",
+  },
+  {
+    folder: "scripts/ and tests/",
+    className: "Tooling and reliability checks",
+    edit: "Edit with relevant tooling changes and tests.",
+    read: "Use for deterministic validation and operations; passing tests are operational evidence only.",
+  },
+  {
+    folder: "legacy_ontology/ and tex_shared/",
+    className: "Archival and source-support lanes",
+    edit: "Treat archival content as comparison material unless promoted by tracked authority; edit shared TeX support only through governed changes.",
+    read: "Use for historical comparison and shared source support, not independent claim promotion.",
+  },
+];
+
+const legendRows = [
+  {
+    className: "canonical scientific source",
+    meaning: "Active source material that may carry scientific or mathematical claims when registered and governed.",
+    warning: "Derivatives help reading but do not replace the source.",
+  },
+  {
+    className: "tracked control authority",
+    meaning: "Tasks, approvals, program state, registries, validators, completions, and handoffs.",
+    warning: "Controls workflow authority, not scientific truth by itself.",
+  },
+  {
+    className: "generated derivative",
+    meaning: "Human or agent-readable output generated from source material.",
+    warning: "Read for orientation; edit sources and regenerate.",
+  },
+  {
+    className: "local retrieval",
+    meaning: "Ignored semantic, Obsidian, memory, preview, or QA state.",
+    warning: "Use for search and review; do not cite as authority.",
+  },
+  {
+    className: "tooling/runtime",
+    meaning: "Skills, scripts, tests, prompts, dependencies, and operator helpers.",
+    warning: "Validates or automates behavior, not physics proof.",
+  },
+  {
+    className: "archival or reserved",
+    meaning: "Historical, comparison, support, or future lanes without active registered authority by default.",
+    warning: "Avoid building claims from it until source authority exists.",
+  },
+];
+
+const editRows = [
+  {
+    change: "Physics or mathematical claim",
+    editLane: "Active ontology Markdown/TeX and associated registries through governed source workflows.",
+    blockedLane: "Generated explainers, diagrams, wiki notes, PDFs, or local retrieval hits.",
+  },
+  {
+    change: "Role or schema behavior",
+    editLane: ".agents/ contracts and related registries through project-control workflows.",
+    blockedLane: "Website copy or generated workflow summaries.",
+  },
+  {
+    change: "Research workflow state",
+    editLane: "research_control/ records, registries, AgentJobs, completions, and handoffs.",
+    blockedLane: "Memory summaries, screenshots, or static public pages.",
+  },
+  {
+    change: "Publication source or website seed",
+    editLane: "markdown/publication-briefs/ and markdown/html-explainer-specs/ before regenerating derivatives.",
+    blockedLane: "Generated HTML or GitHub-facing Markdown as an independent source.",
+  },
+  {
+    change: "Local retrieval support",
+    editLane: "Refresh or clean local caches as local tooling state.",
+    blockedLane: ".local material as public evidence.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Builder",
+    title: "Site Builder Guide",
+    href: "/resources/site-builder-guide/",
+    body: "Turn topology into source bundles without treating the map as authority.",
+  },
+  {
+    label: "Authority",
+    title: "Source Authority",
+    href: "/resources/source-authority/",
+    body: "Read source, registry, derivative, retrieval, and website authority classes.",
+  },
+  {
+    label: "Retrieval",
+    title: "Retrieval Layers",
+    href: "/resources/retrieval-layers/",
+    body: "Separate local navigation support from source records.",
+  },
+  {
+    label: "Publication",
+    title: "Publication Process",
+    href: "/resources/publication-process/",
+    body: "Follow source specs, briefs, derivatives, validation, and review limits.",
+  },
+  {
+    label: "Reading",
+    title: "Reading Paths",
+    href: "/resources/reading-paths/",
+    body: "Choose route sequences by reader question before file inspection.",
+  },
+  {
+    label: "Resources",
+    title: "Resources Overview",
+    href: "/resources/",
+    body: "Return to the Resources route map.",
+  },
+];
+
+const provenanceRows = [
+  {
+    reference: "The AEther Flow Website. (2026a). Folder and Repository Topology Components [Product requirements document: PRD-08].",
+    use: "Defines folder families, authority classes, edit/read policy, and generated-versus-canonical warnings.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026b). Quick Source Map for Site Builders [Product requirements document: PRD-11].",
+    use: "Defines source-bundle linkage from repository lanes to future page work.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026c). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
+    use: "Defines registry, derivative, retrieval, and local-cache boundaries.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026d). Sitewide Greenfield Rebuild Implementation Plan [Implementation plan].",
+    use: "Defines the GF-012 repository-map route requirement and reset boundary.",
+  },
+];
+
+const repositorySvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-repository-title resources-repository-desc">
+    <title id="resources-repository-title">Animated repository lane map</title>
+    <desc id="resources-repository-desc">Repository lanes separate source, control, generated, local, tooling, and archival material before edit decisions are made.</desc>
+    <defs>
+      <radialGradient id="resources-repository-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.58" />
+        <stop offset="45%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="resources-repository-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#resources-repository-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <path d="M102 98 H518" />
+      <path d="M102 140 H518" />
+      <path d="M102 182 H518" />
+      <path d="M102 224 H518" />
+      <path d="M102 266 H518" />
+      <ellipse cx="310" cy="182" rx="218" ry="118" />
+    </g>
+    <g filter="url(#resources-repository-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M108 98 C190 148, 242 182, 310 182 C378 182, 430 148, 512 98" />
+      <path class="track-figure-path orange-path" d="M108 266 C190 216, 242 182, 310 182 C378 182, 430 216, 512 266" />
+      <path class="track-figure-path signal-path alternate" d="M108 182 C206 120, 414 120, 512 182" />
+      <path class="track-figure-path orange-path alternate" d="M108 182 C206 244, 414 244, 512 182" />
+    </g>
+    <path class="track-figure-core" d="M310 134 L354 182 L310 230 L266 182 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="108" cy="98" r="13" />
+      <circle cx="108" cy="182" r="13" />
+      <circle cx="108" cy="266" r="13" />
+      <circle cx="310" cy="182" r="13" />
+      <circle cx="512" cy="98" r="13" />
+      <circle cx="512" cy="182" r="13" />
+      <circle cx="512" cy="266" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Repository Map"
+  description="Resources repository map for The AEther Flow Website, classifying source, control, generated, local, tooling, archival, and reserved lanes without treating topology as authority."
+  bodyClass="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Resources / Repository Map"
+    title="Repository Map"
+    lead="The repository map classifies folder lanes by purpose, edit policy, and read policy. It is orientation for inspection, not a substitute for source inspection."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Repository map page actions">
+      <a class="primary-link" href="#folder-map">Read folder lanes</a>
+      <a class="secondary-link" href="/resources/site-builder-guide/">Builder guide</a>
+      <a class="secondary-link" href="/resources/">Resources</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="resources-repository-caption">
+        <Fragment set:html={repositorySvg} />
+        <figcaption id="resources-repository-caption">
+          Visual orientation only: topology organizes inspection and does not grant authority.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Repository map introduction">
+    <p>
+      The repository combines source material, control records, registries,
+      generated derivatives, tooling, tests, archival lanes, and ignored local
+      caches. The safe question is not only where a file lives, but what
+      authority class and edit policy that lane carries.
+    </p>
+  </section>
+
+  <section id="folder-map" class="track-page-band" aria-labelledby="folder-map-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Folder lanes</p>
+      <h2 id="folder-map-title">Read and edit boundaries differ by lane.</h2>
+      <p>
+        This compact map avoids copying a stale generated folder inventory.
+        Future changes must re-check the live upstream tree before using this
+        page as implementation context.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Folder</th>
+          <th scope="col">Class</th>
+          <th scope="col">Edit policy</th>
+          <th scope="col">Read policy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {folderRows.map((row) => (
+          <tr>
+            <th scope="row"><code>{row.folder}</code></th>
+            <td>{row.className}</td>
+            <td>{row.edit}</td>
+            <td>{row.read}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="legend-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Legend</p>
+      <h2 id="legend-title">Authority class is part of the data.</h2>
+      <p>
+        Folder names alone are not enough. Each lane must keep its source,
+        derivative, local, tooling, or archival status visible.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Class</th>
+          <th scope="col">Meaning</th>
+          <th scope="col">Reader warning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {legendRows.map((row) => (
+          <tr>
+            <th scope="row">{row.className}</th>
+            <td>{row.meaning}</td>
+            <td>{row.warning}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="edit-guide-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Where should I edit?</p>
+      <h2 id="edit-guide-title">Canonical changes start in the owning lane.</h2>
+      <p>
+        Generated outputs and local retrieval layers can help find the owner.
+        They are not the owner.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Change</th>
+          <th scope="col">Edit lane</th>
+          <th scope="col">Blocked shortcut</th>
+        </tr>
+      </thead>
+      <tbody>
+        {editRows.map((row) => (
+          <tr>
+            <th scope="row">{row.change}</th>
+            <td>{row.editLane}</td>
+            <td>{row.blockedLane}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Use topology beside builder, authority, retrieval, and publication routes."
+    lead="The map supports source inspection; it does not replace the source bundle or the current tracked record."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related repository-map routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <section class="track-page-band" aria-labelledby="repository-provenance-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Provenance and limits</p>
+      <h2 id="repository-provenance-title">This map is source-bundled orientation, not canonical topology authority.</h2>
+      <p>
+        The references below are cited in APA 7 style as implementation basis.
+        They support this route, while live upstream files, registries, and
+        governed records remain the authority for real edits.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Reference</th>
+          <th scope="col">Used here for</th>
+        </tr>
+      </thead>
+      <tbody>
+        {provenanceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.reference}</th>
+            <td>{row.use}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+</BaseLayout>

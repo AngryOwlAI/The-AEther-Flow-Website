@@ -1085,6 +1085,60 @@
       "boundary_type": "trust_boundary"
     },
     {
+      "route_path": "/resources/reading-paths/",
+      "local_page_source": "src/pages/resources/reading-paths/index.astro",
+      "title": "Reading Paths",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/project-overview-explainer.md",
+        "github-facing/source-authority-explainer.md",
+        "github-facing/aether-flow-physics-program-explainer.md",
+        "github-facing/research-agent-workflow-explainer.md",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "public/files/manifests/page_route_map.json"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/repository-map/",
+      "local_page_source": "src/pages/resources/repository-map/index.astro",
+      "title": "Repository Map",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "FOLDER_MAP.md",
+        "README.md",
+        "AGENTS.md",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "registries/MARKDOWN_SOURCE_REGISTRY.csv",
+        "registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "research_control/README.md"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/site-builder-guide/",
+      "local_page_source": "src/pages/resources/site-builder-guide/index.astro",
+      "title": "Site Builder Guide",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "README.md",
+        "AGENTS.md",
+        "ontology/aether-and-aether-flow.md",
+        "research_control/README.md",
+        "registries/TEX_SOURCE_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "markdown/publication-briefs/README.md"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
       "route_path": "/license/",
       "local_page_source": "src/pages/license/index.astro",
       "title": "Project License",

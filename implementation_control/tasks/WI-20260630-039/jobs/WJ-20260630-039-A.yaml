@@ -4,8 +4,8 @@ job_id: "WJ-20260630-039-A"
 task_id: "WI-20260630-039"
 title: "Build Resources derivatives retrieval publication and library slice"
 created_utc: "2026-06-30T19:32:32Z"
-updated_utc: "2026-06-30T19:46:17Z"
-status: "active"
+updated_utc: "2026-06-30T19:53:28Z"
+status: "completed"
 
 objective: "Implement the GF-011 `/resources/generated-derivatives/`, `/resources/retrieval-layers/`, `/resources/publication-process/`, and `/resources/library/` routes with manifest, ledger, validation, and browser-QA evidence."
 

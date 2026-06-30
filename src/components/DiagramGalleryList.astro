@@ -9,29 +9,50 @@ interface DiagramGalleryItem {
 
 interface Props {
   items: DiagramGalleryItem[];
+  emptyTitle?: string;
+  emptyBody?: string;
 }
 
-const { items } = Astro.props;
+const {
+  items,
+  emptyTitle = "No diagram inventory is currently published.",
+  emptyBody = "Future diagrams need explicit reapproval evidence before they appear in this gallery.",
+} = Astro.props;
 ---
 
 <div class="diagram-gallery-list">
-  {items.map((item) => (
-    <article class="diagram-gallery-item">
+  {items.length === 0 ? (
+    <article class="diagram-gallery-item diagram-gallery-empty">
       <div class="diagram-gallery-copy">
-        <p class="download-kind">Diagram</p>
-        <h3>
-          <a href={item.src}>{item.title}</a>
-        </h3>
-        <p>{item.caption}</p>
-        <p class="diagram-gallery-provenance">{item.provenance}</p>
+        <p class="download-kind">Inventory reset</p>
+        <h3>{emptyTitle}</h3>
+        <p>{emptyBody}</p>
         <p class="diagram-gallery-boundary">
-          Visual orientation only. This diagram is a reader aid, not source
-          authority or claim-promotion evidence.
+          Visual orientation only. Diagram publication requires tracked source,
+          generated static output, manifest status, caption, provenance, and a
+          non-authority boundary.
         </p>
       </div>
-      <a class="diagram-gallery-image-link" href={item.src} aria-label={`Open ${item.title}`}>
-        <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
-      </a>
     </article>
-  ))}
+  ) : (
+    items.map((item) => (
+      <article class="diagram-gallery-item">
+        <div class="diagram-gallery-copy">
+          <p class="download-kind">Diagram</p>
+          <h3>
+            <a href={item.src}>{item.title}</a>
+          </h3>
+          <p>{item.caption}</p>
+          <p class="diagram-gallery-provenance">{item.provenance}</p>
+          <p class="diagram-gallery-boundary">
+            Visual orientation only. This diagram is a reader aid, not source
+            authority or claim-promotion evidence.
+          </p>
+        </div>
+        <a class="diagram-gallery-image-link" href={item.src} aria-label={`Open ${item.title}`}>
+          <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+        </a>
+      </article>
+    ))
+  )}
 </div>

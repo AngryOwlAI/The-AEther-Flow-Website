@@ -1,0 +1,251 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-040"
+title: "Build Reading Paths Repository Map Site Builder Guide And Diagram Gallery"
+created_utc: "2026-06-30T19:53:28Z"
+updated_utc: "2026-06-30T20:07:33Z"
+status: "active"
+
+source_context:
+  task_packet: "GF-012 Build Reading Paths, Repository Map, Site Builder Guide, And Diagram Gallery"
+  canonical_sitewide_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  foundation_contract: "docs/architecture/sitewide-greenfield-foundation-contract.md"
+  review_ledger: "docs/quality/sitewide-greenfield-review-ledger.md"
+  high_level_prd: "PRDs/website-information-space/PRD-01-high-level-components.md"
+  publication_prd: "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+  topology_prd: "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
+  positioning_prd: "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+  source_map_prd: "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+  resources_index_dossier: "docs/content-dossiers/resources-index/dossier.md"
+  diagram_gallery_dossier: "docs/content-dossiers/resources-diagrams/dossier.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-039.yaml"
+
+requirements:
+  - "Implement `/resources/reading-paths/`, `/resources/repository-map/`, `/resources/site-builder-guide/`, and the greenfield reset of `/resources/diagrams/`."
+  - "Reading paths must guide general and specialist readers through new internal routes before provenance or source archaeology."
+  - "Repository map must classify folder families by authority, derivative, retrieval, tooling, cache, archival, and edit/read policy without treating topology as source authority."
+  - "Site-builder guide must expose the source-bundle schema, page-family source bundle index, build-first checklist, contributor handoff requirements, and staleness handling."
+  - "Diagram Gallery must preserve format, provenance, static generated diagram discipline, and non-authority behavior while removing old inventory unless individual diagrams are explicitly reapproved."
+  - "Resource pages must not render a dedicated source-authority section component."
+  - "Update public route/provenance manifests and the review ledger for the four GF-012 routes."
+  - "Do not add dependencies, push, deploy, refresh upstream sources, regenerate diagrams, publish new diagrams, refresh generated derivatives, or mutate the upstream research repository."
+
+goal: "Complete GF-012 by building the greenfield Resources reading paths, repository map, site-builder guide, and diagram gallery routes under fresh live control."
+
+scope:
+  in_scope:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/website-information-space/PRD-01-high-level-components.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    - "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
+    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+    - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "docs/content-dossiers/resources-index/dossier.md"
+    - "docs/content-dossiers/resources-diagrams/dossier.md"
+    - "src/pages/resources/index.astro"
+    - "src/pages/resources/reading-paths/index.astro"
+    - "src/pages/resources/repository-map/index.astro"
+    - "src/pages/resources/site-builder-guide/index.astro"
+    - "src/pages/resources/diagrams.astro"
+    - "src/components/DiagramGalleryList.astro"
+    - "src/components/CommandBand.astro"
+    - "src/components/EvidenceRail.astro"
+    - "src/layouts/BaseLayout.astro"
+    - "src/lib/siteContent.ts"
+    - "src/lib/manifests.ts"
+    - "src/styles/global.css"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/asset_manifest.json"
+    - "scripts/generate_page_provenance.py"
+    - "scripts/render_mermaid_diagrams.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-039.yaml"
+    - "implementation_control/handoffs/WH-20260630-039.md"
+    - "implementation_control/tasks/WI-20260630-039/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-039/jobs/WJ-20260630-039-A.yaml"
+    - "git status output"
+  out_of_scope:
+    - "Old route retirement or redirects."
+    - "Public downloadable asset addition, deletion, regeneration, or generated diagram publishing."
+    - "Source snapshots or source bundle dataset refreshes."
+    - "Generated derivative, retrieval-layer, wiki, PDF, Obsidian, or `.local` cache refreshes."
+    - "Upstream source-project writes."
+    - "Dependency additions."
+    - "Git push."
+    - "Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260630-040-A"
+  next_packet_after_this_task: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/website-information-space/PRD-01-high-level-components.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    - "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
+    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+    - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "docs/content-dossiers/resources-index/dossier.md"
+    - "docs/content-dossiers/resources-diagrams/dossier.md"
+    - "src/pages/resources/index.astro"
+    - "src/pages/resources/diagrams.astro"
+    - "src/components/DiagramGalleryList.astro"
+    - "src/components/CommandBand.astro"
+    - "src/components/EvidenceRail.astro"
+    - "src/layouts/BaseLayout.astro"
+    - "src/lib/siteContent.ts"
+    - "src/lib/manifests.ts"
+    - "src/styles/global.css"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/asset_manifest.json"
+    - "scripts/generate_page_provenance.py"
+    - "scripts/render_mermaid_diagrams.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-039.yaml"
+    - "implementation_control/handoffs/WH-20260630-039.md"
+    - "implementation_control/tasks/WI-20260630-039/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-039/jobs/WJ-20260630-039-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/pages/resources/index.astro"
+    - "src/pages/resources/reading-paths/index.astro"
+    - "src/pages/resources/repository-map/index.astro"
+    - "src/pages/resources/site-builder-guide/index.astro"
+    - "src/pages/resources/diagrams.astro"
+    - "src/components/DiagramGalleryList.astro"
+    - "src/styles/global.css"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-039.yaml"
+    - "implementation_control/handoffs/WH-20260630-039.md"
+    - "implementation_control/tasks/WI-20260630-039/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-039/jobs/WJ-20260630-039-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-040.yaml"
+    - "implementation_control/handoffs/WH-20260630-040.md"
+    - "implementation_control/tasks/WI-20260630-040/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-040/jobs/WJ-20260630-040-A.yaml"
+    - "implementation_control/tasks/WI-20260630-040/jobs/completions/WJC-20260630-040-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "approved"
+    reason: "GF-012 is a public Resources route-copy packet constrained by PRD-01, PRD-06, PRD-08, PRD-10, PRD-11, AGENTS `/resources/` rules, and checked-in implementation-control context."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot, upstream state refresh, generated publication refresh, wiki regeneration, diagram regeneration, or retrieval refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "GF-012 adds three planned greenfield route files and resets one existing Resources route without retiring old routes or adding redirects."
+  shared_visual_systems:
+    status: "approved"
+    reason: "GF-012 may add route-local SVGs and minimally adjust the diagram gallery component/style if required."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public PDF, TeX, image, diagram, or downloadable asset addition, deletion, or regeneration is in scope."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "GF-012 must update public route/provenance manifests for the Resources reading paths, repository map, site-builder guide, and diagram gallery routes."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "content"
+    command: "npm run validate:content"
+    required: true
+  - id: "links"
+    command: "npm run validate:links"
+    required: true
+  - id: "layout"
+    command: "npm run validate:layout"
+    required: true
+  - id: "comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "svg-policy"
+    command: "npm run validate:svg"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "browser-qa"
+    command: "manual inspection of rendered Reading Paths, Repository Map, Site Builder Guide, and Diagram Gallery routes at desktop and mobile viewport"
+    required: true
+
+stop_conditions:
+  - "Allowed write paths need to expand outside the explicit GF-012 allowlist."
+  - "Any redirect, route retirement, dependency addition, push, deploy, upstream write, source refresh, generated output refresh, public asset mutation, or diagram regeneration becomes necessary."
+  - "Any diagram inventory item is republished without explicit reapproval evidence."
+  - "Any repository topology, source map, validator PASS, diagram, generated derivative, or local retrieval layer is represented as source authority or proof."
+  - "Any dedicated source-authority section component is proposed on a `/resources/` page."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Write the active job completion record, then use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-040-A"
+  path: "implementation_control/tasks/WI-20260630-040/jobs/completions/WJC-20260630-040-A.yaml"
+  status: "completed"
+
+handoff:
+  latest_handoff_id: "WH-20260630-040"
+  yaml_path: "implementation_control/handoffs/WH-20260630-040.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-040.md"
+
+next_recommended_action:
+  task_packet: "GF-013 Regenerate Manifests, Redirects, And Retire Obsolete Old Routes"
+  summary: "After checkpoint, open the next fresh implementation-control packet for redirects, old route retirement, and final manifest reconciliation."
+  do_not_skip: "Do not implement redirects, old route retirement, push, deploy, upstream writes, source refreshes, diagram generation, or broaden scope beyond GF-012 without fresh live control records."
