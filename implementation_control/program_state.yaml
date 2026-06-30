@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T16:09:47Z"
+updated_utc: "2026-06-30T16:20:10Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-015/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-015/jobs/WJ-20260630-015-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-015.yaml"
+  - "implementation_control/tasks/WI-20260630-016/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-016/jobs/WJ-20260630-016-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-016.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,26 +24,26 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-015"
-  title: "Convert PRD-00 To Master Implementation Plan"
+  task_id: "WI-20260630-016"
+  title: "Convert PRD-10-website-positioning-guidance To Sub Implementation Plan"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-015/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-016/00_TASK.yaml"
   planning_context:
-    source_prd: "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+    source_prd: "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+    master_plan: "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
-    sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
-    task_packet: "master implementation plan conversion"
+    task_packet: "sub implementation plan conversion"
 
 current_job:
-  job_id: "WJ-20260630-015-A"
+  job_id: "WJ-20260630-016-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-015/jobs/WJ-20260630-015-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-016/jobs/WJ-20260630-016-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-015"
+  handoff_id: "WH-20260630-016"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-015.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-015.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-016.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-016.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -60,6 +60,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "first sub-PRD implementation-plan conversion"
-  summary: "Open a fresh implementation-control packet for PRD-10 positioning guidance before converting any public route or additional sub-PRD implementation plan."
-  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, refresh generated outputs, or broaden scope beyond a fresh live control packet."
+  task_packet: "convert current sub PRD implementation plan"
+  summary: "Convert PRD-10-website-positioning-guidance.md into a sub implementation plan and task-packet set."
+  do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."

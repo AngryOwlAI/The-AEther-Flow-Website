@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260630-015-A"
-task_id: "WI-20260630-015"
-title: "Convert PRD-00 master PRD to master implementation plan"
-created_utc: "2026-06-30T15:47:28Z"
+job_id: "WJ-20260630-016-A"
+task_id: "WI-20260630-016"
+title: "Convert PRD-10-website-positioning-guidance to sub implementation plan"
+created_utc: "2026-06-30T16:20:10Z"
 updated_utc: "2026-06-30T16:20:10Z"
-status: "completed"
+status: "active"
 
-objective: "Use prd-to-implementation-plan to convert PRD-00 into the master implementation plan and task-packet set for the website-information-space revamp."
+objective: "Use prd-to-implementation-plan to convert PRD-10-website-positioning-guidance.md into a sub implementation plan and task-packet set."
 
 execution_boundary:
   invocation_limit: "one bounded implementation packet"
@@ -35,37 +35,41 @@ allowed_reads:
   - "ImplementationPlans/aether_flow_website_prd_system.md"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  - "ImplementationPlans/website-information-space/README.md"
+  - "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
+  - "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-task-packets.md"
   - "PRDs/sitewide-greenfield-rebuild-prd.md"
   - "PRDs/website-information-space/README.md"
   - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
   - "PRDs/website-information-space/PRD-FAMILY-VALIDATION-REVIEW.md"
   - "package.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-014.yaml"
   - "git status output"
+  - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+  - "implementation_control/handoffs/WH-20260630-015.yaml"
 
 allowed_writes:
   - "ImplementationPlans/website-information-space/README.md"
-  - "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
-  - "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-task-packets.md"
+  - "ImplementationPlans/website-information-space/PRD-10-website-positioning-guidance-implementation-plan.md"
+  - "ImplementationPlans/website-information-space/PRD-10-website-positioning-guidance-task-packets.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-014.yaml"
-  - "implementation_control/handoffs/WH-20260630-014.md"
   - "implementation_control/handoffs/WH-20260630-015.yaml"
   - "implementation_control/handoffs/WH-20260630-015.md"
-  - "implementation_control/tasks/WI-20260630-014/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-014/jobs/WJ-20260630-014-A.yaml"
   - "implementation_control/tasks/WI-20260630-015/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260630-015/jobs/WJ-20260630-015-A.yaml"
-  - "implementation_control/tasks/WI-20260630-015/jobs/completions/WJC-20260630-015-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-016.yaml"
+  - "implementation_control/handoffs/WH-20260630-016.md"
+  - "implementation_control/tasks/WI-20260630-016/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-016/jobs/WJ-20260630-016-A.yaml"
+  - "implementation_control/tasks/WI-20260630-016/jobs/completions/WJC-20260630-016-A.yaml"
 
 required_outputs:
-  - "ImplementationPlans/website-information-space/README.md indexes the PRD-to-implementation-plan conversion system and records conversion order."
-  - "PRD-00 master implementation plan exists and maps the master PRD requirements to the canonical sitewide greenfield rebuild approach."
-  - "PRD-00 master task-packet set exists and defines the sequence for sub-PRD implementation-plan conversions."
-  - "The implementation plan records that PRD-00 produces the master implementation plan and every other PRD produces a sub implementation plan."
-  - "The implementation plan records the display-spelling rule that uses Æther in reader-facing text and uses aether only for links, slugs, and file naming."
-  - "Control records preserve website-local scope, upstream read-only status, and no public route implementation."
+  - "The sub implementation plan exists."
+  - "The sub task-packet set exists."
+  - "The implementation-plan index records this PRD as complete."
+  - "The plan preserves the canonical greenfield rebuild constraints."
+  - "The plan preserves the display-spelling rule."
+  - "Control records preserve website-local scope and no public route implementation."
 
 approval_gates:
   - id: "public_claim_changes"
@@ -111,12 +115,11 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "Allowed write paths need to expand outside the explicit PRD-00 implementation-plan allowlist."
-  - "Any sub-PRD implementation-plan conversion is proposed before the PRD-00 master implementation plan is complete."
+  - "Allowed write paths need to expand outside the explicit sub plan allowlist."
+  - "Any additional PRD conversion is proposed before this packet is checkpointed."
   - "Any upstream write is proposed."
-  - "Any public claim, route, asset, manifest, push, deploy, source bundle dataset, source snapshot, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
+  - "Any public claim, route, asset, manifest, push, deploy, source bundle dataset, source snapshot, generated output, wiki, or local retrieval change becomes necessary."
   - "Validation fails."
-  - "The active job cannot be completed within one bounded packet."
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
@@ -124,10 +127,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-015-A"
-  path: "implementation_control/tasks/WI-20260630-015/jobs/completions/WJC-20260630-015-A.yaml"
+  completion_id: "WJC-20260630-016-A"
+  path: "implementation_control/tasks/WI-20260630-016/jobs/completions/WJC-20260630-016-A.yaml"
 
 next_recommended_action:
-  task_packet: "first sub-PRD implementation-plan conversion"
-  summary: "Open a fresh implementation-control packet for PRD-10 positioning guidance, then convert that single PRD into a sub implementation plan."
-  do_not_skip: "Do not convert additional sub-PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden the packet without fresh live control records."
+  task_packet: "convert PRD-05 sub implementation plan"
+  summary: "After checkpoint, open the next fresh implementation-control packet."
+  do_not_skip: "Do not convert additional PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope without fresh live control records."
