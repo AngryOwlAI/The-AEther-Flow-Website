@@ -1,0 +1,303 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const derivativeRows = [
+  {
+    className: "GitHub-facing Markdown",
+    examples: "Repository-browser explainers generated from source-backed publication work.",
+    safeUse: "Use as seed reading and orientation when the source hierarchy is preserved.",
+    limit: "A generated explainer can guide reading, but public claims still require source-basis verification.",
+  },
+  {
+    className: "Tracked HTML explainer",
+    examples: "No-network human-readable HTML outputs and prior explainer pages.",
+    safeUse: "Use as a design and content prior for public pages.",
+    limit: "HTML output remains a generated derivative, not independent authority.",
+  },
+  {
+    className: "PDF and document derivative",
+    examples: "Generated PDFs, website copies, and document-library downloads.",
+    safeUse: "Use for inspection and reading when the source path and status label remain visible.",
+    limit: "Generated documents do not promote source claims or close physics gates.",
+  },
+  {
+    className: "Wiki and object browser",
+    examples: "Generated wiki pages, relationship views, and browsable project maps.",
+    safeUse: "Use for discovery, object browsing, and candidate source location.",
+    limit: "When source and derivative disagree, inspect the canonical source and current tracked control record.",
+  },
+  {
+    className: "Public diagram or asset",
+    examples: "Comprehension diagrams, route figures, and public manifest assets.",
+    safeUse: "Use to improve comprehension of an already source-bounded page.",
+    limit: "A visual aid is not source proof, registry proof, or publication acceptance.",
+  },
+];
+
+const conflictRows = [
+  {
+    step: "Read the derivative label",
+    action: "Identify whether the surface is generated Markdown, HTML, PDF, wiki, diagram, or asset.",
+    result: "The reader sees derivative status before trusting the surface.",
+  },
+  {
+    step: "Find the source basis",
+    action: "Use route provenance, source manifests, registries, or publication briefs to locate the owner.",
+    result: "The derivative becomes a path to source inspection, not a substitute for it.",
+  },
+  {
+    step: "Inspect the owner",
+    action: "Check the canonical source, source spec, registry row, handoff, or control record that owns the claim.",
+    result: "Claim language follows the owner, not the polished derivative.",
+  },
+  {
+    step: "Record the limit",
+    action: "State what the derivative helps readers do and what it cannot prove.",
+    result: "Generated derivatives help readers inspect the project, but registered sources and tracked control records remain authoritative.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Authority",
+    title: "Source Authority",
+    href: "/resources/source-authority/",
+    body: "Start with the source, registry, derivative, retrieval, and website PRD ladder.",
+  },
+  {
+    label: "Retrieval",
+    title: "Retrieval Layers",
+    href: "/resources/retrieval-layers/",
+    body: "Separate generated derivatives from local search and cache layers.",
+  },
+  {
+    label: "Publication",
+    title: "Publication Process",
+    href: "/resources/publication-process/",
+    body: "Read how source specs and briefs keep derivative reuse bounded.",
+  },
+  {
+    label: "Documents",
+    title: "Ontology Documents",
+    href: "/resources/documents/",
+    body: "Inspect generated PDF and TeX copies with manifest status labels.",
+  },
+  {
+    label: "Library",
+    title: "Library",
+    href: "/resources/library/",
+    body: "Find reader paths organized by job rather than file type.",
+  },
+  {
+    label: "Records",
+    title: "Registries",
+    href: "/resources/registries/",
+    body: "Use derivative registries as provenance and status maps.",
+  },
+];
+
+const provenanceRows = [
+  {
+    reference: "The AEther Flow Website. (2026a). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
+    use: "Defines generated derivative and retrieval boundaries.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026b). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
+    use: "Defines generated explainer, publication, and page-template boundaries.",
+  },
+  {
+    reference: "The AEther Flow Website. (2026c). Folder and Repository Topology Components [Product requirements document: PRD-08].",
+    use: "Defines folder classes for generated derivatives and local retrieval layers.",
+  },
+  {
+    reference: "The AEther Flow Project. (2026). Source authority and generated derivatives [Source file: github-facing/source-authority-explainer.md].",
+    use: "Provides upstream framing for derivative-versus-source conflict resolution.",
+  },
+];
+
+const derivativeSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-derivatives-title resources-derivatives-desc">
+    <title id="resources-derivatives-title">Animated generated derivative boundary map</title>
+    <desc id="resources-derivatives-desc">Generated derivatives orbit a source lane and route readers back to canonical source inspection.</desc>
+    <defs>
+      <radialGradient id="resources-derivatives-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.58" />
+        <stop offset="42%" stop-color="var(--owl-cyan-400)" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="resources-derivatives-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#resources-derivatives-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="230" ry="108" />
+      <ellipse cx="310" cy="180" rx="150" ry="72" />
+      <path d="M86 180 H534" />
+      <path d="M310 74 V286" />
+    </g>
+    <g filter="url(#resources-derivatives-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M104 112 C184 96, 242 132, 310 180 C378 228, 436 264, 516 248" />
+      <path class="track-figure-path orange-path" d="M104 248 C184 264, 242 228, 310 180 C378 132, 436 96, 516 112" />
+      <path class="track-figure-path signal-path alternate" d="M170 180 C226 116, 394 116, 450 180" />
+      <path class="track-figure-path orange-path alternate" d="M170 180 C226 244, 394 244, 450 180" />
+    </g>
+    <path class="track-figure-core" d="M310 132 L352 180 L310 228 L268 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="104" cy="112" r="13" />
+      <circle cx="104" cy="248" r="13" />
+      <circle cx="170" cy="180" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="450" cy="180" r="13" />
+      <circle cx="516" cy="112" r="13" />
+      <circle cx="516" cy="248" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Generated Derivatives"
+  description="Resources generated derivatives route explaining generated Markdown, HTML, PDF, wiki, and public assets as reader support rather than source authority."
+  bodyClass="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Resources / Generated Derivatives"
+    title="Generated Derivatives"
+    lead="Generated derivatives help readers inspect the project. They do not replace registered sources, registries, or governed control records."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Generated derivatives page actions">
+      <a class="primary-link" href="#derivative-classes">Read derivative classes</a>
+      <a class="secondary-link" href="/resources/retrieval-layers/">Retrieval layers</a>
+      <a class="secondary-link" href="/resources/">Resources</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="resources-derivatives-caption">
+        <Fragment set:html={derivativeSvg} />
+        <figcaption id="resources-derivatives-caption">
+          Visual orientation only: derivative surfaces route readers back to source inspection.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Generated derivatives introduction">
+    <p>
+      A generated page can be useful and still be noncanonical. Treat it as a
+      reading layer with a source-basis trail, not as a claim owner.
+    </p>
+  </section>
+
+  <section id="derivative-classes" class="track-page-band" aria-labelledby="derivative-classes-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Derivative classes</p>
+      <h2 id="derivative-classes-title">Generated surfaces are reader aids with explicit limits.</h2>
+      <p>
+        The status label tells the reader what kind of inspection the surface
+        supports before the page offers source or provenance links.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Class</th>
+          <th scope="col">Examples</th>
+          <th scope="col">Safe use</th>
+          <th scope="col">Limit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {derivativeRows.map((row) => (
+          <tr>
+            <th scope="row">{row.className}</th>
+            <td>{row.examples}</td>
+            <td>{row.safeUse}</td>
+            <td>{row.limit}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="conflict-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Conflict handling</p>
+      <h2 id="conflict-title">Derivative disagreement sends the reader upstream.</h2>
+      <p>
+        The derivative page is most valuable when it makes the audit path
+        explicit and keeps the source owner visible.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Step</th>
+          <th scope="col">Action</th>
+          <th scope="col">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        {conflictRows.map((row) => (
+          <tr>
+            <th scope="row">{row.step}</th>
+            <td>{row.action}</td>
+            <td>{row.result}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read derivatives beside authority, retrieval, publication, and library routes."
+    lead="Internal routes come first; provenance links remain available when source inspection is required."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related generated derivative routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <section class="track-page-band" aria-labelledby="derivatives-provenance-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Provenance and limits</p>
+      <h2 id="derivatives-provenance-title">This page explains derivative status; it does not promote derivatives.</h2>
+      <p>
+        The references below are cited in APA 7 style as implementation basis.
+        They support the public explanation while leaving current claim status
+        in upstream source files, registries, and governed records.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Reference</th>
+          <th scope="col">Used here for</th>
+        </tr>
+      </thead>
+      <tbody>
+        {provenanceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.reference}</th>
+            <td>{row.use}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+</BaseLayout>

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T19:27:22Z"
+updated_utc: "2026-06-30T19:46:17Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-038/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-038/jobs/WJ-20260630-038-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-038.yaml"
+  - "implementation_control/tasks/WI-20260630-039/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-039/jobs/WJ-20260630-039-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-039.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,29 +24,29 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-038"
-  title: "Build Resources Overview Source Authority And Registries Slice"
+  task_id: "WI-20260630-039"
+  title: "Build Resources Derivatives Retrieval Publication And Library Slice"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-038/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-039/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-010 Build Resources Overview, Source Authority, And Registries Slice"
+    task_packet: "GF-011 Build Resources Derivatives, Retrieval, Publication, And Library Slice"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-038-A"
+  job_id: "WJ-20260630-039-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-038/jobs/WJ-20260630-038-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-039/jobs/WJ-20260630-039-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-038"
+  handoff_id: "WH-20260630-039"
   status: "completed"
-  yaml_path: "implementation_control/handoffs/WH-20260630-038.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-038.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-039.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-039.md"
 
 latest_completion:
-  completion_id: "WJC-20260630-038-A"
-  path: "implementation_control/tasks/WI-20260630-038/jobs/completions/WJC-20260630-038-A.yaml"
+  completion_id: "WJC-20260630-039-A"
+  path: "implementation_control/tasks/WI-20260630-039/jobs/completions/WJC-20260630-039-A.yaml"
   status: "completed"
 
 required_validators:
@@ -87,10 +87,10 @@ required_validators:
     command: "manual inspection of implementation_control YAML and Markdown records"
     required_for_current_job: true
   - id: "browser-qa"
-    command: "manual inspection of rendered Resources Overview, Source Authority, and Registries routes at desktop and mobile viewport"
+    command: "manual inspection of rendered Generated Derivatives, Retrieval Layers, Publication Process, and Library routes at desktop and mobile viewport"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "GF-011 Build Resources Derivatives, Retrieval, Publication, And Library Slice"
-  summary: "After checkpoint, open the next fresh implementation-control packet for generated derivatives, retrieval layers, publication process, and library routes."
-  do_not_skip: "Do not implement generated derivatives, retrieval layers, publication process, library, reading paths, repository map, site-builder guide, diagrams, or other route families before GF-010 is completed and checkpointed."
+  task_packet: "GF-012 Build Reading Paths, Repository Map, Site Builder Guide, And Diagram Gallery"
+  summary: "After checkpoint, open the next fresh implementation-control packet for reading paths, repository map, site-builder guide, and diagram gallery routes."
+  do_not_skip: "Do not implement reading paths, repository map, site-builder guide, diagrams, or other route families before GF-011 is completed and checkpointed."

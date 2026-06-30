@@ -1015,6 +1015,76 @@
       "boundary_type": "trust_boundary"
     },
     {
+      "route_path": "/resources/generated-derivatives/",
+      "local_page_source": "src/pages/resources/generated-derivatives/index.astro",
+      "title": "Generated Derivatives",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/source-authority-explainer.md",
+        "github-facing/documentation-curator-publication-process-explainer.md",
+        "registries/PDF_DERIVATIVE_REGISTRY.csv",
+        "registries/HTML_EXPLAINER_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "public/files/manifests/source_manifest.json",
+        "public/files/manifests/asset_manifest.json"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/retrieval-layers/",
+      "local_page_source": "src/pages/resources/retrieval-layers/index.astro",
+      "title": "Retrieval Layers",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/memory-system-explainer.md",
+        "github-facing/source-authority-explainer.md",
+        "research_control/README.md",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "registries/MARKDOWN_SOURCE_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/publication-process/",
+      "local_page_source": "src/pages/resources/publication-process/index.astro",
+      "title": "Publication Process",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/documentation-curator-publication-process-explainer.md",
+        "research_control/design/documentation_curator_publication_process.md",
+        "markdown/publication-briefs/README.md",
+        "registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "public/files/manifests/page_route_map.json",
+        "public/files/manifests/page_provenance.json"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/library/",
+      "local_page_source": "src/pages/resources/library/index.astro",
+      "title": "Library",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/project-overview-explainer.md",
+        "github-facing/source-authority-explainer.md",
+        "github-facing/documentation-curator-publication-process-explainer.md",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "public/files/manifests/source_manifest.json",
+        "public/files/manifests/asset_manifest.json",
+        "public/files/manifests/page_route_map.json"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
       "route_path": "/license/",
       "local_page_source": "src/pages/license/index.astro",
       "title": "Project License",

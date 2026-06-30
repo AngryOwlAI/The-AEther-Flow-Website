@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-30T19:24:44.651558+00:00",
+  "generated_at": "2026-06-30T19:44:36.672317+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "89f13e18dfafa00a855d6638e3b7da16480ba209",
   "source_commit_date": "2026-06-30T13:19:47-06:00",
@@ -4398,7 +4398,7 @@
     {
       "route_path": "/resources/",
       "local_page_source": "src/pages/resources/index.astro",
-      "local_page_sha256": "c45bb32dc56e5f6851a316b186cdf6fe4874dee6c218765c2e20713915475503",
+      "local_page_sha256": "27626b9ca0339990d1831553742f98dde3015dfaa2f0d1cce516ba4f890ea5b2",
       "title": "Resources",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -4666,6 +4666,320 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/DISTANCE_TO_GR_LEDGER.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/AGENT_JOB_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/generated-derivatives/",
+      "local_page_source": "src/pages/resources/generated-derivatives/index.astro",
+      "local_page_sha256": "46b5dea880bf02d672113e14b9791fcedc7f77c54a54355cb9148688da0937b0",
+      "title": "Generated Derivatives",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/source-authority-explainer.md",
+          "sha256": "b3d9145c6e9cfebe1dfa5ec59e5905eeec636fa188cc8b65562689337a2a8ebf",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/source-authority-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/documentation-curator-publication-process-explainer.md",
+          "sha256": "84175f52a7ec4d6d8f9924919cc48ded4c0c39a6675ea99607a59ae7f36cb92f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/documentation-curator-publication-process-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/PDF_DERIVATIVE_REGISTRY.csv",
+          "sha256": "93f9510d9b5862128425be2045e1dcc0880d9692d2cdbbfa612f1a25fb16480b",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PDF_DERIVATIVE_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/PDF_DERIVATIVE_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/HTML_EXPLAINER_REGISTRY.csv",
+          "sha256": "8ab453701fba42ec67ca045e71b306472170c6f8e181004fa65db2c19490c117",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/HTML_EXPLAINER_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/HTML_EXPLAINER_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "674268df90680e2429a4f8e4827d635d4cc8f6d19788f9440577030ec26ccbc4",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "public/files/manifests/source_manifest.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/source_manifest.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/source_manifest.json",
+          "omission_reason": "source_file_missing"
+        },
+        {
+          "path": "public/files/manifests/asset_manifest.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/asset_manifest.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/asset_manifest.json",
+          "omission_reason": "source_file_missing"
+        }
+      ],
+      "upstream_source_commit": "89f13e18dfafa00a855d6638e3b7da16480ba209",
+      "upstream_source_commit_date": "2026-06-30T13:19:47-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PDF_DERIVATIVE_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/HTML_EXPLAINER_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/source_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/asset_manifest.json"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/source-authority-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/PDF_DERIVATIVE_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/HTML_EXPLAINER_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/source_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/asset_manifest.json"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/retrieval-layers/",
+      "local_page_source": "src/pages/resources/retrieval-layers/index.astro",
+      "local_page_sha256": "e00b3ebf20f4a451466589721007001baccf11b53390518ad4de67825bab6fd4",
+      "title": "Retrieval Layers",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/memory-system-explainer.md",
+          "sha256": "4fa6b32169a9e529382149348d36a65d3a6f81134cc18311a0db8ad40810f94b",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/memory-system-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/memory-system-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/source-authority-explainer.md",
+          "sha256": "b3d9145c6e9cfebe1dfa5ec59e5905eeec636fa188cc8b65562689337a2a8ebf",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/source-authority-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/README.md",
+          "sha256": "60b7b72b17f28d4e5d68bce994b0378a14093c9b6da8eafc88042976615ce741",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/research_control/README.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "674268df90680e2429a4f8e4827d635d4cc8f6d19788f9440577030ec26ccbc4",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/MARKDOWN_SOURCE_REGISTRY.csv",
+          "sha256": "f3469ff3bd41c180e84f2a702f27d4a196ee095766c14ca971312a192a504e6d",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/MARKDOWN_SOURCE_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/MARKDOWN_SOURCE_REGISTRY.csv",
+          "omission_reason": null
+        }
+      ],
+      "upstream_source_commit": "89f13e18dfafa00a855d6638e3b7da16480ba209",
+      "upstream_source_commit_date": "2026-06-30T13:19:47-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/memory-system-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/MARKDOWN_SOURCE_REGISTRY.csv"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/memory-system-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/source-authority-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/research_control/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/MARKDOWN_SOURCE_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/publication-process/",
+      "local_page_source": "src/pages/resources/publication-process/index.astro",
+      "local_page_sha256": "7a0449f2ee6ad0fe9e4672d7e6b20802000bb5fc85102eb1da592a01b8d45717",
+      "title": "Publication Process",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/documentation-curator-publication-process-explainer.md",
+          "sha256": "84175f52a7ec4d6d8f9924919cc48ded4c0c39a6675ea99607a59ae7f36cb92f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/documentation-curator-publication-process-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/design/documentation_curator_publication_process.md",
+          "sha256": "42a5e908f6a1b0325ad4da95dca414d0d073a1577ea51ff31e3139dfe018fac3",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/documentation_curator_publication_process.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/research_control/design/documentation_curator_publication_process.md",
+          "omission_reason": null
+        },
+        {
+          "path": "markdown/publication-briefs/README.md",
+          "sha256": "1b4925b2c42a15341f3aa3891f0ffbd3f56833ef871a1d500cd47170517f29a4",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/markdown/publication-briefs/README.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/markdown/publication-briefs/README.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/PUBLICATION_BRIEF_REGISTRY.csv",
+          "sha256": "13bf9c92b49afdb2a7d2315a051736048c4978499580f4960f1b01af3877153d",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "public/files/manifests/page_route_map.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/page_route_map.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/page_route_map.json",
+          "omission_reason": "source_file_missing"
+        },
+        {
+          "path": "public/files/manifests/page_provenance.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/page_provenance.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/page_provenance.json",
+          "omission_reason": "source_file_missing"
+        }
+      ],
+      "upstream_source_commit": "89f13e18dfafa00a855d6638e3b7da16480ba209",
+      "upstream_source_commit_date": "2026-06-30T13:19:47-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/documentation_curator_publication_process.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/markdown/publication-briefs/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/page_route_map.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/page_provenance.json"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/research_control/design/documentation_curator_publication_process.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/markdown/publication-briefs/README.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/page_route_map.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/page_provenance.json"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "trust_boundary"
+    },
+    {
+      "route_path": "/resources/library/",
+      "local_page_source": "src/pages/resources/library/index.astro",
+      "local_page_sha256": "95a048397014a1321447786d31b9994a6341a9695c38a2d06f95d458b58c3ec5",
+      "title": "Library",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/project-overview-explainer.md",
+          "sha256": "29011d3201de1731056858bdb90996a05cbf95697f9d9a679cdff411a1c7ad8b",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-overview-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/project-overview-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/source-authority-explainer.md",
+          "sha256": "b3d9145c6e9cfebe1dfa5ec59e5905eeec636fa188cc8b65562689337a2a8ebf",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/source-authority-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "github-facing/documentation-curator-publication-process-explainer.md",
+          "sha256": "84175f52a7ec4d6d8f9924919cc48ded4c0c39a6675ea99607a59ae7f36cb92f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/documentation-curator-publication-process-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "674268df90680e2429a4f8e4827d635d4cc8f6d19788f9440577030ec26ccbc4",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/PUBLICATION_BRIEF_REGISTRY.csv",
+          "sha256": "13bf9c92b49afdb2a7d2315a051736048c4978499580f4960f1b01af3877153d",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "public/files/manifests/source_manifest.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/source_manifest.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/source_manifest.json",
+          "omission_reason": "source_file_missing"
+        },
+        {
+          "path": "public/files/manifests/asset_manifest.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/asset_manifest.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/asset_manifest.json",
+          "omission_reason": "source_file_missing"
+        },
+        {
+          "path": "public/files/manifests/page_route_map.json",
+          "sha256": null,
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/page_route_map.json",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/page_route_map.json",
+          "omission_reason": "source_file_missing"
+        }
+      ],
+      "upstream_source_commit": "89f13e18dfafa00a855d6638e3b7da16480ba209",
+      "upstream_source_commit_date": "2026-06-30T13:19:47-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-overview-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/source_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/asset_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/public/files/manifests/page_route_map.json"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/project-overview-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/source-authority-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/github-facing/documentation-curator-publication-process-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/registries/PUBLICATION_BRIEF_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/source_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/asset_manifest.json",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/89f13e18dfafa00a855d6638e3b7da16480ba209/public/files/manifests/page_route_map.json"
       ],
       "upstream_authority_status": "generated_noncanonical",
       "website_publication_status": "published",
