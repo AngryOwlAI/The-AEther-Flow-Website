@@ -1,0 +1,83 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260630-015"
+created_utc: "2026-06-30T15:47:28Z"
+updated_utc: "2026-06-30T16:09:47Z"
+status: "active"
+
+task_id: "WI-20260630-015"
+job_id: "WJ-20260630-015-A"
+
+completion_record:
+  completion_id: "WJC-20260630-015-A"
+  path: "implementation_control/tasks/WI-20260630-015/jobs/completions/WJC-20260630-015-A.yaml"
+
+summary: "PRD-00 master implementation-plan conversion is complete and ready for local checkpoint."
+
+current_state:
+  - "The website information-space PRD family review packet is completed and superseded."
+  - "The PRD-00 master implementation-plan conversion packet is complete."
+  - "Allowed reads include PRD-00, the PRD-family index and review, the prd-to-implementation-plan skill references, and the canonical sitewide greenfield rebuild plan and task packets."
+  - "Created the website-information-space implementation-plan index, PRD-00 master implementation plan, and PRD-00 master task packets."
+  - "The canonical rebuild constraint is ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md plus ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md."
+  - "The display-spelling rule is active for future reader-facing text and uses Æther in reader-facing text while reserving aether for links, slugs, and file naming."
+  - "No public route, public asset, public manifest, deployment, push, or upstream write is authorized."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "none_authorized"
+  proof_or_science_authority: "not_granted"
+  readiness_claims: "implementation_planning_only_not_public_claim_change"
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    checked_utc: "2026-06-30T16:09:47Z"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    checked_utc: "2026-06-30T16:09:47Z"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked_utc: "2026-06-30T16:09:47Z"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    checked_utc: "2026-06-30T16:09:47Z"
+
+next_recommended_action:
+  task_packet: "first sub-PRD implementation-plan conversion"
+  summary: "Open a fresh implementation-control packet for PRD-10 positioning guidance before converting the next PRD."
+  do_not_skip: "Do not convert additional sub-PRDs, implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden the packet without fresh live control records."
+
+stop_before:
+  - "sub-PRD implementation-plan conversion"
+  - "public route changes"
+  - "public asset changes"
+  - "public manifest changes"
+  - "source snapshot refreshes"
+  - "source bundle dataset changes"
+  - "generated HTML or GitHub-facing Markdown changes"
+  - "generated retrieval layer changes"
+  - "wiki changes"
+  - "source-derived public claim changes"
+  - "upstream source-project writes"
+  - "Git push"
+  - "Cloudflare deployment"
