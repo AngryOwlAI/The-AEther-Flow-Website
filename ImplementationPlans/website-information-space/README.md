@@ -85,6 +85,8 @@ one packet at a time.
 - `PRD-11-quick-source-map-for-site-builders-implementation-plan.md`
 - `PRD-11-quick-source-map-for-site-builders-task-packets.md`
 
+- `PRD-IMPLEMENTATION-PLAN-FAMILY-VALIDATION-REVIEW.md`
+
 ## Validation Profile
 
 Planning/control packets for this directory should run:

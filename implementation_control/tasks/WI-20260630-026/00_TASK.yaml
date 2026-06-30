@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260630-026"
 title: "Convert PRD-11-quick-source-map-for-site-builders To Sub Implementation Plan"
 created_utc: "2026-06-30T16:25:28Z"
-updated_utc: "2026-06-30T16:25:28Z"
-status: "active"
+updated_utc: "2026-06-30T16:29:00Z"
+status: "completed"
 
 source_context:
   source_prd: "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
