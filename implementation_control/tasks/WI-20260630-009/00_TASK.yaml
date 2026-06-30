@@ -1,10 +1,10 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-008"
-title: "Create Current Research Frontier For Website Use PRD"
-created_utc: "2026-06-30T04:30:00Z"
+task_id: "WI-20260630-009"
+title: "Create Research-Control And Agent Workflow PRD"
+created_utc: "2026-06-30T04:45:00Z"
 updated_utc: "2026-06-30T04:45:00Z"
-status: "completed"
+status: "active"
 
 source_context:
   source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
@@ -12,34 +12,38 @@ source_context:
   task_packet_section: "Phase 4: Current frontier and AI workflow pages"
 
 requirements:
-  - "Create PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md."
-  - "Use the shared sub-PRD template and PRD-09 specification from the PRD-system plan."
-  - "Define current frontier dashboard, milestone, active task, latest handoff, Distance-to-GR, blocked-claim, validation-status, freshness, and stale-data requirements."
+  - "Create PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md."
+  - "Use the shared sub-PRD template and PRD-03 specification from the PRD-system plan."
+  - "Define Director decision, AgentJob, execution-role, memory-preflight, parent-child synthesis, completion, handoff, Distance-to-GR, validator, and proof-boundary requirements."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
 
-goal: "Create the current research frontier PRD as the next bounded PRD-system packet."
+goal: "Create the research-control and agent workflow PRD as the next bounded PRD-system packet."
 
 scope:
   in_scope:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md"
+    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-007.yaml"
-    - "implementation_control/handoffs/WH-20260630-007.md"
     - "implementation_control/handoffs/WH-20260630-008.yaml"
     - "implementation_control/handoffs/WH-20260630-008.md"
-    - "implementation_control/tasks/WI-20260630-007/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-007/jobs/WJ-20260630-007-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-009.yaml"
+    - "implementation_control/handoffs/WH-20260630-009.md"
     - "implementation_control/tasks/WI-20260630-008/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-008/jobs/WJ-20260630-008-A.yaml"
-    - "implementation_control/tasks/WI-20260630-008/jobs/completions/WJC-20260630-008-A.yaml"
+    - "implementation_control/tasks/WI-20260630-009/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-009/jobs/WJ-20260630-009-A.yaml"
+    - "implementation_control/tasks/WI-20260630-009/jobs/completions/WJC-20260630-009-A.yaml"
   out_of_scope:
-    - "Any sub-PRD file beyond PRD-09."
+    - "Any sub-PRD file beyond PRD-03."
     - "Public routes."
     - "Public assets."
     - "Public manifests."
-    - "Ontology, TeX, PDF, generated HTML, Markdown, wiki, or retrieval-layer refreshes."
+    - "Role contracts."
+    - "Schema contracts."
+    - "Source snapshots."
+    - "Research-control tasks, AgentJobs, completions, handoffs, validators, or registries in the upstream project."
+    - "Generated HTML, Markdown, wiki, PDF, or retrieval-layer refreshes."
     - "Source-derived public claim changes."
     - "Upstream source-project writes."
     - "Git push."
@@ -47,8 +51,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-008-A"
-  next_packet_after_this_task: "PRD-03 research-control and agent workflow"
+  active_job_id: "WJ-20260630-009-A"
+  next_packet_after_this_task: "PRD-04 role and schema components"
 
 allowed_reads:
   website_repository:
@@ -58,16 +62,27 @@ allowed_reads:
     - "ImplementationPlans/aether_flow_website_prd_system.md"
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-02-physics-and-mathematical-components.md"
-    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
     - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md"
+    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-007.yaml"
+    - "implementation_control/handoffs/WH-20260630-008.yaml"
     - "git status output"
   upstream_source_repository:
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/README.md"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/program_state.yaml"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/current_frontier.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/handoffs/handoff-0359.yaml"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/tasks/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/handoffs/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/templates/COMPLETION_TEMPLATE.yaml"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/design/gr_derivation_burden_map.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/design/mathematical_decisiveness_completion_contract.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.codex/skills/continue-research/SKILL.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/DIRECTOR_DECISION_SCHEMA.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/AGENT_JOB_SCHEMA.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/EXECUTION_ROLE_SCHEMA.md"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/AGENT_JOB_REGISTRY.csv"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/ROLE_EXECUTION_REGISTRY.csv"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/DISTANCE_TO_GR_LEDGER.csv"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/CLAIM_BOUNDARY_REGISTRY.csv"
 
@@ -75,17 +90,17 @@ allowed_writes:
   website_repository:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md"
+    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-007.yaml"
-    - "implementation_control/handoffs/WH-20260630-007.md"
     - "implementation_control/handoffs/WH-20260630-008.yaml"
     - "implementation_control/handoffs/WH-20260630-008.md"
-    - "implementation_control/tasks/WI-20260630-007/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-007/jobs/WJ-20260630-007-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-009.yaml"
+    - "implementation_control/handoffs/WH-20260630-009.md"
     - "implementation_control/tasks/WI-20260630-008/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-008/jobs/WJ-20260630-008-A.yaml"
-    - "implementation_control/tasks/WI-20260630-008/jobs/completions/WJC-20260630-008-A.yaml"
+    - "implementation_control/tasks/WI-20260630-009/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-009/jobs/WJ-20260630-009-A.yaml"
+    - "implementation_control/tasks/WI-20260630-009/jobs/completions/WJC-20260630-009-A.yaml"
   upstream_source_repository: []
 
 forbidden_write_patterns:
@@ -145,9 +160,9 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "A write outside the explicit PRD-09 allowlist becomes necessary."
+  - "A write outside the explicit PRD-03 allowlist becomes necessary."
   - "Any upstream source-project write is proposed."
-  - "Any ontology, TeX, public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
+  - "Any role contract, schema contract, source snapshot, ontology, TeX, public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
   - "A source-derived public claim would be changed."
   - "Required validation fails."
   - "The active job cannot be completed within one bounded packet."
@@ -158,10 +173,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-008-A"
-  path: "implementation_control/tasks/WI-20260630-008/jobs/completions/WJC-20260630-008-A.yaml"
+  completion_id: "WJC-20260630-009-A"
+  path: "implementation_control/tasks/WI-20260630-009/jobs/completions/WJC-20260630-009-A.yaml"
 
 handoff:
-  latest_handoff_id: "WH-20260630-008"
-  yaml_path: "implementation_control/handoffs/WH-20260630-008.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-008.md"
+  latest_handoff_id: "WH-20260630-009"
+  yaml_path: "implementation_control/handoffs/WH-20260630-009.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-009.md"
