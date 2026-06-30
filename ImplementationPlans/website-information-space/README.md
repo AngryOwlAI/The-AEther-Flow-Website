@@ -52,7 +52,7 @@ one packet at a time.
 | 5 | `PRD-01-high-level-components.md` | `PRD-01-high-level-components-implementation-plan.md` and `PRD-01-high-level-components-task-packets.md` | complete |
 | 6 | `PRD-02-physics-and-mathematical-components.md` | `PRD-02-physics-and-mathematical-components-implementation-plan.md` and `PRD-02-physics-and-mathematical-components-task-packets.md` | complete |
 | 7 | `PRD-09-current-research-frontier-for-website-use.md` | `PRD-09-current-research-frontier-for-website-use-implementation-plan.md` and `PRD-09-current-research-frontier-for-website-use-task-packets.md` | complete |
-| 8 | `PRD-03-research-control-and-agent-workflow.md` | `PRD-03-research-control-and-agent-workflow-implementation-plan.md` and `PRD-03-research-control-and-agent-workflow-task-packets.md` | pending fresh packet |
+| 8 | `PRD-03-research-control-and-agent-workflow.md` | `PRD-03-research-control-and-agent-workflow-implementation-plan.md` and `PRD-03-research-control-and-agent-workflow-task-packets.md` | complete |
 | 9 | `PRD-04-role-and-schema-components.md` | `PRD-04-role-and-schema-components-implementation-plan.md` and `PRD-04-role-and-schema-components-task-packets.md` | pending fresh packet |
 | 10 | `PRD-07-tooling-skills-scripts-and-runtime-components.md` | `PRD-07-tooling-skills-scripts-and-runtime-components-implementation-plan.md` and `PRD-07-tooling-skills-scripts-and-runtime-components-task-packets.md` | pending fresh packet |
 | 11 | `PRD-08-folder-and-repository-topology-components.md` | `PRD-08-folder-and-repository-topology-components-implementation-plan.md` and `PRD-08-folder-and-repository-topology-components-task-packets.md` | pending fresh packet |
@@ -74,6 +74,8 @@ one packet at a time.
 - `PRD-02-physics-and-mathematical-components-task-packets.md`
 - `PRD-09-current-research-frontier-for-website-use-implementation-plan.md`
 - `PRD-09-current-research-frontier-for-website-use-task-packets.md`
+- `PRD-03-research-control-and-agent-workflow-implementation-plan.md`
+- `PRD-03-research-control-and-agent-workflow-task-packets.md`
 
 ## Validation Profile
 
