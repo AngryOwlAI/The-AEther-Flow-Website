@@ -1,0 +1,356 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const loopRows = [
+  {
+    input: "Observed diff or repeated workflow problem",
+    classification: "Classify the issue as documentation drift, validator gap, routing ambiguity, schema problem, or tooling reliability signal.",
+    output: "A bounded project-system candidate, not a physics continuation.",
+  },
+  {
+    input: "Registered signal",
+    classification: "Check signal type, severity, evidence, current status, and required closure receipt.",
+    output: "One repair route with explicit close, defer, or reject evidence.",
+  },
+  {
+    input: "Source-bridged sidecar",
+    classification: "Use exact-path source evidence as support context for the proposed maintenance action.",
+    output: "A scoped input; never a global allowlist or replacement handoff.",
+  },
+  {
+    input: "Resolver recommendation",
+    classification: "Rank the next repair using current state, open signals, and allowed project-system scope.",
+    output: "Advisory routing below validators, allowlists, and live control records.",
+  },
+];
+
+const evidenceRows = [
+  {
+    artifact: "One bounded repair",
+    proves: "A specific project-system issue was addressed inside an allowed packet.",
+    doesNotProve: "The repair does not promote physics claims or continue research by implication.",
+  },
+  {
+    artifact: "Documentation-impact receipt",
+    proves: "State-changing documentation or control-surface effects were recorded for audit.",
+    doesNotProve: "The receipt is not owner acceptance, Gate Chair approval, or source adoption.",
+  },
+  {
+    artifact: "Validator PASS",
+    proves: "The named check accepted the checked maintenance state.",
+    doesNotProve: "PASS is not a theorem check, scientific verdict, or global workflow guarantee.",
+  },
+  {
+    artifact: "Signal closure",
+    proves: "A signal was closed, deferred, or rejected with explicit evidence.",
+    doesNotProve: "Signals do not disappear by assertion or because a page says they are fixed.",
+  },
+];
+
+const blockedRows = [
+  {
+    overread: "Project-system improvement is not research continuation.",
+    correction: "It repairs the machinery around research control; a separate live research packet is needed for research work.",
+  },
+  {
+    overread: "A sidecar replaces the normal handoff.",
+    correction: "A sidecar can inform routing only inside its exact source-bridged scope.",
+  },
+  {
+    overread: "Resolver output alone blocks or authorizes checkpointing.",
+    correction: "Resolver output is advisory unless a validator, allowlist, source authority, or live record creates the gate.",
+  },
+  {
+    overread: "A maintenance packet can quietly alter source claims.",
+    correction: "Project-system repair does not promote physics claims, role authority, or Gate Chair decisions.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Project-system improvement dossier",
+    usedFor: "Signal, classifier, resolver, sidecar, one-job repair, and documentation-impact framing.",
+    boundary: "Dossier summaries do not close signals without matching evidence.",
+  },
+  {
+    source: "Project-control script documentation",
+    usedFor: "Classifier, resolver, signal collection, sidecar validation, and documentation-impact validation roles.",
+    boundary: "Tooling supports maintenance routing; it cannot mutate research claims by itself.",
+  },
+  {
+    source: "Workflow and runtime requirements",
+    usedFor: "One-packet execution, validators, completion, handoff, and checkpoint interpretation.",
+    boundary: "Operational evidence stays below source authority and human gates.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Memory",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Use retrieval drift as a candidate maintenance signal, not source truth.",
+  },
+  {
+    label: "Runtime",
+    title: "Runtime Requirements",
+    href: "/ai-research-system/runtime-requirements/",
+    body: "Inspect which local tools support repair without granting authority.",
+  },
+  {
+    label: "Validators",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Read how PASS, completion, handoff, and checkpoint evidence stay scoped.",
+  },
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Place maintenance work beside the one-job lifecycle and handoff model.",
+  },
+  {
+    label: "Roles",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    body: "Keep repair actions below role authority and schema contracts.",
+  },
+  {
+    label: "Gate",
+    title: "Human-Gated Promotion",
+    href: "/ai-research-system/human-gated-promotion/",
+    body: "Confirm that maintenance evidence cannot issue protected decisions.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "project-system maintenance boundary explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains bounded maintenance for project-system reliability. It cannot continue physics research, close signals without evidence, grant global sidecar acceptance, promote claims, issue protected decisions, deploy the site, or mutate upstream sources.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Project-system improvement loop [Source file: github-facing/project-system-improvement-explainer.md].",
+    "The AEther Flow Project. (2026b). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026c). Project-control scripts [Technical documentation: scripts/project_control/README.md].",
+    "The AEther Flow Project. (2026d). Project improvement handoff schema [Schema: .agents/schemas/PROJECT_IMPROVEMENT_HANDOFF_SCHEMA.md].",
+    "The AEther Flow Website. (2026a). Research-Control and Agent Workflow [Product requirements document: PRD-03].",
+    "The AEther Flow Website. (2026b). Project-System Improvement Content Dossier [Content dossier].",
+  ],
+};
+
+const improvementSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-improvement-title ai-improvement-desc">
+    <title id="ai-improvement-title">Animated bounded project-system improvement loop</title>
+    <desc id="ai-improvement-desc">Signals, classifiers, resolver context, one bounded repair, documentation-impact evidence, and closure remain inside project-system scope.</desc>
+    <defs>
+      <radialGradient id="ai-improvement-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.62" />
+        <stop offset="44%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-improvement-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="182" fill="url(#ai-improvement-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="224" ry="122" />
+      <ellipse cx="310" cy="180" rx="132" ry="86" />
+      <path d="M98 180 H522" />
+      <path d="M310 74 V286" />
+    </g>
+    <g filter="url(#ai-improvement-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M122 180 C122 92, 498 92, 498 180 C498 268, 122 268, 122 180" />
+      <path class="track-figure-path orange-path" d="M172 180 C172 122, 448 122, 448 180 C448 238, 172 238, 172 180" />
+      <path class="track-figure-path signal-path alternate" d="M220 116 C270 160, 350 200, 400 244" />
+      <path class="track-figure-path orange-path alternate" d="M220 244 C270 200, 350 160, 400 116" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="42" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="122" cy="180" r="13" />
+      <circle cx="220" cy="116" r="13" />
+      <circle cx="400" cy="116" r="13" />
+      <circle cx="498" cy="180" r="13" />
+      <circle cx="400" cy="244" r="13" />
+      <circle cx="220" cy="244" r="13" />
+      <circle cx="310" cy="180" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Project-System Improvement"
+  description="AI Research System project-system improvement route explaining bounded repair loops, signal evidence, documentation-impact records, and non-research boundaries."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page ai-wide-title-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Project-System Improvement"
+    title="Project-System Improvement"
+    lead="Project-system improvement is not research continuation. It is a bounded maintenance loop for the machinery around governed work."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Project-system improvement page actions">
+      <a class="primary-link" href="#improvement-loop">Trace repair loop</a>
+      <a class="secondary-link" href="/ai-research-system/validators-and-handoffs/">Validation evidence</a>
+      <a class="secondary-link" href="/ai-research-system/runtime-requirements/">Runtime requirements</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-improvement-caption">
+        <Fragment set:html={improvementSvg} />
+        <figcaption id="ai-improvement-caption">
+          Visual orientation only: one bounded repair.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Project-system improvement introduction">
+    <p>
+      A project-system packet may improve validators, schemas, control
+      documents, memory tooling, or generated-document pipelines. It does not
+      promote physics claims, close source questions, or widen role authority.
+    </p>
+  </section>
+
+  <section id="improvement-loop" class="track-page-band" aria-labelledby="improvement-loop-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Bounded repair loop</p>
+      <h2 id="improvement-loop-title">Signals become one scoped maintenance packet.</h2>
+      <p>
+        The improvement loop is useful because it treats friction as evidence,
+        classifies it, and repairs one concrete surface with explicit closeout.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Input</th>
+          <th scope="col">Classification</th>
+          <th scope="col">Allowed output</th>
+        </tr>
+      </thead>
+      <tbody>
+        {loopRows.map((row) => (
+          <tr>
+            <th scope="row">{row.input}</th>
+            <td>{row.classification}</td>
+            <td>{row.output}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="improvement-evidence-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Review evidence</p>
+      <h2 id="improvement-evidence-title">Maintenance evidence has a narrow claim.</h2>
+      <p>
+        The closeout should say exactly what was repaired, what was checked,
+        and what remains outside the packet.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Artifact</th>
+          <th scope="col">What it supports</th>
+          <th scope="col">What it does not support</th>
+        </tr>
+      </thead>
+      <tbody>
+        {evidenceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.artifact}</th>
+            <td>{row.proves}</td>
+            <td>{row.doesNotProve}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="improvement-overreads-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Blocked overreads</p>
+      <h2 id="improvement-overreads-title">Repair work must not become hidden authority.</h2>
+      <p>
+        The safest maintenance system names the conclusions it cannot draw.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Overread</th>
+          <th scope="col">Correction</th>
+        </tr>
+      </thead>
+      <tbody>
+        {blockedRows.map((row) => (
+          <tr>
+            <th scope="row">{row.overread}</th>
+            <td>{row.correction}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="improvement-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="improvement-source-title">The source basis defines the maintenance lane.</h2>
+      <p>
+        This page explains project-system repair from dossiers, PRDs, script
+        documentation, and workflow boundaries without changing the source
+        project.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.usedFor}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read maintenance beside the controls it must preserve."
+    lead="Project-system improvement is safest when read with memory preflight, runtime requirements, validator evidence, workflow records, and human-gated promotion."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related project-system improvement routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

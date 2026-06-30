@@ -4084,6 +4084,10 @@ html:has(body.project-overview-page) {
     max-width: min(11ch, 100%);
   }
 
+  .ai-wide-title-page .overview-command-hero .command-band-copy h1 {
+    max-width: min(15ch, 100%);
+  }
+
   .home-page .overview-command-hero .command-band-lead {
     margin-top: 0.8rem;
     font-size: 0.98rem;

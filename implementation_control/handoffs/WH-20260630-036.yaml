@@ -2,18 +2,19 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-036"
 created_utc: "2026-06-30T18:36:07Z"
-updated_utc: "2026-06-30T18:49:32Z"
+updated_utc: "2026-06-30T18:54:32Z"
 status: "completed"
 
 task_id: "WI-20260630-036"
 job_id: "WJ-20260630-036-A"
 
-summary: "Completed GF-008 for the AI roles, human gates, validators, and handoffs slice."
+summary: "Completed GF-008 for the AI roles, human gates, validators, and handoffs slice; checkpointed and superseded by GF-009."
 
 current_state:
   - "The GF-007 AI workflow and AgentJob lifecycle packet is completed and superseded."
   - "This packet implemented one public route implementation slice for `/ai-research-system/roles-and-schemas/`, `/ai-research-system/human-gated-promotion/`, and `/ai-research-system/validators-and-handoffs/`."
   - "The three GF-008 routes are technically ready with human review pending."
+  - "GF-008 is checkpointed and superseded by active packet WI-20260630-037 for GF-009."
   - "Public workflow, role, human-gate, validator, handoff, route-local SVG/style, and public route/provenance manifest writes are approved only inside the GF-008 allowlist."
   - "No memory, runtime, improvement, Resources, old route retirement, public downloadable asset change, deployment, push, source refresh, generated derivative refresh, retrieval refresh, or upstream write is authorized."
 
@@ -72,8 +73,8 @@ completion_record:
 
 next_recommended_action:
   task_packet: "GF-009 Build AI Memory, Improvement, And Runtime Slice"
-  summary: "After checkpoint, open the next fresh implementation-control packet for AI memory, improvement, and runtime routes."
-  do_not_skip: "Do not implement additional route families, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active AI roles, human gates, validators, and handoffs packet without fresh live control records."
+  summary: "Open the AI memory, improvement, and runtime packet."
+  do_not_skip: "Do not implement Resources, old route retirement, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active GF-009 packet without fresh live control records."
 
 stop_before:
   - "AI memory, project-system improvement, or runtime route implementation"

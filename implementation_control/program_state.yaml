@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T18:49:32Z"
+updated_utc: "2026-06-30T19:09:15Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-036/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-036/jobs/WJ-20260630-036-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-036.yaml"
+  - "implementation_control/tasks/WI-20260630-037/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-037/jobs/WJ-20260630-037-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-037.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,29 +24,29 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-036"
-  title: "Build AI Roles Human Gates Validators And Handoffs Slice"
+  task_id: "WI-20260630-037"
+  title: "Build AI Memory Improvement And Runtime Slice"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-036/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-037/00_TASK.yaml"
   planning_context:
-    task_packet: "GF-008 Build AI Roles, Human Gates, Validators, And Handoffs Slice"
+    task_packet: "GF-009 Build AI Memory, Improvement, And Runtime Slice"
     sitewide_greenfield_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     sitewide_greenfield_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 current_job:
-  job_id: "WJ-20260630-036-A"
+  job_id: "WJ-20260630-037-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-036/jobs/WJ-20260630-036-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-037/jobs/WJ-20260630-037-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-036"
+  handoff_id: "WH-20260630-037"
   status: "completed"
-  yaml_path: "implementation_control/handoffs/WH-20260630-036.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-036.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-037.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-037.md"
 
 latest_completion:
-  completion_id: "WJC-20260630-036-A"
-  path: "implementation_control/tasks/WI-20260630-036/jobs/completions/WJC-20260630-036-A.yaml"
+  completion_id: "WJC-20260630-037-A"
+  path: "implementation_control/tasks/WI-20260630-037/jobs/completions/WJC-20260630-037-A.yaml"
   status: "completed"
 
 required_validators:
@@ -87,10 +87,10 @@ required_validators:
     command: "manual inspection of implementation_control YAML and Markdown records"
     required_for_current_job: true
   - id: "browser-qa"
-    command: "manual inspection of rendered AI Roles and Schemas, Human-Gated Promotion, and Validators and Handoffs routes at desktop and mobile viewport"
+    command: "manual inspection of rendered AI Memory Preflight, Project-System Improvement, and Runtime Requirements routes at desktop and mobile viewport"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "GF-009 Build AI Memory, Improvement, And Runtime Slice"
-  summary: "After checkpoint, open the next fresh implementation-control packet for AI memory, improvement, and runtime routes."
-  do_not_skip: "Do not implement memory, project-system improvement, runtime, Resources, or other route families before GF-008 is completed and checkpointed."
+  task_packet: "GF-010 Build Resources Overview, Source Authority, And Registries Slice"
+  summary: "After checkpoint, open the next fresh implementation-control packet for Resources overview, source authority, and registries routes."
+  do_not_skip: "Do not implement Resources or other route families before GF-009 is completed and checkpointed."

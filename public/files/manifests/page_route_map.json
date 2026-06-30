@@ -263,6 +263,61 @@
       "boundary_type": "operational_boundary"
     },
     {
+      "route_path": "/ai-research-system/memory-preflight/",
+      "local_page_source": "src/pages/ai-research-system/memory-preflight/index.astro",
+      "title": "Memory Preflight",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/memory-system-explainer.md",
+        "github-facing/source-authority-explainer.md",
+        "research_control/README.md",
+        ".agents/schemas/AGENT_JOB_SCHEMA.md",
+        "registries/MARKDOWN_SOURCE_REGISTRY.csv",
+        "registries/TEX_SOURCE_REGISTRY.csv",
+        "registries/WIKI_ARTIFACT_REGISTRY.csv",
+        "registries/CONTENT_SEMANTIC_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "authority_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/project-system-improvement/",
+      "local_page_source": "src/pages/ai-research-system/project-system-improvement/index.astro",
+      "title": "Project-System Improvement",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/project-system-improvement-explainer.md",
+        "research_control/README.md",
+        "scripts/project_control/README.md",
+        ".agents/schemas/PROJECT_IMPROVEMENT_HANDOFF_SCHEMA.md",
+        "registries/PROJECT_IMPROVEMENT_SIGNAL_TYPE_REGISTRY.csv",
+        "registries/PROJECT_IMPROVEMENT_SIGNAL_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
+      "route_path": "/ai-research-system/runtime-requirements/",
+      "local_page_source": "src/pages/ai-research-system/runtime-requirements/index.astro",
+      "title": "Runtime Requirements",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/technical-requirements-explainer.md",
+        "README.md",
+        "AGENTS.md",
+        "research_control/README.md",
+        "requirements.txt",
+        "Makefile",
+        "scripts/README.md",
+        "tests/README.md"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "operational_boundary"
+    },
+    {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
       "title": "Physics Research",

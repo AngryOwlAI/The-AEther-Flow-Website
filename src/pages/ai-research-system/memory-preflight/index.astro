@@ -1,0 +1,358 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const preflightRows = [
+  {
+    stage: "Status",
+    purpose: "Check retrieval freshness, known drift, and whether lookup support is usable for navigation.",
+    boundary: "A freshness report is maintenance context, not claim authority.",
+  },
+  {
+    stage: "Targeted lookup",
+    purpose: "Find likely source paths, registry rows, prior tasks, handoffs, or object IDs.",
+    boundary: "A returned hit is only a candidate until inspected directly.",
+  },
+  {
+    stage: "Canonical inspection",
+    purpose: "Open tracked source files, control records, and relevant registry rows before relying on the hit.",
+    boundary: "Canonical sources remain authority when retrieval and source disagree.",
+  },
+  {
+    stage: "Receipt",
+    purpose: "Record query commands, returned IDs, inspected paths, registry rows, hashes, and boundary notes.",
+    boundary: "Receipts make the transaction auditable; they do not prove the underlying claim.",
+  },
+];
+
+const layerRows = [
+  {
+    layer: "Canonical source",
+    examples: "Registered TeX, Markdown, schemas, control records, source specs, and current tracked task state.",
+    use: "Claim-affecting language, routing, and source selection after direct inspection.",
+  },
+  {
+    layer: "Registry metadata",
+    examples: "Source, derivative, AgentJob, role, claim-boundary, wiki, semantic, and publication registries.",
+    use: "Provenance, relationship, status, and source-location evidence.",
+  },
+  {
+    layer: "Generated derivative",
+    examples: "PDFs, HTML explainers, wiki notes, GitHub-facing summaries, and rendered pages.",
+    use: "Reader support and discovery, with source verification when claims matter.",
+  },
+  {
+    layer: "Local retrieval",
+    examples: "Semantic extracts, Obsidian mirrors, SQLite indexes, and `.local/` caches.",
+    use: "Navigation only. Local retrieval must not be cited as source authority.",
+  },
+];
+
+const overreadRows = [
+  {
+    unsafe: "A memory hit names a path, therefore it can be cited.",
+    correction: "Retrieval hits must be verified against the tracked source or registry row before use.",
+  },
+  {
+    unsafe: "A generated wiki note says the claim, therefore the claim is promoted.",
+    correction: "Generated derivatives help locate evidence; they cannot promote scientific or workflow claims.",
+  },
+  {
+    unsafe: "A receipt records a lookup, therefore the theorem is checked.",
+    correction: "The receipt records what was inspected. It is operational evidence, not proof.",
+  },
+  {
+    unsafe: "A stale retrieval warning invalidates the canonical source.",
+    correction: "Stale retrieval is a maintenance signal unless a source validator reports a source problem.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Memory and retrieval requirements",
+    usedFor: "Navigation-versus-authority language, generated derivative classes, and source-inspection rule.",
+    boundary: "Requirements planning does not become source authority.",
+  },
+  {
+    source: "Research-control workflow",
+    usedFor: "Memory preflight receipt shape, one-packet routing, and canonical inspection expectations.",
+    boundary: "Workflow receipts do not prove science or promote claims.",
+  },
+  {
+    source: "Memory registries dossier",
+    usedFor: "Route-specific safe and unsafe summaries for retrieval layers and receipts.",
+    boundary: "Dossiers guide website implementation and remain below tracked source files.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Read where preflight sits before Director routing and bounded work.",
+  },
+  {
+    label: "AgentJob",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "See how receipt evidence belongs inside one auditable job envelope.",
+  },
+  {
+    label: "Validators",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Keep lookup receipts below operational validation and proof boundaries.",
+  },
+  {
+    label: "Source",
+    title: "Source Authority",
+    href: "/project/source-authority/",
+    body: "Review the broader source, derivative, registry, and retrieval hierarchy.",
+  },
+  {
+    label: "System",
+    title: "Project-System Improvement",
+    href: "/ai-research-system/project-system-improvement/",
+    body: "Route stale retrieval or tooling drift as bounded maintenance, not research continuation.",
+  },
+  {
+    label: "Runtime",
+    title: "Runtime Requirements",
+    href: "/ai-research-system/runtime-requirements/",
+    body: "Inspect the local tools that can support validation and retrieval without granting authority.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "memory preflight operational-boundary explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains memory preflight as source-finding support. It cannot publish local memory contents, cite retrieval hits as authority, promote claims, prove physics, refresh source snapshots, mutate upstream sources, or replace canonical source inspection.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Memory, registries, wiki, and retrieval surfaces [Source file: github-facing/memory-system-explainer.md].",
+    "The AEther Flow Project. (2026b). Source authority and generated derivatives [Source file: github-facing/source-authority-explainer.md].",
+    "The AEther Flow Project. (2026c). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026d). AgentJob schema [Schema: .agents/schemas/AGENT_JOB_SCHEMA.md].",
+    "The AEther Flow Website. (2026a). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
+    "The AEther Flow Website. (2026b). Memory Preflight and Source-First Retrieval Content Dossier [Content dossier].",
+  ],
+};
+
+const memorySvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-memory-title ai-memory-desc">
+    <title id="ai-memory-title">Animated source-first memory preflight map</title>
+    <desc id="ai-memory-desc">Retrieval support points toward candidate evidence, which must pass through canonical source inspection and receipt recording before use.</desc>
+    <defs>
+      <radialGradient id="ai-memory-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.58" />
+        <stop offset="42%" stop-color="var(--owl-orange-500)" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-memory-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ai-memory-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="230" ry="116" />
+      <ellipse cx="310" cy="180" rx="154" ry="74" />
+      <path d="M88 180 H532" />
+      <path d="M310 82 V278" />
+    </g>
+    <g filter="url(#ai-memory-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M92 238 C160 188, 220 150, 310 180 C400 210, 460 172, 528 122" />
+      <path class="track-figure-path orange-path" d="M92 122 C160 172, 220 210, 310 180 C400 150, 460 188, 528 238" />
+      <path class="track-figure-path signal-path alternate" d="M146 180 C210 118, 410 118, 474 180" />
+      <path class="track-figure-path orange-path alternate" d="M146 180 C210 242, 410 242, 474 180" />
+    </g>
+    <path class="track-figure-core" d="M310 118 L366 180 L310 242 L254 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="92" cy="122" r="13" />
+      <circle cx="92" cy="238" r="13" />
+      <circle cx="146" cy="180" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="474" cy="180" r="13" />
+      <circle cx="528" cy="122" r="13" />
+      <circle cx="528" cy="238" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Memory Preflight"
+  description="AI Research System memory preflight route explaining source-first retrieval, navigation support, canonical inspection, and receipt boundaries."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Memory Preflight"
+    title="Memory Preflight"
+    lead="Memory preflight is navigation support, not source authority. It finds likely evidence; canonical sources remain authority."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Memory preflight page actions">
+      <a class="primary-link" href="#preflight-chain">Trace preflight</a>
+      <a class="secondary-link" href="/ai-research-system/workflow/">Workflow</a>
+      <a class="secondary-link" href="/project/source-authority/">Source authority</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-memory-caption">
+        <Fragment set:html={memorySvg} />
+        <figcaption id="ai-memory-caption">
+          Visual orientation only: retrieval points toward evidence; source
+          inspection decides whether it may be used.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Memory preflight introduction">
+    <p>
+      Retrieval hits must be verified before they affect routing, public claim
+      text, source selection, or project-system work. Memory helps find the
+      shelf; it does not become the book.
+    </p>
+  </section>
+
+  <section id="preflight-chain" class="track-page-band" aria-labelledby="preflight-chain-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Preflight chain</p>
+      <h2 id="preflight-chain-title">Lookup is useful only when followed by inspection.</h2>
+      <p>
+        The safe model is small and repeatable: check retrieval state, ask a
+        targeted question, inspect the canonical source, and leave an auditable
+        receipt.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Stage</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {preflightRows.map((row) => (
+          <tr>
+            <th scope="row">{row.stage}</th>
+            <td>{row.purpose}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="memory-layers-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Authority layers</p>
+      <h2 id="memory-layers-title">Source, registry, derivative, and retrieval are different layers.</h2>
+      <p>
+        The website can explain all four layers, but it must not flatten them
+        into one evidence class.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Examples</th>
+          <th scope="col">Safe use</th>
+        </tr>
+      </thead>
+      <tbody>
+        {layerRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.examples}</td>
+            <td>{row.use}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="memory-overreads-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Blocked overreads</p>
+      <h2 id="memory-overreads-title">Retrieval never outranks the source it points to.</h2>
+      <p>
+        The page is designed to prevent retrieval convenience from becoming
+        public authority by habit.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Unsafe reading</th>
+          <th scope="col">Correction</th>
+        </tr>
+      </thead>
+      <tbody>
+        {overreadRows.map((row) => (
+          <tr>
+            <th scope="row">{row.unsafe}</th>
+            <td>{row.correction}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="memory-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="memory-source-title">The source basis is inspected, not inferred from search.</h2>
+      <p>
+        This route uses PRD and dossier evidence for website structure while
+        preserving the upstream source hierarchy for claim-bearing content.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.usedFor}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read memory preflight inside the governed workflow."
+    lead="Memory becomes useful when it is connected to AgentJob scope, validator receipts, source authority, and bounded maintenance."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related memory preflight routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

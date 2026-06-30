@@ -1,0 +1,375 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const runtimeRows = [
+  {
+    tier: "Read and inspect",
+    tools: "Git, editor, shell, browser, and tracked source files.",
+    scope: "Inspect repository state, source text, diffs, and rendered pages without changing authority.",
+  },
+  {
+    tier: "Governed workflow",
+    tools: "Codex app context, repo-local skills, prompts, task records, allowlists, completions, and handoffs.",
+    scope: "Execute bounded packets only when live records authorize the work.",
+  },
+  {
+    tier: "Validator and memory",
+    tools: "Python `.venv`, Python tests, requirements files, PyMuPDF where PDF text extraction is in scope, and memory scripts.",
+    scope: "Validate behavior, inspect memory state, and produce operational evidence.",
+  },
+  {
+    tier: "Web and browser QA",
+    tools: "Node.js, npm, Astro, Mermaid-related site dependencies where present, and Playwright.",
+    scope: "Build static pages, check links and policies, and inspect desktop/mobile rendering.",
+  },
+  {
+    tier: "Optional local retrieval",
+    tools: "Obsidian reader, semantic extracts, SQLite indexes, and `.local/` retrieval caches.",
+    scope: "Support lookup and local inspection only; not citation authority.",
+  },
+  {
+    tier: "LaTeX and PDF",
+    tools: "TeX/PDF tooling only when derivative generation or PDF QA is explicitly in scope.",
+    scope: "Produce or inspect derivatives while registered sources remain authority.",
+  },
+];
+
+const commandRows = [
+  {
+    command: "npm run build",
+    validates: "Astro static build and route compilation for the website state under test.",
+    doesNotValidate: "Scientific correctness, source promotion, owner acceptance, or deployment.",
+  },
+  {
+    command: "npm run validate:svg",
+    validates: "Website SVG artwork policy, including animation and no visible embedded SVG text.",
+    doesNotValidate: "The accuracy of nearby scientific or operational claims.",
+  },
+  {
+    command: "npm run validate:implementation-control",
+    validates: "Structural consistency of implementation-control records.",
+    doesNotValidate: "Source authority, deployment approval, or upstream write permission.",
+  },
+  {
+    command: ".venv/bin/python -m pytest",
+    validates: "Python tests for the checked test suite.",
+    doesNotValidate: "Physics proof, benchmark promotion, or untested workflow behavior.",
+  },
+];
+
+const boundaryRows = [
+  {
+    capability: "Installed runtime",
+    unsafe: "Runtime setup authorizes a packet.",
+    safe: "Runtime setup does not grant write authority. Live task and job records decide scope.",
+  },
+  {
+    capability: "Passing validators",
+    unsafe: "Green checks prove the claim.",
+    safe: "A check says only that the named validator accepted its checked surface.",
+  },
+  {
+    capability: "Browser screenshot",
+    unsafe: "Visual QA makes page copy authoritative.",
+    safe: "Screenshots show rendered behavior; they do not prove physics or workflow claims.",
+  },
+  {
+    capability: "Local cache access",
+    unsafe: "A cache hit can be cited.",
+    safe: "Local retrieval can guide inspection, but tracked sources and registries remain authority.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Tooling and runtime PRD",
+    usedFor: "Runtime tiers, command-scope structure, and validator-versus-proof requirements.",
+    boundary: "PRD requirements plan website content; they do not change commands.",
+  },
+  {
+    source: "Package, Makefile, scripts, and tests",
+    usedFor: "Observed website commands, build tooling, validation scripts, and Python test entry points.",
+    boundary: "Command availability is capability, not permission.",
+  },
+  {
+    source: "Technical requirements dossier",
+    usedFor: "Tool authority tiers, safe and unsafe summaries, and local-cache boundaries.",
+    boundary: "Dossier content is implementation guidance, not source promotion.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Checks",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Read how command evidence becomes completion and handoff evidence.",
+  },
+  {
+    label: "Improve",
+    title: "Project-System Improvement",
+    href: "/ai-research-system/project-system-improvement/",
+    body: "Use runtime failures as bounded maintenance signals, not research verdicts.",
+  },
+  {
+    label: "Memory",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Keep local retrieval tooling below canonical inspection.",
+  },
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Place tools inside the governed state-to-handoff lifecycle.",
+  },
+  {
+    label: "AgentJob",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "Confirm that runtime capability stays inside one authorized job.",
+  },
+  {
+    label: "Resources",
+    title: "Resources",
+    href: "/resources/",
+    body: "Use public resources as reader aids while source authority stays explicit.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "runtime and command-scope operational-boundary explanation",
+  updated: "2026-06-30",
+  note:
+    "This route explains runtime capability and validator scope. It cannot add dependencies, authorize writes, bypass AgentJob allowlists, prove physics, promote claims, deploy the site, refresh caches, or mutate upstream sources.",
+  sourceRefs: [
+    "The AEther Flow Project. (2026a). Technical requirements [Source file: github-facing/technical-requirements-explainer.md].",
+    "The AEther Flow Project. (2026b). Project README [Source file: README.md].",
+    "The AEther Flow Project. (2026c). Project AGENTS instructions [Source file: AGENTS.md].",
+    "The AEther Flow Project. (2026d). Research control [Source file: research_control/README.md].",
+    "The AEther Flow Project. (2026e). Script guide [Technical documentation: scripts/README.md].",
+    "The AEther Flow Website. (2026a). Tooling, Skills, Scripts, and Runtime Components [Product requirements document: PRD-07].",
+  ],
+};
+
+const runtimeSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-runtime-title ai-runtime-desc">
+    <title id="ai-runtime-title">Animated runtime scope and authority boundary map</title>
+    <desc id="ai-runtime-desc">Read tools, governed workflow, validators, browser QA, local retrieval, and derivative tooling orbit a central boundary that separates capability from permission.</desc>
+    <defs>
+      <radialGradient id="ai-runtime-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.54" />
+        <stop offset="38%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-runtime-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ai-runtime-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="236" ry="116" />
+      <ellipse cx="310" cy="180" rx="172" ry="82" />
+      <ellipse cx="310" cy="180" rx="92" ry="136" />
+      <path d="M86 180 H534" />
+      <path d="M310 76 V284" />
+    </g>
+    <g filter="url(#ai-runtime-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M310 76 C420 100, 520 132, 534 180 C520 228, 420 260, 310 284 C200 260, 100 228, 86 180 C100 132, 200 100, 310 76" />
+      <path class="track-figure-path orange-path" d="M126 114 C220 154, 400 206, 494 246" />
+      <path class="track-figure-path signal-path alternate" d="M126 246 C220 206, 400 154, 494 114" />
+    </g>
+    <path class="track-figure-core" d="M310 116 L374 180 L310 244 L246 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="310" cy="76" r="13" />
+      <circle cx="494" cy="114" r="13" />
+      <circle cx="534" cy="180" r="13" />
+      <circle cx="494" cy="246" r="13" />
+      <circle cx="310" cy="284" r="13" />
+      <circle cx="126" cy="246" r="13" />
+      <circle cx="86" cy="180" r="13" />
+      <circle cx="126" cy="114" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Runtime Requirements"
+  description="AI Research System runtime requirements route explaining local tools, validator scope, command evidence, and permission boundaries."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Runtime Requirements"
+    title="Runtime Requirements"
+    lead="Runtime setup does not grant write authority. Python, Node.js, Playwright, and local tools support inspection and validation only inside authorized scope."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Runtime requirements page actions">
+      <a class="primary-link" href="#runtime-tiers">Read runtime tiers</a>
+      <a class="secondary-link" href="/ai-research-system/validators-and-handoffs/">Validator limits</a>
+      <a class="secondary-link" href="/ai-research-system/project-system-improvement/">Maintenance loop</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-runtime-caption">
+        <Fragment set:html={runtimeSvg} />
+        <figcaption id="ai-runtime-caption">
+          Visual orientation only: tools are capability layers; permission
+          still comes from live control records.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Runtime requirements introduction">
+    <p>
+      Runtime evidence does not prove physics, promote source laws, bypass
+      AgentJob allowlists, or authorize upstream writes. Capability and
+      permission are separate facts.
+    </p>
+  </section>
+
+  <section id="runtime-tiers" class="track-page-band" aria-labelledby="runtime-tiers-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Runtime tiers</p>
+      <h2 id="runtime-tiers-title">Tools are grouped by what they can safely support.</h2>
+      <p>
+        The runtime page is a map of capability, not an instruction to widen
+        scope. Each tier needs its own authority context before it changes
+        files.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Tier</th>
+          <th scope="col">Tools</th>
+          <th scope="col">Safe scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        {runtimeRows.map((row) => (
+          <tr>
+            <th scope="row">{row.tier}</th>
+            <td>{row.tools}</td>
+            <td>{row.scope}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="command-scope-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Command scope</p>
+      <h2 id="command-scope-title">Every command needs a validates and does-not-validate field.</h2>
+      <p>
+        Command references should teach interpretation. A command can pass and
+        still leave authority, proof, deployment, or acceptance undecided.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Command</th>
+          <th scope="col">Validates</th>
+          <th scope="col">Does not validate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {commandRows.map((row) => (
+          <tr>
+            <th scope="row">{row.command}</th>
+            <td>{row.validates}</td>
+            <td>{row.doesNotValidate}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="runtime-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Permission boundary</p>
+      <h2 id="runtime-boundary-title">Availability is not authorization.</h2>
+      <p>
+        This is the central runtime discipline: an operator can have tools
+        installed and still lack authority to use them for a mutating packet.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">Unsafe inference</th>
+          <th scope="col">Safe interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {boundaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.capability}</th>
+            <td>{row.unsafe}</td>
+            <td>{row.safe}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="runtime-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="runtime-source-title">The source basis defines what the tools mean.</h2>
+      <p>
+        This page summarizes stable command families and runtime tiers without
+        copying script internals or changing dependency policy.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.usedFor}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read tools beside the authority model."
+    lead="Runtime requirements connect to validators, maintenance, memory, workflow, AgentJob boundaries, and resource pages."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related runtime requirements routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>
