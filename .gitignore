@@ -112,5 +112,7 @@ scratch/
 # Keep future Codex agent skills trackable when intentionally added.
 !.codex/
 !.codex/**
+.codex/**/__pycache__/
+.codex/**/*.py[cod]
 !.agents/
 !.agents/**

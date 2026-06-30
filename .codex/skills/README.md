@@ -23,6 +23,9 @@ repository.
   AI-assisted artifacts stay specific, evidenced, audience-fit, and useful.
 - `push-and-deploy/`: push a clean accepted `main` commit and deploy the
   pushed commit to Cloudflare Pages using the current Direct Upload project.
+- `implementation-control/`: resolve live website-local implementation-control
+  records, execute at most one governed implementation packet, validate it, and
+  checkpoint it locally without pushing, deploying, or mutating upstream.
 - `prd-to-implementation-plan/`: convert a PRD, product spec, or requirements
   document into a Codex-ready implementation plan and task packets.
 - `prototype/`: build throwaway logic or UI prototypes to answer a specific
