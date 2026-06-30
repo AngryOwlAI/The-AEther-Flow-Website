@@ -1,50 +1,47 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-011"
-title: "Create Tooling Skills Scripts And Runtime Components PRD"
-created_utc: "2026-06-30T05:15:00Z"
+task_id: "WI-20260630-012"
+title: "Create Folder And Repository Topology Components PRD"
+created_utc: "2026-06-30T05:30:00Z"
 updated_utc: "2026-06-30T05:30:00Z"
-status: "completed"
+status: "active"
 
 source_context:
   source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
   prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-  task_packet_section: "PRD-07: Tooling, Skills, Scripts, and Runtime Components"
+  task_packet_section: "PRD-08: Folder and Repository Topology Components"
 
 requirements:
-  - "Create PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md."
-  - "Use the shared sub-PRD template and PRD-07 specification from the PRD-system plan."
-  - "Define technical requirements, skills catalogue, script catalogue, validator/operator workflow, Makefile command reference, runtime environment, reproducibility guide, and local-cache boundary requirements."
+  - "Create PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md."
+  - "Use the shared sub-PRD template and PRD-08 specification from the PRD-system plan."
+  - "Define repository topology map, folder explorer, source-lane diagram, edit/read guides, and generated-versus-canonical folder legend requirements."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
 
-goal: "Create the tooling, skills, scripts, and runtime components PRD as the next bounded PRD-system packet."
+goal: "Create the folder and repository topology components PRD as the next bounded PRD-system packet."
 
 scope:
   in_scope:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
+    - "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-010.yaml"
-    - "implementation_control/handoffs/WH-20260630-010.md"
     - "implementation_control/handoffs/WH-20260630-011.yaml"
     - "implementation_control/handoffs/WH-20260630-011.md"
-    - "implementation_control/tasks/WI-20260630-010/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-010/jobs/WJ-20260630-010-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-012.yaml"
+    - "implementation_control/handoffs/WH-20260630-012.md"
     - "implementation_control/tasks/WI-20260630-011/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-011/jobs/WJ-20260630-011-A.yaml"
-    - "implementation_control/tasks/WI-20260630-011/jobs/completions/WJC-20260630-011-A.yaml"
+    - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+    - "implementation_control/tasks/WI-20260630-012/jobs/completions/WJC-20260630-012-A.yaml"
   out_of_scope:
-    - "Any sub-PRD file beyond PRD-07."
+    - "Any sub-PRD file beyond PRD-08."
     - "Public routes."
     - "Public assets."
     - "Public manifests."
-    - "Skills."
-    - "Scripts."
-    - "Validators."
-    - "Makefile targets."
-    - "Runtime dependency files."
-    - "Tests."
+    - "Source folders."
+    - "Generated derivative folders."
+    - "Local retrieval folders."
     - "Source snapshots."
     - "Research-control tasks, AgentJobs, completions, handoffs, validators, or registries in the upstream project."
     - "Generated HTML, Markdown, wiki, PDF, or retrieval-layer refreshes."
@@ -55,8 +52,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-011-A"
-  next_packet_after_this_task: "PRD-08 folder and repository topology components"
+  active_job_id: "WJ-20260630-012-A"
+  next_packet_after_this_task: "PRD-11 quick source map for site builders"
 
 allowed_reads:
   website_repository:
@@ -66,38 +63,46 @@ allowed_reads:
     - "ImplementationPlans/aether_flow_website_prd_system.md"
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
-    - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
     - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
     - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-010.yaml"
+    - "implementation_control/handoffs/WH-20260630-011.yaml"
     - "git status output"
   upstream_source_repository:
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/README.md"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/FOLDER_MAP.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.codex/skills/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/scripts/research_control/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/scripts/project_control/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/Makefile"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/requirements.txt"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.codex/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/ontology/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/legacy_ontology/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/markdown/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/github-facing/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/html/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/wiki/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/scripts/"
     - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/tests/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/tex_shared/"
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.local/"
 
 allowed_writes:
   website_repository:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
+    - "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-010.yaml"
-    - "implementation_control/handoffs/WH-20260630-010.md"
     - "implementation_control/handoffs/WH-20260630-011.yaml"
     - "implementation_control/handoffs/WH-20260630-011.md"
-    - "implementation_control/tasks/WI-20260630-010/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-010/jobs/WJ-20260630-010-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-012.yaml"
+    - "implementation_control/handoffs/WH-20260630-012.md"
     - "implementation_control/tasks/WI-20260630-011/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-011/jobs/WJ-20260630-011-A.yaml"
-    - "implementation_control/tasks/WI-20260630-011/jobs/completions/WJC-20260630-011-A.yaml"
+    - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+    - "implementation_control/tasks/WI-20260630-012/jobs/completions/WJC-20260630-012-A.yaml"
   upstream_source_repository: []
 
 forbidden_write_patterns:
@@ -157,9 +162,9 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "A write outside the explicit PRD-07 allowlist becomes necessary."
+  - "A write outside the explicit PRD-08 allowlist becomes necessary."
   - "Any upstream source-project write is proposed."
-  - "Any skill, script, validator, Makefile target, runtime dependency, test, source snapshot, public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
+  - "Any source folder, generated derivative, local retrieval layer, source snapshot, public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
   - "A source-derived public claim would be changed."
   - "Required validation fails."
   - "The active job cannot be completed within one bounded packet."
@@ -170,10 +175,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-011-A"
-  path: "implementation_control/tasks/WI-20260630-011/jobs/completions/WJC-20260630-011-A.yaml"
+  completion_id: "WJC-20260630-012-A"
+  path: "implementation_control/tasks/WI-20260630-012/jobs/completions/WJC-20260630-012-A.yaml"
 
 handoff:
-  latest_handoff_id: "WH-20260630-011"
-  yaml_path: "implementation_control/handoffs/WH-20260630-011.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-011.md"
+  latest_handoff_id: "WH-20260630-012"
+  yaml_path: "implementation_control/handoffs/WH-20260630-012.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-012.md"

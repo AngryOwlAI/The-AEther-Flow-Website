@@ -467,7 +467,7 @@ validation checklist.
 | PRD-05 | `PRD-05-memory-registry-and-retrieval-components.md` | complete | Source authority, registries, memory, and provenance. |
 | PRD-06 | `PRD-06-documentation-publication-and-website-components.md` | complete | Publication, library, and website-component requirements. |
 | PRD-07 | `PRD-07-tooling-skills-scripts-and-runtime-components.md` | complete | Tooling, scripts, validators, runtime, and cache boundaries. |
-| PRD-08 | `PRD-08-folder-and-repository-topology-components.md` | pending | Repository topology and folder-family orientation. |
+| PRD-08 | `PRD-08-folder-and-repository-topology-components.md` | complete | Repository topology and folder-family orientation. |
 | PRD-09 | `PRD-09-current-research-frontier-for-website-use.md` | complete | Dated current-state snapshots and stale-data behavior. |
 | PRD-10 | `PRD-10-website-positioning-guidance.md` | complete | Safe public messaging and forbidden claims. |
 | PRD-11 | `PRD-11-quick-source-map-for-site-builders.md` | pending | Source map for future page builders. |

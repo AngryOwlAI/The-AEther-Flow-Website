@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T05:15:00Z"
+updated_utc: "2026-06-30T05:30:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,10 +9,10 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-011/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-011/jobs/WJ-20260630-011-A.yaml"
-  - "implementation_control/tasks/WI-20260630-011/jobs/completions/WJC-20260630-011-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-011.yaml"
+  - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+  - "implementation_control/tasks/WI-20260630-012/jobs/completions/WJC-20260630-012-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-012.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -25,30 +25,30 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-011"
-  title: "Create Tooling Skills Scripts And Runtime Components PRD"
+  task_id: "WI-20260630-012"
+  title: "Create Folder And Repository Topology Components PRD"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-011/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
   planning_context:
     source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
     prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-    task_packet: "PRD-07 tooling, skills, scripts, and runtime components"
+    task_packet: "PRD-08 folder and repository topology components"
 
 current_job:
-  job_id: "WJ-20260630-011-A"
+  job_id: "WJ-20260630-012-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-011/jobs/WJ-20260630-011-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
 
 latest_completion:
-  completion_id: "WJC-20260630-011-A"
+  completion_id: "WJC-20260630-012-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260630-011/jobs/completions/WJC-20260630-011-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-012/jobs/completions/WJC-20260630-012-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-011"
+  handoff_id: "WH-20260630-012"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-011.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-011.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-012.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-012.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -65,6 +65,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PRD-08 folder and repository topology components"
-  summary: "After the tooling, skills, scripts, and runtime PRD checkpoint, create the folder and repository topology components PRD as the next bounded packet."
+  task_packet: "PRD-11 quick source map for site builders"
+  summary: "After the folder and repository topology PRD checkpoint, create the quick source map for site builders PRD as the next bounded packet."
   do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or begin a broader packet without fresh live control records."

@@ -1,0 +1,72 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260630-012-A"
+task_id: "WI-20260630-012"
+job_id: "WJ-20260630-012-A"
+created_utc: "2026-06-30T05:30:00Z"
+updated_utc: "2026-06-30T05:30:00Z"
+status: "completed"
+
+summary: "Create the folder and repository topology components PRD and update the PRD-system indexes."
+
+changed_files:
+  - "PRDs/website-information-space/README.md"
+  - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+  - "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-011.yaml"
+  - "implementation_control/handoffs/WH-20260630-011.md"
+  - "implementation_control/handoffs/WH-20260630-012.yaml"
+  - "implementation_control/handoffs/WH-20260630-012.md"
+  - "implementation_control/tasks/WI-20260630-011/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-011/jobs/WJ-20260630-011-A.yaml"
+  - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+  - "implementation_control/tasks/WI-20260630-012/jobs/completions/WJC-20260630-012-A.yaml"
+
+outputs:
+  - "PRD-08 defines repository topology map, folder explorer, source-lane diagram, edit/read guides, and generated-versus-canonical folder legend requirements."
+  - "PRD-08 classifies required folders by authority class, edit policy, website use, source anchors, and source/derivative/cache status."
+  - "PRD index and master PRD status table mark PRD-08 complete."
+  - "Implementation-control state points to PRD-11 as the next bounded packet."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "none_authorized"
+  proof_or_science_authority: "not_granted"
+  topology_claims: "requirements_only_not_public_claim_change"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    checked_utc: "2026-06-30T05:30:00Z"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    checked_utc: "2026-06-30T05:30:00Z"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked_utc: "2026-06-30T05:30:00Z"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    checked_utc: "2026-06-30T05:30:00Z"
+
+remaining_risk:
+  - "PRD-08 is a planning artifact only; public website pages, source folders, generated derivatives, local retrieval layers, source snapshots, and upstream control files have not been changed."
+  - "Generated HTML, GitHub-facing Markdown, wiki, PDF, and .local retrieval layers were intentionally not refreshed in this packet."
+  - "The remaining PRD-11 and final PRD-family review remain pending."
+  - "The upstream source repository remains read-only."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  status: "ready"
+  expected_effect: "stage only completion-listed PRD-08 packet files and create one local commit"
+
+next_recommended_action:
+  task_packet: "PRD-11 quick source map for site builders"
+  summary: "Create PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md as the next bounded packet."
+  do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, refresh source snapshots, refresh generated publication outputs, refresh retrieval layers, or broaden the packet without fresh live control records."
