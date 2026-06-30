@@ -1,0 +1,251 @@
+---
+import CommandBand from "../../components/CommandBand.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsTrack;
+
+const physicsChildRoutes = [
+  {
+    label: "01",
+    title: "Ontology",
+    href: "/physics/ontology/",
+    body: "Plain-language terms for AEther, AEther-flow, observed space, S-time, expansion language, and gravity-language.",
+  },
+  {
+    label: "02",
+    title: "Exact-GR Benchmark",
+    href: "/physics/exact-gr-benchmark/",
+    body: "Benchmark compatibility boundaries without treating compatibility as a source-side derivation.",
+  },
+  {
+    label: "03",
+    title: "Derivation Roadmap",
+    href: "/physics/derivation-roadmap/",
+    body: "The open burden chain for effective geometry, matter coupling, field equations, and benchmark promotion.",
+  },
+  {
+    label: "04",
+    title: "Flow Geometry",
+    href: "/physics/flow-geometry/",
+    body: "Geometry-facing explanation constrained by source-bundle evidence and open derivation status.",
+  },
+  {
+    label: "05",
+    title: "Claim Status",
+    href: "/physics/claim-status/",
+    body: "Claim gates, allowed wording, forbidden overreads, and gate-required statements.",
+  },
+  {
+    label: "06",
+    title: "Open Burdens",
+    href: "/physics/open-burdens/",
+    body: "Remaining proof, model, and evidence burdens before stronger public claims are available.",
+  },
+];
+
+const statusRows = [
+  {
+    layer: "Ontology vocabulary",
+    safe: "Names the proposed substrate and flow-language that the project studies.",
+    boundary: "Vocabulary does not prove equations, predictions, or GR recovery.",
+  },
+  {
+    layer: "Exact-GR benchmark",
+    safe: "Preserves ordinary GR behavior as the public benchmark boundary.",
+    boundary: "Benchmark compatibility is not a first-principles derivation.",
+  },
+  {
+    layer: "Derivation burden",
+    safe: "Tracks what a source-side bridge would still need to show.",
+    boundary: "The GR derivation remains open under current source authority.",
+  },
+  {
+    layer: "Obstruction record",
+    safe: "Preserves negative results and frozen routes with scoped labels.",
+    boundary: "A scoped obstruction is not global theory rejection or promotion.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Generated physics explainer",
+    use: "Public orientation and five-layer status framing.",
+    boundary: "Generated noncanonical surface.",
+  },
+  {
+    source: "Ontology Markdown and registered TeX references",
+    use: "Vocabulary and source-authority distinction.",
+    boundary: "Registered sources outrank website copy.",
+  },
+  {
+    source: "Claim-boundary registry",
+    use: "Allowed, forbidden, and gate-required wording.",
+    boundary: "Registry rows constrain copy but do not prove claims.",
+  },
+];
+
+const physicsOverviewSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="physics-greenfield-title physics-greenfield-desc">
+    <title id="physics-greenfield-title">Animated Physics Research boundary map</title>
+    <desc id="physics-greenfield-desc">Six connected physics route layers orbit a central open derivation boundary.</desc>
+    <defs>
+      <radialGradient id="physics-greenfield-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.78" />
+        <stop offset="32%" stop-color="var(--owl-orange-500)" stop-opacity="0.34" />
+        <stop offset="72%" stop-color="var(--owl-cyan-400)" stop-opacity="0.12" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="physics-greenfield-bloom" x="-18%" y="-22%" width="136%" height="144%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="190" fill="url(#physics-greenfield-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="244" ry="124" />
+      <ellipse cx="310" cy="180" rx="170" ry="84" />
+      <path d="M80 180 C156 112, 246 96, 310 132 C382 96, 470 116, 540 180" />
+      <path d="M80 180 C156 248, 246 264, 310 228 C382 264, 470 244, 540 180" />
+    </g>
+    <g filter="url(#physics-greenfield-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M92 236 C170 170, 238 156, 310 180 C384 204, 450 188, 528 124" />
+      <path class="track-figure-path signal-path" d="M92 124 C172 156, 238 210, 310 180 C382 148, 448 156, 528 236" />
+      <path class="track-figure-path orange-path alternate" d="M156 290 C216 238, 266 218, 310 180 C356 138, 406 112, 468 70" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="38" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="112" cy="118" r="13" />
+      <circle cx="112" cy="242" r="13" />
+      <circle cx="250" cy="78" r="13" />
+      <circle cx="372" cy="282" r="13" />
+      <circle cx="508" cy="112" r="13" />
+      <circle cx="508" cy="248" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Physics Research"
+  description="Greenfield Physics Research overview for The Æther Flow Project, with ontology, benchmark, derivation, claim-status, and source-authority boundaries."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research"
+    title="Physics Research"
+    lead="Read the proposed Æther-flow physics program as layered public orientation, not as a completed derivation of general relativity."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Physics overview actions">
+      <a class="primary-link" href="/physics/ontology/">Start with ontology</a>
+      <a class="secondary-link" href="/physics/claim-status/">Check claim status</a>
+      <a class="secondary-link" href="/">Back to Home</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="physics-greenfield-caption">
+        <Fragment set:html={physicsOverviewSvg} />
+        <figcaption id="physics-greenfield-caption">
+          Visual orientation only: six reader routes surround an open derivation
+          boundary; the diagram cannot promote a physics claim.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Physics overview introduction">
+    <p>
+      The Physics Research category separates what the project can currently
+      explain from what upstream source work would still need to derive. Readers
+      should treat ontology vocabulary, the exact-GR benchmark, derivation
+      burdens, flow-geometry questions, claim gates, and open-burden records as
+      distinct layers. Website copy may organize those layers for reading, but
+      it does not create scientific authority, complete a source-side GR
+      derivation, or promote a candidate beyond registered evidence.
+    </p>
+  </section>
+
+  <CommandBand
+    id="physics-route-map"
+    className="overview-panel overview-command-band"
+    eyebrow="Reader route map"
+    title="Six child pages, one conservative status model."
+    lead="Start with ontology if the vocabulary is new, or move directly to the benchmark, roadmap, flow-geometry, claim-status, and open-burden pages as those packets become technically ready."
+  >
+    <EvidenceRail
+      items={physicsChildRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Physics child routes"
+      className="overview-capability-rail"
+    />
+  </CommandBand>
+
+  <section class="track-page-band" aria-labelledby="physics-status-matrix-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim status</p>
+      <h2 id="physics-status-matrix-title">Keep status layers separate.</h2>
+      <p>
+        The safe reading is not a single success or failure claim. It is a
+        controlled map of what each layer can and cannot say.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Safe use</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {statusRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.safe}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="physics-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="physics-source-title">Sources constrain the public route.</h2>
+      <p>
+        The page is a reader-facing synthesis. Stronger scientific statements
+        require upstream source records, registered files, and claim gates.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

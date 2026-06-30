@@ -26,8 +26,8 @@ Deployment remains blocked until the owner marks the rebuilt page set
 | Order | Route | Page | Family | Task | Technical status | Human review status | Source-bundle status | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `/` | Home | Home | GF-002 | technically ready | human review pending | verified | GF-002 rebuilt Home and primary navigation; linked category routes remain pending in later packets. |
-| 2 | `/physics/` | Physics Overview | Physics Research | GF-003 | not implemented | not implemented | not started | New category landing page. |
-| 3 | `/physics/ontology/` | Ontology | Physics Research | GF-003 | not implemented | not implemented | not started | Must define ontology terms near use. |
+| 2 | `/physics/` | Physics Overview | Physics Research | GF-003 | technically ready | human review pending | verified | GF-003 implemented the category landing page; linked remaining Physics child routes stay pending in later packets. |
+| 3 | `/physics/ontology/` | Ontology | Physics Research | GF-003 | technically ready | human review pending | verified | GF-003 defines ontology terms near use and keeps proof-boundary language visible. |
 | 4 | `/physics/exact-gr-benchmark/` | Exact-GR Benchmark | Physics Research | GF-004 | not implemented | not implemented | not started | Must distinguish compatibility benchmark from derivation. |
 | 5 | `/physics/derivation-roadmap/` | Derivation Roadmap | Physics Research | GF-004 | not implemented | not implemented | not started | Must not imply completed GR derivation. |
 | 6 | `/physics/flow-geometry/` | Flow Geometry | Physics Research | GF-004 | not implemented | not implemented | not started | Requires source-bundle evidence before technical copy. |
@@ -62,6 +62,7 @@ Deployment remains blocked until the owner marks the rebuilt page set
 | GF-000 | Open fresh greenfield control packet. | completed | `git diff --check`, `npm run validate:implementation-control`, and `.venv/bin/python -m pytest` passed in packet `WI-20260630-028`. | GF-001 foundation contract and review ledger. |
 | GF-001 | Foundation contract and route review ledger. | completed | `git diff --check`, `npm run validate:implementation-control`, and `.venv/bin/python -m pytest` passed in packet `WI-20260630-029`. | GF-002 Home and primary navigation slice. |
 | GF-002 | Home route and primary navigation slice. | completed | `git diff --check`, `npm run validate:content`, `npm run validate:links`, `npm run validate:layout`, `npm run validate:comprehension`, `npm run validate:provenance`, `npm run validate:implementation-control`, `npm run build`, `.venv/bin/python -m pytest`, `npm run validate:svg`, and desktop/mobile browser QA passed in packet `WI-20260630-030`. | GF-003 Physics overview and ontology slice. |
+| GF-003 | Physics overview and ontology slice. | completed | `git diff --check`, `npm run validate:content`, `npm run validate:links`, `npm run validate:layout`, `npm run validate:comprehension`, `npm run validate:provenance`, `npm run validate:manifests`, `npm run validate:svg`, `npm run build`, `npm run validate:implementation-control`, `.venv/bin/python -m pytest`, manual control-record inspection, and desktop/mobile browser QA passed in packet `WI-20260630-031`. | GF-004 Physics benchmark, roadmap, and flow geometry slice. |
 
 ## Review Rules
 

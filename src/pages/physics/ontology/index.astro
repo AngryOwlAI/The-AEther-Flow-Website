@@ -1,0 +1,245 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsOntology;
+
+const vocabularyRows = [
+  {
+    term: "AEther",
+    meaning: "The proposed deeper four-dimensional substrate the project studies.",
+    boundary: "Not an ordinary medium inside observed three-dimensional space.",
+  },
+  {
+    term: "AEther-flow",
+    meaning: "Intrinsic ordered motion of that proposed substrate.",
+    boundary: "Not a directly observed fluid current or wind through space.",
+  },
+  {
+    term: "Observed space",
+    meaning: "The observer-accessible appearance or slice through which local observers encounter the deeper order.",
+    boundary: "Not the full underlying ontology and not independent proof of it.",
+  },
+  {
+    term: "S-time",
+    meaning: "Experienced order of change among matter, light, and AEther-flow language.",
+    boundary: "Not mathematical closure or a second place-like corridor.",
+  },
+  {
+    term: "Observed expansion",
+    meaning: "A proposed three-dimensional appearance of deeper ordered motion.",
+    boundary: "Not a denial that measured expansion is part of observed cosmology.",
+  },
+  {
+    term: "Gravity-language",
+    meaning: "A heuristic way to discuss matter reorganizing surrounding AEther-flow.",
+    boundary: "Not an equation-level derivation by itself.",
+  },
+];
+
+const boundaryRows = [
+  {
+    layer: "Ontology",
+    canSay: "Names the objects, appearances, and interpretation the project studies.",
+    cannotSay: "Cannot force GR, certify predictions, or promote itself from vocabulary alone.",
+  },
+  {
+    layer: "Mathematical bridge",
+    canSay: "Identifies the downstream work needed for metric behavior and matter coupling.",
+    cannotSay: "Cannot be replaced by a diagram, public page, or generated explainer.",
+  },
+  {
+    layer: "Benchmark",
+    canSay: "Keeps public observable-scale behavior within ordinary GR for the current benchmark.",
+    cannotSay: "Cannot be treated as first-principles substrate derivation.",
+  },
+  {
+    layer: "Source authority",
+    canSay: "Registered source files and claim-boundary records govern stronger language.",
+    cannotSay: "Cannot be overridden by website prose or generated derivatives.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Benchmark",
+    title: "Exact-GR Benchmark",
+    href: "/physics/exact-gr-benchmark/",
+    body: "Distinguish benchmark compatibility from source-side derivation.",
+  },
+  {
+    label: "Roadmap",
+    title: "Derivation Roadmap",
+    href: "/physics/derivation-roadmap/",
+    body: "Read the open burden chain that ontology does not discharge.",
+  },
+  {
+    label: "Status",
+    title: "Claim Status",
+    href: "/physics/claim-status/",
+    body: "Inspect allowed wording, forbidden wording, and gate-required claims.",
+  },
+];
+
+const ontologySvg = `
+  <svg class="track-map-svg ontology-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ontology-greenfield-title ontology-greenfield-desc">
+    <title id="ontology-greenfield-title">Animated ontology boundary map</title>
+    <desc id="ontology-greenfield-desc">Ontology vocabulary, mathematical bridge, benchmark, and prediction layers remain separated.</desc>
+    <defs>
+      <radialGradient id="ontology-greenfield-core" cx="50%" cy="50%" r="62%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.58" />
+        <stop offset="36%" stop-color="var(--owl-orange-500)" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ontology-greenfield-bloom" x="-20%" y="-26%" width="140%" height="152%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ontology-greenfield-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="220" ry="118" />
+      <ellipse cx="310" cy="180" rx="142" ry="72" />
+      <path d="M94 180 C164 110, 240 104, 310 150 C380 104, 456 110, 526 180" />
+      <path d="M94 180 C164 250, 240 256, 310 210 C380 256, 456 250, 526 180" />
+    </g>
+    <g filter="url(#ontology-greenfield-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M88 116 C178 158, 234 246, 318 208 C402 170, 446 90, 532 132" />
+      <path class="track-figure-path orange-path" d="M92 252 C170 142, 252 106, 330 168 C404 226, 482 214, 532 104" />
+      <path class="track-figure-path signal-path alternate" d="M150 292 C226 236, 264 222, 310 180 C358 136, 416 118, 486 76" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="42" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="126" cy="118" r="14" />
+      <circle cx="176" cy="270" r="14" />
+      <circle cx="310" cy="80" r="14" />
+      <circle cx="438" cy="274" r="14" />
+      <circle cx="512" cy="138" r="14" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="AEther-Flow Ontology"
+  description="Greenfield ontology explainer for AEther, AEther-flow, observed space, S-time, expansion language, gravity-language, and source authority."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research / Ontology"
+    title="AEther-Flow Ontology"
+    lead="This page defines the ontology language used by The Æther Flow Project while keeping mathematics, benchmark status, and empirical prediction downstream."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Ontology page actions">
+      <a class="primary-link" href="#ontology-vocabulary">Read terms</a>
+      <a class="secondary-link" href="/physics/">Physics overview</a>
+      <a class="secondary-link" href="/resources/source-authority/">Source authority</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ontology-greenfield-caption">
+        <Fragment set:html={ontologySvg} />
+        <figcaption id="ontology-greenfield-caption">
+          Visual orientation only: ontology terms, mathematical bridge work,
+          benchmark status, and prediction remain separate layers.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Ontology introduction">
+    <p>
+      AEther-flow ontology gives the project its working vocabulary: AEther as
+      proposed deeper substrate, AEther-flow as ordered motion, observed space
+      as observer-accessible appearance, S-time as order of change, observed
+      expansion as interpreted appearance, and gravity-language as heuristic
+      reorganization. Those terms orient the reader, but they do not complete
+      the source-side mathematical bridge, force general relativity, or create
+      an empirical prediction.
+    </p>
+  </section>
+
+  <section id="ontology-vocabulary" class="track-page-band" aria-labelledby="ontology-vocabulary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Vocabulary matrix</p>
+      <h2 id="ontology-vocabulary-title">Define each term near its first use.</h2>
+      <p>
+        The matrix keeps the conceptual term beside its boundary so readers do
+        not mistake vocabulary for proof.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Term</th>
+          <th scope="col">Meaning here</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {vocabularyRows.map((row) => (
+          <tr>
+            <th scope="row">{row.term}</th>
+            <td>{row.meaning}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ontology-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim boundary</p>
+      <h2 id="ontology-boundary-title">Ontology is not equation-level proof.</h2>
+      <p>
+        The page can explain the conceptual model. Stronger claims need
+        registered source mathematics, benchmark evidence, and explicit gates.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Can safely say</th>
+          <th scope="col">Cannot say</th>
+        </tr>
+      </thead>
+      <tbody>
+        {boundaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.canSay}</td>
+            <td>{row.cannotSay}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Continue through boundary-safe physics routes."
+    lead="Use internal pages for the reader journey. Provenance and source authority remain available for inspection, but they do not replace route-level explanation."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related ontology routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>
