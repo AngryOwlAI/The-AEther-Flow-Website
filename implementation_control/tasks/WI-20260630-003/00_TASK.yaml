@@ -1,10 +1,10 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-002"
-title: "Create Master Website Information Space PRD"
-created_utc: "2026-06-30T03:32:00Z"
+task_id: "WI-20260630-003"
+title: "Create Website Positioning Guidance PRD"
+created_utc: "2026-06-30T03:40:00Z"
 updated_utc: "2026-06-30T03:40:00Z"
-status: "completed"
+status: "active"
 
 source_context:
   source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
@@ -12,29 +12,30 @@ source_context:
   task_packet_section: "Phase 1: Master PRD and positioning rules"
 
 requirements:
-  - "Create PRDs/website-information-space/PRD-00-master-website-information-space.md."
-  - "Use the master PRD sections, thesis, navigation, and acceptance criteria from the PRD-system plan."
-  - "Reference all eleven sub-PRDs and explain how they interlock."
+  - "Create PRDs/website-information-space/PRD-10-website-positioning-guidance.md."
+  - "Use the shared sub-PRD template and PRD-10 specification from the PRD-system plan."
+  - "Include baseline safe pitch, approved phrases, forbidden phrases, homepage guidance, audience-specific positioning, and copy QA."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
 
-goal: "Create the master website information-space PRD as the next bounded PRD-system packet."
+goal: "Create the website positioning guidance PRD as the next bounded PRD-system packet."
 
 scope:
   in_scope:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-001.yaml"
-    - "implementation_control/handoffs/WH-20260630-001.md"
     - "implementation_control/handoffs/WH-20260630-002.yaml"
     - "implementation_control/handoffs/WH-20260630-002.md"
-    - "implementation_control/tasks/WI-20260630-001/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-001/jobs/WJ-20260630-001-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-003.yaml"
+    - "implementation_control/handoffs/WH-20260630-003.md"
     - "implementation_control/tasks/WI-20260630-002/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-002/jobs/WJ-20260630-002-A.yaml"
-    - "implementation_control/tasks/WI-20260630-002/jobs/completions/WJC-20260630-002-A.yaml"
+    - "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
+    - "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
   out_of_scope:
-    - "Any sub-PRD file beyond PRD-00."
+    - "Any sub-PRD file beyond PRD-10."
     - "Public routes."
     - "Public assets."
     - "Public manifests."
@@ -45,8 +46,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-002-A"
-  next_packet_after_this_task: "PRD-10 website positioning guidance"
+  active_job_id: "WJ-20260630-003-A"
+  next_packet_after_this_task: "PRD-05 memory registry and retrieval components"
 
 allowed_reads:
   website_repository:
@@ -55,8 +56,9 @@ allowed_reads:
     - "ImplementationPlans/aether_flow_project_components.md"
     - "ImplementationPlans/aether_flow_website_prd_system.md"
     - "PRDs/website-information-space/README.md"
+    - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-001.yaml"
+    - "implementation_control/handoffs/WH-20260630-002.yaml"
     - "git status output"
   upstream_source_repository: []
 
@@ -64,16 +66,17 @@ allowed_writes:
   website_repository:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+    - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-001.yaml"
-    - "implementation_control/handoffs/WH-20260630-001.md"
     - "implementation_control/handoffs/WH-20260630-002.yaml"
     - "implementation_control/handoffs/WH-20260630-002.md"
-    - "implementation_control/tasks/WI-20260630-001/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-001/jobs/WJ-20260630-001-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-003.yaml"
+    - "implementation_control/handoffs/WH-20260630-003.md"
     - "implementation_control/tasks/WI-20260630-002/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-002/jobs/WJ-20260630-002-A.yaml"
-    - "implementation_control/tasks/WI-20260630-002/jobs/completions/WJC-20260630-002-A.yaml"
+    - "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
+    - "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
   upstream_source_repository: []
 
 forbidden_write_patterns:
@@ -131,7 +134,7 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "A write outside the explicit master-PRD allowlist becomes necessary."
+  - "A write outside the explicit PRD-10 allowlist becomes necessary."
   - "Any upstream source-project write is proposed."
   - "Any public route, public asset, public manifest, push, or deploy change becomes necessary."
   - "A source-derived public claim would be changed."
@@ -144,10 +147,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-002-A"
-  path: "implementation_control/tasks/WI-20260630-002/jobs/completions/WJC-20260630-002-A.yaml"
+  completion_id: "WJC-20260630-003-A"
+  path: "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
 
 handoff:
-  latest_handoff_id: "WH-20260630-002"
-  yaml_path: "implementation_control/handoffs/WH-20260630-002.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-002.md"
+  latest_handoff_id: "WH-20260630-003"
+  yaml_path: "implementation_control/handoffs/WH-20260630-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-003.md"

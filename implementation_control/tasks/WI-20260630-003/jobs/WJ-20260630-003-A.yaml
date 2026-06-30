@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260630-002-A"
-task_id: "WI-20260630-002"
-title: "Create PRD-00 master website information-space PRD"
-created_utc: "2026-06-30T03:32:00Z"
+job_id: "WJ-20260630-003-A"
+task_id: "WI-20260630-003"
+title: "Create PRD-10 website positioning guidance"
+created_utc: "2026-06-30T03:40:00Z"
 updated_utc: "2026-06-30T03:40:00Z"
-status: "completed"
+status: "active"
 
-objective: "Create the master website information-space PRD and checkpoint that second PRD-system packet."
+objective: "Create the website positioning guidance PRD and checkpoint that third PRD-system packet."
 
 execution_boundary:
   invocation_limit: "one bounded implementation packet"
@@ -22,29 +22,31 @@ allowed_reads:
   - "ImplementationPlans/aether_flow_project_components.md"
   - "ImplementationPlans/aether_flow_website_prd_system.md"
   - "PRDs/website-information-space/README.md"
+  - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-001.yaml"
+  - "implementation_control/handoffs/WH-20260630-002.yaml"
   - "git status output"
 
 allowed_writes:
   - "PRDs/website-information-space/README.md"
   - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+  - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260630-001.yaml"
-  - "implementation_control/handoffs/WH-20260630-001.md"
   - "implementation_control/handoffs/WH-20260630-002.yaml"
   - "implementation_control/handoffs/WH-20260630-002.md"
-  - "implementation_control/tasks/WI-20260630-001/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-001/jobs/WJ-20260630-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-003.yaml"
+  - "implementation_control/handoffs/WH-20260630-003.md"
   - "implementation_control/tasks/WI-20260630-002/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260630-002/jobs/WJ-20260630-002-A.yaml"
-  - "implementation_control/tasks/WI-20260630-002/jobs/completions/WJC-20260630-002-A.yaml"
+  - "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
+  - "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
 
 required_outputs:
-  - "PRD-00 defines product summary, project context, website mission, source authority, goals, non-goals, audiences, IA, page families, cross-PRD map, claim boundary, freshness policy, workflow, design principles, requirements, launch phases, risks, open questions, definition of done, and sub-PRD index."
-  - "PRD-00 references all eleven sub-PRDs."
-  - "PRD-00 prevents completed-GR-derivation and benchmark-promotion claims."
-  - "README progress table reflects PRD-00 completion."
+  - "PRD-10 follows the shared sub-PRD template."
+  - "PRD-10 defines safe pitch, approved phrases, forbidden phrases, homepage guidance, audience positioning, trust language, and copy QA."
+  - "PRD-10 preserves source-authority and claim-boundary constraints."
+  - "README and PRD-00 status tables reflect PRD-10 completion."
   - "Control records point to this packet and preserve upstream read-only status."
 
 approval_gates:
@@ -91,7 +93,7 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "Allowed write paths need to expand outside the explicit master-PRD allowlist."
+  - "Allowed write paths need to expand outside the explicit PRD-10 allowlist."
   - "Any upstream write is proposed."
   - "Any public claim, route, asset, manifest, push, or deploy change becomes necessary."
   - "Validation fails."
@@ -103,10 +105,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-002-A"
-  path: "implementation_control/tasks/WI-20260630-002/jobs/completions/WJC-20260630-002-A.yaml"
+  completion_id: "WJC-20260630-003-A"
+  path: "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
 
 next_recommended_action:
-  task_packet: "PRD-10 website positioning guidance"
-  summary: "Create the website positioning PRD as the next bounded packet after this master PRD checkpoint."
+  task_packet: "PRD-05 memory registry and retrieval components"
+  summary: "Create the memory, registry, and retrieval PRD as the next bounded packet after this positioning PRD checkpoint."
   do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or broaden the packet without fresh live control records."

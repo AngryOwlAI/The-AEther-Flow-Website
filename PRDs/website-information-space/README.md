@@ -38,6 +38,7 @@ mathematical, governance, or research-workflow authority.
 | --- | --- | --- |
 | `README.md` | complete | Index packet checkpointed before the master PRD packet. |
 | `PRD-00-master-website-information-space.md` | complete | Defines the website mission, source-authority model, information architecture, launch phases, and sub-PRD map. |
+| `PRD-10-website-positioning-guidance.md` | complete | Defines safe public positioning, approved phrasing, forbidden claims, homepage guidance, audience pitches, and copy QA. |
 | Remaining sub-PRDs | pending | Create one bounded packet at a time in dependency order. |
 
 ## Source Authority Boundary
