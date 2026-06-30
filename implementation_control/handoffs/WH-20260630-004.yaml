@@ -1,23 +1,23 @@
 schema_version: "0.1"
 record_type: "implementation_handoff"
-handoff_id: "WH-20260630-003"
-created_utc: "2026-06-30T03:40:00Z"
+handoff_id: "WH-20260630-004"
+created_utc: "2026-06-30T03:45:00Z"
 updated_utc: "2026-06-30T03:45:00Z"
-status: "completed"
+status: "active"
 
-task_id: "WI-20260630-003"
-job_id: "WJ-20260630-003-A"
+task_id: "WI-20260630-004"
+job_id: "WJ-20260630-004-A"
 
 completion_record:
-  completion_id: "WJC-20260630-003-A"
-  path: "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
+  completion_id: "WJC-20260630-004-A"
+  path: "implementation_control/tasks/WI-20260630-004/jobs/completions/WJC-20260630-004-A.yaml"
 
-summary: "The website positioning guidance PRD packet was checkpointed and superseded by the memory, registry, and retrieval PRD packet."
+summary: "The memory, registry, and retrieval PRD packet is complete and ready for local checkpoint."
 
 current_state:
-  - "The master PRD packet has been checkpointed and superseded."
-  - "PRD-10 now defines safe public positioning, approved phrases, forbidden phrases, homepage guidance, audience-specific pitches, and copy QA."
-  - "No public route copy or additional PRD files are included in this packet."
+  - "The positioning PRD packet has been checkpointed and superseded."
+  - "PRD-05 now defines source authority, registries, generated derivatives, local retrieval layers, memory lookup, provenance graph, and source/provenance footer requirements."
+  - "No public route copy, generated retrieval layer, wiki, manifest, or additional PRD files are included in this packet."
   - "No public route, public asset, public manifest, deployment, push, or upstream write is authorized."
 
 source_authority_boundary:
@@ -25,6 +25,7 @@ source_authority_boundary:
   upstream_write_status: "forbidden"
   website_public_claim_changes: "none_authorized"
   proof_or_science_authority: "not_granted"
+  retrieval_layers: "navigation_only_not_authority"
 
 required_validators:
   - id: "git-diff-check"
@@ -44,26 +45,28 @@ validation_results:
   - id: "git-diff-check"
     command: "git diff --check"
     status: "passed"
-    checked_utc: "2026-06-30T03:40:00Z"
+    checked_utc: "2026-06-30T03:45:00Z"
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     status: "passed"
-    checked_utc: "2026-06-30T03:40:00Z"
+    checked_utc: "2026-06-30T03:45:00Z"
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     status: "passed"
-    checked_utc: "2026-06-30T03:40:00Z"
+    checked_utc: "2026-06-30T03:45:00Z"
 
 next_recommended_action:
-  task_packet: "Create Memory Registry And Retrieval PRD"
-  summary: "The next authorized packet creates PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md and updates the PRD indexes."
-  do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or broaden the packet without fresh live control records."
+  task_packet: "PRD-06 documentation publication and website components"
+  summary: "Create PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md as the next bounded packet."
+  do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, refresh retrieval layers, or broaden the packet without fresh live control records."
 
 stop_before:
-  - "additional PRD files beyond PRD-10"
+  - "additional PRD files beyond PRD-05"
   - "public route changes"
   - "public asset changes"
   - "public manifest changes"
+  - "generated retrieval layer changes"
+  - "wiki changes"
   - "source-derived public claim changes"
   - "upstream source-project writes"
   - "Git push"

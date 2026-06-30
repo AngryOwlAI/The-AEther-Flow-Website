@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T03:40:00Z"
+updated_utc: "2026-06-30T03:45:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,10 +9,10 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
-  - "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-003.yaml"
+  - "implementation_control/tasks/WI-20260630-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-004/jobs/WJ-20260630-004-A.yaml"
+  - "implementation_control/tasks/WI-20260630-004/jobs/completions/WJC-20260630-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-004.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -25,30 +25,30 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-003"
-  title: "Create Website Positioning Guidance PRD"
+  task_id: "WI-20260630-004"
+  title: "Create Memory Registry And Retrieval PRD"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-003/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-004/00_TASK.yaml"
   planning_context:
     source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
     prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-    task_packet: "PRD-10 website positioning guidance"
+    task_packet: "PRD-05 memory registry and retrieval components"
 
 current_job:
-  job_id: "WJ-20260630-003-A"
+  job_id: "WJ-20260630-004-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-003/jobs/WJ-20260630-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-004/jobs/WJ-20260630-004-A.yaml"
 
 latest_completion:
-  completion_id: "WJC-20260630-003-A"
+  completion_id: "WJC-20260630-004-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260630-003/jobs/completions/WJC-20260630-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-004/jobs/completions/WJC-20260630-004-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-003"
+  handoff_id: "WH-20260630-004"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-003.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-003.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-004.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-004.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -65,6 +65,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PRD-05 memory registry and retrieval components"
-  summary: "After the positioning PRD checkpoint, create the source-authority and retrieval PRD as the next bounded packet."
+  task_packet: "PRD-06 documentation publication and website components"
+  summary: "After the memory, registry, and retrieval PRD checkpoint, create the documentation/publication PRD as the next bounded packet."
   do_not_skip: "Do not create additional PRD files, push, deploy, mutate upstream, or begin a broader packet without fresh live control records."
