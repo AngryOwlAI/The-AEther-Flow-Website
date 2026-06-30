@@ -2,18 +2,19 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-037"
 created_utc: "2026-06-30T18:54:32Z"
-updated_utc: "2026-06-30T19:09:15Z"
+updated_utc: "2026-06-30T19:12:40Z"
 status: "completed"
 
 task_id: "WI-20260630-037"
 job_id: "WJ-20260630-037-A"
 
-summary: "Completed GF-009 for the AI memory preflight, project-system improvement, and runtime requirements slice."
+summary: "Completed GF-009 for the AI memory preflight, project-system improvement, and runtime requirements slice; checkpointed and superseded by GF-010."
 
 current_state:
   - "GF-008 is completed, checkpointed, and superseded."
   - "This packet authorizes one public route implementation slice for `/ai-research-system/memory-preflight/`, `/ai-research-system/project-system-improvement/`, and `/ai-research-system/runtime-requirements/`."
   - "The three GF-009 routes are technically ready with human review pending."
+  - "GF-009 is checkpointed and superseded by active packet WI-20260630-038 for GF-010."
   - "Public memory, improvement, runtime, route-local SVG/style, and public route/provenance manifest writes are approved only inside the GF-009 allowlist."
   - "Memory lookup and retrieval are navigation support only, not source authority."
   - "Runtime setup and validator PASS do not grant write permission, claim authority, proof, or public acceptance."
@@ -74,8 +75,8 @@ completion_record:
 
 next_recommended_action:
   task_packet: "GF-010 Build Resources Overview, Source Authority, And Registries Slice"
-  summary: "After checkpoint, open the next fresh implementation-control packet for Resources overview, source authority, and registries routes."
-  do_not_skip: "Do not implement additional route families, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active AI memory, improvement, and runtime packet without fresh live control records."
+  summary: "Open the Resources overview, source authority, and registries packet."
+  do_not_skip: "Do not implement generated derivatives, retrieval layers, publication process, library, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active GF-010 packet without fresh live control records."
 
 stop_before:
   - "Resources route implementation"

@@ -1,150 +1,389 @@
 ---
-import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
-import DownloadList from "../../components/DownloadList.astro";
+import CommandBand from "../../components/CommandBand.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { resourcesIndexComprehension } from "../../lib/supportComprehensionContent";
-import {
-  downloads,
-} from "../../lib/manifests";
-import { resourceGroups } from "../../lib/siteContent";
+import { downloadStatusCounts } from "../../lib/manifests";
+
+const liveResourceRoutes = [
+  {
+    label: "Start",
+    title: "Source Authority",
+    href: "/resources/source-authority/",
+    body: "Learn which layer owns claims before opening registries, derivatives, or downloads.",
+  },
+  {
+    label: "Records",
+    title: "Registries",
+    href: "/resources/registries/",
+    body: "Use registries as provenance and status maps, not proof surfaces.",
+  },
+  {
+    label: "Assets",
+    title: "Diagram Gallery",
+    href: "/resources/diagrams/",
+    body: "Inspect visual reader aids with their non-authority status labels.",
+  },
+  {
+    label: "Documents",
+    title: "Ontology Documents",
+    href: "/resources/documents/",
+    body: "Open manifest-backed TeX and PDF assets with status labels preserved.",
+  },
+  {
+    label: "Guides",
+    title: "Guided Starts",
+    href: "/resources/guided-starts/",
+    body: "Choose an internal reading path before source archaeology.",
+  },
+  {
+    label: "Review",
+    title: "Reviewer Packet",
+    href: "/resources/reviewer-packet/",
+    body: "Use the reviewer packet when evaluating boundaries across physics and AI workflow pages.",
+  },
+];
+
+const routeRows = [
+  {
+    route: "/resources/source-authority/",
+    title: "Source Authority",
+    status: "live in GF-010",
+    readerJob: "Understand authority classes before reading assets or registries.",
+    href: "/resources/source-authority/",
+  },
+  {
+    route: "/resources/registries/",
+    title: "Registries",
+    status: "live in GF-010",
+    readerJob: "Interpret registry rows as provenance and workflow state.",
+    href: "/resources/registries/",
+  },
+  {
+    route: "/resources/generated-derivatives/",
+    title: "Generated Derivatives",
+    status: "planned GF-011",
+    readerJob: "Distinguish generated reader surfaces from source authority.",
+  },
+  {
+    route: "/resources/retrieval-layers/",
+    title: "Retrieval Layers",
+    status: "planned GF-011",
+    readerJob: "Treat memory, wiki, semantic, and cache layers as navigation support.",
+  },
+  {
+    route: "/resources/publication-process/",
+    title: "Publication Process",
+    status: "planned GF-011",
+    readerJob: "Read source-to-publication workflow without confusing quality and authority.",
+  },
+  {
+    route: "/resources/library/",
+    title: "Library",
+    status: "planned GF-011",
+    readerJob: "Browse reading surfaces by reader job rather than repository layout.",
+  },
+  {
+    route: "/resources/reading-paths/",
+    title: "Reading Paths",
+    status: "planned GF-012",
+    readerJob: "Choose a route sequence by audience and question.",
+  },
+  {
+    route: "/resources/repository-map/",
+    title: "Repository Map",
+    status: "planned GF-012",
+    readerJob: "Understand folder classes without treating local paths as authority.",
+  },
+  {
+    route: "/resources/site-builder-guide/",
+    title: "Site Builder Guide",
+    status: "planned GF-012",
+    readerJob: "Map page types to source bundles and claim-boundary checks.",
+  },
+  {
+    route: "/resources/diagrams/",
+    title: "Diagram Gallery",
+    status: "existing route",
+    readerJob: "Inspect visual aids with source and status labels.",
+    href: "/resources/diagrams/",
+  },
+];
+
+const manifestRows = Object.entries(downloadStatusCounts).map(([status, count]) => ({
+  status,
+  count,
+  meaning:
+    status === "approved"
+      ? "Approved public assets with manifest-backed source references."
+      : status === "sample"
+        ? "Sample fixtures retained for scaffold or visual support."
+        : status === "source-index-only"
+          ? "Indexed source records without a direct public download."
+          : "Manifest category that requires its own status label before use.",
+}));
+
+const boundaryRows = [
+  {
+    surface: "Resource route",
+    safeUse: "Guide the reader toward a page, asset class, or source concept.",
+    limit: "A route card does not promote claims or create authority.",
+  },
+  {
+    surface: "Manifest row",
+    safeUse: "Expose path, kind, hash, status, and source reference for a website asset.",
+    limit: "A hash proves file identity only; it does not prove scientific correctness.",
+  },
+  {
+    surface: "Download",
+    safeUse: "Let readers inspect a committed public file.",
+    limit: "Downloads retain their source or derivative status.",
+  },
+  {
+    surface: "Source/provenance link",
+    safeUse: "Support audit after the internal explanation is understood.",
+    limit: "External source links should not replace the primary internal reading path.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "PRD-05",
+    use: "Source, registry, derivative, retrieval, and provenance class boundaries.",
+    boundary: "Requirements planning, not source authority.",
+  },
+  {
+    source: "PRD-06",
+    use: "Publication surfaces, library behavior, generated derivative warnings, and page footer expectations.",
+    boundary: "Publication quality remains separate from claim authority.",
+  },
+  {
+    source: "Resources dossier",
+    use: "Manifest-backed asset status, internal route selection, and hash limits.",
+    boundary: "Dossier guidance remains below tracked source and manifest records.",
+  },
+  {
+    source: "Public manifests",
+    use: "Asset and route provenance for public files and pages.",
+    boundary: "Website manifests do not supersede upstream source registries.",
+  },
+];
+
+const resourcesSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-overview-title resources-overview-desc">
+    <title id="resources-overview-title">Animated Resources route map</title>
+    <desc id="resources-overview-desc">Internal Resources routes, manifests, documents, diagrams, and future reading surfaces orbit a central provenance boundary.</desc>
+    <defs>
+      <radialGradient id="resources-overview-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.58" />
+        <stop offset="42%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="resources-overview-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#resources-overview-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="236" ry="112" />
+      <ellipse cx="310" cy="180" rx="166" ry="76" />
+      <path d="M84 180 H536" />
+      <path d="M310 76 V284" />
+    </g>
+    <g filter="url(#resources-overview-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M98 118 C178 154, 234 180, 310 180 C386 180, 442 154, 522 118" />
+      <path class="track-figure-path signal-path" d="M98 242 C178 206, 234 180, 310 180 C386 180, 442 206, 522 242" />
+      <path class="track-figure-path orange-path alternate" d="M156 180 C218 112, 402 112, 464 180" />
+      <path class="track-figure-path signal-path alternate" d="M156 180 C218 248, 402 248, 464 180" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="42" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="98" cy="118" r="13" />
+      <circle cx="98" cy="242" r="13" />
+      <circle cx="156" cy="180" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="464" cy="180" r="13" />
+      <circle cx="522" cy="118" r="13" />
+      <circle cx="522" cy="242" r="13" />
+    </g>
+  </svg>
+`;
 ---
 
 <BaseLayout
   title="Resources"
-  description="Manifest-backed downloadable resources for The AEther Flow website."
-  bodyClass="project-overview-page project-support-page"
+  description="Resources overview for The AEther Flow Website, organizing source authority, registries, manifests, documents, diagrams, and planned reader paths without creating source authority."
+  bodyClass="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"
 >
-  <section class="content-band project-support-hero" aria-labelledby="resources-title">
-    <div class="project-support-copy">
-      <div class="section-header">
-        <p class="eyebrow">Source-index-only</p>
-        <h1 id="resources-title">Resources</h1>
-        <p class="lead">
-          This resource area supports the public reading path while keeping file
-          status explicit. Canonical ontology PDF and TeX assets are committed
-          to the website repo with manifest hashes; remaining sample assets are
-          clearly labeled as fixtures.
-        </p>
-      </div>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Resources"
+    title="Resources"
+    lead="Resources organize reader paths, public assets, manifests, and provenance labels. They do not create source authority or scientific proof."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Resources overview page actions">
+      <a class="primary-link" href="/resources/source-authority/">Start with authority</a>
+      <a class="secondary-link" href="/resources/registries/">Read registries</a>
+      <a class="secondary-link" href="#resource-map">See route map</a>
     </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="resources-overview-caption">
+        <Fragment set:html={resourcesSvg} />
+        <figcaption id="resources-overview-caption">
+          Visual orientation only: Resources routes organize access; they do not promote claims.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
 
-    <figure class="support-figure resource-constellation resources-manifest-figure" aria-labelledby="resources-figure-caption">
-      <svg
-        class="support-svg resources-manifest-svg"
-        viewBox="0 0 520 340"
-        role="img"
-        aria-labelledby="resources-figure-title resources-figure-desc"
-      >
-        <title id="resources-figure-title">Animated resource manifest constellation</title>
-        <desc id="resources-figure-desc">
-          Source manifest, asset manifest, approved PDF and TeX document nodes,
-          hash rings, and fixture separation are shown as connected publication
-          layers.
-        </desc>
-        <defs>
-          <radialGradient id="resources-glow" cx="50%" cy="48%" r="70%">
-            <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.7" />
-            <stop offset="34%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
-            <stop offset="76%" stop-color="var(--color-dark-page)" stop-opacity="0.16" />
-            <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
-          </radialGradient>
-          <linearGradient id="resources-rail" x1="8%" x2="92%" y1="50%" y2="50%">
-            <stop offset="0%" stop-color="var(--owl-orange-500)" stop-opacity="0" />
-            <stop offset="28%" stop-color="var(--owl-orange-500)" stop-opacity="0.86" />
-            <stop offset="64%" stop-color="var(--owl-orange-100)" stop-opacity="0.76" />
-            <stop offset="100%" stop-color="var(--owl-cyan-400)" stop-opacity="0" />
-          </linearGradient>
-          <filter id="resources-bloom" x="-20%" y="-24%" width="140%" height="148%">
-            <feGaussianBlur stdDeviation="4.2" result="resourcesBlur" />
-            <feMerge>
-              <feMergeNode in="resourcesBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path class="support-bg" d="M0 0H520V340H0Z" />
-        <circle class="resources-glow" cx="260" cy="170" r="160" aria-hidden="true" />
-        <g class="support-dust" aria-hidden="true">
-          <circle cx="54" cy="62" r="1.2" />
-          <circle cx="94" cy="264" r="1" />
-          <circle cx="168" cy="86" r="0.9" />
-          <circle cx="238" cy="286" r="1.2" />
-          <circle cx="314" cy="72" r="1" />
-          <circle cx="406" cy="266" r="1.1" />
-          <circle cx="470" cy="110" r="0.9" />
-        </g>
-        <g class="resources-manifest-stream" aria-hidden="true">
-          <circle cx="110" cy="97" r="23" />
-          <circle cx="110" cy="167" r="23" />
-          <circle cx="110" cy="237" r="23" />
-          <path d="M110 120 C96 140, 96 154, 110 167 C124 180, 124 200, 110 214" />
-        </g>
-        <g class="resources-approved-rings" aria-hidden="true">
-          <circle cx="422" cy="110" r="34" />
-          <circle cx="422" cy="230" r="34" />
-          <ellipse cx="422" cy="110" rx="54" ry="20" />
-          <ellipse cx="422" cy="230" rx="54" ry="20" />
-        </g>
-        <g class="resources-fixture-orbit" aria-hidden="true">
-          <path d="M190 280 C226 300, 294 300, 330 280" />
-          <circle cx="260" cy="280" r="13" />
-        </g>
-        <g class="support-link-lines" filter="url(#resources-bloom)" aria-hidden="true">
-          <path class="support-line orange-line resources-flow-path primary" d="M133 97 C186 96, 218 130, 260 170 C308 216, 348 116, 388 110" />
-          <path class="support-line signal-line resources-flow-path" d="M133 167 C190 168, 224 168, 260 170 C306 172, 348 224, 388 230" />
-          <path class="support-line orange-line alternate resources-flow-path" d="M133 237 C190 222, 226 194, 260 170 C310 134, 348 116, 388 110" />
-          <path class="support-line signal-line alternate resources-flow-path" d="M260 170 C258 212, 258 238, 260 280" />
-        </g>
-        <circle class="support-core" cx="260" cy="170" r="34" aria-hidden="true" />
-        <g class="support-nodes" aria-hidden="true">
-          <circle cx="133" cy="97" r="8" />
-          <circle cx="133" cy="167" r="8" />
-          <circle cx="133" cy="237" r="8" />
-          <circle cx="260" cy="170" r="10" />
-          <circle cx="388" cy="110" r="8" />
-          <circle cx="388" cy="230" r="8" />
-          <circle cx="260" cy="280" r="8" />
-        </g>
-        <g class="support-rings" aria-hidden="true">
-          <circle cx="260" cy="170" r="58" />
-          <circle cx="260" cy="170" r="92" />
-          <circle cx="260" cy="170" r="126" />
-        </g>
-      </svg>
-      <figcaption id="resources-figure-caption">
-        Manifest-backed resources stay indexed and status-labeled before public use.
-      </figcaption>
-    </figure>
+  <section class="greenfield-intro-panel" aria-label="Resources overview introduction">
+    <p>
+      The logical path is internal first: read the explanation, check the
+      status label, then use provenance links or manifests when a claim needs
+      source inspection.
+    </p>
   </section>
 
-  <ComprehensionBlocks content={resourcesIndexComprehension} />
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Live resource paths"
+    title="Begin with the route that matches the question."
+    lead="The overview keeps reader jobs visible before file lists, hashes, or source paths appear."
+  >
+    <EvidenceRail
+      items={liveResourceRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Live Resources routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
 
-  <section class="content-band content-band-tight" aria-labelledby="resource-groups-title">
-    <div class="section-header">
-      <p class="eyebrow">Reader path</p>
-      <h2 id="resource-groups-title">Public pages and ontology documents</h2>
-      <p class="lead">
-        Use the project pages for source-boundary-safe explanation. Use the
-        resource libraries to inspect current manifest-backed assets.
+  <section id="resource-map" class="track-page-band" aria-labelledby="resource-map-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Resource route map</p>
+      <h2 id="resource-map-title">Resources is a category landing page, not a loose link index.</h2>
+      <p>
+        Each child route has a reader job and a status boundary. Planned routes
+        are listed as route commitments, not as live links before implementation.
       </p>
     </div>
-    <EvidenceRail
-      items={resourceGroups.map((group) => ({
-        ...group,
-        actionLabel: "Open resource",
-      }))}
-      ariaLabel="Resource reader paths"
-      className="link-grid resource-path-rail"
-      ordered
-    />
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Route</th>
+          <th scope="col">Page</th>
+          <th scope="col">Status</th>
+          <th scope="col">Reader job</th>
+        </tr>
+      </thead>
+      <tbody>
+        {routeRows.map((row) => (
+          <tr>
+            <th scope="row">
+              {row.href ? <a href={row.href}>{row.route}</a> : <code>{row.route}</code>}
+            </th>
+            <td>{row.title}</td>
+            <td>{row.status}</td>
+            <td>{row.readerJob}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </section>
 
-  <section class="content-band content-band-tight">
-    <DownloadList
-      items={downloads}
-      title="Current manifest-backed files"
-      description="This list is generated from asset manifest entries. Status labels distinguish approved ontology assets from remaining visual fixtures."
-    />
+  <section class="track-page-band" aria-labelledby="manifest-summary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Manifest status</p>
+      <h2 id="manifest-summary-title">Manifests identify files and status; they do not prove claims.</h2>
+      <p>
+        Asset and source manifests are useful audit surfaces because they keep
+        public file status, hashes, and source references visible.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Status</th>
+          <th scope="col">Count</th>
+          <th scope="col">Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {manifestRows.map((row) => (
+          <tr>
+            <th scope="row">{row.status}</th>
+            <td>{row.count}</td>
+            <td>{row.meaning}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="resource-boundaries-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Boundaries</p>
+      <h2 id="resource-boundaries-title">Resource surfaces preserve status labels.</h2>
+      <p>
+        A resource page can make the project easier to inspect. It cannot
+        promote a source, prove a claim, or override a registry.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Surface</th>
+          <th scope="col">Safe use</th>
+          <th scope="col">Limit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {boundaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.surface}</th>
+            <td>{row.safeUse}</td>
+            <td>{row.limit}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="resources-provenance-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Provenance and limits</p>
+      <h2 id="resources-provenance-title">The overview is source-bundled, not source authority.</h2>
+      <p>
+        This route is based on PRD-05, PRD-06, the Resources content dossier,
+        and website manifests. Those materials guide the website page; upstream
+        source files, registries, and governed records remain authoritative for
+        scientific, mathematical, and workflow claims.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Basis</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </section>
 </BaseLayout>
