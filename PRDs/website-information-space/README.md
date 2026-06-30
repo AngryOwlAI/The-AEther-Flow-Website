@@ -49,7 +49,7 @@ mathematical, governance, or research-workflow authority.
 | `PRD-07-tooling-skills-scripts-and-runtime-components.md` | complete | Defines technical requirements, skills, scripts, validators, Makefile, runtime, reproducibility, and local-cache boundary requirements. |
 | `PRD-08-folder-and-repository-topology-components.md` | complete | Defines repository topology, folder explorer, source-lane diagram, edit/read guides, and generated-versus-canonical folder legend requirements. |
 | `PRD-11-quick-source-map-for-site-builders.md` | complete | Defines site-builder guide, source bundle index, page-to-source mapping table, build-first checklist, contributor handoff guide, and staleness handling requirements. |
-| PRD-family validation review | pending | Review the full PRD set against the validation checklist before treating it as ready for implementation planning. |
+| `PRD-FAMILY-VALIDATION-REVIEW.md` | complete | Reviews the full PRD set against the validation checklist and records requirements-readiness for implementation planning. |
 
 ## Source Authority Boundary
 
@@ -181,12 +181,18 @@ Before the PRD family is treated as ready for implementation planning:
 - Public route and implementation requirements remain internal-first and
   source-provenance aware.
 
+Final review result: `PRD-FAMILY-VALIDATION-REVIEW.md` records this checklist
+as passed for requirements-planning purposes. The review does not grant
+scientific, mathematical, public-claim, push, deployment, source-refresh,
+publication, or public-manifest authority.
+
 ## Next Packet
 
-The next bounded implementation-control packet should create
-a final PRD-family validation review and handoff. It should not implement
-public routes, push, deploy, mutate upstream sources, refresh source snapshots,
-or broaden scope unless fresh live control records authorize that work.
+No further PRD-creation packet remains in this PRD family. The next bounded
+implementation-control packet should select one website implementation surface
+from the reviewed PRDs. It should not implement public routes, push, deploy,
+mutate upstream sources, refresh source snapshots, or broaden scope unless
+fresh live control records authorize that work.
 
 ## References
 
@@ -195,3 +201,6 @@ Functionality, Logic, Features, and Systems Catalogue* [Project catalogue].
 
 The AEther Flow Website. (2026). *The AEther-Flow Website PRD System*
 [Implementation handoff].
+
+The AEther Flow Website. (2026). *Website Information-Space PRD Family
+Validation Review* [Requirements-readiness audit].

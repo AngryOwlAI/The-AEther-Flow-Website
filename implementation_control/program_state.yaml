@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-06-30T05:45:00Z"
+updated_utc: "2026-06-30T06:00:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,10 +9,10 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-013/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-013/jobs/WJ-20260630-013-A.yaml"
-  - "implementation_control/tasks/WI-20260630-013/jobs/completions/WJC-20260630-013-A.yaml"
-  - "implementation_control/handoffs/WH-20260630-013.yaml"
+  - "implementation_control/tasks/WI-20260630-014/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-014/jobs/WJ-20260630-014-A.yaml"
+  - "implementation_control/tasks/WI-20260630-014/jobs/completions/WJC-20260630-014-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-014.yaml"
   - "current_git_state_and_validator_output"
   - "PRDs_and_ImplementationPlans_as_context_only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -25,30 +25,30 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260630-013"
-  title: "Create Quick Source Map For Site Builders PRD"
+  task_id: "WI-20260630-014"
+  title: "Review Website Information-Space PRD Family"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-013/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260630-014/00_TASK.yaml"
   planning_context:
     source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
     prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-    task_packet: "PRD-11 quick source map for site builders"
+    task_packet: "final PRD-family validation review"
 
 current_job:
-  job_id: "WJ-20260630-013-A"
+  job_id: "WJ-20260630-014-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260630-013/jobs/WJ-20260630-013-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-014/jobs/WJ-20260630-014-A.yaml"
 
 latest_completion:
-  completion_id: "WJC-20260630-013-A"
+  completion_id: "WJC-20260630-014-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260630-013/jobs/completions/WJC-20260630-013-A.yaml"
+  path: "implementation_control/tasks/WI-20260630-014/jobs/completions/WJC-20260630-014-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260630-013"
+  handoff_id: "WH-20260630-014"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260630-013.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-013.md"
+  yaml_path: "implementation_control/handoffs/WH-20260630-014.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-014.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -65,6 +65,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "final PRD-family validation review"
-  summary: "After the quick source map for site builders PRD checkpoint, review the full PRD family against the validation checklist and produce the final readiness handoff."
-  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, or begin a broader packet without fresh live control records."
+  task_packet: "next website implementation surface"
+  summary: "No further PRD-creation packet remains. Select one website implementation surface from the reviewed PRD family under fresh live control records."
+  do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, refresh generated outputs, or broaden scope without fresh live control records."

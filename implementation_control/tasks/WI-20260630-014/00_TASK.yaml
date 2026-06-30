@@ -1,43 +1,43 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-013"
-title: "Create Quick Source Map For Site Builders PRD"
-created_utc: "2026-06-30T05:45:00Z"
+task_id: "WI-20260630-014"
+title: "Review Website Information-Space PRD Family"
+created_utc: "2026-06-30T06:00:00Z"
 updated_utc: "2026-06-30T06:00:00Z"
-status: "completed"
+status: "active"
 
 source_context:
   source_catalogue: "ImplementationPlans/aether_flow_project_components.md"
   prd_system_plan: "ImplementationPlans/aether_flow_website_prd_system.md"
-  task_packet_section: "PRD-11: Quick Source Map for Site Builders"
+  task_packet_section: "Phase 6: Review and validation"
 
 requirements:
-  - "Create PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md."
-  - "Use the shared sub-PRD template and PRD-11 specification from the PRD-system plan."
-  - "Define site-builder guide, source bundle index, page-to-source mapping table, build-first checklist, contributor handoff guide, and staleness handling guide requirements."
-  - "Preserve the Source Authority Boundary and do not create public website surfaces."
+  - "Review all website information-space PRDs against the validation checklist."
+  - "Search for forbidden claims and distinguish forbidden-claim guardrails from endorsed claims."
+  - "Verify every detailed PRD has source basis, claim boundary, functional requirements, acceptance criteria, dependencies, validation plan, and definition of done."
+  - "Record a final requirements-readiness handoff without creating public website surfaces."
 
-goal: "Create the quick source map for site builders PRD as the final detailed PRD-system sub-PRD packet."
+goal: "Complete the final PRD-family validation review and checkpoint the PRD-system readiness handoff."
 
 scope:
   in_scope:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+    - "PRDs/website-information-space/PRD-FAMILY-VALIDATION-REVIEW.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-012.yaml"
-    - "implementation_control/handoffs/WH-20260630-012.md"
     - "implementation_control/handoffs/WH-20260630-013.yaml"
     - "implementation_control/handoffs/WH-20260630-013.md"
-    - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-014.yaml"
+    - "implementation_control/handoffs/WH-20260630-014.md"
     - "implementation_control/tasks/WI-20260630-013/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-013/jobs/WJ-20260630-013-A.yaml"
-    - "implementation_control/tasks/WI-20260630-013/jobs/completions/WJC-20260630-013-A.yaml"
+    - "implementation_control/tasks/WI-20260630-014/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-014/jobs/WJ-20260630-014-A.yaml"
+    - "implementation_control/tasks/WI-20260630-014/jobs/completions/WJC-20260630-014-A.yaml"
   out_of_scope:
     - "Any additional sub-PRD file."
-    - "Final PRD-family review packet."
     - "Public routes."
+    - "Public route copy."
     - "Public assets."
     - "Public manifests."
     - "Source snapshots."
@@ -51,8 +51,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-013-A"
-  next_packet_after_this_task: "final PRD-family validation review"
+  active_job_id: "WJ-20260630-014-A"
+  next_packet_after_this_task: "next website implementation surface under fresh live control records"
 
 allowed_reads:
   website_repository:
@@ -62,51 +62,37 @@ allowed_reads:
     - "ImplementationPlans/aether_flow_website_prd_system.md"
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
+    - "PRDs/website-information-space/PRD-01-high-level-components.md"
+    - "PRDs/website-information-space/PRD-02-physics-and-mathematical-components.md"
+    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
+    - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
     - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
     - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
     - "PRDs/website-information-space/PRD-08-folder-and-repository-topology-components.md"
     - "PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md"
     - "PRDs/website-information-space/PRD-10-website-positioning-guidance.md"
+    - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-012.yaml"
+    - "implementation_control/handoffs/WH-20260630-013.yaml"
     - "git status output"
-  upstream_source_repository:
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/README.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/AGENTS.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/ontology/aether-and-aether-flow.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/ontology/tex/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/TEX_SOURCE_REGISTRY.csv"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/CLAIM_BOUNDARY_REGISTRY.csv"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/README.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/research_control/current_frontier.md"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.codex/skills/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/roles/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/.agents/schemas/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/github-facing/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/html/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/markdown/publication-briefs/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/markdown/html-explainer-specs/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/registries/PUBLICATION_BRIEF_REGISTRY.csv"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/Makefile"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/requirements.txt"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/scripts/"
-    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/tests/"
+  upstream_source_repository: []
 
 allowed_writes:
   website_repository:
     - "PRDs/website-information-space/README.md"
     - "PRDs/website-information-space/PRD-00-master-website-information-space.md"
-    - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+    - "PRDs/website-information-space/PRD-FAMILY-VALIDATION-REVIEW.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-012.yaml"
-    - "implementation_control/handoffs/WH-20260630-012.md"
     - "implementation_control/handoffs/WH-20260630-013.yaml"
     - "implementation_control/handoffs/WH-20260630-013.md"
-    - "implementation_control/tasks/WI-20260630-012/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-012/jobs/WJ-20260630-012-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-014.yaml"
+    - "implementation_control/handoffs/WH-20260630-014.md"
     - "implementation_control/tasks/WI-20260630-013/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-013/jobs/WJ-20260630-013-A.yaml"
-    - "implementation_control/tasks/WI-20260630-013/jobs/completions/WJC-20260630-013-A.yaml"
+    - "implementation_control/tasks/WI-20260630-014/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-014/jobs/WJ-20260630-014-A.yaml"
+    - "implementation_control/tasks/WI-20260630-014/jobs/completions/WJC-20260630-014-A.yaml"
   upstream_source_repository: []
 
 forbidden_write_patterns:
@@ -125,7 +111,7 @@ forbidden_write_patterns:
 approval_gates:
   public_claim_changes:
     status: "not_required"
-    reason: "The packet writes planning material only and does not change public route copy."
+    reason: "The packet writes planning and control material only and does not change public route copy."
   source_refresh_uncertainty:
     status: "not_required"
     reason: "No source snapshot, upstream claim refresh, generated publication refresh, wiki refresh, or local retrieval refresh is in scope."
@@ -166,7 +152,7 @@ required_validators:
     required: true
 
 stop_conditions:
-  - "A write outside the explicit PRD-11 allowlist becomes necessary."
+  - "A write outside the explicit final-review allowlist becomes necessary."
   - "Any upstream source-project write is proposed."
   - "Any source bundle dataset, source snapshot, public route, public asset, public manifest, push, deploy, generated publication output, wiki, or .local retrieval-layer change becomes necessary."
   - "A source-derived public claim would be changed."
@@ -179,10 +165,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260630-013-A"
-  path: "implementation_control/tasks/WI-20260630-013/jobs/completions/WJC-20260630-013-A.yaml"
+  completion_id: "WJC-20260630-014-A"
+  path: "implementation_control/tasks/WI-20260630-014/jobs/completions/WJC-20260630-014-A.yaml"
 
 handoff:
-  latest_handoff_id: "WH-20260630-013"
-  yaml_path: "implementation_control/handoffs/WH-20260630-013.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-013.md"
+  latest_handoff_id: "WH-20260630-014"
+  yaml_path: "implementation_control/handoffs/WH-20260630-014.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-014.md"

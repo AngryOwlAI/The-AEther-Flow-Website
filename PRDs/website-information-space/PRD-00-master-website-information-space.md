@@ -456,6 +456,10 @@ The full PRD system is complete only after all eleven sub-PRDs exist, follow the
 shared template, define source anchors and acceptance criteria, and pass the PRD
 validation checklist.
 
+`PRD-FAMILY-VALIDATION-REVIEW.md` records this condition as satisfied for
+requirements-planning purposes. That review is not scientific, mathematical,
+public-claim, source-refresh, publication, push, or deployment authority.
+
 ## 24. Sub-PRD Index
 
 | PRD | File | Status | Launch role |
@@ -482,3 +486,6 @@ The AEther Flow Website. (2026). *The AEther-Flow Website PRD System*
 
 The AEther Flow Website. (2026). *Website Information-Space PRD Index*
 [Product requirements index].
+
+The AEther Flow Website. (2026). *Website Information-Space PRD Family
+Validation Review* [Requirements-readiness audit].
