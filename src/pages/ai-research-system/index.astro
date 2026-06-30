@@ -1,0 +1,281 @@
+---
+import CommandBand from "../../components/CommandBand.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const aiRouteItems = [
+  {
+    label: "01",
+    title: "Current State",
+    href: "/ai-research-system/current-state/",
+    body: "Dated implementation-control context, source-basis warnings, and bounded validation status.",
+  },
+  {
+    label: "02",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Request routing, memory/source checks, Director decisions, one bounded AgentJob, and completion evidence.",
+  },
+  {
+    label: "03",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "One job envelope from allowlist through validators, completion, handoff, and checkpoint.",
+  },
+  {
+    label: "04",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    body: "Role labels, schemas, execution-role records, and job-local authority boundaries.",
+  },
+  {
+    label: "05",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Operational PASS, completion receipts, handoff limits, and blocked overreads.",
+  },
+  {
+    label: "06",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Memory and retrieval as source-navigation support, not source authority.",
+  },
+  {
+    label: "07",
+    title: "Project-System Improvement",
+    href: "/ai-research-system/project-system-improvement/",
+    body: "Bounded repair loops for workflow and tooling issues without smuggling research continuation.",
+  },
+  {
+    label: "08",
+    title: "Runtime Requirements",
+    href: "/ai-research-system/runtime-requirements/",
+    body: "Tool, validator, environment, and checkpoint requirements as operational evidence.",
+  },
+];
+
+const workflowRows = [
+  {
+    layer: "Reader entry",
+    safe: "The category explains why the project uses governed AI-supported research infrastructure.",
+    boundary: "It does not present AI systems as autonomous proof authorities.",
+  },
+  {
+    layer: "Bounded work",
+    safe: "One invocation narrows into one task, one AgentJob, one allowlist, and one completion record.",
+    boundary: "A job cannot silently add objectives, write paths, or claim authority.",
+  },
+  {
+    layer: "Source-first evidence",
+    safe: "Memory, registries, and generated summaries help locate source files and records.",
+    boundary: "Navigation layers do not replace source inspection or tracked authority.",
+  },
+  {
+    layer: "Validation and handoff",
+    safe: "Validators and handoffs make a checked state inspectable and preserve next-route context.",
+    boundary: "Validation PASS is operational consistency, not scientific proof.",
+  },
+  {
+    layer: "Human accountability",
+    safe: "Promotion, adoption, protected verdicts, and publication decisions stay explicit and gated.",
+    boundary: "Generated output cannot replace human-gated responsibility.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Research-agent workflow sources",
+    use: "Governed workflow, one-job rule, AgentJob lifecycle, completions, handoffs, and validator limits.",
+    boundary: "Workflow evidence remains operational and source-bound.",
+  },
+  {
+    source: "Role, memory, and registry explainers",
+    use: "Role labels, skills, memory preflight, and retrieval-layer boundaries.",
+    boundary: "Labels and retrieval hits are not current execution authority.",
+  },
+  {
+    source: "Current-state rules",
+    use: "Dated snapshot behavior and stale-data warnings for moving implementation-control context.",
+    boundary: "Transient state belongs in current-state pages, not stable overview claims.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "governed AI workflow orientation",
+  updated: "2026-06-30",
+  note:
+    "This route explains the AI Research System as bounded, source-first research infrastructure. It cannot make model behavior scientific authority, treat validators as proof, expand role authority, or replace human-gated decisions.",
+  sourceRefs: [
+    "AEther-Flow Project. (2026). github-facing/research-agent-workflow-explainer.md",
+    "AEther-Flow Project. (2026). github-facing/roles-and-skills-explainer.md",
+    "AEther-Flow Project. (2026). github-facing/memory-system-explainer.md",
+    "AEther-Flow Project. (2026). github-facing/validator-operator-workflow-explainer.md",
+    "The AEther Flow Website. (2026). PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md",
+    "The AEther Flow Website. (2026). PRDs/website-information-space/PRD-10-website-positioning-guidance.md",
+  ],
+};
+
+const aiOverviewSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-overview-greenfield-title ai-overview-greenfield-desc">
+    <title id="ai-overview-greenfield-title">Animated AI Research System workflow map</title>
+    <desc id="ai-overview-greenfield-desc">Bounded tasks, source inspection, validators, memory, handoffs, and human gates orbit a central source-authority boundary.</desc>
+    <defs>
+      <radialGradient id="ai-overview-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.5" />
+        <stop offset="40%" stop-color="var(--owl-orange-500)" stop-opacity="0.26" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-overview-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#ai-overview-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="238" ry="118" />
+      <ellipse cx="310" cy="180" rx="158" ry="78" />
+      <path d="M82 180 C154 112, 234 104, 310 130 C386 104, 466 112, 538 180" />
+      <path d="M82 180 C154 248, 234 256, 310 230 C386 256, 466 248, 538 180" />
+    </g>
+    <g filter="url(#ai-overview-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M102 122 C178 154, 242 214, 310 180 C380 146, 444 154, 520 122" />
+      <path class="track-figure-path orange-path" d="M102 238 C178 206, 242 146, 310 180 C380 214, 444 206, 520 238" />
+      <path class="track-figure-path signal-path alternate" d="M142 76 C212 126, 264 162, 310 180 C358 198, 410 234, 478 286" />
+    </g>
+    <path class="track-figure-core" d="M310 126 L362 180 L310 234 L258 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="122" cy="122" r="13" />
+      <circle cx="122" cy="238" r="13" />
+      <circle cx="244" cy="90" r="13" />
+      <circle cx="376" cy="270" r="13" />
+      <circle cx="504" cy="122" r="13" />
+      <circle cx="504" cy="238" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="AI Research System"
+  description="Greenfield AI Research System overview for governed, source-first, bounded research workflow without autonomous-proof or validator-as-proof claims."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System"
+    title="AI Research System"
+    lead="Read this category as the governed workflow around the research, not as an autonomous proof engine."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="AI Research System overview actions">
+      <a class="primary-link" href="/ai-research-system/current-state/">Check current state</a>
+      <a class="secondary-link" href="#ai-route-map">Read route map</a>
+      <a class="secondary-link" href="/">Back to Home</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-overview-greenfield-caption">
+        <Fragment set:html={aiOverviewSvg} />
+        <figcaption id="ai-overview-greenfield-caption">
+          Visual orientation only: workflow records, validation, memory, and
+          human gates remain support structures around source authority.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="AI Research System introduction">
+    <p>
+      The AI Research System category explains how The AEther Flow Project uses
+      bounded, source-inspected, validator-checked workflow to pursue difficult
+      research without letting generated output become authority. The category
+      starts from the public idea: requests are narrowed, evidence is inspected,
+      changes are constrained, validations are recorded, and human-gated
+      decisions remain explicit. Internal terms such as AgentJob, execution-role
+      record, completion, handoff, and memory preflight matter because they
+      keep the workflow auditable.
+    </p>
+  </section>
+
+  <CommandBand
+    id="ai-route-map"
+    className="overview-panel overview-command-band"
+    eyebrow="Reader route map"
+    title="Start with the workflow boundary, then inspect the parts."
+    lead="The overview is stable public orientation. The current-state page is dated snapshot context. Later pages explain the record chain, roles, validators, memory, runtime, and improvement loop."
+  >
+    <EvidenceRail
+      items={aiRouteItems.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="AI Research System child routes"
+      className="overview-capability-rail"
+    />
+  </CommandBand>
+
+  <section class="track-page-band" aria-labelledby="ai-status-matrix-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Workflow status</p>
+      <h2 id="ai-status-matrix-title">Operational rigor is useful because it stays bounded.</h2>
+      <p>
+        The public claim is not that AI proves physics. The public claim is
+        that the research workflow is designed to make work inspectable,
+        narrow, reversible, and accountable.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Safe use</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {workflowRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.safe}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ai-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="ai-source-title">The category explains source-backed artifact classes.</h2>
+      <p>
+        Stable overview copy should describe artifact classes and boundaries.
+        Moving task and handoff details belong in dated current-state context.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

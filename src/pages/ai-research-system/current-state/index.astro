@@ -1,0 +1,346 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const snapshot = {
+  capturedAt: "2026-06-30T18:07:57Z",
+  sourceClass: "checked-in website implementation-control snapshot",
+  activeTask: "WI-20260630-034",
+  activePacket: "GF-006 Build AI Overview And Current State Slice",
+  currentJob: "WJ-20260630-034-A",
+  latestHandoff: "WH-20260630-034",
+  nextPacket: "GF-007 Build AI Workflow And AgentJob Lifecycle Slice",
+  upstreamWriteStatus: "forbidden",
+  deploymentStatus: "not_authorized",
+};
+
+const dashboardRows = [
+  {
+    field: "Snapshot timestamp",
+    value: snapshot.capturedAt,
+    reading:
+      "This is dated context from checked-in website control records, not a live dashboard feed.",
+  },
+  {
+    field: "Active packet at capture",
+    value: snapshot.activePacket,
+    reading:
+      "A packet names the bounded implementation slice. It is not permanent website truth.",
+  },
+  {
+    field: "Current job at capture",
+    value: snapshot.currentJob,
+    reading:
+      "A job identifies one allowed transaction and cannot authorize adjacent route families.",
+  },
+  {
+    field: "Latest handoff at capture",
+    value: snapshot.latestHandoff,
+    reading:
+      "A handoff transfers state and next-route context. It is not proof, source adoption, or expanded authority.",
+  },
+  {
+    field: "Next packet",
+    value: snapshot.nextPacket,
+    reading:
+      "Next action is route context for maintainers, not a public instruction or research verdict.",
+  },
+];
+
+const statusRows = [
+  {
+    status: "Website-local implementation",
+    evidence:
+      "The active packet is a website route implementation slice under implementation-control records.",
+    blockedOverread:
+      "Website implementation progress does not change upstream physics, governance, role, or source authority.",
+  },
+  {
+    status: "Validation",
+    evidence:
+      "Required validators are operational gates for the affected files, manifests, and browser behavior.",
+    blockedOverread:
+      "Validation PASS means operational consistency, not scientific proof or autonomous model understanding.",
+  },
+  {
+    status: "Source refresh",
+    evidence:
+      "GF-006 does not authorize source snapshot refresh, generated derivative refresh, retrieval refresh, or upstream writes.",
+    blockedOverread:
+      "No route may silently convert stale or unverified current state into stronger public truth.",
+  },
+  {
+    status: "Deployment",
+    evidence: `Deployment is ${snapshot.deploymentStatus} and upstream writes are ${snapshot.upstreamWriteStatus}.`,
+    blockedOverread:
+      "A local checkpoint is not publication acceptance, Cloudflare deployment, or upstream project mutation.",
+  },
+];
+
+const staleRows = [
+  {
+    condition: "Fresh and source-consistent",
+    behavior:
+      "Show the dated status with source basis and keep validation language bounded.",
+  },
+  {
+    condition: "Snapshot age exceeds the freshness window",
+    behavior:
+      "Show stale-data warning and avoid strong current-language phrasing.",
+  },
+  {
+    condition: "Required source missing or contradictory",
+    behavior:
+      "Fail closed into unavailable or disagreement language and prefer higher-authority tracked records.",
+  },
+  {
+    condition: "Validation pending or failed",
+    behavior:
+      "Report operational status without treating it as scientific, mathematical, workflow, or governance proof.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Overview",
+    title: "AI Research System",
+    href: "/ai-research-system/",
+    body: "Return to the stable category overview before inspecting lower-level workflow pages.",
+  },
+  {
+    label: "Workflow",
+    title: "Workflow",
+    href: "/ai-research-system/workflow/",
+    body: "Follow the planned request-to-AgentJob record chain.",
+  },
+  {
+    label: "AgentJob",
+    title: "AgentJob Lifecycle",
+    href: "/ai-research-system/agentjob-lifecycle/",
+    body: "Inspect the planned one-job envelope and completion boundary.",
+  },
+  {
+    label: "Validators",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Read the planned PASS, completion, and handoff boundary route.",
+  },
+  {
+    label: "Memory",
+    title: "Memory Preflight",
+    href: "/ai-research-system/memory-preflight/",
+    body: "Read the planned source-first retrieval and memory-boundary route.",
+  },
+  {
+    label: "Runtime",
+    title: "Runtime Requirements",
+    href: "/ai-research-system/runtime-requirements/",
+    body: "Read the planned operational requirements route.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "dated implementation-control snapshot orientation",
+  updated: "2026-06-30",
+  note:
+    "This route presents checked-in website implementation-control context as a dated snapshot. It cannot mutate control records, authorize source refresh, treat validators as proof, or convert a transient packet into permanent website truth.",
+  sourceRefs: [
+    "The AEther Flow Website. (2026). implementation_control/program_state.yaml",
+    `The AEther Flow Website. (2026). implementation_control/tasks/${snapshot.activeTask}/00_TASK.yaml`,
+    `The AEther Flow Website. (2026). implementation_control/tasks/${snapshot.activeTask}/jobs/${snapshot.currentJob}.yaml`,
+    `The AEther Flow Website. (2026). implementation_control/handoffs/${snapshot.latestHandoff}.yaml`,
+    "The AEther Flow Website. (2026). PRDs/website-information-space/PRD-09-current-research-frontier-for-website-use.md",
+    "The AEther Flow Website. (2026). PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md",
+  ],
+};
+
+const currentStateSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="ai-current-greenfield-title ai-current-greenfield-desc">
+    <title id="ai-current-greenfield-title">Animated AI current-state snapshot map</title>
+    <desc id="ai-current-greenfield-desc">A dated snapshot, control records, validators, stale warnings, and blocked overreads orbit a source-authority boundary.</desc>
+    <defs>
+      <radialGradient id="ai-current-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.68" />
+        <stop offset="38%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="ai-current-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="180" fill="url(#ai-current-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="230" ry="118" />
+      <ellipse cx="310" cy="180" rx="150" ry="78" />
+      <path d="M92 180 C164 112, 238 104, 310 132 C382 104, 456 112, 528 180" />
+      <path d="M92 180 C164 248, 238 256, 310 228 C382 256, 456 248, 528 180" />
+    </g>
+    <g filter="url(#ai-current-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M104 246 C178 214, 238 154, 310 180 C382 206, 444 154, 516 112" />
+      <path class="track-figure-path signal-path" d="M104 114 C178 146, 238 206, 310 180 C382 154, 444 206, 516 246" />
+      <path class="track-figure-path orange-path alternate" d="M152 286 C218 234, 268 206, 310 180 C354 152, 404 126, 468 74" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="38" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="120" cy="114" r="13" />
+      <circle cx="120" cy="246" r="13" />
+      <circle cx="242" cy="92" r="13" />
+      <circle cx="378" cy="268" r="13" />
+      <circle cx="500" cy="112" r="13" />
+      <circle cx="500" cy="246" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="AI Current State"
+  description="Dated AI Research System current-state route explaining implementation-control context without treating validation, handoffs, or packet state as proof."
+  bodyClass="project-overview-page project-track-page ai-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="AI Research System / Current State"
+    title="Current State"
+    lead="This route shows a dated implementation-control snapshot so readers can see status without mistaking it for permanent truth."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="AI current-state page actions">
+      <a class="primary-link" href="#ai-current-dashboard">Read snapshot</a>
+      <a class="secondary-link" href="/ai-research-system/">AI overview</a>
+      <a class="secondary-link" href="/">Back to Home</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="ai-current-greenfield-caption">
+        <Fragment set:html={currentStateSvg} />
+        <figcaption id="ai-current-greenfield-caption">
+          Visual orientation only: dated status, validators, warnings, and
+          next-route context remain below source authority.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="AI current-state introduction">
+    <p>
+      Current implementation-control status is moving data. This page therefore
+      presents it as a dated source-backed snapshot captured at {snapshot.capturedAt}.
+      It is not independent scientific authority, not a control console, and
+      not permanent website truth. Validation PASS means operational
+      consistency, not proof. If the snapshot is stale, missing, or
+      contradictory, the page must fail closed into weaker current-state
+      language.
+    </p>
+  </section>
+
+  <section id="ai-current-dashboard" class="track-page-band" aria-labelledby="ai-current-dashboard-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot dashboard</p>
+      <h2 id="ai-current-dashboard-title">Live-looking data is labeled as dated context.</h2>
+      <p>
+        These fields come from checked-in website implementation-control
+        records. They orient readers to the current website packet, not to
+        upstream scientific truth.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">Snapshot value</th>
+          <th scope="col">How to read it</th>
+        </tr>
+      </thead>
+      <tbody>
+        {dashboardRows.map((row) => (
+          <tr>
+            <th scope="row">{row.field}</th>
+            <td>{row.value}</td>
+            <td>{row.reading}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ai-current-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Blocked overreads</p>
+      <h2 id="ai-current-status-title">Status and validation never become proof.</h2>
+      <p>
+        Blocked readings are part of the status, not a footnote. The page keeps
+        them beside the workflow state that might otherwise be overread.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Status area</th>
+          <th scope="col">Operational evidence</th>
+          <th scope="col">Blocked overread</th>
+        </tr>
+      </thead>
+      <tbody>
+        {statusRows.map((row) => (
+          <tr>
+            <th scope="row">{row.status}</th>
+            <td>{row.evidence}</td>
+            <td>{row.blockedOverread}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="ai-stale-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Freshness behavior</p>
+      <h2 id="ai-stale-title">Stale or contradictory data fails closed.</h2>
+      <p>
+        The current-state route is allowed to orient readers only when its
+        source basis remains visible. Uncertainty weakens the claim.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Condition</th>
+          <th scope="col">Required website behavior</th>
+        </tr>
+      </thead>
+      <tbody>
+        {staleRows.map((row) => (
+          <tr>
+            <th scope="row">{row.condition}</th>
+            <td>{row.behavior}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Use the snapshot as a doorway, then inspect the workflow model."
+    lead="The current-state page should route readers toward stable explanations and planned workflow details before source provenance links."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related AI current-state routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

@@ -3224,7 +3224,8 @@ html:has(body.project-overview-page) {
   text-transform: uppercase;
 }
 
-.physics-greenfield-page .overview-command-hero .command-band-copy h1 {
+.physics-greenfield-page .overview-command-hero .command-band-copy h1,
+.ai-greenfield-page .overview-command-hero .command-band-copy h1 {
   max-width: min(15ch, 100%);
   font-size: 5.6rem;
 }
@@ -4057,11 +4058,16 @@ html:has(body.project-overview-page) {
     padding-block: 0.85rem;
   }
 
+  .ai-greenfield-page .overview-command-hero {
+    padding-block: 0.45rem;
+  }
+
   .home-page .overview-command-hero .command-band-layout {
     gap: 0.9rem;
   }
 
-  .physics-greenfield-page .overview-command-hero .command-band-layout {
+  .physics-greenfield-page .overview-command-hero .command-band-layout,
+  .ai-greenfield-page .overview-command-hero .command-band-layout {
     gap: 0.9rem;
   }
 
@@ -4071,7 +4077,8 @@ html:has(body.project-overview-page) {
     max-width: min(10ch, 100%);
   }
 
-  .physics-greenfield-page .overview-command-hero .command-band-copy h1 {
+  .physics-greenfield-page .overview-command-hero .command-band-copy h1,
+  .ai-greenfield-page .overview-command-hero .command-band-copy h1 {
     font-size: 2.55rem;
     line-height: 1.02;
     max-width: min(11ch, 100%);
@@ -4083,7 +4090,8 @@ html:has(body.project-overview-page) {
     line-height: 1.55;
   }
 
-  .physics-greenfield-page .overview-command-hero .command-band-lead {
+  .physics-greenfield-page .overview-command-hero .command-band-lead,
+  .ai-greenfield-page .overview-command-hero .command-band-lead {
     margin-top: 0.8rem;
     font-size: 0.98rem;
     line-height: 1.55;
@@ -4097,6 +4105,10 @@ html:has(body.project-overview-page) {
     height: 96px;
   }
 
+  .ai-greenfield-page .overview-command-hero .track-page-figure svg {
+    height: 82px;
+  }
+
   .home-page .overview-command-hero .field-stage figcaption {
     padding: 0.65rem 0.75rem;
     font-size: 0.9rem;
@@ -4107,6 +4119,12 @@ html:has(body.project-overview-page) {
     padding: 0.5rem 0.65rem;
     font-size: 0.86rem;
     line-height: 1.32;
+  }
+
+  .ai-greenfield-page .overview-command-hero .track-page-figure figcaption {
+    padding: 0.42rem 0.6rem;
+    font-size: 0.82rem;
+    line-height: 1.26;
   }
 
   .home-intro-panel {
