@@ -1,13 +1,13 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260630-023"
-title: "Convert PRD-04-role-and-schema-components To Sub Implementation Plan"
-created_utc: "2026-06-30T16:25:10Z"
+task_id: "WI-20260630-024"
+title: "Convert PRD-07-tooling-skills-scripts-and-runtime-components To Sub Implementation Plan"
+created_utc: "2026-06-30T16:25:16Z"
 updated_utc: "2026-06-30T16:25:16Z"
-status: "completed"
+status: "active"
 
 source_context:
-  source_prd: "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
+  source_prd: "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
   master_plan: "ImplementationPlans/website-information-space/PRD-00-master-website-information-space-implementation-plan.md"
   prd_family_index: "PRDs/website-information-space/README.md"
   prd_family_review: "PRDs/website-information-space/PRD-FAMILY-VALIDATION-REVIEW.md"
@@ -15,13 +15,13 @@ source_context:
   canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
 
 requirements:
-  - "Use the prd-to-implementation-plan workflow to convert PRD-04-role-and-schema-components.md into a sub implementation plan."
+  - "Use the prd-to-implementation-plan workflow to convert PRD-07-tooling-skills-scripts-and-runtime-components.md into a sub implementation plan."
   - "Treat the sitewide greenfield rebuild plan and task packets as canonical route and validation constraints."
   - "Preserve the display-spelling rule for Æther in reader-facing text and aether in machine-facing identifiers."
   - "Preserve the Source Authority Boundary and do not create public website surfaces."
   - "Convert only this PRD in this packet."
 
-goal: "Convert PRD-04-role-and-schema-components.md into the sub implementation-plan layer for Role and Schema Components."
+goal: "Convert PRD-07-tooling-skills-scripts-and-runtime-components.md into the sub implementation-plan layer for Tooling, Skills, Scripts, and Runtime Components."
 
 scope:
   in_scope:
@@ -47,21 +47,21 @@ scope:
     - "package.json"
     - "implementation_control/program_state.yaml"
     - "git status output"
-    - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
-    - "implementation_control/handoffs/WH-20260630-022.yaml"
+    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
+    - "implementation_control/handoffs/WH-20260630-023.yaml"
     - "ImplementationPlans/website-information-space/README.md"
-    - "ImplementationPlans/website-information-space/PRD-04-role-and-schema-components-implementation-plan.md"
-    - "ImplementationPlans/website-information-space/PRD-04-role-and-schema-components-task-packets.md"
+    - "ImplementationPlans/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components-implementation-plan.md"
+    - "ImplementationPlans/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components-task-packets.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-022.yaml"
-    - "implementation_control/handoffs/WH-20260630-022.md"
-    - "implementation_control/tasks/WI-20260630-022/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-022/jobs/WJ-20260630-022-A.yaml"
     - "implementation_control/handoffs/WH-20260630-023.yaml"
     - "implementation_control/handoffs/WH-20260630-023.md"
     - "implementation_control/tasks/WI-20260630-023/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-023/jobs/WJ-20260630-023-A.yaml"
-    - "implementation_control/tasks/WI-20260630-023/jobs/completions/WJC-20260630-023-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-024.yaml"
+    - "implementation_control/handoffs/WH-20260630-024.md"
+    - "implementation_control/tasks/WI-20260630-024/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-024/jobs/WJ-20260630-024-A.yaml"
+    - "implementation_control/tasks/WI-20260630-024/jobs/completions/WJC-20260630-024-A.yaml"
   out_of_scope:
     - "Additional PRD conversions."
     - "Public routes."
@@ -78,8 +78,8 @@ scope:
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260630-023-A"
-  next_packet_after_this_task: "convert PRD-07 sub implementation plan"
+  active_job_id: "WJ-20260630-024-A"
+  next_packet_after_this_task: "convert PRD-08 sub implementation plan"
 
 allowed_reads:
   website_repository:
@@ -105,25 +105,25 @@ allowed_reads:
     - "package.json"
     - "implementation_control/program_state.yaml"
     - "git status output"
-    - "PRDs/website-information-space/PRD-04-role-and-schema-components.md"
-    - "implementation_control/handoffs/WH-20260630-022.yaml"
+    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
+    - "implementation_control/handoffs/WH-20260630-023.yaml"
   upstream_source_repository: []
 
 allowed_writes:
   website_repository:
     - "ImplementationPlans/website-information-space/README.md"
-    - "ImplementationPlans/website-information-space/PRD-04-role-and-schema-components-implementation-plan.md"
-    - "ImplementationPlans/website-information-space/PRD-04-role-and-schema-components-task-packets.md"
+    - "ImplementationPlans/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components-implementation-plan.md"
+    - "ImplementationPlans/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components-task-packets.md"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260630-022.yaml"
-    - "implementation_control/handoffs/WH-20260630-022.md"
-    - "implementation_control/tasks/WI-20260630-022/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260630-022/jobs/WJ-20260630-022-A.yaml"
     - "implementation_control/handoffs/WH-20260630-023.yaml"
     - "implementation_control/handoffs/WH-20260630-023.md"
     - "implementation_control/tasks/WI-20260630-023/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260630-023/jobs/WJ-20260630-023-A.yaml"
-    - "implementation_control/tasks/WI-20260630-023/jobs/completions/WJC-20260630-023-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-024.yaml"
+    - "implementation_control/handoffs/WH-20260630-024.md"
+    - "implementation_control/tasks/WI-20260630-024/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-024/jobs/WJ-20260630-024-A.yaml"
+    - "implementation_control/tasks/WI-20260630-024/jobs/completions/WJC-20260630-024-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -183,10 +183,10 @@ checkpoint_expectations:
   closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
 
 handoff:
-  latest_handoff_id: "WH-20260630-023"
-  yaml_path: "implementation_control/handoffs/WH-20260630-023.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260630-023.md"
+  latest_handoff_id: "WH-20260630-024"
+  yaml_path: "implementation_control/handoffs/WH-20260630-024.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260630-024.md"
 
 completion_record:
-  completion_id: "WJC-20260630-023-A"
-  path: "implementation_control/tasks/WI-20260630-023/jobs/completions/WJC-20260630-023-A.yaml"
+  completion_id: "WJC-20260630-024-A"
+  path: "implementation_control/tasks/WI-20260630-024/jobs/completions/WJC-20260630-024-A.yaml"
