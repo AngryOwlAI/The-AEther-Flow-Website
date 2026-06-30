@@ -98,6 +98,39 @@
       "boundary_type": "claim_boundary"
     },
     {
+      "route_path": "/physics/claim-status/",
+      "local_page_source": "src/pages/physics/claim-status/index.astro",
+      "title": "Physics Claim Status",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "research_control/program_state.yaml",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md",
+        "registries/DISTANCE_TO_GR_LEDGER.csv"
+      ],
+      "upstream_authority_status": "draft_control_artifact",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/physics/open-burdens/",
+      "local_page_source": "src/pages/physics/open-burdens/index.astro",
+      "title": "Open Burdens",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "registries/DISTANCE_TO_GR_LEDGER.csv",
+        "research_control/design/gr_derivation_burden_map.md",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "research_control/program_state.yaml",
+        "research_control/handoffs/handoff-0323.yaml",
+        "research_control/handoffs/handoff-0323.md"
+      ],
+      "upstream_authority_status": "draft_control_artifact",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
       "title": "Physics Research",

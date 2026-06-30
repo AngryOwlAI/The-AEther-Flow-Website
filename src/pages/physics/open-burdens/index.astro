@@ -1,0 +1,389 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import distanceSnapshot from "../../../data/distance_to_gr_snapshot.json";
+import currentSnapshot from "../../../data/physics_current_state_snapshot.json";
+
+const shortCommit = distanceSnapshot.source_commit
+  ? `${distanceSnapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+const activeBurden = currentSnapshot.derivation_burden.active_row;
+const downstreamRows = currentSnapshot.derivation_burden.downstream_rows;
+const statusCountRows = Object.entries(distanceSnapshot.status_counts)
+  .sort(([left], [right]) => left.localeCompare(right))
+  .map(([status, count]) => ({
+    status,
+    count: String(count),
+    reading:
+      "A count of ledger rows in this status class, not a measure of derivation completion.",
+  }));
+
+const selectedBurdenRows = [
+  {
+    burden: "Active Distance-to-GR burden",
+    status: activeBurden.current_status,
+    missing: activeBurden.blocking_burden,
+    blockedOverread:
+      "No active burden means no current ledger movement, not completed derivation.",
+  },
+  ...downstreamRows.map((row) => ({
+    burden:
+      row.burden_id === "matter_coupling"
+        ? "matter coupling"
+        : row.burden_id === "einstein_equations"
+          ? "Einstein equations"
+          : row.burden_id === "benchmark_promotion"
+            ? "benchmark promotion"
+            : "Gate Chair status",
+    status: row.current_status,
+    missing: row.blocking_burden,
+    blockedOverread: row.notes,
+  })),
+];
+
+const groupRows = distanceSnapshot.groups.map((group) => ({
+  group: group.title,
+  rows: String(group.rows.length),
+  statuses: Array.from(new Set(group.rows.map((row) => row.current_status))).join("; "),
+  reading: group.description,
+}));
+
+const metadataRows = [
+  {
+    field: "Snapshot refresh date",
+    value: distanceSnapshot.source_refresh_date,
+    reading:
+      "The burden data is checked in. If freshness cannot be verified, fail closed and avoid stronger claims.",
+  },
+  {
+    field: "Source commit",
+    value: shortCommit,
+    reading:
+      "The commit identifies the source basis used to generate the snapshot.",
+  },
+  {
+    field: "Latest handoff",
+    value: distanceSnapshot.latest_handoff_id,
+    reading:
+      "The handoff id is context, not a proof surface or permanent website truth.",
+  },
+  {
+    field: "Ledger rows",
+    value: String(distanceSnapshot.row_count),
+    reading:
+      "Row count describes scope of the snapshot, not percentage progress toward GR.",
+  },
+];
+
+const noScoreRows = [
+  {
+    rule: "No percentage score",
+    reason:
+      "Derivation burdens are heterogeneous: source ontology, metric behavior, matter coupling, equations, benchmark promotion, and human gates cannot be collapsed into one scalar.",
+    consequence:
+      "The page reports row state and missing steps instead of a progress bar proof.",
+  },
+  {
+    rule: "Scoped acceptance stays scoped",
+    reason:
+      "Some rows can be accepted as source-extension evidence or preconditions while downstream claims remain blocked.",
+    consequence:
+      "Acceptance language must preserve no source-law adoption, no matter-coupling derivation, no Einstein equations, and no benchmark promotion when those are still absent.",
+  },
+  {
+    rule: "Human gates stay human-gated",
+    reason:
+      "Gate Chair status requires protected verdict authority outside website validators.",
+    consequence:
+      "Validation PASS and public readability cannot substitute for a protected review decision.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Status",
+    title: "Claim Status",
+    href: "/physics/claim-status/",
+    body: "Inspect claimed, not claimed, blocked, and open language boundaries.",
+  },
+  {
+    label: "Roadmap",
+    title: "Derivation Roadmap",
+    href: "/physics/derivation-roadmap/",
+    body: "Read the conceptual chain of source, metric, matter, equation, and promotion obligations.",
+  },
+  {
+    label: "Geometry",
+    title: "Flow Geometry",
+    href: "/physics/flow-geometry/",
+    body: "Review geometry vocabulary without treating notation as derivation.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "checked-in open-burden snapshot orientation",
+  updated: distanceSnapshot.source_refresh_date,
+  note:
+    "This route organizes checked-in Distance-to-GR and current-state snapshots. It cannot close a burden, derive matter coupling, recover Einstein equations, promote the benchmark, or issue a Gate Chair verdict.",
+  sourceRefs: [
+    "AEther-Flow Project. (2026). registries/DISTANCE_TO_GR_LEDGER.csv",
+    "AEther-Flow Project. (2026). research_control/design/gr_derivation_burden_map.md",
+    "AEther-Flow Project. (2026). registries/CLAIM_BOUNDARY_REGISTRY.csv",
+    "AEther-Flow Project. (2026). research_control/program_state.yaml",
+    `AEther-Flow Project. (2026). research_control/handoffs/${distanceSnapshot.latest_handoff_id}.yaml`,
+    `AEther-Flow Project. (2026). research_control/handoffs/${distanceSnapshot.latest_handoff_id}.md`,
+    "The AEther Flow Website. (2026). src/data/distance_to_gr_snapshot.json",
+    "The AEther Flow Website. (2026). src/data/physics_current_state_snapshot.json",
+  ],
+};
+
+const openBurdensSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="open-burdens-greenfield-title open-burdens-greenfield-desc">
+    <title id="open-burdens-greenfield-title">Animated open-burdens status map</title>
+    <desc id="open-burdens-greenfield-desc">Open derivation burdens remain separated across matter coupling, equations, promotion, and gate status.</desc>
+    <defs>
+      <radialGradient id="open-burdens-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.68" />
+        <stop offset="40%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="open-burdens-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="178" fill="url(#open-burdens-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="232" ry="116" />
+      <ellipse cx="310" cy="180" rx="158" ry="78" />
+      <path d="M92 104 C168 148, 238 198, 310 180 C382 162, 452 212, 528 256" />
+      <path d="M92 256 C168 212, 238 162, 310 180 C382 198, 452 148, 528 104" />
+    </g>
+    <g filter="url(#open-burdens-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M102 258 C180 210, 230 142, 310 174 C390 206, 440 138, 518 90" />
+      <path class="track-figure-path signal-path" d="M102 100 C180 154, 232 234, 310 186 C388 138, 444 206, 518 258" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="38" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="118" cy="258" r="13" />
+      <circle cx="220" cy="132" r="13" />
+      <circle cx="410" cy="226" r="13" />
+      <circle cx="518" cy="90" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Open Burdens"
+  description="Greenfield open-burdens page explaining missing Distance-to-GR derivation steps without progress-bar proof or claim promotion."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research / Open Burdens"
+    title="Open Burdens"
+    lead="This route lists the derivation obligations that remain open, blocked, scoped, or human-gated. It is a burden map, not evidence that the obligations are solved."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Open burdens page actions">
+      <a class="primary-link" href="#open-burdens-table">Read open burdens</a>
+      <a class="secondary-link" href="/physics/claim-status/">Claim status</a>
+      <a class="secondary-link" href="/physics/">Physics overview</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="open-burdens-greenfield-caption">
+        <Fragment set:html={openBurdensSvg} />
+        <figcaption id="open-burdens-greenfield-caption">
+          Visual orientation only: row status names missing derivation work and
+          cannot close a downstream burden.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Open burdens introduction">
+    <p>
+      The checked-in Distance-to-GR snapshot is dated {distanceSnapshot.source_refresh_date}.
+      It reports burdens, blockers, and gate states. It does not provide a
+      progress-bar proof. If source freshness cannot be verified, the safe
+      reading is fail-closed: use the page only as stale orientation and do not
+      strengthen any claim.
+    </p>
+  </section>
+
+  <section id="open-burdens-table" class="track-page-band" aria-labelledby="open-burdens-table-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Open burden dossier</p>
+      <h2 id="open-burdens-table-title">Missing derivation steps remain named and separate.</h2>
+      <p>
+        The rows below put matter coupling, Einstein equations, benchmark
+        promotion, and Gate Chair status beside their blockers instead of
+        collapsing them into a single success narrative.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Burden</th>
+          <th scope="col">Current status</th>
+          <th scope="col">What remains missing</th>
+          <th scope="col">Blocked overread</th>
+        </tr>
+      </thead>
+      <tbody>
+        {selectedBurdenRows.map((row) => (
+          <tr>
+            <th scope="row">{row.burden}</th>
+            <td>{row.status}</td>
+            <td>{row.missing}</td>
+            <td>{row.blockedOverread}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="no-score-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Reader rule</p>
+      <h2 id="no-score-title">No percentage score means no progress-bar proof.</h2>
+      <p>
+        The ledger is useful because it keeps unlike obligations separate.
+        Scalar progress would hide the different proof, construction, and gate
+        requirements.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Rule</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Consequence</th>
+        </tr>
+      </thead>
+      <tbody>
+        {noScoreRows.map((row) => (
+          <tr>
+            <th scope="row">{row.rule}</th>
+            <td>{row.reason}</td>
+            <td>{row.consequence}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="burden-groups-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Ledger groups</p>
+      <h2 id="burden-groups-title">The snapshot groups rows by derivation function.</h2>
+      <p>
+        Grouping helps readers find burden families without making one family
+        discharge another.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Group</th>
+          <th scope="col">Rows</th>
+          <th scope="col">Status classes</th>
+          <th scope="col">Reader meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {groupRows.map((row) => (
+          <tr>
+            <th scope="row">{row.group}</th>
+            <td>{row.rows}</td>
+            <td>{row.statuses}</td>
+            <td>{row.reading}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="status-count-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Snapshot counts</p>
+      <h2 id="status-count-title">Status counts describe ledger shape, not completion.</h2>
+      <p>
+        Counts are useful operational metadata. They are not a proof score, and
+        they do not convert accepted scoped rows into downstream derivations.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Status</th>
+          <th scope="col">Rows</th>
+          <th scope="col">How to read it</th>
+        </tr>
+      </thead>
+      <tbody>
+        {statusCountRows.map((row) => (
+          <tr>
+            <th scope="row">{row.status}</th>
+            <td>{row.count}</td>
+            <td>{row.reading}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="burden-metadata-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Freshness and source basis</p>
+      <h2 id="burden-metadata-title">Dated snapshot behavior is visible.</h2>
+      <p>
+        The route displays source-basis metadata so readers can see the checked
+        state behind the page.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">Value</th>
+          <th scope="col">How to read it</th>
+        </tr>
+      </thead>
+      <tbody>
+        {metadataRows.map((row) => (
+          <tr>
+            <th scope="row">{row.field}</th>
+            <td>{row.value}</td>
+            <td>{row.reading}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Use open burdens with claim status, roadmap, and geometry context."
+    lead="The reader path stays internal-first, while provenance remains available in the source-authority section."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related open-burdens routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

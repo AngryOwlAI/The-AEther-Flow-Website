@@ -1,0 +1,395 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import claimSnapshot from "../../../data/claim_boundary_snapshot.json";
+import currentSnapshot from "../../../data/physics_current_state_snapshot.json";
+
+const shortCommit = currentSnapshot.source_commit
+  ? `${currentSnapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+const currentBoundary = claimSnapshot.current_task_rows[0];
+const latestBoundary = claimSnapshot.latest_rows[0];
+const freshnessState =
+  currentSnapshot.source_refresh_date && currentSnapshot.source_commit
+    ? "checked-in snapshot freshness is visible"
+    : "freshness incomplete; treat this page as stale orientation";
+
+const summarize = (items: string[] | undefined, limit = 4) =>
+  items && items.length > 0 ? items.slice(0, limit).join("; ") : "Unavailable";
+
+const claimStateRows = [
+  {
+    state: "Claimed within scope",
+    basis:
+      "The website may say a checked-in snapshot exists, exact-GR is the current observable-scale benchmark, and scoped source-extension/precondition evidence is recorded where the source snapshot says so.",
+    boundary:
+      "This does not create source-law adoption, a completed derivation, benchmark promotion, or proof authority.",
+  },
+  {
+    state: "Not claimed",
+    basis:
+      "The current snapshot preserves no source-law adoption, no MetricData(E) adoption, no g_eff scope expansion, no matter-coupling derivation, no Einstein equations, and no completed derivation.",
+    boundary:
+      "A website route, validator PASS, handoff, or generated graph cannot strengthen those negatives.",
+  },
+  {
+    state: "Blocked",
+    basis: `The blocked-claim list includes ${currentSnapshot.blocked_claims
+      .slice(0, 8)
+      .join(", ")}.`,
+    boundary:
+      "Blocked items stay blocked until upstream source authority and required gates record a narrower result.",
+  },
+  {
+    state: "Open / gated",
+    basis:
+      "Matter-coupling adoption, Einstein-equation recovery, benchmark promotion, and Gate Chair closure remain protected downstream states.",
+    boundary:
+      "The page can identify the gate. It cannot issue the gate decision.",
+  },
+];
+
+const boundaryRows = [
+  {
+    source: "Current task boundary",
+    allowed: summarize(currentBoundary.allowed_summary),
+    forbidden: summarize(currentBoundary.forbidden_summary),
+    gate: summarize(currentBoundary.requires_gate_summary),
+  },
+  {
+    source: "Latest handoff boundary",
+    allowed: summarize(latestBoundary.allowed_summary),
+    forbidden: summarize(latestBoundary.forbidden_summary),
+    gate: summarize(latestBoundary.requires_gate_summary),
+  },
+];
+
+const metadataRows = [
+  {
+    field: "Snapshot refresh date",
+    value: currentSnapshot.source_refresh_date,
+    reading: freshnessState,
+  },
+  {
+    field: "Source commit",
+    value: shortCommit,
+    reading:
+      "The commit is source-basis metadata for this checked-in snapshot, not live source authority.",
+  },
+  {
+    field: "Latest handoff",
+    value: currentSnapshot.latest_handoff_id,
+    reading:
+      "The handoff id identifies source-side control context. It is not permanent website truth.",
+  },
+  {
+    field: "Current status",
+    value: currentSnapshot.current_status,
+    reading:
+      "Operational state must be read beside the blocked claims and gate requirements.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Claim-boundary registry snapshot",
+    use: "Allowed, forbidden, and gate-required language examples.",
+    boundary:
+      "Registry orientation constrains public copy; it does not certify a physics result.",
+  },
+  {
+    source: "Current physics state snapshot",
+    use: "Blocked-claim list, latest source-state metadata, and downstream burden context.",
+    boundary:
+      "The JSON file is checked-in website data and does not refresh during normal builds.",
+  },
+  {
+    source: "Distance-to-GR ledger",
+    use: "Status vocabulary for open, blocked, accepted-with-scope, and human-gated rows.",
+    boundary:
+      "Ledger status is not a progress percentage or proof of downstream recovery.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Burdens",
+    title: "Open Burdens",
+    href: "/physics/open-burdens/",
+    body: "Read the missing derivation steps without turning them into a progress bar.",
+  },
+  {
+    label: "Roadmap",
+    title: "Derivation Roadmap",
+    href: "/physics/derivation-roadmap/",
+    body: "Trace the source, metric, matter, equation, and promotion obligations.",
+  },
+  {
+    label: "Benchmark",
+    title: "Exact-GR Benchmark",
+    href: "/physics/exact-gr-benchmark/",
+    body: "Separate observable-scale benchmark adoption from source-side derivation.",
+  },
+];
+
+const sourceNotice = {
+  claimStatus: "checked-in claim-boundary snapshot orientation",
+  updated: currentSnapshot.source_refresh_date,
+  note:
+    "This route organizes checked-in claim-boundary and current-state snapshots. It cannot create source claims, certify a Gate Chair verdict, promote benchmark status, or turn validation PASS into proof.",
+  sourceRefs: [
+    "AEther-Flow Project. (2026). registries/CLAIM_BOUNDARY_REGISTRY.csv",
+    "AEther-Flow Project. (2026). research_control/program_state.yaml",
+    `AEther-Flow Project. (2026). research_control/handoffs/${currentSnapshot.latest_handoff_id}.yaml`,
+    "AEther-Flow Project. (2026). registries/DISTANCE_TO_GR_LEDGER.csv",
+    "The AEther Flow Website. (2026). src/data/claim_boundary_snapshot.json",
+    "The AEther Flow Website. (2026). src/data/physics_current_state_snapshot.json",
+  ],
+};
+
+const claimStatusSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="claim-status-greenfield-title claim-status-greenfield-desc">
+    <title id="claim-status-greenfield-title">Animated claim status boundary map</title>
+    <desc id="claim-status-greenfield-desc">Claimed, not claimed, blocked, and open states orbit a source-authority boundary.</desc>
+    <defs>
+      <radialGradient id="claim-status-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.5" />
+        <stop offset="42%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="claim-status-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="176" fill="url(#claim-status-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="226" ry="118" />
+      <ellipse cx="310" cy="180" rx="146" ry="76" />
+      <path d="M96 180 C152 116, 238 108, 310 138 C382 108, 468 116, 524 180" />
+      <path d="M96 180 C152 244, 238 252, 310 222 C382 252, 468 244, 524 180" />
+    </g>
+    <g filter="url(#claim-status-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M104 230 C176 174, 238 154, 310 180 C382 206, 446 188, 516 128" />
+      <path class="track-figure-path signal-path" d="M104 128 C176 156, 238 214, 310 180 C382 146, 446 154, 516 230" />
+    </g>
+    <path class="track-figure-core" d="M310 128 L358 180 L310 232 L262 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="124" cy="128" r="13" />
+      <circle cx="190" cy="252" r="13" />
+      <circle cx="430" cy="108" r="13" />
+      <circle cx="498" cy="238" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Physics Claim Status"
+  description="Greenfield physics claim-status page showing claimed, not claimed, blocked, and open states from checked-in source snapshots without promoting public copy into proof."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research / Claim Status"
+    title="Physics Claim Status"
+    lead="This route explains what the current checked-in snapshots allow readers to say, what they do not allow, and which stronger physics claims remain blocked or gated."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Physics claim-status page actions">
+      <a class="primary-link" href="#claim-status-matrix">Read status matrix</a>
+      <a class="secondary-link" href="/physics/open-burdens/">Open burdens</a>
+      <a class="secondary-link" href="/physics/">Physics overview</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="claim-status-greenfield-caption">
+        <Fragment set:html={claimStatusSvg} />
+        <figcaption id="claim-status-greenfield-caption">
+          Visual orientation only: claim states stay separate from source
+          authority and protected gate decisions.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Physics claim-status introduction">
+    <p>
+      This page uses a checked-in snapshot dated {currentSnapshot.source_refresh_date}.
+      It is a reader-facing status dossier, not a live upstream query. A
+      validation PASS is operational consistency, not proof. If snapshot
+      freshness cannot be verified, the logical reading is fail-closed: treat
+      the page as stale orientation and do not promote any physics claim.
+    </p>
+  </section>
+
+  <section id="claim-status-matrix" class="track-page-band" aria-labelledby="claim-status-matrix-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim status</p>
+      <h2 id="claim-status-matrix-title">Claimed, not claimed, blocked, and open states stay distinct.</h2>
+      <p>
+        The matrix summarizes the public reading contract. It deliberately
+        places blocked claims beside status and progress language.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Snapshot basis</th>
+          <th scope="col">Public boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {claimStateRows.map((row) => (
+          <tr>
+            <th scope="row">{row.state}</th>
+            <td>{row.basis}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Boundary records</p>
+      <h2 id="claim-boundary-title">Allowed language remains narrower than gate-required language.</h2>
+      <p>
+        The checked-in claim-boundary snapshot exposes allowed explanation,
+        forbidden overread, and gate-required changes as separate columns.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Record</th>
+          <th scope="col">Allowed summary</th>
+          <th scope="col">Forbidden summary</th>
+          <th scope="col">Gate required</th>
+        </tr>
+      </thead>
+      <tbody>
+        {boundaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.allowed}</td>
+            <td>{row.forbidden}</td>
+            <td>{row.gate}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-language-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Language examples</p>
+      <h2 id="claim-language-title">Copy must remain bounded to the evidence class.</h2>
+      <p>
+        These examples come from the claim-boundary snapshot. They are useful
+        because they show how quickly control evidence can be overread.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Example class</th>
+          <th scope="col">Title</th>
+          <th scope="col">Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        {claimSnapshot.language_examples.map((row) => (
+          <tr>
+            <th scope="row">{row.label}</th>
+            <td>{row.title}</td>
+            <td>{row.body}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-metadata-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Freshness and source basis</p>
+      <h2 id="claim-metadata-title">Readers can see what snapshot this page reflects.</h2>
+      <p>
+        The route displays freshness and source-basis metadata so dated
+        snapshot behavior is visible rather than implied.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">Value</th>
+          <th scope="col">How to read it</th>
+        </tr>
+      </thead>
+      <tbody>
+        {metadataRows.map((row) => (
+          <tr>
+            <th scope="row">{row.field}</th>
+            <td>{row.value}</td>
+            <td>{row.reading}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="claim-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="claim-source-title">The page organizes evidence without becoming evidence.</h2>
+      <p>
+        Source rows constrain the page. They do not transfer scientific
+        authority to the website route.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read claim status beside burdens, roadmap, and benchmark boundaries."
+    lead="The reader journey stays internal-first. Source links remain available through the source-authority section."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related claim-status routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>
