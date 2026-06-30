@@ -1,0 +1,181 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260629-001"
+title: "Bootstrap Implementation-Control Records"
+created_utc: "2026-06-29T22:57:50Z"
+updated_utc: "2026-06-30T01:10:04Z"
+status: "active"
+
+source_context:
+  prd: "PRDs/continue-implementation-control-system-prd.md"
+  implementation_plan: "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
+  task_packet: "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+  task_packet_section: "Task 1: Bootstrap Implementation-Control Records"
+
+requirements:
+  - "REQ-001"
+  - "REQ-002"
+  - "REQ-003"
+  - "REQ-005"
+  - "REQ-006"
+  - "REQ-009"
+  - "REQ-010"
+  - "REQ-011"
+
+goal: "Create the first live website-local implementation-control authority records and document the lightweight schema."
+
+scope:
+  in_scope:
+    - "PRDs/continue-implementation-control-system-prd.md"
+    - "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
+    - "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "docs/system-analyses/aether-flow-source-project-functionality-inventory.md"
+    - "package.json"
+    - "implementation_control/README.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260629-001.yaml"
+    - "implementation_control/handoffs/WH-20260629-001.md"
+    - "implementation_control/handoffs/WH-20260629-002.yaml"
+    - "implementation_control/handoffs/WH-20260629-002.md"
+    - "implementation_control/tasks/WI-20260629-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260629-001/jobs/WJ-20260629-001-A.yaml"
+    - "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
+    - "scripts/implementation_control/README.md"
+    - "scripts/implementation_control/__init__.py"
+    - "scripts/implementation_control/continue_implementation.py"
+    - "scripts/implementation_control/validate_implementation_control.py"
+    - "scripts/implementation_control/checkpoint_implementation_transaction.py"
+    - "tests/test_continue_implementation.py"
+    - "tests/test_validate_implementation_control.py"
+    - "tests/test_checkpoint_implementation_transaction.py"
+  out_of_scope:
+    - "public routes"
+    - "public assets"
+    - "public manifests"
+    - "source-derived public claim changes"
+    - "upstream source-project writes"
+    - "Git push"
+    - "Cloudflare deployment"
+    - "retrospective completion records for older plans"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260629-001-A"
+  next_packet_after_this_task: "Task 2: Add Deterministic Continue-Implementation Resolver"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "PRDs/continue-implementation-control-system-prd.md"
+    - "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
+    - "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+    - "package.json"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "PRDs/continue-implementation-control-system-prd.md"
+    - "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
+    - "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "docs/system-analyses/aether-flow-source-project-functionality-inventory.md"
+    - "package.json"
+    - "implementation_control/README.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260629-001.yaml"
+    - "implementation_control/handoffs/WH-20260629-001.md"
+    - "implementation_control/handoffs/WH-20260629-002.yaml"
+    - "implementation_control/handoffs/WH-20260629-002.md"
+    - "implementation_control/tasks/WI-20260629-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260629-001/jobs/WJ-20260629-001-A.yaml"
+    - "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
+    - "scripts/implementation_control/README.md"
+    - "scripts/implementation_control/__init__.py"
+    - "scripts/implementation_control/continue_implementation.py"
+    - "scripts/implementation_control/validate_implementation_control.py"
+    - "scripts/implementation_control/checkpoint_implementation_transaction.py"
+    - "tests/test_continue_implementation.py"
+    - "tests/test_validate_implementation_control.py"
+    - "tests/test_checkpoint_implementation_transaction.py"
+  upstream_source_repository: []
+
+forbidden_write_patterns:
+  - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow/**"
+  - "src/pages/**"
+  - "src/components/**"
+  - "src/layouts/**"
+  - "src/lib/**"
+  - "src/data/**"
+  - "public/**"
+  - "public/files/manifests/**"
+  - "dist/**"
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public content or source-derived claim text is in scope."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot or upstream claim refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No public route or navigation change is in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No CSS, component, layout, SVG, or visual asset change is in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public file publication is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest write is in scope."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system is read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "An upstream source-project write path appears in allowed_writes."
+  - "A write outside the explicit bootstrap allowlist becomes necessary."
+  - "A public route, public asset, or public manifest change becomes necessary."
+  - "A source-derived public claim would be changed."
+  - "The work would require more than one active job in this invocation."
+  - "Required validation fails."
+  - "Unrelated dirty work overlaps an allowed write path."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  current_packet_closeout: "Run required validation, write completion and handoff records, and use checkpoint:implementation for one local commit."
+  future_checkpoint_policy: "After Task 4, checkpointing must stage only active-job allowed write paths after validators pass."
+
+completion_record:
+  completion_id: "WJC-20260629-001-A"
+  path: "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
+
+handoff:
+  latest_handoff_id: "WH-20260629-002"
+  yaml_path: "implementation_control/handoffs/WH-20260629-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260629-002.md"

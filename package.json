@@ -9,6 +9,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "continue:implementation": "python3 scripts/implementation_control/continue_implementation.py",
+    "validate:implementation-control": "python3 scripts/implementation_control/validate_implementation_control.py",
+    "checkpoint:implementation": "python3 scripts/implementation_control/checkpoint_implementation_transaction.py",
     "validate:manifests": "python3 scripts/validate_manifest_paths.py",
     "validate:content": "python3 scripts/validate_content_sources.py",
     "validate:links": "python3 scripts/validate_internal_first_links.py",
@@ -19,7 +22,7 @@
     "validate:curator": "python3 scripts/run_curator.py --check",
     "validate:cloudflare": "python3 scripts/validate_cloudflare_pages_config.py",
     "quality": "npm run validate && python3 scripts/quality_gate.py",
-    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:links && npm run validate:layout && npm run validate:svg && npm run validate:provenance && npm run validate:curator && npm run validate:cloudflare && npm run build",
+    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:links && npm run validate:layout && npm run validate:svg && npm run validate:provenance && npm run validate:curator && npm run validate:cloudflare && npm run validate:implementation-control && npm run build",
     "astro": "astro"
   },
   "repository": {

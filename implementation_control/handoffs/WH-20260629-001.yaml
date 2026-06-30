@@ -1,0 +1,68 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260629-001"
+created_utc: "2026-06-29T22:57:50Z"
+updated_utc: "2026-06-29T23:00:47Z"
+status: "active"
+
+task_id: "WI-20260629-001"
+job_id: "WJ-20260629-001-A"
+
+summary: "Initial website-local implementation-control records have been bootstrapped as prospective live authority for future continue-implementation work."
+
+current_state:
+  - "implementation_control/README.md defines the lightweight control model."
+  - "program_state.yaml points to the active bootstrap task, active job, and this handoff pair."
+  - "The active job limits writes to implementation_control records only."
+  - "No public route, public asset, public manifest, deployment, push, or upstream write is authorized."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "none_authorized"
+  proof_or_science_authority: "not_granted"
+
+allowed_write_summary:
+  website_repository:
+    - "implementation_control/README.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260629-001.yaml"
+    - "implementation_control/handoffs/WH-20260629-001.md"
+    - "implementation_control/tasks/WI-20260629-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260629-001/jobs/WJ-20260629-001-A.yaml"
+  upstream_source_repository: []
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    checked_utc: "2026-06-29T23:00:47Z"
+  - id: "ruby-yaml-parse"
+    command: "Ruby YAML.load_file parse of four implementation_control YAML records"
+    status: "passed"
+    checked_utc: "2026-06-29T23:00:47Z"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of bootstrap YAML and Markdown records"
+    status: "passed"
+    checked_utc: "2026-06-29T23:00:47Z"
+
+next_recommended_action:
+  task_packet: "Task 2: Add Deterministic Continue-Implementation Resolver"
+  summary: "This handoff is retained as the Task 1 handoff. The later WH-20260629-002 handoff closes the full bootstrap sequence through Task 5."
+
+stop_before:
+  - "public route changes"
+  - "public asset changes"
+  - "public manifest changes"
+  - "source-derived public claim changes"
+  - "upstream source-project writes"
+  - "Git push"
+  - "Cloudflare deployment"

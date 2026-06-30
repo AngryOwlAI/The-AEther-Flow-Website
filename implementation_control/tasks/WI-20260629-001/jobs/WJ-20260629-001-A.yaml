@@ -1,0 +1,124 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260629-001-A"
+task_id: "WI-20260629-001"
+title: "Close bootstrap implementation-control packet"
+created_utc: "2026-06-29T22:57:50Z"
+updated_utc: "2026-06-30T01:10:04Z"
+status: "active"
+
+objective: "Create, validate, document, and checkpoint the first website-local implementation-control bootstrap packet without changing public website surfaces or upstream source-project files."
+
+execution_boundary:
+  invocation_limit: "one bounded implementation packet"
+  live_state_priority: "implementation_control records outrank PRDs, task packets, memory, and conversation summaries after this bootstrap exists"
+  upstream_write_status: "forbidden"
+  public_route_write_status: "forbidden_for_this_job"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - "docs/architecture/website-feature-and-functionality.md"
+  - "PRDs/continue-implementation-control-system-prd.md"
+  - "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
+  - "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+  - "package.json"
+  - "git status output"
+
+allowed_writes:
+  - "PRDs/continue-implementation-control-system-prd.md"
+  - "ImplementationPlans/continue_implementation_control_system_implementation_plan.md"
+  - "ImplementationPlans/continue_implementation_control_system_task_packets.md"
+  - "docs/architecture/website-feature-and-functionality.md"
+  - "docs/system-analyses/aether-flow-source-project-functionality-inventory.md"
+  - "package.json"
+  - "implementation_control/README.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260629-001.yaml"
+  - "implementation_control/handoffs/WH-20260629-001.md"
+  - "implementation_control/handoffs/WH-20260629-002.yaml"
+  - "implementation_control/handoffs/WH-20260629-002.md"
+  - "implementation_control/tasks/WI-20260629-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260629-001/jobs/WJ-20260629-001-A.yaml"
+  - "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
+  - "scripts/implementation_control/README.md"
+  - "scripts/implementation_control/__init__.py"
+  - "scripts/implementation_control/continue_implementation.py"
+  - "scripts/implementation_control/validate_implementation_control.py"
+  - "scripts/implementation_control/checkpoint_implementation_transaction.py"
+  - "tests/test_continue_implementation.py"
+  - "tests/test_validate_implementation_control.py"
+  - "tests/test_checkpoint_implementation_transaction.py"
+
+required_outputs:
+  - "READMEs explain authority order, record types, approval gates, one-packet execution, validation, checkpointing, and upstream read-only status."
+  - "program_state.yaml names the active implementation task and latest handoff."
+  - "Task record declares allowed reads, allowed writes, validators, stop conditions, approval gates, and checkpoint expectations."
+  - "Job record declares one bounded active job."
+  - "Completion record lists changed files, validator evidence, full-validation status, and remaining risk."
+  - "Handoff YAML and Markdown summarize current state and the next action."
+
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "Any edit to public scientific, mathematical, governance, or research-workflow claims."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "Any source snapshot or upstream state refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "Any navigation, route-family, or route-retirement change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "Any shared CSS, layout, component, SVG, or visual asset change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "Any public PDF, TeX, image, or downloadable publication change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "Any change under public/files/manifests."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any production or preview deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "Allowed write paths need to expand outside the explicit bootstrap allowlist."
+  - "Any upstream write is proposed."
+  - "Any public claim, route, asset, manifest, push, or deploy change becomes necessary."
+  - "Validation fails."
+  - "The active job cannot be completed within one bounded packet."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260629-001-A"
+  path: "implementation_control/tasks/WI-20260629-001/jobs/completions/WJC-20260629-001-A.yaml"
+
+next_recommended_action:
+  task_packet: "Post-bootstrap governed implementation"
+  summary: "After the bootstrap checkpoint commit, run the resolver before future website implementation work and create a fresh task/job for the next authorized packet."
+  do_not_skip: "Do not push, deploy, mutate upstream, or begin a new packet without explicit instruction and live control records."

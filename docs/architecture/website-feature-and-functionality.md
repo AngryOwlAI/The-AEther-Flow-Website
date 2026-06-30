@@ -182,6 +182,7 @@ flowchart TD
   provenance["validate:provenance<br/>route coverage and page/source hashes"]
   curator["validate:curator<br/>curator acknowledgement/report checks"]
   cloudflare["validate:cloudflare<br/>Cloudflare Pages config"]
+  impl["validate:implementation-control<br/>website-local control records"]
   build["astro build<br/>static build"]
   quality["npm run quality<br/>validate plus quality_gate.py"]
 
@@ -191,7 +192,8 @@ flowchart TD
   links --> provenance
   provenance --> curator
   curator --> cloudflare
-  cloudflare --> build
+  cloudflare --> impl
+  impl --> build
   build --> quality
 ```
 
@@ -199,7 +201,10 @@ Relevant command surfaces:
 
 - `npm run validate` runs manifest validation, content-source validation,
   internal-first link validation, page-provenance validation, curator checks,
-  Cloudflare configuration validation, and the Astro build.
+  Cloudflare configuration validation, implementation-control validation, and
+  the Astro build.
+- `npm run continue:implementation` resolves the current website-local
+  implementation boundary from `implementation_control/`.
 - `npm run validate:manifests` validates source and asset manifests.
 - `npm run validate:content` validates content-source discipline.
 - `npm run validate:links` rejects mapped upstream GitHub explainer URLs in
@@ -208,6 +213,12 @@ Relevant command surfaces:
   page hashes, upstream source hashes, and local-path leak constraints.
 - `npm run validate:curator` checks curator report state.
 - `npm run validate:cloudflare` checks Cloudflare Pages configuration files.
+- `npm run validate:implementation-control` validates website-local program
+  state, task, job, handoff, completion references, approval gates, allowed
+  writes, required validators, and package-script wiring.
+- `npm run checkpoint:implementation` validates a completed active packet,
+  stages only completion-listed files inside the active allowed write scope,
+  and creates one local Git commit.
 - `python3 -m pytest` runs Python tests.
 - `python3 scripts/quality_gate.py` checks built artifacts in `dist/`.
 
@@ -267,15 +278,25 @@ requires explicit authorization.
 
 The logical next step before any non-trivial content or route change is:
 
-1. Identify whether the change affects website presentation only or upstream
+1. Run `npm run continue:implementation -- --summary` when the work is part of
+   a governed website implementation packet.
+2. Identify whether the change affects website presentation only or upstream
    source authority.
-2. If it changes a scientific, mathematical, governance, or research-workflow
+3. If it changes a scientific, mathematical, governance, or research-workflow
    claim, update and validate the upstream source project first.
-3. Change the smallest necessary website route, component, manifest, or asset.
-4. Regenerate provenance or asset manifests when page or asset hashes change.
-5. Run the relevant focused check, then `npm run validate`.
-6. Use `npm run quality` before deployment readiness.
-7. Deploy only when explicitly authorized.
+4. Change the smallest necessary website route, component, manifest, asset, or
+   control record inside the active allowed write scope.
+5. Regenerate provenance or asset manifests when page or asset hashes change.
+6. Write completion and handoff records for governed implementation packets.
+7. Run the relevant focused check, then `npm run validate`.
+8. Use `npm run checkpoint:implementation` only after completion evidence
+   exists and the active job is ready for a local commit.
+9. Use `npm run quality` before deployment readiness.
+10. Deploy only when explicitly authorized.
+
+Implementation-control success is a maintainer-process result. It is not
+source authority, scientific proof, public-claim approval, push approval, or
+deployment approval.
 
 ## Sitewide Revamp Contract
 
@@ -427,6 +448,9 @@ local development, deployment, and source-authority boundary].
 
 The AEther Flow Website. (2026). `package.json` [Configured Astro, validation,
 and quality scripts].
+
+The AEther Flow Website. (2026). `implementation_control/README.md`
+[Website-local implementation-control operating model].
 
 The AEther Flow Website. (2026). `PRDs/internal-explainer-and-source-assets-prd.md`
 [Internal explainer and source-asset release contract].
