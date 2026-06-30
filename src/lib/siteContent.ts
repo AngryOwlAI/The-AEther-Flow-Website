@@ -11,6 +11,11 @@ export type SiteNavigationLink = {
   children?: SiteNavigationChild[];
 };
 
+export const publicComprehensionSummaryLabels = {
+  safe: "Safe summary",
+  unsafe: "Unsafe summary",
+} as const;
+
 export const overviewPillars = [
   {
     title: "Public explanation",
@@ -1132,90 +1137,162 @@ export const siteNavigationLinks: SiteNavigationLink[] = [
   },
   {
     title: "Physics Research",
-    href: "/project/physics/",
-    matchPrefixes: ["/project/physics/"],
+    href: "/physics/",
+    matchPrefixes: ["/physics/"],
     children: [
       {
-        title: "Physics Research",
-        href: "/project/physics/",
-        description: "Track landing for ontology, benchmark, derivation roadmap, and claim-gate context.",
+        title: "Physics Overview",
+        href: "/physics/",
+        description: "Category landing for ontology, benchmark boundaries, derivation roadmap, and open burdens.",
       },
-      ...projectPhysicsDeepDiveRoutes.map(toNavigationChild),
+      {
+        title: "Ontology",
+        href: "/physics/ontology/",
+        description: "Plain vocabulary for AEther, AEther-flow, observed space, S-time, expansion, and gravity language.",
+      },
+      {
+        title: "Exact-GR Benchmark",
+        href: "/physics/exact-gr-benchmark/",
+        description: "Benchmark compatibility boundaries without treating compatibility as derivation.",
+      },
+      {
+        title: "Derivation Roadmap",
+        href: "/physics/derivation-roadmap/",
+        description: "Open burden map for effective geometry, matter coupling, equations, and benchmark promotion.",
+      },
+      {
+        title: "Flow Geometry",
+        href: "/physics/flow-geometry/",
+        description: "Geometry-facing explanation constrained by source-bundle evidence.",
+      },
+      {
+        title: "Claim Status",
+        href: "/physics/claim-status/",
+        description: "Claim gates, obstruction status, frozen routes, and blocked overreads.",
+      },
+      {
+        title: "Open Burdens",
+        href: "/physics/open-burdens/",
+        description: "Remaining proof, model, and evidence burdens before stronger claims are available.",
+      },
     ],
   },
   {
     title: "AI Research System",
-    href: "/project/ai-research-agent-system/",
-    matchPrefixes: ["/project/ai-research-agent-system/"],
+    href: "/ai-research-system/",
+    matchPrefixes: ["/ai-research-system/"],
     children: [
       {
-        title: "AI Research System",
-        href: "/project/ai-research-agent-system/",
-        description: "Track landing for bounded research-agent workflow, roles, memory, and synthesis.",
+        title: "System Overview",
+        href: "/ai-research-system/",
+        description: "Category landing for the governed research workflow and its authority boundaries.",
       },
-      ...projectAiDeepDiveRoutes.map(toNavigationChild),
+      {
+        title: "Current State",
+        href: "/ai-research-system/current-state/",
+        description: "Freshness-sensitive research-control status and source-boundary framing.",
+      },
+      {
+        title: "Workflow",
+        href: "/ai-research-system/workflow/",
+        description: "Request routing, bounded AgentJobs, review discipline, and source-first execution.",
+      },
+      {
+        title: "AgentJob Lifecycle",
+        href: "/ai-research-system/agentjob-lifecycle/",
+        description: "One job envelope from allowlist through validators, completion, and handoff.",
+      },
+      {
+        title: "Roles and Schemas",
+        href: "/ai-research-system/roles-and-schemas/",
+        description: "Role labels, schemas, registry records, and job-local authority boundaries.",
+      },
+      {
+        title: "Human-Gated Promotion",
+        href: "/ai-research-system/human-gated-promotion/",
+        description: "Human review gates for promotion, adoption, and protected decisions.",
+      },
+      {
+        title: "Validators and Handoffs",
+        href: "/ai-research-system/validators-and-handoffs/",
+        description: "Validator PASS boundaries, completion evidence, and handoff constraints.",
+      },
+      {
+        title: "Memory Preflight",
+        href: "/ai-research-system/memory-preflight/",
+        description: "Source-first memory and retrieval support without replacing source inspection.",
+      },
+      {
+        title: "Project-System Improvement",
+        href: "/ai-research-system/project-system-improvement/",
+        description: "Bounded maintenance loops for workflow and tooling improvements.",
+      },
+      {
+        title: "Runtime Requirements",
+        href: "/ai-research-system/runtime-requirements/",
+        description: "Tool, validator, and environment requirements stated as operational evidence.",
+      },
     ],
   },
   {
-    title: "Research Ops",
-    href: "/project/operations/",
-    matchPrefixes: ["/project/operations/"],
-    children: [
-      {
-        title: "Research Ops",
-        href: "/project/operations/",
-        description: "Operational landing for lifecycle, routing, validation, publication, improvement, and tools.",
-      },
-      ...projectOperationsRoutes.map(toNavigationChild),
-    ],
-  },
-  {
-    title: "Source Authority",
-    href: "/project/source-authority/",
-    matchPrefixes: ["/project/source-authority/"],
-    children: [
-      {
-        title: "Source Authority",
-        href: "/project/source-authority/",
-        description: "Trust boundary for website pages, generated derivatives, manifests, and upstream records.",
-      },
-      ...projectSourceAuthorityRoutes.map(toNavigationChild),
-    ],
-  },
-  {
-    title: "Library",
+    title: "Resources",
     href: "/resources/",
     matchPrefixes: ["/resources/"],
     children: [
       {
-        title: "Library",
+        title: "Resources Overview",
         href: "/resources/",
-        description: "Manifest-backed resource index for public pages and approved ontology documents.",
+        description: "Category landing for source authority, registries, derivatives, paths, and diagrams.",
       },
       {
-        title: "External Reviewer Packet",
-        href: "/resources/reviewer-packet/",
-        description: "Human-review-pending inspection packet with claim boundaries before source inspection.",
+        title: "Source Authority",
+        href: "/resources/source-authority/",
+        description: "Trust boundary for website pages, source records, manifests, and derivatives.",
       },
       {
-        title: "Specialist Guided Starts",
-        href: "/resources/guided-starts/",
-        description: "Audience-specific internal-first paths for specialist readers and staged reviewer prerequisites.",
+        title: "Registries",
+        href: "/resources/registries/",
+        description: "Registry surfaces used as evidence maps rather than proof mechanisms.",
       },
       {
-        title: "General-Public Guided Start",
-        href: "/resources/guided-starts/general-public/",
-        description: "First reading path through the site for general-public readers.",
+        title: "Generated Derivatives",
+        href: "/resources/generated-derivatives/",
+        description: "Generated PDFs, diagrams, and publication artifacts downstream from sources.",
       },
       {
-        title: "Ontology Documents",
-        href: "/resources/documents/",
-        description: "Canonical ontology PDF derivatives and registered TeX source files served from the website.",
+        title: "Retrieval Layers",
+        href: "/resources/retrieval-layers/",
+        description: "Local retrieval layers as navigation aids, not authority surfaces.",
+      },
+      {
+        title: "Publication Process",
+        href: "/resources/publication-process/",
+        description: "How source bundles, manifests, reviews, and static routes are published.",
+      },
+      {
+        title: "Library",
+        href: "/resources/library/",
+        description: "Reader-facing library for approved documents and source-backed resources.",
+      },
+      {
+        title: "Reading Paths",
+        href: "/resources/reading-paths/",
+        description: "Internal-first routes for general readers, specialists, and reviewers.",
+      },
+      {
+        title: "Repository Map",
+        href: "/resources/repository-map/",
+        description: "Public-safe map of source areas and website presentation boundaries.",
+      },
+      {
+        title: "Site Builder Guide",
+        href: "/resources/site-builder-guide/",
+        description: "Rules for source bundles, page contracts, provenance, and validation.",
       },
       {
         title: "Diagram Gallery",
         href: "/resources/diagrams/",
-        description: "Website-local visual orientation fixtures with explicit provenance and non-authority status.",
+        description: "Website-local visual aids with explicit provenance and non-authority status.",
       },
     ],
   },

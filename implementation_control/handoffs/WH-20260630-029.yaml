@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-029"
 created_utc: "2026-06-30T16:48:42Z"
-updated_utc: "2026-06-30T16:48:42Z"
-status: "active"
+updated_utc: "2026-06-30T16:55:25Z"
+status: "completed"
 
 task_id: "WI-20260630-029"
 job_id: "WJ-20260630-029-A"
@@ -18,6 +18,7 @@ current_state:
   - "The GF-000 greenfield-control packet is completed and superseded."
   - "The foundation contract records the greenfield navigation model, metadata contract, source-bundle requirement, page grammar, preserved footer rules, hero and SVG rules, diagram rules, validation profiles, and review-ledger requirement."
   - "The review ledger records every planned greenfield route with initial status."
+  - "This packet is checkpointed and superseded by the GF-002 Home and primary navigation packet."
   - "No public route, public asset, public manifest, deployment, push, source refresh, or upstream write is authorized by this packet."
 
 source_authority_boundary:
@@ -91,7 +92,7 @@ next_packet_authorization:
 
 next_recommended_action:
   task_packet: "GF-002 Build Home And Primary Navigation Slice"
-  summary: "Open the next fresh implementation-control packet for the Home and primary navigation slice."
+  summary: "Open the Home and primary navigation packet."
   do_not_skip: "Do not implement public routes, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the next authorized route packet without fresh live control records."
 
 stop_before:

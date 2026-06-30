@@ -24,70 +24,70 @@ const aiDetails = [
 const trackRailItems = [
   {
     label: "Physics Research",
-    title: "Exploring an Æther-flow interpretation of relativity.",
-    body: "The physics track studies an ontology, keeps an Exact-GR benchmark as a reference point, and treats the GR-derivation problem as open.",
+    title: "Understand the physics proposal without treating it as proved.",
+    body: "The physics category starts with ontology, exact-GR benchmark boundaries, the open derivation roadmap, and claim-status discipline.",
     points: [
       ...physicsDetails,
       "Public language preserves the distinction between interpretation, benchmark compatibility, open derivation work, and obstruction records.",
     ],
-    href: "/project/physics/",
-    actionLabel: "Open physics track",
+    href: "/physics/",
+    actionLabel: "Open physics research",
   },
   {
-    label: "AI Research-Agent System",
-    title: "Building the AI-assisted workflow used to pursue the research.",
-    body: "The AI track organizes research work through bounded tasks, roles, review discipline, claim gates, and source-first memory.",
+    label: "AI Research System",
+    title: "Inspect the governed workflow used to pursue the research.",
+    body: "The AI research system category explains bounded tasks, roles, validators, handoffs, memory preflight, and human-gated promotion.",
     points: [
       ...aiDetails,
-      "Public copy explains the system in plain language before internal terms such as AgentJobs, registries, and role contracts.",
+      "Public copy explains the system in plain language before internal terms such as AgentJobs, registries, and role contracts become necessary.",
     ],
-    href: "/project/ai-research-agent-system/",
-    actionLabel: "Open AI track",
+    href: "/ai-research-system/",
+    actionLabel: "Open AI research system",
   },
 ];
 
 const readerCapabilityRoutes = [
   {
     title: "Start with physics",
-    href: "/project/physics/",
-    body: "Move through ontology, exact-GR benchmark boundaries, the open derivation roadmap, current status, and claim gates.",
+    href: "/physics/",
+    body: "Begin with ontology, benchmark boundaries, derivation roadmap, flow geometry, claim status, and open burdens.",
   },
   {
-    title: "Track the current research state",
-    href: "/project/physics/current-state/",
-    body: "Review the checked-in status snapshot for active task, latest handoff, blocked claims, derivation burden, and next action.",
+    title: "Check physics claim status",
+    href: "/physics/claim-status/",
+    body: "Separate stated ideas, benchmark compatibility, open derivation work, obstructions, and blocked overreads.",
   },
   {
     title: "Understand the AI system",
-    href: "/project/ai-research-agent-system/",
-    body: "See how bounded tasks, roles, skills, memory, registries, and review discipline organize the research process.",
+    href: "/ai-research-system/",
+    body: "See how bounded tasks, roles, schemas, memory, validators, handoffs, and review discipline organize the work.",
   },
   {
-    title: "Inspect operations",
-    href: "/project/operations/",
-    body: "Routing, AgentJobs, validators, publication process, project-system improvement, and tools.",
+    title: "Inspect validation and handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body: "Understand why a validator PASS is bounded to a checked state and why handoffs do not expand authority.",
   },
   {
     title: "Check source authority",
-    href: "/project/source-authority/",
-    body: "How website pages, source records, registries, generated surfaces, and derivatives differ.",
+    href: "/resources/source-authority/",
+    body: "Learn how website pages, source records, registries, generated surfaces, and derivatives differ.",
   },
   {
-    title: "Read ontology documents",
-    href: "/resources/documents/",
-    body: "Direct PDF reading and TeX downloads for the canonical ontology package.",
+    title: "Use resources",
+    href: "/resources/",
+    body: "Find source-authority guidance, registries, generated derivatives, reading paths, documents, and diagrams.",
   },
 ];
 
 const ontologyStatusRoutes = [
   {
     title: "Æther Flow ontology",
-    href: "/project/physics/ontology/",
+    href: "/physics/ontology/",
     body: "Plain vocabulary for AEther, AEther-flow, observed space, S-time, expansion, and gravity-language, with boundaries around what those terms do not prove.",
   },
   {
     title: "GR derivation roadmap",
-    href: "/project/physics/gr-derivation-roadmap/",
+    href: "/physics/derivation-roadmap/",
     body: "A burden map for the still-open derivation path: effective geometry, matter coupling, field equations, and benchmark promotion each require source-side evidence.",
   },
 ];
@@ -240,7 +240,7 @@ const agentMap = `
 
 <BaseLayout
   title="The Æther Flow Project"
-  description="Canonical Home page for The Æther Flow website, with source-boundary-safe routes into physics, AI research workflow, operations, and resources."
+  description="Canonical Home page for The Æther Flow website, with source-boundary-safe routes into physics research, the AI research system, and resources."
   bodyClass="project-overview-page home-page"
   exactTitle
 >
@@ -248,7 +248,7 @@ const agentMap = `
     className="overview-shell overview-command-hero"
     eyebrow="Dual research program"
     title="The Æther Flow Project"
-    lead="Start here to orient yourself: the project pairs a proposed Æther-flow physics ontology with a governed AI research workflow. This site explains the routes and boundaries; source files, registries, and reviewed records remain the authority."
+    lead="Start here to orient yourself: the project pairs a proposed Æther-flow physics ontology with a governed AI research system. This site explains the routes and boundaries; source files, registries, and reviewed records remain the authority."
     headingLevel="h1"
   >
     <Fragment slot="visual">
@@ -262,18 +262,30 @@ const agentMap = `
     </Fragment>
   </CommandBand>
 
+  <section class="home-intro-panel" aria-label="Project introduction">
+    <p>
+      The Æther Flow Project is presented here as a source-boundary-safe public
+      map. The physics side explores ontology, benchmark compatibility, and an
+      explicitly open derivation path; the AI research system explains how
+      bounded tasks, validators, memory preflight, and human review keep the
+      work inspectable. Resources then expose documents, registries,
+      derivatives, reading paths, and provenance without turning website copy
+      into source authority.
+    </p>
+  </section>
+
   <nav class="home-action-row" aria-label="Homepage primary actions">
-    <a class="primary-link" href="#project-capabilities">Choose the route</a>
-    <a class="secondary-link" href="/resources/guided-starts/general-public/">Guided Start</a>
-    <a class="secondary-link" href="/project/physics/current-state/">Current State</a>
+    <a class="primary-link" href="/physics/">Physics Research</a>
+    <a class="secondary-link" href="/ai-research-system/">AI Research System</a>
+    <a class="secondary-link" href="/resources/">Resources</a>
   </nav>
 
   <CommandBand
     id="overview-paths"
     className="overview-panel overview-command-band overview-track-command"
     eyebrow="Two first-class tracks"
-    title="Two paths, one research program."
-    lead="The project structure is the first thing a general reader sees: physics research and the AI research-agent system are equal first-class paths."
+    title="Two research tracks, one authority boundary."
+    lead="The Home route separates the physics research track from the AI research system while keeping both downstream from reviewed source records."
   >
     <EvidenceRail
       items={trackRailItems}
@@ -298,7 +310,7 @@ const agentMap = `
     className="overview-panel overview-command-band"
     eyebrow="Reader capability routes"
     title="Choose the route that matches your question."
-    lead="One route map now combines practical capabilities with reader journeys: start with physics, inspect current status, understand the AI workflow, review operations, check source authority, or read registered documents."
+    lead="The greenfield navigation model gives readers three practical choices: inspect the physics research, inspect the AI research system, or use the resources layer for source authority and supporting materials."
   >
     <EvidenceRail
       items={readerCapabilityRoutes.map((route) => ({
@@ -321,7 +333,7 @@ const agentMap = `
     className="overview-panel overview-command-band overview-physics-status-command"
     eyebrow="Physics status"
     title="Ontology and GR derivation status"
-    lead="The ontology page gives the project vocabulary and model orientation. The GR derivation remains an open burden roadmap, not a completed proof or benchmark promotion."
+    lead="The ontology page gives vocabulary and model orientation. The derivation roadmap remains an open-burden map, not a completed proof or benchmark promotion."
   >
     <EvidenceRail
       items={ontologyStatusRoutes.map((item) => ({ ...item, actionLabel: "Open route" }))}

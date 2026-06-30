@@ -193,7 +193,7 @@ summary:focus-visible {
 
 .nav-menu-trigger {
   gap: 0.38rem;
-  padding: 0;
+  padding: 0 0.2rem 0 0;
   cursor: pointer;
 }
 
@@ -1401,6 +1401,24 @@ html:has(body.project-overview-page) {
   min-width: 0;
   text-align: center;
   overflow-wrap: anywhere;
+}
+
+.home-intro-panel {
+  width: min(100% - 2rem, 1180px);
+  margin: 0 auto 1.4rem;
+  border-block: 1px solid var(--overview-white-line);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--overview-orange) 8%, transparent), transparent 34%),
+    color-mix(in srgb, var(--overview-bg) 62%, transparent);
+  padding: 1.15rem 0;
+}
+
+.home-intro-panel p {
+  max-width: 78ch;
+  margin: 0;
+  color: var(--overview-muted);
+  font-size: 1.03rem;
+  line-height: 1.72;
 }
 
 .project-overview-page .primary-link,
@@ -3970,6 +3988,46 @@ html:has(body.project-overview-page) {
   .overview-command-band,
   .source-authority-section {
     padding: 1rem;
+  }
+
+  .home-page .overview-command-hero {
+    padding-block: 0.85rem;
+  }
+
+  .home-page .overview-command-hero .command-band-layout {
+    gap: 0.9rem;
+  }
+
+  .home-page .overview-command-hero .command-band-copy h1 {
+    font-size: 2.55rem;
+    line-height: 1.02;
+    max-width: min(10ch, 100%);
+  }
+
+  .home-page .overview-command-hero .command-band-lead {
+    margin-top: 0.8rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .home-page .overview-command-hero .field-stage svg {
+    height: 180px;
+  }
+
+  .home-page .overview-command-hero .field-stage figcaption {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .home-intro-panel {
+    margin-bottom: 1rem;
+    padding-block: 0.9rem;
+  }
+
+  .home-intro-panel p {
+    font-size: 0.96rem;
+    line-height: 1.58;
   }
 
   .evidence-rail,

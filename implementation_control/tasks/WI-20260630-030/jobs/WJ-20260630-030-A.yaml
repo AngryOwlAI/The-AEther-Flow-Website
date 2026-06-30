@@ -1,0 +1,161 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260630-030-A"
+task_id: "WI-20260630-030"
+title: "Build Home and primary navigation slice"
+created_utc: "2026-06-30T16:55:25Z"
+updated_utc: "2026-06-30T16:55:25Z"
+status: "active"
+
+objective: "Implement the GF-002 Home route and primary navigation slice with updated manifests and review ledger evidence."
+
+execution_boundary:
+  invocation_limit: "one bounded implementation packet"
+  live_state_priority: "implementation_control records outrank PRDs, task packets, memory, and conversation summaries"
+  canonical_rebuild_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_rebuild_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  upstream_write_status: "forbidden"
+  public_route_write_status: "approved_for_home_only"
+  public_manifest_write_status: "approved_for_home_route_map_and_provenance_only"
+  source_snapshot_write_status: "forbidden_for_this_job"
+  generated_derivative_write_status: "forbidden_for_this_job"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  - "PRDs/sitewide-greenfield-rebuild-prd.md"
+  - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "docs/content-dossiers/project-overview/dossier.md"
+  - "src/pages/index.astro"
+  - "src/layouts/BaseLayout.astro"
+  - "src/lib/siteContent.ts"
+  - "src/styles/global.css"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "package.json"
+  - "scripts/generate_page_provenance.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.md"
+  - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+  - "git status output"
+
+allowed_writes:
+  - "src/pages/index.astro"
+  - "src/layouts/BaseLayout.astro"
+  - "src/lib/siteContent.ts"
+  - "src/styles/global.css"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.yaml"
+  - "implementation_control/handoffs/WH-20260630-029.md"
+  - "implementation_control/tasks/WI-20260630-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-029/jobs/WJ-20260630-029-A.yaml"
+  - "implementation_control/handoffs/WH-20260630-030.yaml"
+  - "implementation_control/handoffs/WH-20260630-030.md"
+  - "implementation_control/tasks/WI-20260630-030/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-030/jobs/WJ-20260630-030-A.yaml"
+  - "implementation_control/tasks/WI-20260630-030/jobs/completions/WJC-20260630-030-A.yaml"
+
+required_outputs:
+  - "`/` uses the new greenfield navigation model."
+  - "Home intro explains the project, why it matters, and how it connects physics, AI workflow, source authority, and resources."
+  - "Footer content and badges remain available."
+  - "The first viewport has no incoherent text overlap on desktop or mobile."
+  - "Source/provenance links do not replace internal-first navigation."
+  - "Page route and provenance manifests are updated for the changed Home route."
+  - "Review ledger records Home as technically ready or human review pending."
+
+approval_gates:
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "GF-002 Home route public copy constrained by PRD-10, the Home dossier, and source-authority boundaries."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source snapshot, upstream refresh, generated publication refresh, wiki regeneration, or local retrieval refresh is in scope."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "GF-002 primary navigation model change without old-route retirement."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "GF-002 may touch layout, styles, and shared navigation data for Home/navigation shell work."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public PDF, TeX, image, or downloadable publication change is in scope."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "GF-002 must update public route/provenance manifests for the changed Home route."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any production or preview deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "content"
+    command: "npm run validate:content"
+    required: true
+  - id: "links"
+    command: "npm run validate:links"
+    required: true
+  - id: "layout"
+    command: "npm run validate:layout"
+    required: true
+  - id: "comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "browser-qa"
+    command: "manual inspection of rendered Home route at desktop and mobile viewport"
+    required: true
+
+stop_conditions:
+  - "Allowed write paths need to expand outside the explicit GF-002 allowlist."
+  - "Any additional route-family implementation is proposed before checkpoint."
+  - "Any old route retirement, redirect, push, deploy, source snapshot refresh, generated output refresh, wiki refresh, or upstream write becomes necessary."
+  - "A source-derived public claim would be strengthened beyond inspected source and PRD boundaries."
+  - "Validation or browser QA fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+completion_record:
+  completion_id: "WJC-20260630-030-A"
+  path: "implementation_control/tasks/WI-20260630-030/jobs/completions/WJC-20260630-030-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "GF-003 Build Physics Overview And Ontology Slice"
+  summary: "After checkpoint, open the next fresh implementation-control packet for the Physics overview and ontology slice."
+  do_not_skip: "Do not implement additional route families, push, deploy, mutate upstream, refresh source snapshots, or broaden scope beyond the active Home/navigation packet without fresh live control records."
