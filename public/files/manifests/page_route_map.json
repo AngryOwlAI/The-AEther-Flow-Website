@@ -51,6 +51,53 @@
       "boundary_type": "claim_boundary"
     },
     {
+      "route_path": "/physics/exact-gr-benchmark/",
+      "local_page_source": "src/pages/physics/exact-gr-benchmark/index.astro",
+      "title": "Exact-GR Benchmark",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/exact-gr-benchmark-boundary-explainer.md",
+        "research_control/design/gr_derivation_burden_map.md",
+        "registries/DISTANCE_TO_GR_LEDGER.csv",
+        "registries/TEX_SOURCE_REGISTRY.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/physics/derivation-roadmap/",
+      "local_page_source": "src/pages/physics/derivation-roadmap/index.astro",
+      "title": "Derivation Roadmap",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "github-facing/gr-derivation-roadmap-explainer.md",
+        "research_control/design/gr_derivation_burden_map.md",
+        "registries/DISTANCE_TO_GR_LEDGER.csv",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/physics/flow-geometry/",
+      "local_page_source": "src/pages/physics/flow-geometry/index.astro",
+      "title": "Flow Geometry",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_paths": [
+        "ontology/tex/aether_flow_geometry.tex",
+        "ontology/tex/aether_flow_relativistic_recovery.tex",
+        "ontology/tex/aether_flow_exact_closure_note.tex",
+        "research_control/design/gr_derivation_burden_map.md",
+        "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "draft_control_artifact",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
       "route_path": "/project/physics/",
       "local_page_source": "src/pages/project/physics/index.astro",
       "title": "Physics Research",

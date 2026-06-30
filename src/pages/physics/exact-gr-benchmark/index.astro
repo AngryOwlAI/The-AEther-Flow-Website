@@ -1,0 +1,287 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
+
+const benchmarkRows = [
+  {
+    state: "Adoption",
+    safe: "Use ordinary general relativity as the current observable-scale benchmark.",
+    boundary: "Adoption is not source-side derivation from Æther-flow substrate structure.",
+  },
+  {
+    state: "Compatibility",
+    safe: "Hold the ontology beside the benchmark without claiming contradiction from this page.",
+    boundary: "Compatibility is weaker than construction, recovery, or promotion.",
+  },
+  {
+    state: "Derivation",
+    safe: "Name the source-side burdens that would be needed for a stronger claim.",
+    boundary: "Metric behavior, matter coupling, and Einstein equations remain open burdens.",
+  },
+  {
+    state: "Promotion",
+    safe: "Route readers to claim gates and source authority before accepting stronger language.",
+    boundary: "Website pages, validators, PDFs, and generated derivatives cannot issue promotion.",
+  },
+];
+
+const benchmarkPackageRows = [
+  {
+    component: "One operative metric",
+    benchmarkUse: "Reader-facing exact-GR behavior uses the standard metric benchmark.",
+    sourceLimit: "No current source-side object is promoted here as a derived effective metric.",
+  },
+  {
+    component: "Universal matter coupling",
+    benchmarkUse: "The benchmark assumes ordinary same-metric matter behavior at observable scale.",
+    sourceLimit: "The source-side derivation of universal coupling remains downstream.",
+  },
+  {
+    component: "Einstein-Hilbert action",
+    benchmarkUse: "The action belongs to the adopted effective benchmark package.",
+    sourceLimit: "The page does not derive the action from substrate dynamics.",
+  },
+  {
+    component: "Standard causal structure",
+    benchmarkUse: "The public benchmark remains ordinary relativistic causality.",
+    sourceLimit: "No independent low-energy non-GR signature is claimed here.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Exact-GR benchmark explainer",
+    use: "Reader-facing boundary between adoption, compatibility, derivation, and promotion.",
+    boundary: "Generated noncanonical surface.",
+  },
+  {
+    source: "GR derivation burden map",
+    use: "Ordering of metric, matter-coupling, field-equation, and promotion burdens.",
+    boundary: "Control note, not website proof.",
+  },
+  {
+    source: "Distance-to-GR and claim-boundary registries",
+    use: "Current burden and forbidden-claim constraints.",
+    boundary: "Registry state constrains copy but does not prove a theorem.",
+  },
+  {
+    source: "Registered TeX source registry",
+    use: "Authority distinction between TeX sources and generated derivatives.",
+    boundary: "Website page remains explanatory derivative.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Roadmap",
+    title: "Derivation Roadmap",
+    href: "/physics/derivation-roadmap/",
+    body: "Trace the burden chain that the benchmark does not solve.",
+  },
+  {
+    label: "Geometry",
+    title: "Flow Geometry",
+    href: "/physics/flow-geometry/",
+    body: "Read the geometry dictionary without treating notation as derivation.",
+  },
+  {
+    label: "Status",
+    title: "Claim Status",
+    href: "/physics/claim-status/",
+    body: "Inspect allowed wording, forbidden overreads, and gate-required claims.",
+  },
+];
+
+const benchmarkSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="benchmark-greenfield-title benchmark-greenfield-desc">
+    <title id="benchmark-greenfield-title">Animated exact-GR benchmark boundary map</title>
+    <desc id="benchmark-greenfield-desc">Benchmark adoption, compatibility, derivation, and promotion remain separated.</desc>
+    <defs>
+      <radialGradient id="benchmark-greenfield-core" cx="50%" cy="50%" r="62%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.72" />
+        <stop offset="42%" stop-color="var(--owl-orange-500)" stop-opacity="0.26" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="benchmark-greenfield-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="178" fill="url(#benchmark-greenfield-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="232" ry="112" />
+      <ellipse cx="310" cy="180" rx="150" ry="72" />
+      <path d="M92 180 C158 126, 230 108, 310 136 C390 108, 462 126, 528 180" />
+      <path d="M92 180 C158 234, 230 252, 310 224 C390 252, 462 234, 528 180" />
+    </g>
+    <g filter="url(#benchmark-greenfield-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M98 238 C174 176, 238 160, 310 180 C382 200, 448 184, 522 122" />
+      <path class="track-figure-path signal-path" d="M98 122 C174 154, 238 212, 310 180 C382 148, 448 156, 522 238" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="38" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="128" cy="122" r="13" />
+      <circle cx="196" cy="256" r="13" />
+      <circle cx="424" cy="104" r="13" />
+      <circle cx="498" cy="244" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Exact-GR Benchmark"
+  description="Greenfield exact-GR benchmark page separating effective benchmark adoption, compatibility, open derivation burdens, and benchmark promotion."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research / Benchmark"
+    title="Exact-GR Benchmark"
+    lead="Exact general relativity is the conservative observable-scale benchmark here. That benchmark is not a source-side derivation, matter-coupling proof, or promotion decision."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Exact-GR benchmark page actions">
+      <a class="primary-link" href="#benchmark-status">Compare claims</a>
+      <a class="secondary-link" href="/physics/derivation-roadmap/">Open roadmap</a>
+      <a class="secondary-link" href="/physics/">Physics overview</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="benchmark-greenfield-caption">
+        <Fragment set:html={benchmarkSvg} />
+        <figcaption id="benchmark-greenfield-caption">
+          Visual orientation only: adoption, compatibility, derivation, and
+          promotion stay as separate claim states.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Exact-GR benchmark introduction">
+    <p>
+      The Exact-GR Benchmark page tells readers how to read ordinary general
+      relativity inside this project. The benchmark can be used as the
+      observable-scale reference package: one operative metric, ordinary
+      relativistic causality, and same-metric matter behavior. It does not
+      follow that the project has derived those structures from source-side
+      Æther-flow ontology, discharged the matter-coupling burden, recovered
+      Einstein equations, or promoted the benchmark through a protected gate.
+    </p>
+  </section>
+
+  <section id="benchmark-status" class="track-page-band" aria-labelledby="benchmark-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim status</p>
+      <h2 id="benchmark-status-title">Four claim states must not be merged.</h2>
+      <p>
+        This matrix is the safe reading contract. Each row is useful, but only
+        within its stated boundary.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Safe use</th>
+          <th scope="col">Boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {benchmarkRows.map((row) => (
+          <tr>
+            <th scope="row">{row.state}</th>
+            <td>{row.safe}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="benchmark-package-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Benchmark package</p>
+      <h2 id="benchmark-package-title">The effective benchmark is ordinary; the derivation burden remains open.</h2>
+      <p>
+        The benchmark package is useful because it prevents hidden target
+        import. It also makes clear what the source-side project would still
+        need to construct.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Component</th>
+          <th scope="col">Benchmark use</th>
+          <th scope="col">Source-side limit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {benchmarkPackageRows.map((row) => (
+          <tr>
+            <th scope="row">{row.component}</th>
+            <td>{row.benchmarkUse}</td>
+            <td>{row.sourceLimit}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="benchmark-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="benchmark-source-title">The page is a boundary map, not proof.</h2>
+      <p>
+        Stronger benchmark language belongs to upstream source records and
+        human-gated decisions. This route only organizes the reader-facing
+        distinction.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Follow the benchmark boundary into the open burdens."
+    lead="The reader journey stays internal-first. Provenance links remain available through the source-authority section."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related exact-GR benchmark routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

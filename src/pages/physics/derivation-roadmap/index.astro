@@ -1,0 +1,274 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+
+const sourceNotice = projectSourceNoticeDefaults.physicsGrDerivationRoadmap;
+
+const roadmapSteps = [
+  {
+    label: "01",
+    title: "Source ontology",
+    body: "Name the source primitives and rules that any later recovery would have to use.",
+    points: ["Vocabulary is not proof.", "Registered sources outrank website summary."],
+  },
+  {
+    label: "02",
+    title: "Localization and response",
+    body: "Separate observer localization, response tokens, and bridge attempts before metric language is used.",
+    points: ["Rows can be accepted, blocked, frozen, or gated.", "A row status does not discharge downstream rows."],
+  },
+  {
+    label: "03",
+    title: "Effective metric burden",
+    body: "Recovering effective Lorentzian metric behavior remains a distinct construction burden.",
+    points: ["No g_eff promotion here.", "No MetricData adoption from website copy."],
+  },
+  {
+    label: "04",
+    title: "Matter, equations, and promotion",
+    body: "Matter coupling, Einstein equations, finite-toy validation, and benchmark promotion stay separate gates.",
+    points: ["No matter-coupling claim.", "No Einstein-equation derivation claim."],
+  },
+];
+
+const downstreamRows = [
+  {
+    burden: "g_eff",
+    whatItWouldNeed: "A source-side metric construction with explicit status and acceptance evidence.",
+    currentBoundary: "The page names the burden but does not construct or adopt it.",
+  },
+  {
+    burden: "Matter coupling",
+    whatItWouldNeed: "A universal same-metric matter behavior argument from source-side structure.",
+    currentBoundary: "Ordinary matter coupling remains benchmark-level, not derived here.",
+  },
+  {
+    burden: "Einstein equations",
+    whatItWouldNeed: "A source-side dynamics, action, variation principle, or equivalent theorem.",
+    currentBoundary: "No theorem is supplied by this route or by validator PASS.",
+  },
+  {
+    burden: "Benchmark promotion",
+    whatItWouldNeed: "Upstream burden discharge plus protected human-gated approval.",
+    currentBoundary: "Public route clarity cannot issue benchmark promotion.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "GR derivation roadmap explainer",
+    use: "Reader-facing roadmap and safe/unsafe summaries.",
+    boundary: "Generated noncanonical surface.",
+  },
+  {
+    source: "Derivation burden map",
+    use: "Milestone chain and future job contract.",
+    boundary: "Control note, not completed derivation.",
+  },
+  {
+    source: "Distance-to-GR ledger",
+    use: "Persistent burden-row status vocabulary.",
+    boundary: "Ledger rows are status evidence, not proof shortcuts.",
+  },
+  {
+    source: "Claim-boundary registry",
+    use: "Forbidden derivation, metric, matter-coupling, and promotion claims.",
+    boundary: "Registry constraints preserve weaker public language.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Benchmark",
+    title: "Exact-GR Benchmark",
+    href: "/physics/exact-gr-benchmark/",
+    body: "Separate the adopted benchmark from source-side derivation.",
+  },
+  {
+    label: "Geometry",
+    title: "Flow Geometry",
+    href: "/physics/flow-geometry/",
+    body: "Read the geometry dictionary used by the roadmap.",
+  },
+  {
+    label: "Burdens",
+    title: "Open Burdens",
+    href: "/physics/open-burdens/",
+    body: "Continue to the later route for detailed burden status after GF-005.",
+  },
+];
+
+const roadmapSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="roadmap-greenfield-title roadmap-greenfield-desc">
+    <title id="roadmap-greenfield-title">Animated derivation roadmap burden ladder</title>
+    <desc id="roadmap-greenfield-desc">A source ontology path climbs through metric, matter, equation, and promotion burdens.</desc>
+    <defs>
+      <radialGradient id="roadmap-greenfield-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.52" />
+        <stop offset="38%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="roadmap-greenfield-bloom" x="-18%" y="-22%" width="136%" height="144%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="178" fill="url(#roadmap-greenfield-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <path d="M94 274 C178 238, 222 184, 306 190 C392 196, 438 116, 526 86" />
+      <path d="M94 108 C170 138, 224 218, 306 220 C398 222, 444 158, 526 236" />
+      <ellipse cx="310" cy="180" rx="216" ry="114" />
+      <ellipse cx="310" cy="180" rx="136" ry="70" />
+    </g>
+    <g filter="url(#roadmap-greenfield-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M106 268 C178 218, 218 150, 292 174 C368 198, 418 116, 514 86" />
+      <path class="track-figure-path signal-path" d="M108 110 C170 154, 224 238, 306 218 C394 196, 450 164, 514 236" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="38" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="112" cy="266" r="13" />
+      <circle cx="226" cy="154" r="13" />
+      <circle cx="400" cy="134" r="13" />
+      <circle cx="514" cy="86" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Derivation Roadmap"
+  description="Greenfield derivation roadmap page explaining the open GR derivation burden chain without claiming metric, matter, equation, or benchmark-promotion completion."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research / Roadmap"
+    title="Derivation Roadmap"
+    lead="The roadmap names the source-side burdens that would be required for a stronger GR derivation claim. It does not solve those burdens."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Derivation roadmap page actions">
+      <a class="primary-link" href="#roadmap-burdens">Read burdens</a>
+      <a class="secondary-link" href="/physics/exact-gr-benchmark/">Benchmark boundary</a>
+      <a class="secondary-link" href="/physics/">Physics overview</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="roadmap-greenfield-caption">
+        <Fragment set:html={roadmapSvg} />
+        <figcaption id="roadmap-greenfield-caption">
+          Visual orientation only: the ladder names dependencies and cannot
+          discharge a derivation milestone.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Derivation roadmap introduction">
+    <p>
+      The Derivation Roadmap is a burden map for first-principles recovery, not
+      a claim that recovery has happened. It explains why source ontology,
+      localization, response, metric behavior, matter coupling, field equations,
+      and benchmark promotion must remain separate. A reader can use the page
+      to understand the order of obligations, but every stronger physics claim
+      still requires upstream source evidence and the relevant gate status.
+    </p>
+  </section>
+
+  <CommandBand
+    id="roadmap-burdens"
+    className="overview-panel overview-command-band"
+    eyebrow="Burden roadmap"
+    title="A roadmap is useful because it refuses shortcuts."
+    lead="Each step is a named obligation. A public page can explain the chain, but it cannot replace payload, validation, and source-authority review."
+  >
+    <EvidenceRail
+      items={roadmapSteps}
+      ariaLabel="Derivation roadmap burden steps"
+      className="overview-track-rail"
+      ordered={true}
+    />
+  </CommandBand>
+
+  <section class="track-page-band" aria-labelledby="roadmap-downstream-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim status</p>
+      <h2 id="roadmap-downstream-title">Downstream burdens remain downstream.</h2>
+      <p>
+        The roadmap prevents one visible status row from becoming the whole
+        derivation. The page can name the next obligations, not erase them.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Burden</th>
+          <th scope="col">Would need</th>
+          <th scope="col">Current page boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {downstreamRows.map((row) => (
+          <tr>
+            <th scope="row">{row.burden}</th>
+            <td>{row.whatItWouldNeed}</td>
+            <td>{row.currentBoundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="roadmap-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="roadmap-source-title">Burden records constrain the public story.</h2>
+      <p>
+        The page stays useful only if it preserves the difference between
+        orientation, control evidence, and mathematical derivation.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Use the roadmap beside benchmark and geometry context."
+    lead="The next pages help separate exact-GR benchmark language, geometry vocabulary, and later open-burden status."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related derivation roadmap routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
+</BaseLayout>

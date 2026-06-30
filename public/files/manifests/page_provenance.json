@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-30T17:28:56.113978+00:00",
+  "generated_at": "2026-06-30T17:42:56.135242+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "cb2c304e9a466d92781f1f1e75e9cc1ce7a36708",
   "source_commit_date": "2026-06-30T11:26:21-06:00",
@@ -179,6 +179,192 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv"
       ],
       "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/physics/exact-gr-benchmark/",
+      "local_page_source": "src/pages/physics/exact-gr-benchmark/index.astro",
+      "local_page_sha256": "abaa6e518b63d62e49994b5dbc571bc81835af5d6f75f112958ba4e5a31c471e",
+      "title": "Exact-GR Benchmark",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/exact-gr-benchmark-boundary-explainer.md",
+          "sha256": "df259165eaeb38a4ca07d977007a1d6ecb395cad8260aa0144d153397d38314e",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/github-facing/exact-gr-benchmark-boundary-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/design/gr_derivation_burden_map.md",
+          "sha256": "6d1df3488be163b72296cf34ee07b979e29b061d508e6a4c271ac3305373aa1f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/research_control/design/gr_derivation_burden_map.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
+          "sha256": "82d4f38fbfc7d305b7151686b7df5fd235bb52f41f687c6e3072f065e08d90b7",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/DISTANCE_TO_GR_LEDGER.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/TEX_SOURCE_REGISTRY.csv",
+          "sha256": "13c85ae356c4e9c9cb52377a3448acd12d10e4ff1453de8bdb1fff31c8e3ec95",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/TEX_SOURCE_REGISTRY.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "936c2b99f25cd17917ca971d8daeaca6ebb6343dcc8279b793bddbadb8772a94",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        }
+      ],
+      "upstream_source_commit": "cb2c304e9a466d92781f1f1e75e9cc1ce7a36708",
+      "upstream_source_commit_date": "2026-06-30T11:26:21-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/exact-gr-benchmark-boundary-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/TEX_SOURCE_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/github-facing/exact-gr-benchmark-boundary-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/DISTANCE_TO_GR_LEDGER.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/TEX_SOURCE_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/physics/derivation-roadmap/",
+      "local_page_source": "src/pages/physics/derivation-roadmap/index.astro",
+      "local_page_sha256": "fd438eb8bbc0d8f497368a6e8dc89801ebad5df5ed38d588659666e9d4c4bb46",
+      "title": "Derivation Roadmap",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "github-facing/gr-derivation-roadmap-explainer.md",
+          "sha256": "d7fcd2b21a6cdb0f5d6377298fa55ea10d74730a9ed742d010c06d15563aadaf",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/github-facing/gr-derivation-roadmap-explainer.md",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/design/gr_derivation_burden_map.md",
+          "sha256": "6d1df3488be163b72296cf34ee07b979e29b061d508e6a4c271ac3305373aa1f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/research_control/design/gr_derivation_burden_map.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
+          "sha256": "82d4f38fbfc7d305b7151686b7df5fd235bb52f41f687c6e3072f065e08d90b7",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/DISTANCE_TO_GR_LEDGER.csv",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "936c2b99f25cd17917ca971d8daeaca6ebb6343dcc8279b793bddbadb8772a94",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        }
+      ],
+      "upstream_source_commit": "cb2c304e9a466d92781f1f1e75e9cc1ce7a36708",
+      "upstream_source_commit_date": "2026-06-30T11:26:21-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/github-facing/gr-derivation-roadmap-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/DISTANCE_TO_GR_LEDGER.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "generated_noncanonical",
+      "website_publication_status": "published",
+      "boundary_type": "claim_boundary"
+    },
+    {
+      "route_path": "/physics/flow-geometry/",
+      "local_page_source": "src/pages/physics/flow-geometry/index.astro",
+      "local_page_sha256": "1e433f64af1eb861df25af16fcb364549e128c10b0c77e8ae80827582d7166da",
+      "title": "Flow Geometry",
+      "adaptation_type": "curated_synthesis",
+      "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
+      "upstream_sources": [
+        {
+          "path": "ontology/tex/aether_flow_geometry.tex",
+          "sha256": "ad43e3408fe2d9686a52a71de7ab8326668e8f04ebe2d2845986898b7d2c000f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_geometry.tex",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/ontology/tex/aether_flow_geometry.tex",
+          "omission_reason": null
+        },
+        {
+          "path": "ontology/tex/aether_flow_relativistic_recovery.tex",
+          "sha256": "77d5c2db56f122870343834f853bf2f375a912116a347d7c5710405c8707d69c",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_relativistic_recovery.tex",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/ontology/tex/aether_flow_relativistic_recovery.tex",
+          "omission_reason": null
+        },
+        {
+          "path": "ontology/tex/aether_flow_exact_closure_note.tex",
+          "sha256": "c4a4e956ad5a10e6b3f4e661351bdeda2145b01e6e85d9df849e765c765eca35",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_note.tex",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/ontology/tex/aether_flow_exact_closure_note.tex",
+          "omission_reason": null
+        },
+        {
+          "path": "research_control/design/gr_derivation_burden_map.md",
+          "sha256": "6d1df3488be163b72296cf34ee07b979e29b061d508e6a4c271ac3305373aa1f",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/research_control/design/gr_derivation_burden_map.md",
+          "omission_reason": null
+        },
+        {
+          "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "sha256": "936c2b99f25cd17917ca971d8daeaca6ebb6343dcc8279b793bddbadb8772a94",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "omission_reason": null
+        }
+      ],
+      "upstream_source_commit": "cb2c304e9a466d92781f1f1e75e9cc1ce7a36708",
+      "upstream_source_commit_date": "2026-06-30T11:26:21-06:00",
+      "adapted_from_source_date": "2026-06-29",
+      "github_main_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_geometry.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_relativistic_recovery.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_note.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "github_pinned_urls": [
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/ontology/tex/aether_flow_geometry.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/ontology/tex/aether_flow_relativistic_recovery.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/ontology/tex/aether_flow_exact_closure_note.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/research_control/design/gr_derivation_burden_map.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cb2c304e9a466d92781f1f1e75e9cc1ce7a36708/registries/CLAIM_BOUNDARY_REGISTRY.csv"
+      ],
+      "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
       "boundary_type": "claim_boundary"
     },

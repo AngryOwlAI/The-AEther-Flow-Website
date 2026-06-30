@@ -1,0 +1,305 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const flowGeometrySourceNotice = {
+  claimStatus: "geometry dictionary orientation",
+  updated: "2026-06-30",
+  note:
+    "This page explains flow-geometry vocabulary as a disciplined reader dictionary. It does not derive an effective metric, matter coupling, Einstein equations, or benchmark promotion.",
+  sourceRefs: [
+    "AEther-Flow Project. (2026). ontology/tex/aether_flow_geometry.tex",
+    "AEther-Flow Project. (2026). ontology/tex/aether_flow_relativistic_recovery.tex",
+    "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_note.tex",
+    "AEther-Flow Project. (2026). research_control/design/gr_derivation_burden_map.md",
+    "AEther-Flow Project. (2026). registries/CLAIM_BOUNDARY_REGISTRY.csv",
+    "The AEther Flow Website. (2026). PRDs/website-information-space/PRD-02-physics-and-mathematical-components.md",
+  ],
+};
+
+const dictionaryRows = [
+  {
+    term: "g",
+    meaning: "The metric symbol used when discussing the effective benchmark geometry.",
+    assumption: "Reader-facing shorthand must be tied to its benchmark context.",
+    limit: "This page does not derive g from source-side substrate data.",
+  },
+  {
+    term: "u",
+    meaning: "A congruence or flow-direction marker used to orient geometry language.",
+    assumption: "It helps readers discuss ordered motion without importing a finished theorem.",
+    limit: "It is not by itself a matter-coupling law or field equation.",
+  },
+  {
+    term: "Congruence geometry",
+    meaning: "A disciplined dictionary for reading flow-aligned geometric language.",
+    assumption: "The dictionary can clarify terms before formal source work is inspected.",
+    limit: "Dictionary clarity is weaker than source-side derivation.",
+  },
+  {
+    term: "Observed geometry",
+    meaning: "The observer-facing geometric description associated with the benchmark route.",
+    assumption: "Observed geometry can remain ordinary at the public benchmark level.",
+    limit: "Ordinary benchmark behavior does not prove substrate recovery.",
+  },
+];
+
+const boundaryRows = [
+  {
+    layer: "Vocabulary",
+    canSay: "Defines symbols and interpretive roles near their use.",
+    cannotSay: "Cannot make the symbols source-adopted objects by display alone.",
+  },
+  {
+    layer: "Benchmark geometry",
+    canSay: "Keeps ordinary effective geometry visible for readers.",
+    cannotSay: "Cannot claim the effective metric has been derived from ontology.",
+  },
+  {
+    layer: "Matter behavior",
+    canSay: "Names matter coupling as a downstream derivation requirement.",
+    cannotSay: "Cannot infer universal same-metric coupling from a geometry dictionary.",
+  },
+  {
+    layer: "Field equations",
+    canSay: "Points toward the equation burden as separate work.",
+    cannotSay: "Cannot supply Einstein-equation recovery or benchmark promotion.",
+  },
+];
+
+const sourceRows = [
+  {
+    source: "Geometry and relativistic-recovery TeX sources",
+    use: "Term orientation and source-bundle provenance.",
+    boundary: "Registered sources outrank website dictionary copy.",
+  },
+  {
+    source: "Exact-closure TeX notes",
+    use: "Benchmark package context for geometry language.",
+    boundary: "Generated explanation is not source promotion.",
+  },
+  {
+    source: "GR derivation burden map",
+    use: "Open burden ordering and downstream limits.",
+    boundary: "The map names burdens; it does not discharge them.",
+  },
+  {
+    source: "Claim-boundary registry",
+    use: "Forbidden overreads for metric, matter, equation, and promotion claims.",
+    boundary: "Registry constraints keep the page in weaker language.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Benchmark",
+    title: "Exact-GR Benchmark",
+    href: "/physics/exact-gr-benchmark/",
+    body: "Read the effective benchmark before interpreting geometry notation.",
+  },
+  {
+    label: "Roadmap",
+    title: "Derivation Roadmap",
+    href: "/physics/derivation-roadmap/",
+    body: "See where metric, matter, and equation burdens remain open.",
+  },
+  {
+    label: "Ontology",
+    title: "AEther-Flow Ontology",
+    href: "/physics/ontology/",
+    body: "Return to the vocabulary layer that precedes geometry-facing language.",
+  },
+];
+
+const flowSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="flow-greenfield-title flow-greenfield-desc">
+    <title id="flow-greenfield-title">Animated flow geometry dictionary map</title>
+    <desc id="flow-greenfield-desc">Metric, flow, observed geometry, and downstream equation layers stay separated.</desc>
+    <defs>
+      <radialGradient id="flow-greenfield-core" cx="50%" cy="50%" r="64%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.64" />
+        <stop offset="36%" stop-color="var(--owl-orange-500)" stop-opacity="0.26" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="flow-greenfield-bloom" x="-20%" y="-26%" width="140%" height="152%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#flow-greenfield-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="230" ry="118" />
+      <ellipse cx="310" cy="180" rx="162" ry="82" />
+      <path d="M88 176 C170 112, 238 104, 310 144 C382 104, 450 112, 532 176" />
+      <path d="M88 184 C170 248, 238 256, 310 216 C382 256, 450 248, 532 184" />
+    </g>
+    <g filter="url(#flow-greenfield-bloom)" aria-hidden="true">
+      <path class="track-figure-path signal-path" d="M92 126 C172 172, 242 236, 318 208 C398 178, 444 100, 528 132" />
+      <path class="track-figure-path orange-path" d="M92 244 C174 152, 248 118, 320 168 C394 220, 462 214, 528 110" />
+      <path class="track-figure-path signal-path alternate" d="M150 288 C224 232, 268 222, 310 180 C356 134, 414 120, 486 76" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="40" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="124" cy="126" r="13" />
+      <circle cx="178" cy="268" r="13" />
+      <circle cx="310" cy="82" r="13" />
+      <circle cx="438" cy="272" r="13" />
+      <circle cx="508" cy="134" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Flow Geometry"
+  description="Greenfield flow-geometry dictionary for The Æther Flow Project, defining symbols, assumptions, limits, and source-authority boundaries."
+  bodyClass="project-overview-page project-track-page physics-greenfield-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Physics Research / Geometry"
+    title="Flow Geometry"
+    lead="Flow geometry is a dictionary for reading geometry-facing terms. It is not a derivation of the effective metric, matter coupling, field equations, or benchmark promotion."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Flow geometry page actions">
+      <a class="primary-link" href="#flow-dictionary">Read dictionary</a>
+      <a class="secondary-link" href="/physics/derivation-roadmap/">Open roadmap</a>
+      <a class="secondary-link" href="/physics/">Physics overview</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="flow-greenfield-caption">
+        <Fragment set:html={flowSvg} />
+        <figcaption id="flow-greenfield-caption">
+          Visual orientation only: notation, benchmark geometry, and downstream
+          derivation burdens remain separate.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <section class="greenfield-intro-panel" aria-label="Flow geometry introduction">
+    <p>
+      The Flow Geometry page gives readers a disciplined dictionary for
+      geometry-facing language. Symbols such as g and u can orient discussion
+      of effective geometry and flow-aligned interpretation, but a symbol table
+      is not a theorem. This page therefore defines each term with its
+      assumption and limit: what it helps the reader see, and what it cannot
+      promote without upstream source evidence.
+    </p>
+  </section>
+
+  <section id="flow-dictionary" class="track-page-band" aria-labelledby="flow-dictionary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Visual dictionary</p>
+      <h2 id="flow-dictionary-title">Put each geometry term beside its limit.</h2>
+      <p>
+        The dictionary is intentionally tabular. It keeps meaning, assumption,
+        and limit visible at the same time.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Term</th>
+          <th scope="col">Meaning here</th>
+          <th scope="col">Assumption</th>
+          <th scope="col">Limit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {dictionaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.term}</th>
+            <td>{row.meaning}</td>
+            <td>{row.assumption}</td>
+            <td>{row.limit}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="flow-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Claim status</p>
+      <h2 id="flow-boundary-title">Geometry vocabulary is weaker than derivation.</h2>
+      <p>
+        The page can explain the dictionary. It cannot turn a convenient
+        notation into a source-side result.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Can safely say</th>
+          <th scope="col">Cannot say</th>
+        </tr>
+      </thead>
+      <tbody>
+        {boundaryRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.canSay}</td>
+            <td>{row.cannotSay}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="flow-source-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source basis</p>
+      <h2 id="flow-source-title">The dictionary depends on source-bundle boundaries.</h2>
+      <p>
+        Flow-geometry wording must stay tied to registered source anchors and
+        claim-boundary records. When evidence is incomplete, the page uses
+        weaker language.
+      </p>
+    </div>
+    <table class="greenfield-matrix greenfield-source-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Source area</th>
+          <th scope="col">Used here for</th>
+          <th scope="col">Authority boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourceRows.map((row) => (
+          <tr>
+            <th scope="row">{row.source}</th>
+            <td>{row.use}</td>
+            <td>{row.boundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read geometry between ontology and derivation."
+    lead="Use the benchmark and roadmap pages to keep the dictionary from becoming a proof claim."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related flow geometry routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+
+  <SourceAuthoritySection {...flowGeometrySourceNotice} className="track-page-band" />
+</BaseLayout>
