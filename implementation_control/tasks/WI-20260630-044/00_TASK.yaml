@@ -4,7 +4,7 @@ task_id: "WI-20260630-044"
 title: "Refresh Curator Source Drift Artifacts"
 created_utc: "2026-06-30T20:49:37Z"
 updated_utc: "2026-06-30T21:00:08Z"
-status: "active"
+status: "completed"
 
 source_context:
   task_packet: "GF-014 Follow-up Curator Source Drift Refresh"

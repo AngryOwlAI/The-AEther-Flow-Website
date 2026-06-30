@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const validationRows = [
   {
@@ -247,6 +249,9 @@ const validatorsSvg = `
       they do not silently continue a closed job.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiValidatorsAndHandoffs} />
 
   <section id="validator-scope" class="track-page-band" aria-labelledby="validator-scope-title">
     <div class="track-page-heading">

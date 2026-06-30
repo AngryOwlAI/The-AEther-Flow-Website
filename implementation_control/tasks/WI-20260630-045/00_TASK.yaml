@@ -1,0 +1,186 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260630-045"
+title: "Add Greenfield Route Comprehension Diagrams"
+created_utc: "2026-06-30T22:03:26Z"
+updated_utc: "2026-06-30T22:19:26Z"
+status: "active"
+
+completion_record:
+  completion_id: "WJC-20260630-045-A"
+  path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
+
+source_context:
+  task_packet: "Owner-requested bounded feedback packet: Greenfield diagram rollout"
+  source_plan: "Greenfield Diagram Opportunity Review"
+  canonical_sitewide_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  canonical_sitewide_task_packets: "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+  foundation_contract: "docs/architecture/sitewide-greenfield-foundation-contract.md"
+  public_comprehension_prd: "PRDs/public-comprehension-and-diagram-system-prd.md"
+  review_ledger: "docs/quality/sitewide-greenfield-review-ledger.md"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-044.yaml"
+
+requirements:
+  - "Add source-backed static comprehension diagrams to greenfield routes where diagrams clarify relationships, authority flow, proof burden, lifecycle, source lineage, or validation boundaries."
+  - "Prefer reusing existing diagram concepts and PNG assets when the existing dossier/diagram accurately matches the greenfield route."
+  - "Create new dossier-backed Mermaid and PNG diagrams only where no adequate existing diagram exists."
+  - "Wire diagrams into route pages with alt text, captions, provenance, and nearby non-authority boundary prose."
+  - "Regenerate diagram PNGs and asset manifests when Mermaid or public assets change."
+  - "Do not write to the upstream source repository, deploy, push, add dependencies, mark owner acceptance, or treat diagrams as source authority."
+
+goal: "Implement the owner-requested greenfield route diagram rollout as a website-local comprehension and public-asset packet."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/mermaid-diagram-style/SKILL.md"
+    - ".codex/skills/mermaid-diagram-style/references/palette-contract.md"
+    - ".codex/skills/mermaid-diagram-style/references/migration-checklist.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_task_packets.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/public-comprehension-and-diagram-system-prd.md"
+    - "PRDs/website-information-space/"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/content-dossiers/"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "public/assets/diagrams/comprehension/"
+    - "public/files/manifests/asset_manifest.json"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "scripts/render_mermaid_diagrams.py"
+    - "scripts/build_asset_manifest.py"
+    - "scripts/generate_page_provenance.py"
+    - "src/components/Figure.astro"
+    - "src/components/ComprehensionBlocks.astro"
+    - "src/lib/siteContent.ts"
+    - "src/lib/comprehensionContent.ts"
+    - "src/lib/aiComprehensionContent.ts"
+    - "src/lib/operationsComprehensionContent.ts"
+    - "src/lib/supportComprehensionContent.ts"
+    - "src/pages/"
+    - "src/styles/global.css"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-044.yaml"
+    - "implementation_control/handoffs/WH-20260630-044.md"
+    - "implementation_control/tasks/WI-20260630-044/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-044/jobs/WJ-20260630-044-A.yaml"
+    - "git status output"
+  upstream_source_repository:
+    - "/Volumes/P-SSD/AngryOwl/The-AEther-Flow committed source paths referenced by existing page provenance, read-only"
+
+allowed_writes:
+  website_repository:
+    - "docs/content-dossiers/"
+    - "public/assets/diagrams/comprehension/"
+    - "public/files/manifests/asset_manifest.json"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "scripts/render_mermaid_diagrams.py"
+    - "src/components/Figure.astro"
+    - "src/components/ComprehensionBlocks.astro"
+    - "src/lib/siteContent.ts"
+    - "src/lib/comprehensionContent.ts"
+    - "src/lib/aiComprehensionContent.ts"
+    - "src/lib/operationsComprehensionContent.ts"
+    - "src/lib/supportComprehensionContent.ts"
+    - "src/pages/index.astro"
+    - "src/pages/physics/"
+    - "src/pages/ai-research-system/"
+    - "src/pages/resources/"
+    - "src/pages/license/index.astro"
+    - "src/styles/global.css"
+    - "docs/quality/sitewide-greenfield-review-ledger.md"
+    - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-044.yaml"
+    - "implementation_control/handoffs/WH-20260630-044.md"
+    - "implementation_control/tasks/WI-20260630-044/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-044/jobs/WJ-20260630-044-A.yaml"
+    - "implementation_control/handoffs/WH-20260630-045.yaml"
+    - "implementation_control/handoffs/WH-20260630-045.md"
+    - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
+    - "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "approved"
+    reason: "Diagram captions and nearby boundary prose may be added only to explain existing route claims without strengthening source claims."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "Use existing pinned route provenance and committed website dossiers; do not refresh upstream source snapshots."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Existing public route files may be edited only to wire source-backed static diagrams; no route additions, deletions, redirects, or navigation retirement are authorized."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Route-level diagram figure wiring, content-module wiring, and minimal shared figure styles are allowed."
+  public_downloadable_assets:
+    status: "approved"
+    reason: "Public static comprehension PNGs under `public/assets/diagrams/comprehension/` may be added or regenerated from tracked Mermaid sources."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Asset, source, route, and provenance manifests may be updated only to reflect diagram assets and route wiring."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "svg-policy"
+    command: "npm run validate:svg"
+    required: true
+  - id: "manifests"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "provenance"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "build"
+    command: "npm run build"
+    required: true
+  - id: "validate"
+    command: "npm run validate"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "A diagram would require an unsupported new upstream source claim."
+  - "A diagram would require writing to the upstream source repository."
+  - "A route, redirect, dependency, deployment, push, owner-acceptance claim, or source refresh becomes necessary."
+  - "Validation reveals unrelated curator/source drift that is not caused by this packet."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Write completion evidence, then use npm run checkpoint:implementation. Do not push or deploy."
+
+next_recommended_action:
+  task_packet: "Greenfield diagram rollout closeout"
+  summary: "After validation, record diagrams added, changed files, manifest updates, and owner-review status."
+  do_not_skip: "Do not mark owner acceptance, push, deploy, or mutate upstream."

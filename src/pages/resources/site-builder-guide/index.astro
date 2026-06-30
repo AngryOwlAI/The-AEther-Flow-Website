@@ -2,6 +2,8 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const schemaRows = [
   {
@@ -290,6 +292,9 @@ const builderSvg = `
       guardrail, not a shortcut around source reading.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesSiteBuilderGuide} />
 
   <section id="source-bundle-schema" class="track-page-band" aria-labelledby="schema-title">
     <div class="track-page-heading">

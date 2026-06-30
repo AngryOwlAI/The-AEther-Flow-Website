@@ -2,6 +2,8 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const authorityRows = [
   {
@@ -205,6 +207,9 @@ const authoritySvg = `
       source-authority component block.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesSourceAuthority} />
 
   <section id="authority-classes" class="track-page-band" aria-labelledby="authority-classes-title">
     <div class="track-page-heading">

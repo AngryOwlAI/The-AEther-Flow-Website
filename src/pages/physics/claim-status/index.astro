@@ -5,6 +5,8 @@ import SourceAuthoritySection from "../../../components/SourceAuthoritySection.a
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import claimSnapshot from "../../../data/claim_boundary_snapshot.json";
 import currentSnapshot from "../../../data/physics_current_state_snapshot.json";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const shortCommit = currentSnapshot.source_commit
   ? `${currentSnapshot.source_commit.slice(0, 12)}...`
@@ -227,6 +229,9 @@ const claimStatusSvg = `
       the page as stale orientation and do not promote any physics claim.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsClaimStatus} />
 
   <section id="claim-status-matrix" class="track-page-band" aria-labelledby="claim-status-matrix-title">
     <div class="track-page-heading">

@@ -23,6 +23,11 @@ Curator/source drift was resolved in packet `WI-20260630-044` by refreshing
 website-side generated artifacts from clean committed upstream source commit
 `2a934c29b58e84aa913a5088a8388bd259f6370b` and validating with
 `AETHER_FLOW_SOURCE_ROOT` bound to that clean source view.
+Owner-requested static diagram wiring was resolved in packet
+`WI-20260630-045` by adding source-backed diagram blocks to 28 greenfield
+routes. The optional `/license/` split-license decision map remains out of the
+core release-candidate route set because no existing source-backed static
+diagram asset matches that lower-priority concept.
 
 ## Route Set For Review
 
@@ -49,7 +54,7 @@ Passed:
 - `npm run validate:cloudflare`
 - `npm run validate:implementation-control`
 - `npm run build`: 64 static pages built.
-- `.venv/bin/python -m pytest`: 75 passed.
+- `.venv/bin/python -m pytest`: 79 passed.
 - `python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321`: 92 routes passed.
 - Browser QA: Home, Physics, AI Research System, Resources, and Diagram Gallery returned HTTP 200 on desktop and mobile, exposed expected `h1` text, and showed no document-level horizontal overflow.
 - `python3 scripts/quality_gate.py`: passed after `WI-20260630-043` updated the quality gate to validate `/resources/diagrams/` against the greenfield Diagram Gallery contract while keeping `/resources/documents/` on the support-page schema.
@@ -59,6 +64,12 @@ Passed:
 - `npm run quality`: passed after `WI-20260630-044` with
   `AETHER_FLOW_SOURCE_ROOT` bound to the same clean committed source view.
 - `python3 scripts/smoke_test_site.py --base-url http://127.0.0.1:4321`: 92 routes passed after the source-derived refresh.
+- `WI-20260630-045` diagram rollout: 28 changed routes rendered a
+  `ComprehensionBlocks` static diagram block with manifest-backed PNG paths,
+  captions, provenance, and non-authority note.
+- Browser diagram QA after `WI-20260630-045`: 28 changed routes passed desktop
+  and mobile checks for nonzero loaded diagram dimensions and no document-level
+  horizontal overflow.
 
 Failed or blocked:
 

@@ -5,6 +5,8 @@ import SourceAuthoritySection from "../../../components/SourceAuthoritySection.a
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import distanceSnapshot from "../../../data/distance_to_gr_snapshot.json";
 import currentSnapshot from "../../../data/physics_current_state_snapshot.json";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const shortCommit = distanceSnapshot.source_commit
   ? `${distanceSnapshot.source_commit.slice(0, 12)}...`
@@ -217,6 +219,9 @@ const openBurdensSvg = `
       strengthen any claim.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsOpenBurdens} />
 
   <section id="open-burdens-table" class="track-page-band" aria-labelledby="open-burdens-table-title">
     <div class="track-page-heading">

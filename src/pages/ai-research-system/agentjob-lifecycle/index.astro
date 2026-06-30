@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const envelopeRows = [
   {
@@ -270,6 +272,9 @@ const agentJobSvg = `
       proof.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiAgentjobLifecycle} />
 
   <section id="agentjob-envelope" class="track-page-band" aria-labelledby="agentjob-envelope-title">
     <div class="track-page-heading">

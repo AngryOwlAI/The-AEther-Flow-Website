@@ -3,7 +3,8 @@ import CommandBand from "../../components/CommandBand.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { projectSourceNoticeDefaults } from "../../lib/siteContent";
+import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../lib/siteContent";
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsTrack;
 
@@ -171,6 +172,9 @@ const physicsOverviewSvg = `
       derivation, or promote a candidate beyond registered evidence.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsTrack} />
 
   <CommandBand
     id="physics-route-map"

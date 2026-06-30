@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const runtimeRows = [
   {
@@ -237,6 +239,9 @@ const runtimeSvg = `
       permission are separate facts.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiRuntimeRequirements} />
 
   <section id="runtime-tiers" class="track-page-band" aria-labelledby="runtime-tiers-title">
     <div class="track-page-heading">

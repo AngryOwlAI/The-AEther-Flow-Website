@@ -3,6 +3,8 @@ import CommandBand from "../../components/CommandBand.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { downloadStatusCounts } from "../../lib/manifests";
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../lib/siteContent";
 
 const liveResourceRoutes = [
   {
@@ -297,6 +299,9 @@ const resourcesSvg = `
       source inspection.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesIndex} />
 
   <CommandBand
     className="overview-panel overview-command-band"

@@ -3,7 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../../lib/siteContent";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsGrDerivationRoadmap;
 
@@ -180,6 +181,9 @@ const roadmapSvg = `
       still requires upstream source evidence and the relevant gate status.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsDerivationRoadmap} />
 
   <CommandBand
     id="roadmap-burdens"

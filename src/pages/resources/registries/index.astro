@@ -2,6 +2,8 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const registryRows = [
   {
@@ -220,6 +222,9 @@ const registriesSvg = `
       describes.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesRegistries} />
 
   <section id="registry-families" class="track-page-band" aria-labelledby="registry-families-title">
     <div class="track-page-heading">

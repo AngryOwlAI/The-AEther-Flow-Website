@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const preflightRows = [
   {
@@ -222,6 +224,9 @@ const memorySvg = `
       shelf; it does not become the book.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiMemoryPreflight} />
 
   <section id="preflight-chain" class="track-page-band" aria-labelledby="preflight-chain-title">
     <div class="track-page-heading">

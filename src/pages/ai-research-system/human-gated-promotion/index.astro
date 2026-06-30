@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const gateRows = [
   {
@@ -233,6 +235,9 @@ const gateSvg = `
       decisions remain separate from automated outcomes.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiHumanGatedPromotion} />
 
   <section id="human-gate-stack" class="track-page-band" aria-labelledby="human-gate-stack-title">
     <div class="track-page-heading">

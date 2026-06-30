@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const loopRows = [
   {
@@ -221,6 +223,9 @@ const improvementSvg = `
       promote physics claims, close source questions, or widen role authority.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiProjectSystemImprovement} />
 
   <section id="improvement-loop" class="track-page-band" aria-labelledby="improvement-loop-title">
     <div class="track-page-heading">

@@ -2,6 +2,8 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const folderRows = [
   {
@@ -268,6 +270,9 @@ const repositorySvg = `
       authority class and edit policy that lane carries.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesRepositoryMap} />
 
   <section id="folder-map" class="track-page-band" aria-labelledby="folder-map-title">
     <div class="track-page-heading">

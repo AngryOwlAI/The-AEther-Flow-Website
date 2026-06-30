@@ -1,3 +1,5 @@
+import type { ComprehensionContent } from "./comprehensionContent";
+
 export type SiteNavigationChild = {
   title: string;
   href: string;
@@ -474,6 +476,247 @@ export const diagramGalleryItems = [
   caption: string;
   provenance: string;
 }>;
+
+type DiagramGalleryItem = (typeof diagramGalleryItems)[number];
+
+const diagramGalleryByTitle = Object.fromEntries(
+  diagramGalleryItems.map((item) => [item.title, item]),
+) as Record<string, DiagramGalleryItem>;
+
+const requireDiagram = (title: string): DiagramGalleryItem => {
+  const diagram = diagramGalleryByTitle[title];
+  if (!diagram) {
+    throw new Error(`Missing public comprehension diagram: ${title}`);
+  }
+  return diagram;
+};
+
+export const greenfieldRouteDiagramBlocks = {
+  home: {
+    id: "home-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read Home as two tracks under one source-authority boundary.",
+    summary:
+      "The diagram keeps the physics research lane, AI research-agent workflow, and source-authority spine visible before readers choose a deeper route.",
+    diagram: requireDiagram("Home two-track map"),
+  },
+  physicsTrack: {
+    id: "physics-track-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read the physics track as status layers, not one promoted claim.",
+    summary:
+      "The diagram separates ontology, exact-GR benchmark status, derivation burdens, claim gates, and source authority so the route does not collapse orientation into proof.",
+    diagram: requireDiagram("Physics track status map"),
+  },
+  physicsOntology: {
+    id: "physics-ontology-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep vocabulary, source authority, and derivation boundaries distinct.",
+    summary:
+      "The ontology map shows where vocabulary orientation ends and where registered mathematics, benchmark status, and downstream prediction burdens begin.",
+    diagram: requireDiagram("Ontology boundary map"),
+  },
+  physicsExactGrBenchmark: {
+    id: "physics-benchmark-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep benchmark compatibility below derivation proof.",
+    summary:
+      "The benchmark ladder shows exact-GR compatibility, source derivation, and promotion as separate levels with separate evidence burdens.",
+    diagram: requireDiagram("Exact-GR benchmark boundary ladder"),
+  },
+  physicsDerivationRoadmap: {
+    id: "physics-roadmap-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read the derivation roadmap as a burden ladder.",
+    summary:
+      "The ladder names the open sequence from ontology primitives through metric behavior, matter coupling, equations, and benchmark promotion without discharging those burdens.",
+    diagram: requireDiagram("Physics derivation burden ladder"),
+  },
+  physicsOpenBurdens: {
+    id: "physics-open-burdens-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read open burdens as ledger states, not progress percentages.",
+    summary:
+      "The dashboard boundary diagram keeps Distance-to-GR ledger rows, blockers, and burden labels visible while preventing a progress-bar interpretation.",
+    diagram: requireDiagram("Distance-to-GR dashboard boundary"),
+  },
+  physicsFlowGeometry: {
+    id: "physics-flow-geometry-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep flow-geometry vocabulary below metric promotion.",
+    summary:
+      "The metric-response ladder is reused here because it illustrates the same protected boundary: geometry terms and response objects do not jump directly to matter coupling, Einstein equations, or GR promotion.",
+    diagram: requireDiagram("Metric response ladder"),
+  },
+  physicsClaimStatus: {
+    id: "physics-claim-status-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read claim status as a controlled lifecycle.",
+    summary:
+      "The claim-gates diagram keeps allowed language, blocked overreads, frozen results, open burdens, and human-gated states separated from one another.",
+    diagram: requireDiagram("Claim gates lifecycle"),
+  },
+  aiSystem: {
+    id: "ai-system-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read the AI research system as task authority, not autonomous proof.",
+    summary:
+      "The authority map shows request classification, source authority, task records, AgentJobs, validators, and bounded outputs in one controlled chain.",
+    diagram: requireDiagram("AI system task authority map"),
+  },
+  aiWorkflow: {
+    id: "ai-workflow-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Follow one request through one bounded AgentJob chain.",
+    summary:
+      "The workflow diagram shows the request, Director decision, allowlist, execution, validators, completion, handoff, and bounded PASS scope.",
+    diagram: requireDiagram("AI workflow bounded AgentJob chain"),
+  },
+  aiAgentjobLifecycle: {
+    id: "ai-agentjob-lifecycle-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read AgentJob lifecycle records as a narrowing chain.",
+    summary:
+      "The record-chain diagram shows how Director decisions, execution-role evidence, command receipts, completions, and handoffs close one transaction.",
+    diagram: requireDiagram("Director and AgentJob record chain"),
+  },
+  aiRolesAndSchemas: {
+    id: "ai-roles-schemas-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep role labels below schema and job authority.",
+    summary:
+      "The role stack shows that labels, schemas, execution-role records, AgentJob allowlists, and validators occupy distinct authority layers.",
+    diagram: requireDiagram("AI roles authority stack"),
+  },
+  aiHumanGatedPromotion: {
+    id: "ai-human-gated-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep human-gated promotion outside validator authority.",
+    summary:
+      "The human-gate map shows Gate Chair decisions, protected approvals, claim promotion, automation limits, and validator limits as separate boundaries.",
+    diagram: requireDiagram("Gate Chair and human gates"),
+  },
+  aiValidatorsAndHandoffs: {
+    id: "ai-validators-handoffs-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read PASS as scoped checked-state evidence.",
+    summary:
+      "The validator boundary diagram shows the changed surface, focused check, receipt, PASS scope, handoff, and the no-claim-promotion boundary.",
+    diagram: requireDiagram("Validator PASS boundary"),
+  },
+  aiMemoryPreflight: {
+    id: "ai-memory-preflight-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep retrieval below source inspection.",
+    summary:
+      "The source-first layers diagram shows memory, generated retrieval layers, registries, handoffs, and source inspection without allowing retrieval to become authority.",
+    diagram: requireDiagram("Memory source-first layers"),
+  },
+  aiProjectSystemImprovement: {
+    id: "ai-project-improvement-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read project-system improvement as a bounded repair loop.",
+    summary:
+      "The improvement diagram shows signal, classification, sidecar input, one AgentJob, evidence receipts, and close/defer/reject outcomes.",
+    diagram: requireDiagram("Project-system improvement loop"),
+  },
+  aiCurrentState: {
+    id: "ai-current-state-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read current state through task authority and freshness boundaries.",
+    summary:
+      "The AI authority map is reused here to keep dated snapshots, handoffs, source context, validators, and bounded outputs tied to tracked records.",
+    diagram: requireDiagram("AI system task authority map"),
+  },
+  aiRuntimeRequirements: {
+    id: "ai-runtime-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep tool capability separate from authorization.",
+    summary:
+      "The technical tiers diagram shows Node, Python, validators, browser checks, build tools, and the boundary that tool availability does not grant permission.",
+    diagram: requireDiagram("Technical tool authority tiers"),
+  },
+  resourcesIndex: {
+    id: "resources-index-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read resources as a manifest-backed reader layer.",
+    summary:
+      "The manifest chain shows source-manifest records, asset-manifest bytes, resource routes, downloads, hashes, status labels, and the no-authority-creation boundary.",
+    diagram: requireDiagram("Resources manifest chain"),
+  },
+  resourcesSourceAuthority: {
+    id: "resources-source-authority-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep website pages downstream from source authority.",
+    summary:
+      "The source-authority ladder shows source files and registries above generated derivatives, public pages, diagrams, and reader orientation.",
+    diagram: requireDiagram("Source authority ladder"),
+  },
+  resourcesRegistries: {
+    id: "resources-registries-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read registries as typed control records.",
+    summary:
+      "The claim-boundary explorer diagram is reused to show how registry rows feed checked snapshots and public readers while forbidden overreads remain blocked.",
+    diagram: requireDiagram("Claim boundary explorer"),
+  },
+  resourcesGeneratedDerivatives: {
+    id: "resources-derivatives-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep generated derivatives downstream from source and manifests.",
+    summary:
+      "The publication-provenance diagram shows source basis, route maps, page provenance, source manifests, asset manifests, static build output, and conflict paths back to source.",
+    diagram: requireDiagram("Publication provenance system"),
+  },
+  resourcesRetrievalLayers: {
+    id: "resources-retrieval-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Keep retrieval layers below canonical source inspection.",
+    summary:
+      "The source-first memory diagram shows memory, semantic extracts, mirrors, caches, registries, handoffs, and the final source-inspection boundary.",
+    diagram: requireDiagram("Memory source-first layers"),
+  },
+  resourcesPublicationProcess: {
+    id: "resources-publication-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read publication as review flow, not authority promotion.",
+    summary:
+      "The publication flow diagram shows brief, source spec, reader page, screenshots, human review, manifests, and provenance in one auditable chain.",
+    diagram: requireDiagram("Publication review flow"),
+  },
+  resourcesRepositoryMap: {
+    id: "resources-repository-map-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read repository topology through manifest and source boundaries.",
+    summary:
+      "The manifest chain is reused here to keep canonical source, public assets, generated derivatives, resource routes, and no-authority boundaries visible while reading folder lanes.",
+    diagram: requireDiagram("Resources manifest chain"),
+  },
+  resourcesSiteBuilderGuide: {
+    id: "resources-site-builder-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Build pages from source bundles through provenance.",
+    summary:
+      "The publication-provenance diagram shows the source-bundle-first workflow: inspect source, build the route, update manifests, validate, and hand off without strengthening claims.",
+    diagram: requireDiagram("Publication provenance system"),
+  },
+  resourcesLibrary: {
+    id: "resources-library-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Read the library as an internal-first shelf map.",
+    summary:
+      "The manifest chain shows how reader routes, public files, manifest records, hashes, and status labels organize inspection without becoming authority.",
+    diagram: requireDiagram("Resources manifest chain"),
+  },
+  resourcesReadingPaths: {
+    id: "resources-reading-paths-static-diagram",
+    eyebrow: "Static diagram",
+    title: "Route readers by audience and question while preserving source boundaries.",
+    summary:
+      "The specialist guided-starts diagram shows audience-specific paths into internal pages before provenance links or source inspection.",
+    diagram: requireDiagram("Specialist guided starts"),
+  },
+} satisfies Record<string, ComprehensionContent>;
 
 export const resourceGroups = [
   {

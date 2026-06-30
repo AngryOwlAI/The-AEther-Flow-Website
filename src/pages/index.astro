@@ -3,7 +3,8 @@ import CommandBand from "../components/CommandBand.astro";
 import EvidenceRail from "../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { projectSourceNoticeDefaults } from "../lib/siteContent";
+import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../lib/siteContent";
+import ComprehensionBlocks from "../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.home;
 
@@ -304,6 +305,9 @@ const agentMap = `
       </div>
     </Fragment>
   </CommandBand>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.home} />
 
   <CommandBand
     id="project-capabilities"

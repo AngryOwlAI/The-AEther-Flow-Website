@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const flowGeometrySourceNotice = {
   claimStatus: "geometry dictionary orientation",
@@ -194,6 +196,9 @@ const flowSvg = `
       promote without upstream source evidence.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsFlowGeometry} />
 
   <section id="flow-dictionary" class="track-page-band" aria-labelledby="flow-dictionary-title">
     <div class="track-page-heading">

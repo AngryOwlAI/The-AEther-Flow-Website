@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const snapshot = {
   capturedAt: "2026-06-30T18:07:57Z",
@@ -239,6 +241,9 @@ const currentStateSvg = `
       language.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiCurrentState} />
 
   <section id="ai-current-dashboard" class="track-page-band" aria-labelledby="ai-current-dashboard-title">
     <div class="track-page-heading">

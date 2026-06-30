@@ -3,7 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { projectSourceNoticeDefaults } from "../../../lib/siteContent";
+import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../../lib/siteContent";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
 
@@ -177,6 +178,9 @@ const benchmarkSvg = `
       Einstein equations, or promoted the benchmark through a protected gate.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsExactGrBenchmark} />
 
   <section id="benchmark-status" class="track-page-band" aria-labelledby="benchmark-status-title">
     <div class="track-page-heading">

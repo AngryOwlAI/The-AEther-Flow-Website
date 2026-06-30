@@ -3,6 +3,8 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const lifecycleRows = [
   {
@@ -267,6 +269,9 @@ const workflowSvg = `
       preserves boundaries while moving from request to handoff.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiWorkflow} />
 
   <section id="workflow-lifecycle" class="track-page-band" aria-labelledby="workflow-lifecycle-title">
     <div class="track-page-heading">

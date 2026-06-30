@@ -3,6 +3,8 @@ import CommandBand from "../../components/CommandBand.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../lib/siteContent";
 
 const aiRouteItems = [
   {
@@ -200,6 +202,9 @@ const aiOverviewSvg = `
       keep the workflow auditable.
     </p>
   </section>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiSystem} />
 
   <CommandBand
     id="ai-route-map"
