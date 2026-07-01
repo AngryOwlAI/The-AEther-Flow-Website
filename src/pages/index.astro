@@ -9,7 +9,7 @@ import ComprehensionBlocks from "../components/ComprehensionBlocks.astro";
 const sourceNotice = projectSourceNoticeDefaults.home;
 
 const physicsDetails = [
-  "Æther / Æther-flow ontology",
+  "Æther / Æther-Flow ontology",
   "Exact-GR benchmark package",
   "Open GR-derivation problem",
   "No-go and obstruction record",
@@ -82,9 +82,9 @@ const readerCapabilityRoutes = [
 
 const ontologyStatusRoutes = [
   {
-    title: "Æther Flow ontology",
+    title: "Æther / Æther-Flow ontology",
     href: "/physics/ontology/",
-    body: "Plain vocabulary for AEther, AEther-flow, observed space, S-time, expansion, and gravity-language, with boundaries around what those terms do not prove.",
+    body: "Plain vocabulary for Æther, Æther-Flow, observed space, S-time, expansion, and gravity-language, with boundaries around what those terms do not prove.",
   },
   {
     title: "GR derivation roadmap",
@@ -249,7 +249,7 @@ const agentMap = `
     className="overview-shell overview-command-hero"
     eyebrow="Dual research program"
     title="The Æther Flow Project"
-    lead="Start here to orient yourself: the project pairs a proposed Æther-flow physics ontology with a governed AI research system. This site explains the routes and boundaries; source files, registries, and reviewed records remain the authority."
+    lead="Start here to orient yourself: the project pairs a proposed Æther-Flow physics ontology with a governed AI research system. This site explains the routes and boundaries; source files, registries, and reviewed records remain the authority."
     headingLevel="h1"
   >
     <Fragment slot="visual">
@@ -266,19 +266,20 @@ const agentMap = `
 
   <section class="home-intro-panel" aria-label="Project introduction">
     <p>
-      The Æther Flow Project is presented here as a source-boundary-safe public
-      map. The physics side explores ontology, benchmark compatibility, and an
-      explicitly open derivation path; the AI research system explains how
-      bounded tasks, validators, memory preflight, and human review keep the
-      work inspectable. Resources then expose documents, registries,
-      derivatives, reading paths, and provenance without turning website copy
-      into source authority.
+      Æther / Æther-Flow ontology is the project's proposed source-side
+      vocabulary for a deeper substrate, ordered flow, observed space,
+      S-time, expansion, and gravity-language; it orients the model but does
+      not prove it. A General Relativity (GR) derivation would show, from
+      source-side mathematics and bridge laws, why ordinary GR emerges with
+      the required metric, matter coupling, field equations, and benchmark
+      behavior; that derivation remains open and claim-gated.
     </p>
   </section>
 
   <nav class="home-action-row" aria-label="Homepage primary actions">
-    <a class="primary-link" href="/physics/">Physics Research</a>
-    <a class="secondary-link" href="/ai-research-system/">AI Research System</a>
+    <a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>
+    <a class="secondary-link" href="/physics/">Physics</a>
+    <a class="secondary-link" href="/ai-research-system/">AI Research</a>
     <a class="secondary-link" href="/resources/">Resources</a>
   </nav>
 
@@ -335,10 +336,11 @@ const agentMap = `
   </CommandBand>
 
   <CommandBand
+    id="ontology-and-gr"
     className="overview-panel overview-command-band overview-physics-status-command"
     eyebrow="Physics status"
-    title="Ontology and GR derivation status"
-    lead="The ontology page gives vocabulary and model orientation. The derivation roadmap remains an open-burden map, not a completed proof or benchmark promotion."
+    title="Ontology and GR"
+    lead="The ontology page gives vocabulary and model orientation for Æther / Æther-Flow. The GR derivation roadmap remains an open-burden map, not a completed proof or benchmark promotion."
   >
     <EvidenceRail
       items={ontologyStatusRoutes.map((item) => ({ ...item, actionLabel: "Open route" }))}
@@ -351,7 +353,7 @@ const agentMap = `
         <div class="physics-status-video-frame">
           <iframe
             src="https://www.youtube-nocookie.com/embed/psbk97rd9T8?start=2&rel=0"
-            title="Supplemental video context for the AEther Flow physics status"
+            title="Supplemental video context for the Æther-Flow physics status"
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

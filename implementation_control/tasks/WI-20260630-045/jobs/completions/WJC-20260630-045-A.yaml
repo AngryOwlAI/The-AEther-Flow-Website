@@ -4,10 +4,10 @@ completion_id: "WJC-20260630-045-A"
 task_id: "WI-20260630-045"
 job_id: "WJ-20260630-045-A"
 created_utc: "2026-06-30T22:19:26Z"
-updated_utc: "2026-07-01T04:59:06Z"
+updated_utc: "2026-07-01T05:35:30Z"
 status: "completed"
 
-summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set, then applied the owner-requested Resources category cleanup and route-link contrast repair without creating new source authority or changing deployment state."
+summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set, then applied the owner-requested Resources category cleanup, route-link contrast repair, and Home Ontology/GR entry refinement without creating new source authority or changing deployment state."
 
 outputs:
   - path: "src/lib/siteContent.ts"
@@ -15,7 +15,7 @@ outputs:
     description: "Added the centralized greenfieldRouteDiagramBlocks registry that maps greenfield routes to existing source-backed diagram assets and bounded summaries."
   - path: "src/pages/index.astro"
     status: "modified"
-    description: "Added the Home two-track static diagram block."
+    description: "Added the Home two-track static diagram block, then refined Home intro copy, primary actions, and the Physics status/Ontology and GR section terminology."
   - path: "src/pages/physics/"
     status: "modified"
     description: "Added static diagram blocks to the six physics child routes and the physics overview route."
@@ -45,7 +45,8 @@ changed_files:
   - "implementation_control/handoffs/WH-20260630-045.md"
   - "implementation_control/handoffs/WH-20260630-045.yaml"
   - "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
-  - "src/styles/global.css"
+  - "public/files/manifests/page_provenance.json"
+  - "src/pages/index.astro"
 
 requirements_satisfied:
   - "Priority 1 greenfield routes now render source-backed static comprehension diagram blocks or low-risk reused diagram assets."
@@ -61,6 +62,7 @@ requirements_satisfied:
   - "Shared expanded diagram dialogs now render mobile `Open larger` views with a compact close bar, scrollable image-first stage, below-image caption text, and wider-than-viewport mobile diagram rendering."
   - "Owner feedback on Resources category cleanup was addressed by replacing raw route labels with page-name links in the `/resources/` route map, removing dedicated `Provenance and limits` sections from resource pages, and adding a public-comprehension validator guard against reintroduction."
   - "Owner feedback on Resources route-table link contrast was addressed by scoping `.greenfield-matrix` links to dark-surface text and hover colors."
+  - "Owner feedback on the Home entry surface was addressed by adding a concise Æther / Æther-Flow ontology description, a concise General Relativity (GR) derivation description, a yellow `Ontology and GR` in-page CTA, three dark route buttons for `Physics`, `AI Research`, and `Resources`, and corrected Æther / Æther-Flow terminology in the Home Physics status section."
   - "Owner review remains pending and deployment remains not authorized."
   - "No upstream source writes, dependency additions, push, deployment, route retirement, redirect changes, or owner-acceptance claims were made."
 
@@ -577,6 +579,69 @@ resource_route_link_contrast_closeout:
     source_manifest: "unchanged"
     curator_reports: "unchanged"
     note: "The repair changed shared CSS and implementation-control evidence only; no route source, public asset, source manifest, curator report, upstream source write, push, or deployment change was made."
+
+home_ontology_gr_entry_closeout:
+  refinement_id: "GF-014K"
+  checked_utc: "2026-07-01T05:35:30Z"
+  summary: "Refined the Home entry surface after owner review so the intro defines Æther / Æther-Flow ontology and General Relativity (GR) derivation status, while preserving the open-derivation boundary."
+  outputs:
+    - path: "src/pages/index.astro"
+      status: "modified"
+      description: "Rewrote the Home intro panel with concise ontology and GR-derivation descriptions, changed the yellow primary action to `Ontology and GR` with `#ontology-and-gr`, added dark `Physics`, `AI Research`, and `Resources` route buttons, renamed the Physics status command band to `Ontology and GR`, and corrected visible Home Physics-status terminology from AEther/AEther-flow forms to Æther/Æther-Flow."
+    - path: "public/files/manifests/page_provenance.json"
+      status: "modified"
+      description: "Regenerated the Home route local page hash against clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b."
+    - path: "implementation_control/handoffs/WH-20260630-045.md"
+      status: "modified"
+      description: "Recorded the Home Ontology and GR entry refinement and validation evidence."
+    - path: "implementation_control/handoffs/WH-20260630-045.yaml"
+      status: "modified"
+      description: "Recorded the Home Ontology and GR entry refinement and browser QA evidence."
+    - path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
+      status: "modified"
+      description: "Recorded the Home Ontology and GR entry refinement in completion evidence."
+  acceptance_checks:
+    - command: "rg -n \"AEther|AEther-flow|Æther-flow\" src/pages/index.astro"
+      status: "passed"
+      checked:
+        - "No Home route source matches remain for AEther, AEther-flow, or lowercase Æther-flow spelling."
+    - command: "Playwright snapshot and computed-style QA against http://127.0.0.1:4321/"
+      status: "passed"
+      checked:
+        - "The Home intro exposes the concise Æther / Æther-Flow ontology and General Relativity (GR) derivation descriptions."
+        - "The yellow primary link text is `Ontology and GR`, points to `#ontology-and-gr`, and navigates the page hash to `#ontology-and-gr`."
+        - "The target section title is `Ontology and GR` under the `Physics status` eyebrow."
+        - "The three dark route buttons are `Physics`, `AI Research`, and `Resources` with internal hrefs `/physics/`, `/ai-research-system/`, and `/resources/`."
+        - "The sampled dark route buttons computed to dark backgrounds and ivory text."
+        - "No document-level horizontal overflow appeared."
+    - command: "git diff --check"
+      status: "passed"
+    - command: "npm run validate:comprehension"
+      status: "passed"
+    - command: "npm run validate:svg"
+      status: "passed"
+    - command: "npm run validate:manifests"
+      status: "passed"
+    - command: "npm run validate:provenance"
+      status: "passed"
+    - command: "npm run build"
+      status: "passed"
+      checked:
+        - "64 static Astro pages built"
+    - command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-resources-x4jBjZ npm run validate"
+      status: "passed"
+      checked:
+        - "Aggregate website validation passed with curator bound to clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b."
+    - command: ".venv/bin/python -m pytest"
+      status: "passed"
+      checked:
+        - "79 Python tests passed"
+  manifest_result:
+    page_provenance: "updated"
+    asset_manifest: "unchanged"
+    source_manifest: "unchanged"
+    curator_reports: "unchanged"
+    note: "Only the Home route source hash changed; no upstream source write, source refresh, Mermaid source, PNG asset, source manifest, curator report, push, or deployment change was made."
 
 source_authority_boundary:
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
