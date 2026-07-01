@@ -1,66 +1,49 @@
 ---
 import CommandBand from "../../components/CommandBand.astro";
+import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DiagramGalleryList from "../../components/DiagramGalleryList.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { approvedDownloads } from "../../lib/manifests";
+import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
+import { diagramConceptGroups, diagramGalleryItems } from "../../lib/siteContent";
 
-const inventoryRows = [
-  {
-    status: "Greenfield inventory",
-    current: "Empty in GF-012.",
-    reason: "The active packet contains no individual diagram reapproval evidence.",
-    next: "Reapprove diagrams one by one with tracked source, static output, manifest status, caption, and provenance.",
-  },
-  {
-    status: "Static comprehension diagram",
-    current: "Retained as this route's diagram-publication contract.",
-    reason: "The validator requires the existing manifest-backed comprehension diagram and dossier contract.",
-    next: "Keep it as nearby explanatory material, not as gallery inventory.",
-  },
-  {
-    status: "Legacy gallery records",
-    current: "Not rendered as the GF-012 gallery inventory.",
-    reason: "The greenfield reset rule removes old inventory unless explicitly reapproved.",
-    next: "Review candidates in a future packet before restoring any public list item.",
-  },
-];
+const approvedDiagramPaths = new Set(
+  approvedDownloads.filter((item) => item.kind === "diagram").map((item) => item.path),
+);
+const seenDiagramPaths = new Set<string>();
+const approvedGalleryItems = diagramGalleryItems.filter((item) => {
+  if (!approvedDiagramPaths.has(item.src) || seenDiagramPaths.has(item.src)) {
+    return false;
+  }
+  seenDiagramPaths.add(item.src);
+  return true;
+});
+const approvedDiagramLabel =
+  approvedGalleryItems.length === 1
+    ? "approved public-comprehension PNG"
+    : "approved public-comprehension PNGs";
 
-const workflowRows = [
+const galleryStatusRows = [
   {
-    step: "Editable diagram source",
-    requirement: "Track the Mermaid or source file used to generate the visual.",
-    boundary: "Source for a visual is still not proof of the claim it explains.",
+    status: "Approved PNGs",
+    current: `${approvedGalleryItems.length} displayed once`,
+    reason:
+      "The gallery renders only approved comprehension PNGs generated from tracked Mermaid sources.",
+    boundary: "Approval here means website comprehension use, not source-claim authority.",
   },
   {
-    step: "Static generated output",
-    requirement: "Publish committed PNG or equivalent static output; do not depend on browser Mermaid runtime.",
+    status: "Caption",
+    current: "Interpretation stays in prose",
+    reason:
+      "Each figure keeps meaning in alt text, caption, nearby copy, and source provenance records.",
+    boundary: "A polished visual remains below source files, registries, and governed records.",
+  },
+  {
+    status: "Runtime",
+    current: "Static assets only",
+    reason: "Public pages use committed PNG assets instead of browser Mermaid rendering.",
     boundary: "Static output improves reliability and accessibility, not authority.",
-  },
-  {
-    step: "Manifest and hash",
-    requirement: "Record the public asset path, manifest id, status, and hash-backed identity.",
-    boundary: "A hash proves file identity only, not scientific correctness.",
-  },
-  {
-    step: "Caption and nearby prose",
-    requirement: "Put interpretation, labels, and claim boundaries in HTML text around the visual.",
-    boundary: "The reader should not infer authority from visual polish.",
-  },
-  {
-    step: "Explicit reapproval",
-    requirement: "Name the packet or owner decision that approves the diagram for the greenfield gallery.",
-    boundary: "Old inventory remains excluded until that evidence exists.",
-  },
-];
-
-const safeRows = [
-  {
-    label: "Safe summary",
-    text: "The diagram gallery shows manifest-backed visual aids grouped by concept, with editable sources, static PNG outputs, captions, provenance, and non-authority boundaries.",
-  },
-  {
-    label: "Unsafe summary",
-    text: "A diagram proves science, changes workflow authority, replaces source inspection, or needs Mermaid in the public browser runtime.",
   },
 ];
 
@@ -171,18 +154,19 @@ const diagramSvg = `
 
 <BaseLayout
   title="Diagram Gallery"
-  description="Diagram gallery for The AEther Flow Website, preserving static diagram publication discipline while resetting the greenfield inventory until individual diagrams are reapproved."
+  description="Diagram gallery for The AEther Flow Website with manifest-backed static comprehension diagrams grouped by reader concept."
   bodyClass="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"
 >
   <CommandBand
     className="overview-shell overview-command-hero"
     eyebrow="Resources / Diagram Gallery"
     title="Diagram Gallery"
-    lead="The gallery publishes diagrams only after source, static output, manifest status, caption, provenance, and approval evidence are present. In GF-012, the visible inventory is reset."
+    lead="The gallery publishes approved static comprehension diagrams as reader aids grouped by concept. Each visual remains downstream from tracked source, manifest status, caption, provenance, and source-authority boundaries."
     headingLevel="h1"
   >
     <div class="overview-actions" aria-label="Diagram gallery page actions">
-      <a class="primary-link" href="#inventory-status">Inventory status</a>
+      <a class="primary-link" href="#diagram-status">Diagram status</a>
+      <a class="secondary-link" href="#diagram-group-physics-title">Gallery</a>
       <a class="secondary-link" href="/resources/publication-process/">Publication</a>
       <a class="secondary-link" href="/resources/">Resources</a>
     </div>
@@ -199,22 +183,22 @@ const diagramSvg = `
 
   <section class="greenfield-intro-panel" aria-label="Diagram gallery introduction">
     <p>
-      The greenfield rule is conservative: old diagram inventory is not
-      republished unless an individual diagram has explicit reapproval
-      evidence. The route still documents the static diagram workflow and
-      keeps the existing comprehension diagram as explanatory material, not as
-      a restored gallery list.
+      Diagrams here are visual orientation aids. They can make relationships,
+      route boundaries, and publication flow easier to inspect, but they do
+      not prove science, promote claims, or replace source inspection.
     </p>
   </section>
 
-  <section id="inventory-status" class="track-page-band" aria-labelledby="inventory-status-title">
+  <ComprehensionBlocks content={resourcesDiagramsComprehension} />
+
+  <section id="diagram-status" class="track-page-band" aria-labelledby="diagram-status-title">
     <div class="track-page-heading">
-      <p class="eyebrow">Inventory status</p>
-      <h2 id="inventory-status-title">The GF-012 gallery inventory starts empty.</h2>
+      <p class="eyebrow">Manifest audit</p>
+      <h2 id="diagram-status-title">The gallery displays {approvedGalleryItems.length} {approvedDiagramLabel}.</h2>
       <p>
-        This packet authorizes a route reset, not diagram regeneration or asset
-        publication. Future candidates need explicit reapproval before they
-        appear as gallery entries.
+        The visible inventory is derived from approved diagram manifest rows
+        and the tracked gallery metadata. Source paths remain audit data in
+        manifests and dossiers rather than visible card copy.
       </p>
     </div>
     <table class="greenfield-matrix">
@@ -223,84 +207,15 @@ const diagramSvg = `
           <th scope="col">Surface</th>
           <th scope="col">Current state</th>
           <th scope="col">Reason</th>
-          <th scope="col">Next requirement</th>
-        </tr>
-      </thead>
-      <tbody>
-        {inventoryRows.map((row) => (
-          <tr>
-            <th scope="row">{row.status}</th>
-            <td>{row.current}</td>
-            <td>{row.reason}</td>
-            <td>{row.next}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="gallery-empty-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Gallery inventory</p>
-      <h2 id="gallery-empty-title">No diagram entries are visible until reapproval exists.</h2>
-      <p>
-        The empty state is intentional and accessible. It is safer than
-        carrying old inventory forward without a packet-level approval trail.
-      </p>
-    </div>
-    <DiagramGalleryList
-      items={[]}
-      emptyTitle="Greenfield diagram inventory is empty."
-      emptyBody="GF-012 contains no individual diagram reapproval evidence, so the gallery format remains but no legacy item is republished."
-    />
-  </section>
-
-  <section class="track-page-band" aria-labelledby="comprehension-diagram-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Diagram-publication contract</p>
-      <h2 id="comprehension-diagram-title">The route keeps one static comprehension diagram as workflow evidence.</h2>
-      <p>
-        This image is the manifest-backed route diagram from the content
-        dossier. It explains the publication boundary; it is not a gallery
-        inventory item and not source authority.
-      </p>
-    </div>
-    <figure class="support-figure diagram-release-flow" aria-labelledby="comprehension-diagram-caption">
-      <img
-        src="/assets/diagrams/comprehension/resources-diagram-publication-boundary.png"
-        alt="Mermaid source, generated PNG, manifest entry, diagram gallery, nearby prose and caption, hash-backed asset status, and diagram is not source authority."
-        loading="lazy"
-        decoding="async"
-      />
-      <figcaption id="comprehension-diagram-caption">
-        The diagram illustrates how a diagram moves from source file to
-        rendered image, manifest entry, gallery placement, and explanatory copy.
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="workflow-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Static diagram workflow</p>
-      <h2 id="workflow-title">Every future gallery item needs a complete publication chain.</h2>
-      <p>
-        The chain keeps diagram work deterministic and auditable without
-        implying that diagrams prove the content they depict.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Step</th>
-          <th scope="col">Requirement</th>
           <th scope="col">Boundary</th>
         </tr>
       </thead>
       <tbody>
-        {workflowRows.map((row) => (
+        {galleryStatusRows.map((row) => (
           <tr>
-            <th scope="row">{row.step}</th>
-            <td>{row.requirement}</td>
+            <th scope="row">{row.status}</th>
+            <td>{row.current}</td>
+            <td>{row.reason}</td>
             <td>{row.boundary}</td>
           </tr>
         ))}
@@ -308,32 +223,19 @@ const diagramSvg = `
     </table>
   </section>
 
-  <section class="track-page-band" aria-labelledby="safe-unsafe-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Safe and unsafe readings</p>
-      <h2 id="safe-unsafe-title">The boundary is about interpretation, not image quality.</h2>
-      <p>
-        The dossier summary remains visible because diagram overreads are a
-        high-risk failure mode.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Type</th>
-          <th scope="col">Summary</th>
-        </tr>
-      </thead>
-      <tbody>
-        {safeRows.map((row) => (
-          <tr>
-            <th scope="row">{row.label}</th>
-            <td>{row.text}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
+  {diagramConceptGroups.map((group) => (
+    <section
+      class="track-page-band"
+      aria-labelledby={`diagram-group-${group.id}-title`}
+    >
+      <div class="track-page-heading">
+        <p class="eyebrow">Concept group</p>
+        <h2 id={`diagram-group-${group.id}-title`}>{group.title}</h2>
+        <p>{group.body}</p>
+      </div>
+      <DiagramGalleryList items={approvedGalleryItems.filter((item) => item.group === group.id)} />
+    </section>
+  ))}
 
   <CommandBand
     className="overview-panel overview-command-band"
