@@ -40,6 +40,10 @@ those files are outside the active packet's write scope.
 Owner-requested diagram caption weight feedback was resolved by rendering
 diagram description captions and expanded-dialog captions as regular note text
 rather than bold label text.
+Owner-requested Diagram Gallery fit-rule feedback was resolved by making shared
+comprehension diagrams default to full route-column width, removing the
+automatic repeated post-diagram note, and adding a source-level comprehension
+validator guard against the old width cap and note injection.
 
 ## Route Set For Review
 
@@ -93,6 +97,14 @@ Passed:
 - `WI-20260630-045` caption weight refinement: shared diagram descriptions,
   gallery boundary notes, and expanded-dialog captions render as regular note
   text rather than bold label text.
+- `WI-20260630-045` Diagram Gallery rule refinement: shared comprehension
+  diagrams now default to the route content width, the automatic post-diagram
+  note is gone, and `npm run validate:comprehension` fails closed if the old
+  default note, `"default"` fit, or `940px` width cap returns.
+- Browser QA for `http://127.0.0.1:4321/resources/diagrams/`: the Diagram
+  comprehension figure and manifest audit table aligned at `1180px` on desktop
+  and `358px` on mobile; the old repeated note was absent, image dimensions
+  were nonzero, and no document-level horizontal overflow appeared.
 
 Failed or blocked:
 

@@ -36,6 +36,11 @@ RUNTIME_MERMAID_PATTERNS = [
     re.compile(r"@mermaid-js/mermaid(?!-cli)", re.IGNORECASE),
 ]
 
+OLD_REPEATED_DIAGRAM_NOTE = (
+    "The diagram is a static reader aid. It does not replace the source files, "
+    "route dossiers, or claim-status records that govern the topic."
+)
+
 
 @dataclass(frozen=True)
 class RemediatedRoute:
@@ -564,6 +569,81 @@ def validate_runtime_mermaid(repo_root: Path) -> list[str]:
     return errors
 
 
+def validate_comprehension_figure_contract(repo_root: Path) -> list[str]:
+    errors: list[str] = []
+    component_path = repo_root / "src/components/ComprehensionBlocks.astro"
+    model_path = repo_root / "src/lib/comprehensionContent.ts"
+    css_path = repo_root / "src/styles/global.css"
+
+    if not component_path.is_file():
+        errors.append(f"{component_path.relative_to(repo_root)}: missing shared renderer")
+    else:
+        component_text = component_path.read_text(encoding="utf-8")
+        if OLD_REPEATED_DIAGRAM_NOTE in component_text:
+            errors.append(
+                f"{component_path.relative_to(repo_root)}: repeated default diagram note "
+                "must not be injected by the shared renderer"
+            )
+        if "defaultDiagramNote" in component_text:
+            errors.append(
+                f"{component_path.relative_to(repo_root)}: defaultDiagramNote must not return"
+            )
+        if 'content.diagramFit ?? "full-width"' not in component_text:
+            errors.append(
+                f"{component_path.relative_to(repo_root)}: comprehension diagrams must "
+                'default to diagramFit "full-width"'
+            )
+        if "content.diagramNote === false" in component_text:
+            errors.append(
+                f"{component_path.relative_to(repo_root)}: diagram notes must be explicit "
+                "strings, not default notes suppressed by false"
+            )
+
+    if not model_path.is_file():
+        errors.append(f"{model_path.relative_to(repo_root)}: missing comprehension model")
+    else:
+        model_text = model_path.read_text(encoding="utf-8")
+        fit_match = re.search(
+            r"export\s+type\s+ComprehensionDiagramFit\s*=\s*([^;]+);",
+            model_text,
+        )
+        if not fit_match:
+            errors.append(
+                f"{model_path.relative_to(repo_root)}: missing ComprehensionDiagramFit type"
+            )
+        elif '"default"' in fit_match.group(1) or "'default'" in fit_match.group(1):
+            errors.append(
+                f"{model_path.relative_to(repo_root)}: ComprehensionDiagramFit must not "
+                'reintroduce "default"'
+            )
+        if "diagramNote?: string | false" in model_text:
+            errors.append(
+                f"{model_path.relative_to(repo_root)}: diagramNote must be an explicit "
+                "optional string"
+            )
+
+    if not css_path.is_file():
+        errors.append(f"{css_path.relative_to(repo_root)}: missing global styles")
+    else:
+        css_text = css_path.read_text(encoding="utf-8")
+        wrap_match = re.search(r"\.comprehension-diagram-wrap\s*\{(?P<body>.*?)\}", css_text, re.S)
+        if not wrap_match:
+            errors.append(f"{css_path.relative_to(repo_root)}: missing diagram wrapper rule")
+        else:
+            body = wrap_match.group("body")
+            if "max-width: 940px" in body or "max-width: 940" in body:
+                errors.append(
+                    f"{css_path.relative_to(repo_root)}: base comprehension diagram "
+                    "wrapper must not be capped at the old 940px width"
+                )
+            if "width: 100%" not in body or "max-width: none" not in body:
+                errors.append(
+                    f"{css_path.relative_to(repo_root)}: base comprehension diagram "
+                    "wrapper must span the route content column"
+                )
+    return errors
+
+
 def validate_route_wiring(route: RemediatedRoute, repo_root: Path) -> list[str]:
     errors: list[str] = []
     page = repo_root / route.local_page_source
@@ -665,6 +745,7 @@ def main() -> int:
         errors.extend(validate_manifests(route, source_manifest, asset_manifest))
 
     errors.extend(validate_runtime_mermaid(repo_root))
+    errors.extend(validate_comprehension_figure_contract(repo_root))
     errors.extend(validate_human_review(repo_root))
 
     if errors:

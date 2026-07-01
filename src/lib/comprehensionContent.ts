@@ -22,7 +22,7 @@ export interface ComprehensionDiagram {
   provenance: string;
 }
 
-export type ComprehensionDiagramFit = "default" | "full-width" | "viewport-contained";
+export type ComprehensionDiagramFit = "full-width" | "viewport-contained";
 
 export interface ComprehensionLink {
   title: string;
@@ -53,7 +53,7 @@ export interface ComprehensionContent {
   diagram?: ComprehensionDiagram;
   diagramFit?: ComprehensionDiagramFit;
   diagramExpandable?: boolean;
-  diagramNote?: string | false;
+  diagramNote?: string;
   mechanismSteps?: ComprehensionStep[];
   terms?: ComprehensionTerm[];
   boundaries?: ComprehensionCard[];

@@ -2885,7 +2885,8 @@ html:has(body.project-overview-page) {
 .comprehension-diagram-wrap {
   display: grid;
   gap: 0.8rem;
-  max-width: 940px;
+  width: 100%;
+  max-width: none;
 }
 
 .comprehension-diagram-wrap--full-width,

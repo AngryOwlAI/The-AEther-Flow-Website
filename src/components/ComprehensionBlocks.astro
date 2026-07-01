@@ -8,15 +8,10 @@ interface Props {
 }
 
 const { content, className = "" } = Astro.props;
-const diagramFit = content.diagramFit ?? "default";
-const diagramFitClass =
-  diagramFit === "default" ? "" : `comprehension-diagram-wrap--${diagramFit}`;
-const figureFitClass =
-  diagramFit === "default" ? "" : `comprehension-figure--${diagramFit}`;
-const defaultDiagramNote =
-  "The diagram is a static reader aid. It does not replace the source files, route dossiers, or claim-status records that govern the topic.";
-const diagramNote =
-  content.diagramNote === false ? "" : content.diagramNote ?? defaultDiagramNote;
+const diagramFit = content.diagramFit ?? "full-width";
+const diagramFitClass = `comprehension-diagram-wrap--${diagramFit}`;
+const figureFitClass = `comprehension-figure--${diagramFit}`;
+const diagramNote = content.diagramNote?.trim();
 ---
 
 <section

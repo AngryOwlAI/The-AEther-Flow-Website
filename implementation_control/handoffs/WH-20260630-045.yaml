@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-07-01T01:08:27Z"
+updated_utc: "2026-07-01T02:10:50Z"
 status: "active"
 
 task_id: "WI-20260630-045"
@@ -12,7 +12,7 @@ completion_record:
   completion_id: "WJC-20260630-045-A"
   path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
 
-summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform and `/resources/diagrams/` gallery restoration."
+summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, `/resources/diagrams/` gallery restoration, and the shared comprehension diagram fit rule."
 
 current_state:
   - "WI-20260630-044 is completed, checkpointed, and superseded."
@@ -23,6 +23,7 @@ current_state:
   - "Owner feedback on caption format was addressed inside the active write boundary by replacing warning/source-path figure captions with descriptive figure-note copy and by removing visible Mermaid source paths from shared figure/gallery rendering."
   - "Owner feedback on caption weight was addressed by rendering diagram description captions and expanded-dialog captions as regular note text instead of bold label text."
   - "Owner feedback on `/resources/diagrams/` was addressed by restoring grouped gallery wiring from approved manifest-backed static diagram assets while keeping Mermaid source paths in manifests and dossiers rather than visible card text."
+  - "Owner feedback on the `/resources/diagrams/` Diagram comprehension figure was addressed by making shared comprehension diagrams default to full route-column width, removing the automatic repeated post-diagram note, and adding a validator guard against the old behavior."
   - "Legacy project-route captions with old warning-style language remain outside this packet's authorized write paths and are recorded as follow-up scope."
   - "Diagrams must remain reader aids and must not create source authority, proof authority, claim promotion, owner acceptance, deployment readiness, or upstream source changes."
   - "No deployment, push, upstream source-project write, source refresh, dependency addition, route retirement, redirect change, or owner acceptance is authorized."
@@ -74,6 +75,9 @@ browser_qa:
     status: "passed"
   - id: "resources-diagrams-gallery-qa"
     command: "HTML and Playwright browser image-dimension checks against http://127.0.0.1:4321/resources/diagrams/"
+    status: "passed"
+  - id: "resources-diagrams-figure-rule-qa"
+    command: "Playwright desktop/mobile alignment and repeated-note checks against http://127.0.0.1:4321/resources/diagrams/"
     status: "passed"
 
 next_recommended_action:

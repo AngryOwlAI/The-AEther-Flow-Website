@@ -499,8 +499,6 @@ const withGreenfieldDiagramDefaults = <T extends Record<string, ComprehensionCon
       key,
       {
         diagramExpandable: true,
-        diagramFit: "full-width",
-        diagramNote: false,
         ...block,
       },
     ]),
