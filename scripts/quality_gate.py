@@ -27,11 +27,15 @@ RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA = {
 }
 RESOURCE_ROUTES_REQUIRING_GREENFIELD_SCHEMA = {
     "/resources/diagrams/": [
-        'class="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page"',
+        (
+            'class="project-overview-page project-track-page resources-greenfield-page '
+            'ai-greenfield-page"'
+        ),
         'class="command-band overview-shell overview-command-hero"',
         'class="track-map-svg physics-greenfield-svg"',
-        "Greenfield diagram inventory is empty.",
-        'id="comprehension-diagram-title"',
+        'id="resources-diagrams-comprehension-title"',
+        'id="diagram-status-title"',
+        'class="diagram-gallery-list"',
     ],
 }
 RESOURCE_SOURCE_AUTHORITY_SECTION_SNIPPETS = {

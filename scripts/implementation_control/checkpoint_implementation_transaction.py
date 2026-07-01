@@ -153,14 +153,14 @@ def extract_completion_paths(value: Any) -> list[str]:
             paths.extend(extract_completion_paths(item))
         return paths
     if isinstance(value, dict):
-        paths: list[str] = []
+        mapping_paths: list[str] = []
         for key in ("path", "file", "relative_path", "repo_relative_path"):
             item = value.get(key)
             if isinstance(item, str):
-                paths.append(item)
+                mapping_paths.append(item)
         for key in ("paths", "files", "changed_files", "changed_paths"):
-            paths.extend(extract_completion_paths(value.get(key)))
-        return paths
+            mapping_paths.extend(extract_completion_paths(value.get(key)))
+        return mapping_paths
     return []
 
 

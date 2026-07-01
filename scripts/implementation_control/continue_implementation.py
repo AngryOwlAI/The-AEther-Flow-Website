@@ -10,7 +10,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -463,19 +462,19 @@ def resolve_continue_context(repo_root: Path = REPO_ROOT) -> tuple[dict[str, Any
         and not current_job_pointer
         and not handoff_pointer
     ):
-        payload = blocked_payload(repo_root, [])
-        payload["status"] = "no_action"
-        payload["errors"] = []
-        payload["boundary"]["upstream_write_status"] = str(
+        no_action_payload = blocked_payload(repo_root, [])
+        no_action_payload["status"] = "no_action"
+        no_action_payload["errors"] = []
+        no_action_payload["boundary"]["upstream_write_status"] = str(
             repository_boundary.get("upstream_write_status", "unknown")
         )
-        payload["boundary"]["deployment_status"] = str(
+        no_action_payload["boundary"]["deployment_status"] = str(
             repository_boundary.get("deployment_status", "unknown")
         )
-        payload["next_recommended_action"] = next_action_summary(
+        no_action_payload["next_recommended_action"] = next_action_summary(
             program_state.get("next_recommended_action")
         )
-        return payload, 0
+        return no_action_payload, 0
 
     task_relative_path: Path | None = None
     job_relative_path: Path | None = None

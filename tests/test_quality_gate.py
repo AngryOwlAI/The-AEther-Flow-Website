@@ -73,11 +73,13 @@ def test_resource_greenfield_schema_is_required_for_diagrams(tmp_path: Path) -> 
     page = dist / "resources/diagrams/index.html"
     page.parent.mkdir(parents=True)
     page.write_text(
-        '<body class="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page">'
+        '<body class="project-overview-page project-track-page resources-greenfield-page '
+        'ai-greenfield-page">'
         '<section class="command-band overview-shell overview-command-hero">'
         '<svg class="track-map-svg physics-greenfield-svg"></svg>'
-        "Greenfield diagram inventory is empty."
-        '<h2 id="comprehension-diagram-title">Static diagram contract</h2>'
+        '<h2 id="resources-diagrams-comprehension-title">Static diagram contract</h2>'
+        '<h2 id="diagram-status-title">The gallery displays approved PNGs.</h2>'
+        '<div class="diagram-gallery-list"></div>'
         "</section></body>",
         encoding="utf-8",
     )
@@ -92,7 +94,8 @@ def test_resource_greenfield_schema_reports_missing_diagram_contract(tmp_path: P
     page = dist / "resources/diagrams/index.html"
     page.parent.mkdir(parents=True)
     page.write_text(
-        '<body class="project-overview-page project-track-page resources-greenfield-page ai-greenfield-page">'
+        '<body class="project-overview-page project-track-page resources-greenfield-page '
+        'ai-greenfield-page">'
         '<section class="command-band overview-shell overview-command-hero"></section>'
         "</body>",
         encoding="utf-8",

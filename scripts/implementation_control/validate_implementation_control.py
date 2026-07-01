@@ -371,6 +371,7 @@ def validate_completion_pointer(
 ) -> None:
     if pointer is None:
         return
+    path_value: Any
     if isinstance(pointer, str):
         path_value = pointer
         completion_id = ""
