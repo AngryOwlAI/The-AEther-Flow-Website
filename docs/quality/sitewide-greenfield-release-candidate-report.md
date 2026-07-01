@@ -125,7 +125,12 @@ Passed:
   `2a934c29b58e84aa913a5088a8388bd259f6370b`, and `npm run
   validate:comprehension` passed with the new guard against
   visual-description captions for future inline animated SVG hero figures.
-- Final GF-014I validation: `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate`
+- `WI-20260630-045` animated SVG caption label and capitalization refinement:
+  the visible `Fact:` prefix was removed from greenfield animated SVG hero
+  captions, sentence starts were capitalized, and `npm run
+  validate:comprehension` passed with guards against visible `Fact:` labels and
+  lowercase caption starts.
+- Final GF-014K validation: `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate`
   passed against clean committed upstream source commit
   `2a934c29b58e84aa913a5088a8388bd259f6370b`; `npm run
   validate:implementation-control` passed; `.venv/bin/python -m pytest` passed

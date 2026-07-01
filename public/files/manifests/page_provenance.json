@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-01T03:06:52.954884+00:00",
+  "generated_at": "2026-07-01T03:17:19.067370+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "2a934c29b58e84aa913a5088a8388bd259f6370b",
   "source_commit_date": "2026-06-30T14:57:31-06:00",
@@ -8,7 +8,7 @@
     {
       "route_path": "/",
       "local_page_source": "src/pages/index.astro",
-      "local_page_sha256": "8e093785bc80ceab6c395b2392d90379b0f6f0ff0c7db19b9bc6676ebe53e941",
+      "local_page_sha256": "290fe1a6b82cb9443d95b61c5081f2fd6c8e33c4d228353a880c1f7a177245b1",
       "title": "The \u00c6ther Flow Project",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -64,7 +64,7 @@
     {
       "route_path": "/physics/",
       "local_page_source": "src/pages/physics/index.astro",
-      "local_page_sha256": "b8cd2341bdf2b500c9aafbf2bfbcb440f121107a433454e67dea30df31ff76bd",
+      "local_page_sha256": "5b69d4d2abc609826ad63dc816d5f30e05ec49274debeedcdc979ae07dd6b5f6",
       "title": "Physics Research",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -120,7 +120,7 @@
     {
       "route_path": "/physics/ontology/",
       "local_page_source": "src/pages/physics/ontology/index.astro",
-      "local_page_sha256": "2a2a5a008f2c22f496ee932ba2108041b22b751f00a8cb6cea7c83ad9ea55c3d",
+      "local_page_sha256": "3ad44007928331cc5637c4366915e82433d82557ad3f930db84ea49758c9caf0",
       "title": "AEther-Flow Ontology",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -185,7 +185,7 @@
     {
       "route_path": "/physics/exact-gr-benchmark/",
       "local_page_source": "src/pages/physics/exact-gr-benchmark/index.astro",
-      "local_page_sha256": "27e426bc2bd8e1d172cbbfce9e740fd3041c2e03a87896a29d11463fca23ce6d",
+      "local_page_sha256": "a455991a82b92027ffc290cdd98dacbb35acfb50a0211289eb1e5dd09e4f30ff",
       "title": "Exact-GR Benchmark",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -250,7 +250,7 @@
     {
       "route_path": "/physics/derivation-roadmap/",
       "local_page_source": "src/pages/physics/derivation-roadmap/index.astro",
-      "local_page_sha256": "86685e326d4a3eef7a6b251b227926ad1d2a38aed0701735d3c7b6b7c88a0fd8",
+      "local_page_sha256": "f83de40b65603c1be9a023f395aa2c0f8b8fb21c4b8da09152bb19fb2a98f336",
       "title": "Derivation Roadmap",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -306,7 +306,7 @@
     {
       "route_path": "/physics/flow-geometry/",
       "local_page_source": "src/pages/physics/flow-geometry/index.astro",
-      "local_page_sha256": "299db2284cac417ac23ceb13205d27d0d3674bb608bcb2f3ba99d22ab4e8ed82",
+      "local_page_sha256": "66c24d817f3c693a32e985492bf208de464ed6eec0c89e36291472437bb3e9c8",
       "title": "Flow Geometry",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -371,7 +371,7 @@
     {
       "route_path": "/physics/claim-status/",
       "local_page_source": "src/pages/physics/claim-status/index.astro",
-      "local_page_sha256": "0fd462c0c46cdfbce93b0818f2b7baba1d7f7b588506b0e267d61f6da115877e",
+      "local_page_sha256": "3850932ac3e15d4f20eea9299db0af0dda3f6dc799090c40f20a69902040c8b4",
       "title": "Physics Claim Status",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -436,7 +436,7 @@
     {
       "route_path": "/physics/open-burdens/",
       "local_page_source": "src/pages/physics/open-burdens/index.astro",
-      "local_page_sha256": "2323d36b3bb89fe0e821269e6b942b14fa3a111d54b7c1f786c8a3fc54a29153",
+      "local_page_sha256": "4eadfab859cea496b5d943b5d16e944f85fd0d37356a487522a788db6e30bfeb",
       "title": "Open Burdens",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -510,7 +510,7 @@
     {
       "route_path": "/ai-research-system/",
       "local_page_source": "src/pages/ai-research-system/index.astro",
-      "local_page_sha256": "bb9e3e95d9e3811884f7ee98b11312af0c0a46a54484d2d58856927d23defcd9",
+      "local_page_sha256": "6df49796fc20839f4ca13c6275189ff471f8571c590d8cb4de54d686836f8616",
       "title": "AI Research System",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -584,7 +584,7 @@
     {
       "route_path": "/ai-research-system/current-state/",
       "local_page_source": "src/pages/ai-research-system/current-state/index.astro",
-      "local_page_sha256": "981db05861b8985d955a648a956bb96582311ce48a7b225e95b03ca6fd247625",
+      "local_page_sha256": "be8b1c97d53cdfafd18cebefab909d832d4307e62e5e327f518d086b11fb96b5",
       "title": "AI Current State",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -649,7 +649,7 @@
     {
       "route_path": "/ai-research-system/workflow/",
       "local_page_source": "src/pages/ai-research-system/workflow/index.astro",
-      "local_page_sha256": "2e6ccf3bdc04d2891424154bd024dbd94aa757cf5750e8baf2bc6c3e89966d3f",
+      "local_page_sha256": "87e8789f9d6bf8dbff8e2fe2d6fc12668333b500a371bb6db2eb5125fd504bc1",
       "title": "Workflow",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -759,7 +759,7 @@
     {
       "route_path": "/ai-research-system/agentjob-lifecycle/",
       "local_page_source": "src/pages/ai-research-system/agentjob-lifecycle/index.astro",
-      "local_page_sha256": "96021065ca275905faaf887582815466674b6ab5dbce4a01de6560cc32aa6a25",
+      "local_page_sha256": "3ce67a05dd37314aa3dde8e3df754fdd833617fdad25e4679159293a570fb9b9",
       "title": "AgentJob Lifecycle",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -842,7 +842,7 @@
     {
       "route_path": "/ai-research-system/roles-and-schemas/",
       "local_page_source": "src/pages/ai-research-system/roles-and-schemas/index.astro",
-      "local_page_sha256": "9ec6e0734817d0e2dcc6bafb6ddef87862f9c812b6cf568aa14b0f3c2d00de59",
+      "local_page_sha256": "c046ac746fe19f32c8c2cc064fe3c179bbce7e529c3af28816d609af7da51584",
       "title": "Roles and Schemas",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -961,7 +961,7 @@
     {
       "route_path": "/ai-research-system/human-gated-promotion/",
       "local_page_source": "src/pages/ai-research-system/human-gated-promotion/index.astro",
-      "local_page_sha256": "bb490c908a642e2329cffcc20f74b01df0c0e82de578af8004dd3f37a3eece51",
+      "local_page_sha256": "5250a0f4032423c754bfe9050df15e1fbe2ee51600e3d0b338025e2c310dad3c",
       "title": "Human-Gated Promotion",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1044,7 +1044,7 @@
     {
       "route_path": "/ai-research-system/validators-and-handoffs/",
       "local_page_source": "src/pages/ai-research-system/validators-and-handoffs/index.astro",
-      "local_page_sha256": "0e3f68f6bafa496bc0d768e3de32e6b8bfa9e7cadc1419c53a0b9f7f17638693",
+      "local_page_sha256": "ee4d9ce50e47c30fce296d8ba9470c4c6d020587db657f98ead2306d16dea526",
       "title": "Validators and Handoffs",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1145,7 +1145,7 @@
     {
       "route_path": "/ai-research-system/memory-preflight/",
       "local_page_source": "src/pages/ai-research-system/memory-preflight/index.astro",
-      "local_page_sha256": "18f49b38ebc328d802acea9e743ce8605704abe77c6158fda961d2cb705abb08",
+      "local_page_sha256": "b6b3d80d25e66439019a66c4e75d0d1f9531da9eccc7c2931a8646a202bd046d",
       "title": "Memory Preflight",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1237,7 +1237,7 @@
     {
       "route_path": "/ai-research-system/project-system-improvement/",
       "local_page_source": "src/pages/ai-research-system/project-system-improvement/index.astro",
-      "local_page_sha256": "40b7819b1ac2acff0667883854865cf0a243ac847b474ed2c183654c00604ddb",
+      "local_page_sha256": "93236621e1d87e652be5297e8fd507e6b4a07b9d02c93dd26678d83c2e1e5502",
       "title": "Project-System Improvement",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1311,7 +1311,7 @@
     {
       "route_path": "/ai-research-system/runtime-requirements/",
       "local_page_source": "src/pages/ai-research-system/runtime-requirements/index.astro",
-      "local_page_sha256": "446db5514b3c7353b144b031124ac1cfa547ccfa13d78ce5b613f5946c0b9bdd",
+      "local_page_sha256": "5833144faa52374df9c953f1981ae7b676f346e9f6f0f72f2e5456f593a18155",
       "title": "Runtime Requirements",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1403,7 +1403,7 @@
     {
       "route_path": "/resources/guided-starts/general-public/",
       "local_page_source": "src/pages/resources/guided-starts/general-public/index.astro",
-      "local_page_sha256": "16b6942f96928fcaaeb0fa981514a8d622fe2e3f725c212334d179e31d38c2ba",
+      "local_page_sha256": "864f26494c5b3447e25afc1cef5eaa54c95369e85d8ef7bae5e6367ffb1b773f",
       "title": "General-Public Guided Start",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1733,7 +1733,7 @@
     {
       "route_path": "/resources/documents/",
       "local_page_source": "src/pages/resources/documents.astro",
-      "local_page_sha256": "f529260d34adfc9dd5582b5f65cedb98d42c7e2fce742f10b8a98103a6816f77",
+      "local_page_sha256": "6c4295bd6d7608b0220767a1ac0c70ba3cb032807c415a65d15905cae8146881",
       "title": "Ontology Documents",
       "adaptation_type": "asset_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1789,7 +1789,7 @@
     {
       "route_path": "/resources/diagrams/",
       "local_page_source": "src/pages/resources/diagrams.astro",
-      "local_page_sha256": "31b201e990b7924a56da6e2b6605a530c3a08c377ee76813208338ec9dd8931e",
+      "local_page_sha256": "e9f9cc6afc04f75aa8ce3102568b9bdc1dc16e0d1e0869be6eb690617ad3b32d",
       "title": "Diagram Gallery",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1836,7 +1836,7 @@
     {
       "route_path": "/resources/",
       "local_page_source": "src/pages/resources/index.astro",
-      "local_page_sha256": "d3f4e471b48e1d7060975965c99d1d20323efeff597ec6a6e42a25800bd5a9ea",
+      "local_page_sha256": "ef6a03421ee08e9cbc6b70e4607010e8ed2ba1c8fc2390e7f0145fdd6f046ced",
       "title": "Resources",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1937,7 +1937,7 @@
     {
       "route_path": "/resources/source-authority/",
       "local_page_source": "src/pages/resources/source-authority/index.astro",
-      "local_page_sha256": "9d1e2f7abf1832fcc493246d3a0493692a6984b6980702c32356156fde5a0316",
+      "local_page_sha256": "fcd790c321f98df16da65290977cb7f2758564c4348cbb5a508f4dbfdb8026f2",
       "title": "Source Authority",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2011,7 +2011,7 @@
     {
       "route_path": "/resources/registries/",
       "local_page_source": "src/pages/resources/registries/index.astro",
-      "local_page_sha256": "790d7b824cb0b8b1947b7c70f7505f1bbf62ff9247ed12f0d3049501887d3f18",
+      "local_page_sha256": "b21f1a890d95a68592f5502d670af407c3c4b9fbb07fc71b7b9e7d610546d0cd",
       "title": "Registries",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2112,7 +2112,7 @@
     {
       "route_path": "/resources/generated-derivatives/",
       "local_page_source": "src/pages/resources/generated-derivatives/index.astro",
-      "local_page_sha256": "cc147d50fb6d1ec6c5efcac4d7ef102fe53d8b470fdbaa08ed225129ff722b2c",
+      "local_page_sha256": "856ac2b82772cb20769e0a37818a283124f555405d75967e76870830b019e070",
       "title": "Generated Derivatives",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2195,7 +2195,7 @@
     {
       "route_path": "/resources/retrieval-layers/",
       "local_page_source": "src/pages/resources/retrieval-layers/index.astro",
-      "local_page_sha256": "6ed75cf62367703706949fa5991a9b04d41c62bed463bd6468e916338b2a5fae",
+      "local_page_sha256": "095b4e826105a8bed300d7ecedd1d16dc68ee5efb6a26026bfee22d5c7926f70",
       "title": "Retrieval Layers",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2260,7 +2260,7 @@
     {
       "route_path": "/resources/publication-process/",
       "local_page_source": "src/pages/resources/publication-process/index.astro",
-      "local_page_sha256": "9e69ab573574240bb4b164049378f02ca328e380026277013b8e5b4c5e13caf7",
+      "local_page_sha256": "aaf116c8058b1a9c97d0af66d3b8f06436ec8cceee9d55e25868b97d177ea320",
       "title": "Publication Process",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2334,7 +2334,7 @@
     {
       "route_path": "/resources/library/",
       "local_page_source": "src/pages/resources/library/index.astro",
-      "local_page_sha256": "d77c40142a4907930d326ad535292c044adb647f828bf87b1faf5937fe2f4093",
+      "local_page_sha256": "522b8651712d0c644f459e4284d492c308783757f15cbf16cbb722ba615b6b54",
       "title": "Library",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2426,7 +2426,7 @@
     {
       "route_path": "/resources/reading-paths/",
       "local_page_source": "src/pages/resources/reading-paths/index.astro",
-      "local_page_sha256": "cdede4a745d392ad90bc421e6104cba57a5e99ddfc59247aa3c583c025a02d89",
+      "local_page_sha256": "36444b4641fcd5f67d1b3211bc7f174981b52c58ac04c0b70dad2fdd65abf41c",
       "title": "Reading Paths",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2500,7 +2500,7 @@
     {
       "route_path": "/resources/repository-map/",
       "local_page_source": "src/pages/resources/repository-map/index.astro",
-      "local_page_sha256": "70f463bf2ae366dcc3215b7b6937577919ffd81ed3df58374097e88e0747473a",
+      "local_page_sha256": "3b85fa82119e2a76b1193e870282f4d043b9613b70a40397cc9ced15e6281f08",
       "title": "Repository Map",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2583,7 +2583,7 @@
     {
       "route_path": "/resources/site-builder-guide/",
       "local_page_source": "src/pages/resources/site-builder-guide/index.astro",
-      "local_page_sha256": "a88a9cb40c9f42e35f9288befdfa0dd31463dcb9054f6ed394f70cbb0329296f",
+      "local_page_sha256": "5c17462d281a00c38bc6727e9f7c292d28854066e8746322c7a97e1d7a47a11f",
       "title": "Site Builder Guide",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

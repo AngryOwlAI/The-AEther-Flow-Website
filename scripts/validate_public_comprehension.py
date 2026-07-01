@@ -56,6 +56,7 @@ VISUAL_DESCRIPTION_CAPTION_PATTERNS = [
         r"(?:illustrates|shows|depicts|maps|arranges)\b",
         re.IGNORECASE,
     ),
+    re.compile(r"^\s*fact\s*:", re.IGNORECASE),
 ]
 
 
@@ -737,12 +738,20 @@ def validate_animated_svg_caption_contract(repo_root: Path) -> list[str]:
                 continue
 
             caption = visible_caption_text(caption_match.group("body"))
+            first_alpha = re.search(r"[A-Za-z]", caption)
+            if first_alpha and first_alpha.group(0).islower():
+                errors.append(
+                    f"{path.relative_to(repo_root)}: animated SVG hero captions must "
+                    "begin with a capital letter: "
+                    f"{caption!r}"
+                )
             for pattern in VISUAL_DESCRIPTION_CAPTION_PATTERNS:
                 if pattern.search(caption):
                     errors.append(
                         f"{path.relative_to(repo_root)}: animated SVG hero captions must "
-                        "state a conservative fact about the route topic, not describe "
-                        f"the visual composition: {caption!r}"
+                        "state a conservative fact about the route topic without a "
+                        "visible `Fact:` label or visual-composition description: "
+                        f"{caption!r}"
                     )
                     break
     return errors
