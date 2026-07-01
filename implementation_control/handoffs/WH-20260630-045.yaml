@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-07-01T02:53:25Z"
+updated_utc: "2026-07-01T03:07:50Z"
 status: "active"
 
 task_id: "WI-20260630-045"
@@ -12,7 +12,7 @@ completion_record:
   completion_id: "WJC-20260630-045-A"
   path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
 
-summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, `/resources/diagrams/` gallery restoration, the shared comprehension diagram fit rule, and the mobile expanded-diagram dialog fix."
+summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, animated SVG fact-caption rules, `/resources/diagrams/` gallery restoration, the shared comprehension diagram fit rule, and the mobile expanded-diagram dialog fix."
 
 current_state:
   - "WI-20260630-044 is completed, checkpointed, and superseded."
@@ -22,6 +22,8 @@ current_state:
   - "Owner feedback on diagram fit was addressed with route-width diagram frames, viewport-contained vertical diagrams, in-page larger-view dialogs, and suppressed repeated visible post-diagram notes."
   - "Owner feedback on caption format was addressed inside the active write boundary by replacing warning/source-path figure captions with descriptive figure-note copy and by removing visible Mermaid source paths from shared figure/gallery rendering."
   - "Owner feedback on caption weight was addressed by rendering diagram description captions and expanded-dialog captions as regular note text instead of bold label text."
+  - "Owner feedback on animated page-hero SVG captions was addressed by rewriting greenfield animated SVG hero captions as conservative facts about each route topic rather than visual-composition descriptions."
+  - "The public comprehension validator now fails closed if an inline animated SVG hero figure in the greenfield route scope reintroduces visual-description caption patterns such as `The diagram illustrates...`."
   - "Owner feedback on `/resources/diagrams/` was addressed by restoring grouped gallery wiring from approved manifest-backed static diagram assets while keeping Mermaid source paths in manifests and dossiers rather than visible card text."
   - "Owner feedback on the `/resources/diagrams/` Diagram comprehension figure was addressed by making shared comprehension diagrams default to full route-column width, removing the automatic repeated post-diagram note, and adding a validator guard against the old behavior."
   - "Owner feedback on mobile `Open larger` behavior was addressed by moving expanded dialogs to a compact close bar, scrollable image-first stage, below-image caption text, and wider-than-viewport mobile diagram rendering."

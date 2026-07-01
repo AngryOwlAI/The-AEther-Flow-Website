@@ -41,6 +41,23 @@ OLD_REPEATED_DIAGRAM_NOTE = (
     "route dossiers, or claim-status records that govern the topic."
 )
 
+ANIMATED_SVG_CAPTION_ROOTS = [
+    Path("src/pages/index.astro"),
+    Path("src/pages/physics"),
+    Path("src/pages/ai-research-system"),
+    Path("src/pages/resources"),
+    Path("src/pages/license/index.astro"),
+]
+
+VISUAL_DESCRIPTION_CAPTION_PATTERNS = [
+    re.compile(r"\bdiagram\s+(?:illustrates|shows|depicts)\b", re.IGNORECASE),
+    re.compile(
+        r"\b(?:the|this)\s+(?:diagram|svg|visual|animation)\s+"
+        r"(?:illustrates|shows|depicts|maps|arranges)\b",
+        re.IGNORECASE,
+    ),
+]
+
 
 @dataclass(frozen=True)
 class RemediatedRoute:
@@ -691,6 +708,46 @@ def validate_comprehension_figure_contract(repo_root: Path) -> list[str]:
     return errors
 
 
+def visible_caption_text(raw: str) -> str:
+    text = re.sub(r"<[^>]*>", " ", raw)
+    text = re.sub(r"\{[^}]*\}", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def validate_animated_svg_caption_contract(repo_root: Path) -> list[str]:
+    errors: list[str] = []
+    files: list[Path] = []
+
+    for relative_root in ANIMATED_SVG_CAPTION_ROOTS:
+        root = repo_root / relative_root
+        if root.is_file():
+            files.append(root)
+        elif root.is_dir():
+            files.extend(sorted(root.rglob("*.astro")))
+
+    for path in sorted(set(files)):
+        text = path.read_text(encoding="utf-8")
+        for figure_match in re.finditer(r"<figure\b[^>]*>(?P<body>.*?)</figure>", text, re.S):
+            body = figure_match.group("body")
+            if "<svg" not in body and "<Fragment set:html={" not in body:
+                continue
+
+            caption_match = re.search(r"<figcaption\b[^>]*>(?P<body>.*?)</figcaption>", body, re.S)
+            if not caption_match:
+                continue
+
+            caption = visible_caption_text(caption_match.group("body"))
+            for pattern in VISUAL_DESCRIPTION_CAPTION_PATTERNS:
+                if pattern.search(caption):
+                    errors.append(
+                        f"{path.relative_to(repo_root)}: animated SVG hero captions must "
+                        "state a conservative fact about the route topic, not describe "
+                        f"the visual composition: {caption!r}"
+                    )
+                    break
+    return errors
+
+
 def validate_route_wiring(route: RemediatedRoute, repo_root: Path) -> list[str]:
     errors: list[str] = []
     page = repo_root / route.local_page_source
@@ -793,6 +850,7 @@ def main() -> int:
 
     errors.extend(validate_runtime_mermaid(repo_root))
     errors.extend(validate_comprehension_figure_contract(repo_root))
+    errors.extend(validate_animated_svg_caption_contract(repo_root))
     errors.extend(validate_human_review(repo_root))
 
     if errors:

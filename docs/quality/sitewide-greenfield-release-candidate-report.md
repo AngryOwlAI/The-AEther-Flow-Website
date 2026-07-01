@@ -47,6 +47,10 @@ validator guard against the old width cap and note injection.
 Owner-requested mobile expanded-diagram feedback was resolved by changing the
 shared larger-view dialog to a compact close bar, scrollable image-first stage,
 wider-than-viewport mobile diagram rendering, and below-image caption text.
+Owner-requested animated SVG caption feedback was resolved by rewriting
+greenfield animated SVG hero captions as conservative facts about each route
+topic and adding a comprehension-validator guard against future
+visual-description caption patterns such as `The diagram illustrates...`.
 
 ## Route Set For Review
 
@@ -115,6 +119,12 @@ Passed:
   overflow; `/ai-research-system/memory-preflight/` showed the same `720px`
   expanded width in a viewport-contained route; desktop QA on `/` kept the
   expanded image at `1278px` wide and Escape closed the dialog.
+- `WI-20260630-045` animated SVG hero fact-caption refinement: current
+  greenfield inline SVG hero captions now state topic facts, page provenance
+  was regenerated from clean committed upstream source commit
+  `2a934c29b58e84aa913a5088a8388bd259f6370b`, and `npm run
+  validate:comprehension` passed with the new guard against
+  visual-description captions for future inline animated SVG hero figures.
 - Final GF-014I validation: `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate`
   passed against clean committed upstream source commit
   `2a934c29b58e84aa913a5088a8388bd259f6370b`; `npm run
