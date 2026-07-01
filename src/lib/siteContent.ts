@@ -77,7 +77,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/project-overview-two-track-map.png",
     alt: "Diagram showing The AEther Flow Home page as physics research and AI research-agent workflow downstream from source authority.",
     caption:
-      "Public comprehension diagram for the Home route; it orients readers without promoting scientific claims.",
+      "The diagram illustrates how the Home route branches into the physics research lane, the AI research-agent workflow, and the shared source-authority spine.",
     provenance:
       "Mermaid source: docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd.",
   },
@@ -88,7 +88,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing physics research status layers as ontology, benchmark, derivation burden, claim gates, and source authority boundaries.",
     caption:
-      "Public comprehension diagram for the physics track; it separates status layers without promoting claims.",
+      "The diagram illustrates the physics track as layered status areas: ontology, benchmark behavior, derivation burdens, claim gates, and source authority.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-track/diagrams/status-layer-map.mmd.",
   },
@@ -99,7 +99,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing ontology vocabulary, mathematical bridge work, exact-GR benchmark status, and empirical prediction as separate zones.",
     caption:
-      "Public comprehension diagram for the ontology route; vocabulary orientation is not a completed derivation.",
+      "The diagram illustrates how ontology vocabulary, mathematical bridge work, benchmark status, and empirical prediction occupy separate zones.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-ontology/diagrams/ontology-boundary-map.mmd.",
   },
@@ -110,7 +110,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing exact-GR benchmark compatibility below first-principles derivation and downstream promotion burdens.",
     caption:
-      "Public comprehension diagram for the exact-GR benchmark route; benchmark compatibility remains below derivation proof.",
+      "The diagram illustrates the benchmark ladder from operational exact-GR compatibility through source derivation and downstream promotion burdens.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-exact-gr-benchmark/diagrams/benchmark-boundary-ladder.mmd.",
   },
@@ -120,7 +120,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/physics-roadmap-burden-ladder.png",
     alt: "Diagram showing the GR derivation roadmap as separate source, metric, matter-coupling, equation, and promotion burdens.",
     caption:
-      "Public comprehension diagram for the GR derivation roadmap; it names burdens rather than discharging them.",
+      "The diagram illustrates the GR derivation roadmap as a sequence of source, metric, matter-coupling, equation, and promotion burdens.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-gr-derivation-roadmap/diagrams/burden-ladder.mmd.",
   },
@@ -131,7 +131,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing claim gates, obstructions, freeze discipline, and gate boundaries as a lifecycle.",
     caption:
-      "Public comprehension diagram for claim gates; gate structure does not itself approve a claim.",
+      "The diagram illustrates the claim-gate lifecycle across proposal states, obstructions, freeze discipline, and protected gate boundaries.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-claim-gates/diagrams/claim-gates-lifecycle.mmd.",
   },
@@ -142,7 +142,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing proposal-only source extension through audit, stress, selector, and human-gated adoption boundaries.",
     caption:
-      "Public comprehension diagram for source extension; proposal and audit stages do not become adoption.",
+      "The diagram illustrates the source-extension path from proposal-only work through audit, stress testing, selector review, and human-gated adoption boundaries.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-source-extension-pipeline/diagrams/source-extension-pipeline.mmd.",
   },
@@ -153,7 +153,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing Gate Chair status, human-gated decisions, protected approvals, and validator limits.",
     caption:
-      "Public comprehension diagram for human gates; protected decisions remain outside validator authority.",
+      "The diagram illustrates how Gate Chair status, human-gated decisions, protected approvals, and validator limits relate to one another.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-gate-chair-and-human-gates/diagrams/human-gate-authority.mmd.",
   },
@@ -164,7 +164,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing current physics state as a snapshot with active task, handoff, open burden, blocked claims, and next action.",
     caption:
-      "Public comprehension diagram for current state; a snapshot reports status without closing the burden.",
+      "The diagram illustrates the current-state snapshot as a dated view of active task context, handoff context, open burden, blocked claims, and next action.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-current-state/diagrams/snapshot-boundary.mmd.",
   },
@@ -175,7 +175,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing a distance-to-GR dashboard with ledger inputs, burden labels, blockers, and no progress-bar proof.",
     caption:
-      "Public comprehension diagram for the distance-to-GR dashboard; burden visualization is not derivation progress.",
+      "The diagram illustrates how Distance-to-GR ledger inputs, burden labels, blockers, and dashboard grouping feed a public status view.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-distance-to-gr/diagrams/distance-dashboard-boundary.mmd.",
   },
@@ -186,7 +186,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing request classification, source authority, task records, AgentJobs, validators, and bounded outputs.",
     caption:
-      "Public comprehension diagram for the AI system; task authority remains record-bound.",
+      "The diagram illustrates the AI system as a chain from request classification through source authority, task records, AgentJobs, validators, and bounded outputs.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-research-agent-system/diagrams/task-authority-review-map.mmd.",
   },
@@ -196,7 +196,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png",
     alt: "Diagram showing a request flowing through Director decision, AgentJob allowlist, execution, validators, completion, handoff, and bounded PASS.",
     caption:
-      "Public comprehension diagram for the workflow route; PASS remains bounded to the checked state.",
+      "The diagram illustrates how a request moves through Director decision, AgentJob allowlist, execution, validators, completion, handoff, and checked output.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-workflow/diagrams/bounded-agentjob-chain.mmd.",
   },
@@ -207,7 +207,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing one AgentJob envelope containing allowed reads, writes, outputs, validators, forbidden paths, and stop conditions.",
     caption:
-      "Public comprehension diagram for one bounded AgentJob; the envelope does not authorize adjacent work.",
+      "The diagram illustrates one AgentJob envelope containing allowed reads, writes, expected outputs, validators, forbidden paths, and stop conditions.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-one-bounded-agentjob/diagrams/one-agentjob-envelope.mmd.",
   },
@@ -218,7 +218,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing role labels below registry status, execution records, AgentJob allowlists, and validators.",
     caption:
-      "Public comprehension diagram for roles and skills; role labels are not live permission.",
+      "The diagram illustrates the role-authority stack from role labels through registry status, execution records, AgentJob allowlists, and validators.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-roles-and-skills/diagrams/role-authority-stack.mmd.",
   },
@@ -229,7 +229,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing role name, registry row, role contract, execution-role record, AgentJob, validators, and current authority boundary.",
     caption:
-      "Public comprehension diagram for role authority inspection; current authority requires task-local records.",
+      "The diagram illustrates role authority inspection across the role name, registry row, role contract, execution-role record, AgentJob, validators, and current boundary.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-role-authority-inspector/diagrams/role-authority-inspection-stack.mmd.",
   },
@@ -240,7 +240,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing canonical sources above registries, handoffs, generated memory layers, retrieval, and source-first verification.",
     caption:
-      "Public comprehension diagram for memory preflight; retrieval helps locate sources without replacing them.",
+      "The diagram illustrates source-first memory layers from canonical sources through registries, handoffs, generated memory layers, retrieval, and source inspection.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-memory-registries/diagrams/source-first-memory-layers.mmd.",
   },
@@ -251,7 +251,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing parent-child synthesis inside one outer AgentJob with one allowlist, one completion, and one fused output.",
     caption:
-      "Public comprehension diagram for parent-child synthesis; parallel perspectives do not create parallel authority.",
+      "The diagram illustrates parent-child synthesis inside one outer AgentJob with one allowlist, one completion record, and one fused output.",
     provenance:
       "Mermaid source: docs/content-dossiers/parent-child-synthesis/diagrams/single-outer-agentjob-frame.mmd.",
   },
@@ -262,7 +262,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing request, Director decision, AgentJob, execution role, validators, completion, handoff, and no physics proof boundary.",
     caption:
-      "Public comprehension diagram for operations; operational evidence is not scientific proof.",
+      "The diagram illustrates the operations control spine from request intake through Director decision, AgentJob, execution role, validators, completion, and handoff.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations/diagrams/operations-control-spine.mmd.",
   },
@@ -273,7 +273,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing task row, Director decision, AgentJob, execution-role evidence, command evidence, completion, and handoff.",
     caption:
-      "Public comprehension diagram for the lifecycle route; each record narrows one transaction.",
+      "The diagram illustrates the lifecycle record chain from task row and Director decision through AgentJob evidence, command receipts, completion, and handoff.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-director-agentjob-lifecycle/diagrams/director-agentjob-record-chain.mmd.",
   },
@@ -284,7 +284,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing registered role, task overlay or provisional role, execution-role record, AgentJob allowlist, outputs, and validators.",
     caption:
-      "Public comprehension diagram for role routing; current authority lives in the job-specific allowlist.",
+      "The diagram illustrates role routing across registered roles, task overlays, execution-role records, AgentJob allowlists, outputs, and validators.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-role-routing/diagrams/role-routing-allowlist-stack.mmd.",
   },
@@ -295,7 +295,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing changed surface, focused check, command or screenshot receipt, PASS for checked state, and no claim promotion.",
     caption:
-      "Public comprehension diagram for validator PASS; passing checks remain checked-state evidence.",
+      "The diagram illustrates validator PASS as a flow from changed surface through focused check, receipt evidence, checked state, and handoff context.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-validator-operator-workflow/diagrams/validator-pass-boundary.mmd.",
   },
@@ -306,7 +306,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing publication brief, source spec, reader page, screenshots, human review, and manifests.",
     caption:
-      "Public comprehension diagram for publication; readability remains downstream from source authority.",
+      "The diagram illustrates publication review flow from brief and source specification through reader page, screenshots, human review, and manifests.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-publication-process/diagrams/publication-source-review-flow.mmd.",
   },
@@ -317,7 +317,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing observed issue, classifier, resolver, sidecar input, one AgentJob, receipts, and close/defer/reject outcome.",
     caption:
-      "Public comprehension diagram for project-system improvement; repairs stay one bounded maintenance packet.",
+      "The diagram illustrates project-system improvement as a loop from observed issue through classification, sidecar input, one AgentJob, receipts, and close/defer/reject outcome.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-project-system-improvement/diagrams/project-system-improvement-loop.mmd.",
   },
@@ -328,7 +328,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing inspection tools, validation tools, Astro browser QA, TeX/PDF tools, and tool availability boundary.",
     caption:
-      "Public comprehension diagram for technical requirements; tool capability is not authorization.",
+      "The diagram illustrates technical tool tiers across inspection tools, validation tools, browser QA, TeX/PDF tooling, and tool-availability boundaries.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-technical-requirements/diagrams/technical-tool-authority-tiers.mmd.",
   },
@@ -338,7 +338,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/source-authority-ladder.png",
     alt: "Diagram showing source files and registries upstream from generated derivatives, website pages, and reader orientation.",
     caption:
-      "Public comprehension diagram for the source-authority route; if derivatives and sources conflict, source records win.",
+      "The diagram illustrates the source-authority ladder from source files and registries through generated derivatives, website pages, and reader orientation.",
     provenance:
       "Mermaid source: docs/content-dossiers/source-authority/diagrams/source-authority-ladder.mmd.",
   },
@@ -348,7 +348,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/source-authority-claim-boundary-explorer.png",
     alt: "Diagram showing the claim-boundary registry feeding a checked-in snapshot and public explorer while forbidden overreads remain blocked.",
     caption:
-      "Public comprehension diagram for the claim-boundary explorer route; registry language remains upstream authority.",
+      "The diagram illustrates how claim-boundary registry rows feed checked snapshots and public explorer views while blocked overread paths stay separated.",
     provenance:
       "Mermaid source: docs/content-dossiers/source-authority-claim-boundary-explorer/diagrams/claim-boundary-explorer.mmd.",
   },
@@ -359,7 +359,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing source basis feeding page route map, page provenance, source manifest, asset manifest, static build, internal reader routes, provenance links, and a publication-is-not-source-truth boundary.",
     caption:
-      "Public comprehension diagram for the publication provenance system; manifest evidence makes publication auditable without creating source truth.",
+      "The diagram illustrates the publication provenance system across source basis, route maps, page provenance, source manifests, asset manifests, static build output, and reader routes.",
     provenance:
       "Mermaid source: docs/content-dossiers/source-authority-publication-and-provenance-system/diagrams/publication-provenance-system.mmd.",
   },
@@ -369,7 +369,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/general-public-guided-start.png",
     alt: "Diagram showing a general-public reader moving through Home, current state, source authority, claim boundaries, and provenance without creating new claims.",
     caption:
-      "Public comprehension diagram for the general-public guided start; it assembles existing sourced pages without adding claims.",
+      "The diagram illustrates a general-public reading path through Home, current state, source authority, claim boundaries, and provenance context.",
     provenance:
       "Mermaid source: docs/content-dossiers/guided-start-general-public/diagrams/general-public-guided-start.mmd.",
   },
@@ -380,7 +380,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing a specialist guided-start hub routing physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers to internal prerequisite pages while preserving the no-new-claims boundary.",
     caption:
-      "Public comprehension diagram for specialist guided starts; audience paths route readers without creating source authority.",
+      "The diagram illustrates specialist guided starts for physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers.",
     provenance:
       "Mermaid source: docs/content-dossiers/guided-start-specialists/diagrams/specialist-guided-starts.mmd.",
   },
@@ -391,7 +391,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing the reviewer packet moving from claim boundaries to current state, Distance-to-GR, ontology documents, source inspection, reviewer questions, human review pending, and no-completed-derivation boundary.",
     caption:
-      "Public comprehension diagram for the reviewer packet; claim boundaries come before source inspection.",
+      "The diagram illustrates the reviewer inspection order from claim boundaries through current state, Distance-to-GR, ontology documents, source inspection, questions, and human review.",
     provenance:
       "Mermaid source: docs/content-dossiers/reviewer-packet/diagrams/reviewer-inspection-order.mmd.",
   },
@@ -401,7 +401,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/physics-metric-response-ladder.png",
     alt: "Diagram showing Resp_lc, M_src, MetricData(E), scoped g_eff, matter coupling, Einstein equations, and benchmark promotion as separate ladder objects with blocked overreads.",
     caption:
-      "Public comprehension diagram for the metric-response ladder route; it separates object status from downstream GR promotion.",
+      "The diagram illustrates the metric-response ladder across response objects, MetricData(E), scoped g_eff, matter coupling, Einstein equations, and benchmark promotion.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-metric-response-ladder/diagrams/metric-response-ladder.mmd.",
   },
@@ -411,7 +411,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/physics-finite-toy-models.png",
     alt: "Diagram showing a finite toy route moving through selector, draft/control construction, conditional audit, tag-removal stress, frozen negative local route status, and source-extension continuation while blocked overreads remain separate.",
     caption:
-      "Public comprehension diagram for the finite toy models route; it explains a local frozen negative result without global theory rejection.",
+      "The diagram illustrates a finite-toy route moving through selector, draft/control construction, conditional audit, tag-removal stress, frozen local status, and source-extension continuation.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-finite-toy-models/diagrams/finite-toy-freeze.mmd.",
   },
@@ -421,7 +421,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/physics-no-target-import-discipline.png",
     alt: "Diagram showing source data entering a source-only factorization check while target topology, target atlas, target metric, benchmark success, and process authority are blocked into fail-closed obstruction labels.",
     caption:
-      "Public comprehension diagram for the no-target-import discipline route; it explains a guardrail without proving candidate adoption.",
+      "The diagram illustrates no-target-import discipline as source data entering factorization checks while target-context imports route to fail-closed obstruction labels.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-no-target-import-discipline/diagrams/no-target-import-discipline.mmd.",
   },
@@ -431,7 +431,7 @@ export const diagramGalleryItems = [
     src: "/assets/diagrams/comprehension/physics-negative-results-and-frozen-routes.png",
     alt: "Diagram showing a failed route becoming a scoped obstruction, obstruction receipt, local freeze or selector route, and preserved evidence while global rejection and downstream promotion remain blocked.",
     caption:
-      "Public comprehension diagram for the negative results route; it preserves obstruction scope without global rejection.",
+      "The diagram illustrates how a failed route becomes scoped obstruction evidence, an obstruction receipt, a local freeze or selector route, and preserved review context.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-negative-results-and-frozen-routes/diagrams/negative-results-freeze-flow.mmd.",
   },
@@ -442,7 +442,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing source manifest, asset manifest, resource index, downloads, hashes, status labels, and no authority creation.",
     caption:
-      "Public comprehension diagram for resources; manifest rows organize assets without promoting them.",
+      "The diagram illustrates how source manifests, asset manifests, resource routes, downloads, hashes, and status labels organize public resources.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-index/diagrams/resource-manifest-chain.mmd.",
   },
@@ -453,7 +453,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing registered TeX source, TeX registry row, generated PDF derivative, website copy, and source inspection download.",
     caption:
-      "Public comprehension diagram for ontology documents; PDFs are derivatives of registered TeX.",
+      "The diagram illustrates the TeX/PDF derivative chain from registered TeX source through registry row, generated PDF derivative, website copy, and source inspection download.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-documents/diagrams/tex-pdf-derivative-chain.mmd.",
   },
@@ -464,7 +464,7 @@ export const diagramGalleryItems = [
     alt:
       "Diagram showing Mermaid source, generated PNG, manifest entry, gallery, nearby prose, and diagram non-authority boundary.",
     caption:
-      "Public comprehension diagram for this gallery; diagram publication creates a reader aid, not authority.",
+      "The diagram illustrates the diagram-publication workflow from Mermaid source through generated PNG, manifest entry, gallery placement, and nearby explanatory prose.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-diagrams/diagrams/diagram-publication-boundary.mmd.",
   },

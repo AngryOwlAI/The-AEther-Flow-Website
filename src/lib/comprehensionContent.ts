@@ -76,7 +76,7 @@ export const overviewComprehension: ComprehensionContent = {
     alt:
       "Diagram showing The AEther Flow Home page as two linked tracks: physics research and AI research-agent workflow, both downstream from source authority.",
     caption:
-      "Static comprehension diagram: Home routes readers through the physics lane, AI research-agent lane, and source-authority spine without promoting claims.",
+      "The diagram illustrates Home as two linked tracks, with the physics lane and AI research-agent lane both downstream from the source-authority spine.",
     provenance:
       "Mermaid source: docs/content-dossiers/project-overview/diagrams/two-track-project-map.mmd. Manifest id: comprehension_project_overview_two_track_map.",
   },
@@ -180,7 +180,7 @@ export const parentChildComprehension: ComprehensionContent = {
     alt:
       "Diagram showing one outer AgentJob containing parent review, child draft/control perspectives, conflict review, and one fused output.",
     caption:
-      "Static comprehension diagram: parent-child synthesis adds internal perspectives inside one bounded AgentJob, not extra jobs or independent authority.",
+      "The diagram illustrates parent-child synthesis inside one outer AgentJob, including parent review, child draft/control perspectives, conflict review, and one fused output.",
     provenance:
       "Mermaid source: docs/content-dossiers/parent-child-synthesis/diagrams/single-outer-agentjob-frame.mmd. Manifest id: comprehension_parent_child_single_outer_agentjob.",
   },
@@ -284,7 +284,7 @@ export const physicsTrackComprehension: ComprehensionContent = {
     alt:
       "Diagram showing the physics track as separate ontology, exact-GR benchmark, derivation burden, negative-result, and human-gate layers.",
     caption:
-      "Static comprehension diagram: the physics track is a layered status model, not a single promoted claim.",
+      "The diagram illustrates the physics track as separate ontology, exact-GR benchmark, derivation burden, negative-result, and human-gate layers.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-track/diagrams/status-layer-map.mmd. Manifest id: comprehension_physics_track_status_map.",
   },
@@ -356,7 +356,7 @@ export const physicsOntologyComprehension: ComprehensionContent = {
     alt:
       "Diagram separating AEther-flow ontology vocabulary from mathematical bridge work, exact-GR benchmark status, and empirical prediction.",
     caption:
-      "Static comprehension diagram: ontology, mathematical bridge, benchmark, and prediction remain separate layers.",
+      "The diagram illustrates AEther-flow ontology vocabulary, mathematical bridge work, exact-GR benchmark status, and empirical prediction as separate layers.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-ontology/diagrams/ontology-boundary-map.mmd. Manifest id: comprehension_physics_ontology_boundary_map.",
   },
@@ -437,7 +437,7 @@ export const physicsBenchmarkComprehension: ComprehensionContent = {
     alt:
       "Diagram showing benchmark adoption, ontology compatibility, source-side derivation, and human-gated benchmark promotion as separate claim states.",
     caption:
-      "Static comprehension diagram: benchmark adoption is not the same as derivation or promotion.",
+      "The diagram illustrates benchmark adoption, ontology compatibility, source-side derivation, and human-gated benchmark promotion as separate claim states.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-exact-gr-benchmark/diagrams/benchmark-boundary-ladder.mmd. Manifest id: comprehension_physics_benchmark_boundary_ladder.",
   },
@@ -513,7 +513,7 @@ export const physicsRoadmapComprehension: ComprehensionContent = {
     alt:
       "Diagram showing the GR derivation roadmap as a burden ladder from source ontology through g_eff, matter coupling, Einstein equations, and benchmark promotion.",
     caption:
-      "Static comprehension diagram: every derivation milestone needs its own evidence and boundary.",
+      "The diagram illustrates the GR derivation roadmap as a burden ladder from source ontology through g_eff, matter coupling, Einstein equations, and benchmark promotion.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-gr-derivation-roadmap/diagrams/burden-ladder.mmd. Manifest id: comprehension_physics_roadmap_burden_ladder.",
   },
@@ -584,7 +584,7 @@ export const physicsClaimGatesComprehension: ComprehensionContent = {
     alt:
       "Diagram showing proposal, audit, stress test, completion, handoff, freeze, and human gate states with separate allowed claim scopes.",
     caption:
-      "Static comprehension diagram: claim control preserves scoped evidence without turning it into global success or rejection.",
+      "The diagram illustrates claim control across proposal, audit, stress test, completion, handoff, freeze, and human gate states.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-claim-gates/diagrams/claim-gates-lifecycle.mmd. Manifest id: comprehension_physics_claim_gates_lifecycle.",
   },
@@ -655,7 +655,7 @@ export const physicsCurrentStateComprehension: ComprehensionContent = {
     alt:
       "Diagram showing upstream control state flowing into a checked-in website snapshot with blocked downstream claims preserved.",
     caption:
-      "Static comprehension diagram: current-state pages report a bounded snapshot and preserve blocked downstream claims.",
+      "The diagram illustrates upstream control state flowing into a checked-in website snapshot, with blocked downstream claim paths shown alongside it.",
     provenance:
       "Mermaid source: docs/content-dossiers/physics-current-state/diagrams/snapshot-boundary.mmd. Manifest id: comprehension_physics_current_state_snapshot_boundary.",
   },

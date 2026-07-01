@@ -14,7 +14,7 @@ export const sourceAuthorityComprehension: ComprehensionContent = {
     alt:
       "Diagram showing registered TeX and source files upstream from registries, generated derivatives, website pages, reader orientation, and source wins on conflict.",
     caption:
-      "Static comprehension diagram: generated and website surfaces remain downstream from registered source authority.",
+      "The diagram illustrates the source-authority ladder from registered TeX and source files through registries, generated derivatives, website pages, and reader orientation.",
     provenance:
       "Mermaid source: docs/content-dossiers/source-authority/diagrams/source-authority-ladder.mmd. Manifest id: comprehension_source_authority_ladder.",
   },
@@ -109,7 +109,7 @@ export const resourcesIndexComprehension: ComprehensionContent = {
     alt:
       "Diagram showing source manifest, asset manifest, resources index, document downloads, diagram gallery, hashes, status labels, and index does not create authority.",
     caption:
-      "Static comprehension diagram: resource pages organize committed assets and status labels downstream from source records.",
+      "The diagram illustrates how source manifests, asset manifests, the resources index, downloads, diagram gallery entries, hashes, and status labels connect.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-index/diagrams/resource-manifest-chain.mmd. Manifest id: comprehension_resources_manifest_chain.",
   },
@@ -196,7 +196,7 @@ export const resourcesDocumentsComprehension: ComprehensionContent = {
     alt:
       "Diagram showing registered TeX source, TeX registry row, generated PDF derivative, website TeX copy, human-readable PDF download, source inspection download, and PDF is derivative.",
     caption:
-      "Static comprehension diagram: TeX source authority and PDF readability are different asset roles.",
+      "The diagram illustrates the document chain from registered TeX source and registry row through generated PDF derivative, website copy, and inspection downloads.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-documents/diagrams/tex-pdf-derivative-chain.mmd. Manifest id: comprehension_resources_tex_pdf_derivative_chain.",
   },
@@ -310,7 +310,7 @@ export const resourcesDiagramsComprehension: ComprehensionContent = {
     alt:
       "Diagram showing Mermaid source, generated PNG, manifest entry, diagram gallery, nearby prose and caption, hash-backed asset status, and diagram is not source authority.",
     caption:
-      "Static comprehension diagram: a diagram becomes public only as a manifest-backed reader aid.",
+      "The diagram illustrates the diagram-publication chain from Mermaid source through generated PNG, manifest entry, gallery placement, explanatory prose, and hash-backed asset status.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-diagrams/diagrams/diagram-publication-boundary.mmd. Manifest id: comprehension_resources_diagram_publication_boundary.",
   },

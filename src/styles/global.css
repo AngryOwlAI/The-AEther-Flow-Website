@@ -844,11 +844,6 @@ summary:focus-visible {
   color: var(--content-card-muted);
 }
 
-.diagram-gallery-provenance {
-  overflow-wrap: anywhere;
-  font-size: 0.9rem;
-}
-
 .diagram-gallery-boundary {
   max-width: 54rem;
   font-weight: 700;
@@ -1031,8 +1026,7 @@ summary:focus-visible {
   padding: 0.85rem 1rem;
 }
 
-.figure-dialog-toolbar p,
-.figure-dialog-provenance {
+.figure-dialog-toolbar p {
   margin: 0;
   color: var(--color-dark-muted);
 }
@@ -1049,13 +1043,6 @@ summary:focus-visible {
   max-height: calc(100dvh - 11rem);
   object-fit: contain;
   background: #000000;
-}
-
-.figure-dialog-provenance {
-  border-top: 1px solid color-mix(in srgb, var(--color-dark-text) 16%, transparent);
-  padding: 0.85rem 1rem;
-  overflow-wrap: anywhere;
-  font-size: 0.9rem;
 }
 
 .content-figure figcaption {

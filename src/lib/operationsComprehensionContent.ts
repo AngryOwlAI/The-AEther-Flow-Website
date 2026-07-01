@@ -14,7 +14,7 @@ export const operationsComprehension: ComprehensionContent = {
     alt:
       "Diagram showing request, Director decision, AgentJob, execution role, validators, completion, handoff, and an operational-evidence-is-not-physics-proof boundary.",
     caption:
-      "Static comprehension diagram: operations keep work auditable while preserving source and claim boundaries.",
+      "The diagram illustrates the operations control spine from request intake through Director decision, AgentJob, execution role, validators, completion, and handoff.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations/diagrams/operations-control-spine.mmd. Manifest id: comprehension_operations_control_spine.",
   },
@@ -102,7 +102,7 @@ export const directorAgentjobLifecycleComprehension: ComprehensionContent = {
     alt:
       "Diagram showing task row, Director decision, AgentJob, execution-role evidence, command evidence, completion, handoff, and no silent authority expansion.",
     caption:
-      "Static comprehension diagram: the lifecycle records why one transaction was authorized and how it closed.",
+      "The diagram illustrates the lifecycle record chain from task row and Director decision through AgentJob evidence, command receipts, completion, and handoff.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-director-agentjob-lifecycle/diagrams/director-agentjob-record-chain.mmd. Manifest id: comprehension_operations_director_agentjob_record_chain.",
   },
@@ -184,7 +184,7 @@ export const roleRoutingComprehension: ComprehensionContent = {
     alt:
       "Diagram showing registered role, task overlay or provisional role, execution-role record, AgentJob allowlist, outputs, validators, and role name is not live permission.",
     caption:
-      "Static comprehension diagram: current authority lives in the job-specific allowlist, not in the label alone.",
+      "The diagram illustrates role routing across registered roles, task overlays, provisional roles, execution-role records, AgentJob allowlists, outputs, and validators.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-role-routing/diagrams/role-routing-allowlist-stack.mmd. Manifest id: comprehension_operations_role_routing_allowlist_stack.",
   },
@@ -271,7 +271,7 @@ export const validatorOperatorWorkflowComprehension: ComprehensionContent = {
     alt:
       "Diagram showing changed authority surface, focused checks, validator or test, command or screenshot receipt, PASS for checked state, claim-promotion decision, and no theorem, Gate Chair, role, or physics promotion.",
     caption:
-      "Static comprehension diagram: PASS is operational checked-state evidence; claim promotion requires separate source and authority paths.",
+      "The diagram illustrates validator review from changed surface through focused checks, command or screenshot receipts, checked state, and claim-promotion decision paths.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-validator-operator-workflow/diagrams/validator-pass-boundary.mmd. Manifest id: comprehension_operations_validator_pass_boundary.",
   },
@@ -394,7 +394,7 @@ export const publicationProcessComprehension: ComprehensionContent = {
     alt:
       "Diagram showing publication brief, source spec, reader page, screenshots, human review, manifests, and readable page is downstream.",
     caption:
-      "Static comprehension diagram: publication improves explanation without changing source authority.",
+      "The diagram illustrates publication review flow from brief and source specification through reader page, screenshots, human review, and manifests.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-publication-process/diagrams/publication-source-review-flow.mmd. Manifest id: comprehension_operations_publication_review_flow.",
   },
@@ -482,7 +482,7 @@ export const projectSystemImprovementComprehension: ComprehensionContent = {
     alt:
       "Diagram showing observed diff or registered signal, classifier, advisory resolver, source-bridged sidecar input, one project-system AgentJob, documentation-impact and PASS evidence, close defer or reject signal, and no hidden physics continuation or signal closure by prose.",
     caption:
-      "Static comprehension diagram: project-system improvement repairs research machinery through one bounded packet and explicit evidence.",
+      "The diagram illustrates project-system improvement from observed issue through classification, sidecar input, one AgentJob, evidence receipts, and close/defer/reject outcome.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-project-system-improvement/diagrams/project-system-improvement-loop.mmd. Manifest id: comprehension_operations_project_system_improvement_loop.",
   },
@@ -599,7 +599,7 @@ export const technicalRequirementsComprehension: ComprehensionContent = {
     alt:
       "Diagram showing inspect tools, validation tools, Astro and browser QA, TeX and PDF derivative tools, and tool availability is not authorization.",
     caption:
-      "Static comprehension diagram: tools make operations reproducible without deciding whether an operation is allowed.",
+      "The diagram illustrates technical tool tiers across inspection tools, validators, browser QA, TeX/PDF derivative tools, and tool-availability boundaries.",
     provenance:
       "Mermaid source: docs/content-dossiers/operations-technical-requirements/diagrams/technical-tool-authority-tiers.mmd. Manifest id: comprehension_operations_technical_tool_tiers.",
   },

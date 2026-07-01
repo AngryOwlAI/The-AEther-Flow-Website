@@ -4,7 +4,7 @@ interface DiagramGalleryItem {
   src: string;
   alt: string;
   caption: string;
-  provenance: string;
+  provenance?: string;
 }
 
 interface Props {
@@ -28,9 +28,9 @@ const {
         <h3>{emptyTitle}</h3>
         <p>{emptyBody}</p>
         <p class="diagram-gallery-boundary">
-          Visual orientation only. Diagram publication requires tracked source,
-          generated static output, manifest status, caption, provenance, and a
-          non-authority boundary.
+          Diagram publication requires tracked source, generated static output,
+          manifest status, descriptive caption text, and audit provenance in the
+          source records.
         </p>
       </div>
     </article>
@@ -43,10 +43,9 @@ const {
             <a href={item.src}>{item.title}</a>
           </h3>
           <p>{item.caption}</p>
-          <p class="diagram-gallery-provenance">{item.provenance}</p>
           <p class="diagram-gallery-boundary">
-            Visual orientation only. This diagram is a reader aid, not source
-            authority or claim-promotion evidence.
+            Audit provenance remains available through the manifests and source
+            dossiers for inspection.
           </p>
         </div>
         <a class="diagram-gallery-image-link" href={item.src} aria-label={`Open ${item.title}`}>

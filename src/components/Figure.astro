@@ -16,7 +16,6 @@ const {
   src,
   alt,
   caption,
-  provenance,
   className = "",
   loading = "lazy",
   expandable = false,
@@ -45,7 +44,6 @@ const dialogId = expandable && id ? `${id}-dialog` : undefined;
   </div>
   <figcaption>
     <span>{caption}</span>
-    {provenance && <small>{provenance}</small>}
   </figcaption>
   {expandable && dialogId && (
     <dialog id={dialogId} class="figure-dialog" aria-label={`Expanded diagram: ${caption}`}>
@@ -57,7 +55,6 @@ const dialogId = expandable && id ? `${id}-dialog` : undefined;
           </form>
         </div>
         <img src={src} alt={alt} loading="lazy" decoding="async" />
-        {provenance && <p class="figure-dialog-provenance">{provenance}</p>}
       </div>
     </dialog>
   )}

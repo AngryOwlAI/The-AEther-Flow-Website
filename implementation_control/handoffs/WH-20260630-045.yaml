@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-06-30T23:01:38Z"
+updated_utc: "2026-07-01T00:20:41Z"
 status: "active"
 
 task_id: "WI-20260630-045"
@@ -12,7 +12,7 @@ completion_record:
   completion_id: "WJC-20260630-045-A"
   path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
 
-summary: "Completed and refined the owner-requested greenfield diagram rollout packet."
+summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform."
 
 current_state:
   - "WI-20260630-044 is completed, checkpointed, and superseded."
@@ -20,6 +20,8 @@ current_state:
   - "The owner requested implementation of the Greenfield Diagram Opportunity Review."
   - "This packet authorizes source-backed static comprehension diagrams, route-level figure wiring, diagram PNG assets, and manifest updates for the greenfield route set."
   - "Owner feedback on diagram fit was addressed with route-width diagram frames, viewport-contained vertical diagrams, in-page larger-view dialogs, and suppressed repeated visible post-diagram notes."
+  - "Owner feedback on caption format was addressed inside the active write boundary by replacing warning/source-path figure captions with descriptive figure-note copy and by removing visible Mermaid source paths from shared figure/gallery rendering."
+  - "Legacy project-route captions with old warning-style language remain outside this packet's authorized write paths and are recorded as follow-up scope."
   - "Diagrams must remain reader aids and must not create source authority, proof authority, claim promotion, owner acceptance, deployment readiness, or upstream source changes."
   - "No deployment, push, upstream source-project write, source refresh, dependency addition, route retirement, redirect change, or owner acceptance is authorized."
 

@@ -14,7 +14,7 @@ export const aiSystemComprehension: ComprehensionContent = {
     alt:
       "Diagram showing an AI research-agent request narrowing through classification, one AgentJob, role limits, memory support, review, and a no-physics-proof boundary.",
     caption:
-      "Static comprehension diagram: the AI system organizes auditable work without becoming independent physics evidence.",
+      "The diagram illustrates an AI research-agent request narrowing through classification, one AgentJob, role limits, memory support, review, and bounded output.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-research-agent-system/diagrams/task-authority-review-map.mmd. Manifest id: comprehension_ai_system_task_authority_map.",
   },
@@ -121,7 +121,7 @@ export const aiWorkflowComprehension: ComprehensionContent = {
     alt:
       "Diagram showing a request narrowing through memory preflight, canonical source check, Director decision, one AgentJob, completion, handoff, registry rows, and a bounded PASS limit.",
     caption:
-      "Static comprehension diagram: each workflow record narrows the current transaction; PASS remains bounded to the checked state.",
+      "The diagram illustrates a request narrowing through memory preflight, canonical source check, Director decision, one AgentJob, completion, handoff, and registry rows.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-workflow/diagrams/bounded-agentjob-chain.mmd. Manifest id: comprehension_ai_workflow_bounded_agentjob_chain.",
   },
@@ -248,7 +248,7 @@ export const aiRolesAndSkillsComprehension: ComprehensionContent = {
     alt:
       "Diagram showing role registry status, contract text, execution-role record, AgentJob allowlist, completion evidence, and a public-catalog-is-not-permission boundary.",
     caption:
-      "Static comprehension diagram: role authority is task-local and record-bound.",
+      "The diagram illustrates role authority across registry status, contract text, execution-role record, AgentJob allowlist, and completion evidence.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-roles-and-skills/diagrams/role-authority-stack.mmd. Manifest id: comprehension_ai_roles_authority_stack.",
   },
@@ -343,7 +343,7 @@ export const aiMemoryRegistriesComprehension: ComprehensionContent = {
     alt:
       "Diagram showing memory status, targeted lookup, likely source object, canonical source file, source registry row, preflight receipt, retrieval layers, and a retrieval-is-not-authority boundary.",
     caption:
-      "Static comprehension diagram: memory preflight can find evidence; source inspection decides whether it may be relied on.",
+      "The diagram illustrates memory preflight across status checks, targeted lookup, likely source objects, canonical source files, registry rows, receipts, and retrieval layers.",
     provenance:
       "Mermaid source: docs/content-dossiers/ai-memory-registries/diagrams/source-first-memory-layers.mmd. Manifest id: comprehension_ai_memory_source_first_layers.",
   },

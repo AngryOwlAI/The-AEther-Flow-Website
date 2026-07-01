@@ -32,6 +32,11 @@ Owner-requested diagram fit feedback was resolved in the same packet by
 expanding the diagram frames to the route content width, containing oversized
 vertical diagrams, adding an in-page larger-view dialog, and removing the
 repeated visible post-diagram note.
+Owner-requested diagram caption feedback was resolved in the same packet by
+rewriting allowed greenfield/resource figure captions as descriptive figure
+notes and removing visible Mermaid source paths from shared figure/gallery
+rendering. Legacy `/project/*` caption wording remains a follow-up item because
+those files are outside the active packet's write scope.
 
 ## Route Set For Review
 
@@ -78,6 +83,10 @@ Passed:
   passed desktop/mobile checks for full-width figure frames, contained oversized
   diagrams, absent repeated note text, no horizontal overflow, and working
   larger-view dialogs.
+- `WI-20260630-045` caption reform: allowed greenfield/resource captions use
+  descriptive figure-note language, shared figure/gallery rendering no longer
+  displays Mermaid source paths, and remaining old warning-style phrase hits are
+  limited to legacy `/project/*` surfaces outside this packet's write scope.
 
 Failed or blocked:
 
@@ -103,6 +112,9 @@ Screenshots were captured under ignored local QA output:
 
 - Owner review has not accepted the rebuilt route set.
 - Old `/project/*` source files remain in the build for validator continuity even though the public route/provenance manifests now expose the short-route inventory.
+- Some legacy `/project/*` diagram captions still use old warning-style wording;
+  they were not changed because the active packet authorizes the greenfield and
+  resources route scope, not legacy project-route caption rewrites.
 - The default curator source root currently points at the upstream working tree;
   when that tree is dirty, validation must bind `AETHER_FLOW_SOURCE_ROOT` to a
   clean committed source view to avoid treating uncommitted upstream edits as
