@@ -3039,6 +3039,17 @@ html:has(body.project-overview-page) {
   line-height: 1.55;
 }
 
+.greenfield-matrix a {
+  color: var(--overview-text);
+  text-decoration-color: color-mix(in srgb, var(--overview-orange) 74%, transparent);
+}
+
+.greenfield-matrix a:hover,
+.greenfield-matrix a:focus-visible {
+  color: var(--overview-orange);
+  text-decoration-color: currentColor;
+}
+
 .track-status-grid,
 .source-link-grid,
 .planned-route-grid {
