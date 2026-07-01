@@ -4,7 +4,7 @@ completion_id: "WJC-20260630-045-A"
 task_id: "WI-20260630-045"
 job_id: "WJ-20260630-045-A"
 created_utc: "2026-06-30T22:19:26Z"
-updated_utc: "2026-07-01T02:10:50Z"
+updated_utc: "2026-07-01T02:53:25Z"
 status: "completed"
 
 summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set without creating new source authority or changing deployment state."
@@ -42,15 +42,11 @@ changed_files:
   - "implementation_control/handoffs/WH-20260630-045.md"
   - "implementation_control/handoffs/WH-20260630-045.yaml"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
   - "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
   - "docs/quality/sitewide-greenfield-review-ledger.md"
   - "docs/quality/sitewide-greenfield-release-candidate-report.md"
   - "scripts/validate_public_comprehension.py"
-  - "src/components/ComprehensionBlocks.astro"
-  - "src/lib/comprehensionContent.ts"
-  - "src/lib/siteContent.ts"
+  - "src/components/Figure.astro"
   - "src/styles/global.css"
 
 requirements_satisfied:
@@ -64,6 +60,7 @@ requirements_satisfied:
   - "`/resources/diagrams/` now renders the approved grouped diagram gallery from manifest-backed static PNG assets instead of the old greenfield empty state."
   - "Shared comprehension diagrams now default to full route-column width, and the shared renderer no longer injects an automatic post-diagram note."
   - "The public comprehension validator now fails closed if the shared diagram renderer reintroduces the old default note, the old default fit option, or the old 940px base wrapper cap."
+  - "Shared expanded diagram dialogs now render mobile `Open larger` views with a compact close bar, scrollable image-first stage, below-image caption text, and wider-than-viewport mobile diagram rendering."
   - "Owner review remains pending and deployment remains not authorized."
   - "No upstream source writes, dependency additions, push, deployment, route retirement, redirect changes, or owner-acceptance claims were made."
 
@@ -246,6 +243,72 @@ diagram_figure_rule_closeout:
     asset_manifest: "unchanged"
     source_manifest: "unchanged"
     note: "No route source file, Mermaid source, PNG asset, source manifest, or asset manifest change was needed for this shared rendering rule."
+
+mobile_expanded_dialog_closeout:
+  refinement_id: "GF-014I"
+  checked_utc: "2026-07-01T02:49:38Z"
+  summary: "Made shared expanded diagram dialogs image-first and pan-capable on phone viewports after owner review found the mobile view was effectively showing the caption instead of a larger diagram."
+  outputs:
+    - path: "src/components/Figure.astro"
+      status: "modified"
+      description: "Moved full caption text out of the dialog toolbar, added a scrollable `figure-dialog-stage` wrapper, and kept the direct image fallback plus accessible close control."
+    - path: "src/styles/global.css"
+      status: "modified"
+      description: "Changed expanded dialogs to use a compact close bar, image-first stage, below-image caption, and wider-than-viewport mobile image sizing inside a contained scroll area."
+    - path: "scripts/validate_public_comprehension.py"
+      status: "modified"
+      description: "Added regression checks requiring the dialog image-stage wrapper, mobile pan sizing, viewport-height mobile layout, and no full-caption toolbar rule."
+    - path: "docs/quality/sitewide-greenfield-review-ledger.md"
+      status: "modified"
+      description: "Added the GF-014I mobile expanded-diagram refinement row."
+    - path: "docs/quality/sitewide-greenfield-release-candidate-report.md"
+      status: "modified"
+      description: "Recorded the mobile expanded-dialog fix and browser QA evidence."
+  acceptance_checks:
+    - command: "npm run validate:comprehension"
+      status: "passed"
+      checked:
+        - "shared Figure renderer contains `figure-dialog-stage` and `figure-dialog-caption`"
+        - "old full-caption toolbar structure is rejected"
+        - "CSS contains scrollable dialog stage and mobile wider-than-viewport image sizing"
+    - command: "Playwright mobile QA against http://127.0.0.1:4321/ at 390x844"
+      status: "passed"
+      checked:
+        - "inline Home diagram measured 356px wide"
+        - "expanded Home diagram measured 720px wide inside a 350px scrollable stage"
+        - "caption rendered below the image stage"
+        - "document-level horizontal overflow remained 0"
+    - command: "Playwright mobile QA against http://127.0.0.1:4321/ai-research-system/memory-preflight/ at 390x844"
+      status: "passed"
+      checked:
+        - "viewport-contained inline diagram measured 356px wide"
+        - "expanded viewport-contained diagram measured 720px wide inside a 350px scrollable stage"
+        - "document-level horizontal overflow remained 0"
+    - command: "Playwright desktop QA against http://127.0.0.1:4321/ at 1440x1000"
+      status: "passed"
+      checked:
+        - "expanded Home diagram measured 1278px wide"
+        - "caption stayed below the expanded image"
+        - "document-level horizontal overflow remained 0"
+        - "Escape closed the dialog"
+    - command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate"
+      status: "passed"
+      checked:
+        - "aggregate website validation passed with curator bound to clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b"
+        - "an unbound aggregate validation attempt was blocked by unrelated default upstream source-root drift"
+    - command: "npm run validate:implementation-control"
+      status: "passed"
+      checked:
+        - "implementation-control structural validation passed after GF-014I evidence updates"
+    - command: ".venv/bin/python -m pytest"
+      status: "passed"
+      checked:
+        - "79 Python tests passed"
+  manifest_result:
+    page_provenance: "unchanged"
+    asset_manifest: "unchanged"
+    source_manifest: "unchanged"
+    note: "No route source file, Mermaid source, PNG asset, source manifest, asset manifest, source refresh, push, or deployment change was needed for this shared presentation fix."
 
 source_authority_boundary:
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"

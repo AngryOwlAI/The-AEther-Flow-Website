@@ -571,9 +571,30 @@ def validate_runtime_mermaid(repo_root: Path) -> list[str]:
 
 def validate_comprehension_figure_contract(repo_root: Path) -> list[str]:
     errors: list[str] = []
+    figure_path = repo_root / "src/components/Figure.astro"
     component_path = repo_root / "src/components/ComprehensionBlocks.astro"
     model_path = repo_root / "src/lib/comprehensionContent.ts"
     css_path = repo_root / "src/styles/global.css"
+
+    if not figure_path.is_file():
+        errors.append(f"{figure_path.relative_to(repo_root)}: missing shared figure renderer")
+    else:
+        figure_text = figure_path.read_text(encoding="utf-8")
+        if 'class="figure-dialog-stage"' not in figure_text:
+            errors.append(
+                f"{figure_path.relative_to(repo_root)}: expanded diagrams must render "
+                "inside the scrollable figure-dialog-stage wrapper"
+            )
+        if 'class="figure-dialog-caption"' not in figure_text:
+            errors.append(
+                f"{figure_path.relative_to(repo_root)}: expanded diagram captions must "
+                "render outside the compact dialog toolbar"
+            )
+        if '<div class="figure-dialog-toolbar">\n          <p>{caption}</p>' in figure_text:
+            errors.append(
+                f"{figure_path.relative_to(repo_root)}: expanded dialog toolbar must "
+                "not put the full caption before the diagram image"
+            )
 
     if not component_path.is_file():
         errors.append(f"{component_path.relative_to(repo_root)}: missing shared renderer")
@@ -641,6 +662,32 @@ def validate_comprehension_figure_contract(repo_root: Path) -> list[str]:
                     f"{css_path.relative_to(repo_root)}: base comprehension diagram "
                     "wrapper must span the route content column"
                 )
+        if ".figure-dialog-toolbar p" in css_text:
+            errors.append(
+                f"{css_path.relative_to(repo_root)}: dialog toolbar must stay compact "
+                "and not style full caption text before the expanded image"
+            )
+        stage_match = re.search(r"\.figure-dialog-stage\s*\{(?P<body>.*?)\}", css_text, re.S)
+        if not stage_match:
+            errors.append(f"{css_path.relative_to(repo_root)}: missing figure dialog image stage")
+        else:
+            stage_body = stage_match.group("body")
+            for required_rule in ["overflow: auto", "overscroll-behavior: contain"]:
+                if required_rule not in stage_body:
+                    errors.append(
+                        f"{css_path.relative_to(repo_root)}: figure dialog image stage must "
+                        f"include `{required_rule}`"
+                    )
+        if "width: max(720px, 180vw)" not in css_text or "max-width: none" not in css_text:
+            errors.append(
+                f"{css_path.relative_to(repo_root)}: mobile expanded diagrams must be "
+                "wider than the phone viewport inside the scrollable dialog stage"
+            )
+        if "height: calc(100dvh - 1rem)" not in css_text:
+            errors.append(
+                f"{css_path.relative_to(repo_root)}: mobile expanded dialog must use "
+                "the phone viewport height for the image-first layout"
+            )
     return errors
 
 

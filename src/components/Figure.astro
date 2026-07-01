@@ -22,6 +22,7 @@ const {
   expandLabel = "Open larger",
 } = Astro.props;
 const dialogId = expandable && id ? `${id}-dialog` : undefined;
+const dialogCaptionId = dialogId ? `${dialogId}-caption` : undefined;
 ---
 
 <figure id={id} class={`content-figure ${className}`.trim()}>
@@ -46,15 +47,22 @@ const dialogId = expandable && id ? `${id}-dialog` : undefined;
     <span>{caption}</span>
   </figcaption>
   {expandable && dialogId && (
-    <dialog id={dialogId} class="figure-dialog" aria-label={`Expanded diagram: ${caption}`}>
+    <dialog
+      id={dialogId}
+      class="figure-dialog"
+      aria-label="Expanded diagram"
+      aria-describedby={dialogCaptionId}
+    >
       <div class="figure-dialog-shell">
         <div class="figure-dialog-toolbar">
-          <p>{caption}</p>
           <form method="dialog">
             <button type="submit">Close</button>
           </form>
         </div>
-        <img src={src} alt={alt} loading="lazy" decoding="async" />
+        <div class="figure-dialog-stage" tabindex="0" aria-label="Scrollable expanded diagram image">
+          <img src={src} alt={alt} loading="lazy" decoding="async" />
+        </div>
+        <p id={dialogCaptionId} class="figure-dialog-caption">{caption}</p>
       </div>
     </dialog>
   )}

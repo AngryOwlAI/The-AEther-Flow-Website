@@ -44,6 +44,9 @@ Owner-requested Diagram Gallery fit-rule feedback was resolved by making shared
 comprehension diagrams default to full route-column width, removing the
 automatic repeated post-diagram note, and adding a source-level comprehension
 validator guard against the old width cap and note injection.
+Owner-requested mobile expanded-diagram feedback was resolved by changing the
+shared larger-view dialog to a compact close bar, scrollable image-first stage,
+wider-than-viewport mobile diagram rendering, and below-image caption text.
 
 ## Route Set For Review
 
@@ -105,6 +108,18 @@ Passed:
   comprehension figure and manifest audit table aligned at `1180px` on desktop
   and `358px` on mobile; the old repeated note was absent, image dimensions
   were nonzero, and no document-level horizontal overflow appeared.
+- `WI-20260630-045` mobile expanded-dialog refinement: `npm run
+  validate:comprehension` passed with the new dialog-stage guard; Playwright
+  mobile QA on `/` measured the inline diagram at `356px` wide and the expanded
+  diagram at `720px` wide inside a `350px` scrollable stage with no document
+  overflow; `/ai-research-system/memory-preflight/` showed the same `720px`
+  expanded width in a viewport-contained route; desktop QA on `/` kept the
+  expanded image at `1278px` wide and Escape closed the dialog.
+- Final GF-014I validation: `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate`
+  passed against clean committed upstream source commit
+  `2a934c29b58e84aa913a5088a8388bd259f6370b`; `npm run
+  validate:implementation-control` passed; `.venv/bin/python -m pytest` passed
+  with 79 tests.
 
 Failed or blocked:
 
