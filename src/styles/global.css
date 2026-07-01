@@ -846,7 +846,7 @@ summary:focus-visible {
 
 .diagram-gallery-boundary {
   max-width: 54rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .diagram-gallery-image-link {
@@ -1033,7 +1033,7 @@ summary:focus-visible {
 
 .figure-dialog-toolbar p {
   overflow-wrap: anywhere;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .figure-dialog img {
@@ -1055,7 +1055,7 @@ summary:focus-visible {
 
 .content-figure figcaption span {
   color: var(--content-card-text);
-  font-weight: 800;
+  font-weight: 400;
   min-width: 0;
   overflow-wrap: anywhere;
 }

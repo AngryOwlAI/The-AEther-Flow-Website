@@ -37,6 +37,9 @@ rewriting allowed greenfield/resource figure captions as descriptive figure
 notes and removing visible Mermaid source paths from shared figure/gallery
 rendering. Legacy `/project/*` caption wording remains a follow-up item because
 those files are outside the active packet's write scope.
+Owner-requested diagram caption weight feedback was resolved by rendering
+diagram description captions and expanded-dialog captions as regular note text
+rather than bold label text.
 
 ## Route Set For Review
 
@@ -87,6 +90,9 @@ Passed:
   descriptive figure-note language, shared figure/gallery rendering no longer
   displays Mermaid source paths, and remaining old warning-style phrase hits are
   limited to legacy `/project/*` surfaces outside this packet's write scope.
+- `WI-20260630-045` caption weight refinement: shared diagram descriptions,
+  gallery boundary notes, and expanded-dialog captions render as regular note
+  text rather than bold label text.
 
 Failed or blocked:
 
