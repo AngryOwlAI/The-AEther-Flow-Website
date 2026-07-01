@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-07-01T05:35:30Z"
+updated_utc: "2026-07-01T05:57:26Z"
 status: "active"
 
 task_id: "WI-20260630-045"
@@ -12,7 +12,7 @@ completion_record:
   completion_id: "WJC-20260630-045-A"
   path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
 
-summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, animated SVG fact-caption, label, and capitalization rules, `/resources/diagrams/` gallery restoration, the shared comprehension diagram fit rule, the mobile expanded-diagram dialog fix, the Resources category cleanup, the resource route-link contrast repair, and the Home Ontology/GR entry refinement."
+summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, animated SVG fact-caption, label, and capitalization rules, `/resources/diagrams/` gallery restoration, the shared comprehension diagram fit rule, the mobile expanded-diagram dialog fix, the Resources category cleanup, the resource route-link contrast repair, the Home Ontology/GR entry refinement, and the Home dual-track/action-row refinement."
 
 current_state:
   - "WI-20260630-044 is completed, checkpointed, and superseded."
@@ -31,6 +31,8 @@ current_state:
   - "Owner feedback on Resources category cleanup was addressed by making the `/resources/` route map use named internal links, removing the route-map Page and Status columns, removing dedicated `Provenance and limits` sections from resource routes, and adding a public-comprehension validator guard against future reintroduction."
   - "Owner feedback on Resources route-table link contrast was addressed by scoping `.greenfield-matrix` links to the dark-page ivory/orange palette so Route-column links no longer inherit the dark light-theme cyan link token."
   - "Owner feedback on the Home entry surface was addressed by adding concise Æther / Æther-Flow ontology and General Relativity (GR) derivation descriptions, making the yellow `Ontology and GR` CTA target the Home Physics status section, adding three dark route buttons for `Physics`, `AI Research`, and `Resources`, and correcting Home Physics-status terminology to Æther / Æther-Flow."
+  - "Follow-up owner feedback on the Home entry surface was addressed by making the intro explicitly describe the dual-track physics research and AI research-system structure, while preserving that the GR derivation from the ontology remains open and claim-gated."
+  - "Follow-up owner feedback on Home primary actions was addressed by making the three dark route buttons align horizontally on the row below the yellow `Ontology and GR` CTA at desktop and 390px mobile widths."
   - "Legacy project-route captions with old warning-style language remain outside this packet's authorized write paths and are recorded as follow-up scope."
   - "Diagrams must remain reader aids and must not create source authority, proof authority, claim promotion, owner acceptance, deployment readiness, or upstream source changes."
   - "No deployment, push, upstream source-project write, source refresh, dependency addition, route retirement, redirect change, or owner acceptance is authorized."
@@ -97,6 +99,9 @@ browser_qa:
     status: "passed"
   - id: "home-ontology-gr-entry-qa"
     command: "Playwright snapshot and computed-style QA against http://127.0.0.1:4321/"
+    status: "passed"
+  - id: "home-dual-track-action-row-qa"
+    command: "Playwright snapshot and geometry QA against http://127.0.0.1:4321/ at 1440x1000 and 390x844"
     status: "passed"
 
 next_recommended_action:

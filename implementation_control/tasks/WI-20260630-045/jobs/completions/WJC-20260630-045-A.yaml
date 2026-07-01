@@ -4,10 +4,10 @@ completion_id: "WJC-20260630-045-A"
 task_id: "WI-20260630-045"
 job_id: "WJ-20260630-045-A"
 created_utc: "2026-06-30T22:19:26Z"
-updated_utc: "2026-07-01T05:35:30Z"
+updated_utc: "2026-07-01T05:57:26Z"
 status: "completed"
 
-summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set, then applied the owner-requested Resources category cleanup, route-link contrast repair, and Home Ontology/GR entry refinement without creating new source authority or changing deployment state."
+summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set, then applied the owner-requested Resources category cleanup, route-link contrast repair, Home Ontology/GR entry refinement, and Home dual-track/action-row refinement without creating new source authority or changing deployment state."
 
 outputs:
   - path: "src/lib/siteContent.ts"
@@ -42,11 +42,14 @@ outputs:
     description: "Recorded the WI-045 task, job, handoff, completion evidence, and WI-044 supersession cleanup."
 
 changed_files:
+  - "docs/quality/sitewide-greenfield-release-candidate-report.md"
+  - "docs/quality/sitewide-greenfield-review-ledger.md"
   - "implementation_control/handoffs/WH-20260630-045.md"
   - "implementation_control/handoffs/WH-20260630-045.yaml"
   - "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
   - "public/files/manifests/page_provenance.json"
   - "src/pages/index.astro"
+  - "src/styles/global.css"
 
 requirements_satisfied:
   - "Priority 1 greenfield routes now render source-backed static comprehension diagram blocks or low-risk reused diagram assets."
@@ -632,6 +635,69 @@ home_ontology_gr_entry_closeout:
       status: "passed"
       checked:
         - "Aggregate website validation passed with curator bound to clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b."
+    - command: ".venv/bin/python -m pytest"
+      status: "passed"
+      checked:
+        - "79 Python tests passed"
+  manifest_result:
+    page_provenance: "updated"
+    asset_manifest: "unchanged"
+    source_manifest: "unchanged"
+    curator_reports: "unchanged"
+    note: "Only the Home route source hash changed; no upstream source write, source refresh, Mermaid source, PNG asset, source manifest, curator report, push, or deployment change was made."
+
+home_dual_track_action_row_closeout:
+  refinement_id: "GF-014L"
+  checked_utc: "2026-07-01T05:57:26Z"
+  summary: "Refined the Home introduction and primary action row after owner review so the description names the dual-track physics/AI research structure and the three dark route buttons sit on one horizontal row under the yellow `Ontology and GR` CTA."
+  outputs:
+    - path: "src/pages/index.astro"
+      status: "modified"
+      description: "Rewrote the Home intro panel to state that the project is dual-track: a physics research track asking whether a GR derivation can be built from the Æther / Æther-Flow ontology, and an AI research-system track governing bounded tasks, validators, handoffs, memory discipline, and human review."
+    - path: "src/styles/global.css"
+      status: "modified"
+      description: "Changed `.home-action-row` to a two-row grid with the yellow primary CTA on the first row and the three dark route buttons aligned horizontally below it, with mobile sizing that preserves the row without document overflow at 390px."
+    - path: "public/files/manifests/page_provenance.json"
+      status: "modified"
+      description: "Regenerated the Home route local page hash against clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b."
+    - path: "implementation_control/handoffs/WH-20260630-045.md"
+      status: "modified"
+      description: "Recorded the Home dual-track/action-row refinement and validation evidence."
+    - path: "implementation_control/handoffs/WH-20260630-045.yaml"
+      status: "modified"
+      description: "Recorded the Home dual-track/action-row refinement and browser QA evidence."
+    - path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
+      status: "modified"
+      description: "Recorded the Home dual-track/action-row refinement in completion evidence."
+  acceptance_checks:
+    - command: "Playwright snapshot and geometry QA against http://127.0.0.1:4321/ at 1440x1000 and 390x844"
+      status: "passed"
+      checked:
+        - "The Home intro contains `dual-track research program`, `physics research track`, and `AI research-system track`."
+        - "At 1440x1000, the three dark route buttons share one y-position below the yellow `Ontology and GR` CTA."
+        - "At 390x844, the three dark route buttons share one y-position below the yellow `Ontology and GR` CTA."
+        - "The sampled dark route buttons computed to dark backgrounds and ivory text."
+        - "Document-level horizontal overflow was 0 at desktop and mobile viewport widths."
+    - command: "git diff --check"
+      status: "passed"
+    - command: "npm run validate:comprehension"
+      status: "passed"
+    - command: "npm run validate:svg"
+      status: "passed"
+    - command: "npm run validate:manifests"
+      status: "passed"
+    - command: "npm run validate:provenance"
+      status: "passed"
+    - command: "npm run build"
+      status: "passed"
+      checked:
+        - "64 static Astro pages built"
+    - command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate"
+      status: "passed"
+      checked:
+        - "Aggregate website validation passed with curator bound to clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b."
+    - command: "npm run validate:implementation-control"
+      status: "passed"
     - command: ".venv/bin/python -m pytest"
       status: "passed"
       checked:

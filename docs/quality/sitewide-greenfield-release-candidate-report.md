@@ -130,11 +130,26 @@ Passed:
   captions, sentence starts were capitalized, and `npm run
   validate:comprehension` passed with guards against visible `Fact:` labels and
   lowercase caption starts.
+- `WI-20260630-045` Home dual-track/action-row refinement: the Home intro now
+  states the project is a dual-track research program, names the physics
+  research track as the open GR-derivation-from-ontology path, and names the AI
+  research-system track as the bounded-task/validator/handoff/memory/review
+  discipline; the three dark route buttons now sit on one horizontal row under
+  the yellow `Ontology and GR` CTA.
 - Final GF-014K validation: `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate`
   passed against clean committed upstream source commit
   `2a934c29b58e84aa913a5088a8388bd259f6370b`; `npm run
   validate:implementation-control` passed; `.venv/bin/python -m pytest` passed
   with 79 tests.
+- Final GF-014L validation: `git diff --check`, `npm run
+  validate:comprehension`, `npm run validate:svg`, `npm run
+  validate:manifests`, `npm run validate:provenance`, `npm run build`,
+  `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run
+  validate`, `npm run validate:implementation-control`, and `.venv/bin/python
+  -m pytest` passed. Playwright geometry QA on `http://127.0.0.1:4321/` passed
+  at `1440x1000` and `390x844`: the dual-track intro text was visible, the
+  three dark route buttons shared one row below the yellow CTA, and
+  document-level horizontal overflow was `0`.
 
 Failed or blocked:
 

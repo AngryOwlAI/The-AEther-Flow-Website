@@ -1511,23 +1511,16 @@ html:has(body.project-overview-page) {
 }
 
 .home-action-row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
   gap: 0.75rem;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: start;
   width: min(100% - 2rem, 1180px);
   margin: 0 auto 2rem;
 }
 
-.home-action-row:has(> a:nth-child(3):last-child) {
-  display: grid;
-  grid-template-columns: max-content max-content;
-  align-items: center;
-  justify-content: start;
-}
-
-.home-action-row:has(> a:nth-child(3):last-child) > .primary-link:first-child {
+.home-action-row > .primary-link:first-child {
   grid-column: 1 / -1;
   justify-self: start;
 }
@@ -4048,13 +4041,13 @@ html:has(body.project-overview-page) {
     max-width: 100%;
   }
 
-  .home-action-row:has(> a:nth-child(3):last-child) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .home-action-row {
+    grid-template-columns: repeat(3, minmax(0, max-content));
     align-items: stretch;
   }
 
   .overview-actions:has(> a:nth-child(3):last-child) > .secondary-link,
-  .home-action-row:has(> a:nth-child(3):last-child) > .secondary-link {
+  .home-action-row > .secondary-link {
     width: 100%;
     min-width: 0;
   }
@@ -4352,7 +4345,6 @@ html:has(body.project-overview-page) {
 
   .overview-actions,
   .home-action-row,
-  .home-action-row:has(> a:nth-child(3):last-child),
   .overview-actions:has(> a:nth-child(3):last-child) {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -4361,10 +4353,23 @@ html:has(body.project-overview-page) {
 
   .overview-actions > a,
   .home-action-row > a,
-  .home-action-row:has(> a:nth-child(3):last-child) > .primary-link:first-child,
   .overview-actions:has(> a:nth-child(3):last-child) > .primary-link:first-child {
     width: 100%;
     justify-self: stretch;
+  }
+
+  .home-action-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .home-action-row > a {
+    padding-inline: 0.55rem;
+    font-size: 0.86rem;
+  }
+
+  .home-action-row > .primary-link:first-child {
+    grid-column: 1 / -1;
   }
 
   .physics-greenfield-page .overview-command-hero .overview-actions:has(> a:nth-child(3):last-child) {
