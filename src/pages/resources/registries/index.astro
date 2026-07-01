@@ -123,25 +123,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
-    use: "Registry classes, retrieval boundary, source-versus-derivative matrix, and required proof-limit language.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Resources Content Dossier [Content dossier].",
-    use: "Manifest-backed resource status, hash limits, and internal-first route behavior.",
-  },
-  {
-    reference: "The AEther Flow Project. (2026a). TeX source registry [Registry: registries/TEX_SOURCE_REGISTRY.csv].",
-    use: "Representative canonical physics source lane.",
-  },
-  {
-    reference: "The AEther Flow Project. (2026b). Claim boundary registry [Registry: registries/CLAIM_BOUNDARY_REGISTRY.csv].",
-    use: "Representative claim-status and forbidden-overread lane.",
-  },
-];
-
 const registriesSvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-registries-title resources-registries-desc">
     <title id="resources-registries-title">Animated registry provenance map</title>
@@ -331,32 +312,4 @@ const registriesSvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="registries-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="registries-provenance-title">This page explains registry use; it is not a registry dashboard.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        The route points readers toward registry classes while leaving current
-        rows and source files in their governing records.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>

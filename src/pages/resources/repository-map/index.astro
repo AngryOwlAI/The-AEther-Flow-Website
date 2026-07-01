@@ -168,25 +168,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). Folder and Repository Topology Components [Product requirements document: PRD-08].",
-    use: "Defines folder families, authority classes, edit/read policy, and generated-versus-canonical warnings.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Quick Source Map for Site Builders [Product requirements document: PRD-11].",
-    use: "Defines source-bundle linkage from repository lanes to future page work.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026c). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
-    use: "Defines registry, derivative, retrieval, and local-cache boundaries.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026d). Sitewide Greenfield Rebuild Implementation Plan [Implementation plan].",
-    use: "Defines the GF-012 repository-map route requirement and reset boundary.",
-  },
-];
-
 const repositorySvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-repository-title resources-repository-desc">
     <title id="resources-repository-title">Animated repository lane map</title>
@@ -380,32 +361,4 @@ const repositorySvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="repository-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="repository-provenance-title">This map is source-bundled orientation, not canonical topology authority.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        They support this route, while live upstream files, registries, and
-        governed records remain the authority for real edits.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>

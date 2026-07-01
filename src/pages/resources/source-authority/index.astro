@@ -106,25 +106,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    source: "The AEther Flow Website. (2026a). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
-    use: "Defines source, registry, derivative, retrieval, and provenance classes.",
-  },
-  {
-    source: "The AEther Flow Website. (2026b). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
-    use: "Defines publication and reader-surface boundaries.",
-  },
-  {
-    source: "The AEther Flow Website. (2026c). Website Positioning Guidance [Product requirements document: PRD-10].",
-    use: "Defines safe public claim language and forbidden overclaims.",
-  },
-  {
-    source: "The AEther Flow Project. (2026). Source authority and generated derivatives [Source file: github-facing/source-authority-explainer.md].",
-    use: "Provides upstream source-authority framing.",
-  },
-];
-
 const authoritySvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-authority-title resources-authority-desc">
     <title id="resources-authority-title">Animated Resources source authority ladder</title>
@@ -287,32 +268,4 @@ const authoritySvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="authority-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="authority-provenance-title">This page explains the boundary; it does not become the boundary.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        They support the public explanation while leaving claim authority in
-        upstream source files, registries, and governed records.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.source}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>

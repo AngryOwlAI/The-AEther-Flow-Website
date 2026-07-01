@@ -188,25 +188,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). Quick Source Map for Site Builders [Product requirements document: PRD-11].",
-    use: "Defines source-bundle schema, bundle index, build-first checklist, handoff requirements, and staleness handling.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Folder and Repository Topology Components [Product requirements document: PRD-08].",
-    use: "Defines folder classes and edit/read lanes used by source bundles.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026c). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
-    use: "Defines source specs, publication briefs, generated derivatives, parity, validation, and page-type requirements.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026d). Website Positioning Guidance [Product requirements document: PRD-10].",
-    use: "Constrains safe public copy and forbidden claim promotion.",
-  },
-];
-
 const builderSvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-builder-title resources-builder-desc">
     <title id="resources-builder-title">Animated source-bundle builder map</title>
@@ -430,33 +411,4 @@ const builderSvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="builder-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="builder-provenance-title">The guide defines build discipline; it is not a write authorization.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        Future builders must still use the current live control packet and
-        inspect current source before changing public routes, manifests, or
-        assets.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>

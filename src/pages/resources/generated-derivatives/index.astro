@@ -100,25 +100,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). Memory, Registry, and Retrieval Components [Product requirements document: PRD-05].",
-    use: "Defines generated derivative and retrieval boundaries.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
-    use: "Defines generated explainer, publication, and page-template boundaries.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026c). Folder and Repository Topology Components [Product requirements document: PRD-08].",
-    use: "Defines folder classes for generated derivatives and local retrieval layers.",
-  },
-  {
-    reference: "The AEther Flow Project. (2026). Source authority and generated derivatives [Source file: github-facing/source-authority-explainer.md].",
-    use: "Provides upstream framing for derivative-versus-source conflict resolution.",
-  },
-];
-
 const derivativeSvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-derivatives-title resources-derivatives-desc">
     <title id="resources-derivatives-title">Animated generated derivative boundary map</title>
@@ -278,32 +259,4 @@ const derivativeSvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="derivatives-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="derivatives-provenance-title">This page explains derivative status; it does not promote derivatives.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        They support the public explanation while leaving current claim status
-        in upstream source files, registries, and governed records.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>

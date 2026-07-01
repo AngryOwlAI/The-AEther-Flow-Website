@@ -133,25 +133,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
-    use: "Defines library organization by reader job, publication page types, and provenance expectations.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Website Positioning Guidance [Product requirements document: PRD-10].",
-    use: "Defines safe public positioning and reader-route priorities.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026c). Quick Source Map for Site Builders [Product requirements document: PRD-11].",
-    use: "Defines compact source-bundle and site-builder orientation needs.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026d). Resources Content Dossier [Content dossier].",
-    use: "Provides Resources route behavior, internal-first routing, and manifest boundary guidance.",
-  },
-];
-
 const librarySvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-library-title resources-library-desc">
     <title id="resources-library-title">Animated Resources library route map</title>
@@ -344,32 +325,4 @@ const librarySvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="library-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="library-provenance-title">This page organizes reading; it does not create authority.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        They support the public library route while source, registry,
-        derivative, retrieval, and publication status remain separately labeled.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>

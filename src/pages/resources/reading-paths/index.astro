@@ -139,25 +139,6 @@ const policyRows = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). High-Level Components [Product requirements document: PRD-01].",
-    use: "Defines internal-first reader paths for general readers, physicists, AI researchers, contributors, and site builders.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
-    use: "Defines reading-path pages, publication surfaces, and library organization by reader job.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026c). Quick Source Map for Site Builders [Product requirements document: PRD-11].",
-    use: "Defines source-bundle-first paths for future route implementation.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026d). Sitewide Greenfield Rebuild Implementation Plan [Implementation plan].",
-    use: "Defines the new short route inventory and GF-012 acceptance criteria.",
-  },
-];
-
 const readingPathsSvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-reading-title resources-reading-desc">
     <title id="resources-reading-title">Animated internal reading path map</title>
@@ -343,34 +324,6 @@ const readingPathsSvg = `
             <th scope="row">{row.rule}</th>
             <td>{row.meaning}</td>
             <td>{row.failureMode}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="reading-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="reading-provenance-title">This route orders reading; it does not create source truth.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        They support the reading-path route while upstream source records,
-        registries, and governed control files remain authoritative for claims.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
           </tr>
         ))}
       </tbody>

@@ -89,72 +89,52 @@ const liveResourceRoutes = [
 
 const routeRows = [
   {
-    route: "/resources/source-authority/",
     title: "Source Authority",
-    status: "live in GF-010",
     readerJob: "Understand authority classes before reading assets or registries.",
     href: "/resources/source-authority/",
   },
   {
-    route: "/resources/registries/",
     title: "Registries",
-    status: "live in GF-010",
     readerJob: "Interpret registry rows as provenance and workflow state.",
     href: "/resources/registries/",
   },
   {
-    route: "/resources/generated-derivatives/",
     title: "Generated Derivatives",
-    status: "live in GF-011",
     readerJob: "Distinguish generated reader surfaces from source authority.",
     href: "/resources/generated-derivatives/",
   },
   {
-    route: "/resources/retrieval-layers/",
     title: "Retrieval Layers",
-    status: "live in GF-011",
     readerJob: "Treat memory, wiki, semantic, and cache layers as navigation support.",
     href: "/resources/retrieval-layers/",
   },
   {
-    route: "/resources/publication-process/",
     title: "Publication Process",
-    status: "live in GF-011",
     readerJob: "Read source-to-publication workflow without confusing quality and authority.",
     href: "/resources/publication-process/",
   },
   {
-    route: "/resources/library/",
     title: "Library",
-    status: "live in GF-011",
     readerJob: "Browse reading surfaces by reader job rather than repository layout.",
     href: "/resources/library/",
   },
   {
-    route: "/resources/reading-paths/",
     title: "Reading Paths",
-    status: "live in GF-012",
     readerJob: "Choose a route sequence by audience and question.",
     href: "/resources/reading-paths/",
   },
   {
-    route: "/resources/repository-map/",
     title: "Repository Map",
-    status: "live in GF-012",
     readerJob: "Understand folder classes without treating local paths as authority.",
     href: "/resources/repository-map/",
   },
   {
-    route: "/resources/site-builder-guide/",
     title: "Site Builder Guide",
-    status: "live in GF-012",
     readerJob: "Map page types to source bundles and claim-boundary checks.",
     href: "/resources/site-builder-guide/",
   },
   {
-    route: "/resources/diagrams/",
     title: "Diagram Gallery",
-    status: "live in GF-012",
     readerJob: "Inspect the greenfield inventory reset, static diagram workflow, and non-authority labels.",
     href: "/resources/diagrams/",
   },
@@ -193,29 +173,6 @@ const boundaryRows = [
     surface: "Source/provenance link",
     safeUse: "Support audit after the internal explanation is understood.",
     limit: "External source links should not replace the primary internal reading path.",
-  },
-];
-
-const sourceRows = [
-  {
-    source: "PRD-05",
-    use: "Source, registry, derivative, retrieval, and provenance class boundaries.",
-    boundary: "Requirements planning, not source authority.",
-  },
-  {
-    source: "PRD-06",
-    use: "Publication surfaces, library behavior, generated derivative warnings, and page footer expectations.",
-    boundary: "Publication quality remains separate from claim authority.",
-  },
-  {
-    source: "Resources dossier",
-    use: "Manifest-backed asset status, internal route selection, and hash limits.",
-    boundary: "Dossier guidance remains below tracked source and manifest records.",
-  },
-  {
-    source: "Public manifests",
-    use: "Asset and route provenance for public files and pages.",
-    boundary: "Website manifests do not supersede upstream source registries.",
   },
 ];
 
@@ -325,16 +282,14 @@ const resourcesSvg = `
       <p class="eyebrow">Resource route map</p>
       <h2 id="resource-map-title">Resources is a category landing page, not a loose link index.</h2>
       <p>
-        Each child route has a reader job and a status boundary. Planned routes
-        are listed as route commitments, not as live links before implementation.
+        Each child route has a reader job and a status boundary before readers
+        reach manifests, files, or provenance records.
       </p>
     </div>
     <table class="greenfield-matrix">
       <thead>
         <tr>
           <th scope="col">Route</th>
-          <th scope="col">Page</th>
-          <th scope="col">Status</th>
           <th scope="col">Reader job</th>
         </tr>
       </thead>
@@ -342,10 +297,8 @@ const resourcesSvg = `
         {routeRows.map((row) => (
           <tr>
             <th scope="row">
-              {row.href ? <a href={row.href}>{row.route}</a> : <code>{row.route}</code>}
+              <a href={row.href}>{row.title}</a>
             </th>
-            <td>{row.title}</td>
-            <td>{row.status}</td>
             <td>{row.readerJob}</td>
           </tr>
         ))}
@@ -405,37 +358,6 @@ const resourcesSvg = `
             <th scope="row">{row.surface}</th>
             <td>{row.safeUse}</td>
             <td>{row.limit}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
-
-  <section class="track-page-band" aria-labelledby="resources-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="resources-provenance-title">The overview is source-bundled, not source authority.</h2>
-      <p>
-        This route is based on PRD-05, PRD-06, the Resources content dossier,
-        and website manifests. Those materials guide the website page; upstream
-        source files, registries, and governed records remain authoritative for
-        scientific, mathematical, and workflow claims.
-      </p>
-    </div>
-    <table class="greenfield-matrix greenfield-source-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Basis</th>
-          <th scope="col">Used here for</th>
-          <th scope="col">Boundary</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sourceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.source}</th>
-            <td>{row.use}</td>
-            <td>{row.boundary}</td>
           </tr>
         ))}
       </tbody>

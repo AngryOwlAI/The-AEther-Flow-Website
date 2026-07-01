@@ -49,6 +49,13 @@ ANIMATED_SVG_CAPTION_ROOTS = [
     Path("src/pages/license/index.astro"),
 ]
 
+RESOURCE_PAGE_ROOT = Path("src/pages/resources")
+RESOURCE_PROVENANCE_SECTION = "Provenance and limits"
+RESOURCE_REFERENCE_TABLE_HEADERS = (
+    '<th scope="col">Reference</th>',
+    '<th scope="col">Used here for</th>',
+)
+
 VISUAL_DESCRIPTION_CAPTION_PATTERNS = [
     re.compile(r"\bdiagram\s+(?:illustrates|shows|depicts)\b", re.IGNORECASE),
     re.compile(
@@ -757,6 +764,29 @@ def validate_animated_svg_caption_contract(repo_root: Path) -> list[str]:
     return errors
 
 
+def validate_resource_page_section_contract(repo_root: Path) -> list[str]:
+    errors: list[str] = []
+    resources_root = repo_root / RESOURCE_PAGE_ROOT
+    if not resources_root.is_dir():
+        return errors
+
+    for path in sorted(resources_root.rglob("*.astro")):
+        text = path.read_text(encoding="utf-8")
+        relative = path.relative_to(repo_root)
+        if RESOURCE_PROVENANCE_SECTION in text:
+            errors.append(
+                f"{relative}: Resources pages must not render a dedicated "
+                f"{RESOURCE_PROVENANCE_SECTION!r} section"
+            )
+        if all(header in text for header in RESOURCE_REFERENCE_TABLE_HEADERS):
+            errors.append(
+                f"{relative}: Resources pages must not render dedicated "
+                "reference/citation tables; keep resource context in page copy, "
+                "manifests, dossiers, or footer provenance"
+            )
+    return errors
+
+
 def validate_route_wiring(route: RemediatedRoute, repo_root: Path) -> list[str]:
     errors: list[str] = []
     page = repo_root / route.local_page_source
@@ -860,6 +890,7 @@ def main() -> int:
     errors.extend(validate_runtime_mermaid(repo_root))
     errors.extend(validate_comprehension_figure_contract(repo_root))
     errors.extend(validate_animated_svg_caption_contract(repo_root))
+    errors.extend(validate_resource_page_section_contract(repo_root))
     errors.extend(validate_human_review(repo_root))
 
     if errors:

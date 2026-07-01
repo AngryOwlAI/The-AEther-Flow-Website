@@ -86,25 +86,6 @@ const relatedRoutes = [
   },
 ];
 
-const provenanceRows = [
-  {
-    reference: "The AEther Flow Website. (2026a). Diagram Gallery Content Dossier [Content dossier].",
-    use: "Defines the diagram route job, diagram-publication contract, safe/unsafe summaries, and non-authority boundary.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026b). Sitewide Greenfield Rebuild Implementation Plan [Implementation plan].",
-    use: "Defines the greenfield Diagram Gallery reset rule and GF-012 route requirement.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026c). Documentation, Publication, and Website Components [Product requirements document: PRD-06].",
-    use: "Defines visual brief, publication, static diagram, and page-type constraints.",
-  },
-  {
-    reference: "The AEther Flow Website. (2026d). `scripts/render_mermaid_diagrams.py` [Website maintainer source].",
-    use: "Provides the static Mermaid rendering workflow referenced by the diagram route.",
-  },
-];
-
 const diagramSvg = `
   <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="resources-diagrams-title resources-diagrams-desc">
     <title id="resources-diagrams-title">Animated diagram gallery reset map</title>
@@ -252,32 +233,4 @@ const diagramSvg = `
       className="overview-track-rail"
     />
   </CommandBand>
-
-  <section class="track-page-band" aria-labelledby="diagram-provenance-title">
-    <div class="track-page-heading">
-      <p class="eyebrow">Provenance and limits</p>
-      <h2 id="diagram-provenance-title">Diagram publication is an audit trail, not claim authority.</h2>
-      <p>
-        The references below are cited in APA 7 style as implementation basis.
-        The manifest id for the retained comprehension diagram is
-        `comprehension_resources_diagram_publication_boundary`.
-      </p>
-    </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Reference</th>
-          <th scope="col">Used here for</th>
-        </tr>
-      </thead>
-      <tbody>
-        {provenanceRows.map((row) => (
-          <tr>
-            <th scope="row">{row.reference}</th>
-            <td>{row.use}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </section>
 </BaseLayout>
