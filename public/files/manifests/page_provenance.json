@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-01T05:50:59.782812+00:00",
+  "generated_at": "2026-07-01T06:17:34.258417+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "2a934c29b58e84aa913a5088a8388bd259f6370b",
   "source_commit_date": "2026-06-30T14:57:31-06:00",
@@ -120,8 +120,8 @@
     {
       "route_path": "/physics/ontology/",
       "local_page_source": "src/pages/physics/ontology/index.astro",
-      "local_page_sha256": "3ad44007928331cc5637c4366915e82433d82557ad3f930db84ea49758c9caf0",
-      "title": "AEther-Flow Ontology",
+      "local_page_sha256": "581325814b849595f5ec35414837b6eb52f2bb83abd05c5beeba9bf3e3893747",
+      "title": "\u00c6ther-Flow Ontology",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [

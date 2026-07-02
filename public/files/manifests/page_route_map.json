@@ -37,7 +37,7 @@
     {
       "route_path": "/physics/ontology/",
       "local_page_source": "src/pages/physics/ontology/index.astro",
-      "title": "AEther-Flow Ontology",
+      "title": "Æther-Flow Ontology",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "github-facing/aether-flow-ontology-explainer.md",

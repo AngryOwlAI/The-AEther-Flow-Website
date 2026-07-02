@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
-updated_utc: "2026-07-01T05:57:26Z"
+updated_utc: "2026-07-01T06:19:31Z"
 status: "active"
 
 task_id: "WI-20260630-045"
@@ -12,7 +12,7 @@ completion_record:
   completion_id: "WJC-20260630-045-A"
   path: "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
 
-summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, animated SVG fact-caption, label, and capitalization rules, `/resources/diagrams/` gallery restoration, the shared comprehension diagram fit rule, the mobile expanded-diagram dialog fix, the Resources category cleanup, the resource route-link contrast repair, the Home Ontology/GR entry refinement, and the Home dual-track/action-row refinement."
+summary: "Completed and refined the owner-requested greenfield diagram rollout packet, including owner-requested caption reform, animated SVG fact-caption, label, and capitalization rules, `/resources/diagrams/` gallery restoration, the shared comprehension diagram fit rule, the mobile expanded-diagram dialog fix, the Resources category cleanup, the resource route-link contrast repair, the Home Ontology/GR entry refinement, the Home dual-track/action-row refinement, and the `/physics/ontology/` Æther spelling correction."
 
 current_state:
   - "WI-20260630-044 is completed, checkpointed, and superseded."
@@ -33,6 +33,8 @@ current_state:
   - "Owner feedback on the Home entry surface was addressed by adding concise Æther / Æther-Flow ontology and General Relativity (GR) derivation descriptions, making the yellow `Ontology and GR` CTA target the Home Physics status section, adding three dark route buttons for `Physics`, `AI Research`, and `Resources`, and correcting Home Physics-status terminology to Æther / Æther-Flow."
   - "Follow-up owner feedback on the Home entry surface was addressed by making the intro explicitly describe the dual-track physics research and AI research-system structure, while preserving that the GR derivation from the ontology remains open and claim-gated."
   - "Follow-up owner feedback on Home primary actions was addressed by making the three dark route buttons align horizontally on the row below the yellow `Ontology and GR` CTA at desktop and 390px mobile widths."
+  - "Follow-up owner feedback on `/physics/ontology/` spelling was addressed by changing reader-facing `AEther` / `AEther-flow` text to `Æther` / `Æther-flow` in the route, source notice, navigation description, route map, and page provenance."
+  - "The `/physics/ontology/` spelling correction passed targeted validation and rendered-text checks, but aggregate `npm run validate` is blocked at the curator validation step because checked-in curator reports are stale and `curator/reports/` is outside this active write scope."
   - "Legacy project-route captions with old warning-style language remain outside this packet's authorized write paths and are recorded as follow-up scope."
   - "Diagrams must remain reader aids and must not create source authority, proof authority, claim promotion, owner acceptance, deployment readiness, or upstream source changes."
   - "No deployment, push, upstream source-project write, source refresh, dependency addition, route retirement, redirect change, or owner acceptance is authorized."
@@ -103,8 +105,20 @@ browser_qa:
   - id: "home-dual-track-action-row-qa"
     command: "Playwright snapshot and geometry QA against http://127.0.0.1:4321/ at 1440x1000 and 390x844"
     status: "passed"
+  - id: "ontology-spelling-rendered-text-qa"
+    command: "Rendered-text extraction against http://127.0.0.1:4321/physics/ontology/"
+    status: "passed"
+
+follow_up_validation:
+  - id: "ontology-spelling-targeted-validation"
+    command: "git diff --check; npm run validate:comprehension; npm run validate:svg; npm run validate:manifests; npm run validate:provenance; npm run build; .venv/bin/python -m pytest"
+    status: "passed"
+  - id: "ontology-spelling-aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate"
+    status: "blocked"
+    reason: "Stopped at the curator validation step because checked-in curator reports are stale and `curator/reports/` is outside the active allowed write scope."
 
 next_recommended_action:
-  task_packet: "Owner review decision"
-  summary: "Owner must review the greenfield route set with static diagrams and either accept it or request bounded feedback packets."
-  do_not_skip: "Do not mark owner acceptance, push, deploy, or mutate upstream."
+  task_packet: "Curator report refresh authorization or owner review decision"
+  summary: "Owner must either authorize a bounded curator-report refresh for the ontology spelling correction, or review the current route set and request the next bounded feedback packet."
+  do_not_skip: "Do not mark owner acceptance, push, deploy, mutate upstream, or write curator reports without authorized scope."

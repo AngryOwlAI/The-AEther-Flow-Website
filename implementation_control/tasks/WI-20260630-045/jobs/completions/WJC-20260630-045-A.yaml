@@ -4,10 +4,10 @@ completion_id: "WJC-20260630-045-A"
 task_id: "WI-20260630-045"
 job_id: "WJ-20260630-045-A"
 created_utc: "2026-06-30T22:19:26Z"
-updated_utc: "2026-07-01T05:57:26Z"
+updated_utc: "2026-07-01T06:19:31Z"
 status: "completed"
 
-summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set, then applied the owner-requested Resources category cleanup, route-link contrast repair, Home Ontology/GR entry refinement, and Home dual-track/action-row refinement without creating new source authority or changing deployment state."
+summary: "Added and refined source-backed static comprehension diagram blocks for the greenfield route set, then applied the owner-requested Resources category cleanup, route-link contrast repair, Home Ontology/GR entry refinement, Home dual-track/action-row refinement, and `/physics/ontology/` Æther spelling correction without creating new source authority or changing deployment state."
 
 outputs:
   - path: "src/lib/siteContent.ts"
@@ -46,10 +46,14 @@ changed_files:
   - "docs/quality/sitewide-greenfield-review-ledger.md"
   - "implementation_control/handoffs/WH-20260630-045.md"
   - "implementation_control/handoffs/WH-20260630-045.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
   - "implementation_control/tasks/WI-20260630-045/jobs/completions/WJC-20260630-045-A.yaml"
+  - "public/files/manifests/page_route_map.json"
   - "public/files/manifests/page_provenance.json"
-  - "src/pages/index.astro"
-  - "src/styles/global.css"
+  - "src/lib/siteContent.ts"
+  - "src/pages/physics/ontology/index.astro"
 
 requirements_satisfied:
   - "Priority 1 greenfield routes now render source-backed static comprehension diagram blocks or low-risk reused diagram assets."
@@ -66,6 +70,7 @@ requirements_satisfied:
   - "Owner feedback on Resources category cleanup was addressed by replacing raw route labels with page-name links in the `/resources/` route map, removing dedicated `Provenance and limits` sections from resource pages, and adding a public-comprehension validator guard against reintroduction."
   - "Owner feedback on Resources route-table link contrast was addressed by scoping `.greenfield-matrix` links to dark-surface text and hover colors."
   - "Owner feedback on the Home entry surface was addressed by adding a concise Æther / Æther-Flow ontology description, a concise General Relativity (GR) derivation description, a yellow `Ontology and GR` in-page CTA, three dark route buttons for `Physics`, `AI Research`, and `Resources`, and corrected Æther / Æther-Flow terminology in the Home Physics status section."
+  - "Owner feedback on the `/physics/ontology/` route spelling was addressed by replacing reader-facing `AEther` / `AEther-flow` terminology with `Æther` / `Æther-flow` while preserving lowercase slugs, source paths, and upstream repository identifiers."
   - "Owner review remains pending and deployment remains not authorized."
   - "No upstream source writes, dependency additions, push, deployment, route retirement, redirect changes, or owner-acceptance claims were made."
 
@@ -709,6 +714,64 @@ home_dual_track_action_row_closeout:
     curator_reports: "unchanged"
     note: "Only the Home route source hash changed; no upstream source write, source refresh, Mermaid source, PNG asset, source manifest, curator report, push, or deployment change was made."
 
+ontology_spelling_closeout:
+  refinement_id: "GF-014M"
+  checked_utc: "2026-07-01T06:19:31Z"
+  summary: "Corrected reader-facing `/physics/ontology/` terminology from `AEther` forms to `Æther` forms while preserving source-authority identifiers and lowercase source-path slugs."
+  outputs:
+    - path: "src/pages/physics/ontology/index.astro"
+      status: "modified"
+      description: "Changed the page title, meta description, hero title, intro copy, and vocabulary matrix from `AEther` / `AEther-flow` to `Æther` / `Æther-flow`."
+    - path: "src/lib/siteContent.ts"
+      status: "modified"
+      description: "Changed the ontology source-notice sentence and Physics navigation description to use `Æther` / `Æther-flow`."
+    - path: "public/files/manifests/page_route_map.json"
+      status: "modified"
+      description: "Changed the `/physics/ontology/` route-map title to `Æther-Flow Ontology`."
+    - path: "public/files/manifests/page_provenance.json"
+      status: "modified"
+      description: "Regenerated the `/physics/ontology/` route local page hash and title against clean committed upstream source commit 2a934c29b58e84aa913a5088a8388bd259f6370b."
+  acceptance_checks:
+    - command: "Rendered-text extraction against http://127.0.0.1:4321/physics/ontology/"
+      status: "passed"
+      checked:
+        - "No visible `AEther` matches remain after excluding script and style text."
+    - command: "git diff --check"
+      status: "passed"
+    - command: "npm run validate:comprehension"
+      status: "passed"
+    - command: "npm run validate:svg"
+      status: "passed"
+    - command: "npm run validate:manifests"
+      status: "passed"
+    - command: "npm run validate:provenance"
+      status: "passed"
+    - command: "npm run build"
+      status: "passed"
+      checked:
+        - "64 static Astro pages built."
+    - command: ".venv/bin/python -m pytest"
+      status: "passed"
+      checked:
+        - "79 Python tests passed."
+    - command: "npm run validate:implementation-control"
+      status: "passed"
+      checked:
+        - "Structural implementation-control validation passed before this record refresh."
+    - command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate"
+      status: "blocked"
+      checked:
+        - "Aggregate validation passed through manifest, content, links, layout, SVG, and provenance checks."
+        - "The curator validation step stopped because `curator/reports/latest.json` is stale."
+        - "`curator/reports/` is outside the active allowed write scope, so curator reports were not rewritten in this packet."
+  manifest_result:
+    page_route_map: "updated"
+    page_provenance: "updated"
+    asset_manifest: "unchanged"
+    source_manifest: "unchanged"
+    curator_reports: "blocked_outside_active_write_scope"
+    note: "Only ontology route reader-facing spelling and route metadata changed; no upstream source write, source refresh, Mermaid source, PNG asset, source manifest, push, or deployment change was made."
+
 source_authority_boundary:
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
   upstream_source_commit_used: "2a934c29b58e84aa913a5088a8388bd259f6370b"
@@ -858,6 +921,9 @@ post_label_capitalization_validation_results:
 skipped_checks: []
 
 remaining_blockers:
+  - id: "curator-report-refresh-out-of-scope"
+    status: "open"
+    summary: "Aggregate `npm run validate` is blocked at the curator validation step because checked-in curator reports are stale and `curator/reports/` is outside the active allowed write scope."
   - id: "owner-review-pending"
     status: "open"
     summary: "Owner has not accepted the rebuilt route set with the diagram rollout."

@@ -51,6 +51,12 @@ Owner-requested animated SVG caption feedback was resolved by rewriting
 greenfield animated SVG hero captions as conservative facts about each route
 topic and adding a comprehension-validator guard against future
 visual-description caption patterns such as `The diagram illustrates...`.
+Owner-requested `/physics/ontology/` spelling feedback was implemented by
+changing reader-facing `AEther` / `AEther-flow` wording to `Æther` /
+`Æther-flow` in the route, source notice, navigation description, route map,
+and page provenance. Aggregate validation now stops at stale curator reports;
+the active implementation-control write scope does not authorize
+`curator/reports/` rewrites.
 
 ## Route Set For Review
 
@@ -150,9 +156,18 @@ Passed:
   at `1440x1000` and `390x844`: the dual-track intro text was visible, the
   three dark route buttons shared one row below the yellow CTA, and
   document-level horizontal overflow was `0`.
+- GF-014M targeted validation: rendered-text extraction against
+  `http://127.0.0.1:4321/physics/ontology/` reported no visible `AEther`
+  matches; `git diff --check`, `npm run validate:comprehension`, `npm run
+  validate:svg`, `npm run validate:manifests`, `npm run validate:provenance`,
+  `npm run build`, `npm run validate:implementation-control`, and
+  `.venv/bin/python -m pytest` passed.
 
 Failed or blocked:
 
+- `AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-git-2a934c29-Er9Glc npm run validate`
+  now stops at `validate:curator` because checked-in curator reports are stale;
+  `curator/reports/` is outside the active allowed write scope for this packet.
 - Owner review has not accepted the rebuilt route set.
 - Deployment has not been requested or performed.
 

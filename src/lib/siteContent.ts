@@ -911,7 +911,7 @@ export const projectSourceNoticeDefaults = {
   physicsOntology: {
     claimStatus: "ontology orientation",
     updated: "2026-06-28",
-    note: "This page explains AEther / AEther-flow vocabulary as a current research ontology. It is not an accepted derivation of GR and cannot promote ontology beyond upstream source authority.",
+    note: "This page explains Æther / Æther-flow vocabulary as a current research ontology. It is not an accepted derivation of GR and cannot promote ontology beyond upstream source authority.",
     sourceRefs: [
       "AEther-Flow Project. (2026). github-facing/aether-flow-ontology-explainer.md",
       "AEther-Flow Project. (2026). ontology/aether-and-aether-flow.md",
@@ -1412,7 +1412,7 @@ export const siteNavigationLinks: SiteNavigationLink[] = [
       {
         title: "Ontology",
         href: "/physics/ontology/",
-        description: "Plain vocabulary for AEther, AEther-flow, observed space, S-time, expansion, and gravity language.",
+        description: "Plain vocabulary for Æther, Æther-flow, observed space, S-time, expansion, and gravity language.",
       },
       {
         title: "Exact-GR Benchmark",
