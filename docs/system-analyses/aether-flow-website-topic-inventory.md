@@ -183,7 +183,7 @@ The most useful candidate pages are those that satisfy four conditions:
 | Guided Start Page For AI/Agent Researchers | Frames AEther Flow as an applied research-agent governance case study. | workflow, memory, role, validator, publication-process sources | Must distinguish agent behavior from model understanding. |
 | Publication And Provenance System | Explains page provenance, source manifests, asset manifests, route maps, and internal-first routing. | website architecture doc, `page_route_map.json`, `source_manifest.json` | Mostly website-maintainer content; should stay operational. |
 | Visual Diagram Gallery By Concept | Groups diagrams by physics, AI workflow, operations, and source authority. | existing diagram route, comprehension content, diagram manifests | Diagrams must remain analysis aids, not authority. |
-| External Review Packet | Prepares a concise page for reviewers with what is claimed, not claimed, and where to inspect sources. | README, source-authority, current-state, ontology assets | Requires careful no-ai-slop refuter pass before public use. |
+| External Review Packet | Prepares a concise page for reviewers with what is claimed, not claimed, and where to inspect sources. | README, source-authority, current-state, ontology assets | Requires careful source-analysis refuter pass before public use. |
 
 ### Recommended Initial Build Order
 

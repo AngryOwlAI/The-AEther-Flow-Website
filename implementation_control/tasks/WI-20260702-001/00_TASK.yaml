@@ -1,0 +1,122 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260702-001"
+title: "Retire Obsolete Local Skills And Revamp System Analysis"
+created_utc: "2026-07-02T19:53:39Z"
+updated_utc: "2026-07-02T19:53:39Z"
+status: "active"
+
+completion_record:
+  completion_id: "WJC-20260702-001-A"
+  path: "implementation_control/tasks/WI-20260702-001/jobs/completions/WJC-20260702-001-A.yaml"
+
+source_context:
+  task_packet: "Owner-requested skill retirement packet"
+  approved_plan: "Retire Obsolete Local Skills And Revamp system-analysis"
+  previous_handoff: "implementation_control/handoffs/WH-20260630-045.yaml"
+
+requirements:
+  - "Remove the repo-local no-ai-slop, project-explainer-frontend, and to-web-page skills."
+  - "Treat explainer-frontend as an alias/reference cleanup because no separate local skill directory exists."
+  - "Keep system-analysis as the surviving source-grounded analysis skill with a native pass repair block quality gate."
+  - "Update current operational skill indexes and architecture docs so they do not instruct agents to use removed skills."
+  - "Preserve historical PRDs, implementation plans, and QA records unless they are current operational instructions."
+  - "Do not change public website runtime behavior, push, deploy, or mutate the upstream source repository."
+
+goal: "Retire obsolete repo-local skill surfaces while preserving source-analysis quality discipline inside system-analysis."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "docs/project-features-and-functionality.md"
+    - "docs/system-analyses/aether-flow-website-topic-inventory.md"
+    - "docs/quality/"
+    - "tests/test_project_explainer_frontend_skill.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-045.yaml"
+    - "implementation_control/handoffs/WH-20260630-045.md"
+    - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
+    - "git status output"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - ".codex/skills/"
+    - "docs/architecture/website-feature-and-functionality.md"
+    - "docs/project-features-and-functionality.md"
+    - "docs/system-analyses/aether-flow-website-topic-inventory.md"
+    - "tests/test_project_explainer_frontend_skill.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260630-045.yaml"
+    - "implementation_control/handoffs/WH-20260630-045.md"
+    - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
+    - "implementation_control/handoffs/WH-20260702-001.yaml"
+    - "implementation_control/handoffs/WH-20260702-001.md"
+    - "implementation_control/tasks/WI-20260702-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260702-001/jobs/WJ-20260702-001-A.yaml"
+    - "implementation_control/tasks/WI-20260702-001/jobs/completions/WJC-20260702-001-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "The packet changes local agent workflow instructions and current operational docs, not public scientific or mathematical claims."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot, upstream refresh, generated publication refresh, wiki regeneration, or retrieval refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No public route, redirect, or navigation retirement is in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No shared visual system changes are in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes are in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest authority records are changed."
+  git_push:
+    status: "not_required"
+    reason: "Push is explicitly out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is explicitly out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "A change would require public route behavior, public manifest, or public asset mutation."
+  - "A change would require rewriting historical PRDs, implementation plans, or QA records only to erase historical references."
+  - "A change would require writing to the upstream source repository."
+  - "Validation reveals unrelated curator/source drift outside this skill-retirement packet."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+next_recommended_action:
+  task_packet: "Skill retirement implementation"
+  summary: "Remove retired local skills and update surviving operational instructions."
+  do_not_skip: "Do not push, deploy, mutate upstream, or rewrite historical records merely to erase prior workflow references."

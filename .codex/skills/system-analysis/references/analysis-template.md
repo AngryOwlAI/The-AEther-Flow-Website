@@ -3,8 +3,9 @@
 Use this template for
 `/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/docs/system-analyses/<topic-slug>.md`.
 Keep the section order stable. Remove filler, but do not remove a required
-section unless the no-ai-slop gate concludes that the section would be empty
-padding. Prefer short, evidence-dense paragraphs over broad summaries.
+section unless the source-analysis quality gate concludes that the section
+would be empty padding. Prefer short, evidence-dense paragraphs over broad
+summaries.
 
 ````md
 # <Topic> System Analysis
@@ -138,6 +139,12 @@ reviewed evidence."
 
 State the smallest useful next action. Prefer a verifiable repository action,
 review step, validator, or bounded follow-up analysis.
+
+## Source-Analysis Quality Gate
+
+Classify the artifact as `pass`, `repair`, or `block`. State only the concise
+reasoning needed for maintainers to understand source evidence, authority
+limits, major repairs, or blockers.
 
 ## References
 

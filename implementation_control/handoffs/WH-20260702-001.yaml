@@ -1,0 +1,56 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260702-001"
+created_utc: "2026-07-02T19:53:39Z"
+updated_utc: "2026-07-02T19:53:39Z"
+status: "active"
+
+task_id: "WI-20260702-001"
+job_id: "WJ-20260702-001-A"
+
+completion_record:
+  completion_id: "WJC-20260702-001-A"
+  path: "implementation_control/tasks/WI-20260702-001/jobs/completions/WJC-20260702-001-A.yaml"
+
+summary: "Retired obsolete repo-local skills and moved source-analysis quality discipline into system-analysis."
+
+current_state:
+  - "WI-20260630-045 is completed, checkpointed, and superseded."
+  - "The no-ai-slop, project-explainer-frontend, and to-web-page local skill directories were removed."
+  - "No separate explainer-frontend local skill directory exists."
+  - "system-analysis remains as the source-grounded analysis workflow and owns its native pass repair block quality gate."
+  - "Current operational skill indexes and architecture docs were updated."
+  - "Historical PRDs, implementation plans, and QA records were preserved unless they were current operating instructions."
+  - "No public runtime behavior, public route content, public asset, public manifest, push, deploy, or upstream source write was performed."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  website_public_claim_changes: "not_authorized"
+  proof_or_science_authority: "not_granted"
+  owner_acceptance: "not_granted"
+  deployment_readiness: "not_granted"
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+
+completion_record_status:
+  completion_id: "WJC-20260702-001-A"
+  path: "implementation_control/tasks/WI-20260702-001/jobs/completions/WJC-20260702-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "Owner review decision"
+  summary: "Owner can review the updated local skill surface and request any follow-up packet."
+  do_not_skip: "Do not push, deploy, mutate upstream, or treat skill cleanup as public source authority."

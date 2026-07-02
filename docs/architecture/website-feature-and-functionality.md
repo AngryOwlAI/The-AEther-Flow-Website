@@ -349,10 +349,10 @@ must close as `block` or remain staged. Scaffold-only or navigation-only copy
 may proceed only when it does not create new scientific, mathematical,
 governance, or research-workflow claims.
 
-### Anti-Slop And Review Status
+### Source-Analysis Quality And Review Status
 
-The `no-ai-slop` gate is mandatory for public-facing, substantial, or
-claim-bearing artifacts:
+The surviving `system-analysis` workflow owns a native pass/repair/block gate
+for public-facing, substantial, or claim-bearing analysis artifacts:
 
 - `pass`: the page or dossier is specific, source-grounded, audience-fit, and
   ready for the stated review status.

@@ -1,7 +1,0 @@
-interface:
-  display_name: "To Web Page"
-  short_description: "Publish a system-analysis artifact as one integrated AEther explainer route."
-  default_prompt: "Use $to-web-page to turn this completed system-analysis Markdown file into one integrated AEther Flow Website page with dossier, manifests, optional static diagram, validation, and no-ai-slop gates."
-
-policy:
-  allow_implicit_invocation: true

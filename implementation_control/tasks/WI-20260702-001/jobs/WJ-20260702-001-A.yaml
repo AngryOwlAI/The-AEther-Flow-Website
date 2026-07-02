@@ -1,0 +1,122 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260702-001-A"
+task_id: "WI-20260702-001"
+title: "Retire obsolete local skills and update system-analysis"
+created_utc: "2026-07-02T19:53:39Z"
+updated_utc: "2026-07-02T19:53:39Z"
+status: "active"
+
+completion_record:
+  completion_id: "WJC-20260702-001-A"
+  path: "implementation_control/tasks/WI-20260702-001/jobs/completions/WJC-20260702-001-A.yaml"
+
+objective: "Remove retired repo-local skill directories, update system-analysis to own its quality gate, and reconcile current operational references."
+
+execution_boundary:
+  invocation_limit: "one bounded implementation packet"
+  live_state_priority: "implementation_control records outrank PRDs, task packets, memory, and conversation summaries"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "forbidden_for_this_job"
+  historical_record_rewrite_status: "forbidden_unless_current_operational_instruction"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/"
+  - "docs/architecture/website-feature-and-functionality.md"
+  - "docs/project-features-and-functionality.md"
+  - "docs/system-analyses/aether-flow-website-topic-inventory.md"
+  - "docs/quality/"
+  - "tests/test_project_explainer_frontend_skill.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-045.yaml"
+  - "implementation_control/handoffs/WH-20260630-045.md"
+  - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
+  - "git status output"
+
+allowed_writes:
+  - ".codex/skills/"
+  - "docs/architecture/website-feature-and-functionality.md"
+  - "docs/project-features-and-functionality.md"
+  - "docs/system-analyses/aether-flow-website-topic-inventory.md"
+  - "tests/test_project_explainer_frontend_skill.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260630-045.yaml"
+  - "implementation_control/handoffs/WH-20260630-045.md"
+  - "implementation_control/tasks/WI-20260630-045/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260630-045/jobs/WJ-20260630-045-A.yaml"
+  - "implementation_control/handoffs/WH-20260702-001.yaml"
+  - "implementation_control/handoffs/WH-20260702-001.md"
+  - "implementation_control/tasks/WI-20260702-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260702-001/jobs/WJ-20260702-001-A.yaml"
+  - "implementation_control/tasks/WI-20260702-001/jobs/completions/WJC-20260702-001-A.yaml"
+
+required_outputs:
+  - "The no-ai-slop, project-explainer-frontend, and to-web-page local skill directories are removed."
+  - "No separate explainer-frontend skill directory exists after cleanup."
+  - "system-analysis no longer depends on removed skills and owns its source-analysis quality gate."
+  - "Current operational skill indexes and architecture docs describe the remaining live skill system."
+  - "Tests for deleted skill helper scripts are removed with the retired skill."
+  - "Historical PRDs, implementation plans, and QA records are preserved unless they were current operating instructions."
+
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public scientific, mathematical, governance, or workflow claim changes."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No public routes, redirects, or navigation changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No visual system changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset changes."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifest authority record changes."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+
+stop_conditions:
+  - "Public runtime behavior, public route content, public assets, or public manifests become necessary."
+  - "Historical PRDs, implementation plans, or QA records would need edits only to erase past workflow references."
+  - "An upstream source repository write becomes necessary."
+  - "The implementation-control validator reports malformed control records."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after completion evidence exists. Do not push or deploy."
+
+next_recommended_action:
+  task_packet: "Skill retirement checkpoint"
+  summary: "Validate and checkpoint the local skill retirement packet."
+  do_not_skip: "Do not push, deploy, mutate upstream, or rewrite historical records merely to erase prior workflow references."

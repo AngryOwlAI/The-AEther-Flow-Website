@@ -5,7 +5,7 @@ task_id: "WI-20260630-045"
 title: "Wire source-backed diagrams into greenfield routes"
 created_utc: "2026-06-30T22:03:26Z"
 updated_utc: "2026-07-01T02:10:50Z"
-status: "active"
+status: "completed"
 
 completion_record:
   completion_id: "WJC-20260630-045-A"

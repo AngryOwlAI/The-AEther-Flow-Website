@@ -1,8 +1,0 @@
-interface:
-  display_name: "Project Explainer Frontend"
-  short_description: "Build AEther-aware informational project frontend plans."
-  brand_color: "#5668A6"
-  default_prompt: "Use $project-explainer-frontend to scan this project, respect the source-authority boundary, and create an Astro-ready explainer blueprint."
-
-policy:
-  allow_implicit_invocation: true

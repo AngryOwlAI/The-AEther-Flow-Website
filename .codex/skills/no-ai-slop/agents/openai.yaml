@@ -1,7 +1,0 @@
-interface:
-  display_name: "No AI Slop"
-  short_description: "Gate substantial artifacts for specificity, evidence, and usefulness."
-  default_prompt: "Use $no-ai-slop to check this artifact for AI slop risk, repair straightforward issues, and block unsupported claims."
-
-policy:
-  allow_implicit_invocation: true

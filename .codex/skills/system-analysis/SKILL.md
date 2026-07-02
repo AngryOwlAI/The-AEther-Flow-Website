@@ -11,7 +11,8 @@ Create website-maintained explanatory analyses for AEther Flow systems,
 functionalities, workflows, roles, or topics. The output is a Markdown file in
 `/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/docs/system-analyses/` with an
 embedded styled Mermaid diagram, source-grounded explanation, explicit
-authority limits, APA-style references, and a no-ai-slop quality gate.
+authority limits, APA-style references, and a native source-analysis quality
+gate.
 
 These analyses explain and organize upstream evidence. They do not create,
 strengthen, or silently promote scientific, mathematical, governance, or
@@ -33,28 +34,26 @@ inspection cannot resolve the ambiguity.
 1. Read the active repository instructions such as `AGENTS.md`.
 2. Use the repo-local `mermaid-diagram-style` skill. At minimum, read its
    `SKILL.md` and `references/palette-contract.md` before writing the diagram.
-3. Use the repo-local `no-ai-slop` skill. For substantial, public-facing,
-   research, governance, or claim-bearing analysis, read
-   `references/quality-gate-checklist.md` and apply the builder/refuter pass.
-4. Inspect upstream source evidence in
+3. Inspect upstream source evidence in
    `/Volumes/P-SSD/AngryOwl/The-AEther-Flow` before making source-dependent
    claims.
-5. Attempt a Codex sub-agent for every non-trivial analysis when the current
+4. Attempt a Codex sub-agent for every non-trivial analysis when the current
    user request and available tools permit sub-agent delegation. Use a
    system-analyst role prompt. If no sub-agent tool is available or policy does
    not permit delegation, perform the same workflow in the main agent and state
    in the final response that no sub-agent was spawned.
-6. Define the Mermaid diagram's visual grammar before drafting it. Decide what
+5. Define the Mermaid diagram's visual grammar before drafting it. Decide what
    shapes, borders, arrows, edge labels, groups, and palette classes mean for
    this specific system, functionality, workflow, role, or topic.
-7. Draft the analysis from repository evidence, not memory or generated
+6. Draft the analysis from repository evidence, not memory or generated
    summaries.
-8. Read `references/analysis-template.md` from this skill and use its section
+7. Read `references/analysis-template.md` from this skill and use its section
    order for the output file.
-9. Write the Markdown file to `docs/system-analyses/<topic-slug>.md` unless the
+8. Write the Markdown file to `docs/system-analyses/<topic-slug>.md` unless the
    user provided a different path.
-10. Run a no-ai-slop pass/repair/block gate before finalizing. Repair ordinary
-   weaknesses directly. Block instead of writing unsupported claims.
+9. Run the native source-analysis pass/repair/block gate before finalizing.
+   Repair ordinary weaknesses directly. Block instead of writing unsupported
+   claims.
 
 ## Evidence Hierarchy
 
@@ -86,7 +85,8 @@ bounded analysis task. Do not ask the sub-agent to modify files. Ask for:
 
 Use the sub-agent result as evidence to integrate, not as authority by itself.
 The main agent remains responsible for verifying claims against source files,
-writing the final Markdown, and applying the no-ai-slop gate.
+writing the final Markdown, and applying the native source-analysis quality
+gate.
 
 Suggested prompt:
 
@@ -140,7 +140,17 @@ The AEther Flow. (n.d.). File or document title/path. Local file:
 Also list exact inspected local paths under `## Evidence Reviewed` so
 maintainers can verify the analysis quickly.
 
-## Output Quality Gate
+## Source-Analysis Quality Gate
+
+Before finalizing, identify the artifact type, audience, purpose, working
+thesis, evidence basis, and exclusions. Then run two checks for substantial,
+public-facing, scientific, governance, or claim-bearing analyses:
+
+- Builder pass: improve clarity, structure, specificity, examples, evidence
+  traceability, limitations, and reader usefulness.
+- Refuter pass: look for unsupported claims, authority drift, hidden
+  uncertainty, generic prose, audience mismatch, excessive length, and review
+  burden.
 
 Classify the final artifact as:
 
@@ -150,9 +160,22 @@ Classify the final artifact as:
 - `block`: missing source evidence, authority, thesis, or context needed for a
   truthful analysis.
 
+Do not use numeric quality scores. Remove or mark uncertainty in claims that
+cannot be verified. Block when repair would require inventing facts,
+strengthening claims, guessing authority, hiding uncertainty, or pretending
+evidence exists.
+
 Surface the gate result in the final response when there was a material repair,
 a block, public-facing sensitivity, scientific/governance claim sensitivity, or
 source-authority risk.
+
+## Public Page Boundary
+
+This skill produces system-analysis Markdown only. Public page creation is no
+longer routed through a separate repo-local publication skill. When an analysis
+should become a public Astro route, open a fresh implementation-control packet
+and use the repository's existing Astro, content-dossier, manifest, diagram,
+browser-QA, and validator workflows inside that packet's allowed write scope.
 
 ## Reference Files
 

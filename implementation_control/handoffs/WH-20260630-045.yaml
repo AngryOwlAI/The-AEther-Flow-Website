@@ -3,7 +3,7 @@ record_type: "implementation_handoff"
 handoff_id: "WH-20260630-045"
 created_utc: "2026-06-30T22:03:26Z"
 updated_utc: "2026-07-01T06:19:31Z"
-status: "active"
+status: "completed"
 
 task_id: "WI-20260630-045"
 job_id: "WJ-20260630-045-A"
@@ -38,6 +38,7 @@ current_state:
   - "Legacy project-route captions with old warning-style language remain outside this packet's authorized write paths and are recorded as follow-up scope."
   - "Diagrams must remain reader aids and must not create source authority, proof authority, claim promotion, owner acceptance, deployment readiness, or upstream source changes."
   - "No deployment, push, upstream source-project write, source refresh, dependency addition, route retirement, redirect change, or owner acceptance is authorized."
+  - "This packet is checkpointed and superseded by active packet WI-20260702-001 for repo-local skill retirement and system-analysis revamp."
 
 source_authority_boundary:
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"

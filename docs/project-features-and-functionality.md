@@ -131,8 +131,12 @@ Project-local skills live under:
 
 Current important skills:
 
-- `project-explainer-frontend`: source-boundary-aware frontend implementation
-  and QA workflow.
+- `implementation-control`: resolves live website-local packets, allowed
+  scopes, validators, and local checkpoints.
+- `system-analysis`: creates source-grounded analysis Markdown with native
+  source-authority and pass/repair/block quality gates.
+- `mermaid-diagram-style`: governs Mermaid diagram styling, static rendering,
+  and diagram source-authority boundaries.
 - `prototype`: local throwaway design exploration.
 - `to-prd`: repository-local PRD synthesis.
 - `prd-to-implementation-plan`: PRD-to-task planning.
