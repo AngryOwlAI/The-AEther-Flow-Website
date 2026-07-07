@@ -1,0 +1,69 @@
+Split License Summary
+=====================
+
+This repository is split-licensed because it contains both reader-facing
+research/documentation content and website software/tooling.
+
+This summary is provided for orientation. Unless a file or directory states
+otherwise, the applicable license families are:
+
+- Creative Commons Attribution 4.0 International (CC BY 4.0) for
+  research/documentation content.
+- Apache License, Version 2.0 (Apache-2.0) for source code and tooling.
+
+Reader-Facing Research and Documentation Content
+------------------------------------------------
+
+Unless a file or directory states otherwise, public website copy, physics
+research summaries, ontology material, GR-derivation material, research-path
+articles, explanatory diagrams, resource descriptions, generated
+human-readable derivatives, and non-code documentation in this repository are
+licensed under CC BY 4.0.
+
+Attribution under CC BY 4.0 should identify, where reasonably practicable:
+
+- Alexander Ricciardi
+- The AngryOwl project
+- The AEther GR Derivation / The AEther-Flow Interpretation of Relativity
+- the repository URL or other stable source locator
+- whether changes were made
+
+Website Code, Tooling, and Implementation
+-----------------------------------------
+
+Unless a file or directory states otherwise, source code and support tooling in
+this repository are licensed under Apache-2.0. This includes Astro pages,
+components, layouts, styles, scripts, tests, build configuration, validators,
+repo-local agent tooling, deployment helpers, manifests, and website
+implementation scaffolding.
+
+Mixed or Ambiguous Files
+------------------------
+
+If a file combines research prose and executable/tooling material, use the
+nearest explicit file or directory notice. If no narrower notice exists, prose
+and scholarly content default to CC BY 4.0, while executable source code,
+workflow automation, schemas, and validation logic default to Apache-2.0.
+
+Third-Party and Upstream Material
+---------------------------------
+
+This licensing statement applies only to material for which the repository
+owner or contributors have authority to grant permissions. Third-party
+material, vendored assets, package dependencies, externally licensed
+references, and upstream materials remain under their own licenses and
+notices.
+
+Source Authority and Scientific Claim Boundary
+----------------------------------------------
+
+This repository is the reader-facing website for the source research
+repository at:
+
+  /Volumes/P-SSD/AngryOwl/The-AEther-Flow
+
+These licenses grant reuse permissions for material in this repository. They
+do not supersede the source repository's authority over scientific,
+mathematical, governance, or research-workflow claims. They also do not imply
+that the first-principles derivation of GR from the AEther / AEther-flow
+ontology is complete.
