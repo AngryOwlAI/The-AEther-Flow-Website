@@ -1,0 +1,3588 @@
+{
+  "schema_version": "0.1",
+  "packet_id": "FE-G0-02",
+  "generated_utc": "2026-07-11T16:52:30Z",
+  "method": {
+    "source_routes": "Files under src/pages with Astro, Markdown, or MDX extensions.",
+    "built_pages": "dist/**/index.html after npm run build.",
+    "words": "Text tokens in built body markup excluding script, style, noscript, template, and inline SVG text.",
+    "svg_classification": "Informational when role img or an accessible label is present; decorative when explicitly aria-hidden or presentation; otherwise unclassified.",
+    "motion_hooks": "Elements with native SVG animation tags, data-motion attributes, or class tokens containing motion, animate, orbit, pulse, spin, flow, drift, sweep, or glow.",
+    "selector_ownership": "First class-token prefix per selector; element-only selectors are grouped separately.",
+    "browser_boundary": "Viewport-dependent and console evidence is recorded in the companion Markdown report, not inferred here."
+  },
+  "routes": {
+    "source_route_count": 64,
+    "source_routes": [
+      "/ai-research-system/agentjob-lifecycle/",
+      "/ai-research-system/current-state/",
+      "/ai-research-system/human-gated-promotion/",
+      "/ai-research-system/",
+      "/ai-research-system/memory-preflight/",
+      "/ai-research-system/project-system-improvement/",
+      "/ai-research-system/roles-and-schemas/",
+      "/ai-research-system/runtime-requirements/",
+      "/ai-research-system/validators-and-handoffs/",
+      "/ai-research-system/workflow/",
+      "/",
+      "/license/",
+      "/physics/claim-status/",
+      "/physics/derivation-roadmap/",
+      "/physics/exact-gr-benchmark/",
+      "/physics/flow-geometry/",
+      "/physics/",
+      "/physics/ontology/",
+      "/physics/open-burdens/",
+      "/project/ai-research-agent-system/",
+      "/project/ai-research-agent-system/memory-registries/",
+      "/project/ai-research-agent-system/one-bounded-agentjob/",
+      "/project/ai-research-agent-system/parent-child-synthesis/",
+      "/project/ai-research-agent-system/role-authority-inspector/",
+      "/project/ai-research-agent-system/roles-and-skills/",
+      "/project/ai-research-agent-system/workflow/",
+      "/project/operations/director-agentjob-lifecycle/",
+      "/project/operations/",
+      "/project/operations/project-system-improvement/",
+      "/project/operations/publication-process/",
+      "/project/operations/role-routing/",
+      "/project/operations/technical-requirements/",
+      "/project/operations/validator-operator-workflow/",
+      "/project/physics/claim-gates/",
+      "/project/physics/current-state/",
+      "/project/physics/distance-to-gr/",
+      "/project/physics/exact-gr-benchmark/",
+      "/project/physics/finite-toy-models/",
+      "/project/physics/gate-chair-and-human-gates/",
+      "/project/physics/gr-derivation-roadmap/",
+      "/project/physics/",
+      "/project/physics/metric-response-ladder/",
+      "/project/physics/negative-results-and-frozen-routes/",
+      "/project/physics/no-target-import-discipline/",
+      "/project/physics/ontology/",
+      "/project/physics/source-extension-pipeline/",
+      "/project/source-authority/claim-boundary-explorer/",
+      "/project/source-authority/",
+      "/project/source-authority/publication-and-provenance-system/",
+      "/resources/diagrams/",
+      "/resources/documents/",
+      "/resources/generated-derivatives/",
+      "/resources/guided-starts/general-public/",
+      "/resources/guided-starts/",
+      "/resources/",
+      "/resources/library/",
+      "/resources/publication-process/",
+      "/resources/reading-paths/",
+      "/resources/registries/",
+      "/resources/repository-map/",
+      "/resources/retrieval-layers/",
+      "/resources/reviewer-packet/",
+      "/resources/site-builder-guide/",
+      "/resources/source-authority/"
+    ],
+    "built_page_count": 64,
+    "built_html_document_count": 65,
+    "redirect_document_count": 1,
+    "redirect_routes": [
+      "/project/overview/"
+    ],
+    "active_route_map_count": 34,
+    "provenance_page_count": 34,
+    "legacy_source_route_count": 30
+  },
+  "words": {
+    "total": 75537,
+    "minimum": 7,
+    "p25": 980.0,
+    "median": 1095,
+    "mean": 1162.11,
+    "p75": 1307.0,
+    "maximum": 2153
+  },
+  "tables": {
+    "total": 88,
+    "classification_candidate_counts": {
+      "true_comparison_table": 72,
+      "small_status_matrix": 14,
+      "public_vocabulary_or_definition": 2
+    },
+    "routes": [
+      {
+        "route": "/ai-research-system/agentjob-lifecycle/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Envelope part",
+              "Purpose",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Lifecycle event",
+              "Receipt",
+              "Non-scope"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Signal",
+              "What it says",
+              "What it does not say"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/current-state/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Field",
+              "Snapshot value",
+              "How to read it"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Status area",
+              "Operational evidence",
+              "Blocked overread"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Condition",
+              "Required website behavior"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/human-gated-promotion/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Can prepare",
+              "Cannot decide"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Protected action",
+              "Automated outcome may show",
+              "Required gate"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Unsafe overread",
+              "Correct reading"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/",
+        "table_count": 2,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Safe use",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/memory-preflight/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Stage",
+              "Purpose",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Examples",
+              "Safe use"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Unsafe reading",
+              "Correction"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/project-system-improvement/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Input",
+              "Classification",
+              "Allowed output"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Artifact",
+              "What it supports",
+              "What it does not support"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Overread",
+              "Correction"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/roles-and-schemas/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Role family",
+              "Primary authority",
+              "Can do",
+              "Cannot do"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Schema",
+              "Controls",
+              "Reader explanation",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Question",
+              "Safe reading",
+              "Proof boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/runtime-requirements/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Tier",
+              "Tools",
+              "Safe scope"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Command",
+              "Validates",
+              "Does not validate"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Capability",
+              "Unsafe inference",
+              "Safe interpretation"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/validators-and-handoffs/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Surface",
+              "Checked scope",
+              "Non-scope"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Signal",
+              "What it says",
+              "What it does not say"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Artifact",
+              "Purpose",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/ai-research-system/workflow/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Stage",
+              "Artifact",
+              "Reader explanation",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Workflow claim",
+              "Safe use",
+              "Blocked overread"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/claim-status/",
+        "table_count": 5,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "State",
+              "Snapshot basis",
+              "Public boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Record",
+              "Allowed summary",
+              "Forbidden summary",
+              "Gate required"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Example class",
+              "Title",
+              "Body"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Field",
+              "Value",
+              "How to read it"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/derivation-roadmap/",
+        "table_count": 2,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Burden",
+              "Would need",
+              "Current page boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/exact-gr-benchmark/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "State",
+              "Safe use",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Component",
+              "Benchmark use",
+              "Source-side limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/flow-geometry/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Term",
+              "Meaning here",
+              "Assumption",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "public_vocabulary_or_definition"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Can safely say",
+              "Cannot say"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/",
+        "table_count": 2,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Safe use",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Source area",
+              "Used here for",
+              "Authority boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/ontology/",
+        "table_count": 2,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Term",
+              "Meaning here",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "public_vocabulary_or_definition"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Can safely say",
+              "Cannot say"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/physics/open-burdens/",
+        "table_count": 5,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Burden",
+              "Current status",
+              "What remains missing",
+              "Blocked overread"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Rule",
+              "Reason",
+              "Consequence"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Group",
+              "Rows",
+              "Status classes",
+              "Reader meaning"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Status",
+              "Rows",
+              "How to read it"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix greenfield-source-matrix",
+            "column_headers": [
+              "Field",
+              "Value",
+              "How to read it"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/diagrams/",
+        "table_count": 1,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Surface",
+              "Current state",
+              "Reason",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          }
+        ]
+      },
+      {
+        "route": "/resources/generated-derivatives/",
+        "table_count": 2,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Class",
+              "Examples",
+              "Safe use",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Step",
+              "Action",
+              "Result"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Route",
+              "Reader job"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Status",
+              "Count",
+              "Meaning"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Surface",
+              "Safe use",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/library/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Reader",
+              "Recommended path",
+              "Reason"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Shelf",
+              "Examples",
+              "Use",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Rule",
+              "Implication",
+              "Failure mode"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/publication-process/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Function",
+              "Website use",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Signal",
+              "Supports",
+              "Does not prove"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Page type",
+              "Reader job",
+              "Useful pattern"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/reading-paths/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Reader",
+              "First route",
+              "Recommended path",
+              "Reason"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Question",
+              "Route",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Rule",
+              "Meaning",
+              "Failure mode"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/registries/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Family",
+              "Examples",
+              "What it can say",
+              "What it cannot say"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Step",
+              "Action",
+              "Guardrail"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Signal",
+              "Supports",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          }
+        ]
+      },
+      {
+        "route": "/resources/repository-map/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Folder",
+              "Class",
+              "Edit policy",
+              "Read policy"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Class",
+              "Meaning",
+              "Reader warning"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Change",
+              "Edit lane",
+              "Blocked shortcut"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/retrieval-layers/",
+        "table_count": 3,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Layer",
+              "Examples",
+              "Use",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Step",
+              "Action",
+              "Boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Risk",
+              "Safe response",
+              "Blocked use"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/site-builder-guide/",
+        "table_count": 4,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Field",
+              "Purpose",
+              "Required boundary"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Page family",
+              "Primary authority sources",
+              "Derivative seeds",
+              "Required PRDs"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Step",
+              "Action",
+              "Stop condition"
+            ],
+            "caption": "",
+            "classification_candidate": "small_status_matrix"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Item",
+              "Reason",
+              "Risk if missing"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      },
+      {
+        "route": "/resources/source-authority/",
+        "table_count": 2,
+        "tables": [
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Class",
+              "Examples",
+              "Website use",
+              "Limit"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          },
+          {
+            "class": "greenfield-matrix",
+            "column_headers": [
+              "Step",
+              "Question",
+              "Outcome"
+            ],
+            "caption": "",
+            "classification_candidate": "true_comparison_table"
+          }
+        ]
+      }
+    ]
+  },
+  "svg": {
+    "inline_instance_count": 62,
+    "source_inline_svg_artwork_count": 57,
+    "standalone_svg_file_count": 1,
+    "source_svg_artwork_count": 58,
+    "astro_files_with_inline_svg": 54,
+    "classification_counts": {
+      "informational": 62
+    },
+    "role_img_count": 62,
+    "aria_labelledby_count": 60,
+    "aria_label_count": 2,
+    "title_count": 60,
+    "description_count": 47,
+    "missing_complete_title_description_pair_count": 15,
+    "figcaption_count": 125,
+    "svg_id_attribute_count": 205,
+    "filter_definition_count": 34,
+    "filter_reference_count": 40,
+    "motion_hook_element_count": 62,
+    "duplicate_id_pages": []
+  },
+  "css": {
+    "source_files": [
+      {
+        "path": "src/styles/global.css",
+        "lines": 4382,
+        "bytes": 99297,
+        "selector_count": 905
+      },
+      {
+        "path": "src/styles/math.css",
+        "lines": 11,
+        "bytes": 155,
+        "selector_count": 1
+      }
+    ],
+    "source_file_count": 2,
+    "source_lines": 4393,
+    "source_bytes": 99452,
+    "selector_count": 906,
+    "selector_owner_prefixes": {
+      "project": 100,
+      "track": 61,
+      "element_or_at_rule": 60,
+      "overview": 41,
+      "ai": 40,
+      "physics": 36,
+      "nav": 32,
+      "source": 31,
+      "evidence": 27,
+      "operations": 25,
+      "authority": 25,
+      "resources": 23,
+      "status": 22,
+      "figure": 21,
+      "home": 21,
+      "snapshot": 20,
+      "site": 17,
+      "planned": 17,
+      "greenfield": 16,
+      "footer": 15,
+      "download": 14,
+      "diagram": 14,
+      "support": 14,
+      "content": 13,
+      "technical": 13,
+      "field": 12,
+      "claim": 12,
+      "link": 11,
+      "comprehension": 10,
+      "command": 10,
+      "hero": 9,
+      "signal": 9,
+      "resource": 9,
+      "equation": 9,
+      "license": 8,
+      "principle": 7,
+      "timeline": 7,
+      "orange": 7,
+      "detail": 6,
+      "section": 5,
+      "smoke": 5,
+      "brand": 4,
+      "primary": 4,
+      "metadata": 4,
+      "flare": 4,
+      "agent": 4,
+      "document": 3,
+      "trace": 3,
+      "metric": 3,
+      "safe": 3,
+      "skip": 2,
+      "secondary": 2,
+      "plasma": 2,
+      "lens": 2,
+      "ontology": 2,
+      "tokens": 1,
+      "eyebrow": 1,
+      "lead": 1,
+      "page": 1,
+      "stage": 1,
+      "cosmic": 1,
+      "charged": 1,
+      "capability": 1,
+      "publication": 1,
+      "katex": 1
+    },
+    "keyframe_count": 23,
+    "animation_declaration_count": 51,
+    "built_files": [
+      {
+        "path": "dist/_astro/BaseLayout.3ufOI0nx.css",
+        "lines": 1,
+        "bytes": 113828,
+        "gzip_bytes": 21338
+      }
+    ],
+    "built_file_count": 1,
+    "built_bytes": 113828,
+    "built_gzip_bytes": 21338
+  },
+  "images": {
+    "rendered_occurrence_count": 512,
+    "remote_occurrence_count": 320,
+    "remote_hosts": {
+      "img.shields.io": 256,
+      "github.com": 64
+    },
+    "missing_intrinsic_dimension_occurrence_count": 128,
+    "loading_policy_counts": {
+      "auto": 64,
+      "eager": 52,
+      "lazy": 396
+    },
+    "asset_file_count": 39,
+    "asset_total_bytes": 3404683,
+    "assets": [
+      {
+        "path": "assets/brand/main_angryowl_round.png",
+        "extension": ".png",
+        "bytes": 1147309,
+        "width": 1254,
+        "height": 1254
+      },
+      {
+        "path": "assets/diagrams/comprehension/ai-memory-source-first-layers.png",
+        "extension": ".png",
+        "bytes": 103516,
+        "width": 1544,
+        "height": 1324
+      },
+      {
+        "path": "assets/diagrams/comprehension/ai-one-bounded-agentjob-envelope.png",
+        "extension": ".png",
+        "bytes": 102412,
+        "width": 1368,
+        "height": 1596
+      },
+      {
+        "path": "assets/diagrams/comprehension/ai-role-authority-inspector-stack.png",
+        "extension": ".png",
+        "bytes": 102564,
+        "width": 1326,
+        "height": 1640
+      },
+      {
+        "path": "assets/diagrams/comprehension/ai-roles-authority-stack.png",
+        "extension": ".png",
+        "bytes": 76938,
+        "width": 1182,
+        "height": 1068
+      },
+      {
+        "path": "assets/diagrams/comprehension/ai-system-task-authority-map.png",
+        "extension": ".png",
+        "bytes": 28309,
+        "width": 1568,
+        "height": 178
+      },
+      {
+        "path": "assets/diagrams/comprehension/ai-workflow-bounded-agentjob-chain.png",
+        "extension": ".png",
+        "bytes": 27080,
+        "width": 1568,
+        "height": 230
+      },
+      {
+        "path": "assets/diagrams/comprehension/general-public-guided-start.png",
+        "extension": ".png",
+        "bytes": 43975,
+        "width": 1568,
+        "height": 280
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-control-spine.png",
+        "extension": ".png",
+        "bytes": 26376,
+        "width": 1568,
+        "height": 212
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-director-agentjob-record-chain.png",
+        "extension": ".png",
+        "bytes": 22887,
+        "width": 1568,
+        "height": 164
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-project-system-improvement-loop.png",
+        "extension": ".png",
+        "bytes": 124168,
+        "width": 1038,
+        "height": 2268
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-publication-review-flow.png",
+        "extension": ".png",
+        "bytes": 27164,
+        "width": 1568,
+        "height": 220
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-role-routing-allowlist-stack.png",
+        "extension": ".png",
+        "bytes": 67075,
+        "width": 1326,
+        "height": 1068
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-technical-tool-tiers.png",
+        "extension": ".png",
+        "bytes": 63580,
+        "width": 1026,
+        "height": 1068
+      },
+      {
+        "path": "assets/diagrams/comprehension/operations-validator-pass-boundary.png",
+        "extension": ".png",
+        "bytes": 102155,
+        "width": 868,
+        "height": 1898
+      },
+      {
+        "path": "assets/diagrams/comprehension/parent-child-single-outer-agentjob.png",
+        "extension": ".png",
+        "bytes": 111663,
+        "width": 1568,
+        "height": 1020
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-benchmark-boundary-ladder.png",
+        "extension": ".png",
+        "bytes": 63465,
+        "width": 1568,
+        "height": 278
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-claim-gates-lifecycle.png",
+        "extension": ".png",
+        "bytes": 37521,
+        "width": 1568,
+        "height": 354
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-current-state-snapshot-boundary.png",
+        "extension": ".png",
+        "bytes": 48446,
+        "width": 1568,
+        "height": 294
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-distance-to-gr-dashboard.png",
+        "extension": ".png",
+        "bytes": 75202,
+        "width": 1568,
+        "height": 406
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-finite-toy-models.png",
+        "extension": ".png",
+        "bytes": 32010,
+        "width": 1568,
+        "height": 158
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-gate-chair-human-gates.png",
+        "extension": ".png",
+        "bytes": 67430,
+        "width": 1568,
+        "height": 464
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-metric-response-ladder.png",
+        "extension": ".png",
+        "bytes": 38525,
+        "width": 1568,
+        "height": 172
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-negative-results-and-frozen-routes.png",
+        "extension": ".png",
+        "bytes": 26068,
+        "width": 1568,
+        "height": 166
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-no-target-import-discipline.png",
+        "extension": ".png",
+        "bytes": 43300,
+        "width": 1568,
+        "height": 304
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-ontology-boundary-map.png",
+        "extension": ".png",
+        "bytes": 44385,
+        "width": 1568,
+        "height": 274
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-roadmap-burden-ladder.png",
+        "extension": ".png",
+        "bytes": 88958,
+        "width": 1096,
+        "height": 1948
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-source-extension-pipeline.png",
+        "extension": ".png",
+        "bytes": 45806,
+        "width": 1568,
+        "height": 224
+      },
+      {
+        "path": "assets/diagrams/comprehension/physics-track-status-map.png",
+        "extension": ".png",
+        "bytes": 61777,
+        "width": 1568,
+        "height": 384
+      },
+      {
+        "path": "assets/diagrams/comprehension/project-overview-two-track-map.png",
+        "extension": ".png",
+        "bytes": 65223,
+        "width": 1568,
+        "height": 558
+      },
+      {
+        "path": "assets/diagrams/comprehension/resources-diagram-publication-boundary.png",
+        "extension": ".png",
+        "bytes": 36866,
+        "width": 1568,
+        "height": 298
+      },
+      {
+        "path": "assets/diagrams/comprehension/resources-manifest-chain.png",
+        "extension": ".png",
+        "bytes": 47825,
+        "width": 1568,
+        "height": 472
+      },
+      {
+        "path": "assets/diagrams/comprehension/resources-tex-pdf-derivative-chain.png",
+        "extension": ".png",
+        "bytes": 45148,
+        "width": 1568,
+        "height": 412
+      },
+      {
+        "path": "assets/diagrams/comprehension/reviewer-inspection-order.png",
+        "extension": ".png",
+        "bytes": 51825,
+        "width": 1568,
+        "height": 348
+      },
+      {
+        "path": "assets/diagrams/comprehension/source-authority-claim-boundary-explorer.png",
+        "extension": ".png",
+        "bytes": 82278,
+        "width": 1568,
+        "height": 472
+      },
+      {
+        "path": "assets/diagrams/comprehension/source-authority-ladder.png",
+        "extension": ".png",
+        "bytes": 68856,
+        "width": 856,
+        "height": 1212
+      },
+      {
+        "path": "assets/diagrams/comprehension/source-authority-publication-provenance-system.png",
+        "extension": ".png",
+        "bytes": 38218,
+        "width": 1568,
+        "height": 232
+      },
+      {
+        "path": "assets/diagrams/comprehension/specialist-guided-starts.png",
+        "extension": ".png",
+        "bytes": 113202,
+        "width": 1568,
+        "height": 864
+      },
+      {
+        "path": "assets/diagrams/publication-layer-map.svg",
+        "extension": ".svg",
+        "bytes": 5178,
+        "width": 960,
+        "height": 420
+      }
+    ]
+  },
+  "gallery": {
+    "rendered_item_count": 37
+  },
+  "pages": [
+    {
+      "route": "/ai-research-system/agentjob-lifecycle/",
+      "redirect_document": false,
+      "word_count": 1379,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 65,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/current-state/",
+      "redirect_document": false,
+      "word_count": 1124,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 61,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/human-gated-promotion/",
+      "redirect_document": false,
+      "word_count": 1234,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 65,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/",
+      "redirect_document": false,
+      "word_count": 1057,
+      "table_count": 2,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 65,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/memory-preflight/",
+      "redirect_document": false,
+      "word_count": 1195,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 67,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/project-system-improvement/",
+      "redirect_document": false,
+      "word_count": 1193,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 63,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/roles-and-schemas/",
+      "redirect_document": false,
+      "word_count": 1380,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 73,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/runtime-requirements/",
+      "redirect_document": false,
+      "word_count": 1228,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 67,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/validators-and-handoffs/",
+      "redirect_document": false,
+      "word_count": 1260,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 69,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/ai-research-system/workflow/",
+      "redirect_document": false,
+      "word_count": 1370,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 71,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/",
+      "redirect_document": false,
+      "word_count": 1098,
+      "table_count": 0,
+      "svg_count": 3,
+      "svg_classifications": {
+        "informational": 3
+      },
+      "figcaption_count": 3,
+      "filter_count": 2,
+      "filter_reference_count": 6,
+      "motion_hook_element_count": 0,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 64,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Homepage primary actions",
+          "anchor_count": 4,
+          "button_count": 0
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/license/",
+      "redirect_document": false,
+      "word_count": 663,
+      "table_count": 0,
+      "svg_count": 0,
+      "svg_classifications": {},
+      "figcaption_count": 0,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 6,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 0,
+      "document_action_count": 44,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/claim-status/",
+      "redirect_document": false,
+      "word_count": 1307,
+      "table_count": 5,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 58,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/derivation-roadmap/",
+      "redirect_document": false,
+      "word_count": 1022,
+      "table_count": 2,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 56,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/exact-gr-benchmark/",
+      "redirect_document": false,
+      "word_count": 1015,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 58,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/flow-geometry/",
+      "redirect_document": false,
+      "word_count": 1052,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 58,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/",
+      "redirect_document": false,
+      "word_count": 946,
+      "table_count": 2,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 59,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/ontology/",
+      "redirect_document": false,
+      "word_count": 941,
+      "table_count": 2,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 58,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/physics/open-burdens/",
+      "redirect_document": false,
+      "word_count": 1511,
+      "table_count": 5,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 60,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/",
+      "redirect_document": false,
+      "word_count": 827,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 4,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 55,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/memory-registries/",
+      "redirect_document": false,
+      "word_count": 1150,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 61,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/one-bounded-agentjob/",
+      "redirect_document": false,
+      "word_count": 1064,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 49,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/parent-child-synthesis/",
+      "redirect_document": false,
+      "word_count": 1087,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 49,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/role-authority-inspector/",
+      "redirect_document": false,
+      "word_count": 1043,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 55,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/roles-and-skills/",
+      "redirect_document": false,
+      "word_count": 1201,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 57,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/ai-research-agent-system/workflow/",
+      "redirect_document": false,
+      "word_count": 1360,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 49,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/director-agentjob-lifecycle/",
+      "redirect_document": false,
+      "word_count": 898,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 57,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/",
+      "redirect_document": false,
+      "word_count": 1403,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 5,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 99,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/project-system-improvement/",
+      "redirect_document": false,
+      "word_count": 844,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 57,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/publication-process/",
+      "redirect_document": false,
+      "word_count": 848,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 55,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/role-routing/",
+      "redirect_document": false,
+      "word_count": 875,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 55,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/technical-requirements/",
+      "redirect_document": false,
+      "word_count": 829,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 56,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/operations/validator-operator-workflow/",
+      "redirect_document": false,
+      "word_count": 934,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 59,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/overview/",
+      "redirect_document": true,
+      "word_count": 7,
+      "table_count": 0,
+      "svg_count": 0,
+      "svg_classifications": {},
+      "figcaption_count": 0,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 0,
+      "remote_image_count": 0,
+      "images_missing_dimensions": 0,
+      "document_action_count": 1,
+      "navigation": [],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/claim-gates/",
+      "redirect_document": false,
+      "word_count": 944,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 53,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/current-state/",
+      "redirect_document": false,
+      "word_count": 1846,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 56,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/distance-to-gr/",
+      "redirect_document": false,
+      "word_count": 1755,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 63,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/exact-gr-benchmark/",
+      "redirect_document": false,
+      "word_count": 1218,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 58,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/finite-toy-models/",
+      "redirect_document": false,
+      "word_count": 1587,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 58,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/gate-chair-and-human-gates/",
+      "redirect_document": false,
+      "word_count": 1307,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 4,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 52,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/gr-derivation-roadmap/",
+      "redirect_document": false,
+      "word_count": 937,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 52,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/",
+      "redirect_document": false,
+      "word_count": 1019,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 2,
+      "motion_hook_element_count": 4,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 64,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/metric-response-ladder/",
+      "redirect_document": false,
+      "word_count": 1766,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 57,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/negative-results-and-frozen-routes/",
+      "redirect_document": false,
+      "word_count": 1417,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 56,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/no-target-import-discipline/",
+      "redirect_document": false,
+      "word_count": 1553,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 57,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/ontology/",
+      "redirect_document": false,
+      "word_count": 1189,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 3,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 55,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/physics/source-extension-pipeline/",
+      "redirect_document": false,
+      "word_count": 968,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 4,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 52,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/source-authority/claim-boundary-explorer/",
+      "redirect_document": false,
+      "word_count": 1612,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 61,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/source-authority/",
+      "redirect_document": false,
+      "word_count": 1034,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 2,
+      "motion_hook_element_count": 5,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 59,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/project/source-authority/publication-and-provenance-system/",
+      "redirect_document": false,
+      "word_count": 1180,
+      "table_count": 0,
+      "svg_count": 0,
+      "svg_classifications": {},
+      "figcaption_count": 1,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 65,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/diagrams/",
+      "redirect_document": false,
+      "word_count": 2153,
+      "table_count": 1,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 44,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 38,
+      "document_action_count": 124,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/documents/",
+      "redirect_document": false,
+      "word_count": 1687,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 71,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/generated-derivatives/",
+      "redirect_document": false,
+      "word_count": 980,
+      "table_count": 2,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/guided-starts/general-public/",
+      "redirect_document": false,
+      "word_count": 956,
+      "table_count": 0,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 1,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 57,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/guided-starts/",
+      "redirect_document": false,
+      "word_count": 1237,
+      "table_count": 0,
+      "svg_count": 0,
+      "svg_classifications": {},
+      "figcaption_count": 1,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 67,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/",
+      "redirect_document": false,
+      "word_count": 1028,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 68,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/library/",
+      "redirect_document": false,
+      "word_count": 1073,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/publication-process/",
+      "redirect_document": false,
+      "word_count": 1026,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/reading-paths/",
+      "redirect_document": false,
+      "word_count": 1095,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 62,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/registries/",
+      "redirect_document": false,
+      "word_count": 1048,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/repository-map/",
+      "redirect_document": false,
+      "word_count": 1237,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/retrieval-layers/",
+      "redirect_document": false,
+      "word_count": 1023,
+      "table_count": 3,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/reviewer-packet/",
+      "redirect_document": false,
+      "word_count": 1036,
+      "table_count": 0,
+      "svg_count": 0,
+      "svg_classifications": {},
+      "figcaption_count": 1,
+      "filter_count": 0,
+      "filter_reference_count": 0,
+      "motion_hook_element_count": 0,
+      "image_count": 7,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 1,
+      "document_action_count": 54,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/site-builder-guide/",
+      "redirect_document": false,
+      "word_count": 1330,
+      "table_count": 4,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    },
+    {
+      "route": "/resources/source-authority/",
+      "redirect_document": false,
+      "word_count": 951,
+      "table_count": 2,
+      "svg_count": 1,
+      "svg_classifications": {
+        "informational": 1
+      },
+      "figcaption_count": 2,
+      "filter_count": 1,
+      "filter_reference_count": 1,
+      "motion_hook_element_count": 1,
+      "image_count": 8,
+      "remote_image_count": 5,
+      "images_missing_dimensions": 2,
+      "document_action_count": 51,
+      "navigation": [
+        {
+          "aria_label": "Primary navigation",
+          "anchor_count": 30,
+          "button_count": 3
+        },
+        {
+          "aria_label": "Footer project links",
+          "anchor_count": 2,
+          "button_count": 0
+        }
+      ],
+      "duplicate_ids": []
+    }
+  ]
+}

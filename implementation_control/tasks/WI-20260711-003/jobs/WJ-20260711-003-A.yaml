@@ -1,18 +1,18 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260711-002-A"
-task_id: "WI-20260711-002"
-title: "Complete FE-G0-01 Governance And Control Transition"
-created_utc: "2026-07-11T16:14:55Z"
-updated_utc: "2026-07-11T16:39:53Z"
-status: "completed"
+job_id: "WJ-20260711-003-A"
+task_id: "WI-20260711-003"
+title: "Measure And Record The FE-G0-02 Frontend Baseline"
+created_utc: "2026-07-11T16:39:53Z"
+updated_utc: "2026-07-11T16:54:54Z"
+status: "active"
 
-objective: "Transition live control to the adopted frontend roadmap and expose FE-G0-02 without starting baseline or runtime implementation."
+objective: "Produce a reproducible dated FE-G0-02 inventory from static repository evidence, built output, and read-only browser observations."
 
 execution_boundary:
-  invocation_limit: "one bounded control-transition packet"
+  invocation_limit: "one bounded baseline inventory packet"
   live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
-  packet_id: "FE-G0-01"
+  packet_id: "FE-G0-02"
   adopted_plan: "ImplementationPlans/recomendation_frontend.md"
   upstream_write_status: "forbidden"
   public_runtime_write_status: "forbidden_for_this_job"
@@ -24,36 +24,43 @@ allowed_reads:
   - "CONTEXT.md"
   - ".codex/skills/implementation-control/SKILL.md"
   - "ImplementationPlans/recomendation_frontend.md"
-  - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260711-001.yaml"
-  - "implementation_control/handoffs/WH-20260711-001.md"
-  - "implementation_control/tasks/WI-20260711-001/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260711-001/jobs/WJ-20260711-001-A.yaml"
-  - "implementation_control/tasks/WI-20260711-001/jobs/completions/WJC-20260711-001-A.yaml"
-  - "git status and log output"
+  - "package.json"
+  - "astro.config.mjs"
+  - "src/"
+  - "public/"
+  - "dist/"
+  - "scripts/"
+  - "tests/"
+  - "implementation_control/"
+  - "local build, validator, browser, git status, and git log output"
 
 allowed_writes:
+  - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+  - "docs/quality/frontend-baseline-inventory-2026-07-11.json"
+  - "scripts/frontend_baseline_inventory.py"
+  - "tests/test_frontend_baseline_inventory.py"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260711-001.yaml"
-  - "implementation_control/handoffs/WH-20260711-001.md"
-  - "implementation_control/tasks/WI-20260711-001/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260711-001/jobs/WJ-20260711-001-A.yaml"
   - "implementation_control/handoffs/WH-20260711-002.yaml"
   - "implementation_control/handoffs/WH-20260711-002.md"
+  - "implementation_control/handoffs/WH-20260711-003.yaml"
+  - "implementation_control/handoffs/WH-20260711-003.md"
   - "implementation_control/tasks/WI-20260711-002/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260711-002/jobs/WJ-20260711-002-A.yaml"
-  - "implementation_control/tasks/WI-20260711-002/jobs/completions/WJC-20260711-002-A.yaml"
+  - "implementation_control/tasks/WI-20260711-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-003/jobs/WJ-20260711-003-A.yaml"
+  - "implementation_control/tasks/WI-20260711-003/jobs/completions/WJC-20260711-003-A.yaml"
 
 required_outputs:
-  - "The prior adoption packet is recorded as completed and superseded."
-  - "Live control recognizes FE-G0-01 and the adopted roadmap hash."
-  - "Completion evidence records the exact control-only transition."
-  - "The resolver exposes FE-G0-02 without opening or executing it."
+  - "A dated Markdown baseline covering every FE-G0-02 minimum measurement."
+  - "Machine-readable static inventory evidence with per-route measurements."
+  - "A deterministic inventory script and focused tests."
+  - "Browser evidence for console, remote visual requests, above-fold images, first-view actions, navigation children, and visible animated elements."
+  - "A pre-existing-defect ledger that makes no corrective runtime changes."
 
 approval_gates:
   - id: "plan_adoption"
     status: "approved"
-    trigger: "The owner explicitly authorized FE-G0-01 after checkpoint dc78e86666448ed723546adde8f1c3e9f21c7b5c."
+    trigger: "The owner explicitly authorized FE-G0-02 after checkpoint cbe242138cd33b0d97a061fc8493908addbc565d."
   - id: "public_claim_changes"
     status: "not_required"
     trigger: "No public claim change."
@@ -92,29 +99,32 @@ required_validators:
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required: true
-  - id: "manual-fe-g0-01-boundary-review"
-    command: "manual inspection of FE-G0-01 transition evidence"
+  - id: "manual-fe-g0-02-boundary-review"
+    command: "manual inspection of FE-G0-02 inventory evidence"
     required: true
 
 stop_conditions:
-  - "A path outside the control-record allowlist becomes necessary."
-  - "FE-G0-02 or frontend runtime implementation becomes necessary."
+  - "A write outside the report, script, test, and control-record allowlist becomes necessary."
+  - "FE-G0-03 or frontend runtime implementation becomes necessary."
   - "A public claim, source refresh, upstream write, push, or deployment becomes necessary."
   - "Validation fails."
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Use npm run checkpoint:implementation only after WJC-20260711-002-A exists with passed evidence. Do not push or deploy."
+  closeout: "Use npm run checkpoint:implementation only after WJC-20260711-003-A exists with passed evidence. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260711-002-A"
-  path: "implementation_control/tasks/WI-20260711-002/jobs/completions/WJC-20260711-002-A.yaml"
+  completion_id: "WJC-20260711-003-A"
+  path: "implementation_control/tasks/WI-20260711-003/jobs/completions/WJC-20260711-003-A.yaml"
 
 next_recommended_action:
-  task_packet: "FE-G0-02 baseline inventory packet"
-  summary: "Stop after FE-G0-01 checkpoint; FE-G0-02 requires separate owner authorization."
-  do_not_skip: "Do not open FE-G0-02 or modify frontend runtime, public claim, upstream, remote, or deployment state."
+  task_packet: "FE-G0-03 performance baseline packet"
+  summary: "Stop after FE-G0-02 checkpoint; FE-G0-03 requires separate owner authorization."
+  do_not_skip: "Do not open FE-G0-03 or modify frontend runtime, public claim, upstream, remote, or deployment state."

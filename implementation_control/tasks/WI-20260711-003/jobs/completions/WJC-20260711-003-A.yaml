@@ -1,0 +1,125 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260711-003-A"
+task_id: "WI-20260711-003"
+job_id: "WJ-20260711-003-A"
+created_utc: "2026-07-11T16:39:53Z"
+updated_utc: "2026-07-11T16:54:54Z"
+status: "completed"
+
+summary: "Completed FE-G0-02 with a reproducible static and browser-observed frontend baseline while preserving all runtime, source-authority, remote, and deployment boundaries."
+
+outputs:
+  - path: "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+    status: "created"
+    description: "Dated human-readable FE-G0-02 report covering every roadmap minimum measurement, pre-existing defects, validation state, and packet boundary."
+  - path: "docs/quality/frontend-baseline-inventory-2026-07-11.json"
+    status: "created"
+    description: "Machine-readable per-route, per-table, per-SVG, per-CSS-owner, and per-asset static evidence."
+  - path: "scripts/frontend_baseline_inventory.py"
+    status: "created"
+    description: "Standard-library deterministic inventory generator for built and source surfaces."
+  - path: "tests/test_frontend_baseline_inventory.py"
+    status: "created"
+    description: "Focused parser, route-mapping, and live-output coverage tests."
+
+changed_files:
+  - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+  - "docs/quality/frontend-baseline-inventory-2026-07-11.json"
+  - "scripts/frontend_baseline_inventory.py"
+  - "tests/test_frontend_baseline_inventory.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-002.yaml"
+  - "implementation_control/handoffs/WH-20260711-002.md"
+  - "implementation_control/handoffs/WH-20260711-003.yaml"
+  - "implementation_control/handoffs/WH-20260711-003.md"
+  - "implementation_control/tasks/WI-20260711-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-002/jobs/WJ-20260711-002-A.yaml"
+  - "implementation_control/tasks/WI-20260711-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-003/jobs/WJ-20260711-003-A.yaml"
+  - "implementation_control/tasks/WI-20260711-003/jobs/completions/WJC-20260711-003-A.yaml"
+
+baseline_evidence:
+  packet_id: "FE-G0-02"
+  owner_authorization: "Owner explicitly authorized FE-G0-02 on 2026-07-11"
+  prior_checkpoint: "cbe242138cd33b0d97a061fc8493908addbc565d"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  report_sha256: "da21ec2b8a32ae60d3f8fddcfca53027e5b2067bf94341506ac9bde71336fce4"
+  json_sha256: "eadab8cc56496d6944b7fac337f1f86e1e6947d637ee1521959e580111b343ca"
+  source_routes: 64
+  built_pages: 64
+  built_html_documents: 65
+  active_manifest_routes: 34
+  provenance_pages: 34
+  legacy_source_routes: 30
+  rendered_word_tokens: 75537
+  tables: 88
+  built_inline_svgs: 62
+  incomplete_svg_title_description_pairs: 15
+  source_css_lines: 4393
+  source_selectors: 906
+  image_occurrences: 512
+  image_occurrences_missing_intrinsic_dimensions: 128
+  gallery_items: 37
+  representative_browser_routes: 5
+
+requirements_satisfied:
+  - "Recorded every FE-G0-02 minimum measurement defined by the adopted roadmap."
+  - "Separated deterministic static evidence from representative browser-observed viewport and console evidence."
+  - "Recorded pre-existing defects without changing frontend runtime, public content, assets, manifests, curator outputs, or upstream sources."
+  - "Added only the allowlisted report, JSON evidence, inventory script, focused test, and implementation-control records."
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "frontend-baseline-tests"
+    command: ".venv/bin/python -m pytest tests/test_frontend_baseline_inventory.py"
+    status: "passed"
+    checked:
+      - "3 focused tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked:
+      - "79 Python tests passed."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    checked:
+      - "64 Astro pages built."
+  - id: "aggregate-validation-observation"
+    command: "npm run validate"
+    status: "failed_pre_existing_out_of_scope"
+    note: "Manifest, content, link, layout, SVG, and provenance checks passed before the aggregate chain stopped at stale curator reports and unacknowledged upstream drift, including critical current-state drift."
+  - id: "browser-observation"
+    command: "read-only local Playwright observation at 1440 by 900"
+    status: "passed_with_pre_existing_console_findings"
+    note: "All five representative routes returned 200; Home exposed third-party YouTube warnings and one non-repeating permissions-policy error; no visual request failed."
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    note: "Pointers, identifiers, allowlists, gates, stop conditions, completion paths, hashes, and supersession fields were inspected."
+  - id: "manual-fe-g0-02-boundary-review"
+    command: "manual inspection of FE-G0-02 inventory evidence"
+    status: "passed"
+    note: "The packet changes inventory evidence and control records only, and exposes but does not open FE-G0-03."
+
+remaining_blockers:
+  - id: "aggregate_curator_source_drift"
+    status: "open_outside_packet"
+    summary: "Aggregate validation requires a separately governed curator/source-refresh packet; FE-G0-02 does not authorize those writes or acknowledgements."
+  - id: "fe_g0_03_not_authorized"
+    status: "closed_for_this_packet"
+    summary: "FE-G0-03 requires separate owner authorization and a fresh bounded packet."
+  - id: "physics_owner_acceptance_not_granted"
+    status: "closed_for_this_packet"
+    summary: "No public-claim or physics-owner approval was requested or granted."
+
+next_recommended_action:
+  task_packet: "FE-G0-03 performance baseline packet"
+  summary: "After the FE-G0-02 local checkpoint, the owner may separately authorize performance measurement."
+  do_not_skip: "Do not open FE-G0-03 or modify frontend runtime, public claim, upstream, remote, or deployment state."
