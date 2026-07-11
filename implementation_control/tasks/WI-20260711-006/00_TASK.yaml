@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260711-006"
 title: "Execute FE-G0-05 Frontend Decision Ledger"
 created_utc: "2026-07-11T18:07:26Z"
-updated_utc: "2026-07-11T18:11:46Z"
-status: "active"
+updated_utc: "2026-07-11T19:51:49Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-G0-05"
@@ -149,3 +149,7 @@ next_recommended_action:
   task_packet: "FE-P0-01 authoritative exact-closure source preflight"
   summary: "After this checkpoint, the owner may separately authorize the upstream read-only source-pinning and drift-disposition packet."
   do_not_skip: "Do not open FE-P0-01, implement frontend runtime changes, approve public claims, push, deploy, or mutate upstream in this packet."
+
+supersession:
+  superseded_by_task_id: "WI-20260711-007"
+  reason: "FE-G0-05 was completed and checkpointed at 43f3d750c6f90c72d182c94f5f7ab7a72caa3195; the owner then separately authorized FE-P0-01."

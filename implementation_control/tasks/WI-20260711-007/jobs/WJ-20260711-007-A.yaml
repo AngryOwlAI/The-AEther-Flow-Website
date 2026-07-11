@@ -1,0 +1,133 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260711-007-A"
+task_id: "WI-20260711-007"
+title: "Pin Compare And Disposition The Exact-Closure Source Set"
+created_utc: "2026-07-11T19:51:49Z"
+updated_utc: "2026-07-11T20:00:00Z"
+status: "active"
+
+objective: "Produce a dated, commit-pinned comparison of the authoritative exact-closure sources, registries, governed review state, and website-local copies without mutating source or publication state."
+
+execution_boundary:
+  invocation_limit: "one bounded read-only source-preflight packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-01"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "forbidden_for_this_job"
+  public_claim_write_status: "forbidden_for_this_job"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "public/files/tex/ontology/aether_flow_exact_closure_sequence_overview.tex"
+  - "public/files/tex/ontology/aether_flow_exact_closure_note.tex"
+  - "public/files/tex/ontology/aether_flow_exact_closure_flagship_article.tex"
+  - "public/files/pdf/ontology/aether_flow_exact_closure_sequence_overview.pdf"
+  - "public/files/pdf/ontology/aether_flow_exact_closure_note.pdf"
+  - "public/files/pdf/ontology/aether_flow_exact_closure_flagship_article.pdf"
+  - "public/files/manifests/source_manifest.json"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "src/lib/siteContent.ts"
+  - "implementation_control/"
+  - "website Git status and history evidence"
+  - "read-only upstream exact-closure TeX, registry, governed review or positioning, Git status, and history evidence allowlisted by WI-20260711-007"
+
+allowed_writes:
+  - "docs/quality/frontend-exact-closure-source-preflight-2026-07-11.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-006.yaml"
+  - "implementation_control/handoffs/WH-20260711-006.md"
+  - "implementation_control/handoffs/WH-20260711-007.yaml"
+  - "implementation_control/handoffs/WH-20260711-007.md"
+  - "implementation_control/tasks/WI-20260711-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-006/jobs/WJ-20260711-006-A.yaml"
+  - "implementation_control/tasks/WI-20260711-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-007/jobs/WJ-20260711-007-A.yaml"
+  - "implementation_control/tasks/WI-20260711-007/jobs/completions/WJC-20260711-007-A.yaml"
+
+required_outputs:
+  - "A dated report pinning upstream branch, commit, cleanliness, exact source hashes, and registry states."
+  - "A hash comparison for all three website-local exact-closure TeX copies."
+  - "A read-only audit of Home and Physics route bundles, provenance rows, source notices, and applicable authority state."
+  - "An explicit proceed, source-refresh, public-claim, or physics-review disposition for each observed mismatch."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "The owner explicitly authorized FE-P0-01 after checkpoint 43f3d750c6f90c72d182c94f5f7ab7a72caa3195."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "The preflight changes no public claim."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "The preflight records drift but performs no refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route or navigation change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No shared visual-system change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "Manifests are read-only in this job."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-fe-p0-01-source-preflight-review"
+    command: "manual inspection of FE-P0-01 pinned hashes, registry states, comparisons, and drift dispositions"
+    required: true
+
+stop_conditions:
+  - "The work requires a path outside the explicit report and control-record allowlist."
+  - "The upstream checkout is dirty, a required source is uncommitted or absent, or the authority pin cannot be established."
+  - "A mismatch requires refresh, regeneration, manifest or provenance mutation, public-copy repair, or physics-owner acceptance."
+  - "The work requires frontend runtime, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260711-007-A"
+  path: "implementation_control/tasks/WI-20260711-007/jobs/completions/WJC-20260711-007-A.yaml"
+
+next_recommended_action:
+  task_packet: "separately authorized website-local source-refresh and manifest-authority repair"
+  summary: "Stop after the read-only preflight and wait for separate authorization to repair current source and publication metadata."
+  do_not_skip: "Do not open FE-P0-02, refresh sources, modify manifests, regenerate provenance, change public claims, push, deploy, or mutate upstream without a new bounded authorization."

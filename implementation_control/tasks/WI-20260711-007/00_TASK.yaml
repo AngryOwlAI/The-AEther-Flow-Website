@@ -1,0 +1,169 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260711-007"
+title: "Execute FE-P0-01 Authoritative Exact-Closure Source Preflight"
+created_utc: "2026-07-11T19:51:49Z"
+updated_utc: "2026-07-11T20:00:00Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P0-01"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
+  adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260711-006"
+  previous_checkpoint: "43f3d750c6f90c72d182c94f5f7ab7a72caa3195"
+  owner_authorization: "Owner explicitly authorized FE-P0-01 for the read-only authoritative exact-closure source preflight and drift disposition on 2026-07-11"
+
+goal: "Pin and verify the authoritative exact-closure source set, compare website-local copies and authority metadata to the committed upstream state, and record a bounded drift disposition without refreshing or publishing anything."
+
+requirements:
+  - "Record the upstream branch, exact commit, cleanliness state, and SHA-256 hashes for the required exact-closure TeX files."
+  - "Record the applicable TEX, PDF derivative, and claim-boundary registry states plus the governed physics-review or public-positioning owner state."
+  - "Compare website-local exact-closure TeX copies and relevant source, route, provenance, and source-notice metadata against the pinned upstream state."
+  - "Give every observed mismatch an explicit disposition and stop at the source-refresh or physics-owner gate when required."
+  - "Do not refresh sources, regenerate provenance, change public claims, or alter frontend runtime, manifests, assets, routes, or upstream records."
+
+scope:
+  in_scope:
+    - "docs/quality/frontend-exact-closure-source-preflight-2026-07-11.md"
+    - "Read-only inspection of the adopted plan, exact website source copies, relevant website manifests and source-notice defaults, current Git state, and implementation-control records."
+    - "Read-only inspection of the required upstream exact-closure TeX files, registries, current governed review/positioning records, Git state, and commit history."
+    - "Exactly allowlisted implementation-control records."
+  out_of_scope:
+    - "Any source or derivative refresh, copy, regeneration, or registry mutation."
+    - "FE-P0-02 or later frontend implementation."
+    - "Physics-owner acceptance, public scientific claims, or accessibility conformance claims."
+    - "Frontend runtime, route, redirect, navigation, component, style, asset, manifest, or provenance writes."
+    - "Upstream source-project writes, Git push, or Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260711-007-A"
+  next_packet_after_this_task: "FE-P0-02 canonical document order correction, only if the preflight disposition permits it"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+    - "public/files/tex/ontology/aether_flow_exact_closure_sequence_overview.tex"
+    - "public/files/tex/ontology/aether_flow_exact_closure_note.tex"
+    - "public/files/tex/ontology/aether_flow_exact_closure_flagship_article.tex"
+    - "public/files/pdf/ontology/aether_flow_exact_closure_sequence_overview.pdf"
+    - "public/files/pdf/ontology/aether_flow_exact_closure_note.pdf"
+    - "public/files/pdf/ontology/aether_flow_exact_closure_flagship_article.pdf"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "src/lib/siteContent.ts"
+    - "implementation_control/"
+    - "website Git status and history evidence"
+  upstream_source_repository:
+    - "ontology/tex/aether_flow_exact_closure_sequence_overview.tex"
+    - "ontology/tex/aether_flow_exact_closure_note.tex"
+    - "ontology/tex/aether_flow_exact_closure_flagship_article.tex"
+    - "ontology/pdfs/aether_flow_exact_closure_sequence_overview.pdf"
+    - "ontology/pdfs/aether_flow_exact_closure_note.pdf"
+    - "ontology/pdfs/aether_flow_exact_closure_flagship_article.pdf"
+    - "registries/TEX_SOURCE_REGISTRY.csv"
+    - "registries/PDF_DERIVATIVE_REGISTRY.csv"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "current governed records needed to identify physics-review or public-positioning ownership and approval state"
+    - "upstream Git status, branch, exact commit, and relevant history evidence"
+
+allowed_writes:
+  website_repository:
+    - "docs/quality/frontend-exact-closure-source-preflight-2026-07-11.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260711-006.yaml"
+    - "implementation_control/handoffs/WH-20260711-006.md"
+    - "implementation_control/handoffs/WH-20260711-007.yaml"
+    - "implementation_control/handoffs/WH-20260711-007.md"
+    - "implementation_control/tasks/WI-20260711-006/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-006/jobs/WJ-20260711-006-A.yaml"
+    - "implementation_control/tasks/WI-20260711-007/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-007/jobs/WJ-20260711-007-A.yaml"
+    - "implementation_control/tasks/WI-20260711-007/jobs/completions/WJC-20260711-007-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly authorized FE-P0-01 after checkpoint 43f3d750c6f90c72d182c94f5f7ab7a72caa3195."
+  public_claim_changes:
+    status: "not_required"
+    reason: "The preflight records evidence and changes no public claim."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "The packet identifies and disposes drift but performs no refresh or regeneration."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route, redirect, or navigation change is in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No CSS, component, layout, SVG, motion, typography, or visual asset change is in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset publication or replacement is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "Website manifests are inspected read-only and are not modified."
+  git_push:
+    status: "not_required"
+    reason: "Push remains separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment remains separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-fe-p0-01-source-preflight-review"
+    command: "manual inspection of FE-P0-01 pinned hashes, registry states, comparisons, and drift dispositions"
+    required: true
+
+stop_conditions:
+  - "A write outside the comparison report and explicit control-record allowlist becomes necessary."
+  - "The upstream checkout is dirty, a required source is uncommitted or absent, or source authority cannot be pinned."
+  - "A mismatch requires source refresh, derivative regeneration, manifest or provenance mutation, or public-copy repair."
+  - "Physics-owner acceptance or a public scientific claim would be implied."
+  - "The work requires frontend runtime, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation only after WJC-20260711-007-A exists with passed evidence. Do not push or deploy."
+
+handoff:
+  latest_handoff_id: "WH-20260711-007"
+  yaml_path: "implementation_control/handoffs/WH-20260711-007.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260711-007.md"
+
+completion_record:
+  completion_id: "WJC-20260711-007-A"
+  path: "implementation_control/tasks/WI-20260711-007/jobs/completions/WJC-20260711-007-A.yaml"
+
+next_recommended_action:
+  task_packet: "separately authorized website-local source-refresh and manifest-authority repair"
+  summary: "Resolve exact-source pins, PDF derivative authority metadata, and stale provenance before FE-P0-02 is opened."
+  do_not_skip: "Do not open FE-P0-02, refresh sources, modify manifests, regenerate provenance, change public claims, push, deploy, or mutate upstream without a new bounded authorization."

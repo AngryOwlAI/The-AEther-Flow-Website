@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-11T18:11:46Z"
+updated_utc: "2026-07-11T20:00:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260711-006/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260711-006/jobs/WJ-20260711-006-A.yaml"
-  - "implementation_control/handoffs/WH-20260711-006.yaml"
+  - "implementation_control/tasks/WI-20260711-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-007/jobs/WJ-20260711-007-A.yaml"
+  - "implementation_control/handoffs/WH-20260711-007.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260711-006"
-  title: "Execute FE-G0-05 Frontend Decision Ledger"
+  task_id: "WI-20260711-007"
+  title: "Execute FE-P0-01 Authoritative Exact-Closure Source Preflight"
   status: "active"
-  path: "implementation_control/tasks/WI-20260711-006/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260711-007/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-G0-05"
+    task_packet: "FE-P0-01"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    adoption_checkpoint: "8813faa38639591fbc8c6f6045f0bc64d5cf4fb7"
-    owner_authorization: "Owner explicitly authorized FE-G0-05 and D-01 through D-30 resolution or explicit deferral on 2026-07-11"
+    adoption_checkpoint: "43f3d750c6f90c72d182c94f5f7ab7a72caa3195"
+    owner_authorization: "Owner explicitly authorized FE-P0-01 for the read-only authoritative exact-closure source preflight and drift disposition on 2026-07-11"
 
 current_job:
-  job_id: "WJ-20260711-006-A"
+  job_id: "WJ-20260711-007-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260711-006/jobs/WJ-20260711-006-A.yaml"
+  path: "implementation_control/tasks/WI-20260711-007/jobs/WJ-20260711-007-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260711-006"
+  handoff_id: "WH-20260711-007"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260711-006.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260711-006.md"
+  yaml_path: "implementation_control/handoffs/WH-20260711-007.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260711-007.md"
 
 latest_completion:
-  completion_id: "WJC-20260711-006-A"
-  task_id: "WI-20260711-006"
-  job_id: "WJ-20260711-006-A"
+  completion_id: "WJC-20260711-007-A"
+  task_id: "WI-20260711-007"
+  job_id: "WJ-20260711-007-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260711-006/jobs/completions/WJC-20260711-006-A.yaml"
+  path: "implementation_control/tasks/WI-20260711-007/jobs/completions/WJC-20260711-007-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -70,11 +70,11 @@ required_validators:
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required_for_current_job: true
-  - id: "manual-fe-g0-05-decision-review"
-    command: "manual inspection of FE-G0-05 decision and deferral evidence"
+  - id: "manual-fe-p0-01-source-preflight-review"
+    command: "manual inspection of FE-P0-01 pinned hashes, registry states, comparisons, and drift dispositions"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P0-01 authoritative exact-closure source preflight"
-  summary: "Checkpoint FE-G0-05 locally, then stop before separately authorizing source pinning and drift disposition."
-  do_not_skip: "Do not open FE-P0-01, implement frontend runtime changes, approve public claims, push, deploy, or mutate upstream in this packet."
+  task_packet: "separately authorized website-local source-refresh and manifest-authority repair"
+  summary: "Resolve exact-source pins, PDF derivative authority metadata, and stale provenance before FE-P0-02 is opened."
+  do_not_skip: "Do not open FE-P0-02, refresh sources, modify manifests, regenerate provenance, change public claims, push, deploy, or mutate upstream without a new bounded authorization."

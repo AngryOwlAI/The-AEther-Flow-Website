@@ -4,8 +4,8 @@ job_id: "WJ-20260711-006-A"
 task_id: "WI-20260711-006"
 title: "Resolve And Record The FE-G0-05 Decision Ledger"
 created_utc: "2026-07-11T18:07:26Z"
-updated_utc: "2026-07-11T18:11:46Z"
-status: "active"
+updated_utc: "2026-07-11T19:51:49Z"
+status: "superseded"
 
 objective: "Produce a dated, owner-assigned decision ledger for D-01 through D-30, with explicit deferrals and hard gates where evidence or authority is incomplete."
 
@@ -125,3 +125,7 @@ next_recommended_action:
   task_packet: "FE-P0-01 authoritative exact-closure source preflight"
   summary: "Stop after FE-G0-05 checkpoint; FE-P0-01 requires separate owner authorization."
   do_not_skip: "Do not open FE-P0-01 or modify frontend runtime, public claim, upstream, remote, or deployment state."
+
+supersession:
+  superseded_by_job_id: "WJ-20260711-007-A"
+  reason: "FE-G0-05 was locally checkpointed before the owner separately authorized FE-P0-01."
