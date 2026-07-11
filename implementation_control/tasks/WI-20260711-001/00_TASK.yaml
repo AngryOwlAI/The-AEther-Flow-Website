@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260711-001"
 title: "Review And Adopt Frontend Recommendations Roadmap"
 created_utc: "2026-07-11T15:52:04Z"
-updated_utc: "2026-07-11T16:05:50Z"
-status: "active"
+updated_utc: "2026-07-11T16:14:55Z"
+status: "completed"
 
 source_context:
   candidate_plan: "ImplementationPlans/recomendation_frontend.md"
@@ -166,5 +166,9 @@ completion_record:
 
 next_recommended_action:
   task_packet: "FE-G0-01 governance and decision packet"
-  summary: "After this adoption checkpoint, the owner may separately authorize opening FE-G0-01 in a new bounded discussion thread."
-  do_not_skip: "Do not open or execute FE-G0-01, change frontend runtime files, approve physics copy, push, deploy, or mutate upstream in this packet."
+  summary: "Superseded after owner authorization by WI-20260711-002, the bounded FE-G0-01 control-transition packet."
+  do_not_skip: "FE-G0-02 and all frontend runtime work remain separately gated."
+
+superseded_by:
+  task_id: "WI-20260711-002"
+  handoff_id: "WH-20260711-002"

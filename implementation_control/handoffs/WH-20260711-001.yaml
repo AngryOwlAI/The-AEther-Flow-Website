@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260711-001"
 created_utc: "2026-07-11T15:52:04Z"
-updated_utc: "2026-07-11T16:05:50Z"
-status: "active"
+updated_utc: "2026-07-11T16:14:55Z"
+status: "superseded"
 
 task_id: "WI-20260711-001"
 job_id: "WJ-20260711-001-A"
@@ -51,8 +51,13 @@ required_validators:
 
 next_recommended_action:
   task_packet: "FE-G0-01 governance and decision packet"
-  summary: "Stop after this local checkpoint; the owner may separately authorize FE-G0-01 in a new bounded discussion thread."
-  do_not_skip: "Do not open or execute FE-G0-01, implement frontend changes, approve physics copy, push, deploy, or mutate upstream in this packet."
+  summary: "The owner authorized FE-G0-01; WH-20260711-002 now governs the control transition."
+  do_not_skip: "FE-G0-02 and frontend runtime work remain outside this superseded handoff."
+
+superseded_by:
+  handoff_id: "WH-20260711-002"
+  task_id: "WI-20260711-002"
+  job_id: "WJ-20260711-002-A"
 
 stop_before:
   - "frontend runtime implementation"

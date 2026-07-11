@@ -1,0 +1,154 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260711-002"
+title: "Execute FE-G0-01 Frontend Control Transition"
+created_utc: "2026-07-11T16:14:55Z"
+updated_utc: "2026-07-11T16:14:55Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-G0-01"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
+  adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260711-001"
+  previous_checkpoint: "dc78e86666448ed723546adde8f1c3e9f21c7b5c"
+  owner_authorization: "Codex task request dated 2026-07-11"
+
+goal: "Complete FE-G0-01 by transitioning live implementation control from roadmap adoption to the first separately gated baseline packet."
+
+requirements:
+  - "Verify the roadmap adoption checkpoint and unchanged adopted-plan hash."
+  - "Create exactly allowlisted FE-G0-01 control records and supersede the prior adoption handoff."
+  - "Expose FE-G0-02 as the next recommended packet without opening or executing it."
+  - "Preserve the plan as planning context only and retain all source-authority and production boundaries."
+  - "Do not modify frontend runtime, public routes, public assets, public manifests, upstream sources, remote Git state, or deployment state."
+
+scope:
+  in_scope:
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260711-001.yaml"
+    - "implementation_control/handoffs/WH-20260711-001.md"
+    - "implementation_control/tasks/WI-20260711-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-001/jobs/WJ-20260711-001-A.yaml"
+    - "implementation_control/handoffs/WH-20260711-002.yaml"
+    - "implementation_control/handoffs/WH-20260711-002.md"
+    - "implementation_control/tasks/WI-20260711-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-002/jobs/WJ-20260711-002-A.yaml"
+    - "implementation_control/tasks/WI-20260711-002/jobs/completions/WJC-20260711-002-A.yaml"
+  out_of_scope:
+    - "FE-G0-02 inventory execution."
+    - "Frontend runtime code or styling."
+    - "Public routes, redirects, navigation, copy, metadata, assets, or manifests."
+    - "Physics-owner acceptance, source refreshes, or public claim promotion."
+    - "Upstream source-project writes."
+    - "Git push or Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260711-002-A"
+  next_packet_after_this_task: "FE-G0-02 baseline inventory packet"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260711-001.yaml"
+    - "implementation_control/handoffs/WH-20260711-001.md"
+    - "implementation_control/tasks/WI-20260711-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-001/jobs/WJ-20260711-001-A.yaml"
+    - "implementation_control/tasks/WI-20260711-001/jobs/completions/WJC-20260711-001-A.yaml"
+    - "git status and log output"
+
+allowed_writes:
+  website_repository:
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260711-001.yaml"
+    - "implementation_control/handoffs/WH-20260711-001.md"
+    - "implementation_control/tasks/WI-20260711-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-001/jobs/WJ-20260711-001-A.yaml"
+    - "implementation_control/handoffs/WH-20260711-002.yaml"
+    - "implementation_control/handoffs/WH-20260711-002.md"
+    - "implementation_control/tasks/WI-20260711-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-002/jobs/WJ-20260711-002-A.yaml"
+    - "implementation_control/tasks/WI-20260711-002/jobs/completions/WJC-20260711-002-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly authorized FE-G0-01 after the roadmap adoption checkpoint."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public scientific, mathematical, governance, or workflow claim changes are in scope."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source snapshot or generated publication refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route, redirect, or navigation change is in scope."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No CSS, component, layout, SVG, or visual asset change is in scope."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset publication is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest write is in scope."
+  git_push:
+    status: "not_required"
+    reason: "Push remains separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment remains separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-fe-g0-01-boundary-review"
+    command: "manual inspection of FE-G0-01 transition evidence"
+    required: true
+
+stop_conditions:
+  - "A write outside the explicit control-record allowlist becomes necessary."
+  - "FE-G0-02 inventory work or any frontend runtime change becomes necessary."
+  - "Plan adoption would be treated as physics-owner acceptance or public claim authority."
+  - "An upstream write, push, or deployment becomes necessary."
+  - "Validation fails or checkpoint evidence cannot be reproduced."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation after FE-G0-01 completion evidence exists. Do not push or deploy."
+
+handoff:
+  latest_handoff_id: "WH-20260711-002"
+  yaml_path: "implementation_control/handoffs/WH-20260711-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260711-002.md"
+
+completion_record:
+  completion_id: "WJC-20260711-002-A"
+  path: "implementation_control/tasks/WI-20260711-002/jobs/completions/WJC-20260711-002-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-G0-02 baseline inventory packet"
+  summary: "After this checkpoint, the owner may separately authorize the bounded frontend baseline inventory."
+  do_not_skip: "Do not open or execute FE-G0-02, change frontend runtime files, approve physics copy, push, deploy, or mutate upstream in this packet."
