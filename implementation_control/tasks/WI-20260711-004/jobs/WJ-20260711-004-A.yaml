@@ -1,18 +1,18 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260711-003-A"
-task_id: "WI-20260711-003"
-title: "Measure And Record The FE-G0-02 Frontend Baseline"
-created_utc: "2026-07-11T16:39:53Z"
-updated_utc: "2026-07-11T17:17:54Z"
-status: "completed"
+job_id: "WJ-20260711-004-A"
+task_id: "WI-20260711-004"
+title: "Measure And Record The FE-G0-03 Performance Baseline"
+created_utc: "2026-07-11T17:17:54Z"
+updated_utc: "2026-07-11T17:29:06Z"
+status: "active"
 
-objective: "Produce a reproducible dated FE-G0-02 inventory from static repository evidence, built output, and read-only browser observations."
+objective: "Produce reproducible dated performance evidence and measured provisional budgets for five representative routes without modifying the public runtime."
 
 execution_boundary:
-  invocation_limit: "one bounded baseline inventory packet"
+  invocation_limit: "one bounded performance baseline packet"
   live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
-  packet_id: "FE-G0-02"
+  packet_id: "FE-G0-03"
   adopted_plan: "ImplementationPlans/recomendation_frontend.md"
   upstream_write_status: "forbidden"
   public_runtime_write_status: "forbidden_for_this_job"
@@ -32,35 +32,34 @@ allowed_reads:
   - "scripts/"
   - "tests/"
   - "implementation_control/"
-  - "local build, validator, browser, git status, and git log output"
+  - "local build, validator, browser, Lighthouse, Web Vitals guidance, structured-data guidance, git status, and git log output"
 
 allowed_writes:
-  - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
-  - "docs/quality/frontend-baseline-inventory-2026-07-11.json"
-  - "scripts/frontend_baseline_inventory.py"
-  - "tests/test_frontend_baseline_inventory.py"
+  - "docs/quality/frontend-performance-baseline-2026-07-11.md"
+  - "docs/quality/frontend-performance-baseline-2026-07-11.json"
+  - "scripts/frontend_performance_baseline.py"
+  - "tests/test_frontend_performance_baseline.py"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260711-002.yaml"
-  - "implementation_control/handoffs/WH-20260711-002.md"
   - "implementation_control/handoffs/WH-20260711-003.yaml"
   - "implementation_control/handoffs/WH-20260711-003.md"
-  - "implementation_control/tasks/WI-20260711-002/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260711-002/jobs/WJ-20260711-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.md"
   - "implementation_control/tasks/WI-20260711-003/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260711-003/jobs/WJ-20260711-003-A.yaml"
-  - "implementation_control/tasks/WI-20260711-003/jobs/completions/WJC-20260711-003-A.yaml"
+  - "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/completions/WJC-20260711-004-A.yaml"
 
 required_outputs:
-  - "A dated Markdown baseline covering every FE-G0-02 minimum measurement."
-  - "Machine-readable static inventory evidence with per-route measurements."
-  - "A deterministic inventory script and focused tests."
-  - "Browser evidence for console, remote visual requests, above-fold images, first-view actions, navigation children, and visible animated elements."
-  - "A pre-existing-defect ledger that makes no corrective runtime changes."
+  - "A dated Markdown performance report for Home, Physics, AI, Resources, and the diagram gallery."
+  - "Machine-readable per-run Lighthouse and aggregate evidence."
+  - "A deterministic report generator and focused tests."
+  - "Measured provisional budgets that clearly separate lab targets from unavailable field evidence."
 
 approval_gates:
   - id: "plan_adoption"
     status: "approved"
-    trigger: "The owner explicitly authorized FE-G0-02 after checkpoint cbe242138cd33b0d97a061fc8493908addbc565d."
+    trigger: "The owner explicitly authorized FE-G0-03 after checkpoint 086d5f1364c759cffa4713e0e451dde217b8b49b."
   - id: "public_claim_changes"
     status: "not_required"
     trigger: "No public claim change."
@@ -105,26 +104,27 @@ required_validators:
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required: true
-  - id: "manual-fe-g0-02-boundary-review"
-    command: "manual inspection of FE-G0-02 inventory evidence"
+  - id: "manual-fe-g0-03-boundary-review"
+    command: "manual inspection of FE-G0-03 performance evidence"
     required: true
 
 stop_conditions:
   - "A write outside the report, script, test, and control-record allowlist becomes necessary."
-  - "FE-G0-03 or frontend runtime implementation becomes necessary."
+  - "FE-G0-04 or frontend runtime implementation becomes necessary."
+  - "Performance evidence cannot distinguish lab measurements from field data."
   - "A public claim, source refresh, upstream write, push, or deployment becomes necessary."
   - "Validation fails."
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Use npm run checkpoint:implementation only after WJC-20260711-003-A exists with passed evidence. Do not push or deploy."
+  closeout: "Use npm run checkpoint:implementation only after WJC-20260711-004-A exists with passed evidence. Do not push or deploy."
 
 completion_record:
-  completion_id: "WJC-20260711-003-A"
-  path: "implementation_control/tasks/WI-20260711-003/jobs/completions/WJC-20260711-003-A.yaml"
+  completion_id: "WJC-20260711-004-A"
+  path: "implementation_control/tasks/WI-20260711-004/jobs/completions/WJC-20260711-004-A.yaml"
 
 next_recommended_action:
-  task_packet: "FE-G0-03 performance baseline packet"
-  summary: "Stop after FE-G0-02 checkpoint; FE-G0-03 requires separate owner authorization."
-  do_not_skip: "Do not open FE-G0-03 or modify frontend runtime, public claim, upstream, remote, or deployment state."
+  task_packet: "FE-G0-04 accessibility baseline packet"
+  summary: "Stop after FE-G0-03 checkpoint; FE-G0-04 requires separate owner authorization."
+  do_not_skip: "Do not open FE-G0-04 or modify frontend runtime, public claim, upstream, remote, or deployment state."

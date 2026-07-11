@@ -1,0 +1,128 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260711-004-A"
+task_id: "WI-20260711-004"
+job_id: "WJ-20260711-004-A"
+created_utc: "2026-07-11T17:17:54Z"
+updated_utc: "2026-07-11T17:29:06Z"
+status: "completed"
+
+summary: "Completed FE-G0-03 with a reproducible five-route mobile lab baseline and evidence-qualified provisional budgets while preserving all runtime, source-authority, remote, and deployment boundaries."
+
+outputs:
+  - path: "docs/quality/frontend-performance-baseline-2026-07-11.md"
+    status: "created"
+    description: "Dated human-readable FE-G0-03 report covering the five required routes, per-run metrics, budgets, defects, limitations, and APA 7 references."
+  - path: "docs/quality/frontend-performance-baseline-2026-07-11.json"
+    status: "created"
+    description: "Machine-readable per-run Lighthouse evidence, route aggregates, structured-data observations, and measured provisional budgets."
+  - path: "scripts/frontend_performance_baseline.py"
+    status: "created"
+    description: "Standard-library deterministic report generator for pinned Lighthouse JSON evidence and built-page JSON-LD inventory."
+  - path: "tests/test_frontend_performance_baseline.py"
+    status: "created"
+    description: "Focused aggregation, required-route, run-count, structured-data, and field-versus-lab boundary tests."
+
+changed_files:
+  - "docs/quality/frontend-performance-baseline-2026-07-11.md"
+  - "docs/quality/frontend-performance-baseline-2026-07-11.json"
+  - "scripts/frontend_performance_baseline.py"
+  - "tests/test_frontend_performance_baseline.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-003.yaml"
+  - "implementation_control/handoffs/WH-20260711-003.md"
+  - "implementation_control/handoffs/WH-20260711-004.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.md"
+  - "implementation_control/tasks/WI-20260711-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-003/jobs/WJ-20260711-003-A.yaml"
+  - "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/completions/WJC-20260711-004-A.yaml"
+
+baseline_evidence:
+  packet_id: "FE-G0-03"
+  owner_authorization: "Owner explicitly authorized FE-G0-03 on 2026-07-11"
+  prior_checkpoint: "086d5f1364c759cffa4713e0e451dde217b8b49b"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  report_sha256: "ecafb3b4f0c7abe44b830d3e940a6777dfc7c20b852e68e2d6f834722096f2d9"
+  json_sha256: "a72e151678c03b71afd6ef6448d26d9d77960f9eed3bcc5abfd05fc97bc167f9"
+  lighthouse_version: "13.4.0"
+  representative_routes: 5
+  runs_per_route: 3
+  total_runs: 15
+  shared_header_logo_source_bytes: 1147309
+  home_initial_raster_transfer_bytes: 1213070
+  routes_with_lcp_stability_failure: 4
+  routes_fetching_below_fold_images: 5
+  maximum_long_task_ms: 54
+  all_runs_zero_cls: true
+  all_runs_zero_tbt: true
+  field_inp_available: false
+
+requirements_satisfied:
+  - "Recorded three pinned mobile Lighthouse runs for Home, Physics, AI Research System, Resources, and Diagram Gallery."
+  - "Recorded user-centric metrics, transfer and request counts, resource classes, image waste, eager below-fold images, long tasks, and structured-data observations."
+  - "Checked current Core Web Vitals, Total Blocking Time, and structured-data guidance against official primary documentation."
+  - "Separated lab evidence from unavailable field data and kept all thresholds internal and provisional."
+  - "Added only the allowlisted report, JSON evidence, generator, focused test, and implementation-control records."
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "performance-baseline-tests"
+    command: ".venv/bin/python -m pytest tests/test_frontend_performance_baseline.py"
+    status: "passed"
+    checked:
+      - "3 focused tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked:
+      - "82 Python tests passed."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    checked:
+      - "64 Astro pages built."
+  - id: "aggregate-validation-observation"
+    command: "npm run validate"
+    status: "failed_pre_existing_out_of_scope"
+    note: "Manifest, content, link, layout, SVG, and provenance checks passed before the aggregate chain stopped at stale curator reports and unacknowledged upstream drift, including critical current-state drift."
+  - id: "lighthouse-mobile-lab"
+    command: "15 pinned Lighthouse 13.4.0 performance runs against local static preview"
+    status: "passed_with_budget_failures_recorded"
+    note: "All required reports completed; the evidence records LCP stability, long-task, image-transfer, and eager below-fold image failures without remediation."
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    note: "Pointers, identifiers, allowlists, gates, stop conditions, completion paths, hashes, and supersession fields were inspected."
+  - id: "manual-fe-g0-03-boundary-review"
+    command: "manual inspection of FE-G0-03 performance evidence"
+    status: "passed"
+    note: "The packet changes performance evidence and control records only, clearly separates lab from field data, and exposes but does not open FE-G0-04."
+
+remaining_blockers:
+  - id: "aggregate_curator_source_drift"
+    status: "open_outside_packet"
+    summary: "Aggregate validation requires a separately governed curator or source-refresh packet; FE-G0-03 does not authorize those writes or acknowledgements."
+  - id: "performance_budget_failures"
+    status: "measured_for_later_repair"
+    summary: "The shared logo, LCP stability, unexplained long-task, and eager below-fold image targets require later authorized remediation packets."
+  - id: "field_core_web_vitals_unavailable"
+    status: "open_evidence_gap"
+    summary: "No production field dataset was available; lab values must not be presented as 75th-percentile field Core Web Vitals."
+  - id: "fe_g0_04_not_authorized"
+    status: "closed_for_this_packet"
+    summary: "FE-G0-04 requires separate owner authorization and a fresh bounded packet."
+  - id: "physics_owner_acceptance_not_granted"
+    status: "closed_for_this_packet"
+    summary: "No public-claim or physics-owner approval was requested or granted."
+
+next_recommended_action:
+  task_packet: "FE-G0-04 accessibility baseline packet"
+  summary: "After the FE-G0-03 local checkpoint, the owner may separately authorize accessibility target and evidence-policy work."
+  do_not_skip: "Do not open FE-G0-04 or modify frontend runtime, public claim, upstream, remote, or deployment state."

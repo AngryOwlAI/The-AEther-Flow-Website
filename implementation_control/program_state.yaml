@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-11T16:54:54Z"
+updated_utc: "2026-07-11T17:29:06Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260711-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260711-003/jobs/WJ-20260711-003-A.yaml"
-  - "implementation_control/handoffs/WH-20260711-003.yaml"
+  - "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260711-003"
-  title: "Execute FE-G0-02 Frontend Baseline Inventory"
+  task_id: "WI-20260711-004"
+  title: "Execute FE-G0-03 Frontend Performance Baseline"
   status: "active"
-  path: "implementation_control/tasks/WI-20260711-003/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-G0-02"
+    task_packet: "FE-G0-03"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    adoption_checkpoint: "cbe242138cd33b0d97a061fc8493908addbc565d"
-    owner_authorization: "Owner explicitly authorized FE-G0-02 on 2026-07-11"
+    adoption_checkpoint: "086d5f1364c759cffa4713e0e451dde217b8b49b"
+    owner_authorization: "Owner explicitly authorized FE-G0-03 on 2026-07-11"
 
 current_job:
-  job_id: "WJ-20260711-003-A"
+  job_id: "WJ-20260711-004-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260711-003/jobs/WJ-20260711-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260711-003"
+  handoff_id: "WH-20260711-004"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260711-003.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260711-003.md"
+  yaml_path: "implementation_control/handoffs/WH-20260711-004.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260711-004.md"
 
 latest_completion:
-  completion_id: "WJC-20260711-003-A"
-  task_id: "WI-20260711-003"
-  job_id: "WJ-20260711-003-A"
+  completion_id: "WJC-20260711-004-A"
+  task_id: "WI-20260711-004"
+  job_id: "WJ-20260711-004-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260711-003/jobs/completions/WJC-20260711-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260711-004/jobs/completions/WJC-20260711-004-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -70,11 +70,11 @@ required_validators:
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
-  - id: "manual-fe-g0-02-boundary-review"
-    command: "manual inspection of FE-G0-02 inventory evidence"
+  - id: "manual-fe-g0-03-boundary-review"
+    command: "manual inspection of FE-G0-03 performance evidence"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-G0-03 performance baseline packet"
-  summary: "Complete and checkpoint FE-G0-02 before separately authorizing performance measurement."
-  do_not_skip: "Do not open FE-G0-03, change frontend runtime files, approve physics copy, push, deploy, or mutate upstream in this packet."
+  task_packet: "FE-G0-04 accessibility baseline packet"
+  summary: "Complete and checkpoint FE-G0-03 before separately authorizing accessibility target work."
+  do_not_skip: "Do not open FE-G0-04, change frontend runtime files, approve physics copy, push, deploy, or mutate upstream in this packet."

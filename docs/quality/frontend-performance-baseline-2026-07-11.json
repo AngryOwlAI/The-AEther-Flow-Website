@@ -1,0 +1,1406 @@
+{
+  "schema_version": "0.1",
+  "packet_id": "FE-G0-03",
+  "measurement_window": {
+    "first_fetch_time": "2026-07-11T17:20:49.484Z",
+    "last_fetch_time": "2026-07-11T17:24:05.467Z"
+  },
+  "method": {
+    "tool": "Lighthouse",
+    "tool_version": "13.4.0",
+    "runs_per_route": 3,
+    "navigation": "cold local static-preview navigation",
+    "form_factor": "mobile",
+    "throttling_method": "simulate",
+    "throttling": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    },
+    "screen_emulation": {
+      "mobile": true,
+      "width": 412,
+      "height": 823,
+      "deviceScaleFactor": 1.75,
+      "disabled": false
+    },
+    "host_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "network_user_agent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
+    "benchmark_index": {
+      "min": 3846,
+      "median": 3896,
+      "max": 3925
+    },
+    "limitations": [
+      "Local static preview removes production CDN, TLS, geographic latency, cache, and server variability.",
+      "Three simulated mobile lab runs are diagnostic and do not substitute for 75th-percentile field Core Web Vitals.",
+      "No representative user interactions were executed, so INP is unavailable; TBT is the recorded lab proxy.",
+      "Performance-only Lighthouse runs do not validate structured-data eligibility; checked-in JSON-LD is inventoried separately."
+    ]
+  },
+  "guidance": {
+    "core_web_vitals": {
+      "url": "https://web.dev/articles/defining-core-web-vitals-thresholds",
+      "checked_utc_date": "2026-07-11",
+      "field_good_thresholds": {
+        "lcp_ms": 2500,
+        "inp_ms": 200,
+        "cls": 0.1
+      },
+      "qualification": "Field classification uses the 75th percentile; this three-run lab baseline is not field data."
+    },
+    "total_blocking_time": {
+      "url": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time",
+      "checked_utc_date": "2026-07-11",
+      "mobile_fast_threshold_ms": 200,
+      "qualification": "TBT is a Lighthouse lab metric and is not a Core Web Vital."
+    },
+    "structured_data": {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "checked_utc_date": "2026-07-11",
+      "qualification": "Markup must represent visible page content; automated presence checks do not establish rich-result eligibility."
+    }
+  },
+  "routes": {
+    "home": {
+      "route": "/",
+      "runs": [
+        {
+          "route_key": "home",
+          "route": "/",
+          "run": 1,
+          "fetch_time": "2026-07-11T17:20:49.484Z",
+          "performance_score": 100,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 8867,
+            "Image": 1213070,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 50,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/project-overview-two-track-map.png"
+          ],
+          "image_estimated_waste_bytes": 1200233,
+          "render_blocking_estimated_savings_ms": 302,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Start here to orient yourself: the project pairs a proposed \u00c6ther-Flow physics \u2026"
+          },
+          "first_contentful_paint_ms": 904.22,
+          "largest_contentful_paint_ms": 1504.22,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 2214.21,
+          "time_to_interactive_ms": 1519.22,
+          "total_transfer_bytes": 1244011
+        },
+        {
+          "route_key": "home",
+          "route": "/",
+          "run": 2,
+          "fetch_time": "2026-07-11T17:21:17.242Z",
+          "performance_score": 77,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 8867,
+            "Image": 1213070,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 51,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/project-overview-two-track-map.png"
+          ],
+          "image_estimated_waste_bytes": 1200233,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Start here to orient yourself: the project pairs a proposed \u00c6ther-Flow physics \u2026"
+          },
+          "first_contentful_paint_ms": 902.84,
+          "largest_contentful_paint_ms": 7052.84,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.84,
+          "time_to_interactive_ms": 7052.84,
+          "total_transfer_bytes": 1244011
+        },
+        {
+          "route_key": "home",
+          "route": "/",
+          "run": 3,
+          "fetch_time": "2026-07-11T17:21:27.757Z",
+          "performance_score": 100,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 8867,
+            "Image": 1213070,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 0,
+          "longest_task_ms": 0,
+          "long_task_attributions": [],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/project-overview-two-track-map.png"
+          ],
+          "image_estimated_waste_bytes": 1200233,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Start here to orient yourself: the project pairs a proposed \u00c6ther-Flow physics \u2026"
+          },
+          "first_contentful_paint_ms": 902.3,
+          "largest_contentful_paint_ms": 1577.3,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.3,
+          "time_to_interactive_ms": 1584.8,
+          "total_transfer_bytes": 1244011
+        }
+      ],
+      "aggregate": {
+        "performance_score": {
+          "min": 77,
+          "median": 100,
+          "max": 100
+        },
+        "first_contentful_paint_ms": {
+          "min": 902.3,
+          "median": 902.84,
+          "max": 904.22
+        },
+        "largest_contentful_paint_ms": {
+          "min": 1504.22,
+          "median": 1577.3,
+          "max": 7052.84
+        },
+        "cumulative_layout_shift": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "total_blocking_time_ms": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed_index_ms": {
+          "min": 902.3,
+          "median": 902.84,
+          "max": 2214.21
+        },
+        "time_to_interactive_ms": {
+          "min": 1519.22,
+          "median": 1584.8,
+          "max": 7052.84
+        },
+        "total_transfer_bytes": {
+          "min": 1244011,
+          "median": 1244011,
+          "max": 1244011
+        },
+        "network_request_count": {
+          "min": 5,
+          "median": 5,
+          "max": 5
+        },
+        "remote_request_count": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "header_logo_transfer_bytes": {
+          "min": 1147580,
+          "median": 1147580,
+          "max": 1147580
+        },
+        "long_task_count": {
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "longest_task_ms": {
+          "min": 0,
+          "median": 50,
+          "max": 51
+        },
+        "below_fold_fetched_image_count": {
+          "min": 1,
+          "median": 1,
+          "max": 1
+        },
+        "image_estimated_waste_bytes": {
+          "min": 1200233,
+          "median": 1200233,
+          "max": 1200233
+        },
+        "render_blocking_estimated_savings_ms": {
+          "min": 301,
+          "median": 301,
+          "max": 302
+        },
+        "provisional_budgets": {
+          "no_regression_total_transfer_bytes": 1244011,
+          "no_regression_request_count": 5,
+          "css_transfer_review_threshold_bytes": 24142,
+          "external_javascript_transfer_ceiling_bytes": 0,
+          "image_transfer_baseline_ceiling_bytes": 1213070,
+          "remote_request_ceiling": 0,
+          "lab_lcp_median_target_ms": 2500,
+          "lab_lcp_max_stability_guard_ms": 4000,
+          "lab_cls_max_target": 0.1,
+          "lab_tbt_max_target_ms": 200,
+          "unexplained_long_task_max_ms": 50,
+          "below_fold_eager_image_ceiling": 0
+        },
+        "budget_evaluation": {
+          "lcp_median_target": "passed",
+          "lcp_stability_guard": "failed",
+          "cls_target": "passed",
+          "tbt_target": "passed",
+          "long_task_guard": "failed",
+          "below_fold_eager_image_target": "failed",
+          "remote_request_target": "passed"
+        },
+        "observed_lcp_elements": [
+          "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead"
+        ],
+        "long_task_attributions": [
+          "Unattributable"
+        ],
+        "below_fold_fetched_images": [
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/project-overview-two-track-map.png"
+        ]
+      },
+      "structured_data": {
+        "blocks": 0,
+        "types": [],
+        "malformed_blocks": 0
+      }
+    },
+    "physics": {
+      "route": "/physics/",
+      "runs": [
+        {
+          "route_key": "physics",
+          "route": "/physics/",
+          "run": 1,
+          "fetch_time": "2026-07-11T17:21:38.404Z",
+          "performance_score": 100,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7038,
+            "Image": 1209624,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 51,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png"
+          ],
+          "image_estimated_waste_bytes": 1197400,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Read the proposed \u00c6ther-flow physics program as layered public orientation, not\u2026"
+          },
+          "first_contentful_paint_ms": 902.01,
+          "largest_contentful_paint_ms": 1502.01,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.01,
+          "time_to_interactive_ms": 1517.01,
+          "total_transfer_bytes": 1238736
+        },
+        {
+          "route_key": "physics",
+          "route": "/physics/",
+          "run": 2,
+          "fetch_time": "2026-07-11T17:21:48.954Z",
+          "performance_score": 77,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7038,
+            "Image": 1209624,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 52,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png"
+          ],
+          "image_estimated_waste_bytes": 1197400,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Read the proposed \u00c6ther-flow physics program as layered public orientation, not\u2026"
+          },
+          "first_contentful_paint_ms": 902.12,
+          "largest_contentful_paint_ms": 7052.12,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.12,
+          "time_to_interactive_ms": 7052.12,
+          "total_transfer_bytes": 1238736
+        },
+        {
+          "route_key": "physics",
+          "route": "/physics/",
+          "run": 3,
+          "fetch_time": "2026-07-11T17:21:59.532Z",
+          "performance_score": 77,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7038,
+            "Image": 1209624,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 0,
+          "longest_task_ms": 0,
+          "long_task_attributions": [],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png"
+          ],
+          "image_estimated_waste_bytes": 1197400,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Read the proposed \u00c6ther-flow physics program as layered public orientation, not\u2026"
+          },
+          "first_contentful_paint_ms": 902.15,
+          "largest_contentful_paint_ms": 7052.15,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.15,
+          "time_to_interactive_ms": 7052.15,
+          "total_transfer_bytes": 1238736
+        }
+      ],
+      "aggregate": {
+        "performance_score": {
+          "min": 77,
+          "median": 77,
+          "max": 100
+        },
+        "first_contentful_paint_ms": {
+          "min": 902.01,
+          "median": 902.12,
+          "max": 902.15
+        },
+        "largest_contentful_paint_ms": {
+          "min": 1502.01,
+          "median": 7052.12,
+          "max": 7052.15
+        },
+        "cumulative_layout_shift": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "total_blocking_time_ms": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed_index_ms": {
+          "min": 902.01,
+          "median": 902.12,
+          "max": 902.15
+        },
+        "time_to_interactive_ms": {
+          "min": 1517.01,
+          "median": 7052.12,
+          "max": 7052.15
+        },
+        "total_transfer_bytes": {
+          "min": 1238736,
+          "median": 1238736,
+          "max": 1238736
+        },
+        "network_request_count": {
+          "min": 5,
+          "median": 5,
+          "max": 5
+        },
+        "remote_request_count": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "header_logo_transfer_bytes": {
+          "min": 1147580,
+          "median": 1147580,
+          "max": 1147580
+        },
+        "long_task_count": {
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "longest_task_ms": {
+          "min": 0,
+          "median": 51,
+          "max": 52
+        },
+        "below_fold_fetched_image_count": {
+          "min": 1,
+          "median": 1,
+          "max": 1
+        },
+        "image_estimated_waste_bytes": {
+          "min": 1197400,
+          "median": 1197400,
+          "max": 1197400
+        },
+        "render_blocking_estimated_savings_ms": {
+          "min": 301,
+          "median": 301,
+          "max": 301
+        },
+        "provisional_budgets": {
+          "no_regression_total_transfer_bytes": 1238736,
+          "no_regression_request_count": 5,
+          "css_transfer_review_threshold_bytes": 24142,
+          "external_javascript_transfer_ceiling_bytes": 0,
+          "image_transfer_baseline_ceiling_bytes": 1209624,
+          "remote_request_ceiling": 0,
+          "lab_lcp_median_target_ms": 2500,
+          "lab_lcp_max_stability_guard_ms": 4000,
+          "lab_cls_max_target": 0.1,
+          "lab_tbt_max_target_ms": 200,
+          "unexplained_long_task_max_ms": 50,
+          "below_fold_eager_image_ceiling": 0
+        },
+        "budget_evaluation": {
+          "lcp_median_target": "failed",
+          "lcp_stability_guard": "failed",
+          "cls_target": "passed",
+          "tbt_target": "passed",
+          "long_task_guard": "failed",
+          "below_fold_eager_image_target": "failed",
+          "remote_request_target": "passed"
+        },
+        "observed_lcp_elements": [
+          "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead"
+        ],
+        "long_task_attributions": [
+          "Unattributable"
+        ],
+        "below_fold_fetched_images": [
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png"
+        ]
+      },
+      "structured_data": {
+        "blocks": 0,
+        "types": [],
+        "malformed_blocks": 0
+      }
+    },
+    "ai": {
+      "route": "/ai-research-system/",
+      "runs": [
+        {
+          "route_key": "ai",
+          "route": "/ai-research-system/",
+          "run": 1,
+          "fetch_time": "2026-07-11T17:22:41.209Z",
+          "performance_score": 77,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7364,
+            "Image": 1176156,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 54,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/ai-system-task-authority-map.png"
+          ],
+          "image_estimated_waste_bytes": 1169889,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > h1#command-band-ai-research-system",
+            "label": "AI RESEARCH SYSTEM"
+          },
+          "first_contentful_paint_ms": 902.02,
+          "largest_contentful_paint_ms": 6902.02,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.02,
+          "time_to_interactive_ms": 6902.02,
+          "total_transfer_bytes": 1205594
+        },
+        {
+          "route_key": "ai",
+          "route": "/ai-research-system/",
+          "run": 2,
+          "fetch_time": "2026-07-11T17:22:51.754Z",
+          "performance_score": 100,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7364,
+            "Image": 1176156,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 51,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/ai-system-task-authority-map.png"
+          ],
+          "image_estimated_waste_bytes": 1169889,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > h1#command-band-ai-research-system",
+            "label": "AI RESEARCH SYSTEM"
+          },
+          "first_contentful_paint_ms": 902.41,
+          "largest_contentful_paint_ms": 1277.41,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.41,
+          "time_to_interactive_ms": 1284.91,
+          "total_transfer_bytes": 1205594
+        },
+        {
+          "route_key": "ai",
+          "route": "/ai-research-system/",
+          "run": 3,
+          "fetch_time": "2026-07-11T17:23:02.219Z",
+          "performance_score": 100,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7364,
+            "Image": 1176156,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 51,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/ai-system-task-authority-map.png"
+          ],
+          "image_estimated_waste_bytes": 1169889,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > h1#command-band-ai-research-system",
+            "label": "AI RESEARCH SYSTEM"
+          },
+          "first_contentful_paint_ms": 901.71,
+          "largest_contentful_paint_ms": 1276.71,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 901.71,
+          "time_to_interactive_ms": 1284.21,
+          "total_transfer_bytes": 1205594
+        }
+      ],
+      "aggregate": {
+        "performance_score": {
+          "min": 77,
+          "median": 100,
+          "max": 100
+        },
+        "first_contentful_paint_ms": {
+          "min": 901.71,
+          "median": 902.02,
+          "max": 902.41
+        },
+        "largest_contentful_paint_ms": {
+          "min": 1276.71,
+          "median": 1277.41,
+          "max": 6902.02
+        },
+        "cumulative_layout_shift": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "total_blocking_time_ms": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed_index_ms": {
+          "min": 901.71,
+          "median": 902.02,
+          "max": 902.41
+        },
+        "time_to_interactive_ms": {
+          "min": 1284.21,
+          "median": 1284.91,
+          "max": 6902.02
+        },
+        "total_transfer_bytes": {
+          "min": 1205594,
+          "median": 1205594,
+          "max": 1205594
+        },
+        "network_request_count": {
+          "min": 5,
+          "median": 5,
+          "max": 5
+        },
+        "remote_request_count": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "header_logo_transfer_bytes": {
+          "min": 1147580,
+          "median": 1147580,
+          "max": 1147580
+        },
+        "long_task_count": {
+          "min": 1,
+          "median": 1,
+          "max": 1
+        },
+        "longest_task_ms": {
+          "min": 51,
+          "median": 51,
+          "max": 54
+        },
+        "below_fold_fetched_image_count": {
+          "min": 1,
+          "median": 1,
+          "max": 1
+        },
+        "image_estimated_waste_bytes": {
+          "min": 1169889,
+          "median": 1169889,
+          "max": 1169889
+        },
+        "render_blocking_estimated_savings_ms": {
+          "min": 301,
+          "median": 301,
+          "max": 301
+        },
+        "provisional_budgets": {
+          "no_regression_total_transfer_bytes": 1205594,
+          "no_regression_request_count": 5,
+          "css_transfer_review_threshold_bytes": 24142,
+          "external_javascript_transfer_ceiling_bytes": 0,
+          "image_transfer_baseline_ceiling_bytes": 1176156,
+          "remote_request_ceiling": 0,
+          "lab_lcp_median_target_ms": 2500,
+          "lab_lcp_max_stability_guard_ms": 4000,
+          "lab_cls_max_target": 0.1,
+          "lab_tbt_max_target_ms": 200,
+          "unexplained_long_task_max_ms": 50,
+          "below_fold_eager_image_ceiling": 0
+        },
+        "budget_evaluation": {
+          "lcp_median_target": "passed",
+          "lcp_stability_guard": "failed",
+          "cls_target": "passed",
+          "tbt_target": "passed",
+          "long_task_guard": "failed",
+          "below_fold_eager_image_target": "failed",
+          "remote_request_target": "passed"
+        },
+        "observed_lcp_elements": [
+          "section.command-band > div.command-band-layout > div.command-band-copy > h1#command-band-ai-research-system"
+        ],
+        "long_task_attributions": [
+          "Unattributable"
+        ],
+        "below_fold_fetched_images": [
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/ai-system-task-authority-map.png"
+        ]
+      },
+      "structured_data": {
+        "blocks": 0,
+        "types": [],
+        "malformed_blocks": 0
+      }
+    },
+    "resources": {
+      "route": "/resources/",
+      "runs": [
+        {
+          "route_key": "resources",
+          "route": "/resources/",
+          "run": 1,
+          "fetch_time": "2026-07-11T17:23:12.746Z",
+          "performance_score": 77,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7166,
+            "Image": 1195672,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 0,
+          "longest_task_ms": 0,
+          "long_task_attributions": [],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-manifest-chain.png"
+          ],
+          "image_estimated_waste_bytes": 1185932,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Resources organize reader paths, public assets, manifests, and provenance label\u2026"
+          },
+          "first_contentful_paint_ms": 901.78,
+          "largest_contentful_paint_ms": 7051.78,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 901.78,
+          "time_to_interactive_ms": 7051.78,
+          "total_transfer_bytes": 1224912
+        },
+        {
+          "route_key": "resources",
+          "route": "/resources/",
+          "run": 2,
+          "fetch_time": "2026-07-11T17:23:23.264Z",
+          "performance_score": 77,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7166,
+            "Image": 1195672,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 52,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-manifest-chain.png"
+          ],
+          "image_estimated_waste_bytes": 1185932,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Resources organize reader paths, public assets, manifests, and provenance label\u2026"
+          },
+          "first_contentful_paint_ms": 902.06,
+          "largest_contentful_paint_ms": 7052.06,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.06,
+          "time_to_interactive_ms": 7052.06,
+          "total_transfer_bytes": 1224912
+        },
+        {
+          "route_key": "resources",
+          "route": "/resources/",
+          "run": 3,
+          "fetch_time": "2026-07-11T17:23:33.767Z",
+          "performance_score": 100,
+          "network_request_count": 5,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 7166,
+            "Image": 1195672,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 2,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 51,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 1,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-manifest-chain.png"
+          ],
+          "image_estimated_waste_bytes": 1185932,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "Resources organize reader paths, public assets, manifests, and provenance label\u2026"
+          },
+          "first_contentful_paint_ms": 902.08,
+          "largest_contentful_paint_ms": 1427.08,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.08,
+          "time_to_interactive_ms": 1434.58,
+          "total_transfer_bytes": 1224912
+        }
+      ],
+      "aggregate": {
+        "performance_score": {
+          "min": 77,
+          "median": 77,
+          "max": 100
+        },
+        "first_contentful_paint_ms": {
+          "min": 901.78,
+          "median": 902.06,
+          "max": 902.08
+        },
+        "largest_contentful_paint_ms": {
+          "min": 1427.08,
+          "median": 7051.78,
+          "max": 7052.06
+        },
+        "cumulative_layout_shift": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "total_blocking_time_ms": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed_index_ms": {
+          "min": 901.78,
+          "median": 902.06,
+          "max": 902.08
+        },
+        "time_to_interactive_ms": {
+          "min": 1434.58,
+          "median": 7051.78,
+          "max": 7052.06
+        },
+        "total_transfer_bytes": {
+          "min": 1224912,
+          "median": 1224912,
+          "max": 1224912
+        },
+        "network_request_count": {
+          "min": 5,
+          "median": 5,
+          "max": 5
+        },
+        "remote_request_count": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "header_logo_transfer_bytes": {
+          "min": 1147580,
+          "median": 1147580,
+          "max": 1147580
+        },
+        "long_task_count": {
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "longest_task_ms": {
+          "min": 0,
+          "median": 51,
+          "max": 52
+        },
+        "below_fold_fetched_image_count": {
+          "min": 1,
+          "median": 1,
+          "max": 1
+        },
+        "image_estimated_waste_bytes": {
+          "min": 1185932,
+          "median": 1185932,
+          "max": 1185932
+        },
+        "render_blocking_estimated_savings_ms": {
+          "min": 301,
+          "median": 301,
+          "max": 301
+        },
+        "provisional_budgets": {
+          "no_regression_total_transfer_bytes": 1224912,
+          "no_regression_request_count": 5,
+          "css_transfer_review_threshold_bytes": 24142,
+          "external_javascript_transfer_ceiling_bytes": 0,
+          "image_transfer_baseline_ceiling_bytes": 1195672,
+          "remote_request_ceiling": 0,
+          "lab_lcp_median_target_ms": 2500,
+          "lab_lcp_max_stability_guard_ms": 4000,
+          "lab_cls_max_target": 0.1,
+          "lab_tbt_max_target_ms": 200,
+          "unexplained_long_task_max_ms": 50,
+          "below_fold_eager_image_ceiling": 0
+        },
+        "budget_evaluation": {
+          "lcp_median_target": "failed",
+          "lcp_stability_guard": "failed",
+          "cls_target": "passed",
+          "tbt_target": "passed",
+          "long_task_guard": "failed",
+          "below_fold_eager_image_target": "failed",
+          "remote_request_target": "passed"
+        },
+        "observed_lcp_elements": [
+          "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead"
+        ],
+        "long_task_attributions": [
+          "Unattributable"
+        ],
+        "below_fold_fetched_images": [
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-manifest-chain.png"
+        ]
+      },
+      "structured_data": {
+        "blocks": 0,
+        "types": [],
+        "malformed_blocks": 0
+      }
+    },
+    "gallery": {
+      "route": "/resources/diagrams/",
+      "runs": [
+        {
+          "route_key": "gallery",
+          "route": "/resources/diagrams/",
+          "run": 1,
+          "fetch_time": "2026-07-11T17:23:44.259Z",
+          "performance_score": 100,
+          "network_request_count": 7,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 10591,
+            "Image": 1291409,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 4,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 50,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 3,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png",
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-ontology-boundary-map.png",
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-diagram-publication-boundary.png"
+          ],
+          "image_estimated_waste_bytes": 1270083,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "The gallery publishes approved static comprehension diagrams as reader aids gro\u2026"
+          },
+          "first_contentful_paint_ms": 902.06,
+          "largest_contentful_paint_ms": 1577.06,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.06,
+          "time_to_interactive_ms": 1599.56,
+          "total_transfer_bytes": 1324074
+        },
+        {
+          "route_key": "gallery",
+          "route": "/resources/diagrams/",
+          "run": 2,
+          "fetch_time": "2026-07-11T17:23:54.912Z",
+          "performance_score": 100,
+          "network_request_count": 7,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 10591,
+            "Image": 1291409,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 4,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 52,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 3,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png",
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-ontology-boundary-map.png",
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-diagram-publication-boundary.png"
+          ],
+          "image_estimated_waste_bytes": 1270083,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "The gallery publishes approved static comprehension diagrams as reader aids gro\u2026"
+          },
+          "first_contentful_paint_ms": 902.07,
+          "largest_contentful_paint_ms": 1502.07,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 902.07,
+          "time_to_interactive_ms": 1532.07,
+          "total_transfer_bytes": 1324074
+        },
+        {
+          "route_key": "gallery",
+          "route": "/resources/diagrams/",
+          "run": 3,
+          "fetch_time": "2026-07-11T17:24:05.467Z",
+          "performance_score": 100,
+          "network_request_count": 7,
+          "remote_request_count": 0,
+          "remote_requests": [],
+          "header_logo_transfer_bytes": 1147580,
+          "resource_transfer_bytes": {
+            "Document": 10591,
+            "Image": 1291409,
+            "Other": 127,
+            "Stylesheet": 21947
+          },
+          "resource_request_counts": {
+            "Document": 1,
+            "Image": 4,
+            "Other": 1,
+            "Stylesheet": 1
+          },
+          "long_task_count": 1,
+          "longest_task_ms": 51,
+          "long_task_attributions": [
+            "Unattributable"
+          ],
+          "below_fold_fetched_image_count": 3,
+          "below_fold_fetched_images": [
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png",
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-ontology-boundary-map.png",
+            "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-diagram-publication-boundary.png"
+          ],
+          "image_estimated_waste_bytes": 1270083,
+          "render_blocking_estimated_savings_ms": 301,
+          "lcp_element": {
+            "selector": "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead",
+            "label": "The gallery publishes approved static comprehension diagrams as reader aids gro\u2026"
+          },
+          "first_contentful_paint_ms": 901.93,
+          "largest_contentful_paint_ms": 1576.93,
+          "cumulative_layout_shift": 0,
+          "total_blocking_time_ms": 0,
+          "speed_index_ms": 901.93,
+          "time_to_interactive_ms": 1599.43,
+          "total_transfer_bytes": 1324074
+        }
+      ],
+      "aggregate": {
+        "performance_score": {
+          "min": 100,
+          "median": 100,
+          "max": 100
+        },
+        "first_contentful_paint_ms": {
+          "min": 901.93,
+          "median": 902.06,
+          "max": 902.07
+        },
+        "largest_contentful_paint_ms": {
+          "min": 1502.07,
+          "median": 1576.93,
+          "max": 1577.06
+        },
+        "cumulative_layout_shift": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "total_blocking_time_ms": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed_index_ms": {
+          "min": 901.93,
+          "median": 902.06,
+          "max": 902.07
+        },
+        "time_to_interactive_ms": {
+          "min": 1532.07,
+          "median": 1599.43,
+          "max": 1599.56
+        },
+        "total_transfer_bytes": {
+          "min": 1324074,
+          "median": 1324074,
+          "max": 1324074
+        },
+        "network_request_count": {
+          "min": 7,
+          "median": 7,
+          "max": 7
+        },
+        "remote_request_count": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "header_logo_transfer_bytes": {
+          "min": 1147580,
+          "median": 1147580,
+          "max": 1147580
+        },
+        "long_task_count": {
+          "min": 1,
+          "median": 1,
+          "max": 1
+        },
+        "longest_task_ms": {
+          "min": 50,
+          "median": 51,
+          "max": 52
+        },
+        "below_fold_fetched_image_count": {
+          "min": 3,
+          "median": 3,
+          "max": 3
+        },
+        "image_estimated_waste_bytes": {
+          "min": 1270083,
+          "median": 1270083,
+          "max": 1270083
+        },
+        "render_blocking_estimated_savings_ms": {
+          "min": 301,
+          "median": 301,
+          "max": 301
+        },
+        "provisional_budgets": {
+          "no_regression_total_transfer_bytes": 1324074,
+          "no_regression_request_count": 7,
+          "css_transfer_review_threshold_bytes": 24142,
+          "external_javascript_transfer_ceiling_bytes": 0,
+          "image_transfer_baseline_ceiling_bytes": 1291409,
+          "remote_request_ceiling": 0,
+          "lab_lcp_median_target_ms": 2500,
+          "lab_lcp_max_stability_guard_ms": 4000,
+          "lab_cls_max_target": 0.1,
+          "lab_tbt_max_target_ms": 200,
+          "unexplained_long_task_max_ms": 50,
+          "below_fold_eager_image_ceiling": 0
+        },
+        "budget_evaluation": {
+          "lcp_median_target": "passed",
+          "lcp_stability_guard": "passed",
+          "cls_target": "passed",
+          "tbt_target": "passed",
+          "long_task_guard": "failed",
+          "below_fold_eager_image_target": "failed",
+          "remote_request_target": "passed"
+        },
+        "observed_lcp_elements": [
+          "section.command-band > div.command-band-layout > div.command-band-copy > p.command-band-lead"
+        ],
+        "long_task_attributions": [
+          "Unattributable"
+        ],
+        "below_fold_fetched_images": [
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-ontology-boundary-map.png",
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/physics-track-status-map.png",
+          "http://127.0.0.1:4321/assets/diagrams/comprehension/resources-diagram-publication-boundary.png"
+        ]
+      },
+      "structured_data": {
+        "blocks": 0,
+        "types": [],
+        "malformed_blocks": 0
+      }
+    }
+  },
+  "cross_route_findings": {
+    "shared_header_logo_source_bytes": 1147309,
+    "shared_header_logo_observed_transfer_bytes": 1147580,
+    "home_initial_raster_transfer_bytes": 1213070,
+    "all_routes_zero_tbt": true,
+    "all_routes_zero_cls": true,
+    "all_routes_zero_external_script_transfer": true,
+    "all_routes_zero_remote_requests_in_lab": true,
+    "routes_with_lcp_stability_failure": [
+      "home",
+      "physics",
+      "ai",
+      "resources"
+    ],
+    "routes_with_long_task_guard_failure": [
+      "home",
+      "physics",
+      "ai",
+      "resources",
+      "gallery"
+    ],
+    "routes_fetching_below_fold_images": [
+      "home",
+      "physics",
+      "ai",
+      "resources",
+      "gallery"
+    ]
+  },
+  "budget_policy": {
+    "status": "provisional_baseline_relative",
+    "rule": "Do not increase the measured route transfer or request ceilings; require review above 110 percent of measured CSS transfer; retain the user-centric targets as lab gates with explicit field-data qualification.",
+    "remediation_targets_retained_from_plan": {
+      "header_logo_1x_modern_bytes": 30000,
+      "header_logo_2x_modern_bytes": 60000,
+      "header_logo_png_fallback_bytes": 100000,
+      "initial_home_raster_transfer_bytes": 250000,
+      "remote_visual_asset_requests": 0
+    }
+  }
+}
