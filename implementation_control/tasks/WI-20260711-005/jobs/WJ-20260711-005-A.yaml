@@ -1,0 +1,114 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260711-005-A"
+task_id: "WI-20260711-005"
+title: "Define And Record The FE-G0-04 Accessibility Policy"
+created_utc: "2026-07-11T17:42:42Z"
+updated_utc: "2026-07-11T17:51:10Z"
+status: "active"
+
+objective: "Produce a source-grounded, versioned accessibility target and execution evidence policy without modifying the public runtime."
+
+execution_boundary:
+  invocation_limit: "one bounded accessibility policy packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-G0-04"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "forbidden_for_this_job"
+  public_claim_write_status: "forbidden_for_this_job"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+  - "docs/quality/frontend-performance-baseline-2026-07-11.md"
+  - "package.json"
+  - "implementation_control/"
+  - "official W3C WCAG, WAI evaluation, reflow, motion, target-size, ARIA interoperability, git status, and git log evidence"
+
+allowed_writes:
+  - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.md"
+  - "implementation_control/handoffs/WH-20260711-005.yaml"
+  - "implementation_control/handoffs/WH-20260711-005.md"
+  - "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
+  - "implementation_control/tasks/WI-20260711-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-005/jobs/WJ-20260711-005-A.yaml"
+  - "implementation_control/tasks/WI-20260711-005/jobs/completions/WJC-20260711-005-A.yaml"
+
+required_outputs:
+  - "A dated accessibility policy adopting WCAG 2.2 Level AA as an internal target without asserting current conformance."
+  - "A severity model with explicit packet, release, exception, and conformance-claim effects."
+  - "A minimum browser, assistive-technology, viewport, zoom, text-enlargement, motion, route, and process matrix."
+  - "An evidence schema, storage policy, claim-language boundary, and downstream packet gates."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "The owner explicitly authorized FE-G0-04 after checkpoint 40ca36aa588bdf925520831c43f3b8aa6a5b4735."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source or derivative refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route, redirect, or navigation change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No shared visual-system or motion runtime change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifest authority change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-fe-g0-04-policy-review"
+    command: "manual inspection of the FE-G0-04 accessibility target and evidence policy"
+    required: true
+
+stop_conditions:
+  - "The work requires a path outside the explicit policy and control-record allowlist."
+  - "The work becomes an accessibility audit, remediation, or public conformance claim."
+  - "The work requires frontend runtime, source, manifest, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false

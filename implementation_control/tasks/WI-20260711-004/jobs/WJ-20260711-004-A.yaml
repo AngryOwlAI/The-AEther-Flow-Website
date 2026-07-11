@@ -4,8 +4,8 @@ job_id: "WJ-20260711-004-A"
 task_id: "WI-20260711-004"
 title: "Measure And Record The FE-G0-03 Performance Baseline"
 created_utc: "2026-07-11T17:17:54Z"
-updated_utc: "2026-07-11T17:29:06Z"
-status: "active"
+updated_utc: "2026-07-11T17:42:42Z"
+status: "superseded"
 
 objective: "Produce reproducible dated performance evidence and measured provisional budgets for five representative routes without modifying the public runtime."
 
@@ -128,3 +128,7 @@ next_recommended_action:
   task_packet: "FE-G0-04 accessibility baseline packet"
   summary: "Stop after FE-G0-03 checkpoint; FE-G0-04 requires separate owner authorization."
   do_not_skip: "Do not open FE-G0-04 or modify frontend runtime, public claim, upstream, remote, or deployment state."
+
+supersession:
+  superseded_by_job_id: "WJ-20260711-005-A"
+  reason: "FE-G0-03 was locally checkpointed before the owner separately authorized FE-G0-04."

@@ -1,0 +1,119 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260711-005-A"
+task_id: "WI-20260711-005"
+job_id: "WJ-20260711-005-A"
+created_utc: "2026-07-11T17:42:42Z"
+completed_utc: "2026-07-11T17:51:10Z"
+status: "completed"
+
+summary: "Established the FE-G0-04 accessibility target, severity model, browser, assistive-technology, viewport, zoom, motion, route, process, and evidence policy without changing the public runtime."
+
+scope_confirmation:
+  packet_id: "FE-G0-04"
+  previous_checkpoint: "40ca36aa588bdf925520831c43f3b8aa6a5b4735"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized FE-G0-04 on 2026-07-11"
+  upstream_write_status: "forbidden_and_unchanged"
+  public_runtime_change: false
+  public_claim_change: false
+  accessibility_conformance_claim: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.yaml"
+  - "implementation_control/handoffs/WH-20260711-004.md"
+  - "implementation_control/handoffs/WH-20260711-005.yaml"
+  - "implementation_control/handoffs/WH-20260711-005.md"
+  - "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
+  - "implementation_control/tasks/WI-20260711-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-005/jobs/WJ-20260711-005-A.yaml"
+  - "implementation_control/tasks/WI-20260711-005/jobs/completions/WJC-20260711-005-A.yaml"
+
+policy_evidence:
+  report_path: "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  report_sha256: "4e952fc2cd22a41ecfb55cf61f060151306735d0cf67e7953e9ea65ec8cc4bfe"
+  target: "WCAG 2.2 Level AA internal engineering and release target"
+  current_conformance_claim: "not_made"
+  severity_levels: 4
+  required_environment_cases: 6
+  recommended_environment_cases: 1
+  viewport_and_zoom_cases: 10
+  representative_routes: 13
+  motion_modes:
+    - "Full"
+    - "Reduced"
+    - "Still"
+  primary_sources:
+    - "W3C Web Content Accessibility Guidelines 2.2"
+    - "WAI Website Accessibility Conformance Evaluation Methodology overview"
+    - "WAI Selecting Web Accessibility Evaluation Tools"
+    - "WAI Understanding Reflow"
+    - "WAI Understanding Target Size Minimum"
+    - "WAI Understanding Pause Stop Hide"
+    - "WAI Understanding Animation from Interactions"
+    - "WAI ARIA Authoring Practices Read Me First"
+
+requirements_satisfied:
+  - "Adopted WCAG 2.2 Level AA as an internal target while explicitly withholding any current-site conformance claim."
+  - "Defined Blocker, Critical, Major, and Minor impact with packet, release, exception, and conformance effects."
+  - "Defined minimum Chromium, Firefox, Safari, VoiceOver, Android, automated-regression, viewport, zoom, text-enlargement, motion, route, and process coverage."
+  - "Defined result states, required evidence fields, storage and privacy rules, retest preservation, and public claim boundaries."
+  - "Reviewed current official W3C and WAI primary guidance and cited it in APA 7 format."
+  - "Changed only the allowlisted policy and implementation-control records."
+
+validation_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    checked:
+      - "Full Python suite passed."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    checked:
+      - "Astro static build passed."
+  - id: "aggregate-validation-observation"
+    command: "npm run validate"
+    status: "failed_pre_existing_out_of_scope"
+    note: "Manifest, content, link, layout, SVG, and provenance checks passed before the aggregate chain stopped at stale curator reports and unacknowledged upstream drift, including critical current-state drift."
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+    note: "Pointers, identifiers, allowlists, gates, stop conditions, completion paths, and supersession fields were inspected."
+  - id: "manual-fe-g0-04-policy-review"
+    command: "manual inspection of the FE-G0-04 accessibility target and evidence policy"
+    status: "passed"
+    note: "The policy separates an internal target from a current conformance claim and makes browser, AT, zoom, motion, severity, evidence, and release rules operational."
+
+remaining_blockers:
+  - id: "current_site_conformance_unestablished"
+    status: "open_for_later_audit"
+    summary: "FE-G0-04 establishes policy only; FE-P7-03 and FE-P7-04 must execute the final evidence matrix."
+  - id: "windows_nvda_coverage_unresolved"
+    status: "open_for_fe_g0_05"
+    summary: "FE-G0-05 must approve or explicitly defer the recommended Windows and NVDA environment and name its owner."
+  - id: "accessibility_and_release_owners_unassigned"
+    status: "open_for_fe_g0_05"
+    summary: "Named accessibility and release owners are required before exception or final release acceptance."
+  - id: "legal_scope_not_evaluated"
+    status: "outside_packet"
+    summary: "This technical target is not a legal opinion or jurisdictional compliance determination."
+  - id: "fe_g0_05_not_authorized"
+    status: "closed_for_this_packet"
+    summary: "FE-G0-05 requires separate owner authorization and a fresh bounded packet."
+
+next_recommended_action:
+  task_packet: "FE-G0-05 frontend decision ledger"
+  summary: "After the FE-G0-04 local checkpoint, the owner may separately authorize D-01 through D-30 resolution or explicit deferral."
+  do_not_skip: "Do not open FE-G0-05 or modify frontend runtime, public claim, upstream, remote, or deployment state."
