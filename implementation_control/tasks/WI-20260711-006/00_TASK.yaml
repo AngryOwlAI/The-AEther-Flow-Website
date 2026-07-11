@@ -1,0 +1,151 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260711-006"
+title: "Execute FE-G0-05 Frontend Decision Ledger"
+created_utc: "2026-07-11T18:07:26Z"
+updated_utc: "2026-07-11T18:11:46Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-G0-05"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
+  adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260711-005"
+  previous_checkpoint: "8813faa38639591fbc8c6f6045f0bc64d5cf4fb7"
+  owner_authorization: "Owner explicitly authorized FE-G0-05 and D-01 through D-30 resolution or explicit deferral on 2026-07-11"
+
+goal: "Resolve D-01 through D-30 or record bounded explicit deferrals, including Windows and NVDA coverage plus named accessibility and release owners, without implementing any downstream frontend change."
+
+requirements:
+  - "Give every decision D-01 through D-30 an explicit disposition, accountable owner, implementation gate, and downstream packet."
+  - "Name the website, accessibility, release, route-family, and gallery-curation owners using current repository evidence."
+  - "Approve or explicitly defer Windows and NVDA coverage with a reproducible environment definition and official NV Access support evidence."
+  - "Preserve physics-review independence by blocking public claim work until a named physics reviewer and receipt exist."
+  - "Do not implement any decision, change public claims, or alter frontend runtime, assets, manifests, routes, or upstream sources."
+
+scope:
+  in_scope:
+    - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+    - "Read-only inspection of the adopted frontend plan, FE-G0-02 through FE-G0-04 evidence, repository ownership evidence, current Git state, and official NV Access documentation."
+    - "Exactly allowlisted implementation-control records."
+  out_of_scope:
+    - "Any downstream frontend implementation, accessibility test execution, or remediation."
+    - "Physics-owner acceptance or public scientific, accessibility, legal, or conformance claims."
+    - "Source refresh, route, redirect, navigation, component, style, asset, manifest, or provenance changes."
+    - "FE-P0-01 source preflight work."
+    - "Upstream source-project writes, Git push, or Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260711-006-A"
+  next_packet_after_this_task: "FE-P0-01 authoritative exact-closure source preflight"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+    - "docs/quality/frontend-performance-baseline-2026-07-11.md"
+    - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+    - "README.md"
+    - "package.json"
+    - "astro.config.mjs"
+    - "implementation_control/"
+    - "official NV Access user-guide and download documentation, git config, git status, and git log evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260711-005.yaml"
+    - "implementation_control/handoffs/WH-20260711-005.md"
+    - "implementation_control/handoffs/WH-20260711-006.yaml"
+    - "implementation_control/handoffs/WH-20260711-006.md"
+    - "implementation_control/tasks/WI-20260711-005/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-005/jobs/WJ-20260711-005-A.yaml"
+    - "implementation_control/tasks/WI-20260711-006/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260711-006/jobs/WJ-20260711-006-A.yaml"
+    - "implementation_control/tasks/WI-20260711-006/jobs/completions/WJC-20260711-006-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly authorized FE-G0-05 after checkpoint 8813faa38639591fbc8c6f6045f0bc64d5cf4fb7."
+  public_claim_changes:
+    status: "not_required"
+    reason: "The ledger records decisions and hard gates but changes no public claim."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source or derivative refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "The ledger does not execute route, redirect, or navigation decisions."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "The ledger does not implement CSS, components, layouts, SVGs, motion, typography, or visual assets."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset publication is in scope."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest write is in scope."
+  git_push:
+    status: "not_required"
+    reason: "Push remains separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment remains separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-fe-g0-05-decision-review"
+    command: "manual inspection of FE-G0-05 decision and deferral evidence"
+    required: true
+
+stop_conditions:
+  - "A write outside the decision-ledger and explicit control-record allowlist becomes necessary."
+  - "A disposition would silently approve a public claim, physics review, accessibility conformance claim, or downstream implementation."
+  - "The work requires frontend runtime, source, manifest, upstream, remote, or deployment mutation."
+  - "A deferred item lacks an accountable owner, unblock condition, or blocking effect."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation only after WJC-20260711-006-A exists with passed evidence. Do not push or deploy."
+
+handoff:
+  latest_handoff_id: "WH-20260711-006"
+  yaml_path: "implementation_control/handoffs/WH-20260711-006.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260711-006.md"
+
+completion_record:
+  completion_id: "WJC-20260711-006-A"
+  path: "implementation_control/tasks/WI-20260711-006/jobs/completions/WJC-20260711-006-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-01 authoritative exact-closure source preflight"
+  summary: "After this checkpoint, the owner may separately authorize the upstream read-only source-pinning and drift-disposition packet."
+  do_not_skip: "Do not open FE-P0-01, implement frontend runtime changes, approve public claims, push, deploy, or mutate upstream in this packet."

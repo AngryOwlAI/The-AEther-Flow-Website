@@ -1,18 +1,18 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260711-005-A"
-task_id: "WI-20260711-005"
-title: "Define And Record The FE-G0-04 Accessibility Policy"
-created_utc: "2026-07-11T17:42:42Z"
-updated_utc: "2026-07-11T18:07:26Z"
-status: "superseded"
+job_id: "WJ-20260711-006-A"
+task_id: "WI-20260711-006"
+title: "Resolve And Record The FE-G0-05 Decision Ledger"
+created_utc: "2026-07-11T18:07:26Z"
+updated_utc: "2026-07-11T18:11:46Z"
+status: "active"
 
-objective: "Produce a source-grounded, versioned accessibility target and execution evidence policy without modifying the public runtime."
+objective: "Produce a dated, owner-assigned decision ledger for D-01 through D-30, with explicit deferrals and hard gates where evidence or authority is incomplete."
 
 execution_boundary:
-  invocation_limit: "one bounded accessibility policy packet"
+  invocation_limit: "one bounded decision-ledger packet"
   live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
-  packet_id: "FE-G0-04"
+  packet_id: "FE-G0-05"
   adopted_plan: "ImplementationPlans/recomendation_frontend.md"
   upstream_write_status: "forbidden"
   public_runtime_write_status: "forbidden_for_this_job"
@@ -26,45 +26,48 @@ allowed_reads:
   - "ImplementationPlans/recomendation_frontend.md"
   - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
   - "docs/quality/frontend-performance-baseline-2026-07-11.md"
+  - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  - "README.md"
   - "package.json"
+  - "astro.config.mjs"
   - "implementation_control/"
-  - "official W3C WCAG, WAI evaluation, reflow, motion, target-size, ARIA interoperability, git status, and git log evidence"
+  - "official NV Access user-guide and download documentation, git config, git status, and git log evidence"
 
 allowed_writes:
-  - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260711-004.yaml"
-  - "implementation_control/handoffs/WH-20260711-004.md"
   - "implementation_control/handoffs/WH-20260711-005.yaml"
   - "implementation_control/handoffs/WH-20260711-005.md"
-  - "implementation_control/tasks/WI-20260711-004/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260711-004/jobs/WJ-20260711-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260711-006.yaml"
+  - "implementation_control/handoffs/WH-20260711-006.md"
   - "implementation_control/tasks/WI-20260711-005/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260711-005/jobs/WJ-20260711-005-A.yaml"
-  - "implementation_control/tasks/WI-20260711-005/jobs/completions/WJC-20260711-005-A.yaml"
+  - "implementation_control/tasks/WI-20260711-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-006/jobs/WJ-20260711-006-A.yaml"
+  - "implementation_control/tasks/WI-20260711-006/jobs/completions/WJC-20260711-006-A.yaml"
 
 required_outputs:
-  - "A dated accessibility policy adopting WCAG 2.2 Level AA as an internal target without asserting current conformance."
-  - "A severity model with explicit packet, release, exception, and conformance-claim effects."
-  - "A minimum browser, assistive-technology, viewport, zoom, text-enlargement, motion, route, and process matrix."
-  - "An evidence schema, storage policy, claim-language boundary, and downstream packet gates."
+  - "A dated D-01 through D-30 ledger with no missing or implicit disposition."
+  - "Named website, accessibility, release, route-family, and gallery-curation owners."
+  - "A Windows 11 and NVDA required-coverage decision with current official support evidence."
+  - "Explicit hard blockers for unresolved physics-review, provider/privacy, font-license, and media decisions."
 
 approval_gates:
   - id: "plan_adoption"
     status: "approved"
-    trigger: "The owner explicitly authorized FE-G0-04 after checkpoint 40ca36aa588bdf925520831c43f3b8aa6a5b4735."
+    trigger: "The owner explicitly authorized FE-G0-05 after checkpoint 8813faa38639591fbc8c6f6045f0bc64d5cf4fb7."
   - id: "public_claim_changes"
     status: "not_required"
-    trigger: "No public claim change."
+    trigger: "The ledger changes no public claim."
   - id: "source_refresh_uncertainty"
     status: "not_required"
     trigger: "No source or derivative refresh."
   - id: "broad_navigation_or_route_retirement"
     status: "not_required"
-    trigger: "No route, redirect, or navigation change."
+    trigger: "The ledger does not execute route or navigation decisions."
   - id: "shared_visual_systems"
     status: "not_required"
-    trigger: "No shared visual-system or motion runtime change."
+    trigger: "The ledger does not implement a shared visual system."
   - id: "public_downloadable_assets"
     status: "not_required"
     trigger: "No public asset change."
@@ -97,14 +100,15 @@ required_validators:
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required: true
-  - id: "manual-fe-g0-04-policy-review"
-    command: "manual inspection of the FE-G0-04 accessibility target and evidence policy"
+  - id: "manual-fe-g0-05-decision-review"
+    command: "manual inspection of FE-G0-05 decision and deferral evidence"
     required: true
 
 stop_conditions:
-  - "The work requires a path outside the explicit policy and control-record allowlist."
-  - "The work becomes an accessibility audit, remediation, or public conformance claim."
+  - "The work requires a path outside the explicit decision-ledger and control-record allowlist."
+  - "A decision becomes downstream implementation, public claim approval, physics review, or accessibility conformance."
   - "The work requires frontend runtime, source, manifest, upstream, remote, or deployment mutation."
+  - "A deferral lacks an owner, unblock condition, or release/packet effect."
   - "Validation fails."
 
 checkpoint:
@@ -113,6 +117,11 @@ checkpoint:
   push_allowed: false
   deploy_allowed: false
 
-supersession:
-  superseded_by_job_id: "WJ-20260711-006-A"
-  reason: "FE-G0-04 was locally checkpointed before the owner separately authorized FE-G0-05."
+completion_record:
+  completion_id: "WJC-20260711-006-A"
+  path: "implementation_control/tasks/WI-20260711-006/jobs/completions/WJC-20260711-006-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-01 authoritative exact-closure source preflight"
+  summary: "Stop after FE-G0-05 checkpoint; FE-P0-01 requires separate owner authorization."
+  do_not_skip: "Do not open FE-P0-01 or modify frontend runtime, public claim, upstream, remote, or deployment state."
