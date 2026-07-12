@@ -172,6 +172,14 @@ def path_prefix(relative_path: str) -> str:
     return parts[0]
 
 
+def applies_to_active_task(applies_to_path: str, active_task_id: str) -> bool:
+    for candidate in applies_to_path.split(";"):
+        normalized = candidate.strip().removesuffix("/**").rstrip("/")
+        if normalized == active_task_id or normalized.endswith(f"/{active_task_id}"):
+            return True
+    return False
+
+
 def build_language_examples(current_row: dict[str, str] | None) -> list[dict[str, str]]:
     if current_row is None:
         return []
@@ -247,7 +255,12 @@ def build_snapshot(
     program_state = parse_program_state(source_root)
     rows = load_registry_rows(source_root)
     current_rows = [
-        row for row in rows if row["applies_to_path"].endswith(program_state["active_task_id"])
+        row
+        for row in rows
+        if applies_to_active_task(
+            row["applies_to_path"],
+            program_state["active_task_id"],
+        )
     ]
     latest_rows = sorted(rows, key=lambda row: row["updated_at"], reverse=True)[:12]
     current_row = current_rows[0] if current_rows else (latest_rows[0] if latest_rows else None)

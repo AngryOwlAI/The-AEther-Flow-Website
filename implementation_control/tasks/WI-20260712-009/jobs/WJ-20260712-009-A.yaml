@@ -1,0 +1,147 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-009-A"
+task_id: "WI-20260712-009"
+title: "Refresh Snapshots Provenance And Curator Evidence"
+created_utc: "2026-07-12T19:32:13Z"
+updated_utc: "2026-07-12T19:48:36Z"
+status: "active"
+
+objective: "Refresh only reviewed website-local source-derived evidence from clean upstream commit 5ad2d856 and checkpoint it separately before FE-P1-01 resumes."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-SR-01 packet"
+  live_state_priority: "implementation-control records outrank plans memory and conversation summaries"
+  upstream_write_status: "forbidden"
+  upstream_read_status: "reviewed committed files only"
+  source_refresh_status: "approved for generated website-local evidence"
+  authored_public_copy_status: "forbidden"
+  physics_promotion_status: "forbidden"
+  frontend_runtime_status: "unchanged"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website reads allowlisted by WI-20260712-009"
+  - "upstream reads allowlisted by WI-20260712-009"
+
+allowed_writes:
+  - "src/data/claim_boundary_snapshot.json"
+  - "src/data/physics_current_state_snapshot.json"
+  - "scripts/refresh_claim_boundary_snapshot.py"
+  - "tests/test_claim_boundary_snapshot.py"
+  - "scripts/refresh_physics_current_state_snapshot.py"
+  - "tests/test_physics_current_state_snapshot.py"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.md"
+  - "implementation_control/handoffs/WH-20260712-008.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.md"
+  - "implementation_control/handoffs/WH-20260712-009.yaml"
+  - "implementation_control/handoffs/WH-20260712-009.md"
+  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
+
+required_outputs:
+  - "Fresh claim-boundary and physics current-state snapshots pinned to upstream commit 5ad2d856."
+  - "Fresh page provenance from the unchanged route map and source commit."
+  - "Curator JSON and Markdown reports with zero drift and zero acknowledgements."
+  - "Control and completion evidence for a separate local checkpoint."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner granted standing approval for remaining in-scope FE-SR-01 repairs including recursive claim snapshot path matching and focused coverage."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Generated snapshots only with no authored narrative or physics promotion."
+  - id: "source_refresh_uncertainty"
+    status: "approved"
+    trigger: "Website-local evidence refresh from clean committed upstream state."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route navigation redirect canonical or route-map change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No shared frontend change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Generated page provenance refresh only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+    required: true
+
+stop_conditions:
+  - "Upstream cleanliness origin parity or exact commit changes."
+  - "Review finds physics promotion or source-authority expansion."
+  - "Residual curator drift needs acknowledgement or authored public changes."
+  - "Work requires frontend runtime upstream push or deployment mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260712-009-A"
+  path: "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
+  status: "ready_to_checkpoint"
+
+next_recommended_action:
+  task_packet: "Resume FE-P1-01 aggregate validation and local checkpoint"
+  summary: "After FE-SR-01 is separately checkpointed reactivate WJ-20260712-008-A and complete its required validation."
+  do_not_skip: "Do not modify the public route create acknowledgements resume frontend work push deploy promote physics or mutate upstream before the separate checkpoint."

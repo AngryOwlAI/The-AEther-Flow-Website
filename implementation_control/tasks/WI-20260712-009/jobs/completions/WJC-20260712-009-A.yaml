@@ -1,0 +1,141 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-009-A"
+task_id: "WI-20260712-009"
+job_id: "WJ-20260712-009-A"
+created_utc: "2026-07-12T19:48:36Z"
+completed_utc: "2026-07-12T19:48:36Z"
+status: "ready_to_checkpoint"
+
+summary: "Resolved curator source drift by refreshing reviewed website-local snapshots provenance and reports and repairing two current upstream schema compatibility gaps without physics promotion."
+
+scope_confirmation:
+  packet_id: "FE-SR-01"
+  previous_checkpoint: "90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c"
+  owner_authorization: "Owner authorized the website-local source-refresh packet and granted standing approval for its remaining in-scope compatibility repairs"
+  upstream_source_commit: "5ad2d856b5b7a689b76035e348734824cf7411f0"
+  upstream_origin_main: "5ad2d856b5b7a689b76035e348734824cf7411f0"
+  upstream_worktree: "clean"
+  upstream_write_status: "forbidden_and_unchanged"
+  physics_delta: false
+  physics_promotion: false
+  authored_public_copy_change: false
+  route_map_change: false
+  acknowledgement_change: false
+  frontend_runtime_change: false
+  fe_p1_01_preserved_uncommitted: true
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/handoffs/WH-20260712-007.md"
+  - "implementation_control/handoffs/WH-20260712-007.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.md"
+  - "implementation_control/handoffs/WH-20260712-008.yaml"
+  - "implementation_control/handoffs/WH-20260712-009.md"
+  - "implementation_control/handoffs/WH-20260712-009.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "scripts/refresh_claim_boundary_snapshot.py"
+  - "scripts/refresh_physics_current_state_snapshot.py"
+  - "src/data/claim_boundary_snapshot.json"
+  - "src/data/physics_current_state_snapshot.json"
+  - "tests/test_claim_boundary_snapshot.py"
+  - "tests/test_physics_current_state_snapshot.py"
+
+source_refresh_evidence:
+  source_commit: "5ad2d856b5b7a689b76035e348734824cf7411f0"
+  claim_boundary_snapshot_sha256: "9834ef786b88783f38eed59701f9fe31951de3a11294e06ade3106d0cbe80343"
+  physics_current_state_snapshot_sha256: "3c26ef6c8b67c3b00517c9e8854817be1134d15aceee6d42a23a4a29789137c8"
+  page_provenance_sha256: "67e4491af4b83e02182f76630e06e2dc8fc12bbdd8e75d33048fbc817ec2eb64"
+  curator_json_sha256: "928ea56ff165f7fa7600e9fe550d0513fa0842a7c107eeb0fc18b1b36a912225"
+  curator_markdown_sha256: "ac4b29eef5dc12b10a3527b681472ac7a2c029b9d7a5ed2227a76f55185eee5c"
+  route_provenance_records: 34
+  curator_declared_dependencies: 248
+  curator_drift_count: 0
+  curator_critical_count: 0
+  curator_review_required_count: 0
+  curator_acknowledgement_count: 0
+  curator_diagnostic_count: 0
+  current_claim_boundary_id: "CB-V18-P11-T05-COVERAGE-AUDIT-001"
+  blocked_claim_count: 15
+
+generator_repairs:
+  - "Physics current-state generation now reads current nested claim_boundary blocked claims and retains legacy top-level support."
+  - "Claim-boundary generation now matches exact active task path segments with or without a recursive wildcard suffix and supports semicolon-delimited scopes."
+  - "No public route fallback manual generated-JSON patch acknowledgement or upstream write was introduced."
+
+requirements_satisfied:
+  - "Confirmed clean upstream main and origin main parity before every source-derived write."
+  - "Reviewed all seven drifted upstream dependency families and the added G5 claim-boundary row."
+  - "Confirmed the new row and current handoff preserve no physics delta and block proof authority ontology adoption benchmark promotion Gate Chair verdict and completed derivation."
+  - "Refreshed claim-boundary and physics current-state snapshots from one committed source view."
+  - "Regenerated 34-route page provenance from the unchanged route map."
+  - "Previewed curator output before report writes and obtained zero residual drift or diagnostics."
+  - "Preserved the separate uncommitted FE-P1-01 implementation outside this checkpoint."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 page provenance records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero acknowledgements"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "108 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+    status: "passed"
+    evidence: "Clean source parity exact 5ad2d856 pins current RT-20260709-006 boundary 15 blocked claims zero curator drift unchanged route map unchanged authored pages and no physics promotion confirmed."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the 23 completion-listed FE-SR-01 generated evidence generator tests and control files while leaving FE-P1-01 runtime files uncommitted."
+  push_allowed: false
+  deployment_allowed: false
+
+remaining_boundaries:
+  - "FE-P1-01 remains blocked only until this separate local checkpoint completes and live control reactivates it."
+  - "FE-P1-02 remains unopened."
+  - "No push or deployment is requested or authorized by this packet."
+
+next_recommended_action:
+  task_packet: "Resume FE-P1-01 aggregate validation and local checkpoint"
+  summary: "After this separate checkpoint reactivate WI-20260712-008 rerun aggregate validation create WJC-20260712-008-A and checkpoint FE-P1-01."
+  do_not_skip: "Do not open FE-P1-02 push deploy promote physics or mutate upstream."

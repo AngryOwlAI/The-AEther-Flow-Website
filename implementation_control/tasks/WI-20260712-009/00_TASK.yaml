@@ -1,0 +1,196 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260712-009"
+title: "Refresh Upstream Source-Derived Website Evidence"
+created_utc: "2026-07-12T19:32:13Z"
+updated_utc: "2026-07-12T19:48:36Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-SR-01"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  previous_task: "WI-20260712-008"
+  previous_checkpoint: "90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c"
+  owner_authorization: "Owner explicitly authorized one website-local source-refresh packet on 2026-07-12 before FE-P1-01 resumes"
+
+goal: "Clear the aggregate curator blocker by refreshing only reviewed website-local snapshots provenance and curator reports from clean committed upstream state without promoting physics or changing authored public copy."
+
+requirements:
+  - "Confirm upstream main is clean and equals origin main before refresh."
+  - "Review every changed upstream dependency family reported by the curator before writing generated evidence."
+  - "Confirm the changed claim-boundary row preserves no physics delta and blocks physics promotion."
+  - "Refresh claim-boundary and physics current-state snapshots from the same committed upstream source view."
+  - "Regenerate page provenance from the unchanged route map and current website page bytes."
+  - "Preview curator output before writing reports and stop if any critical review-required or unexplained drift remains."
+  - "Checkpoint this packet separately while preserving the uncommitted FE-P1-01 runtime implementation."
+
+scope:
+  in_scope:
+    - "Read-only review of the seven upstream files reported by curator drift and their Git evidence."
+    - "Generated claim-boundary and physics current-state snapshots."
+    - "Generated page provenance and curator JSON and Markdown reports."
+    - "Exactly allowlisted implementation-control records."
+  out_of_scope:
+    - "Curator acknowledgements or waiver files."
+    - "Authored route copy route map source bundles authority classifications or public assets."
+    - "Physics promotion ontology adoption benchmark promotion Gate Chair verdict or completed-derivation claims."
+    - "FE-P1-01 runtime edits FE-P1-02 upstream writes Git push or Cloudflare deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260712-009-A"
+  next_packet_after_this_task: "Resume FE-P1-01 only after FE-SR-01 is validated and separately checkpointed"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "scripts/refresh_claim_boundary_snapshot.py"
+    - "scripts/refresh_physics_current_state_snapshot.py"
+    - "scripts/generate_page_provenance.py"
+    - "scripts/run_curator.py"
+    - "src/data/claim_boundary_snapshot.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "tests/"
+    - "implementation_control/"
+    - "website Git status and history evidence"
+  upstream_source_repository:
+    - "FOLDER_MAP.md"
+    - "registries/AGENT_JOB_REGISTRY.csv"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "registries/CONTENT_SEMANTIC_REGISTRY.csv"
+    - "registries/MARKDOWN_SOURCE_REGISTRY.csv"
+    - "registries/ROLE_EXECUTION_REGISTRY.csv"
+    - "registries/WIKI_ARTIFACT_REGISTRY.csv"
+    - "research_control/program_state.yaml"
+    - "research_control/handoffs/"
+    - "registries/DISTANCE_TO_GR_LEDGER.csv"
+    - "upstream Git status branch exact commit and origin main parity evidence"
+
+allowed_writes:
+  website_repository:
+    - "src/data/claim_boundary_snapshot.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "scripts/refresh_claim_boundary_snapshot.py"
+    - "tests/test_claim_boundary_snapshot.py"
+    - "scripts/refresh_physics_current_state_snapshot.py"
+    - "tests/test_physics_current_state_snapshot.py"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260712-007.yaml"
+    - "implementation_control/handoffs/WH-20260712-007.md"
+    - "implementation_control/handoffs/WH-20260712-008.yaml"
+    - "implementation_control/handoffs/WH-20260712-008.md"
+    - "implementation_control/handoffs/WH-20260712-009.yaml"
+    - "implementation_control/handoffs/WH-20260712-009.md"
+    - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+    - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+    - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
+    - "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner granted standing approval for the remaining in-scope FE-SR-01 repairs including the focused claim snapshot generator and test repair."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval is limited to faithful generated snapshot refresh from reviewed upstream records with no authored narrative change or claim promotion."
+  source_refresh_uncertainty:
+    status: "approved"
+    reason: "The owner authorized website-local source-derived evidence refresh from clean committed upstream state."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route navigation redirect canonical or route-map change occurs."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No component layout style SVG motion or frontend runtime change occurs."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset bytes paths licenses or downloadable records change."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Page provenance is regenerated from the unchanged route map and reviewed committed upstream source view."
+  git_push:
+    status: "not_required"
+    reason: "Push remains separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment remains separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any write to the upstream source project remains forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+    required: true
+
+stop_conditions:
+  - "Upstream main is dirty differs from origin main or changes during the packet."
+  - "Review finds a physics delta claim promotion ontology adoption benchmark promotion or completed-derivation claim."
+  - "Snapshot refresh requires authored route copy route map source-bundle classification acknowledgement or public-asset changes."
+  - "Curator preview retains any critical review-required or unexplained drift after regeneration."
+  - "Work requires FE-P1-01 runtime edits FE-P1-02 upstream mutation push or deployment."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260712-009-A with passed evidence run npm run checkpoint:implementation and stop before resuming FE-P1-01."
+
+handoff:
+  latest_handoff_id: "WH-20260712-009"
+  yaml_path: "implementation_control/handoffs/WH-20260712-009.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-009.md"
+
+completion_record:
+  completion_id: "WJC-20260712-009-A"
+  path: "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
+  status: "ready_to_checkpoint"
+
+next_recommended_action:
+  task_packet: "Resume FE-P1-01 aggregate validation and local checkpoint"
+  summary: "After FE-SR-01 is separately checkpointed reactivate WI-20260712-008 rerun aggregate validation create WJC-20260712-008-A and checkpoint FE-P1-01."
+  do_not_skip: "Do not add route fallback create acknowledgements open FE-P1-02 push deploy promote physics or mutate upstream."

@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260712-007"
 created_utc: "2026-07-12T15:45:00Z"
-updated_utc: "2026-07-12T15:52:00Z"
-status: "active"
+updated_utc: "2026-07-12T16:08:03Z"
+status: "superseded"
 
 task_id: "WI-20260712-007"
 job_id: "WJ-20260712-007-A"
@@ -77,3 +77,7 @@ stop_before:
   - "upstream source-project writes"
   - "Git push"
   - "Cloudflare deployment"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-008"
+  reason: "FE-P0-07 was checkpointed at 90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c before the owner explicitly authorized FE-P1-01."

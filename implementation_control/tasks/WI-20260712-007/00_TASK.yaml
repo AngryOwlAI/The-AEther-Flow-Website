@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-007"
 title: "Implement The Accessible Project Status Strip"
 created_utc: "2026-07-12T15:45:00Z"
-updated_utc: "2026-07-12T15:52:00Z"
-status: "active"
+updated_utc: "2026-07-12T16:08:03Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P0-07"
@@ -169,3 +169,7 @@ next_recommended_action:
   task_packet: "FE-P0-07 immediate five-state status strip"
   summary: "Checkpoint the validated FE-P0-07 completion locally and stop before any separately gated later packet."
   do_not_skip: "Do not open a later packet, modify claim or route authority, push, deploy, or mutate upstream."
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-008"
+  reason: "FE-P0-07 was completed and checkpointed at 90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c before the owner explicitly authorized FE-P1-01."

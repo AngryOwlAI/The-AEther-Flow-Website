@@ -123,6 +123,51 @@ def parse_top_level_string_list(path: Path, key: str) -> list[str]:
     return values
 
 
+def parse_nested_string_list(
+    path: Path,
+    parent_key: str,
+    key: str,
+) -> list[str] | None:
+    lines = load_text(path).splitlines()
+    parent_start: int | None = None
+    for index, raw_line in enumerate(lines):
+        if raw_line == f"{parent_key}:":
+            parent_start = index + 1
+            break
+    if parent_start is None:
+        return None
+
+    list_start: int | None = None
+    for index, raw_line in enumerate(lines[parent_start:], start=parent_start):
+        if raw_line and not raw_line.startswith((" ", "\t")):
+            break
+        if raw_line == f"  {key}:":
+            list_start = index + 1
+            break
+    if list_start is None:
+        raise SnapshotError(f"{path}: missing required nested list {parent_key}.{key}")
+
+    values: list[str] = []
+    for line_number, raw_line in enumerate(lines[list_start:], start=list_start + 1):
+        if raw_line and len(raw_line) - len(raw_line.lstrip(" ")) <= 2:
+            break
+        if not raw_line.strip():
+            continue
+        if not raw_line.startswith("    - "):
+            raise SnapshotError(
+                f"{path}:{line_number}: unsupported list item for {parent_key}.{key}"
+            )
+        value = parse_scalar_value(raw_line.strip()[2:])
+        if not isinstance(value, str) or not value:
+            raise SnapshotError(
+                f"{path}:{line_number}: {parent_key}.{key} entries must be strings"
+            )
+        values.append(value)
+    if not values:
+        raise SnapshotError(f"{path}: {parent_key}.{key} must not be empty")
+    return values
+
+
 def parse_nested_scalars(path: Path, parent_key: str) -> dict[str, str | bool | None]:
     lines = load_text(path).splitlines()
     start: int | None = None
@@ -165,7 +210,11 @@ def parse_handoff(source_root: Path, handoff_id: str) -> dict[str, Any]:
 
     scalars = parse_top_level_scalars(handoff_yaml)
     distance_to_gr = parse_nested_scalars(handoff_yaml, "distance_to_gr")
-    blocked_claims = parse_top_level_string_list(handoff_yaml, "blocked_claims")
+    blocked_claims = parse_nested_string_list(
+        handoff_yaml,
+        "claim_boundary",
+        "blocked_claims",
+    ) or parse_top_level_string_list(handoff_yaml, "blocked_claims")
     return {
         "handoff_id": required_string(scalars, "handoff_id", path=handoff_yaml),
         "created_at": required_string(scalars, "created_at", path=handoff_yaml),

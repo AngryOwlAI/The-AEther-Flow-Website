@@ -1,0 +1,140 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-008-A"
+task_id: "WI-20260712-008"
+title: "Implement Layer Tokens And Native Dark Scheme"
+created_utc: "2026-07-12T16:08:03Z"
+updated_utc: "2026-07-12T19:32:13Z"
+status: "blocked"
+
+objective: "Execute one FE-P1-01 packet that tokenizes existing stacking layers and aligns browser-native rendering with the dark project shell without changing layer behavior."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P1-01 packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P1-01"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "global_layer_tokens_and_native_dark_scheme_only"
+  skip_link_behavior_write_status: "forbidden"
+  navigation_behavior_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "src/styles/global.css"
+  - "src/layouts/BaseLayout.astro"
+  - "src/components/Figure.astro"
+  - "src/pages/"
+  - "src/components/"
+  - "tests/"
+  - "scripts/"
+  - "implementation_control/"
+  - "website Git status and history evidence"
+
+allowed_writes:
+  - "src/styles/global.css"
+  - "src/layouts/BaseLayout.astro"
+  - "tests/test_foundation_layers_and_color_scheme.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.md"
+  - "implementation_control/handoffs/WH-20260712-008.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.md"
+  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+
+required_outputs:
+  - "Global CSS declares named tokens for every existing z-index layer."
+  - "Every z-index declaration consumes a named token and preserves its prior numeric value."
+  - "Root CSS and BaseLayout head metadata advertise the dark native color scheme used by every current route."
+  - "One focused test covers token declarations, token consumption, color-scheme CSS and metadata, and the unchanged skip-link layer."
+  - "Browser inspection confirms native dark controls and representative layering remain legible and functional."
+  - "One implementation completion record captures changed files, validators, browser review, and checkpoint readiness."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint 90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public claim, copy, registry, or ladder change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source or derivative refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No navigation or route change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "Global z-index tokens and native dark color-scheme behavior only."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No manifest change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "manual-native-dark-scheme-review"
+    command: "manual inspection of native controls, scrollbars, dialog surfaces, and dark-shell contrast in a browser"
+    required: true
+  - id: "manual-layering-review"
+    command: "manual inspection of header, navigation panel, figure controls, dialog top layer, and unchanged skip-link order in a browser"
+    required: true
+
+stop_conditions:
+  - "Skip-link visibility or focus behavior would change before FE-P1-02."
+  - "Navigation interaction, content, claims, route authority, manifests, SVG, motion, or public assets would change."
+  - "A token substitution would change established relative layer order."
+  - "Native dark color-scheme behavior would reduce control or text contrast."
+  - "Work requires push, deployment, or upstream mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-SR-01 website-local source-refresh and curator-drift resolution"
+  summary: "Preserve the implemented FE-P1-01 files while a separate source-refresh packet clears aggregate validation."
+  do_not_skip: "Do not checkpoint FE-P1-01 with source-refresh artifacts or alter skip-link navigation behavior push deploy or upstream sources."
+
+suspension:
+  status: "blocked_by_aggregate_curator_drift"
+  blocked_at_utc: "2026-07-12T19:32:13Z"
+  resume_after: "WJ-20260712-009-A is separately checkpointed"

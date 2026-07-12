@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T15:52:00Z"
+updated_utc: "2026-07-12T19:48:36Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-007.yaml"
+  - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-009.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-007"
-  title: "Implement The Accessible Project Status Strip"
+  task_id: "WI-20260712-009"
+  title: "Refresh Upstream Source-Derived Website Evidence"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P0-07"
+    task_packet: "FE-SR-01"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "1d836634eb34d0377af76b0444bf1048e5b9c2c0"
-    owner_authorization: "Owner explicitly authorized FE-P0-07 implementation on 2026-07-12"
+    previous_checkpoint: "90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c"
+    owner_authorization: "Owner explicitly authorized one website-local source-refresh packet on 2026-07-12 before FE-P1-01 resumes"
 
 current_job:
-  job_id: "WJ-20260712-007-A"
+  job_id: "WJ-20260712-009-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-007"
+  handoff_id: "WH-20260712-009"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-007.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-007.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-009.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-009.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-007-A"
-  task_id: "WI-20260712-007"
-  job_id: "WJ-20260712-007-A"
-  status: "completed"
-  path: "implementation_control/tasks/WI-20260712-007/jobs/completions/WJC-20260712-007-A.yaml"
+  completion_id: "WJC-20260712-009-A"
+  task_id: "WI-20260712-009"
+  job_id: "WJ-20260712-009-A"
+  status: "ready_to_checkpoint"
+  path: "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -61,8 +61,17 @@ required_validators:
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     required_for_current_job: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required_for_current_job: true
   - id: "claim-contract"
     command: "npm run validate:claims"
+    required_for_current_job: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required_for_current_job: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
     required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
@@ -73,14 +82,14 @@ required_validators:
   - id: "aggregate-validation"
     command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-status-strip-review"
-    command: "manual inspection of five-state order, explicit text semantics, solid dashed and stopped shapes, desktop and mobile layout, clipping, and first-viewport placement"
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
     required_for_current_job: true
-  - id: "manual-authority-boundary-review"
-    command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
+  - id: "quality-gate"
+    command: "npm run quality"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P0-07 immediate five-state status strip"
-  summary: "Create the authorized local FE-P0-07 checkpoint from completion WJC-20260712-007-A, then stop before any later packet."
-  do_not_skip: "Do not open a later packet, modify claim or route authority, push, deploy, or mutate the upstream source project."
+  task_packet: "FE-SR-01 website-local source-refresh and curator-drift resolution"
+  summary: "Repair recursive active-task path matching in the claim snapshot generator then regenerate evidence rerun all required validation and checkpoint FE-SR-01 separately."
+  do_not_skip: "Do not add a route fallback create acknowledgements change authored public copy promote physics push deploy or mutate upstream."

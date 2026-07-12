@@ -215,6 +215,45 @@ def test_blocked_claim_strings_are_preserved(tmp_path: Path) -> None:
     ]
 
 
+def test_nested_claim_boundary_blocked_claims_are_preserved(tmp_path: Path) -> None:
+    source_root = tmp_path / "source"
+    write_fixture_source(source_root)
+    handoff = source_root / "research_control/handoffs/handoff-0001.yaml"
+    handoff.write_text(
+        handoff.read_text(encoding="utf-8").replace(
+            "\n".join(
+                [
+                    "blocked_claims:",
+                    '  - "MetricData(E) adoption"',
+                    '  - "g_eff construction"',
+                    '  - "matter coupling"',
+                    '  - "Einstein equations"',
+                ]
+            ),
+            "\n".join(
+                [
+                    "claim_boundary:",
+                    "  blocked_claims:",
+                    '    - "MetricData(E) adoption"',
+                    '    - "g_eff construction"',
+                    '    - "matter coupling"',
+                    '    - "Einstein equations"',
+                ]
+            ),
+        ),
+        encoding="utf-8",
+    )
+
+    data = snapshot.build_snapshot(source_root=source_root)
+
+    assert data["blocked_claims"] == [
+        "MetricData(E) adoption",
+        "g_eff construction",
+        "matter coupling",
+        "Einstein equations",
+    ]
+
+
 def test_cli_writes_only_with_explicit_write(tmp_path: Path, capsys) -> None:
     source_root = tmp_path / "source"
     out_path = tmp_path / "snapshot.json"

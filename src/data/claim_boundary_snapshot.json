@@ -1,741 +1,732 @@
 {
-  "active_task_id": "RT-20260614-290",
+  "active_task_id": "RT-20260709-006",
   "authority_source_prefix_counts": {
-    ".agents": 3,
+    ".agents": 6,
     ".codex": 1,
     "AGENTS.md": 1,
-    "README.md": 1,
+    "README.md": 3,
+    "implementations_plans": 8,
+    "markdown": 3,
+    "output": 1,
+    "research_control/README.md": 1,
     "research_control/current_frontier.md": 3,
-    "research_control/design": 5,
+    "research_control/design": 33,
+    "research_control/handoffs": 18,
     "research_control/missing_laws": 1,
-    "research_control/tasks": 433,
-    "scripts": 11,
+    "research_control/tasks": 733,
+    "research_control/templates": 2,
+    "scripts": 22,
     "tests": 1
   },
-  "current_status": "v11_p0_evidence_closure_completed_all_plan_tasks_proven_no_promotion",
+  "current_status": "v18_p11_t05_coverage_audit_complete_no_signals_v18_complete_next_eqsrc_route",
   "current_task_rows": [
     {
-      "allowed_claims": "Process Integrity Auditor may create standalone P0-T01 and P0-T02 evidence receipts;may track the single v11 implementation-plan file through a narrow ignore exception;may mark v11 implementation-plan tasks complete after validation and checkpoint;control evidence only",
+      "allowed_claims": "v18 P11-T05 recommendation coverage audit completed;V18-R01 through V18-R10 have final covered status;no project-improvement bridge is required from P11-T05;all applicable v18 plan tasks are complete;the selected next route remains EqSrc_family_closure_repair_or_stress;no physics delta",
       "allowed_summary": [
-        "Process Integrity Auditor may create standalone P0-T01 and P0-T02 evidence receipts",
-        "may track the single v11 implementation-plan file through a narrow ignore exception",
-        "may mark v11 implementation-plan tasks complete after validation and checkpoint"
+        "v18 P11-T05 recommendation coverage audit completed",
+        "V18-R01 through V18-R10 have final covered status",
+        "no project-improvement bridge is required from P11-T05"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-290",
-      "authority_source_path": "research_control/tasks/RT-20260614-290/artifacts/p0_evidence_closure_audit.md",
-      "claim_boundary_id": "CB-P0-EVIDENCE-CLOSURE-001",
-      "created_at": "2026-06-29T00:44:00Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;implementation-plan tracking as physics evidence;baseline snapshot as physics evidence;handoff as physics evidence;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;role as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-006/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-006/jobs/completions/AJC-AJ-RT-20260709-006-001.yaml",
+      "claim_boundary_id": "CB-V18-P11-T05-COVERAGE-AUDIT-001",
+      "created_at": "2026-07-09T03:11:04Z",
+      "forbidden_claims": "coverage audit as physics proof;coverage count as Distance-to-GR promotion;v18 plan completion as completed derivation;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector or readout semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;future source-extension impossibility;program-wide no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
+        "coverage audit as physics proof",
+        "coverage count as Distance-to-GR promotion",
+        "v18 plan completion as completed derivation",
+        "general EqSrc discharge",
+        "RetainH adoption",
+        "GenH adoption",
         "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "detector or readout semantics adoption"
       ],
-      "notes": "P0 evidence closure boundary permits only control-evidence closure and single-file implementation-plan tracking while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change",
+      "notes": "P11-T05 boundary permits only recommendation coverage accounting v18 applicable plan completion statement P11-T06 not-required routing and ordinary EqSrc route handoff with no physics promotion.",
+      "requires_gate_for": "canonical ontology edit protected adoption benchmark closure external outreach ledger status change source-law adoption matter-coupling derivation Einstein-equation derivation or completed-derivation authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit protected adoption benchmark closure external outreach ledger status change source-law adoption matter-coupling derivation Einstein-equation derivation or completed-derivation authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-29T00:44:00Z"
+      "updated_at": "2026-07-09T03:11:04Z"
     }
   ],
   "language_examples": [
     {
-      "body": "Process Integrity Auditor may create standalone P0-T01 and P0-T02 evidence receipts",
+      "body": "v18 P11-T05 recommendation coverage audit completed",
       "label": "Allowed explanation",
       "title": "Describe the bounded action"
     },
     {
-      "body": "canonical ontology TeX edit; source-law adoption; MetricData(E) adoption; g_eff adoption or scope expansion",
+      "body": "coverage audit as physics proof; coverage count as Distance-to-GR promotion; v18 plan completion as completed derivation; general EqSrc discharge",
       "label": "Forbidden promotion",
       "title": "Do not strengthen it into adoption"
     },
     {
-      "body": "canonical ontology edit; source-law adoption; MetricData(E) adoption; g_eff adoption or scope expansion",
+      "body": "canonical ontology edit protected adoption benchmark closure external outreach ledger status change source-law adoption matter-coupling derivation Einstein-equation derivation or completed-derivation authority",
       "label": "Gate required",
       "title": "Protected changes remain gated"
     }
   ],
-  "latest_handoff_id": "handoff-0323",
+  "latest_handoff_id": "handoff-0740",
   "latest_rows": [
     {
-      "allowed_claims": "Add root README website under-development notice and align displayed project map with tracked repository surfaces only;no physics claim promotion;no role authority change;no validator behavior change;no routing behavior change;no generated derivative authority",
+      "allowed_claims": "approved two-skill source candidate;focused runtime regression test;isolated RT-003 checkpoint repair;isolated RT-004 PDF-registry test repair;mandatory registrations;generated memory derivatives;source-only checkpoint;non-accepting smoke record;no physics delta",
       "allowed_summary": [
-        "Add root README website under-development notice and align displayed project map with tracked repository surfaces only",
-        "no physics claim promotion",
-        "no role authority change"
+        "approved two-skill source candidate",
+        "focused runtime regression test",
+        "isolated RT-003 checkpoint repair"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260629-001",
-      "authority_source_path": "research_control/tasks/RT-20260629-001/artifacts/readme_project_website_front_door_update_review.md",
-      "claim_boundary_id": "CB-PROJECT-SYSTEM-README-WEBSITE-FRONT-DOOR-001",
-      "created_at": "2026-06-29T01:52:00Z",
-      "forbidden_claims": "canonical ontology edit;benchmark promotion;Gate Chair verdict;physics claim promotion;completed derivation claim;role contract change;role authority expansion;validator behavior change;routing behavior change;checkpoint behavior change;generated derivative authority;external website status as scientific authority",
+      "applies_to_path": ".codex/skills/continue-research-goal/**;.codex/skills/continue-research-continue-goal/**;tests/test_continue_research_goal_state.py;scripts/research_control/checkpoint_research_transaction.py;tests/test_research_control.py;tests/test_memory_system.py;research_control/tasks/RT-20260711-001/**",
+      "authority_source_path": "research_control/tasks/RT-20260711-001/jobs/completions/AJC-AJ-RT-20260711-001-001.yaml",
+      "claim_boundary_id": "CB-RT-20260711-001-CONTINUE-GOAL-G5-001",
+      "created_at": "2026-07-11T14:13:25Z",
+      "forbidden_claims": "skill runtime as physics proof;runtime goal as canonical authority;disposable research history promotion;expired smoke as acceptance;Distance-to-GR change;ontology or source-law adoption;matter coupling;Einstein equations;benchmark promotion;Gate Chair verdict;completed derivation",
       "forbidden_summary": [
-        "canonical ontology edit",
-        "benchmark promotion",
-        "Gate Chair verdict",
-        "physics claim promotion",
-        "completed derivation claim",
-        "role contract change",
-        "role authority expansion",
-        "validator behavior change"
+        "skill runtime as physics proof",
+        "runtime goal as canonical authority",
+        "disposable research history promotion",
+        "expired smoke as acceptance",
+        "Distance-to-GR change",
+        "ontology or source-law adoption",
+        "matter coupling",
+        "Einstein equations"
       ],
-      "notes": "README website front-door boundary preserves documentation-only status and generated metadata as noncanonical",
-      "requires_gate_for": "ontology edit;benchmark promotion;Gate Chair verdict;physics claim;role authority expansion;validator change;routing change;checkpoint change;generated-output authority expansion",
+      "notes": "G5 remediation permits only the repaired source candidate and governed derivatives and stops before a fresh disposable smoke test.",
+      "requires_gate_for": "canonical ontology edit physics promotion live test push merge pull request archival cleanup or mutation rerun or relabeling of the old terminal goal",
       "requires_gate_summary": [
-        "ontology edit",
-        "benchmark promotion",
-        "Gate Chair verdict",
-        "physics claim",
-        "role authority expansion",
-        "validator change",
-        "routing change",
-        "checkpoint change"
+        "canonical ontology edit physics promotion live test push merge pull request archival cleanup or mutation rerun or relabeling of the old terminal goal"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-29T01:52:00Z"
+      "updated_at": "2026-07-11T14:56:06Z"
     },
     {
-      "allowed_claims": "Process Integrity Auditor may create standalone P0-T01 and P0-T02 evidence receipts;may track the single v11 implementation-plan file through a narrow ignore exception;may mark v11 implementation-plan tasks complete after validation and checkpoint;control evidence only",
+      "allowed_claims": "generated folder map refreshed through bootstrap after tracked task directories exist;task-index navigation refreshed;support-only project-system repair only;proof authority remains false",
       "allowed_summary": [
-        "Process Integrity Auditor may create standalone P0-T01 and P0-T02 evidence receipts",
-        "may track the single v11 implementation-plan file through a narrow ignore exception",
-        "may mark v11 implementation-plan tasks complete after validation and checkpoint"
+        "generated folder map refreshed through bootstrap after tracked task directories exist",
+        "task-index navigation refreshed",
+        "support-only project-system repair only"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-290",
-      "authority_source_path": "research_control/tasks/RT-20260614-290/artifacts/p0_evidence_closure_audit.md",
-      "claim_boundary_id": "CB-P0-EVIDENCE-CLOSURE-001",
-      "created_at": "2026-06-29T00:44:00Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;implementation-plan tracking as physics evidence;baseline snapshot as physics evidence;handoff as physics evidence;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;role as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-008/**;FOLDER_MAP.md",
+      "authority_source_path": "research_control/tasks/RT-20260709-008/jobs/completions/AJC-AJ-RT-20260709-008-001.yaml",
+      "claim_boundary_id": "CB-RT-20260709-008-FOLDER-MAP-FOLLOWUP-001",
+      "created_at": "2026-07-09T16:17:08Z",
+      "forbidden_claims": "folder map as scientific authority;task index as physics proof;generated derivative as source-law adoption;generated derivative as benchmark promotion;generated derivative as completed derivation",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "folder map as scientific authority",
+        "task index as physics proof",
+        "generated derivative as source-law adoption",
+        "generated derivative as benchmark promotion",
+        "generated derivative as completed derivation"
       ],
-      "notes": "P0 evidence closure boundary permits only control-evidence closure and single-file implementation-plan tracking while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change",
+      "notes": "RT-20260709-008 boundary permits only generated freshness repair with no proof authority and no physics promotion",
+      "requires_gate_for": "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-29T00:44:00Z"
+      "updated_at": "2026-07-09T16:17:08Z"
     },
     {
-      "allowed_claims": "Documentation Curator may create P8-T03 final continuation handoff;may summarize recommendations 1 through 7;may route strict P0 evidence closure;control handoff only",
+      "allowed_claims": "generated folder map refreshed through bootstrap;proof normal form tests aligned to current twelve row registry;support-only row count preserved as test expectation;proof authority remains false",
       "allowed_summary": [
-        "Documentation Curator may create P8-T03 final continuation handoff",
-        "may summarize recommendations 1 through 7",
-        "may route strict P0 evidence closure"
+        "generated folder map refreshed through bootstrap",
+        "proof normal form tests aligned to current twelve row registry",
+        "support-only row count preserved as test expectation"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-289",
-      "authority_source_path": "research_control/tasks/RT-20260614-289/artifacts/p8_t03_final_continuation_handoff.md",
-      "claim_boundary_id": "CB-P8-T03-FINAL-CONTINUATION-HANDOFF-001",
-      "created_at": "2026-06-29T00:22:57Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;handoff as physics evidence;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;role as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-007/**;tests/test_proof_normal_form_registry.py;tests/test_render_proof_normal_form_index.py;FOLDER_MAP.md",
+      "authority_source_path": "research_control/tasks/RT-20260709-007/jobs/completions/AJC-AJ-RT-20260709-007-001.yaml",
+      "claim_boundary_id": "CB-RT-20260709-007-CI-VALIDATION-REPAIR-001",
+      "created_at": "2026-07-09T14:20:54Z",
+      "forbidden_claims": "folder map as scientific authority;tests as proof authority;tests as physics promotion;test row count as source-law adoption;test row count as benchmark promotion;test row count as completed derivation",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "folder map as scientific authority",
+        "tests as proof authority",
+        "tests as physics promotion",
+        "test row count as source-law adoption",
+        "test row count as benchmark promotion",
+        "test row count as completed derivation"
       ],
-      "notes": "P8-T03 boundary permits only final handoff and P0 evidence closure routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change",
+      "notes": "RT-20260709-007 boundary permits only CI validation repair and generated freshness with no proof authority and no physics promotion",
+      "requires_gate_for": "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-29T00:22:57Z"
+      "updated_at": "2026-07-09T14:20:54Z"
     },
     {
-      "allowed_claims": "Validator Engineer may run P8-T02 final validation suite;may create validation receipt;may prepare checkpoint transaction;may route next to P8-T03 final continuation handoff;control validation only",
+      "allowed_claims": "v18 P11-T05 recommendation coverage audit completed;V18-R01 through V18-R10 have final covered status;no project-improvement bridge is required from P11-T05;all applicable v18 plan tasks are complete;the selected next route remains EqSrc_family_closure_repair_or_stress;no physics delta",
       "allowed_summary": [
-        "Validator Engineer may run P8-T02 final validation suite",
-        "may create validation receipt",
-        "may prepare checkpoint transaction"
+        "v18 P11-T05 recommendation coverage audit completed",
+        "V18-R01 through V18-R10 have final covered status",
+        "no project-improvement bridge is required from P11-T05"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-288",
-      "authority_source_path": "research_control/tasks/RT-20260614-288/artifacts/p8_t02_final_validation_receipt.md",
-      "claim_boundary_id": "CB-P8-T02-FINAL-VALIDATION-CHECKPOINT-001",
-      "created_at": "2026-06-29T00:06:04Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;validator output as physics evidence;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;checkpoint or commit status as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;role as proof;handoff as proof;approval as proof;local cache as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-006/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-006/jobs/completions/AJC-AJ-RT-20260709-006-001.yaml",
+      "claim_boundary_id": "CB-V18-P11-T05-COVERAGE-AUDIT-001",
+      "created_at": "2026-07-09T03:11:04Z",
+      "forbidden_claims": "coverage audit as physics proof;coverage count as Distance-to-GR promotion;v18 plan completion as completed derivation;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector or readout semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;future source-extension impossibility;program-wide no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
+        "coverage audit as physics proof",
+        "coverage count as Distance-to-GR promotion",
+        "v18 plan completion as completed derivation",
+        "general EqSrc discharge",
+        "RetainH adoption",
+        "GenH adoption",
         "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "detector or readout semantics adoption"
       ],
-      "notes": "P8-T02 boundary permits only validation receipt checkpoint preparation and P8-T03 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change",
+      "notes": "P11-T05 boundary permits only recommendation coverage accounting v18 applicable plan completion statement P11-T06 not-required routing and ordinary EqSrc route handoff with no physics promotion.",
+      "requires_gate_for": "canonical ontology edit protected adoption benchmark closure external outreach ledger status change source-law adoption matter-coupling derivation Einstein-equation derivation or completed-derivation authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit protected adoption benchmark closure external outreach ledger status change source-law adoption matter-coupling derivation Einstein-equation derivation or completed-derivation authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-29T00:06:04Z"
+      "updated_at": "2026-07-09T03:11:04Z"
     },
     {
-      "allowed_claims": "Validator Engineer may implement deterministic current-frontier renderer;may add focused renderer tests;may generate current_frontier.md from tracked active state;may route next to P8-T02 final validation;current_frontier remains snapshot-only not independent authority;control tooling only",
+      "allowed_claims": "P11-T04 ordinary continuation route selection only;exactly one ordinary route selected;EqSrc_family_closure_repair_or_stress selected;P11-T05 route next;no physics delta",
       "allowed_summary": [
-        "Validator Engineer may implement deterministic current-frontier renderer",
-        "may add focused renderer tests",
-        "may generate current_frontier.md from tracked active state"
+        "P11-T04 ordinary continuation route selection only",
+        "exactly one ordinary route selected",
+        "EqSrc_family_closure_repair_or_stress selected"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-287",
-      "authority_source_path": "scripts/research_control/render_current_frontier.py",
-      "claim_boundary_id": "CB-P1-T04-GENERATED-CURRENT-STATE-REPORT-001",
-      "created_at": "2026-06-28T23:52:02Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;generated renderer output as physics evidence;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-005/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-005/jobs/completions/AJC-AJ-RT-20260709-005-001.yaml",
+      "claim_boundary_id": "CB-V18-P11-T04-ORDINARY-HANDOFF-001",
+      "created_at": "2026-07-09T02:38:46Z",
+      "forbidden_claims": "route selection as physics proof;route selection as general EqSrc discharge;route selection as RetainH adoption;route selection as GenH adoption;route selection as source-law adoption;route selection as detector semantics adoption;route selection as readout semantics adoption;route selection as matter-coupling derivation;route selection as Einstein-equation derivation;route selection as benchmark promotion;route selection as Gate Chair verdict;route selection as completed derivation",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "route selection as physics proof",
+        "route selection as general EqSrc discharge",
+        "route selection as RetainH adoption",
+        "route selection as GenH adoption",
+        "route selection as source-law adoption",
+        "route selection as detector semantics adoption",
+        "route selection as readout semantics adoption",
+        "route selection as matter-coupling derivation"
       ],
-      "notes": "P1-T04 boundary permits only deterministic renderer tooling tests current-frontier generation and P8-T02 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change",
+      "notes": "P11-T04 boundary permits only ordinary route selection and P11-T05 routing while preserving all physics-promotion blocks",
+      "requires_gate_for": "canonical ontology edit or protected adoption benchmark closure authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit or protected adoption benchmark closure authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T23:52:02Z"
+      "updated_at": "2026-07-09T02:38:46Z"
     },
     {
-      "allowed_claims": "Validator Engineer may implement deterministic active-state drift guard;may add focused regression tests;may resynchronize current_frontier.md to post-P1-T03 tracked state;may route next to P1-T04 renderer;current_frontier remains snapshot-only not independent authority;control validation only",
+      "allowed_claims": "current frontier synchronized after P11-T03;compact frontier synchronized after P11-T03;claim graph and dependency graph refreshed after P11-T03;Distance-to-GR and metric-use ledger hashes unchanged by P11-T03;P11-T04 is the immediate next route;no physics delta",
       "allowed_summary": [
-        "Validator Engineer may implement deterministic active-state drift guard",
-        "may add focused regression tests",
-        "may resynchronize current_frontier.md to post-P1-T03 tracked state"
+        "current frontier synchronized after P11-T03",
+        "compact frontier synchronized after P11-T03",
+        "claim graph and dependency graph refreshed after P11-T03"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-286",
-      "authority_source_path": "scripts/research_control/validate_research_control.py",
-      "claim_boundary_id": "CB-P1-T03-ACTIVE-STATE-DRIFT-VALIDATOR-GUARD-001",
-      "created_at": "2026-06-28T23:34:09Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;render_current_frontier.py implementation in this packet;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-004/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-004/jobs/completions/AJC-AJ-RT-20260709-004-001.yaml",
+      "claim_boundary_id": "CB-V18-P11-T03-FRONTIER-LEDGER-SYNC-001",
+      "created_at": "2026-07-09T02:13:02Z",
+      "forbidden_claims": "synchronization as physics proof;generated graph as source-law adoption;current frontier as matter-coupling derivation;ledger freshness as g_eff adoption;P11-T03 as final ordinary continuation route selection;P11-T03 as v18 completion;v18 synchronization as completed derivation",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "synchronization as physics proof",
+        "generated graph as source-law adoption",
+        "current frontier as matter-coupling derivation",
+        "ledger freshness as g_eff adoption",
+        "P11-T03 as final ordinary continuation route selection",
+        "P11-T03 as v18 completion",
+        "v18 synchronization as completed derivation"
       ],
-      "notes": "P1-T03 boundary permits only validator guard implementation stale-fixture tests current-frontier resync and P1-T04 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change;renderer implementation",
+      "notes": "P11-T03 boundary permits only generated frontier graph ledger receipt synchronization and P11-T04 routing while preserving unchanged ledgers no proof authority no final route selection no v18 completion and no physics promotion",
+      "requires_gate_for": "canonical ontology edit protected adoption benchmark closure external outreach final ordinary route selection v18 completion or ledger status change authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit protected adoption benchmark closure external outreach final ordinary route selection v18 completion or ledger status change authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T23:34:09Z"
+      "updated_at": "2026-07-09T02:13:02Z"
     },
     {
-      "allowed_claims": "Process Integrity Auditor may synchronize research_control/current_frontier.md with live tracked state;may summarize Distance-to-GR ledger context;may route next to P1-T03 validator guard;current_frontier remains snapshot-only not independent authority;control synchronization only",
+      "allowed_claims": "v18 P11-T02 final validation report exists;required validation layers are listed;required validation layers passed;no pending hard failures;next route is P11-T03",
       "allowed_summary": [
-        "Process Integrity Auditor may synchronize research_control/current_frontier.md with live tracked state",
-        "may summarize Distance-to-GR ledger context",
-        "may route next to P1-T03 validator guard"
+        "v18 P11-T02 final validation report exists",
+        "required validation layers are listed",
+        "required validation layers passed"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-285",
-      "authority_source_path": "research_control/current_frontier.md",
-      "claim_boundary_id": "CB-P1-T02-CURRENT-FRONTIER-SYNC-001",
-      "created_at": "2026-06-28T23:10:10Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;render_current_frontier.py implementation in this packet;validator guard implementation in this packet;generated graph as physics evidence;checker output as proof;metrics warning as proof;current_frontier as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-003/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-003/jobs/completions/AJC-AJ-RT-20260709-003-001.yaml",
+      "claim_boundary_id": "CB-V18-P11-T02-FINAL-VALIDATION-001",
+      "created_at": "2026-07-09T01:27:43Z",
+      "forbidden_claims": "validation report as v18 completion;validation report as physics proof authority;validation report as benchmark authority;validation report as Distance-to-GR ledger promotion;validation report as ordinary route final selection;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector/readout semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;completed derivation;future source-extension impossibility;broad no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "validation report as v18 completion",
+        "validation report as physics proof authority",
+        "validation report as benchmark authority",
+        "validation report as Distance-to-GR ledger promotion",
+        "validation report as ordinary route final selection",
+        "general EqSrc discharge",
+        "RetainH adoption",
+        "GenH adoption"
       ],
-      "notes": "P1-T02 boundary permits only current-frontier synchronization and P1-T03 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;Distance-to-GR ledger change;validator guard implementation;renderer implementation",
+      "notes": "P11-T02 boundary permits only final validation reporting generated derivative refresh no hard-failure routing if pass and P11-T03 routing while preserving no ledger delta no ordinary route final selection no proof authority and no physics promotion",
+      "requires_gate_for": "canonical ontology edit protected adoption benchmark closure external outreach or final ordinary route selection authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit protected adoption benchmark closure external outreach or final ordinary route selection authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T23:10:10Z"
+      "updated_at": "2026-07-09T01:27:43Z"
     },
     {
-      "allowed_claims": "Process Integrity Auditor may define active-state source-of-truth invariant;may select current-frontier policy;may state drift failure conditions;may route next to P1-T02 synchronization;control design only;current_frontier remains snapshot-only not independent authority",
+      "allowed_claims": "v18 P11-T01 integration report exists;V18-R01 through V18-R10 are classified;downstream P11 tasks remain pending;no Distance-to-GR promotion is claimed;next route is P11-T02",
       "allowed_summary": [
-        "Process Integrity Auditor may define active-state source-of-truth invariant",
-        "may select current-frontier policy",
-        "may state drift failure conditions"
+        "v18 P11-T01 integration report exists",
+        "V18-R01 through V18-R10 are classified",
+        "downstream P11 tasks remain pending"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-284",
-      "authority_source_path": "research_control/tasks/RT-20260614-284/artifacts/active_state_authority_invariant.md",
-      "claim_boundary_id": "CB-P1-T01-ACTIVE-STATE-AUTHORITY-INVARIANT-001",
-      "created_at": "2026-06-28T22:56:30Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;current_frontier.md repair in this packet;render_current_frontier.py implementation in this packet;validator guard implementation in this packet;generated graph as physics evidence;checker output as proof;metrics warning as proof;invariant artifact as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260709-002/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-002/jobs/completions/AJC-AJ-RT-20260709-002-001.yaml",
+      "claim_boundary_id": "CB-V18-P11-T01-INTEGRATION-REPORT-001",
+      "created_at": "2026-07-09T00:51:47Z",
+      "forbidden_claims": "integration report as v18 completion;integration report as final validation;integration report as ledger synchronization;integration report as ordinary route final selection;integration report as physics proof authority;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector/readout semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;completed derivation;future source-extension impossibility;broad no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "integration report as v18 completion",
+        "integration report as final validation",
+        "integration report as ledger synchronization",
+        "integration report as ordinary route final selection",
+        "integration report as physics proof authority",
+        "general EqSrc discharge",
+        "RetainH adoption",
+        "GenH adoption"
       ],
-      "notes": "P1-T01 boundary permits only active-state invariant design and P1-T02 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;current_frontier repair;validator guard implementation",
+      "notes": "P11-T01 boundary permits only integration report coverage classification downstream P11 deferral and P11-T02 routing while preserving no ledger delta no final validation no ordinary route final selection no proof authority and no physics promotion",
+      "requires_gate_for": "canonical ontology edit protected adoption benchmark closure external outreach or final ordinary route selection authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "canonical ontology edit protected adoption benchmark closure external outreach or final ordinary route selection authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T22:56:30Z"
+      "updated_at": "2026-07-09T00:51:47Z"
     },
     {
-      "allowed_claims": "Process Integrity Auditor may audit v11 P1 through P7 implementation consistency;may create task-local audit artifact;may list completed tasks deferred tasks blockers and next handoff;may identify stale current_frontier.md and missing active-state guard;may confirm no v11 recommendation 8 through 10 task;may confirm no physics overclaim;control audit only",
+      "allowed_claims": "v18 P10-T06 response-intake template exists;no external outreach occurred;no reviewer was named;reviewer identity publication remains false by default;external responses remain non-proof non-benchmark non-endorsement advisory input;next route is P11-T01",
       "allowed_summary": [
-        "Process Integrity Auditor may audit v11 P1 through P7 implementation consistency",
-        "may create task-local audit artifact",
-        "may list completed tasks deferred tasks blockers and next handoff"
+        "v18 P10-T06 response-intake template exists",
+        "no external outreach occurred",
+        "no reviewer was named"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-283",
-      "authority_source_path": "research_control/tasks/RT-20260614-283/artifacts/p8_t01_cross_phase_consistency_audit.md",
-      "claim_boundary_id": "CB-P8-T01-CROSS-PHASE-CONSISTENCY-AUDIT-001",
-      "created_at": "2026-06-28T22:41:08Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;current_frontier.md repair in this packet;P8-T02 final validation in this packet;P8-T03 final handoff in this packet;generated graph as physics evidence;checker output as proof;metrics warning as proof;audit artifact as scientific proof;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/design/external_review_response_intake_template_v1.md;research_control/tasks/RT-20260709-001/**",
+      "authority_source_path": "research_control/tasks/RT-20260709-001/jobs/completions/AJC-AJ-RT-20260709-001-001.yaml",
+      "claim_boundary_id": "CB-V18-P10-T06-EXTERNAL-REVIEW-RESPONSE-INTAKE-TEMPLATE-001",
+      "created_at": "2026-07-09T00:25:09Z",
+      "forbidden_claims": "response-intake template as outreach authorization;template as external message sent;template as reviewer naming;template as reviewer identity publication;template as external review completion;template as external endorsement;external feedback as proof authority;external feedback as benchmark authority;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector-semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;completed derivation;future source-extension impossibility;broad no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "response-intake template as outreach authorization",
+        "template as external message sent",
+        "template as reviewer naming",
+        "template as reviewer identity publication",
+        "template as external review completion",
+        "template as external endorsement",
+        "external feedback as proof authority",
+        "external feedback as benchmark authority"
       ],
-      "notes": "P8-T01 boundary permits only cross-phase process audit and routing to P1 repair while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and generated-output authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;Gate Chair verdict;current_frontier repair",
+      "notes": "P10-T06 boundary permits only a future response-intake template and P11-T01 routing while preserving no outreach no reviewer naming no identity publication no endorsement no proof authority no benchmark authority no ledger delta and no physics promotion",
+      "requires_gate_for": "external outreach reviewer naming reviewer identity publication external feedback proof authority benchmark authority canonical ontology edit or protected adoption benchmark closure authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "external outreach reviewer naming reviewer identity publication external feedback proof authority benchmark authority canonical ontology edit or protected adoption benchmark closure authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T22:41:08Z"
+      "updated_at": "2026-07-09T00:25:09Z"
     },
     {
-      "allowed_claims": "Project-Control Maintainer may surface a compact dependency graph summary in continue_research.py context;may include active task latest handoff active burden upstream objects accepted scoped objects draft/control objects human-gated objects blocked downstream objects frozen negative routes next route and graph path/hash;may add focused context tests;graph summary is navigational support only;summary does not replace canonical source inspection;no graph output as physics evidence;no source-law adoption;no MetricData(E) adoption;no g_eff adoption or scope expansion;no coupling-law adoption;no matter-coupling derivation;no stress-energy semantics;no downstream GR promotion",
+      "allowed_claims": "v18 P10-T05 human-gate setup exists;no external outreach occurred;no reviewer was named;future outreach requires later human gate;next route is P10-T06",
       "allowed_summary": [
-        "Project-Control Maintainer may surface a compact dependency graph summary in continue_research.py context",
-        "may include active task latest handoff active burden upstream objects accepted scoped objects draft/control objects human-gated objects blocked downstream objects frozen negative routes next route and graph path/hash",
-        "may add focused context tests"
+        "v18 P10-T05 human-gate setup exists",
+        "no external outreach occurred",
+        "no reviewer was named"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-282",
-      "authority_source_path": "scripts/research_control/continue_research.py",
-      "claim_boundary_id": "CB-P7-T04-CONTINUE-RESEARCH-GRAPH-SUMMARY-001",
-      "created_at": "2026-06-28T22:13:41Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;graph data as physics evidence;generated graph artifact as proof;generated graph artifact as control authority;graph summary as physics evidence;graph summary as source inspection replacement;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260708-041/**",
+      "authority_source_path": "research_control/tasks/RT-20260708-041/jobs/completions/AJC-AJ-RT-20260708-041-001.yaml",
+      "claim_boundary_id": "CB-V18-P10-T05-EXTERNAL-OUTREACH-HUMAN-GATE-SETUP-001",
+      "created_at": "2026-07-08T23:49:47Z",
+      "forbidden_claims": "human-gate setup as outreach authorization;gate setup as external message sent;gate setup as reviewer naming;gate setup as external review completion;gate setup as external endorsement;external feedback as proof authority;external feedback as benchmark authority;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector-semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;completed derivation;future source-extension impossibility;broad no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "human-gate setup as outreach authorization",
+        "gate setup as external message sent",
+        "gate setup as reviewer naming",
+        "gate setup as external review completion",
+        "gate setup as external endorsement",
+        "external feedback as proof authority",
+        "external feedback as benchmark authority",
+        "general EqSrc discharge"
       ],
-      "notes": "P7-T04 boundary permits only compact Continue Research graph summary surfacing focused tests generated graph refresh and P8-T01 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and graph-authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;graph output as physics evidence;graph output as control authority;suppression of source inspection",
+      "notes": "P10-T05 boundary permits only a future human-gate question and P10-T06 routing while preserving no outreach no reviewer naming no endorsement no proof authority no ledger delta and no physics promotion",
+      "requires_gate_for": "external outreach reviewer naming external feedback proof authority canonical ontology edit or protected adoption benchmark closure authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "external outreach reviewer naming external feedback proof authority canonical ontology edit or protected adoption benchmark closure authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T22:13:41Z"
+      "updated_at": "2026-07-08T23:49:47Z"
     },
     {
-      "allowed_claims": "Validator Engineer may add render_dependency_graph.py --check freshness validation;may compare generated JSON Markdown and DOT graph artifact content against tracked-state renders;may add focused fresh and stale artifact regression tests;may regenerate graph artifacts after final control state;graph freshness check is validator support only;graph remains navigational support only;no graph output as physics evidence;no source-law adoption;no MetricData(E) adoption;no g_eff adoption or scope expansion;no coupling-law adoption;no matter-coupling derivation;no stress-energy semantics;no downstream GR promotion",
+      "allowed_claims": "v18 P10-T04 internal red-team review passed;packet is sharp enough for bounded future review;packet exposes EqSrc family-closure obstruction family;packet preserves no-outreach no-reviewer-naming no-external-completion and no-endorsement boundaries;next route is P10-T05",
       "allowed_summary": [
-        "Validator Engineer may add render_dependency_graph.py --check freshness validation",
-        "may compare generated JSON Markdown and DOT graph artifact content against tracked-state renders",
-        "may add focused fresh and stale artifact regression tests"
+        "v18 P10-T04 internal red-team review passed",
+        "packet is sharp enough for bounded future review",
+        "packet exposes EqSrc family-closure obstruction family"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-281",
-      "authority_source_path": "scripts/research_control/render_dependency_graph.py",
-      "claim_boundary_id": "CB-P7-T03-GRAPH-FRESHNESS-VALIDATION-001",
-      "created_at": "2026-06-28T21:58:31Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;graph data as physics evidence;generated graph artifact as proof;generated graph artifact as control authority;freshness check as physics evidence;freshness check as proof authority;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "research_control/tasks/RT-20260708-040/**",
+      "authority_source_path": "research_control/tasks/RT-20260708-040/jobs/completions/AJC-AJ-RT-20260708-040-001.yaml",
+      "claim_boundary_id": "CB-V18-P10-T04-EXTERNAL-REVIEW-PACKET-INTERNAL-RED-TEAM-001",
+      "created_at": "2026-07-08T23:19:19Z",
+      "forbidden_claims": "review pass as proof authority;internal red-team pass as external endorsement;internal red-team pass as external review completion;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;detector-semantics adoption;coupling-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;completed derivation;future source-extension impossibility;broad no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
+        "review pass as proof authority",
+        "internal red-team pass as external endorsement",
+        "internal red-team pass as external review completion",
+        "general EqSrc discharge",
+        "RetainH adoption",
+        "GenH adoption",
         "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "detector-semantics adoption"
       ],
-      "notes": "P7-T03 boundary permits only content freshness validation focused tests generated graph refresh and P7-T04 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and graph-authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;graph output as physics evidence;graph output as control authority;suppression of source inspection",
+      "notes": "P10-T04 boundary permits one internal review pass and P10-T05 routing only while preserving no outreach no endorsement no primitive adoption no proof authority no ledger delta and no physics promotion",
+      "requires_gate_for": "external outreach canonical ontology edit or protected adoption benchmark closure authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "external outreach canonical ontology edit or protected adoption benchmark closure authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T21:58:31Z"
+      "updated_at": "2026-07-08T23:19:19Z"
     },
     {
-      "allowed_claims": "Memory-System Maintainer may implement deterministic render_dependency_graph.py;may generate JSON Markdown and DOT graph artifacts;may add focused extractor tests;graph is navigational support only;no graph output as physics evidence;no source-law adoption;no MetricData(E) adoption;no g_eff adoption or scope expansion;no coupling-law adoption;no matter-coupling derivation;no stress-energy semantics;no downstream GR promotion",
+      "allowed_claims": "v18 P10-T03 created bounded external-review packet artifact;packet registered in EXTERNAL_REVIEW_PACKET_REGISTRY;packet source-backed by P10-T02 source spec;no external outreach was performed;no reviewer was named;next route is P10-T04",
       "allowed_summary": [
-        "Memory-System Maintainer may implement deterministic render_dependency_graph.py",
-        "may generate JSON Markdown and DOT graph artifacts",
-        "may add focused extractor tests"
+        "v18 P10-T03 created bounded external-review packet artifact",
+        "packet registered in EXTERNAL_REVIEW_PACKET_REGISTRY",
+        "packet source-backed by P10-T02 source spec"
       ],
-      "applies_to_path": "research_control/tasks/RT-20260614-280",
-      "authority_source_path": "scripts/research_control/render_dependency_graph.py",
-      "claim_boundary_id": "CB-P7-T02-DEPENDENCY-GRAPH-EXTRACTOR-001",
-      "created_at": "2026-06-28T21:26:44Z",
-      "forbidden_claims": "canonical ontology TeX edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics import;stress-energy tensor construction;matter action import;detector semantics import;Gate Chair verdict;protected evidence-status change;Distance-to-GR ledger change;freshness validator integration in P7-T02;graph data as physics evidence;generated graph artifact as proof;generated graph artifact as control authority;Einstein equation derivation;benchmark promotion;benchmark Gate Chair closure;completed derivation claim;future source-extension impossibility;global theory rejection;registry metadata as proof;validator as proof;role as proof;handoff as proof;approval as proof;local cache as proof;commit status as proof",
+      "applies_to_path": "external_review_packets/eqsrc_family_closure_review_packet_v1.md;registries/EXTERNAL_REVIEW_PACKET_REGISTRY.csv;research_control/tasks/RT-20260708-039/**",
+      "authority_source_path": "research_control/tasks/RT-20260708-039/jobs/completions/AJC-AJ-RT-20260708-039-001.yaml",
+      "claim_boundary_id": "CB-V18-P10-T03-EXTERNAL-REVIEW-PACKET-ARTIFACT-001",
+      "created_at": "2026-07-08T22:50:01Z",
+      "forbidden_claims": "packet as external endorsement;packet as proof authority;packet as external review completion;reviewer acceptance claim;general EqSrc discharge;RetainH adoption;GenH adoption;source-law adoption;matter-coupling derivation;Einstein-equation derivation;benchmark promotion;Gate Chair verdict;completed derivation;future source-extension impossibility;broad no-go conclusion",
       "forbidden_summary": [
-        "canonical ontology TeX edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics import"
+        "packet as external endorsement",
+        "packet as proof authority",
+        "packet as external review completion",
+        "reviewer acceptance claim",
+        "general EqSrc discharge",
+        "RetainH adoption",
+        "GenH adoption",
+        "source-law adoption"
       ],
-      "notes": "P7-T02 boundary permits only extractor implementation generated graph artifacts focused tests and P7-T03 routing while preserving all adoption matter-coupling stress-energy tensor matter-action detector-semantics Einstein-equation downstream GR and graph-authority blocks",
-      "requires_gate_for": "canonical ontology edit;source-law adoption;MetricData(E) adoption;g_eff adoption or scope expansion;coupling-law adoption;matter-coupling derivation;matter-coupling adoption;stress-energy semantics;stress-energy tensor;matter action;detector semantics;Einstein equations adoption;benchmark promotion;completed derivation;graph output as physics evidence;graph output as control authority",
+      "notes": "P10-T03 boundary permits one bounded packet artifact and P10-T04 routing only while preserving no outreach no reviewer naming no primitive adoption no proof authority no ledger delta and no physics promotion",
+      "requires_gate_for": "external outreach canonical ontology edit or protected adoption benchmark closure authority",
       "requires_gate_summary": [
-        "canonical ontology edit",
-        "source-law adoption",
-        "MetricData(E) adoption",
-        "g_eff adoption or scope expansion",
-        "coupling-law adoption",
-        "matter-coupling derivation",
-        "matter-coupling adoption",
-        "stress-energy semantics"
+        "external outreach canonical ontology edit or protected adoption benchmark closure authority"
       ],
       "scope": "task",
       "status": "active",
-      "updated_at": "2026-06-28T21:26:44Z"
+      "updated_at": "2026-07-08T22:50:01Z"
     }
   ],
-  "next_recommended_action": "No v11 implementation-plan task remains after checkpoint; resume ordinary research-control continuation only under a new tracked objective.",
+  "next_recommended_action": "Run one bounded EqSrc family-closure repair-or-stress packet from validated v18 outputs.",
   "recurring_forbidden_claims": [
     {
-      "count": 451,
+      "count": 620,
       "phrase": "benchmark promotion"
     },
     {
-      "count": 385,
-      "phrase": "completed derivation claim"
-    },
-    {
-      "count": 339,
+      "count": 434,
       "phrase": "global theory rejection"
     },
     {
-      "count": 281,
-      "phrase": "Gate Chair verdict"
+      "count": 434,
+      "phrase": "completed derivation claim"
     },
     {
-      "count": 273,
+      "count": 430,
       "phrase": "canonical ontology edit"
     },
     {
-      "count": 248,
-      "phrase": "future source-extension impossibility"
+      "count": 418,
+      "phrase": "Gate Chair verdict"
     },
     {
-      "count": 201,
-      "phrase": "matter coupling claim"
-    },
-    {
-      "count": 180,
+      "count": 391,
       "phrase": "source-law adoption"
     },
     {
-      "count": 179,
-      "phrase": "canonical ontology TeX edit"
+      "count": 378,
+      "phrase": "future source-extension impossibility"
     },
     {
-      "count": 166,
-      "phrase": "validator as proof"
+      "count": 278,
+      "phrase": "MetricData(E) adoption"
     },
     {
-      "count": 165,
-      "phrase": "Einstein equations claim"
-    },
-    {
-      "count": 164,
-      "phrase": "handoff as proof"
-    },
-    {
-      "count": 160,
-      "phrase": "local cache as proof"
-    },
-    {
-      "count": 159,
+      "count": 248,
       "phrase": "commit status as proof"
     },
     {
-      "count": 157,
+      "count": 246,
       "phrase": "role as proof"
     },
     {
-      "count": 156,
+      "count": 236,
+      "phrase": "registry metadata as proof"
+    },
+    {
+      "count": 225,
+      "phrase": "coupling-law adoption"
+    },
+    {
+      "count": 223,
+      "phrase": "approval as proof"
+    },
+    {
+      "count": 222,
+      "phrase": "local cache as proof"
+    },
+    {
+      "count": 220,
+      "phrase": "detector semantics import"
+    },
+    {
+      "count": 212,
       "phrase": "benchmark Gate Chair closure"
     }
   ],
   "recurring_gate_requirements": [
     {
-      "count": 450,
+      "count": 751,
       "phrase": "benchmark promotion"
     },
     {
-      "count": 272,
+      "count": 463,
       "phrase": "Gate Chair verdict"
+    },
+    {
+      "count": 458,
+      "phrase": "completed derivation"
+    },
+    {
+      "count": 450,
+      "phrase": "source-law adoption"
+    },
+    {
+      "count": 401,
+      "phrase": "Einstein equations adoption"
+    },
+    {
+      "count": 329,
+      "phrase": "global theory rejection"
+    },
+    {
+      "count": 320,
+      "phrase": "canonical ontology edit"
+    },
+    {
+      "count": 302,
+      "phrase": "coupling-law adoption"
+    },
+    {
+      "count": 282,
+      "phrase": "MetricData(E) adoption"
+    },
+    {
+      "count": 282,
+      "phrase": "stress-energy semantics"
     },
     {
       "count": 257,
       "phrase": "ontology edit"
     },
     {
-      "count": 229,
-      "phrase": "global theory rejection"
-    },
-    {
-      "count": 193,
-      "phrase": "Einstein equations adoption"
-    },
-    {
-      "count": 192,
-      "phrase": "derivation claim"
-    },
-    {
-      "count": 181,
-      "phrase": "future source-extension impossibility claim"
-    },
-    {
-      "count": 171,
-      "phrase": "canonical ontology TeX edit"
-    },
-    {
-      "count": 157,
-      "phrase": "completed derivation"
-    },
-    {
-      "count": 149,
-      "phrase": "source-law adoption"
-    },
-    {
-      "count": 140,
-      "phrase": "MetricData(E) adoption"
-    },
-    {
-      "count": 137,
-      "phrase": "matter coupling adoption"
+      "count": 255,
+      "phrase": "matter action"
     }
   ],
-  "row_count": 460,
+  "row_count": 837,
   "scope_counts": {
+    "P18-T01 physics-program manuscript outline": 1,
+    "P18-T02 AI methodology manuscript outline": 1,
+    "P18-T03 shared glossary and cross-manuscript boundary": 1,
+    "P19-T01 V15 recommendation coverage audit": 1,
+    "P19-T02 current frontier final refresh": 1,
+    "P19-T03 final validation packet": 1,
+    "P19-T04 ordinary continuation handoff": 1,
     "current_frontier_handoff0153_sync": 1,
     "current_frontier_post_rt114_sync": 1,
     "current_frontier_post_rt152_sync": 1,
     "local_tracking_governance_cleanup": 1,
     "project": 1,
-    "task": 455
+    "task": 751,
+    "v16_p10_t01_source_model_zoo_schema": 1,
+    "v16_p10_t02_initial_source_model_zoo": 1,
+    "v16_p10_t03_model_zoo_validation_and_selector": 1,
+    "v16_p11_t01_negative_result_reader_language_audit": 1,
+    "v16_p11_t03_negative_result_integration_selector": 1,
+    "v16_p12_t01_physics_manuscript_status_refresh": 1,
+    "v16_p12_t02_ai_methodology_manuscript_status_refresh": 1,
+    "v16_p12_t03_manuscript_split_boundary_checklist": 1,
+    "v16_p13_t02_one_question_red_team_packet": 1,
+    "v16_p13_t03_internal_one_question_red_team_pilot": 1,
+    "v16_p14_t01_target_import_attack_taxonomy": 1,
+    "v16_p14_t02_target_import_attack_fixture_catalog": 1,
+    "v16_p14_t03_target_import_validator_integration": 1,
+    "v16_p15_t01_compact_frontier_schema": 1,
+    "v16_p15_t02_compact_frontier_renderer": 1,
+    "v16_p15_t03_compact_frontier_check_integration": 1,
+    "v16_p16_t01_documentation_impact_consolidation": 1,
+    "v16_p16_t02_validation_inventory_update": 1,
+    "v16_p4_t03_valid_invariance_certificate_instance": 1,
+    "v16_p4_t04_valid_factorization_certificate_instance": 1,
+    "v16_p4_t05_negative_certificate_instance_packet": 1,
+    "v16_p4_t06_certificate_instance_index": 1,
+    "v16_p5_t01_eqms_theorem_content_separation_audit": 1,
+    "v16_p5_t02_refactored_certificate_indexed_source_equivalence_target_spec": 1,
+    "v16_p5_t03_certificate_indexed_equivalence_property_theorem_attempt": 1,
+    "v16_p5_t04_post_eqms_refactor_route_selector": 1,
+    "v16_p6_t01_formalization_scope_selector": 1,
+    "v16_p6_t02_support_only_executable_certificate_spec": 1,
+    "v16_p6_t03_formalization_integration_report": 1,
+    "v16_p7_t01_minimum_physics_payload_schema": 1,
+    "v16_p7_t02_route_orbit_gating_policy": 1,
+    "v16_p7_t03_payload_orbit_validator_integration": 1,
+    "v16_p8_t01_risky_status_field_audit": 1,
+    "v16_p8_t02_layered_status_field_schema": 1,
+    "v16_p8_t03_status_field_compatibility_validator": 1,
+    "v16_p9_t01_eqsrc_retainh_genh_trigger_list": 1,
+    "v16_p9_t02_upstream_trigger_selector_integration": 1,
+    "v17_p11_t01_github_actions_validation_workflow": 1,
+    "v17_p12_t01_ai_research_agent_metrics_taxonomy": 1,
+    "v17_p12_t02_ai_research_agent_metrics_report_extension": 1,
+    "v17_p12_t03_ai_methodology_evaluation_memo": 1,
+    "v17_p12_t04_methodology_dashboard_integration": 1,
+    "v17_p13_t01_integration_report": 1,
+    "v17_p13_t02_final_validation_packet": 1,
+    "v17_p13_t03_current_frontier_synchronization": 1,
+    "v17_p13_t04_ordinary_continuation_handoff": 1,
+    "v18 P4-T01 countermodel obligation policy": 1,
+    "v18 P4-T02 countermodel obligation schema and registry": 1,
+    "v18 P4-T03 countermodel obligation validator and tests": 1,
+    "v18 P4-T04 countermodel obligation theorem task template integration": 1,
+    "v18 P4-T05 countermodel obligation pilot": 1,
+    "v18 P4-T06 countermodel obligation red-team review": 1,
+    "v18 P5-T01 source detector/readout burden design note": 1,
+    "v18_p0_t01_plan_registration": 1,
+    "v18_p0_t02_backlog_materialization": 1,
+    "v18_p0_t03_active_state_preflight": 1,
+    "v18_p0_t04_recommendation_coverage_seed": 1,
+    "v18_p1_t01_active_state_bifurcation_policy": 1,
+    "v18_p1_t02_active_state_bifurcation_renderer": 1,
+    "v18_p1_t03_active_state_sidecar_validator": 1,
+    "v18_p1_t04_active_state_bifurcation_red_team_review": 1,
+    "v18_p1_t04_repair_active_state_supersession_director_decision_guard": 1,
+    "v18_p2_t01_source_equivalence_typed_object_problem_statement": 1,
+    "v18_p2_t02_source_equivalence_typed_schema": 1,
+    "v18_p2_t03_source_equivalence_typed_object": 1,
+    "v18_p2_t04_source_equivalence_typed_object_smuggling_audit": 1,
+    "v18_p2_t05_source_equivalence_typed_object_refuter_stress": 1,
+    "v18_p2_t06_typed_object_continuation_selector": 1,
+    "v18_p3_t01_eqsrc_family_closure_setup": 1,
+    "v18_p3_t02_eqsrc_family_closure_attempt": 1,
+    "v18_p3_t03_retainh_genh_primitive_boundary": 1,
+    "v18_p3_t04_eqsrc_family_closure_smuggling_audit": 1,
+    "v18_p3_t05_eqsrc_family_closure_refuter_stress": 1,
+    "v18_p3_t06_post_eqsrc_family_closure_selector": 1
   },
-  "source_commit": "53aea4bfed312d874cad328496c8f9e0e3a844c5",
-  "source_commit_date": "2026-06-28T20:01:23-06:00",
+  "source_commit": "5ad2d856b5b7a689b76035e348734824cf7411f0",
+  "source_commit_date": "2026-07-12T07:40:03-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "dff2b7472bc558a38f21e6f723a538774c076638e8b42eb28f55e4eaf157ae8c"
+      "sha256": "eeac221198f3c862a835e62c0ed0e1deaf5e7164fbd45266d2a8673d35f764af"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "3e475708c222a035ce9caafdc4eea6bf4380e3947159a339e1d66739240e6a2e"
+      "sha256": "1a28fc71d3076347be4221e4d30b4bf962e5f752fd9d90f099d916dd89a4706c"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
-      "path": "research_control/handoffs/handoff-0323.yaml",
-      "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/handoffs/handoff-0740.yaml",
+      "path": "research_control/handoffs/handoff-0740.yaml",
+      "sha256": "5be1f16f476c1f03db0baf3dcfec8ffc1947ff61c5d5d3ff43012239ce5c0c1d"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
-      "path": "research_control/handoffs/handoff-0323.md",
-      "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/handoffs/handoff-0740.md",
+      "path": "research_control/handoffs/handoff-0740.md",
+      "sha256": "2d2bb5936181f7040357c1074c06e124904b28cd84fdb6b3138be59055d02402"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/README.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/README.md",
       "path": "research_control/README.md",
-      "sha256": "60b7b72b17f28d4e5d68bce994b0378a14093c9b6da8eafc88042976615ce741"
+      "sha256": "15a348545509714949b35f81e03026af4c2e42d5aef778d2ce1dc90106dd9a9e"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/source-authority-explainer.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/github-facing/source-authority-explainer.md",
       "path": "github-facing/source-authority-explainer.md",
-      "sha256": "b3d9145c6e9cfebe1dfa5ec59e5905eeec636fa188cc8b65562689337a2a8ebf"
+      "sha256": "16eabfe2c9bc8d591d691281498655a8e4c22ee85485173c85bdd5e6a7317993"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/claim-gates-explainer.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/claim-gates-explainer.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/github-facing/claim-gates-explainer.md",
       "path": "github-facing/claim-gates-explainer.md",
-      "sha256": "8af0f20cb1d9a31c39f9b0077bc07cf07d73e67035da99330704b159f590c5c6"
+      "sha256": "c1bf6ca303eec3433a271f63288b58b7e50a02fd32ef4e04ea0a05a008609f2a"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.yaml",
-      "label": "research_control/handoffs/handoff-0323.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/handoffs/handoff-0740.yaml",
+      "label": "research_control/handoffs/handoff-0740.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/handoffs/handoff-0323.md",
-      "label": "research_control/handoffs/handoff-0323.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/handoffs/handoff-0740.md",
+      "label": "research_control/handoffs/handoff-0740.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/research_control/README.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/research_control/README.md",
       "label": "research_control/README.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/source-authority-explainer.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/github-facing/source-authority-explainer.md",
       "label": "github-facing/source-authority-explainer.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/53aea4bfed312d874cad328496c8f9e0e3a844c5/github-facing/claim-gates-explainer.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/5ad2d856b5b7a689b76035e348734824cf7411f0/github-facing/claim-gates-explainer.md",
       "label": "github-facing/claim-gates-explainer.md"
     }
   ],
-  "source_refresh_date": "2026-06-29",
+  "source_refresh_date": "2026-07-12",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "status_counts": {
-    "active": 460
+    "active": 827,
+    "completed": 10
   },
   "version": 1,
-  "website_publication_date": "2026-06-29"
+  "website_publication_date": "2026-07-12"
 }
