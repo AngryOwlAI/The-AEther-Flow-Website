@@ -1,0 +1,127 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-002-A"
+task_id: "WI-20260712-002"
+job_id: "WJ-20260712-002-A"
+created_utc: "2026-07-12T12:55:53Z"
+completed_utc: "2026-07-12T13:04:57Z"
+status: "completed"
+
+summary: "Corrected the ontology library to the source-grounded overview-first eight-item sequence, centralized order data, added fail-closed validation and tests, and regenerated affected page provenance."
+
+scope_confirmation:
+  packet_id: "FE-P0-02"
+  previous_checkpoint: "366d7b263dbff15bcf35a4244a50b34d6f5f75d6"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized the logical next FE-P0-02 packet on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  public_claim_change: true
+  public_claim_change_scope: "source-grounded canonical document sequence only"
+  public_asset_byte_change: false
+  source_manifest_change: false
+  asset_manifest_change: false
+  route_map_change: false
+  page_provenance_change: true
+  physics_review_granted: false
+  physics_delta: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-001.yaml"
+  - "implementation_control/handoffs/WH-20260712-001.md"
+  - "implementation_control/handoffs/WH-20260712-002.yaml"
+  - "implementation_control/handoffs/WH-20260712-002.md"
+  - "implementation_control/tasks/WI-20260712-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-001/jobs/WJ-20260712-001-A.yaml"
+  - "implementation_control/tasks/WI-20260712-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-002/jobs/WJ-20260712-002-A.yaml"
+  - "implementation_control/tasks/WI-20260712-002/jobs/completions/WJC-20260712-002-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/lib/manifests.ts"
+  - "src/pages/resources/documents.astro"
+  - "tests/test_canonical_document_order.py"
+
+sequence_evidence:
+  source_file: "ontology/tex/aether_flow_exact_closure_sequence_overview.tex"
+  source_commit: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  item_count: 8
+  first_slug: "aether_flow_exact_closure_sequence_overview"
+  first_role: "canonical_front_door"
+  final_slug: "aether_flow_exact_closure_flagship_article"
+  final_role: "release_synthesis"
+  rendered_order: "passed"
+  documents_local_page_sha256: "f3c48f146411aa0c5eec6d453ccbf30f0177921aeaf65fb4893257c283216ecd"
+  page_provenance_sha256: "31badc534e4cb0c0b394b978ea0cae82552b8b46e7c0c4f4bef4a2dab078829d"
+  route_authority_status: "canonical"
+  route_adaptation_type: "asset_index"
+
+requirements_satisfied:
+  - "Used the upstream Exact-Closure Sequence Overview as the fixed-order authority."
+  - "Placed the overview first, six scientific-core documents next, and the flagship synthesis last."
+  - "Centralized sequence metadata for manifest assembly, visible guidance, labels, and DocumentActions order."
+  - "Added build-time rejection for duplicate, missing, unexpected, and noncontiguous sequence data."
+  - "Added focused regression tests for slugs, titles, ordinals, roles, failure modes, and TeX/PDF wording."
+  - "Regenerated only the changed documents-route provenance record from the unchanged route map."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed; only the documents local page hash changed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "87 tests passed, including 3 canonical document order tests"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+  - id: "manual-canonical-document-order-review"
+    command: "manual inspection of canonical document labels, slugs, positions, authority roles, and rendered order"
+    status: "passed"
+    evidence: "Rendered download headings matched the exact eight-item sequence; TeX source and PDF derivative wording remained explicit."
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "blocked_preexisting"
+  stopped_at: "npm run validate curator"
+  passed_before_stop:
+    - "manifest validation"
+    - "content-source validation"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+  reason: "curator/reports/latest.json and curator/reports/latest.md remain stale and regeneration is outside the FE-P0-02 allowlist."
+  scope_effect: "All required FE-P0-02 validators pass; no curator file is staged."
+
+remaining_blockers:
+  - "Home and Physics route bundles remain assigned to FE-P0-03 and FE-P0-04."
+  - "No independent physics reviewer or checked-in AG-01 receipt exists, so unrelated public claim work remains blocked."
+  - "Checked-in curator reports remain stale and require a separately bounded refresh."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "stage only the completion-listed FE-P0-02 runtime, test, provenance, and control files and create one local commit"
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-03 Home source-bundle expansion"
+  summary: "Checkpoint FE-P0-02 locally and stop; FE-P0-03 may be separately authorized afterward."
+  do_not_skip: "Do not open FE-P0-03, expand Physics, change unrelated claims, push, deploy, or mutate upstream."

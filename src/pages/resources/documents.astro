@@ -5,7 +5,11 @@ import EvidenceRail from "../../components/EvidenceRail.astro";
 import StatusDossier from "../../components/StatusDossier.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcesDocumentsComprehension } from "../../lib/supportComprehensionContent";
-import { approvedDownloads, ontologyDocuments } from "../../lib/manifests";
+import {
+  approvedDownloads,
+  ontologyDocuments,
+  ontologyDocumentSequence,
+} from "../../lib/manifests";
 
 const approvedDocumentDownloads = approvedDownloads.filter(
   (item) => item.kind === "pdf" || item.kind === "tex",
@@ -68,56 +72,12 @@ const documentReadingGuide = [
   },
 ];
 
-const specialistReadingOrder = [
-  {
-    slug: "aether_flow_foundations",
-    label: "1",
-    title: "Foundations",
-    body: "Start with the source vocabulary, core ontology terms, and baseline assumptions.",
-  },
-  {
-    slug: "aether_flow_dynamics",
-    label: "2",
-    title: "Dynamics",
-    body: "Read next for evolution and response structure after the foundations are clear.",
-  },
-  {
-    slug: "aether_flow_geometry",
-    label: "3",
-    title: "Geometry",
-    body: "Read after dynamics to inspect the geometric interpretation layer.",
-  },
-  {
-    slug: "aether_flow_relativistic_recovery",
-    label: "4",
-    title: "Relativistic Recovery",
-    body: "Read when comparing the ontology package with relativistic benchmark behavior.",
-  },
-  {
-    slug: "aether_flow_consistency",
-    label: "5",
-    title: "Consistency",
-    body: "Read after the main structure to inspect internal compatibility claims.",
-  },
-  {
-    slug: "aether_flow_exact_closure_note",
-    label: "6",
-    title: "Exact Closure Note",
-    body: "Read as a compact closure-oriented note after the baseline package.",
-  },
-  {
-    slug: "aether_flow_exact_closure_sequence_overview",
-    label: "7",
-    title: "Exact Closure Sequence Overview",
-    body: "Use as a guide to the closure-sequence material, not as independent proof.",
-  },
-  {
-    slug: "aether_flow_exact_closure_flagship_article",
-    label: "8",
-    title: "Exact Closure Flagship Article",
-    body: "Read last as the broadest synthesis after inspecting the narrower source files.",
-  },
-];
+const specialistReadingOrder = ontologyDocumentSequence.map((entry) => ({
+  slug: entry.slug,
+  label: String(entry.ordinal),
+  title: entry.title,
+  body: entry.guidance,
+}));
 
 const documentGuidanceBySlug = Object.fromEntries(
   specialistReadingOrder.map((item) => [
@@ -260,11 +220,11 @@ const sourceStatusGuide = [
   <section class="content-band content-band-tight" aria-labelledby="specialist-reading-title">
     <div class="section-header">
       <p class="eyebrow">Specialist order</p>
-      <h2 id="specialist-reading-title">Read narrow source files before broad synthesis.</h2>
+      <h2 id="specialist-reading-title">Start at the canonical front door.</h2>
       <p class="lead">
-        This order follows the website ontology document order so specialists
-        can move from foundations toward closure-oriented synthesis with the
-        source-status boundary still visible.
+        The overview fixes the package order and claim boundary. Follow it
+        through the six-document scientific core, then use the flagship article
+        as a release-facing synthesis rather than a replacement for the overview.
       </p>
     </div>
     <StatusDossier

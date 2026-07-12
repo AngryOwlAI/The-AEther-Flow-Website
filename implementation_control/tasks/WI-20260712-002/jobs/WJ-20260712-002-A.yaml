@@ -1,0 +1,138 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-002-A"
+task_id: "WI-20260712-002"
+title: "Centralize And Validate The Canonical Document Sequence"
+created_utc: "2026-07-12T12:55:53Z"
+updated_utc: "2026-07-12T13:04:57Z"
+status: "active"
+
+objective: "Implement one overview-first canonical sequence definition, consume it on the documents route and in manifest assembly, validate exact membership, and regenerate affected provenance."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P0-02 packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-02"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "allowed_only_for_the_documents_route_and_manifest_order_module"
+  public_claim_write_status: "allowed_only_for_the_source-grounded_canonical_sequence_correction"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "src/lib/manifests.ts"
+  - "src/pages/resources/documents.astro"
+  - "src/components/DocumentActions.astro"
+  - "public/files/manifests/source_manifest.json"
+  - "public/files/manifests/asset_manifest.json"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/"
+  - "read-only upstream exact-closure sequence overview and flagship article"
+  - "website Git status and history evidence"
+
+allowed_writes:
+  - "src/lib/manifests.ts"
+  - "src/pages/resources/documents.astro"
+  - "tests/test_canonical_document_order.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-001.yaml"
+  - "implementation_control/handoffs/WH-20260712-001.md"
+  - "implementation_control/handoffs/WH-20260712-002.yaml"
+  - "implementation_control/handoffs/WH-20260712-002.md"
+  - "implementation_control/tasks/WI-20260712-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-001/jobs/WJ-20260712-001-A.yaml"
+  - "implementation_control/tasks/WI-20260712-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-002/jobs/WJ-20260712-002-A.yaml"
+  - "implementation_control/tasks/WI-20260712-002/jobs/completions/WJC-20260712-002-A.yaml"
+
+required_outputs:
+  - "One typed overview-first eight-item sequence definition with public roles and reader guidance."
+  - "A documents route and DocumentActions input derived from that single sequence."
+  - "A fail-closed exact-membership validator for duplicate, missing, and unexpected ontology documents."
+  - "Focused tests for labels, slugs, positions, failure modes, and source-role wording."
+  - "Regenerated page provenance from the unchanged route map."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint 366d7b263dbff15bcf35a4244a50b34d6f5f75d6."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Only the upstream-grounded canonical sequence correction."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Documents page sequence and guidance only; no route or navigation target changes."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "Manifest-order data centralization and validation only."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset bytes or paths change."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Regenerate page provenance without changing source bundles or authority classes."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-canonical-document-order-review"
+    command: "manual inspection of canonical document labels, slugs, positions, authority roles, and rendered order"
+    required: true
+
+stop_conditions:
+  - "The upstream overview does not support the planned order or role wording."
+  - "A write outside the exact documents, manifest-order, focused test, provenance, and control-record allowlist becomes necessary."
+  - "The work requires FE-P0-03, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260712-002-A"
+  path: "implementation_control/tasks/WI-20260712-002/jobs/completions/WJC-20260712-002-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-03 Home source-bundle expansion"
+  summary: "After FE-P0-02 checkpoint, stop and wait for separate FE-P0-03 authorization."
+  do_not_skip: "Do not open FE-P0-03, expand Physics, change unrelated claims, push, deploy, or mutate upstream."

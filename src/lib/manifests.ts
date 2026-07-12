@@ -48,6 +48,14 @@ export type OntologyDocument = {
   tex?: DownloadItem;
 };
 
+export type OntologyDocumentSequenceEntry = {
+  slug: string;
+  ordinal: number;
+  title: string;
+  role: "canonical_front_door" | "ordered_core" | "release_synthesis";
+  guidance: string;
+};
+
 const sourceItems = (sourceManifest.items as SourceManifestItem[]) ?? [];
 const assets = (assetManifest.items as AssetManifestItem[]) ?? [];
 const sourceById = new Map(sourceItems.map((item) => [item.id, item]));
@@ -74,26 +82,76 @@ export const downloadStatusCounts = downloads.reduce<Record<string, number>>((co
   return counts;
 }, {});
 
-export const ontologyDocumentOrder = [
-  "aether_flow_foundations",
-  "aether_flow_dynamics",
-  "aether_flow_geometry",
-  "aether_flow_relativistic_recovery",
-  "aether_flow_consistency",
-  "aether_flow_exact_closure_note",
-  "aether_flow_exact_closure_sequence_overview",
-  "aether_flow_exact_closure_flagship_article",
+export const ontologyDocumentSequence: readonly OntologyDocumentSequenceEntry[] = [
+  {
+    slug: "aether_flow_exact_closure_sequence_overview",
+    ordinal: 1,
+    title: "Exact Closure Sequence Overview",
+    role: "canonical_front_door",
+    guidance:
+      "Start here. This overview is the canonical scientific front door and fixes the package reading order and claim boundary.",
+  },
+  {
+    slug: "aether_flow_exact_closure_note",
+    ordinal: 2,
+    title: "Exact Closure Note",
+    role: "ordered_core",
+    guidance:
+      "Read the shortest standalone anchor for the active exact-closure position and its explicit nonclaims.",
+  },
+  {
+    slug: "aether_flow_foundations",
+    ordinal: 3,
+    title: "Foundations",
+    role: "ordered_core",
+    guidance:
+      "Continue with the ontological vocabulary, original framework intent, and the reason exact closure is the active stance.",
+  },
+  {
+    slug: "aether_flow_dynamics",
+    ordinal: 4,
+    title: "Dynamics",
+    role: "ordered_core",
+    guidance:
+      "Inspect the adopted effective action, field equations, matter coupling, weak-field structure, and benchmark role.",
+  },
+  {
+    slug: "aether_flow_consistency",
+    ordinal: 5,
+    title: "Consistency",
+    role: "ordered_core",
+    guidance:
+      "Check the gauge structure, degree-of-freedom count, and effective health conditions inherited from GR.",
+  },
+  {
+    slug: "aether_flow_relativistic_recovery",
+    ordinal: 6,
+    title: "Relativistic Recovery",
+    role: "ordered_core",
+    guidance:
+      "Read the exact relation to GR and the local relation to SR, including propagation, redshift, clocks, and inertial structure.",
+  },
+  {
+    slug: "aether_flow_geometry",
+    ordinal: 7,
+    title: "Flow Geometry",
+    role: "ordered_core",
+    guidance:
+      "Complete the core with the congruence-based geometric dictionary for the AEther-flow interpretation.",
+  },
+  {
+    slug: "aether_flow_exact_closure_flagship_article",
+    ordinal: 8,
+    title: "Exact Closure Flagship Article",
+    role: "release_synthesis",
+    guidance:
+      "Read this release-facing synthesis after the ordered scientific core; it does not replace the canonical overview.",
+  },
 ];
 
-const ontologyTitleFromSlug = (slug: string) =>
-  slug
-    .split("_")
-    .map((word) => {
-      if (word === "aether") return "AEther";
-      if (word === "gr") return "GR";
-      return `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
-    })
-    .join(" ");
+export const ontologyDocumentOrder = ontologyDocumentSequence.map(
+  (entry) => entry.slug,
+);
 
 const ontologySlugFromDownload = (item: DownloadItem) => {
   const sourcePath = item.source?.source_path ?? item.path;
@@ -101,14 +159,58 @@ const ontologySlugFromDownload = (item: DownloadItem) => {
   return match?.[1];
 };
 
-export const ontologyDocuments: OntologyDocument[] = ontologyDocumentOrder
-  .map((slug) => {
-    const documentDownloads = approvedDownloads.filter(
-      (item) => ontologySlugFromDownload(item) === slug,
+const duplicateValues = (values: readonly string[]) =>
+  [...new Set(values.filter((value, index) => values.indexOf(value) !== index))];
+
+export const validateOntologyDocumentSequence = (
+  sequence: readonly OntologyDocumentSequenceEntry[],
+  availableSlugs: readonly string[],
+) => {
+  const expectedSlugs = sequence.map((entry) => entry.slug);
+  const duplicateExpected = duplicateValues(expectedSlugs);
+  const duplicateAvailable = duplicateValues(availableSlugs);
+  const expectedSet = new Set(expectedSlugs);
+  const availableSet = new Set(availableSlugs);
+  const missing = expectedSlugs.filter((slug) => !availableSet.has(slug));
+  const unexpected = availableSlugs.filter((slug) => !expectedSet.has(slug));
+  const invalidOrdinals = sequence
+    .filter((entry, index) => entry.ordinal !== index + 1)
+    .map((entry) => `${entry.slug}=${entry.ordinal}`);
+  const errors = [
+    duplicateExpected.length && `duplicate sequence slugs: ${duplicateExpected.join(", ")}`,
+    duplicateAvailable.length && `duplicate available slugs: ${duplicateAvailable.join(", ")}`,
+    missing.length && `missing ontology documents: ${missing.join(", ")}`,
+    unexpected.length && `unexpected ontology documents: ${unexpected.join(", ")}`,
+    invalidOrdinals.length && `invalid sequence ordinals: ${invalidOrdinals.join(", ")}`,
+  ].filter(Boolean);
+
+  if (errors.length) {
+    throw new Error(
+      `Canonical ontology document sequence is invalid: ${errors.join("; ")}`,
     );
+  }
+};
+
+const documentDownloadsBySlug = new Map<string, DownloadItem[]>();
+for (const item of approvedDownloads) {
+  const slug = ontologySlugFromDownload(item);
+  if (!slug) continue;
+  const documentDownloads = documentDownloadsBySlug.get(slug) ?? [];
+  documentDownloads.push(item);
+  documentDownloadsBySlug.set(slug, documentDownloads);
+}
+
+validateOntologyDocumentSequence(
+  ontologyDocumentSequence,
+  [...documentDownloadsBySlug.keys()],
+);
+
+export const ontologyDocuments: OntologyDocument[] = ontologyDocumentSequence
+  .map((entry) => {
+    const documentDownloads = documentDownloadsBySlug.get(entry.slug) ?? [];
     return {
-      slug,
-      title: ontologyTitleFromSlug(slug),
+      slug: entry.slug,
+      title: entry.title,
       pdf: documentDownloads.find((item) => item.kind === "pdf"),
       tex: documentDownloads.find((item) => item.kind === "tex"),
     };

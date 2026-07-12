@@ -1,0 +1,166 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260712-002"
+title: "Correct Canonical Ontology Document Order"
+created_utc: "2026-07-12T12:55:53Z"
+updated_utc: "2026-07-12T13:04:57Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P0-02"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
+  adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260712-001"
+  previous_checkpoint: "366d7b263dbff15bcf35a4244a50b34d6f5f75d6"
+  owner_authorization: "Owner explicitly authorized the logical next FE-P0-02 packet on 2026-07-12"
+
+goal: "Correct the public ontology library to the upstream overview-first eight-item canonical sequence, make one typed sequence definition drive all consumers, and fail closed on duplicate or missing documents."
+
+requirements:
+  - "Use the upstream Exact-Closure Sequence Overview as the source authority for the fixed sequence."
+  - "Place the overview first, followed by the exact-closure note, foundations, dynamics, consistency, relativistic recovery, flow geometry, and flagship synthesis."
+  - "Keep the overview identified as the canonical scientific front door and the flagship article identified as a release-facing synthesis."
+  - "Make one typed sequence definition drive manifest ordering, reader guidance, ordinal labels, and DocumentActions order."
+  - "Fail the static build when an ontology slug is duplicated, missing, or unexpected."
+  - "Test labels, slugs, ordinal positions, duplicate detection, missing detection, and TeX/PDF authority wording."
+  - "Regenerate page provenance for the changed documents route without changing its source bundle or authority classification."
+
+scope:
+  in_scope:
+    - "src/lib/manifests.ts"
+    - "src/pages/resources/documents.astro"
+    - "tests/test_canonical_document_order.py"
+    - "public/files/manifests/page_provenance.json regenerated from the unchanged route map"
+    - "Exactly allowlisted implementation-control records"
+    - "Read-only upstream exact-closure sequence overview and website manifests"
+  out_of_scope:
+    - "Document asset bytes, source manifest authority, asset manifest metadata, or route-map changes"
+    - "Home or Physics route-bundle expansion assigned to FE-P0-03 and FE-P0-04"
+    - "Unrelated public claims, physics-owner acceptance, navigation, styling, components, or SVG changes"
+    - "Upstream source-project writes, Git push, or Cloudflare deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260712-002-A"
+  next_packet_after_this_task: "FE-P0-03 only after FE-P0-02 is validated and locally checkpointed"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "src/lib/manifests.ts"
+    - "src/pages/resources/documents.astro"
+    - "src/components/DocumentActions.astro"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/asset_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/"
+    - "website Git status and history evidence"
+  upstream_source_repository:
+    - "ontology/tex/aether_flow_exact_closure_sequence_overview.tex"
+    - "ontology/tex/aether_flow_exact_closure_flagship_article.tex"
+
+allowed_writes:
+  website_repository:
+    - "src/lib/manifests.ts"
+    - "src/pages/resources/documents.astro"
+    - "tests/test_canonical_document_order.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260712-001.yaml"
+    - "implementation_control/handoffs/WH-20260712-001.md"
+    - "implementation_control/handoffs/WH-20260712-002.yaml"
+    - "implementation_control/handoffs/WH-20260712-002.md"
+    - "implementation_control/tasks/WI-20260712-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-001/jobs/WJ-20260712-001-A.yaml"
+    - "implementation_control/tasks/WI-20260712-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-002/jobs/WJ-20260712-002-A.yaml"
+    - "implementation_control/tasks/WI-20260712-002/jobs/completions/WJC-20260712-002-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly authorized FE-P0-02 after checkpoint 366d7b263dbff15bcf35a4244a50b34d6f5f75d6."
+  public_claim_changes:
+    status: "approved"
+    reason: "The owner authorized the source-grounded canonical sequence correction only; unrelated public claims remain closed."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source or derivative refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "The documents page may change order and guidance only; no route, redirect, or navigation target changes."
+  shared_visual_systems:
+    status: "approved"
+    reason: "The shared manifest-order module may change only to centralize and validate canonical document sequence data."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No downloadable asset byte or path changes."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Page provenance may be regenerated for the changed documents route without changing authority classifications."
+  git_push:
+    status: "not_required"
+    reason: "Push remains separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment remains separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The website implementation-control system remains read-only toward the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-canonical-document-order-review"
+    command: "manual inspection of canonical document labels, slugs, positions, authority roles, and rendered order"
+    required: true
+
+stop_conditions:
+  - "The upstream overview does not support the planned order or public-role wording."
+  - "A source, derivative, route-map, asset, unrelated public claim, component, style, navigation, or SVG change becomes necessary."
+  - "The work requires FE-P0-03, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Use npm run checkpoint:implementation only after WJC-20260712-002-A exists with passed evidence. Do not push or deploy."
+
+handoff:
+  latest_handoff_id: "WH-20260712-002"
+  yaml_path: "implementation_control/handoffs/WH-20260712-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-002.md"
+
+completion_record:
+  completion_id: "WJC-20260712-002-A"
+  path: "implementation_control/tasks/WI-20260712-002/jobs/completions/WJC-20260712-002-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-03 Home source-bundle expansion"
+  summary: "After FE-P0-02 is validated and locally checkpointed, stop and request separate authorization for FE-P0-03."
+  do_not_skip: "Do not open FE-P0-03, expand Physics, change unrelated public claims, push, deploy, or mutate upstream in this packet."

@@ -1,0 +1,91 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260712-002"
+created_utc: "2026-07-12T12:55:53Z"
+updated_utc: "2026-07-12T13:04:57Z"
+status: "active"
+
+task_id: "WI-20260712-002"
+job_id: "WJ-20260712-002-A"
+
+summary: "Completed FE-P0-02 with one overview-first canonical sequence, fail-closed order validation, focused regression tests, and current documents-route provenance."
+
+current_state:
+  - "FE-P0-01R is checkpointed at 366d7b263dbff15bcf35a4244a50b34d6f5f75d6 and its source-refresh and manifest-authority gate remains cleared."
+  - "The owner explicitly authorized FE-P0-02 on 2026-07-12."
+  - "The documents route now begins with the Exact Closure Sequence Overview as canonical scientific front door."
+  - "The overview is followed by Exact Closure Note, Foundations, Dynamics, Consistency, Relativistic Recovery, and Flow Geometry."
+  - "The Exact Closure Flagship Article remains eighth as a release-facing synthesis built on the ordered core."
+  - "One typed sequence definition now drives manifest assembly, reader guidance, ordinal labels, and DocumentActions order."
+  - "Build-time validation rejects duplicate, missing, unexpected, or noncontiguous sequence data."
+  - "The documents-route provenance hash was regenerated while its source bundle, canonical authority, and asset-index classification remained unchanged."
+  - "No TeX/PDF byte, source manifest, asset manifest, route map, unrelated public claim, upstream file, push, or deployment changed."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden_and_unchanged"
+  website_public_claim_changes: "completed_only_for_source-grounded_sequence_correction"
+  document_asset_bytes: "unchanged"
+  source_manifest: "unchanged"
+  asset_manifest: "unchanged"
+  route_map: "unchanged"
+  physics_owner_acceptance: "not_granted"
+  deployment_readiness: "not_granted"
+
+completion_record:
+  completion_id: "WJC-20260712-002-A"
+  path: "implementation_control/tasks/WI-20260712-002/jobs/completions/WJC-20260712-002-A.yaml"
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+  - id: "manual-canonical-document-order-review"
+    command: "manual inspection of canonical document labels, slugs, positions, authority roles, and rendered order"
+    status: "passed"
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "blocked_preexisting"
+  passed_before_stop:
+    - "manifest validation"
+    - "content-source validation"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+  stopped_at: "validate curator"
+  reason: "The checked-in curator reports at curator/reports/latest.json and curator/reports/latest.md remain stale; their regeneration is outside FE-P0-02."
+
+next_recommended_action:
+  task_packet: "FE-P0-03 Home source-bundle expansion"
+  summary: "Create the FE-P0-02 local checkpoint and stop; FE-P0-03 requires separate authorization."
+  do_not_skip: "Do not open FE-P0-03, expand Physics, change unrelated claims, push, deploy, or mutate upstream."
+
+stop_before:
+  - "FE-P0-03"
+  - "Home or Physics route-bundle expansion"
+  - "unrelated public claim changes"
+  - "physics-owner acceptance"
+  - "public asset or route-map changes"
+  - "upstream source-project writes"
+  - "Git push"
+  - "Cloudflare deployment"

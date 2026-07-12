@@ -4,8 +4,8 @@ job_id: "WJ-20260712-001-A"
 task_id: "WI-20260712-001"
 title: "Refresh Publication Metadata And Repair Derivative Authority"
 created_utc: "2026-07-12T12:10:26Z"
-updated_utc: "2026-07-12T12:16:52Z"
-status: "active"
+updated_utc: "2026-07-12T12:55:53Z"
+status: "superseded"
 
 objective: "Execute one website-local refresh against pinned upstream commit a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0, repair registry-derived PDF authority, and regenerate current provenance while leaving FE-P0-02 closed."
 
@@ -145,3 +145,7 @@ next_recommended_action:
   task_packet: "FE-P0-02 canonical document order correction"
   summary: "After this packet is checkpointed, stop and report whether the source-refresh and manifest-authority gate is cleared."
   do_not_skip: "Do not open FE-P0-02, expand Home or Physics bundles, change public claims, push, deploy, or mutate upstream in this packet."
+
+supersession:
+  superseded_by_job_id: "WJ-20260712-002-A"
+  reason: "FE-P0-01R was locally checkpointed before the owner separately authorized FE-P0-02."
