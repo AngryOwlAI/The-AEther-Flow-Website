@@ -11,7 +11,7 @@ BASE_LAYOUT = REPO_ROOT / "src/layouts/BaseLayout.astro"
 EXPECTED_Z_INDEX_TOKENS = {
     "--z-content-raised": "1",
     "--z-overlay-control": "2",
-    "--z-skip-link": "10",
+    "--z-skip-link": "60",
     "--z-navigation-panel": "40",
     "--z-site-header": "50",
 }
@@ -60,6 +60,25 @@ def test_each_existing_stacking_context_consumes_its_semantic_token() -> None:
     for selector, token in EXPECTED_Z_INDEX_USES.items():
         assert f"z-index: var({token});" in css_rule(css, selector)
 
-    assert int(EXPECTED_Z_INDEX_TOKENS["--z-skip-link"]) < int(
+    assert int(EXPECTED_Z_INDEX_TOKENS["--z-skip-link"]) > int(
         EXPECTED_Z_INDEX_TOKENS["--z-site-header"]
     )
+
+
+def test_skip_link_is_first_and_targets_focusable_main_content() -> None:
+    css = GLOBAL_CSS.read_text(encoding="utf-8")
+    layout = BASE_LAYOUT.read_text(encoding="utf-8")
+
+    skip_link = '<a class="skip-link" href="#main-content">Skip to content</a>'
+    header = '<header class="site-header">'
+    focusable_main = '<main id="main-content" tabindex="-1">'
+
+    assert skip_link in layout
+    assert focusable_main in layout
+    assert layout.index(skip_link) < layout.index(header) < layout.index(focusable_main)
+    assert "transform: translateY(0);" in css_rule(css, ".skip-link:focus")
+
+    main_focus = css_rule(css, "#main-content:focus")
+    assert "outline: 3px solid var(--color-focus-ring);" in main_focus
+    assert "outline-offset: -0.35rem;" in main_focus
+    assert "scroll-margin-block-start: 1rem;" in css_rule(css, "#main-content")

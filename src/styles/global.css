@@ -61,7 +61,7 @@
   /* Shared stacking layers. Keep component rules on named tokens. */
   --z-content-raised: 1;
   --z-overlay-control: 2;
-  --z-skip-link: 10;
+  --z-skip-link: 60;
   --z-navigation-panel: 40;
   --z-site-header: 50;
 
@@ -99,6 +99,12 @@ body {
 
 #main-content {
   padding-bottom: clamp(3rem, 5vw, 4.5rem);
+  scroll-margin-block-start: 1rem;
+}
+
+#main-content:focus {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -0.35rem;
 }
 
 a {

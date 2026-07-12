@@ -5,7 +5,7 @@ task_id: "WI-20260712-008"
 job_id: "WJ-20260712-008-A"
 created_utc: "2026-07-12T20:09:31Z"
 completed_utc: "2026-07-12T20:09:31Z"
-status: "ready_to_checkpoint"
+status: "completed"
 
 summary: "Established semantic stacking-layer tokens and native dark browser rendering while preserving the existing layer order and frontend behavior."
 
@@ -142,6 +142,11 @@ checkpoint_readiness:
   expected_effect: "Stage only the three FE-P1-01 frontend files completion record and allowlisted control transition files while ignoring unrelated untracked metadata files."
   push_allowed: false
   deployment_allowed: false
+
+checkpoint_evidence:
+  commit: "4f72bb453f233208ea2ba1bbf16e176d41de35c8"
+  observed_as_ancestor_of_head: true
+  repeated: false
 
 remaining_boundaries:
   - "FE-P1-02 remains unopened and requires separate authorization."

@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260712-008"
 created_utc: "2026-07-12T16:08:03Z"
-updated_utc: "2026-07-12T20:04:59Z"
-status: "active"
+updated_utc: "2026-07-12T20:27:40Z"
+status: "superseded"
 
 task_id: "WI-20260712-008"
 job_id: "WJ-20260712-008-A"
@@ -74,4 +74,11 @@ stop_before:
 completion_record:
   completion_id: "WJC-20260712-008-A"
   path: "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
-  status: "ready_to_checkpoint"
+  status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260712-010"
+  task_id: "WI-20260712-010"
+  job_id: "WJ-20260712-010-A"
+  checkpoint: "4f72bb453f233208ea2ba1bbf16e176d41de35c8"
+  reason: "The owner separately authorized the dependent FE-P1-02 skip-link and main-focus packet."

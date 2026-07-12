@@ -1,0 +1,152 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-010-A"
+task_id: "WI-20260712-010"
+job_id: "WJ-20260712-010-A"
+created_utc: "2026-07-12T20:46:36Z"
+completed_utc: "2026-07-12T20:46:36Z"
+status: "ready_to_checkpoint"
+
+summary: "Raised the skip link above the header and made main content an explicit visible focus target without changing header-menu behavior or later packets."
+
+scope_confirmation:
+  packet_id: "FE-P1-02"
+  previous_checkpoint: "4f72bb453f233208ea2ba1bbf16e176d41de35c8"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized FE-P1-02 and its governed control transition on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  skip_link_visibility_change: true
+  main_focus_target_change: true
+  header_menu_behavior_change: false
+  navigation_target_size_change: false
+  public_claim_change: false
+  route_or_manifest_change: false
+  svg_motion_or_public_asset_change: false
+  physics_delta: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/styles/global.css"
+  - "src/layouts/BaseLayout.astro"
+  - "tests/test_foundation_layers_and_color_scheme.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.yaml"
+  - "implementation_control/handoffs/WH-20260712-010.yaml"
+  - "implementation_control/handoffs/WH-20260712-010.md"
+  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-010/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml"
+  - "implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+
+accessibility_evidence:
+  global_css_sha256: "76b2945089cfb7333312c2ed95fafa5d4055132b3fa671d4e21026757a0a95a8"
+  base_layout_sha256: "15ec76cb08c0e392e1c6bc3707527e87d41af43f8eb4e5e760faeb8003acdce3"
+  focused_test_sha256: "dde83cfa82d524cbef4424ba95e868d4f77fd81899ed0d31835990f40740785c"
+  numeric_layers:
+    content_raised: 1
+    overlay_control: 2
+    navigation_panel: 40
+    site_header: 50
+    skip_link: 60
+  skip_link_document_order: "first focusable element before header and main"
+  main_target: "main#main-content tabindex=-1"
+  main_focus_outline: "3px solid var(--color-focus-ring)"
+  main_scroll_margin: "1rem"
+
+browser_evidence:
+  route: "/license/ shared BaseLayout static preview"
+  desktop_100_closed:
+    method: "first Tab from initial page focus"
+    skip_link_visible: true
+    menu_open: false
+    enter_focused_main: true
+  desktop_100_open:
+    method: "explicit skip-link focus while the menu remained open"
+    skip_link_visible: true
+    menu_open: true
+    enter_focused_main: true
+  mobile_320_closed:
+    method: "first Tab at 320x720"
+    skip_link_visible: true
+    horizontal_overflow: false
+    enter_focused_main: true
+  mobile_320_open:
+    method: "explicit skip-link focus at 320x720 while the menu remained open"
+    skip_link_visible: true
+    horizontal_overflow: false
+    enter_focused_main: true
+  desktop_200_closed:
+    method: "first Tab at observed Chromium page scale 2"
+    visual_viewport: "720x450"
+    skip_link_visible: true
+    enter_focused_main: true
+  desktop_200_open:
+    method: "menu opened and skip link focused before applying observed Chromium page scale 2"
+    visual_viewport: "720x450"
+    skip_link_visible: true
+    menu_open: true
+    enter_focused_main: true
+  desktop_400_closed:
+    method: "first Tab using 1440x900 physical canvas equivalence at 360x225 CSS viewport and device scale 4"
+    skip_link_visible: true
+    horizontal_overflow: false
+    enter_focused_main: true
+  desktop_400_open:
+    method: "explicit skip-link focus with menu open at 360x225 CSS viewport and device scale 4"
+    skip_link_visible: true
+    horizontal_overflow: false
+    enter_focused_main: true
+  automation_limit: "Chromium's page-scale automation API capped a requested factor 4 at factor 3; the 400 percent reflow case therefore used the equivalent physical-canvas CSS-viewport and device-scale configuration and is not misreported as direct toolbar zoom."
+  reduced_motion_timing_check: "At prefers-reduced-motion reduce the 0.01ms transition settled to the visible focused state within 50ms."
+
+requirements_satisfied:
+  - "Raised the skip-link semantic layer from 10 to 60 above the unchanged site-header layer at 50."
+  - "Preserved the skip link as the first focusable document element and confirmed first-Tab visibility in initial-focus cases."
+  - "Made main content an explicit tabindex -1 fragment target with a visible focus outline and scroll margin."
+  - "Updated one existing focused test file for stacking order focus order target focusability and focus presentation."
+  - "Verified desktop 320px 200 percent and 400 percent equivalent reflow cases with header menus closed and open."
+  - "Preserved header-menu interaction navigation sizing content claims routes manifests SVG motion public assets upstream sources push and deployment state."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "109 tests passed including four focused foundation tests"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "All configured gates passed including implementation control and the 64-page static build"
+  - id: "manual-skip-link-review"
+    command: "manual inspection of first-Tab skip-link visibility, header stacking, Enter activation, main focus, desktop and 320px widths, 200 and 400 percent zoom, and header menus open and closed"
+    status: "passed"
+    evidence: "All bounded Chromium cases passed; 400 percent used the explicitly recorded equivalent CSS viewport and device-scale configuration because the direct page-scale API caps at 300 percent."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the three FE-P1-02 runtime and test files plus the allowlisted control transition and completion records."
+  push_allowed: false
+  deployment_allowed: false
+
+remaining_boundaries:
+  - "FE-P1-03 remains unopened and requires separate authorization."
+  - "No header-menu behavior navigation sizing public claim route manifest physics source or upstream change occurred."
+  - "No push or deployment is requested or authorized."
+
+next_recommended_action:
+  task_packet: "FE-P1-02 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop before FE-P1-03."
+  do_not_skip: "Do not open FE-P1-03 push deploy promote physics or mutate upstream."

@@ -1,0 +1,153 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260712-010"
+title: "Fix Skip-Link Visibility And Main Focus"
+created_utc: "2026-07-12T20:27:40Z"
+updated_utc: "2026-07-12T20:46:36Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P1-02"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
+  adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260712-008"
+  previous_checkpoint: "4f72bb453f233208ea2ba1bbf16e176d41de35c8"
+  owner_authorization: "Owner explicitly authorized FE-P1-02 implementation and its governed control transition on 2026-07-12"
+
+goal: "Make the skip link the first visible keyboard target above the site header and ensure activation moves the browser focus and reading position to main content."
+
+requirements:
+  - "Raise the existing skip-link stacking token above the site-header layer without changing unrelated layers."
+  - "Keep the skip link first in document focus order and reveal it on the first Tab action."
+  - "Make main content a programmatically focusable fragment target so Enter activation transfers focus and reading position."
+  - "Use visible focus treatment or an unambiguous reading position at the main target."
+  - "Modify only global CSS, BaseLayout markup, one focused existing test file, and allowlisted implementation-control records."
+  - "Verify desktop and 320px widths, 200 and 400 percent zoom, and header menus open and closed."
+
+scope:
+  in_scope:
+    - "Skip-link stacking and focus-visible presentation in src/styles/global.css"
+    - "Main fragment-target focus markup in src/layouts/BaseLayout.astro"
+    - "One focused foundation test file"
+    - "Exactly allowlisted implementation-control records"
+  out_of_scope:
+    - "Header-menu behavior, mobile-menu implementation, navigation target sizing, content, claims, routes, manifests, SVG, motion, or public assets"
+    - "FE-P1-03 or any later packet"
+    - "Upstream source-project writes, Git push, or Cloudflare deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260712-010-A"
+  next_packet_after_this_task: "FE-P1-03 only after FE-P1-02 is validated and locally checkpointed and the owner separately authorizes it"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "src/styles/global.css"
+    - "src/layouts/BaseLayout.astro"
+    - "tests/test_foundation_layers_and_color_scheme.py"
+    - "scripts/"
+    - "implementation_control/"
+    - "website Git status and history evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/styles/global.css"
+    - "src/layouts/BaseLayout.astro"
+    - "tests/test_foundation_layers_and_color_scheme.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260712-008.yaml"
+    - "implementation_control/handoffs/WH-20260712-008.md"
+    - "implementation_control/handoffs/WH-20260712-010.yaml"
+    - "implementation_control/handoffs/WH-20260712-010.md"
+    - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+    - "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+    - "implementation_control/tasks/WI-20260712-010/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml"
+    - "implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly authorized FE-P1-02 after checkpoint 4f72bb453f233208ea2ba1bbf16e176d41de35c8."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public claim, copy, metadata claim, registry, or ladder change occurs."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source or derivative refresh occurs."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval is limited to the existing skip link and main fragment target; navigation structure, routes, redirects, canonicals, and retirements remain unchanged."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval covers only skip-link stacking, visibility, and main focus presentation in the shared layout and global stylesheet."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No manifest or route source bytes change."
+  git_push:
+    status: "not_required"
+    reason: "Push is separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream write remains forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "manual-skip-link-review"
+    command: "manual inspection of first-Tab skip-link visibility, header stacking, Enter activation, main focus, desktop and 320px widths, 200 and 400 percent zoom, and header menus open and closed"
+    required: true
+
+stop_conditions:
+  - "The patch would alter header-menu interaction, navigation target sizing, content, public claims, route authority, manifests, SVG, motion, or public assets."
+  - "The skip link would not remain the first focusable element or would remain below the header."
+  - "Activation would not focus and position main content unambiguously at any required width or zoom level."
+  - "The work requires FE-P1-03, push, deployment, or upstream mutation."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260712-010-A with passed evidence, run npm run checkpoint:implementation, then stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260712-010"
+  yaml_path: "implementation_control/handoffs/WH-20260712-010.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-010.md"
+
+completion_record:
+  completion_id: "WJC-20260712-010-A"
+  path: "implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  status: "ready_to_checkpoint"
+
+next_recommended_action:
+  task_packet: "FE-P1-02 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for WJC-20260712-010-A and stop."
+  do_not_skip: "Do not open FE-P1-03 change header-menu behavior push deploy or mutate upstream."

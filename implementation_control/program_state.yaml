@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T20:04:59Z"
+updated_utc: "2026-07-12T20:46:36Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-008.yaml"
+  - "implementation_control/tasks/WI-20260712-010/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-010.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-008"
-  title: "Establish Layer Tokens And Native Dark Scheme"
+  task_id: "WI-20260712-010"
+  title: "Fix Skip-Link Visibility And Main Focus"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-010/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P1-01"
+    task_packet: "FE-P1-02"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
-    owner_authorization: "Owner explicitly authorized FE-P1-01 implementation and its post-FE-SR-01 checkpoint resumption on 2026-07-12"
+    previous_checkpoint: "4f72bb453f233208ea2ba1bbf16e176d41de35c8"
+    owner_authorization: "Owner explicitly authorized FE-P1-02 implementation and its governed control transition on 2026-07-12"
 
 current_job:
-  job_id: "WJ-20260712-008-A"
+  job_id: "WJ-20260712-010-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-008"
+  handoff_id: "WH-20260712-010"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-008.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-008.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-010.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-010.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-008-A"
-  task_id: "WI-20260712-008"
-  job_id: "WJ-20260712-008-A"
+  completion_id: "WJC-20260712-010-A"
+  task_id: "WI-20260712-010"
+  job_id: "WJ-20260712-010-A"
   status: "ready_to_checkpoint"
-  path: "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -70,14 +70,11 @@ required_validators:
   - id: "aggregate-validation"
     command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-native-dark-scheme-review"
-    command: "manual inspection of native controls, scrollbars, dialog surfaces, and dark-shell contrast in a browser"
-    required_for_current_job: true
-  - id: "manual-layering-review"
-    command: "manual inspection of header, navigation panel, figure controls, dialog top layer, and unchanged skip-link order in a browser"
+  - id: "manual-skip-link-review"
+    command: "manual inspection of first-Tab skip-link visibility, header stacking, Enter activation, main focus, desktop and 320px widths, 200 and 400 percent zoom, and header menus open and closed"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P1-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completion WJC-20260712-008-A."
-  do_not_skip: "Do not open FE-P1-02 change skip-link behavior push deploy promote physics or mutate upstream."
+  task_packet: "FE-P1-02 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completion WJC-20260712-010-A."
+  do_not_skip: "Do not open FE-P1-03 change header-menu behavior push deploy promote physics or mutate upstream."
