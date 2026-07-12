@@ -1,0 +1,147 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-001-A"
+task_id: "WI-20260712-001"
+title: "Refresh Publication Metadata And Repair Derivative Authority"
+created_utc: "2026-07-12T12:10:26Z"
+updated_utc: "2026-07-12T12:16:52Z"
+status: "active"
+
+objective: "Execute one website-local refresh against pinned upstream commit a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0, repair registry-derived PDF authority, and regenerate current provenance while leaving FE-P0-02 closed."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P0-01R source-refresh and manifest-authority repair packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-01R"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "allowed_only_for_the_importer_fix_and_generated_publication_metadata"
+  public_claim_write_status: "forbidden_for_this_job"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-exact-closure-source-preflight-2026-07-11.md"
+  - "scripts/import_ontology_assets.py"
+  - "scripts/generate_page_provenance.py"
+  - "scripts/validate_manifest_paths.py"
+  - "scripts/validate_page_provenance.py"
+  - "public/files/manifests/source_manifest.json"
+  - "public/files/manifests/asset_manifest.json"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "public/files/tex/ontology/"
+  - "public/files/pdf/ontology/"
+  - "implementation_control/"
+  - "read-only upstream ontology files, TeX/PDF registries, claim-boundary registry, and Git evidence allowlisted by WI-20260712-001"
+  - "website Git status and history evidence"
+
+allowed_writes:
+  - "scripts/import_ontology_assets.py"
+  - "tests/test_import_ontology_assets.py"
+  - "public/files/manifests/source_manifest.json"
+  - "public/files/manifests/asset_manifest.json"
+  - "public/files/manifests/page_provenance.json"
+  - "public/files/tex/ontology"
+  - "public/files/pdf/ontology"
+  - "docs/quality/frontend-source-refresh-manifest-authority-repair-2026-07-12.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-007.yaml"
+  - "implementation_control/handoffs/WH-20260711-007.md"
+  - "implementation_control/handoffs/WH-20260712-001.yaml"
+  - "implementation_control/handoffs/WH-20260712-001.md"
+  - "implementation_control/tasks/WI-20260711-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-007/jobs/WJ-20260711-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-001/jobs/WJ-20260712-001-A.yaml"
+  - "implementation_control/tasks/WI-20260712-001/jobs/completions/WJC-20260712-001-A.yaml"
+
+required_outputs:
+  - "An importer that reads authority from the matching TeX or PDF upstream registry."
+  - "A focused regression test proving TeX remains canonical while PDF derivatives are generated_noncanonical."
+  - "Refreshed source and asset manifests pinned to a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0."
+  - "Regenerated page provenance pinned to the same clean upstream commit with current source hashes."
+  - "A dated quality record documenting the bounded repair and remaining FE-P0-03/04 and physics-review gates."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint ed64e566292065dbb3ad537eebea348d99ae51dd."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No reader-facing scientific statement changes."
+  - id: "source_refresh_uncertainty"
+    status: "approved"
+    trigger: "Website-local refresh explicitly authorized; upstream remains read-only and pinned."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route, navigation, redirect, or route-map bundle change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No shared visual-system change."
+  - id: "public_downloadable_assets"
+    status: "approved"
+    trigger: "Existing ontology TeX/PDF publication assets may be recopied only with byte identity preserved."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Source, asset, and provenance manifest repair explicitly authorized."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-source-refresh-authority-review"
+    command: "manual inspection of refreshed source pins, derivative authority statuses, and provenance hashes"
+    required: true
+
+stop_conditions:
+  - "Upstream cleanliness, origin parity, or the a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0 authority pin fails."
+  - "An ontology TeX/PDF byte changes unexpectedly or registry metadata cannot be mapped exactly."
+  - "A schema enum, route bundle, source notice, public claim, or physics-owner change becomes necessary."
+  - "The work requires FE-P0-02, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260712-001-A"
+  path: "implementation_control/tasks/WI-20260712-001/jobs/completions/WJC-20260712-001-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-02 canonical document order correction"
+  summary: "After this packet is checkpointed, stop and report whether the source-refresh and manifest-authority gate is cleared."
+  do_not_skip: "Do not open FE-P0-02, expand Home or Physics bundles, change public claims, push, deploy, or mutate upstream in this packet."

@@ -4,8 +4,8 @@ job_id: "WJ-20260711-007-A"
 task_id: "WI-20260711-007"
 title: "Pin Compare And Disposition The Exact-Closure Source Set"
 created_utc: "2026-07-11T19:51:49Z"
-updated_utc: "2026-07-11T20:00:00Z"
-status: "active"
+updated_utc: "2026-07-12T12:10:26Z"
+status: "superseded"
 
 objective: "Produce a dated, commit-pinned comparison of the authoritative exact-closure sources, registries, governed review state, and website-local copies without mutating source or publication state."
 
@@ -131,3 +131,7 @@ next_recommended_action:
   task_packet: "separately authorized website-local source-refresh and manifest-authority repair"
   summary: "Stop after the read-only preflight and wait for separate authorization to repair current source and publication metadata."
   do_not_skip: "Do not open FE-P0-02, refresh sources, modify manifests, regenerate provenance, change public claims, push, deploy, or mutate upstream without a new bounded authorization."
+
+supersession:
+  superseded_by_job_id: "WJ-20260712-001-A"
+  reason: "FE-P0-01 was locally checkpointed before the owner separately authorized the website-local source-refresh and manifest-authority repair packet."

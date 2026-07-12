@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260711-007"
 title: "Execute FE-P0-01 Authoritative Exact-Closure Source Preflight"
 created_utc: "2026-07-11T19:51:49Z"
-updated_utc: "2026-07-11T20:00:00Z"
-status: "active"
+updated_utc: "2026-07-12T12:10:26Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P0-01"
@@ -167,3 +167,7 @@ next_recommended_action:
   task_packet: "separately authorized website-local source-refresh and manifest-authority repair"
   summary: "Resolve exact-source pins, PDF derivative authority metadata, and stale provenance before FE-P0-02 is opened."
   do_not_skip: "Do not open FE-P0-02, refresh sources, modify manifests, regenerate provenance, change public claims, push, deploy, or mutate upstream without a new bounded authorization."
+
+supersession:
+  superseded_by_task_id: "WI-20260712-001"
+  reason: "FE-P0-01 was locally checkpointed at ed64e566292065dbb3ad537eebea348d99ae51dd; the owner then separately authorized the website-local source-refresh and manifest-authority repair packet."

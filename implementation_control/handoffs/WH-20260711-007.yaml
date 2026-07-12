@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260711-007"
 created_utc: "2026-07-11T19:51:49Z"
-updated_utc: "2026-07-11T20:00:00Z"
-status: "active"
+updated_utc: "2026-07-12T12:10:26Z"
+status: "superseded"
 
 task_id: "WI-20260711-007"
 job_id: "WJ-20260711-007-A"
@@ -84,3 +84,7 @@ stop_before:
   - "upstream source-project writes"
   - "Git push"
   - "Cloudflare deployment"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-001"
+  reason: "The owner authorized FE-P0-01R after checkpoint ed64e566292065dbb3ad537eebea348d99ae51dd."

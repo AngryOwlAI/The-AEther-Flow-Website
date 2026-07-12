@@ -71,10 +71,10 @@ def title_from_slug(slug: str) -> str:
     return " ".join(words)
 
 
-def load_tex_registry(source_root: Path) -> dict[str, dict[str, str]]:
-    registry_path = source_root / "registries/TEX_SOURCE_REGISTRY.csv"
+def load_registry(source_root: Path, registry_name: str) -> dict[str, dict[str, str]]:
+    registry_path = source_root / f"registries/{registry_name}"
     if not registry_path.is_file():
-        return {}
+        raise FileNotFoundError(f"missing upstream registry: {registry_path}")
     rows: dict[str, dict[str, str]] = {}
     with registry_path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -83,6 +83,19 @@ def load_tex_registry(source_root: Path) -> dict[str, dict[str, str]]:
             if path:
                 rows[path] = row
     return rows
+
+
+def require_registry_row(
+    registry_rows: dict[str, dict[str, str]],
+    source_path: str,
+    registry_name: str,
+) -> dict[str, str]:
+    row = registry_rows.get(source_path)
+    if not row:
+        raise ValueError(f"{registry_name}: missing registry row for {source_path}")
+    if not row.get("authority_status"):
+        raise ValueError(f"{registry_name}: authority_status is required for {source_path}")
+    return row
 
 
 def keep_non_document_item(item: dict[str, Any]) -> bool:
@@ -100,7 +113,8 @@ def import_assets(
     asset_manifest = load_json(asset_manifest_path)
     generated_at = datetime.now(tz=UTC).isoformat()
     source_commit = git_output(source_root, "rev-parse", "HEAD")
-    registry_rows = load_tex_registry(source_root)
+    tex_registry_rows = load_registry(source_root, "TEX_SOURCE_REGISTRY.csv")
+    pdf_registry_rows = load_registry(source_root, "PDF_DERIVATIVE_REGISTRY.csv")
 
     public_dir = repo_root / "public"
     pdf_dest_dir = public_dir / "files/pdf/ontology"
@@ -138,7 +152,17 @@ def import_assets(
             site_path = f"/files/{kind}/ontology/{source_file.name}"
             file_hash = sha256_file(dest_file)
             source_id = f"ontology_{kind}_{slug}"
-            registry_row = registry_rows.get(source_relative, {})
+            registry_name = (
+                "TEX_SOURCE_REGISTRY.csv"
+                if kind == "tex"
+                else "PDF_DERIVATIVE_REGISTRY.csv"
+            )
+            registry_rows = tex_registry_rows if kind == "tex" else pdf_registry_rows
+            registry_row = require_registry_row(
+                registry_rows,
+                source_relative,
+                registry_name,
+            )
             if kind == "tex":
                 notes = (
                     "Registered TeX source for the canonical ontology package. "
@@ -166,7 +190,7 @@ def import_assets(
                         "Website publication of canonical ontology package assets."
                     ),
                     "notes": notes,
-                    "source_authority_status": registry_row.get("authority_status", "canonical"),
+                    "source_authority_status": registry_row["authority_status"],
                     "claim_status": registry_row.get("claim_status"),
                     "research_status": registry_row.get("research_status"),
                     "ontology_promotion_status": registry_row.get("ontology_promotion_status"),

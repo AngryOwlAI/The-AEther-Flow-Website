@@ -1,0 +1,134 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-001-A"
+task_id: "WI-20260712-001"
+job_id: "WJ-20260712-001-A"
+created_utc: "2026-07-12T12:10:26Z"
+completed_utc: "2026-07-12T12:16:52Z"
+status: "completed"
+
+summary: "Refreshed the byte-identical ontology publication package, repaired PDF derivative authority from the correct registry, and regenerated current page provenance without opening FE-P0-02."
+
+scope_confirmation:
+  packet_id: "FE-P0-01R"
+  previous_checkpoint: "ed64e566292065dbb3ad537eebea348d99ae51dd"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized a website-local source-refresh and manifest-authority repair packet on 2026-07-12 and required FE-P0-02 to remain unopened until the gate is cleared"
+  upstream_write_status: "forbidden_and_unchanged"
+  source_refresh_performed: true
+  public_manifest_change: true
+  public_asset_byte_change: false
+  route_map_change: false
+  source_notice_change: false
+  public_claim_change: false
+  physics_review_granted: false
+  physics_delta: false
+  fe_p0_02_opened: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "docs/quality/frontend-source-refresh-manifest-authority-repair-2026-07-12.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260711-007.yaml"
+  - "implementation_control/handoffs/WH-20260711-007.md"
+  - "implementation_control/handoffs/WH-20260712-001.yaml"
+  - "implementation_control/handoffs/WH-20260712-001.md"
+  - "implementation_control/tasks/WI-20260711-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260711-007/jobs/WJ-20260711-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-001/jobs/WJ-20260712-001-A.yaml"
+  - "implementation_control/tasks/WI-20260712-001/jobs/completions/WJC-20260712-001-A.yaml"
+  - "public/files/manifests/source_manifest.json"
+  - "public/files/manifests/asset_manifest.json"
+  - "public/files/manifests/page_provenance.json"
+  - "scripts/import_ontology_assets.py"
+  - "tests/test_import_ontology_assets.py"
+
+repair_evidence:
+  report_path: "docs/quality/frontend-source-refresh-manifest-authority-repair-2026-07-12.md"
+  report_sha256: "ae401148c3aa2b4c5dbeafa9176dc094debc607b4d6d48c503d4114283bdc35e"
+  upstream_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_branch: "main"
+  upstream_commit: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  upstream_origin_main: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  upstream_worktree: "clean"
+  tex_copy_matches: 8
+  pdf_copy_matches: 8
+  tex_manifest_authority: "canonical"
+  pdf_manifest_authority: "generated_noncanonical"
+  source_manifest_sha256: "3e7cbceb7d380db596e60f77bea5b9a1532caff9801cbb373b7cc3a0cce3f0ab"
+  asset_manifest_sha256: "d9ec52eabe097c97c2802c0707c87b4ac9e801541d1e3f6d6922c7e35933060f"
+  page_provenance_sha256: "9732d58da2c0ab4f1930a67cf476e9d7d860f6cfc3e5bfec323828ac3b67a993"
+  physics_claim_boundary_sha256: "ce67a8f2060074c61d2bf4b613ef056c3891547c5f16ba230e6673a2acb30519"
+  route_provenance_records: 34
+  disposition: "source_refresh_and_manifest_authority_gate_cleared"
+
+requirements_satisfied:
+  - "Reconfirmed the clean upstream commit and origin/main parity before refresh."
+  - "Preserved byte identity for all eight TeX files and eight PDF derivatives."
+  - "Changed the importer to read TeX and PDF authority from their respective registries and fail closed on missing authority rows."
+  - "Repinned all ontology manifest entries and classified every PDF generated_noncanonical."
+  - "Regenerated current page provenance without changing the route map or Home/Physics authority classifications."
+  - "Kept FE-P0-02 closed and public claims, physics status, upstream, push, and deployment unchanged."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "84 tests passed, including 2 importer regression tests"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 pages built"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+  - id: "manual-source-refresh-authority-review"
+    command: "manual inspection of refreshed source pins, derivative authority statuses, and provenance hashes"
+    status: "passed"
+    evidence: "8 TeX canonical, 8 PDF generated_noncanonical, 16 byte matches, current source pin and claim-boundary hash verified."
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "blocked_preexisting"
+  stopped_at: "npm run validate:curator"
+  passed_before_stop:
+    - "manifest validation"
+    - "content-source validation"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+  reason: "curator/reports/latest.json and curator/reports/latest.md are stale and regeneration is outside the FE-P0-01R allowlist."
+  scope_effect: "The required FE-P0-01R validators pass; curator refresh remains a separate packet and no stale curator file is staged."
+
+remaining_blockers:
+  - "Home and Physics route bundles and source notices still omit the exact-closure overview, note, and flagship sources; FE-P0-03 and FE-P0-04 own those repairs."
+  - "No independent physics reviewer or checked-in AG-01 receipt exists, so public claim work remains blocked."
+  - "Checked-in curator reports remain stale and require a separately bounded refresh."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "stage only the completion-listed FE-P0-01R importer, regression test, manifests, quality record, and control records and create one local commit"
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-02 canonical document order correction"
+  summary: "Checkpoint FE-P0-01R locally and stop; FE-P0-02 may be separately authorized after the gate-clearing checkpoint."
+  do_not_skip: "Do not open FE-P0-02, expand Home or Physics bundles, change public claims, push, deploy, or mutate upstream in this packet."
