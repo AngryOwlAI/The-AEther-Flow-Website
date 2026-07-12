@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-002"
 title: "Correct Canonical Ontology Document Order"
 created_utc: "2026-07-12T12:55:53Z"
-updated_utc: "2026-07-12T13:04:57Z"
-status: "active"
+updated_utc: "2026-07-12T13:24:06Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P0-02"
@@ -164,3 +164,7 @@ next_recommended_action:
   task_packet: "FE-P0-03 Home source-bundle expansion"
   summary: "After FE-P0-02 is validated and locally checkpointed, stop and request separate authorization for FE-P0-03."
   do_not_skip: "Do not open FE-P0-03, expand Physics, change unrelated public claims, push, deploy, or mutate upstream in this packet."
+
+supersession:
+  superseded_by_task_id: "WI-20260712-003"
+  reason: "FE-P0-02 was completed and checkpointed at f51f0b0c86e4d03ab55887c00e23bbd732821eef; the owner then separately authorized FE-P0-03."

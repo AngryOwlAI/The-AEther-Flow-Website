@@ -13,6 +13,9 @@
         "github-facing/project-overview-explainer.md",
         "github-facing/source-authority-explainer.md",
         "github-facing/aether-flow-ontology-explainer.md",
+        "ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+        "ontology/tex/aether_flow_exact_closure_note.tex",
+        "ontology/tex/aether_flow_exact_closure_flagship_article.tex",
         "github-facing/gr-derivation-roadmap-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",

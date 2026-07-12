@@ -1,0 +1,146 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-003-A"
+task_id: "WI-20260712-003"
+title: "Pin Home Exact-Closure Sources And Refresh Evidence"
+created_utc: "2026-07-12T13:24:06Z"
+updated_utc: "2026-07-12T13:31:40Z"
+status: "active"
+
+objective: "Execute one FE-P0-03 packet that expands only the Home source bundle, aligns its source notice, and regenerates provenance and curator evidence while preserving classification."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P0-03 packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-03"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "allowed_only_for_the_Home_source_notice"
+  public_claim_write_status: "allowed_only_for_contextual_source_references"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "src/pages/index.astro"
+  - "src/lib/siteContent.ts"
+  - "scripts/generate_page_provenance.py"
+  - "scripts/run_curator.py"
+  - "public/files/manifests/source_manifest.json"
+  - "public/files/manifests/asset_manifest.json"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/"
+  - "read-only upstream exact-closure TeX sources and Git evidence allowlisted by WI-20260712-003"
+  - "website Git status and history evidence"
+
+allowed_writes:
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "src/lib/siteContent.ts"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-002.yaml"
+  - "implementation_control/handoffs/WH-20260712-002.md"
+  - "implementation_control/handoffs/WH-20260712-003.yaml"
+  - "implementation_control/handoffs/WH-20260712-003.md"
+  - "implementation_control/tasks/WI-20260712-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-002/jobs/WJ-20260712-002-A.yaml"
+  - "implementation_control/tasks/WI-20260712-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-003/jobs/WJ-20260712-003-A.yaml"
+  - "implementation_control/tasks/WI-20260712-003/jobs/completions/WJC-20260712-003-A.yaml"
+
+required_outputs:
+  - "A deterministic Home source bundle containing its existing sources plus the exact-closure overview, note, and flagship TeX sources."
+  - "A Home source notice with matching source references and a current update date."
+  - "Regenerated page provenance with valid pinned URLs, hashes, commit date, and null omission reasons for all Home inputs."
+  - "Fresh checked-in curator JSON and Markdown reports."
+  - "Evidence that Home remains generated_noncanonical and curated_synthesis and that Physics and all unrelated rows are unchanged."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint f51f0b0c86e4d03ab55887c00e23bbd732821eef."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Contextual Home source notice and source references only."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source or derivative refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route, redirect, navigation, or route identity change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "Only the Home record in the shared site-content module may change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset byte or path changes."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Home route-bundle expansion and generated provenance only; classifications remain fixed."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    required: true
+  - id: "manual-home-bundle-authority-review"
+    command: "manual inspection of Home source order, source notice, pinned URLs, hashes, route classification, and curator evidence"
+    required: true
+
+stop_conditions:
+  - "A required exact-closure TeX source is absent or unpinned."
+  - "Home classification cannot remain generated_noncanonical and curated_synthesis."
+  - "Any Physics or unrelated route row, source manifest, asset manifest, asset, or narrative claim would change."
+  - "The work requires FE-P0-04, upstream, remote, or deployment mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260712-003-A"
+  path: "implementation_control/tasks/WI-20260712-003/jobs/completions/WJC-20260712-003-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-04 Physics landing source-bundle expansion"
+  summary: "After this packet is checkpointed, stop and wait for separate FE-P0-04 authorization."
+  do_not_skip: "Do not expand Physics, rewrite claims, change route classifications, push, deploy, or mutate upstream."

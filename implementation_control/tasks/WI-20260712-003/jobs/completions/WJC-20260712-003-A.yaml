@@ -1,0 +1,143 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-003-A"
+task_id: "WI-20260712-003"
+job_id: "WJ-20260712-003-A"
+created_utc: "2026-07-12T13:30:37Z"
+completed_utc: "2026-07-12T13:31:40Z"
+status: "completed"
+
+summary: "Expanded the Home source bundle with the exact-closure overview, note, and flagship TeX sources, aligned the contextual source notice, and regenerated provenance and curator evidence."
+
+scope_confirmation:
+  packet_id: "FE-P0-03"
+  previous_checkpoint: "f51f0b0c86e4d03ab55887c00e23bbd732821eef"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized FE-P0-03 on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  public_claim_change: true
+  public_claim_change_scope: "contextual Home source notice and source references only"
+  public_asset_byte_change: false
+  source_manifest_change: false
+  asset_manifest_change: false
+  route_map_change: true
+  route_map_change_scope: "Home upstream source paths only"
+  page_provenance_change: true
+  curator_evidence_change: true
+  physics_delta: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-002.yaml"
+  - "implementation_control/handoffs/WH-20260712-002.md"
+  - "implementation_control/handoffs/WH-20260712-003.yaml"
+  - "implementation_control/handoffs/WH-20260712-003.md"
+  - "implementation_control/tasks/WI-20260712-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-002/jobs/WJ-20260712-002-A.yaml"
+  - "implementation_control/tasks/WI-20260712-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-003/jobs/WJ-20260712-003-A.yaml"
+  - "implementation_control/tasks/WI-20260712-003/jobs/completions/WJC-20260712-003-A.yaml"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "src/lib/siteContent.ts"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+
+home_bundle_evidence:
+  source_count: 7
+  added_sources:
+    - "ontology/tex/aether_flow_exact_closure_sequence_overview.tex"
+    - "ontology/tex/aether_flow_exact_closure_note.tex"
+    - "ontology/tex/aether_flow_exact_closure_flagship_article.tex"
+  source_commit: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  source_commit_date: "2026-07-09T10:35:40-06:00"
+  all_hashes_present: true
+  all_pinned_urls_present: true
+  all_omission_reasons_null: true
+  non_home_route_rows_unchanged: true
+  adaptation_type: "curated_synthesis"
+  upstream_authority_status: "generated_noncanonical"
+  website_publication_status: "published"
+  boundary_type: "trust_boundary"
+  route_map_sha256: "0c59b864d534fa2e11cd5d9da0d7016204843d4fdb999364aeb1b7a62eae3997"
+  page_provenance_sha256: "dff541694d30fad1dcc21f3af0b0243ed5b4e2d3f3fae68dd7d1def8d9626e0b"
+  site_content_sha256: "26cdca5e4ec33ce0a84436ac67093815ba62f9a32dd01b46776498be88ad3d18"
+
+curator_evidence:
+  dependency_count: 245
+  drift_count: 0
+  critical_count: 0
+  review_required_count: 0
+  diagnostics_count: 0
+  json_sha256: "909ecef70e164daa4188a582b757167fa9cca2d7d87a1e9dc855982a54c9971f"
+  markdown_sha256: "8d38d723a357ada4f0bc49155eeb2966f0650fcceaea3ae7a66ebf1fb2e67636"
+
+requirements_satisfied:
+  - "Added the overview, note, and flagship TeX sources to the Home route bundle in deterministic order."
+  - "Preserved Home as a generated_noncanonical curated_synthesis."
+  - "Changed no non-Home route-map row."
+  - "Updated the Home source notice date, boundary wording, and source references without rewriting the Home narrative."
+  - "Regenerated provenance with complete hashes, pinned URLs, commit metadata, and null omission reasons."
+  - "Regenerated curator reports with no drift, critical items, review-required items, or diagnostics."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "245 declared dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "87 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+  - id: "manual-home-bundle-authority-review"
+    command: "manual inspection of Home source order, source notice, pinned URLs, hashes, route classification, and curator evidence"
+    status: "passed"
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "passed"
+  passed_gates:
+    - "manifest validation"
+    - "content-source validation"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+    - "curator report validation"
+    - "Cloudflare configuration validation"
+    - "implementation-control validation"
+    - "64-page static build"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the completion-listed FE-P0-03 manifest, source-notice, curator, provenance, and control files and create one local commit."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-04 Physics landing source-bundle expansion"
+  summary: "Finish FE-P0-03 validation and checkpoint locally; FE-P0-04 requires separate authorization."
+  do_not_skip: "Do not expand Physics, rewrite claims, change classifications, push, deploy, or mutate upstream."

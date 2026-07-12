@@ -4,8 +4,8 @@ job_id: "WJ-20260712-002-A"
 task_id: "WI-20260712-002"
 title: "Centralize And Validate The Canonical Document Sequence"
 created_utc: "2026-07-12T12:55:53Z"
-updated_utc: "2026-07-12T13:04:57Z"
-status: "active"
+updated_utc: "2026-07-12T13:24:06Z"
+status: "superseded"
 
 objective: "Implement one overview-first canonical sequence definition, consume it on the documents route and in manifest assembly, validate exact membership, and regenerate affected provenance."
 
@@ -136,3 +136,7 @@ next_recommended_action:
   task_packet: "FE-P0-03 Home source-bundle expansion"
   summary: "After FE-P0-02 checkpoint, stop and wait for separate FE-P0-03 authorization."
   do_not_skip: "Do not open FE-P0-03, expand Physics, change unrelated claims, push, deploy, or mutate upstream."
+
+supersession:
+  superseded_by_job_id: "WJ-20260712-003-A"
+  reason: "FE-P0-02 was locally checkpointed before the owner separately authorized FE-P0-03."

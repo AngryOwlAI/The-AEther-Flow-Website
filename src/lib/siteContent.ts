@@ -820,13 +820,18 @@ export interface ProjectRouteMetadata {
 export const projectSourceNoticeDefaults = {
   home: {
     claimStatus: "public orientation",
-    updated: "2026-06-28",
-    note: "The Home page is a reader-entry surface derived from the public overview and source-authority contract. It does not add scientific, mathematical, governance, or workflow authority.",
+    updated: "2026-07-12",
+    note: "The Home page is a reader-entry curated synthesis grounded in the public overview, source-authority contract, exact-closure overview, note, and flagship article. Canonical inputs do not make this website route canonical, and the page does not add scientific, mathematical, governance, or workflow authority.",
     sourceRefs: [
       "The AEther Flow Website. (2026). src/pages/index.astro",
       "The AEther Flow Website. (2026). docs/architecture/website-feature-and-functionality.md",
       "AEther-Flow Project. (2026). github-facing/project-overview-explainer.md",
       "AEther-Flow Project. (2026). github-facing/source-authority-explainer.md",
+      "AEther-Flow Project. (2026). github-facing/aether-flow-ontology-explainer.md",
+      "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+      "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_note.tex",
+      "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_flagship_article.tex",
+      "AEther-Flow Project. (2026). github-facing/gr-derivation-roadmap-explainer.md",
     ],
   },
   physicsTrack: {

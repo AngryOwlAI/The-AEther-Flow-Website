@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-12T13:03:44.598082+00:00",
+  "generated_at": "2026-07-12T13:29:42.276124+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
   "source_commit_date": "2026-07-09T10:35:40-06:00",
@@ -35,6 +35,27 @@
           "omission_reason": null
         },
         {
+          "path": "ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+          "sha256": "356a5f65b0931914fdf9362ba544c2868bad7d33b828754b91c029bed96f86b1",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+          "omission_reason": null
+        },
+        {
+          "path": "ontology/tex/aether_flow_exact_closure_note.tex",
+          "sha256": "c4a4e956ad5a10e6b3f4e661351bdeda2145b01e6e85d9df849e765c765eca35",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_note.tex",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/ontology/tex/aether_flow_exact_closure_note.tex",
+          "omission_reason": null
+        },
+        {
+          "path": "ontology/tex/aether_flow_exact_closure_flagship_article.tex",
+          "sha256": "900c799cb0c3d8f790c836196c136b3cec6944e46d41b89e511b85123fd30e40",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_flagship_article.tex",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/ontology/tex/aether_flow_exact_closure_flagship_article.tex",
+          "omission_reason": null
+        },
+        {
           "path": "github-facing/gr-derivation-roadmap-explainer.md",
           "sha256": "cae6baf3ba64d4c9942963a2cd5d3f883e2281e559c8498f20187af79f53464c",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md",
@@ -49,12 +70,18 @@
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/project-overview-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/aether-flow-ontology-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_note.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/ontology/tex/aether_flow_exact_closure_flagship_article.tex",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/gr-derivation-roadmap-explainer.md"
       ],
       "github_pinned_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/github-facing/project-overview-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/github-facing/source-authority-explainer.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/github-facing/aether-flow-ontology-explainer.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/ontology/tex/aether_flow_exact_closure_note.tex",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/ontology/tex/aether_flow_exact_closure_flagship_article.tex",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0/github-facing/gr-derivation-roadmap-explainer.md"
       ],
       "upstream_authority_status": "generated_noncanonical",
