@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
   /* Raw image-derived Angry Owl color tokens. */
   --owl-cyan-900: #0f364d;
@@ -58,6 +58,13 @@
   --content-card-accent: var(--color-dark-orange);
   --content-card-shadow: 0 20px 70px color-mix(in srgb, var(--owl-black) 32%, transparent);
 
+  /* Shared stacking layers. Keep component rules on named tokens. */
+  --z-content-raised: 1;
+  --z-overlay-control: 2;
+  --z-skip-link: 10;
+  --z-navigation-panel: 40;
+  --z-site-header: 50;
+
   /* Temporary compatibility aliases for older route styles during migration. */
   --color-teal: var(--color-primary);
   --color-teal-dark: var(--color-primary-hover);
@@ -115,7 +122,7 @@ summary:focus-visible {
   position: absolute;
   left: 1rem;
   top: 1rem;
-  z-index: 10;
+  z-index: var(--z-skip-link);
   transform: translateY(-150%);
   border: 2px solid var(--color-primary);
   border-radius: 4px;
@@ -130,7 +137,7 @@ summary:focus-visible {
 
 .site-header {
   position: relative;
-  z-index: 50;
+  z-index: var(--z-site-header);
   border-bottom: 1px solid var(--color-line);
   background: color-mix(in srgb, var(--color-surface) 95%, transparent);
   backdrop-filter: blur(14px);
@@ -231,7 +238,7 @@ summary:focus-visible {
   position: absolute;
   top: calc(100% + 0.75rem);
   right: 0;
-  z-index: 40;
+  z-index: var(--z-navigation-panel);
   display: grid;
   gap: 0.22rem;
   width: min(26rem, calc(100vw - 2rem));
@@ -956,7 +963,7 @@ summary:focus-visible {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  z-index: 2;
+  z-index: var(--z-overlay-control);
   display: flex;
   gap: 0.5rem;
 }
@@ -1016,7 +1023,7 @@ summary:focus-visible {
 .figure-dialog-toolbar {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: var(--z-overlay-control);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -3588,7 +3595,7 @@ html:has(body.project-overview-page) {
 
 .overview-command-band .command-band-layout {
   position: relative;
-  z-index: 1;
+  z-index: var(--z-content-raised);
 }
 
 .overview-track-command .command-band-layout {

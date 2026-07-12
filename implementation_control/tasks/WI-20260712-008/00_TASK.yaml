@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-008"
 title: "Establish Layer Tokens And Native Dark Scheme"
 created_utc: "2026-07-12T16:08:03Z"
-updated_utc: "2026-07-12T19:32:13Z"
-status: "blocked"
+updated_utc: "2026-07-12T20:04:59Z"
+status: "active"
 
 source_context:
   packet_id: "FE-P1-01"
@@ -13,6 +13,7 @@ source_context:
   adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
   previous_task: "WI-20260712-007"
   previous_checkpoint: "90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c"
+  resume_checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
   owner_authorization: "Owner explicitly authorized FE-P1-01 implementation on 2026-07-12"
 
 goal: "Replace raw global stacking numbers with maintainable layer tokens and advertise the native dark color scheme used by every BaseLayout route."
@@ -74,6 +75,10 @@ allowed_writes:
     - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
     - "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+    - "implementation_control/handoffs/WH-20260712-009.yaml"
+    - "implementation_control/handoffs/WH-20260712-009.md"
+    - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -149,14 +154,20 @@ handoff:
   yaml_path: "implementation_control/handoffs/WH-20260712-008.yaml"
   markdown_path: "implementation_control/handoffs/WH-20260712-008.md"
 
+completion_record:
+  completion_id: "WJC-20260712-008-A"
+  path: "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  status: "ready_to_checkpoint"
+
 next_recommended_action:
-  task_packet: "FE-SR-01 website-local source-refresh and curator-drift resolution"
-  summary: "Resolve the separately governed aggregate curator blocker and checkpoint it before resuming FE-P1-01 validation."
-  do_not_skip: "Do not mix source-refresh artifacts into the FE-P1-01 checkpoint or change skip-link navigation authored claims push deploy or upstream source bytes."
+  task_packet: "FE-P1-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for WJC-20260712-008-A."
+  do_not_skip: "Do not open FE-P1-02 or change skip-link navigation authored claims push deploy or upstream source bytes."
 
 suspension:
-  status: "blocked_by_aggregate_curator_drift"
+  status: "resolved"
   blocked_at_utc: "2026-07-12T19:32:13Z"
-  blocking_validator: "npm run validate"
-  resume_after: "FE-SR-01 is validated and separately checkpointed"
+  resolved_at_utc: "2026-07-12T20:04:59Z"
+  resolution_checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
+  resolution: "FE-SR-01 refreshed source-derived evidence cleared aggregate validation and was separately checkpointed"
   implementation_preserved: true

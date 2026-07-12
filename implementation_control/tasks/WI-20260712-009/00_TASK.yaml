@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-009"
 title: "Refresh Upstream Source-Derived Website Evidence"
 created_utc: "2026-07-12T19:32:13Z"
-updated_utc: "2026-07-12T19:48:36Z"
-status: "active"
+updated_utc: "2026-07-12T20:04:59Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-SR-01"
@@ -194,3 +194,8 @@ next_recommended_action:
   task_packet: "Resume FE-P1-01 aggregate validation and local checkpoint"
   summary: "After FE-SR-01 is separately checkpointed reactivate WI-20260712-008 rerun aggregate validation create WJC-20260712-008-A and checkpoint FE-P1-01."
   do_not_skip: "Do not add route fallback create acknowledgements open FE-P1-02 push deploy promote physics or mutate upstream."
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-008"
+  checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
+  reason: "FE-SR-01 was completed and separately checkpointed before FE-P1-01 reactivation."

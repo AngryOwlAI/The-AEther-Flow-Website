@@ -2,13 +2,13 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260712-008"
 created_utc: "2026-07-12T16:08:03Z"
-updated_utc: "2026-07-12T19:32:13Z"
-status: "blocked"
+updated_utc: "2026-07-12T20:04:59Z"
+status: "active"
 
 task_id: "WI-20260712-008"
 job_id: "WJ-20260712-008-A"
 
-summary: "Opened the owner-authorized FE-P1-01 packet for named z-index tokens and native dark color-scheme behavior."
+summary: "Reactivated the owner-authorized FE-P1-01 packet after the separate FE-SR-01 checkpoint cleared aggregate curator drift."
 
 current_state:
   - "FE-P0-07 is completed and locally checkpointed at 90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c."
@@ -20,6 +20,11 @@ current_state:
   - "No push or deployment is authorized."
   - "FE-P1-01 implementation and focused runtime review are complete, but aggregate validation stops at stale curator reports and upstream registry drift."
   - "The owner authorized a separate website-local source-refresh packet before FE-P1-01 resumes."
+  - "FE-SR-01 passed its gates and was separately checkpointed at dba66ec6ef2dc454aefe2666dfeb1955675b896a."
+  - "FE-P1-01 is reactivated with its preserved CSS layout metadata and focused test as the only frontend changes."
+  - "Desktop mobile and expanded-dialog browser review confirms native dark controls legible dark-shell contrast and unchanged layer ordering."
+  - "One hundred eight Python tests the 64-page build aggregate validation and all required manual reviews pass."
+  - "Completion WJC-20260712-008-A is ready for a separate local checkpoint."
 
 source_authority_boundary:
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
@@ -33,30 +38,30 @@ source_authority_boundary:
 required_validators:
   - id: "git-diff-check"
     command: "git diff --check"
-    status: "pending"
+    status: "passed"
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
-    status: "pending"
+    status: "passed"
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
-    status: "pending"
+    status: "passed"
   - id: "static-build"
     command: "npm run build"
-    status: "pending"
+    status: "passed"
   - id: "aggregate-validation"
     command: "npm run validate"
-    status: "pending"
+    status: "passed"
   - id: "manual-native-dark-scheme-review"
     command: "manual inspection of native controls, scrollbars, dialog surfaces, and dark-shell contrast in a browser"
-    status: "pending"
+    status: "passed"
   - id: "manual-layering-review"
     command: "manual inspection of header, navigation panel, figure controls, dialog top layer, and unchanged skip-link order in a browser"
-    status: "pending"
+    status: "passed"
 
 next_recommended_action:
-  task_packet: "FE-SR-01 website-local source-refresh and curator-drift resolution"
-  summary: "Checkpoint a separately governed source-refresh packet before resuming FE-P1-01 aggregate validation."
-  do_not_skip: "Do not mix checkpoints change authored claims promote physics open FE-P1-02 push deploy or mutate upstream."
+  task_packet: "FE-P1-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for WJC-20260712-008-A."
+  do_not_skip: "Do not change authored claims promote physics open FE-P1-02 push deploy or mutate upstream."
 
 stop_before:
   - "skip-link visibility or focus behavior changes"
@@ -65,3 +70,8 @@ stop_before:
   - "upstream source-project writes"
   - "Git push"
   - "Cloudflare deployment"
+
+completion_record:
+  completion_id: "WJC-20260712-008-A"
+  path: "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  status: "ready_to_checkpoint"

@@ -4,8 +4,8 @@ job_id: "WJ-20260712-008-A"
 task_id: "WI-20260712-008"
 title: "Implement Layer Tokens And Native Dark Scheme"
 created_utc: "2026-07-12T16:08:03Z"
-updated_utc: "2026-07-12T19:32:13Z"
-status: "blocked"
+updated_utc: "2026-07-12T20:04:59Z"
+status: "active"
 
 objective: "Execute one FE-P1-01 packet that tokenizes existing stacking layers and aligns browser-native rendering with the dark project shell without changing layer behavior."
 
@@ -51,6 +51,10 @@ allowed_writes:
   - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
   - "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-009.yaml"
+  - "implementation_control/handoffs/WH-20260712-009.md"
+  - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
 
 required_outputs:
   - "Global CSS declares named tokens for every existing z-index layer."
@@ -129,12 +133,19 @@ checkpoint:
   push_allowed: false
   deploy_allowed: false
 
+completion_record:
+  completion_id: "WJC-20260712-008-A"
+  path: "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  status: "ready_to_checkpoint"
+
 next_recommended_action:
-  task_packet: "FE-SR-01 website-local source-refresh and curator-drift resolution"
-  summary: "Preserve the implemented FE-P1-01 files while a separate source-refresh packet clears aggregate validation."
-  do_not_skip: "Do not checkpoint FE-P1-01 with source-refresh artifacts or alter skip-link navigation behavior push deploy or upstream sources."
+  task_packet: "FE-P1-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for WJC-20260712-008-A."
+  do_not_skip: "Do not open FE-P1-02 or alter skip-link navigation behavior push deploy or upstream sources."
 
 suspension:
-  status: "blocked_by_aggregate_curator_drift"
+  status: "resolved"
   blocked_at_utc: "2026-07-12T19:32:13Z"
-  resume_after: "WJ-20260712-009-A is separately checkpointed"
+  resolved_at_utc: "2026-07-12T20:04:59Z"
+  resolution_checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
+  resolution: "WJ-20260712-009-A cleared aggregate curator drift and was separately checkpointed"

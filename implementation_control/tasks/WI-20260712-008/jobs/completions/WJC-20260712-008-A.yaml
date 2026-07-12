@@ -1,0 +1,154 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-008-A"
+task_id: "WI-20260712-008"
+job_id: "WJ-20260712-008-A"
+created_utc: "2026-07-12T20:09:31Z"
+completed_utc: "2026-07-12T20:09:31Z"
+status: "ready_to_checkpoint"
+
+summary: "Established semantic stacking-layer tokens and native dark browser rendering while preserving the existing layer order and frontend behavior."
+
+scope_confirmation:
+  packet_id: "FE-P1-01"
+  original_previous_checkpoint: "90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c"
+  resume_checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized FE-P1-01 and directed its reactivation validation completion record and separate local checkpoint on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  global_layer_token_change: true
+  native_dark_scheme_change: true
+  focused_test_change: true
+  skip_link_behavior_change: false
+  navigation_behavior_change: false
+  public_claim_change: false
+  route_or_manifest_change: false
+  svg_motion_or_public_asset_change: false
+  physics_delta: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/styles/global.css"
+  - "src/layouts/BaseLayout.astro"
+  - "tests/test_foundation_layers_and_color_scheme.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.md"
+  - "implementation_control/handoffs/WH-20260712-009.yaml"
+  - "implementation_control/handoffs/WH-20260712-009.md"
+  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
+  - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
+
+foundation_evidence:
+  global_css_sha256: "6a0f59d3dc851350ccca0b1e7848b70dd44c444d8ae7f35428027979971b7894"
+  base_layout_sha256: "77c6a2a3d6b3d0e9ca96e0852ee298df1cef6dc0426b891c1302b17dabc3ed27"
+  focused_test_sha256: "cda0b47da4b888dd51e1dcad5725bc4d50241fe1c50ea94b5961479fdb87cf1b"
+  named_layer_count: 5
+  z_index_declaration_count: 6
+  numeric_order:
+    content_raised: 1
+    overlay_control: 2
+    skip_link: 10
+    navigation_panel: 40
+    site_header: 50
+  root_color_scheme: "dark"
+  head_color_scheme_metadata: "dark"
+
+browser_evidence:
+  desktop_review:
+    root_color_scheme: "dark"
+    root_background: "rgb(0, 0, 0)"
+    body_text_color: "rgb(255, 248, 239)"
+    menu_button_color_scheme: "dark"
+    horizontal_overflow: false
+    shell_contrast: "legible"
+  expanded_dialog_review:
+    dialog_open: true
+    dialog_color_scheme: "dark"
+    dialog_background: "rgb(0, 0, 0)"
+    dialog_text_color: "rgb(255, 248, 239)"
+    close_button_color_scheme: "dark"
+    close_button_visible: true
+    figure_actions_z_index: 2
+    dialog_toolbar_z_index: 2
+  mobile_review:
+    navigation_panel_visible: true
+    navigation_panel_z_index: 40
+    site_header_z_index: 50
+    skip_link_z_index: 10
+    ordering_preserved: true
+    root_color_scheme: "dark"
+    horizontal_overflow: false
+    native_scrollbar_visible_against_dark_shell: true
+
+requirements_satisfied:
+  - "Declared five semantic z-index tokens for the existing numeric layers."
+  - "Replaced all six raw z-index declarations without changing their numeric values or relative order."
+  - "Set root CSS and BaseLayout metadata to the native dark color scheme used by all current BaseLayout consumers."
+  - "Added one focused three-test module for token declarations consumption native color scheme metadata and unchanged skip-link ordering."
+  - "Desktop mobile and expanded-dialog browser review confirmed legible dark native controls dialog surfaces scrollbars and representative stacking."
+  - "Preserved skip-link visibility navigation behavior content claims routes manifests SVG motion public assets upstream sources push and deployment state."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "108 tests passed including three focused FE-P1-01 tests"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built through the aggregate validation run"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "manual-native-dark-scheme-review"
+    command: "manual inspection of native controls, scrollbars, dialog surfaces, and dark-shell contrast in a browser"
+    status: "passed"
+    evidence: "Desktop mobile and expanded-dialog inspection showed dark inherited native controls a dark visible scrollbar black surfaces ivory text and a legible close control."
+  - id: "manual-layering-review"
+    command: "manual inspection of header, navigation panel, figure controls, dialog top layer, and unchanged skip-link order in a browser"
+    status: "passed"
+    evidence: "Computed stacking remained content 1 figure controls 2 skip link 10 navigation panel 40 and site header 50 while the modal dialog remained in the browser top layer."
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "passed"
+  passed_gates:
+    - "manifest validation"
+    - "content-source validation"
+    - "public claim evidence freshness"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+    - "curator report validation with zero residual drift"
+    - "Cloudflare configuration validation"
+    - "implementation-control validation"
+    - "64-page static build"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the three FE-P1-01 frontend files completion record and allowlisted control transition files while ignoring unrelated untracked metadata files."
+  push_allowed: false
+  deployment_allowed: false
+
+remaining_boundaries:
+  - "FE-P1-02 remains unopened and requires separate authorization."
+  - "No public claim route manifest physics source or upstream change occurred."
+  - "No push or deployment is requested or authorized."
+
+next_recommended_action:
+  task_packet: "FE-P1-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop before FE-P1-02."
+  do_not_skip: "Do not open FE-P1-02 push deploy promote physics or mutate upstream."

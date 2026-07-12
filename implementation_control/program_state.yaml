@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T19:48:36Z"
+updated_utc: "2026-07-12T20:04:59Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-009.yaml"
+  - "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-008.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-009"
-  title: "Refresh Upstream Source-Derived Website Evidence"
+  task_id: "WI-20260712-008"
+  title: "Establish Layer Tokens And Native Dark Scheme"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-009/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-008/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-SR-01"
+    task_packet: "FE-P1-01"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "90e6c0a1e8e21ea7c63bb9bfe1085c69e90f3f6c"
-    owner_authorization: "Owner explicitly authorized one website-local source-refresh packet on 2026-07-12 before FE-P1-01 resumes"
+    previous_checkpoint: "dba66ec6ef2dc454aefe2666dfeb1955675b896a"
+    owner_authorization: "Owner explicitly authorized FE-P1-01 implementation and its post-FE-SR-01 checkpoint resumption on 2026-07-12"
 
 current_job:
-  job_id: "WJ-20260712-009-A"
+  job_id: "WJ-20260712-008-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-009/jobs/WJ-20260712-009-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-008/jobs/WJ-20260712-008-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-009"
+  handoff_id: "WH-20260712-008"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-009.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-009.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-008.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-008.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-009-A"
-  task_id: "WI-20260712-009"
-  job_id: "WJ-20260712-009-A"
+  completion_id: "WJC-20260712-008-A"
+  task_id: "WI-20260712-008"
+  job_id: "WJ-20260712-008-A"
   status: "ready_to_checkpoint"
-  path: "implementation_control/tasks/WI-20260712-009/jobs/completions/WJC-20260712-009-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-008/jobs/completions/WJC-20260712-008-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -60,18 +60,6 @@ required_validators:
     required_for_current_job: true
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
-    required_for_current_job: true
-  - id: "manifest-validation"
-    command: "npm run validate:manifests"
-    required_for_current_job: true
-  - id: "claim-contract"
-    command: "npm run validate:claims"
-    required_for_current_job: true
-  - id: "provenance-validation"
-    command: "npm run validate:provenance"
-    required_for_current_job: true
-  - id: "curator-validation"
-    command: "npm run validate:curator"
     required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
@@ -82,14 +70,14 @@ required_validators:
   - id: "aggregate-validation"
     command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-source-refresh-review"
-    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+  - id: "manual-native-dark-scheme-review"
+    command: "manual inspection of native controls, scrollbars, dialog surfaces, and dark-shell contrast in a browser"
     required_for_current_job: true
-  - id: "quality-gate"
-    command: "npm run quality"
+  - id: "manual-layering-review"
+    command: "manual inspection of header, navigation panel, figure controls, dialog top layer, and unchanged skip-link order in a browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-SR-01 website-local source-refresh and curator-drift resolution"
-  summary: "Repair recursive active-task path matching in the claim snapshot generator then regenerate evidence rerun all required validation and checkpoint FE-SR-01 separately."
-  do_not_skip: "Do not add a route fallback create acknowledgements change authored public copy promote physics push deploy or mutate upstream."
+  task_packet: "FE-P1-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completion WJC-20260712-008-A."
+  do_not_skip: "Do not open FE-P1-02 change skip-link behavior push deploy promote physics or mutate upstream."
