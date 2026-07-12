@@ -1,0 +1,148 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-005-A"
+task_id: "WI-20260712-005"
+title: "Implement The Six-State Claim Contract And AI Review Receipt"
+created_utc: "2026-07-12T14:45:48Z"
+updated_utc: "2026-07-12T15:04:06Z"
+status: "active"
+
+objective: "Execute one FE-P0-05 packet that builds the typed claim ladder, traceability registry, generated matrix, independent AI technical-review receipt, and fail-closed tests without publishing new route copy."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P0-05 packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-05"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "registry_and_validation_modules_only_not_consumed_by_routes"
+  public_claim_write_status: "reviewed_candidate_registry_only"
+  reviewer_model: "distinct_spawned_AI_technical_review_with_no_human_credentials"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "docs/quality/frontend-exact-closure-source-preflight-2026-07-11.md"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "src/pages/index.astro"
+  - "src/pages/physics/index.astro"
+  - "src/lib/"
+  - "src/data/"
+  - "scripts/"
+  - "tests/"
+  - "implementation_control/"
+  - "read-only upstream exact-closure TeX sources, registries, and Git evidence allowlisted by WI-20260712-005"
+  - "website Git status and history evidence"
+
+allowed_writes:
+  - "package.json"
+  - "src/data/publicStatements.ts"
+  - "src/lib/publicClaimLadder.ts"
+  - "scripts/generate_public_claim_review.mjs"
+  - "tests/test_public_claim_ladder.py"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "docs/quality/public-claim-review-matrix-2026-07-12.md"
+  - "docs/quality/public-claim-review-receipt-2026-07-12.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-004.yaml"
+  - "implementation_control/handoffs/WH-20260712-004.md"
+  - "implementation_control/handoffs/WH-20260712-005.yaml"
+  - "implementation_control/handoffs/WH-20260712-005.md"
+  - "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
+  - "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
+  - "implementation_control/tasks/WI-20260712-005/jobs/completions/WJC-20260712-005-A.yaml"
+
+required_outputs:
+  - "One typed public-statement registry containing exact wording, qualification, sources, commit, passages, registry status, review metadata, forbidden overreads, and disposition."
+  - "One six-state claim ladder with stable IDs and exactly one accepted statement reference per state."
+  - "Generated Markdown matrix and receipt that remain byte-current with the typed registry."
+  - "A distinct spawned reviewer identity with no human credential, signature, external-review, validation, or proof claim."
+  - "Tests for duplicates, orphans, nonaccepted runtime use, adoption-versus-derivation, unsafe inference phrases, route-bundle source coverage, reviewer separation, and generated-report freshness."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint a38d6855fcfe2cebf9f9ad517ffd65ef92a2d2f5."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Reviewed candidate registry and evidence only; no route consumes it."
+  - id: "physics_review_mechanism"
+    status: "approved"
+    trigger: "Owner authorized a distinct spawned AI technical reviewer with explicit noncredential and nonauthority limits."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source or derivative refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route, redirect, navigation, canonical, or route identity change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "New shared claim-contract module only; no visual or component rendering change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset byte or path change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No manifest, provenance, classification, or bundle change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "manual-ai-review-boundary"
+    command: "manual inspection of AI reviewer identity, non-credential statement, source pins, dispositions, limitations, and owner accountability"
+    required: true
+  - id: "manual-claim-matrix-review"
+    command: "manual inspection of six claim states, exact wording, qualifications, source passages, registry status, forbidden overreads, and route-bundle coverage"
+    required: true
+
+stop_conditions:
+  - "The reviewer would be represented as a human, degree holder, external peer reviewer, signatory, proof authority, or independent scientific validator."
+  - "A claim lacks source-level traceability, qualification, forbidden overread, or route-bundle coverage."
+  - "Any Home or Physics route, manifest, provenance, curator, asset, classification, or upstream source would change."
+  - "The implementation and reviewer identities cannot remain distinct."
+  - "The work requires FE-P0-06, push, deployment, or upstream mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260712-005-A"
+  path: "implementation_control/tasks/WI-20260712-005/jobs/completions/WJC-20260712-005-A.yaml"
+
+next_recommended_action:
+  task_packet: "FE-P0-06 Home and Physics positioning"
+  summary: "After this packet is checkpointed, stop and wait for separate FE-P0-06 authorization."
+  do_not_skip: "Do not publish claim copy, claim external validation, push, deploy, or mutate upstream."

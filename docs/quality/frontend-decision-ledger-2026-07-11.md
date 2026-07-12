@@ -81,7 +81,7 @@ required and is not replaced by NVDA.
 
 | ID | Status | Disposition | Accountable owner | Gate, unblock condition, and downstream packet |
 | --- | --- | --- | --- | --- |
-| D-01 | Deferred; hard blocker | Do not self-approve physics wording. Appoint a qualified named physics reviewer and use a checked-in receipt containing reviewer identity, commit, reviewed claim/source rows, outcome, conditions, and signature/date. | Alexander Ricciardi, appointment owner; physics reviewer unassigned | Blocks `AG-01`, `FE-P0-05`, `FE-P0-06`, `FE-P2-07`, and public claim publication until the reviewer and receipt exist. |
+| D-01 | Decided; bounded AI technical-review mechanism | Use a fresh, separately spawned AI sub-agent to review the statement registry against pinned physics sources under a PhD-level physics, mathematics, and philosophy rubric. The receipt must identify the implementing and reviewing task contexts, reviewed commit and rows, sources, outcome, conditions, and machine attribution. It must state that the reviewer is not human, claims no degrees or professional credentials, is not external peer review, cannot sign as a person, and supplies neither proof authority nor independent scientific validation. Alexander Ricciardi remains the accountable human acceptance owner, and route publication remains separately gated. | Alexander Ricciardi, accountable acceptance owner; spawned AI sub-agent, technical reviewer only | Enables source-bound `FE-P0-05` registry review after a distinct reviewer receipt passes. It does not itself authorize `FE-P0-06`, public route-copy changes, physics promotion, push, or deployment. |
 | D-02 | Decided | Initially use the existing `/resources/documents/` flagship entry. A dedicated reader route is allowed only after evidence shows a distinct reader job and less friction without duplicating the source document. | Alexander Ricciardi | Governs `FE-P6-02`; a new route also requires the relevant navigation, canonical, provenance, and source gates. |
 | D-03 | Deferred; policy fixed | Use exactly one configured Astro site origin and derive canonicals, sitemap URLs, social URLs, and structured-data URLs from it. `astro.config.mjs` currently has no `site` value; the production origin value is intentionally deferred. No hard-coded duplicates are allowed. | Alexander Ricciardi | Blocks canonical publication and structured URL claims until the production origin is approved in `FE-P6-08`; `FE-P6-08` through `FE-P6-11` must share it. |
 | D-04 | Deferred; hard blocker | Draft from the audit direction, but do not approve final Home wording until the claim ladder, source matrix, and D-01 physics receipt pass. | Alexander Ricciardi | Blocks final `FE-P0-06` copy acceptance; resolved through `FE-P0-05` and `AG-01`. |
@@ -117,7 +117,10 @@ required and is not replaced by NVDA.
 All thirty decisions now have an explicit disposition and accountable owner.
 The following items remain intentionally blocking:
 
-1. `D-01`: no named physics reviewer or receipt; public claim work is blocked.
+1. `D-01`: the independent AI technical-review mechanism is defined. Each claim
+   packet still fails closed without a fresh receipt, distinct task identity,
+   pinned-source review, and accountable-owner record; it never constitutes
+   external peer review or independent scientific validation.
 2. `D-03`: no approved production origin; canonical/structured URL publication
    is blocked.
 3. `D-04`: final Home wording awaits claim and physics review.

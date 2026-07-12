@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T14:27:03Z"
+updated_utc: "2026-07-12T15:04:06Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-004.yaml"
+  - "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-005.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-004"
-  title: "Expand The Physics Landing Source Bundle"
+  task_id: "WI-20260712-005"
+  title: "Build The Reviewed Public Claim Contract"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P0-04"
+    task_packet: "FE-P0-05"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "6eb6b34c104d3fcc0f654cee5f0f3aaa34876db0"
-    owner_authorization: "Owner explicitly authorized FE-P0-04 on 2026-07-12"
+    previous_checkpoint: "a38d6855fcfe2cebf9f9ad517ffd65ef92a2d2f5"
+    owner_authorization: "Owner authorized FE-P0-05 and an independent spawned AI technical-review function on 2026-07-12"
 
 current_job:
-  job_id: "WJ-20260712-004-A"
+  job_id: "WJ-20260712-005-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-004"
+  handoff_id: "WH-20260712-005"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-004.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-004.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-005.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-005.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-004-A"
-  task_id: "WI-20260712-004"
-  job_id: "WJ-20260712-004-A"
+  completion_id: "WJC-20260712-005-A"
+  task_id: "WI-20260712-005"
+  job_id: "WJ-20260712-005-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260712-004/jobs/completions/WJC-20260712-004-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-005/jobs/completions/WJC-20260712-005-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -61,29 +61,23 @@ required_validators:
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     required_for_current_job: true
-  - id: "manifest-validation"
-    command: "npm run validate:manifests"
-    required_for_current_job: true
-  - id: "provenance-validation"
-    command: "npm run validate:provenance"
-    required_for_current_job: true
-  - id: "curator-validation"
-    command: "npm run validate:curator"
-    required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required_for_current_job: true
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
-  - id: "manual-control-record-inspection"
-    command: "manual inspection of implementation_control YAML and Markdown records"
+  - id: "aggregate-validation"
+    command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-home-bundle-authority-review"
-    command: "manual inspection of Home source order, source notice, pinned URLs, hashes, route classification, and curator evidence"
+  - id: "manual-ai-review-boundary"
+    command: "manual inspection of AI reviewer identity, non-credential statement, source pins, dispositions, limitations, and owner accountability"
+    required_for_current_job: true
+  - id: "manual-claim-matrix-review"
+    command: "manual inspection of six claim states, exact wording, qualifications, source passages, registry status, forbidden overreads, and route-bundle coverage"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P0-04 Physics landing source-bundle expansion"
-  summary: "Add the overview, exact-closure note, and flagship article to Physics landing provenance, refresh the contextual source notice and curator evidence, checkpoint locally, and stop."
-  do_not_skip: "Do not widen child Physics bundles, rewrite Physics claims, change route classifications, push, deploy, or mutate upstream in this packet."
+  task_packet: "FE-P0-05 shared claim ladder and claim-copy-source review matrix"
+  summary: "Build the typed six-state claim contract, generated review matrix, spawned-review receipt, and fail-closed tests without changing route copy."
+  do_not_skip: "Do not rewrite Home or Physics, claim human reviewer credentials, claim independent validation, open FE-P0-06, push, deploy, or mutate upstream."

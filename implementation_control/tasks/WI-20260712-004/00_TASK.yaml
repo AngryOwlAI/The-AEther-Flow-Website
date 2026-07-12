@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-004"
 title: "Expand The Physics Landing Source Bundle"
 created_utc: "2026-07-12T14:20:33Z"
-updated_utc: "2026-07-12T14:27:03Z"
-status: "active"
+updated_utc: "2026-07-12T14:45:48Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P0-04"
@@ -180,3 +180,7 @@ next_recommended_action:
   task_packet: "FE-P0-05 shared claim ladder and claim-copy-source review matrix"
   summary: "After FE-P0-04 is validated and locally checkpointed, stop and request separate authorization for FE-P0-05."
   do_not_skip: "Do not open FE-P0-05, rewrite public claims, widen child Physics bundles, change route classifications, push, deploy, or mutate upstream in this packet."
+
+supersession:
+  superseded_by_task_id: "WI-20260712-005"
+  reason: "FE-P0-04 was completed and checkpointed at a38d6855fcfe2cebf9f9ad517ffd65ef92a2d2f5; the owner then authorized a bounded FE-P0-05 packet with an independent AI sub-agent review mechanism."
