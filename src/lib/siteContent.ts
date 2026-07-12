@@ -836,11 +836,14 @@ export const projectSourceNoticeDefaults = {
   },
   physicsTrack: {
     claimStatus: "explanatory track landing",
-    updated: "2026-06-25",
-    note: "This page may orient readers to the physics track, but it must preserve the open GR-derivation boundary and defer scientific authority upstream.",
+    updated: "2026-07-12",
+    note: "This page is a curated synthesis grounded in the physics-program materials and the exact-closure overview, note, and flagship article. Those canonical inputs do not make the website route canonical; it preserves the open GR-derivation boundary and defers scientific authority upstream.",
     sourceRefs: [
       "AEther-Flow Project. (2026). README.md",
       "AEther-Flow Project. (2026). github-facing/aether-flow-physics-program-explainer.md",
+      "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+      "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_note.tex",
+      "AEther-Flow Project. (2026). ontology/tex/aether_flow_exact_closure_flagship_article.tex",
       "AEther-Flow Project. (2026). github-facing/exact-gr-benchmark-boundary-explainer.md",
       "AEther-Flow Project. (2026). github-facing/claim-gates-explainer.md",
     ],

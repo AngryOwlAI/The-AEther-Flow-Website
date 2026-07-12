@@ -1,0 +1,149 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-004-A"
+task_id: "WI-20260712-004"
+job_id: "WJ-20260712-004-A"
+created_utc: "2026-07-12T14:27:03Z"
+completed_utc: "2026-07-12T14:27:03Z"
+status: "completed"
+
+summary: "Expanded the Physics landing source bundle with the exact-closure overview, note, and flagship TeX sources, aligned the contextual source notice, and regenerated provenance and curator evidence."
+
+scope_confirmation:
+  packet_id: "FE-P0-04"
+  previous_checkpoint: "6eb6b34c104d3fcc0f654cee5f0f3aaa34876db0"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized FE-P0-04 on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  public_claim_change: true
+  public_claim_change_scope: "contextual Physics landing source notice and source references only"
+  public_asset_byte_change: false
+  source_manifest_change: false
+  asset_manifest_change: false
+  route_map_change: true
+  route_map_change_scope: "Physics landing upstream source paths only"
+  page_provenance_change: true
+  curator_evidence_change: true
+  physics_child_route_delta: false
+  home_delta: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-003.yaml"
+  - "implementation_control/handoffs/WH-20260712-003.md"
+  - "implementation_control/handoffs/WH-20260712-004.yaml"
+  - "implementation_control/handoffs/WH-20260712-004.md"
+  - "implementation_control/tasks/WI-20260712-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-003/jobs/WJ-20260712-003-A.yaml"
+  - "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
+  - "implementation_control/tasks/WI-20260712-004/jobs/completions/WJC-20260712-004-A.yaml"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "src/lib/siteContent.ts"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+
+physics_landing_bundle_evidence:
+  source_count: 7
+  added_sources:
+    - "ontology/tex/aether_flow_exact_closure_sequence_overview.tex"
+    - "ontology/tex/aether_flow_exact_closure_note.tex"
+    - "ontology/tex/aether_flow_exact_closure_flagship_article.tex"
+  source_commit: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  source_commit_date: "2026-07-09T10:35:40-06:00"
+  upstream_main_matches_origin_main: true
+  all_hashes_present: true
+  all_pinned_urls_present: true
+  all_omission_reasons_null: true
+  child_physics_route_rows_unchanged: true
+  unrelated_route_rows_unchanged: true
+  adaptation_type: "curated_synthesis"
+  upstream_authority_status: "generated_noncanonical"
+  website_publication_status: "published"
+  boundary_type: "claim_boundary"
+  route_map_sha256: "224718ab0fd1f38df55c4bf266273f0d53c464677d7c7c89ba5e9dd7cd30fb8b"
+  page_provenance_sha256: "39177d11ba40bf8f5a1d44dbed581e7c777b45f863cb4e00570cde295641c1dd"
+  site_content_sha256: "5f3e253f6d547e44113fb5a9926f1ff039b1081a2d88ced306f8544ac58bf838"
+
+curator_evidence:
+  dependency_count: 248
+  drift_count: 0
+  critical_count: 0
+  review_required_count: 0
+  diagnostics_count: 0
+  json_sha256: "d3459b87a47d940b3b8fbc4a28b7f65be925aeab82e38cce8b6ccd1d3d4cb8dd"
+  markdown_sha256: "980366492e05627490350fee8d593bab127392f5f57bcd51848f88f478db07ab"
+
+requirements_satisfied:
+  - "Added the overview, note, and flagship TeX sources to the Physics landing route bundle in deterministic order."
+  - "Preserved Physics landing as a generated_noncanonical curated_synthesis."
+  - "Changed no child Physics or unrelated route-map row."
+  - "Updated the Physics landing source notice date, boundary wording, and source references without rewriting the Physics narrative."
+  - "Regenerated provenance with complete hashes, pinned URLs, commit metadata, and null omission reasons."
+  - "Regenerated curator reports with no drift, critical items, review-required items, or diagnostics."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 declared dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "87 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "manual-control-record-inspection"
+    command: "manual inspection of implementation_control YAML and Markdown records"
+    status: "passed"
+  - id: "manual-physics-bundle-authority-review"
+    command: "manual inspection of Physics landing source order, source notice, pinned URLs, hashes, route classification, child-row immutability, and curator evidence"
+    status: "passed"
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "passed"
+  passed_gates:
+    - "manifest validation"
+    - "content-source validation"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+    - "curator report validation"
+    - "Cloudflare configuration validation"
+    - "implementation-control validation"
+    - "64-page static build"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the completion-listed FE-P0-04 manifest, source-notice, curator, provenance, and control files and create one local commit."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-05 shared claim ladder and claim-copy-source review matrix"
+  summary: "Finish FE-P0-04 validation and checkpoint locally; FE-P0-05 requires separate authorization."
+  do_not_skip: "Do not open FE-P0-05, rewrite claims, widen child Physics bundles, change classifications, push, deploy, or mutate upstream."

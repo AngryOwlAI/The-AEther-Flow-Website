@@ -1,21 +1,21 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260712-003-A"
-task_id: "WI-20260712-003"
-title: "Pin Home Exact-Closure Sources And Refresh Evidence"
-created_utc: "2026-07-12T13:24:06Z"
-updated_utc: "2026-07-12T14:20:33Z"
-status: "superseded"
+job_id: "WJ-20260712-004-A"
+task_id: "WI-20260712-004"
+title: "Pin Physics Landing Exact-Closure Sources And Refresh Evidence"
+created_utc: "2026-07-12T14:20:33Z"
+updated_utc: "2026-07-12T14:27:03Z"
+status: "active"
 
-objective: "Execute one FE-P0-03 packet that expands only the Home source bundle, aligns its source notice, and regenerates provenance and curator evidence while preserving classification."
+objective: "Execute one FE-P0-04 packet that expands only the Physics landing source bundle, aligns its source notice, and regenerates provenance and curator evidence while preserving classification and child-route bundles."
 
 execution_boundary:
-  invocation_limit: "one bounded FE-P0-03 packet"
+  invocation_limit: "one bounded FE-P0-04 packet"
   live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
-  packet_id: "FE-P0-03"
+  packet_id: "FE-P0-04"
   adopted_plan: "ImplementationPlans/recomendation_frontend.md"
   upstream_write_status: "forbidden"
-  public_runtime_write_status: "allowed_only_for_the_Home_source_notice"
+  public_runtime_write_status: "allowed_only_for_the_physicsTrack_source_notice"
   public_claim_write_status: "allowed_only_for_contextual_source_references"
   deployment_status: "not_authorized"
 
@@ -24,7 +24,7 @@ allowed_reads:
   - "CONTEXT.md"
   - ".codex/skills/implementation-control/SKILL.md"
   - "ImplementationPlans/recomendation_frontend.md"
-  - "src/pages/index.astro"
+  - "src/pages/physics/index.astro"
   - "src/lib/siteContent.ts"
   - "scripts/generate_page_provenance.py"
   - "scripts/run_curator.py"
@@ -35,8 +35,8 @@ allowed_reads:
   - "curator/reports/latest.json"
   - "curator/reports/latest.md"
   - "implementation_control/"
-  - "read-only upstream exact-closure TeX sources and Git evidence allowlisted by WI-20260712-003"
-  - "website Git status and history evidence"
+  - "read-only upstream Physics landing and exact-closure sources allowlisted by WI-20260712-004"
+  - "website and upstream Git evidence"
 
 allowed_writes:
   - "public/files/manifests/page_route_map.json"
@@ -45,30 +45,30 @@ allowed_writes:
   - "curator/reports/latest.json"
   - "curator/reports/latest.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260712-002.yaml"
-  - "implementation_control/handoffs/WH-20260712-002.md"
   - "implementation_control/handoffs/WH-20260712-003.yaml"
   - "implementation_control/handoffs/WH-20260712-003.md"
-  - "implementation_control/tasks/WI-20260712-002/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-002/jobs/WJ-20260712-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-004.yaml"
+  - "implementation_control/handoffs/WH-20260712-004.md"
   - "implementation_control/tasks/WI-20260712-003/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260712-003/jobs/WJ-20260712-003-A.yaml"
-  - "implementation_control/tasks/WI-20260712-003/jobs/completions/WJC-20260712-003-A.yaml"
+  - "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
+  - "implementation_control/tasks/WI-20260712-004/jobs/completions/WJC-20260712-004-A.yaml"
 
 required_outputs:
-  - "A deterministic Home source bundle containing its existing sources plus the exact-closure overview, note, and flagship TeX sources."
-  - "A Home source notice with matching source references and a current update date."
-  - "Regenerated page provenance with valid pinned URLs, hashes, commit date, and null omission reasons for all Home inputs."
+  - "A deterministic Physics landing source bundle containing its existing sources plus the exact-closure overview, note, and flagship TeX sources."
+  - "A Physics landing source notice with matching exact-closure references and a current update date."
+  - "Regenerated page provenance with valid pinned URLs, hashes, commit date, and null omission reasons for all Physics landing inputs."
   - "Fresh checked-in curator JSON and Markdown reports."
-  - "Evidence that Home remains generated_noncanonical and curated_synthesis and that Physics and all unrelated rows are unchanged."
+  - "Evidence that Physics landing remains generated_noncanonical and curated_synthesis and that child Physics and unrelated rows are unchanged."
 
 approval_gates:
   - id: "plan_adoption"
     status: "approved"
-    trigger: "Owner authorization on 2026-07-12 after checkpoint f51f0b0c86e4d03ab55887c00e23bbd732821eef."
+    trigger: "Owner authorization on 2026-07-12 after checkpoint 6eb6b34c104d3fcc0f654cee5f0f3aaa34876db0."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "Contextual Home source notice and source references only."
+    trigger: "Contextual Physics landing source notice and source references only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
     trigger: "No source or derivative refresh."
@@ -77,13 +77,13 @@ approval_gates:
     trigger: "No route, redirect, navigation, or route identity change."
   - id: "shared_visual_systems"
     status: "approved"
-    trigger: "Only the Home record in the shared site-content module may change."
+    trigger: "Only the physicsTrack source notice in the shared site-content module may change."
   - id: "public_downloadable_assets"
     status: "not_required"
     trigger: "No public asset byte or path changes."
   - id: "public_manifest_authority_records"
     status: "approved"
-    trigger: "Home route-bundle expansion and generated provenance only; classifications remain fixed."
+    trigger: "Physics landing route-bundle expansion and generated provenance only; classifications remain fixed."
   - id: "git_push"
     status: "not_required"
     trigger: "Any remote push."
@@ -116,18 +116,21 @@ required_validators:
   - id: "static-build"
     command: "npm run build"
     required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
   - id: "manual-control-record-inspection"
     command: "manual inspection of implementation_control YAML and Markdown records"
     required: true
-  - id: "manual-home-bundle-authority-review"
-    command: "manual inspection of Home source order, source notice, pinned URLs, hashes, route classification, and curator evidence"
+  - id: "manual-physics-bundle-authority-review"
+    command: "manual inspection of Physics landing source order, source notice, pinned URLs, hashes, route classification, child-row immutability, and curator evidence"
     required: true
 
 stop_conditions:
   - "A required exact-closure TeX source is absent or unpinned."
-  - "Home classification cannot remain generated_noncanonical and curated_synthesis."
-  - "Any Physics or unrelated route row, source manifest, asset manifest, asset, or narrative claim would change."
-  - "The work requires FE-P0-04, upstream, remote, or deployment mutation."
+  - "Physics landing classification cannot remain generated_noncanonical and curated_synthesis."
+  - "Any child Physics or unrelated route row, source manifest, asset manifest, asset, or narrative claim would change."
+  - "The work requires FE-P0-05, upstream, remote, or deployment mutation."
   - "Validation fails."
 
 checkpoint:
@@ -137,14 +140,10 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260712-003-A"
-  path: "implementation_control/tasks/WI-20260712-003/jobs/completions/WJC-20260712-003-A.yaml"
+  completion_id: "WJC-20260712-004-A"
+  path: "implementation_control/tasks/WI-20260712-004/jobs/completions/WJC-20260712-004-A.yaml"
 
 next_recommended_action:
-  task_packet: "FE-P0-04 Physics landing source-bundle expansion"
-  summary: "After this packet is checkpointed, stop and wait for separate FE-P0-04 authorization."
-  do_not_skip: "Do not expand Physics, rewrite claims, change route classifications, push, deploy, or mutate upstream."
-
-supersession:
-  superseded_by_job_id: "WJ-20260712-004-A"
-  reason: "FE-P0-03 was locally checkpointed before the owner separately authorized FE-P0-04."
+  task_packet: "FE-P0-05 shared claim ladder and claim-copy-source review matrix"
+  summary: "After this packet is checkpointed, stop and wait for separate FE-P0-05 authorization."
+  do_not_skip: "Do not open FE-P0-05, rewrite claims, widen child Physics bundles, change route classifications, push, deploy, or mutate upstream."

@@ -2268,6 +2268,72 @@
       "dependency_type": "page_route_source",
       "drift_detected": false,
       "impact_class": "mapped_route_source",
+      "new_sha256": "900c799cb0c3d8f790c836196c136b3cec6944e46d41b89e511b85123fd30e40",
+      "old_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
+      "old_sha256": "900c799cb0c3d8f790c836196c136b3cec6944e46d41b89e511b85123fd30e40",
+      "recommended_action": "Review the affected internal page against its upstream source dependency.",
+      "route_path": "/physics/",
+      "severity": "review_required",
+      "source_manifest_id": null,
+      "source_path": "ontology/tex/aether_flow_exact_closure_flagship_article.tex",
+      "status": "in_sync",
+      "title": "Physics Research"
+    },
+    {
+      "acknowledgement_state": "not_required",
+      "approval_status": null,
+      "current_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": false,
+      "impact_class": "mapped_route_source",
+      "new_sha256": "c4a4e956ad5a10e6b3f4e661351bdeda2145b01e6e85d9df849e765c765eca35",
+      "old_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
+      "old_sha256": "c4a4e956ad5a10e6b3f4e661351bdeda2145b01e6e85d9df849e765c765eca35",
+      "recommended_action": "Review the affected internal page against its upstream source dependency.",
+      "route_path": "/physics/",
+      "severity": "review_required",
+      "source_manifest_id": null,
+      "source_path": "ontology/tex/aether_flow_exact_closure_note.tex",
+      "status": "in_sync",
+      "title": "Physics Research"
+    },
+    {
+      "acknowledgement_state": "not_required",
+      "approval_status": null,
+      "current_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": false,
+      "impact_class": "mapped_route_source",
+      "new_sha256": "356a5f65b0931914fdf9362ba544c2868bad7d33b828754b91c029bed96f86b1",
+      "old_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
+      "old_sha256": "356a5f65b0931914fdf9362ba544c2868bad7d33b828754b91c029bed96f86b1",
+      "recommended_action": "Review the affected internal page against its upstream source dependency.",
+      "route_path": "/physics/",
+      "severity": "review_required",
+      "source_manifest_id": null,
+      "source_path": "ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+      "status": "in_sync",
+      "title": "Physics Research"
+    },
+    {
+      "acknowledgement_state": "not_required",
+      "approval_status": null,
+      "current_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
+      "declared_in": [
+        "page_provenance",
+        "page_route_map"
+      ],
+      "dependency_type": "page_route_source",
+      "drift_detected": false,
+      "impact_class": "mapped_route_source",
       "new_sha256": "ce67a8f2060074c61d2bf4b613ef056c3891547c5f16ba230e6673a2acb30519",
       "old_commit": "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0",
       "old_sha256": "ce67a8f2060074c61d2bf4b613ef056c3891547c5f16ba230e6673a2acb30519",
@@ -5385,7 +5451,7 @@
   ],
   "dependency_summary": {
     "critical_count": 0,
-    "declared_dependency_count": 245,
+    "declared_dependency_count": 248,
     "drift_count": 0,
     "informational_count": 0,
     "review_required_count": 0

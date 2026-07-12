@@ -29,6 +29,9 @@
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "github-facing/aether-flow-physics-program-explainer.md",
+        "ontology/tex/aether_flow_exact_closure_sequence_overview.tex",
+        "ontology/tex/aether_flow_exact_closure_note.tex",
+        "ontology/tex/aether_flow_exact_closure_flagship_article.tex",
         "ontology/aether-and-aether-flow.md",
         "research_control/design/gr_derivation_burden_map.md",
         "registries/CLAIM_BOUNDARY_REGISTRY.csv"

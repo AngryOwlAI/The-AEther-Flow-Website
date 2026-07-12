@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T13:31:40Z"
+updated_utc: "2026-07-12T14:27:03Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-003/jobs/WJ-20260712-003-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-003.yaml"
+  - "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-004.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-003"
-  title: "Expand The Home Source Bundle"
+  task_id: "WI-20260712-004"
+  title: "Expand The Physics Landing Source Bundle"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-003/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-004/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P0-03"
+    task_packet: "FE-P0-04"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "f51f0b0c86e4d03ab55887c00e23bbd732821eef"
-    owner_authorization: "Owner explicitly authorized FE-P0-03 on 2026-07-12"
+    previous_checkpoint: "6eb6b34c104d3fcc0f654cee5f0f3aaa34876db0"
+    owner_authorization: "Owner explicitly authorized FE-P0-04 on 2026-07-12"
 
 current_job:
-  job_id: "WJ-20260712-003-A"
+  job_id: "WJ-20260712-004-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-003/jobs/WJ-20260712-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-004/jobs/WJ-20260712-004-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-003"
+  handoff_id: "WH-20260712-004"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-003.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-003.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-004.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-004.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-003-A"
-  task_id: "WI-20260712-003"
-  job_id: "WJ-20260712-003-A"
+  completion_id: "WJC-20260712-004-A"
+  task_id: "WI-20260712-004"
+  job_id: "WJ-20260712-004-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260712-003/jobs/completions/WJC-20260712-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-004/jobs/completions/WJC-20260712-004-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -84,6 +84,6 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P0-03 Home source-bundle expansion"
-  summary: "Add the overview, exact-closure note, and flagship article to Home provenance, refresh the contextual source notice and curator evidence, checkpoint locally, and stop."
-  do_not_skip: "Do not expand Physics, rewrite Home claims, change route classifications, push, deploy, or mutate upstream in this packet."
+  task_packet: "FE-P0-04 Physics landing source-bundle expansion"
+  summary: "Add the overview, exact-closure note, and flagship article to Physics landing provenance, refresh the contextual source notice and curator evidence, checkpoint locally, and stop."
+  do_not_skip: "Do not widen child Physics bundles, rewrite Physics claims, change route classifications, push, deploy, or mutate upstream in this packet."
