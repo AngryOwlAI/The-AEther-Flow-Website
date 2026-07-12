@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T15:34:00Z"
+updated_utc: "2026-07-12T15:52:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-006.yaml"
+  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-006"
-  title: "Rewrite Home And Physics Positioning"
+  task_id: "WI-20260712-007"
+  title: "Implement The Accessible Project Status Strip"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P0-06"
+    task_packet: "FE-P0-07"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "1aa279aca4372b3d0e3c4c5cc0300d71e204c4ec"
-    owner_authorization: "Owner explicitly authorized FE-P0-06 and the governed control-plane transition on 2026-07-12"
+    previous_checkpoint: "1d836634eb34d0377af76b0444bf1048e5b9c2c0"
+    owner_authorization: "Owner explicitly authorized FE-P0-07 implementation on 2026-07-12"
 
 current_job:
-  job_id: "WJ-20260712-006-A"
+  job_id: "WJ-20260712-007-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-006"
+  handoff_id: "WH-20260712-007"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-006.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-006.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-007.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-007.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-006-A"
-  task_id: "WI-20260712-006"
-  job_id: "WJ-20260712-006-A"
+  completion_id: "WJC-20260712-007-A"
+  task_id: "WI-20260712-007"
+  job_id: "WJ-20260712-007-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260712-006/jobs/completions/WJC-20260712-006-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-007/jobs/completions/WJC-20260712-007-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -73,14 +73,14 @@ required_validators:
   - id: "aggregate-validation"
     command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-positive-positioning-review"
-    command: "manual inspection of Home and Physics content order, exact reviewed wording, qualifications, contextual closures, metadata, and first-reader comprehension"
+  - id: "manual-status-strip-review"
+    command: "manual inspection of five-state order, explicit text semantics, solid dashed and stopped shapes, desktop and mobile layout, clipping, and first-viewport placement"
     required_for_current_job: true
   - id: "manual-authority-boundary-review"
     command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P0-06 Home and Physics positioning"
-  summary: "Create the authorized local FE-P0-06 checkpoint from completion WJC-20260712-006-A, then stop before FE-P0-07."
-  do_not_skip: "Do not open FE-P0-07, modify the reviewed claim registry or route authority, push, deploy, or mutate the upstream source project."
+  task_packet: "FE-P0-07 immediate five-state status strip"
+  summary: "Create the authorized local FE-P0-07 checkpoint from completion WJC-20260712-007-A, then stop before any later packet."
+  do_not_skip: "Do not open a later packet, modify claim or route authority, push, deploy, or mutate the upstream source project."

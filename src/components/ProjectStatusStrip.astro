@@ -1,0 +1,83 @@
+---
+export type ProjectStatusSemantic =
+  | "complete"
+  | "adopted"
+  | "interpretive"
+  | "open"
+  | "not-claimed";
+
+export interface ProjectStatusItem {
+  id: string;
+  label: string;
+  value: string;
+  description: string;
+  qualification: string;
+  semantic: ProjectStatusSemantic;
+}
+
+interface Props {
+  items: readonly ProjectStatusItem[];
+}
+
+const { items } = Astro.props;
+const expectedSemantics: readonly ProjectStatusSemantic[] = [
+  "complete",
+  "adopted",
+  "interpretive",
+  "open",
+  "not-claimed",
+];
+const semanticDetails: Record<
+  ProjectStatusSemantic,
+  { marker: string; label: string }
+> = {
+  complete: { marker: "✓", label: "Solid completion" },
+  adopted: { marker: "=", label: "Closed shell · adopted" },
+  interpretive: { marker: "◎", label: "Field · interpretive" },
+  open: { marker: "○", label: "Dashed aperture · open" },
+  "not-claimed": { marker: "■", label: "Stopped state · not claimed" },
+};
+
+if (
+  items.length !== expectedSemantics.length ||
+  items.some((item, index) => item.semantic !== expectedSemantics[index])
+) {
+  throw new Error(
+    "ProjectStatusStrip requires exactly five items in complete, adopted, interpretive, open, and not-claimed order.",
+  );
+}
+---
+
+<section class="project-status-strip" aria-labelledby="project-status-strip-title">
+  <div class="project-status-strip-heading">
+    <p class="eyebrow">Current project status</p>
+    <h2 id="project-status-strip-title">Five states, stated plainly.</h2>
+  </div>
+  <ol class="project-status-strip-list">
+    {items.map((item) => {
+      const descriptionId = `project-status-${item.id}-description`;
+      const qualificationId = `project-status-${item.id}-qualification`;
+      const semantic = semanticDetails[item.semantic];
+      return (
+        <li
+          class="project-status-strip-item"
+          data-status-semantic={item.semantic}
+          aria-describedby={`${descriptionId} ${qualificationId}`}
+        >
+          <span class="project-status-marker" aria-hidden="true">{semantic.marker}</span>
+          <span class="project-status-copy">
+            <span class="project-status-name">{item.label}</span>
+            <strong class="project-status-value">{item.value}</strong>
+            <span class="project-status-shape-label">{semantic.label}</span>
+          </span>
+          <span id={descriptionId} class="project-status-context">
+            {item.description}
+          </span>
+          <span id={qualificationId} class="project-status-context">
+            {item.qualification}
+          </span>
+        </li>
+      );
+    })}
+  </ol>
+</section>

@@ -1,0 +1,146 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-007-A"
+task_id: "WI-20260712-007"
+title: "Build And Integrate The Accessible Five-State Strip"
+created_utc: "2026-07-12T15:45:00Z"
+updated_utc: "2026-07-12T15:52:00Z"
+status: "active"
+
+objective: "Execute one FE-P0-07 packet that builds a compact five-state Home status strip with explicit text, non-color semantics, responsive behavior, source-safe claim mapping, tests, and current evidence."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P0-07 packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-07"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "one_component_home_integration_and_status_only_global_css"
+  public_claim_write_status: "five_source_bounded_short_values_from_accepted_home_entries"
+  route_map_write_status: "forbidden"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "src/pages/index.astro"
+  - "src/components/"
+  - "src/styles/global.css"
+  - "src/data/publicStatements.ts"
+  - "src/lib/publicClaimLadder.ts"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "tests/"
+  - "scripts/"
+  - "implementation_control/"
+  - "website and read-only upstream Git evidence"
+
+allowed_writes:
+  - "src/components/ProjectStatusStrip.astro"
+  - "src/pages/index.astro"
+  - "src/styles/global.css"
+  - "tests/test_project_status_strip.py"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.md"
+  - "implementation_control/handoffs/WH-20260712-007.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.md"
+  - "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
+  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/completions/WJC-20260712-007-A.yaml"
+
+required_outputs:
+  - "One reusable ProjectStatusStrip component renders exactly five ordered status items."
+  - "Home derives the items from accepted resolvedPublicClaimLadder statements and places the strip directly beneath its hero."
+  - "Visible text and distinct structural markers communicate every state without color-only meaning."
+  - "Responsive rules stack or group every item without clipping, hiding, removal, or horizontal scrolling."
+  - "One focused test covers mapping, order, semantics, placement, responsive rules, and forbidden-overread absence."
+  - "Home provenance and curator evidence are current without route-bundle or authority drift."
+  - "One implementation completion record captures changed files, validation, manual review, and checkpoint readiness."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint 1d836634eb34d0377af76b0444bf1048e5b9c2c0."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Five source-bounded short status values mapped to accepted Home statements."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source or derivative refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Home integration only; no identity, navigation, redirect, canonical, or retirement change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "Exactly one component and status-only global CSS variables and rules."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Mechanical Home page-provenance hash refresh only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "manual-status-strip-review"
+    command: "manual inspection of five-state order, explicit text semantics, solid dashed and stopped shapes, desktop and mobile layout, clipping, and first-viewport placement"
+    required: true
+  - id: "manual-authority-boundary-review"
+    command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
+    required: true
+
+stop_conditions:
+  - "Any state is missing, nonaccepted, not authorized for Home, or communicated by color alone."
+  - "Any state clips, hides, disappears, or requires undiscoverable horizontal scrolling on mobile."
+  - "Implementation requires a registry, ladder, route map, source bundle, classification, upstream, Physics, child-route, navigation, layout, SVG, motion, or public-asset change."
+  - "Copy implies completed substrate derivation, independent validation, non-GR predictive novelty, or AI proof authority."
+  - "Work requires push, deployment, or upstream mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-07 immediate five-state status strip"
+  summary: "Use completion WJC-20260712-007-A to create the authorized local checkpoint, then stop before any later packet."
+  do_not_skip: "Do not open a later packet, modify claim or route authority, push, deploy, or mutate upstream."

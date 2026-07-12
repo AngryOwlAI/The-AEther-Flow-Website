@@ -1,0 +1,151 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-007-A"
+task_id: "WI-20260712-007"
+job_id: "WJ-20260712-007-A"
+created_utc: "2026-07-12T15:52:00Z"
+completed_utc: "2026-07-12T15:52:00Z"
+status: "completed"
+
+summary: "Implemented the accessible five-state Home status strip with accepted claim-ladder mapping, explicit non-color semantics, responsive browser verification, and unchanged source authority."
+
+scope_confirmation:
+  packet_id: "FE-P0-07"
+  previous_checkpoint: "1d836634eb34d0377af76b0444bf1048e5b9c2c0"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized FE-P0-07 implementation on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  status_component_change: true
+  home_route_change: true
+  status_only_global_style_change: true
+  focused_test_change: true
+  page_provenance_change: true
+  curator_regeneration_performed: true
+  curator_evidence_change: false
+  reviewed_registry_change: false
+  claim_ladder_change: false
+  route_map_change: false
+  source_bundle_change: false
+  authority_classification_change: false
+  physics_or_child_route_change: false
+  navigation_or_layout_change: false
+  svg_motion_or_public_asset_change: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/components/ProjectStatusStrip.astro"
+  - "src/pages/index.astro"
+  - "src/styles/global.css"
+  - "tests/test_project_status_strip.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.md"
+  - "implementation_control/handoffs/WH-20260712-007.yaml"
+  - "implementation_control/handoffs/WH-20260712-007.md"
+  - "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
+  - "implementation_control/tasks/WI-20260712-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/WJ-20260712-007-A.yaml"
+  - "implementation_control/tasks/WI-20260712-007/jobs/completions/WJC-20260712-007-A.yaml"
+
+status_strip_evidence:
+  component_sha256: "05460939cfede33bc625b1051462aa484c278cc945d878da856639e97bc893c9"
+  home_page_sha256: "88d70fa4370507c07c4d90306a4dafaf358826e660cee42f33c4fcf410e7b8d8"
+  global_css_sha256: "ce98642384702d01f421ee0471e0179d1a2413a700aee3052807bb6d360a563c"
+  focused_test_sha256: "65549abf6956e894560078bfb083c2fa06a9ad16474c59b7a13fe4b0ceb44ab5"
+  page_provenance_sha256: "ba306b77666feba72e3d94bf1355765663431f5809e481613e5ca87c93d5626e"
+  route_map_sha256_unchanged: "224718ab0fd1f38df55c4bf266273f0d53c464677d7c7c89ba5e9dd7cd30fb8b"
+  public_statements_sha256_unchanged: "131dd6678a35530cb4d5599b6cb39552216d384d0d7218a169790140a312cd5e"
+  claim_ladder_sha256_unchanged: "727cd4d459f76044232f8030b3a98fbcaaabf9094f873af1c9e3f76fbb86a2ef"
+  curator_json_sha256_unchanged: "d3459b87a47d940b3b8fbc4a28b7f65be925aeab82e38cce8b6ccd1d3d4cb8dd"
+  curator_markdown_sha256_unchanged: "980366492e05627490350fee8d593bab127392f5f57bcd51848f88f478db07ab"
+  upstream_commit_unchanged: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  accepted_home_statement_count: 5
+  ordered_semantics:
+    - "complete"
+    - "adopted"
+    - "interpretive"
+    - "open"
+    - "not_claimed"
+  desktop_browser_review:
+    item_count: 5
+    grid_columns: 5
+    horizontal_overflow: false
+    explicit_text_present: true
+  mobile_browser_review:
+    css_viewport_width: 500
+    item_count: 5
+    grid_columns: 1
+    hidden_item_count: 0
+    horizontal_overflow: false
+
+requirements_satisfied:
+  - "Rendered exactly five states in the authorized order from accepted Home claim-ladder statements."
+  - "Placed the strip directly below the Home hero and before the longer positioning sequence."
+  - "Provided explicit visible labels and values plus solid, closed-shell, field, dashed-aperture, and stopped-state text and shapes."
+  - "Used no SVG and did not rely on color alone."
+  - "Responsive browser review confirmed all five states remain present without horizontal overflow at desktop and 500 CSS-pixel mobile width."
+  - "Focused tests cover order, mapping, accepted dispositions, accessibility semantics, placement, responsive rules, and forbidden overreads."
+  - "Provenance and curator evidence are current without route-bundle or authority drift."
+  - "No registry, ladder, route-map, source-bundle, classification, Physics, navigation, unrelated style, asset, upstream, push, or deployment change occurred."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence is current."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "103 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "manual-status-strip-review"
+    command: "manual inspection of five-state order, explicit text semantics, solid dashed and stopped shapes, desktop and mobile layout, clipping, and first-viewport placement"
+    status: "passed"
+    evidence: "Desktop and 500 CSS-pixel mobile browser inspection confirmed correct placement, five present states, explicit text, distinct structures, zero hidden items, one-column mobile stacking, and no horizontal overflow."
+  - id: "manual-authority-boundary-review"
+    command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
+    status: "passed"
+    evidence: "Registry, ladder, route map, source bundles, classifications, curator evidence, and upstream commit are unchanged; provenance differs only by generation time and expected Home route hash."
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "passed"
+  passed_gates:
+    - "manifest validation"
+    - "content-source validation"
+    - "public claim evidence freshness"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+    - "curator report validation"
+    - "Cloudflare configuration validation"
+    - "implementation-control validation"
+    - "64-page static build"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the completion-listed FE-P0-07 component, Home, status CSS, focused-test, provenance, and control files and create one local commit."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "later packet requires separate authorization"
+  summary: "Stop after the FE-P0-07 local checkpoint and resolve the next packet from live control only after separate owner authorization."
+  do_not_skip: "Do not open a later packet, push, deploy, mutate upstream, or alter claim or route authority without a new bounded authorization."

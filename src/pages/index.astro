@@ -1,6 +1,7 @@
 ---
 import CommandBand from "../components/CommandBand.astro";
 import EvidenceRail from "../components/EvidenceRail.astro";
+import ProjectStatusStrip from "../components/ProjectStatusStrip.astro";
 import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../lib/siteContent";
@@ -51,6 +52,48 @@ const homePositioningSteps = [
 ] as const;
 const homeCurrentResult = homeClaimByState.get("complete-effective")!;
 const homeOpenFoundation = homeClaimByState.get("open-foundational")!;
+const homeStatusItems = [
+  {
+    id: "exact-closure",
+    label: "Exact closure",
+    value: "Completed effective statement",
+    semantic: "complete",
+    description: homeCurrentResult.exactWording,
+    qualification: homeCurrentResult.allowedQualification,
+  },
+  {
+    id: "observable-dynamics",
+    label: "Observable dynamics",
+    value: "Exactly GR by adoption",
+    semantic: "adopted",
+    description: homeClaimByState.get("adopted-effective")!.exactWording,
+    qualification: homeClaimByState.get("adopted-effective")!.allowedQualification,
+  },
+  {
+    id: "ontology",
+    label: "Ontology",
+    value: "Retained interpretive structure",
+    semantic: "interpretive",
+    description: homeClaimByState.get("interpretive")!.exactWording,
+    qualification: homeClaimByState.get("interpretive")!.allowedQualification,
+  },
+  {
+    id: "first-principles-derivation",
+    label: "First-principles derivation",
+    value: "Open",
+    semantic: "open",
+    description: homeOpenFoundation.exactWording,
+    qualification: homeOpenFoundation.allowedQualification,
+  },
+  {
+    id: "new-low-energy-signature",
+    label: "New low-energy signature",
+    value: "Not claimed",
+    semantic: "not-claimed",
+    description: homeClaimByState.get("not-claimed")!.exactWording,
+    qualification: homeClaimByState.get("not-claimed")!.allowedQualification,
+  },
+] as const;
 
 const physicsDetails = [
   "Æther / Æther-Flow ontology",
@@ -307,6 +350,8 @@ const agentMap = `
       </figure>
     </Fragment>
   </CommandBand>
+
+  <ProjectStatusStrip items={homeStatusItems} />
 
   <section
     class="track-page-band public-positioning-sequence"

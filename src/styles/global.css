@@ -1359,6 +1359,11 @@ html:has(body.project-overview-page) {
   --overview-line: color-mix(in srgb, var(--color-dark-orange) 34%, transparent);
   --overview-cyan-line: color-mix(in srgb, var(--color-dark-cyan) 34%, transparent);
   --overview-white-line: color-mix(in srgb, var(--color-dark-text) 16%, transparent);
+  --status-complete: var(--owl-orange-100);
+  --status-adopted: var(--overview-cyan);
+  --status-interpretive: var(--overview-orange);
+  --status-open: var(--overview-text);
+  --status-stopped: var(--overview-muted);
   --overview-shadow: 0 30px 100px color-mix(in srgb, var(--owl-black) 62%, transparent);
   background:
     radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--color-dark-orange) 13%, transparent), transparent 28rem),
@@ -1529,6 +1534,146 @@ html:has(body.project-overview-page) {
   min-width: 0;
   text-align: center;
   overflow-wrap: anywhere;
+}
+
+.project-status-strip {
+  width: min(100% - 2rem, 1180px);
+  margin: 0 auto 1.4rem;
+  border-block: 1px solid var(--overview-white-line);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--overview-orange) 9%, transparent), transparent 38%, color-mix(in srgb, var(--overview-cyan) 8%, transparent)),
+    color-mix(in srgb, var(--overview-bg) 72%, transparent);
+  padding: 1rem clamp(0.8rem, 1.5vw, 1.25rem) 1.15rem;
+}
+
+.project-status-strip-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-status-strip-heading p,
+.project-status-strip-heading h2 {
+  margin: 0;
+}
+
+.project-status-strip-heading h2 {
+  color: var(--overview-text);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height: 1.2;
+}
+
+.project-status-strip-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-status-strip-item {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+  border: 2px solid var(--status-complete);
+  background: color-mix(in srgb, var(--color-dark-panel) 86%, transparent);
+  padding: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.project-status-marker {
+  display: inline-grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid currentColor;
+  color: var(--status-complete);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.project-status-copy {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.project-status-name {
+  color: var(--overview-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.project-status-value {
+  color: var(--overview-text);
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.project-status-shape-label {
+  color: var(--overview-muted);
+  font-size: 0.68rem;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.project-status-context {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.project-status-strip-item[data-status-semantic="adopted"] {
+  border-color: var(--status-adopted);
+  border-style: double;
+  border-width: 4px;
+}
+
+.project-status-strip-item[data-status-semantic="adopted"] .project-status-marker {
+  border-radius: 50%;
+  color: var(--status-adopted);
+}
+
+.project-status-strip-item[data-status-semantic="interpretive"] {
+  border-color: var(--status-interpretive);
+  border-left-width: 0.55rem;
+}
+
+.project-status-strip-item[data-status-semantic="interpretive"] .project-status-marker {
+  border-radius: 50%;
+  color: var(--status-interpretive);
+}
+
+.project-status-strip-item[data-status-semantic="open"] {
+  border-color: var(--status-open);
+  border-style: dashed;
+}
+
+.project-status-strip-item[data-status-semantic="open"] .project-status-marker {
+  border-color: var(--status-open);
+  border-style: dashed;
+  border-radius: 50%;
+  color: var(--status-open);
+}
+
+.project-status-strip-item[data-status-semantic="not-claimed"] {
+  border-color: var(--status-stopped);
+  border-bottom-width: 0.5rem;
+}
+
+.project-status-strip-item[data-status-semantic="not-claimed"] .project-status-marker {
+  border-radius: 0;
+  color: var(--status-stopped);
 }
 
 .home-intro-panel {
@@ -4035,6 +4180,10 @@ html:has(body.project-overview-page) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .project-status-strip-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .overview-actions:has(> a:nth-child(3):last-child) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
@@ -4222,6 +4371,15 @@ html:has(body.project-overview-page) {
 
   .home-page .overview-command-hero .command-band-layout {
     gap: 0.9rem;
+  }
+
+  .project-status-strip-heading {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .project-status-strip-list {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .physics-greenfield-page .overview-command-hero .command-band-layout,
