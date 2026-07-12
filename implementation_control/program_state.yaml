@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-12T15:04:06Z"
+updated_utc: "2026-07-12T15:34:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-005.yaml"
+  - "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,35 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-005"
-  title: "Build The Reviewed Public Claim Contract"
+  task_id: "WI-20260712-006"
+  title: "Rewrite Home And Physics Positioning"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P0-05"
+    task_packet: "FE-P0-06"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "a38d6855fcfe2cebf9f9ad517ffd65ef92a2d2f5"
-    owner_authorization: "Owner authorized FE-P0-05 and an independent spawned AI technical-review function on 2026-07-12"
+    previous_checkpoint: "1aa279aca4372b3d0e3c4c5cc0300d71e204c4ec"
+    owner_authorization: "Owner explicitly authorized FE-P0-06 and the governed control-plane transition on 2026-07-12"
 
 current_job:
-  job_id: "WJ-20260712-005-A"
+  job_id: "WJ-20260712-006-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-005"
+  handoff_id: "WH-20260712-006"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-005.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-005.md"
+  yaml_path: "implementation_control/handoffs/WH-20260712-006.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-006.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-005-A"
-  task_id: "WI-20260712-005"
-  job_id: "WJ-20260712-005-A"
+  completion_id: "WJC-20260712-006-A"
+  task_id: "WI-20260712-006"
+  job_id: "WJ-20260712-006-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260712-005/jobs/completions/WJC-20260712-005-A.yaml"
+  path: "implementation_control/tasks/WI-20260712-006/jobs/completions/WJC-20260712-006-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -60,6 +60,9 @@ required_validators:
     required_for_current_job: true
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
+    required_for_current_job: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
     required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
@@ -70,14 +73,14 @@ required_validators:
   - id: "aggregate-validation"
     command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-ai-review-boundary"
-    command: "manual inspection of AI reviewer identity, non-credential statement, source pins, dispositions, limitations, and owner accountability"
+  - id: "manual-positive-positioning-review"
+    command: "manual inspection of Home and Physics content order, exact reviewed wording, qualifications, contextual closures, metadata, and first-reader comprehension"
     required_for_current_job: true
-  - id: "manual-claim-matrix-review"
-    command: "manual inspection of six claim states, exact wording, qualifications, source passages, registry status, forbidden overreads, and route-bundle coverage"
+  - id: "manual-authority-boundary-review"
+    command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P0-05 shared claim ladder and claim-copy-source review matrix"
-  summary: "Build the typed six-state claim contract, generated review matrix, spawned-review receipt, and fail-closed tests without changing route copy."
-  do_not_skip: "Do not rewrite Home or Physics, claim human reviewer credentials, claim independent validation, open FE-P0-06, push, deploy, or mutate upstream."
+  task_packet: "FE-P0-06 Home and Physics positioning"
+  summary: "Create the authorized local FE-P0-06 checkpoint from completion WJC-20260712-006-A, then stop before FE-P0-07."
+  do_not_skip: "Do not open FE-P0-07, modify the reviewed claim registry or route authority, push, deploy, or mutate the upstream source project."

@@ -1,0 +1,138 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-006-A"
+task_id: "WI-20260712-006"
+job_id: "WJ-20260712-006-A"
+created_utc: "2026-07-12T15:34:00Z"
+completed_utc: "2026-07-12T15:34:00Z"
+status: "completed"
+
+summary: "Rewrote Home and Physics around source-reviewed exact closure, current effective content, open foundational work, governed method, and evidence without changing claim or source authority."
+
+scope_confirmation:
+  packet_id: "FE-P0-06"
+  previous_checkpoint: "1aa279aca4372b3d0e3c4c5cc0300d71e204c4ec"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly authorized execution, validation, completion record creation, and local checkpoint for WJ-20260712-006-A on 2026-07-12"
+  upstream_write_status: "forbidden_and_unchanged"
+  home_route_change: true
+  physics_landing_route_change: true
+  route_local_metadata_change: true
+  focused_test_change: true
+  page_provenance_change: true
+  curator_regeneration_performed: true
+  curator_evidence_change: false
+  reviewed_registry_change: false
+  claim_ladder_change: false
+  route_map_change: false
+  source_bundle_change: false
+  authority_classification_change: false
+  child_route_change: false
+  shared_component_or_style_change: false
+  public_asset_change: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/pages/index.astro"
+  - "src/pages/physics/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-005.yaml"
+  - "implementation_control/handoffs/WH-20260712-005.md"
+  - "implementation_control/handoffs/WH-20260712-006.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.md"
+  - "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
+  - "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/completions/WJC-20260712-006-A.yaml"
+
+positioning_evidence:
+  home_page_sha256: "ead71eb1c497d877a94317b4bc4eac0829ca234fdde21c33fd7f4aa29d0cb216"
+  physics_page_sha256: "94656af78edb35fa53c43d5e3b4c98a35ae7fa9d0fb77ae6313bd84044e9f88d"
+  focused_test_sha256: "37ba174d87a21102c0c3de616d8651681cac02715bb8c7315b57a1fb72cb555d"
+  page_provenance_sha256: "4446cd4f51d11dd02bb65fe4c4bfc3d6b8349dc2aaca92ecd349a5677956edad"
+  route_map_sha256_unchanged: "224718ab0fd1f38df55c4bf266273f0d53c464677d7c7c89ba5e9dd7cd30fb8b"
+  public_statements_sha256_unchanged: "131dd6678a35530cb4d5599b6cb39552216d384d0d7218a169790140a312cd5e"
+  claim_ladder_sha256_unchanged: "727cd4d459f76044232f8030b3a98fbcaaabf9094f873af1c9e3f76fbb86a2ef"
+  curator_json_sha256_unchanged: "d3459b87a47d940b3b8fbc4a28b7f65be925aeab82e38cce8b6ccd1d3d4cb8dd"
+  curator_markdown_sha256_unchanged: "980366492e05627490350fee8d593bab127392f5f57bcd51848f88f478db07ab"
+  upstream_commit_unchanged: "a8c0b3f4ada00d852d3bc2123ddd4d203f5428b0"
+  accepted_surface_statement_count: 6
+  content_order:
+    - "what_the_project_is"
+    - "why_exact_closure_matters"
+    - "what_exists_now"
+    - "what_remains_open"
+    - "how_the_work_is_tested_and_governed"
+    - "evidence_and_sources"
+
+requirements_satisfied:
+  - "Both routes consume only accepted statements for their surface through resolvedPublicClaimLadder."
+  - "Both routes present the six authorized content beats in the required order."
+  - "The open foundational derivation stays visible while detailed qualifications and the exact nonclaim use native details disclosure."
+  - "Home and Physics have source-safe in-file title and description metadata derived from accepted exact wording."
+  - "Focused tests cover surface filtering, dispositions, qualifications, order, metadata, route bundles, classifications, and forbidden overreads."
+  - "Provenance was regenerated for the two changed route hashes and curator evidence was confirmed current without route or authority drift."
+  - "No registry, ladder, route-map, source-bundle, classification, child-route, shared-visual, asset, upstream, push, or deployment change occurred."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence is current."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "98 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "manual-positive-positioning-review"
+    command: "manual inspection of Home and Physics content order, exact reviewed wording, qualifications, contextual closures, metadata, and first-reader comprehension"
+    status: "passed"
+    evidence: "Rendered HTML exposes the required heading order, accepted exact statements, metadata, visible open burden, native qualification disclosure, and source-evidence placement."
+  - id: "manual-authority-boundary-review"
+    command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
+    status: "passed"
+    evidence: "Registry, ladder, route map, source bundles, classifications, curator evidence, and upstream commit are unchanged; provenance differs only by generation time and the two expected route hashes."
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "passed"
+  passed_gates:
+    - "manifest validation"
+    - "content-source validation"
+    - "public claim evidence freshness"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+    - "curator report validation"
+    - "Cloudflare configuration validation"
+    - "implementation-control validation"
+    - "64-page static build"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the completion-listed FE-P0-06 route, focused-test, provenance, and control files and create one local commit."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-07 immediate five-state status strip"
+  summary: "Stop after the FE-P0-06 local checkpoint and require separate owner authorization before opening FE-P0-07."
+  do_not_skip: "Do not open FE-P0-07, push, deploy, mutate upstream, or alter route authority without a new bounded authorization."

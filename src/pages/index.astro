@@ -4,9 +4,53 @@ import EvidenceRail from "../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../lib/siteContent";
+import { resolvedPublicClaimLadder } from "../lib/publicClaimLadder";
 import ComprehensionBlocks from "../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.home;
+const homeClaimByState = new Map(
+  resolvedPublicClaimLadder
+    .filter(
+      ({ statement }) =>
+        statement.disposition === "accepted" && statement.surfaces.includes("home"),
+    )
+    .map(({ state, statement }) => [state, statement] as const),
+);
+const homePositioningSteps = [
+  {
+    id: "home-project-definition",
+    label: "01 · What the project is",
+    title: "A proposed ontology paired with an exact effective package.",
+    statement: homeClaimByState.get("interpretive")!,
+  },
+  {
+    id: "home-exact-closure",
+    label: "02 · Why exact closure matters",
+    title: "The observer-level gravitational system is explicit.",
+    statement: homeClaimByState.get("adopted-effective")!,
+  },
+  {
+    id: "home-current-result",
+    label: "03 · What exists now",
+    title: "An operational effective theory statement is complete.",
+    statement: homeClaimByState.get("complete-effective")!,
+  },
+  {
+    id: "home-open-foundation",
+    label: "04 · What remains open",
+    title: "The foundational derivation is still an active burden.",
+    statement: homeClaimByState.get("open-foundational")!,
+    supportingStatement: homeClaimByState.get("not-claimed")!,
+  },
+  {
+    id: "home-governed-method",
+    label: "05 · How the work is tested and governed",
+    title: "AI assistance operates inside a human-accountable method.",
+    statement: homeClaimByState.get("governed-method")!,
+  },
+] as const;
+const homeCurrentResult = homeClaimByState.get("complete-effective")!;
+const homeOpenFoundation = homeClaimByState.get("open-foundational")!;
 
 const physicsDetails = [
   "Æther / Æther-Flow ontology",
@@ -240,8 +284,8 @@ const agentMap = `
 ---
 
 <BaseLayout
-  title="The Æther Flow Project"
-  description="Canonical Home page for The Æther Flow website, with source-boundary-safe routes into physics research, the AI research system, and resources."
+  title="The Æther Flow Project | Exact Closure and Open Foundations"
+  description={`${homeCurrentResult.exactWording} ${homeOpenFoundation.exactWording}`}
   bodyClass="project-overview-page home-page"
   exactTitle
 >
@@ -249,7 +293,7 @@ const agentMap = `
     className="overview-shell overview-command-hero"
     eyebrow="Dual research program"
     title="The Æther Flow Project"
-    lead="Start here to orient yourself: the project pairs a proposed Æther-Flow physics ontology with a governed AI research system. This site explains the routes and boundaries; source files, registries, and reviewed records remain the authority."
+    lead="Explore a proposed Æther / Æther-Flow ontology, its exact effective gravity package, the open foundational derivation, and the governed research system used to test each step."
     headingLevel="h1"
   >
     <Fragment slot="visual">
@@ -264,18 +308,39 @@ const agentMap = `
     </Fragment>
   </CommandBand>
 
-  <section class="home-intro-panel" aria-label="Project introduction">
-    <p>
-      The project is a dual-track research program. The physics research track
-      asks whether a General Relativity (GR) derivation can be built from the
-      Æther / Æther-Flow ontology: a proposed source-side vocabulary for a
-      deeper substrate, ordered flow, observed space, S-time, expansion, and
-      gravity-language. The AI research-system track governs how bounded tasks,
-      validators, handoffs, memory discipline, and human review are used to
-      pursue and audit that work. The ontology orients the model but does not
-      prove it; the GR derivation remains open and claim-gated.
-    </p>
+  <section
+    class="track-page-band public-positioning-sequence"
+    aria-labelledby="home-positioning-title"
+  >
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-reviewed positioning</p>
+      <h2 id="home-positioning-title">Exact closure first, with the foundation kept explicit.</h2>
+      <p>
+        These statements are consumed directly from the reviewed public-claim
+        ladder. Their qualifications preserve the line between effective
+        completion, proposed interpretation, and foundational derivation.
+      </p>
+    </div>
+    {homePositioningSteps.map((step) => (
+      <article id={step.id} class="track-page-heading public-positioning-step">
+        <p class="eyebrow">{step.label}</p>
+        <h3>{step.title}</h3>
+        <p>{step.statement.exactWording}</p>
+        <details>
+          <summary>Read the qualification</summary>
+          <p>{step.statement.allowedQualification}</p>
+          {step.supportingStatement && (
+            <>
+              <p>{step.supportingStatement.exactWording}</p>
+              <p>{step.supportingStatement.allowedQualification}</p>
+            </>
+          )}
+        </details>
+      </article>
+    ))}
   </section>
+
+  <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
 
   <nav class="home-action-row" aria-label="Homepage primary actions">
     <a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>
@@ -368,7 +433,5 @@ const agentMap = `
       </figure>
     </Fragment>
   </CommandBand>
-
-  <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
 
 </BaseLayout>

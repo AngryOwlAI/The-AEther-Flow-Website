@@ -4,9 +4,53 @@ import EvidenceRail from "../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../lib/siteContent";
+import { resolvedPublicClaimLadder } from "../../lib/publicClaimLadder";
 import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsTrack;
+const physicsClaimByState = new Map(
+  resolvedPublicClaimLadder
+    .filter(
+      ({ statement }) =>
+        statement.disposition === "accepted" && statement.surfaces.includes("physics"),
+    )
+    .map(({ state, statement }) => [state, statement] as const),
+);
+const physicsPositioningSteps = [
+  {
+    id: "physics-project-definition",
+    label: "01 · What the project is",
+    title: "An interpretive setting for an explicit effective package.",
+    statement: physicsClaimByState.get("interpretive")!,
+  },
+  {
+    id: "physics-exact-closure",
+    label: "02 · Why exact closure matters",
+    title: "The effective dynamics and matter coupling are fixed.",
+    statement: physicsClaimByState.get("adopted-effective")!,
+  },
+  {
+    id: "physics-current-result",
+    label: "03 · What exists now",
+    title: "The package has a complete operational effective statement.",
+    statement: physicsClaimByState.get("complete-effective")!,
+  },
+  {
+    id: "physics-open-foundation",
+    label: "04 · What remains open",
+    title: "A substrate-level derivation remains unresolved.",
+    statement: physicsClaimByState.get("open-foundational")!,
+    supportingStatement: physicsClaimByState.get("not-claimed")!,
+  },
+  {
+    id: "physics-governed-method",
+    label: "05 · How the work is tested and governed",
+    title: "Research assistance does not replace scientific review.",
+    statement: physicsClaimByState.get("governed-method")!,
+  },
+] as const;
+const physicsCurrentResult = physicsClaimByState.get("complete-effective")!;
+const physicsOpenFoundation = physicsClaimByState.get("open-foundational")!;
 
 const physicsChildRoutes = [
   {
@@ -134,15 +178,15 @@ const physicsOverviewSvg = `
 ---
 
 <BaseLayout
-  title="Physics Research"
-  description="Greenfield Physics Research overview for The Æther Flow Project, with ontology, benchmark, derivation, claim-status, and source-authority boundaries."
+  title="Physics Research | Exact Closure and Open Foundations"
+  description={`${physicsCurrentResult.exactWording} ${physicsOpenFoundation.exactWording}`}
   bodyClass="project-overview-page project-track-page physics-greenfield-page"
 >
   <CommandBand
     className="overview-shell overview-command-hero"
     eyebrow="Physics Research"
     title="Physics Research"
-    lead="Read the proposed Æther-flow physics program as layered public orientation, not as a completed derivation of general relativity."
+    lead="Start with the exact effective gravity package, then inspect its proposed Æther / Æther-Flow interpretation, open foundational derivation, and source evidence."
     headingLevel="h1"
   >
     <div class="overview-actions" aria-label="Physics overview actions">
@@ -162,18 +206,39 @@ const physicsOverviewSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Physics overview introduction">
-    <p>
-      The Physics Research category separates what the project can currently
-      explain from what upstream source work would still need to derive. Readers
-      should treat ontology vocabulary, the exact-GR benchmark, derivation
-      burdens, flow-geometry questions, claim gates, and open-burden records as
-      distinct layers. Website copy may organize those layers for reading, but
-      it does not create scientific authority, complete a source-side GR
-      derivation, or promote a candidate beyond registered evidence.
-    </p>
+  <section
+    class="track-page-band public-positioning-sequence"
+    aria-labelledby="physics-positioning-title"
+  >
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-reviewed positioning</p>
+      <h2 id="physics-positioning-title">Exact effective closure, open foundational derivation.</h2>
+      <p>
+        The ordered statements below come directly from the reviewed
+        public-claim ladder. Detailed qualifications remain available without
+        displacing the effective result from the first reading path.
+      </p>
+    </div>
+    {physicsPositioningSteps.map((step) => (
+      <article id={step.id} class="track-page-heading public-positioning-step">
+        <p class="eyebrow">{step.label}</p>
+        <h3>{step.title}</h3>
+        <p>{step.statement.exactWording}</p>
+        <details>
+          <summary>Read the qualification</summary>
+          <p>{step.statement.allowedQualification}</p>
+          {step.supportingStatement && (
+            <>
+              <p>{step.supportingStatement.exactWording}</p>
+              <p>{step.supportingStatement.allowedQualification}</p>
+            </>
+          )}
+        </details>
+      </article>
+    ))}
   </section>
 
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsTrack} />
 
@@ -252,5 +317,4 @@ const physicsOverviewSvg = `
     </table>
   </section>
 
-  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 </BaseLayout>

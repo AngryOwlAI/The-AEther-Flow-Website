@@ -1,0 +1,153 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260712-006-A"
+task_id: "WI-20260712-006"
+title: "Implement Source-Safe Positive Landing Positioning"
+created_utc: "2026-07-12T15:15:59Z"
+updated_utc: "2026-07-12T15:34:00Z"
+status: "active"
+
+objective: "Execute one FE-P0-06 packet that rewrites Home and Physics in a positive exact-closure-first order, consumes reviewed statements without claim drift, refreshes required evidence, and preserves every non-route authority boundary."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P0-06 packet"
+  live_state_priority: "implementation_control records outrank plans, memory, and conversation summaries"
+  packet_id: "FE-P0-06"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "home_and_physics_landing_routes_only"
+  public_claim_write_status: "exact_accepted_registry_consumption_with_qualifications"
+  reviewed_registry_write_status: "forbidden"
+  route_metadata_write_status: "in_file_title_and_description_only"
+  route_bundle_write_status: "forbidden"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "AGENTS.md"
+  - "CONTEXT.md"
+  - ".codex/skills/implementation-control/SKILL.md"
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "docs/quality/public-claim-review-matrix-2026-07-12.md"
+  - "docs/quality/public-claim-review-receipt-2026-07-12.md"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "src/pages/index.astro"
+  - "src/pages/physics/index.astro"
+  - "src/data/publicStatements.ts"
+  - "src/lib/publicClaimLadder.ts"
+  - "src/components/CommandBand.astro"
+  - "src/components/EvidenceRail.astro"
+  - "src/components/SourceAuthoritySection.astro"
+  - "src/layouts/BaseLayout.astro"
+  - "tests/"
+  - "scripts/"
+  - "implementation_control/"
+  - "read-only upstream exact-closure sources and registries allowlisted by WI-20260712-006"
+  - "website and upstream Git evidence"
+
+allowed_writes:
+  - "src/pages/index.astro"
+  - "src/pages/physics/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-005.yaml"
+  - "implementation_control/handoffs/WH-20260712-005.md"
+  - "implementation_control/handoffs/WH-20260712-006.yaml"
+  - "implementation_control/handoffs/WH-20260712-006.md"
+  - "implementation_control/tasks/WI-20260712-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-005/jobs/WJ-20260712-005-A.yaml"
+  - "implementation_control/tasks/WI-20260712-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/WJ-20260712-006-A.yaml"
+  - "implementation_control/tasks/WI-20260712-006/jobs/completions/WJC-20260712-006-A.yaml"
+
+required_outputs:
+  - "Home and Physics use the six-beat positive content order defined by FE-P0-06."
+  - "Both routes consume exact accepted statements through resolvedPublicClaimLadder and render the required qualifications or boundaries."
+  - "Each route has source-safe in-file title and description metadata."
+  - "One focused test proves registry consumption, accepted dispositions, ordering, qualifications, metadata, and prohibited-overread absence."
+  - "Page provenance and curator evidence are current for the changed route bytes without bundle, schema, status, or classification drift."
+  - "One implementation completion record captures changed files, validators, manual reviews, and checkpoint readiness."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorization on 2026-07-12 after checkpoint 1aa279aca4372b3d0e3c4c5cc0300d71e204c4ec."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Exact accepted statement publication on Home and Physics with qualifications and no registry mutation."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source or derivative refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Exactly two existing landing route files may change; navigation, identity, redirects, canonicals, and retirements may not."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No component, layout, style, token, SVG, or motion change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset byte, path, license, or downloadable record change."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Mechanical page-provenance hash refresh only; no route-bundle, schema, status, or classification change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to /Volumes/P-SSD/AngryOwl/The-AEther-Flow."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "manual-positive-positioning-review"
+    command: "manual inspection of Home and Physics content order, exact reviewed wording, qualifications, contextual closures, metadata, and first-reader comprehension"
+    required: true
+  - id: "manual-authority-boundary-review"
+    command: "manual inspection of registry consumption, route-bundle preservation, provenance hashes, curator evidence, non-authority language, and forbidden overreads"
+    required: true
+
+stop_conditions:
+  - "Either route would render claim wording not drawn exactly from an accepted reviewed registry statement."
+  - "The positive framing would conceal the open foundational derivation burden or omit required qualifications."
+  - "The work requires changes to the reviewed registry, claim ladder, route map, source bundle, authority status, adaptation type, or upstream source."
+  - "The work requires a child route, shared component, layout, style, SVG, motion, navigation, or public-asset change."
+  - "The work would imply external peer review, independent scientific validation, non-GR predictive novelty, completed substrate derivation, or AI proof authority."
+  - "The work requires push, deployment, or upstream mutation."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P0-06 Home and Physics positioning"
+  summary: "Use completion WJC-20260712-006-A to create the authorized local checkpoint, then stop before FE-P0-07."
+  do_not_skip: "Do not open FE-P0-07, modify the reviewed registry or route authority, push, deploy, or mutate upstream."
