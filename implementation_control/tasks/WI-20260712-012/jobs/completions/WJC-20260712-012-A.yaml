@@ -1,0 +1,153 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-012-A"
+task_id: "WI-20260712-012"
+job_id: "WJ-20260712-012-A"
+created_utc: "2026-07-12T22:09:48Z"
+completed_utc: "2026-07-13T01:58:11Z"
+status: "completed"
+
+summary: "Refreshed reviewed claim-boundary current-state provenance and curator evidence from one clean origin-parity upstream commit while preserving FE-P1-03 runtime work and confirming no physics delta."
+
+scope_confirmation:
+  packet_id: "FE-SR-02"
+  previous_checkpoint: "59e0b4128237f68ef839a439a50a09ae109dff90"
+  previous_source_pin: "5ad2d856b5b7a689b76035e348734824cf7411f0"
+  accepted_source_pin: "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5"
+  upstream_origin_main: "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5"
+  upstream_worktree: "clean"
+  upstream_write_status: "forbidden_and_unchanged"
+  source_refresh_performed: true
+  generated_public_claim_snapshot_change: true
+  authored_public_copy_change: false
+  route_map_change: false
+  source_bundle_change: false
+  public_asset_change: false
+  frontend_runtime_change: false
+  acknowledgement_or_waiver_created: false
+  physics_delta: false
+  physics_promotion_authorized: false
+  windows_nvda_governance_amendment_executed: false
+  fe_p1_03_resumed: false
+  fe_p1_04_opened: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/data/claim_boundary_snapshot.json"
+  - "src/data/physics_current_state_snapshot.json"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-011.yaml"
+  - "implementation_control/handoffs/WH-20260712-011.md"
+  - "implementation_control/handoffs/WH-20260712-012.yaml"
+  - "implementation_control/handoffs/WH-20260712-012.md"
+  - "implementation_control/tasks/WI-20260712-011/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-011/jobs/WJ-20260712-011-A.yaml"
+  - "implementation_control/tasks/WI-20260712-012/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-012/jobs/WJ-20260712-012-A.yaml"
+  - "implementation_control/tasks/WI-20260712-012/jobs/completions/WJC-20260712-012-A.yaml"
+
+source_refresh_evidence:
+  upstream_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_branch: "main"
+  upstream_commit: "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5"
+  upstream_origin_main: "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5"
+  upstream_worktree: "clean"
+  protected_upstream_delta_count: 0
+  protected_upstream_delta_scope: "ontology TeX Distance-to-GR program-state frontier and research handoffs"
+  physics_semantic_fields_unchanged: true
+  claim_boundary_row_count_before: 837
+  claim_boundary_row_count_after: 844
+  new_claim_boundary_row_count: 7
+  new_claim_boundary_scope: "v19 project-system planning measurement graph budget and checkpoint control only"
+  route_provenance_records: 34
+  route_order_unchanged: true
+  local_page_hash_changes: 0
+  curator_dependency_count: 248
+  curator_drift_count: 0
+  curator_diagnostic_count: 0
+  curator_review_required_count: 0
+  curator_critical_drift_count: 0
+  claim_boundary_snapshot_sha256: "0f90ab2415c1088c37466b36218e85a3a948ff18b9151ba2b5fa007c5f79b093"
+  physics_current_state_snapshot_sha256: "b2f09b0aba4376136cb361d5a074e4b1fcc2d0f97c48899eb29aa7e6c8937b22"
+  page_provenance_sha256: "932cc64a23bc0b3e1e1673a199680409420dc23d55b48e6df6f46a569b843cbc"
+  curator_json_sha256: "6691842e3f2ae1b7d245016ad571507abff0daf0bd456dddf49946377b4146f2"
+  curator_markdown_sha256: "ff3ed0bf898d711fcfaf46b8ad21277d495ba5523689786a00d22fe43ac67481"
+
+preserved_runtime_evidence:
+  base_layout_sha256: "b358ae7c19765b777d57ae7eec6fb825e8a6f1879597041431f83342bdd0518c"
+  global_css_sha256: "8c29df97c7e57cf4dac389ab4ffe72a17dcca3b9283681eb9671bd7caf8faaa5"
+  mobile_navigation_test_sha256: "7616d4558fa70b97ee2d6667428072437366f1283a5cc702dfe473eadce87ec2"
+  before_after_hashes_equal: true
+  checkpoint_exclusion_required: true
+
+requirements_satisfied:
+  - "Confirmed upstream main was clean and exactly equal to origin main before reading source bytes."
+  - "Reviewed the committed upstream delta and found no protected scientific or research-state change."
+  - "Generated both snapshots from the same accepted source commit and confirmed physics semantic state was unchanged."
+  - "Reviewed all seven new claim-boundary rows as project-system no-physics-delta records with explicit promotion guards."
+  - "Regenerated page provenance without changing route identity order local page hashes route map or source bundles."
+  - "Previewed curator output before writing reports and observed zero drift diagnostics review-required or critical items."
+  - "Preserved the suspended FE-P1-03 runtime files byte-for-byte and excluded them from this checkpoint."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "112 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+    status: "passed"
+    evidence: "Origin parity protected-path review semantic physics equality seven guarded project-system claim rows 34 stable routes and preserved runtime hashes verified"
+
+remaining_boundaries:
+  - "The Windows NVDA deferral governance amendment is separately authorized but is not part of FE-SR-02."
+  - "FE-P1-03 remains suspended and uncheckpointed until the separate governance amendment is recorded."
+  - "FE-P1-04 remains unopened."
+  - "No website push or deployment is authorized."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the five generated source-refresh outputs plus the allowlisted FE-P1-03 suspension and FE-SR-02 control records."
+  excluded_runtime_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-SR-02 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop before the separate Windows NVDA deferral governance amendment."
+  do_not_skip: "Do not resume FE-P1-03 open FE-P1-04 push deploy promote physics or mutate upstream."
