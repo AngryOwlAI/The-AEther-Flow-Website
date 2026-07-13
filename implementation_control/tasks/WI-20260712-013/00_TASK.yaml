@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-013"
 title: "Refactor EvidenceRail Accessible Names"
 created_utc: "2026-07-13T02:20:02Z"
-updated_utc: "2026-07-13T13:22:45Z"
-status: "active"
+updated_utc: "2026-07-13T14:25:55Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P1-05"
@@ -196,3 +196,8 @@ suspension:
   checkpoint_created: false
   resolved_at_utc: "2026-07-13T13:10:34Z"
   resolution_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260713-002"
+  checkpoint: "86dba4a60c5673244598af508392233d8e92035b"
+  reason: "FE-P1-05 was already checkpointed before the owner authorized the separate technical writing skill packet."

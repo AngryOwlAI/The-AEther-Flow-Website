@@ -1,5 +1,20 @@
 # Third-Party Notices
 
+## Technical Writing Quality Gate Adaptation
+
+The local `technical-writing-quality-gate` skill is adapted from the
+Sys4AI-dev package at source commit
+`ef93cc008f1d3d91129e86bb4ce48b1435c17f6d`.
+
+Copyright 2026 Alexander Samuel Ricciardi, AngryOwl. The source package is
+licensed under the Apache License, Version 2.0. The website adaptation changes
+the runtime location, authority hierarchy, project guidance, example,
+metadata, matcher reporting, and regression coverage. The website repository's
+Apache-2.0 tooling terms apply to these modifications without changing the
+source license or attribution.
+
+## Matt Pocock Skill Adaptations
+
 Portions of the local `prototype` and `to-prd` skills are adapted from:
 
 - Matt Pocock's `prototype` skill:

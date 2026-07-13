@@ -1,0 +1,7 @@
+interface:
+  display_name: "Technical Writing Quality Gate"
+  short_description: "Gate AEther technical prose against sources"
+  default_prompt: "Use $technical-writing-quality-gate to draft, revise, or review this technical prose against The AEther Flow source-authority boundary and return a pass, repair, or block result."
+
+policy:
+  allow_implicit_invocation: true

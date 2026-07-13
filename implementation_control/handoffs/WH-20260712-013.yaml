@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260712-013"
 created_utc: "2026-07-13T02:20:02Z"
-updated_utc: "2026-07-13T13:22:45Z"
-status: "active"
+updated_utc: "2026-07-13T14:25:55Z"
+status: "superseded"
 
 task_id: "WI-20260712-013"
 job_id: "WJ-20260712-013-A"
@@ -72,3 +72,10 @@ completion_record:
   completion_id: "WJC-20260712-013-A"
   path: "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
   status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260713-002"
+  task_id: "WI-20260713-002"
+  job_id: "WJ-20260713-002-A"
+  checkpoint: "86dba4a60c5673244598af508392233d8e92035b"
+  reason: "FE-P1-05 was checkpointed before the separately authorized skill integration packet opened."

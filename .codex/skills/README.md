@@ -18,6 +18,9 @@ repository.
 - `implementation-control/`: resolve live website-local implementation-control
   records, execute at most one governed implementation packet, validate it, and
   checkpoint it locally without pushing, deploying, or mutating upstream.
+- `technical-writing-quality-gate/`: draft, revise, or review source-grounded
+  technical and public-facing prose with explicit pass, repair, or block
+  outcomes plus an optional advisory standard-library warning matcher.
 - `prd-to-implementation-plan/`: convert a PRD, product spec, or requirements
   document into a Codex-ready implementation plan and task packets.
 - `prototype/`: build throwaway logic or UI prototypes to answer a specific

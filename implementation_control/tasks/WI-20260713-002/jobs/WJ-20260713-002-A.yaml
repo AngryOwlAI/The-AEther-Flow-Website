@@ -1,0 +1,142 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260713-002-A"
+task_id: "WI-20260713-002"
+title: "Implement Website Technical Writing Quality Gate"
+created_utc: "2026-07-13T14:25:55Z"
+updated_utc: "2026-07-13T14:34:42Z"
+status: "active"
+
+objective: "Adapt the Sys4AI technical writing quality gate into one canonical website skill package with advisory proxy checks and project source authority boundaries."
+
+execution_boundary:
+  invocation_limit: "one bounded skill integration packet"
+  live_state_priority: "implementation control records outrank plans memory and generated summaries"
+  packet_id: "SKILL-TWQG-01"
+  public_runtime_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  package_command_write_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and external read only sources allowlisted by WI-20260713-002"
+
+allowed_writes:
+  - ".codex/skills/technical-writing-quality-gate"
+  - ".codex/skills/README.md"
+  - ".codex/skills/THIRD_PARTY_NOTICES.md"
+  - "tests/test_technical_writing_quality_gate_skill.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.md"
+  - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.md"
+  - "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+
+required_outputs:
+  - "One canonical .codex skill package with valid frontmatter metadata maintenance guidance reference example and standard library script."
+  - "A website authority hierarchy that keeps upstream tracked evidence above website presentation and generated orientation layers."
+  - "An advisory warning matcher with documented pass repair block output and stable exit codes."
+  - "A current skill index and Apache adaptation notice."
+  - "Focused regression tests for package and command behavior."
+  - "No package command quality hook system-analysis runtime public or upstream change."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the approved skill plan."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public claims change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No research source refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route or navigation change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No visual system change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No manifest change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write outside the website repository."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "manual-skill-review"
+    command: "manual inspection of skill authority advisory behavior metadata attribution and excluded runtime surfaces"
+    required: true
+
+stop_conditions:
+  - "A public route claim manifest asset or runtime change becomes necessary."
+  - "A package command dependency quality hook system-analysis change .agents shim or skill manifest becomes necessary."
+  - "The proxy matcher would be described as truth source coverage originality or authorship proof."
+  - "Work enters upstream push or deployment scope."
+  - "Validation fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260713-002-A"
+  path: "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+  status: "completed"
+
+aggregate_validation_observation:
+  command: "npm run validate"
+  status: "failed_outside_scope"
+  observed_utc: "2026-07-13T14:33:32Z"
+  failing_gate: "npm run validate:curator"
+  packet_file_involvement: false
+  disposition: "Do not refresh curator reports add acknowledgements change public sources or mutate upstream inside this skill packet."
+
+next_recommended_action:
+  task_packet: "SKILL-TWQG-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-002-A and stop."
+  do_not_skip: "Do not widen into runtime public source package system-analysis push or deployment changes."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  unrelated_dirty_paths_must_remain_unstaged: true
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  skill_package_files: 7
+  focused_tests: "passed 6 tests"
+  full_python_tests: "passed 121 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "failed outside scope at curator due current upstream drift"
+  checkpoint_status: "ready_to_checkpoint"

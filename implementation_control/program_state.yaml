@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-13T13:22:45Z"
+updated_utc: "2026-07-13T14:34:42Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,11 +9,11 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-013.yaml"
+  - "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.yaml"
   - "current_git_state_and_validator_output"
-  - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
+  - "owner approved technical writing quality gate implementation plan"
   - "memory_and_conversation_summaries_as_navigation_only"
 
 repository_boundary:
@@ -24,35 +24,34 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-013"
-  title: "Refactor EvidenceRail Accessible Names"
+  task_id: "WI-20260713-002"
+  title: "Adapt Technical Writing Quality Gate Skill"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P1-05"
-    adopted_plan: "ImplementationPlans/recomendation_frontend.md"
-    adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
-    adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
-    owner_authorization: "Owner explicitly directed post-FE-SR-03 FE-P1-05 acceptance on 2026-07-13"
+    task_packet: "SKILL-TWQG-01"
+    source_skill: "/Volumes/P-SSD/AngryOwl/Sys4AI-dev/.agents/skills/technical-writing-quality-gate"
+    source_commit: "ef93cc008f1d3d91129e86bb4ce48b1435c17f6d"
+    previous_checkpoint: "86dba4a60c5673244598af508392233d8e92035b"
+    owner_authorization: "Owner explicitly directed implementation of the approved website technical writing quality gate plan on 2026-07-13"
 
 current_job:
-  job_id: "WJ-20260712-013-A"
+  job_id: "WJ-20260713-002-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-013"
+  handoff_id: "WH-20260713-002"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-013.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-013.md"
+  yaml_path: "implementation_control/handoffs/WH-20260713-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260713-002.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-013-A"
-  task_id: "WI-20260712-013"
-  job_id: "WJ-20260712-013-A"
+  completion_id: "WJC-20260713-002-A"
+  task_id: "WI-20260713-002"
+  job_id: "WJ-20260713-002-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -67,17 +66,19 @@ required_validators:
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
-  - id: "aggregate-validation"
-    command: "npm run validate"
-    required_for_current_job: true
-  - id: "quality-gate"
-    command: "npm run quality"
-    required_for_current_job: true
-  - id: "manual-evidence-rail-review"
-    command: "manual inspection of concise link names adjacent descriptive text card action focus indication and representative consumers"
+  - id: "manual-skill-review"
+    command: "manual inspection of skill authority advisory behavior metadata attribution and excluded runtime surfaces"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P1-05 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260712-013-A and stop."
-  do_not_skip: "Do not repeat FE-SR-03 include cancelled mobile-navigation files open FE-P1-03 or FE-P1-04 push deploy or mutate upstream."
+  task_packet: "SKILL-TWQG-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-002-A and stop."
+  do_not_skip: "Do not change public runtime package commands system analysis upstream sources push or deploy."
+
+aggregate_validation_observation:
+  command: "npm run validate"
+  status: "failed_outside_scope"
+  observed_utc: "2026-07-13T14:33:32Z"
+  failing_gate: "npm run validate:curator"
+  packet_file_involvement: false
+  disposition: "Record the upstream registry and folder map drift without refreshing reports acknowledgements public sources or upstream files in this skill packet."

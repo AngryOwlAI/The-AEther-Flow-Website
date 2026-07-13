@@ -1,0 +1,66 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260713-002"
+created_utc: "2026-07-13T14:25:55Z"
+updated_utc: "2026-07-13T14:34:42Z"
+status: "active"
+
+task_id: "WI-20260713-002"
+job_id: "WJ-20260713-002-A"
+
+summary: "Opened one owner authorized website local packet to adapt the technical writing quality gate without public runtime upstream push or deployment changes."
+
+current_state:
+  - "FE-P1-05 was already checkpointed at 86dba4a60c5673244598af508392233d8e92035b and was not replayed."
+  - "The source skill is read from Sys4AI-dev commit ef93cc008f1d3d91129e86bb4ce48b1435c17f6d."
+  - "The website canonical skill surface is .codex/skills only."
+  - "The warning matcher remains advisory and outside package commands and aggregate quality wiring."
+  - "The existing system-analysis skill remains unchanged."
+  - "Preserved mobile-navigation and older control changes remain outside the write and checkpoint scope."
+  - "All 121 Python tests pass."
+  - "Aggregate validation reaches the curator gate then reports unrelated upstream registry and folder map drift with no packet file involvement."
+  - "The seven-file canonical skill package focused tests Ruff MyPy implementation control diff check and 64-page static build pass."
+  - "Completion WJC-20260713-002-A is ready for the local checkpoint transaction."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  public_claim_change_status: "forbidden"
+  public_runtime_change_status: "forbidden"
+  package_command_change_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "SKILL-TWQG-01 implementation"
+  summary: "Implement validate and locally checkpoint the allowlisted skill package."
+  do_not_skip: "Do not change system-analysis package commands public runtime upstream push or deployment."
+
+stop_before:
+  - "public route claim manifest asset or runtime changes"
+  - "package command dependency quality hook or system-analysis changes"
+  - ".agents shim or skill manifest creation"
+  - "upstream source writes"
+  - "Git push"
+  - "Cloudflare deployment"
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+validation_disposition:
+  control_transition_status: "validated"
+  skill_implementation_status: "completed_ready_for_checkpoint"
+  python_tests_status: "passed_121"
+  focused_tests_status: "passed_6"
+  focused_ruff_status: "passed"
+  focused_mypy_status: "passed"
+  static_build_status: "passed_64_pages"
+  aggregate_validation_status: "failed_outside_scope_at_curator"
+  completion_record_status: "completed"
+  checkpoint_status: "ready_to_checkpoint"
+
+completion_record:
+  completion_id: "WJC-20260713-002-A"
+  path: "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+  status: "completed"

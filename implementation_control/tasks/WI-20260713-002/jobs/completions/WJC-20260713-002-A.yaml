@@ -1,0 +1,140 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260713-002-A"
+task_id: "WI-20260713-002"
+job_id: "WJ-20260713-002-A"
+created_utc: "2026-07-13T14:34:42Z"
+completed_utc: "2026-07-13T14:34:42Z"
+status: "completed"
+
+summary: "Adapted the technical writing quality gate into the canonical website skill surface with advisory proxy checks source authority discipline metadata attribution and focused regression coverage."
+
+scope_confirmation:
+  packet_id: "SKILL-TWQG-01"
+  source_commit: "ef93cc008f1d3d91129e86bb4ce48b1435c17f6d"
+  previous_checkpoint: "86dba4a60c5673244598af508392233d8e92035b"
+  owner_authorization: "Owner explicitly directed implementation of the approved website technical writing quality gate plan on 2026-07-13"
+  canonical_codex_skill_added: true
+  agents_shim_added: false
+  skill_manifest_added: false
+  package_command_change: false
+  aggregate_quality_hook_change: false
+  dependency_change: false
+  system_analysis_change: false
+  public_runtime_change: false
+  public_claim_change: false
+  public_manifest_change: false
+  public_asset_change: false
+  upstream_write_status: "forbidden_and_unchanged"
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+  - ".codex/skills/technical-writing-quality-gate/README.md"
+  - ".codex/skills/technical-writing-quality-gate/AGENTS.md"
+  - ".codex/skills/technical-writing-quality-gate/agents/openai.yaml"
+  - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
+  - ".codex/skills/technical-writing-quality-gate/examples/source-authority-repair.md"
+  - ".codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py"
+  - ".codex/skills/README.md"
+  - ".codex/skills/THIRD_PARTY_NOTICES.md"
+  - "tests/test_technical_writing_quality_gate_skill.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.md"
+  - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.md"
+  - "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+
+source_and_output_evidence:
+  source_skill_sha256: "bb546493d98df1ab7e74d944ac5a20f6df99e61dc93959f5a4d124727f95da66"
+  source_script_sha256: "cc88c02822a946c6e767a124d9c2fcdc4bf38d5507cca0bb4696ab2a1cabb286"
+  adapted_skill_sha256: "c0d20489f76c4a2af3aa9b2c6083811a0de1bfe046e86926632b1e7d91b8c476"
+  adapted_script_sha256: "b1543ee6fe135b5f46a147b5984739b904d015ffa462bc35bb226bf6f17f973d"
+  focused_test_sha256: "4a1f82dd7a7055fa553a0cdb6e09361949da8d011bf30bc3e7c125c368bcc97d"
+  skill_package_files: 7
+  matcher_standard_library_only: true
+  matcher_default_mode: "advisory"
+  matcher_exit_codes: "zero readable one strict warning two no match or read error"
+  implicit_invocation_enabled: true
+
+requirements_satisfied:
+  - "Added one canonical .codex technical writing skill with valid frontmatter and project metadata."
+  - "Preserved pass repair and block outcomes APA 7 guidance and the three-level evidence hierarchy."
+  - "Documented the website and upstream claim boundary plus public implementation-control routing."
+  - "Added a standard library advisory matcher with stable exit behavior and an always-visible proxy-evidence disclaimer."
+  - "Added maintenance guidance an adapted reference and a source-authority repair example."
+  - "Updated the local skill index and recorded Apache source attribution."
+  - "Covered package contract help clean Unicode advisory strict block glob and report behavior with six focused tests."
+  - "Preserved package commands system-analysis public runtime upstream push deployment and unrelated dirty files."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "skill-help"
+    command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py --help"
+    status: "passed"
+  - id: "focused-skill-tests"
+    command: ".venv/bin/python -m pytest tests/test_technical_writing_quality_gate_skill.py"
+    status: "passed"
+    evidence: "6 focused tests passed"
+  - id: "focused-ruff"
+    command: ".venv/bin/python -m ruff check .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py tests/test_technical_writing_quality_gate_skill.py"
+    status: "passed"
+  - id: "focused-mypy"
+    command: ".venv/bin/python -m mypy .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py tests/test_technical_writing_quality_gate_skill.py"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "121 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "failed_outside_scope"
+    evidence: "All gates through page provenance passed then validate curator reported current upstream registry and folder map drift plus stale checked in reports with no packet file involvement"
+  - id: "manual-skill-review"
+    command: "manual inspection of skill authority advisory behavior metadata attribution and excluded runtime surfaces"
+    status: "passed"
+    evidence: "Seven package files present implicit invocation enabled advisory boundary explicit no agents shim no skill manifest and no package system analysis public upstream push or deployment change"
+
+aggregate_validation_observation:
+  status: "failed_outside_scope"
+  failing_gate: "npm run validate:curator"
+  packet_file_involvement: false
+  reports_changed_by_packet: false
+  public_sources_changed_by_packet: false
+  upstream_changed_by_packet: false
+  repair_in_this_packet: "forbidden"
+  disposition: "Record the current drift for a future source refresh packet and retain the independent static build as required evidence."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the twenty one completion listed skill index notice test and control files while ignoring preserved frontend and older control changes."
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  push_allowed: false
+  deployment_allowed: false
+
+remaining_boundaries:
+  - "Aggregate source currency remains blocked outside this packet by current upstream registry and folder map drift."
+  - "No public runtime claim manifest asset system-analysis package dependency or upstream change occurred."
+  - "No push or deployment is requested or authorized."
+
+next_recommended_action:
+  task_packet: "SKILL-TWQG-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop without opening another packet."
+  do_not_skip: "Do not stage preserved frontend or older control changes push deploy refresh sources add acknowledgements or mutate upstream."
