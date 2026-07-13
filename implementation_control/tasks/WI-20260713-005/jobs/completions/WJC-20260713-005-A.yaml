@@ -1,0 +1,173 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260713-005-A"
+task_id: "WI-20260713-005"
+job_id: "WJ-20260713-005-A"
+created_utc: "2026-07-13T20:02:24Z"
+completed_utc: "2026-07-13T20:05:53Z"
+status: "completed"
+
+summary: "Built and validated reusable table treatments and converted the ontology route vocabulary and comparison pilot without changing reviewed wording."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260713-004.md"
+  - "implementation_control/handoffs/WH-20260713-004.yaml"
+  - "implementation_control/handoffs/WH-20260713-005.md"
+  - "implementation_control/handoffs/WH-20260713-005.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260713-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/WJ-20260713-004-A.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
+  - "implementation_control/tasks/WI-20260713-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-005/jobs/WJ-20260713-005-A.yaml"
+  - "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/components/OverflowTable.astro"
+  - "src/components/TermCardGrid.astro"
+  - "src/pages/physics/ontology/index.astro"
+  - "tests/test_table_treatments.py"
+
+source_context:
+  packet_id: "FE-P1-06"
+  previous_checkpoint: "efa78149f5fa6ef7521a0f20d58047938847c4d9"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  dependency: "FE-G0-05 completed"
+  checkpoint_replayed: false
+
+changed_surface:
+  new_shared_components: 2
+  ontology_routes: 1
+  vocabulary_rows_converted: 6
+  retained_comparison_tables: 1
+  focused_test_files: 1
+  provenance_files: 1
+  curator_reports_written: 2
+  curator_report_bytes_changed: false
+  global_style_files_changed: false
+  route_map_changed: false
+  source_bundles_changed: false
+  reviewed_wording_changed: false
+  public_assets_changed: false
+  upstream_files_changed: false
+
+implementation_evidence:
+  overflow_table_sha256: "75d013779e3a46d530825f66b29f9bfacd4a0981774f7cf69ca4409b94333519"
+  term_card_grid_sha256: "68992c4f9a3288d87d3c56bb02ef3bf9853bd434d01a1b1fdd70d01ff15c59bf"
+  ontology_route_sha256: "cd3867c79de5d9c784b38d5bccd3b409f019c987d9bb4b7a8522fe24d4784d7e"
+  focused_test_sha256: "dc5c51c8d3d1e072412179ffd015dc23d882c5f6b6423d4bea4e405f7bbb8096"
+  provenance_sha256: "0136fcbecdb3f9838c36a986522782ea6a3bd8c166b11a20e4d9bd8e5f7b2a85"
+  semantic_term_list_count: 1
+  term_card_count: 6
+  definition_labels_per_card: 2
+  semantic_comparison_table_count: 1
+  duplicate_responsive_markup: false
+
+browser_evidence:
+  observed_utc: "2026-07-13T20:05:43Z"
+  tool: "Playwright CLI headed Chrome"
+  route: "local physics ontology route"
+  desktop_instruction_hidden_without_overflow: true
+  mobile_viewport_width: 320
+  mobile_viewport_height: 568
+  table_viewport_width: 271
+  table_scroll_width: 704
+  overflow_instruction_visible: true
+  end_edge_cue_visible_at_start: true
+  keyboard_end_scroll_left: 418
+  keyboard_max_scroll: 433
+  last_cell_fully_visible_after_end: true
+  end_edge_cue_hidden_after_end: true
+  keyboard_home_scroll_left: 0
+  start_edge_cue_hidden_after_home: true
+  end_edge_cue_visible_after_home: true
+  keyboard_focus_outline: "three pixel solid"
+  high_zoom_equivalent_viewport: "360 by 225"
+  high_zoom_body_scroll_width: 345
+  high_zoom_page_overflow: false
+  source_authority_sections: 1
+  browser_console_errors: 0
+  browser_console_warnings: 0
+
+requirements_satisfied:
+  - "Created OverflowTable with conditional visible instruction a focusable labeled region explicit keyboard scrolling and directional edge cues."
+  - "Created TermCardGrid as one semantic list with one article per term and repeated definition labels."
+  - "Converted the ontology vocabulary matrix to six cards without changing reviewed wording."
+  - "Retained the claim boundary table headers row headers and cells inside the overflow treatment."
+  - "Kept all treatment styles component scoped and preserved the dirty global stylesheet unchanged."
+  - "Added focused structural coverage for component contracts route integration and terminal Source Authority ordering."
+  - "Regenerated page provenance from the unchanged route map and previewed zero curator drift before byte stable report writing."
+  - "Preserved eight unrelated dirty paths byte for byte and unstaged."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "focused-structural-tests"
+    command: ".venv/bin/python -m pytest tests/test_table_treatments.py -q"
+    status: "passed"
+    evidence: "3 tests passed after the expected three failure baseline"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 mapped route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "126 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-table-treatment-review"
+    command: "manual inspection of ontology card semantics overflow instruction keyboard scrolling edge cues zoom behavior and source authority preservation"
+    status: "passed"
+    evidence: "Headed Chrome review covered desktop 320 pixel mobile and 360 by 225 high zoom equivalent layouts plus keyboard focus and scrolling"
+
+provenance_evidence:
+  generator: "python3 scripts/generate_page_provenance.py"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  mapped_route_count: 34
+  ontology_route_hash_changed: true
+  route_map_changed: false
+
+preservation_evidence:
+  staged_preserved_paths: 0
+  excluded_paths_unchanged: true
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+
+remaining_boundaries:
+  - "The baseline inventory still classifies the other audited tables for later packets and none were migrated here."
+  - "FE-P1-03 remains cancelled and FE-P1-04 remains blocked."
+  - "No reviewed wording route identity navigation source bundle public asset global style physics authority upstream push or deployment change occurred."
+  - "Eight unrelated dirty paths remain outside the checkpoint."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only FE-P1-06 components ontology route focused test provenance completion and allowlisted control transition files while excluding eight preserved dirty paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P1-06 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop without opening another packet."
+  do_not_skip: "Do not stage preserved dirty paths migrate other tables open a successor packet push deploy or mutate upstream."

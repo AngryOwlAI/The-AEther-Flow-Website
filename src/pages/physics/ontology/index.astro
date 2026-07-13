@@ -1,7 +1,9 @@
 ---
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
+import OverflowTable from "../../../components/OverflowTable.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
+import TermCardGrid from "../../../components/TermCardGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../../lib/siteContent";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
@@ -181,24 +183,16 @@ const ontologySvg = `
         not mistake vocabulary for proof.
       </p>
     </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Term</th>
-          <th scope="col">Meaning here</th>
-          <th scope="col">Boundary</th>
-        </tr>
-      </thead>
-      <tbody>
-        {vocabularyRows.map((row) => (
-          <tr>
-            <th scope="row">{row.term}</th>
-            <td>{row.meaning}</td>
-            <td>{row.boundary}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <TermCardGrid
+      ariaLabel="Ontology vocabulary"
+      items={vocabularyRows.map((row) => ({
+        term: row.term,
+        fields: [
+          { label: "Meaning here", value: row.meaning },
+          { label: "Boundary", value: row.boundary },
+        ],
+      }))}
+    />
   </section>
 
   <section class="track-page-band" aria-labelledby="ontology-boundary-title">
@@ -210,24 +204,26 @@ const ontologySvg = `
         registered source mathematics, benchmark evidence, and explicit gates.
       </p>
     </div>
-    <table class="greenfield-matrix">
-      <thead>
-        <tr>
-          <th scope="col">Layer</th>
-          <th scope="col">Can safely say</th>
-          <th scope="col">Cannot say</th>
-        </tr>
-      </thead>
-      <tbody>
-        {boundaryRows.map((row) => (
+    <OverflowTable id="ontology-boundary-table" label="Ontology claim boundary comparison">
+      <table class="greenfield-matrix">
+        <thead>
           <tr>
-            <th scope="row">{row.layer}</th>
-            <td>{row.canSay}</td>
-            <td>{row.cannotSay}</td>
+            <th scope="col">Layer</th>
+            <th scope="col">Can safely say</th>
+            <th scope="col">Cannot say</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {boundaryRows.map((row) => (
+            <tr>
+              <th scope="row">{row.layer}</th>
+              <td>{row.canSay}</td>
+              <td>{row.cannotSay}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </OverflowTable>
   </section>
 
   <CommandBand

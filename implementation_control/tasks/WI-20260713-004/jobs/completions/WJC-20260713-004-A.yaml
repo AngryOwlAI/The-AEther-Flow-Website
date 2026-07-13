@@ -4,6 +4,7 @@ completion_id: "WJC-20260713-004-A"
 task_id: "WI-20260713-004"
 job_id: "WJ-20260713-004-A"
 created_utc: "2026-07-13T19:33:14Z"
+completed_utc: "2026-07-13T19:33:14Z"
 status: "completed"
 
 summary: "Added and validated the seven route operations Description contract with terminal Source Authority ordering."
@@ -133,3 +134,12 @@ next_recommended_action:
   task_packet: "TW-DESC-01 local checkpoint"
   summary: "Run the implementation checkpoint transaction and stop without opening another packet."
   do_not_skip: "Do not stage preserved dirty paths open a successor packet push deploy or mutate upstream."
+
+checkpoint_evidence:
+  commit: "efa78149f5fa6ef7521a0f20d58047938847c4d9"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260713-005"
+  reason: "The owner separately authorized FE-P1-06 after the TW-DESC-01 checkpoint."

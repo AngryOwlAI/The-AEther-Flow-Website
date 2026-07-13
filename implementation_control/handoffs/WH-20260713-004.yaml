@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260713-004"
 created_utc: "2026-07-13T19:25:00Z"
-updated_utc: "2026-07-13T19:33:14Z"
-status: "active"
+updated_utc: "2026-07-13T19:52:49Z"
+status: "superseded"
 
 task_id: "WI-20260713-004"
 job_id: "WJ-20260713-004-A"
@@ -54,11 +54,18 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260713-004-A"
   path: "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
   status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260713-005"
+  task_id: "WI-20260713-005"
+  job_id: "WJ-20260713-005-A"
+  checkpoint: "efa78149f5fa6ef7521a0f20d58047938847c4d9"
+  reason: "TW-DESC-01 was checkpointed before the separately authorized FE-P1-06 packet opened."

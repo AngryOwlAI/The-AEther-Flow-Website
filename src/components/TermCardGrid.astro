@@ -1,0 +1,113 @@
+---
+export interface TermCardField {
+  label: string;
+  value: string;
+}
+
+export interface TermCardItem {
+  term: string;
+  fields: TermCardField[];
+}
+
+interface Props {
+  items: TermCardItem[];
+  ariaLabel: string;
+  className?: string;
+}
+
+const { items, ariaLabel, className = "" } = Astro.props;
+---
+
+<ul class:list={["term-card-grid", className]} aria-label={ariaLabel}>
+  {items.map((item) => (
+    <li class="term-card-grid__item">
+      <article class="term-card">
+        <h3>{item.term}</h3>
+        <dl class="term-card__fields">
+          {item.fields.map((field) => (
+            <div>
+              <dt>{field.label}</dt>
+              <dd>{field.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </article>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .term-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1rem;
+    margin: 1.35rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .term-card-grid__item {
+    min-width: 0;
+  }
+
+  .term-card {
+    height: 100%;
+    border: 1px solid var(--overview-white-line, var(--content-card-border));
+    border-top: 3px solid var(--overview-cyan, var(--content-card-link));
+    border-radius: 8px;
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--overview-cyan, var(--content-card-link)) 9%, transparent),
+        transparent 48%
+      ),
+      var(--content-card-bg);
+    padding: 1.1rem;
+    color: var(--overview-text, var(--content-card-text));
+    box-shadow: var(--content-card-shadow);
+  }
+
+  .term-card-grid__item:nth-child(2n) .term-card {
+    border-top-color: var(--overview-orange, var(--content-card-accent));
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--overview-orange, var(--content-card-accent)) 9%, transparent),
+        transparent 48%
+      ),
+      var(--content-card-bg);
+  }
+
+  .term-card h3 {
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: var(--overview-text, var(--content-card-text));
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .term-card__fields {
+    display: grid;
+    gap: 0.9rem;
+    margin: 1rem 0 0;
+  }
+
+  .term-card__fields > div {
+    border-top: 1px solid var(--overview-white-line, var(--content-card-border));
+    padding-top: 0.75rem;
+  }
+
+  .term-card__fields dt {
+    color: var(--overview-orange, var(--content-card-accent));
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .term-card__fields dd {
+    margin: 0.3rem 0 0;
+    overflow-wrap: anywhere;
+    color: var(--overview-muted, var(--content-card-muted));
+  }
+</style>

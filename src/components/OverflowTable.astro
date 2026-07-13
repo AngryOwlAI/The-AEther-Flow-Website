@@ -1,0 +1,134 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  className?: string;
+}
+
+const { id, label, className = "" } = Astro.props;
+const instructionId = `${id}-instruction`;
+---
+
+<div class:list={["overflow-table", className]} data-overflow-table data-overflow="unknown">
+  <p id={instructionId} class="overflow-table__instruction">
+    Scroll table horizontally when it overflows.
+  </p>
+  <div
+    class="overflow-table__viewport"
+    data-overflow-table-viewport
+    role="region"
+    tabindex="0"
+    aria-label={label}
+    aria-describedby={instructionId}
+  >
+    <slot />
+  </div>
+  <div class="overflow-table__edge-cues" aria-hidden="true">
+    <span data-overflow-table-start-cue hidden>← Earlier columns</span>
+    <span data-overflow-table-end-cue hidden>More columns →</span>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-overflow-table]").forEach((container) => {
+    const viewport = container.querySelector<HTMLElement>("[data-overflow-table-viewport]");
+    const instruction = container.querySelector<HTMLElement>(".overflow-table__instruction");
+    const startCue = container.querySelector<HTMLElement>("[data-overflow-table-start-cue]");
+    const endCue = container.querySelector<HTMLElement>("[data-overflow-table-end-cue]");
+    const table = viewport?.querySelector<HTMLElement>("table");
+
+    if (!viewport || !instruction || !startCue || !endCue || !table) return;
+
+    const syncState = () => {
+      const overflows = viewport.scrollWidth > viewport.clientWidth + 1;
+      const atStart = viewport.scrollLeft <= 1;
+      const atEnd = table.getBoundingClientRect().right <= viewport.getBoundingClientRect().right + 1;
+
+      container.dataset.overflow = overflows ? "true" : "false";
+      viewport.tabIndex = overflows ? 0 : -1;
+      instruction.hidden = !overflows;
+      startCue.hidden = !overflows || atStart;
+      endCue.hidden = !overflows || atEnd;
+    };
+
+    viewport.addEventListener("scroll", syncState, { passive: true });
+    viewport.addEventListener("keydown", (event) => {
+      const step = Math.max(viewport.clientWidth * 0.75, 120);
+      let nextPosition: number | null = null;
+
+      if (event.key === "ArrowLeft") nextPosition = viewport.scrollLeft - 48;
+      if (event.key === "ArrowRight") nextPosition = viewport.scrollLeft + 48;
+      if (event.key === "PageUp") nextPosition = viewport.scrollLeft - step;
+      if (event.key === "PageDown") nextPosition = viewport.scrollLeft + step;
+      if (event.key === "Home") nextPosition = 0;
+      if (event.key === "End") nextPosition = viewport.scrollWidth;
+
+      if (nextPosition === null) return;
+      event.preventDefault();
+      viewport.scrollTo({ left: nextPosition, behavior: "auto" });
+    });
+
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(syncState);
+      observer.observe(viewport);
+      observer.observe(table);
+    }
+
+    syncState();
+  });
+</script>
+
+<style>
+  .overflow-table {
+    margin-top: 1.35rem;
+  }
+
+  .overflow-table__instruction {
+    margin: 0 0 0.55rem;
+    color: var(--overview-muted, var(--content-card-muted));
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .overflow-table__instruction[hidden],
+  .overflow-table__edge-cues [hidden] {
+    display: none;
+  }
+
+  .overflow-table__viewport {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    border: 1px solid var(--overview-white-line, var(--content-card-border));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-dark-panel) 84%, transparent);
+    scrollbar-gutter: stable;
+  }
+
+  .overflow-table__viewport:focus-visible {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 0.2rem;
+  }
+
+  .overflow-table__viewport :global(table) {
+    width: 100%;
+    min-width: 44rem;
+    margin: 0;
+  }
+
+  .overflow-table__edge-cues {
+    display: flex;
+    justify-content: space-between;
+    min-height: 1.6rem;
+    gap: 1rem;
+    margin-top: 0.4rem;
+    color: var(--overview-cyan, var(--content-card-link));
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+  }
+
+  .overflow-table__edge-cues span:last-child {
+    margin-left: auto;
+  }
+</style>

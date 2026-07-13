@@ -1,0 +1,204 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260713-005"
+title: "Build Accessible Table Treatments And Ontology Pilot"
+created_utc: "2026-07-13T19:52:49Z"
+updated_utc: "2026-07-13T20:05:53Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P1-06"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260713-004"
+  previous_checkpoint: "efa78149f5fa6ef7521a0f20d58047938847c4d9"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  dependency: "FE-G0-05 completed"
+  owner_authorization: "Owner explicitly directed FE-P1-06 implementation validation and a separate local checkpoint on 2026-07-13"
+
+goal: "Build reusable accessible table treatments and apply them to the ontology route so public vocabulary becomes term cards and the retained comparison table exposes discoverable overflow behavior."
+
+requirements:
+  - "Create OverflowTable with visible overflow instruction a focusable labeled scroll region keyboard scrolling and directional edge cues."
+  - "Create TermCardGrid as one semantic list whose cards repeat field labels and do not duplicate desktop and mobile content."
+  - "Convert the ontology vocabulary matrix to TermCardGrid without changing reviewed wording."
+  - "Wrap the ontology claim boundary comparison in OverflowTable while retaining table header and row semantics."
+  - "Keep styles component scoped so the preserved dirty global stylesheet remains byte for byte unchanged."
+  - "Add focused structural and built output regression coverage for the two treatments and ontology pilot."
+  - "Regenerate page provenance and curator evidence after the route change."
+  - "Create one local checkpoint and stop without push deployment route migration or upstream writes."
+
+scope:
+  in_scope:
+    - "OverflowTable component and scoped styles"
+    - "TermCardGrid component and scoped styles"
+    - "Physics ontology route pilot"
+    - "Focused table treatment tests"
+    - "Generated page provenance and curator evidence"
+    - "Exact implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Other table routes or repo wide table migration"
+    - "Table inventory generator changes or baseline regeneration"
+    - "Reviewed public wording source bundles route identity navigation redirects or public assets"
+    - "Preserved mobile navigation files and older control records"
+    - "Git push Cloudflare deployment or upstream source changes"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260713-005-A"
+  next_packet_after_this_task: "No successor packet opens until FE-P1-06 is checkpointed and separately authorized"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+    - "docs/quality/frontend-baseline-inventory-2026-07-11.json"
+    - "src/components"
+    - "src/pages/physics/ontology/index.astro"
+    - "src/styles/global.css"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports"
+    - "tests"
+    - "scripts"
+    - "implementation_control"
+    - "website and upstream Git status history and hash evidence"
+  upstream_source_repository:
+    - "read only Git cleanliness and origin parity evidence"
+
+allowed_writes:
+  website_repository:
+    - "src/components/OverflowTable.astro"
+    - "src/components/TermCardGrid.astro"
+    - "src/pages/physics/ontology/index.astro"
+    - "tests/test_table_treatments.py"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260713-004.yaml"
+    - "implementation_control/handoffs/WH-20260713-004.md"
+    - "implementation_control/handoffs/WH-20260713-005.yaml"
+    - "implementation_control/handoffs/WH-20260713-005.md"
+    - "implementation_control/tasks/WI-20260713-004/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260713-004/jobs/WJ-20260713-004-A.yaml"
+    - "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
+    - "implementation_control/tasks/WI-20260713-005/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260713-005/jobs/WJ-20260713-005-A.yaml"
+    - "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval is limited to preserving existing reviewed ontology wording while changing presentation semantics."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source bundle or upstream content changes and upstream remains clean at the accepted pin."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval is limited to markup treatment on the existing ontology route with no route or navigation lifecycle change."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Owner authorized the two bounded reusable table treatment components and their scoped styles."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset change."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval is limited to regenerated page provenance from the unchanged route map and accepted source pin."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-table-treatment-review"
+    command: "manual inspection of ontology card semantics overflow instruction keyboard scrolling edge cues zoom behavior and source authority preservation"
+    required: true
+
+stop_conditions:
+  - "Any change outside the allowlist becomes necessary."
+  - "Any table outside the ontology route requires migration."
+  - "Any reviewed wording source bundle route map navigation public asset or global style change becomes necessary."
+  - "Upstream changes or loses clean origin parity."
+  - "A preserved dirty path changes or becomes staged."
+  - "Curator preview reports unexpected drift or validation fails."
+  - "Work enters push deployment upstream write or successor packet scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260713-005-A after all required evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260713-005"
+  yaml_path: "implementation_control/handoffs/WH-20260713-005.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260713-005.md"
+
+completion_record:
+  completion_id: "WJC-20260713-005-A"
+  path: "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-P1-06 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-005-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths migrate other tables open a successor packet push deploy or mutate upstream."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completed_utc: "2026-07-13T20:05:53Z"
+  ontology_term_cards: 6
+  retained_comparison_tables: 1
+  focused_structural_tests: "passed 3 tests after a three failure baseline"
+  python_tests: "passed 126 tests"
+  static_build: "passed 64 pages"
+  provenance_routes: 34
+  curator_dependencies: 248
+  curator_drift_count: 0
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  checkpoint_status: "ready_to_checkpoint"

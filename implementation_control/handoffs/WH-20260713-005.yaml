@@ -1,0 +1,68 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260713-005"
+created_utc: "2026-07-13T19:52:49Z"
+updated_utc: "2026-07-13T20:05:53Z"
+status: "active"
+
+task_id: "WI-20260713-005"
+job_id: "WJ-20260713-005-A"
+
+summary: "Completed and validated the FE-P1-06 table treatments and ontology pilot after recording the existing TW-DESC-01 checkpoint without replay."
+
+current_state:
+  - "TW-DESC-01 is checkpointed at efa78149f5fa6ef7521a0f20d58047938847c4d9 and must not be repeated."
+  - "Website main is three local commits ahead of origin main."
+  - "Upstream main is clean and equals origin main at 57438af555214bc0785dcb390ee6254f580b8a62."
+  - "Eight unrelated dirty website paths remain excluded and unstaged."
+  - "FE-P1-03 is cancelled and FE-P1-04 remains blocked."
+  - "FE-P1-06 is limited to two reusable components one ontology route one focused test file generated provenance curator evidence and exact control records."
+  - "The existing baseline inventory supplies the audited table classification input while this packet implements only the ontology pilot."
+  - "Six public vocabulary rows render as one labeled term card list with repeated Meaning here and Boundary labels."
+  - "The claim boundary comparison retains one semantic table inside a labeled overflow region."
+  - "At 320 pixels the table scroll region is 271 pixels wide around 704 pixels of table content and exposes instruction and directional cues."
+  - "Keyboard End and Home move across the full table range edge cues update at both boundaries and keyboard focus shows a three pixel outline."
+  - "Focused tests all 126 Python tests the 64 page build aggregate validation and quality pass."
+  - "Provenance retains 34 mapped routes and curator evidence retains 248 dependencies with zero drift."
+  - "No push or deployment is authorized."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  public_wording_change_status: "forbidden"
+  route_map_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "FE-P1-06 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-005-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths migrate other tables open a successor packet push deploy or write upstream."
+
+stop_before:
+  - "Any table route other than the ontology pilot"
+  - "Any reviewed wording source bundle route identity navigation public asset or global style change"
+  - "Git push"
+  - "Cloudflare deployment"
+  - "upstream source writes"
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+checkpoint_transition:
+  previous_packet: "TW-DESC-01"
+  checkpoint: "efa78149f5fa6ef7521a0f20d58047938847c4d9"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260713-005-A"
+  path: "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+  status: "completed"
