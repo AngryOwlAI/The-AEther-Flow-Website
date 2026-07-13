@@ -1,0 +1,161 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260713-003-A"
+task_id: "WI-20260713-003"
+job_id: "WJ-20260713-003-A"
+created_utc: "2026-07-13T19:12:07Z"
+completed_utc: "2026-07-13T19:12:07Z"
+status: "completed"
+
+summary: "Refreshed reviewed claim-boundary physics-current-state provenance and curator evidence from clean origin-parity commit 57438af with no physics delta."
+
+scope_confirmation:
+  packet_id: "FE-SR-04"
+  previous_checkpoint: "66a0d889678cb346c8c81a722bde7528873671d7"
+  previous_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_origin_main: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_worktree: "clean"
+  upstream_push_command_executed: false
+  upstream_parity_observed: true
+  upstream_write_status: "forbidden_and_unchanged"
+  source_refresh_performed: true
+  generated_public_claim_snapshot_change: true
+  authored_public_copy_change: false
+  route_map_change: false
+  source_bundle_change: false
+  public_asset_change: false
+  frontend_runtime_change: false
+  acknowledgement_or_waiver_created: false
+  physics_delta: false
+  physics_promotion_authorized: false
+  tw_desc_01_opened: false
+  website_push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/data/claim_boundary_snapshot.json"
+  - "src/data/physics_current_state_snapshot.json"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.yaml"
+  - "implementation_control/handoffs/WH-20260713-002.md"
+  - "implementation_control/handoffs/WH-20260713-003.yaml"
+  - "implementation_control/handoffs/WH-20260713-003.md"
+  - "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
+  - "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+  - "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+
+source_refresh_evidence:
+  upstream_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_branch: "main"
+  upstream_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_origin_main: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_worktree: "clean"
+  intervening_maintenance_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  intervening_maintenance_scope: "Exact path Git LFS tracking for output research dependency graph"
+  protected_upstream_delta_count: 0
+  protected_upstream_delta_scope: "ontology Distance-to-GR physics program state and research handoffs"
+  physics_semantic_fields_unchanged: true
+  claim_boundary_row_count_before: 846
+  claim_boundary_row_count_after: 849
+  new_claim_boundary_row_count: 3
+  new_claim_boundary_scope: "v19 P1-T03 failure-mode equivalence equivalence repair and P1-T04 optional tracing controls only"
+  route_provenance_records: 34
+  route_order_unchanged: true
+  local_page_hash_changes: 0
+  curator_dependency_count: 248
+  curator_drift_count: 0
+  curator_diagnostic_count: 0
+  curator_review_required_count: 0
+  curator_critical_drift_count: 0
+  claim_boundary_snapshot_sha256: "ba5fad2f87a615c0a0823da697e1b03b3c5ad3d3382836c7d3322537bfb28d16"
+  physics_current_state_snapshot_sha256: "579971898d7672031bdb7dfa699ec3cce18508529a94d02686b8e886ec30003f"
+  page_provenance_sha256: "1d756af482fff343ddac234d9b3524de975400e101a2ea969b4e21b86c4db30b"
+  curator_json_sha256: "24d5735744868dab4961695d4de4289aee0172f503daa6f24baced088d4d4c60"
+  curator_markdown_sha256: "cf5846263b4c5b7b816ef5309f6730a12471b60bffbe812da4ceda7d4d778f71"
+
+preserved_dirty_evidence:
+  base_layout_sha256: "b358ae7c19765b777d57ae7eec6fb825e8a6f1879597041431f83342bdd0518c"
+  global_css_sha256: "8c29df97c7e57cf4dac389ab4ffe72a17dcca3b9283681eb9671bd7caf8faaa5"
+  mobile_navigation_test_sha256: "7616d4558fa70b97ee2d6667428072437366f1283a5cc702dfe473eadce87ec2"
+  older_handoff_markdown_sha256: "258be2829ffbb101de07fa5a1b2eef2fe11dee8f778bb88fc89580b0ebeef995"
+  older_handoff_yaml_sha256: "ff1152b4b030ef4c90007b70094f88a09822867feb925061bff4143f73420483"
+  older_task_sha256: "42cc03f78f45c5dc16fffc916559242491686227ab0ef489831fee83520fbc42"
+  older_job_sha256: "39eed2cfb9ecfe19b9d394b01728731b7172de20e7829f0b40d2e049212bd809"
+  older_completion_sha256: "2cdd10f13b77b21df3a57b5b56828832648ec6e9e13be079c1ff3c5b528aad09"
+  before_after_hashes_equal: true
+  checkpoint_exclusion_required: true
+
+requirements_satisfied:
+  - "Confirmed upstream main was clean and exactly equal to origin main at 57438af before generated evidence writes."
+  - "Reviewed the intervening Git LFS maintenance commit and found no protected scientific research state or authority change."
+  - "Generated both snapshots from the same accepted source commit and confirmed physics semantic state was unchanged."
+  - "Reviewed three new claim-boundary rows as validation-control records with explicit no physics delta and promotion guards."
+  - "Regenerated page provenance without changing route identity order local page hashes route map or source bundles."
+  - "Required a zero-drift curator preview before report writes and observed zero drift diagnostics review-required or critical items."
+  - "Preserved eight excluded dirty paths byte-for-byte and kept them outside this checkpoint."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "121 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness origin parity source drift snapshots provenance curator reports preserved dirty paths and no physics promotion"
+    status: "passed"
+    evidence: "Origin parity maintenance delta protected path review semantic physics equality three guarded project-system rows 34 stable routes zero curator drift and eight preserved hashes verified"
+
+remaining_boundaries:
+  - "TW-DESC-01 remains unopened until this packet is locally checkpointed."
+  - "Description route migration authored copy route map acknowledgements public assets and physics promotion remain outside this packet."
+  - "Eight unrelated dirty paths remain outside this checkpoint."
+  - "No website push or deployment is authorized."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the five generated evidence files and eleven allowlisted control continuity and completion files."
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-SR-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop without opening TW-DESC-01 push or deployment."
+  do_not_skip: "Do not stage preserved dirty paths begin TW-DESC-01 push deploy add acknowledgements author public copy or mutate upstream."

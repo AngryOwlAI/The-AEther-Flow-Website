@@ -1,0 +1,228 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260713-003"
+title: "Refresh Current Curator Evidence Before Description Migration"
+created_utc: "2026-07-13T17:15:40Z"
+updated_utc: "2026-07-13T19:12:07Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-SR-04"
+  previous_task: "WI-20260713-002"
+  previous_checkpoint: "66a0d889678cb346c8c81a722bde7528873671d7"
+  previous_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  owner_authorization: "Owner explicitly directed FE-SR-04 as the first packet in the approved curator refresh and site wide description plan on 2026-07-13"
+
+goal: "Clear the aggregate curator source drift blocker using one reviewed clean origin parity upstream commit without physics promotion acknowledgements authored public copy or upstream writes."
+
+requirements:
+  - "Keep upstream main clean and equal to origin main throughout the packet."
+  - "Review all committed upstream dependency drift from cf5cc938 to 57438af."
+  - "Record an explicit no physics delta and no promotion finding."
+  - "Refresh claim boundary and physics current state snapshots from commit 57438af."
+  - "Regenerate page provenance from the unchanged route map and current website page bytes."
+  - "Write curator reports only after a preview shows zero residual drift diagnostics critical items or review required items."
+  - "Checkpoint separately without staging any preserved dirty website path."
+
+scope:
+  in_scope:
+    - "Read only upstream source delta review."
+    - "Generated claim boundary and physics current state snapshots."
+    - "Generated page provenance and curator reports."
+    - "Exactly allowlisted implementation control records."
+  out_of_scope:
+    - "Curator acknowledgements waivers or drift suppression."
+    - "Authored route copy route map source bundle public asset component layout or style changes."
+    - "Physics promotion ontology adoption benchmark promotion Gate Chair verdict or completed derivation claims."
+    - "TW-DESC-01 through TW-DESC-06 upstream writes push or deployment."
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260713-003-A"
+  next_packet_after_this_task: "TW-DESC-01 remains closed until FE-SR-04 is validated and locally checkpointed"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "scripts/refresh_claim_boundary_snapshot.py"
+    - "scripts/refresh_physics_current_state_snapshot.py"
+    - "scripts/generate_page_provenance.py"
+    - "scripts/run_curator.py"
+    - "src/data/claim_boundary_snapshot.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "tests"
+    - "implementation_control"
+    - "website Git status history and hash evidence"
+  upstream_source_repository:
+    - "FOLDER_MAP.md"
+    - "registries/AGENT_JOB_REGISTRY.csv"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "registries/CONTENT_SEMANTIC_REGISTRY.csv"
+    - "registries/MARKDOWN_SOURCE_REGISTRY.csv"
+    - "registries/ROLE_EXECUTION_REGISTRY.csv"
+    - "registries/WIKI_ARTIFACT_REGISTRY.csv"
+    - "research_control tasks and program state"
+    - "registries/DISTANCE_TO_GR_LEDGER.csv"
+    - "upstream Git cleanliness origin parity and committed delta evidence"
+
+allowed_writes:
+  website_repository:
+    - "src/data/claim_boundary_snapshot.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260713-002.yaml"
+    - "implementation_control/handoffs/WH-20260713-002.md"
+    - "implementation_control/handoffs/WH-20260713-003.yaml"
+    - "implementation_control/handoffs/WH-20260713-003.md"
+    - "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
+    - "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+    - "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
+    - "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed implementation of the approved plan."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval is limited to faithful generated snapshot refresh with no authored wording or claim promotion."
+  source_refresh_uncertainty:
+    status: "approved"
+    reason: "Upstream is clean at origin parity commit 57438af after review of the intervening Git LFS maintenance commit and fresh snapshot previews."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route or navigation change occurs."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No component layout style or visual change occurs."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval is limited to regenerated page provenance from the unchanged route map."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness origin parity source drift snapshots provenance curator reports preserved dirty paths and no physics promotion"
+    required: true
+
+stop_conditions:
+  - "Upstream main becomes dirty differs from origin main or changes during the packet."
+  - "Review finds a physics delta claim promotion ontology adoption benchmark promotion or completed derivation claim."
+  - "Refresh requires acknowledgements authored copy route map source bundle public asset component layout style or generator changes."
+  - "Curator preview retains any residual drift diagnostic critical or review required item."
+  - "Any preserved dirty website path changes or becomes staged."
+  - "Work enters TW-DESC push deploy or upstream write scope."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260713-003-A after all required evidence passes then run npm run checkpoint:implementation and stop before TW-DESC-01 push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260713-003"
+  yaml_path: "implementation_control/handoffs/WH-20260713-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260713-003.md"
+
+completion_record:
+  completion_id: "WJC-20260713-003-A"
+  path: "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-SR-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-003-A and stop."
+  do_not_skip: "Do not add acknowledgements authored copy route changes push deployment or upstream writes."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+preflight_evidence:
+  status: "passed"
+  observed_utc: "2026-07-13T19:09:15Z"
+  upstream_branch: "main"
+  upstream_worktree: "clean"
+  upstream_head: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_origin_main: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_ahead_count: 0
+  accepted_source_commit_date: "2026-07-13T11:45:40-06:00"
+  physics_delta_status: "none observed"
+  snapshot_preview_status: "passed"
+  intervening_commit_scope: "Git LFS tracking for output research dependency graph only"
+  invalidated_utc: "2026-07-13T17:19:52Z"
+  invalidation_reason: "Upstream gained staged .gitattributes and output research dependency graph changes before snapshot preview."
+  recovery_status: "clean origin parity restored after the intervening changes were committed and pushed"
+  generated_evidence_written: true
+  completion_created: true
+  checkpoint_created: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completed_utc: "2026-07-13T19:12:07Z"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  physics_delta: false
+  claim_boundary_rows: 849
+  new_claim_boundary_rows: 3
+  route_provenance_records: 34
+  curator_dependencies: 248
+  curator_drift_count: 0
+  python_tests: "passed 121 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  checkpoint_status: "ready_to_checkpoint"

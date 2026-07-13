@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-13T14:34:42Z"
+updated_utc: "2026-07-13T19:12:07Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,11 +9,11 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
-  - "implementation_control/handoffs/WH-20260713-002.yaml"
+  - "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-003.yaml"
   - "current_git_state_and_validator_output"
-  - "owner approved technical writing quality gate implementation plan"
+  - "owner approved curator refresh and site wide description contract plan"
   - "memory_and_conversation_summaries_as_navigation_only"
 
 repository_boundary:
@@ -24,34 +24,34 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260713-002"
-  title: "Adapt Technical Writing Quality Gate Skill"
+  task_id: "WI-20260713-003"
+  title: "Refresh Current Curator Evidence Before Description Migration"
   status: "active"
-  path: "implementation_control/tasks/WI-20260713-002/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
   planning_context:
-    task_packet: "SKILL-TWQG-01"
-    source_skill: "/Volumes/P-SSD/AngryOwl/Sys4AI-dev/.agents/skills/technical-writing-quality-gate"
-    source_commit: "ef93cc008f1d3d91129e86bb4ce48b1435c17f6d"
-    previous_checkpoint: "86dba4a60c5673244598af508392233d8e92035b"
-    owner_authorization: "Owner explicitly directed implementation of the approved website technical writing quality gate plan on 2026-07-13"
+    task_packet: "FE-SR-04"
+    previous_checkpoint: "66a0d889678cb346c8c81a722bde7528873671d7"
+    previous_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+    accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+    owner_authorization: "Owner explicitly directed implementation of FE-SR-04 before the site wide description migration on 2026-07-13"
 
 current_job:
-  job_id: "WJ-20260713-002-A"
+  job_id: "WJ-20260713-003-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260713-002/jobs/WJ-20260713-002-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260713-002"
+  handoff_id: "WH-20260713-003"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260713-002.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260713-002.md"
+  yaml_path: "implementation_control/handoffs/WH-20260713-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260713-003.md"
 
 latest_completion:
-  completion_id: "WJC-20260713-002-A"
-  task_id: "WI-20260713-002"
-  job_id: "WJ-20260713-002-A"
+  completion_id: "WJC-20260713-003-A"
+  task_id: "WI-20260713-003"
+  job_id: "WJ-20260713-003-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260713-002/jobs/completions/WJC-20260713-002-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -60,25 +60,68 @@ required_validators:
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     required_for_current_job: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required_for_current_job: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required_for_current_job: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required_for_current_job: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required_for_current_job: true
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
-  - id: "manual-skill-review"
-    command: "manual inspection of skill authority advisory behavior metadata attribution and excluded runtime surfaces"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required_for_current_job: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required_for_current_job: true
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness origin parity source drift snapshots provenance curator reports preserved dirty paths and no physics promotion"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "SKILL-TWQG-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-002-A and stop."
-  do_not_skip: "Do not change public runtime package commands system analysis upstream sources push or deploy."
+  task_packet: "FE-SR-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-003-A and stop."
+  do_not_skip: "Do not write upstream change authored public copy stage preserved dirty paths push deploy or begin TW-DESC-01."
 
-aggregate_validation_observation:
-  command: "npm run validate"
-  status: "failed_outside_scope"
-  observed_utc: "2026-07-13T14:33:32Z"
-  failing_gate: "npm run validate:curator"
-  packet_file_involvement: false
-  disposition: "Record the upstream registry and folder map drift without refreshing reports acknowledgements public sources or upstream files in this skill packet."
+preflight_evidence:
+  status: "passed"
+  observed_utc: "2026-07-13T19:09:15Z"
+  upstream_branch: "main"
+  upstream_worktree: "clean"
+  upstream_head: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_origin_main: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_ahead_count: 0
+  previous_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  physics_delta_status: "none observed in the reviewed committed delta"
+  snapshot_preview_status: "passed"
+  intervening_commit_scope: "Git LFS tracking for output research dependency graph only"
+  invalidated_utc: "2026-07-13T17:19:52Z"
+  invalidation_reason: "Upstream gained staged .gitattributes and output research dependency graph changes before snapshot preview."
+  recovery_status: "clean origin parity restored after the intervening changes were committed and pushed"
+  generated_evidence_written: true
+  completion_created: true
+  checkpoint_created: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completed_utc: "2026-07-13T19:12:07Z"
+  claim_boundary_rows: 849
+  new_claim_boundary_rows: 3
+  route_provenance_records: 34
+  curator_dependencies: 248
+  curator_drift_count: 0
+  python_tests: "passed 121 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  checkpoint_status: "ready_to_checkpoint"

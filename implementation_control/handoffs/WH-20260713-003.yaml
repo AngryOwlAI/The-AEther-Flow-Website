@@ -1,0 +1,74 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260713-003"
+created_utc: "2026-07-13T17:15:40Z"
+updated_utc: "2026-07-13T19:12:07Z"
+status: "active"
+
+task_id: "WI-20260713-003"
+job_id: "WJ-20260713-003-A"
+
+summary: "Recovered FE-SR-04 after upstream commit 57438af became clean and equal to origin main."
+
+current_state:
+  - "Technical writing checkpoint 66a0d889 exists and was not replayed."
+  - "Upstream main is clean and equals origin main at 57438af555214bc0785dcb390ee6254f580b8a62."
+  - "The reviewed delta contains validator equivalence optional tracing and exact path Git LFS maintenance with explicit no physics authority change."
+  - "No ontology TeX Distance to GR ledger physics handoff or physics program state file changed."
+  - "Curator reports current registry and folder map drift that FE-SR-04 will resolve through generated evidence refresh."
+  - "Eight unrelated dirty website paths remain excluded."
+  - "The initial clean parity preflight was invalidated before snapshot preview when upstream gained staged .gitattributes and output research dependency graph changes."
+  - "The intervening changes were committed and pushed as 57438af; clean parity and fresh snapshot previews now pass."
+  - "Generated snapshots and provenance now pin 57438af and curator evidence reports 248 dependencies with zero drift or diagnostics."
+  - "All required validators pass including 121 Python tests the 64 page build aggregate validation and quality."
+  - "No authored copy route map acknowledgement physics promotion push deployment or upstream write occurred."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  generated_public_claim_refresh_status: "approved"
+  authored_public_claim_change_status: "forbidden"
+  route_map_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "FE-SR-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-003-A and stop."
+  do_not_skip: "Do not add acknowledgements authored copy route changes push deployment or upstream writes."
+
+stop_before:
+  - "TW-DESC-01"
+  - "Git push"
+  - "Cloudflare deployment"
+  - "upstream source writes"
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+preflight_invalidation:
+  observed_utc: "2026-07-13T17:19:52Z"
+  upstream_head: "00da35422717ec41988b1865964f2d538727a8c3"
+  upstream_origin_main: "00da35422717ec41988b1865964f2d538727a8c3"
+  staged_paths: ".gitattributes output/research_dependency_graph.json"
+  generated_evidence_written: false
+
+preflight_recovery:
+  observed_utc: "2026-07-13T19:09:15Z"
+  upstream_head: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_origin_main: "57438af555214bc0785dcb390ee6254f580b8a62"
+  upstream_worktree: "clean"
+  upstream_ahead_count: 0
+  intervening_commit_scope: "Git LFS tracking for output research dependency graph only"
+  snapshot_preview_status: "passed"
+  physics_delta_status: "none observed"
+  generated_evidence_written: true
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260713-003-A"
+  path: "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+  status: "completed"

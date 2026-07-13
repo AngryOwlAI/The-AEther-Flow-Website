@@ -5,7 +5,7 @@
     ".codex": 1,
     "AGENTS.md": 1,
     "README.md": 3,
-    "implementations_plans": 17,
+    "implementations_plans": 20,
     "markdown": 3,
     "output": 1,
     "research_control/README.md": 1,
@@ -71,6 +71,120 @@
   ],
   "latest_handoff_id": "handoff-0740",
   "latest_rows": [
+    {
+      "allowed_claims": "optional local validation invocation tracing;canonical gate ID recording;scope and tree hash recording;nested parentage;duplicate identity reporting;output byte counts;cache-state recording;legacy behavior retained;handoff-0740 preserved;no physics delta",
+      "allowed_summary": [
+        "optional local validation invocation tracing",
+        "canonical gate ID recording",
+        "scope and tree hash recording"
+      ],
+      "applies_to_path": "scripts/validation/trace.py;tests/test_validation_trace.py;research_control/tasks/RT-20260713-003/**",
+      "authority_source_path": "implementations_plans/recommendations_implementation_plan_continue_task-v19.md",
+      "claim_boundary_id": "CB-V19-P1-T04-VALIDATION-TRACE-001",
+      "created_at": "2026-07-13T14:28:53Z",
+      "forbidden_claims": "trace absence as PASS evidence;trace output as authority;validator output retention;deduplication activation;orchestration cutover;P1-T05 implementation;validator PASS as physics proof;source-law adoption;EqSrc discharge;benchmark promotion;Gate Chair verdict;completed derivation",
+      "forbidden_summary": [
+        "trace absence as PASS evidence",
+        "trace output as authority",
+        "validator output retention",
+        "deduplication activation",
+        "orchestration cutover",
+        "P1-T05 implementation",
+        "validator PASS as physics proof",
+        "source-law adoption"
+      ],
+      "notes": "This boundary authorizes only optional non-authoritative local invocation measurement and focused tests while every migration and physics authority remains inactive.",
+      "requires_gate_for": "P1-T04 PASS;P1-T05 activation;P2 orchestration authority;canonical ontology edit;source-law adoption;general EqSrc discharge;matter-coupling derivation;Einstein equations;benchmark promotion;Gate Chair verdict;completed derivation",
+      "requires_gate_summary": [
+        "P1-T04 PASS",
+        "P1-T05 activation",
+        "P2 orchestration authority",
+        "canonical ontology edit",
+        "source-law adoption",
+        "general EqSrc discharge",
+        "matter-coupling derivation",
+        "Einstein equations"
+      ],
+      "scope": "v19_p1_t04_validation_invocation_tracing",
+      "status": "active",
+      "updated_at": "2026-07-13T14:28:53Z"
+    },
+    {
+      "allowed_claims": "warning classification propagation;structured claim-authority metadata;diff composition across core failures;repaired fixture expectations;P1-T03 equivalence rerun;legacy commands retained;handoff-0740 preserved;no physics delta",
+      "allowed_summary": [
+        "warning classification propagation",
+        "structured claim-authority metadata",
+        "diff composition across core failures"
+      ],
+      "applies_to_path": "scripts/research_control/validate_research_control.py;tests/fixtures/validation_equivalence/corpus.json;tests/test_validation_equivalence.py;research_control/tasks/RT-20260713-002/**",
+      "authority_source_path": "implementations_plans/recommendations_implementation_plan_continue_task-v19.md",
+      "claim_boundary_id": "CB-V19-P1-T03-EQUIVALENCE-REPAIR-001",
+      "created_at": "2026-07-13T13:54:46Z",
+      "forbidden_claims": "deduplication activation;orchestration cutover;P1-T04 implementation;validator PASS as physics proof;source-law adoption;EqSrc discharge;benchmark promotion;Gate Chair verdict;completed derivation",
+      "forbidden_summary": [
+        "deduplication activation",
+        "orchestration cutover",
+        "P1-T04 implementation",
+        "validator PASS as physics proof",
+        "source-law adoption",
+        "EqSrc discharge",
+        "benchmark promotion",
+        "Gate Chair verdict"
+      ],
+      "notes": "This boundary authorizes only the predecessor-documented semantic repair and its fail-closed P1-T03 rerun; all migration authority remains inactive.",
+      "requires_gate_for": "P1-T03 PASS;P1-T04 implementation;P2 orchestration authority;canonical ontology edit;source-law adoption;general EqSrc discharge;matter-coupling derivation;Einstein equations;benchmark promotion;Gate Chair verdict;completed derivation",
+      "requires_gate_summary": [
+        "P1-T03 PASS",
+        "P1-T04 implementation",
+        "P2 orchestration authority",
+        "canonical ontology edit",
+        "source-law adoption",
+        "general EqSrc discharge",
+        "matter-coupling derivation",
+        "Einstein equations"
+      ],
+      "scope": "v19_p1_t03_validation_equivalence_repair",
+      "status": "active",
+      "updated_at": "2026-07-13T13:54:46Z"
+    },
+    {
+      "allowed_claims": "adversarial equivalence fixtures;normalized hard and warning finding IDs;selected-path comparison;authority-field comparison;blocking mismatch evidence;legacy commands retained;handoff-0740 preserved;no physics delta",
+      "allowed_summary": [
+        "adversarial equivalence fixtures",
+        "normalized hard and warning finding IDs",
+        "selected-path comparison"
+      ],
+      "applies_to_path": "tests/fixtures/validation_equivalence/**;tests/test_validation_equivalence.py;research_control/tasks/RT-20260713-001/**",
+      "authority_source_path": "implementations_plans/recommendations_implementation_plan_continue_task-v19.md",
+      "claim_boundary_id": "CB-V19-P1-T03-FAILURE-MODE-EQUIVALENCE-001",
+      "created_at": "2026-07-13T13:01:25Z",
+      "forbidden_claims": "equivalence PASS with unresolved mismatch;deduplication activation;orchestration cutover;production validator repair;validator PASS as physics proof;P1-T04 implementation;source-law adoption;EqSrc discharge;benchmark promotion;Gate Chair verdict;completed derivation",
+      "forbidden_summary": [
+        "equivalence PASS with unresolved mismatch",
+        "deduplication activation",
+        "orchestration cutover",
+        "production validator repair",
+        "validator PASS as physics proof",
+        "P1-T04 implementation",
+        "source-law adoption",
+        "EqSrc discharge"
+      ],
+      "notes": "This boundary authorizes test-only equivalence evidence and requires every semantic mismatch to remain blocking until separately repaired and revalidated.",
+      "requires_gate_for": "P1-T03 PASS;P1-T04 unlock;P2 orchestration authority;production validator edit;orchestration change;canonical ontology edit;source-law adoption;general EqSrc discharge;matter-coupling derivation;Einstein equations;benchmark promotion;Gate Chair verdict;completed derivation",
+      "requires_gate_summary": [
+        "P1-T03 PASS",
+        "P1-T04 unlock",
+        "P2 orchestration authority",
+        "production validator edit",
+        "orchestration change",
+        "canonical ontology edit",
+        "source-law adoption",
+        "general EqSrc discharge"
+      ],
+      "scope": "v19_p1_t03_failure_mode_equivalence_corpus",
+      "status": "active",
+      "updated_at": "2026-07-13T13:01:25Z"
+    },
     {
       "allowed_claims": "stable validation gate IDs;stable obligation names;legacy mapping;fail-closed same-scope predicates;inactive supersedence contracts;negative schema fixtures;handoff-0740 preserved;no physics delta",
       "allowed_summary": [
@@ -412,100 +526,12 @@
       "scope": "v19_p0_t01_plan_registration",
       "status": "active",
       "updated_at": "2026-07-12T20:36:04Z"
-    },
-    {
-      "allowed_claims": "approved two-skill source candidate;focused runtime regression test;isolated RT-003 checkpoint repair;isolated RT-004 PDF-registry test repair;mandatory registrations;generated memory derivatives;source-only checkpoint;non-accepting smoke record;no physics delta",
-      "allowed_summary": [
-        "approved two-skill source candidate",
-        "focused runtime regression test",
-        "isolated RT-003 checkpoint repair"
-      ],
-      "applies_to_path": ".codex/skills/continue-research-goal/**;.codex/skills/continue-research-continue-goal/**;tests/test_continue_research_goal_state.py;scripts/research_control/checkpoint_research_transaction.py;tests/test_research_control.py;tests/test_memory_system.py;research_control/tasks/RT-20260711-001/**",
-      "authority_source_path": "research_control/tasks/RT-20260711-001/jobs/completions/AJC-AJ-RT-20260711-001-001.yaml",
-      "claim_boundary_id": "CB-RT-20260711-001-CONTINUE-GOAL-G5-001",
-      "created_at": "2026-07-11T14:13:25Z",
-      "forbidden_claims": "skill runtime as physics proof;runtime goal as canonical authority;disposable research history promotion;expired smoke as acceptance;Distance-to-GR change;ontology or source-law adoption;matter coupling;Einstein equations;benchmark promotion;Gate Chair verdict;completed derivation",
-      "forbidden_summary": [
-        "skill runtime as physics proof",
-        "runtime goal as canonical authority",
-        "disposable research history promotion",
-        "expired smoke as acceptance",
-        "Distance-to-GR change",
-        "ontology or source-law adoption",
-        "matter coupling",
-        "Einstein equations"
-      ],
-      "notes": "G5 remediation permits only the repaired source candidate and governed derivatives and stops before a fresh disposable smoke test.",
-      "requires_gate_for": "canonical ontology edit physics promotion live test push merge pull request archival cleanup or mutation rerun or relabeling of the old terminal goal",
-      "requires_gate_summary": [
-        "canonical ontology edit physics promotion live test push merge pull request archival cleanup or mutation rerun or relabeling of the old terminal goal"
-      ],
-      "scope": "task",
-      "status": "active",
-      "updated_at": "2026-07-11T14:56:06Z"
-    },
-    {
-      "allowed_claims": "generated folder map refreshed through bootstrap after tracked task directories exist;task-index navigation refreshed;support-only project-system repair only;proof authority remains false",
-      "allowed_summary": [
-        "generated folder map refreshed through bootstrap after tracked task directories exist",
-        "task-index navigation refreshed",
-        "support-only project-system repair only"
-      ],
-      "applies_to_path": "research_control/tasks/RT-20260709-008/**;FOLDER_MAP.md",
-      "authority_source_path": "research_control/tasks/RT-20260709-008/jobs/completions/AJC-AJ-RT-20260709-008-001.yaml",
-      "claim_boundary_id": "CB-RT-20260709-008-FOLDER-MAP-FOLLOWUP-001",
-      "created_at": "2026-07-09T16:17:08Z",
-      "forbidden_claims": "folder map as scientific authority;task index as physics proof;generated derivative as source-law adoption;generated derivative as benchmark promotion;generated derivative as completed derivation",
-      "forbidden_summary": [
-        "folder map as scientific authority",
-        "task index as physics proof",
-        "generated derivative as source-law adoption",
-        "generated derivative as benchmark promotion",
-        "generated derivative as completed derivation"
-      ],
-      "notes": "RT-20260709-008 boundary permits only generated freshness repair with no proof authority and no physics promotion",
-      "requires_gate_for": "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority",
-      "requires_gate_summary": [
-        "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority"
-      ],
-      "scope": "task",
-      "status": "active",
-      "updated_at": "2026-07-09T16:17:08Z"
-    },
-    {
-      "allowed_claims": "generated folder map refreshed through bootstrap;proof normal form tests aligned to current twelve row registry;support-only row count preserved as test expectation;proof authority remains false",
-      "allowed_summary": [
-        "generated folder map refreshed through bootstrap",
-        "proof normal form tests aligned to current twelve row registry",
-        "support-only row count preserved as test expectation"
-      ],
-      "applies_to_path": "research_control/tasks/RT-20260709-007/**;tests/test_proof_normal_form_registry.py;tests/test_render_proof_normal_form_index.py;FOLDER_MAP.md",
-      "authority_source_path": "research_control/tasks/RT-20260709-007/jobs/completions/AJC-AJ-RT-20260709-007-001.yaml",
-      "claim_boundary_id": "CB-RT-20260709-007-CI-VALIDATION-REPAIR-001",
-      "created_at": "2026-07-09T14:20:54Z",
-      "forbidden_claims": "folder map as scientific authority;tests as proof authority;tests as physics promotion;test row count as source-law adoption;test row count as benchmark promotion;test row count as completed derivation",
-      "forbidden_summary": [
-        "folder map as scientific authority",
-        "tests as proof authority",
-        "tests as physics promotion",
-        "test row count as source-law adoption",
-        "test row count as benchmark promotion",
-        "test row count as completed derivation"
-      ],
-      "notes": "RT-20260709-007 boundary permits only CI validation repair and generated freshness with no proof authority and no physics promotion",
-      "requires_gate_for": "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority",
-      "requires_gate_summary": [
-        "canonical ontology edit proof authority source-law adoption matter-coupling derivation Einstein-equation derivation benchmark promotion Gate Chair verdict or completed-derivation authority"
-      ],
-      "scope": "task",
-      "status": "active",
-      "updated_at": "2026-07-09T14:20:54Z"
     }
   ],
   "next_recommended_action": "Run one bounded EqSrc family-closure repair-or-stress packet from validated v18 outputs.",
   "recurring_forbidden_claims": [
     {
-      "count": 622,
+      "count": 625,
       "phrase": "benchmark promotion"
     },
     {
@@ -521,11 +547,11 @@
       "phrase": "canonical ontology edit"
     },
     {
-      "count": 420,
+      "count": 423,
       "phrase": "Gate Chair verdict"
     },
     {
-      "count": 393,
+      "count": 396,
       "phrase": "source-law adoption"
     },
     {
@@ -571,19 +597,19 @@
   ],
   "recurring_gate_requirements": [
     {
-      "count": 760,
+      "count": 763,
       "phrase": "benchmark promotion"
     },
     {
-      "count": 472,
+      "count": 475,
       "phrase": "Gate Chair verdict"
     },
     {
-      "count": 467,
+      "count": 470,
       "phrase": "completed derivation"
     },
     {
-      "count": 459,
+      "count": 462,
       "phrase": "source-law adoption"
     },
     {
@@ -591,7 +617,7 @@
       "phrase": "Einstein equations adoption"
     },
     {
-      "count": 329,
+      "count": 332,
       "phrase": "canonical ontology edit"
     },
     {
@@ -619,7 +645,7 @@
       "phrase": "matter action"
     }
   ],
-  "row_count": 846,
+  "row_count": 849,
   "scope_counts": {
     "P18-T01 physics-program manuscript outline": 1,
     "P18-T02 AI methodology manuscript outline": 1,
@@ -716,88 +742,91 @@
     "v19_p0_t04_legacy_invocation_graph": 1,
     "v19_p0_t05_budget_freeze": 1,
     "v19_p1_t01_validation_evidence_identity_policy": 1,
-    "v19_p1_t02_gate_id_and_supersedence_contracts": 1
+    "v19_p1_t02_gate_id_and_supersedence_contracts": 1,
+    "v19_p1_t03_failure_mode_equivalence_corpus": 1,
+    "v19_p1_t03_validation_equivalence_repair": 1,
+    "v19_p1_t04_validation_invocation_tracing": 1
   },
-  "source_commit": "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808",
-  "source_commit_date": "2026-07-13T06:32:12-06:00",
+  "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
+  "source_commit_date": "2026-07-13T11:45:40-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "c2b70ce3265dee7985c0eb3283c2d3fb3a8a14abf7f64caf939764f63ab9485b"
+      "sha256": "27c8059dbe0d5e4e07174827f32cfce13345adb2e644294c27fdcce5566b042e"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
       "sha256": "1a28fc71d3076347be4221e4d30b4bf962e5f752fd9d90f099d916dd89a4706c"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.yaml",
       "path": "research_control/handoffs/handoff-0740.yaml",
       "sha256": "5be1f16f476c1f03db0baf3dcfec8ffc1947ff61c5d5d3ff43012239ce5c0c1d"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.md",
       "path": "research_control/handoffs/handoff-0740.md",
       "sha256": "2d2bb5936181f7040357c1074c06e124904b28cd84fdb6b3138be59055d02402"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/README.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/README.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/README.md",
       "path": "research_control/README.md",
       "sha256": "15a348545509714949b35f81e03026af4c2e42d5aef778d2ce1dc90106dd9a9e"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/source-authority-explainer.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/github-facing/source-authority-explainer.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/github-facing/source-authority-explainer.md",
       "path": "github-facing/source-authority-explainer.md",
       "sha256": "16eabfe2c9bc8d591d691281498655a8e4c22ee85485173c85bdd5e6a7317993"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/github-facing/claim-gates-explainer.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/github-facing/claim-gates-explainer.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/github-facing/claim-gates-explainer.md",
       "path": "github-facing/claim-gates-explainer.md",
       "sha256": "c1bf6ca303eec3433a271f63288b58b7e50a02fd32ef4e04ea0a05a008609f2a"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.yaml",
       "label": "research_control/handoffs/handoff-0740.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.md",
       "label": "research_control/handoffs/handoff-0740.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/README.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/README.md",
       "label": "research_control/README.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/github-facing/source-authority-explainer.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/github-facing/source-authority-explainer.md",
       "label": "github-facing/source-authority-explainer.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/github-facing/claim-gates-explainer.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/github-facing/claim-gates-explainer.md",
       "label": "github-facing/claim-gates-explainer.md"
     }
   ],
   "source_refresh_date": "2026-07-13",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "status_counts": {
-    "active": 836,
+    "active": 839,
     "completed": 10
   },
   "version": 1,
