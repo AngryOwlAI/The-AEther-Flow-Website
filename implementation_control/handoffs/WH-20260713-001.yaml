@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260713-001"
 created_utc: "2026-07-13T12:32:45Z"
-updated_utc: "2026-07-13T12:47:00Z"
-status: "active"
+updated_utc: "2026-07-13T13:22:45Z"
+status: "superseded"
 
 task_id: "WI-20260713-001"
 job_id: "WJ-20260713-001-A"
@@ -12,8 +12,9 @@ summary: "Completed the bounded FE-SR-03 generated evidence refresh from clean o
 
 current_state:
   - "FE-SR-02 is completed and checkpointed at 567a2d7544ac636c8a35683d4694f0bca86130b3 and must not be repeated."
-  - "FE-P1-05 implementation is suspended preserved uncommitted and not checkpointed."
-  - "FE-SR-03 is authorized as the sole active website-local source-refresh packet."
+  - "FE-P1-05 remained suspended and preserved throughout FE-SR-03 then resumed acceptance after the separate checkpoint."
+  - "FE-SR-03 completed and was separately checkpointed at 5115fca6fc464dfedf5e62d352bfb837be507a5a."
+  - "FE-P1-05 acceptance now passes and completion WJC-20260712-013-A is ready for its distinct local checkpoint."
   - "Upstream main and origin main are clean and equal at cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808."
   - "The refresh updated two snapshots page provenance and both curator reports from the same accepted commit."
   - "Curator validation reports 248 dependencies with zero drift review-required critical or diagnostic items."
@@ -54,9 +55,9 @@ preservation:
   excluded_from_writes_and_checkpoint: true
 
 next_recommended_action:
-  task_packet: "FE-SR-03 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for WJC-20260713-001-A and stop before FE-P1-05 reactivation."
-  do_not_skip: "Do not include preserved frontend or older nonallowlisted control files reactivate FE-P1-05 push the website deploy or mutate upstream."
+  task_packet: "FE-P1-05 acceptance and local checkpoint"
+  summary: "FE-SR-03 is checkpointed; proceed only through the reactivated FE-P1-05 acceptance packet."
+  do_not_skip: "Do not repeat FE-SR-03 include cancelled mobile-navigation files open FE-P1-03 or FE-P1-04 push the website deploy or mutate upstream."
 
 stop_before:
   - "any additional source-refresh write outside the completion record"
@@ -76,9 +77,14 @@ validation_disposition:
   aggregate_validation: "passed"
   quality_gate: "passed"
   completion_record_status: "completed"
-  checkpoint_status: "not_created"
+  checkpoint_status: "created_at_5115fca6fc464dfedf5e62d352bfb837be507a5a"
 
 completion_record:
   completion_id: "WJC-20260713-001-A"
   path: "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
   status: "completed"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-013"
+  checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+  reason: "FE-SR-03 completed and FE-P1-05 acceptance resumed after its separate local checkpoint."

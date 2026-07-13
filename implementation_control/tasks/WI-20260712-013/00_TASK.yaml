@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-013"
 title: "Refactor EvidenceRail Accessible Names"
 created_utc: "2026-07-13T02:20:02Z"
-updated_utc: "2026-07-13T12:32:45Z"
-status: "suspended"
+updated_utc: "2026-07-13T13:22:45Z"
+status: "active"
 
 source_context:
   packet_id: "FE-P1-05"
@@ -13,6 +13,7 @@ source_context:
   adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
   dependency: "FE-G0-04 completed"
   previous_checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
+  resume_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
   owner_authorization: "Owner explicitly directed opening FE-P1-05 after cancelling FE-P1-03 on 2026-07-12"
 
 goal: "Give every linked EvidenceRail card one concise accessible link name while keeping its body and bullet content available as adjacent descriptive text and preserving a clear card action."
@@ -78,6 +79,11 @@ allowed_writes:
     - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
     - "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+    - "implementation_control/handoffs/WH-20260713-001.yaml"
+    - "implementation_control/handoffs/WH-20260713-001.md"
+    - "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
+    - "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -88,8 +94,8 @@ approval_gates:
     status: "not_required"
     reason: "No public claim copy status metadata or source authority changes."
   source_refresh_uncertainty:
-    status: "required"
-    reason: "Required aggregate validation now reports stale curator evidence and current upstream registry drift outside FE-P1-05 scope."
+    status: "not_required"
+    reason: "FE-SR-03 cleared the prior source drift and was separately checkpointed before this acceptance rerun."
   broad_navigation_or_route_retirement:
     status: "not_required"
     reason: "No navigation label destination route redirect canonical or retirement change."
@@ -153,10 +159,15 @@ handoff:
   yaml_path: "implementation_control/handoffs/WH-20260712-013.yaml"
   markdown_path: "implementation_control/handoffs/WH-20260712-013.md"
 
+completion_record:
+  completion_id: "WJC-20260712-013-A"
+  path: "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  status: "completed"
+
 next_recommended_action:
-  task_packet: "FE-SR-03 separate source refresh"
-  summary: "Complete the separately authorized FE-SR-03 packet before returning to FE-P1-05 acceptance."
-  do_not_skip: "Do not checkpoint FE-P1-05 repeat FE-SR-02 resume FE-P1-03 open FE-P1-04 change authored claims push deploy or mutate upstream."
+  task_packet: "FE-P1-05 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260712-013-A and stop."
+  do_not_skip: "Do not repeat FE-SR-03 include cancelled mobile-navigation files resume FE-P1-03 open FE-P1-04 change authored claims push deploy or mutate upstream."
 
 preservation:
   cancelled_task_id: "WI-20260712-011"
@@ -164,21 +175,24 @@ preservation:
   overlap_note: "FE-P1-05 styling is scoped inside EvidenceRail.astro so the preserved global.css bytes remain outside this packet."
 
 implementation_status:
-  status: "implemented_acceptance_blocked"
+  status: "accepted_ready_for_checkpoint"
   implemented_utc: "2026-07-13T02:38:36Z"
   changed_paths: "src/components/EvidenceRail.astro tests/test_evidence_rail.py"
   targeted_tests: "passed 3 tests"
   full_python_tests: "passed 115 tests"
   static_build: "passed 64 pages"
-  aggregate_validation: "blocked_by_current_curator_source_drift"
-  quality_gate: "blocked_by_aggregate_curator_source_drift"
-  checkpoint_status: "not_created"
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  browser_manual_review: "passed"
+  checkpoint_status: "ready_to_checkpoint"
 
 suspension:
+  status: "resolved"
   suspended_by_task_id: "WI-20260713-001"
   suspended_by_handoff_id: "WH-20260713-001"
-  reason: "The owner authorized a separate FE-SR-03 packet to resolve the source-derived validation blocker."
+  reason: "FE-SR-03 resolved the source-derived validation blocker and was separately checkpointed."
   implementation_preserved: true
-  completion_record_created: false
+  completion_record_created: true
   checkpoint_created: false
-  resume_condition: "FE-SR-03 is separately completed and checkpointed then FE-P1-05 acceptance is reactivated through implementation control."
+  resolved_at_utc: "2026-07-13T13:10:34Z"
+  resolution_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"

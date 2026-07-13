@@ -1,0 +1,165 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260712-013-A"
+task_id: "WI-20260712-013"
+job_id: "WJ-20260712-013-A"
+created_utc: "2026-07-13T13:22:45Z"
+completed_utc: "2026-07-13T13:22:45Z"
+status: "completed"
+
+summary: "Accepted the preserved FE-P1-05 EvidenceRail semantic refactor after the separate FE-SR-03 checkpoint with aggregate quality and fresh browser evidence passing."
+
+scope_confirmation:
+  packet_id: "FE-P1-05"
+  original_previous_checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
+  resume_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  owner_authorization: "Owner explicitly directed FE-SR-03 checkpoint recording FE-P1-05 reactivation acceptance completion and a distinct local checkpoint on 2026-07-13"
+  evidence_rail_semantic_change: true
+  evidence_rail_scoped_style_change: true
+  focused_test_change: true
+  cancelled_mobile_navigation_change: false
+  public_claim_change: false
+  route_destination_change: false
+  route_or_manifest_change: false
+  source_authority_change: false
+  public_asset_change: false
+  upstream_write_status: "forbidden_and_unchanged"
+  physics_delta: false
+  push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/components/EvidenceRail.astro"
+  - "tests/test_evidence_rail.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.md"
+  - "implementation_control/handoffs/WH-20260713-001.yaml"
+  - "implementation_control/handoffs/WH-20260713-001.md"
+  - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
+
+implementation_evidence:
+  evidence_rail_sha256: "cb2c128a893ebb920df8225570a38cc9a19318c4b71086d2bebf244c11d83ce5"
+  evidence_rail_test_sha256: "05c9cb54ea69dbf394a8ced47efc85beca15d5086c72f6c20f18934f55cb2062"
+  linked_container: "article"
+  linked_card_link_count: 1
+  accessible_name_contract: "action label followed by card title"
+  body_inside_link_name: false
+  bullet_content_inside_link_name: false
+  stretched_target_status: "preserved"
+  focus_context_status: "visible"
+  reduced_motion_status: "preserved"
+
+preserved_dirty_evidence:
+  base_layout_sha256: "b358ae7c19765b777d57ae7eec6fb825e8a6f1879597041431f83342bdd0518c"
+  global_css_sha256: "8c29df97c7e57cf4dac389ab4ffe72a17dcca3b9283681eb9671bd7caf8faaa5"
+  mobile_navigation_test_sha256: "7616d4558fa70b97ee2d6667428072437366f1283a5cc702dfe473eadce87ec2"
+  cancelled_mobile_navigation_hashes_unchanged: true
+  excluded_control_packet: "WI-20260712-010"
+  excluded_from_checkpoint: true
+
+browser_evidence:
+  observed_utc: "2026-07-13T13:21:55Z"
+  tool: "Playwright CLI headed Chrome"
+  route: "http://127.0.0.1:4321/"
+  page_title: "The Æther Flow Project | Exact Closure and Open Foundations"
+  representative_consumer: "Home"
+  evidence_rail_count: 3
+  article_count: 10
+  linked_article_count: 10
+  nonlinked_article_count_on_home: 0
+  invalid_multi_link_article_count: 0
+  all_destinations_internal: true
+  example_accessible_name: "Open route: Start with physics"
+  example_destination: "/physics/"
+  adjacent_body_and_bullets_visible: true
+  focused_action_is_active_element: true
+  focus_outline_width: "3px"
+  focus_outline_style: "solid"
+  focus_outline_offset: "3px"
+  action_min_height: "44px"
+  action_rendered_height: "44px"
+  stretched_target_inset: "0px"
+  card_center_hit_target: "action link"
+  keyboard_tab_advanced_to_next_action: true
+  action_navigation_result: "/ai-research-system/"
+  browser_console_errors: 0
+  browser_console_warnings: 0
+  nonlinked_branch_evidence: "The representative Home route has no nonlinked EvidenceRail cards; the focused regression test covers the preserved nonlinked article branch."
+
+requirements_satisfied:
+  - "Rendered linked EvidenceRail cards as article containers with exactly one concise action link."
+  - "Kept card titles bodies and bullet lists as adjacent visible and accessible content outside the link accessible name."
+  - "Preserved a 44-pixel action minimum a stretched full-card hit target and a visible three-pixel card-context focus outline."
+  - "Preserved all representative Home destinations as internal routes and completed an action navigation without console warnings or errors."
+  - "Covered the nonlinked article branch and semantic structure with three focused regression tests."
+  - "Preserved the cancelled FE-P1-03 implementation and older control records outside this packet."
+  - "Preserved claims routes manifests source authority public assets upstream sources push and deployment state."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "115 tests passed including three focused EvidenceRail tests"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "All configured gates passed including 34-route provenance zero-drift curator validation implementation control and the 64-page build"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+    evidence: "Aggregate validation reran successfully and the quality gate passed"
+  - id: "manual-evidence-rail-review"
+    command: "manual inspection of concise link names adjacent descriptive text card action focus indication and representative consumers"
+    status: "passed"
+    evidence: "Fresh headed Chrome review of all three Home rails confirmed ten article cards one concise internal link per linked card adjacent descriptions and bullets 44-pixel actions stretched hit targets visible keyboard focus successful navigation and zero console warnings or errors"
+
+aggregate_validation:
+  command: "npm run validate"
+  status: "passed"
+  passed_gates:
+    - "manifest validation"
+    - "content-source validation"
+    - "public claim evidence freshness"
+    - "internal-first link validation"
+    - "layout-language validation"
+    - "SVG policy validation"
+    - "page provenance validation for 34 routes"
+    - "curator report validation with zero residual drift"
+    - "Cloudflare configuration validation"
+    - "implementation-control validation"
+    - "64-page static build"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the two FE-P1-05 frontend files the completion record and ten allowlisted control-transition files while ignoring cancelled mobile-navigation and older nonallowlisted control changes."
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  push_allowed: false
+  deployment_allowed: false
+
+remaining_boundaries:
+  - "FE-P1-03 remains cancelled and FE-P1-04 remains blocked."
+  - "No public claim route manifest source-authority physics source or upstream change occurred."
+  - "No push or deployment is requested or authorized."
+
+next_recommended_action:
+  task_packet: "FE-P1-05 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop without opening another packet."
+  do_not_skip: "Do not repeat FE-SR-03 include cancelled mobile-navigation files open FE-P1-03 or FE-P1-04 push deploy or mutate upstream."

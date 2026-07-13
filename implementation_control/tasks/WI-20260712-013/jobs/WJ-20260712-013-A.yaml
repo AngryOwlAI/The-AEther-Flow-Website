@@ -4,8 +4,8 @@ job_id: "WJ-20260712-013-A"
 task_id: "WI-20260712-013"
 title: "Implement Concise EvidenceRail Link Semantics"
 created_utc: "2026-07-13T02:20:02Z"
-updated_utc: "2026-07-13T12:32:45Z"
-status: "suspended"
+updated_utc: "2026-07-13T13:22:45Z"
+status: "active"
 
 objective: "Execute one FE-P1-05 packet that replaces verbose whole-card link names with one concise actionable link while retaining adjacent card description and bullets."
 
@@ -42,6 +42,11 @@ allowed_writes:
   - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
   - "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-001.yaml"
+  - "implementation_control/handoffs/WH-20260713-001.md"
+  - "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
 
 required_outputs:
   - "Linked EvidenceRail cards use an article container and one concise title or action link."
@@ -58,8 +63,8 @@ approval_gates:
     status: "not_required"
     trigger: "No public claim or source-authority change."
   - id: "source_refresh_uncertainty"
-    status: "required"
-    trigger: "Aggregate validation reports current upstream registry drift and stale curator reports outside this packet."
+    status: "not_required"
+    trigger: "FE-SR-03 cleared the prior source drift and was separately checkpointed before acceptance resumed."
   - id: "broad_navigation_or_route_retirement"
     status: "not_required"
     trigger: "No navigation or route change."
@@ -118,26 +123,37 @@ checkpoint:
   push_allowed: false
   deploy_allowed: false
 
+completion_record:
+  completion_id: "WJC-20260712-013-A"
+  path: "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  status: "completed"
+
 next_recommended_action:
-  task_packet: "FE-SR-03 separate source refresh"
-  summary: "Complete the separately authorized FE-SR-03 packet before returning to this job for acceptance."
-  do_not_skip: "Do not checkpoint FE-P1-05 repeat FE-SR-02 touch cancelled mobile-navigation work open FE-P1-04 push deploy or mutate upstream."
+  task_packet: "FE-P1-05 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260712-013-A and stop."
+  do_not_skip: "Do not repeat FE-SR-03 touch cancelled mobile-navigation work open FE-P1-03 or FE-P1-04 push deploy or mutate upstream."
 
 preservation:
   excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
   overlap_note: "The component contains scoped FE-P1-05 styling and global.css remains byte-preserved outside this packet."
 
 implementation_status:
-  status: "implemented_acceptance_blocked"
+  status: "accepted_ready_for_checkpoint"
   changed_paths: "src/components/EvidenceRail.astro tests/test_evidence_rail.py"
   passing_evidence: "3 focused tests 115 full Python tests 64-page static build implementation-control validation and git diff check"
-  blocking_evidence: "Aggregate validation and quality stop at current curator source drift including critical claim-boundary drift on the physics claim-status route"
-  checkpoint_status: "not_created"
+  blocking_evidence: "resolved by separately checkpointed FE-SR-03 at 5115fca6fc464dfedf5e62d352bfb837be507a5a"
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  browser_manual_review: "passed"
+  checkpoint_status: "ready_to_checkpoint"
 
 suspension:
+  status: "resolved"
   suspended_by_task_id: "WI-20260713-001"
   suspended_by_handoff_id: "WH-20260713-001"
   implementation_preserved: true
-  completion_record_created: false
+  completion_record_created: true
   checkpoint_created: false
-  resume_condition: "A separate FE-SR-03 checkpoint clears aggregate source drift and implementation control reactivates FE-P1-05 acceptance."
+  resolved_at_utc: "2026-07-13T13:10:34Z"
+  resolution_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+  resolution: "FE-SR-03 cleared aggregate source drift and was separately checkpointed before FE-P1-05 reactivation."

@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260713-001"
 title: "Refresh Current Curator Evidence For Preserved FE-P1-05"
 created_utc: "2026-07-13T12:32:45Z"
-updated_utc: "2026-07-13T12:47:00Z"
-status: "active"
+updated_utc: "2026-07-13T13:22:45Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-SR-03"
@@ -15,7 +15,7 @@ source_context:
   previous_checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
   previous_source_pin: "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5"
   owner_authorization: "Owner explicitly authorized FE-SR-03 as a separate website-local source-refresh packet on 2026-07-13"
-  preserved_packet: "FE-P1-05 remains implemented uncommitted and suspended"
+  preserved_packet: "FE-P1-05 was implemented uncommitted and suspended during FE-SR-03 then reactivated after checkpoint 5115fca6fc464dfedf5e62d352bfb837be507a5a"
 
 goal: "Clear the current aggregate curator source-drift blocker by refreshing only reviewed website-local snapshots provenance and curator reports from one clean origin-parity upstream commit without physics promotion or authored public-copy changes."
 
@@ -203,9 +203,9 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "FE-SR-03 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed FE-SR-03 and stop before FE-P1-05 reactivation."
-  do_not_skip: "Do not include preserved frontend or older nonallowlisted control files reactivate FE-P1-05 push deploy or mutate upstream."
+  task_packet: "FE-P1-05 acceptance and local checkpoint"
+  summary: "FE-SR-03 is checkpointed; proceed only through the reactivated FE-P1-05 acceptance packet."
+  do_not_skip: "Do not repeat FE-SR-03 include cancelled mobile-navigation files open FE-P1-03 or FE-P1-04 push deploy or mutate upstream."
 
 preservation:
   suspended_task_id: "WI-20260712-013"
@@ -224,4 +224,10 @@ preflight_evidence:
   upstream_ahead_count: 0
   generated_evidence_written: true
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
+  checkpoint_commit: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-013"
+  checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+  reason: "FE-SR-03 completed and FE-P1-05 acceptance resumed after its separate local checkpoint."

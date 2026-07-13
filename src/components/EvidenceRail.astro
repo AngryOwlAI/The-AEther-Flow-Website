@@ -24,8 +24,14 @@ const { items, ariaLabel, className = "", ordered = false } = Astro.props;
 >
   {items.map((item, index) => {
     const label = item.label ?? (ordered ? String(index + 1).padStart(2, "0") : undefined);
-    const content = (
-      <>
+    const actionLabel = item.actionLabel ?? "Open route";
+    const accessibleActionLabel = `${actionLabel}: ${item.title}`;
+    const linkClass = item.href
+      ? `evidence-rail-link ${item.href.startsWith("http") ? "evidence-rail-link-external" : ""}`
+      : "";
+
+    return (
+      <article class={`evidence-rail-item ${linkClass}`.trim()}>
         {label && <p class="evidence-rail-label">{label}</p>}
         <h3>{item.title}</h3>
         <p>{item.body}</p>
@@ -34,18 +40,59 @@ const { items, ariaLabel, className = "", ordered = false } = Astro.props;
             {item.points.map((point) => <li>{point}</li>)}
           </ul>
         )}
-        {item.href && <span class="evidence-rail-action">{item.actionLabel ?? "Open route"}</span>}
-      </>
-    );
-
-    return item.href ? (
-      <a class="evidence-rail-item evidence-rail-link" href={item.href}>
-        {content}
-      </a>
-    ) : (
-      <article class="evidence-rail-item">
-        {content}
+        {item.href && (
+          <a class="evidence-rail-action" href={item.href} aria-label={accessibleActionLabel}>
+            {actionLabel}
+          </a>
+        )}
       </article>
     );
   })}
 </div>
+
+<style>
+  .evidence-rail-link:hover,
+  .evidence-rail-link:focus-within {
+    background:
+      linear-gradient(
+        160deg,
+        color-mix(in srgb, var(--overview-orange) 13%, transparent),
+        transparent 44%
+      ),
+      color-mix(in srgb, var(--color-dark-panel) 76%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .evidence-rail-link:focus-within {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 0.2rem;
+  }
+
+  .evidence-rail-link-external {
+    background:
+      linear-gradient(
+        160deg,
+        color-mix(in srgb, var(--overview-cyan) 9%, transparent),
+        transparent 44%
+      ),
+      color-mix(in srgb, var(--color-dark-panel) 54%, transparent);
+  }
+
+  .evidence-rail-action {
+    min-height: 2.75rem;
+    align-items: center;
+  }
+
+  .evidence-rail-action::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .evidence-rail-link:hover,
+    .evidence-rail-link:focus-within {
+      transform: none;
+    }
+  }
+</style>

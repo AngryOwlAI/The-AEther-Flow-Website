@@ -2,13 +2,13 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260712-013"
 created_utc: "2026-07-13T02:20:02Z"
-updated_utc: "2026-07-13T12:32:45Z"
-status: "suspended"
+updated_utc: "2026-07-13T13:22:45Z"
+status: "active"
 
 task_id: "WI-20260712-013"
 job_id: "WJ-20260712-013-A"
 
-summary: "Implemented the bounded FE-P1-05 semantic refactor but stopped acceptance and checkpointing because required aggregate validation reports current curator source drift outside the packet."
+summary: "Accepted the preserved FE-P1-05 EvidenceRail semantic refactor after the separate FE-SR-03 checkpoint with all automated and fresh browser gates passing."
 
 current_state:
   - "FE-SR-02 is completed and checkpointed at 567a2d7544ac636c8a35683d4694f0bca86130b3 and must not be repeated."
@@ -16,9 +16,11 @@ current_state:
   - "FE-P1-04 remains blocked because its dependency FE-P1-03 did not pass acceptance."
   - "FE-P1-05 linked cards now use article containers with one concise action link and adjacent descriptive content."
   - "Three focused tests all 115 Python tests the 64-page build implementation-control validation and git diff check pass."
-  - "Aggregate validation and quality stop at current curator source drift including critical claim-boundary drift on the physics claim-status route."
+  - "FE-SR-03 cleared the source drift and was separately checkpointed at 5115fca6fc464dfedf5e62d352bfb837be507a5a."
+  - "Aggregate validation quality and fresh headed-Chrome EvidenceRail review pass."
   - "Pre-existing uncommitted mobile-menu changes remain untouched and their three preserved hashes are unchanged."
-  - "Playwright opened a local browser but snapshot and evaluation commands returned no page output so no browser-automation evidence is claimed."
+  - "Fresh browser evidence confirms three Home rails ten article cards one concise internal link per linked card adjacent descriptions and bullets a 44-pixel action a stretched target visible keyboard focus successful navigation and zero console warnings or errors."
+  - "Completion WJC-20260712-013-A is ready for the distinct local FE-P1-05 checkpoint."
   - "No push or deployment is authorized."
 
 source_authority_boundary:
@@ -31,9 +33,9 @@ source_authority_boundary:
   deployment_status: "not_authorized"
 
 next_recommended_action:
-  task_packet: "FE-SR-03 separate source refresh"
-  summary: "Execute the separately authorized FE-SR-03 packet while preserving the implemented FE-P1-05 component and test."
-  do_not_skip: "Do not checkpoint FE-P1-05 repeat FE-SR-02 resume FE-P1-03 open FE-P1-04 acknowledge drift push deploy or mutate upstream."
+  task_packet: "FE-P1-05 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260712-013-A and stop."
+  do_not_skip: "Do not repeat FE-SR-03 include cancelled mobile-navigation files resume FE-P1-03 open FE-P1-04 push deploy or mutate upstream."
 
 stop_before:
   - "public claim source-authority route destination or navigation changes"
@@ -49,16 +51,24 @@ preservation:
   destructive_cleanup_status: "not_authorized"
 
 validation_disposition:
-  implementation_status: "implemented_acceptance_blocked"
-  aggregate_status: "blocked_by_current_curator_source_drift"
-  quality_status: "blocked_by_aggregate_curator_source_drift"
-  completion_record_status: "not_created"
-  checkpoint_status: "not_created"
+  implementation_status: "accepted_ready_for_checkpoint"
+  aggregate_status: "passed"
+  quality_status: "passed"
+  browser_manual_status: "passed"
+  completion_record_status: "completed"
+  checkpoint_status: "ready_to_checkpoint"
 
 suspension:
+  status: "resolved"
   suspended_by_task_id: "WI-20260713-001"
   suspended_by_job_id: "WJ-20260713-001-A"
   superseded_by_handoff_id: "WH-20260713-001"
   authorization_received_utc: "2026-07-13T12:32:45Z"
   implementation_preserved: true
-  resume_condition: "FE-SR-03 is separately checkpointed and FE-P1-05 acceptance is reactivated."
+  resolved_at_utc: "2026-07-13T13:10:34Z"
+  resolution_checkpoint: "5115fca6fc464dfedf5e62d352bfb837be507a5a"
+
+completion_record:
+  completion_id: "WJC-20260712-013-A"
+  path: "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  status: "completed"
