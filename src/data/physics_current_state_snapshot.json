@@ -89,59 +89,59 @@
   "latest_handoff_next_action": "Run one bounded EqSrc family-closure repair-or-stress packet from validated v18 outputs.",
   "latest_handoff_summary": "RT-20260709-006 completed v18 P11-T05 by assigning final covered status to V18-R01 through V18-R10. No missing or partial recommendation was found, no project-improvement signal was emitted, P11-T06 is not required, and v18 applicable plan tasks are complete. No Distance-to-GR ledger status change, physics promotion, proof authority, source-law adoption, general EqSrc discharge, RetainH adoption, GenH adoption, detector/readout semantics adoption, matter-coupling derivation, Einstein-equation derivation, benchmark promotion, Gate Chair verdict, or completed-derivation claim is authorized.",
   "next_recommended_action": "Run one bounded EqSrc family-closure repair-or-stress packet from validated v18 outputs.",
-  "source_commit": "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5",
-  "source_commit_date": "2026-07-12T19:53:26-06:00",
+  "source_commit": "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808",
+  "source_commit_date": "2026-07-13T06:32:12-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
       "sha256": "1a28fc71d3076347be4221e4d30b4bf962e5f752fd9d90f099d916dd89a4706c"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/research_control/handoffs/handoff-0740.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.yaml",
       "path": "research_control/handoffs/handoff-0740.yaml",
       "sha256": "5be1f16f476c1f03db0baf3dcfec8ffc1947ff61c5d5d3ff43012239ce5c0c1d"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/research_control/handoffs/handoff-0740.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.md",
       "path": "research_control/handoffs/handoff-0740.md",
       "sha256": "2d2bb5936181f7040357c1074c06e124904b28cd84fdb6b3138be59055d02402"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
       "sha256": "0ec3266d708398acde6f380515c37751c0db8ce03bbb135f8aa60fb0f494ce61"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "1ed3a2327ad005da63b1965aff6a9527cd57af681350880dad1fa0728add7649"
+      "sha256": "c2b70ce3265dee7985c0eb3283c2d3fb3a8a14abf7f64caf939764f63ab9485b"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/research_control/handoffs/handoff-0740.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.yaml",
       "label": "research_control/handoffs/handoff-0740.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/research_control/handoffs/handoff-0740.md",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/research_control/handoffs/handoff-0740.md",
       "label": "research_control/handoffs/handoff-0740.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],

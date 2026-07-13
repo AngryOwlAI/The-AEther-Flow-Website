@@ -151,3 +151,8 @@ next_recommended_action:
   task_packet: "FE-SR-02 local checkpoint"
   summary: "Run the implementation checkpoint transaction and stop before the separate Windows NVDA deferral governance amendment."
   do_not_skip: "Do not resume FE-P1-03 open FE-P1-04 push deploy promote physics or mutate upstream."
+
+checkpoint:
+  commit: "567a2d7544ac636c8a35683d4694f0bca86130b3"
+  subject: "Checkpoint WJ-20260712-012-A: Refreshed reviewed claim-boundary curre..."
+  verified_utc: "2026-07-13T02:20:02Z"

@@ -4,8 +4,8 @@ job_id: "WJ-20260712-011-A"
 task_id: "WI-20260712-011"
 title: "Implement Compact Mobile Navigation Disclosure"
 created_utc: "2026-07-12T20:54:42Z"
-updated_utc: "2026-07-12T22:09:48Z"
-status: "suspended"
+updated_utc: "2026-07-13T02:20:02Z"
+status: "cancelled"
 
 objective: "Execute one FE-P1-03 packet that collapses the existing navigation behind one accessible mobile Menu and keeps every required interaction operable in short viewports."
 
@@ -149,3 +149,12 @@ suspension:
   voiceover_status: "not_run_requires_explicit_local_setting_confirmation"
   windows_nvda_status: "not_available"
   resume_after: "WI-20260712-012 is completed and separately checkpointed and the authorized Windows NVDA deferral governance amendment is recorded."
+
+terminalization:
+  status: "cancelled"
+  terminalized_utc: "2026-07-13T02:20:02Z"
+  acceptance_result: "not_accepted"
+  checkpoint_status: "not_checkpointed"
+  superseded_by_handoff_id: "WH-20260712-013"
+  reason: "Mandatory Windows 11 NVDA acceptance evidence is unavailable under the owner's new constraint."
+  preserved_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"

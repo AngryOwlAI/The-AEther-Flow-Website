@@ -1,31 +1,30 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260712-012-A"
-task_id: "WI-20260712-012"
+job_id: "WJ-20260713-001-A"
+task_id: "WI-20260713-001"
 title: "Refresh Reviewed Snapshots Provenance And Curator Evidence"
-created_utc: "2026-07-12T22:09:48Z"
-updated_utc: "2026-07-13T02:20:02Z"
-status: "superseded"
+created_utc: "2026-07-13T12:32:45Z"
+updated_utc: "2026-07-13T12:47:00Z"
+status: "active"
 
-objective: "Execute one bounded FE-SR-02 website-local source refresh from one reviewed clean committed upstream view while preserving the suspended FE-P1-03 runtime implementation."
+objective: "Execute one bounded FE-SR-03 website-local source refresh from one reviewed clean origin-parity upstream commit while preserving the uncommitted FE-P1-05 implementation and cancelled mobile-navigation files."
 
 execution_boundary:
-  invocation_limit: "one bounded FE-SR-02 packet"
+  invocation_limit: "one bounded FE-SR-03 packet"
   live_state_priority: "implementation-control records outrank plans memory and conversation summaries"
-  packet_id: "FE-SR-02"
+  packet_id: "FE-SR-03"
   upstream_write_status: "forbidden"
-  upstream_read_status: "reviewed clean committed files only"
-  source_refresh_status: "approved for generated website-local evidence"
+  upstream_read_status: "reviewed clean origin-parity committed files only"
+  source_refresh_status: "approved for generated website-local evidence after preflight"
   authored_public_copy_status: "forbidden"
   physics_promotion_status: "forbidden"
   frontend_runtime_status: "preserved and excluded"
-  governance_amendment_status: "deferred to a separate packet"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website reads allowlisted by WI-20260712-012"
-  - "upstream reads allowlisted by WI-20260712-012"
+  - "website reads allowlisted by WI-20260713-001"
+  - "upstream reads allowlisted by WI-20260713-001"
 
 allowed_writes:
   - "src/data/claim_boundary_snapshot.json"
@@ -42,29 +41,38 @@ allowed_writes:
   - "implementation_control/handoffs/WH-20260712-011.md"
   - "implementation_control/handoffs/WH-20260712-012.yaml"
   - "implementation_control/handoffs/WH-20260712-012.md"
+  - "implementation_control/handoffs/WH-20260712-013.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.md"
+  - "implementation_control/handoffs/WH-20260713-001.yaml"
+  - "implementation_control/handoffs/WH-20260713-001.md"
   - "implementation_control/tasks/WI-20260712-011/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260712-011/jobs/WJ-20260712-011-A.yaml"
   - "implementation_control/tasks/WI-20260712-012/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260712-012/jobs/WJ-20260712-012-A.yaml"
   - "implementation_control/tasks/WI-20260712-012/jobs/completions/WJC-20260712-012-A.yaml"
+  - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
 
 required_outputs:
   - "A preflight receipt proving upstream cleanliness origin parity and one accepted committed source pin."
   - "Reviewed claim-boundary and current-state drift disposition with an explicit no-physics-delta result."
   - "Fresh claim-boundary and physics current-state snapshots from the same accepted upstream commit."
-  - "Fresh page provenance and curator reports with no critical or unexplained residual drift."
-  - "Control and completion evidence for a separate local checkpoint that excludes FE-P1-03 runtime paths."
+  - "Fresh page provenance and curator reports with no critical review-required diagnostic or unexplained residual drift."
+  - "Control and completion evidence for a separate local checkpoint that excludes all five preserved frontend files."
 
 approval_gates:
   - id: "plan_adoption"
     status: "approved"
-    trigger: "Owner authorization for the bounded FE-SR-02 control transition and repair on 2026-07-12."
+    trigger: "Owner authorization for the bounded FE-SR-03 packet on 2026-07-13."
   - id: "public_claim_changes"
     status: "approved"
     trigger: "Generated snapshots only with no authored narrative or physics promotion."
   - id: "source_refresh_uncertainty"
     status: "approved"
-    trigger: "Website-local evidence refresh from one reviewed clean committed upstream view."
+    trigger: "Website-local evidence refresh from one reviewed clean origin-parity committed view."
   - id: "broad_navigation_or_route_retirement"
     status: "not_required"
     trigger: "No route navigation redirect canonical or route-map change."
@@ -119,14 +127,15 @@ required_validators:
     command: "npm run quality"
     required: true
   - id: "manual-source-refresh-review"
-    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+    command: "manual inspection of upstream cleanliness origin parity source drift snapshot changes provenance pins curator reports preserved frontend hashes and no physics promotion"
     required: true
 
 stop_conditions:
   - "Upstream main is dirty differs from origin main or changes during the packet."
-  - "Review finds physics promotion or source-authority expansion."
+  - "Review finds physics promotion source-authority expansion or a physics semantic delta."
   - "Residual curator drift needs acknowledgement authored public changes or non-allowlisted generator repairs."
-  - "Work requires frontend runtime governance amendment upstream push or deployment mutation."
+  - "Any preserved frontend file changes during the packet."
+  - "Work requires frontend runtime FE-P1-05 acceptance upstream push deployment or mutation."
   - "Validation fails."
 
 checkpoint:
@@ -136,21 +145,25 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260712-012-A"
-  path: "implementation_control/tasks/WI-20260712-012/jobs/completions/WJC-20260712-012-A.yaml"
-  status: "ready_to_checkpoint"
+  completion_id: "WJC-20260713-001-A"
+  path: "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
+  status: "completed"
 
 next_recommended_action:
-  task_packet: "FE-SR-02 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for the completed source refresh and stop."
-  do_not_skip: "Do not execute governance or frontend runtime packets push deploy promote physics or mutate upstream."
+  task_packet: "FE-SR-03 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed FE-SR-03 and stop."
+  do_not_skip: "Do not include preserved frontend or older nonallowlisted control files reactivate FE-P1-05 push deploy or mutate upstream."
 
 preservation:
-  suspended_task_id: "WI-20260712-011"
-  excluded_runtime_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
+  suspended_task_id: "WI-20260712-013"
+  excluded_frontend_paths: "src/components/EvidenceRail.astro tests/test_evidence_rail.py src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
   checkpoint_separation_required: true
 
-supersession:
-  superseded_by_handoff_id: "WH-20260712-013"
-  checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
-  reason: "The source-refresh packet completed and its checkpoint exists."
+preflight_evidence:
+  status: "passed"
+  observed_utc: "2026-07-13T12:32:45Z"
+  upstream_head: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  upstream_origin_main: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  upstream_worktree: "clean"
+  upstream_ahead_count: 0
+  generated_evidence_written: true

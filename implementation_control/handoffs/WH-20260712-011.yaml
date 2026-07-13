@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260712-011"
 created_utc: "2026-07-12T20:54:42Z"
-updated_utc: "2026-07-12T22:09:48Z"
-status: "suspended"
+updated_utc: "2026-07-13T02:20:02Z"
+status: "superseded"
 
 task_id: "WI-20260712-011"
 job_id: "WJ-20260712-011-A"
@@ -84,3 +84,9 @@ suspended_by:
   task_id: "WI-20260712-012"
   job_id: "WJ-20260712-012-A"
   reason: "The owner authorized a fresh bounded website-local curator source-refresh repair while preserving the uncommitted FE-P1-03 implementation."
+
+superseded_by:
+  handoff_id: "WH-20260712-013"
+  task_id: "WI-20260712-013"
+  job_id: "WJ-20260712-013-A"
+  reason: "FE-P1-03 was cancelled because mandatory Windows 11 NVDA acceptance evidence is unavailable under the owner's new constraint."

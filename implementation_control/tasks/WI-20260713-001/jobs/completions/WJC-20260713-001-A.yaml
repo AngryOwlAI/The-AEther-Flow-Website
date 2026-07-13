@@ -1,0 +1,167 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260713-001-A"
+task_id: "WI-20260713-001"
+job_id: "WJ-20260713-001-A"
+created_utc: "2026-07-13T12:32:45Z"
+completed_utc: "2026-07-13T12:47:00Z"
+status: "completed"
+
+summary: "Refreshed reviewed claim-boundary current-state provenance and curator evidence from clean origin-parity commit cf5cc938 while preserving FE-P1-05 and confirming no physics delta."
+
+scope_confirmation:
+  packet_id: "FE-SR-03"
+  previous_checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
+  previous_source_pin: "b8c4d7c6567fbf503b4f6dc7c044433bae2c02e5"
+  accepted_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  upstream_origin_main: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  upstream_worktree: "clean"
+  upstream_push_command_executed: false
+  upstream_parity_observed: true
+  upstream_write_status: "forbidden_and_unchanged"
+  source_refresh_performed: true
+  generated_public_claim_snapshot_change: true
+  authored_public_copy_change: false
+  route_map_change: false
+  source_bundle_change: false
+  public_asset_change: false
+  frontend_runtime_change: false
+  acknowledgement_or_waiver_created: false
+  physics_delta: false
+  physics_promotion_authorized: false
+  fe_p1_05_reactivated: false
+  fe_p1_03_resumed: false
+  fe_p1_04_opened: false
+  website_push_performed: false
+  deployment_performed: false
+
+changed_files:
+  - "src/data/claim_boundary_snapshot.json"
+  - "src/data/physics_current_state_snapshot.json"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260712-011.yaml"
+  - "implementation_control/handoffs/WH-20260712-011.md"
+  - "implementation_control/handoffs/WH-20260712-012.yaml"
+  - "implementation_control/handoffs/WH-20260712-012.md"
+  - "implementation_control/handoffs/WH-20260712-013.yaml"
+  - "implementation_control/handoffs/WH-20260712-013.md"
+  - "implementation_control/handoffs/WH-20260713-001.yaml"
+  - "implementation_control/handoffs/WH-20260713-001.md"
+  - "implementation_control/tasks/WI-20260712-011/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-011/jobs/WJ-20260712-011-A.yaml"
+  - "implementation_control/tasks/WI-20260712-012/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-012/jobs/WJ-20260712-012-A.yaml"
+  - "implementation_control/tasks/WI-20260712-012/jobs/completions/WJC-20260712-012-A.yaml"
+  - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
+
+source_refresh_evidence:
+  upstream_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_branch: "main"
+  upstream_commit: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  upstream_origin_main: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+  upstream_worktree: "clean"
+  protected_upstream_delta_count: 0
+  protected_upstream_delta_scope: "ontology Distance-to-GR program-state and research handoffs"
+  physics_semantic_fields_unchanged: true
+  claim_boundary_row_count_before: 844
+  claim_boundary_row_count_after: 846
+  new_claim_boundary_row_count: 2
+  new_claim_boundary_scope: "v19 P1-T01 and P1-T02 project-system validation identity and gate supersedence controls only"
+  route_provenance_records: 34
+  route_order_unchanged: true
+  local_page_hash_changes: 0
+  curator_dependency_count: 248
+  curator_drift_count: 0
+  curator_diagnostic_count: 0
+  curator_review_required_count: 0
+  curator_critical_drift_count: 0
+  claim_boundary_snapshot_sha256: "f23ee35f55d634d0998a9b7f0963c264c3feec30f3fdd26aa621c3c93b7f331c"
+  physics_current_state_snapshot_sha256: "f38f4f6094d2950a3d7bffa456e6b519ac412599fead3b7e59472057b407891e"
+  page_provenance_sha256: "bbe711f3e3c1f87d008f03607f976f0c10fed0ba95db706b9ffd13673beb2231"
+  curator_json_sha256: "c9bcb62e56f424a5a400ed065a3f30518e38985a4e00999c40ce6706cb106866"
+  curator_markdown_sha256: "66457570bf34ce1811df63de39fdd18adbe4d21ffc5f0bcf41a23eebceca64f7"
+
+preserved_frontend_evidence:
+  evidence_rail_sha256: "cb2c128a893ebb920df8225570a38cc9a19318c4b71086d2bebf244c11d83ce5"
+  evidence_rail_test_sha256: "05c9cb54ea69dbf394a8ced47efc85beca15d5086c72f6c20f18934f55cb2062"
+  base_layout_sha256: "b358ae7c19765b777d57ae7eec6fb825e8a6f1879597041431f83342bdd0518c"
+  global_css_sha256: "8c29df97c7e57cf4dac389ab4ffe72a17dcca3b9283681eb9671bd7caf8faaa5"
+  mobile_navigation_test_sha256: "7616d4558fa70b97ee2d6667428072437366f1283a5cc702dfe473eadce87ec2"
+  before_after_hashes_equal: true
+  checkpoint_exclusion_required: true
+
+requirements_satisfied:
+  - "Confirmed upstream main was clean and exactly equal to origin main before generated evidence writes."
+  - "Reviewed the committed upstream delta and found no protected scientific or research-state change."
+  - "Generated both snapshots from the same accepted source commit and confirmed physics semantic state was unchanged."
+  - "Reviewed both new claim-boundary rows as project-system no-physics-delta records with explicit promotion guards."
+  - "Regenerated page provenance without changing route identity order local page hashes route map or source bundles."
+  - "Regenerated curator reports and observed zero drift diagnostics review-required or critical items."
+  - "Preserved the suspended FE-P1-05 and cancelled mobile-navigation files byte-for-byte and excluded them from this checkpoint."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "115 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-source-refresh-review"
+    command: "manual inspection of upstream cleanliness origin parity source drift snapshot changes provenance pins curator reports preserved frontend hashes and no physics promotion"
+    status: "passed"
+    evidence: "Origin parity protected-path review semantic physics equality two guarded project-system claim rows 34 stable routes zero curator drift and five preserved frontend hashes verified"
+
+remaining_boundaries:
+  - "FE-P1-05 remains suspended implemented uncommitted and unaccepted until a separate control transition."
+  - "FE-P1-03 remains cancelled and FE-P1-04 remains blocked."
+  - "Older nonallowlisted control changes remain outside this checkpoint."
+  - "No website push or deployment is authorized."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only five generated source-refresh outputs and allowlisted control continuity records."
+  excluded_frontend_paths: "src/components/EvidenceRail.astro tests/test_evidence_rail.py src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
+  excluded_control_paths: "implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-SR-03 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop before FE-P1-05 reactivation."
+  do_not_skip: "Do not include preserved frontend or older nonallowlisted control files reactivate FE-P1-05 push the website deploy or mutate upstream."

@@ -1,0 +1,184 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260712-013"
+title: "Refactor EvidenceRail Accessible Names"
+created_utc: "2026-07-13T02:20:02Z"
+updated_utc: "2026-07-13T12:32:45Z"
+status: "suspended"
+
+source_context:
+  packet_id: "FE-P1-05"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
+  adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  dependency: "FE-G0-04 completed"
+  previous_checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
+  owner_authorization: "Owner explicitly directed opening FE-P1-05 after cancelling FE-P1-03 on 2026-07-12"
+
+goal: "Give every linked EvidenceRail card one concise accessible link name while keeping its body and bullet content available as adjacent descriptive text and preserving a clear card action."
+
+requirements:
+  - "Use an article as each card container rather than wrapping label title body bullets and action in one anchor."
+  - "Expose one concise title or action link for linked cards."
+  - "Keep body and bullet content as adjacent descriptive text outside the link accessible name."
+  - "Preserve a visible focus indication and actionable card context."
+  - "Keep the click target at the approved minimum without making the paragraph part of the accessible name."
+  - "Preserve non-linked EvidenceRail cards and existing internal-first destinations."
+
+scope:
+  in_scope:
+    - "EvidenceRail semantic markup and accessible-link contract in src/components/EvidenceRail.astro"
+    - "Minimum scoped EvidenceRail focus and card-action styling in src/components/EvidenceRail.astro"
+    - "Read-only verification of representative consumers after the compatible component refactor"
+    - "Focused EvidenceRail regression coverage"
+    - "Exactly allowlisted implementation-control records"
+  out_of_scope:
+    - "FE-P1-03 mobile navigation changes or acceptance"
+    - "FE-P1-04 desktop navigation targets or interaction changes"
+    - "Broad route copy component redesign navigation destinations public claims manifests public assets or upstream writes"
+    - "Git push or Cloudflare deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260712-013-A"
+  next_packet_after_this_task: "No successor packet opens until FE-P1-05 is validated checkpointed and separately authorized"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+    - "src/components/EvidenceRail.astro"
+    - "src/styles/global.css"
+    - "src/pages/index.astro"
+    - "tests/"
+    - "scripts/"
+    - "implementation_control/"
+    - "website Git status and history evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/components/EvidenceRail.astro"
+    - "tests/test_evidence_rail.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260712-011.yaml"
+    - "implementation_control/handoffs/WH-20260712-011.md"
+    - "implementation_control/handoffs/WH-20260712-012.yaml"
+    - "implementation_control/handoffs/WH-20260712-012.md"
+    - "implementation_control/handoffs/WH-20260712-013.yaml"
+    - "implementation_control/handoffs/WH-20260712-013.md"
+    - "implementation_control/tasks/WI-20260712-011/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-011/jobs/WJ-20260712-011-A.yaml"
+    - "implementation_control/tasks/WI-20260712-012/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-012/jobs/WJ-20260712-012-A.yaml"
+    - "implementation_control/tasks/WI-20260712-012/jobs/completions/WJC-20260712-012-A.yaml"
+    - "implementation_control/tasks/WI-20260712-013/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-013/jobs/WJ-20260712-013-A.yaml"
+    - "implementation_control/tasks/WI-20260712-013/jobs/completions/WJC-20260712-013-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed opening FE-P1-05 on 2026-07-12."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public claim copy status metadata or source authority changes."
+  source_refresh_uncertainty:
+    status: "required"
+    reason: "Required aggregate validation now reports stale curator evidence and current upstream registry drift outside FE-P1-05 scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No navigation label destination route redirect canonical or retirement change."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval is limited to EvidenceRail semantics and minimum supporting focus and action styling."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No manifest authority or route-map change."
+  git_push:
+    status: "not_required"
+    reason: "Push remains separately gated and out of scope."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment remains separately gated and out of scope."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream write remains forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-evidence-rail-review"
+    command: "manual inspection of concise link names adjacent descriptive text card action focus indication and representative consumers"
+    required: true
+
+stop_conditions:
+  - "The refactor would change public claims route destinations source authority or manifest authority."
+  - "Body or bullet content would become hidden from readers or assistive technology."
+  - "The concise link would lose visible focus indication or a usable click target."
+  - "The change requires broad consumer rewrites a new dependency or unrelated shared-component redesign."
+  - "Work enters FE-P1-03 FE-P1-04 push deployment or upstream mutation."
+  - "Validation fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260712-013-A only after all required evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260712-013"
+  yaml_path: "implementation_control/handoffs/WH-20260712-013.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260712-013.md"
+
+next_recommended_action:
+  task_packet: "FE-SR-03 separate source refresh"
+  summary: "Complete the separately authorized FE-SR-03 packet before returning to FE-P1-05 acceptance."
+  do_not_skip: "Do not checkpoint FE-P1-05 repeat FE-SR-02 resume FE-P1-03 open FE-P1-04 change authored claims push deploy or mutate upstream."
+
+preservation:
+  cancelled_task_id: "WI-20260712-011"
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
+  overlap_note: "FE-P1-05 styling is scoped inside EvidenceRail.astro so the preserved global.css bytes remain outside this packet."
+
+implementation_status:
+  status: "implemented_acceptance_blocked"
+  implemented_utc: "2026-07-13T02:38:36Z"
+  changed_paths: "src/components/EvidenceRail.astro tests/test_evidence_rail.py"
+  targeted_tests: "passed 3 tests"
+  full_python_tests: "passed 115 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "blocked_by_current_curator_source_drift"
+  quality_gate: "blocked_by_aggregate_curator_source_drift"
+  checkpoint_status: "not_created"
+
+suspension:
+  suspended_by_task_id: "WI-20260713-001"
+  suspended_by_handoff_id: "WH-20260713-001"
+  reason: "The owner authorized a separate FE-SR-03 packet to resolve the source-derived validation blocker."
+  implementation_preserved: true
+  completion_record_created: false
+  checkpoint_created: false
+  resume_condition: "FE-SR-03 is separately completed and checkpointed then FE-P1-05 acceptance is reactivated through implementation control."

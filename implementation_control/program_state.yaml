@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-13T01:58:11Z"
+updated_utc: "2026-07-13T12:47:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260712-012/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260712-012/jobs/WJ-20260712-012-A.yaml"
-  - "implementation_control/handoffs/WH-20260712-012.yaml"
+  - "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-001.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as adopted planning context only"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,33 +24,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260712-012"
-  title: "Repair Curator Source Drift For Preserved FE-P1-03"
+  task_id: "WI-20260713-001"
+  title: "Refresh Current Curator Evidence For Preserved FE-P1-05"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-012/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260713-001/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-SR-02"
+    task_packet: "FE-SR-03"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_plan_id: "FE-RECOMMENDATIONS-20260711"
     adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
-    previous_checkpoint: "59e0b4128237f68ef839a439a50a09ae109dff90"
-    owner_authorization: "Owner explicitly authorized a separate website-local curator source-refresh repair and its control-plane transition on 2026-07-12"
+    previous_checkpoint: "567a2d7544ac636c8a35683d4694f0bca86130b3"
+    owner_authorization: "Owner explicitly authorized the separate FE-SR-03 website-local source-refresh packet on 2026-07-13"
 
 current_job:
-  job_id: "WJ-20260712-012-A"
+  job_id: "WJ-20260713-001-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260712-012/jobs/WJ-20260712-012-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-001/jobs/WJ-20260713-001-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260712-012"
+  handoff_id: "WH-20260713-001"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260712-012.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260712-012.md"
+  yaml_path: "implementation_control/handoffs/WH-20260713-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260713-001.md"
 
 latest_completion:
-  completion_id: "WJC-20260712-012-A"
-  status: "ready_to_checkpoint"
-  path: "implementation_control/tasks/WI-20260712-012/jobs/completions/WJC-20260712-012-A.yaml"
+  completion_id: "WJC-20260713-001-A"
+  task_id: "WI-20260713-001"
+  job_id: "WJ-20260713-001-A"
+  status: "completed"
+  path: "implementation_control/tasks/WI-20260713-001/jobs/completions/WJC-20260713-001-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -84,10 +86,10 @@ required_validators:
     command: "npm run quality"
     required_for_current_job: true
   - id: "manual-source-refresh-review"
-    command: "manual inspection of upstream cleanliness source drift snapshot changes provenance pins curator reports and no-physics-promotion boundary"
+    command: "manual inspection of upstream cleanliness origin parity source drift snapshot changes provenance pins curator reports preserved frontend hashes and no physics promotion"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-SR-02 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for WJC-20260712-012-A and stop before the separate Windows NVDA deferral governance amendment."
-  do_not_skip: "Do not resume FE-P1-03 open FE-P1-04 change frontend runtime push deploy promote physics or mutate upstream."
+  task_packet: "FE-SR-03 local checkpoint"
+  summary: "Use completion WJC-20260713-001-A to create the separate local source-refresh checkpoint and stop before FE-P1-05 reactivation."
+  do_not_skip: "Do not include preserved frontend or older nonallowlisted control files reactivate FE-P1-05 push the website deploy or mutate upstream."

@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-011"
 title: "Implement Compact Accessible Mobile Menu"
 created_utc: "2026-07-12T20:54:42Z"
-updated_utc: "2026-07-12T22:09:48Z"
-status: "suspended"
+updated_utc: "2026-07-13T02:20:02Z"
+status: "cancelled"
 
 source_context:
   packet_id: "FE-P1-03"
@@ -170,3 +170,14 @@ suspension:
   aggregate_blocker: "Stale curator reports and unacknowledged upstream drift including critical drift on the physics claim-status route."
   assistive_technology_blocker: "VoiceOver needs explicit local-setting confirmation and no Windows 11 NVDA environment is available."
   required_next_action: "Complete and separately checkpoint WI-20260712-012 then execute the authorized Windows NVDA deferral governance amendment before resuming FE-P1-03 acceptance."
+
+terminalization:
+  status: "cancelled"
+  terminalized_utc: "2026-07-13T02:20:02Z"
+  superseded_by_handoff_id: "WH-20260712-013"
+  acceptance_result: "not_accepted"
+  checkpoint_status: "not_checkpointed"
+  reason: "The acceptance contract requires Windows 11 NVDA evidence and that evidence is unavailable under the owner's new constraint."
+  disposition: "FE-P1-03 is cancelled rather than deferred. FE-P1-04 remains blocked because it depends on accepted FE-P1-03."
+  preserved_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py"
+  preservation_note: "Pre-existing uncommitted implementation remains untouched and outside FE-P1-05 write scope."
