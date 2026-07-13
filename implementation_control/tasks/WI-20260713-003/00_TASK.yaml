@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260713-003"
 title: "Refresh Current Curator Evidence Before Description Migration"
 created_utc: "2026-07-13T17:15:40Z"
-updated_utc: "2026-07-13T19:12:07Z"
-status: "active"
+updated_utc: "2026-07-13T19:25:00Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-SR-04"
@@ -209,10 +209,10 @@ preflight_evidence:
   recovery_status: "clean origin parity restored after the intervening changes were committed and pushed"
   generated_evidence_written: true
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "completed_and_checkpointed"
   completed_utc: "2026-07-13T19:12:07Z"
   source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
   physics_delta: false
@@ -225,4 +225,10 @@ implementation_status:
   static_build: "passed 64 pages"
   aggregate_validation: "passed"
   quality_gate: "passed"
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "created_at_f440ce4a412659997b8ab5ee44f445dc98a43d54"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260713-004"
+  checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  repeated: false
+  reason: "FE-SR-04 was already locally checkpointed before the owner authorized the separate TW-DESC-01 operations route packet."

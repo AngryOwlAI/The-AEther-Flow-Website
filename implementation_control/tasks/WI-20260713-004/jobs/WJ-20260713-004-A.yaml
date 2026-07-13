@@ -1,0 +1,156 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260713-004-A"
+task_id: "WI-20260713-004"
+title: "Implement Operations Description Contract"
+created_utc: "2026-07-13T19:25:00Z"
+updated_utc: "2026-07-13T19:33:14Z"
+status: "active"
+
+objective: "Render one explicit Description section directly after the hero on exactly seven project operations routes and keep Source Authority terminal among page owned sections."
+
+execution_boundary:
+  invocation_limit: "one bounded TW-DESC-01 packet"
+  live_state_priority: "implementation control and current Git evidence outrank plans memory and stale resolver recommendations"
+  previous_checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  checkpoint_replay_status: "forbidden"
+  route_count: 7
+  route_identity_change_status: "forbidden"
+  source_bundle_change_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and upstream read only sources allowlisted by WI-20260713-004"
+
+allowed_writes:
+  - "src/components/InternalExplainerPage.astro"
+  - "src/pages/project/operations/index.astro"
+  - "src/pages/project/operations/director-agentjob-lifecycle/index.astro"
+  - "src/pages/project/operations/role-routing/index.astro"
+  - "src/pages/project/operations/validator-operator-workflow/index.astro"
+  - "src/pages/project/operations/publication-process/index.astro"
+  - "src/pages/project/operations/project-system-improvement/index.astro"
+  - "src/pages/project/operations/technical-requirements/index.astro"
+  - "tests/test_operations_description_contract.py"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260713-003.yaml"
+  - "implementation_control/handoffs/WH-20260713-003.md"
+  - "implementation_control/handoffs/WH-20260713-004.yaml"
+  - "implementation_control/handoffs/WH-20260713-004.md"
+  - "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+  - "implementation_control/tasks/WI-20260713-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/WJ-20260713-004-A.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
+
+approval_gates:
+  public_claim_changes:
+    status: "approved"
+    reason: "Existing reviewed metadata descriptions may become the visible Description section with no semantic strengthening."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "Source bundles remain unchanged at the accepted clean origin parity pin."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Exactly seven existing route callers may opt in to the structural Description contract without navigation or route lifecycle changes."
+  shared_visual_systems:
+    status: "approved"
+    reason: "One optional shared component section is authorized without shared style or layout changes."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset change."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Regenerate existing page provenance without changing route map authority."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-description-contract-review"
+    command: "manual inspection of description placement terminal source authority seven operations routes provenance preservation and no claim strengthening"
+    required: true
+
+stop_conditions:
+  - "Any change outside the allowlist becomes necessary."
+  - "Any non operations explainer route opts in or changes behavior."
+  - "Any route navigation source bundle scientific claim public asset or layout style change becomes necessary."
+  - "Upstream changes or loses clean origin parity."
+  - "A preserved dirty path changes or becomes staged."
+  - "Curator preview reports unexpected drift or validation fails."
+  - "Work enters push deployment upstream write or successor packet scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260713-004-A"
+  path: "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "TW-DESC-01 local checkpoint"
+  summary: "Run the checkpoint transaction for completed WJC-20260713-004-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths broaden route scope open a successor packet push deploy or mutate upstream."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  unrelated_dirty_paths_must_remain_unstaged: true
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  operations_route_count: 7
+  focused_structural_tests: "passed 2 tests"
+  python_tests: "passed 123 tests"
+  static_build: "passed 64 pages"
+  provenance_routes: 34
+  curator_dependencies: 248
+  curator_drift_count: 0
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  checkpoint_status: "ready_to_checkpoint"

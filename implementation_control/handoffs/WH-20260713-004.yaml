@@ -1,0 +1,64 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260713-004"
+created_utc: "2026-07-13T19:25:00Z"
+updated_utc: "2026-07-13T19:33:14Z"
+status: "active"
+
+task_id: "WI-20260713-004"
+job_id: "WJ-20260713-004-A"
+
+summary: "Completed and validated TW-DESC-01 after observing the existing FE-SR-04 checkpoint and refusing stale checkpoint replay."
+
+current_state:
+  - "Website HEAD is the FE-SR-04 checkpoint f440ce4a412659997b8ab5ee44f445dc98a43d54."
+  - "The resolver checkpoint recommendation was stale and the checkpoint transaction was not replayed."
+  - "Website main is two local commits ahead of origin main."
+  - "Upstream main is clean and equals origin main at 57438af555214bc0785dcb390ee6254f580b8a62."
+  - "Eight unrelated dirty website paths remain excluded and unstaged."
+  - "TW-DESC-01 is limited to seven project operations routes one optional shared component section focused tests regenerated provenance curator evidence and exact control records."
+  - "All seven operations routes render one Description immediately after the hero and keep Source Authority terminal among page owned sections."
+  - "The separate parent child explainer remains unchanged and does not render the opt in Description section."
+  - "Focused tests full Python tests 64 page build aggregate validation and quality all pass."
+  - "Regenerated provenance retains 34 mapped routes and curator evidence retains 248 dependencies with zero drift or diagnostics."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  visible_description_status: "approved existing reviewed metadata only"
+  claim_strengthening_status: "forbidden"
+  route_map_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "TW-DESC-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-004-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths open a successor packet push deploy or write upstream."
+
+stop_before:
+  - "Any route outside the seven project operations routes"
+  - "Git push"
+  - "Cloudflare deployment"
+  - "upstream source writes"
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+checkpoint_transition:
+  previous_packet: "FE-SR-04"
+  checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260713-004-A"
+  path: "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
+  status: "completed"

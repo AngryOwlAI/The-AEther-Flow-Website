@@ -1,0 +1,135 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260713-004-A"
+task_id: "WI-20260713-004"
+job_id: "WJ-20260713-004-A"
+created_utc: "2026-07-13T19:33:14Z"
+status: "completed"
+
+summary: "Added and validated the seven route operations Description contract with terminal Source Authority ordering."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260713-003.md"
+  - "implementation_control/handoffs/WH-20260713-003.yaml"
+  - "implementation_control/handoffs/WH-20260713-004.md"
+  - "implementation_control/handoffs/WH-20260713-004.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
+  - "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+  - "implementation_control/tasks/WI-20260713-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/WJ-20260713-004-A.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/components/InternalExplainerPage.astro"
+  - "src/pages/project/operations/director-agentjob-lifecycle/index.astro"
+  - "src/pages/project/operations/index.astro"
+  - "src/pages/project/operations/project-system-improvement/index.astro"
+  - "src/pages/project/operations/publication-process/index.astro"
+  - "src/pages/project/operations/role-routing/index.astro"
+  - "src/pages/project/operations/technical-requirements/index.astro"
+  - "src/pages/project/operations/validator-operator-workflow/index.astro"
+  - "tests/test_operations_description_contract.py"
+
+source_context:
+  packet_id: "TW-DESC-01"
+  previous_checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  checkpoint_replayed: false
+  public_wording_source: "existing reviewed page metadata descriptions"
+
+changed_surface:
+  operations_routes: 7
+  shared_components: 1
+  focused_test_files: 1
+  provenance_files: 1
+  curator_reports_written: 2
+  curator_report_bytes_changed: false
+  route_map_changed: false
+  source_bundles_changed: false
+  layout_or_style_files_changed: false
+  upstream_files_changed: false
+
+requirements_satisfied:
+  - "Rendered one explicit Description section immediately after the complete hero on exactly seven project operations routes."
+  - "Reused existing reviewed metadata descriptions without authored scientific wording or claim strengthening."
+  - "Kept Source Authority as the final page owned section before layout footer content."
+  - "Kept the separate parent child synthesis explainer outside the opt in Description contract."
+  - "Added focused structural coverage for route count opt in placement ordering content source and exclusion behavior."
+  - "Regenerated page provenance from the unchanged route map and accepted source pin."
+  - "Previewed zero curator drift before writing byte stable curator reports."
+  - "Preserved eight unrelated dirty paths byte for byte and unstaged."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "focused-structural-tests"
+    command: ".venv/bin/python -m pytest tests/test_operations_description_contract.py -q"
+    status: "passed"
+    evidence: "2 tests passed after a two failure baseline"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 mapped route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "123 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-description-contract-review"
+    command: "manual inspection of description placement terminal source authority seven operations routes provenance preservation and no claim strengthening"
+    status: "passed"
+    evidence: "Built HTML showed one Description after each hero terminal Source Authority before the footer and no Description on the excluded parent child route"
+
+provenance_evidence:
+  generator: "python3 scripts/generate_page_provenance.py"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  mapped_route_count: 34
+  operations_routes_registered_in_route_map: 0
+  mapped_local_page_hash_changes: 0
+  disposition: "The seven legacy operations routes are intentionally absent from the canonical route map so regeneration refreshed generation evidence without adding route authority."
+
+preservation_evidence:
+  staged_preserved_paths: 0
+  excluded_paths_unchanged: true
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+
+remaining_boundaries:
+  - "The seven legacy operations routes remain outside the 34 route canonical provenance map."
+  - "No route identity navigation redirect source bundle public asset physics state push deployment or upstream write occurred."
+  - "Eight unrelated dirty paths remain outside the checkpoint."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only TW-DESC-01 component route test provenance and control files while excluding eight preserved dirty paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "TW-DESC-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop without opening another packet."
+  do_not_skip: "Do not stage preserved dirty paths open a successor packet push deploy or mutate upstream."

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-13T19:12:07Z"
+updated_utc: "2026-07-13T19:33:14Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,11 +9,12 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
-  - "implementation_control/handoffs/WH-20260713-003.yaml"
+  - "implementation_control/tasks/WI-20260713-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-004/jobs/WJ-20260713-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260713-004.yaml"
   - "current_git_state_and_validator_output"
-  - "owner approved curator refresh and site wide description contract plan"
+  - "owner authorized TW-DESC-01 operations route description contract"
+  - "ImplementationPlans/recomendation_frontend.md as routing context"
   - "memory_and_conversation_summaries_as_navigation_only"
 
 repository_boundary:
@@ -24,34 +25,35 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260713-003"
-  title: "Refresh Current Curator Evidence Before Description Migration"
+  task_id: "WI-20260713-004"
+  title: "Add Operations Route Description Sections"
   status: "active"
-  path: "implementation_control/tasks/WI-20260713-003/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260713-004/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-SR-04"
-    previous_checkpoint: "66a0d889678cb346c8c81a722bde7528873671d7"
-    previous_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
+    task_packet: "TW-DESC-01"
+    adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+    adopted_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+    previous_checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly directed implementation of FE-SR-04 before the site wide description migration on 2026-07-13"
+    owner_authorization: "Owner explicitly directed TW-DESC-01 for the seven project operations routes on 2026-07-13"
 
 current_job:
-  job_id: "WJ-20260713-003-A"
+  job_id: "WJ-20260713-004-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260713-003/jobs/WJ-20260713-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-004/jobs/WJ-20260713-004-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260713-003"
+  handoff_id: "WH-20260713-004"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260713-003.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260713-003.md"
+  yaml_path: "implementation_control/handoffs/WH-20260713-004.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260713-004.md"
 
 latest_completion:
-  completion_id: "WJC-20260713-003-A"
-  task_id: "WI-20260713-003"
-  job_id: "WJ-20260713-003-A"
+  completion_id: "WJC-20260713-004-A"
+  task_id: "WI-20260713-004"
+  job_id: "WJ-20260713-004-A"
   status: "completed"
-  path: "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260713-004/jobs/completions/WJC-20260713-004-A.yaml"
 
 required_validators:
   - id: "git-diff-check"
@@ -84,44 +86,37 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "manual-source-refresh-review"
-    command: "manual inspection of upstream cleanliness origin parity source drift snapshots provenance curator reports preserved dirty paths and no physics promotion"
+  - id: "manual-description-contract-review"
+    command: "manual inspection of description placement terminal source authority seven operations routes provenance preservation and no claim strengthening"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-SR-04 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-003-A and stop."
-  do_not_skip: "Do not write upstream change authored public copy stage preserved dirty paths push deploy or begin TW-DESC-01."
+  task_packet: "TW-DESC-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260713-004-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths open a successor packet push deploy or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-13T19:09:15Z"
-  upstream_branch: "main"
-  upstream_worktree: "clean"
+  observed_utc: "2026-07-13T19:25:00Z"
+  previous_checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 2
   upstream_head: "57438af555214bc0785dcb390ee6254f580b8a62"
   upstream_origin_main: "57438af555214bc0785dcb390ee6254f580b8a62"
-  upstream_ahead_count: 0
-  previous_source_pin: "cf5cc9381501cfdb2ad7bd8212d40ad72d3ea808"
-  physics_delta_status: "none observed in the reviewed committed delta"
-  snapshot_preview_status: "passed"
-  intervening_commit_scope: "Git LFS tracking for output research dependency graph only"
-  invalidated_utc: "2026-07-13T17:19:52Z"
-  invalidation_reason: "Upstream gained staged .gitattributes and output research dependency graph changes before snapshot preview."
-  recovery_status: "clean origin parity restored after the intervening changes were committed and pushed"
-  generated_evidence_written: true
-  completion_created: true
-  checkpoint_created: false
+  upstream_worktree: "clean"
+  preserved_dirty_path_count: 8
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
-  completed_utc: "2026-07-13T19:12:07Z"
-  claim_boundary_rows: 849
-  new_claim_boundary_rows: 3
-  route_provenance_records: 34
+  completed_utc: "2026-07-13T19:33:14Z"
+  operations_route_count: 7
+  focused_structural_tests: "passed 2 tests"
+  python_tests: "passed 123 tests"
+  static_build: "passed 64 pages"
+  provenance_routes: 34
   curator_dependencies: 248
   curator_drift_count: 0
-  python_tests: "passed 121 tests"
-  static_build: "passed 64 pages"
   aggregate_validation: "passed"
   quality_gate: "passed"
   checkpoint_status: "ready_to_checkpoint"

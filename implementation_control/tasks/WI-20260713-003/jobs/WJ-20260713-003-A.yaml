@@ -4,8 +4,8 @@ job_id: "WJ-20260713-003-A"
 task_id: "WI-20260713-003"
 title: "Refresh Reviewed Snapshots Provenance And Curator Evidence"
 created_utc: "2026-07-13T17:15:40Z"
-updated_utc: "2026-07-13T19:12:07Z"
-status: "active"
+updated_utc: "2026-07-13T19:25:00Z"
+status: "superseded"
 
 objective: "Execute one bounded FE-SR-04 website local source refresh from accepted clean origin parity commit 57438af while preserving all unrelated dirty website paths."
 
@@ -158,10 +158,10 @@ preflight_evidence:
   recovery_status: "clean origin parity restored after the intervening changes were committed and pushed"
   generated_evidence_written: true
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "completed_and_checkpointed"
   source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
   physics_delta: false
   claim_boundary_rows: 849
@@ -173,4 +173,10 @@ implementation_status:
   static_build: "passed 64 pages"
   aggregate_validation: "passed"
   quality_gate: "passed"
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "created_at_f440ce4a412659997b8ab5ee44f445dc98a43d54"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260713-004"
+  checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  repeated: false
+  reason: "The completed FE-SR-04 packet was checkpointed once before TW-DESC-01 opened."

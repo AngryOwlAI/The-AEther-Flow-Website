@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260713-003"
 created_utc: "2026-07-13T17:15:40Z"
-updated_utc: "2026-07-13T19:12:07Z"
-status: "active"
+updated_utc: "2026-07-13T19:25:00Z"
+status: "superseded"
 
 task_id: "WI-20260713-003"
 job_id: "WJ-20260713-003-A"
@@ -22,6 +22,7 @@ current_state:
   - "Generated snapshots and provenance now pin 57438af and curator evidence reports 248 dependencies with zero drift or diagnostics."
   - "All required validators pass including 121 Python tests the 64 page build aggregate validation and quality."
   - "No authored copy route map acknowledgement physics promotion push deployment or upstream write occurred."
+  - "The FE-SR-04 local checkpoint exists at f440ce4a412659997b8ab5ee44f445dc98a43d54 and was not replayed."
 
 source_authority_boundary:
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
@@ -66,9 +67,15 @@ preflight_recovery:
   physics_delta_status: "none observed"
   generated_evidence_written: true
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260713-003-A"
   path: "implementation_control/tasks/WI-20260713-003/jobs/completions/WJC-20260713-003-A.yaml"
   status: "completed"
+
+supersession:
+  superseded_by_handoff_id: "WH-20260713-004"
+  checkpoint: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  repeated: false
+  reason: "Live Git evidence showed the requested FE-SR-04 checkpoint already existed before TW-DESC-01 opened."

@@ -159,3 +159,9 @@ next_recommended_action:
   task_packet: "FE-SR-04 local checkpoint"
   summary: "Run the implementation checkpoint transaction and stop without opening TW-DESC-01 push or deployment."
   do_not_skip: "Do not stage preserved dirty paths begin TW-DESC-01 push deploy add acknowledgements author public copy or mutate upstream."
+
+checkpoint_evidence:
+  commit: "f440ce4a412659997b8ab5ee44f445dc98a43d54"
+  observed_as_head: true
+  repeated: false
+  successor_handoff_id: "WH-20260713-004"

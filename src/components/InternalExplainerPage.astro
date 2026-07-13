@@ -9,6 +9,7 @@ import type { InternalExplainer } from "../lib/internalExplainers";
 
 interface Props {
   page: InternalExplainer;
+  showDescription?: boolean;
   visualVariant?: "operations";
   routeGrid?: {
     eyebrow: string;
@@ -25,7 +26,7 @@ interface Props {
   };
 }
 
-const { page, visualVariant, routeGrid } = Astro.props;
+const { page, showDescription = false, visualVariant, routeGrid } = Astro.props;
 const isOperationsVisual = visualVariant === "operations";
 ---
 
@@ -138,6 +139,19 @@ const isOperationsVisual = visualVariant === "operations";
       <figcaption id="internal-explainer-figure-caption">{page.visualCaption}</figcaption>
     </figure>
   </section>
+
+  {showDescription && (
+    <section
+      class="track-page-band"
+      data-page-section="description"
+      aria-labelledby="internal-explainer-description-title"
+    >
+      <div class="track-page-heading">
+        <h2 id="internal-explainer-description-title">Description</h2>
+        <p>{page.description}</p>
+      </div>
+    </section>
+  )}
 
   {page.comprehension && <ComprehensionBlocks content={page.comprehension} />}
 
