@@ -4,8 +4,8 @@ job_id: "WJ-20260715-005-A"
 task_id: "WI-20260715-005"
 title: "Implement Home Status Explanatory List"
 created_utc: "2026-07-15T17:40:13Z"
-updated_utc: "2026-07-15T17:54:57Z"
-status: "active"
+updated_utc: "2026-07-15T18:01:15Z"
+status: "superseded"
 
 objective: "Render the five accepted Home claim states as a visible explanatory ordered list instead of a card grid."
 
@@ -134,7 +134,7 @@ next_recommended_action:
   do_not_skip: "Do not enter the sitewide introduction rollout before this packet checkpoints."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   explanatory_list: "passed with five visible ordered states and accepted boundary text"
   focused_tests: "passed 11 tests"
@@ -144,4 +144,13 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_status_list_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-006"
+  reason: "The completed Home status job was checkpointed before PHYSICS-INTRO-01 activation."

@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-005"
 created_utc: "2026-07-15T17:40:13Z"
-updated_utc: "2026-07-15T17:54:57Z"
-status: "active"
+updated_utc: "2026-07-15T18:01:15Z"
+status: "superseded"
 
 task_id: "WI-20260715-005"
 job_id: "WJ-20260715-005-A"
@@ -46,12 +46,19 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-005-A"
   path: "implementation_control/tasks/WI-20260715-005/jobs/completions/WJC-20260715-005-A.yaml"
   status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260715-006"
+  task_id: "WI-20260715-006"
+  job_id: "WJ-20260715-006-A"
+  checkpoint: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  reason: "HOME-STATUS-01 was checkpointed before the separately bounded Physics overview introduction packet opened."

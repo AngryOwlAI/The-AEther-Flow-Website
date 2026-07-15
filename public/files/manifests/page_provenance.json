@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T17:51:48.779059+00:00",
+  "generated_at": "2026-07-15T18:05:07.158297+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -91,7 +91,7 @@
     {
       "route_path": "/physics/",
       "local_page_source": "src/pages/physics/index.astro",
-      "local_page_sha256": "94656af78edb35fa53c43d5e3b4c98a35ae7fa9d0fb77ae6313bd84044e9f88d",
+      "local_page_sha256": "571ca9820691fdb4c3141ef6613172bddb7900b65e648915a06a5865b45cfb58",
       "title": "Physics Research",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

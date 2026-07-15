@@ -1,0 +1,138 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-006-A"
+task_id: "WI-20260715-006"
+job_id: "WJ-20260715-006-A"
+created_utc: "2026-07-15T18:08:22Z"
+completed_utc: "2026-07-15T18:08:22Z"
+status: "completed"
+
+summary: "Added a source grounded general public project introduction immediately after the Physics overview hero."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-005.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-005/jobs/WJ-20260715-005-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-006.yaml"
+  - "implementation_control/handoffs/WH-20260715-006.md"
+  - "implementation_control/tasks/WI-20260715-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-006/jobs/WJ-20260715-006-A.yaml"
+  - "implementation_control/tasks/WI-20260715-006/jobs/completions/WJC-20260715-006-A.yaml"
+  - "src/pages/physics/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+
+source_context:
+  packet_id: "PHYSICS-INTRO-01"
+  previous_checkpoint: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  previous_checkpoint_replayed: false
+  dependency_satisfied: true
+
+implementation_evidence:
+  component: "The Physics overview reuses the checkpointed ProjectIntroduction component."
+  paragraph_count: 1
+  introduction_position: "Immediately after the Physics overview CommandBand hero and before source reviewed positioning."
+  introduction_audience: "General public"
+  project_definition: "Two part foundational physics and governed human accountable AI research program"
+  route_connection: "The paragraph narrows from the whole project to the Physics research track."
+  scientific_boundary: "General relativity remains the exact observable benchmark while first principles derivation remains open and no verified new gravity law is claimed."
+  reader_outcome: "Readers are told to distinguish ontology benchmark derivation burdens and source evidence."
+  existing_physics_sections_changed: false
+  route_or_navigation_changed: false
+  shared_styles_changed: false
+  public_assets_changed: false
+  upstream_source_changed: false
+
+writing_quality_gate:
+  status: "passed"
+  audience: "General public"
+  source_basis: "Accepted Home and Physics public claim ladder statements at source pin 57438af555214bc0785dcb390ee6254f580b8a62"
+  builder_pass: "The paragraph identifies the whole project first then narrows to the Physics track states its accepted boundaries and names the reader outcome."
+  refuter_pass: "The paragraph preserves proposed interpretation adopted exact observable benchmark complete within scope open substrate derivation human accountability and current nonclaim distinctions."
+  warning_matcher_command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/pages/physics/index.astro"
+  warning_matcher_result: "passed with zero warning hits"
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Codex in app browser"
+  route: "http://127.0.0.1:4321/physics/"
+  desktop_result: "One visible paragraph followed the hero and preceded source reviewed positioning at 1707 by 960 CSS pixels."
+  compact_result: "At the browser minimum 520 by 1125 CSS pixels the paragraph remained visible readable and within the viewport."
+  desktop_intro_width: 1180
+  compact_intro_width: 468
+  paragraph_count: 1
+  document_horizontal_overflow: false
+  console_error_count: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-public-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py"
+    status: "passed"
+    evidence: "7 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "132 tests passed"
+  - id: "technical-writing-warning-gate"
+    command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/pages/physics/index.astro"
+    status: "passed"
+    evidence: "Zero warning hits"
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 routes validated"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run quality"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "runtime-physics-introduction-review"
+    command: "manual inspection of the Physics overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    status: "passed"
+    evidence: "Desktop and browser minimum 520 CSS pixel compact views passed with zero console errors"
+
+validation_environment:
+  disposable_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  source_tree_clean: true
+  upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
+  upstream_worktree_modified: false
+  source_refresh_performed: false
+
+remaining_boundaries:
+  - "The project description rollout beyond the Home and Physics overview routes requires later bounded packets."
+  - "The six planned Physics child route introductions remain unchanged in this packet."
+  - "No shared style route navigation claim ladder source notice public asset upstream push or deployment change occurred."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the twelve PHYSICS-INTRO-01 page test provenance transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "PHYSICS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not enter another page family push deployment source refresh or upstream mutation."

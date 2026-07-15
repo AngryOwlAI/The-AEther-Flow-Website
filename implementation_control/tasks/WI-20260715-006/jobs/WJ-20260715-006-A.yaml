@@ -1,0 +1,146 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-006-A"
+task_id: "WI-20260715-006"
+title: "Implement Physics Overview Project Introduction"
+created_utc: "2026-07-15T18:01:15Z"
+updated_utc: "2026-07-15T18:08:22Z"
+status: "active"
+
+objective: "Render one quality gated general public project introduction immediately after the Physics overview hero."
+
+execution_boundary:
+  invocation_limit: "one bounded PHYSICS-INTRO-01 packet"
+  packet_id: "PHYSICS-INTRO-01"
+  previous_checkpoint: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  previous_checkpoint_replay_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Physics overview introduction"
+  route_and_navigation_write_status: "forbidden"
+  other_page_family_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and read only evidence allowlisted by WI-20260715-006"
+
+allowed_writes:
+  - "src/pages/physics/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-005.yaml"
+  - "implementation_control/tasks/WI-20260715-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-005/jobs/WJ-20260715-005-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-006.yaml"
+  - "implementation_control/handoffs/WH-20260715-006.md"
+  - "implementation_control/tasks/WI-20260715-006/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-006/jobs/WJ-20260715-006-A.yaml"
+  - "implementation_control/tasks/WI-20260715-006/jobs/completions/WJC-20260715-006-A.yaml"
+
+required_outputs:
+  - "One substantial ProjectIntroduction paragraph follows the Physics overview hero."
+  - "The paragraph identifies the two part project and then explains the Physics track."
+  - "The paragraph preserves benchmark completion open derivation and current nonclaim boundaries."
+  - "The paragraph tells a general reader what the route helps distinguish."
+  - "Focused tests provenance build aggregate quality and responsive browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the sitewide project description rule."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "One reviewed Physics overview introduction only."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh and wording remains proportional to the accepted public claim surface."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Bounded Physics overview page content change without route navigation or retirement changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "Reuse the existing ProjectIntroduction component without style changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Physics overview provenance regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-physics-introduction-review"
+    command: "manual inspection of the Physics overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The draft cannot remain source proportional."
+  - "A child route shared style route navigation claim ladder source notice asset or upstream source change becomes necessary."
+  - "The paragraph is not one substantial post hero paragraph or fails responsive review."
+  - "A required validator or browser review fails."
+  - "Work enters another route family push deployment source refresh or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-006-A"
+  path: "implementation_control/tasks/WI-20260715-006/jobs/completions/WJC-20260715-006-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "PHYSICS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-006-A and stop."
+  do_not_skip: "Do not enter another page family before this packet checkpoints."
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Physics overview hero"
+  focused_tests: "passed 7 tests"
+  python_tests: "passed 132 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"

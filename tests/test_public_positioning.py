@@ -135,6 +135,25 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
     )
 
 
+def test_physics_overview_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = PHYSICS_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity as its exact observable benchmark" in source
+    assert "remains an open research problem" in source
+    assert "does not claim a verified new law of gravity" in source
+    assert "helps readers distinguish the proposed ontology" in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    positioning = source.index('class="track-page-band public-positioning-sequence"', introduction)
+
+    assert hero < introduction < positioning
+
+
 def test_route_metadata_is_source_safe_and_route_local() -> None:
     home = HOME_PAGE.read_text(encoding="utf-8")
     physics = PHYSICS_PAGE.read_text(encoding="utf-8")

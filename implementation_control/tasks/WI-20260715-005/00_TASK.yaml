@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260715-005"
 title: "Convert Home Status Cards To An Explanatory List"
 created_utc: "2026-07-15T17:40:13Z"
-updated_utc: "2026-07-15T17:54:57Z"
-status: "active"
+updated_utc: "2026-07-15T18:01:15Z"
+status: "superseded"
 
 source_context:
   packet_id: "HOME-STATUS-01"
@@ -184,7 +184,7 @@ preflight_evidence:
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   explanatory_list: "passed with five visible ordered states and accepted boundary text"
   focused_tests: "passed 11 tests"
@@ -194,6 +194,15 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_status_list_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-006"
+  reason: "HOME-STATUS-01 was checkpointed before the separately bounded Physics overview introduction packet opened."
