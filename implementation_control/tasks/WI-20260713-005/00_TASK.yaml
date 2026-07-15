@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260713-005"
 title: "Build Accessible Table Treatments And Ontology Pilot"
 created_utc: "2026-07-13T19:52:49Z"
-updated_utc: "2026-07-13T20:05:53Z"
-status: "active"
+updated_utc: "2026-07-15T02:17:27Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P1-06"
@@ -189,7 +189,7 @@ preservation:
   destructive_cleanup_status: "not_authorized"
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   completed_utc: "2026-07-13T20:05:53Z"
   ontology_term_cards: 6
   retained_comparison_tables: 1
@@ -201,4 +201,13 @@ implementation_status:
   curator_drift_count: 0
   aggregate_validation: "passed"
   quality_gate: "passed"
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "9f4a6b41d2aeac73c781341344fa43481f19effb"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260714-001"
+  reason: "FE-P1-06 was already checkpointed before the separately authorized FE-P1-07 image policy packet opened."

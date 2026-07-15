@@ -5,9 +5,10 @@ import type { ComprehensionContent } from "../lib/comprehensionContent";
 interface Props {
   content: ComprehensionContent;
   className?: string;
+  loading?: "lazy" | "eager";
 }
 
-const { content, className = "" } = Astro.props;
+const { content, className = "", loading = "lazy" } = Astro.props;
 const diagramFit = content.diagramFit ?? "full-width";
 const diagramFitClass = `comprehension-diagram-wrap--${diagramFit}`;
 const figureFitClass = `comprehension-figure--${diagramFit}`;
@@ -33,7 +34,7 @@ const diagramNote = content.diagramNote?.trim();
         alt={content.diagram.alt}
         caption={content.diagram.caption}
         className={`comprehension-figure ${figureFitClass}`.trim()}
-        loading="eager"
+        loading={loading}
         expandable={content.diagramExpandable}
       />
       {diagramNote && <p class="comprehension-diagram-note">{diagramNote}</p>}

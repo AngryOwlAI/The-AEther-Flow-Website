@@ -1,4 +1,5 @@
 import type { ComprehensionContent } from "./comprehensionContent";
+import { withImageDimensions } from "./imageMetadata";
 
 export type SiteNavigationChild = {
   title: string;
@@ -70,7 +71,7 @@ export const diagramConceptGroups: Array<{
   },
 ];
 
-export const diagramGalleryItems = [
+const diagramGallerySourceItems = [
   {
     group: "source-authority",
     title: "Home two-track map",
@@ -476,6 +477,8 @@ export const diagramGalleryItems = [
   caption: string;
   provenance: string;
 }>;
+
+export const diagramGalleryItems = diagramGallerySourceItems.map(withImageDimensions);
 
 type DiagramGalleryItem = (typeof diagramGalleryItems)[number];
 

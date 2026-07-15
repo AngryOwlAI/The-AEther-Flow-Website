@@ -1,4 +1,6 @@
 ---
+import { getImageDimensions } from "../lib/imageMetadata";
+
 interface Props {
   id?: string;
   src: string;
@@ -7,6 +9,9 @@ interface Props {
   provenance?: string;
   className?: string;
   loading?: "lazy" | "eager";
+  width?: number;
+  height?: number;
+  aspectRatio?: string;
   expandable?: boolean;
   expandLabel?: string;
 }
@@ -18,16 +23,28 @@ const {
   caption,
   className = "",
   loading = "lazy",
+  width,
+  height,
+  aspectRatio,
   expandable = false,
   expandLabel = "Open larger",
 } = Astro.props;
+const imageDimensions = getImageDimensions(src, { width, height, aspectRatio });
 const dialogId = expandable && id ? `${id}-dialog` : undefined;
 const dialogCaptionId = dialogId ? `${dialogId}-caption` : undefined;
 ---
 
 <figure id={id} class={`content-figure ${className}`.trim()}>
   <div class="content-figure-media">
-    <img src={src} alt={alt} loading={loading} decoding="async" />
+    <img
+      src={src}
+      alt={alt}
+      width={imageDimensions.width}
+      height={imageDimensions.height}
+      style={`aspect-ratio: ${imageDimensions.aspectRatio};`}
+      loading={loading}
+      decoding="async"
+    />
     {expandable && dialogId && (
       <div class="figure-actions">
         <a
@@ -60,7 +77,15 @@ const dialogCaptionId = dialogId ? `${dialogId}-caption` : undefined;
           </form>
         </div>
         <div class="figure-dialog-stage" tabindex="0" aria-label="Scrollable expanded diagram image">
-          <img src={src} alt={alt} loading="lazy" decoding="async" />
+          <img
+            src={src}
+            alt={alt}
+            width={imageDimensions.width}
+            height={imageDimensions.height}
+            style={`aspect-ratio: ${imageDimensions.aspectRatio};`}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <p id={dialogCaptionId} class="figure-dialog-caption">{caption}</p>
       </div>

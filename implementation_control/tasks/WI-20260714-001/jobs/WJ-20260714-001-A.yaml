@@ -1,0 +1,164 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260714-001-A"
+task_id: "WI-20260714-001"
+title: "Implement Image Geometry And Loading Policy"
+created_utc: "2026-07-15T02:17:27Z"
+updated_utc: "2026-07-15T02:33:31Z"
+status: "active"
+
+objective: "Add a stable image geometry contract to Figure and gallery rendering and make below fold comprehension diagrams lazy by default without changing public assets or claims."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P1-07 packet"
+  live_state_priority: "implementation control and current Git evidence outrank plans memory and stale checkpoint recommendations"
+  packet_id: "FE-P1-07"
+  previous_checkpoint: "9f4a6b41d2aeac73c781341344fa43481f19effb"
+  checkpoint_replay_status: "forbidden"
+  upstream_write_status: "forbidden"
+  public_claim_write_status: "forbidden_for_this_job"
+  public_asset_write_status: "forbidden_for_this_job"
+  route_and_navigation_write_status: "forbidden_for_this_job"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and upstream read only sources allowlisted by WI-20260714-001"
+
+allowed_writes:
+  - "src/components/Figure.astro"
+  - "src/components/ComprehensionBlocks.astro"
+  - "src/components/DiagramGalleryList.astro"
+  - "src/lib/imageMetadata.ts"
+  - "src/lib/siteContent.ts"
+  - "tests/test_image_loading_policy.py"
+  - "public/files/manifests/page_provenance.json"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260713-005.yaml"
+  - "implementation_control/handoffs/WH-20260713-005.md"
+  - "implementation_control/handoffs/WH-20260714-001.yaml"
+  - "implementation_control/handoffs/WH-20260714-001.md"
+  - "implementation_control/tasks/WI-20260713-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-005/jobs/WJ-20260713-005-A.yaml"
+  - "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+  - "implementation_control/tasks/WI-20260714-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260714-001/jobs/WJ-20260714-001-A.yaml"
+  - "implementation_control/tasks/WI-20260714-001/jobs/completions/WJC-20260714-001-A.yaml"
+
+required_outputs:
+  - "A reusable intrinsic dimension and aspect ratio metadata contract covering all approved comprehension PNGs."
+  - "Figure markup with width height aspect ratio loading and async decoding for primary and dialog images."
+  - "ComprehensionBlocks loading policy with lazy as the below fold default."
+  - "Gallery image markup with stable geometry and lazy loading."
+  - "Focused static built output and browser evidence for deferred requests and no layout shift."
+  - "Regenerated provenance curator completion and handoff evidence."
+
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public wording or claim state changes."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source bundle asset or upstream refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No page route redirect or navigation lifecycle changes."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "The owner authorized the bounded Figure ComprehensionBlocks gallery and metadata image policy."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset bytes change."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Regenerate page provenance without changing route map or source pin."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Push is outside this packet."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Deployment is outside this packet."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any write to the upstream source project."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "public-comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-image-policy-review"
+    command: "manual inspection of intrinsic image dimensions aspect ratios lazy loading built markup deferred below fold requests and layout shift evidence"
+    required: true
+
+stop_conditions:
+  - "Any change outside the allowlist becomes necessary."
+  - "Any public asset page route copy route map navigation global style or layout change becomes necessary."
+  - "Any unrelated image family requires migration."
+  - "Upstream changes or loses clean origin parity."
+  - "A preserved dirty path changes or becomes staged."
+  - "Browser evidence shows unresolved diagram layout shift or eager below fold fetching."
+  - "Curator preview reports unexpected drift or validation fails."
+  - "Work enters push deployment upstream write or successor packet scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260714-001-A"
+  path: "implementation_control/tasks/WI-20260714-001/jobs/completions/WJC-20260714-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-P1-07 local checkpoint"
+  summary: "Run the checkpoint transaction for completed WJC-20260714-001-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths modify public assets change claims open another packet push deploy or mutate upstream."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  unrelated_dirty_paths_must_remain_unstaged: true
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  comprehension_png_metadata_count: 37
+  focused_structural_tests: "passed 3 tests after a three failure baseline"
+  python_tests: "passed 129 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  browser_deferred_gallery_images: 36
+  browser_layout_shift_entries: 0
+  checkpoint_status: "ready_to_checkpoint"

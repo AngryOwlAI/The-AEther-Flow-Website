@@ -1,0 +1,70 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260714-001"
+created_utc: "2026-07-15T02:17:27Z"
+updated_utc: "2026-07-15T02:33:31Z"
+status: "active"
+
+task_id: "WI-20260714-001"
+job_id: "WJ-20260714-001-A"
+
+summary: "Completed and validated the FE-P1-07 image policy packet after recording the existing FE-P1-06 checkpoint without replay."
+
+current_state:
+  - "FE-P1-06 is checkpointed at 9f4a6b41d2aeac73c781341344fa43481f19effb and must not be repeated."
+  - "Website main is four local commits ahead of origin main."
+  - "Upstream main is clean and equals origin main at 57438af555214bc0785dcb390ee6254f580b8a62."
+  - "FE-G0-03 is completed and checkpointed at 40ca36aa588bdf925520831c43f3b8aa6a5b4735."
+  - "FE-P1-03 remains cancelled and FE-P1-04 remains blocked."
+  - "Eight unrelated dirty website paths remain excluded and unstaged."
+  - "FE-P1-07 is limited to shared Figure comprehension and gallery image policy metadata focused tests generated provenance curator evidence and exact control records."
+  - "No public asset claim route navigation global style push or deployment change is authorized."
+  - "All 37 approved comprehension PNGs have byte verified width and height metadata plus derived aspect ratios."
+  - "Figure emits stable geometry for primary and expandable dialog images and defaults to lazy loading."
+  - "ComprehensionBlocks defaults below fold diagrams to lazy loading while existing first view Figure consumers retain explicit eager loading."
+  - "A fresh headed browser initially deferred 36 of 37 gallery images and reserved the selected far below fold frame before request dispatch."
+  - "The selected deferred gallery image loaded on scroll without changing its frame and produced zero layout shift entries."
+  - "A fresh full load produced zero layout shift entries and all 37 gallery images exposed intrinsic dimensions and aspect ratios."
+  - "Focused tests all 129 Python tests the 64 page build aggregate validation and quality pass."
+  - "Provenance retains 34 mapped routes and curator evidence retains 248 dependencies with zero drift or diagnostics."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  public_wording_change_status: "forbidden"
+  route_map_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "FE-P1-07 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260714-001-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths modify public assets open another packet push deploy or write upstream."
+
+stop_before:
+  - "Any image family outside Figure comprehension diagrams and gallery images"
+  - "Any public asset copy route identity route map navigation global style or layout change"
+  - "Git push"
+  - "Cloudflare deployment"
+  - "upstream source writes"
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+checkpoint_transition:
+  previous_packet: "FE-P1-06"
+  checkpoint: "9f4a6b41d2aeac73c781341344fa43481f19effb"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260714-001-A"
+  path: "implementation_control/tasks/WI-20260714-001/jobs/completions/WJC-20260714-001-A.yaml"
+  status: "completed"

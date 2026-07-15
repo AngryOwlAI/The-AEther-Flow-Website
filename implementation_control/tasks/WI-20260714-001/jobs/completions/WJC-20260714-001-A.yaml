@@ -1,0 +1,138 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260714-001-A"
+task_id: "WI-20260714-001"
+job_id: "WJ-20260714-001-A"
+created_utc: "2026-07-15T02:33:31Z"
+completed_utc: "2026-07-15T02:33:31Z"
+status: "completed"
+
+summary: "Added and validated intrinsic image dimensions stable aspect ratio frames and lazy below fold loading across Figure comprehension diagrams and gallery images."
+
+changed_files:
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260713-005.yaml"
+  - "implementation_control/handoffs/WH-20260713-005.md"
+  - "implementation_control/handoffs/WH-20260714-001.yaml"
+  - "implementation_control/handoffs/WH-20260714-001.md"
+  - "implementation_control/tasks/WI-20260713-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260713-005/jobs/WJ-20260713-005-A.yaml"
+  - "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+  - "implementation_control/tasks/WI-20260714-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260714-001/jobs/WJ-20260714-001-A.yaml"
+  - "implementation_control/tasks/WI-20260714-001/jobs/completions/WJC-20260714-001-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/components/Figure.astro"
+  - "src/components/ComprehensionBlocks.astro"
+  - "src/components/DiagramGalleryList.astro"
+  - "src/lib/imageMetadata.ts"
+  - "src/lib/siteContent.ts"
+  - "tests/test_image_loading_policy.py"
+
+implementation_evidence:
+  previous_checkpoint: "9f4a6b41d2aeac73c781341344fa43481f19effb"
+  checkpoint_replayed: false
+  comprehension_png_metadata_count: 37
+  metadata_dimension_check: "matched every PNG IHDR width and height"
+  figure_primary_images_with_geometry: true
+  figure_dialog_images_with_geometry: true
+  comprehension_default_loading: "lazy"
+  gallery_default_loading: "lazy"
+  gallery_stable_frame: true
+  public_assets_changed: false
+  public_claims_changed: false
+  route_map_changed: false
+  global_styles_changed_by_packet: false
+
+browser_evidence:
+  tool: "Playwright CLI headed Chromium"
+  route: "/resources/diagrams/"
+  viewport: "1280 by 919 CSS pixels"
+  gallery_images: 37
+  initially_deferred_gallery_images: 36
+  selected_target: "/assets/diagrams/comprehension/resources-tex-pdf-derivative-chain.png"
+  selected_target_initial_top_pixels: 13951
+  selected_target_reserved_frame: "804.8 by 211.5 CSS pixels"
+  selected_target_loaded_after_scroll: true
+  selected_target_frame_changed: false
+  selected_target_layout_shift_total: 0
+  fresh_load_layout_shift_entry_count: 0
+  console_errors: 0
+
+validator_results:
+  - id: "focused-image-policy-tests"
+    command: ".venv/bin/python -m pytest tests/test_image_loading_policy.py -q"
+    status: "passed"
+    evidence: "3 tests passed after the expected 3 failure baseline"
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "public-comprehension"
+    command: "npm run validate:comprehension"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 mapped route records passed"
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    status: "passed"
+    evidence: "248 dependencies with zero drift and zero diagnostics"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "129 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+  - id: "manual-image-policy-review"
+    command: "manual inspection of intrinsic image dimensions aspect ratios lazy loading built markup deferred below fold requests and layout shift evidence"
+    status: "passed"
+    evidence: "Built markup and headed browser evidence confirmed stable geometry deferred far below fold loading and zero layout shift entries"
+
+provenance_evidence:
+  generator: "python3 scripts/generate_page_provenance.py"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  mapped_route_count: 34
+  route_map_changed: false
+  curator_regenerated: true
+  curator_report_content_changed: false
+
+preservation_evidence:
+  staged_preserved_paths: 0
+  excluded_paths_unchanged: true
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+
+remaining_boundaries:
+  - "FE-P1-03 remains cancelled and FE-P1-04 remains blocked."
+  - "Public asset optimization brand and remote visual request changes remain outside FE-P1-07."
+  - "No reviewed wording route identity route map navigation public asset global style physics authority upstream push or deployment change occurred."
+  - "Eight unrelated dirty paths remain outside the checkpoint."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the 18 completion listed FE-P1-07 and control transition paths while excluding eight preserved dirty paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P1-07 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop without opening another packet."
+  do_not_skip: "Do not stage preserved dirty paths open a successor packet push deploy or mutate upstream."

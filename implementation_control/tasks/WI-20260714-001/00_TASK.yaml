@@ -1,0 +1,214 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260714-001"
+title: "Add Image Dimensions Aspect Ratios And Loading Policy"
+created_utc: "2026-07-15T02:17:27Z"
+updated_utc: "2026-07-15T02:33:31Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P1-07"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_sha256: "55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5"
+  previous_task: "WI-20260713-005"
+  previous_checkpoint: "9f4a6b41d2aeac73c781341344fa43481f19effb"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  dependency: "FE-G0-03 completed and checkpointed at 40ca36aa588bdf925520831c43f3b8aa6a5b4735"
+  owner_authorization: "Owner explicitly directed FE-P1-07 implementation validation and a separate local checkpoint on 2026-07-14"
+
+goal: "Reserve stable geometry for Figure and gallery raster images and make below fold comprehension diagrams lazy by default without changing public claims assets routes or layout styles."
+
+requirements:
+  - "Add a reusable image dimension metadata contract for every approved comprehension PNG."
+  - "Require Figure to emit intrinsic width height and aspect ratio for its primary and expandable dialog images."
+  - "Make ComprehensionBlocks accept a loading policy and default below fold diagrams to lazy loading."
+  - "Keep eager loading explicit for existing first view Figure consumers."
+  - "Make every DiagramGalleryList image emit intrinsic width height aspect ratio lazy loading and async decoding."
+  - "Add focused structural and built output regression coverage for the image policy."
+  - "Verify in a browser that below fold diagram requests are deferred and image loading does not produce layout shift."
+  - "Regenerate page provenance and curator evidence after shared component and metadata changes."
+  - "Create one local checkpoint and stop without push deployment public asset changes or upstream writes."
+
+scope:
+  in_scope:
+    - "Figure and ComprehensionBlocks image contracts"
+    - "DiagramGalleryList image markup"
+    - "Central comprehension PNG dimension metadata and gallery data integration"
+    - "Focused image policy tests"
+    - "Generated page provenance and curator evidence"
+    - "Exact FE-P1-06 checkpoint transition and FE-P1-07 control records"
+  out_of_scope:
+    - "Public asset regeneration optimization or replacement"
+    - "Brand remote badge creator image or iframe policy"
+    - "Page copy route identity route map navigation global styles or layout changes"
+    - "FE-P1-03 FE-P1-04 FE-P1-08 or later packet work"
+    - "Git push Cloudflare deployment or upstream source changes"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260714-001-A"
+  next_packet_after_this_task: "No successor packet opens until FE-P1-07 is checkpointed and separately authorized"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "/Users/alex.omegapy/.codex/skills/playwright/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "docs/quality/frontend-baseline-inventory-2026-07-11.md"
+    - "docs/quality/frontend-performance-baseline-2026-07-11.md"
+    - "src/components"
+    - "src/lib"
+    - "src/pages"
+    - "public/assets/diagrams/comprehension"
+    - "public/files/manifests"
+    - "curator/reports"
+    - "tests"
+    - "scripts"
+    - "implementation_control"
+    - "website and upstream Git status history and hash evidence"
+    - "local build preview and browser evidence"
+  upstream_source_repository:
+    - "read only Git cleanliness and origin parity evidence"
+
+allowed_writes:
+  website_repository:
+    - "src/components/Figure.astro"
+    - "src/components/ComprehensionBlocks.astro"
+    - "src/components/DiagramGalleryList.astro"
+    - "src/lib/imageMetadata.ts"
+    - "src/lib/siteContent.ts"
+    - "tests/test_image_loading_policy.py"
+    - "public/files/manifests/page_provenance.json"
+    - "curator/reports/latest.json"
+    - "curator/reports/latest.md"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260713-005.yaml"
+    - "implementation_control/handoffs/WH-20260713-005.md"
+    - "implementation_control/handoffs/WH-20260714-001.yaml"
+    - "implementation_control/handoffs/WH-20260714-001.md"
+    - "implementation_control/tasks/WI-20260713-005/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260713-005/jobs/WJ-20260713-005-A.yaml"
+    - "implementation_control/tasks/WI-20260713-005/jobs/completions/WJC-20260713-005-A.yaml"
+    - "implementation_control/tasks/WI-20260714-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260714-001/jobs/WJ-20260714-001-A.yaml"
+    - "implementation_control/tasks/WI-20260714-001/jobs/completions/WJC-20260714-001-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public wording or claim state changes are in scope."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source bundle public asset or upstream refresh is in scope."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No page route redirect or navigation lifecycle change is in scope."
+  shared_visual_systems:
+    status: "approved"
+    reason: "The owner authorized the bounded shared Figure ComprehensionBlocks gallery and metadata image policy."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "Existing PNG bytes remain unchanged."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval is limited to regenerated page provenance from the unchanged route map and accepted source pin."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-contract"
+    command: "npm run validate:claims"
+    required: true
+  - id: "public-comprehension"
+    command: "npm run validate:comprehension"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "curator-validation"
+    command: "npm run validate:curator"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-image-policy-review"
+    command: "manual inspection of intrinsic image dimensions aspect ratios lazy loading built markup deferred below fold requests and layout shift evidence"
+    required: true
+
+stop_conditions:
+  - "Any change outside the allowlist becomes necessary."
+  - "Any public asset page route copy route map navigation global style or layout change becomes necessary."
+  - "An image outside the Figure comprehension diagram and gallery contract requires migration."
+  - "Upstream changes or loses clean origin parity."
+  - "A preserved dirty path changes or becomes staged."
+  - "Browser evidence shows unresolved diagram layout shift or eager below fold fetching."
+  - "Curator preview reports unexpected drift or validation fails."
+  - "Work enters push deployment upstream write or successor packet scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260714-001-A after all required evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260714-001"
+  yaml_path: "implementation_control/handoffs/WH-20260714-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260714-001.md"
+
+completion_record:
+  completion_id: "WJC-20260714-001-A"
+  path: "implementation_control/tasks/WI-20260714-001/jobs/completions/WJC-20260714-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-P1-07 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260714-001-A and stop."
+  do_not_skip: "Do not stage preserved dirty paths modify public assets change claims open a successor packet push deploy or mutate upstream."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  destructive_cleanup_status: "not_authorized"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completed_utc: "2026-07-15T02:33:31Z"
+  comprehension_png_metadata_count: 37
+  focused_structural_tests: "passed 3 tests after a three failure baseline"
+  python_tests: "passed 129 tests"
+  static_build: "passed 64 pages"
+  provenance_routes: 34
+  curator_dependencies: 248
+  curator_drift_count: 0
+  browser_deferred_gallery_images: 36
+  browser_layout_shift_entries: 0
+  aggregate_validation: "passed"
+  quality_gate: "passed"
+  checkpoint_status: "ready_to_checkpoint"

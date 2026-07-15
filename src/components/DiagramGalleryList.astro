@@ -5,6 +5,9 @@ interface DiagramGalleryItem {
   alt: string;
   caption: string;
   provenance?: string;
+  width: number;
+  height: number;
+  aspectRatio: string;
 }
 
 interface Props {
@@ -48,10 +51,36 @@ const {
             dossiers for inspection.
           </p>
         </div>
-        <a class="diagram-gallery-image-link" href={item.src} aria-label={`Open ${item.title}`}>
-          <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+        <a
+          class="diagram-gallery-image-link"
+          href={item.src}
+          aria-label={`Open ${item.title}`}
+          style={`--diagram-aspect-ratio: ${item.aspectRatio};`}
+        >
+          <img
+            src={item.src}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
+            style={`aspect-ratio: ${item.aspectRatio};`}
+            loading="lazy"
+            decoding="async"
+          />
         </a>
       </article>
     ))
   )}
 </div>
+
+<style>
+  .diagram-gallery-image-link {
+    aspect-ratio: var(--diagram-aspect-ratio);
+    max-height: 22rem;
+  }
+
+  @media (max-width: 780px) {
+    .diagram-gallery-image-link {
+      max-height: 18rem;
+    }
+  }
+</style>
