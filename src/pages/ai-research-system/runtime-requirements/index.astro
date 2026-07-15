@@ -1,10 +1,14 @@
 ---
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
+
+const runtimeRequirementsProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. The AI track depends on reproducible local tools, but a tool being installed answers only whether an operation can run, not whether anyone is authorized to run it. This Runtime Requirements page maps those operating conditions from the simplest to the most specialized: Git, a shell, an editor, and a browser support read-only inspection; the Codex app, repository skills, and tracked control records support governed work; a Python virtual environment, declared dependencies, scripts, and tests support validators and memory tooling; Node.js, npm, Astro, and Playwright support static builds and browser review; local retrieval layers support navigation; and TeX or PDF tooling is used only when registered derivatives are explicitly in scope. Before any command changes project state, the operator must inspect the tracked source, current task and job, role or skill contract, write-path allowlist, claim boundary, and applicable human gates. After a command runs, its result remains limited to the named surface it checked: `npm run build` compiles the website routes but does not deploy them or establish scientific correctness; implementation-control validation checks record structure but not source authority; Python tests provide evidence about tested behavior but not untested behavior or physics; and screenshots show rendered layout rather than truth. Missing or failing runtime support becomes a bounded maintenance signal, not a scientific verdict. Memory indexes, Obsidian mirrors, SQLite databases, and `.local` caches may guide inspection, but tracked files and registries remain authority. No installed runtime, dependency, skill, script, Makefile target, validator PASS, screenshot, cache, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, grants role or source-edit authority, bypasses an AgentJob allowlist, deploys the site, refreshes sources, or authorizes an upstream mutation.";
 
 const runtimeRows = [
   {
@@ -233,14 +237,10 @@ const runtimeSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Runtime requirements introduction">
-    <p>
-      Runtime evidence does not prove physics, promote source laws, bypass
-      AgentJob allowlists, or authorize upstream writes. Capability and
-      permission are separate facts.
-    </p>
-  </section>
-
+  <ProjectIntroduction
+    text={runtimeRequirementsProjectIntroduction}
+    ariaLabel="About the Æther Flow Project and runtime requirements"
+  />
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiRuntimeRequirements} />
 

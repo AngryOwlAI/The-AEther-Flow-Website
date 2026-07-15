@@ -4,7 +4,7 @@ job_id: "WJ-20260715-021-A"
 task_id: "WI-20260715-021"
 title: "Implement Project-System Improvement Project Introduction"
 created_utc: "2026-07-15T20:54:23Z"
-updated_utc: "2026-07-15T20:59:58Z"
+updated_utc: "2026-07-15T21:04:23Z"
 status: "active"
 
 objective: "Render one quality gated general public project introduction immediately after the Project-System Improvement hero."
@@ -135,7 +135,7 @@ next_recommended_action:
   do_not_skip: "Do not change repair signal or sidecar mechanics or enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Project-System Improvement hero"
   focused_tests: "passed 22 tests"
@@ -145,4 +145,13 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "051457e739a99c5ea2577b659aee663711e56410"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-022"
+  reason: "The completed Project-System Improvement introduction job was checkpointed before AI-RUNTIME-REQUIREMENTS-INTRO-01 activation."

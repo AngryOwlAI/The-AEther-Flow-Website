@@ -39,6 +39,9 @@ AI_RESEARCH_SYSTEM_MEMORY_PREFLIGHT_PAGE = (
 AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/project-system-improvement/index.astro"
 )
+AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE = (
+    REPO_ROOT / "src/pages/ai-research-system/runtime-requirements/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -593,6 +596,53 @@ def test_project_system_improvement_has_a_general_public_project_introduction_af
     assert "expands an allowlist" in source
     assert "authorizes research continuation" in source
     assert '<section class="greenfield-intro-panel" aria-label="Project-system improvement introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_runtime_requirements_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "tool being installed answers only whether an operation can run" in source
+    assert "not whether anyone is authorized to run it" in source
+    assert "Git, a shell, an editor, and a browser support read-only inspection" in source
+    assert "Codex app, repository skills, and tracked control records support governed work" in source
+    assert "Python virtual environment, declared dependencies, scripts, and tests" in source
+    assert "Node.js, npm, Astro, and Playwright support static builds and browser review" in source
+    assert "local retrieval layers support navigation" in source
+    assert "TeX or PDF tooling is used only when registered derivatives are explicitly in scope" in source
+    assert "tracked source, current task and job, role or skill contract" in source
+    assert "write-path allowlist, claim boundary, and applicable human gates" in source
+    assert "result remains limited to the named surface it checked" in source
+    assert "`npm run build` compiles the website routes but does not deploy them" in source
+    assert "implementation-control validation checks record structure but not source authority" in source
+    assert "Python tests provide evidence about tested behavior but not untested behavior or physics" in source
+    assert "screenshots show rendered layout rather than truth" in source
+    assert "Missing or failing runtime support becomes a bounded maintenance signal" in source
+    assert "not a scientific verdict" in source
+    assert "Memory indexes, Obsidian mirrors, SQLite databases, and `.local` caches" in source
+    assert "tracked files and registries remain authority" in source
+    assert "No installed runtime, dependency, skill, script, Makefile target" in source
+    assert "validator PASS, screenshot, cache, AI output, or website page" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "grants role or source-edit authority" in source
+    assert "bypasses an AgentJob allowlist" in source
+    assert "deploys the site" in source
+    assert "refreshes sources" in source
+    assert "authorizes an upstream mutation" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Runtime requirements introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

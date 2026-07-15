@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-021"
 created_utc: "2026-07-15T20:54:23Z"
-updated_utc: "2026-07-15T20:59:58Z"
+updated_utc: "2026-07-15T21:04:23Z"
 status: "active"
 
 task_id: "WI-20260715-021"
@@ -54,12 +54,24 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-021-A"
   path: "implementation_control/tasks/WI-20260715-021/jobs/completions/WJC-20260715-021-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "051457e739a99c5ea2577b659aee663711e56410"
+  observed_as_head: true
+  repeated: false
+
+superseded_by:
+  handoff_id: "WH-20260715-022"
+  task_id: "WI-20260715-022"
+  job_id: "WJ-20260715-022-A"
+  checkpoint: "051457e739a99c5ea2577b659aee663711e56410"
+  reason: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 was checkpointed before the separately bounded Runtime Requirements introduction packet opened."

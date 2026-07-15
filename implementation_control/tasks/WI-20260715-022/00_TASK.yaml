@@ -1,50 +1,50 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260715-021"
-title: "Normalize Project-System Improvement Project Introduction"
-created_utc: "2026-07-15T20:54:23Z"
-updated_utc: "2026-07-15T21:04:23Z"
+task_id: "WI-20260715-022"
+title: "Normalize Runtime Requirements Project Introduction"
+created_utc: "2026-07-15T21:04:23Z"
+updated_utc: "2026-07-15T21:09:41Z"
 status: "active"
 
 source_context:
-  packet_id: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01"
+  packet_id: "AI-RUNTIME-REQUIREMENTS-INTRO-01"
   adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-  previous_task: "WI-20260715-020"
-  previous_checkpoint: "7fc003bc982507eef06e28e2d3d1195880c3bcc9"
+  previous_task: "WI-20260715-021"
+  previous_checkpoint: "051457e739a99c5ea2577b659aee663711e56410"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   live_upstream_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
-  relevant_source_parity: "Seven project overview improvement workflow script schema and signal registry sources are byte identical across the accepted pin and live head."
+  relevant_source_parity: "Seven runtime sources are byte identical; the live Makefile removes one redundant validation invocation without changing runtime tiers command capability or permission semantics."
   owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
-goal: "Replace the raw Project-System Improvement topic paragraph with one source grounded whole project introduction immediately after the hero."
+goal: "Replace the raw Runtime Requirements topic paragraph with one source grounded whole project introduction immediately after the hero."
 
 requirements:
-  - "Render one substantial single paragraph ProjectIntroduction immediately after the Project-System Improvement hero."
-  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to maintenance."
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Runtime Requirements hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to runtime capability."
   - "Keep general relativity as the exact observable benchmark while the proposed foundation and first principles derivation remain open."
-  - "Explain that project-system improvement repairs documentation validators schemas memory retrieval routing trigger logic and generated pipelines rather than continuing physics research."
-  - "Explain observable inputs classification advisory resolution one bounded AgentJob documentation impact and explicit signal closeout evidence."
-  - "State that project-improvement sidecars remain separate maintenance inputs and do not replace normal research handoffs."
-  - "State that resolver output alone does not authorize or block checkpointing and descriptive perspectives do not activate role authority."
-  - "State that diffs classifiers resolvers sidecars signals receipts validators completions handoffs commits AI output and pages do not prove physics promote claims expand authority or continue research."
-  - "Preserve all existing repair loop evidence blocked overread source rows route cards diagram and source authority."
+  - "Explain the read only governed workflow Python web browser local retrieval and derivative tool tiers in general public language."
+  - "Explain that tools answer what operation can run while tracked sources current task records roles AgentJob allowlists and gates decide authorization."
+  - "Explain that named commands and validators accept only their checked surface and do not establish source authority proof deployment or untested behavior."
+  - "State that missing or failing runtime support becomes a maintenance signal rather than a scientific verdict and that caches and screenshots remain retrieval or rendering evidence."
+  - "State that installed tools dependencies scripts targets PASS screenshots caches AI output and pages do not prove physics promote claims grant authority bypass allowlists deploy refresh sources or mutate upstream."
+  - "Preserve all existing runtime command permission source rows route cards diagram and source authority."
 
 scope:
   in_scope:
-    - "Project-System Improvement introduction and component reuse in src/pages/ai-research-system/project-system-improvement/index.astro"
+    - "Runtime Requirements introduction and component reuse in src/pages/ai-research-system/runtime-requirements/index.astro"
     - "Focused source and order assertions in tests/test_public_positioning.py"
-    - "Project-System Improvement page provenance regeneration against the accepted source pin"
+    - "Runtime Requirements page provenance regeneration against the accepted source pin"
     - "Current implementation control transition completion and handoff records"
   out_of_scope:
-    - "Repair loop evidence blocked overread source row signal or sidecar mechanics"
+    - "Runtime command permission source row or dependency mechanics"
     - "Other AI Research System and Resources route introductions"
     - "Shared component style route navigation source notice public asset or upstream source changes"
     - "Git push Cloudflare deployment source refresh or upstream writes"
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260715-021-A"
+  active_job_id: "WJ-20260715-022-A"
   next_packet_after_this_task: "The next incomplete introduction route becomes eligible only after this packet validates and is locally checkpointed."
 
 allowed_reads:
@@ -55,12 +55,12 @@ allowed_reads:
     - ".codex/skills/technical-writing-quality-gate/SKILL.md"
     - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
     - "PRDs/sitewide-greenfield-rebuild-prd.md"
-    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
+    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
     - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     - "docs/architecture/sitewide-greenfield-foundation-contract.md"
     - "src/components/ProjectIntroduction.astro"
     - "src/lib/siteContent.ts"
-    - "src/pages/ai-research-system/project-system-improvement/index.astro"
+    - "src/pages/ai-research-system/runtime-requirements/index.astro"
     - "public/files/manifests/page_provenance.json"
     - "tests/test_public_positioning.py"
     - "scripts"
@@ -68,28 +68,29 @@ allowed_reads:
     - "local build preview and in app browser evidence"
     - "website and upstream read only Git evidence"
   upstream_source_repository:
-    - "github-facing/project-overview-explainer.md"
-    - "github-facing/project-system-improvement-explainer.md"
+    - "github-facing/technical-requirements-explainer.md"
+    - "README.md"
+    - "AGENTS.md"
     - "research_control/README.md"
-    - "scripts/project_control/README.md"
-    - ".agents/schemas/PROJECT_IMPROVEMENT_HANDOFF_SCHEMA.md"
-    - "registries/PROJECT_IMPROVEMENT_SIGNAL_TYPE_REGISTRY.csv"
-    - "registries/PROJECT_IMPROVEMENT_SIGNAL_REGISTRY.csv"
+    - "requirements.txt"
+    - "Makefile"
+    - "scripts/README.md"
+    - "tests/README.md"
 
 allowed_writes:
   website_repository:
-    - "src/pages/ai-research-system/project-system-improvement/index.astro"
+    - "src/pages/ai-research-system/runtime-requirements/index.astro"
     - "tests/test_public_positioning.py"
     - "public/files/manifests/page_provenance.json"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260715-020.yaml"
-    - "implementation_control/tasks/WI-20260715-020/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260715-020/jobs/WJ-20260715-020-A.yaml"
     - "implementation_control/handoffs/WH-20260715-021.yaml"
-    - "implementation_control/handoffs/WH-20260715-021.md"
     - "implementation_control/tasks/WI-20260715-021/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260715-021/jobs/WJ-20260715-021-A.yaml"
-    - "implementation_control/tasks/WI-20260715-021/jobs/completions/WJC-20260715-021-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-022.yaml"
+    - "implementation_control/handoffs/WH-20260715-022.md"
+    - "implementation_control/tasks/WI-20260715-022/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-022/jobs/WJ-20260715-022-A.yaml"
+    - "implementation_control/tasks/WI-20260715-022/jobs/completions/WJC-20260715-022-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -98,13 +99,13 @@ approval_gates:
     reason: "The owner explicitly directed implementation of the sitewide project description rule."
   public_claim_changes:
     status: "approved"
-    reason: "Approval covers one source grounded Project-System Improvement introduction under the technical writing quality gate."
+    reason: "Approval covers one source grounded Runtime Requirements introduction under the technical writing quality gate."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "All seven relevant authority sources are byte identical across the accepted pin and live head."
+    reason: "Seven sources are unchanged and the live Makefile cleanup does not change the paragraph authority or runtime semantics."
   broad_navigation_or_route_retirement:
     status: "approved"
-    reason: "Approval covers the bounded Project-System Improvement page content change without route navigation or retirement changes."
+    reason: "Approval covers the bounded Runtime Requirements page content change without route navigation or retirement changes."
   shared_visual_systems:
     status: "not_required"
     reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
@@ -113,7 +114,7 @@ approval_gates:
     reason: "No public assets."
   public_manifest_authority_records:
     status: "approved"
-    reason: "Approval covers regeneration of Project-System Improvement page provenance after the page source change."
+    reason: "Approval covers regeneration of Runtime Requirements page provenance after the page source change."
   git_push:
     status: "not_required"
     reason: "Push is outside this packet."
@@ -152,13 +153,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-ai-project-system-improvement-introduction-review"
-    command: "manual inspection of the Project-System Improvement project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-runtime-requirements-introduction-review"
+    command: "manual inspection of the Runtime Requirements project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "The paragraph cannot remain proportional to the accepted project overview improvement workflow script schema and signal registry sources."
-  - "Repair loop evidence blocked overread source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph cannot remain proportional to the accepted technical requirements project instruction workflow command and test sources."
+  - "Runtime command permission source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
   - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -166,59 +167,50 @@ stop_conditions:
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Create WJC-20260715-021-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+  closeout: "Create WJC-20260715-022-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
 
 handoff:
-  latest_handoff_id: "WH-20260715-021"
-  yaml_path: "implementation_control/handoffs/WH-20260715-021.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-021.md"
+  latest_handoff_id: "WH-20260715-022"
+  yaml_path: "implementation_control/handoffs/WH-20260715-022.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-022.md"
 
 completion_record:
-  completion_id: "WJC-20260715-021-A"
-  path: "implementation_control/tasks/WI-20260715-021/jobs/completions/WJC-20260715-021-A.yaml"
+  completion_id: "WJC-20260715-022-A"
+  path: "implementation_control/tasks/WI-20260715-022/jobs/completions/WJC-20260715-022-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-021-A and stop."
-  do_not_skip: "Do not change repair loop signal sidecar evidence tables route cards shared styles push deploy refresh sources or mutate upstream."
+  task_packet: "AI-RUNTIME-REQUIREMENTS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-022-A and stop."
+  do_not_skip: "Do not change runtime command permission tables route cards shared styles push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_relevant_source_parity_and_unrelated_upstream_changes_isolated"
-  observed_utc: "2026-07-15T20:54:23Z"
-  previous_checkpoint: "7fc003bc982507eef06e28e2d3d1195880c3bcc9"
+  observed_utc: "2026-07-15T21:04:23Z"
+  previous_checkpoint: "051457e739a99c5ea2577b659aee663711e56410"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 19
+  website_ahead_of_origin_main: 20
   website_worktree_status: "clean_before_packet_open"
   accepted_source_worktree_status: "clean"
   upstream_worktree_status: "dirty external project memory tooling changes preserved and excluded"
   upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
-  relevant_source_parity_status: "seven project overview improvement workflow script schema and signal registry sources byte identical across accepted pin and live head"
+  relevant_source_parity_status: "seven runtime sources byte identical; live Makefile removes one redundant validation invocation without changing runtime tiers command capability or permission semantics"
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Project-System Improvement hero"
-  focused_tests: "passed 22 tests"
-  python_tests: "passed 147 tests"
+  project_introduction: "one substantial general public paragraph after the Runtime Requirements hero"
+  focused_tests: "passed 23 tests"
+  python_tests: "passed 148 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false
-
-checkpoint_evidence:
-  commit: "051457e739a99c5ea2577b659aee663711e56410"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-022"
-  reason: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 was checkpointed before the separately bounded Runtime Requirements introduction packet opened."
