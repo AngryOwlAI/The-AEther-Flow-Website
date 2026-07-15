@@ -4,7 +4,7 @@ job_id: "WJ-20260715-013-A"
 task_id: "WI-20260715-013"
 title: "Implement AI Research System Overview Project Introduction"
 created_utc: "2026-07-15T19:21:00Z"
-updated_utc: "2026-07-15T19:28:02Z"
+updated_utc: "2026-07-15T19:32:59Z"
 status: "active"
 
 objective: "Render one quality gated general public project introduction immediately after the AI Research System Overview hero."
@@ -129,12 +129,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "AI-OVERVIEW-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-013-A and stop."
+  task_packet: "AI-CURRENT-STATE-INTRO-01 implementation"
+  summary: "Implement the separately bounded AI Research System Current State project introduction packet."
   do_not_skip: "Do not enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the AI Research System Overview hero"
   focused_tests: "passed 14 tests"
@@ -144,4 +144,13 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "0259c6c3a9b5a70482198921dc75b8017695dfba"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-014"
+  reason: "The completed AI Research System Overview introduction job was checkpointed before AI-CURRENT-STATE-INTRO-01 activation."

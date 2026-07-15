@@ -4,6 +4,7 @@ import EvidenceRail from "../../../components/EvidenceRail.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
 const snapshot = {
@@ -17,6 +18,9 @@ const snapshot = {
   upstreamWriteStatus: "forbidden",
   deploymentStatus: "not_authorized",
 };
+
+const aiCurrentStateProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while that first-principles derivation is still open. The AI track records research and website work as bounded tasks, AgentJobs, validator results, completion records, and handoffs so a reader can see what was allowed, what was checked, and what should happen next. This Current State page presents one checked-in, dated snapshot of those moving control records rather than a live dashboard or permanent statement about the project. If the snapshot is old, missing, or contradicted by higher-authority records, its wording must weaken or become unavailable; a task ID, handoff, validator PASS, or local checkpoint can document operational state, but none of them proves a physics claim, authorizes source refresh, or expands role or source authority.";
 
 const dashboardRows = [
   {
@@ -230,17 +234,10 @@ const currentStateSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="AI current-state introduction">
-    <p>
-      Current implementation-control status is moving data. This page therefore
-      presents it as a dated source-backed snapshot captured at {snapshot.capturedAt}.
-      It is not independent scientific authority, not a control console, and
-      not permanent website truth. Validation PASS means operational
-      consistency, not proof. If the snapshot is stale, missing, or
-      contradictory, the page must fail closed into weaker current-state
-      language.
-    </p>
-  </section>
+  <ProjectIntroduction
+    text={aiCurrentStateProjectIntroduction}
+    ariaLabel="About The Æther Flow Project and AI Research System Current State"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiCurrentState} />
