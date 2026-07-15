@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T22:40:23Z"
+updated_utc: "2026-07-15T23:10:52Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-029/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-029/jobs/WJ-20260715-029-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-029.yaml"
+  - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,32 +25,32 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-029"
-  title: "Normalize Resources Library Project Introduction"
+  task_id: "WI-20260715-030"
+  title: "Correct Home Hero Actions And Status Placement"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-029/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
   planning_context:
-    task_packet: "RESOURCES-LIBRARY-INTRO-01"
+    task_packet: "HOME-HERO-ACTIONS-STATUS-ORDER-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "afca08876102b99a1cd2eb9ca4a4f8e4d00f8e32"
+    previous_checkpoint: "6e4019da2aacde200c627345203a0c0350973813"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-029-A"
+  job_id: "WJ-20260715-030-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-029/jobs/WJ-20260715-029-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-029"
+  handoff_id: "WH-20260715-030"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-029.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-029.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-030.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-030.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-029-A"
-  path: "implementation_control/tasks/WI-20260715-029/jobs/completions/WJC-20260715-029-A.yaml"
+  completion_id: "WJC-20260715-030-A"
+  path: "implementation_control/tasks/WI-20260715-030/jobs/completions/WJC-20260715-030-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,43 +81,43 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-resources-library-introduction-review"
-    command: "manual inspection of the Resources Library project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-home-hero-actions-status-order-review"
+    command: "manual inspection of Home hero action containment status placement responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "RESOURCES-LIBRARY-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-029-A and stop."
-  do_not_skip: "Do not change Library shelves reading paths policy routes shared styles push deploy refresh sources or mutate upstream."
+  task_packet: "HOME-HERO-ACTIONS-STATUS-ORDER-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not change copy links styles sources other routes push deploy or mutate upstream."
 
 preflight_evidence:
-  status: "passed_with_relevant_source_semantics_preserved_and_later_control_rows_isolated"
-  observed_utc: "2026-07-15T22:33:37Z"
-  previous_checkpoint: "afca08876102b99a1cd2eb9ca4a4f8e4d00f8e32"
+  status: "owner_authorized_preflight_failures_as_nonblocking_for_layout_only_work"
+  observed_utc: "2026-07-15T22:53:56Z"
+  previous_checkpoint: "6e4019da2aacde200c627345203a0c0350973813"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 27
+  website_ahead_of_origin_main: 28
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
   upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
-  upstream_worktree_status: "clean"
+  upstream_worktree_status: "dirty_in_flight_and_read_only"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "RESOURCES-PUBLICATION-PROCESS-INTRO-01 checkpoint observed as HEAD"
-  relevant_source_parity_status: "four present route sources unchanged; claim boundary adds eight scoped V19 control rows; three declared upstream manifest omissions unchanged"
+  dependency_status: "RESOURCES-LIBRARY-INTRO-01 checkpoint observed as HEAD"
+  relevant_source_parity_status: "not required because this packet relocates existing Home elements without changing claim copy source bindings or destinations"
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "ready_for_checkpoint"
   previous_checkpoint_replayed: false
-  writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Resources Library hero"
-  focused_tests: "passed 30 tests"
+  writing_gate_status: "not_required_existing_copy_unchanged"
+  home_layout: "implemented primary actions inside hero and project status immediately after route chooser"
+  focused_tests: "passed 35 tests"
   python_tests: "passed 155 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
-  quality_gate: "passed sequentially against accepted clean source pin"
-  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_layout_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
   checkpoint_status: "ready"
   push_performed: false

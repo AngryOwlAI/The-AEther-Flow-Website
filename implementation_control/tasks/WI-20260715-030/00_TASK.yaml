@@ -1,0 +1,205 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-030"
+title: "Correct Home Hero Actions And Status Placement"
+created_utc: "2026-07-15T22:53:56Z"
+updated_utc: "2026-07-15T23:10:52Z"
+status: "active"
+
+source_context:
+  packet_id: "HOME-HERO-ACTIONS-STATUS-ORDER-01"
+  owner_authorization: "Owner browser comments require Home primary actions inside the hero and project status after the route chooser."
+  previous_task: "WI-20260715-029"
+  previous_checkpoint: "6e4019da2aacde200c627345203a0c0350973813"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  source_parity_requirement: "Not required because existing copy source bindings links and scientific status statements remain byte unchanged."
+
+goal: "Relocate existing Home actions into the title hero and move the existing project status section after the route chooser without changing content."
+
+requirements:
+  - "Render the existing four Home primary actions inside the Home hero CommandBand."
+  - "Preserve the Ontology and GR Physics AI Research and Resources labels hrefs order and classes."
+  - "Remove the separate main level Homepage primary actions navigation row."
+  - "Place the unchanged Current Project Status section immediately after the section headed Choose the route that matches your question."
+  - "Preserve the five status items wording boundaries order classes and data source."
+  - "Preserve the ProjectIntroduction Two research tracks Ontology and GR source authority and footer content."
+  - "Add focused structural assertions for hero containment and route chooser to status order."
+  - "Regenerate Home page provenance after the Astro source changes."
+
+scope:
+  in_scope:
+    - "src/pages/index.astro structural relocation only"
+    - "tests/test_public_positioning.py focused Home ordering coverage"
+    - "tests/test_project_status_strip.py focused accepted claim strip placement coverage"
+    - "public/files/manifests/page_provenance.json Home page hash regeneration"
+    - "Current implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Any Home copy label href class status data or source binding change"
+    - "Shared CSS component navigation or route changes"
+    - "Other page introductions including Reading Paths"
+    - "Source refresh upstream writes push or deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-030-A"
+  next_packet_after_this_task: "Return to the Reading Paths preflight only after this packet is checkpointed and upstream parity is available."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "src/pages/index.astro"
+    - "src/components/CommandBand.astro"
+    - "src/components/ProjectStatusStrip.astro"
+    - "src/styles"
+    - "tests/test_public_positioning.py"
+    - "tests/test_project_status_strip.py"
+    - "public/files/manifests/page_provenance.json"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/pages/index.astro"
+    - "tests/test_public_positioning.py"
+    - "tests/test_project_status_strip.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-029.yaml"
+    - "implementation_control/tasks/WI-20260715-029/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-029/jobs/WJ-20260715-029-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-030.yaml"
+    - "implementation_control/handoffs/WH-20260715-030.md"
+    - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+    - "implementation_control/tasks/WI-20260715-030/jobs/completions/WJC-20260715-030-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly requested both Home layout changes."
+  public_claim_changes:
+    status: "not_required"
+    reason: "Existing claim copy is relocated without text changes."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source content or binding changes; accepted pin remains the provenance basis."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers moving existing action links inside the existing hero without changing destinations."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No shared component or stylesheet changes."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval covers Home provenance hash regeneration only."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-home-hero-actions-status-order-review"
+    command: "manual inspection of Home hero action containment status placement responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "Any copy href class status item source binding shared CSS component other route or upstream source change becomes necessary."
+  - "The action links cannot render inside the hero without a shared style change."
+  - "The status section cannot follow the route chooser without changing its content or data."
+  - "A required validator or browser review fails."
+  - "Work enters Reading Paths push deployment source refresh or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-030-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-030"
+  yaml_path: "implementation_control/handoffs/WH-20260715-030.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-030.md"
+
+completion_record:
+  completion_id: "WJC-20260715-030-A"
+  path: "implementation_control/tasks/WI-20260715-030/jobs/completions/WJC-20260715-030-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOME-HERO-ACTIONS-STATUS-ORDER-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not change copy links styles other routes sources push deployment or upstream."
+
+preflight_evidence:
+  status: "owner_authorized_preflight_failures_as_nonblocking_for_layout_only_work"
+  observed_utc: "2026-07-15T22:53:56Z"
+  previous_checkpoint: "6e4019da2aacde200c627345203a0c0350973813"
+  previous_checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 28
+  website_worktree_status: "clean_before_packet_open"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  upstream_worktree_status: "dirty_in_flight_and_read_only"
+  source_content_change_status: "none"
+  source_refresh_status: "not performed"
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  writing_gate_status: "not_required_existing_copy_unchanged"
+  home_layout: "implemented primary actions inside hero and project status after route chooser"
+  packet_scope_adjustment: "Added the pre-existing project status strip test after the full suite exposed its obsolete status-before-positioning assertion."
+  focused_tests: "passed 35 tests"
+  python_tests: "passed 155 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_layout_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"
+  push_performed: false
+  deployment_performed: false

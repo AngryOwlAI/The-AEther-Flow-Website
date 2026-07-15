@@ -63,7 +63,7 @@ def test_home_maps_exactly_five_statuses_in_authorized_order() -> None:
     assert positions == sorted(positions)
 
 
-def test_home_consumes_accepted_claim_ladder_entries_and_places_strip_after_hero() -> None:
+def test_home_consumes_accepted_claim_ladder_entries_and_places_strip_after_route_chooser() -> None:
     source = HOME_PAGE.read_text(encoding="utf-8")
     ladder = load_claim_ladder()
     expected_claim_states = [
@@ -81,10 +81,12 @@ def test_home_consumes_accepted_claim_ladder_entries_and_places_strip_after_hero
         assert statement["disposition"] == "accepted"
         assert "home" in statement["surfaces"]
 
-    hero = source.index('className="overview-shell overview-command-hero"')
-    strip = source.index("<ProjectStatusStrip", hero)
-    positioning = source.index('aria-labelledby="home-positioning-title"', strip)
-    assert hero < strip < positioning
+    route_chooser = source.index('title="Choose the route that matches your question."')
+    route_chooser_end = source.index("</CommandBand>", route_chooser) + len("</CommandBand>")
+    strip = source.index("<ProjectStatusStrip", route_chooser_end)
+    source_authority = source.index("<SourceAuthoritySection", strip)
+    assert source[route_chooser_end:strip].strip() == ""
+    assert route_chooser < strip < source_authority
 
 
 def test_component_uses_explicit_text_and_non_color_semantics() -> None:

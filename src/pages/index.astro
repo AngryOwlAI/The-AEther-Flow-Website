@@ -342,6 +342,13 @@ const agentMap = `
     lead="Explore a proposed Æther / Æther-Flow ontology, its exact effective gravity package, the open foundational derivation, and the governed research system used to test each step."
     headingLevel="h1"
   >
+    <nav class="home-action-row" aria-label="Homepage primary actions">
+      <a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>
+      <a class="secondary-link" href="/physics/">Physics</a>
+      <a class="secondary-link" href="/ai-research-system/">AI Research</a>
+      <a class="secondary-link" href="/resources/">Resources</a>
+    </nav>
+
     <Fragment slot="visual">
       <figure class="field-stage" aria-labelledby="home-field-stage-caption">
         <Fragment set:html={heroFieldMap} />
@@ -355,8 +362,6 @@ const agentMap = `
   </CommandBand>
 
   <ProjectIntroduction text={homeProjectIntroduction} className="home-intro-panel" />
-
-  <ProjectStatusStrip items={homeStatusItems} />
 
   <section
     class="track-page-band public-positioning-sequence"
@@ -389,13 +394,6 @@ const agentMap = `
       </article>
     ))}
   </section>
-
-  <nav class="home-action-row" aria-label="Homepage primary actions">
-    <a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>
-    <a class="secondary-link" href="/physics/">Physics</a>
-    <a class="secondary-link" href="/ai-research-system/">AI Research</a>
-    <a class="secondary-link" href="/resources/">Resources</a>
-  </nav>
 
   <CommandBand
     id="overview-paths"
@@ -481,6 +479,8 @@ const agentMap = `
       records.
     </p>
   </CommandBand>
+
+  <ProjectStatusStrip items={homeStatusItems} />
 
   <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
 

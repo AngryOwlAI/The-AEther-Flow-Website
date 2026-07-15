@@ -1,0 +1,147 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-030-A"
+task_id: "WI-20260715-030"
+title: "Implement Home Hero Actions And Status Placement"
+created_utc: "2026-07-15T22:53:56Z"
+updated_utc: "2026-07-15T23:10:52Z"
+status: "active"
+
+objective: "Relocate existing Home actions into the hero and existing status after the route chooser without changing content."
+
+execution_boundary:
+  invocation_limit: "one bounded HOME-HERO-ACTIONS-STATUS-ORDER-01 packet"
+  packet_id: "HOME-HERO-ACTIONS-STATUS-ORDER-01"
+  previous_checkpoint: "6e4019da2aacde200c627345203a0c0350973813"
+  previous_checkpoint_replay_status: "forbidden"
+  copy_change_status: "forbidden"
+  link_destination_change_status: "forbidden"
+  status_data_change_status: "forbidden"
+  shared_style_or_component_change_status: "forbidden"
+  other_route_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website layout test manifest browser and Git evidence allowlisted by WI-20260715-030"
+
+allowed_writes:
+  - "src/pages/index.astro"
+  - "tests/test_public_positioning.py"
+  - "tests/test_project_status_strip.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-029.yaml"
+  - "implementation_control/tasks/WI-20260715-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-029/jobs/WJ-20260715-029-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.md"
+  - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/completions/WJC-20260715-030-A.yaml"
+
+required_outputs:
+  - "Existing Home actions render inside the Home hero."
+  - "Existing project status renders immediately after the route chooser section."
+  - "Action and status content classes data and destinations remain unchanged."
+  - "Focused tests provenance build aggregate quality and responsive browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner requested both Home layout corrections."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No claim copy changes."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source content or binding changes."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Relocate existing action links inside the hero without destination changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No shared style or component changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Home page provenance hash regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-home-hero-actions-status-order-review"
+    command: "manual inspection of Home hero action containment status placement responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "Any copy href class status data shared style component other route source or upstream change becomes necessary."
+  - "A required validator or browser review fails."
+  - "Work enters Reading Paths push deployment source refresh or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-030-A"
+  path: "implementation_control/tasks/WI-20260715-030/jobs/completions/WJC-20260715-030-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOME-HERO-ACTIONS-STATUS-ORDER-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not change copy links styles other routes sources push deployment or upstream."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  writing_gate_status: "not_required_existing_copy_unchanged"
+  home_layout: "implemented primary actions inside hero and project status after route chooser"
+  packet_scope_adjustment: "Added the pre-existing project status strip test after the full suite exposed its obsolete status-before-positioning assertion."
+  focused_tests: "passed 35 tests"
+  python_tests: "passed 155 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_layout_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"

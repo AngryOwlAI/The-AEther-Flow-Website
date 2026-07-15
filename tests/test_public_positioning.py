@@ -156,27 +156,42 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
     assert "<p>{text}</p>" in component
 
     hero = source.index('className="overview-shell overview-command-hero"')
-    introduction = source.index("<ProjectIntroduction", hero)
-    status = source.index("<ProjectStatusStrip", introduction)
-    positioning = source.index('aria-labelledby="home-positioning-title"', status)
-    actions = source.index('class="home-action-row"', positioning)
-    tracks = source.index('id="overview-paths"', actions)
+    actions = source.index('<nav class="home-action-row"', hero)
+    hero_visual = source.index('<Fragment slot="visual">', actions)
+    introduction = source.index("<ProjectIntroduction", hero_visual)
+    positioning = source.index('aria-labelledby="home-positioning-title"', introduction)
+    tracks = source.index('id="overview-paths"', positioning)
     ontology = source.index('id="ontology-and-gr"', tracks)
     comprehension = source.index("<ComprehensionBlocks", ontology)
     capabilities = source.index('id="project-capabilities"', comprehension)
-    source_authority = source.rindex("<SourceAuthoritySection")
+    capabilities_end = source.index("</CommandBand>", capabilities) + len("</CommandBand>")
+    status = source.index("<ProjectStatusStrip", capabilities_end)
+    source_authority = source.index("<SourceAuthoritySection", status)
     layout_end = source.index("</BaseLayout>", source_authority)
 
+    action_block = source[actions:hero_visual]
+    expected_actions = (
+        '<a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>',
+        '<a class="secondary-link" href="/physics/">Physics</a>',
+        '<a class="secondary-link" href="/ai-research-system/">AI Research</a>',
+        '<a class="secondary-link" href="/resources/">Resources</a>',
+    )
+    assert source.count('<nav class="home-action-row"') == 1
+    assert [action_block.index(action) for action in expected_actions] == sorted(
+        action_block.index(action) for action in expected_actions
+    )
+    assert source[capabilities_end:status].strip() == ""
     assert (
         hero
-        < introduction
-        < status
-        < positioning
         < actions
+        < hero_visual
+        < introduction
+        < positioning
         < tracks
         < ontology
         < comprehension
         < capabilities
+        < status
         < source_authority
         < layout_end
     )

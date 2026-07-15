@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T22:38:23.761860+00:00",
+  "generated_at": "2026-07-15T23:02:34.900596+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -8,7 +8,7 @@
     {
       "route_path": "/",
       "local_page_source": "src/pages/index.astro",
-      "local_page_sha256": "9c725ce96da625c07affc5e98bd35b02d114d188673e9e17de870150d27925b9",
+      "local_page_sha256": "302c5f591a86099de4152566d182fd9adbdccc00d6644834da990bfb2fdef48d",
       "title": "The \u00c6ther Flow Project",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

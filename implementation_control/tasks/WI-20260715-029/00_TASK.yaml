@@ -3,7 +3,7 @@ record_type: "implementation_task"
 task_id: "WI-20260715-029"
 title: "Normalize Resources Library Project Introduction"
 created_utc: "2026-07-15T22:33:37Z"
-updated_utc: "2026-07-15T22:40:23Z"
+updated_utc: "2026-07-15T22:53:56Z"
 status: "active"
 
 source_context:
@@ -203,7 +203,7 @@ preflight_evidence:
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Library hero"
   focused_tests: "passed 30 tests"
@@ -213,6 +213,15 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "6e4019da2aacde200c627345203a0c0350973813"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-030"
+  reason: "The completed Library introduction task was checkpointed before the owner requested a separate Home layout correction."

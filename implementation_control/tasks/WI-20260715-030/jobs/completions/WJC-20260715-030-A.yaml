@@ -1,0 +1,144 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-030-A"
+task_id: "WI-20260715-030"
+job_id: "WJ-20260715-030-A"
+created_utc: "2026-07-15T22:53:56Z"
+completed_utc: "2026-07-15T23:10:52Z"
+status: "completed"
+
+summary: "Moved the existing Home primary actions inside the title hero and the unchanged five state project status list immediately after the route chooser."
+
+changed_files:
+  - "src/pages/index.astro"
+  - "tests/test_public_positioning.py"
+  - "tests/test_project_status_strip.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-029.yaml"
+  - "implementation_control/tasks/WI-20260715-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-029/jobs/WJ-20260715-029-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.md"
+  - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/completions/WJC-20260715-030-A.yaml"
+
+source_context:
+  packet_id: "HOME-HERO-ACTIONS-STATUS-ORDER-01"
+  previous_checkpoint: "6e4019da2aacde200c627345203a0c0350973813"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  source_content_changed: false
+  previous_checkpoint_replayed: false
+
+implementation_evidence:
+  hero_actions: "The existing Homepage primary actions nav is a child of the Home hero CommandBand copy slot."
+  action_count: 4
+  action_order: "Ontology and GR then Physics then AI Research then Resources"
+  action_labels_changed: false
+  action_destinations_changed: false
+  action_classes_changed: false
+  separate_main_level_action_row_removed: true
+  project_status_position: "Immediate next section after the CommandBand headed Choose the route that matches your question."
+  project_status_item_count: 5
+  project_status_content_changed: false
+  project_status_data_source_changed: false
+  project_introduction_changed: false
+  track_sections_changed: false
+  ontology_and_gr_changed: false
+  source_authority_changed: false
+  shared_styles_changed: false
+  shared_components_changed: false
+  other_routes_changed: false
+  upstream_source_changed: false
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Codex in app browser"
+  route: "http://127.0.0.1:4321/"
+  desktop_viewport_css_pixels: "2276 by 1280"
+  compact_viewport_css_pixels: "520 by 1125"
+  desktop_result: "The four action buttons render within the hero and preserve their expected visual hierarchy."
+  compact_result: "The primary action spans the row and the three secondary actions fit beneath it within the hero."
+  hero_contains_actions: true
+  action_count: 4
+  status_immediately_after_route_chooser: true
+  status_item_count: 5
+  desktop_horizontal_overflow_css_pixels: 0
+  compact_horizontal_overflow_css_pixels: 0
+  error_surface_observed: false
+  console_interface_note: "The active browser binding did not expose stored console messages; rendered DOM checks screenshots resize and scroll exercise showed no visible runtime error surface."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-home-layout-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py tests/test_project_status_strip.py -q"
+    status: "passed"
+    evidence: "35 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest -q"
+    status: "passed"
+    evidence: "155 tests passed"
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "content-validation"
+    command: "SOURCE_REPO_PATH=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate:content"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "SOURCE_REPO_PATH=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate:provenance"
+    status: "passed"
+    evidence: "34 routes validated"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run quality"
+    status: "passed"
+    evidence: "Quality gate passed against the accepted clean source pin"
+  - id: "runtime-home-hero-actions-status-order-review"
+    command: "manual inspection of Home hero action containment status placement responsive flow and browser console in the in app browser"
+    status: "passed"
+    evidence: "Desktop and compact DOM and visual review passed with zero horizontal overflow"
+
+validation_notes:
+  - "The first aggregate invocation used SOURCE_REPO_PATH which the curator does not consume and therefore reported live upstream drift."
+  - "The documented AETHER_FLOW_SOURCE_ROOT override was then used and the complete aggregate and quality gates passed against the accepted clean source pin."
+  - "The full test suite exposed one obsolete status-before-positioning assertion. The focused test file was added to the packet and updated to the owner requested route-chooser-to-status order."
+
+validation_environment:
+  disposable_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  source_tree_clean: true
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  live_upstream_worktree_status: "dirty_in_flight_and_read_only"
+  owner_preflight_override: "Owner instructed that preflight failures are nonblocking for this work."
+  upstream_write_performed: false
+  source_refresh_performed: false
+
+remaining_boundaries:
+  - "Reading Paths and other remaining project description packets are unchanged in this layout packet."
+  - "No copy link destination class status data shared style component other route upstream source push or deployment change occurred."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the thirteen HOME-HERO-ACTIONS-STATUS-ORDER-01 page test provenance transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "HOME-HERO-ACTIONS-STATUS-ORDER-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not push deploy refresh sources mutate upstream or enter another route packet in the same transaction."

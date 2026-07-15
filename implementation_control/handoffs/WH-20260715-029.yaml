@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-029"
 created_utc: "2026-07-15T22:33:37Z"
-updated_utc: "2026-07-15T22:40:23Z"
+updated_utc: "2026-07-15T22:53:56Z"
 status: "active"
 
 task_id: "WI-20260715-029"
@@ -55,7 +55,7 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Library hero"
   focused_tests: "passed 30 tests"
@@ -65,9 +65,19 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-029-A"
   path: "implementation_control/tasks/WI-20260715-029/jobs/completions/WJC-20260715-029-A.yaml"
+  status: "completed"
+
+checkpoint_evidence:
+  commit: "6e4019da2aacde200c627345203a0c0350973813"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-030"
+  reason: "RESOURCES-LIBRARY-INTRO-01 was checkpointed before the separately bounded owner requested Home layout packet opened."
   status: "completed"

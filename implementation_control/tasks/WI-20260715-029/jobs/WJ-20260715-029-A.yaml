@@ -4,7 +4,7 @@ job_id: "WJ-20260715-029-A"
 task_id: "WI-20260715-029"
 title: "Implement Resources Library Project Introduction"
 created_utc: "2026-07-15T22:33:37Z"
-updated_utc: "2026-07-15T22:40:23Z"
+updated_utc: "2026-07-15T22:53:56Z"
 status: "active"
 
 objective: "Render one quality gated general public project introduction immediately after the Library hero."
@@ -137,7 +137,7 @@ next_recommended_action:
   do_not_skip: "Do not change Library shelves reading paths or enter Reading Paths."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Library hero"
   focused_tests: "passed 30 tests"
@@ -147,4 +147,13 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "6e4019da2aacde200c627345203a0c0350973813"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-030"
+  reason: "The completed Library introduction job was checkpointed before the owner requested a separate Home layout correction."
