@@ -9,6 +9,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 HOME_PAGE = REPO_ROOT / "src/pages/index.astro"
 PHYSICS_PAGE = REPO_ROOT / "src/pages/physics/index.astro"
 PHYSICS_ONTOLOGY_PAGE = REPO_ROOT / "src/pages/physics/ontology/index.astro"
+PHYSICS_BENCHMARK_PAGE = REPO_ROOT / "src/pages/physics/exact-gr-benchmark/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -168,6 +169,29 @@ def test_physics_ontology_has_a_general_public_project_introduction_after_the_he
     assert "establish an empirical prediction" in source
     assert "separates conceptual orientation" in source
     assert '<section class="greenfield-intro-panel" aria-label="Ontology introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_physics_benchmark_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = PHYSICS_BENCHMARK_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "conservative observable-scale reference" in source
+    assert "one operative Lorentzian metric" in source
+    assert "universal matter coupling" in source
+    assert "no claimed empirical deviation from GR" in source
+    assert "does not mean the proposed Æther / Æther-Flow ontology has derived it" in source
+    assert "benchmark adoption, ontology compatibility" in source
+    assert "effective-level result is not mistaken for foundational proof" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Exact-GR benchmark introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

@@ -1,44 +1,44 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260715-007"
-title: "Normalize Physics Ontology Project Introduction"
-created_utc: "2026-07-15T18:11:49Z"
-updated_utc: "2026-07-15T18:20:15Z"
-status: "superseded"
+task_id: "WI-20260715-008"
+title: "Normalize Exact GR Benchmark Project Introduction"
+created_utc: "2026-07-15T18:20:15Z"
+updated_utc: "2026-07-15T18:27:51Z"
+status: "active"
 
 source_context:
-  packet_id: "PHYSICS-ONTOLOGY-INTRO-01"
+  packet_id: "PHYSICS-BENCHMARK-INTRO-01"
   adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-  previous_task: "WI-20260715-006"
-  previous_checkpoint: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
+  previous_task: "WI-20260715-007"
+  previous_checkpoint: "75040468b8d81657050cc36cd37d336f9cf8c393"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
-goal: "Replace the raw Physics ontology topic paragraph with one source grounded whole project introduction immediately after the hero."
+goal: "Replace the raw exact GR benchmark topic paragraph with one source grounded whole project introduction immediately after the hero."
 
 requirements:
-  - "Render one substantial single paragraph ProjectIntroduction immediately after the ontology hero."
-  - "Explain The AEther Flow Project as a two part physics and governed AI research program before narrowing to ontology vocabulary."
-  - "Define the ontology as proposed conceptual vocabulary rather than mathematical derivation empirical prediction or proof."
-  - "State what the ontology page helps a general reader understand."
-  - "Preserve all existing vocabulary rows claim boundaries actions routes diagrams and source authority."
-  - "Keep the paragraph readable without clipping or horizontal scrolling at desktop and compact widths."
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the benchmark hero."
+  - "Explain The AEther Flow Project as a two part physics and governed AI research program before narrowing to the exact GR benchmark."
+  - "Preserve one operative Lorentzian metric universal matter coupling ordinary causal structure and no empirical deviation claim as benchmark scope."
+  - "Keep benchmark adoption ontology compatibility first principles derivation and human gated promotion distinct."
+  - "State what the benchmark page helps a general reader understand."
+  - "Preserve all existing status matrices actions routes diagrams and source authority."
 
 scope:
   in_scope:
-    - "Ontology introduction and component reuse in src/pages/physics/ontology/index.astro"
+    - "Benchmark introduction and component reuse in src/pages/physics/exact-gr-benchmark/index.astro"
     - "Focused source and order assertions in tests/test_public_positioning.py"
-    - "Ontology page provenance regeneration against the accepted source pin"
+    - "Benchmark page provenance regeneration against the accepted source pin"
     - "Current implementation control transition completion and handoff records"
   out_of_scope:
     - "Other Physics routes and page family introductions"
-    - "Shared component style vocabulary matrix route navigation source notice public asset or upstream source changes"
+    - "Shared component style status matrices route navigation source notice public asset or upstream source changes"
     - "Git push Cloudflare deployment source refresh or upstream writes"
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260715-007-A"
+  active_job_id: "WJ-20260715-008-A"
   next_packet_after_this_task: "The next incomplete introduction route becomes eligible only after this packet validates and is locally checkpointed."
 
 allowed_reads:
@@ -53,9 +53,7 @@ allowed_reads:
     - "docs/architecture/sitewide-greenfield-foundation-contract.md"
     - "src/components/ProjectIntroduction.astro"
     - "src/lib/siteContent.ts"
-    - "src/pages/index.astro"
-    - "src/pages/physics/index.astro"
-    - "src/pages/physics/ontology/index.astro"
+    - "src/pages/physics/exact-gr-benchmark/index.astro"
     - "public/files/manifests/page_provenance.json"
     - "tests/test_public_positioning.py"
     - "scripts"
@@ -63,26 +61,28 @@ allowed_reads:
     - "local build preview and in app browser evidence"
     - "website and upstream read only Git evidence"
   upstream_source_repository:
-    - "github-facing/aether-flow-ontology-explainer.md"
-    - "ontology/aether-and-aether-flow.md"
-    - "ontology/README.md"
+    - "README.md"
+    - "github-facing/exact-gr-benchmark-boundary-explainer.md"
+    - "github-facing/aether-flow-physics-program-explainer.md"
+    - "research_control/design/gr_derivation_burden_map.md"
+    - "registries/DISTANCE_TO_GR_LEDGER.csv"
     - "registries/TEX_SOURCE_REGISTRY.csv"
     - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
 
 allowed_writes:
   website_repository:
-    - "src/pages/physics/ontology/index.astro"
+    - "src/pages/physics/exact-gr-benchmark/index.astro"
     - "tests/test_public_positioning.py"
     - "public/files/manifests/page_provenance.json"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260715-006.yaml"
-    - "implementation_control/tasks/WI-20260715-006/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260715-006/jobs/WJ-20260715-006-A.yaml"
     - "implementation_control/handoffs/WH-20260715-007.yaml"
-    - "implementation_control/handoffs/WH-20260715-007.md"
     - "implementation_control/tasks/WI-20260715-007/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260715-007/jobs/WJ-20260715-007-A.yaml"
-    - "implementation_control/tasks/WI-20260715-007/jobs/completions/WJC-20260715-007-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-008.yaml"
+    - "implementation_control/handoffs/WH-20260715-008.md"
+    - "implementation_control/tasks/WI-20260715-008/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-008/jobs/WJ-20260715-008-A.yaml"
+    - "implementation_control/tasks/WI-20260715-008/jobs/completions/WJC-20260715-008-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -91,13 +91,13 @@ approval_gates:
     reason: "The owner explicitly directed implementation of the sitewide project description rule."
   public_claim_changes:
     status: "approved"
-    reason: "Approval covers one source grounded ontology introduction under the technical writing quality gate."
+    reason: "Approval covers one source grounded benchmark introduction under the technical writing quality gate."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "No source refresh occurs and the introduction remains proportional to the accepted ontology explainer at the pinned source root."
+    reason: "No source refresh occurs and the introduction remains proportional to the accepted benchmark explainer at the pinned source root."
   broad_navigation_or_route_retirement:
     status: "approved"
-    reason: "Approval covers the bounded ontology page content change without route navigation or retirement changes."
+    reason: "Approval covers the bounded benchmark page content change without route navigation or retirement changes."
   shared_visual_systems:
     status: "not_required"
     reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
@@ -106,7 +106,7 @@ approval_gates:
     reason: "No public assets."
   public_manifest_authority_records:
     status: "approved"
-    reason: "Approval covers regeneration of ontology page provenance after the page source change."
+    reason: "Approval covers regeneration of benchmark page provenance after the page source change."
   git_push:
     status: "not_required"
     reason: "Push is outside this packet."
@@ -145,13 +145,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-ontology-introduction-review"
-    command: "manual inspection of the Physics ontology project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-benchmark-introduction-review"
+    command: "manual inspection of the exact GR benchmark project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "The paragraph cannot remain proportional to the accepted ontology explainer and project description."
-  - "Another route shared style vocabulary matrix navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph cannot remain proportional to the accepted benchmark explainer and project description."
+  - "Another route shared style status matrix navigation source notice asset or upstream source change becomes necessary."
   - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -159,30 +159,30 @@ stop_conditions:
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Create WJC-20260715-007-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
-
-handoff:
-  latest_handoff_id: "WH-20260715-007"
-  yaml_path: "implementation_control/handoffs/WH-20260715-007.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-007.md"
+  closeout: "Create WJC-20260715-008-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
 
 completion_record:
-  completion_id: "WJC-20260715-007-A"
-  path: "implementation_control/tasks/WI-20260715-007/jobs/completions/WJC-20260715-007-A.yaml"
+  completion_id: "WJC-20260715-008-A"
+  path: "implementation_control/tasks/WI-20260715-008/jobs/completions/WJC-20260715-008-A.yaml"
   status: "completed"
 
+handoff:
+  latest_handoff_id: "WH-20260715-008"
+  yaml_path: "implementation_control/handoffs/WH-20260715-008.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-008.md"
+
 next_recommended_action:
-  task_packet: "PHYSICS-ONTOLOGY-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-007-A and stop."
+  task_packet: "PHYSICS-BENCHMARK-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-008-A and stop."
   do_not_skip: "Do not enter other routes push deployment source refresh or upstream mutation."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T18:11:49Z"
-  previous_checkpoint: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
+  observed_utc: "2026-07-15T18:20:15Z"
+  previous_checkpoint: "75040468b8d81657050cc36cd37d336f9cf8c393"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 5
+  website_ahead_of_origin_main: 6
   website_worktree_status: "clean_before_packet_open"
   upstream_worktree_status: "clean"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
@@ -191,25 +191,16 @@ preflight_evidence:
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the ontology hero"
-  focused_tests: "passed 8 tests"
-  python_tests: "passed 133 tests"
+  project_introduction: "one substantial general public paragraph after the exact GR benchmark hero"
+  focused_tests: "passed 9 tests"
+  python_tests: "passed 134 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false
-
-checkpoint_evidence:
-  commit: "75040468b8d81657050cc36cd37d336f9cf8c393"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-008"
-  reason: "PHYSICS-ONTOLOGY-INTRO-01 was checkpointed before the separately bounded exact GR benchmark introduction packet opened."

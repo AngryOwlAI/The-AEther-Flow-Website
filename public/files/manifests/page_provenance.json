@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T18:15:14.504871+00:00",
+  "generated_at": "2026-07-15T18:25:17.427242+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -239,7 +239,7 @@
     {
       "route_path": "/physics/exact-gr-benchmark/",
       "local_page_source": "src/pages/physics/exact-gr-benchmark/index.astro",
-      "local_page_sha256": "a455991a82b92027ffc290cdd98dacbb35acfb50a0211289eb1e5dd09e4f30ff",
+      "local_page_sha256": "0917aa63760436fb3d3eb20b8145a9e277f836eac3489a9225aaca4e9db60069",
       "title": "Exact-GR Benchmark",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

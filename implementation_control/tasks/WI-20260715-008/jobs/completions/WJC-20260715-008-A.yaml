@@ -1,0 +1,140 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-008-A"
+task_id: "WI-20260715-008"
+job_id: "WJ-20260715-008-A"
+created_utc: "2026-07-15T18:27:51Z"
+completed_utc: "2026-07-15T18:27:51Z"
+status: "completed"
+
+summary: "Replaced the raw exact GR benchmark topic paragraph with a source grounded general public whole project introduction immediately after the hero."
+
+changed_files:
+  - "src/pages/physics/exact-gr-benchmark/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-007.yaml"
+  - "implementation_control/tasks/WI-20260715-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-007/jobs/WJ-20260715-007-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-008.yaml"
+  - "implementation_control/handoffs/WH-20260715-008.md"
+  - "implementation_control/tasks/WI-20260715-008/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-008/jobs/WJ-20260715-008-A.yaml"
+  - "implementation_control/tasks/WI-20260715-008/jobs/completions/WJC-20260715-008-A.yaml"
+
+source_context:
+  packet_id: "PHYSICS-BENCHMARK-INTRO-01"
+  previous_checkpoint: "75040468b8d81657050cc36cd37d336f9cf8c393"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  previous_checkpoint_replayed: false
+  dependency_satisfied: true
+
+implementation_evidence:
+  component: "The exact GR benchmark route reuses the checkpointed ProjectIntroduction component."
+  raw_intro_removed: true
+  paragraph_count: 1
+  introduction_position: "Immediately after the exact GR benchmark CommandBand hero and before comprehension content."
+  introduction_audience: "General public"
+  project_definition: "Two part foundational physics and governed human accountable AI research program"
+  route_connection: "The paragraph narrows from the whole project to the conservative exact GR observable scale reference."
+  scientific_boundary: "Benchmark adoption does not establish ontology derivation empirical deviation or promotion."
+  reader_outcome: "Readers are told to separate benchmark adoption ontology compatibility first principles derivation and human gated promotion."
+  status_matrices_changed: false
+  route_or_navigation_changed: false
+  shared_styles_changed: false
+  public_assets_changed: false
+  upstream_source_changed: false
+
+writing_quality_gate:
+  status: "passed"
+  audience: "General public"
+  source_basis: "Accepted exact GR benchmark boundary explainer and route source notice at source pin 57438af555214bc0785dcb390ee6254f580b8a62"
+  builder_pass: "The paragraph identifies the whole project first then defines the conservative exact GR benchmark its effective content and the reader outcome."
+  refuter_pass: "The paragraph preserves the no empirical deviation boundary and keeps adoption compatibility derivation and promotion distinct."
+  warning_matcher_command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/pages/physics/exact-gr-benchmark/index.astro"
+  warning_matcher_result: "passed with zero warning hits"
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Codex in app browser"
+  route: "http://127.0.0.1:4321/physics/exact-gr-benchmark/"
+  desktop_result: "One visible paragraph followed the hero and preceded comprehension content."
+  compact_result: "At the browser minimum 520 by 1125 CSS pixels the paragraph remained visible readable and within the viewport."
+  desktop_intro_width: 1180
+  compact_intro_width: 468
+  compact_paragraph_width: 436
+  paragraph_count: 1
+  document_horizontal_overflow: false
+  console_error_count: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-public-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py"
+    status: "passed"
+    evidence: "9 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "134 tests passed"
+  - id: "technical-writing-warning-gate"
+    command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/pages/physics/exact-gr-benchmark/index.astro"
+    status: "passed"
+    evidence: "Zero warning hits"
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 routes validated"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run quality"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "runtime-benchmark-introduction-review"
+    command: "manual inspection of the exact GR benchmark project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    status: "passed"
+    evidence: "Desktop and browser minimum 520 CSS pixel compact views passed with zero console errors"
+
+validation_environment:
+  disposable_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  source_tree_clean: true
+  upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
+  upstream_worktree_modified: false
+  source_refresh_performed: false
+
+remaining_boundaries:
+  - "The project description rollout beyond Home Physics overview Physics ontology and the exact GR benchmark requires later bounded packets."
+  - "Other planned Physics route introductions remain unchanged in this packet."
+  - "No shared style status matrix route navigation source notice public asset upstream push or deployment change occurred."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the twelve PHYSICS-BENCHMARK-INTRO-01 page test provenance transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "PHYSICS-BENCHMARK-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not enter another route push deployment source refresh or upstream mutation."

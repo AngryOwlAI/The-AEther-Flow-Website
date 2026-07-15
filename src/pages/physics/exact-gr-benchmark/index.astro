@@ -1,12 +1,15 @@
 ---
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../../lib/siteContent";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
+const benchmarkProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. This Exact-GR Benchmark page explains how the physics track uses ordinary general relativity as its conservative observable-scale reference: one operative Lorentzian metric, universal matter coupling, ordinary causal structure, and no claimed empirical deviation from GR. Adopting that effective benchmark does not mean the proposed Æther / Æther-Flow ontology has derived it from source-side variables. The page helps readers keep benchmark adoption, ontology compatibility, first-principles derivation, and human-gated promotion separate so that an effective-level result is not mistaken for foundational proof.";
 
 const benchmarkRows = [
   {
@@ -167,18 +170,10 @@ const benchmarkSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Exact-GR benchmark introduction">
-    <p>
-      The Exact-GR Benchmark page tells readers how to read ordinary general
-      relativity inside this project. The benchmark can be used as the
-      observable-scale reference package: one operative metric, ordinary
-      relativistic causality, and same-metric matter behavior. It does not
-      follow that the project has derived those structures from source-side
-      Æther-flow ontology, discharged the matter-coupling burden, recovered
-      Einstein equations, or promoted the benchmark through a protected gate.
-    </p>
-  </section>
-
+  <ProjectIntroduction
+    text={benchmarkProjectIntroduction}
+    ariaLabel="About The Æther Flow Project and the exact GR benchmark"
+  />
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsExactGrBenchmark} />
 
