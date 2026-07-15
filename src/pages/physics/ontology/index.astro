@@ -2,6 +2,7 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import OverflowTable from "../../../components/OverflowTable.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import TermCardGrid from "../../../components/TermCardGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
@@ -9,6 +10,8 @@ import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../..
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsOntology;
+const ontologyProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. This Ontology page explains the physics track's proposed vocabulary: Æther as a deeper substrate, Æther-flow as ordered motion, observed space as an observer-accessible appearance, S-time as the order of change, and expansion and gravity terms as interpretations within that model. These terms help readers understand what the project proposes, but they do not supply the missing mathematical bridge, derive general relativity, or establish an empirical prediction. The page therefore separates conceptual orientation from the equations, benchmark evidence, and source records required for stronger claims.";
 
 const vocabularyRows = [
   {
@@ -159,17 +162,10 @@ const ontologySvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Ontology introduction">
-    <p>
-      Æther-flow ontology gives the project its working vocabulary: Æther as
-      proposed deeper substrate, Æther-flow as ordered motion, observed space
-      as observer-accessible appearance, S-time as order of change, observed
-      expansion as interpreted appearance, and gravity-language as heuristic
-      reorganization. Those terms orient the reader, but they do not complete
-      the source-side mathematical bridge, force general relativity, or create
-      an empirical prediction.
-    </p>
-  </section>
+  <ProjectIntroduction
+    text={ontologyProjectIntroduction}
+    ariaLabel="About The Æther Flow Project and ontology"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsOntology} />

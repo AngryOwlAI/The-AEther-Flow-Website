@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-006"
 created_utc: "2026-07-15T18:01:15Z"
-updated_utc: "2026-07-15T18:08:22Z"
-status: "active"
+updated_utc: "2026-07-15T18:11:49Z"
+status: "superseded"
 
 task_id: "WI-20260715-006"
 job_id: "WJ-20260715-006-A"
@@ -48,12 +48,19 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-006-A"
   path: "implementation_control/tasks/WI-20260715-006/jobs/completions/WJC-20260715-006-A.yaml"
   status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260715-007"
+  task_id: "WI-20260715-007"
+  job_id: "WJ-20260715-007-A"
+  checkpoint: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
+  reason: "PHYSICS-INTRO-01 was checkpointed before the separately bounded Physics ontology introduction packet opened."

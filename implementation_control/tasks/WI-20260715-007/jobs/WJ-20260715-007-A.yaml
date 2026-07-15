@@ -1,47 +1,47 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-006-A"
-task_id: "WI-20260715-006"
-title: "Implement Physics Overview Project Introduction"
-created_utc: "2026-07-15T18:01:15Z"
-updated_utc: "2026-07-15T18:11:49Z"
-status: "superseded"
+job_id: "WJ-20260715-007-A"
+task_id: "WI-20260715-007"
+title: "Implement Physics Ontology Project Introduction"
+created_utc: "2026-07-15T18:11:49Z"
+updated_utc: "2026-07-15T18:17:01Z"
+status: "active"
 
-objective: "Render one quality gated general public project introduction immediately after the Physics overview hero."
+objective: "Render one quality gated general public project introduction immediately after the Physics ontology hero."
 
 execution_boundary:
-  invocation_limit: "one bounded PHYSICS-INTRO-01 packet"
-  packet_id: "PHYSICS-INTRO-01"
-  previous_checkpoint: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  invocation_limit: "one bounded PHYSICS-ONTOLOGY-INTRO-01 packet"
+  packet_id: "PHYSICS-ONTOLOGY-INTRO-01"
+  previous_checkpoint: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
   previous_checkpoint_replay_status: "forbidden"
-  public_claim_write_status: "approved only for the reviewed Physics overview introduction"
+  public_claim_write_status: "approved only for the reviewed ontology introduction"
   route_and_navigation_write_status: "forbidden"
-  other_page_family_status: "forbidden"
+  other_route_status: "forbidden"
   upstream_write_status: "forbidden"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website and read only evidence allowlisted by WI-20260715-006"
+  - "website and upstream read only evidence allowlisted by WI-20260715-007"
 
 allowed_writes:
-  - "src/pages/physics/index.astro"
+  - "src/pages/physics/ontology/index.astro"
   - "tests/test_public_positioning.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-005.yaml"
-  - "implementation_control/tasks/WI-20260715-005/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-005/jobs/WJ-20260715-005-A.yaml"
   - "implementation_control/handoffs/WH-20260715-006.yaml"
-  - "implementation_control/handoffs/WH-20260715-006.md"
   - "implementation_control/tasks/WI-20260715-006/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-006/jobs/WJ-20260715-006-A.yaml"
-  - "implementation_control/tasks/WI-20260715-006/jobs/completions/WJC-20260715-006-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-007.yaml"
+  - "implementation_control/handoffs/WH-20260715-007.md"
+  - "implementation_control/tasks/WI-20260715-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-007/jobs/WJ-20260715-007-A.yaml"
+  - "implementation_control/tasks/WI-20260715-007/jobs/completions/WJC-20260715-007-A.yaml"
 
 required_outputs:
-  - "One substantial ProjectIntroduction paragraph follows the Physics overview hero."
-  - "The paragraph identifies the two part project and then explains the Physics track."
-  - "The paragraph preserves benchmark completion open derivation and current nonclaim boundaries."
+  - "One substantial ProjectIntroduction paragraph replaces the raw ontology intro section."
+  - "The paragraph identifies the two part project before explaining ontology vocabulary."
+  - "The paragraph preserves proposed ontology open mathematics and nonprediction boundaries."
   - "The paragraph tells a general reader what the route helps distinguish."
   - "Focused tests provenance build aggregate quality and responsive browser review pass."
 
@@ -51,13 +51,13 @@ approval_gates:
     trigger: "Owner directed implementation of the sitewide project description rule."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "One reviewed Physics overview introduction only."
+    trigger: "One reviewed ontology introduction only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
-    trigger: "No source refresh and wording remains proportional to the accepted public claim surface."
+    trigger: "No source refresh and wording remains proportional to the accepted ontology explainer."
   - id: "broad_navigation_or_route_retirement"
     status: "approved"
-    trigger: "Bounded Physics overview page content change without route navigation or retirement changes."
+    trigger: "Bounded ontology page content change without route navigation or retirement changes."
   - id: "shared_visual_systems"
     status: "not_required"
     trigger: "Reuse the existing ProjectIntroduction component without style changes."
@@ -66,7 +66,7 @@ approval_gates:
     trigger: "No public assets."
   - id: "public_manifest_authority_records"
     status: "approved"
-    trigger: "Physics overview provenance regeneration only."
+    trigger: "Ontology provenance regeneration only."
   - id: "git_push"
     status: "not_required"
     trigger: "Any remote push."
@@ -105,16 +105,16 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-physics-introduction-review"
-    command: "manual inspection of the Physics overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ontology-introduction-review"
+    command: "manual inspection of the Physics ontology project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
   - "The draft cannot remain source proportional."
-  - "A child route shared style route navigation claim ladder source notice asset or upstream source change becomes necessary."
+  - "Another route shared style vocabulary matrix navigation source notice asset or upstream source change becomes necessary."
   - "The paragraph is not one substantial post hero paragraph or fails responsive review."
   - "A required validator or browser review fails."
-  - "Work enters another route family push deployment source refresh or upstream mutation scope."
+  - "Work enters another route push deployment source refresh or upstream mutation scope."
 
 checkpoint:
   command: "npm run checkpoint:implementation"
@@ -123,33 +123,24 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-006-A"
-  path: "implementation_control/tasks/WI-20260715-006/jobs/completions/WJC-20260715-006-A.yaml"
+  completion_id: "WJC-20260715-007-A"
+  path: "implementation_control/tasks/WI-20260715-007/jobs/completions/WJC-20260715-007-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "PHYSICS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-006-A and stop."
-  do_not_skip: "Do not enter another page family before this packet checkpoints."
+  task_packet: "PHYSICS-ONTOLOGY-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-007-A and stop."
+  do_not_skip: "Do not enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Physics overview hero"
-  focused_tests: "passed 7 tests"
-  python_tests: "passed 132 tests"
+  project_introduction: "one substantial general public paragraph after the ontology hero"
+  focused_tests: "passed 8 tests"
+  python_tests: "passed 133 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-007"
-  reason: "The completed Physics overview introduction job was checkpointed before PHYSICS-ONTOLOGY-INTRO-01 activation."
+  checkpoint_status: "ready"

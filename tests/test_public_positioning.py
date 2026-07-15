@@ -8,6 +8,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 HOME_PAGE = REPO_ROOT / "src/pages/index.astro"
 PHYSICS_PAGE = REPO_ROOT / "src/pages/physics/index.astro"
+PHYSICS_ONTOLOGY_PAGE = REPO_ROOT / "src/pages/physics/ontology/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -152,6 +153,27 @@ def test_physics_overview_has_a_general_public_project_introduction_after_the_he
     positioning = source.index('class="track-page-band public-positioning-sequence"', introduction)
 
     assert hero < introduction < positioning
+
+
+def test_physics_ontology_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = PHYSICS_ONTOLOGY_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "proposed vocabulary" in source
+    assert "do not supply the missing mathematical bridge" in source
+    assert "derive general relativity" in source
+    assert "establish an empirical prediction" in source
+    assert "separates conceptual orientation" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Ontology introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
 
 
 def test_route_metadata_is_source_safe_and_route_local() -> None:

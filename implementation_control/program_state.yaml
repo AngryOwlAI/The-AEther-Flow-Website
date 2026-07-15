@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T18:08:22Z"
+updated_utc: "2026-07-15T18:17:01Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-006/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-006/jobs/WJ-20260715-006-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-006.yaml"
+  - "implementation_control/tasks/WI-20260715-007/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-007/jobs/WJ-20260715-007-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-007.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,28 +25,28 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-006"
-  title: "Add Physics Overview Project Introduction"
+  task_id: "WI-20260715-007"
+  title: "Normalize Physics Ontology Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-006/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-007/00_TASK.yaml"
   planning_context:
-    task_packet: "PHYSICS-INTRO-01"
+    task_packet: "PHYSICS-ONTOLOGY-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "2fb34853f48394bf8492effecc174d6b32289c5c"
+    previous_checkpoint: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-006-A"
+  job_id: "WJ-20260715-007-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-006/jobs/WJ-20260715-006-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-007/jobs/WJ-20260715-007-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-006"
+  handoff_id: "WH-20260715-007"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-006.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-006.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-007.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-007.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -76,27 +76,27 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-physics-introduction-review"
-    command: "manual inspection of the Physics overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ontology-introduction-review"
+    command: "manual inspection of the Physics ontology project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PHYSICS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-006-A and stop."
-  do_not_skip: "Do not enter other page families push deploy refresh sources or mutate upstream."
+  task_packet: "PHYSICS-ONTOLOGY-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-007-A and stop."
+  do_not_skip: "Do not enter other Physics routes page families push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T18:01:15Z"
-  previous_checkpoint: "2fb34853f48394bf8492effecc174d6b32289c5c"
+  observed_utc: "2026-07-15T18:11:49Z"
+  previous_checkpoint: "4c0da7ac7d9ab0220cc7f537d8dd471b391fdfce"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 4
+  website_ahead_of_origin_main: 5
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "HOME-STATUS-01 checkpoint observed as HEAD"
+  dependency_status: "PHYSICS-INTRO-01 checkpoint observed as HEAD"
   upstream_worktree_status: "clean"
   source_refresh_status: "not performed"
 
@@ -104,9 +104,9 @@ implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Physics overview hero"
-  focused_tests: "passed 7 tests"
-  python_tests: "passed 132 tests"
+  project_introduction: "one substantial general public paragraph after the ontology hero"
+  focused_tests: "passed 8 tests"
+  python_tests: "passed 133 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
