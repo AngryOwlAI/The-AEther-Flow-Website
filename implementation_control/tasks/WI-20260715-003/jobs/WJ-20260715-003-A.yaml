@@ -4,8 +4,8 @@ job_id: "WJ-20260715-003-A"
 task_id: "WI-20260715-003"
 title: "Increase And Verify Desktop Navigation Targets"
 created_utc: "2026-07-15T15:50:54Z"
-updated_utc: "2026-07-15T15:57:47Z"
-status: "active"
+updated_utc: "2026-07-15T17:21:57Z"
+status: "superseded"
 
 objective: "Apply one non compact 44 CSS pixel target size rule to existing desktop navigation controls and verify current page and Escape behavior remain unchanged."
 
@@ -124,7 +124,7 @@ next_recommended_action:
   do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   desktop_target_height: "44 CSS pixels"
   focused_navigation_tests: "passed 4 tests"
   python_tests: "passed 130 tests"
@@ -134,4 +134,13 @@ implementation_status:
   runtime_desktop_navigation_review: "passed"
   compact_target_isolation_review: "passed"
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-004"
+  reason: "The completed desktop navigation job was checkpointed before the Home introduction and order packet opened."

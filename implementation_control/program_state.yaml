@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T15:57:47Z"
+updated_utc: "2026-07-15T17:33:43Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,12 +9,12 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-003.yaml"
+  - "implementation_control/tasks/WI-20260715-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-004/jobs/WJ-20260715-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-004.yaml"
   - "current_git_state_and_validator_output"
-  - "owner authorized FE-P1-04 desktop navigation target implementation after the FE-P1-03R checkpoint"
-  - "ImplementationPlans/recomendation_frontend.md as routing context"
+  - "owner authorized the Home introduction and section order implementation after reviewing the local browser"
+  - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
   - "memory_and_conversation_summaries_as_navigation_only"
 
 repository_boundary:
@@ -25,28 +25,28 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-003"
-  title: "Enlarge Desktop Navigation Targets"
+  task_id: "WI-20260715-004"
+  title: "Add Home Introduction And Repair Section Order"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-004/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P1-04"
-    adopted_plan: "ImplementationPlans/recomendation_frontend.md"
-    adopted_sha256: "a411572bc425fb705a1838a707f8030f8a2d637d68c6d6b6c4d11da7ec57c73c"
-    previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+    task_packet: "HOME-INTRO-01"
+    adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
+    previous_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly directed opening and executing a fresh FE-P1-04 packet without replaying the completed FE-P1-03R checkpoint on 2026-07-15."
+    owner_authorization: "Owner explicitly directed implementation of the approved Home and sitewide introduction plan on 2026-07-15."
 
 current_job:
-  job_id: "WJ-20260715-003-A"
+  job_id: "WJ-20260715-004-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-004/jobs/WJ-20260715-004-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-003"
+  handoff_id: "WH-20260715-004"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-003.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-003.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-004.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-004.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -58,6 +58,15 @@ required_validators:
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required_for_current_job: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required_for_current_job: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required_for_current_job: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required_for_current_job: true
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
@@ -67,41 +76,43 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-desktop-navigation-review"
-    command: "manual inspection of desktop target dimensions current state Escape closing and focus return in a headed browser"
+  - id: "runtime-home-order-review"
+    command: "manual inspection of Home introduction section order terminal source authority and responsive reading flow in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P1-04 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-003-A against the accepted clean source pin and stop."
-  do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
+  task_packet: "HOME-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-004-A and stop."
+  do_not_skip: "Do not enter HOME-STATUS-01 the sitewide rollout push deployment source refresh or upstream mutation."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T15:50:54Z"
-  previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  observed_utc: "2026-07-15T17:21:57Z"
+  previous_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 1
+  website_ahead_of_origin_main: 2
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "FE-P1-03R checkpoint observed as HEAD"
+  dependency_status: "Desktop navigation checkpoint observed as HEAD"
+  upstream_worktree_status: "clean"
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
-  desktop_target_height: "44 CSS pixels"
-  focused_navigation_tests: "passed 4 tests"
-  python_tests: "passed 130 tests"
+  introduction_component: "created"
+  home_introduction: "passed technical writing quality gate"
+  home_section_order: "passed source and runtime review"
+  focused_tests: "passed 11 tests"
+  python_tests: "passed 131 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
-  runtime_desktop_navigation_review: "passed"
-  compact_target_isolation_review: "passed with existing 32 CSS pixel inner targets unchanged"
+  runtime_home_order_review: "passed at desktop and 500 CSS pixel compact widths"
   completion_created: true
   checkpoint_status: "ready_to_checkpoint"
 
 latest_completion:
-  completion_id: "WJC-20260715-003-A"
-  path: "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+  completion_id: "WJC-20260715-004-A"
+  path: "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
   status: "completed"

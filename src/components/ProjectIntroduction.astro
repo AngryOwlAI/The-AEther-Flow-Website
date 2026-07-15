@@ -1,0 +1,25 @@
+---
+interface Props {
+  text: string;
+  ariaLabel?: string;
+  className?: string;
+}
+
+const {
+  text,
+  ariaLabel = "About the Æther Flow Project",
+  className = "greenfield-intro-panel",
+} = Astro.props;
+
+if (!text.trim()) {
+  throw new Error("ProjectIntroduction requires a nonempty paragraph.");
+}
+---
+
+<section
+  class={`project-introduction ${className}`.trim()}
+  aria-label={ariaLabel}
+  data-project-introduction
+>
+  <p>{text}</p>
+</section>

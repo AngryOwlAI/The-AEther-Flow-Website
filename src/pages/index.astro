@@ -1,6 +1,7 @@
 ---
 import CommandBand from "../components/CommandBand.astro";
 import EvidenceRail from "../components/EvidenceRail.astro";
+import ProjectIntroduction from "../components/ProjectIntroduction.astro";
 import ProjectStatusStrip from "../components/ProjectStatusStrip.astro";
 import SourceAuthoritySection from "../components/SourceAuthoritySection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -52,6 +53,8 @@ const homePositioningSteps = [
 ] as const;
 const homeCurrentResult = homeClaimByState.get("complete-effective")!;
 const homeOpenFoundation = homeClaimByState.get("open-foundational")!;
+const homeProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed use of AI in research. Its physics track explores a proposed way to interpret space, time, and gravity while keeping general relativity as the exact benchmark for observable gravity. Its AI track develops a human-accountable process for organizing, checking, and reviewing the work. The project has not derived general relativity from its proposed underlying model; that remains an open research problem, and the project does not claim a verified new law of gravity.";
 const homeStatusItems = [
   {
     id: "exact-closure",
@@ -351,6 +354,8 @@ const agentMap = `
     </Fragment>
   </CommandBand>
 
+  <ProjectIntroduction text={homeProjectIntroduction} className="home-intro-panel" />
+
   <ProjectStatusStrip items={homeStatusItems} />
 
   <section
@@ -385,8 +390,6 @@ const agentMap = `
     ))}
   </section>
 
-  <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
-
   <nav class="home-action-row" aria-label="Homepage primary actions">
     <a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>
     <a class="secondary-link" href="/physics/">Physics</a>
@@ -417,33 +420,6 @@ const agentMap = `
         </figure>
       </div>
     </Fragment>
-  </CommandBand>
-
-
-  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.home} />
-
-  <CommandBand
-    id="project-capabilities"
-    className="overview-panel overview-command-band"
-    eyebrow="Reader capability routes"
-    title="Choose the route that matches your question."
-    lead="The greenfield navigation model gives readers three practical choices: inspect the physics research, inspect the AI research system, or use the resources layer for source authority and supporting materials."
-  >
-    <EvidenceRail
-      items={readerCapabilityRoutes.map((route) => ({
-        ...route,
-        actionLabel: "Open route",
-      }))}
-      ariaLabel="Reader capability routes"
-      className="overview-capability-rail"
-      ordered
-    />
-    <p class="capability-boundary-note">
-      These routes help readers follow the project, inspect documents, and
-      understand workflow. They do not create scientific authority, prove a GR
-      derivation, adopt a physics candidate, or replace upstream source
-      records.
-    </p>
   </CommandBand>
 
   <CommandBand
@@ -478,5 +454,34 @@ const agentMap = `
       </figure>
     </Fragment>
   </CommandBand>
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.home} />
+
+  <CommandBand
+    id="project-capabilities"
+    className="overview-panel overview-command-band"
+    eyebrow="Reader capability routes"
+    title="Choose the route that matches your question."
+    lead="The greenfield navigation model gives readers three practical choices: inspect the physics research, inspect the AI research system, or use the resources layer for source authority and supporting materials."
+  >
+    <EvidenceRail
+      items={readerCapabilityRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Reader capability routes"
+      className="overview-capability-rail"
+      ordered
+    />
+    <p class="capability-boundary-note">
+      These routes help readers follow the project, inspect documents, and
+      understand workflow. They do not create scientific authority, prove a GR
+      derivation, adopt a physics candidate, or replace upstream source
+      records.
+    </p>
+  </CommandBand>
+
+  <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
 
 </BaseLayout>

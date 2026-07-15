@@ -8,6 +8,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 HOME_PAGE = REPO_ROOT / "src/pages/index.astro"
 PHYSICS_PAGE = REPO_ROOT / "src/pages/physics/index.astro"
+PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
 EXPECTED_STATE_ORDER = [
@@ -84,10 +85,54 @@ def test_routes_encode_the_authorized_positive_content_order() -> None:
         assert positions == sorted(positions)
         assert 'get("not-claimed")' in sequence
 
-        rendered_sequence = source.index(f"{{{prefix}PositioningSteps.map")
-        evidence = source.index("<SourceAuthoritySection", rendered_sequence)
-        route_navigation = source.index("<ComprehensionBlocks", evidence)
-        assert rendered_sequence < evidence < route_navigation
+    physics = PHYSICS_PAGE.read_text(encoding="utf-8")
+    rendered_sequence = physics.index("{physicsPositioningSteps.map")
+    evidence = physics.index("<SourceAuthoritySection", rendered_sequence)
+    route_navigation = physics.index("<ComprehensionBlocks", evidence)
+    assert rendered_sequence < evidence < route_navigation
+
+
+def test_home_introduction_and_requested_section_order_are_explicit() -> None:
+    source = HOME_PAGE.read_text(encoding="utf-8")
+    component = PROJECT_INTRODUCTION.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "exact benchmark for observable gravity" in source
+    assert "human-accountable process" in source
+    assert "remains an open research problem" in source
+    assert "does not claim a verified new law of gravity" in source
+
+    assert "ProjectIntroduction requires a nonempty paragraph." in component
+    assert "data-project-introduction" in component
+    assert "<p>{text}</p>" in component
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    status = source.index("<ProjectStatusStrip", introduction)
+    positioning = source.index('aria-labelledby="home-positioning-title"', status)
+    actions = source.index('class="home-action-row"', positioning)
+    tracks = source.index('id="overview-paths"', actions)
+    ontology = source.index('id="ontology-and-gr"', tracks)
+    comprehension = source.index("<ComprehensionBlocks", ontology)
+    capabilities = source.index('id="project-capabilities"', comprehension)
+    source_authority = source.rindex("<SourceAuthoritySection")
+    layout_end = source.index("</BaseLayout>", source_authority)
+
+    assert (
+        hero
+        < introduction
+        < status
+        < positioning
+        < actions
+        < tracks
+        < ontology
+        < comprehension
+        < capabilities
+        < source_authority
+        < layout_end
+    )
 
 
 def test_route_metadata_is_source_safe_and_route_local() -> None:

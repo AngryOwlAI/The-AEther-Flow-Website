@@ -1,0 +1,149 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-004-A"
+task_id: "WI-20260715-004"
+title: "Implement Home Introduction And Section Order"
+created_utc: "2026-07-15T17:21:57Z"
+updated_utc: "2026-07-15T17:33:43Z"
+status: "active"
+
+objective: "Render the reviewed general public Home introduction after the hero and place the requested Home sections in their reader approved order."
+
+execution_boundary:
+  invocation_limit: "one bounded HOME-INTRO-01 packet"
+  packet_id: "HOME-INTRO-01"
+  previous_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  previous_checkpoint_replay_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Home introduction"
+  route_and_navigation_write_status: "forbidden"
+  status_list_write_status: "forbidden"
+  sitewide_rollout_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and read only evidence allowlisted by WI-20260715-004"
+
+allowed_writes:
+  - "src/components/ProjectIntroduction.astro"
+  - "src/pages/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-003.yaml"
+  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-004.yaml"
+  - "implementation_control/handoffs/WH-20260715-004.md"
+  - "implementation_control/tasks/WI-20260715-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-004/jobs/WJ-20260715-004-A.yaml"
+  - "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
+
+required_outputs:
+  - "One general public project introduction appears immediately after the Home hero."
+  - "The five state status surface follows the introduction."
+  - "Ontology and GR immediately follows Two first class tracks."
+  - "Source authority is the final substantive Home section before the footer."
+  - "The introduction receives a technical writing pass against accepted Home source statements."
+  - "Focused tests provenance validators build aggregate quality and browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the approved plan."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "One reviewed Home introduction only."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh and validation uses the accepted source pin."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Home section order only without routes or navigation changes."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One reusable prose only introduction component using existing styles."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Home page provenance regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-home-order-review"
+    command: "manual inspection of Home introduction section order terminal source authority and responsive reading flow in the in app browser"
+    required: true
+
+stop_conditions:
+  - "A reviewed claim boundary cannot support the introduction."
+  - "A route navigation ladder registry source notice asset or upstream source change becomes necessary."
+  - "Work enters status list sitewide rollout push deployment source refresh or upstream mutation scope."
+  - "A required validator or browser review fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-004-A"
+  path: "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOME-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-004-A and stop."
+  do_not_skip: "Do not enter HOME-STATUS-01 or any later packet before this packet checkpoints."
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  introduction_component: "created"
+  home_section_order: "passed source and runtime review"
+  focused_tests: "passed 11 tests"
+  python_tests: "passed 131 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_home_order_review: "passed at desktop and 500 CSS pixel compact widths"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"

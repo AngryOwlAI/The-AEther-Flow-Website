@@ -1,0 +1,134 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-004-A"
+task_id: "WI-20260715-004"
+job_id: "WJ-20260715-004-A"
+created_utc: "2026-07-15T17:33:43Z"
+completed_utc: "2026-07-15T17:33:43Z"
+status: "completed"
+
+summary: "Added a source grounded general public Home introduction and placed the requested Home sections in their reader approved order."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-003.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-004.yaml"
+  - "implementation_control/handoffs/WH-20260715-004.md"
+  - "implementation_control/tasks/WI-20260715-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-004/jobs/WJ-20260715-004-A.yaml"
+  - "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
+  - "src/components/ProjectIntroduction.astro"
+  - "src/pages/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+
+source_context:
+  packet_id: "HOME-INTRO-01"
+  previous_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  previous_checkpoint_replayed: false
+  dependency_satisfied: true
+
+implementation_evidence:
+  introduction_component: "Reusable ProjectIntroduction renders one nonempty paragraph inside one labelled section."
+  introduction_position: "Immediately after the Home hero and before project status."
+  introduction_audience: "General public"
+  introduction_subject: "Two part foundational physics and governed AI research program"
+  scientific_boundary: "General relativity remains the exact observable benchmark while first principles derivation remains open and no verified new gravity law is claimed."
+  ontology_position: "Immediately after Two first class tracks."
+  source_authority_position: "Final substantive Home section before the footer."
+  existing_home_content_changed: false
+  status_presentation_changed: false
+  route_or_navigation_changed: false
+  public_assets_changed: false
+  upstream_source_changed: false
+
+writing_quality_gate:
+  status: "passed"
+  audience: "General public"
+  source_basis: "Accepted Home route sources and public claim ladder at source pin 57438af555214bc0785dcb390ee6254f580b8a62"
+  builder_pass: "The paragraph identifies the project and its two research tracks before adding mechanisms and boundaries."
+  refuter_pass: "The paragraph preserves the open derivation boundary the general relativity benchmark the human accountability boundary and the absence of a verified new gravity law claim."
+  warning_matcher_command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/components/ProjectIntroduction.astro src/pages/index.astro"
+  warning_matcher_result: "passed with zero warning hits"
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Codex in app browser"
+  route: "http://127.0.0.1:4321/"
+  desktop_result: "Introduction visible as one paragraph after the hero Ontology and GR follows Two first class tracks and Source authority is last."
+  compact_result: "At the browser minimum 500 CSS pixel width the introduction remained readable within the viewport and Source authority remained last."
+  measured_section_order: "hero introduction status positioning actions tracks ontology comprehension capabilities source authority"
+  source_authority_is_last: true
+  console_error_count: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-public-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py tests/test_project_status_strip.py"
+    status: "passed"
+    evidence: "11 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "131 tests passed"
+  - id: "technical-writing-warning-gate"
+    command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/components/ProjectIntroduction.astro src/pages/index.astro"
+    status: "passed"
+    evidence: "Zero warning hits"
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "34 routes validated"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run quality"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "runtime-home-order-review"
+    command: "manual inspection of Home introduction section order terminal source authority and responsive reading flow in the in app browser"
+    status: "passed"
+    evidence: "Desktop and 500 CSS pixel compact views passed with zero console errors"
+
+validation_environment:
+  disposable_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  source_tree_clean: true
+  upstream_worktree_modified: false
+
+remaining_boundaries:
+  - "The five state status list conversion remains reserved for HOME-STATUS-01."
+  - "The introduction rollout beyond Home requires later bounded packets."
+  - "No route navigation claim ladder registry source notice link public asset upstream push or deployment change occurred."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the thirteen HOME-INTRO-01 implementation test provenance transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "HOME-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not enter HOME-STATUS-01 the sitewide rollout push deployment source refresh or upstream mutation."

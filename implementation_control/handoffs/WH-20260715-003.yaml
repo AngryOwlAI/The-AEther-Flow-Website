@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-003"
 created_utc: "2026-07-15T15:50:54Z"
-updated_utc: "2026-07-15T15:57:47Z"
-status: "active"
+updated_utc: "2026-07-15T17:21:57Z"
+status: "superseded"
 
 task_id: "WI-20260715-003"
 job_id: "WJ-20260715-003-A"
@@ -48,11 +48,18 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-003-A"
   path: "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
   status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260715-004"
+  task_id: "WI-20260715-004"
+  job_id: "WJ-20260715-004-A"
+  checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  reason: "The completed desktop navigation packet was checkpointed before the separately authorized Home packet opened."
