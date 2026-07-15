@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T22:15:57.872691+00:00",
+  "generated_at": "2026-07-15T22:25:21.498873+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -2314,7 +2314,7 @@
     {
       "route_path": "/resources/publication-process/",
       "local_page_source": "src/pages/resources/publication-process/index.astro",
-      "local_page_sha256": "5f9725cf5d36c99a39cd7a30d1b903727810c419e077bc1bd721d546dedf037b",
+      "local_page_sha256": "df8e05dbce5d7dff6648d7de87c4c7bcc07d0334d4f2929323e39c432a7d135d",
       "title": "Publication Process",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

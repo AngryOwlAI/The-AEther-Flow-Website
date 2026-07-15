@@ -1,0 +1,220 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-028"
+title: "Normalize Resources Publication Process Project Introduction"
+created_utc: "2026-07-15T22:21:25Z"
+updated_utc: "2026-07-15T22:28:16Z"
+status: "active"
+
+source_context:
+  packet_id: "RESOURCES-PUBLICATION-PROCESS-INTRO-01"
+  adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
+  previous_task: "WI-20260715-027"
+  previous_checkpoint: "7298053f9554a9963325fed78aa25e8b07f4b3f2"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  relevant_source_parity: "All four present route provenance sources are byte identical between accepted pin and live upstream and the two declared manifest omissions are unchanged."
+  owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
+
+goal: "Replace the raw Publication Process topic paragraph with one source grounded whole project introduction immediately after the hero."
+
+requirements:
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Publication Process hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to publication."
+  - "Keep general relativity as the exact observable benchmark while the proposed foundation and first principles derivation remain open."
+  - "Explain publication as the governed conversion of source bounded material into readable public surfaces without changing claim authority."
+  - "Explain the chain from canonical source or registry through source specification publication brief generated Markdown tracked HTML and website page."
+  - "Distinguish the source specification claim basis and constraints from the publication brief reader job visual strategy acceptance criteria and forbidden patterns."
+  - "Explain parity as shared source basis authority boundary and core claims while allowing medium specific structure."
+  - "Explain that page type and visual strategy follow the reader job and subject rather than a universal template."
+  - "Explain brief review source spec parity screenshot QA and validator PASS as bounded publication evidence with distinct limits."
+  - "Explain that provenance paths registry rows manifests hashes and review records make the chain auditable without proving correctness."
+  - "State that no publication brief source spec derivative manifest hash validator PASS screenshot review receipt AI output or webpage independently proves physics or promotes a claim."
+  - "Preserve all existing publication chain validation page type related route diagram and contextual boundary content."
+
+scope:
+  in_scope:
+    - "Publication Process introduction and component reuse in src/pages/resources/publication-process/index.astro"
+    - "Focused source and order assertions in tests/test_public_positioning.py"
+    - "Publication Process page provenance regeneration against the accepted source pin"
+    - "Current implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Publication chain validation or page type table mechanics"
+    - "Dedicated SourceAuthoritySection rendering on a Resources page"
+    - "Other Resources route introductions"
+    - "Shared component style route navigation public asset or upstream source changes"
+    - "Git push Cloudflare deployment source refresh derivative regeneration or upstream writes"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-028-A"
+  next_packet_after_this_task: "The Library introduction becomes eligible only after this packet validates and is locally checkpointed."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/content-dossiers/source-authority/dossier.md"
+    - "src/components/ProjectIntroduction.astro"
+    - "src/lib/siteContent.ts"
+    - "src/pages/resources/publication-process/index.astro"
+    - "public/files/manifests/page_provenance.json"
+    - "tests/test_public_positioning.py"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "README.md"
+    - "github-facing/project-overview-explainer.md"
+    - "github-facing/documentation-curator-publication-process-explainer.md"
+    - "research_control/design/documentation_curator_publication_process.md"
+    - "markdown/publication-briefs/README.md"
+    - "registries/PUBLICATION_BRIEF_REGISTRY.csv"
+    - "declared missing page route map and page provenance manifest paths"
+
+allowed_writes:
+  website_repository:
+    - "src/pages/resources/publication-process/index.astro"
+    - "tests/test_public_positioning.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-027.yaml"
+    - "implementation_control/tasks/WI-20260715-027/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-027/jobs/WJ-20260715-027-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-028.yaml"
+    - "implementation_control/handoffs/WH-20260715-028.md"
+    - "implementation_control/tasks/WI-20260715-028/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-028/jobs/WJ-20260715-028-A.yaml"
+    - "implementation_control/tasks/WI-20260715-028/jobs/completions/WJC-20260715-028-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed implementation of the sitewide project description rule."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval covers one source grounded Publication Process introduction under the technical writing quality gate."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "The accepted pin remains clean and all present route sources match live upstream."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers the bounded Publication Process page content change without route navigation or retirement changes."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval covers regeneration of Publication Process page provenance after the page source change."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-publication-process-introduction-review"
+    command: "manual inspection of the Resources Publication Process project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The paragraph cannot remain proportional to the accepted project overview publication process brief registry and dossier evidence."
+  - "A publication table review mechanic related route shared style navigation asset derivative or upstream source change becomes necessary."
+  - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
+  - "A required validator or browser review fails."
+  - "Work enters another route push deployment source refresh derivative regeneration or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-028-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-028"
+  yaml_path: "implementation_control/handoffs/WH-20260715-028.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-028.md"
+
+completion_record:
+  completion_id: "WJC-20260715-028-A"
+  path: "implementation_control/tasks/WI-20260715-028/jobs/completions/WJC-20260715-028-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-PUBLICATION-PROCESS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not change publication tables or enter Library."
+
+preflight_evidence:
+  status: "passed_with_exact_source_parity_and_manifest_omissions_unchanged"
+  observed_utc: "2026-07-15T22:21:25Z"
+  previous_checkpoint: "7298053f9554a9963325fed78aa25e8b07f4b3f2"
+  previous_checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 26
+  website_worktree_status: "clean_before_packet_open"
+  accepted_source_worktree_status: "clean"
+  upstream_worktree_status: "clean"
+  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  relevant_source_parity_status: "four present route sources unchanged and two declared upstream manifest omissions unchanged"
+  source_refresh_status: "not performed"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Publication Process hero"
+  focused_tests: "passed 29 tests"
+  python_tests: "passed 154 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"
+  push_performed: false
+  deployment_performed: false

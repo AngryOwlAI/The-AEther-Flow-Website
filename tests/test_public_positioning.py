@@ -51,6 +51,9 @@ RESOURCES_GENERATED_DERIVATIVES_PAGE = (
 RESOURCES_LOCAL_RETRIEVAL_LAYERS_PAGE = (
     REPO_ROOT / "src/pages/resources/retrieval-layers/index.astro"
 )
+RESOURCES_PUBLICATION_PROCESS_PAGE = (
+    REPO_ROOT / "src/pages/resources/publication-process/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -866,6 +869,58 @@ def test_resources_local_retrieval_layers_has_a_general_public_project_introduct
     assert "replaces direct source inspection" in source
     assert "SourceAuthoritySection" not in source
     assert '<section class="greenfield-intro-panel" aria-label="Retrieval layers introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_publication_process_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_PUBLICATION_PROCESS_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "turning source-bounded material from either track into clear reader surfaces" in source
+    assert "without changing who owns the underlying claims" in source
+    assert "canonical source or registry row that supplies the claim basis" in source
+    assert "Markdown source specification then defines the page's purpose, audience" in source
+    assert "publication brief defines the reader's job, document type" in source
+    assert "GitHub-facing Markdown can become a native article" in source
+    assert "tracked HTML can become a standalone no-network visual explainer" in source
+    assert "website adaptation can integrate the subject with internal routes" in source
+    assert "parity means preserving the same source basis, authority boundary, and core claims" in source
+    assert "rather than copying an identical section order" in source
+    assert "page type and visual strategy follow what the reader needs to understand" in source
+    assert "an overview orients, a concept explainer defines" in source
+    assert "workflow guide makes a sequence visible" in source
+    assert "reference catalogue supports scanning" in source
+    assert "lead with the subject instead of making repository metadata or a universal template" in source
+    assert "Brief review checks whether the reader job" in source
+    assert "source-spec parity checks whether outputs remain within their evidence" in source
+    assert "desktop and compact screenshots expose layout, legibility" in source
+    assert "deterministic validators check known requirements" in source
+    assert "before-and-after notes record human editorial judgment" in source
+    assert "a validator PASS does not certify taste, comprehension, source correctness, or scientific truth" in source
+    assert "registry rows, source paths, route maps, provenance records, manifests, hashes" in source
+    assert "a hash identifies particular file contents" in source
+    assert "reviewed or published label records a bounded reader-surface decision" in source
+    assert "repair the downstream surface" in source
+    assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
+    assert "No publication brief, source specification, generated Markdown, tracked HTML" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "expands workflow authority" in source
+    assert "overrides a human gate" in source
+    assert "replaces direct source inspection" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Publication process introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
