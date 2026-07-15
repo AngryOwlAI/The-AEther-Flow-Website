@@ -10,6 +10,7 @@ HOME_PAGE = REPO_ROOT / "src/pages/index.astro"
 PHYSICS_PAGE = REPO_ROOT / "src/pages/physics/index.astro"
 PHYSICS_ONTOLOGY_PAGE = REPO_ROOT / "src/pages/physics/ontology/index.astro"
 PHYSICS_BENCHMARK_PAGE = REPO_ROOT / "src/pages/physics/exact-gr-benchmark/index.astro"
+PHYSICS_DERIVATION_PAGE = REPO_ROOT / "src/pages/physics/derivation-roadmap/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -192,6 +193,29 @@ def test_physics_benchmark_has_a_general_public_project_introduction_after_the_h
     assert "benchmark adoption, ontology compatibility" in source
     assert "effective-level result is not mistaken for foundational proof" in source
     assert '<section class="greenfield-intro-panel" aria-label="Exact-GR benchmark introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_physics_derivation_roadmap_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = PHYSICS_DERIVATION_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "open first-principles problem" in source
+    assert "without inserting the target metric or benchmark behavior by hand" in source
+    assert "source ontology, localization and response" in source
+    assert "universal matter coupling, Einstein equations" in source
+    assert "Distance-to-GR ledger record bounded statuses and evidence" in source
+    assert "do not supply a completed derivation" in source
+    assert "map of remaining work from proof" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Derivation roadmap introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

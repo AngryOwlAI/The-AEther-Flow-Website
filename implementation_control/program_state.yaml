@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T18:27:51Z"
+updated_utc: "2026-07-15T18:38:32Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-008/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-008/jobs/WJ-20260715-008-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-008.yaml"
+  - "implementation_control/tasks/WI-20260715-009/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-009/jobs/WJ-20260715-009-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-009.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,28 +25,28 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-008"
-  title: "Normalize Exact GR Benchmark Project Introduction"
+  task_id: "WI-20260715-009"
+  title: "Normalize GR Derivation Roadmap Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-008/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-009/00_TASK.yaml"
   planning_context:
-    task_packet: "PHYSICS-BENCHMARK-INTRO-01"
+    task_packet: "PHYSICS-DERIVATION-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "75040468b8d81657050cc36cd37d336f9cf8c393"
+    previous_checkpoint: "5d930275ececa3c6c7a8f3b2c66f32b1beac7872"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-008-A"
+  job_id: "WJ-20260715-009-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-008/jobs/WJ-20260715-008-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-009/jobs/WJ-20260715-009-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-008"
+  handoff_id: "WH-20260715-009"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-008.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-008.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-009.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-009.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -76,27 +76,27 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-benchmark-introduction-review"
-    command: "manual inspection of the exact GR benchmark project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-derivation-introduction-review"
+    command: "manual inspection of the GR derivation roadmap project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PHYSICS-BENCHMARK-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-008-A and stop."
+  task_packet: "PHYSICS-DERIVATION-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-009-A and stop."
   do_not_skip: "Do not enter other Physics routes page families push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T18:20:15Z"
-  previous_checkpoint: "75040468b8d81657050cc36cd37d336f9cf8c393"
+  observed_utc: "2026-07-15T18:32:28Z"
+  previous_checkpoint: "5d930275ececa3c6c7a8f3b2c66f32b1beac7872"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 6
+  website_ahead_of_origin_main: 7
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "PHYSICS-ONTOLOGY-INTRO-01 checkpoint observed as HEAD"
+  dependency_status: "PHYSICS-BENCHMARK-INTRO-01 checkpoint observed as HEAD"
   upstream_worktree_status: "clean"
   source_refresh_status: "not performed"
 
@@ -104,9 +104,9 @@ implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the exact GR benchmark hero"
-  focused_tests: "passed 9 tests"
-  python_tests: "passed 134 tests"
+  project_introduction: "one substantial general public paragraph after the GR derivation roadmap hero"
+  focused_tests: "passed 10 tests"
+  python_tests: "passed 135 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"

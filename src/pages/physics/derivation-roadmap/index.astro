@@ -1,12 +1,15 @@
 ---
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../../../lib/siteContent";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsGrDerivationRoadmap;
+const derivationProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. This Derivation Roadmap page explains the physics track's open first-principles problem: how ordinary general relativity might be recovered from proposed Æther / Æther-Flow source structure without inserting the target metric or benchmark behavior by hand. It arranges the necessary obligations—source ontology, localization and response, an effective metric, universal matter coupling, Einstein equations, and protected benchmark review—so readers can see which steps depend on which others. The roadmap and Distance-to-GR ledger record bounded statuses and evidence; they do not supply a completed derivation, an Einstein-equation result, or benchmark promotion. The page helps a general reader distinguish a map of remaining work from proof that the work has been completed.";
 
 const roadmapSteps = [
   {
@@ -171,17 +174,10 @@ const roadmapSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Derivation roadmap introduction">
-    <p>
-      The Derivation Roadmap is a burden map for first-principles recovery, not
-      a claim that recovery has happened. It explains why source ontology,
-      localization, response, metric behavior, matter coupling, field equations,
-      and benchmark promotion must remain separate. A reader can use the page
-      to understand the order of obligations, but every stronger physics claim
-      still requires upstream source evidence and the relevant gate status.
-    </p>
-  </section>
-
+  <ProjectIntroduction
+    text={derivationProjectIntroduction}
+    ariaLabel="About The Æther Flow Project and the GR derivation roadmap"
+  />
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsDerivationRoadmap} />
 
