@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T14:16:35Z"
+updated_utc: "2026-07-15T14:18:31Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,11 +9,11 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-001/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-001/jobs/WJ-20260715-001-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-001.yaml"
+  - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-002.yaml"
   - "current_git_state_and_validator_output"
-  - "owner authorized project wide removal of the optional platform screen reader evidence gate while retaining VoiceOver Safari and WCAG coverage"
+  - "owner authorized FE-P1-03 compact mobile navigation reacceptance under the amended evidence matrix"
   - "ImplementationPlans/recomendation_frontend.md as amended routing context"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -25,35 +25,28 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-001"
-  title: "Remove Optional Platform Screen Reader Gate"
+  task_id: "WI-20260715-002"
+  title: "Reaccept Compact Mobile Navigation"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-001/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-GOV-AT-01"
+    task_packet: "FE-P1-03R"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_sha256: "a411572bc425fb705a1838a707f8030f8a2d637d68c6d6b6c4d11da7ec57c73c"
-    previous_checkpoint: "c4b4363bd10643f2ecd327064d74753238b2f168"
+    previous_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly directed implementation of the approved accessibility evidence amendment and FE-P1-03 reacceptance plan on 2026-07-15."
 
 current_job:
-  job_id: "WJ-20260715-001-A"
+  job_id: "WJ-20260715-002-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-001/jobs/WJ-20260715-001-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-001"
+  handoff_id: "WH-20260715-002"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-001.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-001.md"
-
-latest_completion:
-  completion_id: "WJC-20260715-001-A"
-  task_id: "WI-20260715-001"
-  job_id: "WJ-20260715-001-A"
-  status: "completed"
-  path: "implementation_control/tasks/WI-20260715-001/jobs/completions/WJC-20260715-001-A.yaml"
+  yaml_path: "implementation_control/handoffs/WH-20260715-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-002.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -62,35 +55,47 @@ required_validators:
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
     required_for_current_job: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required_for_current_job: true
+  - id: "static-build"
+    command: "npm run build"
+    required_for_current_job: true
   - id: "aggregate-validation"
     command: "npm run validate"
     required_for_current_job: true
-  - id: "manual-policy-review"
-    command: "manual inspection of complete required accessibility matrix VoiceOver retention optional platform status conformance boundary and historical record preservation"
+  - id: "quality-gate"
+    command: "npm run quality"
+    required_for_current_job: true
+  - id: "manual-mobile-menu-review"
+    command: "manual inspection of pointer keyboard Escape outside click nested group current route short viewport orientation zoom and focus behavior"
+    required_for_current_job: true
+  - id: "manual-no-javascript-review"
+    command: "manual inspection of essential navigation destinations with JavaScript disabled"
+    required_for_current_job: true
+  - id: "manual-voiceover-review"
+    command: "manual inspection of mobile Menu state navigation announcements and focus order with macOS VoiceOver and Safari"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-GOV-AT-01 policy amendment"
-  summary: "Validate and locally checkpoint the accessibility evidence amendment while preserving the eight FE-P1-03 dirty paths."
-  do_not_skip: "Do not stage preserved dirty paths open FE-P1-03 push deploy or mutate upstream before this checkpoint completes."
+  task_packet: "FE-P1-03R acceptance"
+  summary: "Run focused full browser and VoiceOver Safari evidence for the preserved mobile navigation implementation."
+  do_not_skip: "Do not checkpoint until every revised gate passes and do not open FE-P1-04 push deploy or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T14:12:22Z"
-  previous_checkpoint: "c4b4363bd10643f2ecd327064d74753238b2f168"
+  observed_utc: "2026-07-15T14:18:31Z"
+  previous_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_head_equals_origin_main: true
+  website_ahead_of_origin_main: 1
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   live_upstream_activity_status: "ignored_read_only_external_work"
   preserved_dirty_path_count: 8
   preserved_hashes_verified: true
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
-  policy_runtime_change: false
-  technical_writing_gate: "passed_after_contextual_review"
-  aggregate_validation: "passed against accepted clean source pin"
-  static_pages_built: 64
-  completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  status: "preserved_implementation_validation_pending"
+  policy_checkpoint_replayed: false
+  completion_created: false
+  checkpoint_status: "pending"

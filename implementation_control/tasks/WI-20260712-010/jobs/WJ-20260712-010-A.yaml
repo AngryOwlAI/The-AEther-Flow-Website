@@ -4,8 +4,8 @@ job_id: "WJ-20260712-010-A"
 task_id: "WI-20260712-010"
 title: "Implement Skip-Link And Main-Focus Accessibility"
 created_utc: "2026-07-12T20:27:40Z"
-updated_utc: "2026-07-12T20:46:36Z"
-status: "active"
+updated_utc: "2026-07-12T20:54:42Z"
+status: "superseded"
 
 objective: "Execute one FE-P1-02 packet that makes the skip link visibly clear of the header and transfers keyboard activation to a focusable main-content target."
 
@@ -130,3 +130,7 @@ next_recommended_action:
   task_packet: "FE-P1-02 local checkpoint"
   summary: "Use completion WJC-20260712-010-A to create the authorized local checkpoint, then stop."
   do_not_skip: "Do not open FE-P1-03 change header-menu behavior push deploy or mutate upstream."
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-011"
+  reason: "FE-P1-02 was locally checkpointed before the separately authorized FE-P1-03 packet opened."

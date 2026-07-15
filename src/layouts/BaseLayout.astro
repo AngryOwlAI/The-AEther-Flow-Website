@@ -51,7 +51,7 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
   <body class={bodyClass}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
-      <nav class="site-nav" aria-label="Primary navigation">
+      <nav class="site-nav" aria-label="Primary navigation" data-site-navigation>
         <a class="brand" href="/" aria-label={`${brandName} home`}>
           <img
             class="brand-mark"
@@ -64,7 +64,18 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
           />
           <span>{brandName}</span>
         </a>
-        <div class="nav-links">
+        <button
+          class="nav-menu-trigger mobile-nav-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation-links"
+          data-mobile-nav-trigger
+          hidden
+        >
+          <span>Menu</span>
+          <span class="nav-menu-caret" aria-hidden="true"></span>
+        </button>
+        <div class="nav-links" id="primary-navigation-links" data-primary-navigation>
           {siteNavigationLinks.map((link, index) => {
             const children = link.children ?? [];
             const isActive = isActiveNavLink(link);
@@ -105,6 +116,13 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
             );
           })}
         </div>
+        <noscript>
+          <div class="nav-links" data-no-script-navigation>
+            {siteNavigationLinks.filter((link) => (link.children?.length ?? 0) > 0).map((link) => (
+              <a href={link.href}>{link.title}</a>
+            ))}
+          </div>
+        </noscript>
       </nav>
     </header>
     <main id="main-content" tabindex="-1">
@@ -219,7 +237,13 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
       </div>
     </footer>
     <script>
+      const siteNavigation = document.querySelector("[data-site-navigation]");
+      const mobileMenuTrigger = document.querySelector("[data-mobile-nav-trigger]");
+      const primaryNavigation = document.querySelector("[data-primary-navigation]");
       const navigationMenus = Array.from(document.querySelectorAll("[data-nav-menu]"));
+      const compactNavigationQuery = window.matchMedia(
+        "(max-width: 780px), (max-height: 480px) and (max-width: 900px)",
+      );
 
       const getMenuParts = (menu) => {
         const trigger = menu.querySelector("[data-nav-menu-trigger]");
@@ -249,6 +273,55 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
         });
       };
 
+      const setMobileMenuExpanded = (expanded, returnFocus = false) => {
+        if (
+          !(mobileMenuTrigger instanceof HTMLButtonElement) ||
+          !(primaryNavigation instanceof HTMLElement)
+        ) {
+          return;
+        }
+
+        const isCompact = compactNavigationQuery.matches;
+        const nextExpanded = isCompact && expanded;
+        mobileMenuTrigger.setAttribute("aria-expanded", String(nextExpanded));
+        primaryNavigation.hidden = isCompact && !nextExpanded;
+
+        if (!nextExpanded) {
+          closeMenus();
+        }
+
+        if (!nextExpanded && returnFocus) {
+          mobileMenuTrigger.focus();
+        }
+      };
+
+      const syncCompactNavigation = () => {
+        if (
+          !(siteNavigation instanceof HTMLElement) ||
+          !(mobileMenuTrigger instanceof HTMLButtonElement) ||
+          !(primaryNavigation instanceof HTMLElement)
+        ) {
+          return;
+        }
+
+        const activeElementWasInside = primaryNavigation.contains(document.activeElement);
+        const isCompact = compactNavigationQuery.matches;
+        siteNavigation.dataset.compact = String(isCompact);
+        mobileMenuTrigger.hidden = !isCompact;
+        setMobileMenuExpanded(false, isCompact && activeElementWasInside);
+
+        if (!isCompact) {
+          primaryNavigation.hidden = false;
+        }
+      };
+
+      if (mobileMenuTrigger instanceof HTMLButtonElement) {
+        mobileMenuTrigger.addEventListener("click", () => {
+          const isExpanded = mobileMenuTrigger.getAttribute("aria-expanded") === "true";
+          setMobileMenuExpanded(!isExpanded, isExpanded);
+        });
+      }
+
       navigationMenus.forEach((menu) => {
         const { trigger } = getMenuParts(menu);
         if (!(trigger instanceof HTMLButtonElement)) {
@@ -268,13 +341,24 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
           return;
         }
 
-        if (!navigationMenus.some((menu) => menu.contains(target))) {
+        if (siteNavigation instanceof HTMLElement && !siteNavigation.contains(target)) {
           closeMenus();
+          setMobileMenuExpanded(false);
         }
       });
 
       document.addEventListener("keydown", (event) => {
         if (event.key !== "Escape") {
+          return;
+        }
+
+        if (
+          compactNavigationQuery.matches &&
+          mobileMenuTrigger instanceof HTMLButtonElement &&
+          mobileMenuTrigger.getAttribute("aria-expanded") === "true"
+        ) {
+          event.preventDefault();
+          setMobileMenuExpanded(false, true);
           return;
         }
 
@@ -288,6 +372,12 @@ const isActiveNavLink = (link: (typeof siteNavigationLinks)[number]) => {
           setMenuExpanded(openMenu, false, true);
         }
       });
+
+      if (siteNavigation instanceof HTMLElement) {
+        siteNavigation.dataset.navigationEnhanced = "true";
+      }
+      compactNavigationQuery.addEventListener("change", syncCompactNavigation);
+      syncCompactNavigation();
     </script>
   </body>
 </html>

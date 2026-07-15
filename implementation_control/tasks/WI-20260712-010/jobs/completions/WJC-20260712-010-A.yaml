@@ -5,7 +5,7 @@ task_id: "WI-20260712-010"
 job_id: "WJ-20260712-010-A"
 created_utc: "2026-07-12T20:46:36Z"
 completed_utc: "2026-07-12T20:46:36Z"
-status: "ready_to_checkpoint"
+status: "completed"
 
 summary: "Raised the skip link above the header and made main content an explicit visible focus target without changing header-menu behavior or later packets."
 
@@ -150,3 +150,8 @@ next_recommended_action:
   task_packet: "FE-P1-02 local checkpoint"
   summary: "Run the implementation checkpoint transaction and stop before FE-P1-03."
   do_not_skip: "Do not open FE-P1-03 push deploy promote physics or mutate upstream."
+
+checkpoint_evidence:
+  commit: "59e0b4128237f68ef839a439a50a09ae109dff90"
+  observed_as_ancestor_of_head: true
+  repeated: false

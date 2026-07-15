@@ -173,6 +173,18 @@ summary:focus-visible {
   row-gap: 0.45rem;
 }
 
+.mobile-nav-trigger {
+  display: none;
+  width: auto;
+  min-height: 2.75rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 0.4rem;
+  background: var(--color-surface-warm);
+  padding: 0.55rem 0.7rem;
+  color: var(--color-ink);
+  font-weight: 800;
+}
+
 .brand {
   color: var(--color-ink);
   font-weight: 800;
@@ -248,6 +260,11 @@ summary:focus-visible {
   display: grid;
   gap: 0.22rem;
   width: min(26rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 7rem);
+  max-height: calc(100dvh - 7rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   padding: 0.55rem;
   border: 1px solid var(--color-line);
   border-radius: 0.45rem;
@@ -4549,5 +4566,57 @@ html:has(body.project-overview-page) {
 
   .physics-greenfield-page .overview-command-hero .overview-actions:has(> a:nth-child(3):last-child) > .primary-link:first-child {
     grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 780px), (max-height: 480px) and (max-width: 900px) {
+  .site-nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .brand {
+    align-items: center;
+  }
+
+  .mobile-nav-trigger:not([hidden]) {
+    display: flex;
+    width: auto;
+  }
+
+  .nav-links {
+    grid-column: 1 / -1;
+    display: grid;
+    width: 100%;
+    max-height: calc(100vh - 6.5rem);
+    max-height: calc(100dvh - 6.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding: 0.15rem 0.15rem 0.5rem 0;
+  }
+
+  .nav-links[hidden] {
+    display: none;
+  }
+
+  .nav-menu,
+  .nav-link,
+  .nav-menu-trigger {
+    width: 100%;
+  }
+
+  .nav-menu-trigger {
+    justify-content: space-between;
+  }
+
+  .nav-menu-panel {
+    position: static;
+    width: 100%;
+    max-height: max(8rem, calc(100vh - 10rem));
+    max-height: max(8rem, calc(100dvh - 10rem));
+    margin-top: 0.5rem;
+    box-shadow: none;
   }
 }

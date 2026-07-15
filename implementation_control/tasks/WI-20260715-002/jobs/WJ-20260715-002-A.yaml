@@ -1,0 +1,137 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-002-A"
+task_id: "WI-20260715-002"
+title: "Validate And Reaccept Compact Mobile Navigation"
+created_utc: "2026-07-15T14:18:31Z"
+updated_utc: "2026-07-15T14:18:31Z"
+status: "active"
+
+objective: "Validate and accept the preserved compact mobile navigation disclosure under the amended required evidence matrix and create one bounded local checkpoint."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P1-03 reacceptance packet"
+  live_state_priority: "implementation control records and current Git evidence outrank memory and historical cancellation prose"
+  packet_id: "FE-P1-03R"
+  previous_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
+  previous_checkpoint_replay_status: "forbidden"
+  navigation_destination_write_status: "forbidden"
+  desktop_target_size_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and read only upstream evidence allowlisted by WI-20260715-002"
+
+allowed_writes:
+  - "src/layouts/BaseLayout.astro"
+  - "src/styles/global.css"
+  - "tests/test_mobile_navigation.py"
+  - "implementation_control/handoffs/WH-20260712-010.md"
+  - "implementation_control/handoffs/WH-20260712-010.yaml"
+  - "implementation_control/tasks/WI-20260712-010/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml"
+  - "implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-002.yaml"
+  - "implementation_control/handoffs/WH-20260715-002.md"
+  - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/completions/WJC-20260715-002-A.yaml"
+
+required_outputs:
+  - "One initially collapsed compact Menu controls the existing navigation at required mobile and short height profiles."
+  - "Pointer keyboard Escape focus return outside click nested group current route resize and orientation behavior is deterministic."
+  - "Open navigation surfaces scroll internally without clipping required items."
+  - "Essential destinations remain accessible without JavaScript."
+  - "VoiceOver Safari reports the Menu name expanded state navigation landmark and logical focus order."
+  - "Exactly eight preserved paths and current packet control records enter the checkpoint."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the approved two checkpoint plan."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public claims."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "Validation uses the accepted clean source pin and no source refresh occurs."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Existing navigation behavior only with labels destinations groups and routes preserved."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "Bounded mobile navigation disclosure and viewport safe scrolling only."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifests."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-mobile-menu-review"
+    command: "manual inspection of pointer keyboard Escape outside click nested group current route short viewport orientation zoom and focus behavior"
+    required: true
+  - id: "manual-no-javascript-review"
+    command: "manual inspection of essential navigation destinations with JavaScript disabled"
+    required: true
+  - id: "manual-voiceover-review"
+    command: "manual inspection of mobile Menu state navigation announcements and focus order with macOS VoiceOver and Safari"
+    required: true
+
+stop_conditions:
+  - "A navigation destination grouping route target size claim manifest asset or historical cancellation record change becomes necessary."
+  - "A collapsed control remains focusable or a required destination becomes unreachable."
+  - "A required short viewport zoom browser no JavaScript or VoiceOver case fails."
+  - "Work enters FE-P1-04 push deployment or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P1-03R acceptance"
+  summary: "Complete all revised automated browser and VoiceOver Safari evidence before creating the local checkpoint."
+  do_not_skip: "Do not open FE-P1-04 push deploy or mutate upstream."
+
+preserved_input_evidence:
+  expected_dirty_path_count: 8
+  hashes_verified_before_open: true
+
+implementation_status:
+  status: "preserved_implementation_validation_pending"
+  completion_created: false
+  checkpoint_status: "pending"

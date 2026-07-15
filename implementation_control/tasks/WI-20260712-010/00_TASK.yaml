@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260712-010"
 title: "Fix Skip-Link Visibility And Main Focus"
 created_utc: "2026-07-12T20:27:40Z"
-updated_utc: "2026-07-12T20:46:36Z"
-status: "active"
+updated_utc: "2026-07-12T20:54:42Z"
+status: "superseded"
 
 source_context:
   packet_id: "FE-P1-02"
@@ -151,3 +151,7 @@ next_recommended_action:
   task_packet: "FE-P1-02 local checkpoint"
   summary: "Run the implementation checkpoint transaction for WJC-20260712-010-A and stop."
   do_not_skip: "Do not open FE-P1-03 change header-menu behavior push deploy or mutate upstream."
+
+supersession:
+  superseded_by_handoff_id: "WH-20260712-011"
+  reason: "FE-P1-02 was completed and locally checkpointed at 59e0b4128237f68ef839a439a50a09ae109dff90 before the owner separately authorized FE-P1-03."

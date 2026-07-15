@@ -1,0 +1,189 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-002"
+title: "Reaccept Compact Mobile Navigation"
+created_utc: "2026-07-15T14:18:31Z"
+updated_utc: "2026-07-15T14:18:31Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P1-03R"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_sha256: "a411572bc425fb705a1838a707f8030f8a2d637d68c6d6b6c4d11da7ec57c73c"
+  previous_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
+  policy_amendment_task: "WI-20260715-001"
+  original_cancelled_task: "WI-20260712-011"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  owner_authorization: "Owner explicitly directed reacceptance validation and a separate local checkpoint for the preserved FE-P1-03 mobile navigation implementation under the amended evidence matrix on 2026-07-15."
+
+goal: "Validate and accept the preserved compact mobile navigation implementation under the amended required evidence matrix without changing destinations desktop target sizing claims assets or upstream sources."
+
+requirements:
+  - "Use one compact Menu trigger for the existing shared navigation at 320 pixel and short landscape profiles."
+  - "Keep the compact navigation initially collapsed and remove hidden controlled content from the focus order."
+  - "Preserve pointer keyboard Escape focus return outside click nested group current child and resize behavior."
+  - "Keep the compact navigation and nested panels internally scrollable within viewport bounds."
+  - "Keep essential top level destinations available without JavaScript from the shared navigation data."
+  - "Retain the existing desktop navigation destination grouping and target sizing behavior."
+  - "Pass VoiceOver Safari keyboard browser zoom no JavaScript automated test build aggregate and quality evidence."
+  - "Consume exactly the eight preserved dirty paths plus current packet control records."
+
+scope:
+  in_scope:
+    - "Mobile navigation disclosure markup and controller in src/layouts/BaseLayout.astro"
+    - "Compact navigation and viewport safe panel rules in src/styles/global.css"
+    - "Focused mobile navigation regression tests"
+    - "Five preserved FE-P1-02 control reconciliation paths"
+    - "Exactly allowlisted current implementation control records"
+  out_of_scope:
+    - "Navigation labels destinations grouping route identity redirects canonicals or retirements"
+    - "Desktop target size changes reserved for FE-P1-04"
+    - "Claims manifests provenance SVG motion public assets fonts or page archetypes"
+    - "Historical cancelled task job handoff or completion rewrites"
+    - "Upstream writes Git push or Cloudflare deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-002-A"
+  next_packet_after_this_task: "FE-P1-04 becomes dependency ready only after this packet validates and is locally checkpointed"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "/Users/alex.omegapy/.codex/skills/playwright/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+    - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+    - "src/layouts/BaseLayout.astro"
+    - "src/styles/global.css"
+    - "src/lib/siteContent.ts"
+    - "tests"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/layouts/BaseLayout.astro"
+    - "src/styles/global.css"
+    - "tests/test_mobile_navigation.py"
+    - "implementation_control/handoffs/WH-20260712-010.md"
+    - "implementation_control/handoffs/WH-20260712-010.yaml"
+    - "implementation_control/tasks/WI-20260712-010/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml"
+    - "implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-002.yaml"
+    - "implementation_control/handoffs/WH-20260715-002.md"
+    - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+    - "implementation_control/tasks/WI-20260715-002/jobs/completions/WJC-20260715-002-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed implementation of the approved two checkpoint plan."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public claim copy metadata claim registry or ladder changes."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source bundle asset or upstream refresh is in scope and aggregate validation uses the accepted clean source pin."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers compact behavior for the existing navigation only without label destination grouping route or retirement changes."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval covers the bounded shared mobile navigation disclosure and viewport safe scrolling behavior."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No manifest changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "manual-mobile-menu-review"
+    command: "manual inspection of pointer keyboard Escape outside click nested group current route short viewport orientation zoom and focus behavior"
+    required: true
+  - id: "manual-no-javascript-review"
+    command: "manual inspection of essential navigation destinations with JavaScript disabled"
+    required: true
+  - id: "manual-voiceover-review"
+    command: "manual inspection of mobile Menu state navigation announcements and focus order with macOS VoiceOver and Safari"
+    required: true
+
+stop_conditions:
+  - "The patch would alter navigation labels destinations groups route authority redirects canonicals or retirements."
+  - "A collapsed control remains focusable or an essential destination becomes unreachable."
+  - "The Menu or nested panel clips required items in a short viewport."
+  - "Desktop navigation behavior or target sizing changes outside minimum shared controller support."
+  - "VoiceOver Safari or any required validator fails."
+  - "Work requires FE-P1-04 push deployment or upstream mutation."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-002-A only after all revised evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-002"
+  yaml_path: "implementation_control/handoffs/WH-20260715-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-002.md"
+
+next_recommended_action:
+  task_packet: "FE-P1-03R acceptance"
+  summary: "Run focused full browser and VoiceOver Safari evidence for the preserved mobile navigation implementation."
+  do_not_skip: "Do not checkpoint until every revised gate passes and do not open FE-P1-04 push deploy or mutate upstream."
+
+preserved_input_evidence:
+  expected_dirty_path_count: 8
+  hashes_verified_before_open: true
+  base_layout_sha256: "b358ae7c19765b777d57ae7eec6fb825e8a6f1879597041431f83342bdd0518c"
+  global_css_sha256: "8c29df97c7e57cf4dac389ab4ffe72a17dcca3b9283681eb9671bd7caf8faaa5"
+  mobile_navigation_test_sha256: "7616d4558fa70b97ee2d6667428072437366f1283a5cc702dfe473eadce87ec2"
+  older_handoff_markdown_sha256: "258be2829ffbb101de07fa5a1b2eef2fe11dee8f778bb88fc89580b0ebeef995"
+  older_handoff_yaml_sha256: "ff1152b4b030ef4c90007b70094f88a09822867feb925061bff4143f73420483"
+  older_task_sha256: "42cc03f78f45c5dc16fffc916559242491686227ab0ef489831fee83520fbc42"
+  older_job_sha256: "39eed2cfb9ecfe19b9d394b01728731b7172de20e7829f0b40d2e049212bd809"
+  older_completion_sha256: "2cdd10f13b77b21df3a57b5b56828832648ec6e9e13be079c1ff3c5b528aad09"
+
+implementation_status:
+  status: "preserved_implementation_validation_pending"
+  policy_checkpoint_replayed: false
+  completion_created: false
+  checkpoint_status: "pending"
+  push_performed: false
+  deployment_performed: false
