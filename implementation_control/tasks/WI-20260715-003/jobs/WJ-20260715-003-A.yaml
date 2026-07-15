@@ -1,0 +1,137 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-003-A"
+task_id: "WI-20260715-003"
+title: "Increase And Verify Desktop Navigation Targets"
+created_utc: "2026-07-15T15:50:54Z"
+updated_utc: "2026-07-15T15:57:47Z"
+status: "active"
+
+objective: "Apply one non compact 44 CSS pixel target size rule to existing desktop navigation controls and verify current page and Escape behavior remain unchanged."
+
+execution_boundary:
+  invocation_limit: "one bounded FE-P1-04 packet"
+  live_state_priority: "implementation control and current Git evidence outrank plans memory and stale checkpoint prose"
+  packet_id: "FE-P1-04"
+  previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  previous_checkpoint_replay_status: "forbidden"
+  navigation_destination_write_status: "forbidden"
+  compact_navigation_controller_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and read only evidence allowlisted by WI-20260715-003"
+
+allowed_writes:
+  - "src/styles/global.css"
+  - "tests/test_mobile_navigation.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-002.yaml"
+  - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-003.yaml"
+  - "implementation_control/handoffs/WH-20260715-003.md"
+  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+
+required_outputs:
+  - "Existing non compact top level navigation links and disclosure buttons have a 44 CSS pixel minimum target height."
+  - "Compact mobile and short landscape target sizing remains governed by existing compact rules."
+  - "Current link and active group states remain present."
+  - "Escape still closes an open desktop group and returns focus to its trigger."
+  - "Focused static and headed browser regression evidence passes."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner explicitly authorized FE-P1-04."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public claims."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh and validation uses the accepted clean source pin."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Existing desktop navigation target sizing only."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One bounded shared navigation target rule."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifests."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-desktop-navigation-review"
+    command: "manual inspection of desktop target dimensions current state Escape closing and focus return in a headed browser"
+    required: true
+
+stop_conditions:
+  - "A navigation destination grouping route claim manifest asset or historical record change becomes necessary."
+  - "The target rule changes compact navigation sizing or controller behavior."
+  - "Current page state Escape focus return outside click or nested disclosure behavior regresses."
+  - "A required validator or browser review fails."
+  - "Work enters successor packet push deployment or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-003-A"
+  path: "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-P1-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-003-A and stop."
+  do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  desktop_target_height: "44 CSS pixels"
+  focused_navigation_tests: "passed 4 tests"
+  python_tests: "passed 130 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_desktop_navigation_review: "passed"
+  compact_target_isolation_review: "passed"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"

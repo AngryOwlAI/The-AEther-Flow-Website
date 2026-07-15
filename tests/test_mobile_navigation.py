@@ -25,11 +25,35 @@ def test_mobile_controller_preserves_close_and_resize_contracts() -> None:
 
     assert 'event.key !== "Escape"' in layout
     assert "setMobileMenuExpanded(false, true);" in layout
+    assert "setMenuExpanded(openMenu, false, true);" in layout
     assert "!siteNavigation.contains(target)" in layout
     assert "closeMenus(menu);" in layout
+    assert 'aria-current={isActive ? "page" : undefined}' in layout
     assert 'aria-current={isExactNavPath(child.href) ? "page" : undefined}' in layout
+    assert 'data-active={isActive ? "true" : undefined}' in layout
     assert 'compactNavigationQuery.addEventListener("change", syncCompactNavigation);' in layout
     assert "primaryNavigation.contains(document.activeElement)" in layout
+
+
+def test_desktop_navigation_targets_are_44_css_pixels_outside_compact_mode() -> None:
+    css = GLOBAL_CSS.read_text(encoding="utf-8")
+
+    desktop_targets = re.search(
+        r"@media \(min-width: 781px\) and \(min-height: 481px\),\s*"
+        r"\(min-width: 901px\) \{\s*"
+        r"\.nav-links > \.nav-link,\s*"
+        r"\.nav-menu > \.nav-menu-trigger \{(?P<body>[^}]+)\}",
+        css,
+    )
+
+    assert desktop_targets is not None
+    assert "min-height: 2.75rem;" in desktop_targets.group("body")
+    assert "padding-inline: 0.55rem;" in desktop_targets.group("body")
+    assert "(max-width: 780px), (max-height: 480px) and (max-width: 900px)" in css
+    assert re.search(
+        r"\.nav-link,\s*\.nav-menu-trigger \{\s*min-height:\s*2rem;",
+        css,
+    )
 
 
 def test_compact_navigation_is_viewport_safe_and_has_no_script_routes() -> None:

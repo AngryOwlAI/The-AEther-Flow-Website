@@ -222,6 +222,14 @@ summary:focus-visible {
   cursor: pointer;
 }
 
+@media (min-width: 781px) and (min-height: 481px), (min-width: 901px) {
+  .nav-links > .nav-link,
+  .nav-menu > .nav-menu-trigger {
+    min-height: 2.75rem;
+    padding-inline: 0.55rem;
+  }
+}
+
 .nav-link:hover,
 .nav-link:focus-visible,
 .nav-menu-trigger:hover,

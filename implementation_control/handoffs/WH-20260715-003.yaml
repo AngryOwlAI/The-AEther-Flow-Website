@@ -1,0 +1,58 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-003"
+created_utc: "2026-07-15T15:50:54Z"
+updated_utc: "2026-07-15T15:57:47Z"
+status: "active"
+
+task_id: "WI-20260715-003"
+job_id: "WJ-20260715-003-A"
+
+summary: "Completed FE-P1-04 with 44 CSS pixel desktop navigation targets and preserved current page and Escape behavior."
+
+current_state:
+  - "FE-P1-03R is checkpointed at 7db8eb09654ce7b3b664725763aa21c8cb6aeafc and is not replayed."
+  - "The website worktree was clean before this packet opened and main was one local commit ahead of origin main."
+  - "The plan dependency for FE-P1-04 is satisfied by the completed FE-P1-03R checkpoint."
+  - "Desktop top level navigation links and disclosure triggers currently lack an explicit minimum target height."
+  - "Current page state Escape focus return outside click nested disclosure and compact navigation behavior already exist and must remain unchanged."
+  - "No navigation content claim manifest asset push deployment or upstream change is authorized."
+  - "All four desktop top level controls measured exactly 44 CSS pixels high at a 1440 by 900 viewport."
+  - "The Physics group retained active state the Ontology link retained current page state and Escape closed the group with focus returned to its trigger."
+  - "At the compact 780 pixel breakpoint the existing 32 CSS pixel inner targets remained unchanged."
+  - "Four focused tests all 130 Python tests the 64 page build aggregate validation and the quality gate passed."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  navigation_destination_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "FE-P1-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-003-A and stop."
+  do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
+
+stop_before:
+  - "Navigation labels destinations groups routes redirects canonicals or retirements"
+  - "Compact Menu controller or nested panel behavior changes"
+  - "Claims manifests provenance public assets or historical cancellation rewrites"
+  - "Git push Cloudflare deployment or upstream write"
+
+checkpoint_transition:
+  previous_packet: "FE-P1-03R"
+  checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-003-A"
+  path: "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+  status: "completed"

@@ -1,0 +1,185 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-003"
+title: "Enlarge Desktop Navigation Targets"
+created_utc: "2026-07-15T15:50:54Z"
+updated_utc: "2026-07-15T15:57:47Z"
+status: "active"
+
+source_context:
+  packet_id: "FE-P1-04"
+  adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+  adopted_plan_sha256: "a411572bc425fb705a1838a707f8030f8a2d637d68c6d6b6c4d11da7ec57c73c"
+  previous_task: "WI-20260715-002"
+  previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  dependency: "FE-P1-03R completed and checkpointed at 7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  owner_authorization: "Owner explicitly directed opening and executing a fresh FE-P1-04 packet without replaying FE-P1-03R on 2026-07-15."
+
+goal: "Increase non compact desktop navigation targets to 44 CSS pixels while preserving current page state Escape handling and all existing navigation behavior."
+
+requirements:
+  - "Give each non compact top level navigation link and disclosure trigger a 44 CSS pixel minimum height."
+  - "Keep the target rule outside compact mobile and short landscape navigation profiles."
+  - "Preserve current page aria state active group state labels destinations grouping and route identity."
+  - "Preserve Escape close focus return outside click nested disclosure and compact navigation behavior."
+  - "Add focused static regression checks for target sizing current state and Escape focus return."
+  - "Measure target dimensions and exercise current and Escape behavior in a headed desktop browser."
+
+scope:
+  in_scope:
+    - "Non compact top level navigation target sizing in src/styles/global.css"
+    - "Focused navigation regression checks in tests/test_mobile_navigation.py"
+    - "Fresh FE-P1-04 implementation control task job completion and handoff records"
+    - "Supersession evidence for the completed FE-P1-03R control pointers"
+  out_of_scope:
+    - "Navigation labels destinations grouping route identity redirects canonicals or retirements"
+    - "Mobile Menu controller behavior nested panel layout or shared navigation data"
+    - "Claims manifests provenance SVG motion public assets fonts or page archetypes"
+    - "Historical cancelled FE-P1-03 record rewrites"
+    - "Upstream writes Git push or Cloudflare deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-003-A"
+  next_packet_after_this_task: "No successor packet is authorized by FE-P1-04"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "/Users/alex.omegapy/.codex/skills/playwright/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "src/layouts/BaseLayout.astro"
+    - "src/styles/global.css"
+    - "src/lib/siteContent.ts"
+    - "tests"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/styles/global.css"
+    - "tests/test_mobile_navigation.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-002.yaml"
+    - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-003.yaml"
+    - "implementation_control/handoffs/WH-20260715-003.md"
+    - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+    - "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly authorized the FE-P1-04 packet."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public claim copy metadata claim registry or ladder changes."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source bundle asset or upstream refresh is in scope and validation uses the accepted clean source pin."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers desktop target sizing for existing top level navigation only."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval covers one bounded shared navigation target size rule."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No manifest changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-desktop-navigation-review"
+    command: "manual inspection of desktop target dimensions current state Escape closing and focus return in a headed browser"
+    required: true
+
+stop_conditions:
+  - "A navigation label destination group route claim manifest asset or historical cancellation record change becomes necessary."
+  - "The 44 CSS pixel target rule changes compact navigation sizing or controller behavior."
+  - "Current page state Escape close focus return outside click or nested disclosure behavior regresses."
+  - "A required validator or headed browser case fails."
+  - "Work enters successor packet push deployment or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-003-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-003"
+  yaml_path: "implementation_control/handoffs/WH-20260715-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-003.md"
+
+completion_record:
+  completion_id: "WJC-20260715-003-A"
+  path: "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-P1-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-003-A and stop."
+  do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
+
+preflight_evidence:
+  status: "passed"
+  observed_utc: "2026-07-15T15:50:54Z"
+  previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 1
+  website_worktree_status: "clean_before_packet_open"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  previous_checkpoint_replayed: false
+  desktop_target_height: "44 CSS pixels"
+  focused_navigation_tests: "passed 4 tests"
+  python_tests: "passed 130 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_desktop_navigation_review: "passed"
+  compact_target_isolation_review: "passed"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"
+  push_performed: false
+  deployment_performed: false

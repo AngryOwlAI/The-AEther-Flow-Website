@@ -4,8 +4,8 @@ job_id: "WJ-20260715-002-A"
 task_id: "WI-20260715-002"
 title: "Validate And Reaccept Compact Mobile Navigation"
 created_utc: "2026-07-15T14:18:31Z"
-updated_utc: "2026-07-15T15:07:11Z"
-status: "active"
+updated_utc: "2026-07-15T15:50:54Z"
+status: "superseded"
 
 objective: "Validate and accept the preserved compact mobile navigation disclosure under the amended required evidence matrix and create one bounded local checkpoint."
 
@@ -137,7 +137,7 @@ preserved_input_evidence:
   hashes_verified_before_open: true
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   interim_review_commit: "651eadc2f3d63283d9c0dbf039b82c84f1d50282"
   python_tests: "passed 129 tests"
   static_build: "passed 64 pages"
@@ -148,4 +148,13 @@ implementation_status:
   manual_voiceover_safari_review: "passed on macOS 26.5.2 and Safari 26.5.2"
   voiceover_disabled_after_review: true
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-003"
+  reason: "The completed FE-P1-03R job was checkpointed before FE-P1-04 activation."

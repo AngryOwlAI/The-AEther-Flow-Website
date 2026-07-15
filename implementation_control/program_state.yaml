@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T15:07:11Z"
+updated_utc: "2026-07-15T15:57:47Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,12 +9,12 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-002.yaml"
+  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-003.yaml"
   - "current_git_state_and_validator_output"
-  - "owner authorized FE-P1-03 compact mobile navigation reacceptance under the amended evidence matrix"
-  - "ImplementationPlans/recomendation_frontend.md as amended routing context"
+  - "owner authorized FE-P1-04 desktop navigation target implementation after the FE-P1-03R checkpoint"
+  - "ImplementationPlans/recomendation_frontend.md as routing context"
   - "memory_and_conversation_summaries_as_navigation_only"
 
 repository_boundary:
@@ -25,28 +25,28 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-002"
-  title: "Reaccept Compact Mobile Navigation"
+  task_id: "WI-20260715-003"
+  title: "Enlarge Desktop Navigation Targets"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
   planning_context:
-    task_packet: "FE-P1-03R"
+    task_packet: "FE-P1-04"
     adopted_plan: "ImplementationPlans/recomendation_frontend.md"
     adopted_sha256: "a411572bc425fb705a1838a707f8030f8a2d637d68c6d6b6c4d11da7ec57c73c"
-    previous_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
+    previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly directed implementation of the approved accessibility evidence amendment and FE-P1-03 reacceptance plan on 2026-07-15."
+    owner_authorization: "Owner explicitly directed opening and executing a fresh FE-P1-04 packet without replaying the completed FE-P1-03R checkpoint on 2026-07-15."
 
 current_job:
-  job_id: "WJ-20260715-002-A"
+  job_id: "WJ-20260715-003-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-002"
+  handoff_id: "WH-20260715-003"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-002.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-002.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-003.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -67,49 +67,41 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "manual-mobile-menu-review"
-    command: "manual inspection of pointer keyboard Escape outside click nested group current route short viewport orientation zoom and focus behavior"
-    required_for_current_job: true
-  - id: "manual-no-javascript-review"
-    command: "manual inspection of essential navigation destinations with JavaScript disabled"
-    required_for_current_job: true
-  - id: "manual-voiceover-review"
-    command: "manual inspection of mobile Menu state navigation announcements and focus order with macOS VoiceOver and Safari"
+  - id: "runtime-desktop-navigation-review"
+    command: "manual inspection of desktop target dimensions current state Escape closing and focus return in a headed browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "FE-P1-03R local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-002-A against the accepted clean source pin and stop."
-  do_not_skip: "Do not open FE-P1-04 push deploy or mutate upstream."
+  task_packet: "FE-P1-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-003-A against the accepted clean source pin and stop."
+  do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T14:18:31Z"
-  previous_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
+  observed_utc: "2026-07-15T15:50:54Z"
+  previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
   website_ahead_of_origin_main: 1
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-  live_upstream_activity_status: "ignored_read_only_external_work"
-  preserved_dirty_path_count: 8
-  preserved_hashes_verified: true
+  website_worktree_status: "clean_before_packet_open"
+  dependency_status: "FE-P1-03R checkpoint observed as HEAD"
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
-  policy_checkpoint_replayed: false
-  interim_review_commit: "651eadc2f3d63283d9c0dbf039b82c84f1d50282"
-  python_tests: "passed 129 tests"
+  previous_checkpoint_replayed: false
+  desktop_target_height: "44 CSS pixels"
+  focused_navigation_tests: "passed 4 tests"
+  python_tests: "passed 130 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
-  manual_mobile_menu_review: "passed"
-  manual_no_javascript_review: "passed"
-  manual_voiceover_safari_review: "passed on macOS 26.5.2 and Safari 26.5.2"
-  voiceover_disabled_after_review: true
+  runtime_desktop_navigation_review: "passed"
+  compact_target_isolation_review: "passed with existing 32 CSS pixel inner targets unchanged"
   completion_created: true
   checkpoint_status: "ready_to_checkpoint"
 
 latest_completion:
-  completion_id: "WJC-20260715-002-A"
-  path: "implementation_control/tasks/WI-20260715-002/jobs/completions/WJC-20260715-002-A.yaml"
+  completion_id: "WJC-20260715-003-A"
+  path: "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
   status: "completed"

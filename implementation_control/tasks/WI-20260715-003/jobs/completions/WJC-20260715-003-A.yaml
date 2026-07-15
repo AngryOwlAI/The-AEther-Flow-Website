@@ -1,0 +1,116 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-003-A"
+task_id: "WI-20260715-003"
+job_id: "WJ-20260715-003-A"
+created_utc: "2026-07-15T15:57:47Z"
+completed_utc: "2026-07-15T15:57:47Z"
+status: "completed"
+
+summary: "Increased non compact desktop navigation targets to 44 CSS pixels and verified current page state Escape closing focus return and compact isolation."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-002.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-003.yaml"
+  - "implementation_control/handoffs/WH-20260715-003.md"
+  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
+  - "implementation_control/tasks/WI-20260715-003/jobs/completions/WJC-20260715-003-A.yaml"
+  - "src/styles/global.css"
+  - "tests/test_mobile_navigation.py"
+
+source_context:
+  packet_id: "FE-P1-04"
+  previous_checkpoint: "7db8eb09654ce7b3b664725763aa21c8cb6aeafc"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  previous_checkpoint_replayed: false
+  dependency_satisfied: true
+
+implementation_evidence:
+  desktop_top_level_minimum_height: "2.75rem"
+  measured_desktop_target_height: "44 CSS pixels"
+  measured_desktop_target_count: 4
+  desktop_viewport: "1440 by 900 CSS pixels"
+  non_compact_media_boundary: "min width 781 with min height 481 or min width 901"
+  compact_breakpoint_target_height: "32 CSS pixels unchanged"
+  compact_breakpoint_viewport: "780 by 900 CSS pixels"
+  navigation_labels_changed: false
+  navigation_destinations_changed: false
+  navigation_grouping_changed: false
+  route_identity_changed: false
+  compact_controller_changed: false
+  public_claims_changed: false
+  manifests_changed: false
+  public_assets_changed: false
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Playwright CLI headed Chromium"
+  route: "http://127.0.0.1:4322/physics/ontology/"
+  desktop_viewport: "1440 by 900 CSS pixels"
+  home_target: "61.2265625 by 44 CSS pixels"
+  physics_target: "160.4296875 by 44 CSS pixels"
+  ai_target: "178.0390625 by 44 CSS pixels"
+  resources_target: "108.25 by 44 CSS pixels"
+  active_group_state: "Physics Research data active remained true"
+  current_child_state: "Ontology retained aria current page"
+  escape_result: "Physics group collapsed and focus returned to its trigger"
+  compact_isolation: "At 780 by 900 compact mode was true and existing inner target heights remained 32 CSS pixels"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-navigation-tests"
+    command: ".venv/bin/python -m pytest tests/test_mobile_navigation.py"
+    status: "passed"
+    evidence: "4 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "130 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "Passed with AETHER_FLOW_SOURCE_ROOT bound to the accepted clean source pin"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+    evidence: "Passed with AETHER_FLOW_SOURCE_ROOT bound to the accepted clean source pin"
+  - id: "runtime-desktop-navigation-review"
+    command: "manual inspection of desktop target dimensions current state Escape closing and focus return in a headed browser"
+    status: "passed"
+    evidence: "All desktop targets measured 44 CSS pixels high and current and Escape contracts passed"
+
+validation_environment:
+  disposable_source_root: "/tmp/aether-flow-source-57438af-fe-p1-03r-hxDuwC"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  source_tree_clean: true
+  upstream_worktree_modified: false
+
+remaining_boundaries:
+  - "FE-P1-03R remains completed at 7db8eb09654ce7b3b664725763aa21c8cb6aeafc and was not replayed."
+  - "No navigation content route claim manifest asset upstream push or deployment change occurred."
+  - "No successor packet is authorized by this completion."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the eleven FE-P1-04 implementation test transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P1-04 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not replay FE-P1-03R open a successor packet push deploy or mutate upstream."
