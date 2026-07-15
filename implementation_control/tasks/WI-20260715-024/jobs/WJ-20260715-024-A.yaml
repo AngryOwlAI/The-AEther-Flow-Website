@@ -1,0 +1,149 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-024-A"
+task_id: "WI-20260715-024"
+title: "Implement Resources Source Authority Project Introduction"
+created_utc: "2026-07-15T21:28:38Z"
+updated_utc: "2026-07-15T21:36:34Z"
+status: "active"
+
+objective: "Render one quality gated general public project introduction immediately after the Resources Source Authority hero."
+
+execution_boundary:
+  invocation_limit: "one bounded RESOURCES-SOURCE-AUTHORITY-INTRO-01 packet"
+  packet_id: "RESOURCES-SOURCE-AUTHORITY-INTRO-01"
+  previous_checkpoint: "4adb05fdf6f9b10f3432fbe31c10d40d95f955e3"
+  previous_checkpoint_replay_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Resources Source Authority introduction"
+  authority_class_and_checklist_mechanics_write_status: "forbidden"
+  dedicated_source_authority_section_status: "forbidden"
+  route_and_navigation_write_status: "forbidden"
+  other_route_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-024"
+
+allowed_writes:
+  - "src/pages/resources/source-authority/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-023.yaml"
+  - "implementation_control/tasks/WI-20260715-023/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-023/jobs/WJ-20260715-023-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-024.yaml"
+  - "implementation_control/handoffs/WH-20260715-024.md"
+  - "implementation_control/tasks/WI-20260715-024/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-024/jobs/WJ-20260715-024-A.yaml"
+  - "implementation_control/tasks/WI-20260715-024/jobs/completions/WJC-20260715-024-A.yaml"
+
+required_outputs:
+  - "One substantial ProjectIntroduction paragraph replaces the raw Resources Source Authority intro section."
+  - "The paragraph identifies the two part project before explaining authority lanes."
+  - "The paragraph explains source ownership registered TeX Markdown control registries derivatives retrieval PRDs source-first sequence and conflict handling."
+  - "The paragraph keeps the Resources no dedicated Source authority section rule."
+  - "Authority tables checklist routes diagram and contextual boundary remain unchanged."
+  - "Writing gate focused tests provenance build aggregate quality and responsive browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the sitewide project description rule."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "One reviewed Resources Source Authority introduction only."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "Accepted sources are clean and later registry deltas preserve named authority rows and semantics."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Bounded Resources Source Authority page content change without route navigation or retirement changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "Reuse the existing ProjectIntroduction component without style changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Resources Source Authority provenance regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-source-authority-introduction-review"
+    command: "manual inspection of the Resources Source Authority project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The draft cannot remain source proportional."
+  - "An authority table checklist route dedicated authority section shared style navigation asset or upstream source change becomes necessary."
+  - "The paragraph is not one substantial post hero paragraph or fails responsive review."
+  - "A required validator or browser review fails."
+  - "Work enters another route push deployment source refresh or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-024-A"
+  path: "implementation_control/tasks/WI-20260715-024/jobs/completions/WJC-20260715-024-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-SOURCE-AUTHORITY-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-024-A and stop."
+  do_not_skip: "Do not add a dedicated authority section or enter Registry Explorer."
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Resources Source Authority hero"
+  focused_tests: "passed 25 tests"
+  python_tests: "passed 150 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"

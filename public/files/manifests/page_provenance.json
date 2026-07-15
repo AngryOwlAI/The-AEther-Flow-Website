@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T21:21:52.907901+00:00",
+  "generated_at": "2026-07-15T21:33:28.472842+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -1991,7 +1991,7 @@
     {
       "route_path": "/resources/source-authority/",
       "local_page_source": "src/pages/resources/source-authority/index.astro",
-      "local_page_sha256": "d01cfe34a9cb9fa1b1b528105ca8a54ae8ed779d25e186ea1fcfa961c6c8c338",
+      "local_page_sha256": "78fe4298c74a8f8a023b2967bb95eabe4f6ca9397fa14a1d0f497f50b00cd85e",
       "title": "Source Authority",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

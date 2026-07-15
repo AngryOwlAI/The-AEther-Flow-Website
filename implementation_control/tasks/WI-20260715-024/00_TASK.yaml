@@ -1,0 +1,220 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-024"
+title: "Normalize Resources Source Authority Project Introduction"
+created_utc: "2026-07-15T21:28:38Z"
+updated_utc: "2026-07-15T21:36:34Z"
+status: "active"
+
+source_context:
+  packet_id: "RESOURCES-SOURCE-AUTHORITY-INTRO-01"
+  adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
+  previous_task: "WI-20260715-023"
+  previous_checkpoint: "4adb05fdf6f9b10f3432fbe31c10d40d95f955e3"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  live_upstream_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
+  relevant_source_parity: "Project overview README source authority publication TEX and publication brief evidence are unchanged; named Markdown rows are unchanged and later claim-boundary and Markdown registry deltas are unrelated additive control rows and hash maintenance."
+  owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
+
+goal: "Replace the raw Resources Source Authority topic paragraph with one source grounded whole project introduction immediately after the hero."
+
+requirements:
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Resources Source Authority hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to source authority."
+  - "Keep general relativity as the exact observable benchmark while the proposed foundation and first principles derivation remain open."
+  - "Explain source authority as the tracked material allowed to define claim status rather than whichever page is clearest."
+  - "Explain registered TeX registered Markdown tracked control records and registries as distinct scoped authority lanes."
+  - "Explain generated pages PDFs diagrams and public explainers as downstream reader aids and local retrieval as navigation support."
+  - "Explain PRDs as website requirement authority rather than canonical project claim authority."
+  - "Explain the source first sequence of naming the claim class identifying the owner inspecting the source and row resolving conflicts and stating the limit."
+  - "State that this Resources page keeps authority as contextual copy and provenance metadata without a dedicated Source authority component section."
+  - "State that no registry row generated derivative memory hit validator PASS review receipt AI output or webpage independently proves physics completes the open derivation promotes ontology or benchmark expands workflow authority or overrides source."
+  - "Preserve all existing authority class checklist route diagram and contextual boundary content."
+
+scope:
+  in_scope:
+    - "Resources Source Authority introduction and component reuse in src/pages/resources/source-authority/index.astro"
+    - "Focused source and order assertions in tests/test_public_positioning.py"
+    - "Resources Source Authority page provenance regeneration against the accepted source pin"
+    - "Current implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Authority class checklist route or source mechanics"
+    - "Dedicated SourceAuthoritySection rendering on a Resources page"
+    - "Other Resources route introductions"
+    - "Shared component style route navigation public asset or upstream source changes"
+    - "Git push Cloudflare deployment source refresh or upstream writes"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-024-A"
+  next_packet_after_this_task: "The Registry Explorer introduction becomes eligible only after this packet validates and is locally checkpointed."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/content-dossiers/source-authority/dossier.md"
+    - "src/components/ProjectIntroduction.astro"
+    - "src/lib/siteContent.ts"
+    - "src/pages/resources/source-authority/index.astro"
+    - "public/files/manifests/page_provenance.json"
+    - "tests/test_public_positioning.py"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "README.md"
+    - "github-facing/project-overview-explainer.md"
+    - "github-facing/source-authority-explainer.md"
+    - "github-facing/documentation-curator-publication-process-explainer.md"
+    - "registries/PUBLICATION_BRIEF_REGISTRY.csv"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "registries/TEX_SOURCE_REGISTRY.csv"
+    - "registries/MARKDOWN_SOURCE_REGISTRY.csv"
+
+allowed_writes:
+  website_repository:
+    - "src/pages/resources/source-authority/index.astro"
+    - "tests/test_public_positioning.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-023.yaml"
+    - "implementation_control/tasks/WI-20260715-023/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-023/jobs/WJ-20260715-023-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-024.yaml"
+    - "implementation_control/handoffs/WH-20260715-024.md"
+    - "implementation_control/tasks/WI-20260715-024/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-024/jobs/WJ-20260715-024-A.yaml"
+    - "implementation_control/tasks/WI-20260715-024/jobs/completions/WJC-20260715-024-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed implementation of the sitewide project description rule."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval covers one source grounded Resources Source Authority introduction under the technical writing quality gate."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "The accepted pin remains clean and later registry differences preserve the named authority rows and governing semantics."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers the bounded Resources Source Authority page content change without route navigation or retirement changes."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval covers regeneration of Resources Source Authority page provenance after the page source change."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-source-authority-introduction-review"
+    command: "manual inspection of the Resources Source Authority project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The paragraph cannot remain proportional to the accepted project overview source authority publication registry and dossier evidence."
+  - "An authority table checklist route dedicated authority section shared style navigation asset or upstream source change becomes necessary."
+  - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
+  - "A required validator or browser review fails."
+  - "Work enters another route push deployment source refresh or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-024-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-024"
+  yaml_path: "implementation_control/handoffs/WH-20260715-024.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-024.md"
+
+completion_record:
+  completion_id: "WJC-20260715-024-A"
+  path: "implementation_control/tasks/WI-20260715-024/jobs/completions/WJC-20260715-024-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-SOURCE-AUTHORITY-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-024-A and stop."
+  do_not_skip: "Do not add a dedicated authority section or enter Registry Explorer."
+
+preflight_evidence:
+  status: "passed_with_relevant_source_semantics_preserved_and_unrelated_upstream_changes_isolated"
+  observed_utc: "2026-07-15T21:28:38Z"
+  previous_checkpoint: "4adb05fdf6f9b10f3432fbe31c10d40d95f955e3"
+  previous_checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 22
+  website_worktree_status: "clean_before_packet_open"
+  accepted_source_worktree_status: "clean"
+  upstream_worktree_status: "dirty external project memory tooling registry and generated derivative changes preserved and excluded"
+  upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  relevant_source_parity_status: "overview README source authority publication TEX and publication brief sources unchanged; named Markdown rows unchanged; later claim boundary and Markdown registry deltas unrelated to page semantics"
+  source_refresh_status: "not performed"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Resources Source Authority hero"
+  focused_tests: "passed 25 tests"
+  python_tests: "passed 150 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"
+  push_performed: false
+  deployment_performed: false

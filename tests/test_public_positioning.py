@@ -43,6 +43,7 @@ AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/runtime-requirements/index.astro"
 )
 RESOURCES_PAGE = REPO_ROOT / "src/pages/resources/index.astro"
+RESOURCES_SOURCE_AUTHORITY_PAGE = REPO_ROOT / "src/pages/resources/source-authority/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -682,6 +683,47 @@ def test_resources_overview_has_a_general_public_project_introduction_after_the_
     assert "grants workflow authority" in source
     assert "replaces human review" in source
     assert '<section class="greenfield-intro-panel" aria-label="Resources overview introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_source_authority_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_SOURCE_AUTHORITY_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "Source authority is the trust rule shared by both tracks" in source
+    assert "not which page is clearest" in source
+    assert "which tracked material is allowed to define the status of the claim" in source
+    assert "Registered TeX carries scoped physics and derivational claims" in source
+    assert "Registered Markdown carries front-door guidance" in source
+    assert "Current research-control records and registries carry task authority" in source
+    assert "without replacing the source files they describe" in source
+    assert "Generated Markdown, HTML pages, PDFs, diagrams, wiki notes" in source
+    assert "semantic extracts, Obsidian mirrors, SQLite indexes, memory results, and local caches" in source
+    assert "website PRDs define page requirements rather than canonical project claims" in source
+    assert "names the claim class, identifies its owner, inspects the source file" in source
+    assert "resolves any disagreement in favor of the source" in source
+    assert "preserves exact qualifiers" in source
+    assert "contextual copy and provenance metadata rather than a separate Source authority component section" in source
+    assert "the source wins and the derivative needs repair" in source
+    assert "No registry row, generated explainer, diagram, PDF, memory hit, validator PASS" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "expands an AgentJob or role's authority" in source
+    assert "overrides a human gate" in source
+    assert "replaces direct source inspection" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Resources source authority introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

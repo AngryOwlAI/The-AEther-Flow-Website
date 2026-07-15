@@ -4,7 +4,7 @@ job_id: "WJ-20260715-023-A"
 task_id: "WI-20260715-023"
 title: "Implement Resources Overview Project Introduction"
 created_utc: "2026-07-15T21:17:06Z"
-updated_utc: "2026-07-15T21:24:32Z"
+updated_utc: "2026-07-15T21:28:38Z"
 status: "active"
 
 objective: "Render one quality gated general public project introduction immediately after the Resources Overview hero."
@@ -135,7 +135,7 @@ next_recommended_action:
   do_not_skip: "Do not change resource route manifest source status mechanics or enter a Resources child route."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Resources Overview hero"
   focused_tests: "passed 24 tests"
@@ -145,4 +145,13 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "4adb05fdf6f9b10f3432fbe31c10d40d95f955e3"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-024"
+  reason: "The completed Resources Overview introduction job was checkpointed before RESOURCES-SOURCE-AUTHORITY-INTRO-01 activation."

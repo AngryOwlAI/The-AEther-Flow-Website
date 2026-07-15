@@ -3,7 +3,11 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
+
+const resourcesSourceAuthorityProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. Its AI track uses tracked tasks, bounded AgentJobs, roles, validation, memory preflight, completions, handoffs, and human gates so that proposals, calculations, failures, and decisions remain inspectable without becoming accepted physics by workflow alone. Source authority is the trust rule shared by both tracks: the question is not which page is clearest, but which tracked material is allowed to define the status of the claim being made. Registered TeX carries scoped physics and derivational claims within its stated status. Registered Markdown carries front-door guidance, role and skill contracts, schemas, publication briefs, source specifications, and project-control notes within those lanes. Current research-control records and registries carry task authority, routing, provenance, relationships, hashes, source locations, and status without replacing the source files they describe. Generated Markdown, HTML pages, PDFs, diagrams, wiki notes, and other public explainers are downstream reading aids; semantic extracts, Obsidian mirrors, SQLite indexes, memory results, and local caches are navigation support; and website PRDs define page requirements rather than canonical project claims. A source-first check therefore names the claim class, identifies its owner, inspects the source file together with the relevant registry row or current control record, resolves any disagreement in favor of the source, preserves exact qualifiers, and states what the evidence does not prove. This Resources page follows its own rule: authority is explained through contextual copy and provenance metadata rather than a separate Source authority component section. If a polished derivative disagrees with a registered source or current tracked record, the source wins and the derivative needs repair. No registry row, generated explainer, diagram, PDF, memory hit, validator PASS, review receipt, screenshot, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, expands an AgentJob or role's authority, overrides a human gate, or replaces direct source inspection.";
 
 const authorityRows = [
   {
@@ -182,13 +186,10 @@ const authoritySvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Resources source authority introduction">
-    <p>
-      This page is itself a Resources page, so its authority boundary appears
-      as contextual copy and provenance metadata. It does not render a separate
-      source-authority component block.
-    </p>
-  </section>
+  <ProjectIntroduction
+    text={resourcesSourceAuthorityProjectIntroduction}
+    ariaLabel="About the Æther Flow Project and source authority"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesSourceAuthority} />
