@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-012"
 created_utc: "2026-07-15T19:08:42Z"
-updated_utc: "2026-07-15T19:15:32Z"
+updated_utc: "2026-07-15T19:21:00Z"
 status: "active"
 
 task_id: "WI-20260715-012"
@@ -33,8 +33,8 @@ source_authority_boundary:
   deployment_status: "not_authorized"
 
 next_recommended_action:
-  task_packet: "PHYSICS-OPEN-BURDENS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-012-A and stop."
+  task_packet: "AI-OVERVIEW-INTRO-01 implementation"
+  summary: "Implement the separately bounded AI Research System Overview project introduction packet."
   do_not_skip: "Do not enter another route push deploy refresh sources or mutate upstream."
 
 stop_before:
@@ -49,12 +49,24 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-012-A"
   path: "implementation_control/tasks/WI-20260715-012/jobs/completions/WJC-20260715-012-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "2db1121e42854383f751caadbdb723ca5c38eeff"
+  observed_as_head: true
+  repeated: false
+
+superseded_by:
+  handoff_id: "WH-20260715-013"
+  task_id: "WI-20260715-013"
+  job_id: "WJ-20260715-013-A"
+  checkpoint: "2db1121e42854383f751caadbdb723ca5c38eeff"
+  reason: "PHYSICS-OPEN-BURDENS-INTRO-01 was checkpointed before the separately bounded AI Research System Overview introduction packet opened."

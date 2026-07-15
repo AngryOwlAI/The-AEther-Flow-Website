@@ -1,46 +1,46 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260715-012"
-title: "Normalize Open Burdens Project Introduction"
-created_utc: "2026-07-15T19:08:42Z"
-updated_utc: "2026-07-15T19:21:00Z"
+task_id: "WI-20260715-013"
+title: "Normalize AI Research System Overview Project Introduction"
+created_utc: "2026-07-15T19:21:00Z"
+updated_utc: "2026-07-15T19:28:02Z"
 status: "active"
 
 source_context:
-  packet_id: "PHYSICS-OPEN-BURDENS-INTRO-01"
+  packet_id: "AI-OVERVIEW-INTRO-01"
   adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-  previous_task: "WI-20260715-011"
-  previous_checkpoint: "752ba0bad4917f4f5ee6b423ae365c414dea0390"
+  previous_task: "WI-20260715-012"
+  previous_checkpoint: "2db1121e42854383f751caadbdb723ca5c38eeff"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
-goal: "Replace the raw Open Burdens topic paragraph with one source grounded whole project introduction immediately after the hero."
+goal: "Replace the raw AI Research System Overview topic paragraph with one source grounded whole project introduction immediately after the hero."
 
 requirements:
-  - "Render one substantial single paragraph ProjectIntroduction immediately after the Open Burdens hero."
-  - "Explain The AEther Flow Project as a two part physics and governed AI research program before narrowing to open burdens."
-  - "State that exact GR remains the observable benchmark while first principles substrate derivation remains open."
-  - "Explain that source structure metric matter coupling field equations benchmark promotion and human gates are separate obligations."
-  - "State that ledger rows and status counts are not a progress score and scoped evidence does not discharge downstream burdens."
-  - "State that a blocked route or scoped obstruction is not a project wide rejection."
-  - "Tell a general reader how the route makes missing work and limits visible."
-  - "Preserve all existing burden rows status tables snapshots actions diagrams and source authority."
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the AI Research System Overview hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to workflow."
+  - "Explain that the physics track keeps general relativity as the exact observable benchmark while the substrate derivation remains open."
+  - "Explain that the AI track organizes research through tracked tasks bounded AgentJobs named roles source inspection validators completions and handoffs."
+  - "Keep protected decisions with the human Director or other explicit human gate."
+  - "State that AI output validator PASS and workflow completion do not prove physics or expand source granted authority."
+  - "Tell a general reader how the route helps them follow who may act what evidence is required and how results are preserved."
+  - "Preserve all existing route cards workflow tables actions diagrams and source authority."
 
 scope:
   in_scope:
-    - "Open Burdens introduction and component reuse in src/pages/physics/open-burdens/index.astro"
+    - "AI Research System Overview introduction and component reuse in src/pages/ai-research-system/index.astro"
     - "Focused source and order assertions in tests/test_public_positioning.py"
-    - "Open Burdens page provenance regeneration against the accepted source pin"
+    - "AI Research System Overview page provenance regeneration against the accepted source pin"
     - "Current implementation control transition completion and handoff records"
   out_of_scope:
-    - "Other Physics routes and page family introductions"
-    - "Shared component style burden rows tables snapshots route navigation source notice public asset or upstream source changes"
+    - "AI Research System child routes Resources routes and other page family introductions"
+    - "Shared component style route cards workflow tables navigation source notice public asset or upstream source changes"
     - "Git push Cloudflare deployment source refresh or upstream writes"
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260715-012-A"
+  active_job_id: "WJ-20260715-013-A"
   next_packet_after_this_task: "The next incomplete introduction route becomes eligible only after this packet validates and is locally checkpointed."
 
 allowed_reads:
@@ -51,13 +51,12 @@ allowed_reads:
     - ".codex/skills/technical-writing-quality-gate/SKILL.md"
     - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
     - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
     - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     - "docs/architecture/sitewide-greenfield-foundation-contract.md"
     - "src/components/ProjectIntroduction.astro"
     - "src/lib/siteContent.ts"
-    - "src/data/distance_to_gr_snapshot.json"
-    - "src/data/physics_current_state_snapshot.json"
-    - "src/pages/physics/open-burdens/index.astro"
+    - "src/pages/ai-research-system/index.astro"
     - "public/files/manifests/page_provenance.json"
     - "tests/test_public_positioning.py"
     - "scripts"
@@ -66,30 +65,29 @@ allowed_reads:
     - "website and upstream read only Git evidence"
   upstream_source_repository:
     - "README.md"
+    - "AGENTS.md"
     - "github-facing/project-overview-explainer.md"
-    - "github-facing/aether-flow-physics-program-explainer.md"
-    - "github-facing/source-authority-explainer.md"
-    - "github-facing/claim-gates-explainer.md"
-    - "research_control/program_state.yaml"
-    - "research_control/handoffs/handoff-0740.yaml"
-    - "research_control/design/gr_derivation_burden_map.md"
-    - "registries/DISTANCE_TO_GR_LEDGER.csv"
-    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "github-facing/research-agent-workflow-explainer.md"
+    - "github-facing/roles-and-skills-explainer.md"
+    - "github-facing/memory-system-explainer.md"
+    - "github-facing/validator-operator-workflow-explainer.md"
+    - "research_control/README.md"
+    - "registries/AGENT_ROLE_REGISTRY.csv"
 
 allowed_writes:
   website_repository:
-    - "src/pages/physics/open-burdens/index.astro"
+    - "src/pages/ai-research-system/index.astro"
     - "tests/test_public_positioning.py"
     - "public/files/manifests/page_provenance.json"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260715-011.yaml"
-    - "implementation_control/tasks/WI-20260715-011/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260715-011/jobs/WJ-20260715-011-A.yaml"
     - "implementation_control/handoffs/WH-20260715-012.yaml"
-    - "implementation_control/handoffs/WH-20260715-012.md"
     - "implementation_control/tasks/WI-20260715-012/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260715-012/jobs/WJ-20260715-012-A.yaml"
-    - "implementation_control/tasks/WI-20260715-012/jobs/completions/WJC-20260715-012-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-013.yaml"
+    - "implementation_control/handoffs/WH-20260715-013.md"
+    - "implementation_control/tasks/WI-20260715-013/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-013/jobs/WJ-20260715-013-A.yaml"
+    - "implementation_control/tasks/WI-20260715-013/jobs/completions/WJC-20260715-013-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -98,13 +96,13 @@ approval_gates:
     reason: "The owner explicitly directed implementation of the sitewide project description rule."
   public_claim_changes:
     status: "approved"
-    reason: "Approval covers one source grounded Open Burdens introduction under the technical writing quality gate."
+    reason: "Approval covers one source grounded AI Research System Overview introduction under the technical writing quality gate."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "No source refresh occurs and the introduction remains proportional to the accepted project physics and burden map sources at the pinned source root."
+    reason: "No source refresh occurs and the introduction remains proportional to the accepted project overview and research workflow sources at the pinned source root."
   broad_navigation_or_route_retirement:
     status: "approved"
-    reason: "Approval covers the bounded Open Burdens page content change without route navigation or retirement changes."
+    reason: "Approval covers the bounded AI Research System Overview page content change without route navigation or retirement changes."
   shared_visual_systems:
     status: "not_required"
     reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
@@ -113,7 +111,7 @@ approval_gates:
     reason: "No public assets."
   public_manifest_authority_records:
     status: "approved"
-    reason: "Approval covers regeneration of Open Burdens page provenance after the page source change."
+    reason: "Approval covers regeneration of AI Research System Overview page provenance after the page source change."
   git_push:
     status: "not_required"
     reason: "Push is outside this packet."
@@ -152,13 +150,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-open-burdens-introduction-review"
-    command: "manual inspection of the Open Burdens project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-overview-introduction-review"
+    command: "manual inspection of the AI Research System Overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "The paragraph cannot remain proportional to the accepted project physics and burden map sources."
-  - "Another route shared style burden row table snapshot navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph cannot remain proportional to the accepted project overview and research workflow sources."
+  - "Another route shared style route card workflow table navigation source notice asset or upstream source change becomes necessary."
   - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -166,30 +164,30 @@ stop_conditions:
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Create WJC-20260715-012-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+  closeout: "Create WJC-20260715-013-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
 
 completion_record:
-  completion_id: "WJC-20260715-012-A"
-  path: "implementation_control/tasks/WI-20260715-012/jobs/completions/WJC-20260715-012-A.yaml"
+  completion_id: "WJC-20260715-013-A"
+  path: "implementation_control/tasks/WI-20260715-013/jobs/completions/WJC-20260715-013-A.yaml"
   status: "completed"
 
 handoff:
-  latest_handoff_id: "WH-20260715-012"
-  yaml_path: "implementation_control/handoffs/WH-20260715-012.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-012.md"
+  latest_handoff_id: "WH-20260715-013"
+  yaml_path: "implementation_control/handoffs/WH-20260715-013.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-013.md"
 
 next_recommended_action:
-  task_packet: "AI-OVERVIEW-INTRO-01 implementation"
-  summary: "Implement the separately bounded AI Research System Overview project introduction packet."
-  do_not_skip: "Do not enter other routes push deployment source refresh or upstream mutation."
+  task_packet: "AI-OVERVIEW-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-013-A and stop."
+  do_not_skip: "Do not enter child routes Resources routes push deployment source refresh or upstream mutation."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T19:08:42Z"
-  previous_checkpoint: "752ba0bad4917f4f5ee6b423ae365c414dea0390"
+  observed_utc: "2026-07-15T19:21:00Z"
+  previous_checkpoint: "2db1121e42854383f751caadbdb723ca5c38eeff"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 10
+  website_ahead_of_origin_main: 11
   website_worktree_status: "clean_before_packet_open"
   upstream_worktree_status: "clean"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
@@ -198,25 +196,16 @@ preflight_evidence:
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Open Burdens hero"
-  focused_tests: "passed 13 tests"
-  python_tests: "passed 138 tests"
+  project_introduction: "one substantial general public paragraph after the AI Research System Overview hero"
+  focused_tests: "passed 14 tests"
+  python_tests: "passed 139 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false
-
-checkpoint_evidence:
-  commit: "2db1121e42854383f751caadbdb723ca5c38eeff"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-013"
-  reason: "PHYSICS-OPEN-BURDENS-INTRO-01 was checkpointed before the separately bounded AI Research System Overview introduction packet opened."

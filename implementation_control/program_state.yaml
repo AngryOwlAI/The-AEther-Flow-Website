@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T19:15:32Z"
+updated_utc: "2026-07-15T19:28:02Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-012/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-012/jobs/WJ-20260715-012-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-012.yaml"
+  - "implementation_control/tasks/WI-20260715-013/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-013/jobs/WJ-20260715-013-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-013.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,28 +25,33 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-012"
-  title: "Normalize Open Burdens Project Introduction"
+  task_id: "WI-20260715-013"
+  title: "Normalize AI Research System Overview Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-012/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-013/00_TASK.yaml"
   planning_context:
-    task_packet: "PHYSICS-OPEN-BURDENS-INTRO-01"
+    task_packet: "AI-OVERVIEW-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "752ba0bad4917f4f5ee6b423ae365c414dea0390"
+    previous_checkpoint: "2db1121e42854383f751caadbdb723ca5c38eeff"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-012-A"
+  job_id: "WJ-20260715-013-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-012/jobs/WJ-20260715-012-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-013/jobs/WJ-20260715-013-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-012"
+  handoff_id: "WH-20260715-013"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-012.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-012.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-013.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-013.md"
+
+latest_completion:
+  completion_id: "WJC-20260715-013-A"
+  path: "implementation_control/tasks/WI-20260715-013/jobs/completions/WJC-20260715-013-A.yaml"
+  status: "completed"
 
 required_validators:
   - id: "git-diff-check"
@@ -76,27 +81,27 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-open-burdens-introduction-review"
-    command: "manual inspection of the Open Burdens project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-overview-introduction-review"
+    command: "manual inspection of the AI Research System Overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PHYSICS-OPEN-BURDENS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-012-A and stop."
-  do_not_skip: "Do not enter other Physics routes page families push deploy refresh sources or mutate upstream."
+  task_packet: "AI-OVERVIEW-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-013-A and stop."
+  do_not_skip: "Do not enter child routes Resources routes push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T19:08:42Z"
-  previous_checkpoint: "752ba0bad4917f4f5ee6b423ae365c414dea0390"
+  observed_utc: "2026-07-15T19:21:00Z"
+  previous_checkpoint: "2db1121e42854383f751caadbdb723ca5c38eeff"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 10
+  website_ahead_of_origin_main: 11
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "PHYSICS-CLAIM-STATUS-INTRO-01 checkpoint observed as HEAD"
+  dependency_status: "PHYSICS-OPEN-BURDENS-INTRO-01 checkpoint observed as HEAD"
   upstream_worktree_status: "clean"
   source_refresh_status: "not performed"
 
@@ -104,9 +109,9 @@ implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Open Burdens hero"
-  focused_tests: "passed 13 tests"
-  python_tests: "passed 138 tests"
+  project_introduction: "one substantial general public paragraph after the AI Research System Overview hero"
+  focused_tests: "passed 14 tests"
+  python_tests: "passed 139 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
