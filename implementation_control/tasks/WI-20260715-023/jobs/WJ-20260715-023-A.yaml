@@ -1,0 +1,148 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-023-A"
+task_id: "WI-20260715-023"
+title: "Implement Resources Overview Project Introduction"
+created_utc: "2026-07-15T21:17:06Z"
+updated_utc: "2026-07-15T21:24:32Z"
+status: "active"
+
+objective: "Render one quality gated general public project introduction immediately after the Resources Overview hero."
+
+execution_boundary:
+  invocation_limit: "one bounded RESOURCES-OVERVIEW-INTRO-01 packet"
+  packet_id: "RESOURCES-OVERVIEW-INTRO-01"
+  previous_checkpoint: "128e21e0928d447cbfb54566d42572fcf9f99638"
+  previous_checkpoint_replay_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Resources Overview introduction"
+  route_manifest_and_source_mechanics_write_status: "forbidden"
+  route_and_navigation_write_status: "forbidden"
+  other_route_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-023"
+
+allowed_writes:
+  - "src/pages/resources/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-022.yaml"
+  - "implementation_control/tasks/WI-20260715-022/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-022/jobs/WJ-20260715-022-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-023.yaml"
+  - "implementation_control/handoffs/WH-20260715-023.md"
+  - "implementation_control/tasks/WI-20260715-023/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-023/jobs/WJ-20260715-023-A.yaml"
+  - "implementation_control/tasks/WI-20260715-023/jobs/completions/WJC-20260715-023-A.yaml"
+
+required_outputs:
+  - "One substantial ProjectIntroduction paragraph replaces the raw Resources Overview intro section."
+  - "The paragraph identifies the two part project before explaining the Resources reader layer."
+  - "The paragraph explains internal first route selection source lanes registry and manifest functions derivative and retrieval limits and publication evidence."
+  - "The paragraph separates route cards files hashes validator and review evidence from scientific proof claim promotion and workflow authority."
+  - "Resource route manifest boundary tables diagram and internal navigation remain unchanged."
+  - "Writing gate focused tests provenance build aggregate quality and responsive browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the sitewide project description rule."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "One reviewed Resources Overview introduction only."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "Accepted sources are clean and later registry deltas are additive unrelated control rows and hash refreshes with unchanged governing semantics."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Bounded Resources Overview page content change without route navigation or retirement changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "Reuse the existing ProjectIntroduction component without style changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Resources Overview provenance regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-overview-introduction-review"
+    command: "manual inspection of the Resources Overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The draft cannot remain source proportional."
+  - "A resource route manifest status source mechanism child route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph is not one substantial post hero paragraph or fails responsive review."
+  - "A required validator or browser review fails."
+  - "Work enters another route push deployment source refresh or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-023-A"
+  path: "implementation_control/tasks/WI-20260715-023/jobs/completions/WJC-20260715-023-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-OVERVIEW-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-023-A and stop."
+  do_not_skip: "Do not change resource route manifest source status mechanics or enter a Resources child route."
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Resources Overview hero"
+  focused_tests: "passed 24 tests"
+  python_tests: "passed 149 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"

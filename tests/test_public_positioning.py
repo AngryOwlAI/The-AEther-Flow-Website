@@ -42,6 +42,7 @@ AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE = (
 AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/runtime-requirements/index.astro"
 )
+RESOURCES_PAGE = REPO_ROOT / "src/pages/resources/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -643,6 +644,44 @@ def test_runtime_requirements_has_a_general_public_project_introduction_after_th
     assert "refreshes sources" in source
     assert "authorizes an upstream mutation" in source
     assert '<section class="greenfield-intro-panel" aria-label="Runtime requirements introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_overview_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "public map for reading evidence around both tracks" in source
+    assert "Start with the internal route that matches the question" in source
+    assert "Registered TeX carries scoped physics and derivational claims" in source
+    assert "registered Markdown and tracked control records carry guidance and workflow authority" in source
+    assert "registries record provenance, relationships, hashes, routing, and status" in source
+    assert "without replacing the source files they describe" in source
+    assert "Generated pages, PDFs, diagrams, and downloads help people read the project" in source
+    assert "semantic extracts, Obsidian mirrors, SQLite indexes, and local caches help them find material" in source
+    assert "the source and record win" in source
+    assert "path, type, byte count, hash, status, and source reference" in source
+    assert "a hash identifies file contents rather than scientific correctness" in source
+    assert "Publication briefs define the reader and acceptance criteria" in source
+    assert "source specifications bind public outputs to inspected evidence" in source
+    assert "bounded publication quality rather than source authority" in source
+    assert "No route card, manifest row, download, hash, registry entry, generated derivative" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "grants workflow authority" in source
+    assert "replaces human review" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Resources overview introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

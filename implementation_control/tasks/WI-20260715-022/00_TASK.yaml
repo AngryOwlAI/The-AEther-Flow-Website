@@ -3,7 +3,7 @@ record_type: "implementation_task"
 task_id: "WI-20260715-022"
 title: "Normalize Runtime Requirements Project Introduction"
 created_utc: "2026-07-15T21:04:23Z"
-updated_utc: "2026-07-15T21:09:41Z"
+updated_utc: "2026-07-15T21:17:06Z"
 status: "active"
 
 source_context:
@@ -201,7 +201,7 @@ preflight_evidence:
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Runtime Requirements hero"
   focused_tests: "passed 23 tests"
@@ -211,6 +211,15 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "128e21e0928d447cbfb54566d42572fcf9f99638"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-023"
+  reason: "AI-RUNTIME-REQUIREMENTS-INTRO-01 was checkpointed before the separately bounded Resources Overview introduction packet opened."

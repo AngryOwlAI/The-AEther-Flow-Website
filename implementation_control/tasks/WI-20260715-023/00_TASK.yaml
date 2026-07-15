@@ -1,0 +1,224 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-023"
+title: "Normalize Resources Overview Project Introduction"
+created_utc: "2026-07-15T21:17:06Z"
+updated_utc: "2026-07-15T21:24:32Z"
+status: "active"
+
+source_context:
+  packet_id: "RESOURCES-OVERVIEW-INTRO-01"
+  adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
+  previous_task: "WI-20260715-022"
+  previous_checkpoint: "128e21e0928d447cbfb54566d42572fcf9f99638"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  live_upstream_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
+  relevant_source_parity: "Project overview README source authority publication TEX and publication brief evidence retain accepted semantics; later Markdown and claim-boundary registry changes are additive unrelated control rows and hash refreshes."
+  owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
+
+goal: "Replace the raw Resources Overview topic paragraph with one source grounded whole project introduction immediately after the hero."
+
+requirements:
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Resources Overview hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to reader resources."
+  - "Keep general relativity as the exact observable benchmark while the proposed foundation and first principles derivation remain open."
+  - "Explain Resources as the internal first route map for source authority registries derivatives retrieval publication library reading paths repository maps builder guidance diagrams documents guides and reviewer material."
+  - "Explain that registered TeX carries scoped physics claims registered Markdown and tracked control records carry their scoped authority and registries record provenance status relationships and workflow state."
+  - "Explain that generated pages PDFs diagrams downloads and local retrieval surfaces support reading and navigation while source files and current tracked records remain decisive."
+  - "Explain that manifests expose file identity type hash status and source references while a hash identifies bytes rather than scientific correctness."
+  - "State that publication briefs source specs deterministic checks screenshots and review evidence remain bounded publication evidence rather than source or proof authority."
+  - "State that no route card manifest row download hash registry entry derivative retrieval result validator screenshot AI output or webpage proves physics completes the open derivation promotes ontology or benchmark or grants workflow authority."
+  - "Preserve all existing resource routes route map manifest status boundary tables diagram and internal first navigation."
+
+scope:
+  in_scope:
+    - "Resources Overview introduction and component reuse in src/pages/resources/index.astro"
+    - "Focused source and order assertions in tests/test_public_positioning.py"
+    - "Resources Overview page provenance regeneration against the accepted source pin"
+    - "Current implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Resource route list manifest counting status or source mechanics"
+    - "Resources child route introductions"
+    - "Shared component style route navigation source notice public asset or upstream source changes"
+    - "Git push Cloudflare deployment source refresh or upstream writes"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-023-A"
+  next_packet_after_this_task: "The next incomplete Resources introduction route becomes eligible only after this packet validates and is locally checkpointed."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
+    - "PRDs/sitewide-greenfield-rebuild-prd.md"
+    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
+    - "PRDs/website-information-space/PRD-06-documentation-publication-and-website-components.md"
+    - "PRDs/website-information-space/PRD-11-quick-source-map-for-site-builders.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "docs/architecture/sitewide-greenfield-foundation-contract.md"
+    - "docs/content-dossiers/resources-index/dossier.md"
+    - "src/components/ProjectIntroduction.astro"
+    - "src/lib/manifests.ts"
+    - "src/lib/siteContent.ts"
+    - "src/pages/resources/index.astro"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/asset_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "tests/test_public_positioning.py"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "README.md"
+    - "github-facing/project-overview-explainer.md"
+    - "github-facing/source-authority-explainer.md"
+    - "github-facing/documentation-curator-publication-process-explainer.md"
+    - "registries/TEX_SOURCE_REGISTRY.csv"
+    - "registries/MARKDOWN_SOURCE_REGISTRY.csv"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "registries/PUBLICATION_BRIEF_REGISTRY.csv"
+
+allowed_writes:
+  website_repository:
+    - "src/pages/resources/index.astro"
+    - "tests/test_public_positioning.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-022.yaml"
+    - "implementation_control/tasks/WI-20260715-022/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-022/jobs/WJ-20260715-022-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-023.yaml"
+    - "implementation_control/handoffs/WH-20260715-023.md"
+    - "implementation_control/tasks/WI-20260715-023/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-023/jobs/WJ-20260715-023-A.yaml"
+    - "implementation_control/tasks/WI-20260715-023/jobs/completions/WJC-20260715-023-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed implementation of the sitewide project description rule."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval covers one source grounded Resources Overview introduction under the technical writing quality gate."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "The accepted pin remains clean and later registry differences are additive unrelated control rows and hash refreshes that preserve the paragraph authority semantics."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers the bounded Resources Overview page content change without route navigation or retirement changes."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval covers regeneration of Resources Overview page provenance after the page source change."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-overview-introduction-review"
+    command: "manual inspection of the Resources Overview project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The paragraph cannot remain proportional to the accepted project overview source authority publication registry manifest and dossier evidence."
+  - "A resource route manifest status source mechanism child route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
+  - "A required validator or browser review fails."
+  - "Work enters another route push deployment source refresh or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-023-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-023"
+  yaml_path: "implementation_control/handoffs/WH-20260715-023.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-023.md"
+
+completion_record:
+  completion_id: "WJC-20260715-023-A"
+  path: "implementation_control/tasks/WI-20260715-023/jobs/completions/WJC-20260715-023-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-OVERVIEW-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-023-A and stop."
+  do_not_skip: "Do not change resource route manifest source status mechanics or enter a Resources child route."
+
+preflight_evidence:
+  status: "passed_with_relevant_source_semantics_preserved_and_unrelated_upstream_changes_isolated"
+  observed_utc: "2026-07-15T21:17:06Z"
+  previous_checkpoint: "128e21e0928d447cbfb54566d42572fcf9f99638"
+  previous_checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 21
+  website_worktree_status: "clean_before_packet_open"
+  accepted_source_worktree_status: "clean"
+  upstream_worktree_status: "dirty external project memory tooling and registry changes preserved and excluded"
+  upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  relevant_source_parity_status: "project overview README source authority publication TEX and publication brief evidence retain accepted semantics; relevant Markdown rows are unchanged and later registry deltas are unrelated additive control entries and hash refreshes"
+  source_refresh_status: "not performed"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Resources Overview hero"
+  focused_tests: "passed 24 tests"
+  python_tests: "passed 149 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"
+  push_performed: false
+  deployment_performed: false
