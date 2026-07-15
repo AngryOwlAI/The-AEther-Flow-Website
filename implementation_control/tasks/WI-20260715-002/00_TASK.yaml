@@ -3,7 +3,7 @@ record_type: "implementation_task"
 task_id: "WI-20260715-002"
 title: "Reaccept Compact Mobile Navigation"
 created_utc: "2026-07-15T14:18:31Z"
-updated_utc: "2026-07-15T14:18:31Z"
+updated_utc: "2026-07-15T15:07:11Z"
 status: "active"
 
 source_context:
@@ -163,10 +163,15 @@ handoff:
   yaml_path: "implementation_control/handoffs/WH-20260715-002.yaml"
   markdown_path: "implementation_control/handoffs/WH-20260715-002.md"
 
+completion_record:
+  completion_id: "WJC-20260715-002-A"
+  path: "implementation_control/tasks/WI-20260715-002/jobs/completions/WJC-20260715-002-A.yaml"
+  status: "completed"
+
 next_recommended_action:
-  task_packet: "FE-P1-03R acceptance"
-  summary: "Run focused full browser and VoiceOver Safari evidence for the preserved mobile navigation implementation."
-  do_not_skip: "Do not checkpoint until every revised gate passes and do not open FE-P1-04 push deploy or mutate upstream."
+  task_packet: "FE-P1-03R local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-002-A against the accepted clean source pin and stop."
+  do_not_skip: "Do not open FE-P1-04 push deploy or mutate upstream."
 
 preserved_input_evidence:
   expected_dirty_path_count: 8
@@ -181,9 +186,18 @@ preserved_input_evidence:
   older_completion_sha256: "2cdd10f13b77b21df3a57b5b56828832648ec6e9e13be079c1ff3c5b528aad09"
 
 implementation_status:
-  status: "preserved_implementation_validation_pending"
+  status: "completed_ready_for_checkpoint"
   policy_checkpoint_replayed: false
-  completion_created: false
-  checkpoint_status: "pending"
+  interim_review_commit: "651eadc2f3d63283d9c0dbf039b82c84f1d50282"
+  python_tests: "passed 129 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  manual_mobile_menu_review: "passed"
+  manual_no_javascript_review: "passed"
+  manual_voiceover_safari_review: "passed on macOS 26.5.2 and Safari 26.5.2"
+  voiceover_disabled_after_review: true
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false

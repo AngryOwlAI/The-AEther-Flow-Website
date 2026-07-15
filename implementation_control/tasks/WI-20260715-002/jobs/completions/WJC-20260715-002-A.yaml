@@ -1,0 +1,141 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-002-A"
+task_id: "WI-20260715-002"
+job_id: "WJ-20260715-002-A"
+created_utc: "2026-07-15T15:07:11Z"
+completed_utc: "2026-07-15T15:07:11Z"
+status: "completed"
+
+summary: "Validated and reaccepted the compact mobile navigation under the amended accessibility evidence matrix including macOS VoiceOver with Safari."
+
+changed_files:
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-002.yaml"
+  - "implementation_control/handoffs/WH-20260715-002.md"
+  - "implementation_control/tasks/WI-20260715-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/WJ-20260715-002-A.yaml"
+  - "implementation_control/tasks/WI-20260715-002/jobs/completions/WJC-20260715-002-A.yaml"
+
+source_context:
+  packet_id: "FE-P1-03R"
+  policy_checkpoint: "d6d95ceacda0bb91dae0e3994cbd92f16048f3a4"
+  interim_review_commit: "651eadc2f3d63283d9c0dbf039b82c84f1d50282"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  policy_checkpoint_replayed: false
+  historical_cancellation_rewritten: false
+
+implementation_evidence:
+  one_compact_menu_trigger: true
+  initially_collapsed: true
+  hidden_navigation_removed_from_focus_order: true
+  escape_focus_return: true
+  outside_click_close: true
+  nested_group_behavior: true
+  current_route_behavior: true
+  resize_and_orientation_behavior: true
+  short_viewport_internal_scrolling: true
+  no_javascript_essential_destinations: true
+  desktop_navigation_preserved: true
+  desktop_target_sizes_changed: false
+  navigation_destinations_changed: false
+  public_claims_changed: false
+  public_assets_changed: false
+
+chromium_evidence:
+  status: "passed_before_voiceover_gate"
+  coverage: "Pointer keyboard Escape focus return outside click responsive layouts zoom equivalents current route short viewport orientation and focus behavior"
+  no_javascript_fallback: "passed"
+  note: "This evidence was complete before the final VoiceOver Safari review and remained unchanged at interim commit 651eadc2f3d63283d9c0dbf039b82c84f1d50282."
+
+voiceover_safari_evidence:
+  observed_utc: "2026-07-15T15:02:00Z"
+  operating_system: "macOS 26.5.2 build 25F84"
+  browser: "Safari 26.5.2 build 21624.2.5.11.8"
+  route: "http://127.0.0.1:4321/physics/ontology/"
+  tool: "Computer Use accessibility interface with macOS VoiceOver active"
+  primary_navigation_landmark: "exposed as Primary navigation"
+  menu_initial_state: "Menu exposed as collapsed with Expand action"
+  menu_expanded_state: "Menu exposed as expanded with Collapse action"
+  voiceover_activation: "Control Option Space toggled the focused Menu and Physics Research buttons"
+  top_level_focus_order: "Menu then Home then Physics Research"
+  nested_focus_order: "Physics Research then Physics Overview then Ontology"
+  nested_link_names_and_descriptions: "exposed"
+  collapsed_descendants_removed: true
+  escape_result: "Collapsed the compact menu and returned focus to the collapsed Menu button"
+  audio_transcription: "not separately captured; names roles states actions and focus were observed through the live macOS accessibility interface used by VoiceOver"
+  voiceover_disabled_after_review: true
+  result: "passed"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "129 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "Passed with AETHER_FLOW_SOURCE_ROOT bound to a clean disposable clone at accepted source pin 57438af555214bc0785dcb390ee6254f580b8a62"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+    evidence: "Passed with AETHER_FLOW_SOURCE_ROOT bound to the same clean disposable source pin"
+  - id: "manual-mobile-menu-review"
+    command: "manual inspection of pointer keyboard Escape outside click nested group current route short viewport orientation zoom and focus behavior"
+    status: "passed"
+    evidence: "Headed Chromium interaction review covered the required pointer keyboard viewport orientation zoom current route and focus cases"
+  - id: "manual-no-javascript-review"
+    command: "manual inspection of essential navigation destinations with JavaScript disabled"
+    status: "passed"
+    evidence: "Essential top level destinations remained available from the shared navigation data"
+  - id: "manual-voiceover-review"
+    command: "manual inspection of mobile Menu state navigation announcements and focus order with macOS VoiceOver and Safari"
+    status: "passed"
+    evidence: "VoiceOver active Safari review exposed the Primary navigation landmark correct Menu and nested disclosure states link names descriptions logical focus order and Escape focus return"
+
+validation_environment:
+  disposable_source_root: "/tmp/aether-flow-source-57438af-fe-p1-03r-hxDuwC"
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  source_tree_clean: true
+  unbound_quality_diagnostic: "The initial unbound quality attempt read unrelated live upstream drift and failed at curator validation; the packet required and passed validation against the accepted clean source pin."
+  upstream_worktree_modified: false
+
+preservation_evidence:
+  interim_review_commit: "651eadc2f3d63283d9c0dbf039b82c84f1d50282"
+  expected_implementation_and_reconciliation_paths: 8
+  expected_hashes_verified: true
+  base_layout_sha256: "b358ae7c19765b777d57ae7eec6fb825e8a6f1879597041431f83342bdd0518c"
+  global_css_sha256: "8c29df97c7e57cf4dac389ab4ffe72a17dcca3b9283681eb9671bd7caf8faaa5"
+  mobile_navigation_test_sha256: "7616d4558fa70b97ee2d6667428072437366f1283a5cc702dfe473eadce87ec2"
+  older_handoff_markdown_sha256: "258be2829ffbb101de07fa5a1b2eef2fe11dee8f778bb88fc89580b0ebeef995"
+  older_handoff_yaml_sha256: "ff1152b4b030ef4c90007b70094f88a09822867feb925061bff4143f73420483"
+  older_task_sha256: "42cc03f78f45c5dc16fffc916559242491686227ab0ef489831fee83520fbc42"
+  older_job_sha256: "39eed2cfb9ecfe19b9d394b01728731b7172de20e7829f0b40d2e049212bd809"
+  older_completion_sha256: "2cdd10f13b77b21df3a57b5b56828832648ec6e9e13be079c1ff3c5b528aad09"
+
+remaining_boundaries:
+  - "The original FE-P1-03 cancellation remains unchanged historical evidence under the superseded matrix."
+  - "FE-P1-04 does not open until this packet is locally checkpointed and separately authorized."
+  - "No navigation destination grouping route target size claim manifest asset upstream push or deployment change occurred."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the six current FE-P1-03R completion and control updates; the eight implementation and reconciliation paths are already clean in interim commit 651eadc2f3d63283d9c0dbf039b82c84f1d50282 and remain recorded as packet evidence."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "FE-P1-03R local checkpoint"
+  summary: "Run the implementation checkpoint transaction against the accepted clean source pin and stop."
+  do_not_skip: "Do not open FE-P1-04 push deploy or mutate upstream."
