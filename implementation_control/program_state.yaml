@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T20:01:04Z"
+updated_utc: "2026-07-15T20:11:11Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-016/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-016/jobs/WJ-20260715-016-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-016.yaml"
+  - "implementation_control/tasks/WI-20260715-017/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-017/jobs/WJ-20260715-017-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-017.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,32 +25,32 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-016"
-  title: "Normalize AgentJob Lifecycle Project Introduction"
+  task_id: "WI-20260715-017"
+  title: "Normalize Roles and Schemas Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-016/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-017/00_TASK.yaml"
   planning_context:
-    task_packet: "AI-AGENTJOB-LIFECYCLE-INTRO-01"
+    task_packet: "AI-ROLES-SCHEMAS-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "b1c7b5bd785c5137c5f0a750c361e6b471662208"
+    previous_checkpoint: "8dbd07d8f93d96c287c9d070985c07a29e93c484"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-016-A"
+  job_id: "WJ-20260715-017-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-016/jobs/WJ-20260715-016-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-017/jobs/WJ-20260715-017-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-016"
+  handoff_id: "WH-20260715-017"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-016.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-016.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-017.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-017.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-016-A"
-  path: "implementation_control/tasks/WI-20260715-016/jobs/completions/WJC-20260715-016-A.yaml"
+  completion_id: "WJC-20260715-017-A"
+  path: "implementation_control/tasks/WI-20260715-017/jobs/completions/WJC-20260715-017-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,38 +81,39 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-ai-agentjob-lifecycle-introduction-review"
-    command: "manual inspection of the AgentJob Lifecycle project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-roles-schemas-introduction-review"
+    command: "manual inspection of the Roles and Schemas project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "AI-AGENTJOB-LIFECYCLE-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-016-A and stop."
-  do_not_skip: "Do not change lifecycle rows envelope tables route cards shared styles push deploy refresh sources or mutate upstream."
+  task_packet: "AI-ROLES-SCHEMAS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-017-A and stop."
+  do_not_skip: "Do not change role matrices schema tables route cards shared styles push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_external_upstream_drift_isolated"
-  observed_utc: "2026-07-15T19:52:33Z"
-  previous_checkpoint: "b1c7b5bd785c5137c5f0a750c361e6b471662208"
+  observed_utc: "2026-07-15T20:05:40Z"
+  previous_checkpoint: "8dbd07d8f93d96c287c9d070985c07a29e93c484"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 14
+  website_ahead_of_origin_main: 15
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
-  upstream_worktree_status: "dirty external research control work preserved and excluded"
+  upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
+  upstream_worktree_status: "clean external upstream head"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "AI-WORKFLOW-INTRO-01 checkpoint observed as HEAD"
+  dependency_status: "AI-AGENTJOB-LIFECYCLE-INTRO-01 checkpoint observed as HEAD"
+  relevant_source_parity_status: "accepted role source bundle byte identical to live upstream head"
   source_refresh_status: "not performed"
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the AgentJob Lifecycle hero"
-  focused_tests: "passed 17 tests"
-  python_tests: "passed 142 tests"
+  project_introduction: "one substantial general public paragraph after the Roles and Schemas hero"
+  focused_tests: "passed 18 tests"
+  python_tests: "passed 143 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"

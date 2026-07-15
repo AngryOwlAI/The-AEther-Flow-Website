@@ -1,21 +1,21 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-016-A"
-task_id: "WI-20260715-016"
-title: "Implement AgentJob Lifecycle Project Introduction"
-created_utc: "2026-07-15T19:52:33Z"
-updated_utc: "2026-07-15T20:05:40Z"
+job_id: "WJ-20260715-017-A"
+task_id: "WI-20260715-017"
+title: "Implement Roles and Schemas Project Introduction"
+created_utc: "2026-07-15T20:05:40Z"
+updated_utc: "2026-07-15T20:11:11Z"
 status: "active"
 
-objective: "Render one quality gated general public project introduction immediately after the AgentJob Lifecycle hero."
+objective: "Render one quality gated general public project introduction immediately after the Roles and Schemas hero."
 
 execution_boundary:
-  invocation_limit: "one bounded AI-AGENTJOB-LIFECYCLE-INTRO-01 packet"
-  packet_id: "AI-AGENTJOB-LIFECYCLE-INTRO-01"
-  previous_checkpoint: "b1c7b5bd785c5137c5f0a750c361e6b471662208"
+  invocation_limit: "one bounded AI-ROLES-SCHEMAS-INTRO-01 packet"
+  packet_id: "AI-ROLES-SCHEMAS-INTRO-01"
+  previous_checkpoint: "8dbd07d8f93d96c287c9d070985c07a29e93c484"
   previous_checkpoint_replay_status: "forbidden"
-  public_claim_write_status: "approved only for the reviewed AgentJob Lifecycle introduction"
-  lifecycle_mechanics_write_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Roles and Schemas introduction"
+  role_schema_mechanics_write_status: "forbidden"
   route_and_navigation_write_status: "forbidden"
   other_route_status: "forbidden"
   upstream_write_status: "forbidden"
@@ -23,28 +23,28 @@ execution_boundary:
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-016"
+  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-017"
 
 allowed_writes:
-  - "src/pages/ai-research-system/agentjob-lifecycle/index.astro"
+  - "src/pages/ai-research-system/roles-and-schemas/index.astro"
   - "tests/test_public_positioning.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-015.yaml"
-  - "implementation_control/tasks/WI-20260715-015/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-015/jobs/WJ-20260715-015-A.yaml"
   - "implementation_control/handoffs/WH-20260715-016.yaml"
-  - "implementation_control/handoffs/WH-20260715-016.md"
   - "implementation_control/tasks/WI-20260715-016/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-016/jobs/WJ-20260715-016-A.yaml"
-  - "implementation_control/tasks/WI-20260715-016/jobs/completions/WJC-20260715-016-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-017.yaml"
+  - "implementation_control/handoffs/WH-20260715-017.md"
+  - "implementation_control/tasks/WI-20260715-017/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-017/jobs/WJ-20260715-017-A.yaml"
+  - "implementation_control/tasks/WI-20260715-017/jobs/completions/WJC-20260715-017-A.yaml"
 
 required_outputs:
-  - "One substantial ProjectIntroduction paragraph replaces the raw AgentJob Lifecycle intro section."
-  - "The paragraph identifies the two part project before explaining one AgentJob permission envelope."
-  - "The paragraph names concrete envelope parts and the Director decision execution role completion handoff checkpoint chain."
-  - "The paragraph separates transaction evidence from scientific proof upstream authority and future permission."
-  - "Envelope lifecycle proof source rows route cards and source notice remain unchanged."
+  - "One substantial ProjectIntroduction paragraph replaces the raw Roles and Schemas intro section."
+  - "The paragraph identifies the two part project before explaining role and schema authority."
+  - "The paragraph explains registered roles schemas execution role records AgentJobs overlays provisional roles and human gates in general public language."
+  - "The paragraph separates labels and control evidence from scientific proof live permission and protected promotion."
+  - "Role matrices schema tables claim rows route cards and source notice remain unchanged."
   - "Writing gate focused tests provenance build aggregate quality and responsive browser review pass."
 
 approval_gates:
@@ -53,13 +53,13 @@ approval_gates:
     trigger: "Owner directed implementation of the sitewide project description rule."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "One reviewed AgentJob Lifecycle introduction only."
+    trigger: "One reviewed Roles and Schemas introduction only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
-    trigger: "No source refresh and only accepted clean pinned workflow sources ground the stable introduction."
+    trigger: "Relevant source bundle is byte identical across the accepted pin and live head; no refresh."
   - id: "broad_navigation_or_route_retirement"
     status: "approved"
-    trigger: "Bounded AgentJob Lifecycle page content change without route navigation or retirement changes."
+    trigger: "Bounded Roles and Schemas page content change without route navigation or retirement changes."
   - id: "shared_visual_systems"
     status: "not_required"
     trigger: "Reuse the existing ProjectIntroduction component without style changes."
@@ -68,7 +68,7 @@ approval_gates:
     trigger: "No public assets."
   - id: "public_manifest_authority_records"
     status: "approved"
-    trigger: "AgentJob Lifecycle provenance regeneration only."
+    trigger: "Roles and Schemas provenance regeneration only."
   - id: "git_push"
     status: "not_required"
     trigger: "Any remote push."
@@ -107,13 +107,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-ai-agentjob-lifecycle-introduction-review"
-    command: "manual inspection of the AgentJob Lifecycle project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-roles-schemas-introduction-review"
+    command: "manual inspection of the Roles and Schemas project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
   - "The draft cannot remain source proportional."
-  - "Envelope lifecycle proof source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "Role matrix schema table claim matrix source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
   - "The paragraph is not one substantial post hero paragraph or fails responsive review."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -125,33 +125,24 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-016-A"
-  path: "implementation_control/tasks/WI-20260715-016/jobs/completions/WJC-20260715-016-A.yaml"
+  completion_id: "WJC-20260715-017-A"
+  path: "implementation_control/tasks/WI-20260715-017/jobs/completions/WJC-20260715-017-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "AI-ROLES-SCHEMAS-INTRO-01 implementation"
-  summary: "Implement the separately bounded Roles and Schemas project introduction packet."
-  do_not_skip: "Do not change lifecycle mechanics or enter another route before this packet checkpoints."
+  task_packet: "AI-ROLES-SCHEMAS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-017-A and stop."
+  do_not_skip: "Do not change role schema mechanics or enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the AgentJob Lifecycle hero"
-  focused_tests: "passed 17 tests"
-  python_tests: "passed 142 tests"
+  project_introduction: "one substantial general public paragraph after the Roles and Schemas hero"
+  focused_tests: "passed 18 tests"
+  python_tests: "passed 143 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "8dbd07d8f93d96c287c9d070985c07a29e93c484"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-017"
-  reason: "The completed AgentJob Lifecycle introduction job was checkpointed before AI-ROLES-SCHEMAS-INTRO-01 activation."
+  checkpoint_status: "ready_to_checkpoint"

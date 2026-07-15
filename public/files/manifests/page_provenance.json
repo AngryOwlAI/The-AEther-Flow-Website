@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T19:57:30.854993+00:00",
+  "generated_at": "2026-07-15T20:09:30.053755+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -896,7 +896,7 @@
     {
       "route_path": "/ai-research-system/roles-and-schemas/",
       "local_page_source": "src/pages/ai-research-system/roles-and-schemas/index.astro",
-      "local_page_sha256": "c046ac746fe19f32c8c2cc064fe3c179bbce7e529c3af28816d609af7da51584",
+      "local_page_sha256": "32350e64643f09bfbc7da01ddbc755a583b7ec22f92d3f212eddb70bb8a27cb2",
       "title": "Roles and Schemas",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
