@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T18:49:22Z"
+updated_utc: "2026-07-15T19:05:12Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-010/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-010/jobs/WJ-20260715-010-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-010.yaml"
+  - "implementation_control/tasks/WI-20260715-011/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-011/jobs/WJ-20260715-011-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-011.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,28 +25,28 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-010"
-  title: "Normalize Flow Geometry Project Introduction"
+  task_id: "WI-20260715-011"
+  title: "Normalize Physics Claim Status Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-010/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-011/00_TASK.yaml"
   planning_context:
-    task_packet: "PHYSICS-FLOW-GEOMETRY-INTRO-01"
+    task_packet: "PHYSICS-CLAIM-STATUS-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "9485baf9cc730f519f268ba52ae74cd989891d36"
+    previous_checkpoint: "99a55abba56909e097f41d2e389c97b4f55e5816"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-010-A"
+  job_id: "WJ-20260715-011-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-010/jobs/WJ-20260715-010-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-011/jobs/WJ-20260715-011-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-010"
+  handoff_id: "WH-20260715-011"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-010.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-010.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-011.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-011.md"
 
 required_validators:
   - id: "git-diff-check"
@@ -76,27 +76,27 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-flow-geometry-introduction-review"
-    command: "manual inspection of the Flow Geometry project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-claim-status-introduction-review"
+    command: "manual inspection of the Physics Claim Status project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "PHYSICS-FLOW-GEOMETRY-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-010-A and stop."
+  task_packet: "PHYSICS-CLAIM-STATUS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-011-A and stop."
   do_not_skip: "Do not enter other Physics routes page families push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T18:43:33Z"
-  previous_checkpoint: "9485baf9cc730f519f268ba52ae74cd989891d36"
+  observed_utc: "2026-07-15T18:55:09Z"
+  previous_checkpoint: "99a55abba56909e097f41d2e389c97b4f55e5816"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 8
+  website_ahead_of_origin_main: 9
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "PHYSICS-DERIVATION-INTRO-01 checkpoint observed as HEAD"
+  dependency_status: "PHYSICS-FLOW-GEOMETRY-INTRO-01 checkpoint observed as HEAD"
   upstream_worktree_status: "clean"
   source_refresh_status: "not performed"
 
@@ -104,9 +104,9 @@ implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Flow Geometry hero"
-  focused_tests: "passed 11 tests"
-  python_tests: "passed 136 tests"
+  project_introduction: "one substantial general public paragraph after the Physics Claim Status hero"
+  focused_tests: "passed 12 tests"
+  python_tests: "passed 137 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"

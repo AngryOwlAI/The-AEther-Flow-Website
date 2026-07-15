@@ -1,45 +1,45 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260715-010"
-title: "Normalize Flow Geometry Project Introduction"
-created_utc: "2026-07-15T18:43:33Z"
-updated_utc: "2026-07-15T18:55:09Z"
+task_id: "WI-20260715-011"
+title: "Normalize Physics Claim Status Project Introduction"
+created_utc: "2026-07-15T18:55:09Z"
+updated_utc: "2026-07-15T19:05:12Z"
 status: "active"
 
 source_context:
-  packet_id: "PHYSICS-FLOW-GEOMETRY-INTRO-01"
+  packet_id: "PHYSICS-CLAIM-STATUS-INTRO-01"
   adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-  previous_task: "WI-20260715-009"
-  previous_checkpoint: "9485baf9cc730f519f268ba52ae74cd989891d36"
+  previous_task: "WI-20260715-010"
+  previous_checkpoint: "99a55abba56909e097f41d2e389c97b4f55e5816"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
-goal: "Replace the raw Flow Geometry topic paragraph with one source grounded whole project introduction immediately after the hero."
+goal: "Replace the raw Physics Claim Status topic paragraph with one source grounded whole project introduction immediately after the hero."
 
 requirements:
-  - "Render one substantial single paragraph ProjectIntroduction immediately after the Flow Geometry hero."
-  - "Explain The AEther Flow Project as a two part physics and governed AI research program before narrowing to Flow Geometry."
-  - "Explain the metric g and observer flow field u as a reader dictionary inside the adopted exact GR geometry."
-  - "State that u is an admissible generally nonunique observer field that adds interpretation rather than a second gravitational law."
-  - "Keep notation and interpretation distinct from substrate derivation matter coupling Einstein equations and benchmark promotion."
-  - "State what Flow Geometry helps a general reader understand."
-  - "Preserve all existing dictionary rows actions routes diagrams and source authority."
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Physics Claim Status hero."
+  - "Explain The AEther Flow Project as a two part physics and governed AI research program before narrowing to claim status."
+  - "Explain that the route organizes a checked in source snapshot into claimed not claimed blocked and open or gated states."
+  - "State that exact GR remains the observable benchmark while first principles substrate derivation remains open."
+  - "State that a website page snapshot validator or workflow record cannot prove physics or promote a claim."
+  - "Tell a general reader how the route prevents tentative work from being mistaken for established results."
+  - "Preserve all existing status rows boundary tables metadata actions diagrams and source authority."
 
 scope:
   in_scope:
-    - "Flow Geometry introduction and component reuse in src/pages/physics/flow-geometry/index.astro"
+    - "Physics Claim Status introduction and component reuse in src/pages/physics/claim-status/index.astro"
     - "Focused source and order assertions in tests/test_public_positioning.py"
-    - "Flow Geometry page provenance regeneration against the accepted source pin"
+    - "Physics Claim Status page provenance regeneration against the accepted source pin"
     - "Current implementation control transition completion and handoff records"
   out_of_scope:
     - "Other Physics routes and page family introductions"
-    - "Shared component style dictionary rows route navigation source notice public asset or upstream source changes"
+    - "Shared component style status rows tables snapshots route navigation source notice public asset or upstream source changes"
     - "Git push Cloudflare deployment source refresh or upstream writes"
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260715-010-A"
+  active_job_id: "WJ-20260715-011-A"
   next_packet_after_this_task: "The next incomplete introduction route becomes eligible only after this packet validates and is locally checkpointed."
 
 allowed_reads:
@@ -54,7 +54,9 @@ allowed_reads:
     - "docs/architecture/sitewide-greenfield-foundation-contract.md"
     - "src/components/ProjectIntroduction.astro"
     - "src/lib/siteContent.ts"
-    - "src/pages/physics/flow-geometry/index.astro"
+    - "src/data/claim_boundary_snapshot.json"
+    - "src/data/physics_current_state_snapshot.json"
+    - "src/pages/physics/claim-status/index.astro"
     - "public/files/manifests/page_provenance.json"
     - "tests/test_public_positioning.py"
     - "scripts"
@@ -65,27 +67,28 @@ allowed_reads:
     - "README.md"
     - "github-facing/project-overview-explainer.md"
     - "github-facing/aether-flow-physics-program-explainer.md"
-    - "ontology/tex/aether_flow_geometry.tex"
-    - "ontology/tex/aether_flow_relativistic_recovery.tex"
-    - "ontology/tex/aether_flow_exact_closure_note.tex"
+    - "github-facing/source-authority-explainer.md"
+    - "github-facing/claim-gates-explainer.md"
+    - "research_control/program_state.yaml"
+    - "research_control/handoffs/handoff-0740.yaml"
     - "research_control/design/gr_derivation_burden_map.md"
-    - "registries/TEX_SOURCE_REGISTRY.csv"
+    - "registries/DISTANCE_TO_GR_LEDGER.csv"
     - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
 
 allowed_writes:
   website_repository:
-    - "src/pages/physics/flow-geometry/index.astro"
+    - "src/pages/physics/claim-status/index.astro"
     - "tests/test_public_positioning.py"
     - "public/files/manifests/page_provenance.json"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260715-009.yaml"
-    - "implementation_control/tasks/WI-20260715-009/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260715-009/jobs/WJ-20260715-009-A.yaml"
     - "implementation_control/handoffs/WH-20260715-010.yaml"
-    - "implementation_control/handoffs/WH-20260715-010.md"
     - "implementation_control/tasks/WI-20260715-010/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260715-010/jobs/WJ-20260715-010-A.yaml"
-    - "implementation_control/tasks/WI-20260715-010/jobs/completions/WJC-20260715-010-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-011.yaml"
+    - "implementation_control/handoffs/WH-20260715-011.md"
+    - "implementation_control/tasks/WI-20260715-011/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-011/jobs/WJ-20260715-011-A.yaml"
+    - "implementation_control/tasks/WI-20260715-011/jobs/completions/WJC-20260715-011-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -94,13 +97,13 @@ approval_gates:
     reason: "The owner explicitly directed implementation of the sitewide project description rule."
   public_claim_changes:
     status: "approved"
-    reason: "Approval covers one source grounded Flow Geometry introduction under the technical writing quality gate."
+    reason: "Approval covers one source grounded Physics Claim Status introduction under the technical writing quality gate."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "No source refresh occurs and the introduction remains proportional to the registered geometry sources at the pinned source root."
+    reason: "No source refresh occurs and the introduction remains proportional to the accepted project and physics explainers at the pinned source root."
   broad_navigation_or_route_retirement:
     status: "approved"
-    reason: "Approval covers the bounded Flow Geometry page content change without route navigation or retirement changes."
+    reason: "Approval covers the bounded Physics Claim Status page content change without route navigation or retirement changes."
   shared_visual_systems:
     status: "not_required"
     reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
@@ -109,7 +112,7 @@ approval_gates:
     reason: "No public assets."
   public_manifest_authority_records:
     status: "approved"
-    reason: "Approval covers regeneration of Flow Geometry page provenance after the page source change."
+    reason: "Approval covers regeneration of Physics Claim Status page provenance after the page source change."
   git_push:
     status: "not_required"
     reason: "Push is outside this packet."
@@ -148,13 +151,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-flow-geometry-introduction-review"
-    command: "manual inspection of the Flow Geometry project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-claim-status-introduction-review"
+    command: "manual inspection of the Physics Claim Status project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "The paragraph cannot remain proportional to the registered geometry sources and project description."
-  - "Another route shared style dictionary row navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph cannot remain proportional to the accepted project physics and claim boundary sources."
+  - "Another route shared style status row table snapshot navigation source notice asset or upstream source change becomes necessary."
   - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -162,30 +165,30 @@ stop_conditions:
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Create WJC-20260715-010-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+  closeout: "Create WJC-20260715-011-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
 
 completion_record:
-  completion_id: "WJC-20260715-010-A"
-  path: "implementation_control/tasks/WI-20260715-010/jobs/completions/WJC-20260715-010-A.yaml"
+  completion_id: "WJC-20260715-011-A"
+  path: "implementation_control/tasks/WI-20260715-011/jobs/completions/WJC-20260715-011-A.yaml"
   status: "completed"
 
 handoff:
-  latest_handoff_id: "WH-20260715-010"
-  yaml_path: "implementation_control/handoffs/WH-20260715-010.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-010.md"
+  latest_handoff_id: "WH-20260715-011"
+  yaml_path: "implementation_control/handoffs/WH-20260715-011.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-011.md"
 
 next_recommended_action:
-  task_packet: "PHYSICS-CLAIM-STATUS-INTRO-01 implementation"
-  summary: "Implement the separately bounded Physics Claim Status project introduction packet."
+  task_packet: "PHYSICS-CLAIM-STATUS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-011-A and stop."
   do_not_skip: "Do not enter other routes push deployment source refresh or upstream mutation."
 
 preflight_evidence:
   status: "passed"
-  observed_utc: "2026-07-15T18:43:33Z"
-  previous_checkpoint: "9485baf9cc730f519f268ba52ae74cd989891d36"
+  observed_utc: "2026-07-15T18:55:09Z"
+  previous_checkpoint: "99a55abba56909e097f41d2e389c97b4f55e5816"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 8
+  website_ahead_of_origin_main: 9
   website_worktree_status: "clean_before_packet_open"
   upstream_worktree_status: "clean"
   upstream_current_head: "eacecb1f0d10af350224626b0c093fa249ea2d3c"
@@ -194,25 +197,16 @@ preflight_evidence:
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Flow Geometry hero"
-  focused_tests: "passed 11 tests"
-  python_tests: "passed 136 tests"
+  project_introduction: "one substantial general public paragraph after the Physics Claim Status hero"
+  focused_tests: "passed 12 tests"
+  python_tests: "passed 137 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false
-
-checkpoint_evidence:
-  commit: "99a55abba56909e097f41d2e389c97b4f55e5816"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-011"
-  reason: "PHYSICS-FLOW-GEOMETRY-INTRO-01 was checkpointed before the separately bounded Physics Claim Status introduction packet opened."
