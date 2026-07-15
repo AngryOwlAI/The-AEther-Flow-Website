@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-009"
 created_utc: "2026-07-15T18:32:28Z"
-updated_utc: "2026-07-15T18:38:32Z"
+updated_utc: "2026-07-15T18:43:33Z"
 status: "active"
 
 task_id: "WI-20260715-009"
@@ -32,8 +32,8 @@ source_authority_boundary:
   deployment_status: "not_authorized"
 
 next_recommended_action:
-  task_packet: "PHYSICS-DERIVATION-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-009-A and stop."
+  task_packet: "PHYSICS-FLOW-GEOMETRY-INTRO-01 implementation"
+  summary: "Implement the separately bounded Flow Geometry project introduction packet."
   do_not_skip: "Do not enter another route push deploy refresh sources or mutate upstream."
 
 stop_before:
@@ -48,12 +48,24 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-009-A"
   path: "implementation_control/tasks/WI-20260715-009/jobs/completions/WJC-20260715-009-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "9485baf9cc730f519f268ba52ae74cd989891d36"
+  observed_as_head: true
+  repeated: false
+
+superseded_by:
+  handoff_id: "WH-20260715-010"
+  task_id: "WI-20260715-010"
+  job_id: "WJ-20260715-010-A"
+  checkpoint: "9485baf9cc730f519f268ba52ae74cd989891d36"
+  reason: "PHYSICS-DERIVATION-INTRO-01 was checkpointed before the separately bounded Flow Geometry introduction packet opened."

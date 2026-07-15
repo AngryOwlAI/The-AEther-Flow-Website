@@ -1,20 +1,20 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-009-A"
-task_id: "WI-20260715-009"
-title: "Implement GR Derivation Roadmap Project Introduction"
-created_utc: "2026-07-15T18:32:28Z"
-updated_utc: "2026-07-15T18:43:33Z"
+job_id: "WJ-20260715-010-A"
+task_id: "WI-20260715-010"
+title: "Implement Flow Geometry Project Introduction"
+created_utc: "2026-07-15T18:43:33Z"
+updated_utc: "2026-07-15T18:49:22Z"
 status: "active"
 
-objective: "Render one quality gated general public project introduction immediately after the GR derivation roadmap hero."
+objective: "Render one quality gated general public project introduction immediately after the Flow Geometry hero."
 
 execution_boundary:
-  invocation_limit: "one bounded PHYSICS-DERIVATION-INTRO-01 packet"
-  packet_id: "PHYSICS-DERIVATION-INTRO-01"
-  previous_checkpoint: "5d930275ececa3c6c7a8f3b2c66f32b1beac7872"
+  invocation_limit: "one bounded PHYSICS-FLOW-GEOMETRY-INTRO-01 packet"
+  packet_id: "PHYSICS-FLOW-GEOMETRY-INTRO-01"
+  previous_checkpoint: "9485baf9cc730f519f268ba52ae74cd989891d36"
   previous_checkpoint_replay_status: "forbidden"
-  public_claim_write_status: "approved only for the reviewed derivation roadmap introduction"
+  public_claim_write_status: "approved only for the reviewed Flow Geometry introduction"
   route_and_navigation_write_status: "forbidden"
   other_route_status: "forbidden"
   upstream_write_status: "forbidden"
@@ -22,26 +22,26 @@ execution_boundary:
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website and upstream read only evidence allowlisted by WI-20260715-009"
+  - "website and upstream read only evidence allowlisted by WI-20260715-010"
 
 allowed_writes:
-  - "src/pages/physics/derivation-roadmap/index.astro"
+  - "src/pages/physics/flow-geometry/index.astro"
   - "tests/test_public_positioning.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-008.yaml"
-  - "implementation_control/tasks/WI-20260715-008/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-008/jobs/WJ-20260715-008-A.yaml"
   - "implementation_control/handoffs/WH-20260715-009.yaml"
-  - "implementation_control/handoffs/WH-20260715-009.md"
   - "implementation_control/tasks/WI-20260715-009/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-009/jobs/WJ-20260715-009-A.yaml"
-  - "implementation_control/tasks/WI-20260715-009/jobs/completions/WJC-20260715-009-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-010.yaml"
+  - "implementation_control/handoffs/WH-20260715-010.md"
+  - "implementation_control/tasks/WI-20260715-010/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-010/jobs/WJ-20260715-010-A.yaml"
+  - "implementation_control/tasks/WI-20260715-010/jobs/completions/WJC-20260715-010-A.yaml"
 
 required_outputs:
-  - "One substantial ProjectIntroduction paragraph replaces the raw derivation roadmap intro section."
-  - "The paragraph identifies the two part project before explaining the open source to GR recovery burden."
-  - "The paragraph preserves the separation between roadmap obligations tracked status evidence proof and promotion."
+  - "One substantial ProjectIntroduction paragraph replaces the raw Flow Geometry intro section."
+  - "The paragraph identifies the two part project before explaining the geometry dictionary."
+  - "The paragraph preserves the distinction between the adopted GR metric observer field interpretation substrate derivation and downstream promotion."
   - "The paragraph tells a general reader what the route helps distinguish."
   - "Focused tests provenance build aggregate quality and responsive browser review pass."
 
@@ -51,13 +51,13 @@ approval_gates:
     trigger: "Owner directed implementation of the sitewide project description rule."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "One reviewed derivation roadmap introduction only."
+    trigger: "One reviewed Flow Geometry introduction only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
-    trigger: "No source refresh and wording remains proportional to the accepted roadmap explainer."
+    trigger: "No source refresh and wording remains proportional to registered geometry sources."
   - id: "broad_navigation_or_route_retirement"
     status: "approved"
-    trigger: "Bounded derivation roadmap page content change without route navigation or retirement changes."
+    trigger: "Bounded Flow Geometry page content change without route navigation or retirement changes."
   - id: "shared_visual_systems"
     status: "not_required"
     trigger: "Reuse the existing ProjectIntroduction component without style changes."
@@ -66,7 +66,7 @@ approval_gates:
     trigger: "No public assets."
   - id: "public_manifest_authority_records"
     status: "approved"
-    trigger: "Derivation roadmap provenance regeneration only."
+    trigger: "Flow Geometry provenance regeneration only."
   - id: "git_push"
     status: "not_required"
     trigger: "Any remote push."
@@ -105,13 +105,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-derivation-introduction-review"
-    command: "manual inspection of the GR derivation roadmap project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-flow-geometry-introduction-review"
+    command: "manual inspection of the Flow Geometry project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
   - "The draft cannot remain source proportional."
-  - "Another route shared style burden row navigation source notice asset or upstream source change becomes necessary."
+  - "Another route shared style dictionary row navigation source notice asset or upstream source change becomes necessary."
   - "The paragraph is not one substantial post hero paragraph or fails responsive review."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -123,33 +123,24 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-009-A"
-  path: "implementation_control/tasks/WI-20260715-009/jobs/completions/WJC-20260715-009-A.yaml"
+  completion_id: "WJC-20260715-010-A"
+  path: "implementation_control/tasks/WI-20260715-010/jobs/completions/WJC-20260715-010-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "PHYSICS-FLOW-GEOMETRY-INTRO-01 implementation"
-  summary: "Implement the separately bounded Flow Geometry project introduction packet."
+  task_packet: "PHYSICS-FLOW-GEOMETRY-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-010-A and stop."
   do_not_skip: "Do not enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the GR derivation roadmap hero"
-  focused_tests: "passed 10 tests"
-  python_tests: "passed 135 tests"
+  project_introduction: "one substantial general public paragraph after the Flow Geometry hero"
+  focused_tests: "passed 11 tests"
+  python_tests: "passed 136 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "9485baf9cc730f519f268ba52ae74cd989891d36"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-010"
-  reason: "The completed GR derivation roadmap introduction job was checkpointed before PHYSICS-FLOW-GEOMETRY-INTRO-01 activation."
+  checkpoint_status: "ready_to_checkpoint"

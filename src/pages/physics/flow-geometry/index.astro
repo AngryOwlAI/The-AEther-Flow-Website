@@ -1,10 +1,14 @@
 ---
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
+
+const flowGeometryProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. This Flow Geometry page explains the physics track's dictionary for reading the proposed Æther-Flow interpretation inside its exact general-relativity benchmark. In that dictionary, g is the adopted GR metric and u is an admissible, generally non-unique observer field used to describe expansion, shear, rotation, and acceleration within the same spacetime geometry. The observer field adds interpretation rather than a second gravitational law, and the page does not derive either the metric or a preferred flow from substrate variables. It helps a general reader distinguish useful geometry vocabulary from the separate work needed to derive matter coupling, recover Einstein equations, or promote the benchmark.";
 
 const flowGeometrySourceNotice = {
   claimStatus: "geometry dictionary orientation",
@@ -186,17 +190,10 @@ const flowSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Flow geometry introduction">
-    <p>
-      The Flow Geometry page gives readers a disciplined dictionary for
-      geometry-facing language. Symbols such as g and u can orient discussion
-      of effective geometry and flow-aligned interpretation, but a symbol table
-      is not a theorem. This page therefore defines each term with its
-      assumption and limit: what it helps the reader see, and what it cannot
-      promote without upstream source evidence.
-    </p>
-  </section>
-
+  <ProjectIntroduction
+    text={flowGeometryProjectIntroduction}
+    ariaLabel="About The Æther Flow Project and Flow Geometry"
+  />
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsFlowGeometry} />
 
