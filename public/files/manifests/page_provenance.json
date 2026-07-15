@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T20:20:29.282154+00:00",
+  "generated_at": "2026-07-15T20:33:11.117393+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -1098,7 +1098,7 @@
     {
       "route_path": "/ai-research-system/validators-and-handoffs/",
       "local_page_source": "src/pages/ai-research-system/validators-and-handoffs/index.astro",
-      "local_page_sha256": "ee4d9ce50e47c30fce296d8ba9470c4c6d020587db657f98ead2306d16dea526",
+      "local_page_sha256": "fe366dff6825ad7a9425d78c139b4d7aaa46b60cc8f4e157a17e66041924c667",
       "title": "Validators and Handoffs",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

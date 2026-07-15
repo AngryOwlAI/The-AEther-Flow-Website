@@ -30,6 +30,9 @@ AI_RESEARCH_SYSTEM_ROLES_AND_SCHEMAS_PAGE = (
 AI_RESEARCH_SYSTEM_HUMAN_GATED_PROMOTION_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/human-gated-promotion/index.astro"
 )
+AI_RESEARCH_SYSTEM_VALIDATORS_AND_HANDOFFS_PAGE = (
+    REPO_ROOT / "src/pages/ai-research-system/validators-and-handoffs/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -472,6 +475,40 @@ def test_human_gated_promotion_has_a_general_public_project_introduction_after_t
     assert "promotes the proposed ontology" in source
     assert "authorizes protected execution" in source
     assert '<section class="greenfield-intro-panel" aria-label="Human-gated promotion introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_validators_and_handoffs_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = AI_RESEARCH_SYSTEM_VALIDATORS_AND_HANDOFFS_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "bounded, inspectable transactions" in source
+    assert "allowed work, expected outputs, checks, claim limits, and stop conditions" in source
+    assert "one named question about the state actually checked" in source
+    assert "nothing automatically about unmodified surfaces, future changes, or scientific truth" in source
+    assert "completion closes one job" in source
+    assert "handoff transfers that durable state and recommends a separate next packet" in source
+    assert "program state points to the current job" in source
+    assert "local checkpoint seals the allowed transaction" in source
+    assert "Screenshot review can expose overflow, missing headings, broken navigation" in source
+    assert "cannot make a website page source authority" in source
+    assert "no validator PASS, completion, handoff, registry row, screenshot, commit, or webpage" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology" in source
+    assert "expands role authority" in source
+    assert "silently continues a closed job" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Validators and handoffs introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
