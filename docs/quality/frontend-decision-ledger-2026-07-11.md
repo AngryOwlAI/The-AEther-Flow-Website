@@ -1,6 +1,7 @@
 # FE-G0-05 Frontend Decision Ledger
 
 Date: 2026-07-11  
+Amended: 2026-07-15 by owner-authorized packet `WI-20260715-001`
 Packet: `FE-G0-05`  
 Task: `WI-20260711-006`  
 Job: `WJ-20260711-006-A`  
@@ -41,7 +42,6 @@ later checked-in owner-change receipt supersedes them:
 | Home, Physics, AI, and Resources route-family maintainer | Alexander Ricciardi | Accountable for bounded rollout and route-family review; physics wording still requires source grounding and the independent physics-review gate |
 | Gallery curator | Alexander Ricciardi | Selects the representative gallery subset using checked-in selection criteria and source/asset boundaries |
 | Privacy decision owner | Alexander Ricciardi | Must approve provider, consent, retention, access, deletion, and removal terms before any retention or analytics feature |
-| Windows/NVDA coverage owner | Alexander Ricciardi | Must provide or authorize the required environment, name the actual tester in evidence, and close blocked cases before affected acceptance |
 | Physics reviewer | Unassigned | Alexander Ricciardi owns appointment of a qualified named reviewer, but this ledger does not appoint him or grant physics-review acceptance |
 
 The release owner and accessibility owner are named, but role identity does not
@@ -49,33 +49,21 @@ replace evidence. Major accessibility exceptions require both decisions even
 when one person currently holds both roles; the receipt must record the two
 responsibilities separately.
 
-## 3. Windows and NVDA coverage decision
+## 3. Assistive-technology coverage amendment
 
-`ENV-07` from the accessibility policy is promoted from recommended to
-**required**. The required primary combination is:
+The complete required platform and assistive-technology matrix is defined by
+ENV-01 through ENV-06 of the accessibility policy and Section 17.3 of the
+adopted frontend plan. VoiceOver with Safari remains required for packets that
+introduce or materially change menus, disclosures, dialogs, tables, status
+messages, figures, or route-orientation controls and for the final `FE-P7-03`
+accessibility audit.
 
-- A supported 64-bit Windows 11 environment.
-- The current stable NVDA release installed when the test evidence is recorded.
-- Current stable Firefox as the primary browser, plus a focused current-stable
-  Chrome interoperability check for changed ARIA-rich controls.
-- Keyboard navigation using browse and focus modes across landmarks, headings,
-  links, current states, status messages, menus, disclosures, dialogs, tables,
-  figures, and route orientation.
-
-NV Access currently lists 64-bit Windows 10 and Windows 11 as supported,
-recommends Windows 11 or Windows 10 22H2, and documents NVDA browse mode for
-both Mozilla Firefox and Google Chrome (NV Access, 2026a). The current NVDA
-download page identifies release `2026.1.1` on the date of this ledger, but the
-test record must capture the installed release rather than treating this
-version as evergreen (NV Access, 2026b).
-
-Coverage is required for `FE-P1-03`, `FE-P1-06`, and any packet that introduces
-or materially changes menus, disclosures, dialogs, tables, status messages, or
-route-orientation controls. It is also required in the final `FE-P7-03`
-accessibility audit. If the environment or tester is unavailable, the result is
-`blocked` or `not_run`, never `passed`; the affected acceptance and final
-release remain blocked. VoiceOver/Safari coverage remains independently
-required and is not replaced by NVDA.
+Additional platform and screen-reader combinations are optional and
+non-blocking unless a later owner-authorized amendment adds them to the required
+matrix. Their absence cannot be recorded as passed evidence, but it does not
+block packet acceptance or release. This amendment does not establish current
+accessibility conformance, replace any required environment, or weaken the
+WCAG 2.2 Level AA engineering and release target.
 
 ## 4. D-01 through D-30 dispositions
 
@@ -95,11 +83,11 @@ required and is not replaced by NVDA.
 | D-12 | Decided | Narrative entrance runs at most once per page load. Do not add replay until user evidence demonstrates value and the control is accessible. | Alexander Ricciardi | Governs `FE-P2-04`; absence of replay is the default. |
 | D-13 | Decided | Begin with an observer threshold near 35 percent visible and a documented root margin; tune only from lifecycle and short-viewport evidence. | Alexander Ricciardi | Implement in motion primitives and verify in `FE-P2-07` and `FE-P7-05`. |
 | D-14 | Decided | Adopt the measured provisional budgets and no-regression ceilings in the dated FE-G0-03 performance baseline. They are internal gates, not public performance claims. | Alexander Ricciardi, release owner | Applies to prototype acceptance and `FE-P7-05`; exceptions require a scoped repair packet or release-owner receipt. |
-| D-15 | Decided | Adopt WCAG 2.2 Level AA as the internal engineering and release target under the FE-G0-04 policy. Add required Windows/NVDA coverage as defined in Section 3 of this ledger. | Alexander Ricciardi, accessibility owner; Alexander Ricciardi, release owner | Applies to all frontend packets and `FE-P7-03`; this is not a current-conformance claim. |
-| D-16 | Decided | Use one compact top-level disclosure/drawer with nested groups opened on demand, safe short-viewport scrolling, Escape close, trigger-focus return, and a no-JavaScript path. | Alexander Ricciardi | Implement in `FE-P1-03`; acceptance requires VoiceOver and Windows/NVDA evidence. |
+| D-15 | Decided; amended 2026-07-15 | Adopt WCAG 2.2 Level AA as the internal engineering and release target under the FE-G0-04 policy. Use the complete required evidence matrix defined by ENV-01 through ENV-06. | Alexander Ricciardi, accessibility owner; Alexander Ricciardi, release owner | Applies to all frontend packets and `FE-P7-03`; optional platform coverage is non-blocking and this is not a current-conformance claim. |
+| D-16 | Decided; amended 2026-07-15 | Use one compact top-level disclosure/drawer with nested groups opened on demand, safe short-viewport scrolling, Escape close, trigger-focus return, and a no-JavaScript path. | Alexander Ricciardi | Implement in `FE-P1-03`; acceptance requires keyboard, browser, zoom, no-JavaScript, and VoiceOver/Safari evidence. |
 | D-17 | Decided | Support and test a minimum width of 320 CSS pixels plus the approved short-landscape case; retain the complete FE-G0-04 viewport/zoom matrix. | Alexander Ricciardi, accessibility owner | Applies beginning with `FE-P1-02`; no unapproved narrower-browser guarantee is implied. |
 | D-18 | Decided | Convert reviewed public vocabulary/definition tables to semantic card or definition patterns; preserve comparison/data tables with table semantics and an accessible overflow affordance. | Alexander Ricciardi | Inventory and ontology pilot occur in `FE-P1-06`; do not transform from automated classification alone. |
-| D-19 | Decided | Use an accessible dialog for quick gallery inspection plus a stable asset link. Add a dedicated detail page only when distinct editorial/source-backed content warrants it. | Alexander Ricciardi | Governs gallery rebuild packets; dialog acceptance requires keyboard, VoiceOver, and NVDA evidence. |
+| D-19 | Decided; amended 2026-07-15 | Use an accessible dialog for quick gallery inspection plus a stable asset link. Add a dedicated detail page only when distinct editorial/source-backed content warrants it. | Alexander Ricciardi | Governs gallery rebuild packets; dialog acceptance requires keyboard and VoiceOver/Safari evidence. |
 | D-20 | Decided | Alexander Ricciardi is the gallery feature owner and selects the representative default subset using a checked-in rubric covering reader value, source status, accessibility, performance, and visual duplication. | Alexander Ricciardi, gallery curator | Blocks gallery hierarchy acceptance until the rubric and selected set are recorded. |
 | D-21 | Decided | Keep Advanced content public and indexable unless review finds internal-only material. Remove it from primary navigation and present it as a subordinate Resources utility. | Alexander Ricciardi | Execute only through `AG-04` route/navigation review and the route registry. |
 | D-22 | Decided | Preserve working legacy redirects and remove duplicate legacy source pages only after inbound-link, parser, canonical, sitemap, smoke, and redirect-matrix evidence passes. | Alexander Ricciardi | Execute only in `FE-P6-13` with `AG-05`; no route is retired by this ledger. |
@@ -128,8 +116,8 @@ The following items remain intentionally blocking:
 5. `D-23` and `D-24`: retention and analytics remain off.
 6. `D-25`: media replacement/supplement decision awaits source, editorial,
    accessibility, performance, and license evidence.
-7. Windows/NVDA is now required; unavailable coverage blocks affected packet
-   acceptance rather than creating a waiver.
+7. ENV-01 through ENV-06 form the complete required accessibility matrix;
+   additional platform combinations are optional and non-blocking.
 
 The next catalog packet is `FE-P0-01`, a read-only authoritative-source pin and
 drift-disposition packet. It requires separate authorization. This ledger does
@@ -137,12 +125,6 @@ not approve it, does not resolve current upstream drift, and does not grant any
 physics promotion.
 
 ## References
-
-NV Access. (2026a). *NVDA 2026.1 user guide*. Retrieved July 11, 2026, from
-https://download.nvaccess.org/documentation/userGuide.html
-
-NV Access. (2026b). *Download NVDA*. Retrieved July 11, 2026, from
-https://www.nvaccess.org/download/
 
 The Æther Flow Website. (2026a). *README* [Internal repository documentation].
 

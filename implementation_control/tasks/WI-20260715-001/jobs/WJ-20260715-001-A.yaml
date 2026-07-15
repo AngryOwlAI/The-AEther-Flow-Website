@@ -1,0 +1,122 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-001-A"
+task_id: "WI-20260715-001"
+title: "Amend Accessibility Evidence Matrix"
+created_utc: "2026-07-15T14:12:22Z"
+updated_utc: "2026-07-15T14:16:35Z"
+status: "active"
+
+objective: "Remove the superseded optional platform screen reader requirement project wide while preserving the required VoiceOver Safari and WCAG 2.2 Level AA evidence boundary."
+
+execution_boundary:
+  invocation_limit: "one bounded control only policy packet"
+  live_state_priority: "implementation control records and current Git evidence outrank memory and stale checkpoint prose"
+  packet_id: "FE-GOV-AT-01"
+  previous_checkpoint: "c4b4363bd10643f2ecd327064d74753238b2f168"
+  previous_checkpoint_replay_status: "forbidden"
+  public_runtime_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and read only upstream evidence allowlisted by WI-20260715-001"
+
+allowed_writes:
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-001.yaml"
+  - "implementation_control/handoffs/WH-20260715-001.md"
+  - "implementation_control/tasks/WI-20260715-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-001/jobs/WJ-20260715-001-A.yaml"
+  - "implementation_control/tasks/WI-20260715-001/jobs/completions/WJC-20260715-001-A.yaml"
+
+required_outputs:
+  - "The adopted plan declares its listed platform and assistive technology matrix complete."
+  - "The accessibility policy defines ENV-01 through ENV-06 as the complete required matrix."
+  - "The decision ledger retains VoiceOver Safari and removes the superseded platform gate from D-15 D-16 D-19 ownership blockers and references."
+  - "The amendment explicitly preserves the WCAG target and does not claim current conformance."
+  - "Completed historical control records and eight preserved dirty paths remain unchanged and unstaged."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the approved two checkpoint plan."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public route copy or scientific claim changes."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No navigation or route lifecycle changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No runtime style component or visual behavior changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifests."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "manual-policy-review"
+    command: "manual inspection of complete required accessibility matrix VoiceOver retention optional platform status conformance boundary and historical record preservation"
+    required: true
+
+stop_conditions:
+  - "A required accessibility environment or WCAG target would be weakened."
+  - "A public runtime route claim manifest asset or historical control record change becomes necessary."
+  - "Validation fails against the accepted clean source pin."
+  - "Work enters FE-P1-03 runtime push deployment or upstream write scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-001-A"
+  path: "implementation_control/tasks/WI-20260715-001/jobs/completions/WJC-20260715-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "FE-GOV-AT-01 policy amendment"
+  summary: "Complete validation and checkpoint only this control and policy transaction."
+  do_not_skip: "Do not stage the eight preserved FE-P1-03 paths before the policy checkpoint."
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  unrelated_dirty_paths_must_remain_unstaged: true
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  technical_writing_gate: "passed_after_contextual_review"
+  aggregate_validation: "passed against accepted clean source pin"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"

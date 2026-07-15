@@ -1,6 +1,7 @@
 # Frontend Accessibility Target and Evidence Policy
 
 Date: 2026-07-11  
+Amended: 2026-07-15 by owner-authorized packet `WI-20260715-001`
 Packet: `FE-G0-04`  
 Repository baseline: `40ca36aa588bdf925520831c43f3b8aa6a5b4735`  
 Adopted plan SHA-256: `55a4190b47dc0a1fbe4d13c38ab24f6cd588c233c9770bce57ff31399c825be5`
@@ -113,12 +114,14 @@ this policy.
 | ENV-04 | Current stable Safari on macOS with VoiceOver | VoiceOver keyboard navigation | Landmarks, headings, links, current states, status messages, menus, dialogs, tables, figures, and route orientation | Required |
 | ENV-05 | Current stable Chrome on Android | Touch and orientation changes on a physical or approved remote reference device | Menu, tables, figures, targets, portrait/landscape, zoom support, and short-height behavior | Required |
 | ENV-06 | Automated Chromium and WebKit where available | Automated semantic and interaction checks | Regression support only | Required where configured; never substitutes for ENV-03 or ENV-04 |
-| ENV-07 | Windows with NVDA and a supported browser | NVDA keyboard navigation | Additional screen-reader interoperability | Recommended coverage gap for disposition in `FE-G0-05`; not part of the minimum matrix until an environment and owner are approved |
 
 W3C advises testing each relevant browser/AT combination rather than assuming an
-ARIA pattern is interoperable (W3C, 2026a). The minimum matrix above implements
-the adopted frontend plan; `FE-G0-05` must either approve ENV-07 or record an
-explicit owner and deferral rationale.
+ARIA pattern is interoperable (W3C, 2026a). ENV-01 through ENV-06 are the
+complete required project matrix. Other combinations may be tested
+voluntarily, but unavailable optional coverage does not block packet acceptance
+or release. Removing an optional platform combination does not establish
+accessibility conformance, substitute for a required environment, or weaken the
+WCAG 2.2 Level AA engineering target.
 
 ### 4.2 Viewport and zoom matrix
 
@@ -298,13 +301,12 @@ audits before release acceptance.
 ## 8. Known limits and next decision
 
 - Current site conformance remains unestablished.
-- No Windows/NVDA environment, accessibility owner, external evaluator, or user
-  research panel is approved by this packet.
+- No external evaluator or user research panel is approved by this packet.
 - Legal obligations cannot be inferred from this technical target; jurisdiction
   and legal review are outside scope.
-- `FE-G0-05` must approve or defer ENV-07, name the accessibility and release
-  owners, and resolve the remaining frontend decision ledger without changing
-  this packet's source-authority boundary.
+- The named accessibility and release owners must maintain the required matrix
+  and resolve remaining decision-ledger gates without changing this packet's
+  source-authority boundary.
 
 ## References
 

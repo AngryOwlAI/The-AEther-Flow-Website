@@ -2385,6 +2385,10 @@ Acceptance:
 
 ### 17.3 Browser and assistive-technology matrix
 
+The rows below are the complete required platform and assistive-technology
+matrix. Other combinations are optional and non-blocking unless a later
+owner-authorized amendment explicitly adds them.
+
 | Platform | Required behavior |
 | --- | --- |
 | Chromium desktop | Full interaction, metadata, motion, performance baseline |

@@ -1,0 +1,99 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-001-A"
+task_id: "WI-20260715-001"
+job_id: "WJ-20260715-001-A"
+created_utc: "2026-07-15T14:16:35Z"
+completed_utc: "2026-07-15T14:16:35Z"
+status: "completed"
+
+summary: "Amended the frontend accessibility evidence policy so ENV-01 through ENV-06 are the complete required matrix while retaining VoiceOver Safari and the WCAG 2.2 Level AA target."
+
+changed_files:
+  - "ImplementationPlans/recomendation_frontend.md"
+  - "docs/quality/frontend-accessibility-policy-2026-07-11.md"
+  - "docs/quality/frontend-decision-ledger-2026-07-11.md"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-001.yaml"
+  - "implementation_control/handoffs/WH-20260715-001.md"
+  - "implementation_control/tasks/WI-20260715-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-001/jobs/WJ-20260715-001-A.yaml"
+  - "implementation_control/tasks/WI-20260715-001/jobs/completions/WJC-20260715-001-A.yaml"
+
+scope_confirmation:
+  packet_id: "FE-GOV-AT-01"
+  previous_checkpoint: "c4b4363bd10643f2ecd327064d74753238b2f168"
+  previous_checkpoint_replayed: false
+  policy_scope: "project_wide"
+  required_environment_ids: "ENV-01 ENV-02 ENV-03 ENV-04 ENV-05 ENV-06"
+  voiceover_safari_required: true
+  wcag_2_2_level_aa_target_retained: true
+  optional_platform_absence_blocks_acceptance: false
+  current_conformance_claim_created: false
+  public_runtime_change: false
+  public_claim_change: false
+  public_manifest_change: false
+  public_asset_change: false
+  upstream_write_status: "forbidden_and_unchanged"
+  push_performed: false
+  deployment_performed: false
+
+policy_evidence:
+  adopted_plan_sha256: "a411572bc425fb705a1838a707f8030f8a2d637d68c6d6b6c4d11da7ec57c73c"
+  accessibility_policy_sha256: "b971295435e2f430478061f86e49c404082c4314a2f321cfe5ae8edabb4a5faa"
+  decision_ledger_sha256: "02f6c27bf4150bf8e76388226b3f484620037dd1f337c9b1e88162b14aee5bb0"
+  active_policy_named_platform_requirement_matches: 0
+  plan_matrix_declared_complete: true
+  decision_rows_amended: "D-15 D-16 D-19"
+  superseded_environment_owner_removed: true
+  unused_external_references_removed: true
+
+technical_writing_gate:
+  builder_pass: "passed"
+  refuter_pass: "passed"
+  final_gate: "passed_after_contextual_review"
+  warning_matcher_command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py ImplementationPlans/recomendation_frontend.md docs/quality/frontend-accessibility-policy-2026-07-11.md docs/quality/frontend-decision-ledger-2026-07-11.md implementation_control/handoffs/WH-20260715-001.md"
+  advisory_warning_hits: 4
+  warning_disposition: "All four matches occur in unchanged legacy passages and are precise in context; amended prose introduces no unsupported capability conformance or authority claim."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "Validated against a disposable clean clone at accepted source pin 57438af555214bc0785dcb390ee6254f580b8a62; all gates passed and 64 static pages built."
+  - id: "manual-policy-review"
+    command: "manual inspection of complete required accessibility matrix VoiceOver retention optional platform status conformance boundary and historical record preservation"
+    status: "passed"
+    evidence: "ENV-01 through ENV-06 remain required VoiceOver Safari and WCAG 2.2 Level AA remain explicit optional platform absence is non-blocking and no current conformance claim is made."
+
+preservation_evidence:
+  excluded_path_count: 8
+  excluded_paths_unchanged: true
+  excluded_paths_staged: 0
+  preserved_hashes_match_prior_records: true
+  historical_completed_records_rewritten: false
+  excluded_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the nine policy plan and current control files while ignoring the eight preserved FE-P1-03 paths."
+  push_allowed: false
+  deployment_allowed: false
+
+remaining_boundaries:
+  - "The live upstream worktree remains active external work and was neither used nor modified."
+  - "FE-P1-03 runtime acceptance remains a separately authorized successor packet."
+  - "No public accessibility conformance claim is established."
+  - "No push or deployment is authorized."
+
+next_recommended_action:
+  task_packet: "FE-GOV-AT-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction then stop before opening FE-P1-03 reacceptance."
+  do_not_skip: "Do not stage preserved runtime paths push deploy or mutate upstream."

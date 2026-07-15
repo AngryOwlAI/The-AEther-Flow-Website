@@ -1,0 +1,60 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-001"
+created_utc: "2026-07-15T14:12:22Z"
+updated_utc: "2026-07-15T14:16:35Z"
+status: "active"
+
+task_id: "WI-20260715-001"
+job_id: "WJ-20260715-001-A"
+
+summary: "Opened the owner authorized control only amendment that removes the superseded optional platform screen reader gate while retaining the required VoiceOver Safari and WCAG evidence matrix."
+
+current_state:
+  - "FE-P1-07 is already checkpointed at c4b4363bd10643f2ecd327064d74753238b2f168 and is not replayed."
+  - "Website main equals origin main at the checkpoint before this amendment."
+  - "The eight preserved FE-P1-03 paths match their previously recorded hashes and remain unstaged."
+  - "The upstream repository is active external work and remains read only and outside this packet."
+  - "The adopted plan now declares its listed platform and assistive technology matrix complete."
+  - "The active policy retains ENV-01 through ENV-06 VoiceOver Safari and WCAG 2.2 Level AA."
+  - "No runtime public route claim navigation manifest asset push deployment or upstream change is authorized."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  public_runtime_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "FE-GOV-AT-01 policy amendment"
+  summary: "Validate and checkpoint the policy amendment then stop before the separately authorized FE-P1-03 reacceptance packet."
+  do_not_skip: "Do not stage preserved runtime paths push deploy or mutate upstream."
+
+stop_before:
+  - "Any weakening of WCAG VoiceOver Safari keyboard browser zoom touch no JavaScript or automated coverage"
+  - "Any public runtime route claim navigation manifest or asset change"
+  - "FE-P1-03 runtime checkpoint"
+  - "Git push Cloudflare deployment or upstream write"
+
+preservation:
+  excluded_dirty_paths: "src/layouts/BaseLayout.astro src/styles/global.css tests/test_mobile_navigation.py implementation_control/handoffs/WH-20260712-010.md implementation_control/handoffs/WH-20260712-010.yaml implementation_control/tasks/WI-20260712-010/00_TASK.yaml implementation_control/tasks/WI-20260712-010/jobs/WJ-20260712-010-A.yaml implementation_control/tasks/WI-20260712-010/jobs/completions/WJC-20260712-010-A.yaml"
+  preserved_hashes_verified: true
+  destructive_cleanup_status: "not_authorized"
+
+checkpoint_transition:
+  previous_packet: "FE-P1-07"
+  checkpoint: "c4b4363bd10643f2ecd327064d74753238b2f168"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-001-A"
+  path: "implementation_control/tasks/WI-20260715-001/jobs/completions/WJC-20260715-001-A.yaml"
+  status: "completed"
