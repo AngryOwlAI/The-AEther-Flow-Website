@@ -1,0 +1,148 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-015-A"
+task_id: "WI-20260715-015"
+title: "Implement AI Research System Workflow Project Introduction"
+created_utc: "2026-07-15T19:42:10Z"
+updated_utc: "2026-07-15T19:46:57Z"
+status: "active"
+
+objective: "Render one quality gated general public project introduction immediately after the AI Research System Workflow hero."
+
+execution_boundary:
+  invocation_limit: "one bounded AI-WORKFLOW-INTRO-01 packet"
+  packet_id: "AI-WORKFLOW-INTRO-01"
+  previous_checkpoint: "6f7b915c9fab0040528dbd0303f8ecd1df424196"
+  previous_checkpoint_replay_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed AI Research System Workflow introduction"
+  workflow_mechanics_write_status: "forbidden"
+  route_and_navigation_write_status: "forbidden"
+  other_route_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-015"
+
+allowed_writes:
+  - "src/pages/ai-research-system/workflow/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-014.yaml"
+  - "implementation_control/tasks/WI-20260715-014/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-014/jobs/WJ-20260715-014-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-015.yaml"
+  - "implementation_control/handoffs/WH-20260715-015.md"
+  - "implementation_control/tasks/WI-20260715-015/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-015/jobs/WJ-20260715-015-A.yaml"
+  - "implementation_control/tasks/WI-20260715-015/jobs/completions/WJC-20260715-015-A.yaml"
+
+required_outputs:
+  - "One substantial ProjectIntroduction paragraph replaces the raw AI Research System Workflow intro section."
+  - "The paragraph identifies the two part project before explaining the bounded workflow."
+  - "The paragraph explains source inspection Director decisions one AgentJob completion handoff checkpoint and protected human decisions in general public language."
+  - "The paragraph separates audit evidence from scientific proof and job authority."
+  - "Workflow mechanics lifecycle rows route cards and source notice remain unchanged."
+  - "Focused tests provenance build aggregate quality and responsive browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner directed implementation of the sitewide project description rule."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "One reviewed AI Research System Workflow introduction only."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh and only accepted clean pinned workflow sources ground the stable introduction."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Bounded Workflow page content change without route navigation or retirement changes."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "Reuse the existing ProjectIntroduction component without style changes."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "AI Research System Workflow provenance regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-ai-workflow-introduction-review"
+    command: "manual inspection of the AI Research System Workflow project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "The draft cannot remain source proportional."
+  - "Workflow mechanics lifecycle rows another route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph is not one substantial post hero paragraph or fails responsive review."
+  - "A required validator or browser review fails."
+  - "Work enters another route push deployment source refresh or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-015-A"
+  path: "implementation_control/tasks/WI-20260715-015/jobs/completions/WJC-20260715-015-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "AI-WORKFLOW-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-015-A and stop."
+  do_not_skip: "Do not change workflow mechanics or enter another route before this packet checkpoints."
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the AI Research System Workflow hero"
+  focused_tests: "passed 16 tests"
+  python_tests: "passed 141 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready_to_checkpoint"

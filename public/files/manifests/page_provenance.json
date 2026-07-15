@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T19:37:08.172373+00:00",
+  "generated_at": "2026-07-15T19:45:48.485916+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -703,7 +703,7 @@
     {
       "route_path": "/ai-research-system/workflow/",
       "local_page_source": "src/pages/ai-research-system/workflow/index.astro",
-      "local_page_sha256": "87e8789f9d6bf8dbff8e2fe2d6fc12668333b500a371bb6db2eb5125fd504bc1",
+      "local_page_sha256": "0e25ed2c908cb1be92099d4ce58f5edb1fa71d2287fb5526cf779957b28419c4",
       "title": "Workflow",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

@@ -18,6 +18,9 @@ AI_RESEARCH_SYSTEM_PAGE = REPO_ROOT / "src/pages/ai-research-system/index.astro"
 AI_RESEARCH_SYSTEM_CURRENT_STATE_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/current-state/index.astro"
 )
+AI_RESEARCH_SYSTEM_WORKFLOW_PAGE = (
+    REPO_ROOT / "src/pages/ai-research-system/workflow/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -345,6 +348,34 @@ def test_ai_research_system_current_state_has_a_general_public_project_introduct
     assert "authorizes source refresh" in source
     assert "expands role or source authority" in source
     assert '<section class="greenfield-intro-panel" aria-label="AI current-state introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_ai_research_system_workflow_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = AI_RESEARCH_SYSTEM_WORKFLOW_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "starting from tracked state" in source
+    assert "using memory only to locate sources" in source
+    assert "recording a Director decision" in source
+    assert "binding one AgentJob to named roles, allowed files" in source
+    assert "what happened and what remains uncertain" in source
+    assert "later work as a separate packet" in source
+    assert "how authority narrows at each step" in source
+    assert "independently proves a physics claim" in source
+    assert "expands the job" in source
+    assert "replaces a protected human decision" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Workflow introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
