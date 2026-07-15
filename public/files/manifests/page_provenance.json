@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T19:00:17.949476+00:00",
+  "generated_at": "2026-07-15T19:13:34.452943+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -490,7 +490,7 @@
     {
       "route_path": "/physics/open-burdens/",
       "local_page_source": "src/pages/physics/open-burdens/index.astro",
-      "local_page_sha256": "4eadfab859cea496b5d943b5d16e944f85fd0d37356a487522a788db6e30bfeb",
+      "local_page_sha256": "e29b964a108ddc660e011ec3ea5b4c6d587a388675e02356b9fe311427b60419",
       "title": "Open Burdens",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
