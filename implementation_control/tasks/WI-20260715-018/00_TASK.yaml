@@ -1,49 +1,49 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260715-017"
-title: "Normalize Roles and Schemas Project Introduction"
-created_utc: "2026-07-15T20:05:40Z"
-updated_utc: "2026-07-15T20:16:32Z"
+task_id: "WI-20260715-018"
+title: "Normalize Human-Gated Promotion Project Introduction"
+created_utc: "2026-07-15T20:16:32Z"
+updated_utc: "2026-07-15T20:22:42Z"
 status: "active"
 
 source_context:
-  packet_id: "AI-ROLES-SCHEMAS-INTRO-01"
+  packet_id: "AI-HUMAN-GATED-PROMOTION-INTRO-01"
   adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-  previous_task: "WI-20260715-016"
-  previous_checkpoint: "8dbd07d8f93d96c287c9d070985c07a29e93c484"
+  previous_task: "WI-20260715-017"
+  previous_checkpoint: "5b81434298b785a20cb4a382c6a96513f6f8f2eb"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   live_upstream_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
-  relevant_source_parity: "The seven role authority source files are byte identical between the accepted pin and live upstream head."
+  relevant_source_parity: "Stable gate sources are byte identical; live claim registry additions are task local and do not change promotion semantics."
   owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
-goal: "Replace the raw Roles and Schemas topic paragraph with one source grounded whole project introduction immediately after the hero."
+goal: "Replace the raw Human-Gated Promotion topic paragraph with one source grounded whole project introduction immediately after the hero."
 
 requirements:
-  - "Render one substantial single paragraph ProjectIntroduction immediately after the Roles and Schemas hero."
-  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to roles and schemas."
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Human-Gated Promotion hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to protected promotion."
   - "Keep general relativity as the exact observable benchmark while the proposed foundation and first principles derivation remain open."
-  - "Explain named roles as stable responsibility templates and schemas as required field contracts for control records."
-  - "Explain that task local execution role records and one AgentJob allowlist create one job authority."
-  - "Distinguish registered role task overlay and one job provisional role behavior without implying reusable or expanded authority."
-  - "State that roles schemas registries validators and pages do not prove physics and protected promotion remains human gated."
-  - "Preserve all existing authority rows schema rows claim rows source rows route cards diagrams and source authority."
+  - "Explain that automated work can prepare candidate calculations audits refutations documentation validator results completions and handoffs."
+  - "Explain that canonical ontology adoption benchmark promotion scientific claim closure and Gate Chair verdicts require the applicable explicit tracked human approval."
+  - "State that a registered role validator PASS completion handoff commit or public page cannot activate or substitute for protected authority."
+  - "Distinguish protected promotion from publication readiness and deployment."
+  - "Preserve all existing gate protected action blocked overread and source rows route cards diagrams and source authority."
 
 scope:
   in_scope:
-    - "Roles and Schemas introduction and component reuse in src/pages/ai-research-system/roles-and-schemas/index.astro"
+    - "Human-Gated Promotion introduction and component reuse in src/pages/ai-research-system/human-gated-promotion/index.astro"
     - "Focused source and order assertions in tests/test_public_positioning.py"
-    - "Roles and Schemas page provenance regeneration against the accepted source pin"
+    - "Human-Gated Promotion page provenance regeneration against the accepted source pin"
     - "Current implementation control transition completion and handoff records"
   out_of_scope:
-    - "Role matrix schema table claim matrix or source row mechanics"
+    - "Gate protected action blocked overread or source row mechanics"
     - "Other AI Research System and Resources route introductions"
     - "Shared component style route navigation source notice public asset or upstream source changes"
     - "Git push Cloudflare deployment source refresh or upstream writes"
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260715-017-A"
+  active_job_id: "WJ-20260715-018-A"
   next_packet_after_this_task: "The next incomplete introduction route becomes eligible only after this packet validates and is locally checkpointed."
 
 allowed_reads:
@@ -60,7 +60,7 @@ allowed_reads:
     - "docs/architecture/sitewide-greenfield-foundation-contract.md"
     - "src/components/ProjectIntroduction.astro"
     - "src/lib/siteContent.ts"
-    - "src/pages/ai-research-system/roles-and-schemas/index.astro"
+    - "src/pages/ai-research-system/human-gated-promotion/index.astro"
     - "public/files/manifests/page_provenance.json"
     - "tests/test_public_positioning.py"
     - "scripts"
@@ -71,26 +71,27 @@ allowed_reads:
     - "README.md"
     - "AGENTS.md"
     - "github-facing/project-overview-explainer.md"
-    - "github-facing/roles-and-skills-explainer.md"
-    - "github-facing/role-routing-explainer.md"
-    - "registries/AGENT_ROLE_REGISTRY.csv"
-    - ".agents/schemas/EXECUTION_ROLE_SCHEMA.md"
+    - "github-facing/claim-gates-explainer.md"
     - "research_control/README.md"
+    - "research_control/design/mathematical_decisiveness_completion_contract.md"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+    - "registries/AGENT_ROLE_REGISTRY.csv"
+    - ".agents/roles/physics/gate-chair.v0.1.0.md"
 
 allowed_writes:
   website_repository:
-    - "src/pages/ai-research-system/roles-and-schemas/index.astro"
+    - "src/pages/ai-research-system/human-gated-promotion/index.astro"
     - "tests/test_public_positioning.py"
     - "public/files/manifests/page_provenance.json"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260715-016.yaml"
-    - "implementation_control/tasks/WI-20260715-016/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260715-016/jobs/WJ-20260715-016-A.yaml"
     - "implementation_control/handoffs/WH-20260715-017.yaml"
-    - "implementation_control/handoffs/WH-20260715-017.md"
     - "implementation_control/tasks/WI-20260715-017/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260715-017/jobs/WJ-20260715-017-A.yaml"
-    - "implementation_control/tasks/WI-20260715-017/jobs/completions/WJC-20260715-017-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-018.yaml"
+    - "implementation_control/handoffs/WH-20260715-018.md"
+    - "implementation_control/tasks/WI-20260715-018/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-018/jobs/WJ-20260715-018-A.yaml"
+    - "implementation_control/tasks/WI-20260715-018/jobs/completions/WJC-20260715-018-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -99,13 +100,13 @@ approval_gates:
     reason: "The owner explicitly directed implementation of the sitewide project description rule."
   public_claim_changes:
     status: "approved"
-    reason: "Approval covers one source grounded Roles and Schemas introduction under the technical writing quality gate."
+    reason: "Approval covers one source grounded Human-Gated Promotion introduction under the technical writing quality gate."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "The accepted role source bundle is byte identical to live upstream and no refresh occurs."
+    reason: "Stable gate sources are byte identical and live claim registry additions do not change promotion semantics."
   broad_navigation_or_route_retirement:
     status: "approved"
-    reason: "Approval covers the bounded Roles and Schemas page content change without route navigation or retirement changes."
+    reason: "Approval covers the bounded Human-Gated Promotion page content change without route navigation or retirement changes."
   shared_visual_systems:
     status: "not_required"
     reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
@@ -114,7 +115,7 @@ approval_gates:
     reason: "No public assets."
   public_manifest_authority_records:
     status: "approved"
-    reason: "Approval covers regeneration of Roles and Schemas page provenance after the page source change."
+    reason: "Approval covers regeneration of Human-Gated Promotion page provenance after the page source change."
   git_push:
     status: "not_required"
     reason: "Push is outside this packet."
@@ -153,13 +154,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-ai-roles-schemas-introduction-review"
-    command: "manual inspection of the Roles and Schemas project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-human-gated-promotion-introduction-review"
+    command: "manual inspection of the Human-Gated Promotion project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "The paragraph cannot remain proportional to the accepted project role schema and workflow sources."
-  - "Role matrix schema table claim matrix source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph cannot remain proportional to the accepted project gate workflow role and claim sources."
+  - "Gate tables source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
   - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -167,59 +168,50 @@ stop_conditions:
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Create WJC-20260715-017-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
-
-completion_record:
-  completion_id: "WJC-20260715-017-A"
-  path: "implementation_control/tasks/WI-20260715-017/jobs/completions/WJC-20260715-017-A.yaml"
-  status: "completed"
+  closeout: "Create WJC-20260715-018-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
 
 handoff:
-  latest_handoff_id: "WH-20260715-017"
-  yaml_path: "implementation_control/handoffs/WH-20260715-017.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-017.md"
+  latest_handoff_id: "WH-20260715-018"
+  yaml_path: "implementation_control/handoffs/WH-20260715-018.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-018.md"
+
+completion_record:
+  completion_id: "WJC-20260715-018-A"
+  path: "implementation_control/tasks/WI-20260715-018/jobs/completions/WJC-20260715-018-A.yaml"
+  status: "completed"
 
 next_recommended_action:
-  task_packet: "AI-ROLES-SCHEMAS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-017-A and stop."
-  do_not_skip: "Do not change role matrices schema tables route cards shared styles push deploy refresh sources or mutate upstream."
+  task_packet: "AI-HUMAN-GATED-PROMOTION-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-018-A and stop."
+  do_not_skip: "Do not change gate matrices route cards shared styles push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_relevant_source_parity"
-  observed_utc: "2026-07-15T20:05:40Z"
-  previous_checkpoint: "8dbd07d8f93d96c287c9d070985c07a29e93c484"
+  observed_utc: "2026-07-15T20:16:32Z"
+  previous_checkpoint: "5b81434298b785a20cb4a382c6a96513f6f8f2eb"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 15
+  website_ahead_of_origin_main: 16
   website_worktree_status: "clean_before_packet_open"
   accepted_source_worktree_status: "clean"
   upstream_worktree_status: "clean external upstream head"
   upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
-  relevant_source_parity_status: "seven route source files byte identical across accepted pin and live head"
+  relevant_source_parity_status: "stable gate sources byte identical; live claim registry adds task local rows without changing promotion semantics"
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Roles and Schemas hero"
-  focused_tests: "passed 18 tests"
-  python_tests: "passed 143 tests"
+  project_introduction: "one substantial general public paragraph after the Human-Gated Promotion hero"
+  focused_tests: "passed 19 tests"
+  python_tests: "passed 144 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
-  quality_gate: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false
-
-checkpoint_evidence:
-  commit: "5b81434298b785a20cb4a382c6a96513f6f8f2eb"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-018"
-  reason: "AI-ROLES-SCHEMAS-INTRO-01 was checkpointed before the separately bounded Human-Gated Promotion introduction packet opened."

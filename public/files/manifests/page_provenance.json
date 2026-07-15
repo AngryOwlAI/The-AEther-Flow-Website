@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T20:09:30.053755+00:00",
+  "generated_at": "2026-07-15T20:20:29.282154+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -1015,7 +1015,7 @@
     {
       "route_path": "/ai-research-system/human-gated-promotion/",
       "local_page_source": "src/pages/ai-research-system/human-gated-promotion/index.astro",
-      "local_page_sha256": "5250a0f4032423c754bfe9050df15e1fbe2ee51600e3d0b338025e2c310dad3c",
+      "local_page_sha256": "12d9e5d23d63a42045e4318cfc57e25315f166d45a9552ca4ea099dd2c39fd68",
       "title": "Human-Gated Promotion",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

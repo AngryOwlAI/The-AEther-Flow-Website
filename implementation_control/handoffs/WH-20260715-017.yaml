@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-017"
 created_utc: "2026-07-15T20:05:40Z"
-updated_utc: "2026-07-15T20:11:11Z"
+updated_utc: "2026-07-15T20:16:32Z"
 status: "active"
 
 task_id: "WI-20260715-017"
@@ -54,12 +54,24 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-017-A"
   path: "implementation_control/tasks/WI-20260715-017/jobs/completions/WJC-20260715-017-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "5b81434298b785a20cb4a382c6a96513f6f8f2eb"
+  observed_as_head: true
+  repeated: false
+
+superseded_by:
+  handoff_id: "WH-20260715-018"
+  task_id: "WI-20260715-018"
+  job_id: "WJ-20260715-018-A"
+  checkpoint: "5b81434298b785a20cb4a382c6a96513f6f8f2eb"
+  reason: "AI-ROLES-SCHEMAS-INTRO-01 was checkpointed before the separately bounded Human-Gated Promotion introduction packet opened."

@@ -27,6 +27,9 @@ AI_RESEARCH_SYSTEM_AGENTJOB_LIFECYCLE_PAGE = (
 AI_RESEARCH_SYSTEM_ROLES_AND_SCHEMAS_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/roles-and-schemas/index.astro"
 )
+AI_RESEARCH_SYSTEM_HUMAN_GATED_PROMOTION_PAGE = (
+    REPO_ROOT / "src/pages/ai-research-system/human-gated-promotion/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -438,6 +441,37 @@ def test_roles_and_schemas_has_a_general_public_project_introduction_after_the_h
     assert "human-gated Gate Chair path" in source
     assert "requires explicit tracked approval" in source
     assert '<section class="greenfield-intro-panel" aria-label="Roles and schemas introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_human_gated_promotion_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = AI_RESEARCH_SYSTEM_HUMAN_GATED_PROMOTION_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "candidate calculations, audits, refutations, documentation" in source
+    assert "Canonical ontology adoption, benchmark promotion, scientific claim closure" in source
+    assert "Gate Chair verdict require the explicit tracked human approval" in source
+    assert "role registry does not activate that authority" in source
+    assert "validator PASS, completion, handoff, commit, or public page" in source
+    assert "cannot substitute for the required person and approval record" in source
+    assert "evidence can accumulate below that boundary" in source
+    assert "protected verdict remains separate" in source
+    assert "Publication acceptance and deployment are also separate owner decisions" in source
+    assert "none independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology" in source
+    assert "authorizes protected execution" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Human-gated promotion introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
