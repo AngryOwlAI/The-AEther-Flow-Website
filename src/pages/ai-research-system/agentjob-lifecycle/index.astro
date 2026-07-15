@@ -1,10 +1,14 @@
 ---
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
+
+const agentJobLifecycleProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. The AI track turns each bounded request into an inspectable record chain rather than giving an AI system general permission to act. At the center of that chain, one AgentJob is a single-use contract that names the request, source boundary, allowed reads and writes, forbidden paths, expected outputs, validators, claim limits, and stop conditions before work begins. A Director decision chooses the route, an execution-role record binds the role to that one job, and a completion records the files changed, checks run, uncertainty, and result; any later work must begin through a separate handoff and new packet. This page explains that permission envelope so a general reader can distinguish what the job may inspect, change, and verify from what remains outside its authority. An AgentJob, validator PASS, completion, handoff, or local checkpoint can document one transaction, but none independently proves a physics claim, promotes the proposed ontology, authorizes upstream changes, or becomes reusable permission.";
 
 const envelopeRows = [
   {
@@ -264,15 +268,10 @@ const agentJobSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="AgentJob lifecycle introduction">
-    <p>
-      One AgentJob is one auditable permission envelope. It names inputs,
-      Allowed reads, Allowed writes, validators, expected outputs,
-      Completion, and Handoff before work can be closed. The same envelope is
-      not reusable permission, not publication acceptance, and not scientific
-      proof.
-    </p>
-  </section>
+  <ProjectIntroduction
+    text={agentJobLifecycleProjectIntroduction}
+    ariaLabel="About The Æther Flow Project and the AgentJob Lifecycle"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiAgentjobLifecycle} />

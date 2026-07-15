@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T19:45:48.485916+00:00",
+  "generated_at": "2026-07-15T19:57:30.854993+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -813,7 +813,7 @@
     {
       "route_path": "/ai-research-system/agentjob-lifecycle/",
       "local_page_source": "src/pages/ai-research-system/agentjob-lifecycle/index.astro",
-      "local_page_sha256": "3ce67a05dd37314aa3dde8e3df754fdd833617fdad25e4679159293a570fb9b9",
+      "local_page_sha256": "33dd82a0a4bc23770207a820cac8c1d820b3b5ad90b3c595d0409ec678564782",
       "title": "AgentJob Lifecycle",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

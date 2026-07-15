@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-015"
 created_utc: "2026-07-15T19:42:10Z"
-updated_utc: "2026-07-15T19:46:57Z"
+updated_utc: "2026-07-15T19:52:33Z"
 status: "active"
 
 task_id: "WI-20260715-015"
@@ -37,8 +37,8 @@ source_authority_boundary:
   deployment_status: "not_authorized"
 
 next_recommended_action:
-  task_packet: "AI-WORKFLOW-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-015-A and stop."
+  task_packet: "AI-AGENTJOB-LIFECYCLE-INTRO-01 implementation"
+  summary: "Implement the separately bounded AgentJob Lifecycle project introduction packet."
   do_not_skip: "Do not change workflow mechanics enter other routes push deploy refresh sources or mutate upstream."
 
 stop_before:
@@ -53,12 +53,24 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-015-A"
   path: "implementation_control/tasks/WI-20260715-015/jobs/completions/WJC-20260715-015-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "b1c7b5bd785c5137c5f0a750c361e6b471662208"
+  observed_as_head: true
+  repeated: false
+
+superseded_by:
+  handoff_id: "WH-20260715-016"
+  task_id: "WI-20260715-016"
+  job_id: "WJ-20260715-016-A"
+  checkpoint: "b1c7b5bd785c5137c5f0a750c361e6b471662208"
+  reason: "AI-WORKFLOW-INTRO-01 was checkpointed before the separately bounded AgentJob Lifecycle introduction packet opened."
