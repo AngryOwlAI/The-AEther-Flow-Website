@@ -1,51 +1,49 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-004-A"
-task_id: "WI-20260715-004"
-title: "Implement Home Introduction And Section Order"
-created_utc: "2026-07-15T17:21:57Z"
-updated_utc: "2026-07-15T17:40:13Z"
-status: "superseded"
+job_id: "WJ-20260715-005-A"
+task_id: "WI-20260715-005"
+title: "Implement Home Status Explanatory List"
+created_utc: "2026-07-15T17:40:13Z"
+updated_utc: "2026-07-15T17:54:57Z"
+status: "active"
 
-objective: "Render the reviewed general public Home introduction after the hero and place the requested Home sections in their reader approved order."
+objective: "Render the five accepted Home claim states as a visible explanatory ordered list instead of a card grid."
 
 execution_boundary:
-  invocation_limit: "one bounded HOME-INTRO-01 packet"
-  packet_id: "HOME-INTRO-01"
-  previous_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  invocation_limit: "one bounded HOME-STATUS-01 packet"
+  packet_id: "HOME-STATUS-01"
+  previous_checkpoint: "e5010de5162f11fece00814d5ac1f4f0db6f0b20"
   previous_checkpoint_replay_status: "forbidden"
-  public_claim_write_status: "approved only for the reviewed Home introduction"
+  public_claim_write_status: "approved only for state labels and visible accepted explanations"
   route_and_navigation_write_status: "forbidden"
-  status_list_write_status: "forbidden"
   sitewide_rollout_status: "forbidden"
   upstream_write_status: "forbidden"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website and read only evidence allowlisted by WI-20260715-004"
+  - "website and read only evidence allowlisted by WI-20260715-005"
 
 allowed_writes:
-  - "src/components/ProjectIntroduction.astro"
-  - "src/pages/index.astro"
-  - "tests/test_public_positioning.py"
+  - "src/components/ProjectStatusStrip.astro"
+  - "src/styles/global.css"
+  - "tests/test_project_status_strip.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-003.yaml"
-  - "implementation_control/tasks/WI-20260715-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-003/jobs/WJ-20260715-003-A.yaml"
   - "implementation_control/handoffs/WH-20260715-004.yaml"
-  - "implementation_control/handoffs/WH-20260715-004.md"
   - "implementation_control/tasks/WI-20260715-004/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-004/jobs/WJ-20260715-004-A.yaml"
-  - "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-005.yaml"
+  - "implementation_control/handoffs/WH-20260715-005.md"
+  - "implementation_control/tasks/WI-20260715-005/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-005/jobs/WJ-20260715-005-A.yaml"
+  - "implementation_control/tasks/WI-20260715-005/jobs/completions/WJC-20260715-005-A.yaml"
 
 required_outputs:
-  - "One general public project introduction appears immediately after the Home hero."
-  - "The five state status surface follows the introduction."
-  - "Ontology and GR immediately follows Two first class tracks."
-  - "Source authority is the final substantive Home section before the footer."
-  - "The introduction receives a technical writing pass against accepted Home source statements."
+  - "One visible ordered list contains all five accepted Home states."
+  - "Every state shows a plain language semantic label accepted description and qualification."
+  - "No five column card grid full item box or visually hidden state explanation remains."
+  - "Symbols and explicit state text retain non color meaning."
   - "Focused tests provenance validators build aggregate quality and browser review pass."
 
 approval_gates:
@@ -54,16 +52,16 @@ approval_gates:
     trigger: "Owner directed implementation of the approved plan."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "One reviewed Home introduction only."
+    trigger: "Plain language state labels and accepted explanations only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
     trigger: "No source refresh and validation uses the accepted source pin."
   - id: "broad_navigation_or_route_retirement"
-    status: "approved"
-    trigger: "Home section order only without routes or navigation changes."
+    status: "not_required"
+    trigger: "No route or navigation changes."
   - id: "shared_visual_systems"
     status: "approved"
-    trigger: "One reusable prose only introduction component using existing styles."
+    trigger: "Bounded Home status component presentation change."
   - id: "public_downloadable_assets"
     status: "not_required"
     trigger: "No public assets."
@@ -108,15 +106,16 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-home-order-review"
-    command: "manual inspection of Home introduction section order terminal source authority and responsive reading flow in the in app browser"
+  - id: "runtime-status-list-review"
+    command: "manual inspection of the five visible Home status explanations list semantics card removal responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "A reviewed claim boundary cannot support the introduction."
+  - "A state explanation cannot remain source proportional."
   - "A route navigation ladder registry source notice asset or upstream source change becomes necessary."
-  - "Work enters status list sitewide rollout push deployment source refresh or upstream mutation scope."
+  - "A list item is hidden clipped horizontally scrollable or color dependent."
   - "A required validator or browser review fails."
+  - "Work enters sitewide rollout push deployment source refresh or upstream mutation scope."
 
 checkpoint:
   command: "npm run checkpoint:implementation"
@@ -125,34 +124,24 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-004-A"
-  path: "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
+  completion_id: "WJC-20260715-005-A"
+  path: "implementation_control/tasks/WI-20260715-005/jobs/completions/WJC-20260715-005-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "HOME-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-004-A and stop."
-  do_not_skip: "Do not enter HOME-STATUS-01 or any later packet before this packet checkpoints."
+  task_packet: "HOME-STATUS-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-005-A and stop."
+  do_not_skip: "Do not enter the sitewide introduction rollout before this packet checkpoints."
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  introduction_component: "created"
-  home_section_order: "passed source and runtime review"
+  explanatory_list: "passed with five visible ordered states and accepted boundary text"
   focused_tests: "passed 11 tests"
   python_tests: "passed 131 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
-  runtime_home_order_review: "passed at desktop and 500 CSS pixel compact widths"
+  runtime_status_list_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "e5010de5162f11fece00814d5ac1f4f0db6f0b20"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-005"
-  reason: "The completed Home introduction and order job was checkpointed before HOME-STATUS-01 activation."
+  checkpoint_status: "ready"

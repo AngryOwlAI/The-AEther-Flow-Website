@@ -94,32 +94,48 @@ def test_component_uses_explicit_text_and_non_color_semantics() -> None:
     assert '<ol class="project-status-strip-list">' in source
     assert "project-status-name" in source
     assert "project-status-value" in source
+    assert "project-status-row" in source
     assert "project-status-shape-label" in source
-    assert "aria-describedby" in source
     assert "project-status-context" in source
-    assert "Solid completion" in source
-    assert "Closed shell · adopted" in source
-    assert "Field · interpretive" in source
-    assert "Dashed aperture · open" in source
-    assert "Stopped state · not claimed" in source
+    assert "project-status-qualification" in source
+    assert "Five states, explained." in source
+    assert "what the project has completed, adopted, proposed" in source
+    assert "Complete within the stated scope" in source
+    assert "Used as the observable benchmark" in source
+    assert "Proposed interpretation" in source
+    assert "Not completed" in source
+    assert "Outside the project's current claims" in source
+    assert "aria-describedby" not in source
     assert "<svg" not in source
 
 
-def test_status_strip_responsively_wraps_without_hidden_or_scrolling_states() -> None:
+def test_status_strip_is_a_visible_responsive_list_without_card_boxes() -> None:
     css = GLOBAL_CSS.read_text(encoding="utf-8")
     start = css.index(".project-status-strip {")
     end = css.index(".home-intro-panel {", start)
     component_css = css[start:end]
+    item_start = component_css.index(".project-status-strip-item {")
+    item_end = component_css.index(".project-status-row", item_start)
+    item_css = component_css[item_start:item_end]
+    context_start = component_css.index(".project-status-context,")
+    context_end = component_css.index(".project-status-context {", context_start)
+    context_css = component_css[context_start:context_end]
 
-    assert "grid-template-columns: repeat(5, minmax(0, 1fr));" in component_css
+    assert "list-style: decimal;" in component_css
+    assert "grid-template-columns: repeat(5, minmax(0, 1fr));" not in component_css
+    assert "grid-template-columns: repeat(2, minmax(0, 1fr));" not in component_css
+    assert "border-top: 1px solid var(--overview-white-line);" in item_css
+    assert "display: grid;" not in item_css
+    assert "background:" not in item_css
     assert "min-width: 0;" in component_css
     assert 'data-status-semantic="open"' in component_css
     assert "border-style: dashed;" in component_css
     assert 'data-status-semantic="not-claimed"' in component_css
     assert "display: none" not in component_css
     assert "overflow-x" not in component_css
-    assert "grid-template-columns: repeat(2, minmax(0, 1fr));" in css
-    assert "grid-template-columns: minmax(0, 1fr);" in css
+    assert "position: absolute" not in context_css
+    assert "clip-path" not in context_css
+    assert ".project-status-copy {\n    grid-template-columns: minmax(0, 1fr);" in css
 
 
 def test_status_strip_omits_reviewed_forbidden_overreads() -> None:

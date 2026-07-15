@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-004"
 created_utc: "2026-07-15T17:21:57Z"
-updated_utc: "2026-07-15T17:33:43Z"
-status: "active"
+updated_utc: "2026-07-15T17:40:13Z"
+status: "superseded"
 
 task_id: "WI-20260715-004"
 job_id: "WJ-20260715-004-A"
@@ -47,12 +47,19 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-004-A"
   path: "implementation_control/tasks/WI-20260715-004/jobs/completions/WJC-20260715-004-A.yaml"
   status: "completed"
+
+superseded_by:
+  handoff_id: "WH-20260715-005"
+  task_id: "WI-20260715-005"
+  job_id: "WJ-20260715-005-A"
+  checkpoint: "e5010de5162f11fece00814d5ac1f4f0db6f0b20"
+  reason: "HOME-INTRO-01 was checkpointed before the separately authorized status list packet opened."

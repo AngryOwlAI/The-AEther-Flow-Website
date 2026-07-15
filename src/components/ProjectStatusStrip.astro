@@ -31,11 +31,11 @@ const semanticDetails: Record<
   ProjectStatusSemantic,
   { marker: string; label: string }
 > = {
-  complete: { marker: "✓", label: "Solid completion" },
-  adopted: { marker: "=", label: "Closed shell · adopted" },
-  interpretive: { marker: "◎", label: "Field · interpretive" },
-  open: { marker: "○", label: "Dashed aperture · open" },
-  "not-claimed": { marker: "■", label: "Stopped state · not claimed" },
+  complete: { marker: "✓", label: "Complete within the stated scope" },
+  adopted: { marker: "=", label: "Used as the observable benchmark" },
+  interpretive: { marker: "◎", label: "Proposed interpretation" },
+  open: { marker: "○", label: "Not completed" },
+  "not-claimed": { marker: "■", label: "Outside the project's current claims" },
 };
 
 if (
@@ -51,7 +51,11 @@ if (
 <section class="project-status-strip" aria-labelledby="project-status-strip-title">
   <div class="project-status-strip-heading">
     <p class="eyebrow">Current project status</p>
-    <h2 id="project-status-strip-title">Five states, stated plainly.</h2>
+    <h2 id="project-status-strip-title">Five states, explained.</h2>
+    <p class="project-status-strip-intro">
+      Each item distinguishes what the project has completed, adopted, proposed,
+      left open, or does not claim.
+    </p>
   </div>
   <ol class="project-status-strip-list">
     {items.map((item) => {
@@ -62,20 +66,25 @@ if (
         <li
           class="project-status-strip-item"
           data-status-semantic={item.semantic}
-          aria-describedby={`${descriptionId} ${qualificationId}`}
         >
-          <span class="project-status-marker" aria-hidden="true">{semantic.marker}</span>
-          <span class="project-status-copy">
-            <span class="project-status-name">{item.label}</span>
-            <strong class="project-status-value">{item.value}</strong>
-            <span class="project-status-shape-label">{semantic.label}</span>
-          </span>
-          <span id={descriptionId} class="project-status-context">
-            {item.description}
-          </span>
-          <span id={qualificationId} class="project-status-context">
-            {item.qualification}
-          </span>
+          <div class="project-status-row">
+            <span class="project-status-marker" aria-hidden="true">{semantic.marker}</span>
+            <div class="project-status-copy">
+              <div class="project-status-summary">
+                <span class="project-status-name">{item.label}</span>
+                <strong class="project-status-value">{item.value}</strong>
+                <span class="project-status-shape-label">{semantic.label}</span>
+              </div>
+              <div class="project-status-explanation">
+                <p id={descriptionId} class="project-status-context">
+                  {item.description}
+                </p>
+                <p id={qualificationId} class="project-status-qualification">
+                  <strong>Boundary:</strong> {item.qualification}
+                </p>
+              </div>
+            </div>
+          </div>
         </li>
       );
     })}

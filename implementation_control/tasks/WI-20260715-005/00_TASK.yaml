@@ -1,0 +1,199 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-005"
+title: "Convert Home Status Cards To An Explanatory List"
+created_utc: "2026-07-15T17:40:13Z"
+updated_utc: "2026-07-15T17:54:57Z"
+status: "active"
+
+source_context:
+  packet_id: "HOME-STATUS-01"
+  adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+  adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
+  previous_task: "WI-20260715-004"
+  previous_checkpoint: "e5010de5162f11fece00814d5ac1f4f0db6f0b20"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  owner_authorization: "Owner explicitly directed the five Home states to use a list that explains what each state means."
+
+goal: "Replace the card like Home status presentation with one readable ordered list that visibly explains all five accepted claim states."
+
+requirements:
+  - "Keep exactly five states in complete adopted interpretive open and not claimed order."
+  - "Render every accepted status description and qualification as visible reader facing text."
+  - "Replace the five column card grid and boxed item treatment with one vertical ordered list separated by simple rules."
+  - "Retain a symbol and explicit semantic text for each state so meaning does not depend on color."
+  - "Keep the list readable without clipping hidden content or horizontal scrolling at desktop and compact widths."
+  - "Preserve the accepted claim ladder Home introduction section order routes navigation and Source authority position."
+
+scope:
+  in_scope:
+    - "ProjectStatusStrip list markup and public state labels"
+    - "Home status list presentation rules in src/styles/global.css"
+    - "Focused status list tests"
+    - "Home page provenance refresh against the accepted source pin"
+    - "Current implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Project introductions beyond Home"
+    - "Claim ladder registry source notice route navigation destination public asset or upstream source changes"
+    - "Git push Cloudflare deployment source refresh or upstream writes"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-005-A"
+  next_packet_after_this_task: "The sitewide introduction rollout becomes eligible only after this packet validates and is locally checkpointed."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "src/components/ProjectStatusStrip.astro"
+    - "src/data/publicStatements.ts"
+    - "src/lib/publicClaimLadder.ts"
+    - "src/pages/index.astro"
+    - "src/styles/global.css"
+    - "public/files/manifests/page_provenance.json"
+    - "tests"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/components/ProjectStatusStrip.astro"
+    - "src/styles/global.css"
+    - "tests/test_project_status_strip.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-004.yaml"
+    - "implementation_control/tasks/WI-20260715-004/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-004/jobs/WJ-20260715-004-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-005.yaml"
+    - "implementation_control/handoffs/WH-20260715-005.md"
+    - "implementation_control/tasks/WI-20260715-005/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-005/jobs/WJ-20260715-005-A.yaml"
+    - "implementation_control/tasks/WI-20260715-005/jobs/completions/WJC-20260715-005-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly directed implementation of the approved plan."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval covers plain language state labels and visible accepted explanations under the technical writing quality gate."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh occurs and validation uses the accepted clean source pin."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route navigation destination or retirement changes."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval covers the bounded Home status component presentation change."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval covers regeneration of Home page provenance after component and style changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-status-list-review"
+    command: "manual inspection of the five visible Home status explanations list semantics card removal responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "A visible explanation cannot remain proportional to an accepted claim ladder statement."
+  - "A claim ladder registry source notice route navigation destination asset or upstream source change becomes necessary."
+  - "The list hides clips or horizontally scrolls a state or relies on color alone."
+  - "A required validator or browser review fails."
+  - "Work enters sitewide rollout push deployment source refresh or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-005-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-005"
+  yaml_path: "implementation_control/handoffs/WH-20260715-005.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-005.md"
+
+completion_record:
+  completion_id: "WJC-20260715-005-A"
+  path: "implementation_control/tasks/WI-20260715-005/jobs/completions/WJC-20260715-005-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOME-STATUS-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-005-A and stop."
+  do_not_skip: "Do not enter the sitewide introduction rollout push deployment source refresh or upstream mutation."
+
+preflight_evidence:
+  status: "passed"
+  observed_utc: "2026-07-15T17:40:13Z"
+  previous_checkpoint: "e5010de5162f11fece00814d5ac1f4f0db6f0b20"
+  previous_checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 3
+  website_worktree_status: "clean_before_packet_open"
+  upstream_worktree_status: "clean"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  explanatory_list: "passed with five visible ordered states and accepted boundary text"
+  focused_tests: "passed 11 tests"
+  python_tests: "passed 131 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_status_list_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"
+  push_performed: false
+  deployment_performed: false
