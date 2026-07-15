@@ -54,6 +54,7 @@ RESOURCES_LOCAL_RETRIEVAL_LAYERS_PAGE = (
 RESOURCES_PUBLICATION_PROCESS_PAGE = (
     REPO_ROOT / "src/pages/resources/publication-process/index.astro"
 )
+RESOURCES_LIBRARY_PAGE = REPO_ROOT / "src/pages/resources/library/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -921,6 +922,57 @@ def test_resources_publication_process_has_a_general_public_project_introduction
     assert "replaces direct source inspection" in source
     assert "SourceAuthoritySection" not in source
     assert '<section class="greenfield-intro-panel" aria-label="Publication process introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_library_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_LIBRARY_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "organized by what a person wants to understand rather than by repository layout" in source
+    assert "A first-time reader can begin with project orientation" in source
+    assert "a physics reviewer can follow claim status and open burdens" in source
+    assert "an AI workflow maintainer can follow operational routes" in source
+    assert "a provenance reviewer can trace publication and manifests" in source
+    assert "a site builder can inspect page types and source bundles" in source
+    assert "an asset reader can find documents or diagrams" in source
+    assert "Each path starts with an internal website route when one exists" in source
+    assert "before GitHub paths, registry rows, manifests, or downloads become inspection tools" in source
+    assert "reader starts, claim and source status, publication and derivatives" in source
+    assert "documents and diagrams, and operations and workflow" in source
+    assert "does not rank a polished page above the source that owns its claims" in source
+    assert "source-backed, generated derivative, current snapshot, requirements or planning" in source
+    assert "retrieval support helps find material without becoming public evidence" in source
+    assert "Reader job, topic, claim status, freshness, and source basis" in source
+    assert "Registered TeX carries scoped physics and derivational claims" in source
+    assert "registries carry routing, provenance, relationship, status" in source
+    assert "registered Markdown carries guidance, source specifications, publication briefs" in source
+    assert "current governed task records carry task-local permissions and state" in source
+    assert "If a Library summary and its named owner disagree" in source
+    assert "repair the Library surface" in source
+    assert "if a current snapshot is stale, report that uncertainty" in source
+    assert "a manifest or hash can identify particular artifacts" in source
+    assert "none transfers claim authority or certifies scientific correctness" in source
+    assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
+    assert "No Library shelf, reading path, status label, route card" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "expands workflow authority" in source
+    assert "overrides a human gate" in source
+    assert "replaces direct source inspection" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Library introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

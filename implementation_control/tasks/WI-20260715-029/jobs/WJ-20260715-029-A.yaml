@@ -1,21 +1,21 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-028-A"
-task_id: "WI-20260715-028"
-title: "Implement Resources Publication Process Project Introduction"
-created_utc: "2026-07-15T22:21:25Z"
-updated_utc: "2026-07-15T22:33:37Z"
+job_id: "WJ-20260715-029-A"
+task_id: "WI-20260715-029"
+title: "Implement Resources Library Project Introduction"
+created_utc: "2026-07-15T22:33:37Z"
+updated_utc: "2026-07-15T22:40:23Z"
 status: "active"
 
-objective: "Render one quality gated general public project introduction immediately after the Publication Process hero."
+objective: "Render one quality gated general public project introduction immediately after the Library hero."
 
 execution_boundary:
-  invocation_limit: "one bounded RESOURCES-PUBLICATION-PROCESS-INTRO-01 packet"
-  packet_id: "RESOURCES-PUBLICATION-PROCESS-INTRO-01"
-  previous_checkpoint: "7298053f9554a9963325fed78aa25e8b07f4b3f2"
+  invocation_limit: "one bounded RESOURCES-LIBRARY-INTRO-01 packet"
+  packet_id: "RESOURCES-LIBRARY-INTRO-01"
+  previous_checkpoint: "afca08876102b99a1cd2eb9ca4a4f8e4d00f8e32"
   previous_checkpoint_replay_status: "forbidden"
-  public_claim_write_status: "approved only for the reviewed Publication Process introduction"
-  publication_table_and_review_mechanic_write_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Library introduction"
+  library_shelf_and_policy_write_status: "forbidden"
   derivative_regeneration_status: "forbidden"
   dedicated_source_authority_section_status: "forbidden"
   route_and_navigation_write_status: "forbidden"
@@ -25,28 +25,28 @@ execution_boundary:
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-028"
+  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-029"
 
 allowed_writes:
-  - "src/pages/resources/publication-process/index.astro"
+  - "src/pages/resources/library/index.astro"
   - "tests/test_public_positioning.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-027.yaml"
-  - "implementation_control/tasks/WI-20260715-027/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-027/jobs/WJ-20260715-027-A.yaml"
   - "implementation_control/handoffs/WH-20260715-028.yaml"
-  - "implementation_control/handoffs/WH-20260715-028.md"
   - "implementation_control/tasks/WI-20260715-028/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-028/jobs/WJ-20260715-028-A.yaml"
-  - "implementation_control/tasks/WI-20260715-028/jobs/completions/WJC-20260715-028-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-029.yaml"
+  - "implementation_control/handoffs/WH-20260715-029.md"
+  - "implementation_control/tasks/WI-20260715-029/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-029/jobs/WJ-20260715-029-A.yaml"
+  - "implementation_control/tasks/WI-20260715-029/jobs/completions/WJC-20260715-029-A.yaml"
 
 required_outputs:
-  - "One substantial ProjectIntroduction paragraph replaces the raw Publication Process intro section."
-  - "The paragraph identifies the two part project before explaining publication layers."
-  - "The paragraph explains source specs briefs derivative media parity review evidence provenance and proof limits."
+  - "One substantial ProjectIntroduction paragraph replaces the raw Library intro section."
+  - "The paragraph identifies the two part project before explaining the Library reader surface."
+  - "The paragraph explains reader jobs internal paths material labels provenance source precedence and proof limits."
   - "The paragraph keeps the Resources no dedicated Source authority section rule."
-  - "Publication chain validation page type routes diagram and contextual boundary remain unchanged."
+  - "Library shelves sequences policy tables routes diagram and contextual boundary remain unchanged."
   - "Writing gate focused tests provenance build aggregate quality and responsive browser review pass."
 
 approval_gates:
@@ -55,13 +55,13 @@ approval_gates:
     trigger: "Owner directed implementation of the sitewide project description rule."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "One reviewed Publication Process introduction only."
+    trigger: "One reviewed Library introduction only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
-    trigger: "Accepted sources are clean and all present route sources match live upstream."
+    trigger: "Accepted sources are clean and later claim boundary rows are isolated control additions."
   - id: "broad_navigation_or_route_retirement"
     status: "approved"
-    trigger: "Bounded Publication Process page content change without route navigation or retirement changes."
+    trigger: "Bounded Library page content change without route navigation or retirement changes."
   - id: "shared_visual_systems"
     status: "not_required"
     trigger: "Reuse the existing ProjectIntroduction component without style changes."
@@ -70,7 +70,7 @@ approval_gates:
     trigger: "No public assets."
   - id: "public_manifest_authority_records"
     status: "approved"
-    trigger: "Publication Process provenance regeneration only."
+    trigger: "Library provenance regeneration only."
   - id: "git_push"
     status: "not_required"
     trigger: "Any remote push."
@@ -109,13 +109,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-resources-publication-process-introduction-review"
-    command: "manual inspection of the Resources Publication Process project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-resources-library-introduction-review"
+    command: "manual inspection of the Resources Library project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
   - "The draft cannot remain source proportional."
-  - "A publication table review mechanic related route shared style navigation asset derivative or upstream source change becomes necessary."
+  - "A Library shelf reading path policy table related route shared style navigation asset derivative or upstream source change becomes necessary."
   - "The paragraph is not one substantial post hero paragraph or fails responsive review."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh derivative regeneration or upstream mutation scope."
@@ -127,33 +127,24 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-028-A"
-  path: "implementation_control/tasks/WI-20260715-028/jobs/completions/WJC-20260715-028-A.yaml"
+  completion_id: "WJC-20260715-029-A"
+  path: "implementation_control/tasks/WI-20260715-029/jobs/completions/WJC-20260715-029-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "RESOURCES-PUBLICATION-PROCESS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-028-A and stop."
-  do_not_skip: "Do not change publication tables or enter Library."
+  task_packet: "RESOURCES-LIBRARY-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-029-A and stop."
+  do_not_skip: "Do not change Library shelves reading paths or enter Reading Paths."
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Publication Process hero"
-  focused_tests: "passed 29 tests"
-  python_tests: "passed 154 tests"
+  project_introduction: "one substantial general public paragraph after the Library hero"
+  focused_tests: "passed 30 tests"
+  python_tests: "passed 155 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "afca08876102b99a1cd2eb9ca4a4f8e4d00f8e32"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-029"
-  reason: "The completed Publication Process introduction job was checkpointed before Library activation."
+  checkpoint_status: "ready"

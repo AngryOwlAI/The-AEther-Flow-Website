@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T22:25:21.498873+00:00",
+  "generated_at": "2026-07-15T22:38:23.761860+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -2388,7 +2388,7 @@
     {
       "route_path": "/resources/library/",
       "local_page_source": "src/pages/resources/library/index.astro",
-      "local_page_sha256": "3c69a75154c59f967251f786b3c0df933e79a30ed85b0b99902305b0f85b3431",
+      "local_page_sha256": "19efdfdb1d424f71f521a3445915ad3c8a3bdb3f4a9593f7025c1cb91632376d",
       "title": "Library",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

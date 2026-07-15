@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-028"
 created_utc: "2026-07-15T22:21:25Z"
-updated_utc: "2026-07-15T22:28:16Z"
+updated_utc: "2026-07-15T22:33:37Z"
 status: "active"
 
 task_id: "WI-20260715-028"
@@ -54,7 +54,7 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Publication Process hero"
   focused_tests: "passed 29 tests"
@@ -64,9 +64,19 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-028-A"
   path: "implementation_control/tasks/WI-20260715-028/jobs/completions/WJC-20260715-028-A.yaml"
+  status: "completed"
+
+checkpoint_evidence:
+  commit: "afca08876102b99a1cd2eb9ca4a4f8e4d00f8e32"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-029"
+  reason: "RESOURCES-PUBLICATION-PROCESS-INTRO-01 was checkpointed before the separately bounded Library introduction packet opened."
   status: "completed"
