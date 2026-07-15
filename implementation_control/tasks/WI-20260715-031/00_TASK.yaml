@@ -1,0 +1,208 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-031"
+title: "Add Reading Paths General Public Project Introduction"
+created_utc: "2026-07-15T23:17:25Z"
+updated_utc: "2026-07-15T23:29:47Z"
+status: "active"
+
+source_context:
+  packet_id: "RESOURCES-READING-PATHS-INTRO-01"
+  owner_authorization: "Owner requested continuation of the sitewide project description plan and explicitly made preflight failures nonblocking."
+  previous_task: "WI-20260715-030"
+  previous_checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  source_basis: "Accepted clean source pin plus the tracked Reading Paths route map and existing page content."
+
+goal: "Replace the Reading Paths topic-only introduction with one substantial general public paragraph that explains the whole project and then connects it to audience-first internal reading routes."
+
+requirements:
+  - "Import and reuse the existing ProjectIntroduction component on the Reading Paths route."
+  - "Write one paragraph for a general public reader that identifies the project as linked foundational physics and governed AI research missions."
+  - "State that general relativity remains the exact observable benchmark and that the first-principles substrate derivation remains open."
+  - "Explain that the AI research system uses bounded tasks roles AgentJobs source inspection validation completions handoffs and human gates without becoming scientific proof authority."
+  - "Connect the whole project to the Reading Paths reader job question-first internal-route-first and provenance-after-comprehension sequence."
+  - "Preserve source status freshness and generated-derivative boundaries."
+  - "Replace the existing greenfield-intro-panel topic paragraph rather than adding a second introduction."
+  - "Keep the hero actions diagram comprehension blocks audience table question router route clusters and policy table unchanged."
+  - "Do not add a dedicated Source authority section because Resources library routes keep provenance boundaries in contextual copy and manifests."
+  - "Add focused project introduction content and placement assertions."
+  - "Regenerate Reading Paths page provenance after the Astro source change."
+
+scope:
+  in_scope:
+    - "src/pages/resources/reading-paths/index.astro project introduction only"
+    - "tests/test_public_positioning.py focused Reading Paths introduction coverage"
+    - "public/files/manifests/page_provenance.json Reading Paths page hash regeneration"
+    - "Current implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Reading Paths hero actions SVG tables route clusters policy rows or links"
+    - "Shared components styles navigation or other routes"
+    - "Source refresh derivative regeneration upstream writes push or deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-031-A"
+  next_packet_after_this_task: "Stop after the Reading Paths local checkpoint and resolve the next route from live control state."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
+    - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
+    - "src/pages/resources/reading-paths/index.astro"
+    - "src/pages/resources/library/index.astro"
+    - "src/components/ProjectIntroduction.astro"
+    - "tests/test_public_positioning.py"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "scripts"
+    - "implementation_control"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "github-facing/project-overview-explainer.md"
+    - "github-facing/source-authority-explainer.md"
+    - "github-facing/aether-flow-physics-program-explainer.md"
+    - "github-facing/research-agent-workflow-explainer.md"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv"
+
+allowed_writes:
+  website_repository:
+    - "src/pages/resources/reading-paths/index.astro"
+    - "tests/test_public_positioning.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-030.yaml"
+    - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-031.yaml"
+    - "implementation_control/handoffs/WH-20260715-031.md"
+    - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+    - "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner explicitly requested continuation of the named sitewide plan."
+  public_claim_changes:
+    status: "approved"
+    reason: "Owner requested a source grounded general public project description on each page."
+  source_refresh_uncertainty:
+    status: "approved"
+    reason: "Owner explicitly instructed that preflight failures are nonblocking and this packet uses the accepted clean source pin without refreshing sources."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers the bounded Reading Paths route source edit while navigation routes and destinations remain unchanged."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "The existing ProjectIntroduction component is reused without modification."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets change."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "Approval covers Reading Paths provenance hash regeneration only."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write remains forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-reading-paths-introduction-review"
+    command: "manual inspection of the Resources Reading Paths project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "Any Reading Paths table row action link diagram policy shared style component other route or upstream source change becomes necessary."
+  - "The paragraph cannot preserve the accepted source position and explicit open derivation boundary."
+  - "A required implementation validator or browser review fails."
+  - "Work enters Repository Map push deployment source refresh derivative regeneration or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-031-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+
+handoff:
+  latest_handoff_id: "WH-20260715-031"
+  yaml_path: "implementation_control/handoffs/WH-20260715-031.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-031.md"
+
+completion_record:
+  completion_id: "WJC-20260715-031-A"
+  path: "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-READING-PATHS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not push deploy refresh sources mutate upstream or enter Repository Map in the same transaction."
+
+preflight_evidence:
+  status: "owner_authorized_failures_nonblocking"
+  observed_utc: "2026-07-15T23:17:25Z"
+  previous_checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  previous_checkpoint_replay_status: "not_replayed"
+  website_branch: "main"
+  website_ahead_of_origin_main: 29
+  website_worktree_status: "clean_before_packet_open"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  upstream_worktree_status: "dirty_in_flight_and_read_only"
+  source_refresh_status: "not performed"
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "implemented after the Reading Paths hero"
+  focused_tests: "passed 31 tests"
+  python_tests: "passed 156 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"
+  push_performed: false
+  deployment_performed: false

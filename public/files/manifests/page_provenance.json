@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T23:02:34.900596+00:00",
+  "generated_at": "2026-07-15T23:25:37.732040+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -2480,7 +2480,7 @@
     {
       "route_path": "/resources/reading-paths/",
       "local_page_source": "src/pages/resources/reading-paths/index.astro",
-      "local_page_sha256": "58f2fbb339f8c4172992ee119d5bd3139b20acb46e8879b0375728567279a7e8",
+      "local_page_sha256": "1204e2f10419d23ade5bb763ac88c2629c8e722408ce0b545748f93cbcca47eb",
       "title": "Reading Paths",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

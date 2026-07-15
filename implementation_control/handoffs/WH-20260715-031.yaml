@@ -1,0 +1,67 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-031"
+created_utc: "2026-07-15T23:17:25Z"
+updated_utc: "2026-07-15T23:29:47Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260715-031"
+job_id: "WJ-20260715-031-A"
+
+summary: "Opened the bounded Reading Paths project introduction packet after proving the Home layout checkpoint from Git."
+
+current_state:
+  - "HOME-HERO-ACTIONS-STATUS-ORDER-01 is checkpointed at e90e1dded11102baa9f5fae556b3e1ffb11588b8 and is not replayed."
+  - "The website and accepted pinned source worktrees were clean before packet open."
+  - "The live upstream worktree contains unrelated in flight changes and remains read only."
+  - "The owner explicitly instructed that preflight failures are nonblocking for plan continuation."
+  - "The next incomplete introduction route is Resources Reading Paths."
+  - "This packet replaces its short topic-only intro with one substantial source grounded general public project paragraph."
+  - "The paragraph is implemented with the existing ProjectIntroduction component immediately after the hero."
+  - "Writing review focused and full tests provenance build aggregate validation quality and responsive browser review passed."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  upstream_worktree_status: "dirty_in_flight_and_read_only"
+  source_refresh_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "RESOURCES-READING-PATHS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not push deploy refresh sources mutate upstream or enter Repository Map in the same transaction."
+
+stop_before:
+  - "Any Reading Paths table link diagram policy shared style or component change"
+  - "Any other route or source change"
+  - "Git push Cloudflare deployment source refresh derivative regeneration or upstream write"
+
+checkpoint_transition:
+  previous_packet: "HOME-HERO-ACTIONS-STATUS-ORDER-01"
+  checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "implemented after the Reading Paths hero"
+  focused_tests: "passed 31 tests"
+  python_tests: "passed 156 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-031-A"
+  path: "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+  status: "completed"

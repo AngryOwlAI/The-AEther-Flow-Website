@@ -1,0 +1,146 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-031-A"
+task_id: "WI-20260715-031"
+title: "Implement Reading Paths General Public Project Introduction"
+created_utc: "2026-07-15T23:17:25Z"
+updated_utc: "2026-07-15T23:29:47Z"
+status: "active"
+
+objective: "Replace the Reading Paths topic-only introduction with one source grounded general public whole project paragraph."
+
+execution_boundary:
+  invocation_limit: "one bounded RESOURCES-READING-PATHS-INTRO-01 packet"
+  packet_id: "RESOURCES-READING-PATHS-INTRO-01"
+  previous_checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  previous_checkpoint_replay_status: "forbidden"
+  source_refresh_status: "forbidden"
+  table_link_diagram_policy_status: "forbidden"
+  shared_style_or_component_change_status: "forbidden"
+  other_route_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "website route test manifest browser and accepted source evidence allowlisted by WI-20260715-031"
+
+allowed_writes:
+  - "src/pages/resources/reading-paths/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.yaml"
+  - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-031.yaml"
+  - "implementation_control/handoffs/WH-20260715-031.md"
+  - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+  - "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+
+required_outputs:
+  - "One ProjectIntroduction paragraph follows the Reading Paths hero."
+  - "The paragraph explains both project tracks their authority boundary and the Reading Paths reader sequence."
+  - "The existing topic-only greenfield intro panel is removed."
+  - "Reading Paths tables links diagram policy and route clusters remain unchanged."
+  - "Focused tests provenance full validation quality and responsive browser review pass."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner requested continuation of the named sitewide plan."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Owner requested a source grounded general public description on each page."
+  - id: "source_refresh_uncertainty"
+    status: "approved"
+    trigger: "Owner made preflight failures nonblocking and the accepted clean pin remains the source basis."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Bounded Reading Paths route source edit with no navigation destination change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "Reuse the existing component without shared edits."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "Reading Paths provenance hash regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source project write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-resources-reading-paths-introduction-review"
+    command: "manual inspection of the Resources Reading Paths project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    required: true
+
+stop_conditions:
+  - "Any table link diagram policy shared style component other route source or upstream change becomes necessary."
+  - "The paragraph cannot preserve the accepted source position and open derivation boundary."
+  - "A required implementation validator or browser review fails."
+  - "Work enters Repository Map push deployment source refresh derivative regeneration or upstream mutation scope."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-031-A"
+  path: "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RESOURCES-READING-PATHS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not push deploy refresh sources mutate upstream or enter Repository Map in the same transaction."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "implemented after the Reading Paths hero"
+  focused_tests: "passed 31 tests"
+  python_tests: "passed 156 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_status: "ready"

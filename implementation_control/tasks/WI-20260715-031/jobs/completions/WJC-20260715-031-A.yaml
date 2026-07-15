@@ -1,0 +1,157 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-031-A"
+task_id: "WI-20260715-031"
+job_id: "WJ-20260715-031-A"
+created_utc: "2026-07-15T23:17:25Z"
+completed_utc: "2026-07-15T23:29:47Z"
+status: "completed"
+
+summary: "Replaced the Reading Paths topic-only introduction with one source-grounded general-public paragraph explaining the physics and governed AI tracks, the open derivation boundary, and the page's reader sequence."
+
+changed_files:
+  - "src/pages/resources/reading-paths/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-030.yaml"
+  - "implementation_control/tasks/WI-20260715-030/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-030/jobs/WJ-20260715-030-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-031.yaml"
+  - "implementation_control/handoffs/WH-20260715-031.md"
+  - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+  - "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+
+source_context:
+  packet_id: "RESOURCES-READING-PATHS-INTRO-01"
+  previous_checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  source_refresh_performed: false
+  upstream_write_performed: false
+  previous_checkpoint_replayed: false
+
+writing_gate_evidence:
+  skill: "technical-writing-quality-gate"
+  status: "passed"
+  builder_result: "pass"
+  refuter_result: "pass"
+  warning_gate_command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py src/pages/resources/reading-paths/index.astro"
+  warning_gate_result: "passed with zero warning hits"
+  source_basis:
+    - "github-facing/project-overview-explainer.md at the accepted source pin"
+    - "github-facing/source-authority-explainer.md at the accepted source pin"
+    - "github-facing/aether-flow-physics-program-explainer.md at the accepted source pin"
+    - "github-facing/research-agent-workflow-explainer.md at the accepted source pin"
+    - "registries/CLAIM_BOUNDARY_REGISTRY.csv at the accepted source pin"
+    - "public/files/manifests/page_route_map.json and the existing Reading Paths route"
+  claim_boundary: "The paragraph distinguishes the proposed ontology, exact observable GR benchmark, open first-principles derivation, governed AI workflow, and source authority without treating website order or validation as proof."
+
+implementation_evidence:
+  project_introduction_component_reused: true
+  project_introduction_count: 1
+  introduction_position: "Immediately after the Reading Paths hero and before ComprehensionBlocks."
+  original_topic_only_intro_replaced: true
+  existing_greenfield_intro_class_preserved: true
+  route_tables_changed: false
+  action_links_changed: false
+  diagram_changed: false
+  policy_rows_changed: false
+  route_clusters_changed: false
+  source_authority_section_added: false
+  shared_styles_changed: false
+  shared_components_changed: false
+  other_routes_changed: false
+  upstream_source_changed: false
+  reading_paths_page_sha256: "1204e2f10419d23ade5bb763ac88c2629c8e722408ce0b545748f93cbcca47eb"
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Codex in app browser"
+  route: "http://127.0.0.1:4321/resources/reading-paths/"
+  desktop_viewport_css_pixels: "2276 by 1280"
+  compact_viewport_css_pixels: "520 by 1125"
+  introduction_count: 1
+  paragraph_count: 1
+  paragraph_character_count: 1591
+  hero_immediately_before_introduction: true
+  comprehension_blocks_after_introduction: true
+  desktop_introduction_css_pixels: "1180 wide by 492.54 high"
+  desktop_paragraph_css_pixels: "972.05 wide by 454.42 high"
+  compact_introduction_css_pixels: "468 wide by 807.08 high"
+  compact_paragraph_css_pixels: "436 wide by 776.96 high"
+  desktop_horizontal_overflow_css_pixels: 0
+  compact_horizontal_overflow_css_pixels: 0
+  error_surface_observed: false
+  console_interface_note: "The active browser binding did not expose stored console messages; DOM checks screenshots resize and scroll exercise showed no visible runtime error surface."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-reading-paths-introduction-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+    status: "passed"
+    evidence: "31 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest -q"
+    status: "passed"
+    evidence: "156 tests passed"
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+  - id: "content-validation"
+    command: "SOURCE_REPO_PATH=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate:content"
+    status: "passed"
+  - id: "provenance-validation"
+    command: "SOURCE_REPO_PATH=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate:provenance"
+    status: "passed"
+    evidence: "34 routes validated"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate"
+    status: "passed"
+    evidence: "Passed against the accepted clean source pin"
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run quality"
+    status: "passed"
+    evidence: "Quality gate passed against the accepted clean source pin"
+  - id: "runtime-resources-reading-paths-introduction-review"
+    command: "manual inspection of the Resources Reading Paths project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+    status: "passed"
+    evidence: "Desktop and 520 CSS pixel compact DOM and visual review passed with zero horizontal overflow and no visible runtime error surface."
+
+validation_environment:
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  disposable_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  source_tree_clean: true
+  live_upstream_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  live_upstream_worktree_status: "dirty_in_flight_and_read_only"
+  owner_preflight_override: "Owner instructed that preflight failures are nonblocking for plan continuation."
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "Reading Paths tables actions diagram route clusters policies and links are unchanged."
+  - "No shared component style other route upstream source push or deployment change occurred."
+  - "Repository Map and later route introduction packets remain outside this checkpoint."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the twelve RESOURCES-READING-PATHS-INTRO-01 route test provenance transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "RESOURCES-READING-PATHS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not push deploy refresh sources mutate upstream or enter Repository Map in the same transaction."

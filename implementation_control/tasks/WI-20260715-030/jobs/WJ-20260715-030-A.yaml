@@ -4,7 +4,7 @@ job_id: "WJ-20260715-030-A"
 task_id: "WI-20260715-030"
 title: "Implement Home Hero Actions And Status Placement"
 created_utc: "2026-07-15T22:53:56Z"
-updated_utc: "2026-07-15T23:10:52Z"
+updated_utc: "2026-07-15T23:17:25Z"
 status: "active"
 
 objective: "Relocate existing Home actions into the hero and existing status after the route chooser without changing content."
@@ -133,7 +133,7 @@ next_recommended_action:
   do_not_skip: "Do not change copy links styles other routes sources push deployment or upstream."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "not_required_existing_copy_unchanged"
   home_layout: "implemented primary actions inside hero and project status after route chooser"
   packet_scope_adjustment: "Added the pre-existing project status strip test after the full suite exposed its obsolete status-before-positioning assertion."
@@ -144,4 +144,12 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_layout_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-031"

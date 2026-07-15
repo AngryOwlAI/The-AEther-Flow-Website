@@ -55,6 +55,7 @@ RESOURCES_PUBLICATION_PROCESS_PAGE = (
     REPO_ROOT / "src/pages/resources/publication-process/index.astro"
 )
 RESOURCES_LIBRARY_PAGE = REPO_ROOT / "src/pages/resources/library/index.astro"
+RESOURCES_READING_PATHS_PAGE = REPO_ROOT / "src/pages/resources/reading-paths/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -988,6 +989,38 @@ def test_resources_library_has_a_general_public_project_introduction_after_the_h
     assert "replaces direct source inspection" in source
     assert "SourceAuthoritySection" not in source
     assert '<section class="greenfield-intro-panel" aria-label="Library introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_reading_paths_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_READING_PATHS_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert 'className="greenfield-intro-panel"' in source
+    assert "two-part research program about foundational physics" in source
+    assert "governed use of AI to organize that research" in source
+    assert "general relativity as the exact benchmark for observable gravity" in source
+    assert "deriving that benchmark from explicit substrate variables remains an open problem" in source
+    assert "does not claim a verified new law of gravity" in source
+    assert "bounded units of work called AgentJobs" in source
+    assert "without treating AI output, a validator result, or a webpage as scientific proof" in source
+    assert "routes for different questions and audiences" in source
+    assert "a general reader can begin with project orientation" in source
+    assert "a physics reviewer can follow ontology, benchmark, claim-status, and open-burden pages" in source
+    assert "an AI workflow reviewer can follow control and validation pages" in source
+    assert "a contributor or site builder can begin with source-authority and publication guidance" in source
+    assert "question-first, internal-route-second, provenance-third sequence" in source
+    assert "before opening registries, manifests, source files, generated derivatives, or downloads" in source
+    assert "does not change claim status, freshness, source precedence, workflow permission" in source
+    assert "the source wins and the reader surface must be repaired" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Reading paths introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
