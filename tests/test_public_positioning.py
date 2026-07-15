@@ -45,6 +45,9 @@ AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE = (
 RESOURCES_PAGE = REPO_ROOT / "src/pages/resources/index.astro"
 RESOURCES_SOURCE_AUTHORITY_PAGE = REPO_ROOT / "src/pages/resources/source-authority/index.astro"
 RESOURCES_REGISTRY_EXPLORER_PAGE = REPO_ROOT / "src/pages/resources/registries/index.astro"
+RESOURCES_GENERATED_DERIVATIVES_PAGE = (
+    REPO_ROOT / "src/pages/resources/generated-derivatives/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -768,6 +771,51 @@ def test_resources_registry_explorer_has_a_general_public_project_introduction_a
     assert "replaces direct source inspection" in source
     assert "SourceAuthoritySection" not in source
     assert '<section class="greenfield-intro-panel" aria-label="Resources registries introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_generated_derivatives_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_GENERATED_DERIVATIVES_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "reader-facing copy, explanation, or visual presentation made from tracked material" in source
+    assert "without becoming the owner of the claims it presents" in source
+    assert "GitHub-facing Markdown supports repository and AI-assisted reading" in source
+    assert "tracked HTML supports visual no-network reading" in source
+    assert "PDFs and document copies support inspection and download" in source
+    assert "generated wiki pages and object browsers support discovery" in source
+    assert "diagrams and public assets support comprehension" in source
+    assert "remains downstream from its registered source, registry row, or governed control record" in source
+    assert "canonical source or registry supplies the claim basis" in source
+    assert "source specification binds the intended output" in source
+    assert "publication brief defines the reader job, visual strategy, acceptance criteria" in source
+    assert "deterministic checks plus desktop, mobile, or before-and-after review evidence" in source
+    assert "parity requires the same source basis, authority boundary, and core claims" in source
+    assert "rather than identical section order" in source
+    assert "a hash identifies particular file contents, not scientific correctness" in source
+    assert "publication approval records a bounded reader-surface decision rather than physics authority" in source
+    assert "find the source basis, inspect the named source" in source
+    assert "The source wins, and the derivative needs repair" in source
+    assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
+    assert "No generated Markdown, HTML page, PDF, document copy, wiki note, diagram" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "expands workflow authority" in source
+    assert "overrides a human gate" in source
+    assert "replaces direct source inspection" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Generated derivatives introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

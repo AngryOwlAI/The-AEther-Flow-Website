@@ -1,0 +1,72 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-026"
+created_utc: "2026-07-15T21:58:34Z"
+updated_utc: "2026-07-15T22:05:55Z"
+status: "active"
+
+task_id: "WI-20260715-026"
+job_id: "WJ-20260715-026-A"
+
+summary: "Completed and validated the bounded Generated Derivatives project introduction packet after proving the Registry Explorer checkpoint from Git."
+
+current_state:
+  - "RESOURCES-REGISTRY-EXPLORER-INTRO-01 is checkpointed at a67c3d5504075cf615a530f9e4ce61a08f03f51f and is not replayed."
+  - "The website accepted pinned source and live upstream worktrees are clean."
+  - "Four of five present Generated Derivatives provenance sources are byte identical between the accepted pin and live upstream."
+  - "The claim boundary registry adds eight scoped V19 control rows with zero removed IDs."
+  - "The two declared upstream manifest omissions are unchanged at the accepted pin and live head."
+  - "The Generated Derivatives page has a concise topic paragraph but does not identify the whole two part project."
+  - "The owner required every page to explain the project for a general public audience."
+  - "One substantial source grounded whole project paragraph now follows the hero through the shared ProjectIntroduction component."
+  - "Writing review focused and full tests provenance build aggregate validation quality and responsive browser review passed."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  upstream_worktree_status: "clean"
+  relevant_source_parity_status: "accepted Generated Derivatives authority semantics preserved with additive later control boundaries isolated"
+  upstream_write_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Generated Derivatives introduction"
+  derivative_table_and_conflict_workflow_write_status: "forbidden"
+  dedicated_source_authority_section_status: "forbidden"
+  route_and_navigation_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "RESOURCES-GENERATED-DERIVATIVES-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-026-A and stop."
+  do_not_skip: "Do not change derivative tables enter Local Retrieval Layers push deploy refresh sources or mutate upstream."
+
+stop_before:
+  - "Derivative class table conflict workflow or related route changes"
+  - "Shared style public asset or upstream source changes"
+  - "Git push Cloudflare deployment source refresh or upstream write"
+
+checkpoint_transition:
+  previous_packet: "RESOURCES-REGISTRY-EXPLORER-INTRO-01"
+  checkpoint: "a67c3d5504075cf615a530f9e4ce61a08f03f51f"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "completed_ready_for_checkpoint"
+  writing_gate_status: "passed"
+  project_introduction: "one substantial general public paragraph after the Generated Derivatives hero"
+  focused_tests: "passed 27 tests"
+  python_tests: "passed 152 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
+  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-026-A"
+  path: "implementation_control/tasks/WI-20260715-026/jobs/completions/WJC-20260715-026-A.yaml"
+  status: "completed"
