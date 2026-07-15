@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T22:02:45.596034+00:00",
+  "generated_at": "2026-07-15T22:15:57.872691+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -2249,7 +2249,7 @@
     {
       "route_path": "/resources/retrieval-layers/",
       "local_page_source": "src/pages/resources/retrieval-layers/index.astro",
-      "local_page_sha256": "13df14109b2700489b73f8eaf9507c8045a0e9a68b3832a42bc41a14ab88fa39",
+      "local_page_sha256": "899f3fb9a94ae0d25d9022140492743ee9dd140f28a9419bb778b7a0cd416eb0",
       "title": "Retrieval Layers",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

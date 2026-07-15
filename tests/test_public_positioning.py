@@ -48,6 +48,9 @@ RESOURCES_REGISTRY_EXPLORER_PAGE = REPO_ROOT / "src/pages/resources/registries/i
 RESOURCES_GENERATED_DERIVATIVES_PAGE = (
     REPO_ROOT / "src/pages/resources/generated-derivatives/index.astro"
 )
+RESOURCES_LOCAL_RETRIEVAL_LAYERS_PAGE = (
+    REPO_ROOT / "src/pages/resources/retrieval-layers/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -816,6 +819,53 @@ def test_resources_generated_derivatives_has_a_general_public_project_introducti
     assert "replaces direct source inspection" in source
     assert "SourceAuthoritySection" not in source
     assert '<section class="greenfield-intro-panel" aria-label="Generated derivatives introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_local_retrieval_layers_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_LOCAL_RETRIEVAL_LAYERS_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "search and navigation aids" in source
+    assert "without becoming the owner of the claims they find" in source
+    assert "Memory lookup can recall candidate paths" in source
+    assert "semantic extracts can surface related passages" in source
+    assert "generated wiki pages and Obsidian mirrors" in source
+    assert "SQLite or other local indexes" in source
+    assert "ignored local caches can hold previews, screenshots, logs" in source
+    assert "stale, partial, generated, or local-only" in source
+    assert "begins with a precise question, uses retrieval to find a candidate" in source
+    assert "identifies the tracked file, registry row, task, completion, handoff" in source
+    assert "inspects that owner in context" in source
+    assert "Registered TeX carries scoped physics and derivational claims" in source
+    assert "registered Markdown and tracked control records carry their own" in source
+    assert "registries record provenance, relationships, paths, hashes, and status" in source
+    assert "repairs navigation support rather than creating committed evidence" in source
+    assert "the tracked source and current governed record win" in source
+    assert "an older memory must be rechecked" in source
+    assert "a partial extract must be expanded to its surrounding source" in source
+    assert "a generated mirror must route the reader back to its owner" in source
+    assert "a local cache must remain local rather than being cited as public evidence" in source
+    assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
+    assert "No memory hit, semantic extract, wiki or Obsidian mirror, SQLite index, local cache" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "expands workflow authority" in source
+    assert "overrides a human gate" in source
+    assert "replaces direct source inspection" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Retrieval layers introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

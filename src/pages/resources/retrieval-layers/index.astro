@@ -3,7 +3,11 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
+
+const resourcesLocalRetrievalLayersProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. Its AI track uses tracked tasks, Director decisions, bounded AgentJobs, roles, validation, memory preflight, completions, handoffs, and human gates so that theoretical work remains inspectable without becoming accepted physics by workflow alone. Local retrieval layers are the project's search and navigation aids: they help a reader or research agent locate candidate material without becoming the owner of the claims they find. Memory lookup can recall candidate paths, prior packets, and recorded decisions; semantic extracts can surface related passages; generated wiki pages and Obsidian mirrors can expose objects and relationships; SQLite or other local indexes can make repeated searches faster; and ignored local caches can hold previews, screenshots, logs, render checks, or other temporary QA material. Each layer is useful for discovery, but each can be stale, partial, generated, or local-only. A source-first reading sequence therefore begins with a precise question, uses retrieval to find a candidate, identifies the tracked file, registry row, task, completion, handoff, or current control record that owns the relevant claim or state, inspects that owner in context, and reports any remaining uncertainty before reuse. Registered TeX carries scoped physics and derivational claims within its stated status; registered Markdown and tracked control records carry their own documentation, governance, and workflow authority; and registries record provenance, relationships, paths, hashes, and status without replacing the material they describe. A memory preflight or local refresh may rebuild mirrors, semantic extracts, or an index so that search results match tracked inputs more closely, but that maintenance repairs navigation support rather than creating committed evidence, source authority, or scientific proof. When retrieval and source disagree, the tracked source and current governed record win: an older memory must be rechecked, a partial extract must be expanded to its surrounding source, a generated mirror must route the reader back to its owner, and a local cache must remain local rather than being cited as public evidence. This page helps readers distinguish what each retrieval layer can find, how to move from a hit to its owner, which freshness or context failures to watch for, and how to state the limit of the result. As a Resources page, Local Retrieval Layers presents these boundaries through contextual copy, tables, and provenance rather than a separate Source authority component section. No memory hit, semantic extract, wiki or Obsidian mirror, SQLite index, local cache, registry row, validator PASS, screenshot, review receipt, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, expands workflow authority, overrides a human gate, or replaces direct source inspection.";
 
 const layerRows = [
   {
@@ -198,12 +202,10 @@ const retrievalSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Retrieval layers introduction">
-    <p>
-      Retrieval is useful when it shortens the path to the owner. It becomes
-      unsafe when the lookup result is treated as the owner.
-    </p>
-  </section>
+  <ProjectIntroduction
+    text={resourcesLocalRetrievalLayersProjectIntroduction}
+    ariaLabel="About the Æther Flow Project and Local Retrieval Layers"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesRetrievalLayers} />

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T22:05:55Z"
+updated_utc: "2026-07-15T22:17:32Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-026/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-026/jobs/WJ-20260715-026-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-026.yaml"
+  - "implementation_control/tasks/WI-20260715-027/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-027/jobs/WJ-20260715-027-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-027.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,32 +25,32 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-026"
-  title: "Normalize Resources Generated Derivatives Project Introduction"
+  task_id: "WI-20260715-027"
+  title: "Normalize Resources Local Retrieval Layers Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-026/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-027/00_TASK.yaml"
   planning_context:
-    task_packet: "RESOURCES-GENERATED-DERIVATIVES-INTRO-01"
+    task_packet: "RESOURCES-LOCAL-RETRIEVAL-LAYERS-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "a67c3d5504075cf615a530f9e4ce61a08f03f51f"
+    previous_checkpoint: "acda401861e8f097ee2af709e77350d6ce2d0a77"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-026-A"
+  job_id: "WJ-20260715-027-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-026/jobs/WJ-20260715-026-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-027/jobs/WJ-20260715-027-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-026"
+  handoff_id: "WH-20260715-027"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-026.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-026.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-027.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-027.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-026-A"
-  path: "implementation_control/tasks/WI-20260715-026/jobs/completions/WJC-20260715-026-A.yaml"
+  completion_id: "WJC-20260715-027-A"
+  path: "implementation_control/tasks/WI-20260715-027/jobs/completions/WJC-20260715-027-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,39 +81,39 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-resources-generated-derivatives-introduction-review"
-    command: "manual inspection of the Resources Generated Derivatives project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-resources-local-retrieval-layers-introduction-review"
+    command: "manual inspection of the Resources Local Retrieval Layers project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "RESOURCES-GENERATED-DERIVATIVES-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-026-A and stop."
-  do_not_skip: "Do not change derivative tables enter Local Retrieval Layers push deploy refresh sources or mutate upstream."
+  task_packet: "RESOURCES-LOCAL-RETRIEVAL-LAYERS-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-027-A and stop."
+  do_not_skip: "Do not change retrieval tables enter Publication Process push deploy refresh sources local caches or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_relevant_source_semantics_preserved_and_unrelated_upstream_changes_isolated"
-  observed_utc: "2026-07-15T21:58:34Z"
-  previous_checkpoint: "a67c3d5504075cf615a530f9e4ce61a08f03f51f"
+  observed_utc: "2026-07-15T22:11:30Z"
+  previous_checkpoint: "acda401861e8f097ee2af709e77350d6ce2d0a77"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 24
+  website_ahead_of_origin_main: 25
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
   upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
   upstream_worktree_status: "clean"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "RESOURCES-REGISTRY-EXPLORER-INTRO-01 checkpoint observed as HEAD"
-  relevant_source_parity_status: "four of five present route provenance sources are unchanged; the claim boundary registry has eight additive V19 control rows with zero removed IDs and the two manifest omissions are unchanged"
+  dependency_status: "RESOURCES-GENERATED-DERIVATIVES-INTRO-01 checkpoint observed as HEAD"
+  relevant_source_parity_status: "three narrative route sources are unchanged; the claim boundary registry has eight additive V19 control rows and the Markdown source registry has two additive control design rows plus four scoped control row updates with zero removed IDs"
   source_refresh_status: "not performed"
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Resources Generated Derivatives hero"
-  focused_tests: "passed 27 tests"
-  python_tests: "passed 152 tests"
+  project_introduction: "one substantial general public paragraph after the Resources Local Retrieval Layers hero"
+  focused_tests: "passed 28 tests"
+  python_tests: "passed 153 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed sequentially against accepted clean source pin"

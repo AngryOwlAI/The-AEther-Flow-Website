@@ -3,7 +3,7 @@ record_type: "implementation_task"
 task_id: "WI-20260715-026"
 title: "Normalize Resources Generated Derivatives Project Introduction"
 created_utc: "2026-07-15T21:58:34Z"
-updated_utc: "2026-07-15T22:05:55Z"
+updated_utc: "2026-07-15T22:11:30Z"
 status: "active"
 
 source_context:
@@ -207,7 +207,7 @@ preflight_evidence:
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Generated Derivatives hero"
   focused_tests: "passed 27 tests"
@@ -217,6 +217,15 @@ implementation_status:
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "acda401861e8f097ee2af709e77350d6ce2d0a77"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-027"
+  reason: "The completed Generated Derivatives introduction task was checkpointed before Local Retrieval Layers activation."
