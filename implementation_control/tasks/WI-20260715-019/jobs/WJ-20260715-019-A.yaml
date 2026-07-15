@@ -4,7 +4,7 @@ job_id: "WJ-20260715-019-A"
 task_id: "WI-20260715-019"
 title: "Implement Validators and Handoffs Project Introduction"
 created_utc: "2026-07-15T20:27:13Z"
-updated_utc: "2026-07-15T20:36:33Z"
+updated_utc: "2026-07-15T20:43:44Z"
 status: "active"
 
 objective: "Render one quality gated general public project introduction immediately after the Validators and Handoffs hero."
@@ -135,7 +135,7 @@ next_recommended_action:
   do_not_skip: "Do not change validator or handoff mechanics or enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "completed_ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "one substantial general public paragraph after the Validators and Handoffs hero"
   focused_tests: "passed 20 tests"
@@ -145,4 +145,13 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready_to_checkpoint"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "1c097ccab27ad97488b15bee758991d95620e283"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-020"
+  reason: "The completed Validators and Handoffs introduction job was checkpointed before AI-MEMORY-PREFLIGHT-INTRO-01 activation."

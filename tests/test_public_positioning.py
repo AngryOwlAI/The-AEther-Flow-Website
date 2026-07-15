@@ -33,6 +33,9 @@ AI_RESEARCH_SYSTEM_HUMAN_GATED_PROMOTION_PAGE = (
 AI_RESEARCH_SYSTEM_VALIDATORS_AND_HANDOFFS_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/validators-and-handoffs/index.astro"
 )
+AI_RESEARCH_SYSTEM_MEMORY_PREFLIGHT_PAGE = (
+    REPO_ROOT / "src/pages/ai-research-system/memory-preflight/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -509,6 +512,43 @@ def test_validators_and_handoffs_has_a_general_public_project_introduction_after
     assert "expands role authority" in source
     assert "silently continues a closed job" in source
     assert '<section class="greenfield-intro-panel" aria-label="Validators and handoffs introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_memory_preflight_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = AI_RESEARCH_SYSTEM_MEMORY_PREFLIGHT_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "memory preflight before bounded work" in source
+    assert "source objects, registry rows, prior tasks, handoffs" in source
+    assert "retrieval layers are fresh enough for navigation" in source
+    assert "targeted lookup" in source
+    assert "tracked source file and its registry row" in source
+    assert "query, returned canonical object IDs, inspected paths, hashes, and authority note" in source
+    assert "Registered TeX carries physics and derivational claims" in source
+    assert "registered Markdown and tracked control records carry their scoped project authority" in source
+    assert "registries carry provenance, relationships, status, and memory metadata" in source
+    assert "Generated wiki notes, semantic extracts, Obsidian mirrors, SQLite indexes" in source
+    assert "they remain downstream retrieval support" in source
+    assert "the tracked source wins" in source
+    assert "stale retrieval warning calls for maintenance or direct source inspection" in source
+    assert "No memory hit, freshness report, registry row, generated derivative, receipt, AI output, or website page" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology" in source
+    assert "expands authority" in source
+    assert "replaces direct canonical inspection" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Memory preflight introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)

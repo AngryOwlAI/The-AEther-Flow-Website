@@ -1,49 +1,49 @@
 schema_version: "0.1"
 record_type: "implementation_task"
-task_id: "WI-20260715-019"
-title: "Normalize Validators and Handoffs Project Introduction"
-created_utc: "2026-07-15T20:27:13Z"
-updated_utc: "2026-07-15T20:43:44Z"
+task_id: "WI-20260715-020"
+title: "Normalize Memory Preflight Project Introduction"
+created_utc: "2026-07-15T20:43:44Z"
+updated_utc: "2026-07-15T20:50:11Z"
 status: "active"
 
 source_context:
-  packet_id: "AI-VALIDATORS-HANDOFFS-INTRO-01"
+  packet_id: "AI-MEMORY-PREFLIGHT-INTRO-01"
   adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
   adopted_plan_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-  previous_task: "WI-20260715-018"
-  previous_checkpoint: "edd8d503751d5fc66a0f73f1c2554c4fcc2671e7"
+  previous_task: "WI-20260715-019"
+  previous_checkpoint: "1c097ccab27ad97488b15bee758991d95620e283"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   live_upstream_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
-  relevant_source_parity: "Five validator and handoff authority sources are byte identical; unrelated project-memory tooling edits are preserved outside the packet."
+  relevant_source_parity: "Stable explanatory sources and AgentJob schema are byte identical; live registry delta adds or refreshes metadata and generated noncanonical derivative rows without changing memory authority semantics."
   owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
-goal: "Replace the raw Validators and Handoffs topic paragraph with one source grounded whole project introduction immediately after the hero."
+goal: "Replace the raw Memory Preflight topic paragraph with one source grounded whole project introduction immediately after the hero."
 
 requirements:
-  - "Render one substantial single paragraph ProjectIntroduction immediately after the Validators and Handoffs hero."
-  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to validators and handoffs."
+  - "Render one substantial single paragraph ProjectIntroduction immediately after the Memory Preflight hero."
+  - "Explain The AEther Flow Project as a two part physics and governed human accountable AI research program before narrowing to memory preflight."
   - "Keep general relativity as the exact observable benchmark while the proposed foundation and first principles derivation remain open."
-  - "Explain that validators answer named scoped questions about a checked state and do not validate unmodified surfaces future changes or scientific truth."
-  - "Explain completion handoff program state and local checkpoint as one job closeout and continuation evidence chain."
-  - "State that screenshot QA can detect reader surface defects but cannot make the page source authority."
-  - "State that validators completions handoffs screenshots registries and commits do not prove physics promote ontology expand roles or continue a closed job."
-  - "Preserve all existing validator PASS handoff source rows route cards diagrams and source authority."
+  - "Explain preflight status targeted lookup canonical inspection and receipt as a source first sequence."
+  - "Distinguish registered TeX registered Markdown tracked control records registries generated derivatives and local retrieval by authority."
+  - "State that tracked sources win over retrieval hits and that stale retrieval warnings are maintenance context unless a canonical validator reports a source problem."
+  - "State that memory hits freshness reports registry rows derivatives receipts AI output and webpages do not prove science promote ontology expand authority or replace canonical inspection."
+  - "Preserve all existing preflight layer overread source rows route cards diagram and source authority."
 
 scope:
   in_scope:
-    - "Validators and Handoffs introduction and component reuse in src/pages/ai-research-system/validators-and-handoffs/index.astro"
+    - "Memory Preflight introduction and component reuse in src/pages/ai-research-system/memory-preflight/index.astro"
     - "Focused source and order assertions in tests/test_public_positioning.py"
-    - "Validators and Handoffs page provenance regeneration against the accepted source pin"
+    - "Memory Preflight page provenance regeneration against the accepted source pin"
     - "Current implementation control transition completion and handoff records"
   out_of_scope:
-    - "Validator PASS handoff or source row mechanics"
+    - "Preflight layer overread source row or receipt mechanics"
     - "Other AI Research System and Resources route introductions"
     - "Shared component style route navigation source notice public asset or upstream source changes"
     - "Git push Cloudflare deployment source refresh or upstream writes"
 
 one_packet_rule:
   max_active_jobs_per_invocation: 1
-  active_job_id: "WJ-20260715-019-A"
+  active_job_id: "WJ-20260715-020-A"
   next_packet_after_this_task: "The next incomplete introduction route becomes eligible only after this packet validates and is locally checkpointed."
 
 allowed_reads:
@@ -55,12 +55,12 @@ allowed_reads:
     - ".codex/skills/technical-writing-quality-gate/references/system-writing-quality.md"
     - "PRDs/sitewide-greenfield-rebuild-prd.md"
     - "PRDs/website-information-space/PRD-03-research-control-and-agent-workflow.md"
-    - "PRDs/website-information-space/PRD-07-tooling-skills-scripts-and-runtime-components.md"
+    - "PRDs/website-information-space/PRD-05-memory-registry-and-retrieval-components.md"
     - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     - "docs/architecture/sitewide-greenfield-foundation-contract.md"
     - "src/components/ProjectIntroduction.astro"
     - "src/lib/siteContent.ts"
-    - "src/pages/ai-research-system/validators-and-handoffs/index.astro"
+    - "src/pages/ai-research-system/memory-preflight/index.astro"
     - "public/files/manifests/page_provenance.json"
     - "tests/test_public_positioning.py"
     - "scripts"
@@ -68,28 +68,30 @@ allowed_reads:
     - "local build preview and in app browser evidence"
     - "website and upstream read only Git evidence"
   upstream_source_repository:
-    - "README.md"
-    - "AGENTS.md"
     - "github-facing/project-overview-explainer.md"
-    - "github-facing/validator-operator-workflow-explainer.md"
+    - "github-facing/memory-system-explainer.md"
+    - "github-facing/source-authority-explainer.md"
     - "research_control/README.md"
-    - "scripts/research_control/README.md"
-    - "scripts/project_control/README.md"
+    - ".agents/schemas/AGENT_JOB_SCHEMA.md"
+    - "registries/MARKDOWN_SOURCE_REGISTRY.csv"
+    - "registries/TEX_SOURCE_REGISTRY.csv"
+    - "registries/WIKI_ARTIFACT_REGISTRY.csv"
+    - "registries/CONTENT_SEMANTIC_REGISTRY.csv"
 
 allowed_writes:
   website_repository:
-    - "src/pages/ai-research-system/validators-and-handoffs/index.astro"
+    - "src/pages/ai-research-system/memory-preflight/index.astro"
     - "tests/test_public_positioning.py"
     - "public/files/manifests/page_provenance.json"
     - "implementation_control/program_state.yaml"
-    - "implementation_control/handoffs/WH-20260715-018.yaml"
-    - "implementation_control/tasks/WI-20260715-018/00_TASK.yaml"
-    - "implementation_control/tasks/WI-20260715-018/jobs/WJ-20260715-018-A.yaml"
     - "implementation_control/handoffs/WH-20260715-019.yaml"
-    - "implementation_control/handoffs/WH-20260715-019.md"
     - "implementation_control/tasks/WI-20260715-019/00_TASK.yaml"
     - "implementation_control/tasks/WI-20260715-019/jobs/WJ-20260715-019-A.yaml"
-    - "implementation_control/tasks/WI-20260715-019/jobs/completions/WJC-20260715-019-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-020.yaml"
+    - "implementation_control/handoffs/WH-20260715-020.md"
+    - "implementation_control/tasks/WI-20260715-020/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-020/jobs/WJ-20260715-020-A.yaml"
+    - "implementation_control/tasks/WI-20260715-020/jobs/completions/WJC-20260715-020-A.yaml"
   upstream_source_repository: []
 
 approval_gates:
@@ -98,13 +100,13 @@ approval_gates:
     reason: "The owner explicitly directed implementation of the sitewide project description rule."
   public_claim_changes:
     status: "approved"
-    reason: "Approval covers one source grounded Validators and Handoffs introduction under the technical writing quality gate."
+    reason: "Approval covers one source grounded Memory Preflight introduction under the technical writing quality gate."
   source_refresh_uncertainty:
     status: "not_required"
-    reason: "All five relevant sources are byte identical across accepted pin and live head; unrelated upstream edits are excluded."
+    reason: "Stable explanatory sources and AgentJob schema are unchanged; live registry changes preserve retrieval and authority semantics."
   broad_navigation_or_route_retirement:
     status: "approved"
-    reason: "Approval covers the bounded Validators and Handoffs page content change without route navigation or retirement changes."
+    reason: "Approval covers the bounded Memory Preflight page content change without route navigation or retirement changes."
   shared_visual_systems:
     status: "not_required"
     reason: "The packet reuses the checkpointed ProjectIntroduction component without changing shared styles."
@@ -113,7 +115,7 @@ approval_gates:
     reason: "No public assets."
   public_manifest_authority_records:
     status: "approved"
-    reason: "Approval covers regeneration of Validators and Handoffs page provenance after the page source change."
+    reason: "Approval covers regeneration of Memory Preflight page provenance after the page source change."
   git_push:
     status: "not_required"
     reason: "Push is outside this packet."
@@ -152,13 +154,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-ai-validators-handoffs-introduction-review"
-    command: "manual inspection of the Validators and Handoffs project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-memory-preflight-introduction-review"
+    command: "manual inspection of the Memory Preflight project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
-  - "The paragraph cannot remain proportional to the accepted project validator workflow and script documentation sources."
-  - "Validator tables handoff tables source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "The paragraph cannot remain proportional to the accepted project memory source authority workflow and AgentJob schema sources."
+  - "Preflight tables retrieval layers source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
   - "The introduction is not one substantial post hero paragraph or is clipped horizontally scrollable or inaccessible."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -166,59 +168,50 @@ stop_conditions:
 checkpoint_expectations:
   automated_checkpoint_command_available: true
   staging_allowed_by_this_job: true
-  closeout: "Create WJC-20260715-019-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
+  closeout: "Create WJC-20260715-020-A after all evidence passes then run npm run checkpoint:implementation and stop without push or deployment."
 
 handoff:
-  latest_handoff_id: "WH-20260715-019"
-  yaml_path: "implementation_control/handoffs/WH-20260715-019.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-019.md"
+  latest_handoff_id: "WH-20260715-020"
+  yaml_path: "implementation_control/handoffs/WH-20260715-020.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-020.md"
 
 completion_record:
-  completion_id: "WJC-20260715-019-A"
-  path: "implementation_control/tasks/WI-20260715-019/jobs/completions/WJC-20260715-019-A.yaml"
+  completion_id: "WJC-20260715-020-A"
+  path: "implementation_control/tasks/WI-20260715-020/jobs/completions/WJC-20260715-020-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "AI-VALIDATORS-HANDOFFS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-019-A and stop."
-  do_not_skip: "Do not change validator or handoff mechanics route cards shared styles push deploy refresh sources or mutate upstream."
+  task_packet: "AI-MEMORY-PREFLIGHT-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-020-A and stop."
+  do_not_skip: "Do not change preflight tables retrieval layers route cards shared styles push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_relevant_source_parity_and_unrelated_upstream_changes_isolated"
-  observed_utc: "2026-07-15T20:27:13Z"
-  previous_checkpoint: "edd8d503751d5fc66a0f73f1c2554c4fcc2671e7"
+  observed_utc: "2026-07-15T20:43:44Z"
+  previous_checkpoint: "1c097ccab27ad97488b15bee758991d95620e283"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 17
+  website_ahead_of_origin_main: 18
   website_worktree_status: "clean_before_packet_open"
   accepted_source_worktree_status: "clean"
   upstream_worktree_status: "dirty external project memory tooling changes preserved and excluded"
   upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
-  relevant_source_parity_status: "five validator and handoff authority sources byte identical across accepted pin and live head"
+  relevant_source_parity_status: "stable explanatory sources and agent schema byte identical; live registry delta adds or refreshes metadata and generated noncanonical derivative rows without changing memory authority semantics"
   source_refresh_status: "not performed"
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Validators and Handoffs hero"
-  focused_tests: "passed 20 tests"
-  python_tests: "passed 145 tests"
+  project_introduction: "one substantial general public paragraph after the Memory Preflight hero"
+  focused_tests: "passed 21 tests"
+  python_tests: "passed 146 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
-  quality_gate: "passed against accepted clean source pin"
+  quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
+  checkpoint_status: "ready_to_checkpoint"
   push_performed: false
   deployment_performed: false
-
-checkpoint_evidence:
-  commit: "1c097ccab27ad97488b15bee758991d95620e283"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-020"
-  reason: "AI-VALIDATORS-HANDOFFS-INTRO-01 was checkpointed before the separately bounded Memory Preflight introduction packet opened."
