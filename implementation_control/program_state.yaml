@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T21:36:34Z"
+updated_utc: "2026-07-15T21:54:25Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-024/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-024/jobs/WJ-20260715-024-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-024.yaml"
+  - "implementation_control/tasks/WI-20260715-025/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-025/jobs/WJ-20260715-025-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-025.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,32 +25,32 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-024"
-  title: "Normalize Resources Source Authority Project Introduction"
+  task_id: "WI-20260715-025"
+  title: "Normalize Resources Registry Explorer Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-024/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-025/00_TASK.yaml"
   planning_context:
-    task_packet: "RESOURCES-SOURCE-AUTHORITY-INTRO-01"
+    task_packet: "RESOURCES-REGISTRY-EXPLORER-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "4adb05fdf6f9b10f3432fbe31c10d40d95f955e3"
+    previous_checkpoint: "73e4613fa67be70ef368b19c328e286a2dabe945"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-024-A"
+  job_id: "WJ-20260715-025-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-024/jobs/WJ-20260715-024-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-025/jobs/WJ-20260715-025-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-024"
+  handoff_id: "WH-20260715-025"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-024.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-024.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-025.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-025.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-024-A"
-  path: "implementation_control/tasks/WI-20260715-024/jobs/completions/WJC-20260715-024-A.yaml"
+  completion_id: "WJC-20260715-025-A"
+  path: "implementation_control/tasks/WI-20260715-025/jobs/completions/WJC-20260715-025-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,39 +81,39 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-resources-source-authority-introduction-review"
-    command: "manual inspection of the Resources Source Authority project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-resources-registry-explorer-introduction-review"
+    command: "manual inspection of the Resources Registry Explorer project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "RESOURCES-SOURCE-AUTHORITY-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-024-A and stop."
-  do_not_skip: "Do not add a dedicated Source authority section change authority tables enter Registry Explorer push deploy refresh sources or mutate upstream."
+  task_packet: "RESOURCES-REGISTRY-EXPLORER-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-025-A and stop."
+  do_not_skip: "Do not change registry tables enter Generated Derivatives push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_relevant_source_semantics_preserved_and_unrelated_upstream_changes_isolated"
-  observed_utc: "2026-07-15T21:28:38Z"
-  previous_checkpoint: "4adb05fdf6f9b10f3432fbe31c10d40d95f955e3"
+  observed_utc: "2026-07-15T21:47:54Z"
+  previous_checkpoint: "73e4613fa67be70ef368b19c328e286a2dabe945"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 22
+  website_ahead_of_origin_main: 23
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
-  upstream_worktree_status: "dirty external project memory tooling changes preserved and excluded"
+  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
+  upstream_worktree_status: "clean"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "RESOURCES-OVERVIEW-INTRO-01 checkpoint observed as HEAD"
-  relevant_source_parity_status: "overview README source authority publication TEX and publication brief sources are unchanged; named Markdown rows are unchanged and later claim-boundary and Markdown registry deltas are unrelated additive control rows and hash maintenance"
+  dependency_status: "RESOURCES-SOURCE-AUTHORITY-INTRO-01 checkpoint observed as HEAD"
+  relevant_source_parity_status: "six of nine route provenance sources are unchanged; Markdown claim boundary and AgentJob registries have additive V19 control rows with zero removed IDs while the project overview and Source Authority rows are unchanged"
   source_refresh_status: "not performed"
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Resources Source Authority hero"
-  focused_tests: "passed 25 tests"
-  python_tests: "passed 150 tests"
+  project_introduction: "one substantial general public paragraph after the Resources Registry Explorer hero"
+  focused_tests: "passed 26 tests"
+  python_tests: "passed 151 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed sequentially against accepted clean source pin"

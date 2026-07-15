@@ -3,7 +3,11 @@ import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
+
+const resourcesRegistryExplorerProjectIntroduction =
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. Its AI track uses tracked tasks, Director decisions, bounded AgentJobs, roles, validation, memory preflight, completions, handoffs, and human gates so that theoretical work remains inspectable without becoming accepted physics by workflow alone. Registries are the project's tracked maps to the material and decisions behind both tracks: their rows can identify an owner, path, status, date, hash, relationship, or limit, but they do not replace the file or decision record they describe. Source registries point to registered TeX for scoped physics and derivational claims and registered Markdown for authored guidance, contracts, schemas, publication briefs, and source specifications; a reader must still inspect the named source and preserve its exact qualification. Derivative registries connect PDFs, HTML explainers, GitHub-facing Markdown, wiki notes, and other generated reading surfaces to their inputs, while publication and relationship registries connect briefs, specifications, sources, and outputs without making the downstream surface canonical. Workflow registries record bounded AgentJobs, Director decisions, roles, tasks, completions, and validation state; a row can show what happened and within which paths, but it cannot widen an allowlist, expand a role, or turn a validator PASS into a scientific verdict. Claim-boundary rows record allowed wording, forbidden overreads, and required gates, while the Distance-to-GR ledger records named open burdens and evidence paths; neither the boundary metadata nor a burden label executes a gate or closes the first-principles derivation. A reliable reading sequence is to find the relevant row, open the owner it names, check the recorded status, date, source commit, or freshness boundary, and then state both what the row supports and what it cannot prove. A hash can identify the contents of a particular file, and an approval status can record a bounded publication or review state, but neither establishes scientific correctness. As a Resources page, Registry Explorer presents these limits through contextual copy, tables, and provenance rather than a separate Source authority component section. No registry row, dashboard, hash, approval status, generated derivative, memory hit, validator PASS, review receipt, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, expands workflow authority, overrides a human gate, or replaces direct source inspection.";
 
 const registryRows = [
   {
@@ -197,13 +201,10 @@ const registriesSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Resources registries introduction">
-    <p>
-      A registry row can expose where evidence lives, what status was recorded,
-      and which boundary applies. It cannot replace reading the source it
-      describes.
-    </p>
-  </section>
+  <ProjectIntroduction
+    text={resourcesRegistryExplorerProjectIntroduction}
+    ariaLabel="About the Æther Flow Project and Registry Explorer"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesRegistries} />

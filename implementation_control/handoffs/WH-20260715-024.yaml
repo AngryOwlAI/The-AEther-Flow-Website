@@ -2,7 +2,7 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-024"
 created_utc: "2026-07-15T21:28:38Z"
-updated_utc: "2026-07-15T21:36:34Z"
+updated_utc: "2026-07-15T21:47:54Z"
 status: "active"
 
 task_id: "WI-20260715-024"
@@ -70,4 +70,14 @@ implementation_status:
 completion_record:
   completion_id: "WJC-20260715-024-A"
   path: "implementation_control/tasks/WI-20260715-024/jobs/completions/WJC-20260715-024-A.yaml"
+  status: "completed"
+
+checkpoint_evidence:
+  commit: "73e4613fa67be70ef368b19c328e286a2dabe945"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-025"
+  reason: "RESOURCES-SOURCE-AUTHORITY-INTRO-01 was checkpointed before the separately bounded Registry Explorer introduction packet opened."
   status: "completed"

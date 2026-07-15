@@ -44,6 +44,7 @@ AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE = (
 )
 RESOURCES_PAGE = REPO_ROOT / "src/pages/resources/index.astro"
 RESOURCES_SOURCE_AUTHORITY_PAGE = REPO_ROOT / "src/pages/resources/source-authority/index.astro"
+RESOURCES_REGISTRY_EXPLORER_PAGE = REPO_ROOT / "src/pages/resources/registries/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -724,6 +725,49 @@ def test_resources_source_authority_has_a_general_public_project_introduction_af
     assert "replaces direct source inspection" in source
     assert "SourceAuthoritySection" not in source
     assert '<section class="greenfield-intro-panel" aria-label="Resources source authority introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_resources_registry_explorer_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = RESOURCES_REGISTRY_EXPLORER_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "tracked maps to the material and decisions behind both tracks" in source
+    assert "owner, path, status, date, hash, relationship, or limit" in source
+    assert "do not replace the file or decision record they describe" in source
+    assert "Source registries point to registered TeX" in source
+    assert "registered Markdown for authored guidance" in source
+    assert "Derivative registries connect PDFs, HTML explainers, GitHub-facing Markdown" in source
+    assert "publication and relationship registries connect briefs, specifications, sources, and outputs" in source
+    assert "Workflow registries record bounded AgentJobs, Director decisions, roles, tasks" in source
+    assert "cannot widen an allowlist, expand a role" in source
+    assert "Claim-boundary rows record allowed wording, forbidden overreads, and required gates" in source
+    assert "Distance-to-GR ledger records named open burdens and evidence paths" in source
+    assert "neither the boundary metadata nor a burden label executes a gate" in source
+    assert "find the relevant row, open the owner it names" in source
+    assert "check the recorded status, date, source commit, or freshness boundary" in source
+    assert "what the row supports and what it cannot prove" in source
+    assert "neither establishes scientific correctness" in source
+    assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
+    assert "No registry row, dashboard, hash, approval status, generated derivative" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "expands workflow authority" in source
+    assert "overrides a human gate" in source
+    assert "replaces direct source inspection" in source
+    assert "SourceAuthoritySection" not in source
+    assert '<section class="greenfield-intro-panel" aria-label="Resources registries introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
