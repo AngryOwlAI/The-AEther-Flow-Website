@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T20:50:11Z"
+updated_utc: "2026-07-15T20:59:58Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-020/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-020/jobs/WJ-20260715-020-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-020.yaml"
+  - "implementation_control/tasks/WI-20260715-021/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-021/jobs/WJ-20260715-021-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-021.yaml"
   - "current_git_state_and_validator_output"
   - "owner authorized a substantial general public project description on every page"
   - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
@@ -25,32 +25,32 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-020"
-  title: "Normalize Memory Preflight Project Introduction"
+  task_id: "WI-20260715-021"
+  title: "Normalize Project-System Improvement Project Introduction"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-020/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-021/00_TASK.yaml"
   planning_context:
-    task_packet: "AI-MEMORY-PREFLIGHT-INTRO-01"
+    task_packet: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01"
     adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
     adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "1c097ccab27ad97488b15bee758991d95620e283"
+    previous_checkpoint: "7fc003bc982507eef06e28e2d3d1195880c3bcc9"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
     owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
 
 current_job:
-  job_id: "WJ-20260715-020-A"
+  job_id: "WJ-20260715-021-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-020/jobs/WJ-20260715-020-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-021/jobs/WJ-20260715-021-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-020"
+  handoff_id: "WH-20260715-021"
   status: "active"
-  yaml_path: "implementation_control/handoffs/WH-20260715-020.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-020.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-021.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-021.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-020-A"
-  path: "implementation_control/tasks/WI-20260715-020/jobs/completions/WJC-20260715-020-A.yaml"
+  completion_id: "WJC-20260715-021-A"
+  path: "implementation_control/tasks/WI-20260715-021/jobs/completions/WJC-20260715-021-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,39 +81,39 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-ai-memory-preflight-introduction-review"
-    command: "manual inspection of the Memory Preflight project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-project-system-improvement-introduction-review"
+    command: "manual inspection of the Project-System Improvement project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "AI-MEMORY-PREFLIGHT-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-020-A and stop."
-  do_not_skip: "Do not change preflight tables retrieval layers route cards shared styles push deploy refresh sources or mutate upstream."
+  task_packet: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-021-A and stop."
+  do_not_skip: "Do not change repair loop signal sidecar evidence tables route cards shared styles push deploy refresh sources or mutate upstream."
 
 preflight_evidence:
   status: "passed_with_relevant_source_parity_and_unrelated_upstream_changes_isolated"
-  observed_utc: "2026-07-15T20:43:44Z"
-  previous_checkpoint: "1c097ccab27ad97488b15bee758991d95620e283"
+  observed_utc: "2026-07-15T20:54:23Z"
+  previous_checkpoint: "7fc003bc982507eef06e28e2d3d1195880c3bcc9"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 18
+  website_ahead_of_origin_main: 19
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
   upstream_current_head: "4bb806ecc1710ef5f3c036810b1ba9f80e5dc821"
   upstream_worktree_status: "dirty external project memory tooling changes preserved and excluded"
   website_worktree_status: "clean_before_packet_open"
-  dependency_status: "AI-VALIDATORS-HANDOFFS-INTRO-01 checkpoint observed as HEAD"
-  relevant_source_parity_status: "stable explanatory sources and agent schema byte identical; live registry delta adds or refreshes metadata and generated noncanonical derivative rows without changing memory authority semantics"
+  dependency_status: "AI-MEMORY-PREFLIGHT-INTRO-01 checkpoint observed as HEAD"
+  relevant_source_parity_status: "seven project overview improvement workflow script schema and signal registry sources byte identical across accepted pin and live head"
   source_refresh_status: "not performed"
 
 implementation_status:
   status: "completed_ready_for_checkpoint"
   previous_checkpoint_replayed: false
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Memory Preflight hero"
-  focused_tests: "passed 21 tests"
-  python_tests: "passed 146 tests"
+  project_introduction: "one substantial general public paragraph after the Project-System Improvement hero"
+  focused_tests: "passed 22 tests"
+  python_tests: "passed 147 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed sequentially against accepted clean source pin"

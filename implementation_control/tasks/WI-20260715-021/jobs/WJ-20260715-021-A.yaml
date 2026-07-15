@@ -1,21 +1,21 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-020-A"
-task_id: "WI-20260715-020"
-title: "Implement Memory Preflight Project Introduction"
-created_utc: "2026-07-15T20:43:44Z"
-updated_utc: "2026-07-15T20:54:23Z"
+job_id: "WJ-20260715-021-A"
+task_id: "WI-20260715-021"
+title: "Implement Project-System Improvement Project Introduction"
+created_utc: "2026-07-15T20:54:23Z"
+updated_utc: "2026-07-15T20:59:58Z"
 status: "active"
 
-objective: "Render one quality gated general public project introduction immediately after the Memory Preflight hero."
+objective: "Render one quality gated general public project introduction immediately after the Project-System Improvement hero."
 
 execution_boundary:
-  invocation_limit: "one bounded AI-MEMORY-PREFLIGHT-INTRO-01 packet"
-  packet_id: "AI-MEMORY-PREFLIGHT-INTRO-01"
-  previous_checkpoint: "1c097ccab27ad97488b15bee758991d95620e283"
+  invocation_limit: "one bounded AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 packet"
+  packet_id: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01"
+  previous_checkpoint: "7fc003bc982507eef06e28e2d3d1195880c3bcc9"
   previous_checkpoint_replay_status: "forbidden"
-  public_claim_write_status: "approved only for the reviewed Memory Preflight introduction"
-  preflight_and_retrieval_mechanics_write_status: "forbidden"
+  public_claim_write_status: "approved only for the reviewed Project-System Improvement introduction"
+  repair_signal_and_sidecar_mechanics_write_status: "forbidden"
   route_and_navigation_write_status: "forbidden"
   other_route_status: "forbidden"
   upstream_write_status: "forbidden"
@@ -23,28 +23,28 @@ execution_boundary:
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-020"
+  - "website and accepted pinned source read only evidence allowlisted by WI-20260715-021"
 
 allowed_writes:
-  - "src/pages/ai-research-system/memory-preflight/index.astro"
+  - "src/pages/ai-research-system/project-system-improvement/index.astro"
   - "tests/test_public_positioning.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-019.yaml"
-  - "implementation_control/tasks/WI-20260715-019/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-019/jobs/WJ-20260715-019-A.yaml"
   - "implementation_control/handoffs/WH-20260715-020.yaml"
-  - "implementation_control/handoffs/WH-20260715-020.md"
   - "implementation_control/tasks/WI-20260715-020/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-020/jobs/WJ-20260715-020-A.yaml"
-  - "implementation_control/tasks/WI-20260715-020/jobs/completions/WJC-20260715-020-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-021.yaml"
+  - "implementation_control/handoffs/WH-20260715-021.md"
+  - "implementation_control/tasks/WI-20260715-021/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-021/jobs/WJ-20260715-021-A.yaml"
+  - "implementation_control/tasks/WI-20260715-021/jobs/completions/WJC-20260715-021-A.yaml"
 
 required_outputs:
-  - "One substantial ProjectIntroduction paragraph replaces the raw Memory Preflight intro section."
-  - "The paragraph identifies the two part project before explaining source first preflight."
-  - "The paragraph explains status lookup canonical inspection receipt and authority layers."
-  - "The paragraph separates retrieval freshness registries derivatives receipts AI output and pages from source authority and proof."
-  - "Preflight layer overread source rows route cards and source notice remain unchanged."
+  - "One substantial ProjectIntroduction paragraph replaces the raw Project-System Improvement intro section."
+  - "The paragraph identifies the two part project before explaining the maintenance lane."
+  - "The paragraph explains observable signals classification advisory resolution bounded repair documentation impact and explicit closeout evidence."
+  - "The paragraph separates sidecars resolvers roles receipts validators completions and pages from research continuation source authority and proof."
+  - "Repair loop evidence blocked overread source rows route cards and source notice remain unchanged."
   - "Writing gate focused tests provenance build aggregate quality and responsive browser review pass."
 
 approval_gates:
@@ -53,13 +53,13 @@ approval_gates:
     trigger: "Owner directed implementation of the sitewide project description rule."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "One reviewed Memory Preflight introduction only."
+    trigger: "One reviewed Project-System Improvement introduction only."
   - id: "source_refresh_uncertainty"
     status: "not_required"
-    trigger: "Stable explanatory sources and AgentJob schema are unchanged and live registry changes preserve memory authority semantics."
+    trigger: "All seven relevant authority sources are byte identical across accepted pin and live head."
   - id: "broad_navigation_or_route_retirement"
     status: "approved"
-    trigger: "Bounded Memory Preflight page content change without route navigation or retirement changes."
+    trigger: "Bounded Project-System Improvement page content change without route navigation or retirement changes."
   - id: "shared_visual_systems"
     status: "not_required"
     trigger: "Reuse the existing ProjectIntroduction component without style changes."
@@ -68,7 +68,7 @@ approval_gates:
     trigger: "No public assets."
   - id: "public_manifest_authority_records"
     status: "approved"
-    trigger: "Memory Preflight provenance regeneration only."
+    trigger: "Project-System Improvement provenance regeneration only."
   - id: "git_push"
     status: "not_required"
     trigger: "Any remote push."
@@ -107,13 +107,13 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
-  - id: "runtime-ai-memory-preflight-introduction-review"
-    command: "manual inspection of the Memory Preflight project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-ai-project-system-improvement-introduction-review"
+    command: "manual inspection of the Project-System Improvement project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
     required: true
 
 stop_conditions:
   - "The draft cannot remain source proportional."
-  - "Preflight tables retrieval layers source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
+  - "Repair loop evidence blocked overread source rows another route shared style navigation source notice asset or upstream source change becomes necessary."
   - "The paragraph is not one substantial post hero paragraph or fails responsive review."
   - "A required validator or browser review fails."
   - "Work enters another route push deployment source refresh or upstream mutation scope."
@@ -125,33 +125,24 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-020-A"
-  path: "implementation_control/tasks/WI-20260715-020/jobs/completions/WJC-20260715-020-A.yaml"
+  completion_id: "WJC-20260715-021-A"
+  path: "implementation_control/tasks/WI-20260715-021/jobs/completions/WJC-20260715-021-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "AI-MEMORY-PREFLIGHT-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-020-A and stop."
-  do_not_skip: "Do not change preflight mechanics or enter another route before this packet checkpoints."
+  task_packet: "AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for completed WJC-20260715-021-A and stop."
+  do_not_skip: "Do not change repair signal or sidecar mechanics or enter another route before this packet checkpoints."
 
 implementation_status:
-  status: "checkpointed"
+  status: "completed_ready_for_checkpoint"
   writing_gate_status: "passed"
-  project_introduction: "one substantial general public paragraph after the Memory Preflight hero"
-  focused_tests: "passed 21 tests"
-  python_tests: "passed 146 tests"
+  project_introduction: "one substantial general public paragraph after the Project-System Improvement hero"
+  focused_tests: "passed 22 tests"
+  python_tests: "passed 147 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed sequentially against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "7fc003bc982507eef06e28e2d3d1195880c3bcc9"
-  observed_as_head: true
-  repeated: false
-
-supersession:
-  superseded_by_handoff_id: "WH-20260715-021"
-  reason: "The completed Memory Preflight introduction job was checkpointed before AI-PROJECT-SYSTEM-IMPROVEMENT-INTRO-01 activation."
+  checkpoint_status: "ready_to_checkpoint"

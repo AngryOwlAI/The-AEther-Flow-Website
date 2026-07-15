@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-15T20:48:21.339314+00:00",
+  "generated_at": "2026-07-15T20:58:10.209886+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
   "source_commit_date": "2026-07-13T11:45:40-06:00",
@@ -1291,7 +1291,7 @@
     {
       "route_path": "/ai-research-system/project-system-improvement/",
       "local_page_source": "src/pages/ai-research-system/project-system-improvement/index.astro",
-      "local_page_sha256": "93236621e1d87e652be5297e8fd507e6b4a07b9d02c93dd26678d83c2e1e5502",
+      "local_page_sha256": "9c92277a67611df2ac0957be6700037045b052be110fcc1ecaa4331b4c95bb90",
       "title": "Project-System Improvement",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

@@ -36,6 +36,9 @@ AI_RESEARCH_SYSTEM_VALIDATORS_AND_HANDOFFS_PAGE = (
 AI_RESEARCH_SYSTEM_MEMORY_PREFLIGHT_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/memory-preflight/index.astro"
 )
+AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE = (
+    REPO_ROOT / "src/pages/ai-research-system/project-system-improvement/index.astro"
+)
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -549,6 +552,47 @@ def test_memory_preflight_has_a_general_public_project_introduction_after_the_he
     assert "expands authority" in source
     assert "replaces direct canonical inspection" in source
     assert '<section class="greenfield-intro-panel" aria-label="Memory preflight introduction">' not in source
+
+    hero = source.index('className="overview-shell overview-command-hero"')
+    introduction = source.index("<ProjectIntroduction", hero)
+    comprehension = source.index("<ComprehensionBlocks", introduction)
+
+    assert hero < introduction < comprehension
+
+
+def test_project_system_improvement_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE.read_text(encoding="utf-8")
+
+    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert source.count("<ProjectIntroduction") == 1
+    assert "two-part research program about foundational physics" in source
+    assert "governed, human-accountable AI research system" in source
+    assert "general relativity remains the exact benchmark for observable gravity" in source
+    assert "first-principles substrate derivation is still open" in source
+    assert "keeps research and maintenance separate" in source
+    assert "Project-System Improvement repairs the machinery around that work" in source
+    assert "documentation, validators, schemas, memory retrieval, routing, trigger logic" in source
+    assert "without continuing the science by implication" in source
+    assert "current working-tree diff, a registered open signal, a repeated workflow problem" in source
+    assert "source-bridged project-improvement sidecar" in source
+    assert "tracked source files and registry rows must be inspected" in source
+    assert "classifier describes the issue as documentation drift, a validator gap, routing ambiguity" in source
+    assert "advisory resolver ranks the candidate" in source
+    assert "one bounded AgentJob with an explicit write-path allowlist and claim boundary" in source
+    assert "documentation-impact receipt records affected source surfaces" in source
+    assert "generated derivatives, classifier reason codes, and required validators" in source
+    assert "signal closes only with matching PASS completion evidence or a documented rejection decision" in source
+    assert "sidecar is a separate maintenance input and never replaces the normal research handoff" in source
+    assert "resolver recommendation alone neither authorizes nor blocks checkpointing" in source
+    assert "registered role or descriptive perspective does not activate authority" in source
+    assert "no diff, classifier, resolver, sidecar, signal, registry row" in source
+    assert "independently proves a physics claim" in source
+    assert "completes the open first-principles derivation" in source
+    assert "promotes the proposed ontology or a benchmark" in source
+    assert "grants role authority" in source
+    assert "expands an allowlist" in source
+    assert "authorizes research continuation" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Project-system improvement introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
