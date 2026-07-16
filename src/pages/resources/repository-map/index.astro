@@ -2,6 +2,7 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
@@ -214,6 +215,10 @@ const repositorySvg = `
     </g>
   </svg>
 `;
+const resourcesRepositoryMapProjectIntroduction = [
+  "The repository combines source material, control records, registries, generated derivatives, tooling, tests, archival lanes, and ignored local caches. The safe question is not only where a file lives, but what authority class and edit policy that lane carries.",
+] as const;
+
 ---
 
 <BaseLayout
@@ -244,14 +249,10 @@ const repositorySvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Repository map introduction">
-    <p>
-      The repository combines source material, control records, registries,
-      generated derivatives, tooling, tests, archival lanes, and ignored local
-      caches. The safe question is not only where a file lives, but what
-      authority class and edit policy that lane carries.
-    </p>
-  </section>
+  <ProjectIntroduction
+    paragraphs={resourcesRepositoryMapProjectIntroduction}
+    ariaLabel="Repository map introduction"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesRepositoryMap} />

@@ -7,8 +7,16 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
-const memoryPreflightProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. The AI track uses memory preflight before bounded work to find relevant source objects, registry rows, prior tasks, handoffs, and other evidence without confusing fast retrieval with authority. A preflight first checks whether the retrieval layers are fresh enough for navigation, then runs a targeted lookup, opens the tracked source file and its registry row, and records a receipt containing the query, returned canonical object IDs, inspected paths, hashes, and authority note. Registered TeX carries physics and derivational claims; registered Markdown and tracked control records carry their scoped project authority; registries carry provenance, relationships, status, and memory metadata. Generated wiki notes, semantic extracts, Obsidian mirrors, SQLite indexes, and `.local` caches can point toward likely evidence, but they remain downstream retrieval support. If a retrieval hit and a tracked source disagree, the tracked source wins; a stale retrieval warning calls for maintenance or direct source inspection, not rejection of the canonical source. This Memory Preflight page explains how that source-first sequence helps one AgentJob begin from inspectable evidence. No memory hit, freshness report, registry row, generated derivative, receipt, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology, expands authority, or replaces direct canonical inspection.";
+const memoryPreflightProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open.",
+  "The AI track uses memory preflight before bounded work to find relevant source objects, registry rows, prior tasks, handoffs, and other evidence without confusing fast retrieval with authority.",
+  "A preflight first checks whether the retrieval layers are fresh enough for navigation, then runs a targeted lookup, opens the tracked source file and its registry row, and records a receipt containing the query, returned canonical object IDs, inspected paths, hashes, and authority note.",
+  "Registered TeX carries physics and derivational claims; registered Markdown and tracked control records carry their scoped project authority; registries carry provenance, relationships, status, and memory metadata.",
+  "Generated wiki notes, semantic extracts, Obsidian mirrors, SQLite indexes, and `.local` caches can point toward likely evidence, but they remain downstream retrieval support.",
+  "If a retrieval hit and a tracked source disagree, the tracked source wins; a stale retrieval warning calls for maintenance or direct source inspection, not rejection of the canonical source. This Memory Preflight page explains how that source-first sequence helps one AgentJob begin from inspectable evidence.",
+  "No memory hit, freshness report, registry row, generated derivative, receipt, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology, expands authority, or replaces direct canonical inspection.",
+] as const;
 
 const preflightRows = [
   {
@@ -222,7 +230,7 @@ const memorySvg = `
   </CommandBand>
 
   <ProjectIntroduction
-    text={memoryPreflightProjectIntroduction}
+    paragraphs={memoryPreflightProjectIntroduction}
     ariaLabel="About the Æther Flow Project and memory preflight"
   />
 

@@ -4,8 +4,8 @@ job_id: "WJ-20260715-032-A"
 task_id: "WI-20260715-032"
 title: "Validate And Checkpoint Desktop Navigation Link Flex Alignment"
 created_utc: "2026-07-16T00:11:07Z"
-updated_utc: "2026-07-16T00:16:11Z"
-status: "active"
+updated_utc: "2026-07-16T00:35:00Z"
+status: "superseded"
 
 objective: "Validate and checkpoint the bounded direct navigation link flex alignment repair without changing navigation behavior or content."
 
@@ -120,7 +120,7 @@ next_recommended_action:
   do_not_skip: "Do not enter SITEWIDE-PROJECT-INTRO-READABILITY-01 in the same transaction."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   focused_navigation_tests: "passed 4 tests"
   python_tests: "passed 156 tests"
   static_build: "passed 64 pages"
@@ -128,4 +128,10 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_navigation_review: "desktop 44 CSS pixels compact 32 CSS pixels active state preserved zero overflow"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "20f8c88d80c9650d745f439c5f265c4598fe681f"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "SITEWIDE-PROJECT-INTRO-READABILITY-01"

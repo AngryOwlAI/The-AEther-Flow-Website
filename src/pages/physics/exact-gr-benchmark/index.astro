@@ -8,8 +8,12 @@ import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../..
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsExactGrBenchmark;
-const benchmarkProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. This Exact-GR Benchmark page explains how the physics track uses ordinary general relativity as its conservative observable-scale reference: one operative Lorentzian metric, universal matter coupling, ordinary causal structure, and no claimed empirical deviation from GR. Adopting that effective benchmark does not mean the proposed Æther / Æther-Flow ontology has derived it from source-side variables. The page helps readers keep benchmark adoption, ontology compatibility, first-principles derivation, and human-gated promotion separate so that an effective-level result is not mistaken for foundational proof.";
+const benchmarkProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "This Exact-GR Benchmark page explains how the physics track uses ordinary general relativity as its conservative observable-scale reference: one operative Lorentzian metric, universal matter coupling, ordinary causal structure, and no claimed empirical deviation from GR.",
+  "Adopting that effective benchmark does not mean the proposed Æther / Æther-Flow ontology has derived it from source-side variables.",
+  "The page helps readers keep benchmark adoption, ontology compatibility, first-principles derivation, and human-gated promotion separate so that an effective-level result is not mistaken for foundational proof.",
+] as const;
 
 const benchmarkRows = [
   {
@@ -171,7 +175,7 @@ const benchmarkSvg = `
   </CommandBand>
 
   <ProjectIntroduction
-    text={benchmarkProjectIntroduction}
+    paragraphs={benchmarkProjectIntroduction}
     ariaLabel="About The Æther Flow Project and the exact GR benchmark"
   />
 

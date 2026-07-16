@@ -7,8 +7,18 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
-const projectSystemImprovementProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. The AI track keeps research and maintenance separate: research packets investigate physics, while Project-System Improvement repairs the machinery around that work, including documentation, validators, schemas, memory retrieval, routing, trigger logic, and generated-document pipelines, without continuing the science by implication. The repair loop starts when observable evidence identifies friction through a current working-tree diff, a registered open signal, a repeated workflow problem, or a source-bridged project-improvement sidecar from a qualifying completion. Memory may locate earlier context, but tracked source files and registry rows must be inspected before that context affects action. A classifier describes the issue as documentation drift, a validator gap, routing ambiguity, a schema problem, or another registered signal type; an advisory resolver ranks the candidate; and the Director routes one bounded AgentJob with an explicit write-path allowlist and claim boundary. When a repair changes project state, a documentation-impact receipt records affected source surfaces, generated derivatives, classifier reason codes, and required validators. Completion and handoff records preserve the result, while a signal closes only with matching PASS completion evidence or a documented rejection decision. A project-improvement sidecar is a separate maintenance input and never replaces the normal research handoff; a resolver recommendation alone neither authorizes nor blocks checkpointing; and a registered role or descriptive perspective does not activate authority. This Project-System Improvement page explains that reliability loop for readers, but no diff, classifier, resolver, sidecar, signal, registry row, documentation-impact receipt, validator PASS, completion, handoff, commit, AI output, or webpage independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, grants role authority, expands an allowlist, or authorizes research continuation.";
+const projectSystemImprovementProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open.",
+  "The AI track keeps research and maintenance separate: research packets investigate physics, while Project-System Improvement repairs the machinery around that work, including documentation, validators, schemas, memory retrieval, routing, trigger logic, and generated-document pipelines, without continuing the science by implication.",
+  "The repair loop starts when observable evidence identifies friction through a current working-tree diff, a registered open signal, a repeated workflow problem, or a source-bridged project-improvement sidecar from a qualifying completion.",
+  "Memory may locate earlier context, but tracked source files and registry rows must be inspected before that context affects action.",
+  "A classifier describes the issue as documentation drift, a validator gap, routing ambiguity, a schema problem, or another registered signal type; an advisory resolver ranks the candidate; and the Director routes one bounded AgentJob with an explicit write-path allowlist and claim boundary.",
+  "When a repair changes project state, a documentation-impact receipt records affected source surfaces, generated derivatives, classifier reason codes, and required validators.",
+  "Completion and handoff records preserve the result, while a signal closes only with matching PASS completion evidence or a documented rejection decision.",
+  "A project-improvement sidecar is a separate maintenance input and never replaces the normal research handoff; a resolver recommendation alone neither authorizes nor blocks checkpointing; and a registered role or descriptive perspective does not activate authority.",
+  "This Project-System Improvement page explains that reliability loop for readers, but no diff, classifier, resolver, sidecar, signal, registry row, documentation-impact receipt, validator PASS, completion, handoff, commit, AI output, or webpage independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, grants role authority, expands an allowlist, or authorizes research continuation.",
+] as const;
 
 const loopRows = [
   {
@@ -223,7 +233,7 @@ const improvementSvg = `
   </CommandBand>
 
   <ProjectIntroduction
-    text={projectSystemImprovementProjectIntroduction}
+    paragraphs={projectSystemImprovementProjectIntroduction}
     ariaLabel="About the Æther Flow Project and project-system improvement"
   />
 

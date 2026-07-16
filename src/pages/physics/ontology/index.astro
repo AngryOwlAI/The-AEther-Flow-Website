@@ -10,8 +10,12 @@ import { greenfieldRouteDiagramBlocks, projectSourceNoticeDefaults } from "../..
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 
 const sourceNotice = projectSourceNoticeDefaults.physicsOntology;
-const ontologyProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. This Ontology page explains the physics track's proposed vocabulary: Æther as a deeper substrate, Æther-flow as ordered motion, observed space as an observer-accessible appearance, S-time as the order of change, and expansion and gravity terms as interpretations within that model. These terms help readers understand what the project proposes, but they do not supply the missing mathematical bridge, derive general relativity, or establish an empirical prediction. The page therefore separates conceptual orientation from the equations, benchmark evidence, and source records required for stronger claims.";
+const ontologyProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "This Ontology page explains the physics track's proposed vocabulary: Æther as a deeper substrate, Æther-flow as ordered motion, observed space as an observer-accessible appearance, S-time as the order of change, and expansion and gravity terms as interpretations within that model.",
+  "These terms help readers understand what the project proposes, but they do not supply the missing mathematical bridge, derive general relativity, or establish an empirical prediction.",
+  "The page therefore separates conceptual orientation from the equations, benchmark evidence, and source records required for stronger claims.",
+] as const;
 
 const vocabularyRows = [
   {
@@ -163,7 +167,7 @@ const ontologySvg = `
   </CommandBand>
 
   <ProjectIntroduction
-    text={ontologyProjectIntroduction}
+    paragraphs={ontologyProjectIntroduction}
     ariaLabel="About The Æther Flow Project and ontology"
   />
 

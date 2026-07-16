@@ -4,6 +4,7 @@ import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import DiagramGalleryList from "../../components/DiagramGalleryList.astro";
 import EvidenceRail from "../../components/EvidenceRail.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectIntroduction from "../../components/ProjectIntroduction.astro";
 import { approvedDownloads } from "../../lib/manifests";
 import { resourcesDiagramsComprehension } from "../../lib/supportComprehensionContent";
 import { diagramConceptGroups, diagramGalleryItems } from "../../lib/siteContent";
@@ -131,6 +132,10 @@ const diagramSvg = `
     </g>
   </svg>
 `;
+const resourcesDiagramGalleryProjectIntroduction = [
+  "Diagrams here are visual orientation aids. They can make relationships, route boundaries, and publication flow easier to inspect, but they do not prove science, promote claims, or replace source inspection.",
+] as const;
+
 ---
 
 <BaseLayout
@@ -162,13 +167,10 @@ const diagramSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Diagram gallery introduction">
-    <p>
-      Diagrams here are visual orientation aids. They can make relationships,
-      route boundaries, and publication flow easier to inspect, but they do
-      not prove science, promote claims, or replace source inspection.
-    </p>
-  </section>
+  <ProjectIntroduction
+    paragraphs={resourcesDiagramGalleryProjectIntroduction}
+    ariaLabel="Diagram gallery introduction"
+  />
 
   <ComprehensionBlocks content={resourcesDiagramsComprehension} />
 

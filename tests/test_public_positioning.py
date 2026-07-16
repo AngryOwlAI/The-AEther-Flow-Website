@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -57,7 +58,43 @@ RESOURCES_PUBLICATION_PROCESS_PAGE = (
 RESOURCES_LIBRARY_PAGE = REPO_ROOT / "src/pages/resources/library/index.astro"
 RESOURCES_READING_PATHS_PAGE = REPO_ROOT / "src/pages/resources/reading-paths/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
+GLOBAL_CSS = REPO_ROOT / "src/styles/global.css"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
+
+PROJECT_INTRODUCTION_ROUTE_SOURCES = tuple(
+    REPO_ROOT / relative_path
+    for relative_path in (
+        "src/pages/ai-research-system/agentjob-lifecycle/index.astro",
+        "src/pages/ai-research-system/current-state/index.astro",
+        "src/pages/ai-research-system/human-gated-promotion/index.astro",
+        "src/pages/ai-research-system/index.astro",
+        "src/pages/ai-research-system/memory-preflight/index.astro",
+        "src/pages/ai-research-system/project-system-improvement/index.astro",
+        "src/pages/ai-research-system/roles-and-schemas/index.astro",
+        "src/pages/ai-research-system/runtime-requirements/index.astro",
+        "src/pages/ai-research-system/validators-and-handoffs/index.astro",
+        "src/pages/ai-research-system/workflow/index.astro",
+        "src/pages/index.astro",
+        "src/pages/physics/claim-status/index.astro",
+        "src/pages/physics/derivation-roadmap/index.astro",
+        "src/pages/physics/exact-gr-benchmark/index.astro",
+        "src/pages/physics/flow-geometry/index.astro",
+        "src/pages/physics/index.astro",
+        "src/pages/physics/ontology/index.astro",
+        "src/pages/physics/open-burdens/index.astro",
+        "src/pages/resources/diagrams.astro",
+        "src/pages/resources/generated-derivatives/index.astro",
+        "src/pages/resources/index.astro",
+        "src/pages/resources/library/index.astro",
+        "src/pages/resources/publication-process/index.astro",
+        "src/pages/resources/reading-paths/index.astro",
+        "src/pages/resources/registries/index.astro",
+        "src/pages/resources/repository-map/index.astro",
+        "src/pages/resources/retrieval-layers/index.astro",
+        "src/pages/resources/site-builder-guide/index.astro",
+        "src/pages/resources/source-authority/index.astro",
+    )
+)
 
 EXPECTED_STATE_ORDER = [
     "interpretive",
@@ -99,6 +136,26 @@ try {
 def route_record(route_path: str) -> dict[str, object]:
     route_map = json.loads(ROUTE_MAP.read_text(encoding="utf-8"))
     return next(route for route in route_map["routes"] if route["route_path"] == route_path)
+
+
+def project_introduction_paragraphs(source: str) -> list[str]:
+    component = re.search(r"<ProjectIntroduction\b.*?/>", source, re.DOTALL)
+    assert component is not None
+    variable = re.search(r"paragraphs=\{(\w+)\}", component.group(0))
+    assert variable is not None
+    declaration = re.search(
+        rf"const\s+{re.escape(variable.group(1))}\s*=\s*\[(.*?)\]\s*as const;",
+        source,
+        re.DOTALL,
+    )
+    assert declaration is not None
+    items = [
+        line.strip()[:-1]
+        for line in declaration.group(1).splitlines()
+        if line.strip()
+    ]
+    assert items
+    return [json.loads(item) for item in items]
 
 
 def test_routes_consume_only_accepted_surface_statements() -> None:
@@ -152,9 +209,10 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
     assert "remains an open research problem" in source
     assert "does not claim a verified new law of gravity" in source
 
-    assert "ProjectIntroduction requires a nonempty paragraph." in component
+    assert "paragraphs: readonly string[];" in component
+    assert "ProjectIntroduction requires a nonempty paragraphs array with no empty items." in component
     assert "data-project-introduction" in component
-    assert "<p>{text}</p>" in component
+    assert "{paragraphs.map((paragraph) => <p>{paragraph}</p>)}" in component
 
     hero = source.index('className="overview-shell overview-command-hero"')
     actions = source.index('<nav class="home-action-row"', hero)
@@ -195,6 +253,64 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
         < status
         < source_authority
         < layout_end
+    )
+
+
+def test_all_project_introductions_use_nonempty_sentence_complete_paragraph_arrays() -> None:
+    component = PROJECT_INTRODUCTION.read_text(encoding="utf-8")
+    assert "!Array.isArray(paragraphs)" in component
+    assert "paragraphs.length === 0" in component
+    assert "paragraphs.some((paragraph) => !paragraph.trim())" in component
+
+    all_route_sources = {
+        path
+        for path in (REPO_ROOT / "src/pages").rglob("*.astro")
+        if "<ProjectIntroduction" in path.read_text(encoding="utf-8")
+    }
+    assert len(PROJECT_INTRODUCTION_ROUTE_SOURCES) == 29
+    assert all_route_sources == set(PROJECT_INTRODUCTION_ROUTE_SOURCES)
+
+    for path in PROJECT_INTRODUCTION_ROUTE_SOURCES:
+        source = path.read_text(encoding="utf-8")
+        paragraphs = project_introduction_paragraphs(source)
+        normalized_introduction = " ".join(paragraphs)
+
+        assert source.count("<ProjectIntroduction") == 1
+        assert source.count("paragraphs={") == 1
+        assert '<section class="greenfield-intro-panel"' not in source
+        assert all(paragraph.strip() for paragraph in paragraphs)
+        if len(normalized_introduction) > 320:
+            assert len(paragraphs) > 1
+
+        for paragraph in paragraphs:
+            sentences = re.split(r"(?<=[.!?]) (?=[A-ZÆ])", paragraph)
+            if len(sentences) > 1:
+                assert len(paragraph) <= 320
+
+    direct_legacy_panels = [
+        path
+        for path in (REPO_ROOT / "src/pages").rglob("*.astro")
+        if '<section class="greenfield-intro-panel"'
+        in path.read_text(encoding="utf-8")
+    ]
+    assert direct_legacy_panels == []
+
+
+def test_project_introduction_columns_are_centered_left_aligned_and_spaced() -> None:
+    css = GLOBAL_CSS.read_text(encoding="utf-8")
+
+    for selector in (".home-intro-panel p", ".greenfield-intro-panel p"):
+        block = re.search(rf"{re.escape(selector)} \{{(.*?)\n\}}", css, re.DOTALL)
+        assert block is not None
+        assert "max-width: 72ch;" in block.group(1)
+        assert "margin-block: 0;" in block.group(1)
+        assert "margin-inline: auto;" in block.group(1)
+        assert "text-align: left;" in block.group(1)
+
+    assert re.search(
+        r"\.home-intro-panel p \+ p,\s*"
+        r"\.greenfield-intro-panel p \+ p \{\s*margin-top: 1rem;\s*\}",
+        css,
     )
 
 

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T00:16:11Z"
+updated_utc: "2026-07-16T00:49:19Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-032.yaml"
+  - "implementation_control/tasks/WI-20260715-033/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-033/jobs/WJ-20260715-033-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-033.yaml"
   - "current_git_state_and_validator_output"
   - "ImplementationPlans/recomendation_frontend.md as FE-P1-04 context"
   - "memory_and_conversation_summaries_as_navigation_only"
@@ -24,31 +24,32 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-032"
-  title: "Repair Desktop Navigation Link Flex Alignment"
+  task_id: "WI-20260715-033"
+  title: "Improve Sitewide Project Introduction Readability"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-033/00_TASK.yaml"
   planning_context:
-    task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01"
-    adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+    task_packet: "SITEWIDE-PROJECT-INTRO-READABILITY-01"
+    adopted_plan: "Owner supplied Site-wide Project Introduction Readability plan"
     previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly requested resolving and checkpointing the two existing navigation repair changes before the sitewide introduction packet."
+    navigation_checkpoint: "20f8c88d80c9650d745f439c5f265c4598fe681f"
+    owner_authorization: "Owner explicitly requested one atomic sitewide introduction readability packet after the separate navigation checkpoint."
 
 current_job:
-  job_id: "WJ-20260715-032-A"
+  job_id: "WJ-20260715-033-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-033/jobs/WJ-20260715-033-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-032"
+  handoff_id: "WH-20260715-033"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260715-032.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-032.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-033.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-033.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-032-A"
-  path: "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+  completion_id: "WJC-20260715-033-A"
+  path: "implementation_control/tasks/WI-20260715-033/jobs/completions/WJC-20260715-033-A.yaml"
   status: "completed"
 
 required_validators:
@@ -61,6 +62,15 @@ required_validators:
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required_for_current_job: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required_for_current_job: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required_for_current_job: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required_for_current_job: true
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
@@ -70,23 +80,31 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-desktop-navigation-alignment-review"
-    command: "manual inspection of direct desktop navigation link flex alignment target dimensions current state and compact isolation in the in app browser"
+  - id: "introduction-text-parity-review"
+    command: "manual inspection of normalized introduction text parity from checkpoint 095c6e6 across all 29 surfaces"
+    required_for_current_job: true
+  - id: "technical-writing-builder-refuter-review"
+    command: "manual inspection of technical writing builder and refuter no claim change evidence across all changed routes"
+    required_for_current_job: true
+  - id: "runtime-introduction-layout-review"
+    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for centering left alignment paragraph gaps and overflow"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01 validation and local checkpoint"
-  summary: "Validate the two existing navigation repair changes then checkpoint only this bounded repair packet."
-  do_not_skip: "Do not open the sitewide introduction packet push deploy refresh sources or mutate upstream in the same transaction."
+  task_packet: "SITEWIDE-PROJECT-INTRO-READABILITY-01 local checkpoint"
+  summary: "Create one local checkpoint from completion WJC-20260715-033-A and stop."
+  do_not_skip: "Do not change wording navigation routes assets upstream sources page_route_map push or deploy."
 
 preflight_evidence:
-  status: "passed_for_existing_bounded_repair"
-  observed_utc: "2026-07-16T00:11:07Z"
+  status: "passed_for_sitewide_introduction_packet"
+  observed_utc: "2026-07-16T00:35:00Z"
   previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 30
-  website_worktree_status: "two_preexisting_navigation_repair_paths_only"
+  navigation_checkpoint: "20f8c88d80c9650d745f439c5f265c4598fe681f"
+  navigation_checkpoint_replay_status: "not_replayed"
+  website_ahead_of_origin_main: 31
+  website_worktree_status: "clean_before_packet_open"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
@@ -95,13 +113,19 @@ preflight_evidence:
 
 implementation_status:
   status: "ready_for_checkpoint"
-  inherited_diff_review: "The direct nav link flex alignment rule and focused regression assertion are the only preexisting runtime and test changes."
-  focused_navigation_tests: "passed 4 tests"
-  python_tests: "passed 156 tests"
+  baseline_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  baseline_surface_count: 29
+  shared_component_consumers: 26
+  legacy_intro_panels: 3
+  wording_change_status: "forbidden"
+  focused_positioning_tests: "passed 33 tests"
+  python_tests: "passed 158 tests"
+  normalized_text_parity: "passed 29 of 29 surfaces against checkpoint 095c6e6"
+  writing_gate_status: "passed builder refuter and advisory review with zero claim changes"
   static_build: "passed 64 pages"
-  aggregate_validation: "passed against accepted clean source pin"
-  quality_gate: "passed against accepted clean source pin"
-  runtime_navigation_review: "passed at desktop and compact viewports"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed 29 routes at 1440 CSS pixels and 520 CSS pixels"
   completion_created: true
   checkpoint_status: "ready"
   push_performed: false

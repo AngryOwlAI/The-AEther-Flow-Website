@@ -7,8 +7,15 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
-const validatorsAndHandoffsProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. The AI track turns research steps into bounded, inspectable transactions in which one job names the allowed work, expected outputs, checks, claim limits, and stop conditions. A validator then answers one named question about the state actually checked—for example, whether the changed files follow a schema, preserve provenance, build correctly, or fit the approved write boundary—and says nothing automatically about unmodified surfaces, future changes, or scientific truth. This Validators and Handoffs page explains the evidence chain that follows: a completion closes one job by recording outputs, validator results, remaining uncertainty, browser review, and conclusions the evidence does not license; a handoff transfers that durable state and recommends a separate next packet; program state points to the current job; and a local checkpoint seals the allowed transaction in repository history. Screenshot review can expose overflow, missing headings, broken navigation, or other reader-surface defects, but it cannot make a website page source authority. Together, these records make research work easier to inspect and resume safely, but no validator PASS, completion, handoff, registry row, screenshot, commit, or webpage independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology, expands role authority, deploys the site, or silently continues a closed job.";
+const validatorsAndHandoffsProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open.",
+  "The AI track turns research steps into bounded, inspectable transactions in which one job names the allowed work, expected outputs, checks, claim limits, and stop conditions.",
+  "A validator then answers one named question about the state actually checked—for example, whether the changed files follow a schema, preserve provenance, build correctly, or fit the approved write boundary—and says nothing automatically about unmodified surfaces, future changes, or scientific truth.",
+  "This Validators and Handoffs page explains the evidence chain that follows: a completion closes one job by recording outputs, validator results, remaining uncertainty, browser review, and conclusions the evidence does not license; a handoff transfers that durable state and recommends a separate next packet; program state points to the current job; and a local checkpoint seals the allowed transaction in repository history.",
+  "Screenshot review can expose overflow, missing headings, broken navigation, or other reader-surface defects, but it cannot make a website page source authority.",
+  "Together, these records make research work easier to inspect and resume safely, but no validator PASS, completion, handoff, registry row, screenshot, commit, or webpage independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology, expands role authority, deploys the site, or silently continues a closed job.",
+] as const;
 
 const validationRows = [
   {
@@ -245,7 +252,7 @@ const validatorsSvg = `
     </Fragment>
   </CommandBand>
 
-  <ProjectIntroduction text={validatorsAndHandoffsProjectIntroduction} />
+  <ProjectIntroduction paragraphs={validatorsAndHandoffsProjectIntroduction} />
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.aiValidatorsAndHandoffs} />
 

@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-032"
 created_utc: "2026-07-16T00:11:07Z"
-updated_utc: "2026-07-16T00:16:11Z"
-status: "ready_for_checkpoint"
+updated_utc: "2026-07-16T00:35:00Z"
+status: "superseded"
 
 task_id: "WI-20260715-032"
 job_id: "WJ-20260715-032-A"
@@ -49,7 +49,12 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_navigation_review: "passed desktop and compact dimensions alignment active state and overflow"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
+
+checkpoint_evidence:
+  commit: "20f8c88d80c9650d745f439c5f265c4598fe681f"
+  replayed: false
+  next_packet: "SITEWIDE-PROJECT-INTRO-READABILITY-01"
 
 completion_record:
   completion_id: "WJC-20260715-032-A"

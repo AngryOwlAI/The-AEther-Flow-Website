@@ -1747,11 +1747,13 @@ html:has(body.project-overview-page) {
 }
 
 .home-intro-panel p {
-  max-width: 78ch;
-  margin: 0;
+  max-width: 72ch;
+  margin-block: 0;
+  margin-inline: auto;
   color: var(--overview-muted);
   font-size: 1.18rem;
   line-height: 1.72;
+  text-align: left;
 }
 
 .greenfield-intro-panel {
@@ -1765,11 +1767,18 @@ html:has(body.project-overview-page) {
 }
 
 .greenfield-intro-panel p {
-  max-width: 82ch;
-  margin: 0;
+  max-width: 72ch;
+  margin-block: 0;
+  margin-inline: auto;
   color: var(--overview-muted);
   font-size: 1.18rem;
   line-height: 1.72;
+  text-align: left;
+}
+
+.home-intro-panel p + p,
+.greenfield-intro-panel p + p {
+  margin-top: 1rem;
 }
 
 .project-overview-page .primary-link,

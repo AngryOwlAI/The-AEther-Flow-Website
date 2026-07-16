@@ -1,18 +1,24 @@
 ---
 interface Props {
-  text: string;
+  paragraphs: readonly string[];
   ariaLabel?: string;
   className?: string;
 }
 
 const {
-  text,
+  paragraphs,
   ariaLabel = "About the Æther Flow Project",
   className = "greenfield-intro-panel",
 } = Astro.props;
 
-if (!text.trim()) {
-  throw new Error("ProjectIntroduction requires a nonempty paragraph.");
+if (
+  !Array.isArray(paragraphs) ||
+  paragraphs.length === 0 ||
+  paragraphs.some((paragraph) => !paragraph.trim())
+) {
+  throw new Error(
+    "ProjectIntroduction requires a nonempty paragraphs array with no empty items.",
+  );
 }
 ---
 
@@ -21,5 +27,5 @@ if (!text.trim()) {
   aria-label={ariaLabel}
   data-project-introduction
 >
-  <p>{text}</p>
+  {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
 </section>

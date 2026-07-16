@@ -7,8 +7,17 @@ import ComprehensionBlocks from "../../components/ComprehensionBlocks.astro";
 import ProjectIntroduction from "../../components/ProjectIntroduction.astro";
 import { greenfieldRouteDiagramBlocks } from "../../lib/siteContent";
 
-const resourcesOverviewProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open. Its AI track uses tracked tasks, bounded AgentJobs, roles, validation, memory preflight, completions, handoffs, and human gates to make theoretical work inspectable without turning workflow results into scientific proof. This Resources page is the public map for reading evidence around both tracks. Start with the internal route that matches the question—source authority, registries, generated derivatives, retrieval, publication, the library, reading paths, repository structure, builder guidance, diagrams, documents, guided starts, or reviewer material—then check its status label and follow provenance when direct inspection is needed. Registered TeX carries scoped physics and derivational claims within its stated status; registered Markdown and tracked control records carry guidance and workflow authority within their own lanes; and registries record provenance, relationships, hashes, routing, and status without replacing the source files they describe. Generated pages, PDFs, diagrams, and downloads help people read the project, while semantic extracts, Obsidian mirrors, SQLite indexes, and local caches help them find material; when any of those downstream surfaces disagrees with a registered source or current tracked record, the source and record win. Website manifests expose a public file's path, type, byte count, hash, status, and source reference, but a hash identifies file contents rather than scientific correctness. Publication briefs define the reader and acceptance criteria, source specifications bind public outputs to inspected evidence, and deterministic checks, desktop or mobile screenshots, and review notes record bounded publication quality rather than source authority. No route card, manifest row, download, hash, registry entry, generated derivative, retrieval result, validator PASS, screenshot, review receipt, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, grants workflow authority, or replaces human review.";
+const resourcesOverviewProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open.",
+  "Its AI track uses tracked tasks, bounded AgentJobs, roles, validation, memory preflight, completions, handoffs, and human gates to make theoretical work inspectable without turning workflow results into scientific proof. This Resources page is the public map for reading evidence around both tracks.",
+  "Start with the internal route that matches the question—source authority, registries, generated derivatives, retrieval, publication, the library, reading paths, repository structure, builder guidance, diagrams, documents, guided starts, or reviewer material—then check its status label and follow provenance when direct inspection is needed.",
+  "Registered TeX carries scoped physics and derivational claims within its stated status; registered Markdown and tracked control records carry guidance and workflow authority within their own lanes; and registries record provenance, relationships, hashes, routing, and status without replacing the source files they describe.",
+  "Generated pages, PDFs, diagrams, and downloads help people read the project, while semantic extracts, Obsidian mirrors, SQLite indexes, and local caches help them find material; when any of those downstream surfaces disagrees with a registered source or current tracked record, the source and record win.",
+  "Website manifests expose a public file's path, type, byte count, hash, status, and source reference, but a hash identifies file contents rather than scientific correctness.",
+  "Publication briefs define the reader and acceptance criteria, source specifications bind public outputs to inspected evidence, and deterministic checks, desktop or mobile screenshots, and review notes record bounded publication quality rather than source authority.",
+  "No route card, manifest row, download, hash, registry entry, generated derivative, retrieval result, validator PASS, screenshot, review receipt, AI output, or website page independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, grants workflow authority, or replaces human review.",
+] as const;
 
 const liveResourceRoutes = [
   {
@@ -255,7 +264,7 @@ const resourcesSvg = `
   </CommandBand>
 
   <ProjectIntroduction
-    text={resourcesOverviewProjectIntroduction}
+    paragraphs={resourcesOverviewProjectIntroduction}
     ariaLabel="About the Æther Flow Project and its Resources"
   />
 

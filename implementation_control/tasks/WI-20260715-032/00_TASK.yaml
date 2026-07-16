@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260715-032"
 title: "Repair Desktop Navigation Link Flex Alignment"
 created_utc: "2026-07-16T00:11:07Z"
-updated_utc: "2026-07-16T00:16:11Z"
-status: "active"
+updated_utc: "2026-07-16T00:35:00Z"
+status: "superseded"
 
 source_context:
   packet_id: "DESKTOP-NAV-LINK-FLEX-REPAIR-01"
@@ -149,7 +149,7 @@ next_recommended_action:
   do_not_skip: "Do not open the sitewide introduction packet push deploy refresh sources or mutate upstream in this transaction."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   focused_navigation_tests: "passed 4 tests"
   python_tests: "passed 156 tests"
   static_build: "passed 64 pages"
@@ -158,6 +158,12 @@ implementation_status:
   runtime_desktop_navigation_review: "passed with four 44 CSS pixel targets and preserved Resources active state"
   compact_target_isolation_review: "passed with four 32 CSS pixel targets and zero overflow"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "20f8c88d80c9650d745f439c5f265c4598fe681f"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "SITEWIDE-PROJECT-INTRO-READABILITY-01"

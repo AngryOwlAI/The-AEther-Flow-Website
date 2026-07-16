@@ -2,6 +2,7 @@
 import CommandBand from "../../../components/CommandBand.astro";
 import EvidenceRail from "../../../components/EvidenceRail.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
@@ -236,6 +237,10 @@ const builderSvg = `
     </g>
   </svg>
 `;
+const resourcesSiteBuilderGuideProjectIntroduction = [
+  "The safe build order is deliberate: identify the page family, inspect primary sources, map derivative seeds, write forbidden inferences, record freshness, then implement inside live control. A source bundle is a guardrail, not a shortcut around source reading.",
+] as const;
+
 ---
 
 <BaseLayout
@@ -266,14 +271,10 @@ const builderSvg = `
     </Fragment>
   </CommandBand>
 
-  <section class="greenfield-intro-panel" aria-label="Site builder guide introduction">
-    <p>
-      The safe build order is deliberate: identify the page family, inspect
-      primary sources, map derivative seeds, write forbidden inferences, record
-      freshness, then implement inside live control. A source bundle is a
-      guardrail, not a shortcut around source reading.
-    </p>
-  </section>
+  <ProjectIntroduction
+    paragraphs={resourcesSiteBuilderGuideProjectIntroduction}
+    ariaLabel="Site builder guide introduction"
+  />
 
 
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.resourcesSiteBuilderGuide} />

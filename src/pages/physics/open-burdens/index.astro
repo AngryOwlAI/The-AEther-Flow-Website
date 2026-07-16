@@ -9,8 +9,14 @@ import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
 import { greenfieldRouteDiagramBlocks } from "../../../lib/siteContent";
 
-const openBurdensProjectIntroduction =
-  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; exact GR remains the observable-scale benchmark, while that first-principles derivation is still open. This Open Burdens page reads a checked-in snapshot of the missing links as separate obligations, from source structure and metric construction through matter coupling, Einstein equations, benchmark promotion, and protected human review, so one partial result cannot silently stand in for the whole chain. Ledger rows and status counts describe which work exists, which prerequisite is missing, and which gate applies; they are not a percentage score, and scoped evidence for one step does not solve the steps after it. By making both constructive work and recorded obstructions visible, the page helps readers understand what the project must still establish without treating one blocked route as a rejection of the entire research program. If the snapshot becomes stale, the page remains orientation only, while upstream source records and human gates continue to govern stronger conclusions.";
+const openBurdensProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work.",
+  "Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; exact GR remains the observable-scale benchmark, while that first-principles derivation is still open.",
+  "This Open Burdens page reads a checked-in snapshot of the missing links as separate obligations, from source structure and metric construction through matter coupling, Einstein equations, benchmark promotion, and protected human review, so one partial result cannot silently stand in for the whole chain.",
+  "Ledger rows and status counts describe which work exists, which prerequisite is missing, and which gate applies; they are not a percentage score, and scoped evidence for one step does not solve the steps after it.",
+  "By making both constructive work and recorded obstructions visible, the page helps readers understand what the project must still establish without treating one blocked route as a rejection of the entire research program.",
+  "If the snapshot becomes stale, the page remains orientation only, while upstream source records and human gates continue to govern stronger conclusions.",
+] as const;
 
 const shortCommit = distanceSnapshot.source_commit
   ? `${distanceSnapshot.source_commit.slice(0, 12)}...`
@@ -215,7 +221,7 @@ const openBurdensSvg = `
   </CommandBand>
 
   <ProjectIntroduction
-    text={openBurdensProjectIntroduction}
+    paragraphs={openBurdensProjectIntroduction}
     ariaLabel="About The Æther Flow Project and Open Burdens"
   />
 
