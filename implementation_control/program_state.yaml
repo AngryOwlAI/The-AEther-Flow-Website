@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T05:12:16Z"
+updated_utc: "2026-07-16T06:24:57Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-037/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-037/jobs/WJ-20260715-037-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-037.yaml"
+  - "implementation_control/tasks/WI-20260715-038/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-038/jobs/WJ-20260715-038-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-038.yaml"
   - "current_git_state_and_validator_output"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -23,31 +23,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-037"
-  title: "Move And Link Home Source Reviewed Positioning"
+  task_id: "WI-20260715-038"
+  title: "Link Physics Positioning Topics And Place Source Authority Last"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-037/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-038/00_TASK.yaml"
   planning_context:
-    task_packet: "HOME-POSITIONING-ORDER-LINKS-01"
-    adopted_plan: "Owner requested the Home positioning section immediately before Source authority with each topic linked to its related internal route"
-    prior_checkpoint: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+    task_packet: "PHYSICS-POSITIONING-LINKS-01"
+    adopted_plan: "Owner requested focused Physics topic links, Source authority at the bottom, and the unchanged positioning sequence immediately before Source authority before checkpoint"
+    prior_checkpoint: "ac609b5b1e1742e390292d6a3a36a9ea75e1f7b3"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly requested Comment 1 and then authorized the logical successor packet."
+    owner_authorization: "Owner authorized the Physics links packet, the Source authority placement correction, and the positioning-sequence placement immediately before Source authority with no push or deployment."
 
 current_job:
-  job_id: "WJ-20260715-037-A"
+  job_id: "WJ-20260715-038-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-037/jobs/WJ-20260715-037-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-038/jobs/WJ-20260715-038-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-037"
+  handoff_id: "WH-20260715-038"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260715-037.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-037.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-038.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-038.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-037-A"
-  path: "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+  completion_id: "WJC-20260715-038-A"
+  path: "implementation_control/tasks/WI-20260715-038/jobs/completions/WJC-20260715-038-A.yaml"
   status: "completed"
 
 required_validators:
@@ -82,52 +82,53 @@ required_validators:
     command: "npm run quality"
     required_for_current_job: true
   - id: "technical-writing-builder-refuter-review"
-    command: "manual inspection of Home positioning text and qualification parity with no claim strengthening"
+    command: "manual inspection of Physics positioning text and qualification parity with no claim strengthening"
     required_for_current_job: true
-  - id: "runtime-home-positioning-review"
-    command: "manual inspection of Home at 1440 by 1200 and 520 by 900 CSS pixels for section order link visibility focus behavior clipping and overflow"
+  - id: "runtime-physics-positioning-review"
+    command: "manual inspection of Physics at 1440 by 1200 and 520 by 900 CSS pixels for section order link visibility focus behavior clipping overflow and destination loading"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "HOME-POSITIONING-ORDER-LINKS-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-037-A."
+  task_packet: "PHYSICS-POSITIONING-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-038-A."
   do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
 
 preflight_evidence:
-  status: "passed_for_home_positioning_order_links_packet"
-  observed_utc: "2026-07-16T04:58:57Z"
-  prior_checkpoint: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+  status: "passed_for_physics_positioning_links_packet"
+  observed_utc: "2026-07-16T05:25:23Z"
+  prior_checkpoint: "ac609b5b1e1742e390292d6a3a36a9ea75e1f7b3"
   prior_checkpoint_observed_from_git: true
   prior_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 2
+  website_ahead_of_origin_main: 3
   website_worktree_status: "clean_before_packet_open"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  live_upstream_head: "fd802dee85da59d29c71842f9dcfa882a0927c29"
-  live_upstream_worktree_status: "dirty external work preserved read only"
+  live_upstream_head: "4500befb217d5172a69f8a4ed0f47cf5c98a8898"
+  live_upstream_worktree_status: "clean external branch preserved read only"
   source_refresh_status: "not_performed"
 
 implementation_status:
   status: "ready_for_checkpoint"
-  target_route: "/"
-  target_section: "Source reviewed positioning"
+  target_route: "/physics/"
+  target_section: "Source reviewed positioning and Source authority placement"
   target_topic_count: 5
   wording_change_status: "forbidden exact text parity required"
   component_change_status: "forbidden"
   style_change_status: "forbidden"
-  tracked_manifest_change_status: "completed page provenance Home hash regeneration only"
-  section_order: "passed directly before SourceAuthoritySection"
+  tracked_manifest_change_status: "Physics page provenance hash regeneration only"
+  section_order: "The unchanged positioning sequence immediately precedes SourceAuthoritySection which remains the last main content before the footer"
   linked_topic_count: 5
-  focused_positioning_tests: "passed 33 tests"
-  python_tests: "passed 158 tests"
+  focused_positioning_tests: "passed 34 tests after the new order contract first failed 2 tests"
+  python_tests: "passed 159 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source root"
   quality_gate: "passed against accepted clean source root"
-  technical_writing_gate: "passed with zero warning hits"
-  runtime_review: "passed desktop and compact with five verified destinations and zero overflow"
+  technical_writing_gate: "passed with zero warning hits and exact wording parity"
+  runtime_review: "passed 1440 by 1200 and 520 by 900 CSS pixels with direct positioning to Source authority adjacency five visible focusable links and zero overflow"
   completion_created: true
+  completion_refresh_status: "completed"
   checkpoint_status: "ready_for_separate_authorization"
   push_performed: false
   deployment_performed: false

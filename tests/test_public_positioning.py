@@ -253,9 +253,80 @@ def test_routes_encode_the_authorized_positive_content_order() -> None:
 
     physics = PHYSICS_PAGE.read_text(encoding="utf-8")
     rendered_sequence = physics.index("{physicsPositioningSteps.map")
+    route_navigation = physics.index("<ComprehensionBlocks")
+    source_basis = physics.index('aria-labelledby="physics-source-title"')
     evidence = physics.index("<SourceAuthoritySection", rendered_sequence)
-    route_navigation = physics.index("<ComprehensionBlocks", evidence)
-    assert rendered_sequence < evidence < route_navigation
+    assert route_navigation < source_basis < rendered_sequence < evidence
+
+
+def test_physics_positioning_order_and_contextual_topic_links_are_explicit() -> None:
+    source = PHYSICS_PAGE.read_text(encoding="utf-8")
+
+    introduction = source.index("<ProjectIntroduction")
+    positioning_label = source.index(
+        'aria-labelledby="physics-positioning-title"',
+        introduction,
+    )
+    positioning = source.rfind("<section", introduction, positioning_label)
+    positioning_end = source.index("</section>", positioning_label) + len("</section>")
+    route_navigation = source.index("<ComprehensionBlocks", introduction)
+    source_basis_label = source.index(
+        'aria-labelledby="physics-source-title"',
+        route_navigation,
+    )
+    source_basis_end = source.index("</section>", source_basis_label) + len("</section>")
+    source_authority = source.index("<SourceAuthoritySection", positioning_end)
+    source_authority_end = source.index("/>", source_authority) + len("/>")
+    layout_end = source.index("</BaseLayout>", source_authority_end)
+
+    assert source[source_basis_end:positioning].strip() == ""
+    assert source[positioning_end:source_authority].strip() == ""
+    assert source[source_authority_end:layout_end].strip() == ""
+    assert introduction < route_navigation < source_basis_label < positioning < source_authority
+
+    expected_topic_links = (
+        (
+            "physics-project-definition",
+            "An interpretive setting for an explicit effective package.",
+            "/physics/ontology/",
+        ),
+        (
+            "physics-exact-closure",
+            "The effective dynamics and matter coupling are fixed.",
+            "/physics/exact-gr-benchmark/",
+        ),
+        (
+            "physics-current-result",
+            "The package has a complete operational effective statement.",
+            "/physics/claim-status/",
+        ),
+        (
+            "physics-open-foundation",
+            "A substrate-level derivation remains unresolved.",
+            "/physics/derivation-roadmap/",
+        ),
+        (
+            "physics-governed-method",
+            "Research assistance does not replace scientific review.",
+            "/ai-research-system/workflow/",
+        ),
+    )
+    positioning_data_start = source.index("const physicsPositioningSteps")
+    positioning_data_end = source.index("] as const;", positioning_data_start)
+    positioning_data = source[positioning_data_start:positioning_data_end]
+
+    for topic_id, title, href in expected_topic_links:
+        entry = re.search(
+            rf'\{{\s*id: "{re.escape(topic_id)}",(.*?)\n\s*\}},',
+            positioning_data,
+            re.DOTALL,
+        )
+        assert entry is not None
+        assert f'title: "{title}"' in entry.group(1)
+        assert f'href: "{href}"' in entry.group(1)
+        assert route_record(href)["route_path"] == href
+
+    assert source.count("<h3><a href={step.href}>{step.title}</a></h3>") == 1
 
 
 def test_home_introduction_and_requested_section_order_are_explicit() -> None:

@@ -1,0 +1,66 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-038"
+created_utc: "2026-07-16T05:25:23Z"
+updated_utc: "2026-07-16T06:24:57Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260715-038"
+job_id: "WJ-20260715-038-A"
+
+summary: "Completed the owner-authorized Physics positioning links and direct positioning-before-Source-authority correction with full validation and responsive browser evidence."
+
+current_state:
+  - "Git proves the completed Home positioning packet at checkpoint ac609b5b and the transaction will not be replayed."
+  - "The website worktree was clean before this control-only transition."
+  - "The accepted source root remains clean at pin 57438af."
+  - "The unchanged Source-reviewed positioning sequence immediately precedes SourceAuthoritySection which remains the last main content before the footer."
+  - "The five Physics topic titles link respectively to ontology exact GR benchmark claim status derivation roadmap and AI workflow."
+  - "Reviewed wording qualifications labels ids supporting text and topic order remain exact while only SourceAuthoritySection placement and the unchanged positioning-sequence placement changed."
+  - "Focused tests full Python tests accepted root aggregate validation quality technical writing review and the 64 page build passed."
+  - "Desktop and compact browser review passed with direct positioning to Source authority adjacency five visible focusable links zero horizontal overflow and no console errors."
+  - "Shared styles components route definitions assets source bindings source refresh upstream writes checkpoint push and deployment remain unchanged."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  live_upstream_head: "4500befb217d5172a69f8a4ed0f47cf5c98a8898"
+  live_upstream_worktree_status: "dirty external branch observed read only while the accepted source root remained clean"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+checkpoint_transition:
+  prior_packet: "HOME-POSITIONING-ORDER-LINKS-01"
+  checkpoint: "ac609b5b1e1742e390292d6a3a36a9ea75e1f7b3"
+  observed_from_git: true
+  repeated: false
+
+next_recommended_action:
+  task_packet: "PHYSICS-POSITIONING-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-038-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_route: "/physics/"
+  target_topic_count: 5
+  section_order: "The unchanged positioning sequence immediately precedes SourceAuthoritySection which remains the last main content before the footer"
+  linked_topic_count: 5
+  focused_positioning_tests: "passed 34 tests after the new order contract first failed 2 tests"
+  python_tests: "passed 159 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  technical_writing_gate: "passed with zero warning hits and exact wording parity"
+  runtime_review: "passed 1440 by 1200 and 520 by 900 CSS pixels with direct adjacency five visible focusable links and zero overflow"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-038-A"
+  path: "implementation_control/tasks/WI-20260715-038/jobs/completions/WJC-20260715-038-A.yaml"
+  status: "completed"

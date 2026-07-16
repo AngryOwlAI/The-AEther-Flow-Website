@@ -22,24 +22,28 @@ const physicsPositioningSteps = [
     id: "physics-project-definition",
     label: "01 · What the project is",
     title: "An interpretive setting for an explicit effective package.",
+    href: "/physics/ontology/",
     statement: physicsClaimByState.get("interpretive")!,
   },
   {
     id: "physics-exact-closure",
     label: "02 · Why exact closure matters",
     title: "The effective dynamics and matter coupling are fixed.",
+    href: "/physics/exact-gr-benchmark/",
     statement: physicsClaimByState.get("adopted-effective")!,
   },
   {
     id: "physics-current-result",
     label: "03 · What exists now",
     title: "The package has a complete operational effective statement.",
+    href: "/physics/claim-status/",
     statement: physicsClaimByState.get("complete-effective")!,
   },
   {
     id: "physics-open-foundation",
     label: "04 · What remains open",
     title: "A substrate-level derivation remains unresolved.",
+    href: "/physics/derivation-roadmap/",
     statement: physicsClaimByState.get("open-foundational")!,
     supportingStatement: physicsClaimByState.get("not-claimed")!,
   },
@@ -47,6 +51,7 @@ const physicsPositioningSteps = [
     id: "physics-governed-method",
     label: "05 · How the work is tested and governed",
     title: "Research assistance does not replace scientific review.",
+    href: "/ai-research-system/workflow/",
     statement: physicsClaimByState.get("governed-method")!,
   },
 ] as const;
@@ -213,40 +218,6 @@ const physicsOverviewSvg = `
 
   <ProjectIntroduction paragraphs={physicsProjectIntroduction} />
 
-  <section
-    class="track-page-band public-positioning-sequence"
-    aria-labelledby="physics-positioning-title"
-  >
-    <div class="track-page-heading">
-      <p class="eyebrow">Source-reviewed positioning</p>
-      <h2 id="physics-positioning-title">Exact effective closure, open foundational derivation.</h2>
-      <p>
-        The ordered statements below come directly from the reviewed
-        public-claim ladder. Detailed qualifications remain available without
-        displacing the effective result from the first reading path.
-      </p>
-    </div>
-    {physicsPositioningSteps.map((step) => (
-      <article id={step.id} class="track-page-heading public-positioning-step">
-        <p class="eyebrow">{step.label}</p>
-        <h3>{step.title}</h3>
-        <p>{step.statement.exactWording}</p>
-        <details>
-          <summary>Read the qualification</summary>
-          <p>{step.statement.allowedQualification}</p>
-          {step.supportingStatement && (
-            <>
-              <p>{step.supportingStatement.exactWording}</p>
-              <p>{step.supportingStatement.allowedQualification}</p>
-            </>
-          )}
-        </details>
-      </article>
-    ))}
-  </section>
-
-  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
-
   <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.physicsTrack} />
 
   <CommandBand
@@ -323,5 +294,39 @@ const physicsOverviewSvg = `
       </tbody>
     </table>
   </section>
+
+  <section
+    class="track-page-band public-positioning-sequence"
+    aria-labelledby="physics-positioning-title"
+  >
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-reviewed positioning</p>
+      <h2 id="physics-positioning-title">Exact effective closure, open foundational derivation.</h2>
+      <p>
+        The ordered statements below come directly from the reviewed
+        public-claim ladder. Detailed qualifications remain available without
+        displacing the effective result from the first reading path.
+      </p>
+    </div>
+    {physicsPositioningSteps.map((step) => (
+      <article id={step.id} class="track-page-heading public-positioning-step">
+        <p class="eyebrow">{step.label}</p>
+        <h3><a href={step.href}>{step.title}</a></h3>
+        <p>{step.statement.exactWording}</p>
+        <details>
+          <summary>Read the qualification</summary>
+          <p>{step.statement.allowedQualification}</p>
+          {step.supportingStatement && (
+            <>
+              <p>{step.supportingStatement.exactWording}</p>
+              <p>{step.supportingStatement.allowedQualification}</p>
+            </>
+          )}
+        </details>
+      </article>
+    ))}
+  </section>
+
+  <SourceAuthoritySection {...sourceNotice} className="track-page-band" />
 
 </BaseLayout>

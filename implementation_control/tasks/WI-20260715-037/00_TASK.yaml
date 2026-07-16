@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260715-037"
 title: "Move And Link Home Source Reviewed Positioning"
 created_utc: "2026-07-16T04:58:57Z"
-updated_utc: "2026-07-16T05:12:16Z"
-status: "active"
+updated_utc: "2026-07-16T05:25:23Z"
+status: "superseded"
 
 source_context:
   packet_id: "HOME-POSITIONING-ORDER-LINKS-01"
@@ -152,8 +152,8 @@ stop_conditions:
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
-  staging_allowed_by_this_job: false
-  closeout: "Create WJC-20260715-037-A after all evidence passes and leave the packet ready for a separately authorized local checkpoint."
+  staging_allowed_by_this_job: true
+  closeout: "Completion WJC-20260715-037-A was checkpointed locally at ac609b5b and must not be replayed."
 
 handoff:
   latest_handoff_id: "WH-20260715-037"
@@ -166,12 +166,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "HOME-POSITIONING-ORDER-LINKS-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-037-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "PHYSICS-POSITIONING-LINKS-01"
+  summary: "Proceed through the separately authorized Physics positioning contextual links packet."
+  do_not_skip: "Do not replay checkpoint ac609b5b or change reviewed wording shared styles components route definitions sources push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   target_route: "/"
   target_section: "Source reviewed positioning"
   target_topic_count: 5
@@ -186,6 +186,12 @@ implementation_status:
   technical_writing_gate: "passed with zero warning hits"
   runtime_review: "passed desktop and compact with five verified destinations and zero overflow"
   completion_created: true
-  checkpoint_status: "ready_for_separate_authorization"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "ac609b5b1e1742e390292d6a3a36a9ea75e1f7b3"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "PHYSICS-POSITIONING-LINKS-01"

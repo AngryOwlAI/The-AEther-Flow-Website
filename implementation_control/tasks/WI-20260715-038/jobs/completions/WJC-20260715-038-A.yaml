@@ -1,0 +1,161 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-038-A"
+task_id: "WI-20260715-038"
+job_id: "WJ-20260715-038-A"
+created_utc: "2026-07-16T05:34:47Z"
+completed_utc: "2026-07-16T06:24:57Z"
+status: "completed"
+
+summary: "Linked all five Physics positioning topic titles to focused internal routes, moved the unchanged positioning sequence immediately before Source authority, and kept Source authority last while preserving exact reviewed wording."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-037.md"
+  - "implementation_control/handoffs/WH-20260715-037.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-037/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-037/jobs/WJ-20260715-037-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-038.md"
+  - "implementation_control/handoffs/WH-20260715-038.yaml"
+  - "implementation_control/tasks/WI-20260715-038/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-038/jobs/WJ-20260715-038-A.yaml"
+  - "implementation_control/tasks/WI-20260715-038/jobs/completions/WJC-20260715-038-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/pages/physics/index.astro"
+  - "tests/test_public_positioning.py"
+
+implementation_results:
+  target_route: "/physics/"
+  section_order_status: "The unchanged positioning sequence immediately precedes SourceAuthoritySection which remains the last main content before the footer."
+  linked_topic_count: 5
+  physics_project_definition_href: "/physics/ontology/"
+  physics_exact_closure_href: "/physics/exact-gr-benchmark/"
+  physics_current_result_href: "/physics/claim-status/"
+  physics_open_foundation_href: "/physics/derivation-roadmap/"
+  physics_governed_method_href: "/ai-research-system/workflow/"
+  link_markup_status: "Each existing topic title is wrapped by one internal anchor inside its existing h3."
+  reviewed_wording_status: "exactly preserved"
+  qualification_status: "exactly preserved"
+  topic_id_label_order_status: "exactly preserved"
+  section_move_status: "Moved the existing SourceAuthoritySection to the final position and moved the unchanged positioning sequence immediately before it while preserving every other section order."
+  component_change_status: "none"
+  style_change_status: "none"
+  route_definition_change_status: "none"
+  source_binding_change_status: "none"
+  tracked_manifest_change_status: "Physics local page hash regenerated only"
+  public_asset_change_status: "none"
+
+regression_test_evidence:
+  status: "passed"
+  baseline_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+  baseline_result: "After the owner correction added the direct adjacency contract the focused suite failed with 2 failed and 32 passed because the positioning sequence still remained near the top of the page."
+  final_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+  final_result: "34 tests passed with the positioning sequence immediately before final Source authority plus all five route mappings destination records and linked heading template enforced."
+
+technical_writing_review:
+  status: "passed"
+  method: "technical writing builder and refuter parity inspection plus warning matcher"
+  warning_hits: 0
+  evidence: "The word level diff contains five href values one heading anchor wrapper one existing SourceAuthoritySection relocation and one unchanged positioning-sequence relocation. Reviewed statements qualifications labels ids supporting text and topic order remain exact."
+
+runtime_review:
+  status: "passed"
+  desktop_viewport: "1440 by 1200 CSS pixels"
+  compact_viewport: "520 by 900 CSS pixels"
+  desktop_section_width: "1180 CSS pixels"
+  compact_section_width: "468 CSS pixels"
+  section_order_status: "The positioning sequence immediately precedes Source authority and Source authority is the last main content before the footer at both viewports."
+  rendered_link_count: 5
+  links_inside_articles: 5
+  focusable_link_count: 5
+  visible_underlined_link_count: 5
+  desktop_horizontal_overflow: "0 CSS pixels"
+  compact_horizontal_overflow: "0 CSS pixels"
+  browser_console_errors: 0
+  navigation_status: "All five rendered hrefs matched the intended internal routes and all five destinations loaded with nonempty expected page titles."
+  destination_titles:
+    physics_ontology: "Æther-Flow Ontology | The Æther Flow"
+    exact_gr_benchmark: "Exact-GR Benchmark | The AEther Flow"
+    physics_claim_status: "Physics Claim Status | The AEther Flow"
+    derivation_roadmap: "Derivation Roadmap | The AEther Flow"
+    ai_workflow: "Workflow | The AEther Flow"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The bounded packet allowlist and control pointers are structurally coherent."
+  - id: "focused-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+    status: "passed"
+    evidence: "34 tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "159 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remains current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes after regenerating the Physics local page hash."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against accepted source pin 57438af."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "Quality passed against accepted source pin 57438af."
+  - id: "technical-writing-builder-refuter-review"
+    command: "manual inspection of Physics positioning text and qualification parity with no claim strengthening"
+    status: "passed"
+    evidence: "Gate pass with zero warning matches and exact public claim wording parity."
+  - id: "runtime-physics-positioning-review"
+    command: "manual inspection of Physics at 1440 by 1200 and 520 by 900 CSS pixels for section order link visibility focus behavior clipping overflow and destination loading"
+    status: "passed"
+    evidence: "At 1440 by 1200 and 520 by 900 CSS pixels the positioning sequence directly preceded final Source authority all five links were visible and focusable horizontal overflow was zero and the browser console had no errors."
+
+validation_environment:
+  prior_checkpoint: "ac609b5b1e1742e390292d6a3a36a9ea75e1f7b3"
+  prior_checkpoint_replayed: false
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_head: "4500befb217d5172a69f8a4ed0f47cf5c98a8898"
+  live_upstream_tree_status: "dirty external branch observed read only while the accepted source root remained clean"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "Only SourceAuthoritySection placement and the unchanged positioning-sequence placement changed. No reviewed wording qualification label topic id topic order supporting statement shared component global style route definition source binding or public asset changed."
+  - "No source refresh upstream write staging checkpoint push or deployment occurred for this Physics packet."
+
+checkpoint_readiness:
+  ready: true
+  authorized: false
+  command: "npm run checkpoint:implementation"
+  expected_effect: "After separate owner authorization stage and commit only the 13 completion listed paths."
+
+next_recommended_action:
+  task_packet: "PHYSICS-POSITIONING-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
