@@ -23,24 +23,28 @@ const homePositioningSteps = [
     id: "home-project-definition",
     label: "01 · What the project is",
     title: "A proposed ontology paired with an exact effective package.",
+    href: "/physics/ontology/",
     statement: homeClaimByState.get("interpretive")!,
   },
   {
     id: "home-exact-closure",
     label: "02 · Why exact closure matters",
     title: "The observer-level gravitational system is explicit.",
+    href: "/physics/exact-gr-benchmark/",
     statement: homeClaimByState.get("adopted-effective")!,
   },
   {
     id: "home-current-result",
     label: "03 · What exists now",
     title: "An operational effective theory statement is complete.",
+    href: "/physics/claim-status/",
     statement: homeClaimByState.get("complete-effective")!,
   },
   {
     id: "home-open-foundation",
     label: "04 · What remains open",
     title: "The foundational derivation is still an active burden.",
+    href: "/physics/derivation-roadmap/",
     statement: homeClaimByState.get("open-foundational")!,
     supportingStatement: homeClaimByState.get("not-claimed")!,
   },
@@ -48,6 +52,7 @@ const homePositioningSteps = [
     id: "home-governed-method",
     label: "05 · How the work is tested and governed",
     title: "AI assistance operates inside a human-accountable method.",
+    href: "/ai-research-system/workflow/",
     statement: homeClaimByState.get("governed-method")!,
   },
 ] as const;
@@ -365,38 +370,6 @@ const agentMap = `
 
   <ProjectIntroduction paragraphs={homeProjectIntroduction} className="home-intro-panel" />
 
-  <section
-    class="track-page-band public-positioning-sequence"
-    aria-labelledby="home-positioning-title"
-  >
-    <div class="track-page-heading">
-      <p class="eyebrow">Source-reviewed positioning</p>
-      <h2 id="home-positioning-title">Exact closure first, with the foundation kept explicit.</h2>
-      <p>
-        These statements are consumed directly from the reviewed public-claim
-        ladder. Their qualifications preserve the line between effective
-        completion, proposed interpretation, and foundational derivation.
-      </p>
-    </div>
-    {homePositioningSteps.map((step) => (
-      <article id={step.id} class="track-page-heading public-positioning-step">
-        <p class="eyebrow">{step.label}</p>
-        <h3>{step.title}</h3>
-        <p>{step.statement.exactWording}</p>
-        <details>
-          <summary>Read the qualification</summary>
-          <p>{step.statement.allowedQualification}</p>
-          {step.supportingStatement && (
-            <>
-              <p>{step.supportingStatement.exactWording}</p>
-              <p>{step.supportingStatement.allowedQualification}</p>
-            </>
-          )}
-        </details>
-      </article>
-    ))}
-  </section>
-
   <CommandBand
     id="overview-paths"
     className="overview-panel overview-command-band overview-track-command"
@@ -483,6 +456,38 @@ const agentMap = `
   </CommandBand>
 
   <ProjectStatusStrip items={homeStatusItems} />
+
+  <section
+    class="track-page-band public-positioning-sequence"
+    aria-labelledby="home-positioning-title"
+  >
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-reviewed positioning</p>
+      <h2 id="home-positioning-title">Exact closure first, with the foundation kept explicit.</h2>
+      <p>
+        These statements are consumed directly from the reviewed public-claim
+        ladder. Their qualifications preserve the line between effective
+        completion, proposed interpretation, and foundational derivation.
+      </p>
+    </div>
+    {homePositioningSteps.map((step) => (
+      <article id={step.id} class="track-page-heading public-positioning-step">
+        <p class="eyebrow">{step.label}</p>
+        <h3><a href={step.href}>{step.title}</a></h3>
+        <p>{step.statement.exactWording}</p>
+        <details>
+          <summary>Read the qualification</summary>
+          <p>{step.statement.allowedQualification}</p>
+          {step.supportingStatement && (
+            <>
+              <p>{step.supportingStatement.exactWording}</p>
+              <p>{step.supportingStatement.allowedQualification}</p>
+            </>
+          )}
+        </details>
+      </article>
+    ))}
+  </section>
 
   <SourceAuthoritySection {...sourceNotice} className="overview-panel overview-command-band" />
 

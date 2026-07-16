@@ -1,0 +1,191 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-037"
+title: "Move And Link Home Source Reviewed Positioning"
+created_utc: "2026-07-16T04:58:57Z"
+updated_utc: "2026-07-16T05:12:16Z"
+status: "active"
+
+source_context:
+  packet_id: "HOME-POSITIONING-ORDER-LINKS-01"
+  owner_authorization: "Owner requested Comment 1 and then authorized the logical successor packet."
+  prior_task: "WI-20260715-036"
+  prior_checkpoint: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+
+goal: "Move the existing Home source reviewed positioning section immediately before Source authority and link each of its five topic titles to the closest internal reader route."
+
+requirements:
+  - "Treat checkpoint cb2617b as completed Git authority and do not replay it."
+  - "Move the complete existing positioning section without changing its topic order ids labels reviewed statements qualifications or supporting statements."
+  - "Place the positioning section directly before SourceAuthoritySection as the final substantive Home section."
+  - "Link the five topic titles to ontology exact GR benchmark claim status derivation roadmap and AI workflow routes respectively."
+  - "Preserve all other Home sections route behavior shared components global styles public assets and source bindings."
+  - "Regenerate the Home page hash in page_provenance.json against accepted source pin 57438af."
+  - "Validate desktop and compact layout plus keyboard focus and all five internal destinations."
+  - "Leave the completed packet ready for a separately authorized local checkpoint without staging committing pushing or deploying."
+
+topic_links:
+  home_project_definition: "/physics/ontology/"
+  home_exact_closure: "/physics/exact-gr-benchmark/"
+  home_current_result: "/physics/claim-status/"
+  home_open_foundation: "/physics/derivation-roadmap/"
+  home_governed_method: "/ai-research-system/workflow/"
+
+scope:
+  in_scope:
+    - "src/pages/index.astro section order and five title links only"
+    - "tests/test_public_positioning.py Home order link and wording parity coverage"
+    - "public/files/manifests/page_provenance.json Home page hash regeneration"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Any reviewed statement qualification label topic id or topic order change"
+    - "Any shared component global style route definition source binding public asset or page_route_map.json change"
+    - "Source refresh upstream writes checkpoint push and deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - ".codex/skills/technical-writing-quality-gate/SKILL.md"
+    - "Git checkpoint cb2617b"
+    - "Home route related internal route sources focused tests manifests build output and browser evidence"
+    - "Website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "/tmp/aether-flow-source-57438af-homeintro-ZiApaw at accepted source pin 57438af"
+
+allowed_writes:
+  website_repository:
+    - "src/pages/index.astro"
+    - "tests/test_public_positioning.py"
+    - "public/files/manifests/page_provenance.json"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-036.yaml"
+    - "implementation_control/handoffs/WH-20260715-036.md"
+    - "implementation_control/tasks/WI-20260715-036/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-036/jobs/WJ-20260715-036-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-037.yaml"
+    - "implementation_control/handoffs/WH-20260715-037.md"
+    - "implementation_control/tasks/WI-20260715-037/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-037/jobs/WJ-20260715-037-A.yaml"
+    - "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner supplied Comment 1 and authorized the logical successor packet."
+  public_claim_changes:
+    status: "approved"
+    reason: "Approval covers placement and link markup while requiring exact reviewed wording and qualification parity."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh or source binding change is authorized."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers five named contextual internal links with no route definition global navigation or retirement change."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No component style layout token or shared visual source may change."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets change."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "page_provenance Home page hash regeneration only."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "technical-writing-builder-refuter-review"
+    command: "manual inspection of Home positioning text and qualification parity with no claim strengthening"
+    required: true
+  - id: "runtime-home-positioning-review"
+    command: "manual inspection of Home at 1440 by 1200 and 520 by 900 CSS pixels for section order link visibility focus behavior clipping and overflow"
+    required: true
+
+stop_conditions:
+  - "Any reviewed wording qualification topic id topic order or supporting statement changes."
+  - "Any unauthorized component style route definition asset page_route_map source binding or upstream state change."
+  - "Any topic link points outside the five named internal destinations."
+  - "Any required validator writing review or browser review fails."
+  - "Work enters source refresh upstream write checkpoint push or deployment."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: false
+  closeout: "Create WJC-20260715-037-A after all evidence passes and leave the packet ready for a separately authorized local checkpoint."
+
+handoff:
+  latest_handoff_id: "WH-20260715-037"
+  yaml_path: "implementation_control/handoffs/WH-20260715-037.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-037.md"
+
+completion_record:
+  completion_id: "WJC-20260715-037-A"
+  path: "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOME-POSITIONING-ORDER-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-037-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_route: "/"
+  target_section: "Source reviewed positioning"
+  target_topic_count: 5
+  wording_change_status: "forbidden exact text parity required"
+  section_order: "passed directly before SourceAuthoritySection"
+  linked_topic_count: 5
+  focused_positioning_tests: "passed 33 tests"
+  python_tests: "passed 158 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  technical_writing_gate: "passed with zero warning hits"
+  runtime_review: "passed desktop and compact with five verified destinations and zero overflow"
+  completion_created: true
+  checkpoint_status: "ready_for_separate_authorization"
+  push_performed: false
+  deployment_performed: false

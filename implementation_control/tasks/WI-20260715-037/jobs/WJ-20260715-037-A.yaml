@@ -1,0 +1,160 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-037-A"
+task_id: "WI-20260715-037"
+title: "Move Link And Validate Home Source Reviewed Positioning"
+created_utc: "2026-07-16T04:58:57Z"
+updated_utc: "2026-07-16T05:12:16Z"
+status: "active"
+
+objective: "Move the existing Home positioning sequence immediately before Source authority and make each topic title a focused internal reader link without changing reviewed content."
+
+execution_boundary:
+  invocation_limit: "one bounded HOME-POSITIONING-ORDER-LINKS-01 packet"
+  packet_id: "HOME-POSITIONING-ORDER-LINKS-01"
+  prior_checkpoint: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+  prior_checkpoint_replay_status: "forbidden"
+  wording_change_status: "forbidden"
+  component_change_status: "forbidden"
+  style_change_status: "forbidden"
+  route_definition_change_status: "forbidden"
+  manifest_change_status: "Home page provenance hash only"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website baseline and all evidence allowlisted by WI-20260715-037"
+
+allowed_writes:
+  - "src/pages/index.astro"
+  - "tests/test_public_positioning.py"
+  - "public/files/manifests/page_provenance.json"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-036.yaml"
+  - "implementation_control/handoffs/WH-20260715-036.md"
+  - "implementation_control/tasks/WI-20260715-036/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-036/jobs/WJ-20260715-036-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-037.yaml"
+  - "implementation_control/handoffs/WH-20260715-037.md"
+  - "implementation_control/tasks/WI-20260715-037/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-037/jobs/WJ-20260715-037-A.yaml"
+  - "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+
+required_outputs:
+  - "The Home positioning section appears directly before SourceAuthoritySection."
+  - "The five topic titles link to ontology exact GR benchmark claim status derivation roadmap and AI workflow routes."
+  - "All existing positioning ids labels statements qualifications supporting statements and topic order remain exact."
+  - "The Home provenance hash is regenerated against accepted source pin 57438af."
+  - "Desktop compact keyboard and internal navigation review passes."
+  - "No component style route definition asset source checkpoint push or deployment change occurs."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner supplied Comment 1 and authorized the logical successor packet."
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "Placement and link markup only with exact reviewed text parity."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Five named internal topic links only with no route definition global navigation or retirement change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No component style layout token or shared visual source."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "page_provenance Home page hash regeneration only."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "technical-writing-builder-refuter-review"
+    command: "manual inspection of Home positioning text and qualification parity with no claim strengthening"
+    required: true
+  - id: "runtime-home-positioning-review"
+    command: "manual inspection of Home at 1440 by 1200 and 520 by 900 CSS pixels for section order link visibility focus behavior clipping and overflow"
+    required: true
+
+stop_conditions:
+  - "Any reviewed wording qualification topic id topic order or supporting statement changes."
+  - "Any unauthorized component style route definition asset page_route_map source binding or upstream state change."
+  - "Any topic link points outside the five named internal destinations."
+  - "Any required validator writing review or browser review fails."
+  - "Work enters source refresh upstream write checkpoint push or deployment."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-037-A"
+  path: "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOME-POSITIONING-ORDER-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-037-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_route: "/"
+  target_topic_count: 5
+  section_order: "passed directly before SourceAuthoritySection"
+  linked_topic_count: 5
+  focused_positioning_tests: "passed 33 tests"
+  python_tests: "passed 158 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  technical_writing_gate: "passed with zero warning hits"
+  runtime_review: "passed desktop and compact with five verified destinations and zero overflow"
+  completion_created: true
+  checkpoint_status: "ready_for_separate_authorization"

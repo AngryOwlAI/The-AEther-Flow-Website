@@ -279,14 +279,17 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
     actions = source.index('<nav class="home-action-row"', hero)
     hero_visual = source.index('<Fragment slot="visual">', actions)
     introduction = source.index("<ProjectIntroduction", hero_visual)
-    positioning = source.index('aria-labelledby="home-positioning-title"', introduction)
-    tracks = source.index('id="overview-paths"', positioning)
+    tracks = source.index('id="overview-paths"', introduction)
     ontology = source.index('id="ontology-and-gr"', tracks)
     comprehension = source.index("<ComprehensionBlocks", ontology)
     capabilities = source.index('id="project-capabilities"', comprehension)
     capabilities_end = source.index("</CommandBand>", capabilities) + len("</CommandBand>")
     status = source.index("<ProjectStatusStrip", capabilities_end)
-    source_authority = source.index("<SourceAuthoritySection", status)
+    status_end = source.index("/>", status) + len("/>")
+    positioning = source.index("<section", status_end)
+    positioning_label = source.index('aria-labelledby="home-positioning-title"', positioning)
+    positioning_end = source.index("</section>", positioning_label) + len("</section>")
+    source_authority = source.index("<SourceAuthoritySection", positioning_end)
     layout_end = source.index("</BaseLayout>", source_authority)
 
     action_block = source[actions:hero_visual]
@@ -301,20 +304,65 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
         action_block.index(action) for action in expected_actions
     )
     assert source[capabilities_end:status].strip() == ""
+    assert source[status_end:positioning].strip() == ""
+    assert source[positioning_end:source_authority].strip() == ""
     assert (
         hero
         < actions
         < hero_visual
         < introduction
-        < positioning
         < tracks
         < ontology
         < comprehension
         < capabilities
         < status
+        < positioning
         < source_authority
         < layout_end
     )
+
+    expected_topic_links = (
+        (
+            "home-project-definition",
+            "A proposed ontology paired with an exact effective package.",
+            "/physics/ontology/",
+        ),
+        (
+            "home-exact-closure",
+            "The observer-level gravitational system is explicit.",
+            "/physics/exact-gr-benchmark/",
+        ),
+        (
+            "home-current-result",
+            "An operational effective theory statement is complete.",
+            "/physics/claim-status/",
+        ),
+        (
+            "home-open-foundation",
+            "The foundational derivation is still an active burden.",
+            "/physics/derivation-roadmap/",
+        ),
+        (
+            "home-governed-method",
+            "AI assistance operates inside a human-accountable method.",
+            "/ai-research-system/workflow/",
+        ),
+    )
+    positioning_data_start = source.index("const homePositioningSteps")
+    positioning_data_end = source.index("] as const;", positioning_data_start)
+    positioning_data = source[positioning_data_start:positioning_data_end]
+
+    for topic_id, title, href in expected_topic_links:
+        entry = re.search(
+            rf'\{{\s*id: "{re.escape(topic_id)}",(.*?)\n\s*\}},',
+            positioning_data,
+            re.DOTALL,
+        )
+        assert entry is not None
+        assert f'title: "{title}"' in entry.group(1)
+        assert f'href: "{href}"' in entry.group(1)
+
+    assert source.count("<h3><a href={step.href}>{step.title}</a></h3>") == 1
 
 
 def test_all_project_introductions_use_the_accepted_semantic_paragraph_vectors() -> None:

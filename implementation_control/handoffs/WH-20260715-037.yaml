@@ -1,0 +1,64 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-037"
+created_utc: "2026-07-16T04:58:57Z"
+updated_utc: "2026-07-16T05:12:16Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260715-037"
+job_id: "WJ-20260715-037-A"
+
+summary: "Completed the owner-authorized Home positioning order and contextual links packet with focused full aggregate quality technical-writing and responsive browser evidence recorded."
+
+current_state:
+  - "Git proves SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01 at checkpoint cb2617b and the transaction will not be replayed."
+  - "The accepted source root is clean at pin 57438af and the live upstream worktree remains dirty external work preserved read only."
+  - "The complete Home positioning sequence now follows ProjectStatusStrip and directly precedes SourceAuthoritySection."
+  - "The five topic titles link respectively to ontology exact GR benchmark claim status derivation roadmap and AI workflow."
+  - "Reviewed wording qualifications labels ids supporting text and topic order remain exact."
+  - "Focused tests full Python tests accepted root aggregate validation quality technical writing review and the 64 page build passed."
+  - "Desktop and compact browser review passed with five visible focusable links zero horizontal overflow and all five destination routes loaded."
+  - "Shared styles components route definitions assets source bindings source refresh upstream writes checkpoint push and deployment remain unchanged."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  live_upstream_worktree_status: "dirty external work preserved read only"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+checkpoint_transition:
+  prior_packet: "SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01"
+  checkpoint: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+  observed_from_git: true
+  repeated: false
+
+next_recommended_action:
+  task_packet: "HOME-POSITIONING-ORDER-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-037-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_route: "/"
+  target_topic_count: 5
+  section_order: "passed directly before SourceAuthoritySection"
+  linked_topic_count: 5
+  focused_positioning_tests: "passed 33 tests"
+  python_tests: "passed 158 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  technical_writing_gate: "passed with zero warning hits"
+  runtime_review: "passed desktop and compact with five verified destinations and zero overflow"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-037-A"
+  path: "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+  status: "completed"

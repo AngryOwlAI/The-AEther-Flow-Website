@@ -1,0 +1,155 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-037-A"
+task_id: "WI-20260715-037"
+job_id: "WJ-20260715-037-A"
+created_utc: "2026-07-16T05:12:16Z"
+completed_utc: "2026-07-16T05:12:16Z"
+status: "completed"
+
+summary: "Moved the existing Home source reviewed positioning sequence directly before Source authority and linked all five topic titles to their focused internal reader routes without changing reviewed wording."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-036.md"
+  - "implementation_control/handoffs/WH-20260715-036.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-036/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-036/jobs/WJ-20260715-036-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-037.md"
+  - "implementation_control/handoffs/WH-20260715-037.yaml"
+  - "implementation_control/tasks/WI-20260715-037/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-037/jobs/WJ-20260715-037-A.yaml"
+  - "implementation_control/tasks/WI-20260715-037/jobs/completions/WJC-20260715-037-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/pages/index.astro"
+  - "tests/test_public_positioning.py"
+
+implementation_results:
+  target_route: "/"
+  section_order_status: "The complete source reviewed positioning sequence now follows ProjectStatusStrip and is directly before SourceAuthoritySection."
+  linked_topic_count: 5
+  home_project_definition_href: "/physics/ontology/"
+  home_exact_closure_href: "/physics/exact-gr-benchmark/"
+  home_current_result_href: "/physics/claim-status/"
+  home_open_foundation_href: "/physics/derivation-roadmap/"
+  home_governed_method_href: "/ai-research-system/workflow/"
+  link_markup_status: "Each existing topic title is wrapped by one internal anchor inside its existing h3."
+  reviewed_wording_status: "exactly preserved"
+  qualification_status: "exactly preserved"
+  topic_id_label_order_status: "exactly preserved"
+  component_change_status: "none"
+  style_change_status: "none"
+  route_definition_change_status: "none"
+  source_binding_change_status: "none"
+  tracked_manifest_change_status: "Home local page hash regenerated only"
+  public_asset_change_status: "none"
+
+regression_test_evidence:
+  status: "passed"
+  baseline_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+  baseline_result: "The new order contract failed against the prior placement with 1 failed and 32 passed."
+  final_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+  final_result: "33 tests passed with the direct section order all five route mappings and linked heading template enforced."
+
+technical_writing_review:
+  status: "passed"
+  method: "technical writing builder and refuter inspection plus warning matcher"
+  warning_hits: 0
+  evidence: "The exact reviewed statements qualifications labels ids supporting text and topic order were preserved; only placement and internal link markup changed."
+
+runtime_review:
+  status: "passed"
+  desktop_viewport: "1440 by 1200 CSS pixels"
+  compact_viewport: "520 by 900 CSS pixels"
+  desktop_section_width: "1180 CSS pixels"
+  compact_section_width: "468 CSS pixels"
+  section_order_status: "Positioning sequence directly precedes Source authority at both viewports."
+  rendered_link_count: 5
+  links_inside_articles: 5
+  compact_focusable_link_count: 5
+  compact_visible_underlined_link_count: 5
+  desktop_horizontal_overflow: "0 CSS pixels"
+  compact_horizontal_overflow: "0 CSS pixels"
+  browser_console_errors_or_warnings: 0
+  navigation_status: "All five rendered hrefs matched the intended routes and all five destinations loaded directly with their expected page titles."
+  automation_note: "The in app scripted click driver was inconsistent, so navigation was verified from rendered hrefs plus direct destination loads rather than claiming successful automated clicks."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The bounded packet allowlist completion and handoff pointers are structurally coherent."
+  - id: "focused-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+    status: "passed"
+    evidence: "33 tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "158 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remains current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes after regenerating the Home local page hash."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against accepted source pin 57438af."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "Quality passed against accepted source pin 57438af when run alone; an earlier concurrent duplicate build collision in dist was discarded as invalid harness contention."
+  - id: "technical-writing-builder-refuter-review"
+    command: "manual inspection of Home positioning text and qualification parity with no claim strengthening"
+    status: "passed"
+    evidence: "Gate pass with zero warning matches and exact public claim wording parity."
+  - id: "runtime-home-positioning-review"
+    command: "manual inspection of Home at 1440 by 1200 and 520 by 900 CSS pixels for section order link visibility focus behavior clipping and overflow"
+    status: "passed"
+    evidence: "Both viewports showed direct section order five visible focusable links and zero horizontal overflow; all five destination routes loaded."
+
+validation_environment:
+  prior_checkpoint: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+  prior_checkpoint_replayed: false
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_head: "fd802dee85da59d29c71842f9dcfa882a0927c29"
+  live_upstream_tree_status: "dirty external work preserved read only"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "No reviewed wording qualification label topic id topic order supporting statement shared component global style route definition source binding or public asset changed."
+  - "No source refresh upstream write staging checkpoint commit push or deployment occurred for this successor packet."
+
+checkpoint_readiness:
+  ready: true
+  authorized: false
+  command: "npm run checkpoint:implementation"
+  expected_effect: "After separate owner authorization stage and commit only the 13 completion listed paths."
+
+next_recommended_action:
+  task_packet: "HOME-POSITIONING-ORDER-LINKS-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."

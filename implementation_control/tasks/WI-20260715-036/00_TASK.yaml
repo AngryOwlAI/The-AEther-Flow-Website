@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260715-036"
 title: "Widen Sitewide Project Introduction Text"
 created_utc: "2026-07-16T02:38:21Z"
-updated_utc: "2026-07-16T02:47:41Z"
-status: "active"
+updated_utc: "2026-07-16T04:58:57Z"
+status: "superseded"
 
 source_context:
   packet_id: "SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01"
@@ -137,8 +137,8 @@ stop_conditions:
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
-  staging_allowed_by_this_job: false
-  closeout: "Create WJC-20260715-036-A after all evidence passes and leave the packet ready for a separately authorized local checkpoint."
+  staging_allowed_by_this_job: true
+  closeout: "Completion WJC-20260715-036-A was checkpointed locally at cb2617b and must not be replayed."
 
 handoff:
   latest_handoff_id: "WH-20260715-036"
@@ -151,12 +151,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-036-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "HOME-POSITIONING-ORDER-LINKS-01"
+  summary: "Proceed through the separately authorized Home positioning order and contextual links packet."
+  do_not_skip: "Do not replay checkpoint cb2617b or change reviewed wording shared styles components routes sources push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   baseline_surface_count: 29
   target_surface_count: 29
   baseline_max_width: "72ch"
@@ -172,6 +172,12 @@ implementation_status:
   quality_gate: "passed against accepted clean source root"
   runtime_review: "passed 29 desktop and 29 compact route inspections"
   completion_created: true
-  checkpoint_status: "ready_for_separate_authorization"
+  checkpoint_status: "checkpointed"
   push_performed: false
   deployment_performed: false
+
+checkpoint_evidence:
+  commit: "cb2617b177eafe1985ebc0e7c26473f105323c20"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "HOME-POSITIONING-ORDER-LINKS-01"
