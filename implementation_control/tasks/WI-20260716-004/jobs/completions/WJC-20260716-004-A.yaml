@@ -1,0 +1,175 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260716-004-A"
+task_id: "WI-20260716-004"
+job_id: "WJ-20260716-004-A"
+created_utc: "2026-07-16T16:05:48Z"
+completed_utc: "2026-07-16T16:05:48Z"
+status: "completed"
+
+summary: "Contained all 37 Diagram Gallery media surfaces without changing card structure copy assets links metadata manifests provenance or source authority."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260716-003.md"
+  - "implementation_control/handoffs/WH-20260716-003.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-004.md"
+  - "implementation_control/handoffs/WH-20260716-004.yaml"
+  - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
+  - "src/components/DiagramGalleryList.astro"
+  - "tests/test_image_loading_policy.py"
+
+implementation_results:
+  target_surface: "all 37 cards rendered by DiagramGalleryList on the Diagram Gallery route"
+  media_link_rule: "width and max width 100 percent with stretched alignment"
+  bounded_grid_rule: "single minmax zero column and row keep replaced image boxes within the media surface"
+  image_rule: "width height max width and max height 100 percent with zero minimums centered object fit contain"
+  desktop_height_bounds: "13 to 22 rem preserved"
+  compact_height_bounds: "11 to 18 rem preserved"
+  intrinsic_width_height_status: "preserved"
+  aspect_ratio_metadata_status: "preserved"
+  lazy_loading_status: "preserved"
+  async_decoding_status: "preserved"
+  alt_text_status: "preserved"
+  original_image_link_status: "preserved"
+  card_structure_change_status: "none"
+  route_copy_change_status: "none"
+  global_style_change_status: "none"
+  public_api_or_type_change_status: "none"
+  public_asset_change_status: "none"
+  manifest_change_status: "none"
+  provenance_change_status: "none"
+  source_binding_change_status: "none"
+
+regression_test_evidence:
+  status: "passed"
+  contract: "The existing image policy test now enforces full track width bounded minmax grid tracks zero image minimums full media sizing centered containment metadata loading and decoding."
+  baseline_command: ".venv/bin/python -m pytest tests/test_image_loading_policy.py -q"
+  baseline_result: "The new contract failed with 1 failed and 2 passed because the media link lacked a full width rule."
+  final_command: ".venv/bin/python -m pytest tests/test_image_loading_policy.py -q"
+  final_result: "All 3 image policy tests passed after the containment correction."
+
+runtime_review:
+  status: "passed"
+  route: "/resources/diagrams/"
+  card_count: 37
+  group_counts: "13 physics 7 AI workflow 7 operations 10 source authority"
+  baseline_desktop_css_viewport: "1455 by 1285"
+  baseline_overflow_card_count: 25
+  baseline_document_client_width: "1435 pixels"
+  baseline_body_scroll_width: "2871 pixels"
+  tested_viewports:
+    - "desktop 1455 by 1285 CSS pixels"
+    - "intermediate 1024 by 900 CSS pixels"
+    - "breakpoint 780 by 800 CSS pixels"
+    - "compact 520 by 840 CSS pixels"
+  final_overflow_card_count: 0
+  card_horizontal_overflow: false
+  body_horizontal_overflow: false
+  document_horizontal_overflow: false
+  desktop_grid_structure: "two columns preserved at desktop and intermediate widths"
+  compact_grid_structure: "one column preserved at breakpoint and compact widths"
+  desktop_link_height_range: "208 to 352 pixels"
+  intermediate_link_height_range: "208 to 352 pixels"
+  breakpoint_link_height_range: "176 to 288 pixels"
+  compact_link_height_range: "176 to 288 pixels"
+  computed_object_fit: "contain on every image"
+  computed_object_position: "50 percent 50 percent on every image"
+  widest_example: "Finite toy route freeze at 1568 by 158 pixels"
+  tallest_example: "Validator PASS boundary at 868 by 1898 pixels"
+  extreme_visual_result: "Both examples remained fully visible centered proportional and letterboxed inside their media boxes."
+  link_click_result: "Both extreme examples opened their original PNG destinations and returned to the gallery."
+  metadata_and_alt_result: "All 37 links matched their image sources and every image retained alt text."
+  browser_console_warnings_or_errors: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The bounded packet allowlist and active control records were structurally coherent before closeout."
+  - id: "focused-image-policy-tests"
+    command: ".venv/bin/python -m pytest tests/test_image_loading_policy.py -q"
+    status: "passed"
+    evidence: "All 3 focused tests passed after the new contract first failed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest -q"
+    status: "passed"
+    evidence: "162 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed with no manifest changes required."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remains current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes with no route source changes."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against accepted source pin 57438af."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "Quality passed against accepted source pin 57438af."
+  - id: "diagram-gallery-contract-review"
+    command: "manual inspection of diagram gallery component containment loading accessibility and link contracts"
+    status: "passed"
+    evidence: "Component rules and all 37 metadata alt loading decoding and link contracts remained intact."
+  - id: "runtime-diagram-gallery-review"
+    command: "manual inspection of all 37 diagram gallery cards at desktop intermediate breakpoint and compact widths for containment proportions links and zero overflow"
+    status: "passed"
+    evidence: "All four widths passed with zero overflow preserved layouts and height bounds full extreme visibility working links and no console issues."
+
+validation_environment:
+  prior_checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  prior_checkpoint_replayed: false
+  website_branch: "main"
+  website_ahead_of_origin_main: 7
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_head: "bae878078eb2b0747c0fa087521ef7fc97551fab"
+  live_upstream_branch: "codex/v19-remaining-relay"
+  live_upstream_tree_status: "dirty external non-main branch observed and preserved read only"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "Only DiagramGalleryList one focused existing test and implementation control records changed."
+  - "Card structure route copy links alt text intrinsic metadata loading PNGs global styles manifests provenance source bindings source refresh and upstream state remain unchanged."
+  - "Checkpoint push and deployment remain unauthorized and were not performed."
+
+checkpoint_readiness:
+  ready: true
+  authorized: false
+  command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run checkpoint:implementation"
+  dry_run_status: "passed"
+  packet_path_count: 12
+  ignored_unrelated_path_count: 0
+  staged_path_count: 0
+  expected_effect: "After separate owner authorization stage and commit only the 12 completion listed paths."
+
+next_recommended_action:
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."

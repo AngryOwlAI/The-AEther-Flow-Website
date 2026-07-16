@@ -1,0 +1,160 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260716-004-A"
+task_id: "WI-20260716-004"
+title: "Apply Diagram Gallery Media Containment"
+created_utc: "2026-07-16T15:50:25Z"
+updated_utc: "2026-07-16T16:05:48Z"
+status: "active"
+
+objective: "Apply one component scoped width and image containment correction so every Diagram Gallery PNG remains proportional inside its card across desktop and compact layouts."
+
+execution_boundary:
+  invocation_limit: "one bounded DIAGRAM-GALLERY-CONTAINMENT-01 packet"
+  packet_id: "DIAGRAM-GALLERY-CONTAINMENT-01"
+  prior_checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  prior_checkpoint_replay_status: "forbidden"
+  component_change_status: "one scoped containment correction authorized"
+  test_change_status: "one focused existing test extension authorized"
+  global_style_change_status: "forbidden"
+  route_source_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  manifest_change_status: "not_required"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website baseline and all evidence allowlisted by WI-20260716-004"
+
+allowed_writes:
+  - "src/components/DiagramGalleryList.astro"
+  - "tests/test_image_loading_policy.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260716-003.yaml"
+  - "implementation_control/handoffs/WH-20260716-003.md"
+  - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-004.yaml"
+  - "implementation_control/handoffs/WH-20260716-004.md"
+  - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
+
+required_outputs:
+  - "All 37 diagram media links remain within their grid tracks and cards."
+  - "Every PNG remains fully visible centered proportional and uncropped within the existing height bounds."
+  - "Intrinsic dimensions aspect ratio metadata lazy loading decoding alt text and original PNG links remain unchanged."
+  - "The desktop and compact card structures group counts copy assets and manifests remain unchanged."
+  - "Focused full aggregate quality build and responsive browser checks pass against the accepted source root."
+  - "No checkpoint push deployment source refresh or upstream write occurs."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner requested implementation of the complete accepted plan."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public wording or claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No navigation or route change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One component scoped gallery containment correction."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No route source public asset or manifest authority record change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "diagram-gallery-contract-review"
+    command: "manual inspection of diagram gallery component containment loading accessibility and link contracts"
+    required: true
+  - id: "runtime-diagram-gallery-review"
+    command: "manual inspection of all 37 diagram gallery cards at desktop intermediate breakpoint and compact widths for containment proportions links and zero overflow"
+    required: true
+
+stop_conditions:
+  - "Any route copy card structure link destination alt text image metadata or loading behavior changes."
+  - "Any diagram is cropped distorted or escapes its media link card or page width."
+  - "Any desktop or compact media height leaves the existing bounds."
+  - "Any global style route source PNG manifest provenance source binding or upstream source changes."
+  - "Any required validator or browser review fails."
+  - "Work enters checkpoint staging push deployment source refresh or upstream write."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260716-004-A"
+  path: "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  diagram_gallery_card_count: 37
+  observed_overflow_card_count: 25
+  final_overflow_card_count: 0
+  component_change_status: "media links fill their grid tracks and images fill bounded minmax zero grid areas with centered object fit contain"
+  regression_test_status: "baseline failed 1 with 2 passed and final passed all 3 image policy tests"
+  python_tests: "passed 162 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed all 37 cards at 1455 1024 780 and 520 CSS pixel widths with zero card page or body overflow preserved layout and height bounds full extreme diagram visibility working links and zero console errors"
+  completion_created: true
+  checkpoint_status: "not_authorized"

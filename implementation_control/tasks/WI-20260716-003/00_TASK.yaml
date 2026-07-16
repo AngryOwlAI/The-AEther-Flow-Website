@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260716-003"
 title: "Match Related Internal Routes Heading Measure"
 created_utc: "2026-07-16T14:46:23Z"
-updated_utc: "2026-07-16T15:00:07Z"
-status: "active"
+updated_utc: "2026-07-16T15:50:25Z"
+status: "superseded"
 
 source_context:
   packet_id: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
@@ -147,8 +147,8 @@ stop_conditions:
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
-  staging_allowed_by_this_job: false
-  closeout: "Create WJC-20260716-003-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+  staging_allowed_by_this_job: true
+  closeout: "Completion WJC-20260716-003-A was checkpointed locally at 8fb7ab0 and must not be replayed."
 
 handoff:
   latest_handoff_id: "WH-20260716-003"
@@ -161,12 +161,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
+  summary: "Proceed through the owner-authorized Diagram Gallery containment repair."
+  do_not_skip: "Do not replay checkpoint 8fb7ab0 or change global styles route copy assets manifests source bindings checkpoint push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   related_internal_routes_usage_count: 24
   selected_heading_desktop_width_before: "approximately 470 CSS pixels from the shared 14ch cap"
   ordinary_section_heading_width: "820 CSS pixels"
@@ -183,4 +183,10 @@ implementation_status:
   route_source_change_status: "none"
   manifest_change_status: "none"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"

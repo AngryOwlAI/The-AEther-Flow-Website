@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T15:00:07Z"
+updated_utc: "2026-07-16T16:05:48Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
-  - "implementation_control/handoffs/WH-20260716-003.yaml"
+  - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-004.yaml"
   - "current_git_state_and_validator_output"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -23,31 +23,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260716-003"
-  title: "Match Related Internal Routes Heading Measure"
+  task_id: "WI-20260716-004"
+  title: "Contain Diagram Gallery Media"
   status: "active"
-  path: "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
   planning_context:
-    task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
-    adopted_plan: "Owner selected Related routes only and requested the approved plan be implemented after checkpointing the prior header packet"
-    prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
+    task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
+    adopted_plan: "Owner requested the complete Diagram Gallery Containment Repair plan after checkpointing the prior heading packet"
+    prior_checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner authorized the prior checkpoint and one bounded shared component heading measure correction for all exact Related internal routes bands."
+    owner_authorization: "Owner authorized the prior checkpoint and one bounded diagram gallery containment repair without a second checkpoint push or deployment."
 
 current_job:
-  job_id: "WJ-20260716-003-A"
+  job_id: "WJ-20260716-004-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+  path: "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260716-003"
+  handoff_id: "WH-20260716-004"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260716-003.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260716-003.md"
+  yaml_path: "implementation_control/handoffs/WH-20260716-004.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260716-004.md"
 
 latest_completion:
-  completion_id: "WJC-20260716-003-A"
-  path: "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+  completion_id: "WJC-20260716-004-A"
+  path: "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,53 +81,57 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "related-routes-contract-review"
-    command: "manual inspection of all exact Related internal routes CommandBand usages and the unrelated heading negative control"
+  - id: "diagram-gallery-contract-review"
+    command: "manual inspection of diagram gallery component containment loading accessibility and link contracts"
     required_for_current_job: true
-  - id: "runtime-related-routes-review"
-    command: "manual inspection of all 24 related route headings at desktop and compact widths for measure wrapping rail preservation and zero overflow"
+  - id: "runtime-diagram-gallery-review"
+    command: "manual inspection of all 37 diagram gallery cards at desktop intermediate breakpoint and compact widths for containment proportions links and zero overflow"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
   do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
 
 preflight_evidence:
-  status: "passed_for_related_internal_routes_title_measure_packet"
-  observed_utc: "2026-07-16T14:46:23Z"
-  prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
+  status: "passed_for_diagram_gallery_containment_packet"
+  observed_utc: "2026-07-16T15:50:25Z"
+  prior_checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
   prior_checkpoint_observed_from_git: true
   prior_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 6
+  website_ahead_of_origin_main: 7
   website_worktree_status: "clean_before_packet_open"
-  related_internal_routes_usage_count: 24
-  selected_heading_desktop_width_before: "approximately 470 CSS pixels from the shared 14ch cap"
-  ordinary_section_heading_width: "820 CSS pixels"
-  selected_heading_compact_width_before: "approximately 330 CSS pixels from the shared 14ch cap"
+  diagram_gallery_card_count: 37
+  diagram_gallery_group_counts: "13 physics 7 AI workflow 7 operations 10 source authority"
+  observed_overflow_card_count: 25
+  observed_browser_viewport: "1455 by 1285 CSS pixels"
+  observed_body_scroll_width: "2871 CSS pixels against 1435 CSS pixel document width"
+  observed_failure: "The media link uses an intrinsic aspect ratio with height bounds but no definite track width so wide diagrams escape their grid columns and cards."
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  live_upstream_head: "c71ab2760ba0b1e2c2bf9341296d59525c1bd04f"
-  live_upstream_worktree_status: "dirty external non-main branch observed and preserved read only"
+  live_upstream_worktree_status: "external live state preserved read only"
   source_refresh_status: "not_performed"
 
 implementation_status:
   status: "ready_for_checkpoint"
-  target_surface: "all shared CommandBand sections whose eyebrow is exact Related internal routes"
-  target_element: "related route command-band h2 title box"
-  observed_failure: "The shared 14ch h2 cap makes related route title boxes substantially narrower than the existing 820 pixel section title measure."
-  authorized_change: "One conditional command-band-related-routes modifier one scoped 820 pixel max width rule and one focused regression test."
-  unrelated_command_band_status: "Reading Paths Route clusters retained the shared 14ch cap at desktop and compact widths"
-  route_source_change_status: "forbidden"
-  manifest_change_status: "not_required because no route source file or public asset changes"
-  regression_test_status: "baseline failed 1 with 35 deselected and final passed 1 with 35 deselected plus all 36 positioning tests"
+  target_surface: "all 37 cards rendered by DiagramGalleryList on the Diagram Gallery route"
+  target_element: "diagram gallery media links and their PNG images"
+  authorized_change: "One component scoped width containment rule one component scoped image contain rule and focused regression coverage."
+  layout_change_status: "preserve two column desktop and single column compact card structures"
+  height_bound_status: "preserve 13 to 22 rem desktop and 11 to 18 rem compact bounds"
+  component_change_status: "media links fill their grid tracks and images fill bounded minmax zero grid areas with centered object fit contain"
+  regression_test_status: "baseline failed 1 with 2 passed and final passed all 3 image policy tests"
   python_tests: "passed 162 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source root"
   quality_gate: "passed against accepted clean source root"
-  runtime_review: "passed all 24 affected routes at 1440 and 520 CSS pixel widths with 820 and 436 pixel heading boxes zero overflow preserved lead and rail geometry representative visuals and zero console errors"
+  runtime_review: "passed all 37 cards at 1455 1024 780 and 520 CSS pixel widths with zero card page or body overflow preserved layout and height bounds full extreme diagram visibility working links and zero console errors"
+  route_source_change_status: "forbidden"
+  global_style_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  manifest_change_status: "not_required"
   completion_created: true
   checkpoint_status: "not_authorized"
   push_performed: false

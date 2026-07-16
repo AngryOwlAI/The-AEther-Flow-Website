@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260716-003"
 created_utc: "2026-07-16T14:46:23Z"
-updated_utc: "2026-07-16T15:00:07Z"
-status: "ready_for_checkpoint"
+updated_utc: "2026-07-16T15:50:25Z"
+status: "superseded"
 
 task_id: "WI-20260716-003"
 job_id: "WJ-20260716-003-A"
@@ -32,7 +32,7 @@ source_authority_boundary:
   live_upstream_head: "c71ab2760ba0b1e2c2bf9341296d59525c1bd04f"
   live_upstream_worktree_status: "dirty external non-main branch observed and preserved read only"
   upstream_write_status: "forbidden"
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
@@ -43,12 +43,12 @@ checkpoint_transition:
   repeated: false
 
 next_recommended_action:
-  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
+  summary: "Proceed through the owner-authorized Diagram Gallery containment repair."
+  do_not_skip: "Do not replay checkpoint 8fb7ab0 or change global styles route copy assets manifests source bindings checkpoint push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   target_surface: "all exact Related internal routes CommandBand sections"
   target_element: "related route h2 title box"
   observed_failure: "resolved from the shared 14ch cap to the existing 820 pixel section title measure"
@@ -61,9 +61,21 @@ implementation_status:
   runtime_review: "passed all 24 routes at 1440 and 520 CSS pixel widths with zero overflow preserved lead and rail geometry three representative visuals and zero console errors"
   unrelated_negative_control: "Reading Paths Route clusters retained no modifier and the 14ch cap"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260716-003-A"
   path: "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  replayed: false
+  next_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
+
+superseded_by:
+  handoff_id: "WH-20260716-004"
+  task_id: "WI-20260716-004"
+  job_id: "WJ-20260716-004-A"
+  checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  reason: "The Related internal routes heading measure packet was checkpointed before the separately bounded Diagram Gallery containment packet opened."

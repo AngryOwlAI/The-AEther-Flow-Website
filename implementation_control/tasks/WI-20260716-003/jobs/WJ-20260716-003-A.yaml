@@ -4,8 +4,8 @@ job_id: "WJ-20260716-003-A"
 task_id: "WI-20260716-003"
 title: "Apply Related Routes Command Band Title Measure"
 created_utc: "2026-07-16T14:46:23Z"
-updated_utc: "2026-07-16T15:00:07Z"
-status: "active"
+updated_utc: "2026-07-16T15:50:25Z"
+status: "superseded"
 
 objective: "Apply one exact-label conditional modifier and one scoped width override so all Related internal routes h2 boxes match the existing 820 pixel section title measure while unrelated command bands remain unchanged."
 
@@ -131,7 +131,7 @@ stop_conditions:
 
 checkpoint:
   command: "npm run checkpoint:implementation"
-  staging_allowed: false
+  staging_allowed: true
   push_allowed: false
   deploy_allowed: false
 
@@ -141,12 +141,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
+  summary: "Proceed through the owner-authorized Diagram Gallery containment repair."
+  do_not_skip: "Do not replay checkpoint 8fb7ab0 or change global styles route copy assets manifests source bindings checkpoint push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   related_internal_routes_usage_count: 24
   component_change_status: "exact eyebrow condition adds command-band-related-routes without changing props ids ARIA wording or slots"
   style_change_status: "one modifier-scoped min 820 pixels and 100 percent h2 max width rule added while the base 14ch rule remains"
@@ -158,4 +158,10 @@ implementation_status:
   runtime_review: "passed all 24 affected routes at 1440 and 520 CSS pixel widths with exact 820 and 436 pixel heading boxes zero overflow preserved lead and rail geometry representative visuals and zero console errors"
   unrelated_negative_control: "Reading Paths Route clusters retained no modifier and the 14ch cap at approximately 470 desktop and 330 compact CSS pixels"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"

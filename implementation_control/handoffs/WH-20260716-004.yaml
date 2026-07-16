@@ -1,0 +1,78 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260716-004"
+created_utc: "2026-07-16T15:50:25Z"
+updated_utc: "2026-07-16T16:05:48Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260716-004"
+job_id: "WJ-20260716-004-A"
+
+summary: "Completed the owner-authorized Diagram Gallery containment repair with focused full aggregate quality and four-width browser evidence."
+
+current_state:
+  - "Git proves RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 was checkpointed locally at 8fb7ab0 and will not be replayed."
+  - "The website worktree was clean before this control transition."
+  - "The accepted source root remains clean at pin 57438af."
+  - "The Diagram Gallery renders 37 cards across four groups with counts 13 7 7 and 10."
+  - "Baseline browser geometry at 1455 by 1285 CSS pixels found 25 overflowing cards and body scroll width 2871 pixels against a 1435 pixel document width."
+  - "DiagramGalleryList now stretches each media link to its grid track and bounds the image in minmax zero grid tracks with centered object fit contain."
+  - "The focused image policy contract first failed with 1 failed and 2 passed and then passed all 3 tests."
+  - "The full 162 test suite manifest claim content provenance aggregate quality and 64 page build gates passed."
+  - "All 37 cards passed geometry review at 1455 1024 780 and 520 CSS pixel widths with zero card body or document overflow."
+  - "Desktop and intermediate media heights remained 208 to 352 pixels and breakpoint and compact heights remained 176 to 288 pixels."
+  - "Finite toy route freeze and Validator PASS boundary showed full centered letterboxed visibility and both original PNG links opened successfully."
+  - "The browser reported zero console warnings or errors."
+  - "Checkpoint dry run resolved exactly 12 packet paths with no ignored unrelated paths and no staged paths."
+  - "Card structure route copy assets metadata links manifests provenance global styles source refresh upstream writes checkpoint push and deployment remain outside the packet."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  live_upstream_head: "bae878078eb2b0747c0fa087521ef7fc97551fab"
+  live_upstream_worktree_status: "dirty external non-main branch observed and preserved read only"
+  upstream_write_status: "forbidden"
+  public_claim_write_status: "not_required"
+  public_asset_write_status: "forbidden"
+  manifest_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+checkpoint_transition:
+  prior_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
+  checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  observed_from_git: true
+  repeated: false
+
+next_recommended_action:
+  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+stop_before:
+  - "Global style route copy card structure public asset manifest provenance or source binding changes"
+  - "Git checkpoint push Cloudflare deployment source refresh or upstream write"
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  diagram_gallery_card_count: 37
+  group_counts: "13 physics 7 AI workflow 7 operations 10 source authority"
+  observed_overflow_card_count: 25
+  final_overflow_card_count: 0
+  component_change_status: "media links fill their grid tracks and images fill bounded minmax zero grid areas with centered object fit contain"
+  regression_test_status: "passed all 3 image policy tests after the new contract first failed"
+  python_tests: "passed 162 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed all 37 cards at four responsive widths with zero overflow preserved group counts layout height bounds proportions and links"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260716-004-A"
+  path: "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
+  status: "completed"

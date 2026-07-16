@@ -76,5 +76,32 @@ def test_comprehension_and_gallery_loading_policies_are_explicit() -> None:
     assert 'loading="lazy"' in gallery
     assert 'decoding="async"' in gallery
 
+    image_link_rule = re.search(
+        r"\.diagram-gallery-image-link \{(?P<body>.*?)\n  \}",
+        gallery,
+        re.DOTALL,
+    )
+    assert image_link_rule is not None
+    assert "width: 100%;" in image_link_rule.group("body")
+    assert "max-width: 100%;" in image_link_rule.group("body")
+    assert "justify-self: stretch;" in image_link_rule.group("body")
+    assert "grid-template-columns: minmax(0, 1fr);" in image_link_rule.group("body")
+    assert "grid-template-rows: minmax(0, 1fr);" in image_link_rule.group("body")
+
+    image_rule = re.search(
+        r"\.diagram-gallery-image-link img \{(?P<body>.*?)\n  \}",
+        gallery,
+        re.DOTALL,
+    )
+    assert image_rule is not None
+    assert "width: 100%;" in image_rule.group("body")
+    assert "max-width: 100%;" in image_rule.group("body")
+    assert "height: 100%;" in image_rule.group("body")
+    assert "max-height: 100%;" in image_rule.group("body")
+    assert "min-width: 0;" in image_rule.group("body")
+    assert "min-height: 0;" in image_rule.group("body")
+    assert "object-fit: contain;" in image_rule.group("body")
+    assert "object-position: center;" in image_rule.group("body")
+
     assert 'import { withImageDimensions } from "./imageMetadata";' in site_content
     assert "diagramGallerySourceItems.map(withImageDimensions)" in site_content
