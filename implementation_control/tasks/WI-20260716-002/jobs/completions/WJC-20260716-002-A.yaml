@@ -1,0 +1,144 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260716-002-A"
+task_id: "WI-20260716-002"
+job_id: "WJ-20260716-002-A"
+created_utc: "2026-07-16T14:12:27Z"
+completed_utc: "2026-07-16T14:12:27Z"
+status: "completed"
+
+summary: "Corrected the shared header brand from Angry Owl to exact AngryOwl spelling with regression full validation and responsive browser evidence while preserving every other public surface."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260716-001.md"
+  - "implementation_control/handoffs/WH-20260716-001.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260716-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-001/jobs/WJ-20260716-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-002.md"
+  - "implementation_control/handoffs/WH-20260716-002.yaml"
+  - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+  - "implementation_control/tasks/WI-20260716-002/jobs/completions/WJC-20260716-002-A.yaml"
+  - "src/layouts/BaseLayout.astro"
+  - "tests/test_mobile_navigation.py"
+
+implementation_results:
+  target_surface: "shared site header brand link"
+  source_value: "const brandName equals AngryOwl"
+  visible_text: "AngryOwl"
+  accessible_home_label: "AngryOwl home"
+  home_href: "/"
+  brand_logo_change_status: "none"
+  header_markup_change_status: "none"
+  navigation_behavior_change_status: "none"
+  footer_text_change_status: "none"
+  route_source_change_status: "none"
+  style_change_status: "none"
+  public_asset_change_status: "none"
+  manifest_change_status: "none"
+  source_binding_change_status: "none"
+
+regression_test_evidence:
+  status: "passed"
+  baseline_command: ".venv/bin/python -m pytest tests/test_mobile_navigation.py -q"
+  baseline_result: "The new contract failed with 1 failed and 4 passed because brandName was Angry Owl."
+  final_command: ".venv/bin/python -m pytest tests/test_mobile_navigation.py -q"
+  final_result: "5 tests passed with exact AngryOwl source visible and accessible label contracts."
+
+runtime_review:
+  status: "passed"
+  routes:
+    - "Home"
+    - "AI current state"
+  desktop_measured_css_viewport: "1737 by 1713"
+  compact_measured_css_viewport: "693 by 1200"
+  visible_text: "AngryOwl"
+  accessible_home_label: "AngryOwl home"
+  home_href: "/"
+  brand_visible: true
+  brand_clipped: false
+  label_inside_viewport: true
+  page_horizontal_overflow: false
+  compact_menu_visible: true
+  browser_console_errors: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The bounded packet allowlist and control pointers are structurally coherent."
+  - id: "focused-header-brand-tests"
+    command: ".venv/bin/python -m pytest tests/test_mobile_navigation.py -q"
+    status: "passed"
+    evidence: "5 tests passed after the new contract first failed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "161 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed with no manifest changes required."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remains current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes with no route source changes."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against accepted source pin 57438af."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "Quality passed against accepted source pin 57438af."
+  - id: "header-brand-text-review"
+    command: "manual inspection of header brand visible text and accessible home label for exact AngryOwl spelling"
+    status: "passed"
+    evidence: "Source DOM snapshot and rendered header use exact AngryOwl and AngryOwl home values."
+  - id: "runtime-header-brand-review"
+    command: "manual inspection of header brand on Home and AI current state at desktop and compact widths for exact spelling clipping and navigation preservation"
+    status: "passed"
+    evidence: "Both routes passed desktop and compact review with no clipping overflow or console errors and preserved menu behavior."
+
+validation_environment:
+  prior_checkpoint: "b6f291b2b2851ba9b77aa613e6f52233b5b726c7"
+  prior_checkpoint_replayed: false
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_head: "3826b37391ab6e0ce9091eebae14f545a770e485"
+  live_upstream_tree_status: "dirty external non-main branch observed and preserved read only"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "Only one shared BaseLayout brandName string and one focused regression test changed outside control records."
+  - "Footer text other navigation content styles routes assets manifests source bindings source refresh upstream writes checkpoint push and deployment remain unchanged."
+
+checkpoint_readiness:
+  ready: true
+  authorized: false
+  command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run checkpoint:implementation"
+  expected_effect: "After separate owner authorization stage and commit only the 12 completion listed paths."
+
+next_recommended_action:
+  task_packet: "HEADER-BRAND-SPELLING-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."

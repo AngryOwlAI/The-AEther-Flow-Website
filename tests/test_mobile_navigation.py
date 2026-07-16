@@ -9,6 +9,14 @@ BASE_LAYOUT = REPO_ROOT / "src/layouts/BaseLayout.astro"
 GLOBAL_CSS = REPO_ROOT / "src/styles/global.css"
 
 
+def test_shared_header_uses_canonical_angryowl_spelling() -> None:
+    layout = BASE_LAYOUT.read_text(encoding="utf-8")
+
+    assert 'const brandName = "AngryOwl";' in layout
+    assert 'aria-label={`${brandName} home`}' in layout
+    assert "<span>{brandName}</span>" in layout
+
+
 def test_mobile_menu_uses_one_controlled_disclosure() -> None:
     layout = BASE_LAYOUT.read_text(encoding="utf-8")
 

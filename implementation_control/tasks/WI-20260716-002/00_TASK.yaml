@@ -1,0 +1,180 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260716-002"
+title: "Use Canonical AngryOwl Header Spelling"
+created_utc: "2026-07-16T14:03:53Z"
+updated_utc: "2026-07-16T14:12:27Z"
+status: "active"
+
+source_context:
+  packet_id: "HEADER-BRAND-SPELLING-01"
+  owner_authorization: "Owner authorized checkpoint b6f291b2 and requested the selected header brand spelling change from Angry Owl to AngryOwl."
+  prior_task: "WI-20260716-001"
+  prior_checkpoint: "b6f291b2b2851ba9b77aa613e6f52233b5b726c7"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+
+goal: "Display AngryOwl as the exact shared site-header brand text and accessible home-link label without changing navigation behavior footer text assets routes manifests or source authority."
+
+requirements:
+  - "Treat checkpoint b6f291b2 as completed Git authority and do not replay it."
+  - "Change only the shared BaseLayout brandName value from Angry Owl to AngryOwl."
+  - "Render exact visible header text AngryOwl and the derived accessible label AngryOwl home on every BaseLayout route."
+  - "Preserve the brand logo home href markup navigation behavior footer copyright text and all other public copy."
+  - "Add one focused regression test for the exact shared header spelling and derived label contract."
+  - "Confirm no page provenance regeneration is required because no route source file or public asset changes."
+  - "Validate the Home and AI current state header at desktop and compact widths."
+  - "Leave the completed packet ready for separate local checkpoint authorization without staging committing pushing or deploying."
+
+scope:
+  in_scope:
+    - "src/layouts/BaseLayout.astro one brandName string correction"
+    - "tests/test_mobile_navigation.py one focused shared-header regression test"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Any footer copyright wording creator attribution logo asset or brand style change"
+    - "Any navigation link route definition component structure responsive behavior or shared token change"
+    - "Any route source public manifest public asset source binding or claim change"
+    - "Source refresh upstream writes checkpoint push and deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "Git checkpoint b6f291b2"
+    - "BaseLayout focused layout tests build output and browser evidence"
+    - "Website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "/tmp/aether-flow-source-57438af-homeintro-ZiApaw at accepted source pin 57438af"
+
+allowed_writes:
+  website_repository:
+    - "src/layouts/BaseLayout.astro"
+    - "tests/test_mobile_navigation.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260716-001.yaml"
+    - "implementation_control/handoffs/WH-20260716-001.md"
+    - "implementation_control/tasks/WI-20260716-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260716-001/jobs/WJ-20260716-001-A.yaml"
+    - "implementation_control/handoffs/WH-20260716-002.yaml"
+    - "implementation_control/handoffs/WH-20260716-002.md"
+    - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+    - "implementation_control/tasks/WI-20260716-002/jobs/completions/WJC-20260716-002-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner authorized the prior checkpoint and the bounded AngryOwl header spelling successor."
+  public_claim_changes:
+    status: "not_required"
+    reason: "The brand spelling correction does not alter a scientific mathematical governance or workflow claim."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh or binding change is authorized."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "The home destination and navigation definitions remain unchanged."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Owner approval covers one shared BaseLayout brandName string and no structural style token or behavior change."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset changes."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No route source file public asset or manifest authority record changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "header-brand-text-review"
+    command: "manual inspection of header brand visible text and accessible home label for exact AngryOwl spelling"
+    required: true
+  - id: "runtime-header-brand-review"
+    command: "manual inspection of header brand on Home and AI current state at desktop and compact widths for exact spelling clipping and navigation preservation"
+    required: true
+
+stop_conditions:
+  - "Any text outside the BaseLayout brandName value changes."
+  - "Any footer navigation structure route source style token asset manifest or source binding changes."
+  - "The header visible text or accessible home label differs from exact AngryOwl spelling."
+  - "Any tested viewport clips overflows or breaks the home link and primary navigation."
+  - "Any required validator or browser review fails."
+  - "Work enters source refresh upstream write checkpoint push or deployment."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: false
+  closeout: "Create WJC-20260716-002-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+
+handoff:
+  latest_handoff_id: "WH-20260716-002"
+  yaml_path: "implementation_control/handoffs/WH-20260716-002.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260716-002.md"
+
+completion_record:
+  completion_id: "WJC-20260716-002-A"
+  path: "implementation_control/tasks/WI-20260716-002/jobs/completions/WJC-20260716-002-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HEADER-BRAND-SPELLING-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-002-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_surface: "shared site header brand link"
+  target_element: "BaseLayout brandName visible span and derived accessible home label"
+  observed_failure: "Header displays Angry Owl while the canonical requested spelling is AngryOwl"
+  authorized_change: "one shared brandName string from Angry Owl to AngryOwl"
+  footer_change_status: "forbidden"
+  manifest_change_status: "not_required"
+  regression_test_status: "baseline failed 1 with 4 passed and final passed 5 tests"
+  python_tests: "passed 161 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed Home and AI current state in desktop and compact layouts with exact text label home href zero clipping zero page overflow preserved compact menu and zero console errors"
+  completion_created: true
+  checkpoint_status: "not_authorized"

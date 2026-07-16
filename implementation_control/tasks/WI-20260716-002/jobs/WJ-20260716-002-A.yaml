@@ -1,0 +1,159 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260716-002-A"
+task_id: "WI-20260716-002"
+title: "Correct Shared Header Brand Spelling"
+created_utc: "2026-07-16T14:03:53Z"
+updated_utc: "2026-07-16T14:12:27Z"
+status: "active"
+
+objective: "Correct the shared BaseLayout header brand from Angry Owl to exact AngryOwl spelling while preserving every other header footer navigation route asset manifest and source boundary."
+
+execution_boundary:
+  invocation_limit: "one bounded HEADER-BRAND-SPELLING-01 packet"
+  packet_id: "HEADER-BRAND-SPELLING-01"
+  prior_checkpoint: "b6f291b2b2851ba9b77aa613e6f52233b5b726c7"
+  prior_checkpoint_replay_status: "forbidden"
+  header_brand_change_status: "one brandName string authorized"
+  footer_change_status: "forbidden"
+  component_structure_change_status: "forbidden"
+  style_change_status: "forbidden"
+  route_definition_change_status: "forbidden"
+  manifest_change_status: "not_required"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website baseline and all evidence allowlisted by WI-20260716-002"
+
+allowed_writes:
+  - "src/layouts/BaseLayout.astro"
+  - "tests/test_mobile_navigation.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260716-001.yaml"
+  - "implementation_control/handoffs/WH-20260716-001.md"
+  - "implementation_control/tasks/WI-20260716-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-001/jobs/WJ-20260716-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-002.yaml"
+  - "implementation_control/handoffs/WH-20260716-002.md"
+  - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+  - "implementation_control/tasks/WI-20260716-002/jobs/completions/WJC-20260716-002-A.yaml"
+
+required_outputs:
+  - "The shared header visible brand text is exact AngryOwl on every BaseLayout route."
+  - "The derived home-link accessible label is exact AngryOwl home."
+  - "The brand logo home href markup navigation behavior footer copyright text and all other copy remain unchanged."
+  - "One focused regression test fails before and passes after the spelling correction."
+  - "Full validators build and responsive browser review pass."
+  - "No route source asset manifest source checkpoint push or deployment change occurs."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner authorized the prior checkpoint and bounded AngryOwl header successor."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No scientific mathematical governance or workflow claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No home destination navigation definition or route change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One shared BaseLayout brandName string only."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No route source public asset or manifest authority record change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "header-brand-text-review"
+    command: "manual inspection of header brand visible text and accessible home label for exact AngryOwl spelling"
+    required: true
+  - id: "runtime-header-brand-review"
+    command: "manual inspection of header brand on Home and AI current state at desktop and compact widths for exact spelling clipping and navigation preservation"
+    required: true
+
+stop_conditions:
+  - "Any text outside the BaseLayout brandName value changes."
+  - "Any footer navigation structure route source style token asset manifest or source binding changes."
+  - "The header visible text or accessible home label differs from exact AngryOwl spelling."
+  - "Any tested viewport clips overflows or breaks the home link and primary navigation."
+  - "Any required validator or browser review fails."
+  - "Work enters source refresh upstream write checkpoint push or deployment."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260716-002-A"
+  path: "implementation_control/tasks/WI-20260716-002/jobs/completions/WJC-20260716-002-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HEADER-BRAND-SPELLING-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-002-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_surface: "shared site header brand link"
+  target_element: "BaseLayout brandName visible span and derived accessible home label"
+  observed_failure: "Header displays Angry Owl while the canonical requested spelling is AngryOwl"
+  regression_test_status: "baseline failed 1 with 4 passed and final passed 5 tests"
+  python_tests: "passed 161 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed Home and AI current state in desktop and compact layouts with exact text label home href zero clipping zero page overflow preserved compact menu and zero console errors"
+  completion_created: true
+  checkpoint_status: "not_authorized"
