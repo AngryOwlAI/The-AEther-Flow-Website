@@ -1,0 +1,178 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260716-001"
+title: "Fit Project System Improvement Heading Inside Command Band"
+created_utc: "2026-07-16T13:44:26Z"
+updated_utc: "2026-07-16T13:53:09Z"
+status: "active"
+
+source_context:
+  packet_id: "PROJECT-SYSTEM-IMPROVEMENT-HEADING-FIT-01"
+  owner_authorization: "Owner reported that Improvement does not fit in the selected heading box and requested a fit correction with splitting allowed if necessary."
+  prior_task: "WI-20260715-038"
+  prior_checkpoint: "8773f24771e3b74b92c23f276fa34b2777efeda5"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+
+goal: "Keep the complete Project-System Improvement h1 inside its command-band copy box across desktop tablet and compact viewports without changing visible title text or shared component markup."
+
+requirements:
+  - "Treat checkpoint 8773f247 as completed Git authority and do not replay it."
+  - "Use the existing route-unique ai-wide-title-page hook for one bounded responsive title rule."
+  - "Preserve the exact Project-System Improvement title text h1 semantics generated id and command-band structure."
+  - "Keep other command-band titles and all route content unchanged."
+  - "Add focused regression coverage for the unique route hook responsive font bound and emergency wrapping rule."
+  - "Validate the selected heading at the reported viewport plus desktop tablet-boundary and compact widths."
+  - "Leave the completed packet ready for separate local checkpoint authorization without staging committing pushing or deploying."
+
+scope:
+  in_scope:
+    - "src/styles/global.css one ai-wide-title-page heading fit rule"
+    - "tests/test_public_positioning.py focused heading fit regression coverage"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Any CommandBand component markup property or behavior change"
+    - "Any title copy route content shared token asset manifest or source binding change"
+    - "Any styling change affecting a page without ai-wide-title-page"
+    - "Source refresh upstream writes checkpoint push and deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "Git checkpoint 8773f247"
+    - "Project system improvement route CommandBand component global CSS focused tests build output and browser evidence"
+    - "Website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "/tmp/aether-flow-source-57438af-homeintro-ZiApaw at accepted source pin 57438af"
+
+allowed_writes:
+  website_repository:
+    - "src/styles/global.css"
+    - "tests/test_public_positioning.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-038.yaml"
+    - "implementation_control/handoffs/WH-20260715-038.md"
+    - "implementation_control/tasks/WI-20260715-038/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-038/jobs/WJ-20260715-038-A.yaml"
+    - "implementation_control/handoffs/WH-20260716-001.yaml"
+    - "implementation_control/handoffs/WH-20260716-001.md"
+    - "implementation_control/tasks/WI-20260716-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260716-001/jobs/WJ-20260716-001-A.yaml"
+    - "implementation_control/tasks/WI-20260716-001/jobs/completions/WJC-20260716-001-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner supplied the selected browser comment and authorized the control transition needed after the prior checkpoint."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public wording or claim changes are authorized."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh or binding change is authorized."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No navigation or route definition change."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval covers one selector limited by the route-unique ai-wide-title-page class and no shared component or token change."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets change."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No route source public asset or source authority record changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "heading-text-parity-review"
+    command: "manual inspection of Project-System Improvement text and heading semantics for exact parity"
+    required: true
+  - id: "runtime-heading-fit-review"
+    command: "manual inspection of project-system improvement heading at 1303 by 1285 1141 by 900 780 by 900 and 520 by 900 CSS pixels for clipping overflow and readable wrapping"
+    required: true
+
+stop_conditions:
+  - "Any title wording heading semantics component markup route content or shared token changes."
+  - "Any selector affects a page without the route-unique ai-wide-title-page class."
+  - "Any tested viewport still clips or horizontally overflows the heading copy box."
+  - "Any required validator or browser review fails."
+  - "Work enters source refresh upstream write checkpoint push or deployment."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: false
+  closeout: "Create WJC-20260716-001-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+
+handoff:
+  latest_handoff_id: "WH-20260716-001"
+  yaml_path: "implementation_control/handoffs/WH-20260716-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260716-001.md"
+
+completion_record:
+  completion_id: "WJC-20260716-001-A"
+  path: "implementation_control/tasks/WI-20260716-001/jobs/completions/WJC-20260716-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "PROJECT-SYSTEM-IMPROVEMENT-HEADING-FIT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-001-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_route: "/ai-research-system/project-system-improvement/"
+  target_element: "Project-System Improvement command-band h1"
+  observed_failure: "Improvement extends beyond the command-band copy box at the reported viewport"
+  wording_change_status: "forbidden exact title text parity required"
+  component_change_status: "forbidden"
+  style_change_status: "one route-specific ai-wide-title-page rule authorized"
+  regression_test_status: "baseline failed 1 with 34 passed and final passed 35 tests"
+  python_tests: "passed 160 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed 1303 1141 781 780 and 520 CSS pixel widths with zero horizontal overflow"
+  completion_created: true
+  checkpoint_status: "not_authorized"

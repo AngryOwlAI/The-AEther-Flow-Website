@@ -3602,6 +3602,11 @@ html:has(body.project-overview-page) {
   font-size: 5.6rem;
 }
 
+.ai-wide-title-page .overview-command-hero .command-band-copy h1 {
+  font-size: clamp(2.55rem, 5.4vw, 4.5rem);
+  overflow-wrap: anywhere;
+}
+
 .home-page .overview-command-hero .command-band-copy h1 {
   max-width: 12ch;
   text-transform: none;

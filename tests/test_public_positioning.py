@@ -508,6 +508,29 @@ def test_project_introduction_columns_fill_padded_panels_and_remain_left_aligned
     )
 
 
+def test_project_system_improvement_heading_has_a_route_local_responsive_fit_rule() -> None:
+    source = AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE.read_text(
+        encoding="utf-8"
+    )
+    css = GLOBAL_CSS.read_text(encoding="utf-8")
+
+    assert "ai-wide-title-page" in source
+    wide_title_pages = [
+        path
+        for path in (REPO_ROOT / "src/pages").rglob("*.astro")
+        if "ai-wide-title-page" in path.read_text(encoding="utf-8")
+    ]
+    assert wide_title_pages == [AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE]
+
+    selector = ".ai-wide-title-page .overview-command-hero .command-band-copy h1"
+    blocks = re.findall(rf"{re.escape(selector)} \{{(.*?)\n\}}", css, re.DOTALL)
+    assert any(
+        "font-size: clamp(2.55rem, 5.4vw, 4.5rem);" in block
+        and "overflow-wrap: anywhere;" in block
+        for block in blocks
+    )
+
+
 def test_physics_overview_has_a_general_public_project_introduction_after_the_hero() -> None:
     source = PHYSICS_PAGE.read_text(encoding="utf-8")
 
