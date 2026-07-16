@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260715-033"
 title: "Improve Sitewide Project Introduction Readability"
 created_utc: "2026-07-16T00:35:00Z"
-updated_utc: "2026-07-16T00:49:19Z"
-status: "active"
+updated_utc: "2026-07-16T01:18:08Z"
+status: "superseded"
 
 source_context:
   packet_id: "SITEWIDE-PROJECT-INTRO-READABILITY-01"
@@ -194,7 +194,7 @@ next_recommended_action:
   do_not_skip: "Do not push deploy refresh sources mutate upstream or open another packet."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   baseline_surface_count: 29
   wording_change_status: "forbidden"
   normalized_text_parity: "passed 29 of 29 surfaces"
@@ -206,4 +206,10 @@ implementation_status:
   quality_gate: "passed"
   runtime_review: "passed 29 desktop and 29 compact route inspections"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "77ac8273cfc4782a813da5383cba0aaaf48cbd46"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01"

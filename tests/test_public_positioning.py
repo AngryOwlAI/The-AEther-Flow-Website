@@ -96,6 +96,60 @@ PROJECT_INTRODUCTION_ROUTE_SOURCES = tuple(
     )
 )
 
+PROJECT_INTRODUCTION_SENTENCE_VECTORS = {
+    REPO_ROOT / relative_path: vector
+    for relative_path, vector in {
+        "src/pages/ai-research-system/agentjob-lifecycle/index.astro": (2, 2, 3),
+        "src/pages/ai-research-system/current-state/index.astro": (3, 2),
+        "src/pages/ai-research-system/human-gated-promotion/index.astro": (2, 3, 3),
+        "src/pages/ai-research-system/index.astro": (2, 1, 2),
+        "src/pages/ai-research-system/memory-preflight/index.astro": (2, 2, 2, 3),
+        "src/pages/ai-research-system/project-system-improvement/index.astro": (
+            2,
+            1,
+            2,
+            2,
+            2,
+            1,
+        ),
+        "src/pages/ai-research-system/roles-and-schemas/index.astro": (2, 3, 2),
+        "src/pages/ai-research-system/runtime-requirements/index.astro": (3, 1, 2, 3),
+        "src/pages/ai-research-system/validators-and-handoffs/index.astro": (2, 2, 1, 2),
+        "src/pages/ai-research-system/workflow/index.astro": (2, 2, 1),
+        "src/pages/index.astro": (2, 2),
+        "src/pages/physics/claim-status/index.astro": (2, 3),
+        "src/pages/physics/derivation-roadmap/index.astro": (2, 3),
+        "src/pages/physics/exact-gr-benchmark/index.astro": (2, 2),
+        "src/pages/physics/flow-geometry/index.astro": (2, 3),
+        "src/pages/physics/index.astro": (2, 2),
+        "src/pages/physics/ontology/index.astro": (2, 2),
+        "src/pages/physics/open-burdens/index.astro": (2, 2, 2),
+        "src/pages/resources/diagrams.astro": (2,),
+        "src/pages/resources/generated-derivatives/index.astro": (2, 2, 2, 2, 3, 2),
+        "src/pages/resources/index.astro": (2, 3, 2, 2, 1),
+        "src/pages/resources/library/index.astro": (2, 2, 2, 1, 2, 3, 2),
+        "src/pages/resources/publication-process/index.astro": (
+            2,
+            3,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            1,
+        ),
+        "src/pages/resources/reading-paths/index.astro": (2, 2, 2),
+        "src/pages/resources/registries/index.astro": (2, 2, 2, 2, 2, 2),
+        "src/pages/resources/repository-map/index.astro": (2,),
+        "src/pages/resources/retrieval-layers/index.astro": (2, 2, 1, 2, 2, 2, 2),
+        "src/pages/resources/site-builder-guide/index.astro": (2,),
+        "src/pages/resources/source-authority/index.astro": (2, 3, 2, 2, 2, 1),
+    }.items()
+}
+
+PROJECT_INTRODUCTION_SENTENCE_BOUNDARY = re.compile(r"(?<=[.!?]) (?=[A-ZÆ])")
+
 EXPECTED_STATE_ORDER = [
     "interpretive",
     "adopted-effective",
@@ -156,6 +210,13 @@ def project_introduction_paragraphs(source: str) -> list[str]:
     ]
     assert items
     return [json.loads(item) for item in items]
+
+
+def project_introduction_sentence_counts(paragraphs: list[str]) -> tuple[int, ...]:
+    return tuple(
+        len(PROJECT_INTRODUCTION_SENTENCE_BOUNDARY.split(paragraph))
+        for paragraph in paragraphs
+    )
 
 
 def test_routes_consume_only_accepted_surface_statements() -> None:
@@ -256,7 +317,7 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
     )
 
 
-def test_all_project_introductions_use_nonempty_sentence_complete_paragraph_arrays() -> None:
+def test_all_project_introductions_use_the_accepted_semantic_paragraph_vectors() -> None:
     component = PROJECT_INTRODUCTION.read_text(encoding="utf-8")
     assert "!Array.isArray(paragraphs)" in component
     assert "paragraphs.length === 0" in component
@@ -269,23 +330,36 @@ def test_all_project_introductions_use_nonempty_sentence_complete_paragraph_arra
     }
     assert len(PROJECT_INTRODUCTION_ROUTE_SOURCES) == 29
     assert all_route_sources == set(PROJECT_INTRODUCTION_ROUTE_SOURCES)
+    assert set(PROJECT_INTRODUCTION_SENTENCE_VECTORS) == set(
+        PROJECT_INTRODUCTION_ROUTE_SOURCES
+    )
+
+    total_paragraphs = 0
+    total_sentences = 0
 
     for path in PROJECT_INTRODUCTION_ROUTE_SOURCES:
         source = path.read_text(encoding="utf-8")
         paragraphs = project_introduction_paragraphs(source)
-        normalized_introduction = " ".join(paragraphs)
+        sentence_counts = project_introduction_sentence_counts(paragraphs)
 
         assert source.count("<ProjectIntroduction") == 1
         assert source.count("paragraphs={") == 1
         assert '<section class="greenfield-intro-panel"' not in source
         assert all(paragraph.strip() for paragraph in paragraphs)
-        if len(normalized_introduction) > 320:
-            assert len(paragraphs) > 1
+        assert sentence_counts == PROJECT_INTRODUCTION_SENTENCE_VECTORS[path]
 
-        for paragraph in paragraphs:
-            sentences = re.split(r"(?<=[.!?]) (?=[A-ZÆ])", paragraph)
-            if len(sentences) > 1:
-                assert len(paragraph) <= 320
+        for paragraph, sentence_count in zip(paragraphs, sentence_counts, strict=True):
+            assert len(paragraph) <= 675
+            if sentence_count == 1:
+                assert len(paragraph) > 320
+            else:
+                assert 2 <= sentence_count <= 3
+
+        total_paragraphs += len(paragraphs)
+        total_sentences += sum(sentence_counts)
+
+    assert total_paragraphs == 104
+    assert total_sentences == 212
 
     direct_legacy_panels = [
         path

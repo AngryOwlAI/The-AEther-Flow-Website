@@ -1,32 +1,30 @@
 schema_version: "0.1"
 record_type: "implementation_job"
-job_id: "WJ-20260715-033-A"
-task_id: "WI-20260715-033"
-title: "Migrate And Validate Sitewide Project Introduction Paragraphs"
-created_utc: "2026-07-16T00:35:00Z"
-updated_utc: "2026-07-16T01:18:08Z"
-status: "superseded"
+job_id: "WJ-20260715-034-A"
+task_id: "WI-20260715-034"
+title: "Regroup And Validate Sitewide Introduction Paragraphs"
+created_utc: "2026-07-16T01:18:08Z"
+updated_utc: "2026-07-16T01:35:55Z"
+status: "active"
 
-objective: "Implement and verify the exact-text structural paragraph migration across the 29 authorized introduction surfaces."
+objective: "Replace sentence by sentence paragraph fragmentation with the exact owner supplied semantic groupings while preserving all introduction text."
 
 execution_boundary:
-  invocation_limit: "one bounded SITEWIDE-PROJECT-INTRO-READABILITY-01 packet"
-  packet_id: "SITEWIDE-PROJECT-INTRO-READABILITY-01"
-  baseline_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
-  navigation_checkpoint: "20f8c88d80c9650d745f439c5f265c4598fe681f"
-  baseline_checkpoint_replay_status: "forbidden"
-  navigation_checkpoint_replay_status: "forbidden"
+  invocation_limit: "one bounded SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01 packet"
+  packet_id: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01"
+  prior_checkpoint: "77ac8273cfc4782a813da5383cba0aaaf48cbd46"
+  original_text_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  prior_checkpoint_replay_status: "forbidden"
   wording_change_status: "forbidden"
+  component_and_style_change_status: "forbidden"
   upstream_write_status: "forbidden"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
 allowed_reads:
-  - "The exact website source baseline and all evidence allowlisted by WI-20260715-033"
+  - "The exact website source baseline and all evidence allowlisted by WI-20260715-034"
 
 allowed_writes:
-  - "src/components/ProjectIntroduction.astro"
-  - "src/styles/global.css"
   - "src/pages/ai-research-system/agentjob-lifecycle/index.astro"
   - "src/pages/ai-research-system/current-state/index.astro"
   - "src/pages/ai-research-system/human-gated-promotion/index.astro"
@@ -37,7 +35,6 @@ allowed_writes:
   - "src/pages/ai-research-system/runtime-requirements/index.astro"
   - "src/pages/ai-research-system/validators-and-handoffs/index.astro"
   - "src/pages/ai-research-system/workflow/index.astro"
-  - "src/pages/index.astro"
   - "src/pages/physics/claim-status/index.astro"
   - "src/pages/physics/derivation-roadmap/index.astro"
   - "src/pages/physics/exact-gr-benchmark/index.astro"
@@ -45,53 +42,51 @@ allowed_writes:
   - "src/pages/physics/index.astro"
   - "src/pages/physics/ontology/index.astro"
   - "src/pages/physics/open-burdens/index.astro"
-  - "src/pages/resources/diagrams.astro"
   - "src/pages/resources/generated-derivatives/index.astro"
   - "src/pages/resources/index.astro"
   - "src/pages/resources/library/index.astro"
   - "src/pages/resources/publication-process/index.astro"
   - "src/pages/resources/reading-paths/index.astro"
   - "src/pages/resources/registries/index.astro"
-  - "src/pages/resources/repository-map/index.astro"
   - "src/pages/resources/retrieval-layers/index.astro"
-  - "src/pages/resources/site-builder-guide/index.astro"
   - "src/pages/resources/source-authority/index.astro"
   - "tests/test_public_positioning.py"
   - "public/files/manifests/page_provenance.json"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/handoffs/WH-20260715-032.yaml"
-  - "implementation_control/handoffs/WH-20260715-032.md"
-  - "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
-  - "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
   - "implementation_control/handoffs/WH-20260715-033.yaml"
   - "implementation_control/handoffs/WH-20260715-033.md"
   - "implementation_control/tasks/WI-20260715-033/00_TASK.yaml"
   - "implementation_control/tasks/WI-20260715-033/jobs/WJ-20260715-033-A.yaml"
-  - "implementation_control/tasks/WI-20260715-033/jobs/completions/WJC-20260715-033-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-034.yaml"
+  - "implementation_control/handoffs/WH-20260715-034.md"
+  - "implementation_control/tasks/WI-20260715-034/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-034/jobs/WJ-20260715-034-A.yaml"
+  - "implementation_control/tasks/WI-20260715-034/jobs/completions/WJC-20260715-034-A.yaml"
 
 required_outputs:
-  - "All 29 surfaces use ProjectIntroduction with nonempty paragraph arrays."
-  - "Normalized introduction text equals checkpoint 095c6e6 on all 29 surfaces."
-  - "Paragraph length structure CSS layout focused tests full validation writing review and browser review pass."
-  - "page_provenance.json is regenerated and page_route_map.json remains unchanged."
+  - "Exactly 104 paragraphs render across the 29 ProjectIntroduction surfaces."
+  - "Every route matches its owner supplied sentence vector."
+  - "Normalized text matches checkpoints 095c6e6 and 77ac827 on all 29 surfaces."
+  - "Single sentence paragraphs exceed 320 characters and every paragraph is at most 675 characters."
+  - "ProjectIntroduction global styles and page_route_map.json remain unchanged."
+  - "page_provenance.json is regenerated against accepted source pin 57438af."
 
 approval_gates:
   - id: "plan_adoption"
     status: "approved"
-    trigger: "Owner supplied the exact atomic plan."
+    trigger: "Owner supplied the exact regrouping plan and vectors."
   - id: "public_claim_changes"
     status: "approved"
-    trigger: "Exact text parity is mandatory for the structural migration."
+    trigger: "Exact normalized text parity is mandatory."
   - id: "source_refresh_uncertainty"
     status: "not_required"
-    trigger: "No source refresh or source binding change."
+    trigger: "No source refresh or binding change."
   - id: "broad_navigation_or_route_retirement"
     status: "approved"
-    trigger: "Only the 29 named route sources may change and route behavior is preserved."
+    trigger: "Only the 25 named route sources may change and route behavior is preserved."
   - id: "shared_visual_systems"
-    status: "approved"
-    trigger: "Shared introduction component and existing introduction selectors only."
+    status: "not_required"
+    trigger: "No component style layout or shared visual source may change."
   - id: "public_downloadable_assets"
     status: "not_required"
     trigger: "No public assets."
@@ -118,6 +113,9 @@ required_validators:
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
   - id: "claim-validation"
     command: "npm run validate:claims"
     required: true
@@ -136,20 +134,24 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required: true
+  - id: "paragraph-grouping-review"
+    command: "manual inspection of exact paragraph sentence vectors total count single sentence exceptions and character limits across all 29 surfaces"
+    required: true
   - id: "introduction-text-parity-review"
-    command: "manual inspection of normalized introduction text parity from checkpoint 095c6e6 across all 29 surfaces"
+    command: "manual inspection of normalized introduction text parity from checkpoints 095c6e6 and 77ac827 across all 29 surfaces"
     required: true
   - id: "technical-writing-builder-refuter-review"
     command: "manual inspection of technical writing builder and refuter no claim change evidence across all changed routes"
     required: true
   - id: "runtime-introduction-layout-review"
-    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for centering left alignment paragraph gaps and overflow"
+    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for paragraph grouping centering left alignment paragraph gaps compact typography and overflow"
     required: true
 
 stop_conditions:
-  - "Any text parity claim qualification label placement route behavior or unauthorized file changes."
-  - "Any required validator or visual review fails."
-  - "Work enters source refresh upstream write push or deployment."
+  - "Any text parity claim qualification label placement route behavior or unauthorized file change."
+  - "Any paragraph vector count single sentence exception or character cap differs from the plan."
+  - "Any required validator writing review or browser review fails."
+  - "Work enters component style navigation asset source refresh upstream write push or deployment scope."
 
 checkpoint:
   command: "npm run checkpoint:implementation"
@@ -158,31 +160,28 @@ checkpoint:
   deploy_allowed: false
 
 completion_record:
-  completion_id: "WJC-20260715-033-A"
-  path: "implementation_control/tasks/WI-20260715-033/jobs/completions/WJC-20260715-033-A.yaml"
+  completion_id: "WJC-20260715-034-A"
+  path: "implementation_control/tasks/WI-20260715-034/jobs/completions/WJC-20260715-034-A.yaml"
   status: "completed"
 
 next_recommended_action:
-  task_packet: "SITEWIDE-PROJECT-INTRO-READABILITY-01 local checkpoint"
-  summary: "Create one local checkpoint from completion WJC-20260715-033-A and stop."
+  task_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01 local checkpoint"
+  summary: "Create one local checkpoint from completion WJC-20260715-034-A and stop."
   do_not_skip: "Do not push deploy refresh sources mutate upstream or open another packet."
 
 implementation_status:
-  status: "checkpointed"
-  baseline_surface_count: 29
-  normalized_text_parity: "passed 29 of 29 surfaces"
-  writing_gate_status: "passed"
+  status: "ready_for_checkpoint"
+  baseline_paragraph_count: 198
+  target_paragraph_count: 104
+  sentence_count: 212
+  route_arrays_to_change: 25
+  normalized_text_parity: "passed 29 of 29 surfaces against both checkpoints"
+  writing_gate_status: "passed 25 changed routes with zero claim changes"
   focused_positioning_tests: "passed 33 tests"
   python_tests: "passed 158 tests"
   static_build: "passed 64 pages"
-  aggregate_validation: "passed"
-  quality_gate: "passed"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
   runtime_review: "passed 29 desktop and 29 compact route inspections"
   completion_created: true
-  checkpoint_status: "checkpointed"
-
-checkpoint_evidence:
-  commit: "77ac8273cfc4782a813da5383cba0aaaf48cbd46"
-  checkpoint_created: true
-  replayed: false
-  next_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01"
+  checkpoint_status: "ready"

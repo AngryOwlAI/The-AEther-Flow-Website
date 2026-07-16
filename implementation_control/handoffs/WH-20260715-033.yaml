@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-033"
 created_utc: "2026-07-16T00:35:00Z"
-updated_utc: "2026-07-16T00:49:19Z"
-status: "ready_for_checkpoint"
+updated_utc: "2026-07-16T01:18:08Z"
+status: "superseded"
 
 task_id: "WI-20260715-033"
 job_id: "WJ-20260715-033-A"
@@ -41,7 +41,7 @@ checkpoint_transition:
   repeated: false
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   normalized_text_parity: "passed 29 of 29 surfaces"
   writing_gate_status: "passed"
   focused_positioning_tests: "passed 33 tests"
@@ -51,7 +51,12 @@ implementation_status:
   quality_gate: "passed"
   runtime_review: "passed 29 desktop and 29 compact route inspections"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
+
+checkpoint_evidence:
+  commit: "77ac8273cfc4782a813da5383cba0aaaf48cbd46"
+  replayed: false
+  next_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01"
 
 completion_record:
   completion_id: "WJC-20260715-033-A"

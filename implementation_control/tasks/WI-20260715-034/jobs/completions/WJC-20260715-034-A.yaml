@@ -1,0 +1,170 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-034-A"
+task_id: "WI-20260715-034"
+job_id: "WJ-20260715-034-A"
+created_utc: "2026-07-16T01:35:55Z"
+completed_utc: "2026-07-16T01:35:55Z"
+status: "completed"
+
+summary: "Regrouped 25 fragmented project introductions into the exact owner supplied semantic paragraph vectors with all text claims and presentation contracts preserved."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-033.md"
+  - "implementation_control/handoffs/WH-20260715-033.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-033/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-033/jobs/WJ-20260715-033-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-034.md"
+  - "implementation_control/handoffs/WH-20260715-034.yaml"
+  - "implementation_control/tasks/WI-20260715-034/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-034/jobs/WJ-20260715-034-A.yaml"
+  - "implementation_control/tasks/WI-20260715-034/jobs/completions/WJC-20260715-034-A.yaml"
+  - "public/files/manifests/page_provenance.json"
+  - "src/pages/ai-research-system/agentjob-lifecycle/index.astro"
+  - "src/pages/ai-research-system/current-state/index.astro"
+  - "src/pages/ai-research-system/human-gated-promotion/index.astro"
+  - "src/pages/ai-research-system/index.astro"
+  - "src/pages/ai-research-system/memory-preflight/index.astro"
+  - "src/pages/ai-research-system/project-system-improvement/index.astro"
+  - "src/pages/ai-research-system/roles-and-schemas/index.astro"
+  - "src/pages/ai-research-system/runtime-requirements/index.astro"
+  - "src/pages/ai-research-system/validators-and-handoffs/index.astro"
+  - "src/pages/ai-research-system/workflow/index.astro"
+  - "src/pages/physics/claim-status/index.astro"
+  - "src/pages/physics/derivation-roadmap/index.astro"
+  - "src/pages/physics/exact-gr-benchmark/index.astro"
+  - "src/pages/physics/flow-geometry/index.astro"
+  - "src/pages/physics/index.astro"
+  - "src/pages/physics/ontology/index.astro"
+  - "src/pages/physics/open-burdens/index.astro"
+  - "src/pages/resources/generated-derivatives/index.astro"
+  - "src/pages/resources/index.astro"
+  - "src/pages/resources/library/index.astro"
+  - "src/pages/resources/publication-process/index.astro"
+  - "src/pages/resources/reading-paths/index.astro"
+  - "src/pages/resources/registries/index.astro"
+  - "src/pages/resources/retrieval-layers/index.astro"
+  - "src/pages/resources/source-authority/index.astro"
+  - "tests/test_public_positioning.py"
+
+implementation_results:
+  introductions_regrouped: 25
+  unchanged_conforming_introductions: 4
+  total_surfaces: 29
+  baseline_paragraph_count: 198
+  final_paragraph_count: 104
+  preserved_sentence_count: 212
+  longest_paragraph_characters: 657
+  single_sentence_paragraphs: 12
+  shortest_single_sentence_paragraph_characters: 322
+  paragraph_character_cap: 675
+  normalized_text_parity: "29 of 29 surfaces match both 095c6e6 and 77ac827"
+  normalized_text_sha256: "6dd8ae030ae834951ea2ef3568d473775feb42b62dbb92551e09d36b0326fabd"
+  component_status: "unchanged"
+  global_style_status: "unchanged"
+  conforming_route_status: "Home Diagrams Repository Map and Site Builder Guide unchanged"
+  page_route_map_status: "unchanged"
+  provenance_status: "Regenerated against the accepted clean source root."
+
+regression_test_evidence:
+  status: "passed"
+  baseline_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q -k accepted_semantic_paragraph_vectors"
+  baseline_result: "Failed against checkpoint 77ac827 paragraph arrays because one sentence per paragraph did not match the prescribed vectors."
+  implementation_result: "Passed after the 25 route arrays were regrouped."
+
+writing_gate:
+  status: "passed"
+  audience: "General public and route specific readers of the 29 existing introduction surfaces"
+  builder_review: "The owner supplied semantic vectors produce readable multi-sentence blocks while sentence order terminology qualifications and source authority boundaries remain exact."
+  refuter_review: "Exact normalized parity against both reference checkpoints found zero added removed strengthened weakened or reordered claims."
+  advisory_warning_matcher: "passed 25 changed route files with zero warning hits"
+  remaining_limitation: "The gate verifies exact copy preservation and presentation evidence and does not independently establish scientific truth."
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "Active task job handoff gates allowlists validators and completion pointers are structurally coherent."
+  - id: "focused-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+    status: "passed"
+    evidence: "33 tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "158 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence is current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes against the accepted clean source root."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against the packet accepted source root."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT=/tmp/aether-flow-source-57438af-homeintro-ZiApaw npm run quality"
+    status: "passed"
+    evidence: "Quality passed against the packet accepted source root."
+  - id: "paragraph-grouping-review"
+    command: "manual inspection of exact paragraph sentence vectors total count single sentence exceptions and character limits across all 29 surfaces"
+    status: "passed"
+    evidence: "All 29 vectors match exactly with 104 paragraphs 212 sentences a 657 character maximum and 12 single sentence exceptions from 322 to 580 characters."
+  - id: "introduction-text-parity-review"
+    command: "manual inspection of normalized introduction text parity from checkpoints 095c6e6 and 77ac827 across all 29 surfaces"
+    status: "passed"
+    evidence: "All 29 surfaces match both checkpoints with combined normalized SHA-256 6dd8ae030ae834951ea2ef3568d473775feb42b62dbb92551e09d36b0326fabd."
+  - id: "technical-writing-builder-refuter-review"
+    command: "manual inspection of technical writing builder and refuter no claim change evidence across all changed routes"
+    status: "passed"
+    evidence: "Exact text parity proves zero claim changes and the advisory matcher reported zero warnings."
+  - id: "runtime-introduction-layout-review"
+    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for paragraph grouping centering left alignment paragraph gaps compact typography and overflow"
+    status: "passed"
+    evidence: "All 58 route viewport inspections rendered 104 paragraphs with zero center delta 16 pixel gaps left alignment preserved desktop and compact typography and no horizontal overflow."
+
+validation_environment:
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_worktree_status: "dirty external source drift preserved and excluded"
+  default_root_aggregate_observation: "The unscoped default run stopped at unrelated live upstream curator drift before the accepted source root run passed."
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "No introduction wording punctuation claim qualification label order component style navigation asset route page_route_map source binding or upstream source changed."
+  - "No source refresh upstream write push or deployment occurred or is authorized."
+  - "Visual row count remains observational and compact wrapping can exceed the ordinary desktop line target."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage and commit only the 37 completion listed paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not push deploy refresh sources mutate upstream or open another packet in the same transaction."
