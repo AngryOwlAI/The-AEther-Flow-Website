@@ -370,7 +370,7 @@ def test_all_project_introductions_use_the_accepted_semantic_paragraph_vectors()
     assert direct_legacy_panels == []
 
 
-def test_project_introduction_columns_are_centered_left_aligned_and_spaced() -> None:
+def test_project_introduction_columns_are_left_anchored_left_aligned_and_spaced() -> None:
     css = GLOBAL_CSS.read_text(encoding="utf-8")
 
     for selector in (".home-intro-panel p", ".greenfield-intro-panel p"):
@@ -378,7 +378,7 @@ def test_project_introduction_columns_are_centered_left_aligned_and_spaced() -> 
         assert block is not None
         assert "max-width: 72ch;" in block.group(1)
         assert "margin-block: 0;" in block.group(1)
-        assert "margin-inline: auto;" in block.group(1)
+        assert "margin-inline: 0 auto;" in block.group(1)
         assert "text-align: left;" in block.group(1)
 
     assert re.search(

@@ -1,0 +1,177 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-035"
+title: "Left Anchor Sitewide Project Introduction Columns"
+created_utc: "2026-07-16T02:06:08Z"
+updated_utc: "2026-07-16T02:18:00Z"
+status: "active"
+
+source_context:
+  packet_id: "SITEWIDE-PROJECT-INTRO-LEFT-ALIGNMENT-01"
+  owner_authorization: "Owner explicitly supplied and authorized the exact sitewide left alignment plan."
+  prior_task: "WI-20260715-034"
+  prior_checkpoint: "96d50ae08fa5803ae7820c11b795b57f28f0ba32"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+
+goal: "Anchor the existing 72 character project introduction paragraph columns to each panel inner start edge across all 29 shared surfaces."
+
+requirements:
+  - "Treat checkpoint 96d50ae as completed Git authority and do not replay it."
+  - "Change only the two existing shared introduction paragraph margin declarations."
+  - "Use margin-inline 0 auto for both Home and greenfield introduction paragraphs."
+  - "Preserve max width panel dimensions padding backgrounds typography paragraph gaps compact rules copy routes and component interfaces."
+  - "Update focused positioning coverage to require left anchored left aligned columns."
+  - "Inspect all 29 introduction routes at desktop and 520 CSS pixel widths."
+  - "Leave the completed packet ready for checkpoint without staging committing pushing or deploying."
+
+scope:
+  in_scope:
+    - "src/styles/global.css introduction paragraph selectors only"
+    - "tests/test_public_positioning.py introduction column contract only"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Introduction copy route sources component interfaces and shared component markup"
+    - "Panel dimensions padding backgrounds typography paragraph spacing and compact rules"
+    - "Tracked manifests public assets source refresh upstream writes checkpoint push and deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "Git checkpoint 96d50ae"
+    - "All 29 introduction routes shared component global styles focused tests control scripts build output and browser evidence"
+    - "Website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "/tmp/aether-flow-source-57438af-homeintro-ZiApaw at accepted source pin 57438af"
+
+allowed_writes:
+  website_repository:
+    - "src/styles/global.css"
+    - "tests/test_public_positioning.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-034.yaml"
+    - "implementation_control/handoffs/WH-20260715-034.md"
+    - "implementation_control/tasks/WI-20260715-034/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-034/jobs/WJ-20260715-034-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-035.yaml"
+    - "implementation_control/handoffs/WH-20260715-035.md"
+    - "implementation_control/tasks/WI-20260715-035/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-035/jobs/WJ-20260715-035-A.yaml"
+    - "implementation_control/tasks/WI-20260715-035/jobs/completions/WJC-20260715-035-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner supplied the exact implementation plan."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public copy or claim bearing route source may change."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh or source binding change is authorized."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route or navigation source may change."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Owner authorized the two existing shared introduction paragraph selectors only."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets change."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No tracked page source or manifest input changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-introduction-layout-review"
+    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for left anchored columns paragraph gaps typography and overflow"
+    required: true
+
+stop_conditions:
+  - "Any introduction copy route component interface manifest public asset or upstream source change."
+  - "Any panel geometry max width typography paragraph gap compact rule or background change."
+  - "Any required validator or browser review fails."
+  - "Work enters source refresh upstream write checkpoint push or deployment."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: false
+  closeout: "Create WJC-20260715-035-A after all evidence passes and leave the packet ready for a separately authorized local checkpoint."
+
+handoff:
+  latest_handoff_id: "WH-20260715-035"
+  yaml_path: "implementation_control/handoffs/WH-20260715-035.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-035.md"
+
+completion_record:
+  completion_id: "WJC-20260715-035-A"
+  path: "implementation_control/tasks/WI-20260715-035/jobs/completions/WJC-20260715-035-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "SITEWIDE-PROJECT-INTRO-LEFT-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-035-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  baseline_surface_count: 29
+  target_surface_count: 29
+  route_source_change_status: "forbidden"
+  wording_change_status: "forbidden"
+  component_change_status: "forbidden"
+  style_change_status: "completed two introduction paragraph selectors only"
+  tracked_manifest_change_status: "forbidden"
+  focused_positioning_tests: "passed 33 tests"
+  python_tests: "passed 158 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  default_aggregate_observation: "stopped at unrelated live upstream curator drift"
+  runtime_review: "passed 29 desktop and 29 compact route inspections"
+  completion_created: true
+  checkpoint_status: "ready_for_separate_authorization"
+  push_performed: false
+  deployment_performed: false

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T01:35:55Z"
+updated_utc: "2026-07-16T02:18:00Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-034/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-034/jobs/WJ-20260715-034-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-034.yaml"
+  - "implementation_control/tasks/WI-20260715-035/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-035/jobs/WJ-20260715-035-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-035.yaml"
   - "current_git_state_and_validator_output"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -23,32 +23,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-034"
-  title: "Repair Sitewide Introduction Paragraph Grouping"
+  task_id: "WI-20260715-035"
+  title: "Left Anchor Sitewide Project Introduction Columns"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-034/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-035/00_TASK.yaml"
   planning_context:
-    task_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01"
-    adopted_plan: "Owner supplied Repair Site-wide Introduction Paragraph Grouping plan"
-    prior_checkpoint: "77ac8273cfc4782a813da5383cba0aaaf48cbd46"
-    original_text_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+    task_packet: "SITEWIDE-PROJECT-INTRO-LEFT-ALIGNMENT-01"
+    adopted_plan: "Owner supplied Left-Align All Project Introduction Columns plan"
+    prior_checkpoint: "96d50ae08fa5803ae7820c11b795b57f28f0ba32"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly authorized one atomic paragraph regrouping repair with exact sentence vectors."
+    owner_authorization: "Owner explicitly authorized one shared layout adjustment across all 29 project introduction surfaces."
 
 current_job:
-  job_id: "WJ-20260715-034-A"
+  job_id: "WJ-20260715-035-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-034/jobs/WJ-20260715-034-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-035/jobs/WJ-20260715-035-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-034"
+  handoff_id: "WH-20260715-035"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260715-034.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-034.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-035.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-035.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-034-A"
-  path: "implementation_control/tasks/WI-20260715-034/jobs/completions/WJC-20260715-034-A.yaml"
+  completion_id: "WJC-20260715-035-A"
+  path: "implementation_control/tasks/WI-20260715-035/jobs/completions/WJC-20260715-035-A.yaml"
   status: "completed"
 
 required_validators:
@@ -82,57 +81,48 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "paragraph-grouping-review"
-    command: "manual inspection of exact paragraph sentence vectors total count single sentence exceptions and character limits across all 29 surfaces"
-    required_for_current_job: true
-  - id: "introduction-text-parity-review"
-    command: "manual inspection of normalized introduction text parity from checkpoints 095c6e6 and 77ac827 across all 29 surfaces"
-    required_for_current_job: true
-  - id: "technical-writing-builder-refuter-review"
-    command: "manual inspection of technical writing builder and refuter no claim change evidence across all changed routes"
-    required_for_current_job: true
   - id: "runtime-introduction-layout-review"
-    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for paragraph grouping centering left alignment paragraph gaps compact typography and overflow"
+    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for left anchored columns paragraph gaps typography and overflow"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "SITEWIDE-PROJECT-INTRO-PARAGRAPH-REGROUPING-01 local checkpoint"
-  summary: "Create one local checkpoint from completion WJC-20260715-034-A and stop."
-  do_not_skip: "Do not push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "SITEWIDE-PROJECT-INTRO-LEFT-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-035-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
 
 preflight_evidence:
-  status: "passed_for_paragraph_regrouping_packet"
-  observed_utc: "2026-07-16T01:18:08Z"
-  prior_checkpoint: "77ac8273cfc4782a813da5383cba0aaaf48cbd46"
+  status: "passed_for_left_alignment_packet"
+  observed_utc: "2026-07-16T02:06:08Z"
+  prior_checkpoint: "96d50ae08fa5803ae7820c11b795b57f28f0ba32"
   prior_checkpoint_observed_from_git: true
   prior_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 32
+  website_ahead_of_origin_main: 33
   website_worktree_status: "clean_before_packet_open"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
+  live_upstream_head: "fd802dee85da59d29c71842f9dcfa882a0927c29"
+  live_upstream_worktree_status: "clean"
   source_refresh_status: "not_performed"
 
 implementation_status:
   status: "ready_for_checkpoint"
   baseline_surface_count: 29
-  baseline_paragraph_count: 198
-  target_paragraph_count: 104
-  sentence_count: 212
-  route_arrays_to_change: 25
+  target_surface_count: 29
+  route_source_change_status: "forbidden"
   wording_change_status: "forbidden"
   component_change_status: "forbidden"
-  style_change_status: "forbidden"
-  normalized_text_parity: "passed 29 of 29 surfaces against both checkpoints"
-  writing_gate_status: "passed 25 changed routes with zero claim changes"
+  style_change_status: "completed two introduction paragraph selectors only"
+  tracked_manifest_change_status: "forbidden"
   focused_positioning_tests: "passed 33 tests"
   python_tests: "passed 158 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source root"
   quality_gate: "passed against accepted clean source root"
+  default_aggregate_observation: "stopped at unrelated live upstream curator drift"
   runtime_review: "passed 29 desktop and 29 compact route inspections"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "ready_for_separate_authorization"
   push_performed: false
   deployment_performed: false

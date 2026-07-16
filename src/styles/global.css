@@ -1749,7 +1749,7 @@ html:has(body.project-overview-page) {
 .home-intro-panel p {
   max-width: 72ch;
   margin-block: 0;
-  margin-inline: auto;
+  margin-inline: 0 auto;
   color: var(--overview-muted);
   font-size: 1.18rem;
   line-height: 1.72;
@@ -1769,7 +1769,7 @@ html:has(body.project-overview-page) {
 .greenfield-intro-panel p {
   max-width: 72ch;
   margin-block: 0;
-  margin-inline: auto;
+  margin-inline: 0 auto;
   color: var(--overview-muted);
   font-size: 1.18rem;
   line-height: 1.72;
