@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-15T23:29:47Z"
+updated_utc: "2026-07-16T00:16:11Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,12 +9,11 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-031.yaml"
+  - "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-032.yaml"
   - "current_git_state_and_validator_output"
-  - "owner authorized a substantial general public project description on every page"
-  - "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md as route context"
+  - "ImplementationPlans/recomendation_frontend.md as FE-P1-04 context"
   - "memory_and_conversation_summaries_as_navigation_only"
 
 repository_boundary:
@@ -25,32 +24,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-031"
-  title: "Add Reading Paths General Public Project Introduction"
+  task_id: "WI-20260715-032"
+  title: "Repair Desktop Navigation Link Flex Alignment"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
   planning_context:
-    task_packet: "RESOURCES-READING-PATHS-INTRO-01"
-    adopted_plan: "ImplementationPlans/sitewide_greenfield_rebuild_implementation_plan.md"
-    adopted_sha256: "fed8379a5e481f2388d656ecb1d1c810df833b65266a1d9ecdae5668ecdc8efe"
-    previous_checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+    task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01"
+    adopted_plan: "ImplementationPlans/recomendation_frontend.md"
+    previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly required each page to include a substantial general public paragraph that explains the project."
+    owner_authorization: "Owner explicitly requested resolving and checkpointing the two existing navigation repair changes before the sitewide introduction packet."
 
 current_job:
-  job_id: "WJ-20260715-031-A"
+  job_id: "WJ-20260715-032-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-031"
+  handoff_id: "WH-20260715-032"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260715-031.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-031.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-032.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-032.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-031-A"
-  path: "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
+  completion_id: "WJC-20260715-032-A"
+  path: "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
   status: "completed"
 
 required_validators:
@@ -63,15 +61,6 @@ required_validators:
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
     required_for_current_job: true
-  - id: "claim-validation"
-    command: "npm run validate:claims"
-    required_for_current_job: true
-  - id: "content-validation"
-    command: "npm run validate:content"
-    required_for_current_job: true
-  - id: "provenance-validation"
-    command: "npm run validate:provenance"
-    required_for_current_job: true
   - id: "static-build"
     command: "npm run build"
     required_for_current_job: true
@@ -81,43 +70,38 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "runtime-resources-reading-paths-introduction-review"
-    command: "manual inspection of the Resources Reading Paths project introduction paragraph position general public readability responsive flow and browser console in the in app browser"
+  - id: "runtime-desktop-navigation-alignment-review"
+    command: "manual inspection of direct desktop navigation link flex alignment target dimensions current state and compact isolation in the in app browser"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "RESOURCES-READING-PATHS-INTRO-01 local checkpoint"
-  summary: "Run the implementation checkpoint transaction and stop."
-  do_not_skip: "Do not push deploy refresh sources mutate upstream or enter Repository Map in the same transaction."
+  task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01 validation and local checkpoint"
+  summary: "Validate the two existing navigation repair changes then checkpoint only this bounded repair packet."
+  do_not_skip: "Do not open the sitewide introduction packet push deploy refresh sources or mutate upstream in the same transaction."
 
 preflight_evidence:
-  status: "owner_authorized_failures_nonblocking"
-  observed_utc: "2026-07-15T23:17:25Z"
-  previous_checkpoint: "e90e1dded11102baa9f5fae556b3e1ffb11588b8"
+  status: "passed_for_existing_bounded_repair"
+  observed_utc: "2026-07-16T00:11:07Z"
+  previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
   previous_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 29
+  website_ahead_of_origin_main: 30
+  website_worktree_status: "two_preexisting_navigation_repair_paths_only"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  upstream_current_head: "9aa9fe31690de44affdf7def16a3cad3bd50d938"
   upstream_worktree_status: "dirty_in_flight_and_read_only"
-  website_worktree_status: "clean_before_packet_open"
-  dependency_status: "HOME-HERO-ACTIONS-STATUS-ORDER-01 checkpoint observed as HEAD"
-  relevant_source_parity_status: "owner made preflight failures nonblocking; accepted clean source pin remains the writing and validation basis"
   source_refresh_status: "not performed"
 
 implementation_status:
   status: "ready_for_checkpoint"
-  previous_checkpoint_replayed: false
-  writing_gate_status: "passed"
-  project_introduction: "implemented after the Reading Paths hero"
-  focused_tests: "passed 31 tests"
+  inherited_diff_review: "The direct nav link flex alignment rule and focused regression assertion are the only preexisting runtime and test changes."
+  focused_navigation_tests: "passed 4 tests"
   python_tests: "passed 156 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source pin"
   quality_gate: "passed against accepted clean source pin"
-  runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
+  runtime_navigation_review: "passed at desktop and compact viewports"
   completion_created: true
   checkpoint_status: "ready"
   push_performed: false

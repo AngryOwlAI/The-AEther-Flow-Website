@@ -1,0 +1,163 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260715-032"
+title: "Repair Desktop Navigation Link Flex Alignment"
+created_utc: "2026-07-16T00:11:07Z"
+updated_utc: "2026-07-16T00:16:11Z"
+status: "active"
+
+source_context:
+  packet_id: "DESKTOP-NAV-LINK-FLEX-REPAIR-01"
+  owner_authorization: "Owner explicitly requested checkpointing or otherwise resolving the two existing navigation changes before starting the sitewide introduction packet."
+  previous_task: "WI-20260715-031"
+  previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  original_navigation_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+
+goal: "Include direct top level navigation links in the shared flex alignment rule so their existing 44 CSS pixel desktop targets center content consistently with disclosure triggers."
+
+requirements:
+  - "Add nav-link to the existing shared display flex and align items center selector."
+  - "Retain the existing 2.75rem desktop minimum target height and compact 2rem target behavior."
+  - "Add one focused regression assertion for the shared flex alignment selector."
+  - "Preserve labels destinations grouping route state menu behavior and all public content."
+  - "Verify desktop target dimensions and compact isolation in the in app browser."
+
+scope:
+  in_scope:
+    - "src/styles/global.css direct navigation flex alignment selector only"
+    - "tests/test_mobile_navigation.py focused regression assertion only"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Navigation labels destinations grouping controller behavior routes or mobile layout"
+    - "Project introductions public claims manifests assets source refresh upstream writes push or deployment"
+
+one_packet_rule:
+  max_active_jobs_per_invocation: 1
+  active_job_id: "WJ-20260715-032-A"
+  next_packet_after_this_task: "Stop after the local repair checkpoint; the sitewide introduction packet requires a fresh control transition."
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "ImplementationPlans/recomendation_frontend.md"
+    - "src/layouts/BaseLayout.astro"
+    - "src/styles/global.css"
+    - "tests/test_mobile_navigation.py"
+    - "implementation_control"
+    - "scripts"
+    - "local build preview and in app browser evidence"
+    - "website and upstream read only Git evidence"
+  upstream_source_repository: []
+
+allowed_writes:
+  website_repository:
+    - "src/styles/global.css"
+    - "tests/test_mobile_navigation.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260715-031.yaml"
+    - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+    - "implementation_control/handoffs/WH-20260715-032.yaml"
+    - "implementation_control/handoffs/WH-20260715-032.md"
+    - "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
+    - "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "The owner explicitly requested this prerequisite repair checkpoint."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public copy or claim data changes."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source content or binding changes."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "Approval covers alignment of existing desktop navigation targets only."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Approval covers one existing shared navigation selector."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets change."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No route source or manifest changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-desktop-navigation-alignment-review"
+    command: "manual inspection of direct desktop navigation link flex alignment target dimensions current state and compact isolation in the in app browser"
+    required: true
+
+stop_conditions:
+  - "Any navigation content destination grouping controller route source manifest asset or introduction change becomes necessary."
+  - "Desktop targets stop measuring 44 CSS pixels or compact targets change from 32 CSS pixels."
+  - "A required validator or browser review fails."
+  - "Work enters the sitewide introduction packet push deployment source refresh or upstream mutation scope."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: true
+  closeout: "Create WJC-20260715-032-A after all evidence passes then run npm run checkpoint:implementation and stop."
+
+handoff:
+  latest_handoff_id: "WH-20260715-032"
+  yaml_path: "implementation_control/handoffs/WH-20260715-032.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-032.md"
+
+completion_record:
+  completion_id: "WJC-20260715-032-A"
+  path: "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction for the completed repair and stop."
+  do_not_skip: "Do not open the sitewide introduction packet push deploy refresh sources or mutate upstream in this transaction."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  focused_navigation_tests: "passed 4 tests"
+  python_tests: "passed 156 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_desktop_navigation_review: "passed with four 44 CSS pixel targets and preserved Resources active state"
+  compact_target_isolation_review: "passed with four 32 CSS pixel targets and zero overflow"
+  completion_created: true
+  checkpoint_status: "ready"
+  push_performed: false
+  deployment_performed: false

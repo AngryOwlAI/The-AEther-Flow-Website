@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260715-031"
 created_utc: "2026-07-15T23:17:25Z"
-updated_utc: "2026-07-15T23:29:47Z"
-status: "ready_for_checkpoint"
+updated_utc: "2026-07-16T00:11:07Z"
+status: "superseded"
 
 task_id: "WI-20260715-031"
 job_id: "WJ-20260715-031-A"
@@ -59,9 +59,18 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260715-031-A"
   path: "implementation_control/tasks/WI-20260715-031/jobs/completions/WJC-20260715-031-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-032"
+  reason: "The owner authorized a separate repair for direct desktop navigation link alignment after this checkpoint."

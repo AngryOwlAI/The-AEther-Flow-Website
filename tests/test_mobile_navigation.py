@@ -38,6 +38,12 @@ def test_mobile_controller_preserves_close_and_resize_contracts() -> None:
 def test_desktop_navigation_targets_are_44_css_pixels_outside_compact_mode() -> None:
     css = GLOBAL_CSS.read_text(encoding="utf-8")
 
+    assert re.search(
+        r"\.brand,\s*\.nav-links,\s*\.nav-link,\s*\.nav-menu-trigger \{\s*"
+        r"display:\s*flex;\s*align-items:\s*center;",
+        css,
+    )
+
     desktop_targets = re.search(
         r"@media \(min-width: 781px\) and \(min-height: 481px\),\s*"
         r"\(min-width: 901px\) \{\s*"

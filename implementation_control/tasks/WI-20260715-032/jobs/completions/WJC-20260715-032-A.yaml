@@ -1,0 +1,120 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-032-A"
+task_id: "WI-20260715-032"
+job_id: "WJ-20260715-032-A"
+created_utc: "2026-07-16T00:16:11Z"
+completed_utc: "2026-07-16T00:16:11Z"
+status: "completed"
+
+summary: "Centered direct desktop navigation link content inside the existing target sizing contract and added focused regression coverage."
+
+changed_files:
+  - "src/styles/global.css"
+  - "tests/test_mobile_navigation.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-031.yaml"
+  - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-032.yaml"
+  - "implementation_control/handoffs/WH-20260715-032.md"
+  - "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
+  - "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+
+source_context:
+  packet_id: "DESKTOP-NAV-LINK-FLEX-REPAIR-01"
+  previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  original_navigation_checkpoint: "529bc34aa975c099ea0b545aaccd25654b13d0f6"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  previous_checkpoint_replayed: false
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+implementation_evidence:
+  preexisting_runtime_diff_adopted: true
+  direct_nav_link_shared_flex_alignment: true
+  focused_regression_assertion_added: true
+  navigation_labels_changed: false
+  navigation_destinations_changed: false
+  navigation_grouping_changed: false
+  navigation_controller_changed: false
+  project_introductions_changed: false
+  public_claims_changed: false
+  manifests_changed: false
+  public_assets_changed: false
+
+runtime_browser_evidence:
+  status: "passed"
+  tool: "Codex in app browser"
+  route: "http://127.0.0.1:4321/resources/"
+  desktop_control_count: 4
+  desktop_target_height: "44 CSS pixels"
+  desktop_display: "flex"
+  desktop_alignment: "center"
+  desktop_resources_active_state: "preserved"
+  desktop_horizontal_overflow: 0
+  compact_viewport: "520 by 1125 CSS pixels"
+  compact_control_count: 4
+  compact_target_height: "32 CSS pixels"
+  compact_display: "flex"
+  compact_alignment: "center"
+  compact_resources_active_state: "preserved"
+  compact_horizontal_overflow: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+  - id: "focused-navigation-tests"
+    command: ".venv/bin/python -m pytest tests/test_mobile_navigation.py -q"
+    status: "passed"
+    evidence: "4 tests passed"
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "156 tests passed"
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "64 static pages built"
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "Passed with AETHER_FLOW_SOURCE_ROOT bound to the accepted clean source pin"
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+    evidence: "Passed with AETHER_FLOW_SOURCE_ROOT bound to the accepted clean source pin"
+  - id: "runtime-desktop-navigation-alignment-review"
+    command: "manual inspection of direct desktop navigation link flex alignment target dimensions current state and compact isolation in the in app browser"
+    status: "passed"
+    evidence: "Four desktop targets measured 44 CSS pixels four compact targets measured 32 CSS pixels flex alignment was centered active state persisted and overflow was zero"
+
+validation_environment:
+  source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  disposable_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  source_tree_clean: true
+  live_upstream_worktree_status: "dirty_in_flight_and_read_only"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "No navigation content route claim manifest asset project introduction upstream push or deployment change occurred."
+  - "SITEWIDE-PROJECT-INTRO-READABILITY-01 remains a separate next packet."
+
+checkpoint_readiness:
+  ready: true
+  command: "npm run checkpoint:implementation"
+  expected_effect: "Stage only the eleven repair runtime test transition completion and handoff paths."
+  push_allowed: false
+  deployment_allowed: false
+
+next_recommended_action:
+  task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01 local checkpoint"
+  summary: "Run the implementation checkpoint transaction and stop."
+  do_not_skip: "Do not open the sitewide introduction packet push deploy refresh sources or mutate upstream in the same transaction."

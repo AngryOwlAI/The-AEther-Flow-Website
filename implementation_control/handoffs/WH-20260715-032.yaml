@@ -1,0 +1,57 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260715-032"
+created_utc: "2026-07-16T00:11:07Z"
+updated_utc: "2026-07-16T00:16:11Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260715-032"
+job_id: "WJ-20260715-032-A"
+
+summary: "Opened a bounded repair for the two preexisting desktop navigation flex-alignment changes after proving the Reading Paths checkpoint from Git."
+
+current_state:
+  - "Reading Paths is checkpointed at 095c6e66c961a8f581c818dc48a217e4a3d6866b and is not replayed."
+  - "The existing diff adds nav-link to the shared flex centering selector and one focused regression assertion."
+  - "The original FE-P1-04 target sizing checkpoint remains 529bc34aa975c099ea0b545aaccd25654b13d0f6."
+  - "No project introduction public claim route manifest asset source push or deployment change is authorized."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  upstream_worktree_status: "dirty_in_flight_and_read_only"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+next_recommended_action:
+  task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01 local checkpoint"
+  summary: "Run the checkpoint transaction for completed WJC-20260715-032-A."
+  do_not_skip: "Do not enter the sitewide introduction packet in this transaction."
+
+stop_before:
+  - "Any navigation content destination grouping interaction route source manifest asset or introduction change"
+  - "Git push Cloudflare deployment source refresh or upstream write"
+
+checkpoint_transition:
+  previous_packet: "RESOURCES-READING-PATHS-INTRO-01"
+  checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  observed_as_head: true
+  repeated: false
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  focused_test_status: "passed 4 tests"
+  python_tests: "passed 156 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_navigation_review: "passed desktop and compact dimensions alignment active state and overflow"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260715-032-A"
+  path: "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+  status: "completed"

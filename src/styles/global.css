@@ -161,6 +161,7 @@ summary:focus-visible {
 
 .brand,
 .nav-links,
+.nav-link,
 .nav-menu-trigger {
   display: flex;
   align-items: center;

@@ -1,0 +1,131 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260715-032-A"
+task_id: "WI-20260715-032"
+title: "Validate And Checkpoint Desktop Navigation Link Flex Alignment"
+created_utc: "2026-07-16T00:11:07Z"
+updated_utc: "2026-07-16T00:16:11Z"
+status: "active"
+
+objective: "Validate and checkpoint the bounded direct navigation link flex alignment repair without changing navigation behavior or content."
+
+execution_boundary:
+  invocation_limit: "one bounded DESKTOP-NAV-LINK-FLEX-REPAIR-01 packet"
+  packet_id: "DESKTOP-NAV-LINK-FLEX-REPAIR-01"
+  previous_checkpoint: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  previous_checkpoint_replay_status: "forbidden"
+  navigation_content_change_status: "forbidden"
+  introduction_change_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "Website navigation style test control browser and Git evidence allowlisted by WI-20260715-032"
+
+allowed_writes:
+  - "src/styles/global.css"
+  - "tests/test_mobile_navigation.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260715-031.yaml"
+  - "implementation_control/tasks/WI-20260715-031/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-031/jobs/WJ-20260715-031-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-032.yaml"
+  - "implementation_control/handoffs/WH-20260715-032.md"
+  - "implementation_control/tasks/WI-20260715-032/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-032/jobs/WJ-20260715-032-A.yaml"
+  - "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+
+required_outputs:
+  - "Direct top level navigation links use the existing shared flex centering rule."
+  - "Desktop and compact target sizes remain unchanged."
+  - "Focused and full validation plus browser review pass."
+  - "One completion record lists only the bounded repair and control transition paths."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner requested the navigation changes be independently resolved before sitewide introduction work."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public copy or claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source content or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "approved"
+    trigger: "Existing direct navigation alignment only."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One existing global navigation selector only."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No route or manifest change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "runtime-desktop-navigation-alignment-review"
+    command: "manual inspection of direct desktop navigation link flex alignment target dimensions current state and compact isolation in the in app browser"
+    required: true
+
+stop_conditions:
+  - "Any change beyond the two existing repair paths and control records becomes necessary."
+  - "Desktop or compact navigation sizing or interaction regresses."
+  - "Validation or browser review fails."
+  - "Work enters introductions push deployment source refresh or upstream mutation."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260715-032-A"
+  path: "implementation_control/tasks/WI-20260715-032/jobs/completions/WJC-20260715-032-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "DESKTOP-NAV-LINK-FLEX-REPAIR-01 local checkpoint"
+  summary: "Create one local checkpoint from completion WJC-20260715-032-A and stop."
+  do_not_skip: "Do not enter SITEWIDE-PROJECT-INTRO-READABILITY-01 in the same transaction."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  focused_navigation_tests: "passed 4 tests"
+  python_tests: "passed 156 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source pin"
+  quality_gate: "passed against accepted clean source pin"
+  runtime_navigation_review: "desktop 44 CSS pixels compact 32 CSS pixels active state preserved zero overflow"
+  completion_created: true
+  checkpoint_status: "ready"

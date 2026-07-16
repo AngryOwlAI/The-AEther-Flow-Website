@@ -4,8 +4,8 @@ job_id: "WJ-20260715-031-A"
 task_id: "WI-20260715-031"
 title: "Implement Reading Paths General Public Project Introduction"
 created_utc: "2026-07-15T23:17:25Z"
-updated_utc: "2026-07-15T23:29:47Z"
-status: "active"
+updated_utc: "2026-07-16T00:11:07Z"
+status: "superseded"
 
 objective: "Replace the Reading Paths topic-only introduction with one source grounded general public whole project paragraph."
 
@@ -133,7 +133,7 @@ next_recommended_action:
   do_not_skip: "Do not push deploy refresh sources mutate upstream or enter Repository Map in the same transaction."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   writing_gate_status: "passed"
   project_introduction: "implemented after the Reading Paths hero"
   focused_tests: "passed 31 tests"
@@ -143,4 +143,13 @@ implementation_status:
   quality_gate: "passed against accepted clean source pin"
   runtime_introduction_review: "passed at desktop and browser minimum 520 CSS pixel compact width"
   completion_created: true
-  checkpoint_status: "ready"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "095c6e66c961a8f581c818dc48a217e4a3d6866b"
+  observed_as_head: true
+  repeated: false
+
+supersession:
+  superseded_by_handoff_id: "WH-20260715-032"
+  reason: "The Reading Paths packet was checkpointed before the separate navigation repair opened."
