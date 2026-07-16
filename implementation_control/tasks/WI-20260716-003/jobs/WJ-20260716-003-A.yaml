@@ -1,0 +1,161 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260716-003-A"
+task_id: "WI-20260716-003"
+title: "Apply Related Routes Command Band Title Measure"
+created_utc: "2026-07-16T14:46:23Z"
+updated_utc: "2026-07-16T15:00:07Z"
+status: "active"
+
+objective: "Apply one exact-label conditional modifier and one scoped width override so all Related internal routes h2 boxes match the existing 820 pixel section title measure while unrelated command bands remain unchanged."
+
+execution_boundary:
+  invocation_limit: "one bounded RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 packet"
+  packet_id: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
+  prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
+  prior_checkpoint_replay_status: "forbidden"
+  public_copy_change_status: "forbidden"
+  component_change_status: "one exact-label conditional class authorized"
+  style_change_status: "one modifier-scoped h2 max width rule authorized"
+  unrelated_heading_change_status: "forbidden"
+  route_definition_change_status: "forbidden"
+  manifest_change_status: "not_required"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website baseline and all evidence allowlisted by WI-20260716-003"
+
+allowed_writes:
+  - "src/components/CommandBand.astro"
+  - "src/styles/global.css"
+  - "tests/test_public_positioning.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260716-002.yaml"
+  - "implementation_control/handoffs/WH-20260716-002.md"
+  - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-003.yaml"
+  - "implementation_control/handoffs/WH-20260716-003.md"
+  - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+
+required_outputs:
+  - "All current and future exact Related internal routes CommandBand usages receive the command-band-related-routes modifier."
+  - "Only modifier-scoped h2 elements receive max-width min 820 pixels and 100 percent."
+  - "The shared unrelated h2 max-width 14ch rule remains unchanged."
+  - "CommandBand props ids ARIA behavior wording slots and route sources remain unchanged."
+  - "Focused full aggregate quality build and responsive browser checks pass against the accepted source root."
+  - "No manifest source checkpoint push or deployment change occurs."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner requested implementation of the accepted plan."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public wording or claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No navigation or route change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One exact-label CommandBand modifier and one related-routes-only heading measure rule."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No route source public asset or source authority record change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "related-routes-contract-review"
+    command: "manual inspection of all exact Related internal routes CommandBand usages and the unrelated heading negative control"
+    required: true
+  - id: "runtime-related-routes-review"
+    command: "manual inspection of all 24 related route headings at desktop and compact widths for measure wrapping rail preservation and zero overflow"
+    required: true
+
+stop_conditions:
+  - "Any public text title lead card link route source ARIA identifier or slot order changes."
+  - "Any unrelated CommandBand h2 no longer retains the shared 14ch cap."
+  - "Any affected route fails to reach the 820 pixel desktop measure or available compact width."
+  - "Any tested viewport clips horizontally overflows or changes EvidenceRail width or placement."
+  - "Any required validator or browser review fails."
+  - "Work enters manifest regeneration source refresh upstream write checkpoint push or deployment."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260716-003-A"
+  path: "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  related_internal_routes_usage_count: 24
+  component_change_status: "exact eyebrow condition adds command-band-related-routes without changing props ids ARIA wording or slots"
+  style_change_status: "one modifier-scoped min 820 pixels and 100 percent h2 max width rule added while the base 14ch rule remains"
+  regression_test_status: "baseline failed 1 with 35 deselected and final passed 1 with 35 deselected plus all 36 positioning tests"
+  python_tests: "passed 162 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed all 24 affected routes at 1440 and 520 CSS pixel widths with exact 820 and 436 pixel heading boxes zero overflow preserved lead and rail geometry representative visuals and zero console errors"
+  unrelated_negative_control: "Reading Paths Route clusters retained no modifier and the 14ch cap at approximately 470 desktop and 330 compact CSS pixels"
+  completion_created: true
+  checkpoint_status: "not_authorized"

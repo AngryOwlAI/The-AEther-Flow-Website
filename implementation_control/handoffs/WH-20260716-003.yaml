@@ -1,0 +1,69 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260716-003"
+created_utc: "2026-07-16T14:46:23Z"
+updated_utc: "2026-07-16T15:00:07Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260716-003"
+job_id: "WJ-20260716-003-A"
+
+summary: "Completed the owner-authorized Related internal routes heading measure correction with focused full aggregate quality and all-route responsive browser evidence."
+
+current_state:
+  - "Git proves HEADER-BRAND-SPELLING-01 was checkpointed locally at 335ea669 and will not be replayed."
+  - "The website worktree was clean before this control transition."
+  - "The accepted source root remains clean at pin 57438af."
+  - "Twenty four unchanged page sources use CommandBand with the exact eyebrow Related internal routes."
+  - "CommandBand now adds command-band-related-routes only for that exact eyebrow while preserving props ids ARIA wording and slots."
+  - "The scoped h2 rule uses min 820 pixels and 100 percent while the unrelated base h2 rule remains 14ch."
+  - "The focused contract first failed with 1 failed and 35 deselected and then passed with 1 passed and 35 deselected plus all 36 positioning tests."
+  - "The full 162 test suite manifest claim content provenance curator aggregate quality and 64 page build gates passed."
+  - "All 24 affected routes measured exactly 820 pixels at a 1440 pixel viewport and 436 pixels at a 520 pixel viewport with zero overflow and preserved lead and EvidenceRail geometry."
+  - "Publication Process Physics Claim Status and AI Current State passed representative visual review and the browser reported zero console errors."
+  - "Reading Paths Route clusters retained no related modifier and the 14ch title cap at desktop and compact widths."
+  - "Route sources public copy manifests assets claims source refresh upstream writes checkpoint push and deployment remain outside the packet."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  live_upstream_head: "c71ab2760ba0b1e2c2bf9341296d59525c1bd04f"
+  live_upstream_worktree_status: "dirty external non-main branch observed and preserved read only"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+checkpoint_transition:
+  prior_packet: "HEADER-BRAND-SPELLING-01"
+  checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
+  observed_from_git: true
+  repeated: false
+
+next_recommended_action:
+  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  target_surface: "all exact Related internal routes CommandBand sections"
+  target_element: "related route h2 title box"
+  observed_failure: "resolved from the shared 14ch cap to the existing 820 pixel section title measure"
+  related_internal_routes_usage_count: 24
+  regression_test_status: "passed focused and all 36 positioning tests after baseline failure"
+  python_tests: "passed 162 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed all 24 routes at 1440 and 520 CSS pixel widths with zero overflow preserved lead and rail geometry three representative visuals and zero console errors"
+  unrelated_negative_control: "Reading Paths Route clusters retained no modifier and the 14ch cap"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260716-003-A"
+  path: "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+  status: "completed"

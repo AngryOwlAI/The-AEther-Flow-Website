@@ -58,6 +58,7 @@ RESOURCES_PUBLICATION_PROCESS_PAGE = (
 RESOURCES_LIBRARY_PAGE = REPO_ROOT / "src/pages/resources/library/index.astro"
 RESOURCES_READING_PATHS_PAGE = REPO_ROOT / "src/pages/resources/reading-paths/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
+COMMAND_BAND = REPO_ROOT / "src/components/CommandBand.astro"
 GLOBAL_CSS = REPO_ROOT / "src/styles/global.css"
 ROUTE_MAP = REPO_ROOT / "public/files/manifests/page_route_map.json"
 
@@ -529,6 +530,46 @@ def test_project_system_improvement_heading_has_a_route_local_responsive_fit_rul
         and "overflow-wrap: anywhere;" in block
         for block in blocks
     )
+
+
+def test_related_internal_route_command_bands_use_the_section_title_measure() -> None:
+    component = COMMAND_BAND.read_text(encoding="utf-8")
+    css = GLOBAL_CSS.read_text(encoding="utf-8")
+    eyebrow = 'eyebrow="Related internal routes"'
+    modifier = "command-band-related-routes"
+
+    related_route_sources = {
+        path
+        for path in (REPO_ROOT / "src/pages").rglob("*.astro")
+        if eyebrow in path.read_text(encoding="utf-8")
+    }
+    assert len(related_route_sources) == 24
+    assert all(
+        re.search(
+            r'<CommandBand\b[^>]*eyebrow="Related internal routes"[^>]*>',
+            path.read_text(encoding="utf-8"),
+            re.DOTALL,
+        )
+        for path in related_route_sources
+    )
+    assert all(
+        modifier not in path.read_text(encoding="utf-8")
+        for path in related_route_sources
+    )
+
+    assert 'const isRelatedRoutes = eyebrow === "Related internal routes";' in component
+    assert f'"{modifier}": isRelatedRoutes' in component
+
+    base_rules = re.findall(r"\.command-band-copy h2 \{(.*?)\n\}", css, re.DOTALL)
+    assert any("max-width: 14ch;" in rule for rule in base_rules)
+
+    related_rule = re.search(
+        rf"\.{modifier} \.command-band-copy h2 \{{(.*?)\n\}}",
+        css,
+        re.DOTALL,
+    )
+    assert related_rule is not None
+    assert "max-width: min(820px, 100%);" in related_rule.group(1)
 
 
 def test_physics_overview_has_a_general_public_project_introduction_after_the_hero() -> None:

@@ -1,0 +1,186 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260716-003"
+title: "Match Related Internal Routes Heading Measure"
+created_utc: "2026-07-16T14:46:23Z"
+updated_utc: "2026-07-16T15:00:07Z"
+status: "active"
+
+source_context:
+  packet_id: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
+  owner_authorization: "Owner selected Related routes only and requested the complete approved plan be implemented after the prior header packet checkpoint."
+  prior_task: "WI-20260716-002"
+  prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+
+goal: "Give every exact Related internal routes CommandBand h2 the existing 820 pixel section title measure while preserving the 14ch cap for every unrelated CommandBand heading."
+
+requirements:
+  - "Treat checkpoint 335ea669 as completed Git authority and do not replay it."
+  - "Detect the exact eyebrow value Related internal routes inside CommandBand and add one conditional command-band-related-routes modifier class."
+  - "Apply max-width min 820 pixels and 100 percent only to h2 elements inside that modifier."
+  - "Preserve the CommandBand prop interface title ids ARIA behavior wording slot order and unrelated markup behavior."
+  - "Keep the base command-band-copy h2 max-width 14ch rule unchanged for unrelated command bands."
+  - "Add focused regression coverage that dynamically discovers exact Related internal routes page usages and verifies the conditional component and scoped CSS contracts."
+  - "Do not modify any of the 24 route source files or regenerate page provenance."
+  - "Validate all 24 affected routes at desktop and compact widths plus representative visual and unrelated negative-control review."
+  - "Leave the completed packet ready for separate local checkpoint authorization without staging committing pushing or deploying."
+
+scope:
+  in_scope:
+    - "src/components/CommandBand.astro one conditional modifier class"
+    - "src/styles/global.css one modifier-scoped h2 max width rule"
+    - "tests/test_public_positioning.py focused shared heading measure regression coverage"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Any route source public copy title lead evidence rail card or navigation change"
+    - "Any unrelated CommandBand heading width font size line height or wrapping change"
+    - "Any public asset manifest source binding or claim change"
+    - "Source refresh upstream writes checkpoint push and deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "Git checkpoint 335ea669"
+    - "CommandBand global CSS all exact Related internal routes usages focused tests build output and browser evidence"
+    - "Website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "/tmp/aether-flow-source-57438af-homeintro-ZiApaw at accepted source pin 57438af"
+
+allowed_writes:
+  website_repository:
+    - "src/components/CommandBand.astro"
+    - "src/styles/global.css"
+    - "tests/test_public_positioning.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260716-002.yaml"
+    - "implementation_control/handoffs/WH-20260716-002.md"
+    - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+    - "implementation_control/handoffs/WH-20260716-003.yaml"
+    - "implementation_control/handoffs/WH-20260716-003.md"
+    - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+    - "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner explicitly requested implementation of the accepted Related Internal Routes Heading-Width Fix plan."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public wording scientific mathematical governance or workflow claim changes are authorized."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh or binding change is authorized."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No navigation route definition or retirement change."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Owner approved one conditional CommandBand modifier and one related-routes-only heading measure rule."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public assets change."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No route source public asset or manifest authority record changes."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "related-routes-contract-review"
+    command: "manual inspection of all exact Related internal routes CommandBand usages and the unrelated heading negative control"
+    required: true
+  - id: "runtime-related-routes-review"
+    command: "manual inspection of all 24 related route headings at desktop and compact widths for measure wrapping rail preservation and zero overflow"
+    required: true
+
+stop_conditions:
+  - "Any public text title lead card link route source ARIA identifier or slot order changes."
+  - "Any unrelated CommandBand h2 no longer retains the shared 14ch cap."
+  - "Any affected route fails to reach the 820 pixel desktop measure or available compact width."
+  - "Any tested viewport clips horizontally overflows or changes EvidenceRail width or placement."
+  - "Any required validator or browser review fails."
+  - "Work enters manifest regeneration source refresh upstream write checkpoint push or deployment."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: false
+  closeout: "Create WJC-20260716-003-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+
+handoff:
+  latest_handoff_id: "WH-20260716-003"
+  yaml_path: "implementation_control/handoffs/WH-20260716-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260716-003.md"
+
+completion_record:
+  completion_id: "WJC-20260716-003-A"
+  path: "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  related_internal_routes_usage_count: 24
+  selected_heading_desktop_width_before: "approximately 470 CSS pixels from the shared 14ch cap"
+  ordinary_section_heading_width: "820 CSS pixels"
+  selected_heading_compact_width_before: "approximately 330 CSS pixels from the shared 14ch cap"
+  component_change_status: "exact eyebrow condition adds command-band-related-routes without changing props ids ARIA wording or slots"
+  style_change_status: "one modifier-scoped min 820 pixels and 100 percent h2 max width rule added while the base 14ch rule remains"
+  regression_test_status: "baseline failed 1 with 35 deselected and final passed 1 with 35 deselected plus all 36 positioning tests"
+  python_tests: "passed 162 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed all 24 affected routes at 1440 and 520 CSS pixel widths with exact 820 and 436 pixel heading boxes zero overflow preserved lead and rail geometry representative visuals and zero console errors"
+  unrelated_negative_control: "Reading Paths Route clusters retained no modifier and the 14ch cap at approximately 470 desktop and 330 compact CSS pixels"
+  route_source_change_status: "none"
+  manifest_change_status: "none"
+  completion_created: true
+  checkpoint_status: "not_authorized"

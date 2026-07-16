@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260716-002"
 title: "Use Canonical AngryOwl Header Spelling"
 created_utc: "2026-07-16T14:03:53Z"
-updated_utc: "2026-07-16T14:12:27Z"
-status: "active"
+updated_utc: "2026-07-16T14:46:23Z"
+status: "superseded"
 
 source_context:
   packet_id: "HEADER-BRAND-SPELLING-01"
@@ -144,8 +144,8 @@ stop_conditions:
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
-  staging_allowed_by_this_job: false
-  closeout: "Create WJC-20260716-002-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+  staging_allowed_by_this_job: true
+  closeout: "Completion WJC-20260716-002-A was checkpointed locally at 335ea669 and must not be replayed."
 
 handoff:
   latest_handoff_id: "WH-20260716-002"
@@ -158,12 +158,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "HEADER-BRAND-SPELLING-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-002-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
+  summary: "Proceed through the owner-authorized Related internal routes heading measure correction."
+  do_not_skip: "Do not replay checkpoint 335ea669 or widen unrelated CommandBand headings change route sources manifests assets claims push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   target_surface: "shared site header brand link"
   target_element: "BaseLayout brandName visible span and derived accessible home label"
   observed_failure: "Header displays Angry Owl while the canonical requested spelling is AngryOwl"
@@ -177,4 +177,10 @@ implementation_status:
   quality_gate: "passed against accepted clean source root"
   runtime_review: "passed Home and AI current state in desktop and compact layouts with exact text label home href zero clipping zero page overflow preserved compact menu and zero console errors"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "335ea669fc339f00e6c6f1613697f28b923ed861"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"

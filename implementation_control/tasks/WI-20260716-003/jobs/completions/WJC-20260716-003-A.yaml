@@ -1,0 +1,172 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260716-003-A"
+task_id: "WI-20260716-003"
+job_id: "WJ-20260716-003-A"
+created_utc: "2026-07-16T15:00:07Z"
+completed_utc: "2026-07-16T15:00:07Z"
+status: "completed"
+
+summary: "Matched all exact Related internal routes CommandBand h2 boxes to the existing 820 pixel section title measure while preserving the unrelated 14ch default and every route source."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260716-002.md"
+  - "implementation_control/handoffs/WH-20260716-002.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-003.md"
+  - "implementation_control/handoffs/WH-20260716-003.yaml"
+  - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
+  - "src/components/CommandBand.astro"
+  - "src/styles/global.css"
+  - "tests/test_public_positioning.py"
+
+implementation_results:
+  target_surface: "all 24 shared CommandBand sections whose eyebrow is exact Related internal routes"
+  component_condition: "eyebrow equals exact Related internal routes"
+  modifier_class: "command-band-related-routes"
+  related_heading_rule: "max-width min 820 pixels and 100 percent"
+  unrelated_heading_rule: "base max-width 14ch preserved"
+  component_prop_change_status: "none"
+  id_change_status: "none"
+  aria_change_status: "none"
+  wording_change_status: "none"
+  slot_change_status: "none"
+  lead_change_status: "none"
+  evidence_rail_change_status: "none"
+  route_source_change_status: "none"
+  public_asset_change_status: "none"
+  manifest_change_status: "none"
+  source_binding_change_status: "none"
+
+regression_test_evidence:
+  status: "passed"
+  discovery_contract: "The test dynamically found exactly 24 Astro page sources with the exact eyebrow and verified every usage is CommandBand."
+  baseline_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -k related_internal_route"
+  baseline_result: "The new contract failed with 1 failed and 35 deselected because CommandBand lacked the exact condition."
+  final_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -k related_internal_route"
+  final_result: "1 test passed with 35 deselected after the component and CSS correction."
+  positioning_suite_command: ".venv/bin/python -m pytest tests/test_public_positioning.py"
+  positioning_suite_result: "36 tests passed."
+
+runtime_review:
+  status: "passed"
+  affected_route_count: 24
+  desktop_css_viewport: "1440 by 1200"
+  desktop_heading_width_range: "820 to 820 pixels"
+  desktop_copy_width_range: "1132 to 1132 pixels"
+  desktop_lead_width_range: "696.2604 to 696.2604 pixels"
+  desktop_evidence_rail_width_range: "1132 to 1132 pixels"
+  compact_css_viewport: "520 by 900"
+  compact_heading_width_range: "436 to 436 pixels"
+  compact_copy_width_range: "436 to 436 pixels"
+  compact_lead_width_range: "436 to 436 pixels"
+  compact_evidence_rail_width_range: "436 to 436 pixels"
+  related_modifier_count_per_route: 1
+  page_horizontal_overflow: false
+  section_horizontal_overflow: false
+  lead_and_rail_alignment_preserved: true
+  representative_visual_routes:
+    - "/resources/publication-process/"
+    - "/physics/claim-status/"
+    - "/ai-research-system/current-state/"
+  representative_visual_result: "All three samples showed the wider readable title measure with unchanged lead and EvidenceRail placement."
+  negative_control_route: "/resources/reading-paths/"
+  negative_control_eyebrow: "Route clusters"
+  negative_control_related_modifier: false
+  negative_control_desktop_heading_width: "470.0417 pixels from the 14ch rule"
+  negative_control_compact_heading_width: "330.5 pixels from the 14ch rule"
+  browser_console_errors: 0
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The bounded packet allowlist completion pointers and handoff are structurally coherent."
+  - id: "focused-related-routes-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py -k related_internal_route"
+    status: "passed"
+    evidence: "1 focused test passed after the new contract first failed."
+  - id: "positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py"
+    status: "passed"
+    evidence: "36 positioning tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "162 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed with no manifest changes required."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remains current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes with no route source changes."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against accepted source pin 57438af."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "Quality passed against accepted source pin 57438af."
+  - id: "related-routes-contract-review"
+    command: "manual inspection of all exact Related internal routes CommandBand usages and the unrelated heading negative control"
+    status: "passed"
+    evidence: "All 24 exact usages received the modifier and Reading Paths Route clusters retained the unrelated 14ch contract."
+  - id: "runtime-related-routes-review"
+    command: "manual inspection of all 24 related route headings at desktop and compact widths for measure wrapping rail preservation and zero overflow"
+    status: "passed"
+    evidence: "All routes passed at 1440 and 520 CSS pixels with exact expected widths zero overflow stable lead and rail geometry and three clean representative visuals."
+
+validation_environment:
+  prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
+  prior_checkpoint_replayed: false
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_head: "c71ab2760ba0b1e2c2bf9341296d59525c1bd04f"
+  live_upstream_branch: "codex/v19-remaining-relay"
+  live_upstream_tree_status: "dirty external non-main branch observed and preserved read only"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "Only CommandBand one scoped CSS rule one focused test and implementation control records changed."
+  - "All 24 route sources public copy ids ARIA behavior slots leads EvidenceRails cards navigation assets manifests source bindings source refresh and upstream state remain unchanged."
+  - "Checkpoint push and deployment remain unauthorized and were not performed."
+
+checkpoint_readiness:
+  ready: true
+  authorized: false
+  command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run checkpoint:implementation"
+  dry_run_status: "passed"
+  packet_path_count: 13
+  ignored_unrelated_path_count: 0
+  staged_path_count: 0
+  expected_effect: "After separate owner authorization stage and commit only the 13 completion listed paths."
+
+next_recommended_action:
+  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."

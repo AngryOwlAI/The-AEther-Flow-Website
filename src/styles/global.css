@@ -3618,6 +3618,10 @@ html:has(body.project-overview-page) {
   line-height: 1.05;
 }
 
+.command-band-related-routes .command-band-copy h2 {
+  max-width: min(820px, 100%);
+}
+
 .command-band-lead {
   max-width: 64ch;
   margin: 1.2rem 0 0;

@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T14:12:27Z"
+updated_utc: "2026-07-16T15:00:07Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
-  - "implementation_control/handoffs/WH-20260716-002.yaml"
+  - "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
+  - "implementation_control/handoffs/WH-20260716-003.yaml"
   - "current_git_state_and_validator_output"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -23,31 +23,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260716-002"
-  title: "Use Canonical AngryOwl Header Spelling"
+  task_id: "WI-20260716-003"
+  title: "Match Related Internal Routes Heading Measure"
   status: "active"
-  path: "implementation_control/tasks/WI-20260716-002/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260716-003/00_TASK.yaml"
   planning_context:
-    task_packet: "HEADER-BRAND-SPELLING-01"
-    adopted_plan: "Owner identified the selected header label as AngryOwl and authorized the pending checkpoint followed by one bounded successor correction"
-    prior_checkpoint: "b6f291b2b2851ba9b77aa613e6f52233b5b726c7"
+    task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01"
+    adopted_plan: "Owner selected Related routes only and requested the approved plan be implemented after checkpointing the prior header packet"
+    prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner authorized checkpoint b6f291b2 and requested the selected header brand spelling change from Angry Owl to AngryOwl."
+    owner_authorization: "Owner authorized the prior checkpoint and one bounded shared component heading measure correction for all exact Related internal routes bands."
 
 current_job:
-  job_id: "WJ-20260716-002-A"
+  job_id: "WJ-20260716-003-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260716-002/jobs/WJ-20260716-002-A.yaml"
+  path: "implementation_control/tasks/WI-20260716-003/jobs/WJ-20260716-003-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260716-002"
+  handoff_id: "WH-20260716-003"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260716-002.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260716-002.md"
+  yaml_path: "implementation_control/handoffs/WH-20260716-003.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260716-003.md"
 
 latest_completion:
-  completion_id: "WJC-20260716-002-A"
-  path: "implementation_control/tasks/WI-20260716-002/jobs/completions/WJC-20260716-002-A.yaml"
+  completion_id: "WJC-20260716-003-A"
+  path: "implementation_control/tasks/WI-20260716-003/jobs/completions/WJC-20260716-003-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,48 +81,53 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "header-brand-text-review"
-    command: "manual inspection of header brand visible text and accessible home label for exact AngryOwl spelling"
+  - id: "related-routes-contract-review"
+    command: "manual inspection of all exact Related internal routes CommandBand usages and the unrelated heading negative control"
     required_for_current_job: true
-  - id: "runtime-header-brand-review"
-    command: "manual inspection of header brand on Home and AI current state at desktop and compact widths for exact spelling clipping and navigation preservation"
+  - id: "runtime-related-routes-review"
+    command: "manual inspection of all 24 related route headings at desktop and compact widths for measure wrapping rail preservation and zero overflow"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "HEADER-BRAND-SPELLING-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-002-A."
+  task_packet: "RELATED-INTERNAL-ROUTES-TITLE-MEASURE-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-003-A."
   do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
 
 preflight_evidence:
-  status: "passed_for_header_brand_spelling_packet"
-  observed_utc: "2026-07-16T14:03:53Z"
-  prior_checkpoint: "b6f291b2b2851ba9b77aa613e6f52233b5b726c7"
+  status: "passed_for_related_internal_routes_title_measure_packet"
+  observed_utc: "2026-07-16T14:46:23Z"
+  prior_checkpoint: "335ea669fc339f00e6c6f1613697f28b923ed861"
   prior_checkpoint_observed_from_git: true
   prior_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 5
+  website_ahead_of_origin_main: 6
   website_worktree_status: "clean_before_packet_open"
+  related_internal_routes_usage_count: 24
+  selected_heading_desktop_width_before: "approximately 470 CSS pixels from the shared 14ch cap"
+  ordinary_section_heading_width: "820 CSS pixels"
+  selected_heading_compact_width_before: "approximately 330 CSS pixels from the shared 14ch cap"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  live_upstream_head: "3826b37391ab6e0ce9091eebae14f545a770e485"
+  live_upstream_head: "c71ab2760ba0b1e2c2bf9341296d59525c1bd04f"
   live_upstream_worktree_status: "dirty external non-main branch observed and preserved read only"
   source_refresh_status: "not_performed"
 
 implementation_status:
   status: "ready_for_checkpoint"
-  target_surface: "shared site header brand link"
-  target_element: "BaseLayout brandName visible span and derived accessible home label"
-  observed_failure: "Header displays Angry Owl while the canonical requested spelling is AngryOwl"
-  authorized_change: "one shared brandName string from Angry Owl to AngryOwl"
-  footer_change_status: "forbidden because the selected target is the header label"
-  manifest_change_status: "not_required because route source files and public assets remain unchanged"
-  regression_test_status: "baseline failed 1 with 4 passed and final passed 5 tests"
-  python_tests: "passed 161 tests"
+  target_surface: "all shared CommandBand sections whose eyebrow is exact Related internal routes"
+  target_element: "related route command-band h2 title box"
+  observed_failure: "The shared 14ch h2 cap makes related route title boxes substantially narrower than the existing 820 pixel section title measure."
+  authorized_change: "One conditional command-band-related-routes modifier one scoped 820 pixel max width rule and one focused regression test."
+  unrelated_command_band_status: "Reading Paths Route clusters retained the shared 14ch cap at desktop and compact widths"
+  route_source_change_status: "forbidden"
+  manifest_change_status: "not_required because no route source file or public asset changes"
+  regression_test_status: "baseline failed 1 with 35 deselected and final passed 1 with 35 deselected plus all 36 positioning tests"
+  python_tests: "passed 162 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source root"
   quality_gate: "passed against accepted clean source root"
-  runtime_review: "passed Home and AI current state in desktop and compact layouts with exact text label home href zero clipping zero page overflow preserved compact menu and zero console errors"
+  runtime_review: "passed all 24 affected routes at 1440 and 520 CSS pixel widths with 820 and 436 pixel heading boxes zero overflow preserved lead and rail geometry representative visuals and zero console errors"
   completion_created: true
   checkpoint_status: "not_authorized"
   push_performed: false

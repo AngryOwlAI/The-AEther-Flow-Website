@@ -23,11 +23,16 @@ const fallbackTitleId = `command-band-${title
   .replace(/[^a-z0-9]+/g, "-")
   .replace(/^-|-$/g, "")}`;
 const titleId = ariaLabelledby ?? (id ? `${id}-title` : fallbackTitleId);
+const isRelatedRoutes = eyebrow === "Related internal routes";
 ---
 
 <section
   id={id}
-  class={`command-band ${className}`.trim()}
+  class:list={[
+    "command-band",
+    className,
+    { "command-band-related-routes": isRelatedRoutes },
+  ]}
   aria-labelledby={titleId}
 >
   <div class="command-band-layout">
