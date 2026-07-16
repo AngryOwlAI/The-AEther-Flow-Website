@@ -1,0 +1,152 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260715-036-A"
+task_id: "WI-20260715-036"
+job_id: "WJ-20260715-036-A"
+created_utc: "2026-07-16T02:47:41Z"
+completed_utc: "2026-07-16T02:47:41Z"
+status: "completed"
+
+summary: "Expanded all 29 shared project introduction paragraph blocks across their full padded panel interiors while preserving every other content and presentation contract."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260715-035.md"
+  - "implementation_control/handoffs/WH-20260715-035.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260715-035/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-035/jobs/WJ-20260715-035-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-036.md"
+  - "implementation_control/handoffs/WH-20260715-036.yaml"
+  - "implementation_control/tasks/WI-20260715-036/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-036/jobs/WJ-20260715-036-A.yaml"
+  - "implementation_control/tasks/WI-20260715-036/jobs/completions/WJC-20260715-036-A.yaml"
+  - "src/styles/global.css"
+  - "tests/test_public_positioning.py"
+
+implementation_results:
+  introduction_surfaces: 29
+  shared_selectors_changed: 2
+  home_max_width_status: "100 percent"
+  greenfield_max_width_status: "100 percent"
+  margin_status: "preserved margin-inline 0 auto"
+  text_alignment_status: "preserved left"
+  paragraph_gap_status: "preserved at 16 CSS pixels"
+  desktop_padding_status: "preserved responsive padding measured at 28.8 CSS pixels at 1440 width and 32 CSS pixels at 1640 width"
+  compact_padding_status: "preserved at 16 CSS pixels"
+  desktop_font_size_status: "preserved at 18.88 CSS pixels"
+  compact_font_size_status: "preserved at 16.96 CSS pixels"
+  route_source_change_status: "none"
+  copy_change_status: "none"
+  component_interface_change_status: "none"
+  tracked_manifest_change_status: "none"
+  public_asset_change_status: "none"
+
+regression_test_evidence:
+  status: "passed"
+  baseline_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+  baseline_result: "The focused contract failed on max-width 72ch with 1 failed and 32 passed."
+  final_command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+  final_result: "33 tests passed with both introduction selectors requiring max-width 100 percent."
+
+runtime_review:
+  status: "passed"
+  desktop_viewport: "1440 by 1200 CSS pixels"
+  compact_viewport: "520 by 900 CSS pixels"
+  routes_inspected: 29
+  total_inspections: 58
+  successful_inspections: 58
+  failed_inspections: 0
+  desktop_panel_width: "1180 CSS pixels"
+  desktop_paragraph_width: "1122.416748 CSS pixels"
+  desktop_padding: "28.8 CSS pixels per side"
+  maximum_desktop_left_delta: "0.008329 CSS pixels"
+  maximum_desktop_right_delta: "0.008420 CSS pixels"
+  compact_panel_width: "468 CSS pixels"
+  compact_paragraph_width: "436 CSS pixels"
+  compact_padding: "16 CSS pixels per side"
+  maximum_compact_left_delta: "0 CSS pixels"
+  maximum_compact_right_delta: "0 CSS pixels"
+  maximum_paragraph_gap_delta: "0.000184 CSS pixels"
+  horizontal_clipping: "0 CSS pixels on every inspected paragraph"
+  vertical_clipping: "0 CSS pixels on every inspected paragraph"
+  horizontal_overflow: "0 CSS pixels on every inspected route"
+  default_home_viewport: "1640 by 1285 CSS pixels"
+  default_home_panel_width: "1180 CSS pixels"
+  default_home_paragraph_width: "1116 CSS pixels"
+  default_home_padding: "32 CSS pixels per side"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The successor layout packet gates allowlists and completion pointers are structurally coherent."
+  - id: "focused-positioning-tests"
+    command: ".venv/bin/python -m pytest tests/test_public_positioning.py -q"
+    status: "passed"
+    evidence: "33 tests passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "158 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed with no tracked manifest change."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remains current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance passed for 34 routes."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "All aggregate validators and the 64 page build passed against accepted source pin 57438af."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "Quality passed against accepted source pin 57438af."
+  - id: "runtime-introduction-layout-review"
+    command: "manual inspection of all 29 introduction routes at 1440 by 1200 and 520 by 900 CSS pixels for full padded width left alignment paragraph gaps typography clipping and overflow"
+    status: "passed"
+    evidence: "All 58 inspections passed with full padded width preserved typography 16 pixel gaps and zero clipping or overflow."
+
+validation_environment:
+  prior_checkpoint: "f49b367d4e06a4263ef9168a5a1cef7ae9e465b6"
+  prior_checkpoint_replayed: false
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  live_upstream_head: "fd802dee85da59d29c71842f9dcfa882a0927c29"
+  live_upstream_tree_status: "dirty external work preserved read only"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "No introduction copy route source component interface panel dimensions padding background typography paragraph gap compact rule tracked manifest or public asset changed."
+  - "No source refresh upstream write staging checkpoint commit push or deployment occurred for this successor packet."
+
+checkpoint_readiness:
+  ready: true
+  authorized: false
+  command: "npm run checkpoint:implementation"
+  expected_effect: "After separate owner authorization stage and commit only the 12 completion listed paths."
+
+next_recommended_action:
+  task_packet: "SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."

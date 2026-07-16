@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T02:18:00Z"
+updated_utc: "2026-07-16T02:47:41Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260715-035/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260715-035/jobs/WJ-20260715-035-A.yaml"
-  - "implementation_control/handoffs/WH-20260715-035.yaml"
+  - "implementation_control/tasks/WI-20260715-036/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260715-036/jobs/WJ-20260715-036-A.yaml"
+  - "implementation_control/handoffs/WH-20260715-036.yaml"
   - "current_git_state_and_validator_output"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -23,31 +23,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260715-035"
-  title: "Left Anchor Sitewide Project Introduction Columns"
+  task_id: "WI-20260715-036"
+  title: "Widen Sitewide Project Introduction Text"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-035/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260715-036/00_TASK.yaml"
   planning_context:
-    task_packet: "SITEWIDE-PROJECT-INTRO-LEFT-ALIGNMENT-01"
-    adopted_plan: "Owner supplied Left-Align All Project Introduction Columns plan"
-    prior_checkpoint: "96d50ae08fa5803ae7820c11b795b57f28f0ba32"
+    task_packet: "SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01"
+    adopted_plan: "Owner supplied Widen Sitewide Introduction Text plan"
+    prior_checkpoint: "f49b367d4e06a4263ef9168a5a1cef7ae9e465b6"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner explicitly authorized one shared layout adjustment across all 29 project introduction surfaces."
+    owner_authorization: "Owner explicitly authorized full padded width text across all 29 project introduction surfaces."
 
 current_job:
-  job_id: "WJ-20260715-035-A"
+  job_id: "WJ-20260715-036-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260715-035/jobs/WJ-20260715-035-A.yaml"
+  path: "implementation_control/tasks/WI-20260715-036/jobs/WJ-20260715-036-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260715-035"
+  handoff_id: "WH-20260715-036"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260715-035.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260715-035.md"
+  yaml_path: "implementation_control/handoffs/WH-20260715-036.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260715-036.md"
 
 latest_completion:
-  completion_id: "WJC-20260715-035-A"
-  path: "implementation_control/tasks/WI-20260715-035/jobs/completions/WJC-20260715-035-A.yaml"
+  completion_id: "WJC-20260715-036-A"
+  path: "implementation_control/tasks/WI-20260715-036/jobs/completions/WJC-20260715-036-A.yaml"
   status: "completed"
 
 required_validators:
@@ -82,28 +82,28 @@ required_validators:
     command: "npm run quality"
     required_for_current_job: true
   - id: "runtime-introduction-layout-review"
-    command: "manual inspection of all 29 introduction routes at desktop and 520 CSS pixel widths for left anchored columns paragraph gaps typography and overflow"
+    command: "manual inspection of all 29 introduction routes at 1440 by 1200 and 520 by 900 CSS pixels for full padded width left alignment paragraph gaps typography clipping and overflow"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "SITEWIDE-PROJECT-INTRO-LEFT-ALIGNMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-035-A."
+  task_packet: "SITEWIDE-PROJECT-INTRO-FULL-WIDTH-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260715-036-A."
   do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
 
 preflight_evidence:
-  status: "passed_for_left_alignment_packet"
-  observed_utc: "2026-07-16T02:06:08Z"
-  prior_checkpoint: "96d50ae08fa5803ae7820c11b795b57f28f0ba32"
+  status: "passed_for_full_width_packet"
+  observed_utc: "2026-07-16T02:38:21Z"
+  prior_checkpoint: "f49b367d4e06a4263ef9168a5a1cef7ae9e465b6"
   prior_checkpoint_observed_from_git: true
   prior_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 33
+  website_ahead_of_origin_main: 1
   website_worktree_status: "clean_before_packet_open"
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
   live_upstream_head: "fd802dee85da59d29c71842f9dcfa882a0927c29"
-  live_upstream_worktree_status: "clean"
+  live_upstream_worktree_status: "dirty external work preserved read only"
   source_refresh_status: "not_performed"
 
 implementation_status:
@@ -113,14 +113,13 @@ implementation_status:
   route_source_change_status: "forbidden"
   wording_change_status: "forbidden"
   component_change_status: "forbidden"
-  style_change_status: "completed two introduction paragraph selectors only"
+  style_change_status: "completed two introduction max width declarations only"
   tracked_manifest_change_status: "forbidden"
   focused_positioning_tests: "passed 33 tests"
   python_tests: "passed 158 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source root"
   quality_gate: "passed against accepted clean source root"
-  default_aggregate_observation: "stopped at unrelated live upstream curator drift"
   runtime_review: "passed 29 desktop and 29 compact route inspections"
   completion_created: true
   checkpoint_status: "ready_for_separate_authorization"
