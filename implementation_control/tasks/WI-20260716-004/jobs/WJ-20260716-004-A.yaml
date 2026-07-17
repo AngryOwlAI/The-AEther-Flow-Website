@@ -4,8 +4,8 @@ job_id: "WJ-20260716-004-A"
 task_id: "WI-20260716-004"
 title: "Apply Diagram Gallery Media Containment"
 created_utc: "2026-07-16T15:50:25Z"
-updated_utc: "2026-07-16T16:05:48Z"
-status: "active"
+updated_utc: "2026-07-17T13:15:50Z"
+status: "superseded"
 
 objective: "Apply one component scoped width and image containment correction so every Diagram Gallery PNG remains proportional inside its card across desktop and compact layouts."
 
@@ -130,7 +130,7 @@ stop_conditions:
 
 checkpoint:
   command: "npm run checkpoint:implementation"
-  staging_allowed: false
+  staging_allowed: true
   push_allowed: false
   deploy_allowed: false
 
@@ -140,12 +140,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+  summary: "Proceed through the owner-requested Homepage primary action alignment repair."
+  do_not_skip: "Do not replay checkpoint 3a2c856 or change route copy links assets manifests source bindings checkpoint push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   diagram_gallery_card_count: 37
   observed_overflow_card_count: 25
   final_overflow_card_count: 0
@@ -157,4 +157,10 @@ implementation_status:
   quality_gate: "passed against accepted clean source root"
   runtime_review: "passed all 37 cards at 1455 1024 780 and 520 CSS pixel widths with zero card page or body overflow preserved layout and height bounds full extreme diagram visibility working links and zero console errors"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"

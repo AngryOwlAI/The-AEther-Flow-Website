@@ -437,6 +437,17 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
     assert source.count("<h3><a href={step.href}>{step.title}</a></h3>") == 1
 
 
+def test_home_action_row_uses_command_copy_alignment() -> None:
+    css = GLOBAL_CSS.read_text(encoding="utf-8")
+    match = re.search(r"\.home-action-row\s*\{(?P<body>.*?)\}", css, re.DOTALL)
+
+    assert match is not None
+    action_row_css = match.group("body")
+    assert "margin-top: 1.7rem;" in action_row_css
+    assert "width: min(100% - 2rem, 1180px);" not in action_row_css
+    assert "margin: 0 auto" not in action_row_css
+
+
 def test_all_project_introductions_use_the_accepted_semantic_paragraph_vectors() -> None:
     component = PROJECT_INTRODUCTION.read_text(encoding="utf-8")
     assert "!Array.isArray(paragraphs)" in component

@@ -1,0 +1,132 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260717-001-A"
+task_id: "WI-20260717-001"
+job_id: "WJ-20260717-001-A"
+status: "completed"
+completed_utc: "2026-07-17T13:24:28Z"
+
+summary: "Aligned the Homepage primary action row to the same CommandBand copy edges and top spacing as the Physics overview actions while preserving all action content and responsive grouping."
+
+changed_files:
+  - "implementation_control/handoffs/WH-20260716-004.md"
+  - "implementation_control/handoffs/WH-20260716-004.yaml"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260717-001.md"
+  - "implementation_control/handoffs/WH-20260717-001.yaml"
+  - "implementation_control/tasks/WI-20260717-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260717-001/jobs/WJ-20260717-001-A.yaml"
+  - "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
+  - "src/styles/global.css"
+  - "tests/test_public_positioning.py"
+
+implementation_evidence:
+  baseline:
+    viewport: "1533 by 1285 CSS pixels"
+    homepage_copy: "x 166.667 width 528.073"
+    homepage_actions: "x 182.667 width 496.073"
+    physics_copy_and_actions: "x 166.667 width 528.073"
+    cause: "home-action-row subtracted two rem from its containing copy width and centered the result"
+  correction:
+    style: "Removed the row specific centered width and bottom margin and applied the existing 1.7 rem top spacing."
+    source_markup: "unchanged"
+    action_labels_destinations_order_roles: "unchanged"
+  final:
+    desktop: "Homepage and Physics copy/action pairs x 166.667 width 528.073 at 1533 CSS pixel viewport"
+    intermediate: "Homepage and Physics copy/action pairs x 16 width 439.75 at 1040 CSS pixel viewport"
+    breakpoint: "Homepage and Physics copy/action pairs x 16 width 728 at 780 CSS pixel viewport"
+    compact: "Homepage and Physics copy/action pairs x 16 width 468 at 520 CSS pixel viewport"
+    overflow: "zero document horizontal overflow at every reviewed width"
+    console: "zero warnings or errors"
+
+validator_results:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "Implementation-control structural validation passed."
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    status: "passed"
+    evidence: "163 tests passed."
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation passed."
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence is current."
+  - id: "content-validation"
+    command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content source validation passed."
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance validation passed for 34 routes."
+  - id: "static-build"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages."
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    status: "passed"
+    evidence: "Aggregate validation passed against the accepted clean source root."
+  - id: "quality-gate"
+    command: "npm run quality"
+    status: "passed"
+    evidence: "Quality gate passed against the accepted clean source root."
+  - id: "home-action-row-contract-review"
+    command: "manual inspection of Homepage and Physics action row style contracts for matching command copy alignment"
+    status: "passed"
+    evidence: "Both rows use 1.7 rem top spacing and fill their CommandBand copy containing blocks."
+  - id: "runtime-home-action-row-review"
+    command: "manual inspection of Homepage and Physics primary action geometry at desktop and compact widths for copy edge alignment preserved layout and zero overflow"
+    status: "passed"
+    evidence: "All four measured widths passed with matching copy and action edges preserved grouping zero overflow and zero console issues."
+
+focused_regression:
+  command: ".venv/bin/python -m pytest tests/test_public_positioning.py -k home_action_row_uses_command_copy_alignment"
+  baseline_status: "failed 1 with 36 deselected"
+  final_status: "passed 1 with 36 deselected"
+  related_suite: "passed all 37 tests/test_public_positioning.py tests"
+
+checkpoint_dry_run:
+  command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run checkpoint:implementation -- --dry-run"
+  status: "passed"
+  packet_path_count: 12
+  staged_path_count: 0
+  ignored_unrelated_paths:
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+
+validation_environment:
+  prior_checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  prior_checkpoint_replayed: false
+  website_branch: "main"
+  accepted_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_tree_clean: true
+  unrelated_untracked_path: "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md preserved untouched"
+
+scope_preservation:
+  route_source_changed: false
+  action_content_changed: false
+  public_asset_changed: false
+  manifest_changed: false
+  provenance_changed: false
+  source_refresh_performed: false
+  upstream_write_performed: false
+  checkpoint_created: false
+  push_performed: false
+  deployment_performed: false
+
+next_recommended_action:
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."

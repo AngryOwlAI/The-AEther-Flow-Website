@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260716-004"
 title: "Contain Diagram Gallery Media"
 created_utc: "2026-07-16T15:50:25Z"
-updated_utc: "2026-07-16T16:05:48Z"
-status: "active"
+updated_utc: "2026-07-17T13:15:50Z"
+status: "superseded"
 
 source_context:
   packet_id: "DIAGRAM-GALLERY-CONTAINMENT-01"
@@ -144,8 +144,8 @@ stop_conditions:
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
-  staging_allowed_by_this_job: false
-  closeout: "Create WJC-20260716-004-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+  staging_allowed_by_this_job: true
+  closeout: "Completion WJC-20260716-004-A was checkpointed locally at 3a2c856 and must not be replayed."
 
 handoff:
   latest_handoff_id: "WH-20260716-004"
@@ -158,12 +158,12 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+  summary: "Proceed through the owner-requested Homepage primary action alignment repair."
+  do_not_skip: "Do not replay checkpoint 3a2c856 or change route copy links assets manifests source bindings checkpoint push deploy or upstream state."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   diagram_gallery_card_count: 37
   group_counts: "13 physics 7 AI workflow 7 operations 10 source authority"
   observed_overflow_card_count: 25
@@ -180,4 +180,10 @@ implementation_status:
   public_asset_change_status: "none"
   manifest_change_status: "none"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"

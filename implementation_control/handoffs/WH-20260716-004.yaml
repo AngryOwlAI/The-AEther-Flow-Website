@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260716-004"
 created_utc: "2026-07-16T15:50:25Z"
-updated_utc: "2026-07-16T16:05:48Z"
-status: "ready_for_checkpoint"
+updated_utc: "2026-07-17T13:15:50Z"
+status: "superseded"
 
 task_id: "WI-20260716-004"
 job_id: "WJ-20260716-004-A"
@@ -37,7 +37,7 @@ source_authority_boundary:
   public_claim_write_status: "not_required"
   public_asset_write_status: "forbidden"
   manifest_write_status: "forbidden"
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
@@ -48,16 +48,16 @@ checkpoint_transition:
   repeated: false
 
 next_recommended_action:
-  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+  summary: "Proceed through the owner-requested Homepage primary action alignment repair."
+  do_not_skip: "Do not replay checkpoint 3a2c856 or change route copy links assets manifests source bindings checkpoint push deploy or upstream state."
 
 stop_before:
   - "Global style route copy card structure public asset manifest provenance or source binding changes"
   - "Git checkpoint push Cloudflare deployment source refresh or upstream write"
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "checkpointed"
   diagram_gallery_card_count: 37
   group_counts: "13 physics 7 AI workflow 7 operations 10 source authority"
   observed_overflow_card_count: 25
@@ -70,9 +70,21 @@ implementation_status:
   quality_gate: "passed against accepted clean source root"
   runtime_review: "passed all 37 cards at four responsive widths with zero overflow preserved group counts layout height bounds proportions and links"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260716-004-A"
   path: "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  replayed: false
+  next_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+
+superseded_by:
+  handoff_id: "WH-20260717-001"
+  task_id: "WI-20260717-001"
+  job_id: "WJ-20260717-001-A"
+  checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  reason: "The Diagram Gallery containment packet was checkpointed before the separately bounded Homepage action-row alignment packet opened."

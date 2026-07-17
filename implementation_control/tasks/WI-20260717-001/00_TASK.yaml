@@ -1,0 +1,178 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260717-001"
+title: "Align Homepage Primary Actions"
+created_utc: "2026-07-17T13:15:50Z"
+updated_utc: "2026-07-17T13:27:07Z"
+status: "active"
+
+source_context:
+  packet_id: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+  owner_authorization: "Owner requested the Homepage primary actions align like the same component on the Physics page."
+  prior_task: "WI-20260716-004"
+  prior_checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+
+goal: "Align the Homepage primary action row to the command copy edge in the same way as the Physics overview actions without changing action content or responsive grouping."
+
+requirements:
+  - "Treat checkpoint 3a2c856 as completed Git authority and do not replay it."
+  - "Remove the Homepage row specific horizontal inset while retaining the containing CommandBand copy width."
+  - "Use the same top spacing as the Physics overview actions."
+  - "Preserve all four action labels destinations order visual roles and responsive grouping."
+  - "Add one focused CSS regression contract to the existing public positioning tests."
+  - "Verify Homepage and Physics alignment at desktop and compact widths."
+  - "Leave the completed packet ready for separate local checkpoint authorization without staging committing pushing or deploying."
+
+scope:
+  in_scope:
+    - "src/styles/global.css home-action-row base alignment declarations"
+    - "tests/test_public_positioning.py focused action-row alignment contract"
+    - "Implementation control transition completion and handoff records"
+  out_of_scope:
+    - "Any route source copy link action order shared CommandBand structure public asset manifest provenance or source binding change"
+    - "Source refresh upstream writes checkpoint push and deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "Git checkpoint 3a2c856"
+    - "Homepage Physics CommandBand global CSS public positioning tests build output and browser evidence"
+    - "Website and upstream read only Git evidence"
+  upstream_source_repository:
+    - "/tmp/aether-flow-source-57438af-homeintro-ZiApaw at accepted source pin 57438af"
+
+allowed_writes:
+  website_repository:
+    - "src/styles/global.css"
+    - "tests/test_public_positioning.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/handoffs/WH-20260716-004.yaml"
+    - "implementation_control/handoffs/WH-20260716-004.md"
+    - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+    - "implementation_control/handoffs/WH-20260717-001.yaml"
+    - "implementation_control/handoffs/WH-20260717-001.md"
+    - "implementation_control/tasks/WI-20260717-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260717-001/jobs/WJ-20260717-001-A.yaml"
+    - "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner explicitly requested the annotated Homepage alignment correction."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public wording or claim change."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "No source refresh or binding change."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No navigation definition destination or route change."
+  shared_visual_systems:
+    status: "approved"
+    reason: "Owner requested one route scoped action-row alignment repair in the shared stylesheet."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset change."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No route source public asset or manifest authority record change."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream source project write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "home-action-row-contract-review"
+    command: "manual inspection of Homepage and Physics action row style contracts for matching command copy alignment"
+    required: true
+  - id: "runtime-home-action-row-review"
+    command: "manual inspection of Homepage and Physics primary action geometry at desktop and compact widths for copy edge alignment preserved layout and zero overflow"
+    required: true
+
+stop_conditions:
+  - "Any action label destination order role or route source changes."
+  - "Any change escapes the home-action-row base alignment declarations or focused regression test."
+  - "Responsive action grouping changes or horizontal overflow appears."
+  - "Any public asset manifest provenance source binding or upstream state changes."
+  - "Any required validator or browser review fails."
+  - "Work enters checkpoint staging push deployment source refresh or upstream write."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: true
+  staging_allowed_by_this_job: false
+  closeout: "Create WJC-20260717-001-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+
+handoff:
+  latest_handoff_id: "WH-20260717-001"
+  yaml_path: "implementation_control/handoffs/WH-20260717-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260717-001.md"
+
+completion_record:
+  completion_id: "WJC-20260717-001-A"
+  path: "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  observed_failure: "The Homepage row is inset 16 pixels on both sides of the command copy while the Physics row is edge aligned."
+  authorized_change: "Remove the row specific width and centered margin and use the existing 1.7 rem top spacing."
+  style_change_status: "Homepage action row fills its command copy width and uses the same top spacing as Physics overview actions."
+  regression_test_status: "baseline failed 1 focused test and final passed the focused test plus all 37 public positioning tests"
+  python_tests: "passed 163 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed Homepage and Physics at 1533 1040 780 and 520 CSS pixel widths with matching action and copy edges full available widths preserved responsive grouping zero overflow and zero console issues"
+  checkpoint_dry_run: "passed with exactly 12 packet paths zero staged paths and the unrelated untracked implementation plan excluded"
+  route_source_change_status: "none"
+  public_copy_change_status: "none"
+  manifest_change_status: "none"
+  completion_created: true
+  checkpoint_status: "not_authorized"

@@ -1,0 +1,158 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260717-001-A"
+task_id: "WI-20260717-001"
+title: "Apply Homepage Action Row Alignment"
+created_utc: "2026-07-17T13:15:50Z"
+updated_utc: "2026-07-17T13:27:07Z"
+status: "active"
+
+objective: "Apply one Homepage scoped action-row spacing correction so its horizontal edge and width match the Physics overview action container."
+
+execution_boundary:
+  invocation_limit: "one bounded HOMEPAGE-ACTION-ROW-ALIGNMENT-01 packet"
+  packet_id: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+  prior_checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  prior_checkpoint_replay_status: "forbidden"
+  style_change_status: "one home-action-row base alignment correction authorized"
+  test_change_status: "one focused existing test extension authorized"
+  route_source_change_status: "forbidden"
+  public_asset_change_status: "forbidden"
+  manifest_change_status: "not_required"
+  upstream_write_status: "forbidden"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website baseline and all evidence allowlisted by WI-20260717-001"
+
+allowed_writes:
+  - "src/styles/global.css"
+  - "tests/test_public_positioning.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260716-004.yaml"
+  - "implementation_control/handoffs/WH-20260716-004.md"
+  - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+  - "implementation_control/handoffs/WH-20260717-001.yaml"
+  - "implementation_control/handoffs/WH-20260717-001.md"
+  - "implementation_control/tasks/WI-20260717-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260717-001/jobs/WJ-20260717-001-A.yaml"
+  - "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
+
+required_outputs:
+  - "Homepage primary actions share the command copy left edge and width used by Physics overview actions."
+  - "The Homepage primary row retains one full-width primary action and three secondary columns at desktop and compact layouts."
+  - "All action labels destinations order roles and source markup remain unchanged."
+  - "Focused full aggregate quality build and responsive browser checks pass against the accepted source root."
+  - "No checkpoint push deployment source refresh or upstream write occurs."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner requested the annotated Homepage alignment correction."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public wording or claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No source refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No navigation definition destination or route change."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "One Homepage scoped action-row alignment correction in the shared stylesheet."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset change."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No route source public asset or manifest authority record change."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream source write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "manifest-validation"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "claim-validation"
+    command: "npm run validate:claims"
+    required: true
+  - id: "content-validation"
+    command: "npm run validate:content"
+    required: true
+  - id: "provenance-validation"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "static-build"
+    command: "npm run build"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+  - id: "home-action-row-contract-review"
+    command: "manual inspection of Homepage and Physics action row style contracts for matching command copy alignment"
+    required: true
+  - id: "runtime-home-action-row-review"
+    command: "manual inspection of Homepage and Physics primary action geometry at desktop and compact widths for copy edge alignment preserved layout and zero overflow"
+    required: true
+
+stop_conditions:
+  - "Any action label destination order role or route source changes."
+  - "Any change escapes the home-action-row base alignment declarations or focused regression test."
+  - "Responsive action grouping changes or horizontal overflow appears."
+  - "Any public asset manifest provenance source binding or upstream state changes."
+  - "Any required validator or browser review fails."
+  - "Work enters checkpoint staging push deployment source refresh or upstream write."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260717-001-A"
+  path: "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  observed_home_action_inset: "16 CSS pixels from each command copy edge at 1533 CSS pixel viewport width"
+  physics_alignment_reference: "action container and command copy both begin at 166.667 CSS pixels and measure 528.073 CSS pixels"
+  final_home_alignment: "Homepage action container and command copy both begin at 166.667 CSS pixels and measure 528.073 CSS pixels at the desktop reference width."
+  regression_test_status: "baseline failed 1 focused test and final passed the focused test plus all 37 public positioning tests"
+  python_tests: "passed 163 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  runtime_review: "passed Homepage and Physics at 1533 1040 780 and 520 CSS pixel widths with matching action and copy edges full available widths preserved responsive grouping zero overflow and zero console issues"
+  checkpoint_dry_run: "passed with exactly 12 packet paths zero staged paths and the unrelated untracked implementation plan excluded"
+  completion_created: true
+  checkpoint_status: "not_authorized"

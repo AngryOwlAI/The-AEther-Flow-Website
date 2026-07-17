@@ -1,7 +1,7 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-16T16:05:48Z"
+updated_utc: "2026-07-17T13:27:07Z"
 status: "active"
 mode: "website_local_implementation_control"
 
@@ -9,9 +9,9 @@ authority_order:
   - "AGENTS.md"
   - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
-  - "implementation_control/handoffs/WH-20260716-004.yaml"
+  - "implementation_control/tasks/WI-20260717-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260717-001/jobs/WJ-20260717-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260717-001.yaml"
   - "current_git_state_and_validator_output"
   - "memory_and_conversation_summaries_as_navigation_only"
 
@@ -23,31 +23,31 @@ repository_boundary:
   deployment_status: "not_authorized"
 
 active_task:
-  task_id: "WI-20260716-004"
-  title: "Contain Diagram Gallery Media"
+  task_id: "WI-20260717-001"
+  title: "Align Homepage Primary Actions"
   status: "active"
-  path: "implementation_control/tasks/WI-20260716-004/00_TASK.yaml"
+  path: "implementation_control/tasks/WI-20260717-001/00_TASK.yaml"
   planning_context:
-    task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
-    adopted_plan: "Owner requested the complete Diagram Gallery Containment Repair plan after checkpointing the prior heading packet"
-    prior_checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+    task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+    adopted_plan: "Owner requested the Homepage primary actions align like the same component on the Physics page"
+    prior_checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
     accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
-    owner_authorization: "Owner authorized the prior checkpoint and one bounded diagram gallery containment repair without a second checkpoint push or deployment."
+    owner_authorization: "Owner authorized one bounded Homepage action-row alignment repair without checkpoint push or deployment."
 
 current_job:
-  job_id: "WJ-20260716-004-A"
+  job_id: "WJ-20260717-001-A"
   status: "active"
-  path: "implementation_control/tasks/WI-20260716-004/jobs/WJ-20260716-004-A.yaml"
+  path: "implementation_control/tasks/WI-20260717-001/jobs/WJ-20260717-001-A.yaml"
 
 latest_handoff:
-  handoff_id: "WH-20260716-004"
+  handoff_id: "WH-20260717-001"
   status: "ready_for_checkpoint"
-  yaml_path: "implementation_control/handoffs/WH-20260716-004.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260716-004.md"
+  yaml_path: "implementation_control/handoffs/WH-20260717-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260717-001.md"
 
 latest_completion:
-  completion_id: "WJC-20260716-004-A"
-  path: "implementation_control/tasks/WI-20260716-004/jobs/completions/WJC-20260716-004-A.yaml"
+  completion_id: "WJC-20260717-001-A"
+  path: "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
   status: "completed"
 
 required_validators:
@@ -81,57 +81,57 @@ required_validators:
   - id: "quality-gate"
     command: "npm run quality"
     required_for_current_job: true
-  - id: "diagram-gallery-contract-review"
-    command: "manual inspection of diagram gallery component containment loading accessibility and link contracts"
+  - id: "home-action-row-contract-review"
+    command: "manual inspection of Homepage and Physics action row style contracts for matching command copy alignment"
     required_for_current_job: true
-  - id: "runtime-diagram-gallery-review"
-    command: "manual inspection of all 37 diagram gallery cards at desktop intermediate breakpoint and compact widths for containment proportions links and zero overflow"
+  - id: "runtime-home-action-row-review"
+    command: "manual inspection of Homepage and Physics primary action geometry at desktop and compact widths for copy edge alignment preserved layout and zero overflow"
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "DIAGRAM-GALLERY-CONTAINMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260716-004-A."
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
   do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
 
 preflight_evidence:
-  status: "passed_for_diagram_gallery_containment_packet"
-  observed_utc: "2026-07-16T15:50:25Z"
-  prior_checkpoint: "8fb7ab0152eb467534eb7b906f12df32f7aef55c"
+  status: "passed_for_homepage_action_row_alignment_packet"
+  observed_utc: "2026-07-17T13:15:50Z"
+  prior_checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
   prior_checkpoint_observed_from_git: true
   prior_checkpoint_replay_status: "not_replayed"
   website_branch: "main"
-  website_ahead_of_origin_main: 7
+  website_ahead_of_origin_main: 0
   website_worktree_status: "clean_before_packet_open"
-  diagram_gallery_card_count: 37
-  diagram_gallery_group_counts: "13 physics 7 AI workflow 7 operations 10 source authority"
-  observed_overflow_card_count: 25
-  observed_browser_viewport: "1455 by 1285 CSS pixels"
-  observed_body_scroll_width: "2871 CSS pixels against 1435 CSS pixel document width"
-  observed_failure: "The media link uses an intrinsic aspect ratio with height bounds but no definite track width so wide diagrams escape their grid columns and cards."
+  unrelated_untracked_path: "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md preserved untouched"
+  observed_browser_viewport: "1533 by 1285 CSS pixels"
+  homepage_copy_edge: "166.667 CSS pixels"
+  homepage_action_edge_before: "182.667 CSS pixels"
+  homepage_copy_width: "528.073 CSS pixels"
+  homepage_action_width_before: "496.073 CSS pixels"
+  physics_copy_and_action_edge: "166.667 CSS pixels"
+  physics_copy_and_action_width: "528.073 CSS pixels"
+  observed_failure: "The Homepage home-action-row subtracts two rem from its containing command copy width and centers the result creating a 16 pixel inset on both sides."
   accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
   accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
   accepted_source_worktree_status: "clean"
-  live_upstream_worktree_status: "external live state preserved read only"
   source_refresh_status: "not_performed"
 
 implementation_status:
   status: "ready_for_checkpoint"
-  target_surface: "all 37 cards rendered by DiagramGalleryList on the Diagram Gallery route"
-  target_element: "diagram gallery media links and their PNG images"
-  authorized_change: "One component scoped width containment rule one component scoped image contain rule and focused regression coverage."
-  layout_change_status: "preserve two column desktop and single column compact card structures"
-  height_bound_status: "preserve 13 to 22 rem desktop and 11 to 18 rem compact bounds"
-  component_change_status: "media links fill their grid tracks and images fill bounded minmax zero grid areas with centered object fit contain"
-  regression_test_status: "baseline failed 1 with 2 passed and final passed all 3 image policy tests"
-  python_tests: "passed 162 tests"
+  target_surface: "Homepage hero primary actions"
+  target_element: "home-action-row inside the Homepage CommandBand copy column"
+  authorized_change: "Replace the row specific centered width and bottom margin with the same top-only spacing and containing-block alignment used by Physics overview actions."
+  style_change_status: "The home-action-row now uses the existing 1.7 rem top spacing and fills the CommandBand copy containing block without a centered horizontal inset."
+  regression_test_status: "The focused contract first failed 1 with 36 deselected then passed and all 37 public positioning tests passed."
+  python_tests: "passed 163 tests"
   static_build: "passed 64 pages"
   aggregate_validation: "passed against accepted clean source root"
   quality_gate: "passed against accepted clean source root"
-  runtime_review: "passed all 37 cards at 1455 1024 780 and 520 CSS pixel widths with zero card page or body overflow preserved layout and height bounds full extreme diagram visibility working links and zero console errors"
+  runtime_review: "passed Homepage and Physics at 1533 1040 780 and 520 CSS pixel widths with matching action and copy edges full available widths preserved responsive grouping zero overflow and zero console issues"
+  checkpoint_dry_run: "passed with exactly 12 packet paths zero staged paths and the unrelated untracked implementation plan excluded"
   route_source_change_status: "forbidden"
-  global_style_change_status: "forbidden"
-  public_asset_change_status: "forbidden"
-  manifest_change_status: "not_required"
+  public_copy_change_status: "forbidden"
+  manifest_change_status: "not_required because no route source or public asset changes"
   completion_created: true
   checkpoint_status: "not_authorized"
   push_performed: false

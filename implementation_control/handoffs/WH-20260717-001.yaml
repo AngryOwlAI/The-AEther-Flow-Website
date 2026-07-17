@@ -1,0 +1,76 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260717-001"
+created_utc: "2026-07-17T13:15:50Z"
+updated_utc: "2026-07-17T13:27:07Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260717-001"
+job_id: "WJ-20260717-001-A"
+
+summary: "Completed the owner-requested Homepage primary action alignment repair with focused full aggregate quality and four-width browser evidence."
+
+current_state:
+  - "Git proves DIAGRAM-GALLERY-CONTAINMENT-01 was checkpointed at 3a2c856 and will not be replayed."
+  - "The accepted source root remains clean at pin 57438af."
+  - "At 1533 CSS pixels the Homepage command copy begins at 166.667 pixels while its action row begins at 182.667 pixels."
+  - "The Physics command copy and action row both begin at 166.667 pixels and both measure 528.073 pixels."
+  - "The Homepage inset comes from its row specific width subtraction and centered horizontal margin."
+  - "Only the home-action-row base alignment declarations focused regression coverage and control records are authorized."
+  - "The home-action-row now uses the existing 1.7 rem top spacing and fills the CommandBand copy containing block."
+  - "The focused regression contract first failed then passed and all 37 public positioning tests passed."
+  - "The full 163 test suite aggregate validation quality gate and 64 page build passed against the accepted clean source root."
+  - "Homepage and Physics action containers matched their copy edges at 1533 1040 780 and 520 CSS pixel widths with zero overflow."
+  - "The original Homepage primary and three secondary action grouping remained intact and the browser reported zero console warnings or errors."
+  - "Checkpoint dry run resolved exactly 12 packet paths with zero staged paths and excluded the unrelated untracked implementation plan."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  accepted_source_pin: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_source_root: "/tmp/aether-flow-source-57438af-homeintro-ZiApaw"
+  accepted_source_worktree_status: "clean"
+  upstream_write_status: "forbidden"
+  public_claim_write_status: "not_required"
+  public_asset_write_status: "forbidden"
+  manifest_write_status: "not_required"
+  checkpoint_status: "not_authorized"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+checkpoint_transition:
+  prior_packet: "DIAGRAM-GALLERY-CONTAINMENT-01"
+  checkpoint: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  observed_from_git: true
+  repeated: false
+
+next_recommended_action:
+  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
+  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
+  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+
+stop_before:
+  - "Route source copy action order link destination public asset manifest provenance or source binding changes"
+  - "Git checkpoint push Cloudflare deployment source refresh or upstream write"
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  homepage_desktop_alignment: "copy and action x 166.667 width 528.073 CSS pixels"
+  physics_desktop_alignment: "copy and action x 166.667 width 528.073 CSS pixels"
+  intermediate_alignment: "Homepage and Physics copy and action x 16 width 439.75 CSS pixels at 1040 CSS pixel viewport"
+  breakpoint_alignment: "Homepage and Physics copy and action x 16 width 728 CSS pixels at 780 CSS pixel viewport"
+  compact_alignment: "Homepage and Physics copy and action x 16 width 468 CSS pixels at 520 CSS pixel viewport"
+  overflow_status: "zero document horizontal overflow at all reviewed widths"
+  responsive_grouping_status: "preserved one full width Homepage primary action with three secondary columns and preserved Physics action grouping"
+  regression_test_status: "baseline failed then focused and all 37 public positioning tests passed"
+  python_tests: "passed 163 tests"
+  static_build: "passed 64 pages"
+  aggregate_validation: "passed against accepted clean source root"
+  quality_gate: "passed against accepted clean source root"
+  checkpoint_dry_run: "passed with 12 packet paths zero staged paths and one excluded unrelated untracked plan"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260717-001-A"
+  path: "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
+  status: "completed"
