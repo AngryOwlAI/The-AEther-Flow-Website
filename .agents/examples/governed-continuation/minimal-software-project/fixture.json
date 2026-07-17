@@ -1,0 +1,8 @@
+{
+  "fixture_id": "minimal-software-project",
+  "read_paths": ["src/value.txt", "tests/expected.txt"],
+  "write_path": "src/value.txt",
+  "command_cwd": "src",
+  "allowed_claim": "The bounded value fixture passes.",
+  "forbidden_claim": "The entire software system is proven correct."
+}

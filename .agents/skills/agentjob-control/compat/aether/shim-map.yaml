@@ -1,0 +1,25 @@
+schema_version: sys4ai.aether-shim-map.v1
+status: template_not_activated
+activation_requires:
+  - passing read-only shadow comparison
+  - passing AEther research-control validators
+  - explicit target-project migration approval
+  - version-control backup of legacy skill files
+  - tested rollback procedure
+shims:
+  - legacy_skill_id: continue-research
+    canonical_skill_id: continue
+    template_path: skills/agentjob-control/compat/aether/shims/continue-research/SKILL.md
+  - legacy_skill_id: continue-research-goal
+    canonical_skill_id: continue-goal
+    template_path: skills/agentjob-control/compat/aether/shims/continue-research-goal/SKILL.md
+  - legacy_skill_id: continue-research-continue-goal
+    canonical_skill_id: continue-implementing-goal
+    template_path: skills/agentjob-control/compat/aether/shims/continue-research-continue-goal/SKILL.md
+historical_record_support:
+  schema_version: continue-research-goal.v1
+  mode: reader_only
+  reader: skills/agentjob-control/scripts/agentjob_runtime/compat/aether_goal_v1.py
+rollback:
+  restore_legacy_skill_files_from_version_control: true
+  delete_or_rewrite_historical_records: false

@@ -1,0 +1,152 @@
+skill_id: continue-goal
+version: 0.1.0
+status: template
+canonical_path: skills/continue-goal
+summary: Initialize one durable goal relay and dispatch exactly one first-generation worker.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - governed agentic systems
+    - software repositories
+    - research and documentation systems
+domain_emphasis:
+  - durable goal relay
+  - fresh-discussion recursion
+  - at-most-once dispatch
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+optional_role_posture:
+  - process_integrity_auditor
+  - security_engineer
+activation:
+  triggers:
+    - A user explicitly requests recursive continuation across fresh discussions.
+  when_not_to_use:
+    - Recursive fresh discussions were not explicitly requested.
+    - Goal or completion-contract identity is ambiguous.
+  preconditions:
+    - Explicit project and repository identity are available.
+    - Finite guards and a compatible ThreadProvider are configured.
+inputs:
+  required:
+    - Exact goal text and completion contract.
+    - Explicit project and repository binding.
+    - Explicit fresh-discussion recursion authorization.
+  optional:
+    - State backend and ThreadProvider selection.
+    - Manual handoff preference.
+outputs:
+  primary:
+    - One launcher summary for generation 1.
+  evidence:
+    - Goal ID, envelope hash, provider receipt, successor identity, and state revision.
+dependencies:
+  required_skills:
+    - agentjob-control
+    - continue-implementing-goal
+  optional_skills: []
+  required_skill_versions:
+    agentjob-control: ^0.1.0
+    continue-implementing-goal: ^0.1.0
+  python:
+    standard_library_only: true
+    requires_python: ">=3.11"
+    required_packages: []
+    optional_packages: []
+  external_tools: []
+authority:
+  may_read:
+    - Explicit project configuration, repository identity, and relay state.
+  may_write:
+    - One goal record, one first-generation reservation, and one provider receipt.
+  may_not:
+    - Execute an AgentJob or bounded project transaction.
+    - Dispatch more than one first-generation worker.
+    - Reuse the launcher discussion as a worker generation.
+    - Store secrets in goal state or envelopes.
+  canonical_sources:
+    - skills/continue-goal
+    - skills/agentjob-control
+  generated_derivatives:
+    - Project-local goal state, continuation envelope, prompt, and provider receipt.
+  human_gates:
+    - Ambiguous completion contracts and protected provider actions.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/continue-goal/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+    - command: python3 -m unittest discover -s skills/agentjob-control/tests -p 'test_goal_launcher.py' -v
+      validator_class: control_validation
+      mode: required
+      dry_runnable: true
+  validator_classes:
+    - schema_validation
+    - dependency_validation
+    - trace_validation
+    - process_validation
+    - control_validation
+    - human_authority
+  evidence_required:
+    - Exactly one provider call or one manual handoff receipt.
+    - Zero AgentJobs and zero bounded project-work invocations.
+handoff:
+  requires_completion_receipt: false
+  evidence:
+    - Goal, generation, token-bound envelope, successor identity, and expected revision.
+  next_role: continue_implementing_goal_worker
+  open_issue_policy: Enter recovery rather than redispatch ambiguously.
+execution:
+  kind: relay_launcher
+  invocation_policy: explicit
+  maximum_agentjobs_per_invocation: 0
+  may_spawn_threads: true
+  may_create_control_records: true
+  invokes_skills:
+    - continue-implementing-goal
+runtime_capabilities:
+  provides:
+    - sys4ai.continue-goal.v1
+  requires:
+    - sys4ai.agentjob-control.v1
+    - sys4ai.goal-relay-state.v1
+    - sys4ai.continuation-envelope.v1
+    - sys4ai.continue-implementing-goal.v1
+    - python>=3.11
+  optional:
+    - sys4ai.native-goal-mirror.v1
+control_protocol:
+  profile: registered
+  record_types:
+    - GoalState
+    - GoalStepReceipt
+    - ContinuationEnvelope
+  immutable_after_activation: true
+  supersession_required: true
+state:
+  tracked_root_template: "{project_root}/.agents/control"
+  local_root_template: "{project_root}/.local/sys4ai/continuation"
+  mutable_state_must_not_live_in_skill_directory: true
+adapters:
+  required_interfaces:
+    - ControlStore
+    - RepositoryProvider
+    - ThreadProvider
+  optional_interfaces:
+    - NativeGoalMirror
+  manual_thread_fallback: true
+recovery:
+  supported: true
+  automatic_rerun_after_consumption: false
+compatibility_shims:
+  - path: skills/agentjob-control/compat/aether/shims/continue-research-goal/SKILL.md
+    purpose: Template-only AEther legacy launcher mapping with reader-only historical goal support.
+    last_synchronized: "2026-07-17"
+failure_modes:
+  - mode: Missing capability, invalid goal, secret, or repository mismatch.
+    recovery: Write no goal and report the exact blocker.
+  - mode: Provider result is unknown or ambiguous.
+    recovery: Quarantine the reservation and reconcile through recovery.

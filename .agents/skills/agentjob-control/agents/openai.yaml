@@ -1,0 +1,11 @@
+interface:
+  display_name: AgentJob Control
+  short_description: Validate and operate portable bounded AgentJob control records.
+policy:
+  allow_implicit_invocation: false
+  user_invocation: hidden_by_default
+  internal_invocation: declared_skills_only
+capabilities:
+  - sys4ai.agentjob-control.v1
+  - sys4ai.control-records.v1
+  - sys4ai.goal-relay-state.v1

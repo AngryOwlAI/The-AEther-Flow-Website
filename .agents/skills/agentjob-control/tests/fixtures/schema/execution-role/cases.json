@@ -1,0 +1,8 @@
+[
+  {"name": "registered", "binding_type": "registered_role", "valid": true},
+  {"name": "overlay", "binding_type": "task_overlay", "valid": true},
+  {"name": "provisional", "binding_type": "one_job_provisional_role", "valid": true},
+  {"name": "compact", "binding_type": "compact_embedded", "valid": true},
+  {"name": "overlay without delta", "binding_type": "task_overlay", "omit_overlay": true, "valid": false},
+  {"name": "provisional reusable", "binding_type": "one_job_provisional_role", "reusable": true, "valid": false}
+]

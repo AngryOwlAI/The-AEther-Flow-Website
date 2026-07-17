@@ -1,0 +1,54 @@
+schema_version: sys4ai.policy-pack.v1
+policy_id: generic-software
+version: 1.0.0
+protocol_range: ^1.0.0
+namespace_owner: sys4ai
+roles:
+  - system-analyst
+  - system-engineer
+  - software-engineer
+  - validator-engineer
+  - system-architect
+protected_actions:
+  - production-deployment
+  - public-release
+  - secret-access
+  - policy-change
+  - irreversible-external-action
+human_gate_rules:
+  - action: production-deployment
+    required: true
+  - action: public-release
+    required: true
+  - action: secret-access
+    required: true
+  - action: policy-change
+    required: true
+  - action: irreversible-external-action
+    required: true
+source_classes:
+  - controlled-source
+  - project-test
+  - generated-derivative
+  - local-cache
+  - external-reference
+validator_defaults:
+  - schema-validation
+  - path-allowlist
+  - command-result
+  - claim-boundary
+claim_rules:
+  process_validation_does_not_imply_domain_truth: true
+  scientific_promotion_authority: false
+  default_route_policy: conservative
+  conservative_route_candidates: [existing-bounded-job, director-review, control-repair]
+extension_schemas: {}
+extensions:
+  sys4ai.generic-software:
+    version: 1.0.0
+    required: false
+    data:
+      suitable_for_software: true
+      suitable_for_documentation: true
+      default_network_access: false
+      automatic_release_authority: false

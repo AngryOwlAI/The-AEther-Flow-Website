@@ -10,7 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "continue:implementation": "python3 scripts/implementation_control/continue_implementation.py",
+    "continue:goal": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/implementation_control/continue_goal.py",
     "validate:implementation-control": "python3 scripts/implementation_control/validate_implementation_control.py",
+    "validate:goal-relay": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/implementation_control/validate_goal_relay.py",
+    "test:goal-relay-runtime": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s .agents/skills/agentjob-control/tests -p 'test_*.py' -v",
+    "test:goal-relay": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest tests/test_goal_relay_adapter.py tests/test_goal_relay_facade.py",
     "validate:claims": "node scripts/generate_public_claim_review.mjs --check",
     "checkpoint:implementation": "python3 scripts/implementation_control/checkpoint_implementation_transaction.py",
     "validate:manifests": "python3 scripts/validate_manifest_paths.py",
@@ -23,7 +27,7 @@
     "validate:curator": "python3 scripts/run_curator.py --check",
     "validate:cloudflare": "python3 scripts/validate_cloudflare_pages_config.py",
     "quality": "npm run validate && python3 scripts/quality_gate.py",
-    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:claims && npm run validate:links && npm run validate:layout && npm run validate:svg && npm run validate:provenance && npm run validate:curator && npm run validate:cloudflare && npm run validate:implementation-control && npm run build",
+    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:claims && npm run validate:links && npm run validate:layout && npm run validate:svg && npm run validate:provenance && npm run validate:curator && npm run validate:cloudflare && npm run validate:implementation-control && npm run validate:goal-relay && npm run build",
     "astro": "astro"
   },
   "repository": {

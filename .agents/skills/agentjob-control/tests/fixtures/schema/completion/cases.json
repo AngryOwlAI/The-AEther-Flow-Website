@@ -1,0 +1,7 @@
+[
+  {"name": "completed", "status": "completed", "valid": true},
+  {"name": "warning", "status": "completed_with_warnings", "valid": true},
+  {"name": "zero execution blocked", "status": "blocked", "changed_paths": [], "valid": true},
+  {"name": "ambiguous execution", "status": "unknown_execution_result", "verdict": "unknown_execution_result", "valid": true},
+  {"name": "missing overread", "drop_overread": true, "valid": false}
+]

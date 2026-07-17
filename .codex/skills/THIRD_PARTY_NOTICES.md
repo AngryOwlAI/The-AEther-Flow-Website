@@ -1,5 +1,29 @@
 # Third-Party Notices
 
+## Sys4AI Governed Continuation Bundle
+
+The vendored `agentjob-control`, `continue`, `continue-goal`, and
+`continue-implementing-goal` packages are imported from
+`/Volumes/P-SSD/AngryOwl/skills-Sys4AI` at source commit
+`f2852d5273ed7297a0abd55c9aecfbf7f5e4507e`. The exact imported bundle is
+`governed-continuation` version `0.1.0`, retained with its source `draft`
+status and explicit-invocation policy.
+
+Copyright 2026 Alexander Samuel Ricciardi, AngryOwl. The source packages are
+licensed under the Apache License, Version 2.0.
+
+The website adaptation adds project-local Codex front doors, a facade and
+adapter for the existing `implementation_control/` authority, tracked source
+lock and configuration, ignored local runtime state, activation receipts,
+integrity validation, and website-specific regression coverage. The exact
+vendor copies under `.agents/skills/` are unmodified. No portable
+`.agents/control/` system is bootstrapped.
+
+Read-only neutral fixture projects and the Codex integration contract required
+by the complete vendored unit suite are retained under `.agents/examples/` and
+`.agents/docs/`. They are source-pinned validation resources, not runtime
+authority or website content.
+
 ## Technical Writing Quality Gate Adaptation
 
 The local `technical-writing-quality-gate` skill is adapted from the

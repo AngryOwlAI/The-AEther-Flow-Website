@@ -1,0 +1,8 @@
+{
+  "fixture_id": "research-note-project",
+  "read_paths": ["sources/observation.md", "notes/summary.md"],
+  "write_path": "notes/summary.md",
+  "command_cwd": "notes",
+  "allowed_claim": "The bounded research note preserves its source trace.",
+  "forbidden_claim": "The research hypothesis is established as true."
+}

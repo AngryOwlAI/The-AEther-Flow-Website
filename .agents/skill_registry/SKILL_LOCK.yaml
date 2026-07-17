@@ -1,0 +1,205 @@
+lock_version: 2
+resolver_version: "2.0.0"
+generated_at: "2026-07-17T17:27:45Z"
+selection_kind: "bundle"
+selection_id: "governed-continuation"
+selection_version: "0.1.0"
+bundle_id: "governed-continuation"
+bundle_version: "0.1.0"
+source_registry: ".agents/skill_registry/SKILL_REGISTRY.yaml"
+source_selection: ".agents/skill_registry/SKILL_BUNDLES/governed-continuation.yaml"
+source_bundle: ".agents/skill_registry/SKILL_BUNDLES/governed-continuation.yaml"
+target_runtime_root: ".agents/skills"
+allow_python_package_install: false
+bootstrap_requested: false
+skills:
+  - skill_id: "agentjob-control"
+    version: "0.1.0"
+    status: "template"
+    canonical_path: "skills/agentjob-control"
+    manifest_path: "skills/agentjob-control/skill.yaml"
+    source_sha256: "899f7433425b6ef4408546823f6ef231383873100e3644188eb6399e5b76fb74"
+    manifest_sha256: "522c9d6f89746f6edf67dc637b266509584ac0dd99b544c1d440bdf416174b35"
+    required_skills: []
+    optional_skills: []
+    invokes_skills: []
+    provides_capabilities:
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.continuation-envelope.v1"
+      - "sys4ai.control-records.v1"
+      - "sys4ai.goal-relay-state.v1"
+      - "sys4ai.project-bootstrap.v1"
+    requires_capabilities:
+      - "python>=3.11"
+    required_adapters:
+      - "ControlStore"
+      - "ProjectAdapter"
+      - "RepositoryProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+      - "ContextProvider"
+      - "ThreadProvider"
+    scripts:
+      - "skills/agentjob-control/scripts/agentjobctl.py"
+    python:
+      skill_id: "agentjob-control"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+  - skill_id: "continue"
+    version: "0.1.0"
+    status: "template"
+    canonical_path: "skills/continue"
+    manifest_path: "skills/continue/skill.yaml"
+    source_sha256: "5795757bf0c83494d64c0e682a712a146166965f13d620f03175acbe1d46ff1e"
+    manifest_sha256: "682ea219f34ef67f816b30714742430d7934314c3643a8b326ff5e5ff4c7c39a"
+    required_skills:
+      - "agentjob-control"
+    optional_skills: []
+    invokes_skills: []
+    provides_capabilities:
+      - "sys4ai.continue.v1"
+    requires_capabilities:
+      - "python>=3.11"
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.control-records.v1"
+    required_adapters:
+      - "ControlStore"
+      - "ProjectAdapter"
+      - "RepositoryProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+      - "ContextProvider"
+    scripts:
+      - "skills/agentjob-control/scripts/agentjobctl.py"
+    python:
+      skill_id: "continue"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+  - skill_id: "continue-goal"
+    version: "0.1.0"
+    status: "template"
+    canonical_path: "skills/continue-goal"
+    manifest_path: "skills/continue-goal/skill.yaml"
+    source_sha256: "ad87c1dcc5f7d9b024490299c7f0707d553f8cebeafea5cb9c42c4c42dc9d28d"
+    manifest_sha256: "75e33e71f24f335c54f7c356ae5e964375ba90a7fd9a111600fd149eb8410f29"
+    required_skills:
+      - "agentjob-control"
+      - "continue-implementing-goal"
+    optional_skills: []
+    invokes_skills:
+      - "continue-implementing-goal"
+    provides_capabilities:
+      - "sys4ai.continue-goal.v1"
+    requires_capabilities:
+      - "python>=3.11"
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.continuation-envelope.v1"
+      - "sys4ai.continue-implementing-goal.v1"
+      - "sys4ai.goal-relay-state.v1"
+    required_adapters:
+      - "ControlStore"
+      - "RepositoryProvider"
+      - "ThreadProvider"
+    optional_adapters:
+      - "NativeGoalMirror"
+    scripts:
+      - "skills/agentjob-control/scripts/agentjobctl.py"
+    python:
+      skill_id: "continue-goal"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+  - skill_id: "continue-implementing-goal"
+    version: "0.1.0"
+    status: "template"
+    canonical_path: "skills/continue-implementing-goal"
+    manifest_path: "skills/continue-implementing-goal/skill.yaml"
+    source_sha256: "7e6c30e605bbbd3af398dd025a3e3db827ac73e269b5662b8e8a9ef041239d17"
+    manifest_sha256: "024b695f0e76e6c55a54ad08217a940f0a1cac89e61197e6b785ecc3f18be254"
+    required_skills:
+      - "agentjob-control"
+      - "continue"
+    optional_skills: []
+    invokes_skills:
+      - "continue"
+    provides_capabilities:
+      - "sys4ai.continue-implementing-goal.v1"
+    requires_capabilities:
+      - "python>=3.11"
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.continuation-envelope.v1"
+      - "sys4ai.continue.v1"
+      - "sys4ai.goal-relay-state.v1"
+    required_adapters:
+      - "ControlStore"
+      - "ProjectAdapter"
+      - "RepositoryProvider"
+      - "ThreadProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+      - "ContextProvider"
+      - "NativeGoalMirror"
+    scripts:
+      - "skills/agentjob-control/scripts/agentjobctl.py"
+    python:
+      skill_id: "continue-implementing-goal"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+domain_packs: []
+optional_skills: []
+validation_skills: []
+invocation_edges:
+  - from: "continue-goal"
+    to: "continue-implementing-goal"
+  - from: "continue-implementing-goal"
+    to: "continue"
+required_adapters:
+  - "ControlStore"
+  - "ProjectAdapter"
+  - "RepositoryProvider"
+  - "ThreadProvider"
+optional_adapters:
+  - "CheckpointProvider"
+  - "ContextProvider"
+  - "NativeGoalMirror"
+python:
+  - skill_id: "agentjob-control"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+  - skill_id: "continue"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+  - skill_id: "continue-goal"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+  - skill_id: "continue-implementing-goal"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+external_tools: []

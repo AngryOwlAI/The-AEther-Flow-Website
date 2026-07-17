@@ -1,0 +1,43 @@
+schema_version: sys4ai.director-decision.v1
+decision_id: <DECISION_ID>
+task_id: <TASK_ID>
+decision_authority:
+  kind: system_director
+  actor_ref: <ACTOR_REF>
+  policy_refs:
+    - <POLICY_PATH>
+decision_type: create_job
+decision_mode: deliberative
+status: draft
+evidence:
+  state_snapshot_ref: <SNAPSHOT_PATH>
+  state_snapshot_sha256: <SHA256>
+  handoff_refs: []
+  source_refs: []
+candidates:
+  - route_id: <ROUTE_ID>
+    role_id: <ROLE_ID>
+    assessment: accepted
+    reason: <AUTHORITY_AND_FIT_REASON>
+selected:
+  route_id: <ROUTE_ID>
+  role_id: <ROLE_ID>
+  role_version: <SEMVER>
+  agent_job_id: <AGENT_JOB_ID>
+  rationale: <SELECTION_RATIONALE>
+rejected_alternatives:
+  - <REJECTED_ALTERNATIVE_AND_REASON>
+requires_human_gate: false
+human_gate_refs: []
+claim_boundary:
+  allowed:
+    - <ALLOWED_CONCLUSION>
+  forbidden:
+    - <FORBIDDEN_OVERREAD>
+supersedes_decision_id: null
+rule_id: null
+rejected_illegal_routes: []
+created_at: <UTC_TIMESTAMP>
+activated_at: null
+completed_at: null
+extensions: {}

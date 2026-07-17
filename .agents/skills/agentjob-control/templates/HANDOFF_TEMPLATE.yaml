@@ -1,0 +1,23 @@
+schema_version: sys4ai.handoff.v1
+handoff_id: <HANDOFF_ID>
+predecessor:
+  task_id: <TASK_ID>
+  decision_id: <DECISION_ID>
+  job_id: <AGENT_JOB_ID>
+  completion_id: <COMPLETION_ID>
+predecessor_handoff_ids: []
+summary: <BOUNDED_PROGRESS_SUMMARY>
+progress:
+  completed: []
+  remaining:
+    - <REMAINING_WORK>
+next_action:
+  objective: <NEXT_BOUNDED_OBJECTIVE>
+  recommended_role: <ROLE_ID>
+  route_label: <ROUTE_ID>
+constraints_to_preserve:
+  - A new Director decision and AgentJob are required before execution.
+human_gates: []
+grants_execution_authority: false
+created_at: <UTC_TIMESTAMP>
+extensions: {}

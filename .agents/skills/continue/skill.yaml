@@ -1,0 +1,158 @@
+skill_id: continue
+version: 0.1.0
+status: template
+canonical_path: skills/continue
+summary: Execute or close at most one validated AgentJob transaction without spawning threads.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - governed agentic systems
+    - software repositories
+    - documentation and research systems
+domain_emphasis:
+  - bounded continuation
+  - controlled execution
+  - direct verification
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+optional_role_posture:
+  - verification_engineer
+  - security_engineer
+activation:
+  triggers:
+    - A user requests the next lawful bounded project transaction.
+    - A declared goal worker invokes continue for one authorized generation.
+  when_not_to_use:
+    - The project lacks a compatible AgentJob configuration and bootstrap was not requested.
+    - The request is to create a successor discussion or recurse.
+  preconditions:
+    - An explicit project root is available.
+inputs:
+  required:
+    - Explicit project root.
+  optional:
+    - Task identifier.
+    - Inspect or recover-control mode.
+    - Goal and generation context that does not broaden authority.
+outputs:
+  primary:
+    - One validated sys4ai.continue-result.v1 object.
+  evidence:
+    - Direct before and after fingerprints, canonical record IDs, command results, validators, and checkpoint status.
+dependencies:
+  required_skills:
+    - agentjob-control
+  optional_skills: []
+  required_skill_versions:
+    agentjob-control: ^0.1.0
+  python:
+    standard_library_only: true
+    requires_python: ">=3.11"
+    required_packages: []
+    optional_packages: []
+  external_tools: []
+authority:
+  may_read:
+    - Configured repository, control, policy, role, adapter, and validation surfaces.
+  may_write:
+    - Only paths and records authorized by one activated AgentJob.
+  may_not:
+    - Execute more than one AgentJob.
+    - Spawn, fork, or create a discussion.
+    - Broaden an activated job, role, command, path, network, or external-effect boundary.
+    - Push, merge, publish, deploy, or contact external parties without exact authority.
+    - Treat process completion as proof of a domain claim.
+  canonical_sources:
+    - skills/continue
+    - skills/agentjob-control
+  generated_derivatives:
+    - Project-local completion, handoff, index, checkpoint, and diagnostic records.
+  human_gates:
+    - Protected actions declared by the target policy pack.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/continue/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+    - command: python3 -m unittest discover -s skills/agentjob-control/tests -p 'test_continue_*.py' -v
+      validator_class: control_validation
+      mode: required
+      dry_runnable: true
+  validator_classes:
+    - schema_validation
+    - path_validation
+    - dependency_validation
+    - trace_validation
+    - process_validation
+    - control_validation
+    - command_validation
+    - claim_validation
+    - domain_validation
+    - human_authority
+  evidence_required:
+    - Direct structured execution evidence and canonical hashes.
+    - Every failed, skipped, indeterminate, or protected check.
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Boundary, task, decision, job, completion and handoff IDs, fingerprints, validation, checkpoint, and next action.
+  next_role: system_director
+  open_issue_policy: Stop rather than expand authority.
+execution:
+  kind: orchestration
+  invocation_policy: explicit
+  maximum_agentjobs_per_invocation: 1
+  may_spawn_threads: false
+  may_create_control_records: true
+  invokes_skills: []
+runtime_capabilities:
+  provides:
+    - sys4ai.continue.v1
+  requires:
+    - sys4ai.agentjob-control.v1
+    - sys4ai.control-records.v1
+    - python>=3.11
+  optional:
+    - sys4ai.context-provider.v1
+control_protocol:
+  profile: registered
+  record_types:
+    - Task
+    - DirectorDecision
+    - ExecutionRole
+    - AgentJob
+    - Activation
+    - Completion
+    - Handoff
+    - Supersession
+    - ContinueResult
+  immutable_after_activation: true
+  supersession_required: true
+state:
+  tracked_root_template: "{project_root}/.agents/control"
+  local_root_template: "{project_root}/.local/sys4ai/continuation"
+  mutable_state_must_not_live_in_skill_directory: true
+adapters:
+  required_interfaces:
+    - ProjectAdapter
+    - ControlStore
+    - RepositoryProvider
+  optional_interfaces:
+    - CheckpointProvider
+    - ContextProvider
+  manual_thread_fallback: false
+recovery:
+  supported: true
+  automatic_rerun_after_consumption: false
+compatibility_shims:
+  - path: skills/agentjob-control/compat/aether/shims/continue-research/SKILL.md
+    purpose: Template-only AEther legacy invocation mapping to continue after approved parity and cutover.
+    last_synchronized: "2026-07-17"
+failure_modes:
+  - mode: Missing configuration or required capability.
+    recovery: Return bootstrap_required and execute zero AgentJobs.
+  - mode: Stale authority, unsupported runtime control, human gate, or failed validation.
+    recovery: Preserve evidence and stop for supersession, repair, or exact human authority.

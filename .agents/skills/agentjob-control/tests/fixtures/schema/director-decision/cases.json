@@ -1,0 +1,10 @@
+[
+  {"name": "create deliberative", "decision_type": "create_job", "decision_mode": "deliberative", "valid": true},
+  {"name": "reuse deterministic", "decision_type": "reuse_job", "decision_mode": "deterministic", "valid": true},
+  {"name": "supersede", "decision_type": "supersede_job", "decision_mode": "deliberative", "valid": true},
+  {"name": "human gate", "decision_type": "human_gate_required", "decision_mode": "deterministic", "valid": true},
+  {"name": "repair", "decision_type": "repair_control_state", "decision_mode": "deterministic", "valid": true},
+  {"name": "no action", "decision_type": "no_action", "decision_mode": "deterministic", "valid": true},
+  {"name": "close", "decision_type": "close_task", "decision_mode": "deterministic", "valid": true},
+  {"name": "deliberative without rejected route", "decision_type": "create_job", "decision_mode": "deliberative", "drop_rejections": true, "valid": false}
+]

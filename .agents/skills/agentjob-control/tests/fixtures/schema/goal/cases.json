@@ -1,0 +1,17 @@
+[
+  {"name": "initialized", "phase": "initialized", "valid": true},
+  {"name": "terminal complete", "phase": "terminal_complete", "valid": true},
+  {"name": "terminal human", "phase": "terminal_awaiting_human", "valid": true},
+  {"name": "terminal capability", "phase": "terminal_capability_blocked", "valid": true},
+  {"name": "terminal guard", "phase": "terminal_guard_exhausted", "valid": true},
+  {"name": "terminal no progress", "phase": "terminal_no_progress", "valid": true},
+  {"name": "terminal validation", "phase": "terminal_validation_failed", "valid": true},
+  {"name": "terminal ambiguity", "phase": "terminal_handoff_ambiguous", "valid": true},
+  {"name": "terminal timeout", "phase": "terminal_handoff_timeout", "valid": true},
+  {"name": "terminal duplicate", "phase": "terminal_duplicate_detected", "valid": true},
+  {"name": "terminal corrupt", "phase": "terminal_corrupt_state", "valid": true},
+  {"name": "terminal failed", "phase": "terminal_failed", "valid": true},
+  {"name": "terminal cancelled", "phase": "terminal_cancelled", "valid": true},
+  {"name": "unknown phase", "phase": "terminal_invented", "valid": false},
+  {"name": "goal amendment forbidden", "amendment_kind": "goal", "valid": false}
+]

@@ -1,0 +1,95 @@
+{
+  "actions": [
+    {
+      "action": "install",
+      "skill_id": "agentjob-control",
+      "source": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI/skills/agentjob-control",
+      "source_sha256": "899f7433425b6ef4408546823f6ef231383873100e3644188eb6399e5b76fb74",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/agentjob-control",
+      "version": "0.1.0"
+    },
+    {
+      "action": "install",
+      "skill_id": "continue",
+      "source": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI/skills/continue",
+      "source_sha256": "5795757bf0c83494d64c0e682a712a146166965f13d620f03175acbe1d46ff1e",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue",
+      "version": "0.1.0"
+    },
+    {
+      "action": "install",
+      "skill_id": "continue-goal",
+      "source": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI/skills/continue-goal",
+      "source_sha256": "ad87c1dcc5f7d9b024490299c7f0707d553f8cebeafea5cb9c42c4c42dc9d28d",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue-goal",
+      "version": "0.1.0"
+    },
+    {
+      "action": "install",
+      "skill_id": "continue-implementing-goal",
+      "source": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI/skills/continue-implementing-goal",
+      "source_sha256": "7e6c30e605bbbd3af398dd025a3e3db827ac73e269b5662b8e8a9ef041239d17",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue-implementing-goal",
+      "version": "0.1.0"
+    }
+  ],
+  "bootstrap": null,
+  "bootstrap_requested": false,
+  "bundle_id": "governed-continuation",
+  "bundle_version": "0.1.0",
+  "conflicts": [],
+  "execution_performed": true,
+  "external_tools": [],
+  "installed_at": "2026-07-17T20:35:30.200472+00:00",
+  "mode": "apply",
+  "python": [
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "agentjob-control",
+      "standard_library_only": true
+    },
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "continue",
+      "standard_library_only": true
+    },
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "continue-goal",
+      "standard_library_only": true
+    },
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "continue-implementing-goal",
+      "standard_library_only": true
+    }
+  ],
+  "python_install": null,
+  "python_install_requested": false,
+  "rollback_manifest": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.local/sys4ai/install-transactions/5afcfa7beca34263994f967f339561f2/rollback.json",
+  "schema_version": "sys4ai.skill-bundle-install-receipt.v1",
+  "source_lock": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI/.agents/skill_registry/SKILL_LOCK.yaml",
+  "source_lock_sha256": "eb952272d720cd6fc4d58e63e9ddb593956a1f5a721a9d1e638c5a7546d4fcef",
+  "source_repository": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI",
+  "status": "installed",
+  "target_project": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website",
+  "target_runtime_root": ".agents/skills",
+  "transaction_id": "5afcfa7beca34263994f967f339561f2",
+  "validation": {
+    "findings": [],
+    "status": "pass",
+    "verification_level": "installed hashes and manifests"
+  }
+}

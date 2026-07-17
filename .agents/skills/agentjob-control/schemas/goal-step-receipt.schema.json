@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-step-receipt.schema.json",
+  "title": "Portable Goal Step Receipt",
+  "type": "object",
+  "required": [
+    "schema_version", "receipt_id", "goal_id", "generation", "handoff_token_hash",
+    "idempotency_key", "predecessor_thread_id", "successor_thread_id", "started_at",
+    "finished_at", "repository_binding", "revision_before", "revision_after",
+    "fingerprint_before", "fingerprint_after", "continue_invocation_count",
+    "agent_job_id", "zero_job_reason", "task_id", "handoff_id", "checkpoint",
+    "validator_results", "goal_evaluation", "progress_summary", "remaining_work",
+    "decision", "journal_entry_hash", "prior_journal_hash", "finalized", "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-step-receipt.v1"},
+    "receipt_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "generation": {"type": "integer", "minimum": 1},
+    "handoff_token_hash": {"$ref": "common.schema.json#/$defs/sha256"},
+    "idempotency_key": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "predecessor_thread_id": {"type": ["string", "null"]},
+    "successor_thread_id": {"type": ["string", "null"]},
+    "started_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "finished_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "repository_binding": {"$ref": "goal-state.schema.json#/$defs/repositoryBinding"},
+    "revision_before": {"type": ["string", "null"]},
+    "revision_after": {"type": ["string", "null"]},
+    "fingerprint_before": {"$ref": "common.schema.json#/$defs/sha256"},
+    "fingerprint_after": {"$ref": "common.schema.json#/$defs/sha256"},
+    "continue_invocation_count": {"enum": [0, 1, "unknown"]},
+    "agent_job_id": {"oneOf": [{"$ref": "common.schema.json#/$defs/id"}, {"type": "null"}]},
+    "zero_job_reason": {"type": ["string", "null"]},
+    "task_id": {"oneOf": [{"$ref": "common.schema.json#/$defs/id"}, {"type": "null"}]},
+    "handoff_id": {"oneOf": [{"$ref": "common.schema.json#/$defs/id"}, {"type": "null"}]},
+    "checkpoint": {
+      "type": "object",
+      "required": ["provider", "status", "revision", "evidence_ref"],
+      "properties": {
+        "provider": {"$ref": "common.schema.json#/$defs/id"},
+        "status": {"enum": ["pass", "fail", "not_required", "unknown"]},
+        "revision": {"type": ["string", "null"]},
+        "evidence_ref": {"oneOf": [{"$ref": "common.schema.json#/$defs/relativePath"}, {"type": "null"}]}
+      },
+      "additionalProperties": false
+    },
+    "validator_results": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/validationResult"}, "uniqueItems": true},
+    "goal_evaluation": {"enum": ["unmet", "met", "indeterminate"]},
+    "progress_summary": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "remaining_work": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "decision": {"enum": ["terminal_complete", "continuation_required", "protected_stop", "guard_stop", "failed", "cancelled", "unknown"]},
+    "journal_entry_hash": {"$ref": "common.schema.json#/$defs/sha256"},
+    "prior_journal_hash": {"oneOf": [{"$ref": "common.schema.json#/$defs/sha256"}, {"type": "null"}]},
+    "finalized": {"const": true},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {"properties": {"continue_invocation_count": {"const": 0}}, "required": ["continue_invocation_count"]},
+      "then": {"properties": {"agent_job_id": {"type": "null"}, "zero_job_reason": {"type": "string", "minLength": 1}}}
+    },
+    {
+      "if": {"properties": {"agent_job_id": {"type": "string"}}, "required": ["agent_job_id"]},
+      "then": {"properties": {"zero_job_reason": {"type": "null"}}},
+      "else": {
+        "if": {"properties": {"continue_invocation_count": {"enum": [0, 1]}}, "required": ["continue_invocation_count"]},
+        "then": {"properties": {"zero_job_reason": {"type": "string", "minLength": 1}}}
+      }
+    }
+  ]
+}

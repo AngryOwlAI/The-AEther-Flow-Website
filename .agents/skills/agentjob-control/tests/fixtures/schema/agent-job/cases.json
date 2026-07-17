@@ -1,0 +1,11 @@
+[
+  {"name": "read only", "write_paths": [], "actions": ["read_files"], "valid": true},
+  {"name": "code change", "write_paths": ["src/example.py"], "actions": ["read_files", "edit_files", "run_local_commands"], "valid": true},
+  {"name": "documentation", "write_paths": ["docs/example.md"], "actions": ["read_files", "edit_files"], "valid": true},
+  {"name": "external research", "write_paths": ["docs/research.md"], "actions": ["read_files", "edit_files", "external_research"], "valid": true},
+  {"name": "human gated", "write_paths": [], "actions": [], "valid": true},
+  {"name": "missing authority", "drop": "authority", "valid": false},
+  {"name": "broad wildcard", "write_paths": ["**"], "actions": ["edit_files"], "valid": false},
+  {"name": "missing validators", "drop": "validators", "valid": false},
+  {"name": "missing claim boundary", "drop": "claim_boundary", "valid": false}
+]

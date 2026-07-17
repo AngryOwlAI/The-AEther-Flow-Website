@@ -1,0 +1,12 @@
+interface:
+  display_name: Continue
+  short_description: Execute at most one governed AgentJob transaction.
+policy:
+  allow_implicit_invocation: false
+  user_invocation: explicit_or_declared_relay
+  internal_invocation: declared_skills_only
+constraints:
+  maximum_agentjobs_per_invocation: 1
+  may_spawn_threads: false
+capabilities:
+  - sys4ai.continue.v1

@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260717-001"
 title: "Align Homepage Primary Actions"
 created_utc: "2026-07-17T13:15:50Z"
-updated_utc: "2026-07-17T13:27:07Z"
-status: "active"
+updated_utc: "2026-07-17T20:30:03Z"
+status: "superseded"
 
 source_context:
   packet_id: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
@@ -141,8 +141,8 @@ stop_conditions:
 
 checkpoint_expectations:
   automated_checkpoint_command_available: true
-  staging_allowed_by_this_job: false
-  closeout: "Create WJC-20260717-001-A after all evidence passes and leave the packet ready for separately authorized local checkpoint."
+  staging_allowed_by_this_job: true
+  closeout: "Completion WJC-20260717-001-A was checkpointed locally at b6508aca and must not be replayed."
 
 handoff:
   latest_handoff_id: "WH-20260717-001"
@@ -155,9 +155,9 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "GOVERNED-CONTINUATION-IMPORT-01"
+  summary: "Proceed through the separately bounded governed continuation skill family import."
+  do_not_skip: "Do not replay checkpoint b6508aca launch a goal create a Codex task push deploy refresh sources or mutate upstream."
 
 implementation_status:
   status: "ready_for_checkpoint"
@@ -175,4 +175,17 @@ implementation_status:
   public_copy_change_status: "none"
   manifest_change_status: "none"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "GOVERNED-CONTINUATION-IMPORT-01"
+
+superseded_by:
+  handoff_id: "WH-20260717-002"
+  task_id: "WI-20260717-002"
+  job_id: "WJ-20260717-002-A"
+  checkpoint: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  reason: "The Homepage action row alignment packet was checkpointed before the separately bounded governed continuation import opened."

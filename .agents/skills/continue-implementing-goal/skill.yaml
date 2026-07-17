@@ -1,0 +1,164 @@
+skill_id: continue-implementing-goal
+version: 0.1.0
+status: template
+canonical_path: skills/continue-implementing-goal
+summary: Consume one token-bound goal generation and terminalize or dispatch one successor.
+scope:
+  system_agnostic: true
+  target_system_types:
+    - governed agentic systems
+    - software repositories
+    - research and documentation systems
+domain_emphasis:
+  - generation execution
+  - at-most-once consumption
+  - goal evidence verification
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+optional_role_posture:
+  - process_integrity_auditor
+  - verification_engineer
+activation:
+  triggers:
+    - A token-bound predecessor dispatch invokes the reserved generation.
+    - An operator explicitly invokes recovery for a retained goal record.
+  when_not_to_use:
+    - No valid generation envelope or explicit recovery authority exists.
+    - The request is an ordinary non-recursive bounded transaction.
+  preconditions:
+    - Compatible agentjob-control and continue capabilities are installed.
+    - Canonical goal state and repository binding are accessible.
+inputs:
+  required:
+    - Explicit project root and mode.
+    - Goal ID, generation, handoff token, envelope hash, and expected revision in normal mode.
+    - Matching successor discussion identity in normal mode.
+  optional:
+    - Explicit recovery action and authority in recovery mode.
+outputs:
+  primary:
+    - One generation receipt and terminal or successor summary.
+  evidence:
+    - Direct continuation result, fingerprints, validators, checkpoint, goal evaluation, and state revision.
+dependencies:
+  required_skills:
+    - agentjob-control
+    - continue
+  optional_skills: []
+  required_skill_versions:
+    agentjob-control: ^0.1.0
+    continue: ^0.1.0
+  python:
+    standard_library_only: true
+    requires_python: ">=3.11"
+    required_packages: []
+    optional_packages: []
+  external_tools: []
+authority:
+  may_read:
+    - Canonical goal state, token-bound envelope, project control, and direct continuation evidence.
+  may_write:
+    - One generation lifecycle, one receipt, and at most one successor reservation and provider receipt.
+  may_not:
+    - Invoke continue more than once.
+    - Execute more than one AgentJob.
+    - Create more than one successor.
+    - Reuse the current discussion as a successor or follow up on itself.
+    - Rerun consumed or unknown work automatically.
+  canonical_sources:
+    - skills/continue-implementing-goal
+    - skills/agentjob-control
+    - skills/continue
+  generated_derivatives:
+    - Project-local goal events, receipts, envelopes, prompts, and provider receipts.
+  human_gates:
+    - Ambiguous goal evaluation, recovery adoption, and protected project actions.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/continue-implementing-goal/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+    - command: python3 -m unittest discover -s skills/agentjob-control/tests -p 'test_goal_worker.py' -v
+      validator_class: control_validation
+      mode: required
+      dry_runnable: true
+  validator_classes:
+    - schema_validation
+    - dependency_validation
+    - trace_validation
+    - process_validation
+    - control_validation
+    - claim_validation
+    - human_authority
+  evidence_required:
+    - One direct continuation return or one explicit unknown-outcome record.
+    - Zero or one AgentJob and zero or one successor.
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Goal, generation, receipt, final fingerprint, evaluation, token-bound successor, and revision.
+  next_role: continue_implementing_goal_worker
+  open_issue_policy: Stop in a terminal or recovery state rather than repeat work.
+execution:
+  kind: relay_worker
+  invocation_policy: internal
+  maximum_agentjobs_per_invocation: 1
+  may_spawn_threads: true
+  may_create_control_records: true
+  invokes_skills:
+    - continue
+runtime_capabilities:
+  provides:
+    - sys4ai.continue-implementing-goal.v1
+  requires:
+    - sys4ai.agentjob-control.v1
+    - sys4ai.continue.v1
+    - sys4ai.goal-relay-state.v1
+    - sys4ai.continuation-envelope.v1
+    - python>=3.11
+  optional:
+    - sys4ai.context-provider.v1
+    - sys4ai.native-goal-mirror.v1
+control_protocol:
+  profile: registered
+  record_types:
+    - Task
+    - AgentJob
+    - Completion
+    - Handoff
+    - GoalState
+    - GoalStepReceipt
+    - ContinuationEnvelope
+    - ContinueResult
+  immutable_after_activation: true
+  supersession_required: true
+state:
+  tracked_root_template: "{project_root}/.agents/control"
+  local_root_template: "{project_root}/.local/sys4ai/continuation"
+  mutable_state_must_not_live_in_skill_directory: true
+adapters:
+  required_interfaces:
+    - ProjectAdapter
+    - ControlStore
+    - RepositoryProvider
+    - ThreadProvider
+  optional_interfaces:
+    - CheckpointProvider
+    - ContextProvider
+    - NativeGoalMirror
+  manual_thread_fallback: true
+recovery:
+  supported: true
+  automatic_rerun_after_consumption: false
+compatibility_shims:
+  - path: skills/agentjob-control/compat/aether/shims/continue-research-continue-goal/SKILL.md
+    purpose: Template-only AEther legacy worker mapping with at-most-once generation semantics.
+    last_synchronized: "2026-07-17"
+failure_modes:
+  - mode: Invalid generation identity, token, thread, envelope, or revision.
+    recovery: Reject before consumption.
+  - mode: Consumed call returns unknown or provider outcome is ambiguous.
+    recovery: Quarantine and enter explicit recovery without rerun or redispatch.

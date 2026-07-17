@@ -1,0 +1,71 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260717-002"
+created_utc: "2026-07-17T20:30:03Z"
+updated_utc: "2026-07-17T21:00:55Z"
+status: "ready_for_checkpoint"
+
+task_id: "WI-20260717-002"
+job_id: "WJ-20260717-002-A"
+
+summary: "Completed the source pinned governed continuation import and left its exact validated packet ready for the authorized local checkpoint."
+
+current_state:
+  - "Git proves the Homepage action row alignment packet was checkpointed at b6508aca and will not be replayed."
+  - "The website worktree was clean except for three unrelated untracked ImplementationPlans files before this control transition."
+  - "The skill source HEAD exactly matches f2852d5273ed7297a0abd55c9aecfbf7f5e4507e."
+  - "One unrelated untracked source repository plan is preserved read only."
+  - "The governed continuation bundle is version 0.1.0 with draft status."
+  - "Its complete dependency closure is agentjob-control continue continue-goal and continue-implementing-goal."
+  - "The import may create exact vendor runtime tracked adapter front doors tests and ignored local relay state."
+  - "implementation_control remains the sole website implementation authority and bootstrap is forbidden."
+  - "All four installed package hashes and the source lock pass without a runtime dependency on the source repository."
+  - "The exact support resources required by the complete vendored suite are tracked and hash verified."
+  - "The website facade adapter four Codex front doors activation receipt mapping manual fallback and recovery policy are integrated."
+  - "All 286 vendored runtime tests 18 focused relay tests 181 website tests aggregate validation quality and the 64 page build pass."
+  - "No real goal Codex task public route asset manifest claim source refresh upstream write push or deployment occurred."
+
+source_authority_boundary:
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  skill_source_repository: "/Volumes/P-SSD/AngryOwl/skills-Sys4AI"
+  skill_source_commit: "f2852d5273ed7297a0abd55c9aecfbf7f5e4507e"
+  skill_source_write_status: "forbidden"
+  upstream_write_status: "forbidden"
+  public_claim_write_status: "forbidden"
+  public_asset_write_status: "forbidden"
+  manifest_write_status: "forbidden"
+  checkpoint_status: "authorized_after_exact_dry_run"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+checkpoint_transition:
+  prior_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01"
+  checkpoint: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  observed_from_git: true
+  repeated: false
+
+next_recommended_action:
+  task_packet: "GOVERNED-CONTINUATION-IMPORT-01 local checkpoint"
+  summary: "Run the exact packet checkpoint dry run then create the owner authorized local checkpoint."
+  do_not_skip: "Do not launch a goal create a Codex task push deploy refresh sources or mutate upstream."
+
+stop_before:
+  - "Any source hash dependency invocation edge or adapter conformance mismatch"
+  - "Any public route asset manifest claim push deployment source refresh or upstream write"
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  vendor_runtime_status: "passed exact four package hashes"
+  support_resource_status: "passed exact source pinned hashes"
+  adapter_status: "passed website native integration"
+  tests_status: "passed 286 vendored 18 focused relay and 181 website tests"
+  aggregate_validation_status: "passed against accepted clean source root"
+  quality_gate_status: "passed against accepted clean source root"
+  checkpoint_dry_run_status: "passed 257 packet paths zero staged paths and three unrelated plans excluded"
+  completion_created: true
+  checkpoint_created: false
+
+completion_record:
+  completion_id: "WJC-20260717-002-A"
+  path: "implementation_control/tasks/WI-20260717-002/jobs/completions/WJC-20260717-002-A.yaml"
+  status: "completed"

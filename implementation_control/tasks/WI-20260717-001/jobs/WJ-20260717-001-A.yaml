@@ -4,8 +4,8 @@ job_id: "WJ-20260717-001-A"
 task_id: "WI-20260717-001"
 title: "Apply Homepage Action Row Alignment"
 created_utc: "2026-07-17T13:15:50Z"
-updated_utc: "2026-07-17T13:27:07Z"
-status: "active"
+updated_utc: "2026-07-17T20:30:03Z"
+status: "superseded"
 
 objective: "Apply one Homepage scoped action-row spacing correction so its horizontal edge and width match the Physics overview action container."
 
@@ -128,7 +128,7 @@ stop_conditions:
 
 checkpoint:
   command: "npm run checkpoint:implementation"
-  staging_allowed: false
+  staging_allowed: true
   push_allowed: false
   deploy_allowed: false
 
@@ -138,9 +138,9 @@ completion_record:
   status: "completed"
 
 next_recommended_action:
-  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "GOVERNED-CONTINUATION-IMPORT-01"
+  summary: "Proceed through the separately bounded governed continuation skill family import."
+  do_not_skip: "Do not replay checkpoint b6508aca launch a goal create a Codex task push deploy refresh sources or mutate upstream."
 
 implementation_status:
   status: "ready_for_checkpoint"
@@ -155,4 +155,10 @@ implementation_status:
   runtime_review: "passed Homepage and Physics at 1533 1040 780 and 520 CSS pixel widths with matching action and copy edges full available widths preserved responsive grouping zero overflow and zero console issues"
   checkpoint_dry_run: "passed with exactly 12 packet paths zero staged paths and the unrelated untracked implementation plan excluded"
   completion_created: true
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
+
+checkpoint_evidence:
+  commit: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  checkpoint_created: true
+  replayed: false
+  next_packet: "GOVERNED-CONTINUATION-IMPORT-01"

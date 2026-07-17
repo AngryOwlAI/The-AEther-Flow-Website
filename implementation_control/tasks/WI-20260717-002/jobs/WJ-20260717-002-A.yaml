@@ -1,0 +1,169 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260717-002-A"
+task_id: "WI-20260717-002"
+title: "Install and Adapt Governed Continuation Relay"
+created_utc: "2026-07-17T20:30:03Z"
+updated_utc: "2026-07-17T21:00:55Z"
+status: "active"
+
+objective: "Materialize the exact four package runtime and add a fail closed website adapter that relays at most one implementation control job per generation."
+
+execution_boundary:
+  invocation_limit: "one bounded GOVERNED-CONTINUATION-IMPORT-01 packet"
+  packet_id: "GOVERNED-CONTINUATION-IMPORT-01"
+  prior_checkpoint: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  prior_checkpoint_replay_status: "forbidden"
+  source_commit: "f2852d5273ed7297a0abd55c9aecfbf7f5e4507e"
+  bundle_version: "0.1.0"
+  bootstrap_status: "forbidden"
+  implementation_authority: "implementation_control only"
+  public_surface_change_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website and pinned skill source evidence allowlisted by WI-20260717-002"
+
+allowed_writes:
+  - ".agents/skills/agentjob-control"
+  - ".agents/skills/continue"
+  - ".agents/skills/continue-goal"
+  - ".agents/skills/continue-implementing-goal"
+  - ".agents/skill_registry/SKILL_REGISTRY.yaml"
+  - ".agents/skill_registry/SKILL_LOCK.yaml"
+  - ".agents/skill_registry/INSTALL_RECEIPTS"
+  - ".agents/continuation"
+  - ".agents/examples/governed-continuation"
+  - ".agents/docs/skills/CODEX_CONTINUATION_INTEGRATION.md"
+  - ".codex/skills/agentjob-control"
+  - ".codex/skills/continue"
+  - ".codex/skills/continue-goal"
+  - ".codex/skills/continue-implementing-goal"
+  - ".codex/skills/README.md"
+  - ".codex/skills/THIRD_PARTY_NOTICES.md"
+  - ".gitignore"
+  - "package.json"
+  - "scripts/implementation_control/continue_goal.py"
+  - "scripts/implementation_control/goal_relay_adapter.py"
+  - "scripts/implementation_control/validate_goal_relay.py"
+  - "tests/test_goal_relay_adapter.py"
+  - "tests/test_goal_relay_facade.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/handoffs/WH-20260717-001.yaml"
+  - "implementation_control/tasks/WI-20260717-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260717-001/jobs/WJ-20260717-001-A.yaml"
+  - "implementation_control/handoffs/WH-20260717-002.yaml"
+  - "implementation_control/handoffs/WH-20260717-002.md"
+  - "implementation_control/tasks/WI-20260717-002/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260717-002/jobs/WJ-20260717-002-A.yaml"
+  - "implementation_control/tasks/WI-20260717-002/jobs/completions/WJC-20260717-002-A.yaml"
+
+required_outputs:
+  - "The exact four package bundle is installed under .agents/skills with lock verified hashes."
+  - "The exact source pinned fixture and integration document closure required by the complete vendored runtime suite is tracked and hash verified."
+  - "No .agents/control tree exists and implementation_control remains sole execution authority."
+  - "All four packages have project local Codex front doors with preserved internal or explicit invocation policy."
+  - "The website adapter emits sys4ai.continue-result.v1 and persists exact pre execution activation evidence."
+  - "The relay state root is ignored and excluded from canonical project fingerprints."
+  - "Ready gate blocked no action checkpoint source authority duplicate recovery and exact completion paths have focused coverage."
+  - "A fake provider end to end fixture proves at most one job and one successor."
+  - "All required project and vendor runtime gates pass."
+  - "No real goal task push deployment source refresh or upstream write occurs."
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner explicitly approved the complete source pinned import plan."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public wording or claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No upstream research source refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route or navigation change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No reader facing visual change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifest or authority record."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream research or skill source repository write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "goal-relay-integrity"
+    command: "npm run validate:goal-relay"
+    required: true
+  - id: "goal-relay-runtime-tests"
+    command: "npm run test:goal-relay-runtime"
+    required: true
+  - id: "goal-relay-adapter-tests"
+    command: "npm run test:goal-relay"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+  - id: "aggregate-validation"
+    command: "npm run validate"
+    required: true
+  - id: "quality-gate"
+    command: "npm run quality"
+    required: true
+
+stop_conditions:
+  - "Any source package hash lock dependency or invocation edge mismatch."
+  - "Any runtime bootstrap or competing control root is created."
+  - "Any pre execution repository or active record mismatch is consumed."
+  - "Any generation invokes more than one continue job or creates more than one successor."
+  - "Any checkpoint approval is inferred rather than mapped from live control and user authority."
+  - "Any public route asset manifest source claim push deployment or upstream write is attempted."
+  - "Any required validator fails."
+
+checkpoint:
+  command: "npm run checkpoint:implementation"
+  staging_allowed: true
+  push_allowed: false
+  deploy_allowed: false
+
+completion_record:
+  completion_id: "WJC-20260717-002-A"
+  path: "implementation_control/tasks/WI-20260717-002/jobs/completions/WJC-20260717-002-A.yaml"
+  status: "completed"
+
+next_recommended_action:
+  task_packet: "GOVERNED-CONTINUATION-IMPORT-01 local checkpoint"
+  summary: "Run the exact packet checkpoint dry run then create the owner authorized local checkpoint."
+  do_not_skip: "Do not launch a goal create a Codex task push deploy refresh sources or mutate upstream."
+
+implementation_status:
+  status: "ready_for_checkpoint"
+  vendor_runtime_status: "four exact source locked package hashes passed"
+  support_resource_status: "exact test fixture and integration document hashes passed"
+  adapter_status: "website native implementation control binding passed"
+  tests_status: "286 vendored runtime 18 focused relay and 181 website tests passed"
+  aggregate_validation_status: "passed against accepted clean source root"
+  quality_gate_status: "passed against accepted clean source root"
+  real_goal_or_task_created: false
+  completion_created: true
+  checkpoint_dry_run_status: "passed 257 packet paths zero staged paths and three unrelated plans excluded"
+  checkpoint_status: "authorized_after_exact_dry_run"

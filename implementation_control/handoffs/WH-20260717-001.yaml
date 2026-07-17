@@ -2,8 +2,8 @@ schema_version: "0.1"
 record_type: "implementation_handoff"
 handoff_id: "WH-20260717-001"
 created_utc: "2026-07-17T13:15:50Z"
-updated_utc: "2026-07-17T13:27:07Z"
-status: "ready_for_checkpoint"
+updated_utc: "2026-07-17T20:30:03Z"
+status: "superseded"
 
 task_id: "WI-20260717-001"
 job_id: "WJ-20260717-001-A"
@@ -33,7 +33,7 @@ source_authority_boundary:
   public_claim_write_status: "not_required"
   public_asset_write_status: "forbidden"
   manifest_write_status: "not_required"
-  checkpoint_status: "not_authorized"
+  checkpoint_status: "checkpointed"
   push_status: "not_authorized"
   deployment_status: "not_authorized"
 
@@ -44,9 +44,9 @@ checkpoint_transition:
   repeated: false
 
 next_recommended_action:
-  task_packet: "HOMEPAGE-ACTION-ROW-ALIGNMENT-01 local checkpoint"
-  summary: "Await separate owner authorization before creating one local checkpoint from completion WJC-20260717-001-A."
-  do_not_skip: "Do not stage commit push deploy refresh sources mutate upstream or open another packet."
+  task_packet: "GOVERNED-CONTINUATION-IMPORT-01"
+  summary: "Proceed through the separately bounded governed continuation skill family import."
+  do_not_skip: "Do not replay checkpoint b6508aca launch a goal create a Codex task push deploy refresh sources or mutate upstream."
 
 stop_before:
   - "Route source copy action order link destination public asset manifest provenance or source binding changes"
@@ -68,9 +68,21 @@ implementation_status:
   quality_gate: "passed against accepted clean source root"
   checkpoint_dry_run: "passed with 12 packet paths zero staged paths and one excluded unrelated untracked plan"
   completion_created: true
-  checkpoint_created: false
+  checkpoint_created: true
 
 completion_record:
   completion_id: "WJC-20260717-001-A"
   path: "implementation_control/tasks/WI-20260717-001/jobs/completions/WJC-20260717-001-A.yaml"
   status: "completed"
+
+checkpoint_evidence:
+  commit: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  replayed: false
+  next_packet: "GOVERNED-CONTINUATION-IMPORT-01"
+
+superseded_by:
+  handoff_id: "WH-20260717-002"
+  task_id: "WI-20260717-002"
+  job_id: "WJ-20260717-002-A"
+  checkpoint: "b6508aca8932f45d9dc6ea4ecf4438ae922cfc95"
+  reason: "The Homepage action row alignment packet was checkpointed before the separately bounded governed continuation import opened."

@@ -79,6 +79,9 @@ tmp/
 temp/
 scratch/
 
+# Local Sys4AI transactions, goal state, tokens, envelopes, and provider receipts
+.local/sys4ai/
+
 # LaTeX build byproducts. Source .tex and published .pdf files remain tracked.
 *.aux
 *.bbl
@@ -118,3 +121,5 @@ scratch/
 .codex/**/*.py[cod]
 !.agents/
 !.agents/**
+.agents/**/__pycache__/
+.agents/**/*.py[cod]

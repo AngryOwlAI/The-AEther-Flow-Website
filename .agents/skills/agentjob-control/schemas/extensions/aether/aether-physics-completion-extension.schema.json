@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/extensions/aether-physics-completion-extension.schema.json",
+  "title": "AEther scientific completion extension data",
+  "type": "object",
+  "required": [
+    "status",
+    "scientific_claims_changed",
+    "physics_promotion_authorized",
+    "proof_authority",
+    "forbidden_conclusion_summary"
+  ],
+  "properties": {
+    "status": {"type": "string", "minLength": 1},
+    "scientific_claims_changed": {"type": "boolean"},
+    "physics_promotion_authorized": {"type": "boolean"},
+    "proof_authority": {"type": "boolean"},
+    "promotion_authority_path": {"type": ["string", "null"]},
+    "physics_progress_status": {"type": "object"},
+    "distance_to_gr_delta": {"type": "object"},
+    "mathematical_payload_manifest": {"type": "array", "items": {"type": "object"}},
+    "forbidden_conclusion_summary": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "source_schema_ref": {
+      "const": ".agents/schemas/PHYSICS_COMPLETION_DECISIVENESS_SCHEMA.md"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"physics_promotion_authorized": {"const": true}},
+        "required": ["physics_promotion_authorized"]
+      },
+      "then": {
+        "required": ["promotion_authority_path"],
+        "properties": {"promotion_authority_path": {"type": "string", "minLength": 1}}
+      }
+    }
+  ],
+  "additionalProperties": true
+}

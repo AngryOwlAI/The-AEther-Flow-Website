@@ -1,0 +1,4 @@
+[
+  {"name": "bounded recommendation", "grants_execution_authority": false, "valid": true},
+  {"name": "authority escalation", "grants_execution_authority": true, "valid": false}
+]

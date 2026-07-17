@@ -1,0 +1,10 @@
+[
+  {"name": "relative path", "definition": "relativePath", "value": "src/example.py", "valid": true},
+  {"name": "absolute posix path", "definition": "relativePath", "value": "/tmp/example.py", "valid": false},
+  {"name": "absolute windows path", "definition": "relativePath", "value": "C:\\temp\\example.py", "valid": false},
+  {"name": "parent traversal", "definition": "relativePath", "value": "src/../secrets.txt", "valid": false},
+  {"name": "broad wildcard", "definition": "relativePath", "value": "**", "valid": false},
+  {"name": "resolved identity path", "definition": "resolvedIdentityPath", "value": "/project/root", "valid": true},
+  {"name": "sha256", "definition": "sha256", "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "valid": true},
+  {"name": "bad sha256", "definition": "sha256", "value": "ABC", "valid": false}
+]

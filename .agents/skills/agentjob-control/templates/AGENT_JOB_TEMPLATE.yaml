@@ -1,0 +1,65 @@
+schema_version: sys4ai.agent-job.v1
+job_id: <AGENT_JOB_ID>
+task_id: <TASK_ID>
+decision_id: <DECISION_ID>
+status: draft
+activated_at: null
+objective: <BOUNDED_OBJECTIVE>
+role_binding:
+  role_id: <ROLE_ID>
+  role_version: <SEMVER>
+  execution_role_ref: <EXECUTION_ROLE_PATH>
+authority:
+  allowed_read_paths: []
+  allowed_write_paths: []
+  allowed_generated_paths: []
+  forbidden_paths: []
+  allowed_actions: []
+  forbidden_actions:
+    - publish
+    - push
+    - merge
+    - alter_policy
+    - access_secrets
+  network_access: false
+  external_effects: []
+source_policy:
+  allowed_source_classes: []
+  forbidden_source_classes:
+    - unverified_external_claim
+commands:
+  approved: []
+validators:
+  required:
+    - validator_id: changed-path-allowlist
+      validator_class: path_validation
+      mode: required
+  contextual: []
+expected_outputs:
+  - path: <EXPECTED_OUTPUT_PATH>
+    kind: <OUTPUT_CLASSIFICATION>
+completion_contract:
+  required_evidence:
+    - <REQUIRED_EVIDENCE>
+  goal_effect:
+    type: bounded_progress
+    does_not_imply_global_goal_completion: true
+stop_conditions:
+  - authority_ambiguity
+  - required_write_outside_allowlist
+  - validator_failure
+  - new_human_gate
+checkpoint:
+  provider: git_status
+  required: true
+  auto_commit: false
+claim_boundary:
+  allowed:
+    - <ALLOWED_CONCLUSION>
+  forbidden:
+    - <FORBIDDEN_OVERREAD>
+concurrency:
+  policy: exclusive_worktree
+  lease_scope: repository_worktree
+  idempotency_key: <AGENT_JOB_ID>
+extensions: {}
