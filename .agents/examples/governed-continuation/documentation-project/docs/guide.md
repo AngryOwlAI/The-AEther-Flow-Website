@@ -1,3 +1,0 @@
-# Guide
-
-Update pending.

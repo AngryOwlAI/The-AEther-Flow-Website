@@ -1,8 +1,0 @@
-[
-  {"name": "active", "status": "active", "closure_status": "open", "valid": true},
-  {"name": "blocked", "status": "blocked", "closure_status": "open", "valid": true},
-  {"name": "human gated", "status": "human_gated", "closure_status": "open", "valid": true},
-  {"name": "completed with receipt", "status": "completed", "closure_status": "closed", "completion_refs": ["AJC-1"], "valid": true},
-  {"name": "closed without evidence", "status": "completed", "closure_status": "closed", "completion_refs": [], "no_execution_reason": null, "valid": false},
-  {"name": "reopened by decision", "status": "active", "closure_status": "reopened", "valid": true}
-]

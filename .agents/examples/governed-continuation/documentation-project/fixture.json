@@ -1,8 +1,0 @@
-{
-  "fixture_id": "documentation-project",
-  "read_paths": ["canonical/source.md", "docs/guide.md"],
-  "write_path": "docs/guide.md",
-  "command_cwd": "docs",
-  "allowed_claim": "The guide matches the declared canonical source.",
-  "forbidden_claim": "Every document in every downstream system is current."
-}

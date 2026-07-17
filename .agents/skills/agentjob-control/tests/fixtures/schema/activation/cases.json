@@ -1,6 +1,0 @@
-[
-  {"name": "director packet", "packet_type": "director_job_packet", "valid": true},
-  {"name": "supersession packet", "packet_type": "supersession_packet", "valid": true},
-  {"name": "partial staging no records", "packet_type": "director_job_packet", "records": [], "valid": false},
-  {"name": "bad activation order", "packet_type": "director_job_packet", "order": 0, "valid": false}
-]
