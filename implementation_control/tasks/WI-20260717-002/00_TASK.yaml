@@ -3,8 +3,8 @@ record_type: "implementation_task"
 task_id: "WI-20260717-002"
 title: "Integrate Governed Continuation Skill Family"
 created_utc: "2026-07-17T20:30:03Z"
-updated_utc: "2026-07-17T21:00:55Z"
-status: "active"
+updated_utc: "2026-07-19T03:09:53Z"
+status: "superseded"
 
 source_context:
   packet_id: "GOVERNED-CONTINUATION-IMPORT-01"
@@ -179,7 +179,7 @@ next_recommended_action:
   do_not_skip: "Do not launch a goal create a Codex task push deploy refresh sources or mutate upstream."
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "superseded"
   vendor_runtime_status: "four exact source locked package hashes passed"
   support_resource_status: "exact test fixture and integration document hashes passed"
   adapter_status: "website native implementation control binding passed"

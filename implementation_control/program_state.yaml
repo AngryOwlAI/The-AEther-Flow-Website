@@ -1,8 +1,8 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-17T21:00:55Z"
-status: "active"
+updated_utc: "2026-07-19T03:09:53Z"
+status: "inactive"
 mode: "website_local_implementation_control"
 
 authority_order:
@@ -25,7 +25,7 @@ repository_boundary:
 active_task:
   task_id: "WI-20260717-002"
   title: "Integrate Governed Continuation Skill Family"
-  status: "active"
+  status: "superseded"
   path: "implementation_control/tasks/WI-20260717-002/00_TASK.yaml"
   planning_context:
     task_packet: "GOVERNED-CONTINUATION-IMPORT-01"
@@ -38,12 +38,12 @@ active_task:
 
 current_job:
   job_id: "WJ-20260717-002-A"
-  status: "active"
+  status: "superseded"
   path: "implementation_control/tasks/WI-20260717-002/jobs/WJ-20260717-002-A.yaml"
 
 latest_handoff:
   handoff_id: "WH-20260717-002"
-  status: "ready_for_checkpoint"
+  status: "superseded"
   yaml_path: "implementation_control/handoffs/WH-20260717-002.yaml"
   markdown_path: "implementation_control/handoffs/WH-20260717-002.md"
 
@@ -53,15 +53,6 @@ required_validators:
     required_for_current_job: true
   - id: "implementation-control"
     command: "npm run validate:implementation-control"
-    required_for_current_job: true
-  - id: "goal-relay-integrity"
-    command: "npm run validate:goal-relay"
-    required_for_current_job: true
-  - id: "goal-relay-runtime-tests"
-    command: "npm run test:goal-relay-runtime"
-    required_for_current_job: true
-  - id: "goal-relay-adapter-tests"
-    command: "npm run test:goal-relay"
     required_for_current_job: true
   - id: "python-tests"
     command: ".venv/bin/python -m pytest"
@@ -74,9 +65,9 @@ required_validators:
     required_for_current_job: true
 
 next_recommended_action:
-  task_packet: "GOVERNED-CONTINUATION-IMPORT-01 local checkpoint"
-  summary: "Run the exact packet checkpoint dry run then create the owner authorized local checkpoint."
-  do_not_skip: "Do not launch a real goal create a Codex task push deploy refresh sources or mutate upstream."
+  task_packet: "none"
+  summary: "No implementation packet is active after removal of the repository-local governed continuation runtime."
+  do_not_skip: "Open a new bounded implementation-control packet before additional website implementation work."
 
 preflight_evidence:
   status: "passed_for_governed_continuation_import_packet"
@@ -99,24 +90,24 @@ preflight_evidence:
   source_refresh_status: "not_performed"
 
 implementation_status:
-  status: "ready_for_checkpoint"
+  status: "superseded"
   target_surface: "Project local governed continuation tooling"
-  vendor_runtime_status: "passed exact locked four package installation"
-  support_resource_status: "passed exact source pinned test resource closure"
-  adapter_status: "passed website native implementation control binding"
+  vendor_runtime_status: "removed from the current repository tree"
+  support_resource_status: "removed from the current repository tree"
+  adapter_status: "removed from the current repository tree"
   relay_state_root: ".local/sys4ai/continuation"
   route_source_change_status: "forbidden"
   public_copy_change_status: "forbidden"
   public_asset_change_status: "forbidden"
   manifest_change_status: "forbidden"
   source_authority_promotion_status: "forbidden"
-  tests_status: "passed 286 vendored 18 focused relay and 181 website tests"
-  aggregate_validation_status: "passed against accepted clean source root"
-  quality_gate_status: "passed against accepted clean source root"
+  tests_status: "163 current repository tests passed; runtime-specific suites retired with the removed integration"
+  aggregate_validation_status: "blocked at curator validation by current upstream source drift acknowledgements outside the runtime-removal scope"
+  quality_gate_status: "not run because aggregate validation stopped at the curator gate"
   real_goal_or_task_created: false
   completion_created: true
   checkpoint_dry_run_status: "passed 257 packet paths zero staged paths and three unrelated plans excluded"
-  checkpoint_status: "authorized_after_exact_dry_run"
+  checkpoint_status: "prior import checkpoint retained in Git history"
   push_performed: false
   deployment_performed: false
 
