@@ -1,0 +1,50 @@
+{
+  "schema_version": "sys4ai.plan-normalization-report.v1",
+  "report_id": "PNR-EXAMPLE-001",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "source_set_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "normalization_contract_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "sources": [
+    {
+      "source_id": "SOURCE-001",
+      "source_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "media_type": "application/json",
+      "source_class": "structured_plan",
+      "authority": "accepted",
+      "precedence": 0,
+      "immutable_ref": "examples/source-plan.json",
+      "classification_evidence": [
+        "Explicit ordered phases, tasks, dependencies, and acceptance boundaries are present."
+      ]
+    }
+  ],
+  "candidate_plan_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+  "status": "candidate",
+  "findings": [],
+  "traceability": [
+    {
+      "output_kind": "task",
+      "output_id": "TASK-001",
+      "source_anchors": [
+        "SOURCE-001#/tasks/0"
+      ],
+      "transformation": "canonicalized",
+      "generated": true
+    }
+  ],
+  "task_sizing": [
+    {
+      "task_id": "TASK-001",
+      "result": "ready",
+      "evidence_refs": [
+        "evidence/task-001-sizing.md"
+      ],
+      "replacement_task_ids": []
+    }
+  ],
+  "canonicalization_only": true,
+  "hash_basis": "canonical_json_without_report_content_sha256",
+  "report_content_sha256": "ed3e8b30b1ff966928fa6548fcf83aa7f59fbfeddfbe270faecdeb407e76da3c",
+  "finalized": true,
+  "extensions": {}
+}

@@ -1,0 +1,50 @@
+{
+  "plan_id": "PLAN-GOLDEN-001",
+  "title": "Deliver a bounded widget",
+  "objective": "Implement and verify the accepted widget behavior.",
+  "acceptance": {
+    "status": "accepted",
+    "authority_ref": "AUTH-GOLDEN-001",
+    "accepted_at": "2026-01-01T00:00:00Z",
+    "policy_version": "POLICY-GOLDEN-001"
+  },
+  "repository_binding": {
+    "project_id": "PROJECT-GOLDEN-001",
+    "root": "<PROJECT_ROOT>",
+    "worktree": "<PROJECT_ROOT>",
+    "branch": "<TARGET_BRANCH>",
+    "starting_revision": "<STARTING_REVISION>",
+    "git_common_dir": "<GIT_COMMON_DIR>",
+    "environment_mode": "local"
+  },
+  "tasks": [
+    {
+      "task_id": "TASK-WIDGET-001",
+      "title": "Implement and verify the widget",
+      "objective": "Deliver two independently verifiable widget outcomes.",
+      "depends_on": [],
+      "outcomes": [
+        {
+          "title": "Implement the widget behavior",
+          "objective": "Implement the accepted bounded widget behavior.",
+          "acceptance_criteria": [
+            "The accepted widget behavior is implemented without adjacent work."
+          ],
+          "validation_refs": [
+            "tests/widget-implementation.md"
+          ]
+        },
+        {
+          "title": "Verify the widget behavior",
+          "objective": "Verify the accepted widget behavior from direct evidence.",
+          "acceptance_criteria": [
+            "The widget behavior passes its declared validation."
+          ],
+          "validation_refs": [
+            "tests/widget-verification.md"
+          ]
+        }
+      ]
+    }
+  ]
+}

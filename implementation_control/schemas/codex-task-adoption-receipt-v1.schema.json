@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "website.codex-task-adoption-receipt-v1",
+  "title": "Codex task adoption receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "plan_id",
+    "task_id",
+    "generation",
+    "codex_task_id",
+    "envelope_sha256",
+    "requested_reasoning_effort",
+    "effective_reasoning_effort",
+    "profile_evidence_ref",
+    "repository_binding_sha256",
+    "repository_topology_sha256",
+    "prompt_release_authorized",
+    "adopted_at",
+    "receipt_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "website.codex-task-adoption-receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "codex_task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "envelope_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "requested_reasoning_effort": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effective_reasoning_effort": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_evidence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_binding_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "repository_topology_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "prompt_release_authorized": {
+      "const": true
+    },
+    "adopted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "receipt_content_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

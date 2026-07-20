@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-activation-receipt.schema.json",
+  "title": "Immutable Implementation Plan Activation Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "activation_id",
+    "status",
+    "combined_acceptance",
+    "plan_id",
+    "accepted_plan_sha256",
+    "exact_activation_goal_sha256",
+    "reasoning_effort",
+    "selection_source",
+    "current_thread_id",
+    "current_thread_requested_effort",
+    "current_thread_effective_effort",
+    "current_thread_verification_status",
+    "current_thread_evidence_ref",
+    "provider_id",
+    "model_id",
+    "repository_identity_sha256",
+    "repository_topology_policy_sha256",
+    "acceptance_message_sha256",
+    "acceptance_evidence_ref",
+    "effective_from_generation",
+    "superseded_activation_id",
+    "accepted_at",
+    "hash_basis",
+    "receipt_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-activation-receipt.v1"
+    },
+    "activation_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "status": {
+      "const": "accepted"
+    },
+    "combined_acceptance": {
+      "const": true
+    },
+    "plan_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "accepted_plan_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "exact_activation_goal_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "reasoning_effort": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "selection_source": {
+      "enum": [
+        "default",
+        "user_override"
+      ]
+    },
+    "current_thread_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "current_thread_requested_effort": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "current_thread_effective_effort": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "current_thread_verification_status": {
+      "const": "verified"
+    },
+    "current_thread_evidence_ref": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "provider_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "model_id": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "repository_identity_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "repository_topology_policy_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "acceptance_message_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "acceptance_evidence_ref": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "effective_from_generation": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "superseded_activation_id": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "accepted_at": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "hash_basis": {
+      "const": "canonical_json_without_receipt_content_sha256"
+    },
+    "receipt_content_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

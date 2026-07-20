@@ -1,0 +1,7 @@
+interface:
+  display_name: "Continue Plan Task (Internal)"
+  short_description: "Internal one-task plan worker."
+  default_prompt: "Validate, claim, consume, and finalize only the adopted mapped plan task."
+policy:
+  allow_implicit_invocation: false
+  entrypoint_class: "internal_component"

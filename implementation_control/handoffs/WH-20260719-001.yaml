@@ -1,0 +1,42 @@
+schema_version: "0.1"
+record_type: "implementation_handoff"
+handoff_id: "WH-20260719-001"
+created_utc: "2026-07-20T04:32:00Z"
+updated_utc: "2026-07-20T05:42:13Z"
+status: "completed"
+task_id: "WI-20260719-001"
+job_id: "WJ-20260719-001-A"
+
+summary: "Completed and verified the exact source pinned implementation plan goal integration without creating a parallel authority tree or any external effect."
+
+current_state:
+  - "The exact four package bundle is installed from pinned Git archive bytes and all hashes match."
+  - "The website project repository thread profile control and plan providers are bound without enabling the generic executor."
+  - "Focused relay installation recovery and repository tests pass with fake providers and no real task or plan goal."
+  - "The exact source archive passed 46 focused tests and the installed bundle passed 53 tests."
+  - "The plan goal suite passed 69 tests and the complete website suite passed 180 tests using the existing Python 3.12 virtual environment."
+  - "Aggregate validation quality and the 64 page static build pass against accepted source commit 57438af555214bc0785dcb390ee6254f580b8a62."
+  - "The program is inactive with no executable current job live goal lease provider intent or mutable runtime database."
+  - "No checkpoint commit topology change public source upstream push or deployment action occurred."
+
+next_recommended_action:
+  task_packet: "none"
+  summary: "No further implementation action is required; the completed changes remain uncommitted."
+  do_not_skip: "Any checkpoint commit branch worktree push deployment real plan goal Codex task public change or upstream write requires separate authority."
+
+stop_before:
+  - "Any source hash dependency invocation edge or adapter conformance mismatch"
+  - "Any checkpoint Git topology public route asset manifest claim push deployment or upstream write"
+
+completion_record:
+  completion_id: "WJC-20260719-001-A"
+  path: "implementation_control/tasks/WI-20260719-001/jobs/completions/WJC-20260719-001-A.yaml"
+  status: "completed"
+
+implementation_status:
+  status: "complete"
+  exact_import_status: "passed"
+  adapter_status: "passed"
+  relay_lifecycle_status: "passed with fake providers only"
+  completion_created: true
+  checkpoint_created: false

@@ -1,0 +1,112 @@
+{
+  "schema_version": "sys4ai.plan-task-receipt.v1",
+  "receipt_id": "PTR-PHASE02-ONE-JOB",
+  "plan_identity": {
+    "plan_id": "PLAN-EXAMPLE-001",
+    "plan_sha256": "0e36bea5cdc7a0cfd3e2a67cea49f14623c877368c3957d743c9992a88898bd7",
+    "phase_id": "PHASE-EXAMPLE-01"
+  },
+  "task_identity": {
+    "task_id": "TASK-EXAMPLE-001",
+    "task_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "relay_identity": {
+    "generation": 1,
+    "predecessor_thread_id": "thread-predecessor-example",
+    "worker_thread_id": "thread-worker-example",
+    "envelope_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "idempotency_key": "PLAN-EXAMPLE-001:1",
+    "handoff_token_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "started_at": "2026-01-01T00:00:00Z",
+  "finished_at": "2026-01-01T00:05:00Z",
+  "repository_evidence": {
+    "starting_revision": "example-starting-revision",
+    "ending_revision": "example-ending-revision",
+    "fingerprint_before": "4444444444444444444444444444444444444444444444444444444444444444",
+    "fingerprint_after": "5555555555555555555555555555555555555555555555555555555555555555"
+  },
+  "execution": {
+    "outcome": "one_job",
+    "worker_discussions": 1,
+    "continue_invocations": 1,
+    "agentjobs": 1,
+    "agent_job_id": "AJ-PHASE02-001",
+    "provider_create_calls": 0,
+    "successor_creates": 0,
+    "same_task_successors": 0,
+    "zero_job_reason": null
+  },
+  "direct_evidence": {
+    "changed_paths": [
+      "skills/implementation-plan-goal/schemas/plan-task-receipt.schema.json"
+    ],
+    "acceptance_results": [
+      {
+        "criterion": "The bounded task outcome is directly demonstrated.",
+        "status": "pass",
+        "evidence_refs": [
+          "skills/implementation-plan-goal/schemas/plan-task-receipt.schema.json"
+        ]
+      }
+    ],
+    "validator_results": [
+      {
+        "validator_id": "plan-task-receipt-schema",
+        "validator_class": "schema_validation",
+        "status": "pass",
+        "reason_code": null,
+        "evidence_ref": "skills/implementation-plan-goal/tests/test_planctl.py",
+        "notes": []
+      }
+    ],
+    "checkpoint": {
+      "provider": "none",
+      "status": "not_required",
+      "revision": null,
+      "evidence_ref": null
+    },
+    "approvals": [
+      {
+        "approval_id": null,
+        "action": "repository-local schema and fixture changes",
+        "status": "not_required",
+        "evidence_ref": null
+      }
+    ],
+    "protected_effects": [
+      {
+        "effect": "commit, push, release, publication, deployment, or external contact",
+        "status": "not_attempted",
+        "approval_id": null,
+        "evidence_ref": null
+      }
+    ],
+    "warnings": [],
+    "indeterminate_checks": [],
+    "plan_completion": null
+  },
+  "disposition": "task_complete",
+  "reason_code": "fixture.one-job",
+  "terminal_reason": null,
+  "recovery": {
+    "status": "not_required",
+    "action_ref": null
+  },
+  "replanning": {
+    "status": "not_required",
+    "action_ref": null
+  },
+  "coordinator_action": {
+    "kind": "dispatch_next_task",
+    "next_task_id": "TASK-EXAMPLE-002"
+  },
+  "journal": {
+    "prior_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+    "entry_hash": "7777777777777777777777777777777777777777777777777777777777777777"
+  },
+  "hash_basis": "canonical_json_without_receipt_content_sha256",
+  "receipt_content_sha256": "437b214a016b6113237e9d8ae0932e4e9c3b9a0e4abc9f1c8598c1beab2c09a4",
+  "finalized": true,
+  "extensions": {}
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "website.skill-import-provenance.v1",
+  "status": "verified",
+  "source_repository": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI",
+  "source_commit": "5309fabc665b8c6665a24b9edb42b4ceda82227d",
+  "source_access_method": "git archive",
+  "source_working_tree_used": false,
+  "bundle_id": "implementation-plan-goal",
+  "bundle_version": "0.1.0",
+  "lock_path": ".agents/skill_registry/locks/implementation-plan-goal.lock.yaml",
+  "lock_sha256": "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9",
+  "installer_version": "2.0.0",
+  "installer_transaction_id": "d379c6badd2e43d39ee6a8a457b75b1d",
+  "installer_receipt": ".agents/skill_registry/INSTALL_RECEIPTS/bundle-implementation-plan-goal-d379c6badd2e43d39ee6a8a457b75b1d.json",
+  "installer_modes_observed": [
+    "dry-run",
+    "apply",
+    "post-install-dry-run"
+  ],
+  "bootstrap_requested": false,
+  "python_package_install_requested": false,
+  "plugin_distribution_enabled": false,
+  "release_maturity": "experimental",
+  "stability": "evolving",
+  "packages": {
+    "agentjob-control": {
+      "version": "0.3.0",
+      "source_sha256": "4fa0e93dc884e2c95ab3e0e01b3398c50aacacc91297574aabb456e1cc093c2d"
+    },
+    "continue": {
+      "version": "0.3.0",
+      "source_sha256": "8ea81082ca76f77accaf4af2e839741b928817b6ff64761412fba71f0481294d"
+    },
+    "continue-implementing-plan-task": {
+      "version": "0.1.0",
+      "source_sha256": "947c9d5b828746316d96874e253b772376978712e749ace48ef074fdbbcc7859"
+    },
+    "implementation-plan-goal": {
+      "version": "0.1.0",
+      "source_sha256": "5c9320e736ae6314aaa794b57e488eb18488e73bc08031c6805493aa9a36ab76"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/completion.schema.json",
+  "title": "Portable AgentJob Completion",
+  "type": "object",
+  "required": [
+    "schema_version", "completion_id", "job_id", "task_id", "decision_id",
+    "started_at", "completed_at", "status", "before", "after", "changed_paths",
+    "outputs", "command_results", "validator_results", "verdict", "uncertainty",
+    "claim_summary", "next_recommended_action", "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.completion.v1"},
+    "completion_id": {"$ref": "common.schema.json#/$defs/id"},
+    "job_id": {"$ref": "common.schema.json#/$defs/id"},
+    "task_id": {"$ref": "common.schema.json#/$defs/id"},
+    "decision_id": {"$ref": "common.schema.json#/$defs/id"},
+    "started_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "completed_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "status": {"enum": ["completed", "completed_with_warnings", "blocked", "failed", "cancelled", "unknown_execution_result"]},
+    "before": {"$ref": "#/$defs/stateEvidence"},
+    "after": {"$ref": "#/$defs/stateEvidence"},
+    "changed_paths": {"$ref": "common.schema.json#/$defs/pathList"},
+    "outputs": {"type": "array", "items": {"$ref": "#/$defs/output"}, "uniqueItems": true},
+    "command_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command_id", "exit_code", "status", "evidence_ref"],
+        "properties": {
+          "command_id": {"$ref": "common.schema.json#/$defs/id"},
+          "exit_code": {"type": ["integer", "null"]},
+          "status": {"enum": ["pass", "fail", "not_run", "unknown"]},
+          "evidence_ref": {"oneOf": [{"$ref": "common.schema.json#/$defs/relativePath"}, {"type": "null"}]}
+        },
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    },
+    "validator_results": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/validationResult"}, "uniqueItems": true},
+    "verdict": {"enum": ["completed_within_claim_boundary", "blocked_within_claim_boundary", "failed_within_claim_boundary", "cancelled", "unknown_execution_result"]},
+    "uncertainty": {
+      "type": "object",
+      "required": ["status", "notes"],
+      "properties": {
+        "status": {"enum": ["none_observed", "bounded", "material", "unknown"]},
+        "notes": {"$ref": "common.schema.json#/$defs/stringList"}
+      },
+      "additionalProperties": false
+    },
+    "claim_summary": {
+      "type": "object",
+      "required": ["allowed_conclusions", "forbidden_overread", "inherited_boundary_ref"],
+      "properties": {
+        "allowed_conclusions": {"$ref": "common.schema.json#/$defs/stringList"},
+        "forbidden_overread": {"$ref": "common.schema.json#/$defs/stringList"},
+        "inherited_boundary_ref": {"oneOf": [{"$ref": "common.schema.json#/$defs/id"}, {"type": "null"}]}
+      },
+      "additionalProperties": false,
+      "anyOf": [
+        {"properties": {"forbidden_overread": {"minItems": 1}}},
+        {"properties": {"inherited_boundary_ref": {"$ref": "common.schema.json#/$defs/id"}}}
+      ]
+    },
+    "next_recommended_action": {"type": ["string", "null"]},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stateEvidence": {
+      "type": "object",
+      "required": ["repository_fingerprint", "revision"],
+      "properties": {
+        "repository_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "revision": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "required": ["path", "kind", "sha256"],
+      "properties": {
+        "path": {"$ref": "common.schema.json#/$defs/relativePath"},
+        "kind": {"enum": ["controlled_source_change", "generated_evidence", "generated_derivative", "cache", "receipt", "external_effect"]},
+        "sha256": {"oneOf": [{"$ref": "common.schema.json#/$defs/sha256"}, {"type": "null"}]}
+      },
+      "additionalProperties": false
+    }
+  }
+}

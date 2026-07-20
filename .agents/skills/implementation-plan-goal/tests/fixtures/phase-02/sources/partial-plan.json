@@ -1,0 +1,9 @@
+{
+  "plan_id": "PLAN-PARTIAL-PHASE02",
+  "title": "Partial plan fixture",
+  "tasks": [
+    {
+      "title": "One incomplete task"
+    }
+  ]
+}

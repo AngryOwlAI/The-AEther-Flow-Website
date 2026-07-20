@@ -1,0 +1,116 @@
+{
+  "schema_version": "sys4ai.plan-task-receipt-fixture-matrix.v1",
+  "base_fixture": "templates/plan-task-receipt-template.json",
+  "cases": [
+    {
+      "case_id": "zero-job",
+      "execution_outcome": "zero_job",
+      "continue_invocations": 1,
+      "agentjobs": 0,
+      "disposition": "task_complete",
+      "terminal_reason_required": false,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "dispatch_next_task"
+    },
+    {
+      "case_id": "one-job",
+      "execution_outcome": "one_job",
+      "continue_invocations": 1,
+      "agentjobs": 1,
+      "disposition": "task_complete",
+      "terminal_reason_required": false,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "dispatch_next_task"
+    },
+    {
+      "case_id": "blocked",
+      "execution_outcome": "zero_job",
+      "continue_invocations": 0,
+      "agentjobs": 0,
+      "disposition": "blocked",
+      "terminal_reason_required": true,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "protected_stop"
+    },
+    {
+      "case_id": "replan",
+      "execution_outcome": "zero_job",
+      "continue_invocations": 1,
+      "agentjobs": 0,
+      "disposition": "replan_required",
+      "terminal_reason_required": true,
+      "recovery_status": "not_required",
+      "replanning_status": "required",
+      "coordinator_action": "await_replan"
+    },
+    {
+      "case_id": "human-gated",
+      "execution_outcome": "zero_job",
+      "continue_invocations": 0,
+      "agentjobs": 0,
+      "disposition": "human_gate_required",
+      "terminal_reason_required": true,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "protected_stop"
+    },
+    {
+      "case_id": "validation-failed",
+      "execution_outcome": "zero_job",
+      "continue_invocations": 1,
+      "agentjobs": 0,
+      "disposition": "validation_failed",
+      "terminal_reason_required": true,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "protected_stop"
+    },
+    {
+      "case_id": "unknown",
+      "execution_outcome": "unknown",
+      "continue_invocations": "unknown",
+      "agentjobs": "unknown",
+      "disposition": "invocation_unknown",
+      "terminal_reason_required": true,
+      "recovery_status": "required",
+      "replanning_status": "not_required",
+      "coordinator_action": "await_recovery"
+    },
+    {
+      "case_id": "cancelled",
+      "execution_outcome": "zero_job",
+      "continue_invocations": 0,
+      "agentjobs": 0,
+      "disposition": "cancelled",
+      "terminal_reason_required": true,
+      "recovery_status": "cancelled",
+      "replanning_status": "cancelled",
+      "coordinator_action": "none"
+    },
+    {
+      "case_id": "task-complete",
+      "execution_outcome": "one_job",
+      "continue_invocations": 1,
+      "agentjobs": 1,
+      "disposition": "task_complete",
+      "terminal_reason_required": false,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "dispatch_next_task"
+    },
+    {
+      "case_id": "plan-complete",
+      "execution_outcome": "one_job",
+      "continue_invocations": 1,
+      "agentjobs": 1,
+      "disposition": "plan_complete",
+      "terminal_reason_required": false,
+      "recovery_status": "not_required",
+      "replanning_status": "not_required",
+      "coordinator_action": "terminalize_plan"
+    }
+  ]
+}

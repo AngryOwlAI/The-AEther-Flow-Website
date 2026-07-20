@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-task-supersession.schema.json",
+  "title": "Append-only Plan Task Supersession",
+  "type": "object",
+  "required": ["schema_version", "supersession_id", "plan_id", "plan_sha256", "original_task", "replacement_tasks", "acceptance_mapping", "replacement_graph_sha256", "reason_code", "reason", "authorization_ref", "evidence_refs", "acyclic", "original_redispatch_forbidden", "same_task_successors", "prior_receipt_preserved", "partial_work_preserved", "prior_journal_sha256", "hash_basis", "supersession_content_sha256", "finalized", "extensions"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-task-supersession.v1"},
+    "supersession_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "original_task": {"$ref": "#/$defs/originalTask"},
+    "replacement_tasks": {"type": "array", "items": {"$ref": "#/$defs/replacementTask"}, "minItems": 1, "uniqueItems": true},
+    "acceptance_mapping": {"type": "array", "items": {"$ref": "#/$defs/acceptanceMap"}, "minItems": 1, "uniqueItems": true},
+    "replacement_graph_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "reason_code": {"enum": ["plan_task.task_requires_replan", "plan_task.scope_violation", "plan.validation_failed", "plan.human_gate_required"]},
+    "reason": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"},
+    "authorization_ref": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"},
+    "evidence_refs": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/pathList", "minItems": 1},
+    "acyclic": {"const": true},
+    "original_redispatch_forbidden": {"const": true},
+    "same_task_successors": {"const": 0},
+    "prior_receipt_preserved": {"const": true},
+    "partial_work_preserved": {"const": true},
+    "prior_journal_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "hash_basis": {"const": "canonical_json_without_supersession_content_sha256"},
+    "supersession_content_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true},
+    "extensions": {"type": "object", "maxProperties": 0}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "originalTask": {
+      "type": "object",
+      "required": ["task_id", "task_sha256", "generation", "receipt_id", "receipt_sha256", "terminal_status"],
+      "properties": {
+        "task_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "task_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        "generation": {"type": "integer", "minimum": 1},
+        "receipt_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "receipt_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        "terminal_status": {"enum": ["replan_required", "blocked", "validation_failed", "human_gate_required"]}
+      },
+      "additionalProperties": false
+    },
+    "replacementTask": {
+      "type": "object",
+      "required": ["task_id", "task_sha256", "depends_on", "canonical_position", "one_task_per_discussion", "max_continue_invocations", "max_agentjobs"],
+      "properties": {
+        "task_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "task_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        "depends_on": {"type": "array", "items": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, "uniqueItems": true},
+        "canonical_position": {"type": "integer", "minimum": 0},
+        "one_task_per_discussion": {"const": true},
+        "max_continue_invocations": {"const": 1},
+        "max_agentjobs": {"const": 1}
+      },
+      "additionalProperties": false
+    },
+    "acceptanceMap": {
+      "type": "object",
+      "required": ["criterion_id", "replacement_task_ids", "shared_gate_ref"],
+      "properties": {
+        "criterion_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "replacement_task_ids": {"type": "array", "items": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, "minItems": 1, "uniqueItems": true},
+        "shared_gate_ref": {"oneOf": [{"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"}, {"type": "null"}]}
+      },
+      "additionalProperties": false
+    }
+  }
+}

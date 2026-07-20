@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "website.control-activation-receipt-v1",
+  "title": "Website control activation receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "plan_id",
+    "task_id",
+    "task_sha256",
+    "binding_manifest_sha256",
+    "authority_sha256",
+    "website_control_sha256_before",
+    "website_control_sha256_after",
+    "repository_identity_sha256",
+    "activated_paths",
+    "activated_at",
+    "receipt_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "website.control-activation-receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "binding_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "authority_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "website_control_sha256_before": {
+      "$ref": "#/$defs/sha256"
+    },
+    "website_control_sha256_after": {
+      "$ref": "#/$defs/sha256"
+    },
+    "repository_identity_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "activated_paths": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "activated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "receipt_content_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Improve the bounded widget behavior while preserving existing scope.

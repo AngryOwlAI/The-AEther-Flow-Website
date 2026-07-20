@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/implementation-plan.schema.json",
+  "title": "Canonical Implementation Plan",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/legacyPlanV1"
+    },
+    {
+      "$ref": "#/$defs/immutablePlanV2"
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "closedExtensions": {
+      "type": "object",
+      "maxProperties": 0,
+      "additionalProperties": false
+    },
+    "stringSet": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "idSet": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyStringSet": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyIdSet": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "legacyPlanV1": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "plan_id",
+        "title",
+        "status",
+        "serial_execution",
+        "tasks",
+        "extensions"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "sys4ai.implementation-plan.v1"
+        },
+        "plan_id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": ["draft", "active", "blocked", "completed"]
+        },
+        "serial_execution": {
+          "const": true
+        },
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/legacyTaskV1"
+          }
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "legacyTaskV1": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "task_sha256",
+        "title",
+        "status",
+        "depends_on",
+        "extensions"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/id"
+        },
+        "task_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": ["pending", "blocked", "in_progress", "completed", "superseded"]
+        },
+        "depends_on": {
+          "$ref": "#/$defs/idSet"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "immutablePlanV2": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "plan_id",
+        "title",
+        "objective",
+        "acceptance",
+        "repository_binding",
+        "serial_execution",
+        "required_scope",
+        "phases",
+        "tasks",
+        "extensions"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "sys4ai.implementation-plan.v2"
+        },
+        "plan_id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "objective": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "acceptance": {
+          "$ref": "#/$defs/acceptance"
+        },
+        "repository_binding": {
+          "$ref": "#/$defs/repositoryBinding"
+        },
+        "serial_execution": {
+          "const": true
+        },
+        "required_scope": {
+          "$ref": "#/$defs/requiredScope"
+        },
+        "phases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/phaseV2"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/taskV2"
+          }
+        },
+        "extensions": {
+          "$ref": "#/$defs/closedExtensions"
+        }
+      },
+      "additionalProperties": false
+    },
+    "acceptance": {
+      "type": "object",
+      "required": [
+        "status",
+        "authority_ref",
+        "accepted_at",
+        "policy_version"
+      ],
+      "properties": {
+        "status": {
+          "const": "accepted"
+        },
+        "authority_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "accepted_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "policy_version": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repositoryBinding": {
+      "type": "object",
+      "required": [
+        "project_id",
+        "root",
+        "worktree",
+        "branch",
+        "starting_revision",
+        "git_common_dir",
+        "environment_mode"
+      ],
+      "properties": {
+        "project_id": {
+          "$ref": "#/$defs/id"
+        },
+        "root": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "worktree": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "branch": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "starting_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "git_common_dir": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "environment_mode": {
+          "enum": ["local", "worktree", "remote"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "requiredScope": {
+      "type": "object",
+      "required": [
+        "phase_ids",
+        "task_ids",
+        "excluded_phase_ids",
+        "excluded_task_ids"
+      ],
+      "properties": {
+        "phase_ids": {
+          "$ref": "#/$defs/nonEmptyIdSet"
+        },
+        "task_ids": {
+          "$ref": "#/$defs/nonEmptyIdSet"
+        },
+        "excluded_phase_ids": {
+          "$ref": "#/$defs/idSet"
+        },
+        "excluded_task_ids": {
+          "$ref": "#/$defs/idSet"
+        }
+      },
+      "additionalProperties": false
+    },
+    "phaseV2": {
+      "type": "object",
+      "required": [
+        "phase_id",
+        "title",
+        "depends_on",
+        "task_ids",
+        "acceptance_criteria",
+        "extensions"
+      ],
+      "properties": {
+        "phase_id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "depends_on": {
+          "$ref": "#/$defs/idSet"
+        },
+        "task_ids": {
+          "$ref": "#/$defs/nonEmptyIdSet"
+        },
+        "acceptance_criteria": {
+          "$ref": "#/$defs/nonEmptyStringSet"
+        },
+        "extensions": {
+          "$ref": "#/$defs/closedExtensions"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskV2": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "task_sha256",
+        "phase_id",
+        "title",
+        "objective",
+        "depends_on",
+        "acceptance_criteria",
+        "validation_refs",
+        "execution_budget",
+        "extensions"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/id"
+        },
+        "task_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "phase_id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "objective": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "depends_on": {
+          "$ref": "#/$defs/idSet"
+        },
+        "acceptance_criteria": {
+          "$ref": "#/$defs/nonEmptyStringSet"
+        },
+        "validation_refs": {
+          "$ref": "#/$defs/nonEmptyStringSet"
+        },
+        "execution_budget": {
+          "$ref": "#/$defs/executionBudget"
+        },
+        "extensions": {
+          "$ref": "#/$defs/closedExtensions"
+        }
+      },
+      "additionalProperties": false
+    },
+    "executionBudget": {
+      "type": "object",
+      "required": [
+        "one_task_per_discussion",
+        "max_continue_invocations",
+        "max_agentjobs",
+        "same_task_successors"
+      ],
+      "properties": {
+        "one_task_per_discussion": {
+          "const": true
+        },
+        "max_continue_invocations": {
+          "const": 1
+        },
+        "max_agentjobs": {
+          "const": 1
+        },
+        "same_task_successors": {
+          "const": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-task-envelope.schema.json",
+  "title": "Initial Plan Task Envelope",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "plan_id",
+    "plan_sha256",
+    "task_id",
+    "task_sha256",
+    "generation",
+    "handoff_token",
+    "idempotency_key",
+    "predecessor_thread_id",
+    "repository_binding",
+    "one_task_per_discussion",
+    "max_continue_invocations",
+    "max_agentjobs",
+    "required_skill",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-task-envelope.v1"
+    },
+    "plan_id": {
+      "$ref": "implementation-plan.schema.json#/$defs/id"
+    },
+    "plan_sha256": {
+      "$ref": "implementation-plan.schema.json#/$defs/sha256"
+    },
+    "task_id": {
+      "$ref": "implementation-plan.schema.json#/$defs/id"
+    },
+    "task_sha256": {
+      "$ref": "implementation-plan.schema.json#/$defs/sha256"
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "handoff_token": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 512
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessor_thread_id": {
+      "type": ["string", "null"]
+    },
+    "repository_binding": {
+      "type": "object",
+      "required": ["root", "worktree", "branch", "starting_revision", "environment_mode"],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "worktree": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "starting_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment_mode": {
+          "enum": ["local", "worktree", "remote"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "one_task_per_discussion": {
+      "const": true
+    },
+    "max_continue_invocations": {
+      "const": 1
+    },
+    "max_agentjobs": {
+      "const": 1
+    },
+    "required_skill": {
+      "const": "continue-implementing-plan-task"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,116 @@
+{
+  "schema_version": "sys4ai.implementation-plan.v2",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "title": "Neutral serial implementation example",
+  "objective": "Deliver and verify one bounded implementation through an accepted serial plan.",
+  "acceptance": {
+    "status": "accepted",
+    "authority_ref": "<PROJECT_AUTHORITY>",
+    "accepted_at": "2026-01-01T00:00:00Z",
+    "policy_version": "POLICY-EXAMPLE-001"
+  },
+  "repository_binding": {
+    "project_id": "PROJECT-EXAMPLE-001",
+    "root": "<PROJECT_ROOT>",
+    "worktree": "<PROJECT_ROOT>",
+    "branch": "<TARGET_BRANCH>",
+    "starting_revision": "<STARTING_REVISION>",
+    "git_common_dir": "<GIT_COMMON_DIR>",
+    "environment_mode": "local"
+  },
+  "serial_execution": true,
+  "required_scope": {
+    "phase_ids": ["PHASE-01", "PHASE-02"],
+    "task_ids": ["TASK-001", "TASK-002", "TASK-003"],
+    "excluded_phase_ids": [],
+    "excluded_task_ids": []
+  },
+  "phases": [
+    {
+      "phase_id": "PHASE-01",
+      "title": "Establish the accepted baseline",
+      "depends_on": [],
+      "task_ids": ["TASK-001"],
+      "acceptance_criteria": [
+        "The baseline is captured and directly verifiable."
+      ],
+      "extensions": {}
+    },
+    {
+      "phase_id": "PHASE-02",
+      "title": "Implement and verify the bounded change",
+      "depends_on": ["PHASE-01"],
+      "task_ids": ["TASK-002", "TASK-003"],
+      "acceptance_criteria": [
+        "The bounded change and its integrated verification are complete."
+      ],
+      "extensions": {}
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "TASK-001",
+      "task_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "phase_id": "PHASE-01",
+      "title": "Establish the accepted baseline",
+      "objective": "Capture the exact repository and validation baseline.",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Repository identity and baseline checks are recorded."
+      ],
+      "validation_refs": [
+        "<VALIDATION_COMMAND>"
+      ],
+      "execution_budget": {
+        "one_task_per_discussion": true,
+        "max_continue_invocations": 1,
+        "max_agentjobs": 1,
+        "same_task_successors": 0
+      },
+      "extensions": {}
+    },
+    {
+      "task_id": "TASK-002",
+      "task_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "phase_id": "PHASE-02",
+      "title": "Implement one bounded change",
+      "objective": "Implement the accepted bounded behavior without adjacent work.",
+      "depends_on": ["TASK-001"],
+      "acceptance_criteria": [
+        "The bounded behavior is implemented within declared authority."
+      ],
+      "validation_refs": [
+        "<VALIDATION_COMMAND>"
+      ],
+      "execution_budget": {
+        "one_task_per_discussion": true,
+        "max_continue_invocations": 1,
+        "max_agentjobs": 1,
+        "same_task_successors": 0
+      },
+      "extensions": {}
+    },
+    {
+      "task_id": "TASK-003",
+      "task_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "phase_id": "PHASE-02",
+      "title": "Verify the integrated result",
+      "objective": "Verify the accepted result from direct evidence.",
+      "depends_on": ["TASK-002"],
+      "acceptance_criteria": [
+        "Required validation evidence passes without broadening the claim."
+      ],
+      "validation_refs": [
+        "<VALIDATION_COMMAND>"
+      ],
+      "execution_budget": {
+        "one_task_per_discussion": true,
+        "max_continue_invocations": 1,
+        "max_agentjobs": 1,
+        "same_task_successors": 0
+      },
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}

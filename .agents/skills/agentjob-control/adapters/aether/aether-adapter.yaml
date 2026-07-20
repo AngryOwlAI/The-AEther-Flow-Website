@@ -1,0 +1,64 @@
+schema_version: sys4ai.project-adapter.v1
+adapter_id: aether-research-control
+version: 1.0.0
+protocol_range: ^1.0.0
+profile: aether_compatibility
+capabilities:
+  - tracked-program-state
+  - task-records
+  - director-decisions
+  - agentjob-records
+  - execution-role-bindings
+  - completion-records
+  - handoffs
+  - registry-indexes
+  - legacy-boundary-resolver
+  - memory-context-provider
+  - checkpoint-provider
+canonical_source_roots:
+  - research_control
+  - .agents/schemas
+  - .agents/roles
+  - registries
+record_mappings:
+  task: research_control/tasks/<TASK_ID>/00_TASK.yaml
+  director_decision: research_control/tasks/<TASK_ID>/<DECISION_ID>.md
+  agent_job: research_control/tasks/<TASK_ID>/jobs/<JOB_ID>.yaml
+  execution_role: research_control/tasks/<TASK_ID>/roles/<EXECUTION_ROLE_REF>.yaml
+  completion: research_control/tasks/<TASK_ID>/jobs/completions/<COMPLETION_ID>.yaml
+  handoff: research_control/handoffs/<HANDOFF_ID>.yaml
+role_mappings:
+  director-of-research: system-director
+  project-system-director: project-director
+  validator-engineer: validator-engineer
+  project-control-maintainer: system-engineer
+  documentation-curator: documentation-curator
+  process-integrity-auditor: verification-engineer
+  memory-system-maintainer: context-maintainer
+  gate-chair: human-authority
+validators:
+  - .venv/bin/python scripts/research_control/validate_research_control.py --check-diff
+  - .venv/bin/python .codex/skills/project-memory-system/scripts/bootstrap_memory_system.py --validate-only
+checkpoint_provider: aether-research-checkpoint
+extension_schema_refs:
+  - schemas/extensions/aether/aether-authority-extension.schema.json
+  - schemas/extensions/aether/aether-physics-completion-extension.schema.json
+  - schemas/extensions/aether/aether-fingerprint-extension.schema.json
+unsupported_features:
+  - portable-activation-manifest
+  - legacy-goal-mutation
+  - cross-platform-legacy-locking
+  - domain-truth-promotion
+extensions:
+  aether.adapter:
+    version: 1.0.0
+    required: true
+    data:
+      implementation: scripts/agentjob_runtime/compat/aether_adapter.py
+      read_only: true
+      tracked_control_is_authority: true
+      registries_are_indexes: true
+      program_state_task_wins: true
+      unrelated_pending_sidecar_blocks_execution: true
+      no_duplicate_canonical_records: true
+      legacy_resolver_command: .venv/bin/python scripts/research_control/continue_research.py --json

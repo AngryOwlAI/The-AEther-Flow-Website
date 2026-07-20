@@ -1,0 +1,182 @@
+skill_id: continue-implementing-plan-task
+version: 0.1.0
+status: template
+release_maturity: experimental
+stability: evolving
+canonical_path: skills/continue-implementing-plan-task
+summary: Consume one immutable plan-task envelope and execute at most one bounded continuation for exactly that task.
+installation:
+  entrypoint_class: internal_component
+  selection_policy: internal_only
+  direct_copy_supported: false
+  project_adaptation: package_managed
+  recommended_selectors:
+    - kind: bundle
+      id: implementation-plan-goal
+  prerequisites:
+    bootstrap: explicit_required
+    adapters:
+      - PlanControlStore
+      - ProjectAdapter
+      - RepositoryProvider
+      - ThreadProvider
+      - ThreadExecutionProfileProvider
+    external_tools: []
+scope:
+  system_agnostic: true
+  target_system_types:
+    - governed agentic systems
+    - software repositories
+    - research and documentation systems
+domain_emphasis:
+  - one plan task per discussion
+  - at-most-once task execution
+  - direct evidence verification
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+optional_role_posture:
+  - process_integrity_auditor
+  - verification_engineer
+activation:
+  triggers:
+    - A token-bound plan coordinator invokes one reserved task generation.
+  when_not_to_use:
+    - No valid plan-task envelope or matching fresh discussion exists.
+    - The request would execute several plan tasks.
+  preconditions:
+    - Compatible agentjob-control and continue capabilities are installed.
+    - Canonical plan state and repository binding are accessible through an adapted runtime.
+    - A profile-aware v2 envelope and exact observed current-thread profile are available for new runs.
+inputs:
+  required:
+    - Explicit project root and normal mode.
+    - Plan ID and hash, task ID and hash, generation, handoff token, envelope hash, and expected revision.
+    - Matching successor discussion identity.
+    - Inherited execution profile, provider evidence, bound-checkout attestation, and pre-task topology.
+  optional:
+    - Explicit target-project validators and checkpoint provider.
+outputs:
+  primary:
+    - One immutable PlanTaskReceipt v2 or one protected-stop result.
+  evidence:
+    - Direct continuation result, fingerprints, validators, checkpoint, and task disposition.
+    - Requested/effective effort and pre/post topology evidence.
+dependencies:
+  required_skills:
+    - agentjob-control
+    - continue
+  optional_skills: []
+  required_skill_versions:
+    agentjob-control: ^0.3.0
+    continue: ^0.3.0
+  python:
+    standard_library_only: true
+    requires_python: ">=3.11"
+    required_packages: []
+    optional_packages: []
+  external_tools: []
+authority:
+  may_read:
+    - Canonical plan state, one token-bound task envelope, repository state, and direct evidence.
+  may_write:
+    - One future task lifecycle and one task receipt through adapted runtime interfaces.
+  may_not:
+    - Invoke continue more than once.
+    - Execute more than one AgentJob or one task ID.
+    - Create a same-task successor or start the next task.
+    - Rerun consumed or unknown work automatically.
+  canonical_sources:
+    - skills/continue-implementing-plan-task
+    - skills/implementation-plan-goal
+    - skills/agentjob-control
+    - skills/continue
+  generated_derivatives:
+    - Target-project plan-task events, receipt, and coordinator handoff.
+  human_gates:
+    - Ambiguous task evaluation, append-only replanning, recovery, and protected project actions.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/continue-implementing-plan-task/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+    - command: python3 -m unittest discover -s skills/implementation-plan-goal/tests -p "test_*.py" -v
+      validator_class: control_validation
+      mode: required
+      dry_runnable: true
+  validator_classes:
+    - schema_validation
+    - dependency_validation
+    - trace_validation
+    - process_validation
+    - control_validation
+    - claim_validation
+    - human_authority
+  evidence_required:
+    - One direct continuation result or one explicit unknown-outcome record.
+    - Exactly one task ID, zero or one AgentJob, and no same-task successor.
+    - Exact envelope/canonical/provider/current-thread profile parity before claim.
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Plan and task identity, receipt or protected stop, final fingerprint, and exact coordinator action.
+  next_role: implementation_plan_goal_coordinator
+  open_issue_policy: Stop for recovery or append-only replanning rather than repeat work.
+execution:
+  kind: relay_worker
+  invocation_policy: internal
+  maximum_agentjobs_per_invocation: 1
+  may_spawn_threads: false
+  may_create_control_records: true
+  invokes_skills:
+    - continue
+runtime_capabilities:
+  provides:
+    - sys4ai.continue-implementing-plan-task.runtime.v1
+  requires:
+    - sys4ai.agentjob-control.v1
+    - sys4ai.continue.v1
+    - sys4ai.implementation-plan.v1
+    - sys4ai.plan-task-envelope.v1
+    - sys4ai.plan-task-envelope.v2
+    - sys4ai.plan-task-receipt.v2
+    - sys4ai.plan-execution-profile.v1
+    - sys4ai.repository-topology-enforcement.v1
+    - python>=3.11
+  optional: []
+control_protocol:
+  profile: registered
+  record_types:
+    - ImplementationPlan
+    - PlanTaskEnvelope
+    - Task
+    - AgentJob
+    - Completion
+  immutable_after_activation: true
+  supersession_required: true
+state:
+  tracked_root_template: "{project_root}/.agents/control"
+  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-goal"
+  mutable_state_must_not_live_in_skill_directory: true
+adapters:
+  required_interfaces:
+    - PlanControlStore
+    - ProjectAdapter
+    - RepositoryProvider
+    - ThreadProvider
+    - ThreadExecutionProfileProvider
+  optional_interfaces:
+    - CheckpointProvider
+    - ContextProvider
+  manual_thread_fallback: false
+recovery:
+  supported: true
+  automatic_rerun_after_consumption: false
+compatibility_shims: []
+failure_modes:
+  - mode: Invalid plan, task, token, thread, envelope, repository, or revision identity.
+    recovery: Reject before consumption.
+  - mode: Consumed task outcome is unknown or the task is oversized.
+    recovery: Require explicit recovery or append-only task replacement without rerun.

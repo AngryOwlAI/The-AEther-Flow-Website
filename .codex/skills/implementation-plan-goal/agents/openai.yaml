@@ -1,0 +1,7 @@
+interface:
+  display_name: "Implementation Plan Goal"
+  short_description: "Coordinate one accepted plan through website control."
+  default_prompt: "Use the website plan-goal façade, exact combined acceptance, and one-task relay boundaries."
+policy:
+  allow_implicit_invocation: false
+  entrypoint_class: "user_workflow"

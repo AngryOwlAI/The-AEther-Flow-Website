@@ -1,0 +1,7 @@
+interface:
+  display_name: "AgentJob Control (Internal)"
+  short_description: "Internal pinned plan runtime support."
+  default_prompt: "Provide scheduler, receipt, intent, and recovery contracts without becoming website execution authority."
+policy:
+  allow_implicit_invocation: false
+  entrypoint_class: "support_provider"

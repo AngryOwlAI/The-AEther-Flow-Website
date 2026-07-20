@@ -1,0 +1,133 @@
+{
+  "schema_version": "sys4ai.plan-task-receipt.v2",
+  "receipt_id": "PTR-EXAMPLE-V2-001",
+  "plan_identity": {
+    "plan_id": "PLAN-EXAMPLE-001",
+    "plan_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "phase_id": "PHASE-EXAMPLE-01"
+  },
+  "task_identity": {
+    "task_id": "TASK-002",
+    "task_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "relay_identity": {
+    "generation": 2,
+    "predecessor_thread_id": "EXAMPLE-THREAD-001",
+    "worker_thread_id": "thread-worker-example",
+    "envelope_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "idempotency_key": "PLAN-EXAMPLE-001:2",
+    "handoff_token_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "activation_profile_evidence": {
+    "activation_receipt_sha256": "b14de7dc625e2edbe31dd1cf589204947245e9c339f4161ee5b30207f4c33eb7",
+    "execution_profile_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "requested_reasoning_effort": "max",
+    "observed_effective_reasoning_effort": "max",
+    "provider_id": "codex-app-server",
+    "thread_id": "thread-worker-example",
+    "provider_evidence_ref": "evidence/worker-thread-profile.md",
+    "profile_checked_before_claim": true,
+    "canonical_profile_match": true
+  },
+  "topology_evidence": {
+    "environment_mode": "reuse_bound_checkout",
+    "repository_binding_sha256": "0416fdd9a56ccfc815feb622251d83993fd525434c3a32999bd43c61527c0527",
+    "repository_topology_policy_sha256": "908ef39402ab1ba90f7e4227193ef6a8ec7ed68a638957b686ba6464c3e5531e",
+    "pre_task_topology_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "post_task_topology_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "topology_checked_before_claim": true,
+    "unapproved_change_detected": false,
+    "authorization_ref": null
+  },
+  "started_at": "2026-01-01T00:00:00Z",
+  "finished_at": "2026-01-01T00:05:00Z",
+  "repository_evidence": {
+    "starting_revision": "example-starting-revision",
+    "ending_revision": "example-ending-revision",
+    "fingerprint_before": "4444444444444444444444444444444444444444444444444444444444444444",
+    "fingerprint_after": "5555555555555555555555555555555555555555555555555555555555555555"
+  },
+  "execution": {
+    "outcome": "zero_job",
+    "worker_discussions": 1,
+    "continue_invocations": 1,
+    "agentjobs": 0,
+    "agent_job_id": null,
+    "provider_create_calls": 0,
+    "successor_creates": 0,
+    "same_task_successors": 0,
+    "zero_job_reason": "The bounded task completed without an activated AgentJob."
+  },
+  "direct_evidence": {
+    "changed_paths": [
+      "skills/implementation-plan-goal/schemas/plan-task-receipt-v2.schema.json"
+    ],
+    "acceptance_results": [
+      {
+        "criterion": "The profile-aware bounded task outcome is directly demonstrated.",
+        "status": "pass",
+        "evidence_refs": [
+          "skills/implementation-plan-goal/schemas/plan-task-receipt-v2.schema.json"
+        ]
+      }
+    ],
+    "validator_results": [
+      {
+        "validator_id": "plan-task-receipt-v2-schema",
+        "validator_class": "schema_validation",
+        "status": "pass",
+        "reason_code": null,
+        "evidence_ref": "skills/implementation-plan-goal/tests/test_planctl.py",
+        "notes": []
+      }
+    ],
+    "checkpoint": {
+      "provider": "none",
+      "status": "not_required",
+      "revision": null,
+      "evidence_ref": null
+    },
+    "approvals": [
+      {
+        "approval_id": null,
+        "action": "repository-local profile-aware schema work",
+        "status": "not_required",
+        "evidence_ref": null
+      }
+    ],
+    "protected_effects": [
+      {
+        "effect": "commit, push, release, publication, deployment, or external contact",
+        "status": "not_attempted",
+        "approval_id": null,
+        "evidence_ref": null
+      }
+    ],
+    "warnings": [],
+    "indeterminate_checks": [],
+    "plan_completion": null
+  },
+  "disposition": "task_complete",
+  "reason_code": "plan_task.profile_receipt_contract_validated",
+  "terminal_reason": null,
+  "recovery": {
+    "status": "not_required",
+    "action_ref": null
+  },
+  "replanning": {
+    "status": "not_required",
+    "action_ref": null
+  },
+  "coordinator_action": {
+    "kind": "dispatch_next_task",
+    "next_task_id": "TASK-EXAMPLE-002"
+  },
+  "journal": {
+    "prior_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+    "entry_hash": "7777777777777777777777777777777777777777777777777777777777777777"
+  },
+  "hash_basis": "canonical_json_without_receipt_content_sha256",
+  "receipt_content_sha256": "5644cc7afdeb0ffbfd8a1ddda0a59ad33a5eace84da4a78c09bcbe63e1fef3f2",
+  "finalized": true,
+  "extensions": {}
+}

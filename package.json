@@ -11,6 +11,9 @@
     "preview": "astro preview",
     "continue:implementation": "python3 scripts/implementation_control/continue_implementation.py",
     "validate:implementation-control": "python3 scripts/implementation_control/validate_implementation_control.py",
+    "plan-goal": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/implementation_control/continue_plan_goal.py",
+    "validate:plan-goal": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/implementation_control/validate_plan_goal.py",
+    "test:plan-goal": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_plan_goal_adapter.py tests/test_plan_goal_facade.py tests/test_plan_goal_installation.py .agents/skills/implementation-plan-goal/tests",
     "validate:claims": "node scripts/generate_public_claim_review.mjs --check",
     "checkpoint:implementation": "python3 scripts/implementation_control/checkpoint_implementation_transaction.py",
     "validate:manifests": "python3 scripts/validate_manifest_paths.py",
@@ -23,7 +26,7 @@
     "validate:curator": "python3 scripts/run_curator.py --check",
     "validate:cloudflare": "python3 scripts/validate_cloudflare_pages_config.py",
     "quality": "npm run validate && python3 scripts/quality_gate.py",
-    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:claims && npm run validate:links && npm run validate:layout && npm run validate:svg && npm run validate:provenance && npm run validate:curator && npm run validate:cloudflare && npm run validate:implementation-control && npm run build",
+    "validate": "npm run validate:manifests && npm run validate:content && npm run validate:claims && npm run validate:links && npm run validate:layout && npm run validate:svg && npm run validate:provenance && npm run validate:curator && npm run validate:cloudflare && npm run validate:implementation-control && npm run validate:plan-goal && npm run test:plan-goal && npm run build",
     "astro": "astro"
   },
   "repository": {

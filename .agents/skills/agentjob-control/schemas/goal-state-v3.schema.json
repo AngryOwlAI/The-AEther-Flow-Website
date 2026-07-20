@@ -1,0 +1,400 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-state-v3.schema.json",
+  "title": "Portable Continue Goal State v3",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "goal_id",
+    "goal_text",
+    "goal_sha256",
+    "completion_contract",
+    "completion_contract_sha256",
+    "amendments",
+    "created_at",
+    "deadline_at",
+    "guards",
+    "repository_binding",
+    "authorization",
+    "activation",
+    "execution_profile",
+    "runtime_binding",
+    "repository_topology_policy",
+    "supersession",
+    "resolution_history",
+    "human_intervention",
+    "completion_report",
+    "state",
+    "generations",
+    "handoff",
+    "journal",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.continue-goal.v3"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_text": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract": {
+      "$ref": "goal-state-v2.schema.json#/$defs/completionContract"
+    },
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "amendments": {
+      "type": "array",
+      "items": {"$ref": "goal-state-v2.schema.json#/$defs/amendment"}
+    },
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "deadline_at": {
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/timestamp"},
+        {"type": "null"}
+      ]
+    },
+    "guards": {"$ref": "goal-state-v2.schema.json#/$defs/guards"},
+    "repository_binding": {
+      "$ref": "goal-state-v2.schema.json#/$defs/repositoryBinding"
+    },
+    "authorization": {
+      "type": "object",
+      "required": [
+        "fresh_recursive_threads_explicitly_requested",
+        "activation_receipt_sha256"
+      ],
+      "properties": {
+        "fresh_recursive_threads_explicitly_requested": {"const": true},
+        "activation_receipt_sha256": {"$ref": "common.schema.json#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "activation": {"$ref": "goal-activation-receipt.schema.json"},
+    "execution_profile": {"$ref": "#/$defs/executionProfile"},
+    "runtime_binding": {"$ref": "#/$defs/runtimeBinding"},
+    "repository_topology_policy": {"$ref": "#/$defs/repositoryTopologyPolicy"},
+    "supersession": {
+      "oneOf": [
+        {"$ref": "#/$defs/supersession"},
+        {"type": "null"}
+      ]
+    },
+    "resolution_history": {
+      "type": "array",
+      "items": {"$ref": "resolution-disposition.schema.json"}
+    },
+    "human_intervention": {
+      "oneOf": [
+        {"$ref": "human-necessity-report.schema.json"},
+        {"type": "null"}
+      ]
+    },
+    "completion_report": {
+      "oneOf": [
+        {"$ref": "goal-completion-report.schema.json"},
+        {"type": "null"}
+      ]
+    },
+    "state": {"$ref": "#/$defs/state"},
+    "generations": {
+      "type": "object",
+      "patternProperties": {
+        "^[1-9][0-9]*$": {"$ref": "#/$defs/generation"}
+      },
+      "additionalProperties": false
+    },
+    "handoff": {"$ref": "#/$defs/handoff"},
+    "journal": {
+      "type": "array",
+      "items": {"$ref": "goal-state-v2.schema.json#/$defs/journalEntry"}
+    },
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "phase": {
+      "enum": [
+        "initialized",
+        "successor_intent",
+        "successor_created",
+        "step_active",
+        "step_verifying",
+        "step_verified",
+        "continuation_required",
+        "recovery_pending",
+        "terminal_complete",
+        "terminal_awaiting_human",
+        "terminal_policy_limit",
+        "terminal_integrity_incident",
+        "terminal_cancelled"
+      ]
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "revision",
+        "phase",
+        "current_generation",
+        "passes_consumed",
+        "active_lease",
+        "goal_evaluation",
+        "last_canonical_fingerprint",
+        "canonical_fingerprint_history",
+        "terminal_reason"
+      ],
+      "properties": {
+        "revision": {"type": "integer", "minimum": 1},
+        "phase": {"$ref": "#/$defs/phase"},
+        "current_generation": {"type": "integer", "minimum": 0},
+        "passes_consumed": {"type": "integer", "minimum": 0},
+        "active_lease": {
+          "oneOf": [
+            {"$ref": "goal-state-v2.schema.json#/$defs/lease"},
+            {"type": "null"}
+          ]
+        },
+        "goal_evaluation": {"enum": ["unmet", "met", "indeterminate"]},
+        "last_canonical_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "canonical_fingerprint_history": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "common.schema.json#/$defs/sha256"}
+        },
+        "terminal_reason": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "handoff": {
+      "type": "object",
+      "required": [
+        "status",
+        "generation",
+        "token",
+        "idempotency_key",
+        "predecessor_thread_id",
+        "successor_thread_id"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "none",
+            "intent",
+            "successor_created",
+            "failed",
+            "ambiguous",
+            "timeout"
+          ]
+        },
+        "generation": {"type": "integer", "minimum": 1},
+        "token": {"type": ["string", "null"]},
+        "idempotency_key": {"type": ["string", "null"]},
+        "predecessor_thread_id": {"type": ["string", "null"]},
+        "successor_thread_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "executionProfile": {
+      "type": "object",
+      "required": [
+        "reasoning_effort",
+        "selection_source",
+        "accepted_goal_sha256",
+        "accepted_completion_contract_sha256",
+        "current_thread_id",
+        "current_thread_requested_effort",
+        "current_thread_effective_effort",
+        "current_thread_verification_status",
+        "current_thread_evidence_ref",
+        "successor_inheritance_required",
+        "provider_id",
+        "model_id"
+      ],
+      "properties": {
+        "reasoning_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "selection_source": {"enum": ["default", "user_override"]},
+        "accepted_goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "accepted_completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "current_thread_id": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "current_thread_requested_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "current_thread_effective_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "current_thread_verification_status": {"const": "verified"},
+        "current_thread_evidence_ref": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "successor_inheritance_required": {"const": true},
+        "provider_id": {"$ref": "common.schema.json#/$defs/id"},
+        "model_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "runtimeBinding": {
+      "type": "object",
+      "required": [
+        "skill_versions",
+        "capability_versions",
+        "source_lock_ref",
+        "provider_id"
+      ],
+      "properties": {
+        "skill_versions": {"type": "object", "additionalProperties": {"type": "string"}},
+        "capability_versions": {
+          "$ref": "common.schema.json#/$defs/stringList"
+        },
+        "source_lock_ref": {"type": ["string", "null"]},
+        "provider_id": {"$ref": "common.schema.json#/$defs/id"}
+      },
+      "additionalProperties": false
+    },
+    "repositoryTopologyPolicy": {
+      "type": "object",
+      "required": [
+        "environment_mode",
+        "branch_creation_authorized",
+        "worktree_creation_authorized",
+        "binding_change_authorized",
+        "authorization_ref"
+      ],
+      "properties": {
+        "environment_mode": {"const": "reuse_bound_checkout"},
+        "branch_creation_authorized": {"type": "boolean"},
+        "worktree_creation_authorized": {"type": "boolean"},
+        "binding_change_authorized": {"type": "boolean"},
+        "authorization_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "supersession": {
+      "type": "object",
+      "required": [
+        "predecessor_goal_id",
+        "predecessor_schema_version",
+        "predecessor_goal_sha256",
+        "predecessor_record_sha256",
+        "predecessor_revision",
+        "safe_boundary_evidence_ref",
+        "accepted_activation_id",
+        "superseded_at"
+      ],
+      "properties": {
+        "predecessor_goal_id": {"$ref": "common.schema.json#/$defs/id"},
+        "predecessor_schema_version": {
+          "enum": ["sys4ai.continue-goal.v1", "sys4ai.continue-goal.v2"]
+        },
+        "predecessor_goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "predecessor_record_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "predecessor_revision": {"type": "integer", "minimum": 1},
+        "safe_boundary_evidence_ref": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "accepted_activation_id": {"$ref": "common.schema.json#/$defs/id"},
+        "superseded_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+      },
+      "additionalProperties": false
+    },
+    "generation": {
+      "type": "object",
+      "required": [
+        "generation",
+        "handoff_token",
+        "idempotency_key",
+        "phase",
+        "lease_token",
+        "invocation_consumed",
+        "invocation_state",
+        "consumed_at",
+        "returned_at",
+        "before_fingerprint",
+        "after_fingerprint",
+        "fingerprint_status",
+        "pending_step_result",
+        "finalized_receipt_hash",
+        "terminal_or_successor_outcome",
+        "claimed_at",
+        "successor_thread_id",
+        "requested_reasoning_effort",
+        "effective_reasoning_effort",
+        "profile_evidence",
+        "environment_mode",
+        "observed_repository_topology",
+        "resolution_disposition",
+        "repair_strategy_id",
+        "strategy_attempt",
+        "material_progress_dimensions",
+        "human_necessity_report_ref",
+        "completion_report_ref"
+      ],
+      "properties": {
+        "generation": {"type": "integer", "minimum": 1},
+        "handoff_token": {"type": "string", "minLength": 32},
+        "idempotency_key": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "phase": {"$ref": "#/$defs/phase"},
+        "lease_token": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "invocation_consumed": {"type": "boolean"},
+        "invocation_state": {
+          "enum": ["not_authorized", "authorized", "returned", "unknown"]
+        },
+        "consumed_at": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/timestamp"},
+            {"type": "null"}
+          ]
+        },
+        "returned_at": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/timestamp"},
+            {"type": "null"}
+          ]
+        },
+        "before_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "after_fingerprint": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/sha256"},
+            {"type": "null"}
+          ]
+        },
+        "fingerprint_status": {
+          "enum": ["new", "unchanged", "repeated", null]
+        },
+        "pending_step_result": {"type": ["object", "null"]},
+        "finalized_receipt_hash": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/sha256"},
+            {"type": "null"}
+          ]
+        },
+        "terminal_or_successor_outcome": {"type": ["string", "null"]},
+        "claimed_at": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/timestamp"},
+            {"type": "null"}
+          ]
+        },
+        "successor_thread_id": {"type": ["string", "null"]},
+        "requested_reasoning_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "effective_reasoning_effort": {"type": ["string", "null"]},
+        "profile_evidence": {"type": ["object", "null"]},
+        "environment_mode": {"const": "reuse_bound_checkout"},
+        "observed_repository_topology": {"type": ["object", "null"]},
+        "resolution_disposition": {
+          "oneOf": [
+            {"$ref": "resolution-disposition.schema.json"},
+            {"type": "null"}
+          ]
+        },
+        "repair_strategy_id": {"type": ["string", "null"]},
+        "strategy_attempt": {"type": "integer", "minimum": 0},
+        "material_progress_dimensions": {
+          "$ref": "common.schema.json#/$defs/stringList"
+        },
+        "human_necessity_report_ref": {"type": ["string", "null"]},
+        "completion_report_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false,
+      "if": {
+        "properties": {"invocation_consumed": {"const": true}},
+        "required": ["invocation_consumed"]
+      },
+      "then": {
+        "properties": {
+          "invocation_state": {"enum": ["authorized", "returned", "unknown"]},
+          "consumed_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+        }
+      }
+    }
+  }
+}

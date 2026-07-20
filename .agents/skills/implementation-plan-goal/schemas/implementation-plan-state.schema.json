@@ -1,0 +1,918 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/implementation-plan-state.schema.json",
+  "title": "Implementation Plan State",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "plan_id",
+    "plan_sha256",
+    "repository_fingerprint",
+    "revision",
+    "phase",
+    "current_generation",
+    "active_task_id",
+    "counters",
+    "lease",
+    "evaluation",
+    "fingerprints",
+    "terminal_reason",
+    "tasks",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.implementation-plan-state.v1"
+    },
+    "plan_id": {
+      "$ref": "#/$defs/id"
+    },
+    "plan_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "repository_fingerprint": {
+      "$ref": "#/$defs/sha256"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "phase": {
+      "$ref": "#/$defs/planPhase"
+    },
+    "current_generation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "active_task_id": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "counters": {
+      "$ref": "#/$defs/planCounters"
+    },
+    "lease": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/lease"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evaluation": {
+      "enum": [
+        "unmet",
+        "met",
+        "indeterminate"
+      ]
+    },
+    "fingerprints": {
+      "$ref": "#/$defs/fingerprints"
+    },
+    "terminal_reason": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/taskLifecycle"
+      },
+      "contains": {
+        "properties": {
+          "status": {
+            "enum": [
+              "reserved",
+              "active",
+              "verifying"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "minContains": 0,
+      "maxContains": 1
+    },
+    "updated_at": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "#/$defs/closedExtensions"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "enum": [
+              "task_reserved",
+              "task_active",
+              "task_verifying"
+            ]
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "active_task_id": {
+            "$ref": "#/$defs/id"
+          },
+          "lease": {
+            "$ref": "#/$defs/lease"
+          },
+          "terminal_reason": {
+            "type": "null"
+          },
+          "tasks": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "reserved",
+                    "active",
+                    "verifying"
+                  ]
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "minContains": 1,
+            "maxContains": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "tasks": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "reserved",
+                    "active",
+                    "verifying"
+                  ]
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "minContains": 0,
+            "maxContains": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "task_reserved"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "tasks": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "reserved"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "minContains": 1,
+            "maxContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "task_active"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "tasks": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "active"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "minContains": 1,
+            "maxContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "task_verifying"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "tasks": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "verifying"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "minContains": 1,
+            "maxContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "enum": [
+              "initialized",
+              "continuation_required",
+              "completion_candidate"
+            ]
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "active_task_id": {
+            "type": "null"
+          },
+          "lease": {
+            "type": "null"
+          },
+          "terminal_reason": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "recovery_pending"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evaluation": {
+            "enum": [
+              "unmet",
+              "indeterminate"
+            ]
+          },
+          "terminal_reason": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "terminal_complete"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "active_task_id": {
+            "type": "null"
+          },
+          "lease": {
+            "type": "null"
+          },
+          "evaluation": {
+            "const": "met"
+          },
+          "terminal_reason": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "enum": [
+              "terminal_blocked_no_runnable",
+              "terminal_awaiting_human",
+              "terminal_validation_failed",
+              "terminal_capability_blocked",
+              "terminal_corrupt_state",
+              "terminal_cancelled"
+            ]
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "active_task_id": {
+            "type": "null"
+          },
+          "lease": {
+            "type": "null"
+          },
+          "evaluation": {
+            "enum": [
+              "unmet",
+              "indeterminate"
+            ]
+          },
+          "terminal_reason": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "closedExtensions": {
+      "type": "object",
+      "maxProperties": 0,
+      "additionalProperties": false
+    },
+    "planPhase": {
+      "enum": [
+        "initialized",
+        "task_reserved",
+        "task_active",
+        "task_verifying",
+        "continuation_required",
+        "completion_candidate",
+        "recovery_pending",
+        "terminal_complete",
+        "terminal_blocked_no_runnable",
+        "terminal_awaiting_human",
+        "terminal_validation_failed",
+        "terminal_capability_blocked",
+        "terminal_corrupt_state",
+        "terminal_cancelled"
+      ]
+    },
+    "planCounters": {
+      "type": "object",
+      "required": [
+        "worker_discussions",
+        "continue_invocations",
+        "agentjobs",
+        "provider_creates",
+        "successor_creates",
+        "tasks_completed",
+        "tasks_superseded",
+        "protected_stops"
+      ],
+      "properties": {
+        "worker_discussions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "continue_invocations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "agentjobs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provider_creates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "successor_creates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tasks_completed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tasks_superseded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "protected_stops": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskCounters": {
+      "type": "object",
+      "required": [
+        "worker_discussions",
+        "continue_invocations",
+        "agentjobs",
+        "provider_creates",
+        "successor_creates",
+        "same_task_successors"
+      ],
+      "properties": {
+        "worker_discussions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "continue_invocations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "agentjobs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "provider_creates": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "successor_creates": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "same_task_successors": {
+          "const": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "lease": {
+      "type": "object",
+      "required": [
+        "generation",
+        "task_id",
+        "holder_kind",
+        "holder_token_hash",
+        "transaction_id",
+        "repository_fingerprint",
+        "acquired_at",
+        "heartbeat_at",
+        "expires_at"
+      ],
+      "properties": {
+        "generation": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "task_id": {
+          "$ref": "#/$defs/id"
+        },
+        "holder_kind": {
+          "enum": [
+            "coordinator",
+            "successor_reserved",
+            "worker",
+            "quarantined"
+          ]
+        },
+        "holder_token_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "transaction_id": {
+          "$ref": "#/$defs/id"
+        },
+        "repository_fingerprint": {
+          "$ref": "#/$defs/sha256"
+        },
+        "acquired_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "heartbeat_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/timestamp"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fingerprints": {
+      "type": "object",
+      "required": [
+        "initial",
+        "current",
+        "history"
+      ],
+      "properties": {
+        "initial": {
+          "$ref": "#/$defs/sha256"
+        },
+        "current": {
+          "$ref": "#/$defs/sha256"
+        },
+        "history": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "receiptLink": {
+      "type": "object",
+      "required": [
+        "receipt_id",
+        "receipt_sha256"
+      ],
+      "properties": {
+        "receipt_id": {
+          "$ref": "#/$defs/id"
+        },
+        "receipt_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskLifecycle": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "task_sha256",
+        "status",
+        "generation",
+        "counters",
+        "receipt_link",
+        "fingerprint_before",
+        "fingerprint_after",
+        "terminal_reason",
+        "updated_at",
+        "extensions"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/id"
+        },
+        "task_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "reserved",
+            "active",
+            "verifying",
+            "completed",
+            "blocked",
+            "superseded",
+            "replan_required",
+            "human_gate_required",
+            "validation_failed",
+            "invocation_unknown",
+            "cancelled"
+          ]
+        },
+        "generation": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "counters": {
+          "$ref": "#/$defs/taskCounters"
+        },
+        "receipt_link": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/receiptLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fingerprint_before": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fingerprint_after": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "terminal_reason": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "updated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "extensions": {
+          "$ref": "#/$defs/closedExtensions"
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "pending"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "generation": {
+                "type": "null"
+              },
+              "counters": {
+                "properties": {
+                  "worker_discussions": {
+                    "const": 0
+                  },
+                  "continue_invocations": {
+                    "const": 0
+                  },
+                  "agentjobs": {
+                    "const": 0
+                  },
+                  "provider_creates": {
+                    "const": 0
+                  },
+                  "successor_creates": {
+                    "const": 0
+                  },
+                  "same_task_successors": {
+                    "const": 0
+                  }
+                }
+              },
+              "receipt_link": {
+                "type": "null"
+              },
+              "fingerprint_before": {
+                "type": "null"
+              },
+              "fingerprint_after": {
+                "type": "null"
+              },
+              "terminal_reason": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "reserved",
+                  "active",
+                  "verifying"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "generation": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "receipt_link": {
+                "type": "null"
+              },
+              "terminal_reason": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "active",
+                  "verifying"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "fingerprint_before": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "completed",
+                  "blocked",
+                  "superseded",
+                  "replan_required",
+                  "human_gate_required",
+                  "validation_failed",
+                  "invocation_unknown",
+                  "cancelled"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "generation": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "receipt_link": {
+                "$ref": "#/$defs/receiptLink"
+              },
+              "fingerprint_before": {
+                "$ref": "#/$defs/sha256"
+              },
+              "fingerprint_after": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "completed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "terminal_reason": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "blocked",
+                  "superseded",
+                  "replan_required",
+                  "human_gate_required",
+                  "validation_failed",
+                  "invocation_unknown",
+                  "cancelled"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "terminal_reason": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

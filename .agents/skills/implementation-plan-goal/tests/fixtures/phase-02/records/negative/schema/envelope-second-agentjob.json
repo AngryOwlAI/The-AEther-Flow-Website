@@ -1,0 +1,23 @@
+{
+  "schema_version": "sys4ai.plan-task-envelope.v1",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "plan_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "task_id": "TASK-002",
+  "task_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "generation": 2,
+  "handoff_token": "example-token-not-secret-000000000000000000000000",
+  "idempotency_key": "PLAN-EXAMPLE-001:2",
+  "predecessor_thread_id": "EXAMPLE-THREAD-001",
+  "repository_binding": {
+    "root": "<PROJECT_ROOT>",
+    "worktree": "<PROJECT_ROOT>",
+    "branch": "<TARGET_BRANCH>",
+    "starting_revision": "<STARTING_REVISION>",
+    "environment_mode": "local"
+  },
+  "one_task_per_discussion": true,
+  "max_continue_invocations": 1,
+  "max_agentjobs": 2,
+  "required_skill": "continue-implementing-plan-task",
+  "extensions": {}
+}

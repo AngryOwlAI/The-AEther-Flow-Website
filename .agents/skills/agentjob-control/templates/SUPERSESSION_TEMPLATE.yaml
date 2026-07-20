@@ -1,0 +1,15 @@
+schema_version: sys4ai.supersession.v1
+supersession_id: <SUPERSESSION_ID>
+old_decision_id: <OLD_DECISION_ID>
+old_job_id: <OLD_AGENT_JOB_ID>
+reason: <WHY_FUTURE_EXECUTION_IS_INVALID>
+evidence_refs:
+  - <EVIDENCE_PATH>
+prior_execution_status: <UNEXECUTED_PARTIAL_COMPLETED_FAILED_OR_AMBIGUOUS>
+working_evidence_handling: <PRESERVATION_OR_QUARANTINE_RULE>
+replacement_decision_id: <NEW_DECISION_ID>
+replacement_job_id: <NEW_AGENT_JOB_ID>
+replacement_activation_id: <NEW_ACTIVATION_ID>
+claim_boundary_preserved: true
+created_at: <UTC_TIMESTAMP>
+extensions: {}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "website.implementation-plan-goal-adapter.v1",
+  "adapter_id": "the-aether-flow-website-implementation-control",
+  "adapter_version": "1.0.0",
+  "conformance_mode": "emulated",
+  "canonical_execution_authority": "implementation_control",
+  "control_root": "implementation_control",
+  "binding_root": "implementation_control/plan_bindings",
+  "state_path": ".local/sys4ai/implementation-plan-goal/state.sqlite3",
+  "manual_provider_root": ".local/sys4ai/implementation-plan-goal/manual",
+  "adapter_runtime_root": ".local/sys4ai/implementation-plan-goal/website-adapter",
+  "activation_receipt_root": ".local/sys4ai/implementation-plan-goal/control-activations",
+  "adoption_receipt_root": ".local/sys4ai/implementation-plan-goal/task-adoptions",
+  "installed_runtime_root": ".agents/skills",
+  "plan_schema_root": ".agents/skills/implementation-plan-goal/schemas",
+  "providers": {
+    "project": "WebsiteProjectAdapter",
+    "repository": "WebsiteRepositoryProvider",
+    "thread": "ManualThreadProvider",
+    "thread_execution_profile": "WebsiteThreadExecutionProfileProvider",
+    "control": "WebsiteControlStore",
+    "plan_control": "PlanControlStore"
+  },
+  "binding_schema": "implementation_control/schemas/plan-binding-v1.schema.json",
+  "control_activation_schema": "implementation_control/schemas/control-activation-receipt-v1.schema.json",
+  "codex_task_adoption_schema": "implementation_control/schemas/codex-task-adoption-receipt-v1.schema.json",
+  "generic_executor_enabled": false,
+  "generic_control_root_enabled": false,
+  "plugin_distribution_enabled": false,
+  "default_reasoning_effort": "max",
+  "repository_environment_mode": "local",
+  "topology_policy": {
+    "environment_mode": "reuse_bound_checkout",
+    "branch_creation_authorized": false,
+    "worktree_creation_authorized": false,
+    "binding_change_authorized": false,
+    "authorization_ref": null
+  },
+  "mutation_guards": {
+    "require_expected_plan_revision": true,
+    "require_expected_website_control_sha256": true,
+    "fail_closed_on_mismatch": true
+  },
+  "worker_cardinality": {
+    "tasks_per_worker": 1,
+    "continue_invocations_per_worker": 1,
+    "agent_jobs_per_worker": 1,
+    "worker_selects_successor": false
+  }
+}

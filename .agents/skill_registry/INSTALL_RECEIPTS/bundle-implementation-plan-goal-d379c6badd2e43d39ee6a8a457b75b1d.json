@@ -1,0 +1,203 @@
+{
+  "actions": [
+    {
+      "action": "install",
+      "closure_role": "support",
+      "entrypoint_class": "support_provider",
+      "reason": [
+        "required support component for continue, continue-implementing-plan-task, implementation-plan-goal"
+      ],
+      "selection_policy": "advanced_or_dependency",
+      "skill_id": "agentjob-control",
+      "source": "/private/tmp/ipg-5309fabc.caibXF/skills/agentjob-control",
+      "source_sha256": "4fa0e93dc884e2c95ab3e0e01b3398c50aacacc91297574aabb456e1cc093c2d",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/agentjob-control",
+      "version": "0.3.0"
+    },
+    {
+      "action": "install",
+      "closure_role": "dependency",
+      "entrypoint_class": "user_workflow",
+      "reason": [
+        "required dependency component for continue-implementing-plan-task"
+      ],
+      "selection_policy": "dependency_resolved",
+      "skill_id": "continue",
+      "source": "/private/tmp/ipg-5309fabc.caibXF/skills/continue",
+      "source_sha256": "8ea81082ca76f77accaf4af2e839741b928817b6ff64761412fba71f0481294d",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue",
+      "version": "0.3.0"
+    },
+    {
+      "action": "install",
+      "closure_role": "internal",
+      "entrypoint_class": "internal_component",
+      "reason": [
+        "required internal component for implementation-plan-goal"
+      ],
+      "selection_policy": "internal_only",
+      "skill_id": "continue-implementing-plan-task",
+      "source": "/private/tmp/ipg-5309fabc.caibXF/skills/continue-implementing-plan-task",
+      "source_sha256": "947c9d5b828746316d96874e253b772376978712e749ace48ef074fdbbcc7859",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue-implementing-plan-task",
+      "version": "0.1.0"
+    },
+    {
+      "action": "install",
+      "closure_role": "entry",
+      "entrypoint_class": "user_workflow",
+      "reason": [
+        "selected entry skill"
+      ],
+      "selection_policy": "dependency_resolved",
+      "skill_id": "implementation-plan-goal",
+      "source": "/private/tmp/ipg-5309fabc.caibXF/skills/implementation-plan-goal",
+      "source_sha256": "5c9320e736ae6314aaa794b57e488eb18488e73bc08031c6805493aa9a36ab76",
+      "target": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/implementation-plan-goal",
+      "version": "0.1.0"
+    }
+  ],
+  "authority_granted": false,
+  "authority_notice": "Installation does not authorize task execution, bootstrap project control, or grant external-action authority.",
+  "bootstrap": null,
+  "bootstrap_requested": false,
+  "bootstrap_status": "not_requested",
+  "bundle_id": "implementation-plan-goal",
+  "bundle_version": "0.1.0",
+  "conflicts": [],
+  "direct_copy_supported": false,
+  "entry_skills": [
+    "implementation-plan-goal"
+  ],
+  "entrypoint_class": "user_workflow",
+  "execution_performed": true,
+  "external_tools": [],
+  "installed_at": "2026-07-20T04:34:38.504244+00:00",
+  "installer_version": "2.0.0",
+  "mode": "apply",
+  "optional_skills_not_selected": [],
+  "planned_files": [
+    "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/agentjob-control",
+    "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue",
+    "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/continue-implementing-plan-task",
+    "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skills/implementation-plan-goal"
+  ],
+  "prerequisites": {
+    "adapters": [
+      "PlanControlStore",
+      "RepositoryProvider",
+      "ThreadProvider",
+      "ThreadExecutionProfileProvider"
+    ],
+    "bootstrap": "explicit_required",
+    "external_tools": []
+  },
+  "project_adaptation": "required",
+  "python": [
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "agentjob-control",
+      "standard_library_only": true
+    },
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "continue",
+      "standard_library_only": true
+    },
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "continue-implementing-plan-task",
+      "standard_library_only": true
+    },
+    {
+      "optional_packages": [],
+      "required_packages": [],
+      "requirements_file": null,
+      "requires_python": ">=3.11",
+      "skill_id": "implementation-plan-goal",
+      "standard_library_only": true
+    }
+  ],
+  "python_install": null,
+  "python_install_requested": false,
+  "receipt": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.agents/skill_registry/INSTALL_RECEIPTS/bundle-implementation-plan-goal-d379c6badd2e43d39ee6a8a457b75b1d.json",
+  "recommended_bundles": [
+    "implementation-plan-goal"
+  ],
+  "recommended_plugins": [],
+  "recommended_selectors": [
+    {
+      "id": "implementation-plan-goal",
+      "kind": "skill"
+    },
+    {
+      "id": "implementation-plan-goal",
+      "kind": "bundle"
+    }
+  ],
+  "registry_install_mode": "adapted_runtime_registry",
+  "required_adapters": [
+    "ControlStore",
+    "PlanControlStore",
+    "ProjectAdapter",
+    "RepositoryProvider",
+    "ThreadExecutionProfileProvider",
+    "ThreadProvider"
+  ],
+  "required_dependency_closure": [
+    "agentjob-control",
+    "continue",
+    "continue-implementing-plan-task",
+    "implementation-plan-goal"
+  ],
+  "resolved_components": [
+    {
+      "closure_role": "support",
+      "entrypoint_class": "support_provider",
+      "skill_id": "agentjob-control"
+    },
+    {
+      "closure_role": "dependency",
+      "entrypoint_class": "user_workflow",
+      "skill_id": "continue"
+    },
+    {
+      "closure_role": "internal",
+      "entrypoint_class": "internal_component",
+      "skill_id": "continue-implementing-plan-task"
+    }
+  ],
+  "resolver_version": "2.0.0",
+  "rollback_manifest": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.local/sys4ai/install-transactions/d379c6badd2e43d39ee6a8a457b75b1d/rollback.json",
+  "schema_version": "sys4ai.skill-install-receipt.v2",
+  "selected": {
+    "id": "implementation-plan-goal",
+    "kind": "bundle"
+  },
+  "selection_id": "implementation-plan-goal",
+  "selection_kind": "bundle",
+  "selection_policy": "dependency_resolved",
+  "source_lock": "/tmp/ipg-5309fabc.caibXF/.agents/skill_registry/locks/implementation-plan-goal.lock.yaml",
+  "source_lock_sha256": "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9",
+  "source_registry": ".agents/skill_registry/SKILL_REGISTRY.yaml",
+  "source_repository": "/private/tmp/ipg-5309fabc.caibXF",
+  "status": "installed",
+  "target_project": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website",
+  "target_runtime_root": ".agents/skills",
+  "transaction_id": "d379c6badd2e43d39ee6a8a457b75b1d",
+  "validation": {
+    "findings": [],
+    "status": "pass",
+    "verification_level": "installed hashes and manifests"
+  },
+  "write": true
+}

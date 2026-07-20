@@ -1,0 +1,180 @@
+{
+  "candidate_plan": {
+    "acceptance": {
+      "accepted_at": "2026-01-01T00:00:00Z",
+      "authority_ref": "AUTH-GOLDEN-001",
+      "policy_version": "POLICY-GOLDEN-001",
+      "status": "accepted"
+    },
+    "extensions": {},
+    "objective": "Implement and verify the accepted widget behavior.",
+    "phases": [
+      {
+        "acceptance_criteria": [
+          "<PHASE_ACCEPTANCE_CRITERION>"
+        ],
+        "depends_on": [],
+        "extensions": {},
+        "phase_id": "PHASE-DF35E5F670F972CC",
+        "task_ids": [
+          "TASK-736F9C00CFDF1FF5",
+          "TASK-A14C9F37D4DA5148"
+        ],
+        "title": "Execute and verify the accepted work"
+      }
+    ],
+    "plan_id": "PLAN-GOLDEN-001",
+    "repository_binding": {
+      "branch": "<TARGET_BRANCH>",
+      "environment_mode": "local",
+      "git_common_dir": "<GIT_COMMON_DIR>",
+      "project_id": "PROJECT-GOLDEN-001",
+      "root": "<PROJECT_ROOT>",
+      "starting_revision": "<STARTING_REVISION>",
+      "worktree": "<PROJECT_ROOT>"
+    },
+    "required_scope": {
+      "excluded_phase_ids": [],
+      "excluded_task_ids": [],
+      "phase_ids": [
+        "PHASE-DF35E5F670F972CC"
+      ],
+      "task_ids": [
+        "TASK-736F9C00CFDF1FF5",
+        "TASK-A14C9F37D4DA5148"
+      ]
+    },
+    "schema_version": "sys4ai.implementation-plan.v2",
+    "serial_execution": true,
+    "tasks": [
+      {
+        "acceptance_criteria": [
+          "The accepted widget behavior is implemented without adjacent work."
+        ],
+        "depends_on": [],
+        "execution_budget": {
+          "max_agentjobs": 1,
+          "max_continue_invocations": 1,
+          "one_task_per_discussion": true,
+          "same_task_successors": 0
+        },
+        "extensions": {},
+        "objective": "Implement the accepted bounded widget behavior.",
+        "phase_id": "PHASE-DF35E5F670F972CC",
+        "task_id": "TASK-736F9C00CFDF1FF5",
+        "task_sha256": "c772c604e29a6c8523ae8c21f269ccb68045678d8b3a370caadef8da3a55a23c",
+        "title": "Implement the widget behavior",
+        "validation_refs": [
+          "tests/widget-implementation.md"
+        ]
+      },
+      {
+        "acceptance_criteria": [
+          "The widget behavior passes its declared validation."
+        ],
+        "depends_on": [],
+        "execution_budget": {
+          "max_agentjobs": 1,
+          "max_continue_invocations": 1,
+          "one_task_per_discussion": true,
+          "same_task_successors": 0
+        },
+        "extensions": {},
+        "objective": "Verify the accepted widget behavior from direct evidence.",
+        "phase_id": "PHASE-DF35E5F670F972CC",
+        "task_id": "TASK-A14C9F37D4DA5148",
+        "task_sha256": "20181e20ea1dcfe54f3c17b9668e68d454792502637a7ac94497849ec9c7f56c",
+        "title": "Verify the widget behavior",
+        "validation_refs": [
+          "tests/widget-verification.md"
+        ]
+      }
+    ],
+    "title": "Deliver a bounded widget"
+  },
+  "command": "normalize",
+  "findings": [],
+  "normalization_report": {
+    "candidate_plan_sha256": "d5e01a3b2a5c5632b0abe0a51c34c0c09b07f1e58531335339b18d27b085c4a0",
+    "canonicalization_only": false,
+    "extensions": {},
+    "finalized": true,
+    "findings": [],
+    "hash_basis": "canonical_json_without_report_content_sha256",
+    "normalization_contract_sha256": "798ef4254d790926c4eddb27c81e47a1dc881658edd46ac9f4a84f5cee10a12d",
+    "plan_id": "PLAN-GOLDEN-001",
+    "report_content_sha256": "16a9331c4f266095aa9c55e186a3f7ff2446990ac3ea96eb67ab52bc5aa32fb9",
+    "report_id": "PNR-15ABC704CE10161A",
+    "schema_version": "sys4ai.plan-normalization-report.v1",
+    "source_set_sha256": "addeb6d51b9646a9d21f7f6365be70627530aab8321f866a6ece874b8a04c611",
+    "sources": [
+      {
+        "authority": "accepted",
+        "classification_evidence": [
+          "Recognizable plan structure is present but the canonical plan contract is incomplete."
+        ],
+        "immutable_ref": "skills/implementation-plan-goal/examples/normalization-partial-source.example.json",
+        "media_type": "application/json",
+        "precedence": 0,
+        "source_class": "partial_plan",
+        "source_id": "SOURCE-C8B3DB59924F7738",
+        "source_sha256": "8b109ab5df76faa9900bb46e0857d1fd06069f285e25e48c1355a4948455e53a"
+      }
+    ],
+    "status": "candidate",
+    "task_sizing": [
+      {
+        "evidence_refs": [
+          "skills/implementation-plan-goal/examples/normalization-partial-source.example.json"
+        ],
+        "replacement_task_ids": [
+          "TASK-736F9C00CFDF1FF5",
+          "TASK-A14C9F37D4DA5148"
+        ],
+        "result": "split_required",
+        "task_id": "TASK-WIDGET-001"
+      }
+    ],
+    "traceability": [
+      {
+        "generated": false,
+        "output_id": "PLAN-GOLDEN-001",
+        "output_kind": "plan",
+        "source_anchors": [
+          "SOURCE-C8B3DB59924F7738#"
+        ],
+        "transformation": "canonicalized"
+      },
+      {
+        "generated": true,
+        "output_id": "PHASE-DF35E5F670F972CC",
+        "output_kind": "phase",
+        "source_anchors": [
+          "SOURCE-C8B3DB59924F7738#"
+        ],
+        "transformation": "synthesized"
+      },
+      {
+        "generated": true,
+        "output_id": "TASK-736F9C00CFDF1FF5",
+        "output_kind": "task",
+        "source_anchors": [
+          "SOURCE-C8B3DB59924F7738#/tasks/0/outcomes/0"
+        ],
+        "transformation": "synthesized"
+      },
+      {
+        "generated": true,
+        "output_id": "TASK-A14C9F37D4DA5148",
+        "output_kind": "task",
+        "source_anchors": [
+          "SOURCE-C8B3DB59924F7738#/tasks/0/outcomes/1"
+        ],
+        "transformation": "synthesized"
+      }
+    ]
+  },
+  "schema_version": "sys4ai.planctl-result.v1",
+  "source_set_class": "partial_plan",
+  "status": "candidate"
+}

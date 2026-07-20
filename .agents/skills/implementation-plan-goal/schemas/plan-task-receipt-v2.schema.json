@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-task-receipt-v2.schema.json",
+  "title": "Profile-Aware Immutable Plan Task Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "plan_identity",
+    "task_identity",
+    "relay_identity",
+    "activation_profile_evidence",
+    "topology_evidence",
+    "started_at",
+    "finished_at",
+    "repository_evidence",
+    "execution",
+    "direct_evidence",
+    "disposition",
+    "reason_code",
+    "terminal_reason",
+    "recovery",
+    "replanning",
+    "coordinator_action",
+    "journal",
+    "hash_basis",
+    "receipt_content_sha256",
+    "finalized",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-task-receipt.v2"
+    },
+    "receipt_id": {
+      "$ref": "plan-task-receipt.schema.json#/properties/receipt_id"
+    },
+    "plan_identity": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/planIdentity"
+    },
+    "task_identity": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/taskIdentity"
+    },
+    "relay_identity": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/relayIdentity"
+    },
+    "activation_profile_evidence": {
+      "type": "object",
+      "required": [
+        "activation_receipt_sha256",
+        "execution_profile_sha256",
+        "requested_reasoning_effort",
+        "observed_effective_reasoning_effort",
+        "provider_id",
+        "thread_id",
+        "provider_evidence_ref",
+        "profile_checked_before_claim",
+        "canonical_profile_match"
+      ],
+      "properties": {
+        "activation_receipt_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "execution_profile_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "requested_reasoning_effort": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "observed_effective_reasoning_effort": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "provider_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "thread_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "provider_evidence_ref": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "profile_checked_before_claim": {
+          "const": true
+        },
+        "canonical_profile_match": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "topology_evidence": {
+      "type": "object",
+      "required": [
+        "environment_mode",
+        "repository_binding_sha256",
+        "repository_topology_policy_sha256",
+        "pre_task_topology_sha256",
+        "post_task_topology_sha256",
+        "topology_checked_before_claim",
+        "unapproved_change_detected",
+        "authorization_ref"
+      ],
+      "properties": {
+        "environment_mode": {
+          "const": "reuse_bound_checkout"
+        },
+        "repository_binding_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "repository_topology_policy_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "pre_task_topology_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "post_task_topology_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "topology_checked_before_claim": {
+          "const": true
+        },
+        "unapproved_change_detected": {
+          "const": false
+        },
+        "authorization_ref": {
+          "oneOf": [
+            {
+              "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "started_at": {
+      "$ref": "plan-task-receipt.schema.json#/properties/started_at"
+    },
+    "finished_at": {
+      "$ref": "plan-task-receipt.schema.json#/properties/finished_at"
+    },
+    "repository_evidence": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/repositoryEvidence"
+    },
+    "execution": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/executionEvidence"
+    },
+    "direct_evidence": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/directEvidence"
+    },
+    "disposition": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/disposition"
+    },
+    "reason_code": {
+      "$ref": "plan-task-receipt.schema.json#/properties/reason_code"
+    },
+    "terminal_reason": {
+      "$ref": "plan-task-receipt.schema.json#/properties/terminal_reason"
+    },
+    "recovery": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/followupState"
+    },
+    "replanning": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/followupState"
+    },
+    "coordinator_action": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/coordinatorAction"
+    },
+    "journal": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/journalLink"
+    },
+    "hash_basis": {
+      "const": "canonical_json_without_receipt_content_sha256"
+    },
+    "receipt_content_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    },
+    "extensions": {
+      "$ref": "plan-task-receipt.schema.json#/$defs/closedExtensions"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/0"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/1"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/2"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/3"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/4"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/5"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/6"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/7"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/8"
+    },
+    {
+      "$ref": "plan-task-receipt.schema.json#/allOf/9"
+    }
+  ]
+}

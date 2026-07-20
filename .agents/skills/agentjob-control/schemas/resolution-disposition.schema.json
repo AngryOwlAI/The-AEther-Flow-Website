@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/resolution-disposition.schema.json",
+  "title": "Goal Resolution Disposition",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "classification",
+    "reason_code",
+    "blocker_signature",
+    "machine_resolvable",
+    "resolution_type",
+    "candidate_strategy_ids",
+    "selected_strategy_id",
+    "strategy_attempt",
+    "authority_refs",
+    "evidence_refs",
+    "requires_successor",
+    "requires_human",
+    "human_reason"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.resolution-disposition.v1"},
+    "classification": {
+      "enum": [
+        "goal_reached",
+        "normal_continuation",
+        "machine_project_repair",
+        "machine_control_repair",
+        "machine_provider_recovery",
+        "machine_evidence_gathering",
+        "refresh_and_retry_same_identity",
+        "human_authority_required",
+        "human_choice_required",
+        "policy_limit_requires_user",
+        "integrity_incident_requires_owner",
+        "cancelled"
+      ]
+    },
+    "reason_code": {"$ref": "common.schema.json#/$defs/id"},
+    "blocker_signature": {"$ref": "common.schema.json#/$defs/sha256"},
+    "machine_resolvable": {"type": "boolean"},
+    "resolution_type": {
+      "enum": [
+        "none",
+        "continue",
+        "project_repair",
+        "control_repair",
+        "provider_recovery",
+        "evidence_gathering",
+        "identity_refresh",
+        "human_decision",
+        "policy_limit",
+        "integrity_incident",
+        "cancellation"
+      ]
+    },
+    "candidate_strategy_ids": {
+      "$ref": "common.schema.json#/$defs/stringList"
+    },
+    "selected_strategy_id": {
+      "type": ["string", "null"]
+    },
+    "strategy_attempt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "authority_refs": {
+      "$ref": "common.schema.json#/$defs/stringList"
+    },
+    "evidence_refs": {
+      "$ref": "common.schema.json#/$defs/stringList"
+    },
+    "requires_successor": {"type": "boolean"},
+    "requires_human": {"type": "boolean"},
+    "human_reason": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {"requires_human": {"const": true}},
+        "required": ["requires_human"]
+      },
+      "then": {
+        "properties": {
+          "machine_resolvable": {"const": false},
+          "requires_successor": {"const": false},
+          "human_reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"machine_resolvable": {"const": true}},
+        "required": ["machine_resolvable"]
+      },
+      "then": {
+        "properties": {
+          "requires_human": {"const": false},
+          "selected_strategy_id": {"type": "string", "minLength": 1},
+          "strategy_attempt": {"minimum": 1}
+        }
+      }
+    }
+  ]
+}

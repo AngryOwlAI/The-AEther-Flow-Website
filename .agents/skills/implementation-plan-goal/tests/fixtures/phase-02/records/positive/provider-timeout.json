@@ -1,0 +1,35 @@
+{
+  "schema_version": "sys4ai.plan-provider-intent.v1",
+  "intent_id": "PPI-EXAMPLE-001",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+  "task_id": "TASK-REPLACEMENT-001",
+  "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "generation": 2,
+  "provider_id": "codex-app-server",
+  "idempotency_key": "PLAN-EXAMPLE-001:2",
+  "handoff_token_sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+  "predecessor_thread_id": "THREAD-PREDECESSOR-001",
+  "expected_revision": 8,
+  "repository_fingerprint": "1313131313131313131313131313131313131313131313131313131313131313",
+  "created_at": "2026-07-18T00:00:00Z",
+  "status": "timeout",
+  "provider_create_budget": 1,
+  "create_attempts": 1,
+  "returned_thread_id": null,
+  "provider_response_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "conflicting_thread_ids": [],
+  "retry_authorized": false,
+  "recovery": {
+    "status": "required",
+    "reason": "Synthetic provider outcome requires recovery: timeout.",
+    "evidence_refs": [
+      "evidence/provider-query.md"
+    ]
+  },
+  "prior_journal_sha256": "1414141414141414141414141414141414141414141414141414141414141414",
+  "hash_basis": "canonical_json_without_intent_content_sha256",
+  "intent_content_sha256": "add4b2be4f081786431bdb1881be07d86c6f7cffa95440c763d35d2e0fd96a59",
+  "finalized": true,
+  "extensions": {}
+}

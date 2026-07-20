@@ -456,12 +456,7 @@ def resolve_continue_context(repo_root: Path = REPO_ROOT) -> tuple[dict[str, Any
     handoff_pointer = optional_mapping(program_state.get("latest_handoff"))
 
     program_status = str(program_state.get("status", ""))
-    if (
-        program_status in NO_ACTION_STATUSES
-        and not active_task_pointer
-        and not current_job_pointer
-        and not handoff_pointer
-    ):
+    if program_status in NO_ACTION_STATUSES:
         no_action_payload = blocked_payload(repo_root, [])
         no_action_payload["status"] = "no_action"
         no_action_payload["errors"] = []

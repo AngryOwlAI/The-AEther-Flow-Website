@@ -244,6 +244,47 @@ next_recommended_action:
     assert payload["errors"] == []
 
 
+def test_no_action_state_ignores_superseded_historical_pointers(tmp_path: Path) -> None:
+    write_text(
+        tmp_path / "implementation_control/program_state.yaml",
+        """
+schema_version: "0.1"
+record_type: "implementation_program_state"
+repository: "The-AEther-Flow-Website"
+status: "inactive"
+repository_boundary:
+  website_repository: "."
+  upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
+  upstream_write_status: "forbidden"
+  deployment_status: "not_authorized"
+active_task:
+  task_id: "WI-HISTORICAL-001"
+  status: "superseded"
+  path: "implementation_control/tasks/WI-HISTORICAL-001/00_TASK.yaml"
+current_job:
+  job_id: "WJ-HISTORICAL-001-A"
+  status: "superseded"
+  path: "implementation_control/tasks/WI-HISTORICAL-001/jobs/WJ-HISTORICAL-001-A.yaml"
+latest_handoff:
+  handoff_id: "WH-HISTORICAL-001"
+  status: "superseded"
+  yaml_path: "implementation_control/handoffs/WH-HISTORICAL-001.yaml"
+next_recommended_action:
+  task_packet: "none"
+  summary: "Open a new bounded packet before implementation."
+""".lstrip(),
+    )
+
+    payload, exit_code = resolver.resolve_continue_context(tmp_path)
+
+    assert exit_code == 0
+    assert payload["status"] == "no_action"
+    assert payload["errors"] == []
+    assert payload["active_task"] == {}
+    assert payload["current_job"] == {}
+    assert payload["latest_handoff"] == {}
+
+
 def test_upstream_or_absolute_write_path_blocks(tmp_path: Path) -> None:
     write_ready_fixture(
         tmp_path,

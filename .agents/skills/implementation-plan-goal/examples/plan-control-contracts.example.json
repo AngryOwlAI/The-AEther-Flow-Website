@@ -1,0 +1,225 @@
+{
+  "normalization_report": {
+    "schema_version": "sys4ai.plan-normalization-report.v1",
+    "report_id": "PNR-EXAMPLE-001",
+    "plan_id": "PLAN-EXAMPLE-001",
+    "source_set_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "normalization_contract_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "sources": [
+      {
+        "source_id": "SOURCE-001",
+        "source_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "media_type": "application/json",
+        "source_class": "structured_plan",
+        "authority": "accepted",
+        "precedence": 0,
+        "immutable_ref": "examples/source-plan.json",
+        "classification_evidence": ["Explicit ordered phases, tasks, dependencies, and acceptance boundaries are present."]
+      }
+    ],
+    "candidate_plan_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "status": "candidate",
+    "findings": [],
+    "traceability": [
+      {
+        "output_kind": "task",
+        "output_id": "TASK-001",
+        "source_anchors": ["SOURCE-001#/tasks/0"],
+        "transformation": "canonicalized",
+        "generated": false
+      }
+    ],
+    "task_sizing": [
+      {
+        "task_id": "TASK-001",
+        "result": "ready",
+        "evidence_refs": ["evidence/task-001-sizing.md"],
+        "replacement_task_ids": []
+      }
+    ],
+    "canonicalization_only": true,
+    "hash_basis": "canonical_json_without_report_content_sha256",
+    "report_content_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "finalized": true,
+    "extensions": {}
+  },
+  "plan_amendment": {
+    "schema_version": "sys4ai.plan-amendment.v1",
+    "amendment_id": "PA-EXAMPLE-001",
+    "plan_id": "PLAN-EXAMPLE-001",
+    "sequence": 1,
+    "prior_effective_plan_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "new_effective_plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "created_at": "2026-07-18T00:00:00Z",
+    "reason": "Add one explicitly authorized replacement task without changing plan identity.",
+    "authorization": {
+      "authority_id": "AUTH-EXAMPLE-001",
+      "status": "approved",
+      "approval_ref": "approvals/plan-amendment.md",
+      "approved_at": "2026-07-18T00:00:00Z"
+    },
+    "operations": [
+      {
+        "operation_id": "PA-OP-001",
+        "effect": "add",
+        "target_kind": "task",
+        "target_id": "TASK-002",
+        "prior_value_sha256": null,
+        "new_value_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+        "narrows_authority": false,
+        "protected_effects_added": false
+      }
+    ],
+    "evidence_refs": ["evidence/plan-amendment.md"],
+    "plan_identity_unchanged": true,
+    "history_preserved": true,
+    "prior_receipts_preserved": true,
+    "consumed_invocations_preserved": true,
+    "prior_journal_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+    "hash_basis": "canonical_json_without_amendment_content_sha256",
+    "amendment_content_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+    "finalized": true,
+    "extensions": {}
+  },
+  "task_supersession": {
+    "schema_version": "sys4ai.plan-task-supersession.v1",
+    "supersession_id": "PTS-EXAMPLE-001",
+    "plan_id": "PLAN-EXAMPLE-001",
+    "plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "original_task": {
+      "task_id": "TASK-OVERSIZED-001",
+      "task_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "generation": 1,
+      "receipt_id": "PTR-EXAMPLE-001",
+      "receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "terminal_status": "replan_required"
+    },
+    "replacement_tasks": [
+      {
+        "task_id": "TASK-REPLACEMENT-001",
+        "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "depends_on": [],
+        "canonical_position": 1,
+        "one_task_per_discussion": true,
+        "max_continue_invocations": 1,
+        "max_agentjobs": 1
+      },
+      {
+        "task_id": "TASK-REPLACEMENT-002",
+        "task_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "depends_on": ["TASK-REPLACEMENT-001"],
+        "canonical_position": 2,
+        "one_task_per_discussion": true,
+        "max_continue_invocations": 1,
+        "max_agentjobs": 1
+      }
+    ],
+    "acceptance_mapping": [
+      {
+        "criterion_id": "ACCEPT-001",
+        "replacement_task_ids": ["TASK-REPLACEMENT-001"],
+        "shared_gate_ref": null
+      },
+      {
+        "criterion_id": "ACCEPT-002",
+        "replacement_task_ids": ["TASK-REPLACEMENT-002"],
+        "shared_gate_ref": null
+      }
+    ],
+    "replacement_graph_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "reason_code": "plan_task.task_requires_replan",
+    "reason": "The original task requires more than one independently verifiable outcome.",
+    "authorization_ref": "approvals/task-supersession.md",
+    "evidence_refs": ["evidence/task-supersession.md"],
+    "acyclic": true,
+    "original_redispatch_forbidden": true,
+    "same_task_successors": 0,
+    "prior_receipt_preserved": true,
+    "partial_work_preserved": true,
+    "prior_journal_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "hash_basis": "canonical_json_without_supersession_content_sha256",
+    "supersession_content_sha256": "1010101010101010101010101010101010101010101010101010101010101010",
+    "finalized": true,
+    "extensions": {}
+  },
+  "provider_intent": {
+    "schema_version": "sys4ai.plan-provider-intent.v1",
+    "intent_id": "PPI-EXAMPLE-001",
+    "plan_id": "PLAN-EXAMPLE-001",
+    "plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "task_id": "TASK-REPLACEMENT-001",
+    "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "generation": 2,
+    "provider_id": "codex-app-server",
+    "idempotency_key": "PLAN-EXAMPLE-001:2",
+    "handoff_token_sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+    "predecessor_thread_id": "THREAD-PREDECESSOR-001",
+    "expected_revision": 8,
+    "repository_fingerprint": "1313131313131313131313131313131313131313131313131313131313131313",
+    "created_at": "2026-07-18T00:00:00Z",
+    "status": "ambiguous",
+    "provider_create_budget": 1,
+    "create_attempts": 1,
+    "returned_thread_id": null,
+    "provider_response_sha256": null,
+    "conflicting_thread_ids": [],
+    "retry_authorized": false,
+    "recovery": {
+      "status": "required",
+      "reason": "The provider may have created a discussion but no unique identity is proven.",
+      "evidence_refs": ["evidence/provider-query.md"]
+    },
+    "prior_journal_sha256": "1414141414141414141414141414141414141414141414141414141414141414",
+    "hash_basis": "canonical_json_without_intent_content_sha256",
+    "intent_content_sha256": "1515151515151515151515151515151515151515151515151515151515151515",
+    "finalized": true,
+    "extensions": {}
+  },
+  "selection_proof": {
+    "schema_version": "sys4ai.plan-selection-proof.v1",
+    "proof_id": "PSP-EXAMPLE-001",
+    "plan_id": "PLAN-EXAMPLE-001",
+    "plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "plan_revision": 9,
+    "prior_journal_sha256": "1616161616161616161616161616161616161616161616161616161616161616",
+    "repository_fingerprint": "1717171717171717171717171717171717171717171717171717171717171717",
+    "selector_protocol_version": "1.0.0",
+    "selection_policy_sha256": "1818181818181818181818181818181818181818181818181818181818181818",
+    "supersession_graph_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "lease_token_sha256": "1919191919191919191919191919191919191919191919191919191919191919",
+    "active_task_ids": [],
+    "ordered_tasks": [
+      {
+        "canonical_position": 1,
+        "task_id": "TASK-REPLACEMENT-001",
+        "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "effective_task_ids": ["TASK-REPLACEMENT-001"],
+        "status": "pending",
+        "dependencies": [
+          {
+            "task_id": "TASK-PREREQUISITE-001",
+            "effective_task_ids": ["TASK-PREREQUISITE-001"],
+            "status": "terminal",
+            "receipt_sha256s": ["2020202020202020202020202020202020202020202020202020202020202020"]
+          }
+        ],
+        "dependency_ready": true
+      }
+    ],
+    "outcome": "selected",
+    "selected_task": {
+      "task_id": "TASK-REPLACEMENT-001",
+      "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "canonical_position": 1,
+      "dependency_receipt_sha256s": ["2020202020202020202020202020202020202020202020202020202020202020"]
+    },
+    "blocking_reasons": [],
+    "canonical_order_only": true,
+    "revision_bound": true,
+    "compare_and_swap_required": true,
+    "hash_basis": "canonical_json_without_proof_content_sha256",
+    "proof_content_sha256": "2121212121212121212121212121212121212121212121212121212121212121",
+    "finalized": true,
+    "extensions": {}
+  }
+}

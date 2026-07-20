@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "website.plan-binding-v1",
+  "title": "Website implementation plan binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "status",
+    "plan_id",
+    "plan_sha256",
+    "binding_revision",
+    "tasks",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "website.plan-binding.v1"
+    },
+    "record_type": {
+      "const": "implementation_plan_binding"
+    },
+    "status": {
+      "const": "non_executable"
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "binding_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "tasks": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/taskBinding"
+      }
+    },
+    "manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "validator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "command",
+        "required"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "not_required",
+            "required",
+            "approved",
+            "blocked"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "packetIds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "job_id",
+        "handoff_id",
+        "completion_id"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "handoff_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completion_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "checkpointRights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "commit",
+        "branch",
+        "worktree",
+        "push",
+        "deploy"
+      ],
+      "properties": {
+        "stage": {
+          "type": "boolean"
+        },
+        "commit": {
+          "type": "boolean"
+        },
+        "branch": {
+          "type": "boolean"
+        },
+        "worktree": {
+          "type": "boolean"
+        },
+        "push": {
+          "type": "boolean"
+        },
+        "deploy": {
+          "type": "boolean"
+        }
+      }
+    },
+    "executionRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "role_version",
+        "responsibilities",
+        "may_not"
+      ],
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "responsibilities": {
+          "$ref": "#/$defs/stringList"
+        },
+        "may_not": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "taskBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "task_sha256",
+        "packet_ids",
+        "objective",
+        "acceptance_criteria",
+        "validators",
+        "allowed_reads",
+        "allowed_writes",
+        "approval_gates",
+        "stop_conditions",
+        "checkpoint_rights",
+        "execution_role",
+        "authority_sha256"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "packet_ids": {
+          "$ref": "#/$defs/packetIds"
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptance_criteria": {
+          "$ref": "#/$defs/stringList"
+        },
+        "validators": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/validator"
+          }
+        },
+        "allowed_reads": {
+          "$ref": "#/$defs/stringList"
+        },
+        "allowed_writes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "approval_gates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/gate"
+          }
+        },
+        "stop_conditions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "checkpoint_rights": {
+          "$ref": "#/$defs/checkpointRights"
+        },
+        "execution_role": {
+          "$ref": "#/$defs/executionRole"
+        },
+        "authority_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

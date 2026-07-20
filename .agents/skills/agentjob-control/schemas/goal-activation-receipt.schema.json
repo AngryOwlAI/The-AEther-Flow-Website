@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-activation-receipt.schema.json",
+  "title": "Goal Activation Acceptance Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "activation_id",
+    "status",
+    "combined_acceptance",
+    "accepted_goal_sha256",
+    "accepted_completion_contract_sha256",
+    "reasoning_effort",
+    "selection_source",
+    "current_thread_id",
+    "current_thread_requested_effort",
+    "current_thread_effective_effort",
+    "current_thread_verification_status",
+    "current_thread_evidence_ref",
+    "provider_id",
+    "model_id",
+    "repository_identity_sha256",
+    "repository_topology_policy_sha256",
+    "acceptance_message_sha256",
+    "acceptance_evidence_ref",
+    "accepted_at",
+    "supersedes_activation_id",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-activation-receipt.v1"},
+    "activation_id": {"$ref": "common.schema.json#/$defs/id"},
+    "status": {"const": "accepted"},
+    "combined_acceptance": {"const": true},
+    "accepted_goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "accepted_completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "reasoning_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "selection_source": {"enum": ["default", "user_override"]},
+    "current_thread_id": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "current_thread_requested_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "current_thread_effective_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "current_thread_verification_status": {"const": "verified"},
+    "current_thread_evidence_ref": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "provider_id": {"$ref": "common.schema.json#/$defs/id"},
+    "model_id": {"type": ["string", "null"]},
+    "repository_identity_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "repository_topology_policy_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "acceptance_message_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "acceptance_evidence_ref": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "accepted_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "supersedes_activation_id": {
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/id"},
+        {"type": "null"}
+      ]
+    },
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false
+}

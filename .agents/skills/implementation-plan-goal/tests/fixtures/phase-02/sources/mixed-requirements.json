@@ -1,0 +1,6 @@
+{
+  "requirements": [
+    "The implementation must remain serial.",
+    "The result must preserve exact task identity."
+  ]
+}

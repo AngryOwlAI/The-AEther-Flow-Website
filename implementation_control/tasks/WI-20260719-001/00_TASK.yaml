@@ -1,0 +1,175 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260719-001"
+title: "Import and Integrate implementation-plan-goal"
+created_utc: "2026-07-20T04:32:00Z"
+updated_utc: "2026-07-20T05:42:13Z"
+status: "completed"
+
+source_context:
+  packet_id: "IMPLEMENTATION-PLAN-GOAL-IMPORT-01"
+  owner_authorization: "Owner explicitly requested implementation and verification of every task in the source pinned integration plan."
+  baseline_commit: "7cf3c20a605dc319627615ea27141dbc3cc308e7"
+  source_repository: "/Volumes/P-SSD/AngryOwl/skills-Sys4AI"
+  source_commit: "5309fabc665b8c6665a24b9edb42b4ceda82227d"
+  source_lock_sha256: "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9"
+  source_bundle: "implementation-plan-goal"
+  source_bundle_version: "0.1.0"
+  source_bundle_status: "experimental and evolving"
+
+goal: "Install the exact locked implementation plan goal bundle and adapt its serial plan relay to the website implementation control authority without creating a competing authority tree."
+
+requirements:
+  - "Correct no action resolution before opening executable work."
+  - "Import only committed source bytes through git archive at the pinned commit."
+  - "Verify the exact lock and four package hashes before and after installation."
+  - "Install without bootstrap or Python package installation."
+  - "Keep implementation_control as the sole execution authority."
+  - "Persist mutable runtime data only below ignored .local/sys4ai/implementation-plan-goal."
+  - "Add complete hash bound plan bindings before plan acceptance."
+  - "Require plan revision and website control hash compare and swap for every mutation."
+  - "Use fake providers only during verification and create no real Codex task or plan goal."
+  - "Leave all changes uncommitted and undeployed."
+
+scope:
+  in_scope:
+    - "Exact four package installation and generated registry lock and receipt"
+    - "Four project local Codex skill front doors and third party notices"
+    - "Website adapter configuration provenance schemas bindings and conformance evidence"
+    - "Canonical JSON plan relay facade and fake provider tests"
+    - "Implementation control resolver regression packet records and completion evidence"
+    - "Package script integration and configured validation"
+  out_of_scope:
+    - "Any .agents/control authority tree or imported generic executor invocation"
+    - "Any public content route asset public manifest or website API"
+    - "Any upstream research or skill source repository write"
+    - "Any real goal Codex task checkpoint commit branch worktree push or deployment"
+
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - ".codex/skills/implementation-control/SKILL.md"
+    - "Website implementation control records scripts tests package configuration and Git evidence"
+    - "Git baseline 7cf3c20a605dc319627615ea27141dbc3cc308e7"
+  external_source_repository:
+    - "/Volumes/P-SSD/AngryOwl/skills-Sys4AI at commit 5309fabc665b8c6665a24b9edb42b4ceda82227d"
+
+allowed_writes:
+  website_repository:
+    - ".agents/skills/agentjob-control"
+    - ".agents/skills/continue"
+    - ".agents/skills/continue-implementing-plan-task"
+    - ".agents/skills/implementation-plan-goal"
+    - ".agents/skill_registry/SKILL_REGISTRY.yaml"
+    - ".agents/skill_registry/SKILL_LOCK.yaml"
+    - ".agents/skill_registry/locks/implementation-plan-goal.lock.yaml"
+    - ".agents/skill_registry/INSTALL_RECEIPTS"
+    - ".agents/implementation-plan-goal"
+    - ".codex/skills/agentjob-control"
+    - ".codex/skills/continue"
+    - ".codex/skills/continue-implementing-plan-task"
+    - ".codex/skills/implementation-plan-goal"
+    - ".codex/skills/README.md"
+    - ".codex/skills/THIRD_PARTY_NOTICES.md"
+    - ".gitignore"
+    - "package.json"
+    - "scripts/implementation_control/continue_implementation.py"
+    - "scripts/implementation_control/continue_plan_goal.py"
+    - "scripts/implementation_control/plan_goal_adapter.py"
+    - "scripts/implementation_control/validate_plan_goal.py"
+    - "tests/test_continue_implementation.py"
+    - "tests/test_plan_goal_adapter.py"
+    - "tests/test_plan_goal_facade.py"
+    - "tests/test_plan_goal_installation.py"
+    - "implementation_control/program_state.yaml"
+    - "implementation_control/plan_bindings"
+    - "implementation_control/schemas"
+    - "implementation_control/handoffs/WH-20260719-001.yaml"
+    - "implementation_control/handoffs/WH-20260719-001.md"
+    - "implementation_control/tasks/WI-20260719-001/00_TASK.yaml"
+    - "implementation_control/tasks/WI-20260719-001/jobs/WJ-20260719-001-A.yaml"
+    - "implementation_control/tasks/WI-20260719-001/jobs/completions/WJC-20260719-001-A.yaml"
+  upstream_source_repository: []
+
+approval_gates:
+  plan_adoption:
+    status: "approved"
+    reason: "Owner explicitly requested the complete source pinned integration."
+  public_claim_changes:
+    status: "not_required"
+    reason: "No public wording or claim change."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "Pinned skill bytes are read through Git archive and upstream research is unchanged."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No route or navigation change."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No reader facing visual change."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No public asset change."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "No public manifest change."
+  git_push:
+    status: "not_required"
+    reason: "Push is outside this packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "Deployment is outside this packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Any upstream research or skill source repository write is forbidden."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+
+stop_conditions:
+  - "The website HEAD differs from the accepted baseline unexpectedly."
+  - "Any lock package topology profile binding or authority hash differs from accepted evidence."
+  - "Any installed cache bytecode mutable state plugin or competing control root appears."
+  - "Any test creates a real goal task provider effect checkpoint Git topology change publication or deployment."
+  - "Any required validator fails."
+
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  closeout: "Create completion evidence and return program state to inactive without checkpointing."
+
+handoff:
+  latest_handoff_id: "WH-20260719-001"
+  yaml_path: "implementation_control/handoffs/WH-20260719-001.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260719-001.md"
+
+next_recommended_action:
+  task_packet: "none"
+  summary: "No further implementation action is required; retain the completed packet as provenance."
+  do_not_skip: "Any checkpoint commit branch worktree push deployment real plan goal Codex task public change or upstream write requires separate authority."
+
+completion_record:
+  completion_id: "WJC-20260719-001-A"
+  path: "implementation_control/tasks/WI-20260719-001/jobs/completions/WJC-20260719-001-A.yaml"
+  status: "completed"
+
+implementation_status:
+  status: "complete"
+  exact_import_status: "passed"
+  adapter_status: "passed"
+  relay_lifecycle_status: "passed with fake providers only"
+  tests_status: "46 focused source tests, 53 installed bundle tests, 69 plan-goal tests, and 180 website tests passed"
+  aggregate_validation_status: "passed against the accepted clean source root"
+  quality_gate_status: "passed against the accepted clean source root"
+  real_goal_or_task_created: false
+  completion_created: true
+  checkpoint_created: false

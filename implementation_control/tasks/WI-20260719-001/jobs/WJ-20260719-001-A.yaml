@@ -1,0 +1,154 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260719-001-A"
+task_id: "WI-20260719-001"
+title: "Install and Adapt implementation-plan-goal"
+created_utc: "2026-07-20T04:32:00Z"
+updated_utc: "2026-07-20T05:42:13Z"
+status: "completed"
+
+objective: "Materialize the exact four package runtime and add a fail closed website adapter for one task per accepted plan relay generation."
+
+execution_boundary:
+  invocation_limit: "one bounded IMPLEMENTATION-PLAN-GOAL-IMPORT-01 packet"
+  baseline_commit: "7cf3c20a605dc319627615ea27141dbc3cc308e7"
+  source_commit: "5309fabc665b8c6665a24b9edb42b4ceda82227d"
+  source_lock_sha256: "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9"
+  bundle_version: "0.1.0"
+  bootstrap_status: "forbidden"
+  python_package_installation_status: "forbidden"
+  implementation_authority: "implementation_control only"
+  checkpoint_status: "not_authorized"
+  commit_status: "not_authorized"
+  topology_change_status: "not_authorized"
+  public_surface_change_status: "forbidden"
+  upstream_write_status: "forbidden"
+  push_status: "not_authorized"
+  deployment_status: "not_authorized"
+
+allowed_reads:
+  - "The exact website and pinned source evidence allowlisted by WI-20260719-001"
+
+allowed_writes:
+  - ".agents/skills/agentjob-control"
+  - ".agents/skills/continue"
+  - ".agents/skills/continue-implementing-plan-task"
+  - ".agents/skills/implementation-plan-goal"
+  - ".agents/skill_registry/SKILL_REGISTRY.yaml"
+  - ".agents/skill_registry/SKILL_LOCK.yaml"
+  - ".agents/skill_registry/locks/implementation-plan-goal.lock.yaml"
+  - ".agents/skill_registry/INSTALL_RECEIPTS"
+  - ".agents/implementation-plan-goal"
+  - ".codex/skills/agentjob-control"
+  - ".codex/skills/continue"
+  - ".codex/skills/continue-implementing-plan-task"
+  - ".codex/skills/implementation-plan-goal"
+  - ".codex/skills/README.md"
+  - ".codex/skills/THIRD_PARTY_NOTICES.md"
+  - ".gitignore"
+  - "package.json"
+  - "scripts/implementation_control/continue_implementation.py"
+  - "scripts/implementation_control/continue_plan_goal.py"
+  - "scripts/implementation_control/plan_goal_adapter.py"
+  - "scripts/implementation_control/validate_plan_goal.py"
+  - "tests/test_continue_implementation.py"
+  - "tests/test_plan_goal_adapter.py"
+  - "tests/test_plan_goal_facade.py"
+  - "tests/test_plan_goal_installation.py"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/plan_bindings"
+  - "implementation_control/schemas"
+  - "implementation_control/handoffs/WH-20260719-001.yaml"
+  - "implementation_control/handoffs/WH-20260719-001.md"
+  - "implementation_control/tasks/WI-20260719-001/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260719-001/jobs/WJ-20260719-001-A.yaml"
+  - "implementation_control/tasks/WI-20260719-001/jobs/completions/WJC-20260719-001-A.yaml"
+
+required_outputs:
+  - "Exact installed bundle registry lock receipt and provenance"
+  - "Four project local Codex front doors with internal entrypoint policy preserved"
+  - "Website adapter configuration conformance report and versioned schemas"
+  - "Complete non executable plan binding contract and validator"
+  - "Canonical JSON relay facade with protected state transitions"
+  - "Focused deterministic installation adapter lifecycle and recovery tests"
+  - "Inactive final control state with no executable job or live plan lease"
+
+approval_gates:
+  - id: "plan_adoption"
+    status: "approved"
+    trigger: "Owner explicitly requested the complete source pinned integration."
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "No public wording or claim change."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "No upstream research refresh or binding change."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "No route or navigation change."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "No reader facing visual change."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "No public asset."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "No public manifest."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "Any remote push."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "Any deployment."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Any upstream research or skill source repository write."
+
+required_validators:
+  - id: "git-diff-check"
+    command: "git diff --check"
+    required: true
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    required: true
+  - id: "python-tests"
+    command: ".venv/bin/python -m pytest"
+    required: true
+
+stop_conditions:
+  - "Any source package hash dependency or invocation edge mismatch."
+  - "Any .agents/control tree imported generic executor or tracked mutable runtime appears."
+  - "Any mutation proceeds on a stale plan revision or website control hash."
+  - "Any worker executes more than one mapped website job or selects its successor."
+  - "Any fake provider test causes a real external task or goal side effect."
+  - "Any public checkpoint Git topology push deployment or upstream action is attempted."
+  - "Any required validator fails."
+
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+
+next_recommended_action:
+  task_packet: "none"
+  summary: "No further job execution is required; the bounded integration job is complete."
+  do_not_skip: "Any checkpoint commit branch worktree push deployment real plan goal Codex task public change or upstream write requires separate authority."
+
+completion_record:
+  completion_id: "WJC-20260719-001-A"
+  path: "implementation_control/tasks/WI-20260719-001/jobs/completions/WJC-20260719-001-A.yaml"
+  status: "completed"
+
+implementation_status:
+  status: "complete"
+  exact_import_status: "passed"
+  adapter_status: "passed"
+  relay_lifecycle_status: "passed with fake providers only"
+  tests_status: "46 focused source tests, 53 installed bundle tests, 69 plan-goal tests, and 180 website tests passed"
+  aggregate_validation_status: "passed against the accepted clean source root"
+  quality_gate_status: "passed against the accepted clean source root"
+  real_goal_or_task_created: false
+  completion_created: true
+  checkpoint_created: false

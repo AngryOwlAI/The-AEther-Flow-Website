@@ -1,5 +1,21 @@
 # Third-Party Notices
 
+## Sys4AI Implementation Plan Goal Bundle
+
+The project-local `agentjob-control`, `continue`,
+`continue-implementing-plan-task`, and `implementation-plan-goal` packages are
+exact locked imports from `/Volumes/P-SSD/AngryOwl/skills-Sys4AI` commit
+`5309fabc665b8c6665a24b9edb42b4ceda82227d`.
+
+The source lock SHA-256 is
+`a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9`.
+The package is experimental and evolving. Plugin distribution is disabled.
+The local `.codex/skills` files are website-specific adapter front doors; they
+do not change the imported package bytes or grant execution authority.
+
+Copyright 2026 Alexander Samuel Ricciardi, AngryOwl. The source package is
+licensed under the Apache License, Version 2.0.
+
 ## Technical Writing Quality Gate Adaptation
 
 The local `technical-writing-quality-gate` skill is adapted from the

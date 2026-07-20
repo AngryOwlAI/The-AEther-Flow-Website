@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/repository-topology-policy.schema.json",
+  "title": "Implementation Plan Repository Topology Policy",
+  "type": "object",
+  "required": [
+    "environment_mode",
+    "branch_creation_authorized",
+    "worktree_creation_authorized",
+    "binding_change_authorized",
+    "authorization_ref"
+  ],
+  "properties": {
+    "environment_mode": {
+      "const": "reuse_bound_checkout"
+    },
+    "branch_creation_authorized": {
+      "type": "boolean"
+    },
+    "worktree_creation_authorized": {
+      "type": "boolean"
+    },
+    "binding_change_authorized": {
+      "type": "boolean"
+    },
+    "authorization_ref": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "branch_creation_authorized": {
+                "const": true
+              }
+            },
+            "required": [
+              "branch_creation_authorized"
+            ]
+          },
+          {
+            "properties": {
+              "worktree_creation_authorized": {
+                "const": true
+              }
+            },
+            "required": [
+              "worktree_creation_authorized"
+            ]
+          },
+          {
+            "properties": {
+              "binding_change_authorized": {
+                "const": true
+              }
+            },
+            "required": [
+              "binding_change_authorized"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "authorization_ref": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "authorization_ref": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

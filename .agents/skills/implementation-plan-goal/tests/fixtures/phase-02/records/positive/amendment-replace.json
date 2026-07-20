@@ -1,0 +1,40 @@
+{
+  "schema_version": "sys4ai.plan-amendment.v1",
+  "amendment_id": "PA-EXAMPLE-001",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "sequence": 1,
+  "prior_effective_plan_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+  "new_effective_plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+  "created_at": "2026-07-18T00:00:00Z",
+  "reason": "Add one explicitly authorized replacement task without changing plan identity.",
+  "authorization": {
+    "authority_id": "AUTH-EXAMPLE-001",
+    "status": "approved",
+    "approval_ref": "approvals/plan-amendment.md",
+    "approved_at": "2026-07-18T00:00:00Z"
+  },
+  "operations": [
+    {
+      "operation_id": "PA-OP-001",
+      "effect": "replace",
+      "target_kind": "task",
+      "target_id": "TASK-002",
+      "prior_value_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "new_value_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "narrows_authority": false,
+      "protected_effects_added": false
+    }
+  ],
+  "evidence_refs": [
+    "evidence/plan-amendment.md"
+  ],
+  "plan_identity_unchanged": true,
+  "history_preserved": true,
+  "prior_receipts_preserved": true,
+  "consumed_invocations_preserved": true,
+  "prior_journal_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+  "hash_basis": "canonical_json_without_amendment_content_sha256",
+  "amendment_content_sha256": "a8065a1ce1b4be5db3a94e604c37251f0d37e298f1e12de7b12ee2ca6de8a04f",
+  "finalized": true,
+  "extensions": {}
+}

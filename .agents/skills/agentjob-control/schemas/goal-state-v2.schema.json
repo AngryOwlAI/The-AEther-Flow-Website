@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-state-v2.schema.json",
+  "title": "Portable Continue Goal State v2",
+  "type": "object",
+  "required": [
+    "schema_version", "goal_id", "goal_text", "goal_sha256", "completion_contract",
+    "completion_contract_sha256", "amendments", "created_at", "deadline_at", "guards",
+    "repository_binding", "authorization", "state", "generations", "handoff",
+    "journal", "updated_at", "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.continue-goal.v2"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_text": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract": {"$ref": "#/$defs/completionContract"},
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "amendments": {"type": "array", "items": {"$ref": "#/$defs/amendment"}},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "deadline_at": {
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/timestamp"},
+        {"type": "null"}
+      ]
+    },
+    "guards": {"$ref": "#/$defs/guards"},
+    "repository_binding": {"$ref": "#/$defs/repositoryBinding"},
+    "authorization": {
+      "type": "object",
+      "required": ["fresh_recursive_threads_explicitly_requested"],
+      "properties": {"fresh_recursive_threads_explicitly_requested": {"const": true}},
+      "additionalProperties": false
+    },
+    "state": {
+      "type": "object",
+      "required": ["revision", "phase", "current_generation", "passes_consumed", "active_lease", "goal_evaluation", "last_canonical_fingerprint", "canonical_fingerprint_history", "terminal_reason"],
+      "properties": {
+        "revision": {"type": "integer", "minimum": 1},
+        "phase": {"$ref": "#/$defs/phase"},
+        "current_generation": {"type": "integer", "minimum": 0},
+        "passes_consumed": {"type": "integer", "minimum": 0},
+        "active_lease": {"oneOf": [{"$ref": "#/$defs/lease"}, {"type": "null"}]},
+        "goal_evaluation": {"enum": ["unmet", "met", "indeterminate"]},
+        "last_canonical_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "canonical_fingerprint_history": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/sha256"}, "minItems": 1},
+        "terminal_reason": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "generations": {
+      "type": "object",
+      "patternProperties": {"^[1-9][0-9]*$": {"$ref": "#/$defs/generation"}},
+      "additionalProperties": false
+    },
+    "handoff": {
+      "type": "object",
+      "required": ["status", "generation", "token", "idempotency_key", "predecessor_thread_id", "successor_thread_id"],
+      "properties": {
+        "status": {"enum": ["none", "intent", "successor_created", "failed", "ambiguous", "timeout"]},
+        "generation": {"type": "integer", "minimum": 1},
+        "token": {"type": ["string", "null"]},
+        "idempotency_key": {"type": ["string", "null"]},
+        "predecessor_thread_id": {"type": ["string", "null"]},
+        "successor_thread_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "journal": {"type": "array", "items": {"$ref": "#/$defs/journalEntry"}},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "completionContract": {
+      "type": "object",
+      "required": ["interpretation", "required_evidence", "user_confirmed_when_ambiguous"],
+      "properties": {
+        "interpretation": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "required_evidence": {"$ref": "common.schema.json#/$defs/stringList", "minItems": 1},
+        "user_confirmed_when_ambiguous": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "amendment": {
+      "type": "object",
+      "required": ["kind", "user_authorization", "created_at", "prior_effective_sha256", "new_value", "new_sha256"],
+      "properties": {
+        "kind": {"enum": ["completion_contract", "guards"]},
+        "user_authorization": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+        "prior_effective_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "new_value": {"type": "object"},
+        "new_sha256": {"$ref": "common.schema.json#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "guards": {
+      "type": "object",
+      "required": ["max_continue_passes", "max_repeated_state_fingerprints", "max_live_continuations", "handoff_ready_timeout_seconds", "stop_on_human_gate", "stop_on_validation_failure", "stop_on_checkpoint_failure", "stop_on_unexpected_dirty_state", "stop_on_no_progress", "stop_on_repeated_state", "stop_on_capability_loss", "stop_on_repository_mismatch"],
+      "properties": {
+        "max_continue_passes": {
+          "oneOf": [
+            {"type": "integer", "minimum": 1},
+            {"type": "null"}
+          ]
+        },
+        "max_repeated_state_fingerprints": {"type": "integer", "minimum": 1},
+        "max_live_continuations": {"const": 1},
+        "handoff_ready_timeout_seconds": {"type": "integer", "minimum": 1},
+        "stop_on_human_gate": {"const": true},
+        "stop_on_validation_failure": {"const": true},
+        "stop_on_checkpoint_failure": {"const": true},
+        "stop_on_unexpected_dirty_state": {"const": true},
+        "stop_on_no_progress": {"const": true},
+        "stop_on_repeated_state": {"const": true},
+        "stop_on_capability_loss": {"const": true},
+        "stop_on_repository_mismatch": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "repositoryBinding": {
+      "type": "object",
+      "required": ["project_id", "root", "worktree", "branch", "git_common_dir", "starting_revision", "environment_mode"],
+      "properties": {
+        "project_id": {"$ref": "common.schema.json#/$defs/id"},
+        "root": {"$ref": "common.schema.json#/$defs/resolvedIdentityPath"},
+        "worktree": {"$ref": "common.schema.json#/$defs/resolvedIdentityPath"},
+        "branch": {"type": ["string", "null"]},
+        "git_common_dir": {"oneOf": [{"$ref": "common.schema.json#/$defs/resolvedIdentityPath"}, {"type": "null"}]},
+        "starting_revision": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "environment_mode": {"enum": ["local", "remote", "container"]}
+      },
+      "additionalProperties": false
+    },
+    "phase": {
+      "enum": ["initialized", "successor_intent", "successor_created", "step_active", "step_verifying", "step_verified", "continuation_required", "recovery_pending", "terminal_complete", "terminal_awaiting_human", "terminal_capability_blocked", "terminal_guard_exhausted", "terminal_no_progress", "terminal_validation_failed", "terminal_handoff_ambiguous", "terminal_handoff_timeout", "terminal_duplicate_detected", "terminal_corrupt_state", "terminal_failed", "terminal_cancelled"]
+    },
+    "lease": {
+      "type": "object",
+      "required": ["repository_fingerprint", "goal_id", "generation", "holder_kind", "holder_token", "transaction_id", "acquired_at", "heartbeat_at", "expires_at"],
+      "properties": {
+        "repository_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+        "generation": {"type": "integer", "minimum": 0},
+        "holder_kind": {"enum": ["launcher", "continuation", "successor_reserved", "quarantined"]},
+        "holder_token": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "transaction_id": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "acquired_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+        "heartbeat_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+        "expires_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+      },
+      "additionalProperties": false
+    },
+    "generation": {
+      "type": "object",
+      "required": ["generation", "handoff_token", "idempotency_key", "phase", "lease_token", "invocation_consumed", "invocation_state", "consumed_at", "returned_at", "before_fingerprint", "after_fingerprint", "pending_step_result", "finalized_receipt_hash", "terminal_or_successor_outcome", "claimed_at", "successor_thread_id"],
+      "properties": {
+        "generation": {"type": "integer", "minimum": 1},
+        "handoff_token": {"type": "string", "minLength": 32},
+        "idempotency_key": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "phase": {"$ref": "#/$defs/phase"},
+        "lease_token": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "invocation_consumed": {"type": "boolean"},
+        "invocation_state": {"enum": ["not_authorized", "authorized", "returned", "unknown"]},
+        "consumed_at": {"oneOf": [{"$ref": "common.schema.json#/$defs/timestamp"}, {"type": "null"}]},
+        "returned_at": {"oneOf": [{"$ref": "common.schema.json#/$defs/timestamp"}, {"type": "null"}]},
+        "before_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "after_fingerprint": {"oneOf": [{"$ref": "common.schema.json#/$defs/sha256"}, {"type": "null"}]},
+        "fingerprint_status": {"type": ["string", "null"], "enum": ["new", "unchanged", "repeated", null]},
+        "pending_step_result": {"type": ["object", "null"]},
+        "finalized_receipt_hash": {"oneOf": [{"$ref": "common.schema.json#/$defs/sha256"}, {"type": "null"}]},
+        "terminal_or_successor_outcome": {"type": ["string", "null"]},
+        "claimed_at": {"oneOf": [{"$ref": "common.schema.json#/$defs/timestamp"}, {"type": "null"}]},
+        "successor_thread_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false,
+      "if": {"properties": {"invocation_consumed": {"const": true}}, "required": ["invocation_consumed"]},
+      "then": {
+        "properties": {
+          "invocation_state": {"enum": ["authorized", "returned", "unknown"]},
+          "consumed_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+        }
+      }
+    },
+    "journalEntry": {
+      "type": "object",
+      "required": ["sequence", "kind", "payload", "prior_hash", "entry_hash"],
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1},
+        "kind": {"enum": ["event", "step_receipt", "recovery", "amendment"]},
+        "payload": {"type": "object"},
+        "prior_hash": {"oneOf": [{"$ref": "common.schema.json#/$defs/sha256"}, {"type": "null"}]},
+        "entry_hash": {"$ref": "common.schema.json#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": "website.implementation-plan-goal-conformance.v1",
+  "adapter_id": "the-aether-flow-website-implementation-control",
+  "adapter_version": "1.0.0",
+  "status": "conformant",
+  "execution_performed": false,
+  "canonical_source_roots": [
+    "implementation_control",
+    ".agents/skills/agentjob-control",
+    ".agents/skills/implementation-plan-goal"
+  ],
+  "checks": [
+    {
+      "feature_id": "task",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "implementation_control/tasks/<work-item>/00_TASK.yaml"
+      ]
+    },
+    {
+      "feature_id": "director_decision",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "A validated plan binding selects exactly one predeclared website packet projection."
+      ]
+    },
+    {
+      "feature_id": "agent_job",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "implementation_control/tasks/<work-item>/jobs/<job>.yaml"
+      ]
+    },
+    {
+      "feature_id": "execution_role",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "The plan binding stores an exact packet-local execution role without permission expansion."
+      ]
+    },
+    {
+      "feature_id": "completion",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "implementation_control/tasks/<work-item>/jobs/completions/<completion>.yaml"
+      ]
+    },
+    {
+      "feature_id": "handoff",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "implementation_control/handoffs/<handoff>.yaml is continuity evidence and grants no authority."
+      ]
+    },
+    {
+      "feature_id": "immutability",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "Canonical control SHA-256 compare-and-swap binds program, task, job, handoff, and Git identity."
+      ]
+    },
+    {
+      "feature_id": "supersession",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "Historical pointers are provenance only; no-action program state cannot reactivate them."
+      ]
+    },
+    {
+      "feature_id": "one_job_cardinality",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "One active website packet is materialized for one reserved plan task."
+      ]
+    },
+    {
+      "feature_id": "claim_boundary",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "Plan binding acceptance criteria and authority hash are compiled into one DirectorRoute."
+      ]
+    },
+    {
+      "feature_id": "path_boundary",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "Allowed reads and writes are copied only from the predeclared hash-bound binding projection."
+      ]
+    },
+    {
+      "feature_id": "recovery_evidence",
+      "mode": "emulated",
+      "status": "pass",
+      "evidence": [
+        "Open provider intent, adoption receipt, consumed invocation, and unknown quarantine remain in the imported SQLite lifecycle."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "sys4ai.plan-selection-proof.v1",
+  "proof_id": "PSP-EXAMPLE-001",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "plan_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+  "plan_revision": 9,
+  "prior_journal_sha256": "1616161616161616161616161616161616161616161616161616161616161616",
+  "repository_fingerprint": "1717171717171717171717171717171717171717171717171717171717171717",
+  "selector_protocol_version": "1.0.0",
+  "selection_policy_sha256": "1818181818181818181818181818181818181818181818181818181818181818",
+  "supersession_graph_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "lease_token_sha256": "1919191919191919191919191919191919191919191919191919191919191919",
+  "active_task_ids": [],
+  "ordered_tasks": [
+    {
+      "canonical_position": 1,
+      "task_id": "TASK-REPLACEMENT-001",
+      "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "effective_task_ids": [
+        "TASK-REPLACEMENT-001"
+      ],
+      "status": "pending",
+      "dependencies": [
+        {
+          "task_id": "TASK-PREREQUISITE-001",
+          "effective_task_ids": [
+            "TASK-PREREQUISITE-001"
+          ],
+          "status": "terminal",
+          "receipt_sha256s": [
+            "2020202020202020202020202020202020202020202020202020202020202020"
+          ]
+        }
+      ],
+      "dependency_ready": true
+    }
+  ],
+  "outcome": "selected",
+  "selected_task": {
+    "task_id": "TASK-NOT-FIRST-READY",
+    "task_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "canonical_position": 1,
+    "dependency_receipt_sha256s": [
+      "2020202020202020202020202020202020202020202020202020202020202020"
+    ]
+  },
+  "blocking_reasons": [],
+  "canonical_order_only": true,
+  "revision_bound": true,
+  "compare_and_swap_required": true,
+  "hash_basis": "canonical_json_without_proof_content_sha256",
+  "proof_content_sha256": "560b205a40b303dceefc3397a888a40eba774bb295366a3a5cdb99a1d07f5577",
+  "finalized": true,
+  "extensions": {}
+}

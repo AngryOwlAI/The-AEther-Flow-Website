@@ -1,0 +1,342 @@
+lock_version: 2
+resolver_version: "2.0.0"
+generated_at: "2026-07-20T02:26:37Z"
+selection_kind: "bundle"
+selection_id: "implementation-plan-goal"
+selection_version: "0.1.0"
+bundle_id: "implementation-plan-goal"
+bundle_version: "0.1.0"
+source_registry: ".agents/skill_registry/SKILL_REGISTRY.yaml"
+source_selection: ".agents/skill_registry/SKILL_BUNDLES/implementation-plan-goal.yaml"
+source_bundle: ".agents/skill_registry/SKILL_BUNDLES/implementation-plan-goal.yaml"
+target_runtime_root: ".agents/skills"
+allow_python_package_install: false
+bootstrap_requested: false
+entry_skills:
+  - "implementation-plan-goal"
+resolved_components:
+  - skill_id: "agentjob-control"
+    entrypoint_class: "support_provider"
+    closure_role: "support"
+  - skill_id: "continue"
+    entrypoint_class: "user_workflow"
+    closure_role: "dependency"
+  - skill_id: "continue-implementing-plan-task"
+    entrypoint_class: "internal_component"
+    closure_role: "internal"
+skills:
+  - skill_id: "agentjob-control"
+    version: "0.3.0"
+    status: "template"
+    release_maturity: "experimental"
+    stability: "evolving"
+    entrypoint_class: "support_provider"
+    selection_policy: "advanced_or_dependency"
+    direct_copy_supported: false
+    project_adaptation: "required"
+    recommended_selectors:
+      - kind: "bundle"
+        id: "governed-continuation"
+      - kind: "bundle"
+        id: "research-control"
+      - kind: "plugin"
+        id: "sys4ai-governed-continuation"
+    prerequisites:
+      bootstrap: "optional"
+      adapters:
+        - "ProjectAdapter"
+        - "ControlStore"
+        - "RepositoryProvider"
+        - "ThreadExecutionProfileProvider"
+      external_tools: []
+    runtime_state: null
+    closure_role: "support"
+    canonical_path: "skills/agentjob-control"
+    manifest_path: "skills/agentjob-control/skill.yaml"
+    source_sha256: "4fa0e93dc884e2c95ab3e0e01b3398c50aacacc91297574aabb456e1cc093c2d"
+    manifest_sha256: "71baad4a4bf9734623a1440c152647fa0c9687e1b13146bc4d2a97213efcbda9"
+    required_skills: []
+    optional_skills: []
+    invokes_skills: []
+    provides_capabilities:
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.continuation-envelope.v2"
+      - "sys4ai.control-records.v1"
+      - "sys4ai.goal-relay-state-reader.v1"
+      - "sys4ai.goal-relay-state-reader.v2"
+      - "sys4ai.goal-relay-state.v3"
+      - "sys4ai.plan-activation-receipt.v1"
+      - "sys4ai.plan-execution-profile.v1"
+      - "sys4ai.plan-provider-intent.v2"
+      - "sys4ai.plan-store.sqlite.v5"
+      - "sys4ai.plan-task-envelope.v2"
+      - "sys4ai.plan-task-receipt.v2"
+      - "sys4ai.project-bootstrap.v1"
+      - "sys4ai.repository-topology-enforcement.v1"
+      - "sys4ai.thread-provider.v2"
+    requires_capabilities:
+      - "python>=3.11"
+    required_adapters:
+      - "ControlStore"
+      - "ProjectAdapter"
+      - "RepositoryProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+      - "ContextProvider"
+      - "ThreadExecutionProfileProvider"
+      - "ThreadProvider"
+    scripts:
+      - "skills/agentjob-control/scripts/agentjobctl.py"
+    python:
+      skill_id: "agentjob-control"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+  - skill_id: "continue"
+    version: "0.3.0"
+    status: "template"
+    release_maturity: "experimental"
+    stability: "evolving"
+    entrypoint_class: "user_workflow"
+    selection_policy: "dependency_resolved"
+    direct_copy_supported: false
+    project_adaptation: "required"
+    recommended_selectors:
+      - kind: "skill"
+        id: "continue"
+      - kind: "bundle"
+        id: "governed-continuation"
+      - kind: "plugin"
+        id: "sys4ai-governed-continuation"
+    prerequisites:
+      bootstrap: "explicit_required"
+      adapters:
+        - "ProjectAdapter"
+        - "ControlStore"
+        - "RepositoryProvider"
+      external_tools: []
+    runtime_state: null
+    closure_role: "dependency"
+    canonical_path: "skills/continue"
+    manifest_path: "skills/continue/skill.yaml"
+    source_sha256: "8ea81082ca76f77accaf4af2e839741b928817b6ff64761412fba71f0481294d"
+    manifest_sha256: "5b8bea595771dd6350280cc352097c8fcf855bea38d10c1844ff135e7ac3922c"
+    required_skills:
+      - "agentjob-control"
+    optional_skills: []
+    invokes_skills: []
+    provides_capabilities:
+      - "sys4ai.continue.v1"
+      - "sys4ai.continue.v2"
+    requires_capabilities:
+      - "python>=3.11"
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.control-records.v1"
+      - "sys4ai.repository-topology-enforcement.v1"
+    required_adapters:
+      - "ControlStore"
+      - "ProjectAdapter"
+      - "RepositoryProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+      - "ContextProvider"
+    scripts:
+      - "skills/agentjob-control/scripts/agentjobctl.py"
+    python:
+      skill_id: "continue"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+  - skill_id: "continue-implementing-plan-task"
+    version: "0.1.0"
+    status: "template"
+    release_maturity: "experimental"
+    stability: "evolving"
+    entrypoint_class: "internal_component"
+    selection_policy: "internal_only"
+    direct_copy_supported: false
+    project_adaptation: "package_managed"
+    recommended_selectors:
+      - kind: "bundle"
+        id: "implementation-plan-goal"
+    prerequisites:
+      bootstrap: "explicit_required"
+      adapters:
+        - "PlanControlStore"
+        - "ProjectAdapter"
+        - "RepositoryProvider"
+        - "ThreadProvider"
+        - "ThreadExecutionProfileProvider"
+      external_tools: []
+    runtime_state: null
+    closure_role: "internal"
+    canonical_path: "skills/continue-implementing-plan-task"
+    manifest_path: "skills/continue-implementing-plan-task/skill.yaml"
+    source_sha256: "947c9d5b828746316d96874e253b772376978712e749ace48ef074fdbbcc7859"
+    manifest_sha256: "52cba67a0965de7060c3d85fc04ac2e28d1743252b5367624aa9b5af5f380f23"
+    required_skills:
+      - "agentjob-control"
+      - "continue"
+    optional_skills: []
+    invokes_skills:
+      - "continue"
+    provides_capabilities:
+      - "sys4ai.continue-implementing-plan-task.runtime.v1"
+    requires_capabilities:
+      - "python>=3.11"
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.continue.v1"
+      - "sys4ai.implementation-plan.v1"
+      - "sys4ai.plan-execution-profile.v1"
+      - "sys4ai.plan-task-envelope.v1"
+      - "sys4ai.plan-task-envelope.v2"
+      - "sys4ai.plan-task-receipt.v2"
+      - "sys4ai.repository-topology-enforcement.v1"
+    required_adapters:
+      - "PlanControlStore"
+      - "ProjectAdapter"
+      - "RepositoryProvider"
+      - "ThreadExecutionProfileProvider"
+      - "ThreadProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+      - "ContextProvider"
+    scripts: []
+    python:
+      skill_id: "continue-implementing-plan-task"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+  - skill_id: "implementation-plan-goal"
+    version: "0.1.0"
+    status: "template"
+    release_maturity: "experimental"
+    stability: "evolving"
+    entrypoint_class: "user_workflow"
+    selection_policy: "dependency_resolved"
+    direct_copy_supported: false
+    project_adaptation: "required"
+    recommended_selectors:
+      - kind: "skill"
+        id: "implementation-plan-goal"
+      - kind: "bundle"
+        id: "implementation-plan-goal"
+    prerequisites:
+      bootstrap: "explicit_required"
+      adapters:
+        - "PlanControlStore"
+        - "RepositoryProvider"
+        - "ThreadProvider"
+        - "ThreadExecutionProfileProvider"
+      external_tools: []
+    runtime_state: null
+    closure_role: "entry"
+    canonical_path: "skills/implementation-plan-goal"
+    manifest_path: "skills/implementation-plan-goal/skill.yaml"
+    source_sha256: "5c9320e736ae6314aaa794b57e488eb18488e73bc08031c6805493aa9a36ab76"
+    manifest_sha256: "44574c92aec2b68c5c1255aa49b9cb05f2fdbb19951cf782047ef6b44cf8ff98"
+    required_skills:
+      - "agentjob-control"
+      - "continue-implementing-plan-task"
+    optional_skills: []
+    invokes_skills:
+      - "continue-implementing-plan-task"
+    provides_capabilities:
+      - "sys4ai.implementation-plan-goal.runtime.v1"
+      - "sys4ai.implementation-plan-state.v1"
+      - "sys4ai.implementation-plan.v1"
+      - "sys4ai.implementation-plan.v2"
+      - "sys4ai.plan-activation-receipt.v1"
+      - "sys4ai.plan-amendment.v1"
+      - "sys4ai.plan-execution-profile.v1"
+      - "sys4ai.plan-normalization-report.v1"
+      - "sys4ai.plan-provider-intent.v1"
+      - "sys4ai.plan-provider-intent.v2"
+      - "sys4ai.plan-selection-proof.v1"
+      - "sys4ai.plan-store.sqlite.v5"
+      - "sys4ai.plan-task-envelope.v1"
+      - "sys4ai.plan-task-envelope.v2"
+      - "sys4ai.plan-task-receipt.v1"
+      - "sys4ai.plan-task-receipt.v2"
+      - "sys4ai.plan-task-supersession.v1"
+      - "sys4ai.planctl.offline-control.v1"
+      - "sys4ai.repository-topology-policy.v1"
+    requires_capabilities:
+      - "python>=3.11"
+      - "sys4ai.agentjob-control.v1"
+      - "sys4ai.continue-implementing-plan-task.runtime.v1"
+      - "sys4ai.repository-topology-enforcement.v1"
+      - "sys4ai.thread-provider.v2"
+    required_adapters:
+      - "PlanControlStore"
+      - "RepositoryProvider"
+      - "ThreadExecutionProfileProvider"
+      - "ThreadProvider"
+    optional_adapters:
+      - "CheckpointProvider"
+    scripts:
+      - "skills/implementation-plan-goal/scripts/build_phase02_fixture_corpus.py"
+      - "skills/implementation-plan-goal/scripts/offline_control.py"
+      - "skills/implementation-plan-goal/scripts/planctl.py"
+    python:
+      skill_id: "implementation-plan-goal"
+      standard_library_only: true
+      requires_python: ">=3.11"
+      requirements_file: null
+      required_packages: []
+      optional_packages: []
+    external_tools: []
+domain_packs: []
+optional_skills: []
+optional_skills_not_selected: []
+validation_skills: []
+invocation_edges:
+  - from: "continue-implementing-plan-task"
+    to: "continue"
+  - from: "implementation-plan-goal"
+    to: "continue-implementing-plan-task"
+required_adapters:
+  - "ControlStore"
+  - "PlanControlStore"
+  - "ProjectAdapter"
+  - "RepositoryProvider"
+  - "ThreadExecutionProfileProvider"
+  - "ThreadProvider"
+optional_adapters:
+  - "CheckpointProvider"
+  - "ContextProvider"
+python:
+  - skill_id: "agentjob-control"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+  - skill_id: "continue"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+  - skill_id: "continue-implementing-plan-task"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+  - skill_id: "implementation-plan-goal"
+    standard_library_only: true
+    requires_python: ">=3.11"
+    requirements_file: null
+    required_packages: []
+    optional_packages: []
+external_tools: []

@@ -1,0 +1,7 @@
+{
+  "environment_mode": "reuse_bound_checkout",
+  "branch_creation_authorized": false,
+  "worktree_creation_authorized": false,
+  "binding_change_authorized": false,
+  "authorization_ref": null
+}

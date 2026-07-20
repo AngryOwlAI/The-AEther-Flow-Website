@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-completion-report.schema.json",
+  "title": "Authoritative Goal Completion Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "report_id",
+    "goal_id",
+    "goal_text",
+    "goal_sha256",
+    "completion_contract",
+    "completion_contract_sha256",
+    "accepted_reasoning_effort",
+    "goal_reached",
+    "canonical_evaluation",
+    "terminal_phase",
+    "completed_at",
+    "skill_runtime_ledger",
+    "generation_ledger",
+    "work_performed",
+    "verification",
+    "repair_and_recovery",
+    "limitations",
+    "final_report_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-completion-report.v1"},
+    "report_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_text": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract": {"type": "object"},
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "accepted_reasoning_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "goal_reached": {"const": true},
+    "canonical_evaluation": {"const": "met"},
+    "terminal_phase": {"const": "terminal_complete"},
+    "completed_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "skill_runtime_ledger": {
+      "type": "object",
+      "required": [
+        "skills",
+        "runtime_capabilities",
+        "source_lock_ref",
+        "provider_id",
+        "model_id"
+      ],
+      "properties": {
+        "skills": {"type": "array", "items": {"type": "object"}},
+        "runtime_capabilities": {"$ref": "common.schema.json#/$defs/stringList"},
+        "source_lock_ref": {"type": ["string", "null"]},
+        "provider_id": {"$ref": "common.schema.json#/$defs/id"},
+        "model_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "generation_ledger": {"type": "array", "items": {"type": "object"}},
+    "work_performed": {
+      "type": "object",
+      "required": [
+        "claim_summaries",
+        "changed_paths",
+        "changed_path_source_refs",
+        "outputs",
+        "generated_derivatives",
+        "external_effects"
+      ],
+      "properties": {
+        "claim_summaries": {"$ref": "common.schema.json#/$defs/stringList"},
+        "changed_paths": {"$ref": "common.schema.json#/$defs/stringList"},
+        "changed_path_source_refs": {"$ref": "common.schema.json#/$defs/stringList"},
+        "outputs": {"type": "array", "items": {"type": "object"}},
+        "generated_derivatives": {"type": "array", "items": {"type": "object"}},
+        "external_effects": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": false
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "completion_criteria",
+        "validator_results",
+        "checkpoints",
+        "final_repository",
+        "reasoning_profile_evidence"
+      ],
+      "properties": {
+        "completion_criteria": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+        "validator_results": {"type": "array", "items": {"type": "object"}},
+        "checkpoints": {"type": "array", "items": {"type": "object"}},
+        "final_repository": {"type": "object"},
+        "reasoning_profile_evidence": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "repair_and_recovery": {"type": "array", "items": {"type": "object"}},
+    "limitations": {
+      "type": "object",
+      "required": ["warnings", "uncertainty", "forbidden_overread", "unverified_optional_matters"],
+      "properties": {
+        "warnings": {"$ref": "common.schema.json#/$defs/stringList"},
+        "uncertainty": {"$ref": "common.schema.json#/$defs/stringList"},
+        "forbidden_overread": {"$ref": "common.schema.json#/$defs/stringList"},
+        "unverified_optional_matters": {"$ref": "common.schema.json#/$defs/stringList"}
+      },
+      "additionalProperties": false
+    },
+    "final_report_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false
+}

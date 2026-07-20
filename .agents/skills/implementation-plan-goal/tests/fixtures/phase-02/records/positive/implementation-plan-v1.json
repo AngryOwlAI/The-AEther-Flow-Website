@@ -1,0 +1,28 @@
+{
+  "schema_version": "sys4ai.implementation-plan.v1",
+  "plan_id": "PLAN-PHASE02-LEGACY",
+  "title": "Legacy read-compatible Phase 2 fixture",
+  "status": "active",
+  "serial_execution": true,
+  "tasks": [
+    {
+      "task_id": "TASK-001",
+      "task_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "title": "Completed prerequisite",
+      "status": "completed",
+      "depends_on": [],
+      "extensions": {}
+    },
+    {
+      "task_id": "TASK-002",
+      "task_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "title": "Pending bounded task",
+      "status": "pending",
+      "depends_on": [
+        "TASK-001"
+      ],
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}

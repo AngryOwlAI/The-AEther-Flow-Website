@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-execution-profile.schema.json",
+  "title": "Accepted Implementation Plan Execution Profile",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "activation_id",
+    "activation_receipt_sha256",
+    "reasoning_effort",
+    "selection_source",
+    "accepted_goal_sha256",
+    "accepted_plan_sha256",
+    "current_thread_id",
+    "current_thread_requested_effort",
+    "current_thread_effective_effort",
+    "current_thread_verification_status",
+    "current_thread_evidence_ref",
+    "successor_inheritance_required",
+    "provider_id",
+    "model_id",
+    "effective_from_generation",
+    "repository_binding_sha256",
+    "repository_topology_policy_sha256",
+    "hash_basis",
+    "profile_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-execution-profile.v1"
+    },
+    "activation_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "activation_receipt_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "reasoning_effort": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "selection_source": {
+      "enum": [
+        "default",
+        "user_override"
+      ]
+    },
+    "accepted_goal_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "accepted_plan_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "current_thread_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "current_thread_requested_effort": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "current_thread_effective_effort": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "current_thread_verification_status": {
+      "const": "verified"
+    },
+    "current_thread_evidence_ref": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+    },
+    "successor_inheritance_required": {
+      "const": true
+    },
+    "provider_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "model_id": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "effective_from_generation": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "repository_binding_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "repository_topology_policy_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "hash_basis": {
+      "const": "canonical_json_without_profile_content_sha256"
+    },
+    "profile_content_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

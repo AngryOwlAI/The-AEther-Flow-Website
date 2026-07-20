@@ -1,0 +1,1057 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-task-receipt.schema.json",
+  "title": "Immutable Plan Task Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "plan_identity",
+    "task_identity",
+    "relay_identity",
+    "started_at",
+    "finished_at",
+    "repository_evidence",
+    "execution",
+    "direct_evidence",
+    "disposition",
+    "reason_code",
+    "terminal_reason",
+    "recovery",
+    "replanning",
+    "coordinator_action",
+    "journal",
+    "hash_basis",
+    "receipt_content_sha256",
+    "finalized",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-task-receipt.v1"
+    },
+    "receipt_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "plan_identity": {
+      "$ref": "#/$defs/planIdentity"
+    },
+    "task_identity": {
+      "$ref": "#/$defs/taskIdentity"
+    },
+    "relay_identity": {
+      "$ref": "#/$defs/relayIdentity"
+    },
+    "started_at": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "finished_at": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "repository_evidence": {
+      "$ref": "#/$defs/repositoryEvidence"
+    },
+    "execution": {
+      "$ref": "#/$defs/executionEvidence"
+    },
+    "direct_evidence": {
+      "$ref": "#/$defs/directEvidence"
+    },
+    "disposition": {
+      "$ref": "#/$defs/disposition"
+    },
+    "reason_code": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "terminal_reason": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recovery": {
+      "$ref": "#/$defs/followupState"
+    },
+    "replanning": {
+      "$ref": "#/$defs/followupState"
+    },
+    "coordinator_action": {
+      "$ref": "#/$defs/coordinatorAction"
+    },
+    "journal": {
+      "$ref": "#/$defs/journalLink"
+    },
+    "hash_basis": {
+      "const": "canonical_json_without_receipt_content_sha256"
+    },
+    "receipt_content_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    },
+    "extensions": {
+      "$ref": "#/$defs/closedExtensions"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "outcome": {
+                "const": "zero_job"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          }
+        },
+        "required": [
+          "execution"
+        ]
+      },
+      "then": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "agentjobs": {
+                "const": 0
+              },
+              "agent_job_id": {
+                "type": "null"
+              },
+              "zero_job_reason": {
+                "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "outcome": {
+                "const": "one_job"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          }
+        },
+        "required": [
+          "execution"
+        ]
+      },
+      "then": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "continue_invocations": {
+                "const": 1
+              },
+              "agentjobs": {
+                "const": 1
+              },
+              "agent_job_id": {
+                "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+              },
+              "zero_job_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "outcome": {
+                "const": "unknown"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          }
+        },
+        "required": [
+          "execution"
+        ]
+      },
+      "then": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "continue_invocations": {
+                "const": "unknown"
+              },
+              "agentjobs": {
+                "const": "unknown"
+              },
+              "agent_job_id": {
+                "type": "null"
+              },
+              "zero_job_reason": {
+                "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "enum": [
+              "blocked",
+              "replan_required",
+              "human_gate_required",
+              "validation_failed",
+              "invocation_unknown",
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "terminal_reason": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "enum": [
+              "task_complete",
+              "plan_complete"
+            ]
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "terminal_reason": {
+            "type": "null"
+          },
+          "direct_evidence": {
+            "properties": {
+              "acceptance_results": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "status": {
+                          "const": "pass"
+                        }
+                      },
+                      "required": [
+                        "status"
+                      ]
+                    },
+                    "minContains": 1
+                  },
+                  {
+                    "contains": {
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "fail",
+                            "indeterminate"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status"
+                      ]
+                    },
+                    "minContains": 0,
+                    "maxContains": 0
+                  }
+                ]
+              },
+              "validator_results": {
+                "contains": {
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "fail",
+                        "skipped",
+                        "indeterminate"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "minContains": 0,
+                "maxContains": 0
+              },
+              "checkpoint": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pass",
+                      "not_required"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "replan_required"
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "replanning": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "required",
+                  "pending",
+                  "completed"
+                ]
+              }
+            }
+          },
+          "coordinator_action": {
+            "properties": {
+              "kind": {
+                "const": "await_replan"
+              },
+              "next_task_id": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "human_gate_required"
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "direct_evidence": {
+            "properties": {
+              "approvals": {
+                "contains": {
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "missing",
+                        "rejected",
+                        "expired",
+                        "stale",
+                        "unknown"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "minContains": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "validation_failed"
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "direct_evidence": {
+            "anyOf": [
+              {
+                "properties": {
+                  "validator_results": {
+                    "contains": {
+                      "properties": {
+                        "status": {
+                          "const": "fail"
+                        }
+                      },
+                      "required": [
+                        "status"
+                      ]
+                    },
+                    "minContains": 1
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "checkpoint": {
+                    "properties": {
+                      "status": {
+                        "const": "fail"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "invocation_unknown"
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "outcome": {
+                "const": "unknown"
+              }
+            }
+          },
+          "recovery": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "required",
+                  "pending"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "plan_complete"
+          }
+        },
+        "required": [
+          "disposition"
+        ]
+      },
+      "then": {
+        "properties": {
+          "direct_evidence": {
+            "properties": {
+              "plan_completion": {
+                "$ref": "#/$defs/planCompletionEvidence"
+              }
+            }
+          },
+          "coordinator_action": {
+            "properties": {
+              "kind": {
+                "const": "terminalize_plan"
+              },
+              "next_task_id": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "closedExtensions": {
+      "type": "object",
+      "maxProperties": 0,
+      "additionalProperties": false
+    },
+    "nullableId": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableSha256": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableRelativePath": {
+      "oneOf": [
+        {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "planIdentity": {
+      "type": "object",
+      "required": [
+        "plan_id",
+        "plan_sha256",
+        "phase_id"
+      ],
+      "properties": {
+        "plan_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "plan_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "phase_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskIdentity": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "task_sha256"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "task_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "relayIdentity": {
+      "type": "object",
+      "required": [
+        "generation",
+        "predecessor_thread_id",
+        "worker_thread_id",
+        "envelope_sha256",
+        "idempotency_key",
+        "handoff_token_sha256"
+      ],
+      "properties": {
+        "generation": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "predecessor_thread_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "worker_thread_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "envelope_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "idempotency_key": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "handoff_token_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repositoryEvidence": {
+      "type": "object",
+      "required": [
+        "starting_revision",
+        "ending_revision",
+        "fingerprint_before",
+        "fingerprint_after"
+      ],
+      "properties": {
+        "starting_revision": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "ending_revision": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "fingerprint_before": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        },
+        "fingerprint_after": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "executionEvidence": {
+      "type": "object",
+      "required": [
+        "outcome",
+        "worker_discussions",
+        "continue_invocations",
+        "agentjobs",
+        "agent_job_id",
+        "provider_create_calls",
+        "successor_creates",
+        "same_task_successors",
+        "zero_job_reason"
+      ],
+      "properties": {
+        "outcome": {
+          "enum": [
+            "zero_job",
+            "one_job",
+            "unknown"
+          ]
+        },
+        "worker_discussions": {
+          "const": 1
+        },
+        "continue_invocations": {
+          "enum": [
+            0,
+            1,
+            "unknown"
+          ]
+        },
+        "agentjobs": {
+          "enum": [
+            0,
+            1,
+            "unknown"
+          ]
+        },
+        "agent_job_id": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "provider_create_calls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "successor_creates": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "same_task_successors": {
+          "const": 0
+        },
+        "zero_job_reason": {
+          "oneOf": [
+            {
+              "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "acceptanceResult": {
+      "type": "object",
+      "required": [
+        "criterion",
+        "status",
+        "evidence_refs"
+      ],
+      "properties": {
+        "criterion": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "indeterminate"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "status": {
+            "const": "pass"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence_refs": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    "checkpointEvidence": {
+      "type": "object",
+      "required": [
+        "provider",
+        "status",
+        "revision",
+        "evidence_ref"
+      ],
+      "properties": {
+        "provider": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_required",
+            "unknown"
+          ]
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ref": {
+          "$ref": "#/$defs/nullableRelativePath"
+        }
+      },
+      "additionalProperties": false
+    },
+    "approvalEvidence": {
+      "type": "object",
+      "required": [
+        "approval_id",
+        "action",
+        "status",
+        "evidence_ref"
+      ],
+      "properties": {
+        "approval_id": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "action": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": [
+            "approved",
+            "not_required",
+            "missing",
+            "rejected",
+            "expired",
+            "stale",
+            "unknown"
+          ]
+        },
+        "evidence_ref": {
+          "$ref": "#/$defs/nullableRelativePath"
+        }
+      },
+      "additionalProperties": false
+    },
+    "protectedEffect": {
+      "type": "object",
+      "required": [
+        "effect",
+        "status",
+        "approval_id",
+        "evidence_ref"
+      ],
+      "properties": {
+        "effect": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": [
+            "not_attempted",
+            "authorized",
+            "completed",
+            "blocked",
+            "unknown"
+          ]
+        },
+        "approval_id": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "evidence_ref": {
+          "$ref": "#/$defs/nullableRelativePath"
+        }
+      },
+      "additionalProperties": false
+    },
+    "receiptHashLink": {
+      "type": "object",
+      "required": [
+        "receipt_id",
+        "receipt_sha256"
+      ],
+      "properties": {
+        "receipt_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "receipt_sha256": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "planCompletionEvidence": {
+      "type": "object",
+      "required": [
+        "task_receipts",
+        "phase_gate_receipts",
+        "final_validator_refs",
+        "completion_contract_status"
+      ],
+      "properties": {
+        "task_receipts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/receiptHashLink"
+          },
+          "uniqueItems": true
+        },
+        "phase_gate_receipts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/receiptHashLink"
+          },
+          "uniqueItems": true
+        },
+        "final_validator_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"
+          },
+          "uniqueItems": true
+        },
+        "completion_contract_status": {
+          "const": "pass"
+        }
+      },
+      "additionalProperties": false
+    },
+    "directEvidence": {
+      "type": "object",
+      "required": [
+        "changed_paths",
+        "acceptance_results",
+        "validator_results",
+        "checkpoint",
+        "approvals",
+        "protected_effects",
+        "warnings",
+        "indeterminate_checks",
+        "plan_completion"
+      ],
+      "properties": {
+        "changed_paths": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/pathList"
+        },
+        "acceptance_results": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/acceptanceResult"
+          },
+          "uniqueItems": true
+        },
+        "validator_results": {
+          "type": "array",
+          "items": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/validationResult"
+          },
+          "uniqueItems": true
+        },
+        "checkpoint": {
+          "$ref": "#/$defs/checkpointEvidence"
+        },
+        "approvals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/approvalEvidence"
+          },
+          "uniqueItems": true
+        },
+        "protected_effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/protectedEffect"
+          },
+          "uniqueItems": true
+        },
+        "warnings": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/stringList"
+        },
+        "indeterminate_checks": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/stringList"
+        },
+        "plan_completion": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/planCompletionEvidence"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "disposition": {
+      "enum": [
+        "blocked",
+        "replan_required",
+        "human_gate_required",
+        "validation_failed",
+        "invocation_unknown",
+        "cancelled",
+        "task_complete",
+        "plan_complete"
+      ]
+    },
+    "followupState": {
+      "type": "object",
+      "required": [
+        "status",
+        "action_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not_required",
+            "required",
+            "pending",
+            "completed",
+            "cancelled"
+          ]
+        },
+        "action_ref": {
+          "$ref": "#/$defs/nullableRelativePath"
+        }
+      },
+      "additionalProperties": false
+    },
+    "coordinatorAction": {
+      "type": "object",
+      "required": [
+        "kind",
+        "next_task_id"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "dispatch_next_task",
+            "protected_stop",
+            "await_recovery",
+            "await_replan",
+            "terminalize_plan",
+            "none"
+          ]
+        },
+        "next_task_id": {
+          "$ref": "#/$defs/nullableId"
+        }
+      },
+      "additionalProperties": false
+    },
+    "journalLink": {
+      "type": "object",
+      "required": [
+        "prior_hash",
+        "entry_hash"
+      ],
+      "properties": {
+        "prior_hash": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "entry_hash": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

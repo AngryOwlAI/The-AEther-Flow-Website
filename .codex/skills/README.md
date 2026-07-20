@@ -18,6 +18,15 @@ repository.
 - `implementation-control/`: resolve live website-local implementation-control
   records, execute at most one governed implementation packet, validate it, and
   checkpoint it locally without pushing, deploying, or mutating upstream.
+- `implementation-plan-goal/`: user-facing serial plan launcher that binds a
+  canonical v2 plan to exact website implementation packets and releases one
+  adopted worker prompt at a time.
+- `continue/`: relay-callable website continuation front door; it resolves and
+  executes no more than one active website packet.
+- `continue-implementing-plan-task/`: internal-only one-task worker lifecycle
+  for claim, consumption, finalization, and unknown-result quarantine.
+- `agentjob-control/`: internal-only support front door for the pinned SQLite
+  scheduler, provider-intent, receipt, and recovery runtime.
 - `technical-writing-quality-gate/`: draft, revise, or review source-grounded
   technical and public-facing prose with explicit pass, repair, or block
   outcomes plus an optional advisory standard-library warning matcher.

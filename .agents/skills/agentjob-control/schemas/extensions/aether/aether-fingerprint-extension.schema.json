@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/extensions/aether-fingerprint-extension.schema.json",
+  "title": "AEther canonical fingerprint extension data",
+  "type": "object",
+  "required": [
+    "source_revision",
+    "canonical_source_roots",
+    "tree_sha256",
+    "source_hashes",
+    "domain_truth"
+  ],
+  "properties": {
+    "source_revision": {"type": "string", "minLength": 7},
+    "canonical_source_roots": {
+      "type": "array",
+      "items": {"$ref": "../../common.schema.json#/$defs/relativePath"},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "tree_sha256": {"$ref": "../../common.schema.json#/$defs/sha256"},
+    "source_hashes": {
+      "type": "object",
+      "additionalProperties": {"$ref": "../../common.schema.json#/$defs/sha256"}
+    },
+    "domain_truth": {"const": "not_evaluated"},
+    "source_dirty": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

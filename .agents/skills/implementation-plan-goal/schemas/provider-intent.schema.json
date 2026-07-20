@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/provider-intent.schema.json",
+  "title": "Plan Task Provider Intent and Outcome",
+  "type": "object",
+  "required": ["schema_version", "intent_id", "plan_id", "plan_sha256", "task_id", "task_sha256", "generation", "provider_id", "idempotency_key", "handoff_token_sha256", "predecessor_thread_id", "expected_revision", "repository_fingerprint", "created_at", "status", "provider_create_budget", "create_attempts", "returned_thread_id", "provider_response_sha256", "conflicting_thread_ids", "retry_authorized", "recovery", "prior_journal_sha256", "hash_basis", "intent_content_sha256", "finalized", "extensions"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-provider-intent.v1"},
+    "intent_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "task_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "task_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "generation": {"type": "integer", "minimum": 1},
+    "provider_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "idempotency_key": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"},
+    "handoff_token_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "predecessor_thread_id": {"oneOf": [{"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, {"type": "null"}]},
+    "expected_revision": {"type": "integer", "minimum": 0},
+    "repository_fingerprint": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "created_at": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"},
+    "status": {"enum": ["intent", "returned", "failed", "ambiguous", "timeout", "duplicate"]},
+    "provider_create_budget": {"const": 1},
+    "create_attempts": {"type": "integer", "minimum": 0, "maximum": 1},
+    "returned_thread_id": {"oneOf": [{"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, {"type": "null"}]},
+    "provider_response_sha256": {"oneOf": [{"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"}, {"type": "null"}]},
+    "conflicting_thread_ids": {"type": "array", "items": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, "uniqueItems": true},
+    "retry_authorized": {"const": false},
+    "recovery": {"$ref": "#/$defs/recovery"},
+    "prior_journal_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "hash_basis": {"const": "canonical_json_without_intent_content_sha256"},
+    "intent_content_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "finalized": {"type": "boolean"},
+    "extensions": {"type": "object", "maxProperties": 0}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "intent"}}}, "then": {"properties": {"create_attempts": {"const": 0}, "returned_thread_id": {"type": "null"}, "provider_response_sha256": {"type": "null"}, "finalized": {"const": false}}}},
+    {"if": {"properties": {"status": {"const": "returned"}}}, "then": {"properties": {"create_attempts": {"const": 1}, "returned_thread_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, "provider_response_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"}, "conflicting_thread_ids": {"maxItems": 0}, "finalized": {"const": true}, "recovery": {"properties": {"status": {"const": "not_required"}}}}}},
+    {"if": {"properties": {"status": {"enum": ["ambiguous", "timeout"]}}}, "then": {"properties": {"create_attempts": {"const": 1}, "finalized": {"const": true}, "recovery": {"properties": {"status": {"enum": ["required", "pending"]}}}}}},
+    {"if": {"properties": {"status": {"const": "duplicate"}}}, "then": {"properties": {"create_attempts": {"const": 1}, "conflicting_thread_ids": {"minItems": 2}, "finalized": {"const": true}, "recovery": {"properties": {"status": {"enum": ["required", "pending"]}}}}}}
+  ],
+  "$defs": {
+    "recovery": {
+      "type": "object",
+      "required": ["status", "reason", "evidence_refs"],
+      "properties": {
+        "status": {"enum": ["not_required", "required", "pending", "completed"]},
+        "reason": {"oneOf": [{"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "evidence_refs": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/pathList"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

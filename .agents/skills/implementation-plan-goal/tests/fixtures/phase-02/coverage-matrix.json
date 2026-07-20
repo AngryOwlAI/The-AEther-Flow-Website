@@ -1,0 +1,1342 @@
+{
+  "schema_version": "sys4ai.phase02-fixture-coverage.v1",
+  "corpus_root": "tests/fixtures/phase-02",
+  "generated_by": "scripts/build_phase02_fixture_corpus.py",
+  "coverage": {
+    "schema_versions": [
+      "sys4ai.implementation-plan.v1",
+      "sys4ai.implementation-plan.v2",
+      "sys4ai.implementation-plan-state.v1",
+      "sys4ai.plan-task-envelope.v1",
+      "sys4ai.plan-task-envelope.v2",
+      "sys4ai.plan-task-receipt.v1",
+      "sys4ai.plan-task-receipt.v2",
+      "sys4ai.plan-activation-receipt.v1",
+      "sys4ai.plan-execution-profile.v1",
+      "sys4ai.plan-normalization-report.v1",
+      "sys4ai.plan-amendment.v1",
+      "sys4ai.plan-task-supersession.v1",
+      "sys4ai.plan-provider-intent.v1",
+      "sys4ai.plan-provider-intent.v2",
+      "sys4ai.plan-selection-proof.v1"
+    ],
+    "source_classes": [
+      "structured_plan",
+      "partial_plan",
+      "task_list",
+      "phase_outline",
+      "requirements",
+      "prose",
+      "mixed_source"
+    ],
+    "plan_phases": [
+      "initialized",
+      "task_reserved",
+      "task_active",
+      "task_verifying",
+      "continuation_required",
+      "completion_candidate",
+      "recovery_pending",
+      "terminal_complete",
+      "terminal_blocked_no_runnable",
+      "terminal_awaiting_human",
+      "terminal_validation_failed",
+      "terminal_capability_blocked",
+      "terminal_corrupt_state",
+      "terminal_cancelled"
+    ],
+    "task_statuses": [
+      "pending",
+      "reserved",
+      "active",
+      "verifying",
+      "completed",
+      "blocked",
+      "superseded",
+      "replan_required",
+      "human_gate_required",
+      "validation_failed",
+      "invocation_unknown",
+      "cancelled"
+    ],
+    "receipt_dispositions": [
+      "blocked",
+      "replan_required",
+      "human_gate_required",
+      "validation_failed",
+      "invocation_unknown",
+      "cancelled",
+      "task_complete",
+      "plan_complete"
+    ],
+    "receipt_execution_outcomes": [
+      "zero_job",
+      "one_job",
+      "unknown"
+    ],
+    "provider_outcomes": [
+      "intent",
+      "returned",
+      "failed",
+      "ambiguous",
+      "timeout",
+      "duplicate"
+    ],
+    "supersession_terminal_statuses": [
+      "replan_required",
+      "blocked",
+      "validation_failed",
+      "human_gate_required"
+    ],
+    "supersession_reason_codes": [
+      "plan_task.task_requires_replan",
+      "plan_task.scope_violation",
+      "plan.validation_failed",
+      "plan.human_gate_required"
+    ],
+    "amendment_effects": [
+      "add",
+      "replace",
+      "remove",
+      "narrow"
+    ],
+    "normalization_statuses": [
+      "candidate",
+      "blocked",
+      "human_gate_required"
+    ],
+    "selection_outcomes": [
+      "selected",
+      "no_ready_task",
+      "blocked_no_runnable",
+      "completion_candidate",
+      "invalid"
+    ]
+  },
+  "source_cases": [
+    {
+      "case_id": "source-structured-plan",
+      "source_class": "structured_plan",
+      "paths": [
+        "sources/structured-plan.json"
+      ]
+    },
+    {
+      "case_id": "source-partial-plan",
+      "source_class": "partial_plan",
+      "paths": [
+        "sources/partial-plan.json"
+      ]
+    },
+    {
+      "case_id": "source-task-list",
+      "source_class": "task_list",
+      "paths": [
+        "sources/task-list.json"
+      ]
+    },
+    {
+      "case_id": "source-phase-outline",
+      "source_class": "phase_outline",
+      "paths": [
+        "sources/phase-outline.json"
+      ]
+    },
+    {
+      "case_id": "source-requirements",
+      "source_class": "requirements",
+      "paths": [
+        "sources/requirements.json"
+      ]
+    },
+    {
+      "case_id": "source-prose",
+      "source_class": "prose",
+      "paths": [
+        "sources/prose.txt"
+      ]
+    },
+    {
+      "case_id": "source-mixed",
+      "source_class": "mixed_source",
+      "paths": [
+        "sources/mixed-task-list.json",
+        "sources/mixed-requirements.json"
+      ]
+    }
+  ],
+  "positive_record_cases": [
+    {
+      "case_id": "plan-v1",
+      "path": "records/positive/implementation-plan-v1.json",
+      "record_profile": "implementation_plan",
+      "dimensions": {
+        "schema_version": "sys4ai.implementation-plan.v1"
+      }
+    },
+    {
+      "case_id": "plan-v2",
+      "path": "records/positive/implementation-plan-v2.json",
+      "record_profile": "implementation_plan",
+      "dimensions": {
+        "schema_version": "sys4ai.implementation-plan.v2"
+      }
+    },
+    {
+      "case_id": "state-phase-initialized",
+      "path": "records/positive/state-phase-initialized.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "initialized"
+      }
+    },
+    {
+      "case_id": "state-phase-task_reserved",
+      "path": "records/positive/state-phase-task_reserved.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "task_reserved"
+      }
+    },
+    {
+      "case_id": "state-phase-task_active",
+      "path": "records/positive/state-phase-task_active.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "task_active"
+      }
+    },
+    {
+      "case_id": "state-phase-task_verifying",
+      "path": "records/positive/state-phase-task_verifying.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "task_verifying"
+      }
+    },
+    {
+      "case_id": "state-phase-continuation_required",
+      "path": "records/positive/state-phase-continuation_required.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "continuation_required"
+      }
+    },
+    {
+      "case_id": "state-phase-completion_candidate",
+      "path": "records/positive/state-phase-completion_candidate.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "completion_candidate"
+      }
+    },
+    {
+      "case_id": "state-phase-recovery_pending",
+      "path": "records/positive/state-phase-recovery_pending.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "recovery_pending"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_complete",
+      "path": "records/positive/state-phase-terminal_complete.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_complete"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_blocked_no_runnable",
+      "path": "records/positive/state-phase-terminal_blocked_no_runnable.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_blocked_no_runnable"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_awaiting_human",
+      "path": "records/positive/state-phase-terminal_awaiting_human.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_awaiting_human"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_validation_failed",
+      "path": "records/positive/state-phase-terminal_validation_failed.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_validation_failed"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_capability_blocked",
+      "path": "records/positive/state-phase-terminal_capability_blocked.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_capability_blocked"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_corrupt_state",
+      "path": "records/positive/state-phase-terminal_corrupt_state.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_corrupt_state"
+      }
+    },
+    {
+      "case_id": "state-phase-terminal_cancelled",
+      "path": "records/positive/state-phase-terminal_cancelled.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "plan_phase": "terminal_cancelled"
+      }
+    },
+    {
+      "case_id": "state-task-status-superseded",
+      "path": "records/positive/state-task-status-superseded.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "task_status": "superseded"
+      }
+    },
+    {
+      "case_id": "state-task-status-replan_required",
+      "path": "records/positive/state-task-status-replan_required.json",
+      "record_profile": "implementation_plan_state",
+      "dimensions": {
+        "task_status": "replan_required"
+      }
+    },
+    {
+      "case_id": "plan-task-envelope",
+      "path": "records/positive/plan-task-envelope.json",
+      "record_profile": "plan_task_envelope",
+      "dimensions": {
+        "schema_version": "sys4ai.plan-task-envelope.v1"
+      }
+    },
+    {
+      "case_id": "plan-activation-receipt",
+      "path": "records/positive/plan-activation-receipt.json",
+      "record_profile": "plan_activation_receipt",
+      "dimensions": {
+        "schema_version": "sys4ai.plan-activation-receipt.v1"
+      }
+    },
+    {
+      "case_id": "plan-execution-profile",
+      "path": "records/positive/plan-execution-profile.json",
+      "record_profile": "plan_execution_profile",
+      "dimensions": {
+        "schema_version": "sys4ai.plan-execution-profile.v1"
+      }
+    },
+    {
+      "case_id": "plan-task-envelope-v2",
+      "path": "records/positive/plan-task-envelope-v2.json",
+      "record_profile": "plan_task_envelope",
+      "dimensions": {
+        "schema_version": "sys4ai.plan-task-envelope.v2"
+      }
+    },
+    {
+      "case_id": "plan-task-receipt-v2",
+      "path": "records/positive/plan-task-receipt-v2.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "schema_version": "sys4ai.plan-task-receipt.v2"
+      }
+    },
+    {
+      "case_id": "provider-v2-returned",
+      "path": "records/positive/provider-v2-returned.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "schema_version": "sys4ai.plan-provider-intent.v2"
+      }
+    },
+    {
+      "case_id": "receipt-zero-job",
+      "path": "records/positive/receipt-zero-job.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "task_complete",
+        "receipt_execution_outcome": "zero_job"
+      }
+    },
+    {
+      "case_id": "receipt-one-job",
+      "path": "records/positive/receipt-one-job.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "task_complete",
+        "receipt_execution_outcome": "one_job"
+      }
+    },
+    {
+      "case_id": "receipt-blocked",
+      "path": "records/positive/receipt-blocked.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "blocked",
+        "receipt_execution_outcome": "zero_job"
+      }
+    },
+    {
+      "case_id": "receipt-replan",
+      "path": "records/positive/receipt-replan.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "replan_required",
+        "receipt_execution_outcome": "zero_job"
+      }
+    },
+    {
+      "case_id": "receipt-human-gated",
+      "path": "records/positive/receipt-human-gated.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "human_gate_required",
+        "receipt_execution_outcome": "zero_job"
+      }
+    },
+    {
+      "case_id": "receipt-validation-failed",
+      "path": "records/positive/receipt-validation-failed.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "validation_failed",
+        "receipt_execution_outcome": "zero_job"
+      }
+    },
+    {
+      "case_id": "receipt-unknown",
+      "path": "records/positive/receipt-unknown.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "invocation_unknown",
+        "receipt_execution_outcome": "unknown"
+      }
+    },
+    {
+      "case_id": "receipt-cancelled",
+      "path": "records/positive/receipt-cancelled.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "cancelled",
+        "receipt_execution_outcome": "zero_job"
+      }
+    },
+    {
+      "case_id": "receipt-task-complete",
+      "path": "records/positive/receipt-task-complete.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "task_complete",
+        "receipt_execution_outcome": "one_job"
+      }
+    },
+    {
+      "case_id": "receipt-plan-complete",
+      "path": "records/positive/receipt-plan-complete.json",
+      "record_profile": "plan_task_receipt",
+      "dimensions": {
+        "receipt_disposition": "plan_complete",
+        "receipt_execution_outcome": "one_job"
+      }
+    },
+    {
+      "case_id": "normalization-candidate",
+      "path": "records/positive/normalization-candidate.json",
+      "record_profile": "normalization_report",
+      "dimensions": {
+        "normalization_status": "candidate"
+      }
+    },
+    {
+      "case_id": "normalization-blocked",
+      "path": "records/positive/normalization-blocked.json",
+      "record_profile": "normalization_report",
+      "dimensions": {
+        "normalization_status": "blocked"
+      }
+    },
+    {
+      "case_id": "normalization-human_gate_required",
+      "path": "records/positive/normalization-human_gate_required.json",
+      "record_profile": "normalization_report",
+      "dimensions": {
+        "normalization_status": "human_gate_required"
+      }
+    },
+    {
+      "case_id": "amendment-add",
+      "path": "records/positive/amendment-add.json",
+      "record_profile": "plan_amendment",
+      "dimensions": {
+        "amendment_effect": "add"
+      }
+    },
+    {
+      "case_id": "amendment-replace",
+      "path": "records/positive/amendment-replace.json",
+      "record_profile": "plan_amendment",
+      "dimensions": {
+        "amendment_effect": "replace"
+      }
+    },
+    {
+      "case_id": "amendment-remove",
+      "path": "records/positive/amendment-remove.json",
+      "record_profile": "plan_amendment",
+      "dimensions": {
+        "amendment_effect": "remove"
+      }
+    },
+    {
+      "case_id": "amendment-narrow",
+      "path": "records/positive/amendment-narrow.json",
+      "record_profile": "plan_amendment",
+      "dimensions": {
+        "amendment_effect": "narrow"
+      }
+    },
+    {
+      "case_id": "supersession-replan_required",
+      "path": "records/positive/supersession-replan_required.json",
+      "record_profile": "task_supersession",
+      "dimensions": {
+        "supersession_reason_code": "plan_task.task_requires_replan",
+        "supersession_terminal_status": "replan_required"
+      }
+    },
+    {
+      "case_id": "supersession-blocked",
+      "path": "records/positive/supersession-blocked.json",
+      "record_profile": "task_supersession",
+      "dimensions": {
+        "supersession_reason_code": "plan_task.scope_violation",
+        "supersession_terminal_status": "blocked"
+      }
+    },
+    {
+      "case_id": "supersession-validation_failed",
+      "path": "records/positive/supersession-validation_failed.json",
+      "record_profile": "task_supersession",
+      "dimensions": {
+        "supersession_reason_code": "plan.validation_failed",
+        "supersession_terminal_status": "validation_failed"
+      }
+    },
+    {
+      "case_id": "supersession-human_gate_required",
+      "path": "records/positive/supersession-human_gate_required.json",
+      "record_profile": "task_supersession",
+      "dimensions": {
+        "supersession_reason_code": "plan.human_gate_required",
+        "supersession_terminal_status": "human_gate_required"
+      }
+    },
+    {
+      "case_id": "provider-intent",
+      "path": "records/positive/provider-intent.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "provider_outcome": "intent"
+      }
+    },
+    {
+      "case_id": "provider-returned",
+      "path": "records/positive/provider-returned.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "provider_outcome": "returned"
+      }
+    },
+    {
+      "case_id": "provider-failed",
+      "path": "records/positive/provider-failed.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "provider_outcome": "failed"
+      }
+    },
+    {
+      "case_id": "provider-ambiguous",
+      "path": "records/positive/provider-ambiguous.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "provider_outcome": "ambiguous"
+      }
+    },
+    {
+      "case_id": "provider-timeout",
+      "path": "records/positive/provider-timeout.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "provider_outcome": "timeout"
+      }
+    },
+    {
+      "case_id": "provider-duplicate",
+      "path": "records/positive/provider-duplicate.json",
+      "record_profile": "provider_intent",
+      "dimensions": {
+        "provider_outcome": "duplicate"
+      }
+    },
+    {
+      "case_id": "selection-selected",
+      "path": "records/positive/selection-selected.json",
+      "record_profile": "selection_proof",
+      "dimensions": {
+        "selection_outcome": "selected"
+      }
+    },
+    {
+      "case_id": "selection-no_ready_task",
+      "path": "records/positive/selection-no_ready_task.json",
+      "record_profile": "selection_proof",
+      "dimensions": {
+        "selection_outcome": "no_ready_task"
+      }
+    },
+    {
+      "case_id": "selection-blocked_no_runnable",
+      "path": "records/positive/selection-blocked_no_runnable.json",
+      "record_profile": "selection_proof",
+      "dimensions": {
+        "selection_outcome": "blocked_no_runnable"
+      }
+    },
+    {
+      "case_id": "selection-completion_candidate",
+      "path": "records/positive/selection-completion_candidate.json",
+      "record_profile": "selection_proof",
+      "dimensions": {
+        "selection_outcome": "completion_candidate"
+      }
+    },
+    {
+      "case_id": "selection-invalid",
+      "path": "records/positive/selection-invalid.json",
+      "record_profile": "selection_proof",
+      "dimensions": {
+        "selection_outcome": "invalid"
+      }
+    }
+  ],
+  "schema_negative_cases": [
+    {
+      "case_id": "plan-unknown-field",
+      "path": "records/negative/schema/plan-unknown-field.json",
+      "base_path": "records/positive/implementation-plan-v2.json",
+      "fault_path": "$.unexpected",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "state-second-active-task",
+      "path": "records/negative/schema/state-second-active-task.json",
+      "base_path": "records/positive/state-phase-task_active.json",
+      "fault_path": "$.tasks[2].status",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "envelope-second-agentjob",
+      "path": "records/negative/schema/envelope-second-agentjob.json",
+      "base_path": "records/positive/plan-task-envelope.json",
+      "fault_path": "$.max_agentjobs",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "receipt-same-task-successor",
+      "path": "records/negative/schema/receipt-same-task-successor.json",
+      "base_path": "records/positive/receipt-task-complete.json",
+      "fault_path": "$.execution.same_task_successors",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "receipt-stale-content-hash",
+      "path": "records/negative/schema/receipt-stale-content-hash.json",
+      "base_path": "records/positive/receipt-task-complete.json",
+      "fault_path": "$.reason_code",
+      "expected_reason_codes": [
+        "record.content_hash_mismatch"
+      ]
+    },
+    {
+      "case_id": "receipt-unsafe-path",
+      "path": "records/negative/schema/receipt-unsafe-path.json",
+      "base_path": "records/positive/receipt-task-complete.json",
+      "fault_path": "$.direct_evidence.changed_paths[0]",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "normalization-generated-flag",
+      "path": "records/negative/schema/normalization-generated-flag.json",
+      "base_path": "records/positive/normalization-candidate.json",
+      "fault_path": "$.traceability[0].generated",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "amendment-protected-effect",
+      "path": "records/negative/schema/amendment-protected-effect.json",
+      "base_path": "records/positive/amendment-add.json",
+      "fault_path": "$.operations[0].protected_effects_added",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "supersession-original-redispatch",
+      "path": "records/negative/schema/supersession-original-redispatch.json",
+      "base_path": "records/positive/supersession-replan_required.json",
+      "fault_path": "$.original_redispatch_forbidden",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "provider-retry-authorized",
+      "path": "records/negative/schema/provider-retry-authorized.json",
+      "base_path": "records/positive/provider-ambiguous.json",
+      "fault_path": "$.retry_authorized",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "selection-not-revision-bound",
+      "path": "records/negative/schema/selection-not-revision-bound.json",
+      "base_path": "records/positive/selection-selected.json",
+      "fault_path": "$.revision_bound",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "activation-current-thread-unverified",
+      "path": "records/negative/schema/activation-current-thread-unverified.json",
+      "base_path": "records/positive/plan-activation-receipt.json",
+      "fault_path": "$.current_thread_verification_status",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "profile-successor-inheritance-missing",
+      "path": "records/negative/schema/profile-successor-inheritance-missing.json",
+      "base_path": "records/positive/plan-execution-profile.json",
+      "fault_path": "$.successor_inheritance_required",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "provider-v2-verified-without-evidence",
+      "path": "records/negative/schema/provider-v2-verified-without-evidence.json",
+      "base_path": "records/positive/provider-v2-returned.json",
+      "fault_path": "$.profile_evidence_ref",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "envelope-v2-branch-authority-default",
+      "path": "records/negative/schema/envelope-v2-branch-authority-default.json",
+      "base_path": "records/positive/plan-task-envelope-v2.json",
+      "fault_path": "$.repository_topology_policy.branch_creation_authorized",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    },
+    {
+      "case_id": "envelope-v2-worktree-authority-default",
+      "path": "records/negative/schema/envelope-v2-worktree-authority-default.json",
+      "base_path": "records/positive/plan-task-envelope-v2.json",
+      "fault_path": "$.repository_topology_policy.worktree_creation_authorized",
+      "expected_reason_codes": [
+        "record.schema_invalid"
+      ]
+    }
+  ],
+  "semantic_contract_set": {
+    "normalization_report": "records/positive/normalization-candidate.json",
+    "plan_amendment": "records/positive/amendment-add.json",
+    "task_supersession": "records/positive/supersession-replan_required.json",
+    "provider_intent": "records/positive/provider-ambiguous.json",
+    "selection_proof": "records/positive/selection-selected.json"
+  },
+  "semantic_negative_cases": [
+    {
+      "case_id": "normalization-accepted-authority-missing",
+      "record_key": "normalization_report",
+      "path": "records/negative/semantic/normalization-accepted-authority-missing.json",
+      "base_path": "records/positive/normalization-candidate.json",
+      "fault_path": "$.sources[0].authority",
+      "expected_reason_codes": [
+        "normalization.accepted_authority_missing"
+      ]
+    },
+    {
+      "case_id": "amendment-no-effect",
+      "record_key": "plan_amendment",
+      "path": "records/negative/semantic/amendment-no-effect.json",
+      "base_path": "records/positive/amendment-add.json",
+      "fault_path": "$.new_effective_plan_sha256",
+      "expected_reason_codes": [
+        "amendment.no_effect"
+      ]
+    },
+    {
+      "case_id": "supersession-original-task-reused",
+      "record_key": "task_supersession",
+      "path": "records/negative/semantic/supersession-original-task-reused.json",
+      "base_path": "records/positive/supersession-replan_required.json",
+      "fault_path": "$.replacement_tasks[0].task_id",
+      "expected_reason_codes": [
+        "supersession.original_task_reused"
+      ]
+    },
+    {
+      "case_id": "supersession-replacement-cycle",
+      "record_key": "task_supersession",
+      "path": "records/negative/semantic/supersession-replacement-cycle.json",
+      "base_path": "records/positive/supersession-replan_required.json",
+      "fault_path": "$.replacement_tasks[0].depends_on",
+      "expected_reason_codes": [
+        "supersession.replacement_cycle"
+      ]
+    },
+    {
+      "case_id": "provider-predecessor-reused",
+      "record_key": "provider_intent",
+      "path": "records/negative/semantic/provider-predecessor-reused.json",
+      "base_path": "records/positive/provider-ambiguous.json",
+      "fault_path": "$.returned_thread_id",
+      "expected_reason_codes": [
+        "provider.predecessor_reused"
+      ]
+    },
+    {
+      "case_id": "selection-not-first-ready",
+      "record_key": "selection_proof",
+      "path": "records/negative/semantic/selection-not-first-ready.json",
+      "base_path": "records/positive/selection-selected.json",
+      "fault_path": "$.selected_task.task_id",
+      "expected_reason_codes": [
+        "selection.not_first_ready_task"
+      ]
+    },
+    {
+      "case_id": "contract-plan-identity-mismatch",
+      "record_key": "provider_intent",
+      "path": "records/negative/semantic/contract-plan-identity-mismatch.json",
+      "base_path": "records/positive/provider-ambiguous.json",
+      "fault_path": "$.plan_id",
+      "expected_reason_codes": [
+        "contracts.plan_id_mismatch"
+      ]
+    }
+  ],
+  "profile_semantic_contract_set": {
+    "activation_receipt": "records/positive/plan-activation-receipt.json",
+    "execution_profile": "records/positive/plan-execution-profile.json",
+    "task_envelope": "records/positive/plan-task-envelope-v2.json",
+    "provider_intent": "records/positive/provider-v2-returned.json",
+    "task_receipt": "records/positive/plan-task-receipt-v2.json",
+    "activation_transition": "records/positive/activation-transition.json"
+  },
+  "profile_semantic_negative_cases": [
+    {
+      "case_id": "profile-plan-hash-mismatch",
+      "record_key": "execution_profile",
+      "path": "records/negative/semantic-profile/profile-plan-hash-mismatch.json",
+      "base_path": "records/positive/plan-execution-profile.json",
+      "fault_path": "$.accepted_plan_sha256",
+      "expected_reason_codes": [
+        "profile.plan_hash_mismatch"
+      ]
+    },
+    {
+      "case_id": "profile-goal-hash-mismatch",
+      "record_key": "execution_profile",
+      "path": "records/negative/semantic-profile/profile-goal-hash-mismatch.json",
+      "base_path": "records/positive/plan-execution-profile.json",
+      "fault_path": "$.accepted_goal_sha256",
+      "expected_reason_codes": [
+        "profile.goal_hash_mismatch"
+      ]
+    },
+    {
+      "case_id": "envelope-stale-activation-receipt",
+      "record_key": "task_envelope",
+      "path": "records/negative/semantic-profile/envelope-stale-activation-receipt.json",
+      "base_path": "records/positive/plan-task-envelope-v2.json",
+      "fault_path": "$.activation_receipt_sha256",
+      "expected_reason_codes": [
+        "envelope.activation_receipt_stale"
+      ]
+    },
+    {
+      "case_id": "provider-requested-effective-mismatch",
+      "record_key": "provider_intent",
+      "path": "records/negative/semantic-profile/provider-requested-effective-mismatch.json",
+      "base_path": "records/positive/provider-v2-returned.json",
+      "fault_path": "$.effective_reasoning_effort",
+      "expected_reason_codes": [
+        "provider.effective_effort_mismatch"
+      ]
+    },
+    {
+      "case_id": "envelope-profile-mismatch",
+      "record_key": "task_envelope",
+      "path": "records/negative/semantic-profile/envelope-profile-mismatch.json",
+      "base_path": "records/positive/plan-task-envelope-v2.json",
+      "fault_path": "$.execution_profile.reasoning_effort",
+      "expected_reason_codes": [
+        "envelope.profile_mismatch"
+      ]
+    },
+    {
+      "case_id": "receipt-profile-mismatch",
+      "record_key": "task_receipt",
+      "path": "records/negative/semantic-profile/receipt-profile-mismatch.json",
+      "base_path": "records/positive/plan-task-receipt-v2.json",
+      "fault_path": "$.activation_profile_evidence.execution_profile_sha256",
+      "expected_reason_codes": [
+        "receipt.execution_profile_mismatch"
+      ]
+    },
+    {
+      "case_id": "activation-user-override-reset",
+      "record_key": "activation_transition",
+      "path": "records/negative/semantic-profile/activation-user-override-reset.json",
+      "base_path": "records/positive/activation-transition.json",
+      "fault_path": "$.next_reasoning_effort",
+      "expected_reason_codes": [
+        "activation.user_override_not_sticky"
+      ]
+    },
+    {
+      "case_id": "activation-stale-combined-acceptance",
+      "record_key": "activation_transition",
+      "path": "records/negative/semantic-profile/activation-stale-combined-acceptance.json",
+      "base_path": "records/positive/activation-transition.json",
+      "fault_path": "$.accepted_presentation_sequence",
+      "expected_reason_codes": [
+        "activation.stale_combined_acceptance"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "records/negative/schema/activation-current-thread-unverified.json",
+      "sha256": "62785f06ca81a1bd8999b1875d9db338d55324ef966dd3f85e5602e159e7d5d6"
+    },
+    {
+      "path": "records/negative/schema/amendment-protected-effect.json",
+      "sha256": "0054a84dfd656e6dd6132afc0bc2f7d22738c7c782c82241f1309b58903a2eb7"
+    },
+    {
+      "path": "records/negative/schema/envelope-second-agentjob.json",
+      "sha256": "bc32d17e3709f0ab6f2ac361d0693a217fbd13f736b7db989d1cde1194435fa8"
+    },
+    {
+      "path": "records/negative/schema/envelope-v2-branch-authority-default.json",
+      "sha256": "d82247a49b5902f78efa30b10e647cf573f901305a5eff39e6b2d2286cc8d148"
+    },
+    {
+      "path": "records/negative/schema/envelope-v2-worktree-authority-default.json",
+      "sha256": "b372beb871f76bf2de4bb807683ac7a09abc422c0a21f59c0e08306c4f294884"
+    },
+    {
+      "path": "records/negative/schema/normalization-generated-flag.json",
+      "sha256": "8255937e6bfb8252b7e77b0899103da1f7891b53b93f55e152ce0b396e4b8373"
+    },
+    {
+      "path": "records/negative/schema/plan-unknown-field.json",
+      "sha256": "92cb85d2ec1ce5a90164fa654f53413e2a683e721629d991478e3561cbc123bc"
+    },
+    {
+      "path": "records/negative/schema/profile-successor-inheritance-missing.json",
+      "sha256": "db7444cd9b3bdfc90f1b92c3fa223d8f78ca4d78bd56f972f0103269b2371fb2"
+    },
+    {
+      "path": "records/negative/schema/provider-retry-authorized.json",
+      "sha256": "e70918bc95d882447b0c5630967642baad5ee5ae3ae2d3ea3df2c8d1d82b2228"
+    },
+    {
+      "path": "records/negative/schema/provider-v2-verified-without-evidence.json",
+      "sha256": "fe4508bc869ab61cad91b94f6c1cb92d9b6ef9710842af17466e4a5bbf217567"
+    },
+    {
+      "path": "records/negative/schema/receipt-same-task-successor.json",
+      "sha256": "ca022cac936cf71d333b890eb3c9d0fb0b92f046d2fe00885f0dfe3551f700be"
+    },
+    {
+      "path": "records/negative/schema/receipt-stale-content-hash.json",
+      "sha256": "dededb643f228571378feca6fbda0b4da4854315c785d7d6525757c2af756532"
+    },
+    {
+      "path": "records/negative/schema/receipt-unsafe-path.json",
+      "sha256": "04f27311163ab712ceefc7cba194b6714ce152b200979177a0b194b3c8aaf977"
+    },
+    {
+      "path": "records/negative/schema/selection-not-revision-bound.json",
+      "sha256": "f4944a1ecabf2d4c88ca6469adf6030fb293e63f800076c6ad291b6a6a3ff664"
+    },
+    {
+      "path": "records/negative/schema/state-second-active-task.json",
+      "sha256": "8e0ea942ed7c100a05543992789d6b5956b1182d55bc6e495db710b3b22f9ce6"
+    },
+    {
+      "path": "records/negative/schema/supersession-original-redispatch.json",
+      "sha256": "116bff5e68558f0759139b983d2a54831df9f37747ed119a0b5cfd83c85080f4"
+    },
+    {
+      "path": "records/negative/semantic-profile/activation-stale-combined-acceptance.json",
+      "sha256": "713541347af09dca51ff1a1a2578eed347263c3de548450c8f04220fbb6704cf"
+    },
+    {
+      "path": "records/negative/semantic-profile/activation-user-override-reset.json",
+      "sha256": "6b4d9b19ab1995ce39de3ec0e3e60a7b778263cf3ee96f6fd49aceadd69e8088"
+    },
+    {
+      "path": "records/negative/semantic-profile/envelope-profile-mismatch.json",
+      "sha256": "4485d2e7c4904f698381d9baaf0c805623659b9bc84215a218f50d281a844f83"
+    },
+    {
+      "path": "records/negative/semantic-profile/envelope-stale-activation-receipt.json",
+      "sha256": "df0cb583337459248700abb99d4efc51896b8e58f85c834ed3c200abe70b8f51"
+    },
+    {
+      "path": "records/negative/semantic-profile/profile-goal-hash-mismatch.json",
+      "sha256": "20dc91153872d17442cd6e6a57bc80651dce2acd525be53758423c2438eea276"
+    },
+    {
+      "path": "records/negative/semantic-profile/profile-plan-hash-mismatch.json",
+      "sha256": "8a3f2dc8016dec0241c46bdad44f64407f50eaa3efb2e19433d281d74d1d29d8"
+    },
+    {
+      "path": "records/negative/semantic-profile/provider-requested-effective-mismatch.json",
+      "sha256": "141b9b57c140b028f4b97834c98d889f885443c5f3e9d28bb4129ccb27341090"
+    },
+    {
+      "path": "records/negative/semantic-profile/receipt-profile-mismatch.json",
+      "sha256": "29cfa0106d166475be5d352c0f6e1d7a5fc5fc566535d434daec4091cf744559"
+    },
+    {
+      "path": "records/negative/semantic/amendment-no-effect.json",
+      "sha256": "19e5f1709d2bd09450253d34755743370d827d9f27cc4aeaf544507b820b6c52"
+    },
+    {
+      "path": "records/negative/semantic/contract-plan-identity-mismatch.json",
+      "sha256": "2db782cd7ad60fccdd927ad1f5f4caeafd464de29a75b195bc68aead14854b18"
+    },
+    {
+      "path": "records/negative/semantic/normalization-accepted-authority-missing.json",
+      "sha256": "81b16ba1e0960d9e2d0435541c48e76ec1c2c265aed623ec1cb6be5751f0d3d4"
+    },
+    {
+      "path": "records/negative/semantic/provider-predecessor-reused.json",
+      "sha256": "8e1f629f69abf3f9dd9c7944ae8a77e9dc5a491c08dbf370fc7e1f8f1d3d9b87"
+    },
+    {
+      "path": "records/negative/semantic/selection-not-first-ready.json",
+      "sha256": "fac9b647d1329686996847d87a25b2bde4965db97c47b51317218d533723806d"
+    },
+    {
+      "path": "records/negative/semantic/supersession-original-task-reused.json",
+      "sha256": "49430bdf29fe3e01777acc59fcdf4d7e8c5d329df98148debcd748017d7d9c9a"
+    },
+    {
+      "path": "records/negative/semantic/supersession-replacement-cycle.json",
+      "sha256": "260ebf5e5b40f8e180fa955013178a7e821ed0ac5fedfcea6f032122972d1fa1"
+    },
+    {
+      "path": "records/positive/activation-transition.json",
+      "sha256": "e497e185725efd9a69174fa5ab7870d9fc4d010f96906d54ae95088865b86c4a"
+    },
+    {
+      "path": "records/positive/amendment-add.json",
+      "sha256": "411c767c789f0ed0c30fbc48fdede64e296aba4d49e8192c6600b030a5a24bb3"
+    },
+    {
+      "path": "records/positive/amendment-narrow.json",
+      "sha256": "dc8ab7ba9ce67da6ed0d04739657bcd3d661f2aa4beb8ddb331da832279c8435"
+    },
+    {
+      "path": "records/positive/amendment-remove.json",
+      "sha256": "e16dcd9ac1a7defaf35dfa1b0483a5f2573ea7b09e380fe260a005d43f6229f6"
+    },
+    {
+      "path": "records/positive/amendment-replace.json",
+      "sha256": "9017854ae9c6f28bd8fc70058fcef7f7ca5e7153080f934633ccbec1f70dd377"
+    },
+    {
+      "path": "records/positive/implementation-plan-v1.json",
+      "sha256": "3ce0463fe1d9e9da9782b2185424f6599d9cb71027fa82413f5be8a538ad9ad6"
+    },
+    {
+      "path": "records/positive/implementation-plan-v2.json",
+      "sha256": "523684f7d5334d72664ffa7dad26c6784213c2d32bbf1c476d60d1a3da86e48d"
+    },
+    {
+      "path": "records/positive/normalization-blocked.json",
+      "sha256": "257c85686c661e1718023bc00457473ade7dc5ab6a51fb2db4c55fe6d8952454"
+    },
+    {
+      "path": "records/positive/normalization-candidate.json",
+      "sha256": "4bfb1e47ec3bc7af9e5f3fceed55e9ec1feee4e6b9262f1c66de32a9bc50687e"
+    },
+    {
+      "path": "records/positive/normalization-human_gate_required.json",
+      "sha256": "fc3af9f90a041775d7572ac1b3be8c17487081c59a3908abd56fba1210ade9c4"
+    },
+    {
+      "path": "records/positive/plan-activation-receipt.json",
+      "sha256": "69dcbf0295f0ee07e061e6bde8d50caafb0abb9e635943b26cf3a2a1203fc209"
+    },
+    {
+      "path": "records/positive/plan-execution-profile.json",
+      "sha256": "9db2ee5557fc3c4cc8ad8272b6fb51a1d323dfde3de3a9e9667a07176a2665c7"
+    },
+    {
+      "path": "records/positive/plan-task-envelope-v2.json",
+      "sha256": "c1e84abc48fc41ad366030f51ca68d8fcadf7ff0f9f44172dbc194c62692e73c"
+    },
+    {
+      "path": "records/positive/plan-task-envelope.json",
+      "sha256": "4c70be514f161da3b9f5c138d6ab61c6eabfcf603e9233f641d7e9818ec8da85"
+    },
+    {
+      "path": "records/positive/plan-task-receipt-v2.json",
+      "sha256": "43c8bc3c73642eaefdca4ec9eab2ac9d37c0ed513e04e5143d34e2fdb54c68f9"
+    },
+    {
+      "path": "records/positive/provider-ambiguous.json",
+      "sha256": "6e428787e2fb33afaa9ed84a6ec86274e3165e21ff52abad4570daafc917bfd4"
+    },
+    {
+      "path": "records/positive/provider-duplicate.json",
+      "sha256": "0dc375d0bbfd892406849674524d1372448d14ecfedd1e23f7a932dfd7116dc5"
+    },
+    {
+      "path": "records/positive/provider-failed.json",
+      "sha256": "782f45f95e69740865ec172b7db4aac5f5323a7c6cf3ccb8d800834f375475c8"
+    },
+    {
+      "path": "records/positive/provider-intent.json",
+      "sha256": "3fd546e30af0ccd7aa05a154afe7721e068331284bf6b16dc11eb68b14d93c11"
+    },
+    {
+      "path": "records/positive/provider-returned.json",
+      "sha256": "ae8ba9d9817368692aaf0cd6a5a2f6f8edb30d17d49f8254105627d4cc04808a"
+    },
+    {
+      "path": "records/positive/provider-timeout.json",
+      "sha256": "502405d9419cc1f5da3de3f9419f5c2e8997af7d66fc1b3a261b4c0acca21279"
+    },
+    {
+      "path": "records/positive/provider-v2-returned.json",
+      "sha256": "df58edc309672c218652bd43130ff5d06db2a7f958b15186be0eb2fda2cbbfe9"
+    },
+    {
+      "path": "records/positive/receipt-blocked.json",
+      "sha256": "5e187504d062c8e5150804c2a3155acaefdf1786fb48750686f699fb919f8b83"
+    },
+    {
+      "path": "records/positive/receipt-cancelled.json",
+      "sha256": "f75d7e66ea44a61a1dba7273137b56aa8a9e99e64d769322c1bab28d7088699c"
+    },
+    {
+      "path": "records/positive/receipt-human-gated.json",
+      "sha256": "b3dc2f58a7a7ee9d6b0505ed82b47cfa4d16d266377fc3b6c8dca51112fb24f6"
+    },
+    {
+      "path": "records/positive/receipt-one-job.json",
+      "sha256": "6a76857aeedc1032c7f8803de9001a3ce64285d116dba7cbeac9846af1febd94"
+    },
+    {
+      "path": "records/positive/receipt-plan-complete.json",
+      "sha256": "ccdfd7355e6a5621f10cf14a5b07334a6a617f1b9c3d71aa5d40258e742febf2"
+    },
+    {
+      "path": "records/positive/receipt-replan.json",
+      "sha256": "0e8bc01b160f85393b0a165546b053f8454cb3429166dd42e6a608f6dd6b8fa7"
+    },
+    {
+      "path": "records/positive/receipt-task-complete.json",
+      "sha256": "4853ac8104f75e85ee142c27c627de4cee8be5fc56d80b26d41ca693a3f1feb5"
+    },
+    {
+      "path": "records/positive/receipt-unknown.json",
+      "sha256": "8547e98b4c06ae90a282499f0c04f90bd28d00ccf6d48b67947d3f9bff691527"
+    },
+    {
+      "path": "records/positive/receipt-validation-failed.json",
+      "sha256": "20218215425ff9c981d0bd8ac23a25bb32d10e1c340338e5d5463f37088896f2"
+    },
+    {
+      "path": "records/positive/receipt-zero-job.json",
+      "sha256": "6ce7e27d52ff218b66ea73d4f962eb1f779c82c4112967badd933929387970cb"
+    },
+    {
+      "path": "records/positive/selection-blocked_no_runnable.json",
+      "sha256": "026ae2e7d5bff045c3c411908daa1d90a24c8572eabacdb5990fd65284d9c8ea"
+    },
+    {
+      "path": "records/positive/selection-completion_candidate.json",
+      "sha256": "438ebff97846c80e5948df4ff616a89809fbaea34ad0af211f8dff0a5f15117f"
+    },
+    {
+      "path": "records/positive/selection-invalid.json",
+      "sha256": "ccedd4096250eeb8b7edbb6997e8bc7745c73f77cef12acaf9b16d253dae7b56"
+    },
+    {
+      "path": "records/positive/selection-no_ready_task.json",
+      "sha256": "c2eaff7a8ccda4a51c3315dea93314677054e4389f9db2e5d8d8e5fc862c4ff9"
+    },
+    {
+      "path": "records/positive/selection-selected.json",
+      "sha256": "700d82fc02153d037749b75542237672589b2bc1531e7f5355307ad392b94707"
+    },
+    {
+      "path": "records/positive/state-phase-completion_candidate.json",
+      "sha256": "af74135c2a675b1552b4061501cd6a4d63ad9e7b179ec35af9acd6461299be32"
+    },
+    {
+      "path": "records/positive/state-phase-continuation_required.json",
+      "sha256": "d8ba62d763dcf76d25b801fe9f6d50cfada0ffdc70b8cb4d786b6575392cbd02"
+    },
+    {
+      "path": "records/positive/state-phase-initialized.json",
+      "sha256": "5dd9744ea59976028b3ba5efda59ff052fd857a05240ac1816b4af14b673fae3"
+    },
+    {
+      "path": "records/positive/state-phase-recovery_pending.json",
+      "sha256": "4d8167fbe41a1ab8352bb44f15a535e4c01d960f6bf4b196799f66f915058abc"
+    },
+    {
+      "path": "records/positive/state-phase-task_active.json",
+      "sha256": "751a21f12b0e1012865bfd0f4b5d1f7cef959cd674497cb2025860853ba3b5b5"
+    },
+    {
+      "path": "records/positive/state-phase-task_reserved.json",
+      "sha256": "577fc70db0f00d4e451bac88d40cf86edfae38334ec3755538437f97170667d0"
+    },
+    {
+      "path": "records/positive/state-phase-task_verifying.json",
+      "sha256": "7ce285eeef42fca6ab9f1e5b020205de2bcf8e7218b310e2541e115071ee176c"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_awaiting_human.json",
+      "sha256": "9ddecbfcb8ed66f47a8775c02dcfe1dbb73da2c284ff5021823852eef5c05cd3"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_blocked_no_runnable.json",
+      "sha256": "bf026b73cb9bfd08022861fe5104314a991406832e98ddf992d3e6e3b1d07b0c"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_cancelled.json",
+      "sha256": "1b2417fd1c5e2fd4b9a8fafd4c1bc77f5353e25802889df7483e6e78829e9e2e"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_capability_blocked.json",
+      "sha256": "6c38d0a8aa05c785f567565ef2f8c89c7e5f21b812a0b2865b2de78069d9d893"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_complete.json",
+      "sha256": "a33586096230cd554385e1c7d4e2eaa4c7228841b6e890c639d2363998764840"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_corrupt_state.json",
+      "sha256": "d1b40ade5b02434e05ed9fb4950236de94005d121ef262455a8b1dff4e9c2640"
+    },
+    {
+      "path": "records/positive/state-phase-terminal_validation_failed.json",
+      "sha256": "5712ab9cff7efe247fa8d23ace00c608ba40942a585fba2cddb1ef66ed02bf78"
+    },
+    {
+      "path": "records/positive/state-task-status-replan_required.json",
+      "sha256": "62450ef3fc6985ca49726d44215182c3270acd1b3f62131b4fe22c3ff9492946"
+    },
+    {
+      "path": "records/positive/state-task-status-superseded.json",
+      "sha256": "5f349027adddcf7d2094378f3260253db8d7c3f6ef829a0a9c9a5376611941fe"
+    },
+    {
+      "path": "records/positive/supersession-blocked.json",
+      "sha256": "33836f080acf16a87c70c6114511b85d6ae61f6f6bccb602d1ac709325f29016"
+    },
+    {
+      "path": "records/positive/supersession-human_gate_required.json",
+      "sha256": "85c5595d24737cae8ab3710a9954bdb87e6927f4346d16ad0031618ffc6bc30f"
+    },
+    {
+      "path": "records/positive/supersession-replan_required.json",
+      "sha256": "1f75bfc06d159bd25b5bbd7bd4267f3d80f0bd96a64214b2f3407c3198613330"
+    },
+    {
+      "path": "records/positive/supersession-validation_failed.json",
+      "sha256": "f5681fb076f017cfccd8f3b9e7235d055df550c95685e6626e8e25aaf6f37b06"
+    },
+    {
+      "path": "sources/mixed-requirements.json",
+      "sha256": "c5fdf7e4d5c5e10e93600282ea4041b668563c6df19d4396156958395c460a59"
+    },
+    {
+      "path": "sources/mixed-task-list.json",
+      "sha256": "f9dbf7d75e6a5e6a743a7b6b5f5a2e58681ab1c220530adc3c3069e2ad2ae9fc"
+    },
+    {
+      "path": "sources/partial-plan.json",
+      "sha256": "98e6068ee2cf78f66736c8dd6a92a979f79a60c45d55dd3dc52501520bd61878"
+    },
+    {
+      "path": "sources/phase-outline.json",
+      "sha256": "b95fb4b92da968e87f67031a89c1a5bff7fc562811629429ab1b1f0c8b0759ab"
+    },
+    {
+      "path": "sources/prose.txt",
+      "sha256": "98163cd4f643b5dc5294cff61972a3a68fced2dc4cf7ad02a1338beba447d1a4"
+    },
+    {
+      "path": "sources/requirements.json",
+      "sha256": "6d2cc57fd6db4f3da675b25d596e3eae044ab4375bbceb9836c986bedce8c660"
+    },
+    {
+      "path": "sources/structured-plan.json",
+      "sha256": "523684f7d5334d72664ffa7dad26c6784213c2d32bbf1c476d60d1a3da86e48d"
+    },
+    {
+      "path": "sources/task-list.json",
+      "sha256": "f9dbf7d75e6a5e6a743a7b6b5f5a2e58681ab1c220530adc3c3069e2ad2ae9fc"
+    }
+  ],
+  "corpus_sha256": "e205bf00a59e9bda2affe9be239cb784efd2433a29971629cbf30e98ae61004d",
+  "summary": {
+    "generated_files": 96,
+    "source_cases": 7,
+    "positive_record_cases": 56,
+    "schema_negative_cases": 16,
+    "semantic_negative_cases": 7,
+    "profile_semantic_negative_cases": 8
+  }
+}

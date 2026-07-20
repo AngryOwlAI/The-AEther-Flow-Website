@@ -1,0 +1,247 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260719-001-A"
+task_id: "WI-20260719-001"
+job_id: "WJ-20260719-001-A"
+created_utc: "2026-07-20T05:33:46Z"
+completed_utc: "2026-07-20T05:33:46Z"
+status: "completed"
+
+summary: "Imported the exact locked implementation plan goal bundle and integrated its serial relay with website implementation control as the sole execution authority."
+
+changed_files:
+  - ".agents/implementation-plan-goal"
+  - ".agents/skill_registry"
+  - ".agents/skills/agentjob-control"
+  - ".agents/skills/continue"
+  - ".agents/skills/continue-implementing-plan-task"
+  - ".agents/skills/implementation-plan-goal"
+  - ".codex/skills/README.md"
+  - ".codex/skills/THIRD_PARTY_NOTICES.md"
+  - ".codex/skills/agentjob-control"
+  - ".codex/skills/continue"
+  - ".codex/skills/continue-implementing-plan-task"
+  - ".codex/skills/implementation-plan-goal"
+  - "implementation_control/handoffs/WH-20260719-001.md"
+  - "implementation_control/handoffs/WH-20260719-001.yaml"
+  - "implementation_control/plan_bindings"
+  - "implementation_control/program_state.yaml"
+  - "implementation_control/schemas"
+  - "implementation_control/tasks/WI-20260719-001"
+  - "package.json"
+  - "scripts/implementation_control/continue_implementation.py"
+  - "scripts/implementation_control/continue_plan_goal.py"
+  - "scripts/implementation_control/plan_goal_adapter.py"
+  - "scripts/implementation_control/validate_plan_goal.py"
+  - "tests/test_continue_implementation.py"
+  - "tests/test_plan_goal_adapter.py"
+  - "tests/test_plan_goal_facade.py"
+  - "tests/test_plan_goal_installation.py"
+
+requirements_satisfied:
+  - "Any program state status in the no action set resolves to no_action even when historical pointers name superseded records."
+  - "The import used committed Git archive bytes from the exact pinned skills source commit."
+  - "The exact lock and all four package hashes were verified before and after installation."
+  - "The installer ran dry run then apply without bootstrap Python package installation plugin output or mutable installed state."
+  - "Website implementation control remains the sole execution authority and no .agents/control tree exists."
+  - "Mutable plan state is confined to ignored .local/sys4ai/implementation-plan-goal."
+  - "Canonical v2 plans require complete versioned hash bound website packet bindings before acceptance."
+  - "Every state changing facade command requires expected plan revision and expected website control SHA-256."
+  - "The relay lifecycle was verified with fake providers only and created no real Codex task or plan goal."
+  - "The completed packet is inactive with no executable job and remains uncommitted and undeployed."
+
+installation_evidence:
+  source_repository: "/Volumes/P-SSD/AngryOwl/skills-Sys4AI"
+  source_commit: "5309fabc665b8c6665a24b9edb42b4ceda82227d"
+  source_access_mode: "git archive"
+  source_worktree_used_as_install_input: false
+  source_lock_path: ".agents/skill_registry/locks/implementation-plan-goal.lock.yaml"
+  source_lock_sha256: "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9"
+  installer_receipt: ".agents/skill_registry/INSTALL_RECEIPTS/bundle-implementation-plan-goal-d379c6badd2e43d39ee6a8a457b75b1d.json"
+  installer_dry_run_before_apply: "passed with exactly four install actions and no conflicts"
+  installer_apply_status: "passed"
+  installer_dry_run_after_apply: "passed with all four packages unchanged"
+  bootstrap_requested: false
+  python_package_installation_requested: false
+  plugin_distribution_enabled: false
+  package_count: 4
+  packages:
+    agentjob-control:
+      version: "0.3.0"
+      source_sha256: "4fa0e93dc884e2c95ab3e0e01b3398c50aacacc91297574aabb456e1cc093c2d"
+    continue:
+      version: "0.3.0"
+      source_sha256: "8ea81082ca76f77accaf4af2e839741b928817b6ff64761412fba71f0481294d"
+    continue-implementing-plan-task:
+      version: "0.1.0"
+      source_sha256: "947c9d5b828746316d96874e253b772376978712e749ace48ef074fdbbcc7859"
+    implementation-plan-goal:
+      version: "0.1.0"
+      source_sha256: "5c9320e736ae6314aaa794b57e488eb18488e73bc08031c6805493aa9a36ab76"
+  maturity: "experimental and evolving"
+  installed_cache_or_bytecode_count: 0
+  tracked_mutable_runtime_count: 0
+
+integration_evidence:
+  implementation_authority: "implementation_control remains the sole website execution authority"
+  adapter_conformance_mode: "emulated"
+  adapter_conformance_status: "conformant with no blocking gaps"
+  competing_agents_control_created: false
+  imported_generic_executor_invoked: false
+  project_local_front_doors:
+    - "implementation-plan-goal"
+    - "continue"
+    - "continue-implementing-plan-task"
+    - "agentjob-control"
+  internal_only_front_doors:
+    - "continue-implementing-plan-task"
+    - "agentjob-control"
+  state_database: ".local/sys4ai/implementation-plan-goal/state.sqlite3"
+  state_root_ignored: true
+  repository_binding: "exact root worktree Git common directory branch and HEAD"
+  topology_change_authority: "separate one shot user authority required"
+  control_compare_and_swap: "canonical SHA-256 over program task job handoff authority projections and stable Git identity"
+  plan_store_revision: "native numeric revision retained"
+  plan_binding_contract: "versioned non executable complete task and authority hash mapping"
+  acceptance_invalidation: "plan binding goal profile topology or authority hash change"
+  maximum_website_jobs_per_worker: 1
+  worker_successor_selection: "forbidden"
+
+interface_evidence:
+  adapter_configuration: ".agents/implementation-plan-goal/adapter-config.json"
+  import_provenance: ".agents/implementation-plan-goal/import-provenance.json"
+  conformance_report: ".agents/implementation-plan-goal/adapter-conformance.json"
+  plan_binding_schema: "implementation_control/schemas/plan-binding-v1.schema.json"
+  activation_receipt_schema: "implementation_control/schemas/control-activation-receipt-v1.schema.json"
+  adoption_receipt_schema: "implementation_control/schemas/codex-task-adoption-receipt-v1.schema.json"
+  canonical_json_commands:
+    - "status"
+    - "prepare"
+    - "activate"
+    - "adopt-worker"
+    - "worker-prepare"
+    - "worker-consume"
+    - "worker-finalize"
+    - "worker-unknown"
+    - "reserve-next"
+    - "recover"
+  package_scripts:
+    - "plan-goal"
+    - "plan-goal validation"
+    - "plan-goal tests"
+
+relay_evidence:
+  acceptance_binding: "goal text reasoning effort plan hash binding hash checkout binding control hash and local task creation authority"
+  default_reasoning_effort: "max"
+  worker_adoption_before_prompt: "enforced"
+  claim_cardinality: "once"
+  consumption_cardinality: "once immediately before local continue"
+  completion_evidence: "direct website control and validator evidence"
+  unknown_result_policy: "quarantine without automatic rerun"
+  ambiguous_creation_policy: "recover or manually adopt original task without retry"
+  successor_policy: "coordinator only after finalized prior receipt"
+  partial_failure_policy: "recovery_required without duplicate state"
+  final_receipt: "PlanTaskReceipt v2"
+  live_provider_effects_during_verification: 0
+
+validator_results:
+  - id: "resolver-regression"
+    command: ".venv/bin/python -m pytest -p no:cacheprovider tests/test_continue_implementation.py tests/test_plan_goal_adapter.py tests/test_plan_goal_facade.py tests/test_plan_goal_installation.py"
+    status: "passed"
+    evidence: "25 focused website control and plan integration tests passed."
+  - id: "source-runtime-tests"
+    command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider against the exact full Git archive"
+    status: "passed"
+    evidence: "46 focused source tests passed."
+  - id: "installed-runtime-tests"
+    command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider .agents/skills/implementation-plan-goal/tests"
+    status: "passed"
+    evidence: "53 installed bundle tests passed."
+  - id: "plan-goal-tests"
+    command: "npm run test:plan-goal"
+    status: "passed"
+    evidence: "69 tests passed on Python 3.12.13."
+  - id: "python-tests"
+    command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider"
+    status: "passed"
+    evidence: "180 website tests passed."
+  - id: "implementation-control"
+    command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "Implementation control structural validation passed."
+  - id: "plan-goal-validation"
+    command: "npm run validate:plan-goal"
+    status: "passed"
+    evidence: "Exact install conformance and inactive no effect final state passed."
+  - id: "aggregate-validation"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run validate"
+    status: "passed"
+    evidence: "Every configured validator 69 plan tests and the 64 page static build passed against accepted source commit 57438af555214bc0785dcb390ee6254f580b8a62."
+  - id: "quality-gate"
+    command: "AETHER_FLOW_SOURCE_ROOT accepted source root npm run quality"
+    status: "passed"
+    evidence: "The strict quality gate passed against accepted source commit 57438af555214bc0785dcb390ee6254f580b8a62."
+  - id: "git-diff-check"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No tracked whitespace errors."
+
+focused_coverage:
+  inactive_superseded_pointer_status: "passed"
+  active_pending_resolution_status: "passed"
+  malformed_control_status: "passed"
+  deterministic_installation_status: "passed"
+  canonical_plan_binding_validation_status: "passed"
+  content_hash_cas_conflict_status: "passed"
+  acceptance_invalidation_status: "passed"
+  topology_drift_status: "passed"
+  single_task_materialization_status: "passed"
+  adoption_before_prompt_status: "passed"
+  single_consumption_status: "passed"
+  ambiguous_thread_creation_status: "passed"
+  unknown_result_quarantine_status: "passed"
+  recovery_without_duplication_status: "passed"
+  coordinator_only_successor_reservation_status: "passed"
+  terminal_no_action_status: "passed"
+
+validation_environment:
+  website_head: "7cf3c20a605dc319627615ea27141dbc3cc308e7"
+  website_branch: "main"
+  accepted_upstream_source_commit: "57438af555214bc0785dcb390ee6254f580b8a62"
+  accepted_upstream_source_root: "/tmp/aether-flow-source-57438af.T4bIGp"
+  accepted_upstream_source_tree_clean: true
+  live_upstream_source_head: "044c2ac9d75c9e0886dac82c31b8c21c03cc994b"
+  live_upstream_source_tree_clean: true
+  live_upstream_drift_status: "outside this packet and preserved read only"
+  system_python_version: "3.12"
+  system_python_pytest_status: "unavailable because pytest is not installed in the system interpreter"
+  project_virtual_environment_python_version: "3.12.13"
+  source_refresh_performed: false
+  upstream_write_performed: false
+
+scope_preservation:
+  reader_facing_route_changed: false
+  public_copy_changed: false
+  public_asset_changed: false
+  public_manifest_changed: false
+  website_api_changed: false
+  scientific_claim_changed: false
+  source_refresh_performed: false
+  real_plan_goal_created: false
+  real_codex_task_created: false
+  checkpoint_created: false
+  commit_created: false
+  website_branch_or_worktree_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+
+remaining_boundaries:
+  - "The installed bundle is experimental and evolving; future source lock package binding goal profile topology or authority changes require renewed acceptance."
+  - "The live upstream source has advanced beyond the website accepted source pin, so source refresh remains a separate governed task."
+  - "The system Python 3.12 interpreter lacks pytest; repository tests use the existing Python 3.12 virtual environment."
+
+next_recommended_action:
+  task_packet: "none"
+  summary: "No further implementation action is required."
+  do_not_skip: "Any checkpoint commit branch worktree push deployment real plan goal Codex task public change source refresh or upstream write requires separate authority."

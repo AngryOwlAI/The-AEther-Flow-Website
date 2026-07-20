@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/extensions/repository-topology-authorizations-extension.schema.json",
+  "title": "One-shot repository topology authorizations extension data",
+  "type": "object",
+  "required": ["authorizations"],
+  "properties": {
+    "authorizations": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "../../common.schema.json#/$defs/id"
+      },
+      "additionalProperties": {
+        "$ref": "../../repository-topology-authorization.schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/human-necessity-report.schema.json",
+  "title": "Human Intervention Necessity Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "report_id",
+    "goal_id",
+    "generation",
+    "human_intervention_required",
+    "reason_code",
+    "required_human_authority_or_decision",
+    "automated_strategies_attempted",
+    "remaining_machine_routes",
+    "why_no_machine_route_remains",
+    "smallest_requested_user_action",
+    "resume_contract",
+    "policy_authority_refs",
+    "evidence_refs",
+    "created_at",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.human-necessity-report.v1"},
+    "report_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "generation": {"type": "integer", "minimum": 0},
+    "human_intervention_required": {"const": true},
+    "reason_code": {"$ref": "common.schema.json#/$defs/id"},
+    "required_human_authority_or_decision": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "automated_strategies_attempted": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["strategy_id", "outcome", "evidence_refs"],
+        "properties": {
+          "strategy_id": {"$ref": "common.schema.json#/$defs/id"},
+          "outcome": {"enum": ["failed", "exhausted", "not_applicable"]},
+          "evidence_refs": {"$ref": "common.schema.json#/$defs/stringList"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "remaining_machine_routes": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "why_no_machine_route_remains": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "smallest_requested_user_action": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "resume_contract": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "policy_authority_refs": {"$ref": "common.schema.json#/$defs/stringList"},
+    "evidence_refs": {"$ref": "common.schema.json#/$defs/stringList"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false
+}

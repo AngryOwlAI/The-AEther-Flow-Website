@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/normalization-report.schema.json",
+  "title": "Immutable Implementation Plan Normalization Report",
+  "type": "object",
+  "required": ["schema_version", "report_id", "plan_id", "source_set_sha256", "normalization_contract_sha256", "sources", "candidate_plan_sha256", "status", "findings", "traceability", "task_sizing", "canonicalization_only", "hash_basis", "report_content_sha256", "finalized", "extensions"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-normalization-report.v1"},
+    "report_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "source_set_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "normalization_contract_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}, "minItems": 1},
+    "candidate_plan_sha256": {"oneOf": [{"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"}, {"type": "null"}]},
+    "status": {"enum": ["candidate", "blocked", "human_gate_required"]},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}, "uniqueItems": true},
+    "traceability": {"type": "array", "items": {"$ref": "#/$defs/trace"}, "minItems": 1},
+    "task_sizing": {"type": "array", "items": {"$ref": "#/$defs/sizing"}, "minItems": 1},
+    "canonicalization_only": {"type": "boolean"},
+    "hash_basis": {"const": "canonical_json_without_report_content_sha256"},
+    "report_content_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true},
+    "extensions": {"type": "object", "maxProperties": 0}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "candidate"}}}, "then": {"properties": {"candidate_plan_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"}}}},
+    {"if": {"properties": {"status": {"enum": ["blocked", "human_gate_required"]}}}, "then": {"properties": {"findings": {"minItems": 1}}}},
+    {"if": {"properties": {"canonicalization_only": {"const": true}}}, "then": {"properties": {"traceability": {"not": {"contains": {"properties": {"transformation": {"const": "synthesized"}}, "required": ["transformation"]}}}}}}
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["source_id", "source_sha256", "media_type", "source_class", "authority", "precedence", "immutable_ref", "classification_evidence"],
+      "properties": {
+        "source_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "source_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        "media_type": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"},
+        "source_class": {"enum": ["structured_plan", "partial_plan", "task_list", "phase_outline", "requirements", "prose", "mixed_source"]},
+        "authority": {"enum": ["accepted", "supplemental", "advisory", "historical", "unknown"]},
+        "precedence": {"type": "integer", "minimum": 0},
+        "immutable_ref": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"},
+        "classification_evidence": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/stringList", "minItems": 1}
+      },
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "required": ["code", "severity", "message", "source_ids"],
+      "properties": {
+        "code": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "severity": {"enum": ["warning", "blocking", "human_gate"]},
+        "message": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"},
+        "source_ids": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/stringList"}
+      },
+      "additionalProperties": false
+    },
+    "trace": {
+      "type": "object",
+      "required": ["output_kind", "output_id", "source_anchors", "transformation", "generated"],
+      "properties": {
+        "output_kind": {"enum": ["plan", "phase", "task", "requirement", "dependency", "acceptance", "assumption"]},
+        "output_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "source_anchors": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/stringList", "minItems": 1},
+        "transformation": {"enum": ["preserved", "canonicalized", "synthesized", "overridden", "deferred"]},
+        "generated": {"type": "boolean"}
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {"if": {"properties": {"transformation": {"const": "synthesized"}}}, "then": {"properties": {"generated": {"const": true}}}},
+        {"if": {"properties": {"transformation": {"enum": ["preserved", "canonicalized"]}}}, "then": {"properties": {"generated": {"const": false}}}}
+      ]
+    },
+    "sizing": {
+      "type": "object",
+      "required": ["task_id", "result", "evidence_refs", "replacement_task_ids"],
+      "properties": {
+        "task_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        "result": {"enum": ["ready", "split_required", "blocked", "human_gate_required"]},
+        "evidence_refs": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/pathList", "minItems": 1},
+        "replacement_task_ids": {"type": "array", "items": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"}, "uniqueItems": true}
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {"if": {"properties": {"result": {"const": "split_required"}}}, "then": {"properties": {"replacement_task_ids": {"minItems": 2}}}},
+        {"if": {"properties": {"result": {"enum": ["ready", "blocked", "human_gate_required"]}}}, "then": {"properties": {"replacement_task_ids": {"maxItems": 0}}}}
+      ]
+    }
+  }
+}

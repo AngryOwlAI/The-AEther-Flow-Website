@@ -1,0 +1,7 @@
+interface:
+  display_name: "Continue Website Implementation"
+  short_description: "Execute one website-local implementation packet."
+  default_prompt: "Resolve the current website packet and execute at most one authorized job."
+policy:
+  allow_implicit_invocation: true
+  entrypoint_class: "relay_callable"
