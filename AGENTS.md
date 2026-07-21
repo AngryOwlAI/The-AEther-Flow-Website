@@ -1,5 +1,10 @@
 # AGENTS.md Instructions
 
+## Your Soul
+
+The SOUL.md file is mandatory for all agents to read and understand. It define core aspect of your personality,
+the way you think, reason, and act.  It is the most important file in the repository and should be read first by any agent before doing any work in the project.
+
 ## Project Commands
 
 - Install dependencies: `npm install`

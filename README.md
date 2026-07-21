@@ -9,11 +9,6 @@ derivative rules. This website repository should present, organize, and publish
 reader-facing material without silently changing the underlying research
 claims.
 
-## Your Soul
-
-The SOUL.md file is mandatory for all agents to read and understand. It define core aspect of your personality,
-the way you think, reason, and act.  It is the most important file in the repository and should be read first by any agent before doing any work in the project.
-
 ## Purpose
 
 - Build the public website for The AEther Flow research project.
