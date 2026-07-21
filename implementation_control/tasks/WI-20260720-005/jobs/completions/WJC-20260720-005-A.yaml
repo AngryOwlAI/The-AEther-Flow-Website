@@ -1,0 +1,69 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-005-A"
+task_id: "WI-20260720-005"
+job_id: "WJ-20260720-005-A"
+created_utc: "2026-07-20T21:26:36Z"
+completed_utc: "2026-07-20T21:26:36Z"
+status: "completed"
+summary: "Added fail-closed governance Markdown publication controls and explicit security-preserving response headers."
+changed_files:
+  - "scripts/import_document_collection.py"
+  - "scripts/validate_document_catalog.py"
+  - "public/files/manifests/document_catalog.schema.json"
+  - "public/_headers"
+  - "tests/test_document_catalog.py"
+requirements_satisfied:
+  - "Only explicitly allowlisted approved governance Markdown can enter the public catalog."
+  - "Private paths, credentials, local control records, and unreviewed current-state material fail closed."
+  - "Markdown response headers are explicit and do not weaken existing security policy."
+acceptance_results:
+  - criterion: "Only explicitly allowlisted approved governance Markdown can enter the public catalog."
+    status: "passed"
+    evidence_refs:
+      - "scripts/import_document_collection.py"
+      - "scripts/validate_document_catalog.py"
+      - "public/files/manifests/document_catalog.schema.json"
+      - "tests/test_document_catalog.py"
+  - criterion: "Private paths, credentials, local control records, and unreviewed current-state material fail closed."
+    status: "passed"
+    evidence_refs:
+      - "scripts/import_document_collection.py"
+      - "tests/test_document_catalog.py"
+  - criterion: "Markdown response headers are explicit and do not weaken existing security policy."
+    status: "passed"
+    evidence_refs:
+      - "public/_headers"
+      - "tests/test_document_catalog.py"
+validator_results:
+  - id: "afdoc-005-01"
+    command: "npm run validate:cloudflare"
+    status: "passed"
+    evidence: "Cloudflare Pages config validation passed with an explicit governance Markdown rule that repeats the existing security headers."
+  - id: "afdoc-005-02"
+    command: "manual inspection of governance Markdown allowlist and deny-pattern boundaries"
+    status: "passed"
+    evidence: "Inspection confirmed exact source/site allowlist matching, reviewer and current-state attestation, rejection of unused entries, and seven bounded deny-pattern classes before staging."
+additional_validation:
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_document_catalog.py tests/test_import_document_collection.py tests/test_validate_cloudflare_pages_config.py -q"
+    status: "passed"
+    evidence: "Twenty-four focused and adjacent catalog, importer, and Cloudflare tests passed."
+  - command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Source, asset, and document catalog validation passed against the live public manifests."
+scope_preservation:
+  recursive_markdown_import_added: false
+  unreviewed_source_published: false
+  existing_security_header_weakened: false
+  runtime_dependency_added: false
+  scientific_claim_changed: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-005 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

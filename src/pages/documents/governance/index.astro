@@ -1,0 +1,373 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import OverflowTable from "../../../components/OverflowTable.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
+import StatusDossier from "../../../components/StatusDossier.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { documents } from "../../../lib/documents";
+import { approvedDownloads } from "../../../lib/manifests";
+import pageProvenanceManifest from "../../../../public/files/manifests/page_provenance.json";
+
+type PageProvenanceRecord = {
+  route_path: string;
+  upstream_source_commit?: string;
+  adapted_from_source_date?: string;
+  upstream_authority_status?: string;
+  website_publication_status?: string;
+  upstream_sources?: unknown[];
+};
+
+const governanceIntroduction = [
+  "Governance & Control is the reader-facing front door to the project’s source-authority, research-control, role, registry, publication, validation, and maintenance material. It organizes already published contextual pages by reader purpose; it does not turn the website, a registry row, or a workflow record into new authority.",
+  "Each entry exposes its document type, operational scope, registered status, dated source snapshot, and manifest-backed provenance before sending readers to an internal explanatory route. Repository paths remain secondary provenance rather than the primary information architecture.",
+  "Raw governance Markdown is a separate publication class. A file appears only after explicit review, approval, catalog registration, and import into the public governance allowlist. No such public Markdown record is present in the current catalog, so this page does not expose an unapproved raw file.",
+] as const;
+
+const contextDefinitions = [
+  {
+    group: "Source Authority",
+    title: "Source Authority",
+    href: "/documents/governance/source-authority/",
+    documentType: "Policy",
+    scope: "Trust boundaries among registered sources, registries, generated derivatives, retrieval layers, and website pages.",
+    summary: "Begin here when deciding which material may define a claim or status statement.",
+  },
+  {
+    group: "Research Control",
+    title: "Research-Agent Workflow",
+    href: "/ai-research-system/workflow/",
+    documentType: "Procedure",
+    scope: "Bounded request routing, AgentJob execution, completion evidence, handoffs, and human accountability.",
+    summary: "Follow the operational chain without treating workflow completion as scientific proof.",
+  },
+  {
+    group: "Roles and Schemas",
+    title: "Roles and Schemas",
+    href: "/ai-research-system/roles-and-schemas/",
+    documentType: "Schema",
+    scope: "Role labels, contracts, registry status, execution-role records, and task-local permission boundaries.",
+    summary: "Inspect how role identity narrows into current, job-bound authority.",
+  },
+  {
+    group: "Publication and Provenance",
+    title: "Publication Process",
+    href: "/documents/governance/publication-process/",
+    documentType: "Procedure",
+    scope: "Source specifications, publication briefs, reader surfaces, manifests, validation, and review evidence.",
+    summary: "See how source-bounded material becomes readable without changing source authority.",
+  },
+  {
+    group: "Registries and Status",
+    title: "Registries",
+    href: "/documents/governance/registries/",
+    documentType: "Registry guide",
+    scope: "Source, derivative, workflow, claim-boundary, burden, publication, and relationship records.",
+    summary: "Use registry rows to locate owners and status, then inspect the named evidence.",
+  },
+  {
+    group: "Registries and Status",
+    title: "Current State",
+    href: "/ai-research-system/current-state/",
+    documentType: "Current-state record",
+    scope: "One checked-in website snapshot of implementation-control context and its explicit nonclaims.",
+    summary: "Treat this as dated context that may become stale, never as a live control feed.",
+  },
+  {
+    group: "Registries and Status",
+    title: "Retrieval Layers",
+    href: "/documents/governance/retrieval-layers/",
+    documentType: "Registry guide",
+    scope: "Memory, semantic extracts, mirrors, indexes, caches, and source-first retrieval boundaries.",
+    summary: "Use retrieval to find evidence without allowing the retrieval layer to become authority.",
+  },
+  {
+    group: "Validation and Handoffs",
+    title: "Validators and Handoffs",
+    href: "/ai-research-system/validators-and-handoffs/",
+    documentType: "Procedure",
+    scope: "Deterministic checks, PASS limits, completion records, handoffs, checkpoints, and review evidence.",
+    summary: "Read validation at the exact scope checked; do not infer claim promotion or wider permission.",
+  },
+  {
+    group: "Website Maintenance",
+    title: "Repository Map",
+    href: "/documents/governance/repository-map/",
+    documentType: "Maintainer guide",
+    scope: "Public-safe source areas, website presentation boundaries, and reader-oriented route ownership.",
+    summary: "Use the map after identifying the reader task; repository layout remains secondary.",
+  },
+  {
+    group: "Website Maintenance",
+    title: "Site Builder Guide",
+    href: "/documents/governance/site-builder-guide/",
+    documentType: "Maintainer guide",
+    scope: "Source bundles, page contracts, internal-first journeys, provenance, and validation gates.",
+    summary: "Apply the publication boundary while building or reviewing a website route.",
+  },
+] as const;
+
+const phrase = (value?: string) =>
+  value ? value.replaceAll("_", " ").replaceAll("-", " ") : "unavailable";
+const dateOnly = (value?: string) => value?.slice(0, 10) ?? "unavailable";
+const shortCommit = (value?: string) => value?.slice(0, 12) ?? "unavailable";
+const provenanceByRoute = new Map(
+  (pageProvenanceManifest.pages as PageProvenanceRecord[]).map((page) => [
+    page.route_path,
+    page,
+  ]),
+);
+
+const governanceEntries = contextDefinitions.map((entry) => {
+  const provenance = provenanceByRoute.get(entry.href);
+  if (!provenance) {
+    throw new Error(`Governance context route lacks page provenance: ${entry.href}`);
+  }
+  const sourceCount = provenance.upstream_sources?.length ?? 0;
+  return {
+    ...entry,
+    status: `${phrase(provenance.website_publication_status)} reader route · ${phrase(
+      provenance.upstream_authority_status,
+    )}`,
+    freshness: `Adapted from a ${dateOnly(
+      provenance.adapted_from_source_date,
+    )} source snapshot; verify current owners before reuse.`,
+    provenance: `${sourceCount} cited source reference${
+      sourceCount === 1 ? "" : "s"
+    } at pinned revision ${shortCommit(provenance.upstream_source_commit)}.`,
+  };
+});
+
+const governanceCatalogRecords = documents.filter(
+  (document) => document.category === "governance",
+);
+const approvedGovernanceDocuments = governanceCatalogRecords.filter(
+  (document) => document.status.toLowerCase() === "approved",
+);
+const catalogMarkdownPaths = approvedGovernanceDocuments.flatMap((document) =>
+  document.manifestations
+    .filter((manifestation) => manifestation.kind === "markdown")
+    .map((manifestation) => manifestation.sitePath),
+);
+const reviewedMarkdownPaths = new Set(
+  approvedDownloads
+    .filter(
+      (download) =>
+        download.kind === "markdown" &&
+        download.path.startsWith("/files/markdown/governance/") &&
+        Boolean(download.source?.reviewed_by?.trim()),
+    )
+    .map((download) => download.path),
+);
+const unmatchedMarkdownPaths = catalogMarkdownPaths.filter(
+  (path) => !reviewedMarkdownPaths.has(path),
+);
+
+if (unmatchedMarkdownPaths.length > 0) {
+  throw new Error(
+    `Governance catalog exposes Markdown without an approved reviewed source: ${unmatchedMarkdownPaths.join(
+      ", ",
+    )}`,
+  );
+}
+
+const catalogState = [
+  {
+    label: "Contextual routes",
+    value: governanceEntries.length,
+    body: "Published internal explanations grouped by reader purpose and bounded by their own provenance records.",
+  },
+  {
+    label: "Approved governance records",
+    value: approvedGovernanceDocuments.length,
+    body: "Only approved document-catalog records count; draft, historical, and unregistered material is excluded.",
+  },
+  {
+    label: "Public raw Markdown",
+    value: reviewedMarkdownPaths.size,
+    body: "The current allowlist resolves no reviewed governance Markdown, so no raw file action is rendered.",
+  },
+  {
+    label: "Provenance snapshot",
+    title: dateOnly(pageProvenanceManifest.generated_at),
+    body: "This is the checked manifest generation date, not proof that every underlying operational record is live.",
+  },
+];
+
+const entryCards = governanceEntries.map((entry) => ({
+  label: entry.group,
+  title: entry.title,
+  href: entry.href,
+  actionLabel: "Open contextual page",
+  body: entry.summary,
+  points: [
+    `Type: ${entry.documentType}.`,
+    `Operational scope: ${entry.scope}`,
+    `Status: ${entry.status}.`,
+  ],
+}));
+
+const publicationRules = [
+  {
+    material: "Contextual website page",
+    readerAction: "Open the internal explanation first.",
+    authorityBoundary: "The page organizes evidence but does not replace its registered sources or current records.",
+  },
+  {
+    material: "Approved governance Markdown",
+    readerAction: "Use a rendered internal route first; inspect or download raw Markdown only when explicitly allowlisted.",
+    authorityBoundary: "Approval applies only to the stated governance or operational scope.",
+  },
+  {
+    material: "Current-state record",
+    readerAction: "Check snapshot date, source revision, and supersession state.",
+    authorityBoundary: "A dated snapshot may become stale and is not a live dashboard unless a verified refresh says otherwise.",
+  },
+  {
+    material: "Registry or handoff",
+    readerAction: "Use the record to locate the owning source, decision, completion, or task state.",
+    authorityBoundary: "Traceability and validator PASS do not widen permission or prove a scientific claim.",
+  },
+  {
+    material: "Historical or unregistered material",
+    readerAction: "Treat it as excluded until a public status and provenance record exist.",
+    authorityBoundary: "Repository presence alone does not authorize publication or current-state use.",
+  },
+];
+---
+
+<BaseLayout
+  title="Governance & Control"
+  description="Reader-facing front door to approved and contextual Æther Flow governance, control, registry, publication, validation, and workflow material with status, freshness, scope, and provenance visible."
+  bodyClass="project-overview-page project-track-page documents-category-page documents-governance-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Documents / Governance"
+    title="Governance & Control"
+    lead="Find the right operational explanation first, then inspect its status, freshness, provenance, and source boundary before relying on a record."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Governance and Control actions">
+      <a class="primary-link" href="#governance-context">Browse governance context</a>
+      <a class="secondary-link" href="#publication-boundary">Read publication rules</a>
+      <a class="secondary-link" href="/documents/">Documentation Overview</a>
+      <a class="secondary-link" href="/ai-research-system/">AI Research System</a>
+    </div>
+  </CommandBand>
+
+  <ProjectIntroduction
+    paragraphs={governanceIntroduction}
+    ariaLabel="About Governance and Control"
+  />
+
+  <section class="track-page-band" aria-labelledby="governance-catalog-state-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Public catalog boundary</p>
+      <h2 id="governance-catalog-state-title">Context is available; raw publication remains allowlist-only.</h2>
+      <p>
+        These counts come from the checked document and provenance manifests.
+        They report publication state without promoting repository Markdown or
+        transient control data.
+      </p>
+    </div>
+    <StatusDossier
+      items={catalogState}
+      ariaLabel="Governance catalog and raw Markdown publication state"
+      className="track-status-grid"
+    />
+  </section>
+
+  <section id="governance-context" class="track-page-band" aria-labelledby="governance-context-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Contextual front door</p>
+      <h2 id="governance-context-title">Choose the operational question before the repository artifact.</h2>
+      <p>
+        Every destination is an existing internal page. Its card states the
+        document type, operational scope, and registered publication status;
+        the audit table below makes freshness and provenance explicit.
+      </p>
+    </div>
+    <EvidenceRail
+      items={entryCards}
+      ariaLabel="Governance and Control contextual routes"
+      className="track-evidence-grid"
+    />
+
+    <OverflowTable
+      id="governance-entry-metadata"
+      label="Governance route scope, status, freshness, and provenance"
+    >
+      <table class="greenfield-matrix">
+        <thead>
+          <tr>
+            <th scope="col">Entry</th>
+            <th scope="col">Type and scope</th>
+            <th scope="col">Status</th>
+            <th scope="col">Freshness</th>
+            <th scope="col">Provenance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {governanceEntries.map((entry) => (
+            <tr>
+              <th scope="row"><a href={entry.href}>{entry.title}</a></th>
+              <td><strong>{entry.documentType}</strong><br />{entry.scope}</td>
+              <td>{entry.status}</td>
+              <td>{entry.freshness}</td>
+              <td>{entry.provenance}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </OverflowTable>
+  </section>
+
+  <section id="publication-boundary" class="track-page-band" aria-labelledby="publication-boundary-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Status discipline</p>
+      <h2 id="publication-boundary-title">Visibility does not expand authority.</h2>
+      <p>
+        The material class determines the safe reader action and the limit that
+        must remain attached to it.
+      </p>
+    </div>
+    <OverflowTable
+      id="governance-publication-rules"
+      label="Governance and Control publication rules"
+    >
+      <table class="greenfield-matrix">
+        <thead>
+          <tr>
+            <th scope="col">Material</th>
+            <th scope="col">Reader action</th>
+            <th scope="col">Authority boundary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {publicationRules.map((rule) => (
+            <tr>
+              <th scope="row">{rule.material}</th>
+              <td>{rule.readerAction}</td>
+              <td>{rule.authorityBoundary}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </OverflowTable>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Inspection boundary"
+    title="Use context first and provenance second."
+    lead="The catalog and manifests can establish identity, status, and traceability. The registered source or current governed record still owns the operative statement."
+  >
+    <div class="overview-actions" aria-label="Governance provenance and related routes">
+      <a class="primary-link" href="/documents/governance/source-authority/">Read Source Authority</a>
+      <a class="secondary-link" href="/documents/governance/registries/">Inspect registry guidance</a>
+      <a class="secondary-link" href="/files/manifests/document_catalog.json">Inspect document catalog</a>
+      <a class="secondary-link" href="/files/manifests/page_provenance.json">Inspect page provenance</a>
+    </div>
+  </CommandBand>
+</BaseLayout>

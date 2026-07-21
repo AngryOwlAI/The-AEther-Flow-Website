@@ -1,0 +1,60 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-020-A"
+task_id: "WI-20260720-020"
+job_id: "WJ-20260720-020-A"
+created_utc: "2026-07-21T00:45:39Z"
+completed_utc: "2026-07-21T00:45:39Z"
+status: "completed"
+summary: "Added explicit direct 301 redirects from all 15 retired Resources routes to their accepted canonical Documents destinations and regression coverage for exactness and directness."
+changed_files:
+  - "public/_redirects"
+  - "tests/test_validate_cloudflare_pages_config.py"
+requirements_satisfied:
+  - "Every route in the accepted migration matrix has one semantic 301 destination."
+  - "No blanket Resources wildcard hides an unmapped route or creates duplicate canonical content."
+  - "Redirects are direct and do not depend on a second redirect."
+acceptance_results:
+  - criterion: "Every route in the accepted migration matrix has one semantic 301 destination."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "tests/test_validate_cloudflare_pages_config.py"
+  - criterion: "No blanket Resources wildcard hides an unmapped route or creates duplicate canonical content."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "tests/test_validate_cloudflare_pages_config.py"
+  - criterion: "Redirects are direct and do not depend on a second redirect."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "tests/test_validate_cloudflare_pages_config.py"
+validator_results:
+  - id: "afdoc-020-01"
+    command: "npm run validate:cloudflare"
+    status: "passed"
+    evidence: "Cloudflare Pages config validation passed."
+  - id: "afdoc-020-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+scope_preservation:
+  changed_file_count: 2
+  retired_resources_redirect_count: 15
+  blanket_resources_wildcard_present: false
+  resource_redirects_direct: true
+  destination_routes_present: true
+  focused_redirect_tests_passed: true
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-020 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

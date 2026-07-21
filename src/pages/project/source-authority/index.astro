@@ -2,8 +2,28 @@
 import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { sourceAuthorityComprehension } from "../../../lib/supportComprehensionContent";
+import {
+  sourceAuthorityComprehension as legacySourceAuthorityComprehension,
+} from "../../../lib/supportComprehensionContent";
 import { projectSourceAuthorityRoutes, projectSourceNoticeDefaults } from "../../../lib/siteContent";
+
+const sourceAuthorityComprehension = {
+  ...legacySourceAuthorityComprehension,
+  relatedRoutes: [
+    {
+      label: "Internal route",
+      title: "Home",
+      href: "/",
+      body: "Return to the public two-track entry point.",
+    },
+    {
+      label: "Internal route",
+      title: "Documentation Overview",
+      href: "/documents/",
+      body: "Inspect document categories, diagrams, and provenance context.",
+    },
+  ],
+};
 
 const sourceNotice = projectSourceNoticeDefaults.sourceAuthority;
 
@@ -80,9 +100,9 @@ const pageLinks = [
     body: "Read operational pages for routing, roles, validation, publication, improvement, and tool requirements.",
   },
   {
-    title: "Resources",
-    href: "/resources/",
-    body: "Inspect ontology documents and current website resource indexes.",
+    title: "Documents",
+    href: "/documents/",
+    body: "Inspect research articles, governance guides, diagrams, and their provenance context.",
   },
 ];
 

@@ -1,0 +1,78 @@
+---
+import type { DocumentRecord } from "../../lib/documents";
+import DocumentCard from "./DocumentCard.astro";
+
+type MetadataItem = {
+  label: string;
+  title?: string;
+  value?: string | number | null;
+  body?: string;
+  href?: string;
+};
+
+interface Props {
+  title: string;
+  description?: string;
+  documents: readonly DocumentRecord[];
+  emptyMessage?: string;
+  eyebrow?: string;
+  ordered?: boolean;
+  showCollection?: boolean;
+  showSummary?: boolean;
+  metadataByDocumentId?: Record<string, MetadataItem[]>;
+}
+
+const {
+  title,
+  description,
+  documents,
+  emptyMessage = "No approved documents are currently listed.",
+  eyebrow = "Document collection",
+  ordered = false,
+  showCollection = true,
+  showSummary = true,
+  metadataByDocumentId = {},
+} = Astro.props;
+const headingId = `document-collection-${title
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/(^-|-$)/g, "")}`;
+---
+
+<section class="download-section document-collection" aria-labelledby={headingId}>
+  <div class="section-header">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id={headingId}>{title}</h2>
+    {description && <p class="lead">{description}</p>}
+  </div>
+
+  {documents.length > 0 ? (
+    ordered ? (
+      <ol class="download-list document-action-list document-collection-list">
+        {documents.map((document) => (
+          <li class="document-collection-entry">
+            <DocumentCard
+              {document}
+              {showCollection}
+              {showSummary}
+              metadataItems={metadataByDocumentId[document.id] ?? []}
+            />
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <div class="download-list document-action-list document-collection-list">
+        {documents.map((document) => (
+          <DocumentCard
+            {document}
+            {showCollection}
+            {showSummary}
+            metadataItems={metadataByDocumentId[document.id] ?? []}
+          />
+        ))}
+      </div>
+    )
+  ) : (
+    <p class="document-collection-empty">{emptyMessage}</p>
+  )}
+</section>

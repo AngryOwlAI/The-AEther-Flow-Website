@@ -1,0 +1,106 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260720-008-A"
+task_id: "WI-20260720-008"
+title: "Generalize document actions and add only the small reusable collection, card, action, and metadata components required by the Documents pages."
+created_utc: "2026-07-20T21:58:55Z"
+updated_utc: "2026-07-20T22:09:41Z"
+status: "completed"
+objective: "Generalize document actions and add only the small reusable collection, card, action, and metadata components required by the Documents pages."
+plan_binding:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-008"
+  plan_task_sha256: "b794ceaee8ba61be53424c2578666e9d9a00a7c6a1881aa5aa5c2e09df477cbb"
+  binding_manifest_sha256: "2c4d40d9dcaad931cab8862d604703ac6059407b77b66373e7a63fa05f649954"
+  authority_sha256: "cfd979ea8b8f9e71756aeb8150be1c156cf0a14a83a69caa1a1c8b72273df4f7"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "README.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - "astro.config.mjs"
+  - "package.json"
+  - "implementation_control/**"
+  - "src/**"
+  - "public/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+allowed_writes:
+  - "src/components/DocumentActions.astro"
+  - "src/components/documents/**"
+  - "src/styles/global.css"
+required_outputs:
+  - "Action labels distinguish source inspection from readable derivatives and avoid generic unlabeled downloads."
+  - "Components preserve existing consumers or migrate them within this exact boundary."
+  - "Metadata wraps safely and no broad visual-system redesign or dependency is introduced."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "shared_visual_systems"
+    status: "approved"
+    trigger: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - id: "afdoc-008-01"
+    command: "manual inspection of document component APIs existing consumers action labels focus behavior and metadata wrapping"
+    required: true
+  - id: "afdoc-008-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-008 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

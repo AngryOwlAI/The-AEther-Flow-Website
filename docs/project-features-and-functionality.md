@@ -1,6 +1,6 @@
 # Project Features And Functionality
 
-Date: 2026-06-26
+Date: 2026-07-20
 
 Status: maintainer operating map.
 
@@ -29,14 +29,18 @@ not a source-authority record and does not promote any physics claim.
 | `/project/physics/` | Physics track landing page for ontology, benchmark boundary, GR-derivation roadmap, current state, and claim gates. | Keep GR derivation, benchmark compatibility, and ontology status separate. |
 | `/project/ai-research-agent-system/` | AI research-agent track for workflow, roles, skills, memory, registries, and parent-child synthesis. | Explain workflow evidence without treating it as physics proof. |
 | `/project/operations/` | Operational synthesis for AgentJobs, role routing, validation, publication, project-system improvement, and technical requirements. | Operational success is bounded evidence, not scientific authority. |
-| `/project/source-authority/` | Trust-boundary page for source records, derivatives, generated surfaces, validators, and memory. | Use this route when public copy needs to clarify authority levels. |
-| `/resources/` | Manifest-backed resource index. | Keep resource cards internal-first and status-labeled. |
-| `/resources/documents/` | Ontology document library with direct PDF reading and TeX downloads. | Registered TeX carries source authority; PDFs are generated human-readable derivatives. |
-| `/project/source-authority/publication-and-provenance-system/` | Publication/provenance route replacing the old research-map prototype. | Use this when readers need route-map, page-provenance, source-manifest, asset-manifest, and hash-boundary context. |
-| `/resources/guided-starts/`, `/resources/reviewer-packet/` | Specialist guided starts and human-review-pending reviewer packet. | These assemble existing sourced pages and must not create new claims. |
+| `/documents/` | Canonical Documentation Overview for categories, formats, status, authority roles, provenance, and reading paths. | The five-item Documents menu starts here; `/resources/` is redirect-only compatibility. |
+| `/documents/anthology/` | Approved reader-facing anthology PDFs. | Planned or absent publications must not be presented as published. |
+| `/documents/research/` | Research collection with direct PDF reading and registered TeX downloads. | Registered TeX carries source authority; PDFs are generated human-readable derivatives. |
+| `/documents/governance/` | Front door for approved governance, control, registry, publication, and workflow material. | Public Markdown must remain allowlisted, status-labeled, and separated from internal control records. |
+| `/documents/governance/source-authority/` | Trust-boundary page for source records, derivatives, generated surfaces, validators, and memory. | Use this route when public copy needs to clarify authority levels. |
+| `/documents/governance/publication-process/` | Publication and provenance system for route maps, page provenance, source and asset manifests, and hash boundaries. | Publication records organize evidence but do not create source truth. |
+| `/documents/diagrams/` | Manifest-backed diagram gallery grouped by concept. | Preserve captions, alt text, provenance, and non-authority framing. |
+| `/documents/reading-paths/`, `/documents/reviewer-packet/`, `/documents/derivatives/` | Contextual reading, review, and generated-derivative destinations outside the five-item dropdown. | These assemble or explain existing evidence and must not strengthen its status. |
 
-Primary navigation should remain concise: Home, Physics, AI system,
-Operations, Source authority, and Resources.
+Primary navigation should remain concise: Home, Physics Research, AI Research
+System, and Documents. Internal links use `/documents/.../`; retired
+`/resources/.../` paths exist only as direct semantic redirects.
 
 ## Public Assets And Manifests
 
@@ -52,15 +56,22 @@ Core manifests:
   metadata.
 - `public/files/manifests/asset_manifest.json`: public file paths, hashes,
   source references, and byte sizes.
+- `public/files/manifests/document_catalog.json`: logical document records,
+  categories, formats, source roles, publication status, and asset references.
 
 Canonical ontology assets are committed under:
 
 - `public/files/pdf/ontology/`
 - `public/files/tex/ontology/`
 
-Use `scripts/import_ontology_assets.py` for intentional ontology asset import.
-It should copy approved assets and update manifests; it should not silently
-delete website files.
+Registered TeX carries source authority for this collection; PDFs are generated
+human-readable derivatives. The document catalog and rendered Documents pages
+index those roles and provenance without becoming scientific authority.
+
+Use `scripts/import_ontology_assets.py` for intentional ontology refreshes and
+`scripts/import_document_collection.py` for approved collection imports. These
+tools update bounded catalog or manifest records; they must preserve unrelated
+records and must not silently delete website files.
 
 ## Validation And Quality Gates
 
@@ -74,9 +85,10 @@ npm run quality
 python3 -m pytest
 ```
 
-`npm run validate` currently checks manifests, content sources, internal-first
-links, page provenance, curator state, Cloudflare static files, and the Astro
-build.
+`npm run validate` currently checks manifest paths and the document catalog,
+content sources, public claims, internal-first links, layout and SVG policy,
+page provenance, curator state, Cloudflare static files, implementation-control
+and plan-goal state, focused plan-goal tests, and the Astro build.
 
 After editing a public page, update the relevant page provenance hash before
 expecting `npm run validate:provenance` to pass. If route mappings, public
@@ -120,6 +132,9 @@ docs/deployment/cloudflare-pages.md
 
 Deployment is a separate explicit action. A documentation or implementation
 packet should stop at deployment readiness unless deployment is requested.
+Local validation does not imply staging, commit, push, deployment, or
+production verification; record and authorize each applicable release action
+separately.
 
 ## Repo-Local Codex Skills
 
@@ -152,7 +167,11 @@ validation gates, or explicit deployment approval.
   validation assumptions.
 - Keep reader journeys internal-first; use GitHub/source links as provenance
   unless explicitly approved otherwise.
+- Use canonical `/documents/.../` links. Keep `/resources/.../` references only
+  where redirect compatibility itself is being documented or tested.
 - Preserve claim boundaries when editing public copy.
+- Preserve the registered-TeX/source and PDF/generated-derivative distinction;
+  do not treat catalogs, manifests, pages, or validator passes as claim proof.
 - Update manifests when public routes, public assets, source mappings, or page
   hashes change.
 - Run `npm run validate` for normal release readiness.
@@ -160,7 +179,8 @@ validation gates, or explicit deployment approval.
   assets change.
 - Use preview and `scripts/smoke_test_site.py` before deployment when route
   behavior or public assets change.
-- Do not deploy unless deployment is explicitly requested.
+- Record commit and push status independently, and do not deploy unless
+  deployment is explicitly requested.
 
 ## References
 
@@ -172,4 +192,11 @@ The AEther Flow Website. (2026). `public/files/manifests/page_route_map.json`
 [Repository file].
 
 The AEther Flow Website. (2026). `docs/deployment/cloudflare-pages.md`
+[Repository file].
+
+The AEther Flow Website. (2026).
+`ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json`
+[Accepted implementation plan].
+
+The AEther Flow Website. (2026). `public/files/manifests/document_catalog.json`
 [Repository file].

@@ -1,0 +1,85 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-015-A"
+task_id: "WI-20260720-015"
+job_id: "WJ-20260720-015-A"
+created_utc: "2026-07-20T23:41:09Z"
+completed_utc: "2026-07-20T23:41:09Z"
+status: "completed"
+summary: "Created one canonical Documents reading-path system, preserved the general-public and specialist audience guidance, and repointed shared reading-path metadata away from retired Resources routes."
+changed_files:
+  - "src/pages/documents/reading-paths/index.astro"
+  - "src/pages/documents/reading-paths/general-public/index.astro"
+  - "src/lib/siteContent.ts"
+requirements_satisfied:
+  - "The canonical reading-path index and general-public route exist with no duplicate guided-start identity."
+  - "Reading paths use canonical Documents category routes and preserve audience-specific guidance."
+  - "No retired Resources route is required for the primary journey."
+acceptance_results:
+  - criterion: "The canonical reading-path index and general-public route exist with no duplicate guided-start identity."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/reading-paths/index.astro"
+      - "src/pages/documents/reading-paths/general-public/index.astro"
+      - "src/lib/siteContent.ts"
+      - "dist/documents/reading-paths/index.html"
+      - "dist/documents/reading-paths/general-public/index.html"
+  - criterion: "Reading paths use canonical Documents category routes and preserve audience-specific guidance."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/reading-paths/index.astro"
+      - "src/pages/documents/reading-paths/general-public/index.astro"
+      - "src/lib/siteContent.ts"
+  - criterion: "No retired Resources route is required for the primary journey."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/index.astro"
+      - "src/pages/documents/reading-paths/index.astro"
+      - "src/pages/documents/reading-paths/general-public/index.astro"
+      - "src/lib/siteContent.ts"
+validator_results:
+  - id: "afdoc-015-01"
+    command: "manual inspection of reading path consolidation audience routing canonical links and duplicate removal"
+    status: "passed"
+    evidence: "Source and rendered-route inspection confirmed one reader-facing Reading Paths identity, a distinct nested General-Public Reading Path, five preserved specialist audience sections, canonical Documents links for research, governance, diagrams, and reading paths, no Resources links in the new route content, and only legacy asset/provenance filenames retaining guided-start wording. Existing Resources route files were not modified."
+  - id: "afdoc-015-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics; separate trailing-whitespace inspection found none in the two untracked route files."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 77 static pages, including both canonical Documents reading-path routes."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed."
+  - command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remained current."
+  - command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed for the animated text-free inline route artwork."
+  - command: "npm run validate"
+    status: "not_run"
+    evidence: "The accepted packet requires focused checks for this task and authorizes no aggregate release or deployment action."
+scope_preservation:
+  canonical_reading_path_routes_created: 2
+  specialist_audience_paths_preserved: 5
+  general_public_path_preserved: true
+  retired_resources_links_in_new_route_content: 0
+  visible_guided_start_route_identities_in_new_routes: 0
+  old_routes_modified: false
+  redirects_modified: false
+  manifest_changed: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-015 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

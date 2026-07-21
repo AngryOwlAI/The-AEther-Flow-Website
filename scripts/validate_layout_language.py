@@ -32,26 +32,16 @@ MIGRATED_SURFACES = {
         "forbidden": (),
     },
     "src/components/DocumentActions.astro": {
-        "required": ("StatusDossier",),
+        "required": ("DocumentCollection",),
         "forbidden": (),
     },
     "src/pages/project/physics/current-state/index.astro": {
         "required": ("EvidenceRail", "StatusDossier"),
         "forbidden": (),
     },
-    "src/pages/resources/index.astro": {
-        "required": ("EvidenceRail",),
-        "forbidden": (),
-    },
-    "src/pages/resources/documents.astro": {
-        "required": ("EvidenceRail",),
-        "forbidden": (),
-    },
 }
 
-EXPLICIT_EXCEPTIONS = {
-    "src/pages/resources/diagrams.astro": "diagram inspection remains framed by design",
-}
+EXPLICIT_EXCEPTIONS = {}
 
 RESOURCE_SOURCE_AUTHORITY_FORBIDDEN = {
     "SourceAuthoritySection": "SourceAuthoritySection component",

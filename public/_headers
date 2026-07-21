@@ -14,6 +14,15 @@
   Content-Type: text/x-tex; charset=utf-8
   Cache-Control: public, max-age=86400
 
+/files/markdown/governance/*
+  Content-Type: text/markdown; charset=utf-8
+  Content-Disposition: inline
+  Cache-Control: public, max-age=300
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
 /files/manifests/*
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300

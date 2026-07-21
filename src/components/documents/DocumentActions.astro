@@ -1,0 +1,154 @@
+---
+import type { DocumentManifestation, DocumentRecord } from "../../lib/documents";
+
+interface Props {
+  document: Pick<DocumentRecord, "title" | "manifestations" | "relatedRoutes">;
+}
+
+type DocumentAction = {
+  key: string;
+  href: string;
+  label: string;
+  priority: number;
+  variant: "primary" | "secondary";
+  download?: boolean;
+};
+
+const { document } = Astro.props;
+
+const sourceRoles = new Set<DocumentManifestation["role"]>([
+  "authoritative_source",
+  "registered_source",
+  "governance_source",
+  "operational_record",
+]);
+
+const formatLabel = (kind: DocumentManifestation["kind"]) =>
+  kind === "tex"
+    ? "TeX"
+    : kind === "svg"
+      ? "SVG"
+      : kind === "png"
+        ? "PNG"
+        : kind[0].toUpperCase() + kind.slice(1);
+
+const actionsForManifestation = (
+  manifestation: DocumentManifestation,
+  index: number,
+): DocumentAction[] => {
+  const format = formatLabel(manifestation.kind);
+  const key = `${manifestation.kind}-${index}`;
+
+  if (manifestation.role === "provenance_record") {
+    return [
+      {
+        key: `${key}-provenance`,
+        href: manifestation.sitePath,
+        label: `Inspect provenance (${format})`,
+        priority: 50,
+        variant: "secondary",
+      },
+    ];
+  }
+
+  switch (manifestation.kind) {
+    case "pdf": {
+      const roleLabel =
+        manifestation.role === "readable_derivative" ? " PDF derivative" : " PDF";
+      return [
+        {
+          key: `${key}-read`,
+          href: manifestation.sitePath,
+          label: `Read${roleLabel}`,
+          priority: 10,
+          variant: "primary",
+        },
+        {
+          key: `${key}-download`,
+          href: manifestation.sitePath,
+          label: `Download${roleLabel}`,
+          priority: 20,
+          variant: "secondary",
+          download: true,
+        },
+      ];
+    }
+    case "tex":
+      return [
+        {
+          key: `${key}-download`,
+          href: manifestation.sitePath,
+          label: sourceRoles.has(manifestation.role)
+            ? "Download TeX source"
+            : "Download TeX",
+          priority: 30,
+          variant: "secondary",
+          download: true,
+        },
+      ];
+    case "markdown": {
+      const roleLabel = sourceRoles.has(manifestation.role) ? " source" : " document";
+      return [
+        {
+          key: `${key}-read`,
+          href: manifestation.sitePath,
+          label: `Read Markdown${roleLabel}`,
+          priority: 10,
+          variant: "primary",
+        },
+        {
+          key: `${key}-download`,
+          href: manifestation.sitePath,
+          label: `Download Markdown${roleLabel}`,
+          priority: 20,
+          variant: "secondary",
+          download: true,
+        },
+      ];
+    }
+    case "png":
+    case "svg":
+    case "mermaid":
+      return [
+        {
+          key: `${key}-open`,
+          href: manifestation.sitePath,
+          label: `Open ${format} diagram`,
+          priority: 10,
+          variant: "primary",
+        },
+      ];
+  }
+
+  return [];
+};
+
+const actions = document.manifestations
+  .flatMap(actionsForManifestation)
+  .concat(
+    (document.relatedRoutes ?? []).map((route, index) => ({
+      key: `related-${index}`,
+      href: route,
+      label:
+        index === 0 ? "Open related explanation" : `Open related explanation ${index + 1}`,
+      priority: 60 + index,
+      variant: "secondary" as const,
+    })),
+  )
+  .sort((left, right) => left.priority - right.priority);
+---
+
+{actions.length > 0 && (
+  <div class="document-actions" aria-label={`${document.title} document actions`}>
+    {actions.map((action) => (
+      <a
+        class={action.variant === "primary" ? "primary-link" : "secondary-link"}
+        href={action.href}
+        download={action.download ? "" : undefined}
+        aria-label={`${action.label}: ${document.title}`}
+      >
+        {action.label}
+      </a>
+    ))}
+  </div>
+)}

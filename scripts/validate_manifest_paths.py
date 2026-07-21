@@ -10,8 +10,16 @@ import sys
 from pathlib import Path
 from typing import Any
 
-ALLOWED_SOURCE_KINDS = {"pdf", "tex", "image", "diagram", "manifest", "other"}
-ALLOWED_ASSET_KINDS = {"pdf", "tex", "image", "diagram", "other"}
+ALLOWED_SOURCE_KINDS = {
+    "pdf",
+    "tex",
+    "markdown",
+    "image",
+    "diagram",
+    "manifest",
+    "other",
+}
+ALLOWED_ASSET_KINDS = {"pdf", "tex", "markdown", "image", "diagram", "other"}
 ALLOWED_APPROVAL_STATUS = {
     "approved",
     "sample",
@@ -28,6 +36,7 @@ REQUIRED_SOURCE_FIELDS = {
     "approval_status",
 }
 REQUIRED_ASSET_FIELDS = {"path", "kind", "bytes", "sha256", "title", "source_ref"}
+MARKDOWN_PUBLIC_PREFIX = "/files/markdown/governance/"
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -93,10 +102,46 @@ def validate_source_manifest(manifest: dict[str, Any], public_dir: Path) -> list
         else:
             seen_ids.add(item_id)
 
-        if kind not in ALLOWED_SOURCE_KINDS:
+        if not isinstance(kind, str) or kind not in ALLOWED_SOURCE_KINDS:
             errors.append(f"{label}: unsupported kind {kind!r}")
-        if approval_status not in ALLOWED_APPROVAL_STATUS:
+        if (
+            not isinstance(approval_status, str)
+            or approval_status not in ALLOWED_APPROVAL_STATUS
+        ):
             errors.append(f"{label}: unsupported approval_status {approval_status!r}")
+
+        if kind == "markdown":
+            if approval_status != "approved":
+                errors.append(f"{label}: Markdown records must be approved")
+            if not (
+                isinstance(site_path, str)
+                and site_path.startswith(MARKDOWN_PUBLIC_PREFIX)
+                and site_path.lower().endswith(".md")
+            ):
+                errors.append(
+                    f"{label}: Markdown site_path must name one explicit file under "
+                    f"{MARKDOWN_PUBLIC_PREFIX}"
+                )
+            source_path = item["source_path"]
+            if not (
+                isinstance(source_path, str)
+                and source_path
+                and not Path(source_path).is_absolute()
+                and ".." not in Path(source_path).parts
+                and not source_path.startswith("~")
+                and "\\" not in source_path
+                and "://" not in source_path
+                and ":" not in source_path.split("/", 1)[0]
+                and source_path.lower().endswith(".md")
+            ):
+                errors.append(
+                    f"{label}: Markdown source_path must be a safe repository-relative "
+                    "Markdown source identity"
+                )
+
+        if not isinstance(site_path, str) or not site_path:
+            errors.append(f"{label}: site_path must be a nonempty string")
+            continue
 
         try:
             file_path = public_path_to_file(public_dir, site_path)
@@ -161,8 +206,13 @@ def validate_asset_manifest(
         kind = item["kind"]
         source_ref = item["source_ref"]
 
-        if kind not in ALLOWED_ASSET_KINDS:
+        if not isinstance(kind, str) or kind not in ALLOWED_ASSET_KINDS:
             errors.append(f"{label}: unsupported kind {kind!r}")
+
+        if not isinstance(site_path, str) or not site_path:
+            errors.append(f"{label}: path must be a nonempty string")
+            continue
+
         if site_path in seen_paths:
             errors.append(f"{label}: duplicate path {site_path!r}")
         else:
@@ -174,6 +224,16 @@ def validate_asset_manifest(
             source_id = source_ref.split(":", 1)[1]
             if source_id not in source_ids:
                 errors.append(f"{label}: source_ref points to unknown source id {source_id!r}")
+
+        if kind == "markdown":
+            if not (
+                site_path.startswith(MARKDOWN_PUBLIC_PREFIX)
+                and site_path.lower().endswith(".md")
+            ):
+                errors.append(
+                    f"{label}: Markdown path must name one explicit file under "
+                    f"{MARKDOWN_PUBLIC_PREFIX}"
+                )
 
         try:
             file_path = public_path_to_file(public_dir, site_path)

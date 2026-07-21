@@ -27,6 +27,29 @@ def test_current_page_provenance_validates() -> None:
     assert errors == []
 
 
+def test_required_documents_routes_fail_closed() -> None:
+    route_map = validator.load_json(ROUTE_MAP)
+    routes = route_map["routes"]
+
+    assert not any(route["route_path"].startswith("/resources/") for route in routes)
+
+    broken = {
+        **route_map,
+        "routes": [
+            route
+            for route in routes
+            if route["route_path"] != "/documents/anthology/"
+        ],
+    }
+
+    errors = validator.validate_route_map(broken)
+
+    assert any(
+        "missing required route(s): /documents/anthology/" in error
+        for error in errors
+    )
+
+
 def test_page_hash_drift_fails_closed() -> None:
     route_map = validator.load_json(ROUTE_MAP)
     provenance = validator.load_json(PAGE_PROVENANCE)

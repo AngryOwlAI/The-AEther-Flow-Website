@@ -1,6 +1,11 @@
 ---
-import StatusDossier from "./StatusDossier.astro";
-import type { OntologyDocument } from "../lib/manifests";
+import DocumentCollection from "./documents/DocumentCollection.astro";
+import type {
+  DocumentAuthorityRole,
+  DocumentManifestation,
+  DocumentRecord,
+} from "../lib/documents";
+import type { DownloadItem, OntologyDocument } from "../lib/manifests";
 
 interface Props {
   documents: OntologyDocument[];
@@ -8,43 +13,34 @@ interface Props {
 }
 
 const { documents, guidanceBySlug = {} } = Astro.props;
-const byteFormatter = new Intl.NumberFormat("en-US");
-const shortCommit = (value?: string) => (value ? value.slice(0, 12) : undefined);
-const dateOnly = (value?: string) => (value ? value.slice(0, 10) : undefined);
 
-type DossierItem = {
+type MetadataItem = {
   label: string;
   title?: string;
   value?: string | number | null;
   body?: string;
+  href?: string;
 };
 
-const buildDocumentDossier = (document: OntologyDocument): DossierItem[] => {
-  const items: DossierItem[] = [];
-  const guidance = guidanceBySlug[document.slug];
-  if (guidance) {
-    items.push({
-      label: "Reading order",
-      value: guidance.order,
-      body: guidance.reason,
-    });
-  }
-  if (document.pdf) {
-    items.push({
-      label: "PDF bytes",
-      value: byteFormatter.format(document.pdf.bytes),
-    });
-    items.push({
-      label: "PDF role",
-      value: "human-readable derivative",
-    });
-  }
-  if (document.tex) {
-    items.push({
-      label: "TeX bytes",
-      value: byteFormatter.format(document.tex.bytes),
-    });
-  }
+const toManifestation = (
+  item: DownloadItem,
+  kind: "pdf" | "tex",
+  role: DocumentAuthorityRole,
+): DocumentManifestation => ({
+  kind,
+  sitePath: item.path,
+  role,
+  title: item.title,
+  bytes: item.bytes,
+  sha256: item.sha256,
+  sourceId: item.source?.id,
+  sourcePath: item.source?.source_path,
+  sourceCommit: item.source?.source_commit,
+  generatedAt: item.source?.generated_at,
+});
+
+const buildSupplementalMetadata = (document: OntologyDocument): MetadataItem[] => {
+  const items: MetadataItem[] = [];
   if (document.tex?.source?.source_authority_status) {
     items.push({
       label: "TeX authority",
@@ -69,69 +65,49 @@ const buildDocumentDossier = (document: OntologyDocument): DossierItem[] => {
       value: document.tex.source.ontology_promotion_status,
     });
   }
-  const texSourceCommit = shortCommit(document.tex?.source?.source_commit);
-  if (texSourceCommit) {
-    items.push({
-      label: "TeX source commit",
-      value: texSourceCommit,
-    });
-  }
-  const importedAt = dateOnly(document.tex?.source?.generated_at ?? document.pdf?.source?.generated_at);
-  if (importedAt) {
-    items.push({
-      label: "Website import",
-      value: importedAt,
-    });
-  }
-  if (document.tex?.source?.sha256) {
-    items.push({
-      label: "TeX SHA-256",
-      value: document.tex.source.sha256,
-    });
-  }
-  if (document.pdf?.source?.sha256) {
-    items.push({
-      label: "PDF SHA-256",
-      value: document.pdf.source.sha256,
-    });
-  }
   return items;
 };
+
+const presentationDocuments: DocumentRecord[] = documents.map((document) => {
+  const guidance = guidanceBySlug[document.slug];
+  const manifestations: DocumentManifestation[] = [];
+  if (document.pdf) {
+    manifestations.push(toManifestation(document.pdf, "pdf", "readable_derivative"));
+  }
+  if (document.tex) {
+    manifestations.push(toManifestation(document.tex, "tex", "registered_source"));
+  }
+  return {
+    id: `ontology:${document.slug}`,
+    slug: document.slug,
+    title: document.title,
+    category: "research",
+    collection: "canonical ontology package",
+    summary: `${guidance?.reason ?? "Use the PDF for reading."} Use the TeX file for source inspection when comparing authority-bearing text, source commits, and registry metadata.`,
+    status:
+      document.tex?.source?.approval_status ?? document.pdf?.source?.approval_status ?? "approved",
+    authorityScope:
+      document.tex?.source?.source_authority_status ??
+      "registered TeX source with a human-readable PDF derivative",
+    readingOrder: guidance?.order,
+    manifestations,
+  };
+});
+
+const metadataByDocumentId = Object.fromEntries(
+  documents.map((document) => [
+    `ontology:${document.slug}`,
+    buildSupplementalMetadata(document),
+  ]),
+) as Record<string, MetadataItem[]>;
 ---
 
-<section class="download-section" aria-labelledby="ontology-documents-list-title">
-  <div class="section-header">
-    <p class="eyebrow">Canonical ontology package</p>
-    <h2 id="ontology-documents-list-title">PDF readers and TeX sources</h2>
-    <p class="lead">
-      TeX files are the registered source-authority artifacts. PDFs are
-      generated human-readable derivatives for direct reading.
-    </p>
-  </div>
-
-  <div class="download-list document-action-list">
-    {documents.map((document) => (
-      <article class="download-item document-action-item">
-        <div>
-          <p class="download-kind">Ontology document</p>
-          <h3>{document.title}</h3>
-          <p>
-            {guidanceBySlug[document.slug]?.reason ?? "Use the PDF for reading."} Use the TeX
-            file for source inspection when comparing authority-bearing text,
-            source commits, and registry metadata.
-          </p>
-          <div class="document-actions" aria-label={`${document.title} actions`}>
-            {document.pdf && <a class="primary-link" href={document.pdf.path}>Read PDF</a>}
-            {document.pdf && <a class="secondary-link" href={document.pdf.path} download>Download PDF</a>}
-            {document.tex && <a class="secondary-link" href={document.tex.path} download>Download TeX</a>}
-          </div>
-        </div>
-        <StatusDossier
-          items={buildDocumentDossier(document)}
-          ariaLabel={`${document.title} document metadata`}
-          className="download-meta document-download-dossier"
-        />
-      </article>
-    ))}
-  </div>
-</section>
+<DocumentCollection
+  eyebrow="Canonical ontology package"
+  title="PDF readers and TeX sources"
+  description="TeX files are the registered source-authority artifacts. PDFs are generated human-readable derivatives for direct reading."
+  documents={presentationDocuments}
+  metadataByDocumentId={metadataByDocumentId}
+  ordered
+  showCollection={false}
+/>

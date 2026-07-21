@@ -16,8 +16,10 @@
 - Upstream source files, registries, and governed task records remain authoritative for scientific, mathematical, governance, and research-workflow claims.
 - Website pages may explain, organize, promote, and link reviewed material, but must not silently strengthen or create source claims.
 - Keep GitHub links available as provenance; prefer internal website routes for primary reader journeys.
-- For ontology documents, registered TeX sources carry source authority and PDFs are generated human-readable derivatives.
-- Library/resource pages under `/resources/` must not render a dedicated `Source authority` section. Put provenance and non-authority boundaries in contextual copy, manifests, internal source-authority routes, or the footer.
+- Treat `/documents/` and its descendants as the canonical document routes. Use `/resources/.../` only as redirect-only compatibility paths; new reader-facing links must not depend on them.
+- For ontology documents, registered TeX sources carry source authority. PDFs are generated human-readable derivatives; rendered pages, catalog entries, manifests, and validator results do not inherit source authority.
+- Document collection pages under `/documents/` must not add a boilerplate dedicated `Source authority` section. Put provenance and non-authority boundaries in contextual copy, manifests, `/documents/governance/source-authority/`, or the footer.
+- The accepted Documents plan is `ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json`; live `implementation_control/` records remain the execution authority for each bounded task.
 - Visual SVG figures must be animated and must not contain visible embedded text. Put labels and explanations in HTML headings, captions, body copy, ARIA labels, `<title>`, or `<desc>` instead.
 
 ## Definition Of Done
@@ -26,8 +28,9 @@
 - Relevant public manifests are updated and validated.
 - Page and asset hashes are regenerated after file changes.
 - `npm run validate` passes, or skipped checks are named with a concrete reason.
-- User-facing route cards and navigation stay internal-first unless a link is explicitly a provenance/source link.
+- User-facing route cards and navigation stay internal-first, use canonical `/documents/.../` destinations, and use `/resources/.../` only when testing compatibility redirects.
 - SVG policy validation passes for all website SVG artwork in `src/` and `public/assets/`.
+- Validation success does not authorize staging, commit, push, or deployment. Record and authorize those release actions separately.
 
 ## Core Persona
 

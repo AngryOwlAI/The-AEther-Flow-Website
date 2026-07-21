@@ -1,106 +1,49 @@
 schema_version: "0.1"
 record_type: "implementation_program_state"
 repository: "The-AEther-Flow-Website"
-updated_utc: "2026-07-20T05:42:13Z"
+updated_utc: "2026-07-21T21:11:10Z"
 status: "inactive"
 mode: "website_local_implementation_control"
-
 authority_order:
   - "AGENTS.md"
-  - "CONTEXT.md"
   - "implementation_control/program_state.yaml"
-  - "implementation_control/tasks/WI-20260719-001/00_TASK.yaml"
-  - "implementation_control/tasks/WI-20260719-001/jobs/WJ-20260719-001-A.yaml"
-  - "implementation_control/handoffs/WH-20260719-001.yaml"
+  - "implementation_control/tasks/WI-20260721-039/00_TASK.yaml"
+  - "implementation_control/tasks/WI-20260721-039/jobs/WJ-20260721-039-A.yaml"
+  - "implementation_control/handoffs/WH-20260721-039.yaml"
   - "current_git_state_and_validator_output"
-  - "memory_and_conversation_summaries_as_navigation_only"
-
 repository_boundary:
   website_repository: "."
   upstream_source_repository: "/Volumes/P-SSD/AngryOwl/The-AEther-Flow"
   upstream_write_status: "forbidden"
-  public_claim_authority: "upstream_source_project_only"
   deployment_status: "not_authorized"
-
 active_task:
-  task_id: "WI-20260719-001"
-  title: "Import and Integrate implementation-plan-goal"
-  status: "completed"
-  path: "implementation_control/tasks/WI-20260719-001/00_TASK.yaml"
+  task_id: "WI-20260721-039"
+  title: "Run exactly one aggregate repository validation against the reconciled final local state, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+  status: "superseded"
+  path: "implementation_control/tasks/WI-20260721-039/00_TASK.yaml"
   planning_context:
-    task_packet: "IMPLEMENTATION-PLAN-GOAL-IMPORT-01"
-    adopted_plan: "Import and Integrate implementation-plan-goal"
-    baseline_commit: "7cf3c20a605dc319627615ea27141dbc3cc308e7"
-    source_repository: "/Volumes/P-SSD/AngryOwl/skills-Sys4AI"
-    source_commit: "5309fabc665b8c6665a24b9edb42b4ceda82227d"
-    source_lock_sha256: "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9"
-    owner_authorization: "Owner explicitly requested implementation and verification of every task in the source pinned integration plan."
-
+    plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+    plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+    plan_task_id: "AFDOC-039"
+    plan_task_sha256: "0a3bdb91664da12cfd5880c5eb41830318e1ed438ad0f57c62b6367a2502ca14"
+    binding_manifest_sha256: "6e8e13e59ea7ba3fe02aec7896ae912612087768062b719693f39ce48ceed1f9"
+    authority_sha256: "86e752aa7bc5d5853f9ea08bca4bf92cb67ebab33599d4b26b92cfec223030d8"
+    implementation_authority: "implementation_control only"
 current_job: {}
-
 latest_handoff:
-  handoff_id: "WH-20260719-001"
-  status: "completed"
-  yaml_path: "implementation_control/handoffs/WH-20260719-001.yaml"
-  markdown_path: "implementation_control/handoffs/WH-20260719-001.md"
-
-latest_completion:
-  completion_id: "WJC-20260719-001-A"
-  path: "implementation_control/tasks/WI-20260719-001/jobs/completions/WJC-20260719-001-A.yaml"
-  status: "completed"
-
-required_validators:
-  - id: "git-diff-check"
-    command: "git diff --check"
-    required_for_current_job: true
-  - id: "implementation-control"
-    command: "npm run validate:implementation-control"
-    required_for_current_job: true
-  - id: "python-tests"
-    command: ".venv/bin/python -m pytest"
-    required_for_current_job: true
-  - id: "plan-goal-validation"
-    command: "npm run validate:plan-goal"
-    required_for_current_job: true
-  - id: "plan-goal-tests"
-    command: "npm run test:plan-goal"
-    required_for_current_job: true
-  - id: "aggregate-validation"
-    command: "npm run validate"
-    required_for_current_job: true
-  - id: "quality-gate"
-    command: "npm run quality"
-    required_for_current_job: true
-
+  handoff_id: "WH-20260721-039"
+  status: "superseded"
+  yaml_path: "implementation_control/handoffs/WH-20260721-039.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260721-039.md"
+required_validators: []
 next_recommended_action:
   task_packet: "none"
-  summary: "No further implementation action is required; the packet is complete and remains uncommitted."
-  do_not_skip: "Any checkpoint commit branch worktree push deployment real plan goal Codex task public change or upstream write requires separate authority."
-
-preflight_evidence:
-  observed_utc: "2026-07-20T04:32:00Z"
-  website_head: "7cf3c20a605dc319627615ea27141dbc3cc308e7"
-  website_branch: "main"
-  website_worktree_status: "clean_before_resolver_regression"
-  baseline_match: true
-  resolver_defect_reproduced: true
-  resolver_regression_status: "passed"
-  source_access_mode: "pinned_git_archive_only"
-
+  summary: "Open a fresh bounded packet before execution."
+  do_not_skip: "Historical pointers grant no authority."
 implementation_status:
-  status: "complete"
-  implementation_authority: "implementation_control only"
-  plan_store_root: ".local/sys4ai/implementation-plan-goal"
-  plugin_distribution_status: "disabled"
-  exact_import_status: "passed"
-  adapter_conformance_status: "passed in emulated mode with no blocking gaps"
-  tests_status: "46 focused source tests, 53 installed bundle tests, 69 plan-goal tests, and 180 website tests passed"
-  aggregate_validation_status: "passed against accepted source commit 57438af555214bc0785dcb390ee6254f580b8a62"
-  quality_gate_status: "passed against accepted source commit 57438af555214bc0785dcb390ee6254f580b8a62"
-  completion_created: true
-  real_goal_created: false
-  real_task_created: false
-  checkpoint_created: false
-  commit_created: false
-  push_performed: false
-  deployment_performed: false
+  status: "plan_task_active"
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_task_id: "AFDOC-039"
+  plan_task_sha256: "0a3bdb91664da12cfd5880c5eb41830318e1ed438ad0f57c62b6367a2502ca14"
+  binding_manifest_sha256: "6e8e13e59ea7ba3fe02aec7896ae912612087768062b719693f39ce48ceed1f9"
+  authority_sha256: "86e752aa7bc5d5853f9ea08bca4bf92cb67ebab33599d4b26b92cfec223030d8"

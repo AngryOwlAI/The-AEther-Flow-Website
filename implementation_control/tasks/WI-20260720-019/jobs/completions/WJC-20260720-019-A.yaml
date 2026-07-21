@@ -1,0 +1,58 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-019-A"
+task_id: "WI-20260720-019"
+job_id: "WJ-20260720-019-A"
+created_utc: "2026-07-21T00:34:10Z"
+completed_utc: "2026-07-21T00:34:10Z"
+status: "completed"
+summary: "Replaced the six reverse Documents aliases with direct canonical Documents destinations, declared Cloudflare redirects as production authority, and mirrored the mappings in Astro for local preview."
+changed_files:
+  - "public/_redirects"
+  - "astro.config.mjs"
+requirements_satisfied:
+  - "`/documents` normalizes to `/documents/` and no Documents route redirects into Resources."
+  - "Redirect ownership has one declared source of truth and no loop is present."
+  - "Cloudflare and Astro redirect behavior agree for the affected aliases."
+acceptance_results:
+  - criterion: "`/documents` normalizes to `/documents/` and no Documents route redirects into Resources."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "astro.config.mjs"
+  - criterion: "Redirect ownership has one declared source of truth and no loop is present."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "astro.config.mjs"
+  - criterion: "Cloudflare and Astro redirect behavior agree for the affected aliases."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "astro.config.mjs"
+validator_results:
+  - id: "afdoc-019-01"
+    command: "npm run validate:cloudflare"
+    status: "passed"
+    evidence: "Cloudflare Pages config validation passed."
+  - id: "afdoc-019-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+scope_preservation:
+  changed_file_count: 2
+  reverse_documents_redirect_present: false
+  production_redirect_authority_declared: true
+  astro_preview_mappings_aligned: true
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-019 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

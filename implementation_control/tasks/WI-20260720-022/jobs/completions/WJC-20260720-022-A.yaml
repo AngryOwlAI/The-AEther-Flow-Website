@@ -1,0 +1,72 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-022-A"
+task_id: "WI-20260720-022"
+job_id: "WJ-20260720-022-A"
+created_utc: "2026-07-21T01:05:43Z"
+completed_utc: "2026-07-21T01:05:43Z"
+status: "completed"
+summary: "Removed all 15 retired Resources page sources after verifying one direct 301 redirect and an existing canonical Documents destination for every route."
+changed_files:
+  - "src/pages/resources/diagrams.astro"
+  - "src/pages/resources/documents.astro"
+  - "src/pages/resources/generated-derivatives/index.astro"
+  - "src/pages/resources/guided-starts/general-public/index.astro"
+  - "src/pages/resources/guided-starts/index.astro"
+  - "src/pages/resources/index.astro"
+  - "src/pages/resources/library/index.astro"
+  - "src/pages/resources/publication-process/index.astro"
+  - "src/pages/resources/reading-paths/index.astro"
+  - "src/pages/resources/registries/index.astro"
+  - "src/pages/resources/repository-map/index.astro"
+  - "src/pages/resources/retrieval-layers/index.astro"
+  - "src/pages/resources/reviewer-packet/index.astro"
+  - "src/pages/resources/site-builder-guide/index.astro"
+  - "src/pages/resources/source-authority/index.astro"
+requirements_satisfied:
+  - "Retired Resources page sources no longer build duplicate canonical content."
+  - "Every removed page has a verified canonical destination and direct redirect."
+  - "The deletion does not remove shared components or unrelated resource terminology."
+acceptance_results:
+  - criterion: "Retired Resources page sources no longer build duplicate canonical content."
+    status: "passed"
+    evidence_refs:
+      - "git diff --name-status -- src/pages/resources"
+      - "src/pages/resources"
+  - criterion: "Every removed page has a verified canonical destination and direct redirect."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "src/pages/documents"
+  - criterion: "The deletion does not remove shared components or unrelated resource terminology."
+    status: "passed"
+    evidence_refs:
+      - "git diff --name-status -- src/pages/resources"
+validator_results:
+  - id: "afdoc-022-01"
+    command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed after the retired page-source deletion."
+  - id: "afdoc-022-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+scope_preservation:
+  changed_file_count: 15
+  retired_page_sources_removed: 15
+  direct_redirects_verified: 15
+  canonical_destination_sources_verified: 15
+  shared_components_removed: 0
+  unrelated_resource_terminology_removed: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-022 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

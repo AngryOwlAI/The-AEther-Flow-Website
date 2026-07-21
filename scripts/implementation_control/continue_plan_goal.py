@@ -26,6 +26,7 @@ from implementation_control.plan_goal_adapter import (  # noqa: E402
     reserve_next,
     status,
     worker_consume,
+    worker_fail,
     worker_finalize,
     worker_prepare,
     worker_unknown,
@@ -140,6 +141,22 @@ def build_parser() -> argparse.ArgumentParser:
         "--current-thread-id", required=True
     )
     worker_finalize_parser.add_argument("--timestamp")
+
+    worker_fail_parser = subparsers.add_parser("worker-fail")
+    _add_mutation_cas(worker_fail_parser)
+    _add_plan_source(worker_fail_parser)
+    worker_fail_parser.add_argument("--plan-id", required=True)
+    worker_fail_parser.add_argument(
+        "--current-thread-id", required=True
+    )
+    worker_fail_parser.add_argument(
+        "--validator-result",
+        action="append",
+        required=True,
+        help="Required validator result in ID=pass or ID=fail form.",
+    )
+    worker_fail_parser.add_argument("--failure-summary", required=True)
+    worker_fail_parser.add_argument("--timestamp")
 
     worker_unknown_parser = subparsers.add_parser("worker-unknown")
     _add_mutation_cas(worker_unknown_parser)
@@ -269,6 +286,30 @@ def dispatch(arguments: argparse.Namespace) -> dict[str, Any]:
             current_thread_id=arguments.current_thread_id,
             plan_path=arguments.plan,
             binding_path=arguments.binding,
+            repo_root=root,
+            timestamp=arguments.timestamp,
+        )
+    if command == "worker-fail":
+        validator_results: dict[str, str] = {}
+        for item in arguments.validator_result:
+            validator_id, separator, validator_status = item.rpartition("=")
+            if not separator or validator_id in validator_results:
+                raise WebsitePlanAdapterError(
+                    "validator results must use unique ID=STATUS values",
+                    reason_code="plan.validation_failed",
+                )
+            validator_results[validator_id] = validator_status
+        return worker_fail(
+            plan_id=arguments.plan_id,
+            expected_plan_revision=arguments.expected_plan_revision,
+            expected_control_sha256=(
+                arguments.expected_control_sha256
+            ),
+            current_thread_id=arguments.current_thread_id,
+            plan_path=arguments.plan,
+            binding_path=arguments.binding,
+            validator_results=validator_results,
+            failure_summary=arguments.failure_summary,
             repo_root=root,
             timestamp=arguments.timestamp,
         )

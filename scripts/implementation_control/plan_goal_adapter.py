@@ -121,6 +121,9 @@ from agentjob_runtime.plan.worker import (  # noqa: E402
     claim_plan_task_generation,
     compile_plan_task_continue_invocation,
 )
+from agentjob_runtime.plan.verify import (  # noqa: E402
+    verify_plan_task_result,
+)
 from agentjob_runtime.records.canonical import (  # noqa: E402
     canonical_json_bytes,
     content_sha256,
@@ -660,6 +663,17 @@ def _yaml_scalar(value: Any) -> str:
     raise TypeError(f"unsupported YAML scalar: {type(value).__name__}")
 
 
+def _yaml_list_scalar(value: Any) -> str:
+    rendered = _yaml_scalar(value)
+    if isinstance(value, str):
+        # The repository's deliberately small YAML reader identifies list
+        # mappings before it parses quoted scalars.  Preserve literal colons
+        # through JSON's equivalent escape so a scalar cannot be mistaken for
+        # a mapping entry.
+        return rendered.replace(":", "\\u003a")
+    return rendered
+
+
 def _yaml_lines(value: Any, indent: int = 0) -> list[str]:
     prefix = " " * indent
     if isinstance(value, Mapping):
@@ -725,7 +739,7 @@ def _yaml_lines(value: Any, indent: int = 0) -> list[str]:
                 result.append(prefix + "-")
                 result.extend(_yaml_lines(item, indent + 2))
             else:
-                result.append(f"{prefix}- {_yaml_scalar(item)}")
+                result.append(f"{prefix}- {_yaml_list_scalar(item)}")
         return result
     return [prefix + _yaml_scalar(value)]
 
@@ -1144,6 +1158,7 @@ class WebsiteControlStore:
                 backups[path] = path.read_bytes() if path.exists() else None
                 _atomic_write(path, payload, mode=0o644)
                 written.append(path)
+            after = self.snapshot()
         except Exception:
             for path in reversed(written):
                 original = backups[path]
@@ -1152,7 +1167,6 @@ class WebsiteControlStore:
                 else:
                     _atomic_write(path, original, mode=0o644)
             raise
-        after = self.snapshot()
         selected = after.payload["selected"]
         task_record = selected.get("task", {}).get("record", {})
         job_record = selected.get("job", {}).get("record", {})
@@ -1760,6 +1774,81 @@ def _task_authority_basis(entry: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def _validate_task_binding_entry(
+    task_id: str,
+    task: Mapping[str, Any],
+    entry: Mapping[str, Any],
+) -> None:
+    """Validate one task binding without granting manifest authority."""
+
+    validator_ids = [str(item["id"]) for item in entry["validators"]]
+    validator_commands = [
+        str(item["command"]) for item in entry["validators"]
+    ]
+    gates = {str(item["id"]): item for item in entry["approval_gates"]}
+    if (
+        entry["task_id"] != task_id
+        or entry["task_sha256"] != task["task_sha256"]
+        or entry["objective"] != task["objective"]
+        or entry["acceptance_criteria"] != task["acceptance_criteria"]
+        or validator_commands != task["validation_refs"]
+    ):
+        raise _protected(
+            "plan binding task projection differs from canonical task identity",
+            "plan.binding_task_mismatch",
+            task_id=task_id,
+        )
+    if (
+        len(set(validator_ids)) != len(validator_ids)
+        or not all(item["required"] is True for item in entry["validators"])
+    ):
+        raise _protected(
+            "canonical plan validators must remain unique and required",
+            "plan.binding_validator_mismatch",
+            task_id=task_id,
+        )
+    for kind in ("allowed_reads", "allowed_writes"):
+        for path_rule in entry[kind]:
+            supplied = Path(str(path_rule).removesuffix("/**"))
+            if (
+                supplied.is_absolute()
+                or ".." in supplied.parts
+                or str(path_rule) in {"", ".", "*", "**"}
+            ):
+                raise _protected(
+                    "plan binding contains an unsafe authority path",
+                    "plan.binding_path_invalid",
+                    task_id=task_id,
+                    authority_field=kind,
+                    path=path_rule,
+                )
+    if (
+        set(gates) != REQUIRED_HIGH_RISK_GATES
+        or gates["upstream_source_project_writes"]["status"]
+        != "blocked"
+    ):
+        raise _protected(
+            "plan binding lacks the complete website high-risk gate map",
+            "plan.binding_gate_mismatch",
+            task_id=task_id,
+        )
+    rights = entry["checkpoint_rights"]
+    if rights["branch"] or rights["worktree"]:
+        raise _protected(
+            "binding cannot grant Git topology authority",
+            "plan.topology_authority_required",
+            task_id=task_id,
+        )
+    if entry["authority_sha256"] != content_sha256(
+        _task_authority_basis(entry)
+    ):
+        raise _protected(
+            "plan binding task authority hash is invalid",
+            "plan.binding_authority_hash_mismatch",
+            task_id=task_id,
+        )
+
+
 def validate_binding_manifest(
     plan: Mapping[str, Any],
     binding: Mapping[str, Any],
@@ -1799,72 +1888,7 @@ def validate_binding_manifest(
     packet_ids: set[str] = set()
     for task_id, task in expected_tasks.items():
         entry = value["tasks"][task_id]
-        validator_ids = [str(item["id"]) for item in entry["validators"]]
-        validator_commands = [
-            str(item["command"]) for item in entry["validators"]
-        ]
-        gates = {str(item["id"]): item for item in entry["approval_gates"]}
-        if (
-            entry["task_id"] != task_id
-            or entry["task_sha256"] != task["task_sha256"]
-            or entry["objective"] != task["objective"]
-            or entry["acceptance_criteria"] != task["acceptance_criteria"]
-            or validator_commands != task["validation_refs"]
-        ):
-            raise _protected(
-                "plan binding task projection differs from canonical task identity",
-                "plan.binding_task_mismatch",
-                task_id=task_id,
-            )
-        if (
-            len(set(validator_ids)) != len(validator_ids)
-            or not all(item["required"] is True for item in entry["validators"])
-        ):
-            raise _protected(
-                "canonical plan validators must remain unique and required",
-                "plan.binding_validator_mismatch",
-                task_id=task_id,
-            )
-        for kind in ("allowed_reads", "allowed_writes"):
-            for path_rule in entry[kind]:
-                supplied = Path(str(path_rule).removesuffix("/**"))
-                if (
-                    supplied.is_absolute()
-                    or ".." in supplied.parts
-                    or str(path_rule) in {"", ".", "*", "**"}
-                ):
-                    raise _protected(
-                        "plan binding contains an unsafe authority path",
-                        "plan.binding_path_invalid",
-                        task_id=task_id,
-                        authority_field=kind,
-                        path=path_rule,
-                    )
-        if (
-            set(gates) != REQUIRED_HIGH_RISK_GATES
-            or gates["upstream_source_project_writes"]["status"]
-            != "blocked"
-        ):
-            raise _protected(
-                "plan binding lacks the complete website high-risk gate map",
-                "plan.binding_gate_mismatch",
-                task_id=task_id,
-            )
-        rights = entry["checkpoint_rights"]
-        if rights["branch"] or rights["worktree"]:
-            raise _protected(
-                "binding cannot grant Git topology authority",
-                "plan.topology_authority_required",
-                task_id=task_id,
-            )
-        if entry["authority_sha256"] != content_sha256(
-            _task_authority_basis(entry)
-        ):
-            raise _protected(
-                "plan binding task authority hash is invalid",
-                "plan.binding_authority_hash_mismatch",
-                task_id=task_id,
-            )
+        _validate_task_binding_entry(task_id, task, entry)
         for packet_id in entry["packet_ids"].values():
             if packet_id in packet_ids:
                 raise _protected(
@@ -1945,6 +1969,321 @@ def load_plan_binding(
         plan,
         load_yaml(resolved),
         schema_path=repo_root / BINDING_SCHEMA_RELATIVE,
+    )
+
+
+def _require_replacement_binding_authorization(
+    *,
+    store: SQLitePlanStore,
+    plan_record: Mapping[str, Any],
+    session: Mapping[str, Any],
+    base_binding: Mapping[str, Any],
+    task_id: str,
+    repo_root: Path,
+) -> dict[str, Any]:
+    authorizations = session.get("replacement_binding_authorizations")
+    authorization = (
+        authorizations.get(task_id)
+        if isinstance(authorizations, Mapping)
+        else None
+    )
+    if not isinstance(authorization, Mapping):
+        raise _protected(
+            "replacement plan task lacks explicit binding authorization",
+            "plan.binding_authorization_missing",
+            task_id=task_id,
+        )
+    required_authorization_fields = {
+        "status",
+        "approved_at",
+        "approval_ref",
+        "authorized_plan_revision",
+        "authorized_website_control_sha256",
+        "task_authority_sha256",
+        "replacement_binding_content_sha256",
+        "compatibility_writes",
+        "external_effects_authorized",
+        "replacement_binding",
+        "task_definition",
+    }
+    if set(authorization) != required_authorization_fields:
+        raise _protected(
+            "replacement binding authorization fields are not exact",
+            "plan.binding_authorization_invalid",
+            task_id=task_id,
+        )
+    try:
+        parse_utc(str(authorization["approved_at"]))
+    except (TypeError, ValueError) as error:
+        raise _protected(
+            "replacement binding approval timestamp is invalid",
+            "plan.binding_authorization_invalid",
+            task_id=task_id,
+        ) from error
+    compatibility_writes = authorization["compatibility_writes"]
+    if (
+        authorization["status"] != "approved"
+        or not isinstance(authorization["approval_ref"], str)
+        or not authorization["approval_ref"].strip()
+        or isinstance(authorization["authorized_plan_revision"], bool)
+        or not isinstance(authorization["authorized_plan_revision"], int)
+        or authorization["authorized_plan_revision"] < 0
+        or authorization["authorized_plan_revision"]
+        > int(plan_record["state"]["revision"])
+        or authorization["external_effects_authorized"] is not False
+        or not isinstance(compatibility_writes, list)
+        or not compatibility_writes
+        or len(set(compatibility_writes)) != len(compatibility_writes)
+        or any(
+            not isinstance(path, str)
+            or Path(path.removesuffix("/**")).is_absolute()
+            or ".." in Path(path.removesuffix("/**")).parts
+            or path in {"", ".", "*", "**"}
+            for path in compatibility_writes
+        )
+    ):
+        raise _protected(
+            "replacement binding authorization is not an approved bounded delta",
+            "plan.binding_authorization_invalid",
+            task_id=task_id,
+        )
+
+    supplement = authorization["replacement_binding"]
+    task = authorization["task_definition"]
+    if not isinstance(supplement, Mapping) or not isinstance(task, Mapping):
+        raise _protected(
+            "replacement binding evidence is malformed",
+            "plan.binding_authorization_invalid",
+            task_id=task_id,
+        )
+    required_supplement_fields = {
+        "schema_version",
+        "record_type",
+        "status",
+        "plan_id",
+        "plan_sha256",
+        "base_binding_manifest_sha256",
+        "supersession_id",
+        "supersession_sha256",
+        "plan_revision",
+        "task",
+        "hash_basis",
+        "binding_content_sha256",
+    }
+    if (
+        set(supplement) != required_supplement_fields
+        or supplement["schema_version"]
+        != "website.plan-task-replacement-binding.v1"
+        or supplement["record_type"]
+        != "implementation_plan_task_replacement_binding"
+        or supplement["status"] != "non_executable"
+        or supplement["plan_id"] != plan_record["plan_id"]
+        or supplement["plan_sha256"]
+        not in {
+            plan_record["plan_sha256"],
+            plan_record["effective_plan_sha256"],
+        }
+        or supplement["base_binding_manifest_sha256"]
+        != base_binding["manifest_sha256"]
+        or supplement["plan_revision"]
+        != authorization["authorized_plan_revision"]
+        or supplement["hash_basis"]
+        != "canonical_json_without_binding_content_sha256"
+        or supplement["binding_content_sha256"]
+        != authorization["replacement_binding_content_sha256"]
+        or supplement["binding_content_sha256"]
+        != content_sha256(
+            {
+                key: copy.deepcopy(value)
+                for key, value in supplement.items()
+                if key != "binding_content_sha256"
+            }
+        )
+    ):
+        raise _protected(
+            "replacement binding content differs from accepted bytes",
+            "plan.binding_hash_mismatch",
+            task_id=task_id,
+        )
+
+    entry = supplement["task"]
+    expected_task_fields = {
+        "task_id",
+        "task_sha256",
+        "phase_id",
+        "title",
+        "objective",
+        "depends_on",
+        "acceptance_criteria",
+        "validation_refs",
+        "execution_budget",
+        "extensions",
+    }
+    if (
+        set(task) != expected_task_fields
+        or task["task_id"] != task_id
+        or task["task_sha256"]
+        != content_sha256(
+            {
+                key: copy.deepcopy(value)
+                for key, value in task.items()
+                if key != "task_sha256"
+            }
+        )
+        or not isinstance(entry, Mapping)
+    ):
+        raise _protected(
+            "replacement task definition does not match its accepted hash",
+            "plan.binding_task_mismatch",
+            task_id=task_id,
+        )
+    wrapper = {
+        "schema_version": "website.plan-binding.v1",
+        "record_type": "implementation_plan_binding",
+        "status": "non_executable",
+        "plan_id": plan_record["plan_id"],
+        "plan_sha256": plan_record["plan_sha256"],
+        "binding_revision": 1,
+        "tasks": {task_id: copy.deepcopy(dict(entry))},
+        "manifest_sha256": "0" * 64,
+    }
+    wrapper["manifest_sha256"] = content_sha256(
+        {
+            key: copy.deepcopy(value)
+            for key, value in wrapper.items()
+            if key != "manifest_sha256"
+        }
+    )
+    findings = validate_instance(
+        wrapper, repo_root / BINDING_SCHEMA_RELATIVE
+    )
+    if findings:
+        raise _protected(
+            "replacement task binding failed schema validation",
+            "plan.binding_invalid",
+            task_id=task_id,
+            findings=format_issues(findings).splitlines(),
+        )
+    _validate_task_binding_entry(task_id, task, entry)
+    if (
+        entry["authority_sha256"]
+        != authorization["task_authority_sha256"]
+    ):
+        raise _protected(
+            "replacement task authority differs from accepted bytes",
+            "plan.binding_authority_hash_mismatch",
+            task_id=task_id,
+        )
+
+    runtime_definition = store.load_task_definition(
+        str(plan_record["plan_id"]), task_id
+    )
+    runtime_task = runtime_definition.get("task_json", {})
+    budget = task["execution_budget"]
+    if (
+        runtime_definition.get("origin_kind") != "replacement"
+        or runtime_definition.get("task_sha256") != task["task_sha256"]
+        or runtime_definition.get("phase_id") != task["phase_id"]
+        or runtime_definition.get("depends_on") != task["depends_on"]
+        or runtime_task.get("one_task_per_discussion")
+        != budget["one_task_per_discussion"]
+        or runtime_task.get("max_continue_invocations")
+        != budget["max_continue_invocations"]
+        or runtime_task.get("max_agentjobs") != budget["max_agentjobs"]
+        or budget.get("same_task_successors") != 0
+    ):
+        raise _protected(
+            "replacement binding differs from canonical scheduling identity",
+            "plan_task.identity_mismatch",
+            task_id=task_id,
+        )
+    supersession = next(
+        (
+            item
+            for item in store.list_supersessions(
+                str(plan_record["plan_id"])
+            )
+            if item["supersession_id"] == supplement["supersession_id"]
+        ),
+        None,
+    )
+    replacement_ids = {
+        item["task_id"]
+        for item in supersession.get("replacement_tasks", [])
+    } if isinstance(supersession, Mapping) else set()
+    if (
+        not isinstance(supersession, Mapping)
+        or content_sha256(supersession)
+        != supplement["supersession_sha256"]
+        or task_id not in replacement_ids
+    ):
+        raise _protected(
+            "replacement binding lacks its exact append-only supersession",
+            "plan.binding_authorization_invalid",
+            task_id=task_id,
+        )
+    occupied_packet_ids = {
+        str(packet_id)
+        for value in base_binding["tasks"].values()
+        for packet_id in value["packet_ids"].values()
+    }
+    if occupied_packet_ids.intersection(
+        str(value) for value in entry["packet_ids"].values()
+    ):
+        raise _protected(
+            "replacement binding reuses a canonical website packet ID",
+            "plan.binding_packet_identity_conflict",
+            task_id=task_id,
+        )
+    return {
+        "entry": copy.deepcopy(dict(entry)),
+        "task_definition": copy.deepcopy(dict(task)),
+        "binding_manifest_sha256": supplement[
+            "binding_content_sha256"
+        ],
+        "authorized_website_control_sha256": authorization[
+            "authorized_website_control_sha256"
+        ],
+        "compatibility_writes": copy.deepcopy(compatibility_writes),
+        "replacement": True,
+    }
+
+
+def resolve_effective_task_binding(
+    *,
+    store: SQLitePlanStore,
+    plan_record: Mapping[str, Any],
+    session: Mapping[str, Any],
+    base_binding: Mapping[str, Any],
+    task_id: str,
+    repo_root: Path = REPO_ROOT,
+) -> dict[str, Any]:
+    """Resolve a canonical or explicitly authorized replacement binding."""
+
+    entry = base_binding["tasks"].get(task_id)
+    if isinstance(entry, Mapping):
+        runtime_definition = store.load_task_definition(
+            str(plan_record["plan_id"]), task_id
+        )
+        return {
+            "entry": copy.deepcopy(dict(entry)),
+            "task_definition": copy.deepcopy(
+                dict(runtime_definition["task_json"])
+            ),
+            "binding_manifest_sha256": base_binding[
+                "manifest_sha256"
+            ],
+            "authorized_website_control_sha256": None,
+            "compatibility_writes": [],
+            "replacement": False,
+        }
+    return _require_replacement_binding_authorization(
+        store=store,
+        plan_record=plan_record,
+        session=session,
+        base_binding=base_binding,
+        task_id=task_id,
+        repo_root=repo_root,
     )
 
 
@@ -2539,14 +2878,73 @@ def _reserve_task(
 ) -> PlanTaskReservationResult:
     store = plan_store.require_store()
     reserve = reserve_first_plan_task if first_task else reserve_next_plan_task
-    return reserve(
-        store,
+    reservation_store = store
+    record = store.load_plan(str(prepared.plan["plan_id"]))
+    selection = store.select_next_task(
+        str(prepared.plan["plan_id"]),
+        expected_revision=expected_plan_revision,
+    )
+    selected_task_id = (
+        str(selection.selected_task["task_id"])
+        if selection.status == "selected"
+        and selection.selected_task is not None
+        else None
+    )
+    immutable_task_ids = {
+        str(item["task_id"]) for item in record["plan"]["tasks"]
+    }
+    if selected_task_id is not None and selected_task_id not in immutable_task_ids:
+        runtime_definition = store.load_task_definition(
+            record["plan_id"], selected_task_id
+        )
+        entry = prepared.binding["tasks"].get(selected_task_id)
+        if (
+            runtime_definition.get("origin_kind") != "replacement"
+            or not isinstance(entry, Mapping)
+            or entry.get("task_sha256")
+            != runtime_definition.get("task_sha256")
+        ):
+            raise _protected(
+                "replacement reservation lacks exact runtime and binding identity",
+                "plan_task.identity_mismatch",
+                task_id=selected_task_id,
+            )
+        replacement_task = copy.deepcopy(
+            dict(runtime_definition["task_json"])
+        )
+        reservation_store = copy.copy(store)
+
+        def load_plan_with_replacement(plan_id: str) -> dict[str, Any]:
+            value = store.load_plan(plan_id)
+            value["plan"]["tasks"].append(
+                copy.deepcopy(replacement_task)
+            )
+            return value
+
+        reservation_store.load_plan = load_plan_with_replacement  # type: ignore[method-assign]
+    reserved = reserve(
+        reservation_store,
         plan_id=str(prepared.plan["plan_id"]),
         expected_plan_revision=expected_plan_revision,
         expected_outer_revision=expected_outer_revision,
         current_outer_holder_token=outer_holder_token,
         predecessor_thread_id=predecessor_thread_id,
         timestamp=timestamp,
+    )
+    if reservation_store is store:
+        return reserved
+    return PlanTaskReservationResult(
+        plan_record=copy.deepcopy(
+            store.load_plan(str(prepared.plan["plan_id"]))
+        ),
+        outer_goal_record=copy.deepcopy(reserved.outer_goal_record),
+        selection_proof=copy.deepcopy(reserved.selection_proof),
+        task_definition=copy.deepcopy(reserved.task_definition),
+        envelope=copy.deepcopy(reserved.envelope),
+        worker_prompt=reserved.worker_prompt,
+        envelope_schema_path=reserved.envelope_schema_path,
+        expected_worker_revision=reserved.expected_worker_revision,
+        selection_proof_sha256=reserved.selection_proof_sha256,
     )
 
 
@@ -3195,6 +3593,22 @@ def compile_binding_director_route(
         }
         for item in entry["validators"]
     ]
+    controlled_outputs = [
+        {"path": path, "kind": "controlled_source_change"}
+        for path in entry["allowed_writes"]
+    ]
+    generated_paths: list[str] = []
+    if not controlled_outputs:
+        packet_ids = entry["packet_ids"]
+        completion_path = (
+            "implementation_control/tasks/"
+            f"{packet_ids['task_id']}/jobs/completions/"
+            f"{packet_ids['completion_id']}.yaml"
+        )
+        generated_paths.append(completion_path)
+        controlled_outputs.append(
+            {"path": completion_path, "kind": "receipt"}
+        )
     rights = entry["checkpoint_rights"]
     forbidden_actions = [
         "publish",
@@ -3221,7 +3635,7 @@ def compile_binding_director_route(
             "authority": {
                 "allowed_read_paths": list(entry["allowed_reads"]),
                 "allowed_write_paths": list(entry["allowed_writes"]),
-                "allowed_generated_paths": [],
+                "allowed_generated_paths": generated_paths,
                 "forbidden_paths": [".git/**", ".local/**"],
                 "allowed_actions": [
                     "read_files",
@@ -3246,10 +3660,7 @@ def compile_binding_director_route(
                 "required": validators,
                 "contextual": [],
             },
-            "expected_outputs": [
-                {"path": path, "kind": "controlled_source_change"}
-                for path in entry["allowed_writes"]
-            ],
+            "expected_outputs": controlled_outputs,
             "completion_contract": {
                 "required_evidence": list(
                     task["acceptance_criteria"]
@@ -3354,17 +3765,38 @@ def worker_consume(
             "activation.acceptance_invalidated",
         )
     envelope, _, definition, _ = _worker_entry(controls, session)
-    entry = binding["tasks"][envelope["task_id"]]
-    preclaim = PlanWorkerPreclaim(**dict(worker["preclaim"]))
     record = controls.require_store().load_plan(plan_id)
+    resolved_binding = resolve_effective_task_binding(
+        store=controls.require_store(),
+        plan_record=record,
+        session=session,
+        base_binding=binding,
+        task_id=str(envelope["task_id"]),
+        repo_root=repo_root,
+    )
+    active_binding_sha256 = session.get(
+        "active_binding_manifest_sha256",
+        session["binding_manifest_sha256"],
+    )
+    if (
+        active_binding_sha256
+        != resolved_binding["binding_manifest_sha256"]
+    ):
+        raise _protected(
+            "active task binding differs from the reserved authority",
+            "activation.acceptance_invalidated",
+        )
+    entry = resolved_binding["entry"]
+    execution_definition = resolved_binding["task_definition"]
+    preclaim = PlanWorkerPreclaim(**dict(worker["preclaim"]))
     compiled = compile_plan_task_continue_invocation(
         preclaim=preclaim,
         plan_record=record,
         envelope=envelope,
-        selected_task_definition=definition,
+        selected_task_definition=execution_definition,
         resolved_task_id=str(envelope["task_id"]),
         director_route=compile_binding_director_route(
-            definition, entry
+            execution_definition, entry
         ),
         timestamp=now,
     )
@@ -3768,12 +4200,33 @@ def worker_finalize(
             "activation.acceptance_invalidated",
         )
     envelope, _, definition, _ = _worker_entry(controls, session)
-    entry = binding["tasks"][envelope["task_id"]]
-    completion, completion_path = _load_completion(repo_root, entry)
     record = controls.require_store().load_plan(plan_id)
+    resolved_binding = resolve_effective_task_binding(
+        store=controls.require_store(),
+        plan_record=record,
+        session=session,
+        base_binding=binding,
+        task_id=str(envelope["task_id"]),
+        repo_root=repo_root,
+    )
+    active_binding_sha256 = session.get(
+        "active_binding_manifest_sha256",
+        session["binding_manifest_sha256"],
+    )
+    if (
+        active_binding_sha256
+        != resolved_binding["binding_manifest_sha256"]
+    ):
+        raise _protected(
+            "active task binding differs from the finalized authority",
+            "activation.acceptance_invalidated",
+        )
+    entry = resolved_binding["entry"]
+    execution_definition = resolved_binding["task_definition"]
+    completion, completion_path = _load_completion(repo_root, entry)
     result, _ = _direct_website_result(
         plan_record=record,
-        task_definition=definition,
+        task_definition=execution_definition,
         entry=entry,
         compiled=worker["compiled_invocation"],
         snapshot=snapshot,
@@ -3865,6 +4318,317 @@ def worker_finalize(
         "agentjobs": 1,
         "adapter_revision": updated["adapter_revision"],
         "next_boundary": "coordinator reserve-next",
+    }
+
+
+def worker_fail(
+    *,
+    plan_id: str,
+    expected_plan_revision: int,
+    expected_control_sha256: str,
+    current_thread_id: str,
+    plan_path: str | Path,
+    binding_path: str | Path | None,
+    validator_results: Mapping[str, str],
+    failure_summary: str,
+    repo_root: Path = REPO_ROOT,
+    timestamp: str | None = None,
+) -> dict[str, Any]:
+    """Finalize one known validator failure without retry or false success."""
+
+    now = timestamp or utc_now()
+    summary = failure_summary.strip()
+    if not summary or len(summary) > 1000 or "\n" in summary:
+        raise _protected(
+            "validator failure summary must be one bounded line",
+            "plan.validation_failed",
+        )
+    controls = PlanControlStore(repo_root)
+    session, snapshot = _require_mutation_cas(
+        controls=controls,
+        control_store=WebsiteControlStore(repo_root),
+        plan_id=plan_id,
+        expected_plan_revision=expected_plan_revision,
+        expected_control_sha256=expected_control_sha256,
+    )
+    worker = session.get("worker")
+    if (
+        session.get("status") != "invocation_consumed"
+        or not isinstance(worker, Mapping)
+        or worker.get("codex_task_id") != current_thread_id
+        or worker.get("consumed") is not True
+    ):
+        raise _protected(
+            "worker is not eligible for known-failure finalization",
+            "plan_task.identity_mismatch",
+        )
+    plan_source = load_project_plan(plan_path, repo_root=repo_root)
+    binding = load_plan_binding(
+        plan_source,
+        binding_path,
+        repo_root=repo_root,
+    )
+    if binding["manifest_sha256"] != session["binding_manifest_sha256"]:
+        raise _protected(
+            "binding changed after acceptance",
+            "activation.acceptance_invalidated",
+        )
+    envelope, _, _, _ = _worker_entry(controls, session)
+    record = controls.require_store().load_plan(plan_id)
+    resolved_binding = resolve_effective_task_binding(
+        store=controls.require_store(),
+        plan_record=record,
+        session=session,
+        base_binding=binding,
+        task_id=str(envelope["task_id"]),
+        repo_root=repo_root,
+    )
+    active_binding_sha256 = session.get(
+        "active_binding_manifest_sha256",
+        session["binding_manifest_sha256"],
+    )
+    if (
+        active_binding_sha256
+        != resolved_binding["binding_manifest_sha256"]
+    ):
+        raise _protected(
+            "active task binding differs from the finalized authority",
+            "activation.acceptance_invalidated",
+        )
+    entry = resolved_binding["entry"]
+    execution_definition = resolved_binding["task_definition"]
+    expected_validators = {
+        str(item["id"]): str(item["command"])
+        for item in entry["validators"]
+        if item["required"]
+    }
+    normalized_results = {
+        str(validator_id): str(status).lower()
+        for validator_id, status in validator_results.items()
+    }
+    if (
+        set(normalized_results) != set(expected_validators)
+        or any(
+            status not in {"pass", "fail"}
+            for status in normalized_results.values()
+        )
+        or "fail" not in normalized_results.values()
+    ):
+        raise _protected(
+            "known-failure finalization requires one exact result for every required validator and at least one failure",
+            "plan.validation_failed",
+            expected_validator_ids=sorted(expected_validators),
+        )
+
+    compiled = worker["compiled_invocation"]
+    packet = compiled["authority_packet"]
+    agent_job = packet["agent_job"]
+    direct = {
+        "changed_paths": [],
+        "acceptance_results": [
+            {
+                "criterion": criterion,
+                "status": "fail",
+                "evidence_refs": [],
+            }
+            for criterion in execution_definition["acceptance_criteria"]
+        ],
+        "validator_results": [
+            {
+                "validator_id": validator_id,
+                "validator_class": "command_validation",
+                "status": status,
+                "reason_code": (
+                    "plan.validation_failed" if status == "fail" else None
+                ),
+                "evidence_ref": expected_validators[validator_id],
+                "notes": [
+                    expected_validators[validator_id],
+                    *([summary] if status == "fail" else []),
+                ],
+            }
+            for validator_id, status in normalized_results.items()
+        ],
+        "checkpoint": {
+            "provider": "none",
+            "status": "not_required",
+            "revision": None,
+            "evidence_ref": None,
+        },
+        "approvals": [
+            {
+                "approval_id": None,
+                "action": item["id"],
+                "status": (
+                    "approved"
+                    if item["status"] == "approved"
+                    else "not_required"
+                ),
+                "evidence_ref": None,
+            }
+            for item in entry["approval_gates"]
+        ],
+        "protected_effects": [],
+        "warnings": [],
+        "indeterminate_checks": [],
+        "plan_completion": None,
+    }
+    result = {
+        "starting_revision": record["repository_binding"][
+            "starting_revision"
+        ],
+        "ending_revision": snapshot.repository.binding[
+            "starting_revision"
+        ],
+        "fingerprint_after": snapshot.control_sha256,
+        "agentjobs": 1,
+        "agent_job_id": agent_job["job_id"],
+        "completion_id": f"AJC-{agent_job['job_id']}",
+        "task_id": execution_definition["task_id"],
+        "decision_id": packet["decision"]["decision_id"],
+        "handoff_id": None,
+        "global_goal_evaluation": "not_evaluated_here",
+        "zero_job_reason": None,
+        "direct_evidence": direct,
+        "disposition": "validation_failed",
+        "reason_code": "plan.validation_failed",
+        "terminal_reason": summary,
+        "recovery": {"status": "not_required", "action_ref": None},
+        "replanning": {"status": "not_required", "action_ref": None},
+        "coordinator_action": {
+            "kind": "protected_stop",
+            "next_task_id": None,
+        },
+        "pre_topology": copy.deepcopy(
+            dict(snapshot.repository.topology)
+        ),
+        "post_topology": copy.deepcopy(
+            dict(snapshot.repository.topology)
+        ),
+        "finished_at": now,
+    }
+    verification = verify_plan_task_result(
+        plan_record=record,
+        task_definition=execution_definition,
+        compiled_invocation=compiled,
+        result=result,
+        fingerprint_before=str(
+            worker["claim_receipt"]["fingerprint_before"]
+        ),
+        observed_repository_topology_before=snapshot.repository.topology,
+        direct_observation={
+            "ending_revision": result["ending_revision"],
+            "fingerprint_after": result["fingerprint_after"],
+            "post_topology": result["post_topology"],
+            "changed_paths": [],
+        },
+    )
+    if (
+        verification.disposition != "validation_failed"
+        or verification.guard_reason != "validation"
+    ):
+        raise IntegrityError(
+            "known validator failure did not produce the validation guard"
+        )
+    result = copy.deepcopy(dict(verification.result))
+    with controls.require_store().mutation(
+        plan_id,
+        expected_revision=expected_plan_revision,
+        timestamp=now,
+    ) as mutation:
+        mutation.begin_task_verification(
+            task_id=str(envelope["task_id"]),
+            generation=int(envelope["generation"]),
+            fingerprint_after=snapshot.control_sha256,
+            continue_invocations=1,
+            agentjobs=1,
+            provider_creates=1,
+        )
+    verifying = controls.require_store().load_plan(plan_id)
+    intent = controls.require_store().find_provider_intent(
+        plan_id, int(envelope["generation"])
+    )
+    receipt = _build_receipt(
+        record=verifying,
+        task_definition=controls.require_store().load_task_definition(
+            plan_id, str(envelope["task_id"])
+        ),
+        envelope=envelope,
+        intent=intent,
+        preclaim=PlanWorkerPreclaim(**dict(worker["preclaim"])),
+        prior_journal_sha256=verifying["journal"][-1]["event_hash"],
+        fingerprint_before=str(
+            worker["claim_receipt"]["fingerprint_before"]
+        ),
+        result=result,
+        started_at=str(worker["claim_receipt"]["claimed_at"]),
+        finished_at=now,
+    )
+    outer = controls.require_store().goal_store.load_goal(
+        verifying["outer_goal_id"]
+    )
+    with controls.require_store().mutation(
+        plan_id,
+        expected_revision=int(verifying["state"]["revision"]),
+        timestamp=now,
+    ) as mutation:
+        _, quarantined = mutation.finalize_task(
+            receipt, guard_reason="validation"
+        )
+        if quarantined:
+            raise IntegrityError(
+                "known validator failure unexpectedly quarantined"
+            )
+        mutation.release_plan_lease(
+            expected_outer_revision=int(outer["state"]["revision"]),
+            holder_token=str(worker["worker_token"]),
+        )
+    control_result = WebsiteControlStore(repo_root).supersede_packet(
+        {
+            "expected_control_sha256": snapshot.control_sha256,
+            "timestamp": now,
+        }
+    )
+    final = controls.require_store().load_plan(plan_id)
+    updated = controls.write_session(
+        plan_id,
+        {
+            **session,
+            "status": "task_finalized",
+            "website_control_sha256": control_result[
+                "website_control_sha256_after"
+            ],
+            "worker": {
+                **worker,
+                "receipt_id": receipt["receipt_id"],
+                "receipt_sha256": content_sha256(receipt),
+                "finalized": True,
+            },
+            "last_error": {
+                "reason_code": "plan.validation_failed",
+                "message": summary,
+            },
+        },
+        expected_adapter_revision=session["adapter_revision"],
+    )
+    return {
+        "status": "task_finalized",
+        "disposition": "validation_failed",
+        "plan_id": plan_id,
+        "task_id": envelope["task_id"],
+        "generation": envelope["generation"],
+        "plan_revision": final["state"]["revision"],
+        "plan_phase": final["state"]["phase"],
+        "receipt_id": receipt["receipt_id"],
+        "receipt_sha256": content_sha256(receipt),
+        "schema_version": receipt["schema_version"],
+        "website_control_sha256": control_result[
+            "website_control_sha256_after"
+        ],
+        "continue_invocations": 1,
+        "agentjobs": 1,
+        "adapter_revision": updated["adapter_revision"],
+        "next_boundary": "coordinator terminal review",
     }
 
 
@@ -4055,6 +4819,29 @@ def reserve_next(
             "agentjobs": 0,
             "continue_invocations": 0,
         }
+    selected_task_id = str(selection.selected_task["task_id"])
+    resolved_binding = resolve_effective_task_binding(
+        store=controls.require_store(),
+        plan_record=record,
+        session=session,
+        base_binding=binding,
+        task_id=selected_task_id,
+        repo_root=repo_root,
+    )
+    if (
+        resolved_binding["replacement"]
+        and resolved_binding["authorized_website_control_sha256"]
+        != snapshot.control_sha256
+    ):
+        raise _protected(
+            "replacement binding authorization is stale at reservation",
+            "activation.acceptance_invalidated",
+            task_id=selected_task_id,
+            expected=resolved_binding[
+                "authorized_website_control_sha256"
+            ],
+            actual=snapshot.control_sha256,
+        )
     if (
         record["state"]["phase"] != "continuation_required"
         or record["state"]["active_task_id"] is not None
@@ -4064,12 +4851,24 @@ def reserve_next(
             "successor reservation requires one finalized safe coordinator boundary",
             "plan.successor_not_ready",
         )
+    effective_binding = {
+        **copy.deepcopy(dict(binding)),
+        "tasks": {
+            **copy.deepcopy(dict(binding["tasks"])),
+            selected_task_id: copy.deepcopy(
+                dict(resolved_binding["entry"])
+            ),
+        },
+        "manifest_sha256": resolved_binding[
+            "binding_manifest_sha256"
+        ],
+    }
     outer = controls.require_store().goal_store.load_goal(
         record["outer_goal_id"]
     )
     prepared = PreparedPlan(
         plan=plan_source,
-        binding=binding,
+        binding=effective_binding,
         repository=snapshot.repository,
         control=snapshot,
         launcher_preflight=None,
@@ -4111,6 +4910,9 @@ def reserve_next(
                 "reservation": _reservation_session(reservation),
                 "control_activation": None,
                 "website_control_sha256": expected_control_sha256,
+                "active_binding_manifest_sha256": resolved_binding[
+                    "binding_manifest_sha256"
+                ],
                 "worker": None,
                 "last_error": None,
             },
@@ -4368,6 +5170,7 @@ __all__ = [
     "validate_binding_manifest",
     "verify_installed_bundle",
     "worker_consume",
+    "worker_fail",
     "worker_finalize",
     "worker_prepare",
     "worker_unknown",

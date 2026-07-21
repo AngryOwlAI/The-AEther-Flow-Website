@@ -1,0 +1,90 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-035-A"
+task_id: "WI-20260720-035"
+job_id: "WJ-20260720-035-A"
+created_utc: "2026-07-21T06:48:10Z"
+completed_utc: "2026-07-21T06:48:10Z"
+status: "completed"
+summary: "Removed only the Astro /documents redirect collision, restored the Documentation Overview build output, and completed desktop and compact headed-browser review of all five primary Documents destinations."
+changed_files:
+  - "astro.config.mjs"
+requirements_satisfied:
+  - "The canonical /documents/ route renders Documentation Overview content, and /documents reaches it without a self-redirect or redirect loop."
+  - "Documentation Overview and every category landing page are reachable through the intended Documents navigation journey at representative desktop and compact viewports."
+  - "Dropdown order, active state, native keyboard and focus behavior, compact disclosure, clipping, overflow, and browser-console review pass; any observed defect is recorded rather than silently ignored."
+acceptance_results:
+  - criterion: "The canonical /documents/ route renders Documentation Overview content, and /documents reaches it without a self-redirect or redirect loop."
+    status: "passed"
+    evidence_refs:
+      - "astro.config.mjs"
+      - "npm run build"
+      - "headed browser inspection of /documents and /documents/"
+  - criterion: "Documentation Overview and every category landing page are reachable through the intended Documents navigation journey at representative desktop and compact viewports."
+    status: "passed"
+    evidence_refs:
+      - "headed browser inspection at 1440 by 900 and 390 by 844"
+      - "/documents/"
+      - "/documents/anthology/"
+      - "/documents/research/"
+      - "/documents/governance/"
+      - "/documents/diagrams/"
+  - criterion: "Dropdown order, active state, native keyboard and focus behavior, compact disclosure, clipping, overflow, and browser-console review pass; any observed defect is recorded rather than silently ignored."
+    status: "passed"
+    evidence_refs:
+      - "headed Playwright Tab Enter Escape review"
+      - "desktop and compact overflow measurements"
+      - "browser console warning review"
+validator_results:
+  - id: "afdoc-035-01"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Astro built 64 static pages and emitted /documents/index.html as Documentation Overview."
+  - id: "afdoc-035-02"
+    command: "npm run validate:cloudflare"
+    status: "passed"
+    evidence: "Cloudflare Pages config validation passed."
+  - id: "afdoc-035-03"
+    command: "manual inspection of /documents, /documents/, Documents navigation, and every category route at representative desktop and compact viewports including native keyboard focus overflow and browser console"
+    status: "passed"
+    evidence: "Headed review at 1440 by 900 and 390 by 844 verified exact five-item order, current links, Tab Enter Escape focus, compact disclosure, zero document and menu horizontal overflow, all five destinations, and zero console warnings or errors."
+  - id: "afdoc-035-04"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+browser_evidence:
+  desktop_viewport: "1440x900"
+  compact_viewport: "390x844"
+  destinations_reviewed:
+    - "/documents/"
+    - "/documents/anthology/"
+    - "/documents/research/"
+    - "/documents/governance/"
+    - "/documents/diagrams/"
+  slashless_documents_result: "Rendered Documentation Overview directly with no meta refresh or loop."
+  dropdown_order:
+    - "Documentation Overview"
+    - "Anthology Articles"
+    - "Research Articles"
+    - "Governance & Control"
+    - "Diagram Gallery"
+  keyboard_result: "Tab reached each disclosure and child link; Enter opened the disclosures; Escape returned visible focus to Documents on desktop and Menu in compact mode."
+  focus_result: "Focused menu links exposed a solid 3 pixel outline and 4 pixel focus halo."
+  overflow_result: "Document and menu horizontal overflow measured zero at both viewports; the compact menu remained within the viewport."
+  console_result: "0 errors and 0 warnings."
+scope_preservation:
+  changed_product_path_count: 1
+  redirect_entries_removed: 1
+  other_redirect_entries_changed: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-035 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

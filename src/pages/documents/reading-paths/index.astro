@@ -1,0 +1,305 @@
+---
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import Figure from "../../../components/Figure.astro";
+import StatusDossier from "../../../components/StatusDossier.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const pathSummary = [
+  {
+    label: "Route type",
+    title: "Canonical reading-path index",
+    body:
+      "One Documents route organizes the general-public path and anchored specialist paths through existing pages.",
+  },
+  {
+    label: "Audience",
+    title: "General readers, specialists, and reviewers",
+    body:
+      "Choose the path that matches your question, then move from internal explanation to source inspection.",
+  },
+  {
+    label: "Boundary",
+    title: "No new claims",
+    body:
+      "Reading order does not update source state, promote a result, or replace the records that own a claim.",
+  },
+  {
+    label: "Reader rule",
+    title: "Internal route before provenance",
+    body:
+      "Use the page that explains the question first; inspect source and manifest evidence when an audit is needed.",
+  },
+];
+
+const audiencePaths = [
+  {
+    id: "physicists",
+    eyebrow: "Physicists",
+    title: "Start with current status, then inspect the derivation boundary.",
+    summary:
+      "This path is for readers asking what the physics program currently claims, where the open GR burden sits, and which stronger claims remain blocked.",
+    doNotInfer:
+      "Do not infer completed first-principles GR derivation, `g_eff`, matter coupling, Einstein equations, benchmark promotion, or downstream GR promotion.",
+    routes: [
+      {
+        title: "Current physics state",
+        href: "/physics/claim-status/",
+        body: "Read active task, latest handoff, open burden, blocked claims, and next action.",
+      },
+      {
+        title: "Distance-to-GR dashboard",
+        href: "/physics/open-burdens/",
+        body: "Inspect derivation burdens as ledger-backed blockers, not as a progress score.",
+      },
+      {
+        title: "Ontology",
+        href: "/physics/ontology/",
+        body: "Read vocabulary and ontology status before treating terms as derived physics.",
+      },
+      {
+        title: "Exact-GR benchmark",
+        href: "/physics/exact-gr-benchmark/",
+        body: "Separate benchmark compatibility from first-principles derivation.",
+      },
+      {
+        title: "Claim gates",
+        href: "/physics/claim-status/",
+        body: "Check proposal, audit, obstruction, freeze, and gate boundaries.",
+      },
+    ],
+  },
+  {
+    id: "mathematicians",
+    eyebrow: "Mathematicians",
+    title: "Follow definitions, construction burdens, and obstruction scope.",
+    summary:
+      "This path is for readers checking formal objects, route constraints, finite examples, no-target-import discipline, and local negative results.",
+    doNotInfer:
+      "Do not infer existence, uniqueness, regularity, or global impossibility from a reading path, diagram, local freeze, or finite toy result.",
+    routes: [
+      {
+        title: "Ontology",
+        href: "/physics/ontology/",
+        body: "Start with definitions and status boundaries before reading technical routes.",
+      },
+      {
+        title: "GR derivation roadmap",
+        href: "/physics/derivation-roadmap/",
+        body: "Inspect open source, metric, matter-coupling, equation, and promotion burdens.",
+      },
+      {
+        title: "Metric response ladder",
+        href: "/physics/open-burdens/",
+        body: "Read why response tokens remain below metric data and `g_eff` construction.",
+      },
+      {
+        title: "No-target-import discipline",
+        href: "/physics/open-burdens/",
+        body: "Check the fail-closed boundary around target topology, atlas, metric, and benchmark imports.",
+      },
+      {
+        title: "Negative results and frozen routes",
+        href: "/physics/open-burdens/",
+        body: "Read local obstruction scope without converting it into global rejection.",
+      },
+    ],
+  },
+  {
+    id: "ai-agent-researchers",
+    eyebrow: "AI and agent researchers",
+    title: "Read workflow authority before evaluating agent behavior.",
+    summary:
+      "This path is for readers studying bounded AgentJobs, role records, parent-child synthesis, memory retrieval, validators, and completion evidence.",
+    doNotInfer:
+      "Do not infer that AI workflow owns physics decisions, validator PASS is proof, or role labels grant authority without task-local records.",
+    routes: [
+      {
+        title: "AI Research-Agent System",
+        href: "/ai-research-system/",
+        body: "Start with the track landing for workflow scope and authority boundaries.",
+      },
+      {
+        title: "Workflow walkthrough",
+        href: "/ai-research-system/workflow/",
+        body: "Read the bounded request, Director, AgentJob, validation, completion, and handoff sequence.",
+      },
+      {
+        title: "One bounded AgentJob",
+        href: "/ai-research-system/agentjob-lifecycle/",
+        body: "Inspect the single-job envelope for reads, writes, validators, outputs, and stop conditions.",
+      },
+      {
+        title: "Role authority inspector",
+        href: "/ai-research-system/roles-and-schemas/",
+        body: "Check why role authority requires current task-local records.",
+      },
+      {
+        title: "Memory registries",
+        href: "/ai-research-system/memory-preflight/",
+        body: "Read source-first retrieval discipline and generated-memory limits.",
+      },
+    ],
+  },
+  {
+    id: "software-system-engineers",
+    eyebrow: "Software and system engineers",
+    title: "Inspect operation, validation, publication, and tool boundaries.",
+    summary:
+      "This path is for readers reviewing system operation, maintainer workflows, validation evidence, project-system repair, and publication provenance.",
+    doNotInfer:
+      "Do not infer that tool availability is authorization, build success is scientific truth, or manifest presence replaces source review.",
+    routes: [
+      {
+        title: "Operations",
+        href: "/ai-research-system/",
+        body: "Start with the operational landing for lifecycle, routing, validation, publication, repair, and tools.",
+      },
+      {
+        title: "Validator PASS limits",
+        href: "/ai-research-system/validators-and-handoffs/",
+        body: "Read why command PASS is checked-state evidence, not theorem proof or role authority.",
+      },
+      {
+        title: "Publication process",
+        href: "/documents/governance/publication-process/",
+        body: "Inspect brief, source spec, public page, screenshots, human review, and manifest discipline.",
+      },
+      {
+        title: "Governance and control",
+        href: "/documents/governance/",
+        body: "Check publication, provenance, registry, retrieval, and source-authority boundaries together.",
+      },
+      {
+        title: "Technical requirements",
+        href: "/ai-research-system/runtime-requirements/",
+        body: "Read tool tiers without confusing capability with authorization.",
+      },
+    ],
+  },
+  {
+    id: "external-reviewers",
+    eyebrow: "External reviewers",
+    title: "Establish claim and source boundaries before direct inspection.",
+    summary:
+      "This path prepares a reviewer to inspect source status, current burdens, and authority boundaries before opening research artifacts.",
+    doNotInfer:
+      "Do not infer that this path is a review verdict, a review invitation, or evidence that the scientific claims are complete.",
+    routes: [
+      {
+        title: "General-public reading path",
+        href: "/documents/reading-paths/general-public/",
+        body: "Begin with the public first path if the project framing is unfamiliar.",
+      },
+      {
+        title: "Current physics state",
+        href: "/physics/claim-status/",
+        body: "Read the active source-state snapshot before inspecting deeper claims.",
+      },
+      {
+        title: "Distance-to-GR dashboard",
+        href: "/physics/open-burdens/",
+        body: "Inspect open derivation burdens and blocked downstream promotions.",
+      },
+      {
+        title: "Source authority",
+        href: "/documents/governance/source-authority/",
+        body: "Read the trust boundary for website pages, generated derivatives, and upstream records.",
+      },
+      {
+        title: "Research articles",
+        href: "/documents/research/",
+        body: "Use the collection guide for registered TeX sources and corresponding PDF manifestations.",
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Reading Paths"
+  description="Canonical audience-specific reading paths for general readers, physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers."
+  bodyClass="project-overview-page project-support-page"
+>
+  <section class="content-band project-support-hero" aria-labelledby="reading-paths-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">Documents / Reading Paths</p>
+        <h1 id="reading-paths-title">Reading Paths</h1>
+        <p class="lead">
+          Choose the path closest to your question or discipline. Each path
+          begins with an internal explanation, preserves the strongest
+          inference it does not authorize, and leads to source inspection only
+          when needed.
+        </p>
+      </div>
+      <div class="overview-actions" aria-label="Reading path actions">
+        <a class="primary-link" href="#audience-paths">Choose a specialist path</a>
+        <a class="secondary-link" href="/documents/reading-paths/general-public/">General-public path</a>
+        <a class="secondary-link" href="/documents/">Documents overview</a>
+      </div>
+    </div>
+
+    <Figure
+      src="/assets/diagrams/comprehension/specialist-guided-starts.png"
+      alt="Diagram showing one reading-path hub routing physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers to internal prerequisite pages while preserving the no-new-claims boundary."
+      caption="The diagram illustrates audience reading paths connecting each discipline to internal routes and source-authority context."
+      className="support-figure comprehension-figure"
+      loading="eager"
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="summary-title">
+    <div class="section-header">
+      <p class="eyebrow">How to use this index</p>
+      <h2 id="summary-title">Read by question, then inspect source authority.</h2>
+      <p class="lead">
+        These paths are navigation layers. They lower the cost of finding the
+        relevant pages without replacing the records that own claim status.
+      </p>
+    </div>
+    <StatusDossier
+      items={pathSummary}
+      ariaLabel="Reading-path summary"
+      className="resource-status-grid resource-status-dossier"
+    />
+  </section>
+
+  <section id="audience-paths" class="content-band content-band-tight" aria-labelledby="audience-paths-title">
+    <div class="section-header">
+      <p class="eyebrow">Audience paths</p>
+      <h2 id="audience-paths-title">Pick the route family that matches your review question.</h2>
+      <p class="lead">
+        Every path follows one rule: read canonical internal pages first, then
+        use source links and manifests as provenance when auditing a claim or
+        artifact.
+      </p>
+    </div>
+  </section>
+
+  {audiencePaths.map((path) => (
+    <section id={path.id} class="content-band content-band-tight" aria-labelledby={`${path.id}-title`}>
+      <div class="section-header">
+        <p class="eyebrow">{path.eyebrow}</p>
+        <h2 id={`${path.id}-title`}>{path.title}</h2>
+        <p class="lead">{path.summary}</p>
+      </div>
+      <EvidenceRail
+        items={path.routes}
+        ariaLabel={`${path.eyebrow} reading-path routes`}
+        className="link-grid resource-path-rail"
+        ordered
+      />
+      <StatusDossier
+        items={[
+          {
+            label: "Do not infer",
+            title: "Boundary for this path",
+            body: path.doNotInfer,
+          },
+        ]}
+        ariaLabel={`${path.eyebrow} reading-path boundary`}
+        className="resource-status-grid resource-status-dossier"
+      />
+    </section>
+  ))}
+</BaseLayout>

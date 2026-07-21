@@ -8,10 +8,21 @@ export type SourceApprovalStatus =
   | "historical"
   | "source-index-only";
 
+export type SourceManifestKind =
+  | "pdf"
+  | "tex"
+  | "markdown"
+  | "image"
+  | "diagram"
+  | "manifest"
+  | "other";
+
+export type AssetManifestKind = Exclude<SourceManifestKind, "manifest">;
+
 export type SourceManifestItem = {
   id: string;
   site_path: string;
-  kind: string;
+  kind: SourceManifestKind;
   title: string;
   source_path: string;
   source_commit?: string;
@@ -30,7 +41,7 @@ export type SourceManifestItem = {
 
 export type AssetManifestItem = {
   path: string;
-  kind: string;
+  kind: AssetManifestKind;
   bytes: number;
   sha256: string;
   title: string;

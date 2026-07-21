@@ -1,0 +1,428 @@
+---
+import CommandBand from "../../../../components/CommandBand.astro";
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import ProjectIntroduction from "../../../../components/ProjectIntroduction.astro";
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../../lib/siteContent";
+
+const schemaRows = [
+  {
+    field: "Page family",
+    purpose: "Names the public route family or page type.",
+    requiredBoundary: "The family does not grant write permission by itself.",
+  },
+  {
+    field: "Reader job",
+    purpose: "States what the page helps a reader understand or decide.",
+    requiredBoundary: "Reader convenience cannot strengthen the source claim.",
+  },
+  {
+    field: "Primary authority sources",
+    purpose: "Lists the first files, registries, or governed records to inspect.",
+    requiredBoundary: "Primary sources outrank derivative seed material.",
+  },
+  {
+    field: "Supporting sources",
+    purpose: "Names context files, registries, handoffs, PRDs, or manifests that constrain copy.",
+    requiredBoundary: "Support does not override the primary owner.",
+  },
+  {
+    field: "Derivative seed material",
+    purpose: "Identifies generated Markdown, HTML, PDFs, wiki notes, or screenshots that can speed drafting.",
+    requiredBoundary: "Seed material is reusable only after source inspection.",
+  },
+  {
+    field: "Freshness policy",
+    purpose: "Defines inspection date, stale-data behavior, and refresh trigger for current-state material.",
+    requiredBoundary: "A stale snapshot must warn or block depending on route severity.",
+  },
+  {
+    field: "Forbidden inferences",
+    purpose: "Lists claims the page must not imply.",
+    requiredBoundary: "No public route may silently promote blocked or open claims.",
+  },
+  {
+    field: "Handoff requirements",
+    purpose: "Names inspected sources, validators, screenshots, skipped checks, and review status.",
+    requiredBoundary: "A handoff is evidence of implementation discipline, not claim proof.",
+  },
+];
+
+const bundleRows = [
+  {
+    family: "Documents architecture",
+    primary: "Current implementation_control packet for write authority; the accepted Documents canonical plan for architecture; live route, catalog, and manifest files for implementation evidence.",
+    seeds: "Reviewed legacy Resources pages and completed Documents routes after direct comparison.",
+    prds: "Documents navigation implementation plan and packet-scoped acceptance criteria.",
+  },
+  {
+    family: "Project overview",
+    primary: "README.md, AGENTS.md, research_control/README.md, publication process notes.",
+    seeds: "Project overview GitHub-facing and HTML explainers.",
+    prds: "PRD-01, PRD-05, PRD-06, PRD-10.",
+  },
+  {
+    family: "Physics pages",
+    primary: "ontology/aether-and-aether-flow.md, ontology/tex/*.tex, TEX and claim registries.",
+    seeds: "Physics explainers, tracked HTML, briefs, and source specs.",
+    prds: "PRD-02, PRD-05, PRD-09, PRD-10.",
+  },
+  {
+    family: "AI research-agent pages",
+    primary: "research_control/README.md, .agents/ roles and schemas, .codex/ skills, task and registry sources.",
+    seeds: "Workflow, lifecycle, role, parent-child, and roles/skills explainers.",
+    prds: "PRD-03, PRD-04, PRD-05, PRD-07.",
+  },
+  {
+    family: "Source-authority pages",
+    primary: "AGENTS.md, registries/, FOLDER_MAP.md as generated orientation, source and derivative registries.",
+    seeds: "Source-authority, memory-system, and repository-topology explainers.",
+    prds: "PRD-05, PRD-06, PRD-08.",
+  },
+  {
+    family: "Current-frontier pages",
+    primary: "research_control/current_frontier.md, program state, latest handoff, Distance-to-GR ledger.",
+    seeds: "Dated current-state cards and reviewed derivatives after source check.",
+    prds: "PRD-09, PRD-05, PRD-10.",
+  },
+  {
+    family: "Operator and contributor pages",
+    primary: "README.md, Makefile, requirements, scripts/, tests/, .codex/skills/.",
+    seeds: "Technical requirements, validator workflow, project-system improvement explainers.",
+    prds: "PRD-07, PRD-03, PRD-04, PRD-05.",
+  },
+  {
+    family: "Website publication pages",
+    primary: "markdown/publication-briefs/, markdown/html-explainer-specs/, publication brief registry.",
+    seeds: "GitHub-facing, HTML, and publication QA evidence.",
+    prds: "PRD-06, PRD-05, PRD-08, PRD-11.",
+  },
+];
+
+const checklistRows = [
+  {
+    step: "Identify page family",
+    action: "Choose the source bundle before writing copy or page code.",
+    stop: "Do not start from search results or a generated explainer alone.",
+  },
+  {
+    step: "Inspect primary sources",
+    action: "Read the source files, registries, handoffs, or control records that own the claim.",
+    stop: "Do not let derivative seed material decide claim status.",
+  },
+  {
+    step: "Write the boundary",
+    action: "State source class, freshness, forbidden inferences, and validation expectations.",
+    stop: "Do not hide uncertainty behind polished page structure.",
+  },
+  {
+    step: "Use derivative seeds carefully",
+    action: "Reuse generated Markdown, HTML, wiki, PDFs, or screenshots only as drafting support.",
+    stop: "Do not cite derivative material as canonical authority.",
+  },
+  {
+    step: "Record the handoff",
+    action: "Name inspected sources, PRDs, validators, screenshots, skipped checks, and review status.",
+    stop: "Do not push, deploy, mutate assets, or change manifests without live authorization.",
+  },
+];
+
+const handoffRows = [
+  {
+    item: "Source paths",
+    reason: "Reviewers need to verify what was inspected.",
+    missingRisk: "The route looks source-backed but cannot be audited.",
+  },
+  {
+    item: "Inspection date",
+    reason: "Current-frontier and topology material can drift.",
+    missingRisk: "A stale source map reads as current fact.",
+  },
+  {
+    item: "Relevant PRDs",
+    reason: "Requirements planning constrains page structure and forbidden claims.",
+    missingRisk: "A page satisfies layout while violating the product boundary.",
+  },
+  {
+    item: "Claim boundary",
+    reason: "The route must state what it can and cannot imply.",
+    missingRisk: "Publication polish silently promotes the claim.",
+  },
+  {
+    item: "Validation evidence",
+    reason: "Validators, screenshots, and skipped checks show process conformance.",
+    missingRisk: "The packet cannot distinguish implementation quality from authority.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Topology",
+    title: "Repository Map",
+    href: "/documents/governance/repository-map/",
+    body: "Use folder classes and edit/read policy before choosing source bundles.",
+  },
+  {
+    label: "Publication",
+    title: "Publication Process",
+    href: "/documents/governance/publication-process/",
+    body: "Read source specs, briefs, validation limits, and review expectations.",
+  },
+  {
+    label: "Reading",
+    title: "Documentation Overview",
+    href: "/documents/",
+    body: "Select the Documents category by reader job before opening implementation files.",
+  },
+  {
+    label: "Authority",
+    title: "Source Authority",
+    href: "/documents/governance/source-authority/",
+    body: "Confirm source, registry, derivative, retrieval, and website authority classes.",
+  },
+  {
+    label: "Derivatives",
+    title: "Generated Derivatives",
+    href: "/documents/derivatives/",
+    body: "Check what can seed a page and what cannot own claims.",
+  },
+  {
+    label: "Governance",
+    title: "Governance & Control",
+    href: "/documents/governance/",
+    body: "Return to the Governance & Control category landing page.",
+  },
+  {
+    label: "Provenance",
+    title: "Website repository",
+    href: "https://github.com/AngryOwlAI/The-AEther-Flow-Website",
+    body: "Inspect tracked implementation files after the internal guide has established the page and claim boundaries.",
+  },
+];
+
+const builderSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="documents-governance-builder-title documents-governance-builder-desc">
+    <title id="documents-governance-builder-title">Animated source-bundle builder map</title>
+    <desc id="documents-governance-builder-desc">A page family routes through primary authority sources, supporting sources, derivative seeds, freshness policy, validators, and handoff before implementation.</desc>
+    <defs>
+      <radialGradient id="documents-governance-builder-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-cyan-400)" stop-opacity="0.56" />
+        <stop offset="44%" stop-color="var(--owl-orange-500)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="documents-governance-builder-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#documents-governance-builder-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="228" ry="112" />
+      <path d="M104 112 H516" />
+      <path d="M104 180 H516" />
+      <path d="M104 248 H516" />
+      <path d="M206 84 V276" />
+      <path d="M414 84 V276" />
+    </g>
+    <g filter="url(#documents-governance-builder-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M104 180 C176 112, 238 112, 310 180 C382 248, 444 248, 516 180" />
+      <path class="track-figure-path signal-path" d="M104 112 C186 164, 238 180, 310 180 C382 180, 434 164, 516 112" />
+      <path class="track-figure-path orange-path alternate" d="M104 248 C186 196, 238 180, 310 180 C382 180, 434 196, 516 248" />
+      <path class="track-figure-path signal-path alternate" d="M206 84 C250 140, 370 220, 414 276" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="42" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="104" cy="112" r="13" />
+      <circle cx="104" cy="180" r="13" />
+      <circle cx="104" cy="248" r="13" />
+      <circle cx="206" cy="84" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="414" cy="276" r="13" />
+      <circle cx="516" cy="112" r="13" />
+      <circle cx="516" cy="180" r="13" />
+      <circle cx="516" cy="248" r="13" />
+    </g>
+  </svg>
+`;
+const documentsSiteBuilderGuideProjectIntroduction = [
+  "The safe build order is deliberate: identify the page family, inspect primary sources, map derivative seeds, write forbidden inferences, record freshness, then implement inside live control. A source bundle is a guardrail, not a shortcut around source reading.",
+  "This is a secondary maintainer route within Documents / Governance & Control, not a primary Documents dropdown destination. Internal routes carry the reader journey; GitHub is retained as provenance for exact implementation inspection.",
+] as const;
+
+---
+
+<BaseLayout
+  title="Site Builder Guide"
+  description="Documents governance site-builder guide for source-bundle-first implementation, page-family source mapping, build-first checks, handoff requirements, and stale-data handling."
+  bodyClass="project-overview-page project-track-page documents-greenfield-page ai-greenfield-page documents-governance-page documents-governance-detail-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Documents / Governance / Site Builder Guide"
+    title="Site Builder Guide"
+    lead="Every page family starts from a source bundle: primary authority sources first, derivative seeds second, forbidden inferences always visible."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Documents governance site builder guide page actions">
+      <a class="primary-link" href="#source-bundle-schema">Source bundle schema</a>
+      <a class="secondary-link" href="/documents/governance/repository-map/">Repository map</a>
+      <a class="secondary-link" href="/documents/governance/">Governance &amp; Control</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="documents-governance-builder-caption">
+        <Fragment set:html={builderSvg} />
+        <figcaption id="documents-governance-builder-caption">
+          Future route construction starts from source bundles, claim
+          boundaries, manifests, and validation gates.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <ProjectIntroduction
+    paragraphs={documentsSiteBuilderGuideProjectIntroduction}
+    ariaLabel="Site builder guide introduction"
+  />
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.documentsSiteBuilderGuide} />
+
+  <section id="source-bundle-schema" class="track-page-band" aria-labelledby="schema-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-bundle schema</p>
+      <h2 id="schema-title">Every planned page needs the same minimum evidence shape.</h2>
+      <p>
+        The schema keeps primary authority sources ahead of generated seed
+        material and makes blocked inferences visible before implementation.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Field</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">Required boundary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {schemaRows.map((row) => (
+          <tr>
+            <th scope="row">{row.field}</th>
+            <td>{row.purpose}</td>
+            <td>{row.requiredBoundary}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="bundle-index-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Bundle index</p>
+      <h2 id="bundle-index-title">Page families map to source bundles before they map to designs.</h2>
+      <p>
+        This compact index is a starting map. Future packets still need live
+        source inspection before making public route changes.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Page family</th>
+          <th scope="col">Primary authority sources</th>
+          <th scope="col">Derivative seeds</th>
+          <th scope="col">Required PRDs</th>
+        </tr>
+      </thead>
+      <tbody>
+        {bundleRows.map((row) => (
+          <tr>
+            <th scope="row">{row.family}</th>
+            <td>{row.primary}</td>
+            <td>{row.seeds}</td>
+            <td>{row.prds}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="build-first-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Build-first checklist</p>
+      <h2 id="build-first-title">Source inspection happens before derivative reuse.</h2>
+      <p>
+        The checklist blocks a common failure mode: a generated explainer
+        becomes the public claim owner because it was easier to read.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Step</th>
+          <th scope="col">Action</th>
+          <th scope="col">Stop condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        {checklistRows.map((row) => (
+          <tr>
+            <th scope="row">{row.step}</th>
+            <td>{row.action}</td>
+            <td>{row.stop}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="handoff-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Contributor handoff</p>
+      <h2 id="handoff-title">The handoff records what was inspected and what remains uncertain.</h2>
+      <p>
+        A useful handoff gives the next reviewer enough evidence to reproduce
+        the route boundary without reconstructing the repository from memory.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Risk if missing</th>
+        </tr>
+      </thead>
+      <tbody>
+        {handoffRows.map((row) => (
+          <tr>
+            <th scope="row">{row.item}</th>
+            <td>{row.reason}</td>
+            <td>{row.missingRisk}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Use the builder guide with topology, publication, reading paths, and authority pages."
+    lead="The guide helps future implementation packets start from source bundles; live control records still decide what can be changed."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related Documents governance site-builder guide routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+</BaseLayout>

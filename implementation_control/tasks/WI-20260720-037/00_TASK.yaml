@@ -1,0 +1,118 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260720-037"
+title: "Update only the layout-language validator contract and its focused regression coverage so DocumentActions recognizes the migrated DocumentCollection surface and retired Resources page sources are no longer required, while preserving the remaining primitive, anti-pattern, and authority-boundary checks; then run one aggregate repository validation against the repaired final local state."
+created_utc: "2026-07-21T07:58:21Z"
+updated_utc: "2026-07-21T08:20:56Z"
+status: "superseded"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-037"
+  plan_task_sha256: "7db25252511b071b41d344eb0af13a11904f5b8f98674342d6829f70df16eab0"
+  binding_manifest_sha256: "a564eb3ea6726f29c0bb845da7118b053d3c2ebc1f8712a8e086ea5f61b62688"
+  authority_sha256: "3ae3790a61bd6205b34c42b5ebbb87275e2fc916ad1cd3286754605097a49af1"
+  implementation_authority: "implementation_control only"
+goal: "Update only the layout-language validator contract and its focused regression coverage so DocumentActions recognizes the migrated DocumentCollection surface and retired Resources page sources are no longer required, while preserving the remaining primitive, anti-pattern, and authority-boundary checks; then run one aggregate repository validation against the repaired final local state."
+requirements:
+  - "DocumentActions is validated against its current DocumentCollection migration, and the retired Resources index, documents, and diagrams source pages are not required as live layout surfaces."
+  - "Focused layout-language tests prove the current repository passes while retained primitive, anti-pattern, and source-authority safeguards still fail closed."
+  - "`npm run validate` passes against the repaired final bounded implementation state in one aggregate run."
+  - "No product page, manifest, route, release record, external system, or upstream repository is changed."
+scope:
+  in_scope:
+    - "scripts/validate_layout_language.py"
+    - "tests/test_validate_layout_language.py"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "astro.config.mjs"
+    - "package.json"
+    - "implementation_control/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository:
+    - "scripts/validate_layout_language.py"
+    - "tests/test_validate_layout_language.py"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  git_push:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - command: ".venv/bin/python -m pytest -p no:cacheprovider tests/test_validate_layout_language.py"
+    id: "afdoc-037-01"
+    required: true
+  - command: "npm run validate"
+    id: "afdoc-037-02"
+    required: true
+  - command: "git diff --check"
+    id: "afdoc-037-03"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+handoff:
+  latest_handoff_id: "WH-20260720-037"
+  yaml_path: "implementation_control/handoffs/WH-20260720-037.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260720-037.md"
+next_recommended_action:
+  task_packet: "AFDOC-037"
+  summary: "Update only the layout-language validator contract and its focused regression coverage so DocumentActions recognizes the migrated DocumentCollection surface and retired Resources page sources are no longer required, while preserving the remaining primitive, anti-pattern, and authority-boundary checks; then run one aggregate repository validation against the repaired final local state."
+  do_not_skip: "Do not broaden the hash-bound website packet."

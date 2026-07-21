@@ -1,0 +1,110 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260721-039"
+title: "Run exactly one aggregate repository validation against the reconciled final local state, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+created_utc: "2026-07-21T20:55:20Z"
+updated_utc: "2026-07-21T21:11:10Z"
+status: "superseded"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-039"
+  plan_task_sha256: "0a3bdb91664da12cfd5880c5eb41830318e1ed438ad0f57c62b6367a2502ca14"
+  binding_manifest_sha256: "6e8e13e59ea7ba3fe02aec7896ae912612087768062b719693f39ce48ceed1f9"
+  authority_sha256: "86e752aa7bc5d5853f9ea08bca4bf92cb67ebab33599d4b26b92cfec223030d8"
+  implementation_authority: "implementation_control only"
+goal: "Run exactly one aggregate repository validation against the reconciled final local state, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+requirements:
+  - "npm run validate is invoked exactly once after AFDOC-038 and passes against the reconciled final bounded implementation state."
+  - "The preserved layout-language repair and all retained primitive, anti-pattern, authority, curator, provenance, Cloudflare, plan-goal, test, and build gates pass in that aggregate run."
+  - "The validation-only task changes no repository file or external system and performs no branch, worktree, stage, commit, push, deployment, upstream write, or publication."
+scope:
+  in_scope: []
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "astro.config.mjs"
+    - "package.json"
+    - "implementation_control/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository: []
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  git_push:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - command: "npm run validate"
+    id: "afdoc-039-01"
+    required: true
+  - command: "git diff --check"
+    id: "afdoc-039-02"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+handoff:
+  latest_handoff_id: "WH-20260721-039"
+  yaml_path: "implementation_control/handoffs/WH-20260721-039.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260721-039.md"
+next_recommended_action:
+  task_packet: "AFDOC-039"
+  summary: "Run exactly one aggregate repository validation against the reconciled final local state, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+  do_not_skip: "Do not broaden the hash-bound website packet."

@@ -1,0 +1,71 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-034-A"
+task_id: "WI-20260720-034"
+job_id: "WJ-20260720-034-A"
+created_utc: "2026-07-21T04:39:51Z"
+completed_utc: "2026-07-21T04:39:51Z"
+status: "completed"
+summary: "Replaced the 15 retired Resources canonical records with the 15 existing Documents pages, preserved reviewed upstream source ordering and pins, refreshed all 34 local page hashes, and added a fail-closed Documents-category regression."
+changed_files:
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+  - "scripts/smoke_test_site.py"
+  - "scripts/validate_page_provenance.py"
+  - "tests/test_validate_page_provenance.py"
+requirements_satisfied:
+  - "All required Documents routes are represented in required-route checks, the route map, and page provenance, while retired Resources routes are absent as canonical pages."
+  - "The route map and page provenance reflect the final canonical URLs and source paths, current local page hashes, preserved upstream source order and pinning, and no private paths."
+  - "Required-route validation fails for a missing Documents category route, and npm run validate\u003aprovenance passes without exemptions or deferred checks."
+acceptance_results:
+  - criterion: "All required Documents routes are represented in required-route checks, the route map, and page provenance, while retired Resources routes are absent as canonical pages."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/page_route_map.json"
+      - "public/files/manifests/page_provenance.json"
+      - "scripts/validate_page_provenance.py"
+  - criterion: "The route map and page provenance reflect the final canonical URLs and source paths, current local page hashes, preserved upstream source order and pinning, and no private paths."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/page_route_map.json"
+      - "public/files/manifests/page_provenance.json"
+      - "npm run validate\u003aprovenance"
+  - criterion: "Required-route validation fails for a missing Documents category route, and npm run validate\u003aprovenance passes without exemptions or deferred checks."
+    status: "passed"
+    evidence_refs:
+      - "tests/test_validate_page_provenance.py"
+      - "npm run validate\u003aprovenance"
+validator_results:
+  - id: "afdoc-034-01"
+    command: "npm run validate\u003aprovenance"
+    status: "passed"
+    evidence: "Page provenance validation passed for all 34 canonical routes."
+  - id: "afdoc-034-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: ".venv/bin/python -m pytest -p no\u003acacheprovider tests/test_validate_page_provenance.py"
+    status: "passed"
+    evidence: "Four focused provenance tests passed, including the missing Documents-category regression."
+  - command: "read-only route, hash, source-order, and pin comparison"
+    status: "passed"
+    evidence: "Verified 15 Documents route migrations, all 34 page hashes, unchanged source arrays, and unchanged pinned URLs against the pre-task records."
+scope_preservation:
+  changed_product_path_count: 5
+  canonical_documents_routes: 15
+  retired_resources_canonical_routes: 0
+  page_hashes_verified: 34
+  upstream_source_commit_preserved: "57438af555214bc0785dcb390ee6254f580b8a62"
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-034 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

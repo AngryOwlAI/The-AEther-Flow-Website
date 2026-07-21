@@ -3,11 +3,22 @@ import ComprehensionBlocks from "../../../components/ComprehensionBlocks.astro";
 import SourceAuthoritySection from "../../../components/SourceAuthoritySection.astro";
 import ProjectRouteGrid from "../../../components/ProjectRouteGrid.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { aiSystemComprehension } from "../../../lib/aiComprehensionContent";
+import {
+  aiSystemComprehension as legacyAiSystemComprehension,
+} from "../../../lib/aiComprehensionContent";
 import {
   projectAiDeepDiveRoutes,
   projectSourceNoticeDefaults,
 } from "../../../lib/siteContent";
+
+const aiSystemComprehension = {
+  ...legacyAiSystemComprehension,
+  sourceBasis: legacyAiSystemComprehension.sourceBasis?.map((link) =>
+    link.href === "/resources/source-authority/"
+      ? { ...link, href: "/documents/governance/source-authority/" }
+      : link,
+  ),
+};
 
 const sourceNotice = projectSourceNoticeDefaults.aiResearchAgentTrack;
 

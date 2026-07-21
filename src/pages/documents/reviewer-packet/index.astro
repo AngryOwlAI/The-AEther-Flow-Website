@@ -1,0 +1,288 @@
+---
+import EvidenceRail from "../../../components/EvidenceRail.astro";
+import Figure from "../../../components/Figure.astro";
+import StatusDossier from "../../../components/StatusDossier.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import snapshot from "../../../data/physics_current_state_snapshot.json";
+
+const shortCommit = snapshot.source_commit
+  ? `${snapshot.source_commit.slice(0, 12)}...`
+  : "Unavailable";
+
+const packetStatus = [
+  {
+    label: "Review status",
+    title: "Human review pending",
+    body:
+      "This packet is staged for reviewer use. It is not peer review, external validation, or approval.",
+  },
+  {
+    label: "Snapshot date",
+    title: snapshot.source_refresh_date,
+    body: `Checked-in website source-state snapshot at commit ${shortCommit}.`,
+  },
+  {
+    label: "Active task",
+    title: snapshot.active_task_id,
+    body: `Latest handoff: ${snapshot.latest_handoff_id}. Read the current-state route for source details.`,
+  },
+  {
+    label: "Packet scope",
+    title: "Inspection order",
+    body:
+      "The page routes reviewers to source-bound pages before source/provenance inspection.",
+  },
+  {
+    label: "Documents placement",
+    title: "Contextual inspection route",
+    body:
+      "This Documents route is reached from reading paths and review contexts. It is not one of the five primary Documents dropdown destinations.",
+  },
+];
+
+const claimBoundaryCards = [
+  {
+    label: "What is claimed for review",
+    title: "Scoped source-extension evidence/precondition",
+    body:
+      "The checked-in current-state snapshot reports scoped recovery-bridge-candidate evidence/precondition acceptance under finite/local source-side scope.",
+  },
+  {
+    label: "What that does not claim",
+    title: "No adoption or completed derivation",
+    body:
+      "No source-law adoption, no MetricData(E) adoption, no g_eff scope change, no coupling-law adoption, no matter-coupling derivation or adoption, no stress-energy semantics, no Einstein equations, no benchmark promotion, and no completed derivation occurred.",
+  },
+  {
+    label: "What the website can do",
+    title: "Orient and link",
+    body:
+      "The website can organize current state, route burdens, documents, diagrams, and source links. It cannot become scientific authority.",
+  },
+  {
+    label: "Review status",
+    title: "Pending",
+    body:
+      "This route is a human-review-pending inspection packet. It does not report external review completion.",
+  },
+];
+
+const inspectionOrder = [
+  {
+    title: "Source authority",
+    href: "/documents/governance/source-authority/",
+    body:
+      "Start with the rule that upstream source files, registries, and governed records own claim status.",
+  },
+  {
+    title: "Claim Boundary Explorer",
+    href: "/physics/claim-status/",
+    body:
+      "Inspect allowed, forbidden, and gate-required wording before reading any stronger summary.",
+  },
+  {
+    title: "Current physics state",
+    href: "/physics/claim-status/",
+    body:
+      "Read the active task, latest handoff, blocked claims, and next source-side action.",
+  },
+  {
+    title: "Distance-to-GR dashboard",
+    href: "/physics/open-burdens/",
+    body:
+      "Review derivation burdens and blockers without treating them as a progress score.",
+  },
+  {
+    title: "Research articles",
+    href: "/documents/research/",
+    body:
+      "Use the canonical Documents collection for registered TeX sources and generated PDF derivatives.",
+  },
+  {
+    title: "Specialist reading paths",
+    href: "/documents/reading-paths/",
+    body:
+      "Choose the physicist, mathematician, AI/agent, or system-engineering path matching your review question.",
+  },
+];
+
+const secondaryInspection = [
+  {
+    title: "Exact-GR benchmark boundary",
+    href: "/physics/exact-gr-benchmark/",
+    body:
+      "Separate exact-GR benchmark compatibility from first-principles derivation and benchmark promotion.",
+  },
+  {
+    title: "GR derivation roadmap",
+    href: "/physics/derivation-roadmap/",
+    body:
+      "Inspect source, metric, matter-coupling, equation, and promotion burdens as separate obligations.",
+  },
+  {
+    title: "Source extension pipeline",
+    href: "/physics/derivation-roadmap/",
+    body:
+      "Read proposal-only and draft/control work without treating it as adopted source law.",
+  },
+  {
+    title: "Negative results and frozen routes",
+    href: "/physics/open-burdens/",
+    body:
+      "Distinguish scoped obstruction and frozen local routes from global theory rejection.",
+  },
+  {
+    title: "Validator PASS limits",
+    href: "/ai-research-system/validators-and-handoffs/",
+    body:
+      "Check why command PASS is bounded checked-state evidence, not theorem proof.",
+  },
+  {
+    title: "Publication and provenance system",
+    href: "/documents/governance/publication-process/",
+    body:
+      "Inspect route maps, page provenance, source manifests, asset manifests, and hash limits.",
+  },
+];
+
+const reviewerQuestions = [
+  {
+    label: "Question",
+    title: "Which claim is under review?",
+    body:
+      "Name the exact page and boundary before evaluating evidence. Avoid reviewing a stronger claim than the source permits.",
+  },
+  {
+    label: "Question",
+    title: "Which source owns the claim?",
+    body:
+      "Find the registry, handoff, TeX source, or source-analysis artifact before relying on a website summary.",
+  },
+  {
+    label: "Question",
+    title: "Which gate is still closed?",
+    body:
+      "Identify whether the issue is source-law adoption, MetricData(E), g_eff, matter coupling, Einstein equations, or benchmark promotion.",
+  },
+  {
+    label: "Question",
+    title: "What would change the status?",
+    body:
+      "Look for the next bounded packet, acceptance criteria, obstruction, freeze, or human gate named by the source-state page.",
+  },
+];
+---
+
+<BaseLayout
+  title="External Reviewer Packet"
+  description="Documents human-review-pending inspection packet for external reviewers, with claim boundaries before canonical source-inspection paths."
+  bodyClass="project-overview-page project-support-page documents-reviewer-page"
+>
+  <section class="content-band project-support-hero" aria-labelledby="reviewer-packet-title">
+    <div class="project-support-copy">
+      <div class="section-header">
+        <p class="eyebrow">Documents / Reviewer Packet / human review pending</p>
+        <h1 id="reviewer-packet-title">External Reviewer Packet</h1>
+        <p class="lead">
+          Use this contextual Documents route as an inspection order, not as a
+          claim summary. It starts with what is not claimed, then routes you to
+          current state, burden evidence, research articles, and source
+          authority.
+        </p>
+      </div>
+      <div class="overview-actions" aria-label="External reviewer packet actions">
+        <a class="primary-link" href="#claim-boundaries">Read boundaries</a>
+        <a class="secondary-link" href="/documents/reading-paths/">Reading paths</a>
+        <a class="secondary-link" href="/documents/">Documents</a>
+      </div>
+    </div>
+
+    <Figure
+      src="/assets/diagrams/comprehension/reviewer-inspection-order.png"
+      alt="Diagram showing the reviewer packet moving from claim boundaries to current state, Distance-to-GR, ontology documents, source inspection, reviewer questions, human review pending, and no-completed-derivation boundary."
+      caption="The diagram illustrates reviewer inspection from claim boundaries through current state, source inspection, questions, and human review."
+      className="support-figure comprehension-figure"
+      loading="eager"
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="packet-status-title">
+    <div class="section-header">
+      <p class="eyebrow">Packet status</p>
+      <h2 id="packet-status-title">This is a human-review-pending inspection route.</h2>
+      <p class="lead">
+        The packet exists because prerequisite authority and orientation pages
+        now exist. It does not report review completion or scientific approval.
+      </p>
+    </div>
+    <StatusDossier
+      items={packetStatus}
+      ariaLabel="External reviewer packet status"
+      className="resource-status-grid resource-status-dossier"
+    />
+  </section>
+
+  <section id="claim-boundaries" class="content-band content-band-tight" aria-labelledby="claim-boundaries-title">
+    <div class="section-header">
+      <p class="eyebrow">Claim boundaries first</p>
+      <h2 id="claim-boundaries-title">Review the narrow claim, not an inflated one.</h2>
+      <p class="lead">
+        The current-state snapshot is useful only when read with its forbidden
+        implications. The boundary below appears before source inspection so
+        the review target cannot silently expand.
+      </p>
+    </div>
+    <StatusDossier
+      items={claimBoundaryCards}
+      ariaLabel="External reviewer claim boundaries"
+      className="resource-status-grid resource-status-dossier"
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="inspection-order-title">
+    <div class="section-header">
+      <p class="eyebrow">Inspection order</p>
+      <h2 id="inspection-order-title">Read these internal routes before opening source files.</h2>
+      <p class="lead">
+        Internal pages explain the reader job and boundaries. Source links and
+        manifests remain available as provenance once the review question is
+        precise.
+      </p>
+    </div>
+    <EvidenceRail
+      items={inspectionOrder}
+      ariaLabel="External reviewer primary inspection order"
+      className="link-grid resource-path-rail"
+      ordered
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="secondary-inspection-title">
+    <div class="section-header">
+      <p class="eyebrow">Deeper inspection</p>
+      <h2 id="secondary-inspection-title">Use these routes for claim-specific review.</h2>
+      <p class="lead">
+        These pages help separate benchmark status, derivation roadmap, source
+        extension, frozen routes, validation limits, and publication evidence.
+      </p>
+    </div>
+    <EvidenceRail
+      items={secondaryInspection}
+      ariaLabel="External reviewer deeper inspection routes"
+      className="link-grid resource-path-rail"
+      ordered
+    />
+  </section>
+
+  <section class="content-band content-band-tight" aria-labelledby="reviewer-questions-title">
+    <div class="section-header">
+      <p class="eyebrow">Reviewer questions</p>
+      <h2 id="reviewer-questions-title">Make the review target explicit before judging it.</h2>
+    </div>
+    <EvidenceRail
+      items={reviewerQuestions}
+      ariaLabel="External reviewer questions"
+      className="link-grid resource-path-rail"
+    />
+  </section>
+</BaseLayout>

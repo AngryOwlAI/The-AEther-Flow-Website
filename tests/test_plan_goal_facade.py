@@ -91,6 +91,7 @@ def test_every_mutating_subcommand_requires_both_cas_arguments():
         "adopt-worker",
         "worker-prepare",
         "worker-consume",
+        "worker-fail",
         "worker-finalize",
         "worker-unknown",
         "reserve-next",

@@ -1,0 +1,111 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-018-A"
+task_id: "WI-20260720-018"
+job_id: "WJ-20260720-018-A"
+created_utc: "2026-07-21T00:24:17Z"
+completed_utc: "2026-07-21T00:24:17Z"
+status: "completed"
+summary: "Replaced primary internal Resources links with canonical Documents routes, removed stale Resources and Library product labels from the authorized public surfaces, retained legitimate generic prose, and preserved GitHub provenance links."
+changed_files:
+  - "src/lib/internalExplainers.ts"
+  - "src/lib/siteContent.ts"
+  - "src/pages/ai-research-system/memory-preflight/index.astro"
+  - "src/pages/ai-research-system/runtime-requirements/index.astro"
+  - "src/pages/documents/diagrams/index.astro"
+  - "src/pages/documents/governance/index.astro"
+  - "src/pages/documents/governance/publication-process/index.astro"
+  - "src/pages/documents/governance/retrieval-layers/index.astro"
+  - "src/pages/documents/governance/site-builder-guide/index.astro"
+  - "src/pages/documents/research/index.astro"
+  - "src/pages/index.astro"
+  - "src/pages/physics/ontology/index.astro"
+  - "src/pages/project/ai-research-agent-system/index.astro"
+  - "src/pages/project/ai-research-agent-system/memory-registries/index.astro"
+  - "src/pages/project/ai-research-agent-system/one-bounded-agentjob/index.astro"
+  - "src/pages/project/ai-research-agent-system/parent-child-synthesis/index.astro"
+  - "src/pages/project/ai-research-agent-system/role-authority-inspector/index.astro"
+  - "src/pages/project/ai-research-agent-system/roles-and-skills/index.astro"
+  - "src/pages/project/ai-research-agent-system/workflow/index.astro"
+  - "src/pages/project/physics/claim-gates/index.astro"
+  - "src/pages/project/physics/exact-gr-benchmark/index.astro"
+  - "src/pages/project/physics/gate-chair-and-human-gates/index.astro"
+  - "src/pages/project/physics/index.astro"
+  - "src/pages/project/physics/ontology/index.astro"
+  - "src/pages/project/physics/source-extension-pipeline/index.astro"
+  - "src/pages/project/source-authority/claim-boundary-explorer/index.astro"
+  - "src/pages/project/source-authority/index.astro"
+  - "src/pages/project/source-authority/publication-and-provenance-system/index.astro"
+  - "src/pages/resources/diagrams.astro"
+  - "src/pages/resources/documents.astro"
+  - "src/pages/resources/generated-derivatives/index.astro"
+  - "src/pages/resources/guided-starts/general-public/index.astro"
+  - "src/pages/resources/guided-starts/index.astro"
+  - "src/pages/resources/index.astro"
+  - "src/pages/resources/library/index.astro"
+  - "src/pages/resources/publication-process/index.astro"
+  - "src/pages/resources/reading-paths/index.astro"
+  - "src/pages/resources/registries/index.astro"
+  - "src/pages/resources/repository-map/index.astro"
+  - "src/pages/resources/retrieval-layers/index.astro"
+  - "src/pages/resources/reviewer-packet/index.astro"
+  - "src/pages/resources/site-builder-guide/index.astro"
+  - "src/pages/resources/source-authority/index.astro"
+  - "tests/test_documents_internal_links.py"
+  - "tests/test_public_positioning.py"
+requirements_satisfied:
+  - "Primary internal journeys point directly to canonical Documents routes rather than relying on redirects."
+  - "Library and Resources product identities are removed while legitimate generic prose remains."
+  - "No GitHub provenance link is removed merely because an internal reader route exists."
+acceptance_results:
+  - criterion: "Primary internal journeys point directly to canonical Documents routes rather than relying on redirects."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/**"
+      - "src/lib/siteContent.ts"
+      - "src/lib/internalExplainers.ts"
+      - "tests/test_documents_internal_links.py"
+  - criterion: "Library and Resources product identities are removed while legitimate generic prose remains."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/resources/library/index.astro"
+      - "src/pages/documents/governance/site-builder-guide/index.astro"
+      - "src/lib/siteContent.ts"
+      - "tests/test_documents_internal_links.py"
+  - criterion: "No GitHub provenance link is removed merely because an internal reader route exists."
+    status: "passed"
+    evidence_refs:
+      - "source diff review for src/pages, src/lib/siteContent.ts, and src/lib/internalExplainers.ts"
+validator_results:
+  - id: "afdoc-018-01"
+    command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal link validation passed after the route and label migration."
+  - id: "afdoc-018-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_documents_internal_links.py -q"
+    status: "passed"
+    evidence: "Both focused regression tests passed."
+nonblocking_observations:
+  - "A broader combined positioning run passed 37 tests and reported two unrelated stale inventory-count assertions caused by canonical Documents pages introduced before this packet; neither assertion is a required AFDOC-018 validator."
+scope_preservation:
+  changed_file_count: 45
+  primary_resources_hrefs_present: false
+  stale_resources_or_library_product_labels_present: false
+  legitimate_generic_resources_prose_retained: true
+  github_provenance_link_removed: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-018 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

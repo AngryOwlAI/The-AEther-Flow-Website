@@ -1,0 +1,248 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import DocumentCollection from "../../../components/documents/DocumentCollection.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
+import StatusDossier from "../../../components/StatusDossier.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { documents } from "../../../lib/documents";
+import {
+  approvedDownloads,
+  ontologyDocumentSequence,
+  type DownloadItem,
+} from "../../../lib/manifests";
+
+const approvedDownloadByPath = new Map(
+  approvedDownloads.map((download) => [download.path, download]),
+);
+
+const canonicalOntologyDocuments = documents
+  .filter(
+    (document) =>
+      document.category === "research" &&
+      document.collection === "canonical-ontology" &&
+      document.status.toLowerCase() === "approved",
+  )
+  .sort(
+    (left, right) =>
+      (left.readingOrder ?? Number.MAX_SAFE_INTEGER) -
+        (right.readingOrder ?? Number.MAX_SAFE_INTEGER) ||
+      left.title.localeCompare(right.title),
+  );
+
+if (
+  canonicalOntologyDocuments.length !== ontologyDocumentSequence.length ||
+  canonicalOntologyDocuments.some(
+    (document, index) =>
+      document.title !== ontologyDocumentSequence[index]?.title ||
+      document.readingOrder !== ontologyDocumentSequence[index]?.ordinal,
+  )
+) {
+  throw new Error(
+    "The Research Articles catalog does not preserve the canonical ontology reading sequence.",
+  );
+}
+
+const researchArticles = canonicalOntologyDocuments.map((document) => {
+  const texManifestation = document.manifestations.find(
+    (manifestation) => manifestation.kind === "tex",
+  );
+  const pdfManifestation = document.manifestations.find(
+    (manifestation) => manifestation.kind === "pdf",
+  );
+  const texAsset = texManifestation
+    ? approvedDownloadByPath.get(texManifestation.sitePath)
+    : undefined;
+  const pdfAsset = pdfManifestation
+    ? approvedDownloadByPath.get(pdfManifestation.sitePath)
+    : undefined;
+
+  if (!texManifestation || !pdfManifestation || !texAsset || !pdfAsset) {
+    throw new Error(
+      `Research article ${document.id} must resolve to approved TeX and PDF manifestations.`,
+    );
+  }
+
+  return { document, texAsset, pdfAsset };
+});
+
+const researchIntroduction = [
+  "Research Articles is the source-oriented document collection for The Æther Flow Project. The current collection keeps each registered ontology TeX source together with its corresponding human-readable PDF while preserving the established specialist reading order.",
+  "The TeX manifestation is the source-inspection artifact for its registered version. The PDF is a readable derivative. Website presentation, catalog placement, and file hashes do not expand the scientific status or authority recorded by the source manifests.",
+] as const;
+
+const collectionState = [
+  {
+    label: "Logical articles",
+    value: researchArticles.length,
+    body: "Each catalog record renders once with its TeX and PDF manifestations attached.",
+  },
+  {
+    label: "Current collection",
+    title: "Canonical ontology and exact closure",
+    body: "Research notes and technical appendices remain separate future collections until approved catalog records exist.",
+  },
+  {
+    label: "TeX role",
+    title: "Registered source-inspection artifact",
+    body: "Use the registered TeX version together with its source status and provenance when evaluating claims.",
+  },
+  {
+    label: "PDF role",
+    title: "Human-readable derivative",
+    body: "Use the PDF for reading; it does not override the registered TeX source or its status.",
+  },
+];
+
+const readingGuide = ontologyDocumentSequence.map((entry) => ({
+  label: String(entry.ordinal),
+  title: entry.title,
+  body: entry.guidance,
+}));
+
+const phrase = (value: string) => value.replaceAll("_", " ");
+const shortCommit = (value?: string) => value?.slice(0, 12);
+const dateOnly = (value?: string) => value?.slice(0, 10);
+const byteFormatter = new Intl.NumberFormat("en-US");
+
+const assetMetadata = (format: "TeX" | "PDF", asset: DownloadItem) => [
+  { label: `${format} bytes`, value: byteFormatter.format(asset.bytes) },
+  { label: `${format} SHA-256`, value: asset.sha256 },
+  ...(asset.source?.source_path
+    ? [{ label: `${format} source path`, value: asset.source.source_path }]
+    : []),
+  ...(asset.source?.source_commit
+    ? [
+        {
+          label: `${format} source commit`,
+          value: shortCommit(asset.source.source_commit),
+        },
+      ]
+    : []),
+  ...(asset.source?.generated_at
+    ? [
+        {
+          label: `${format} website import`,
+          value: dateOnly(asset.source.generated_at),
+        },
+      ]
+    : []),
+];
+
+const sourceStatusMetadata = (texAsset: DownloadItem) => [
+  ...(texAsset.source?.claim_status
+    ? [{ label: "Claim status", value: phrase(texAsset.source.claim_status) }]
+    : []),
+  ...(texAsset.source?.research_status
+    ? [
+        {
+          label: "Research status",
+          value: phrase(texAsset.source.research_status),
+        },
+      ]
+    : []),
+  ...(texAsset.source?.ontology_promotion_status
+    ? [
+        {
+          label: "Ontology promotion",
+          value: phrase(texAsset.source.ontology_promotion_status),
+        },
+      ]
+    : []),
+];
+
+const metadataByDocumentId = Object.fromEntries(
+  researchArticles.map(({ document, texAsset, pdfAsset }) => [
+    document.id,
+    [
+      ...sourceStatusMetadata(texAsset),
+      ...assetMetadata("TeX", texAsset),
+      ...assetMetadata("PDF", pdfAsset),
+    ],
+  ]),
+);
+---
+
+<BaseLayout
+  title="Research Articles"
+  description="Registered Æther Flow research TeX sources and corresponding readable PDFs, grouped as logical articles in canonical reading order."
+  bodyClass="project-overview-page project-track-page documents-category-page documents-research-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Documents / Research"
+    title="Research Articles"
+    lead="Inspect registered research sources and their readable derivatives as paired logical articles, with sequence, status, and provenance kept visible."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Research Articles actions">
+      <a class="primary-link" href="#canonical-ontology">Browse the canonical collection</a>
+      <a class="secondary-link" href="/documents/">Documentation Overview</a>
+      <a class="secondary-link" href="/physics/ontology/">Ontology orientation</a>
+      <a class="secondary-link" href="/physics/claim-status/">Current claim status</a>
+    </div>
+  </CommandBand>
+
+  <ProjectIntroduction
+    paragraphs={researchIntroduction}
+    ariaLabel="About Research Articles"
+  />
+
+  <section class="track-page-band" aria-labelledby="research-collection-state-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Collection boundary</p>
+      <h2 id="research-collection-state-title">One logical article, two distinct file roles.</h2>
+      <p>
+        The current public catalog contains one approved research collection.
+        Other collection types are not represented as published until their
+        own approved records and public manifestations exist.
+      </p>
+    </div>
+    <StatusDossier
+      items={collectionState}
+      ariaLabel="Research article collection state and file roles"
+      className="track-status-grid"
+    />
+  </section>
+
+  <section class="track-page-band" aria-labelledby="research-reading-order-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Canonical reading order</p>
+      <h2 id="research-reading-order-title">Begin with the exact-closure overview.</h2>
+      <p>
+        The sequence is a reader guide, not a new dependency proof or claim
+        promotion. The flagship article remains a release-facing synthesis
+        after the ordered scientific core.
+      </p>
+    </div>
+    <StatusDossier
+      items={readingGuide}
+      ariaLabel="Canonical ontology and exact-closure reading order"
+      className="track-status-grid"
+    />
+  </section>
+
+  <div id="canonical-ontology" class="track-page-band">
+    <DocumentCollection
+      title="Canonical ontology and exact closure"
+      description="Each article appears once. Its actions retain the existing physical TeX and PDF asset URLs while metadata distinguishes source, derivative, status, hash, commit, and import evidence."
+      documents={researchArticles.map(({ document }) => document)}
+      eyebrow="Approved research collection"
+      ordered
+      metadataByDocumentId={metadataByDocumentId}
+    />
+  </div>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Provenance and interpretation"
+    title="Use the source role before relying on the manifestation."
+    lead="Catalog and manifest records establish public identity and provenance. Scientific and promotion status remains bounded by the registered source evidence."
+  >
+    <div class="overview-actions" aria-label="Research provenance and related routes">
+      <a class="primary-link" href="/physics/ontology/">Read ontology orientation</a>
+      <a class="secondary-link" href="/physics/exact-gr-benchmark/">Check the exact-GR boundary</a>
+      <a class="secondary-link" href="/documents/governance/source-authority/">Understand source authority</a>
+      <a class="secondary-link" href="/files/manifests/document_catalog.json">Inspect catalog JSON</a>
+    </div>
+  </CommandBand>
+</BaseLayout>

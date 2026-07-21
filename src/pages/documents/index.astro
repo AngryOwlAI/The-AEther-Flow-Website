@@ -1,0 +1,513 @@
+---
+import CommandBand from "../../components/CommandBand.astro";
+import EvidenceRail from "../../components/EvidenceRail.astro";
+import OverflowTable from "../../components/OverflowTable.astro";
+import ProjectIntroduction from "../../components/ProjectIntroduction.astro";
+import StatusDossier from "../../components/StatusDossier.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { documents } from "../../lib/documents";
+
+const approvedDocuments = documents.filter(
+  (document) => document.status.toLowerCase() === "approved",
+);
+const approvedResearchDocuments = approvedDocuments.filter(
+  (document) => document.category === "research",
+);
+const publishedCollections = new Set(
+  approvedDocuments
+    .map((document) => document.collection)
+    .filter((collection): collection is string => Boolean(collection)),
+);
+
+const documentationOverviewIntroduction = [
+  "The Æther Flow documentation system serves two related research tracks: foundational physics and the governed, human-accountable AI workflow used to organize and test that work. This overview is the reader-facing front door to those materials, not a replacement for the registered sources and current records that define their scoped claims and status.",
+  "Five public destinations organize the system. Documentation Overview explains how to read it; Anthology Articles collects approved PDF-first publications; Research Articles groups registered TeX with readable PDF manifestations; Governance & Control presents explicitly approved Markdown within operational scope and freshness limits; and Diagram Gallery presents approved visual aids with captions and provenance.",
+  "Formats do not inherit equal authority from appearing together. Registered TeX can carry scoped research-source authority, a PDF may be its human-readable derivative, approved Markdown can carry governance or operational authority within its stated lane, diagrams remain explanatory, and manifest hashes establish artifact identity rather than scientific correctness.",
+  "Begin with the internal route that explains the question, then use status, provenance, and source links when direct inspection is needed. Current-state material must carry dates or revision evidence; generated, historical, source-index-only, and retrieval-support material remains visibly distinct from current approved sources.",
+] as const;
+
+const documentationCategories = [
+  {
+    label: "01 · Front door",
+    title: "Documentation Overview",
+    href: "/documents/",
+    body: "Orient by category, format, authority role, provenance, status, and reader purpose before opening individual files.",
+    points: [
+      "Typical format: reader-facing HTML.",
+      "Boundary: explanation and navigation do not replace registered sources or current control records.",
+    ],
+  },
+  {
+    label: "02 · PDF-first",
+    title: "Anthology Articles",
+    href: "/documents/anthology/",
+    body: "Read curated synthesis, exposition, and editorial publications only when an approved catalog-backed PDF exists.",
+    points: [
+      "Typical format: PDF.",
+      "Boundary: visual polish does not determine authority; the source record and publication status do.",
+    ],
+  },
+  {
+    label: "03 · Research",
+    title: "Research Articles",
+    href: "/documents/research/",
+    body: `Inspect logical research documents with TeX and PDF roles kept distinct. The current catalog contains ${approvedResearchDocuments.length} approved research records.`,
+    points: [
+      "Typical formats: registered TeX and corresponding readable PDF.",
+      "Boundary: claim and research status remain scoped to the registered source record.",
+    ],
+  },
+  {
+    label: "04 · Operations",
+    title: "Governance & Control",
+    href: "/documents/governance/",
+    body: "Read explicitly approved policy, schema, procedure, registry guidance, publication, and workflow Markdown.",
+    points: [
+      "Typical format: approved Markdown.",
+      "Boundary: authority applies only within the stated operational scope and freshness window.",
+    ],
+  },
+  {
+    label: "05 · Visual",
+    title: "Diagram Gallery",
+    href: "/documents/diagrams/",
+    body: "Browse approved concept-grouped visuals with nearby captions, alternative text, and provenance.",
+    points: [
+      "Typical formats: PNG and SVG derivatives from registered visual sources.",
+      "Boundary: a diagram aids comprehension and does not independently prove a claim.",
+    ],
+  },
+];
+
+const formatAuthorityRows = [
+  {
+    format: "TeX",
+    role: "Registered research source",
+    action: "Inspect the source text and its registered version.",
+    boundary: "Authority remains scoped to registry and claim status.",
+  },
+  {
+    format: "PDF",
+    role: "Human-readable publication",
+    action: "Read or download the fixed-layout document.",
+    boundary: "A PDF may be a derivative of TeX and does not override it.",
+  },
+  {
+    format: "Markdown",
+    role: "Governance or control source",
+    action: "Read the rendered page or approved raw file.",
+    boundary: "Authority applies within the stated operational scope, status, and freshness window.",
+  },
+  {
+    format: "PNG / SVG",
+    role: "Explanatory diagram",
+    action: "Inspect the visual together with its caption and provenance.",
+    boundary: "The image does not independently prove a scientific or workflow claim.",
+  },
+  {
+    format: "Manifest JSON",
+    role: "Identity and provenance record",
+    action: "Audit hashes, paths, roles, status, and relationships.",
+    boundary: "Hashes establish file identity, not correctness or authority by themselves.",
+  },
+];
+
+const statusGuide = [
+  {
+    label: "Approved",
+    title: "Reviewed for its stated public role",
+    body: "Approval does not expand the source's scientific or operational authority.",
+  },
+  {
+    label: "Draft",
+    title: "Not a final public claim surface",
+    body: "Read as work in progress and do not infer publication or promotion.",
+  },
+  {
+    label: "Historical",
+    title: "Retained for traceability",
+    body: "A historical record may be superseded even when its artifact identity is intact.",
+  },
+  {
+    label: "Current snapshot",
+    title: "Freshness-sensitive state",
+    body: "Check source date, commit, import date, review date, and supersession state.",
+  },
+  {
+    label: "Generated derivative",
+    title: "Produced from another source",
+    body: "Use for reading or comprehension while the registered source retains its role.",
+  },
+  {
+    label: "Source-index-only",
+    title: "Discoverable without a public file",
+    body: "The index identifies a source record but does not imply a downloadable publication.",
+  },
+  {
+    label: "Retrieval support",
+    title: "Navigation aid",
+    body: "Search, memory, semantic, wiki, and cache layers help locate evidence without becoming authority.",
+  },
+];
+
+const freshnessRows = [
+  {
+    field: "Source date",
+    purpose: "Places the material in its original research or operational context.",
+  },
+  {
+    field: "Source commit",
+    purpose: "Binds the public manifestation to an inspectable repository revision.",
+  },
+  {
+    field: "Website import date",
+    purpose: "Shows when the public copy was synchronized, not when its claims became correct.",
+  },
+  {
+    field: "Review date",
+    purpose: "Records the bounded review event when one is available.",
+  },
+  {
+    field: "Current or superseded",
+    purpose: "Prevents older material from being read as the live state without confirmation.",
+  },
+  {
+    field: "Freshness warning",
+    purpose: "States when currentness cannot be confirmed rather than silently assuming it.",
+  },
+];
+
+const documentationReaderPathRows = [
+  {
+    reader: "New reader",
+    sequence: "Documentation Overview → Anthology Articles or a project overview page",
+    reason: "Orientation and context come before individual publications.",
+  },
+  {
+    reader: "Physics specialist",
+    sequence: "Physics status pages → Research Articles → source provenance",
+    reason: "Claim status and open burdens frame direct source inspection.",
+  },
+  {
+    reader: "AI workflow reviewer",
+    sequence: "AI Research System → Governance & Control → relevant records",
+    reason: "Workflow scope and human gates precede operational artifacts.",
+  },
+  {
+    reader: "Governance reviewer",
+    sequence: "Governance & Control → Source Authority → Registries → Publication Process",
+    reason: "Policy scope, record status, and publication boundaries stay connected.",
+  },
+  {
+    reader: "External reviewer",
+    sequence: "Reviewer Packet → Research Articles → Claim Status → Governance & Control",
+    reason: "The review path exposes nonclaims and evidence boundaries before source evaluation.",
+  },
+  {
+    reader: "Website maintainer",
+    sequence: "Documentation Overview → Publication Process → Repository Map → Site Builder Guide",
+    reason: "Reader purpose and source bundles come before repository edits.",
+  },
+];
+
+const catalogSnapshot = [
+  {
+    label: "Approved records",
+    value: approvedDocuments.length,
+    body: "Only approved catalog records contribute to this count.",
+  },
+  {
+    label: "Published collections",
+    value: publishedCollections.size,
+    body: "A collection is counted only when it contains an approved item.",
+  },
+  {
+    label: "Empty categories",
+    title: "Not represented as published",
+    body: "A planned category remains an explicit empty state until approved catalog content exists.",
+  },
+];
+
+const relatedDocumentationRoutes = [
+  {
+    label: "Research",
+    title: "Research Articles",
+    href: "/documents/research/",
+    body: "Read registered TeX and corresponding PDF manifestations as one logical document.",
+  },
+  {
+    label: "Governance",
+    title: "Governance & Control",
+    href: "/documents/governance/",
+    body: "Inspect approved operational Markdown with scope, status, and freshness attached.",
+  },
+  {
+    label: "Visuals",
+    title: "Diagram Gallery",
+    href: "/documents/diagrams/",
+    body: "Browse approved explanatory visuals with captions and provenance.",
+  },
+  {
+    label: "Paths",
+    title: "Reading Paths",
+    href: "/documents/reading-paths/",
+    body: "Choose an audience-specific sequence before source inspection.",
+  },
+  {
+    label: "Review",
+    title: "Reviewer Packet",
+    href: "/documents/reviewer-packet/",
+    body: "Follow a bounded evidence path for external review.",
+  },
+  {
+    label: "Provenance",
+    title: "Source Authority",
+    href: "/documents/governance/source-authority/",
+    body: "Check which registered material can define each claim or status statement.",
+  },
+];
+
+const documentationOverviewSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="documentation-overview-title documentation-overview-desc">
+    <title id="documentation-overview-title">Animated documentation category and provenance map</title>
+    <desc id="documentation-overview-desc">Five document destinations connect through a central reader path while source, derivative, status, and provenance roles remain distinct.</desc>
+    <defs>
+      <radialGradient id="documentation-overview-core" cx="50%" cy="50%" r="68%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.58" />
+        <stop offset="44%" stop-color="var(--owl-cyan-400)" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="documentation-overview-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#documentation-overview-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <ellipse cx="310" cy="180" rx="236" ry="116" />
+      <ellipse cx="310" cy="180" rx="164" ry="76" />
+      <path d="M82 180 H538" />
+      <path d="M310 62 V298" />
+    </g>
+    <g filter="url(#documentation-overview-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M96 110 C178 146, 236 180, 310 180 C384 180, 442 146, 524 110" />
+      <path class="track-figure-path signal-path" d="M96 250 C178 214, 236 180, 310 180 C384 180, 442 214, 524 250" />
+      <path class="track-figure-path orange-path alternate" d="M180 70 C224 124, 270 154, 310 180 C350 206, 396 236, 440 290" />
+      <path class="track-figure-path signal-path alternate" d="M180 290 C224 236, 270 206, 310 180 C350 154, 396 124, 440 70" />
+    </g>
+    <circle class="track-figure-core" cx="310" cy="180" r="42" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="96" cy="110" r="13" />
+      <circle cx="96" cy="250" r="13" />
+      <circle cx="180" cy="70" r="13" />
+      <circle cx="180" cy="290" r="13" />
+      <circle cx="310" cy="180" r="13" />
+      <circle cx="440" cy="70" r="13" />
+      <circle cx="440" cy="290" r="13" />
+      <circle cx="524" cy="110" r="13" />
+      <circle cx="524" cy="250" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Documentation Overview"
+  description="Overview of The AEther Flow documentation, including anthology articles, research TeX and PDF publications, governance Markdown, diagrams, provenance, and document status."
+  bodyClass="project-overview-page project-track-page documents-overview-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Documents / Overview"
+    title="Documentation Overview"
+    lead="Explore the project's public documentation by category, format, authority role, and reader purpose. Each document retains its source, derivative, status, and provenance boundaries."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Documentation Overview actions">
+      <a class="primary-link" href="/documents/research/">Browse research articles</a>
+      <a class="secondary-link" href="/documents/governance/">Browse governance and control</a>
+      <a class="secondary-link" href="/documents/diagrams/">Open Diagram Gallery</a>
+      <a class="secondary-link" href="#format-authority-guide">Understand formats and authority</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="documentation-overview-caption">
+        <Fragment set:html={documentationOverviewSvg} />
+        <figcaption id="documentation-overview-caption">
+          Document categories share a reader path while source, derivative,
+          status, and provenance roles remain distinct.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <ProjectIntroduction
+    paragraphs={documentationOverviewIntroduction}
+    ariaLabel="About the Æther Flow documentation system"
+  />
+
+  <section id="documentation-categories" class="track-page-band" aria-labelledby="documentation-categories-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Five public destinations</p>
+      <h2 id="documentation-categories-title">Choose the document role before the file format.</h2>
+      <p>
+        The overview is the front door to four collection categories. Each
+        destination states its typical formats and the boundary that remains
+        attached to those materials.
+      </p>
+    </div>
+    <EvidenceRail
+      items={documentationCategories.map((category) => ({
+        ...category,
+        actionLabel: "Open category",
+      }))}
+      ariaLabel="Documentation categories"
+      className="planned-route-grid"
+    />
+  </section>
+
+  <section id="format-authority-guide" class="track-page-band" aria-labelledby="format-authority-guide-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Format and authority guide</p>
+      <h2 id="format-authority-guide-title">The same topic can have several manifestations without one flat authority level.</h2>
+      <p>
+        Use the role attached to each manifestation. Format alone does not
+        establish claim status, freshness, correctness, or promotion.
+      </p>
+    </div>
+    <OverflowTable id="documentation-format-table" label="Documentation format and authority guide">
+      <table class="greenfield-matrix">
+        <thead>
+          <tr>
+            <th scope="col">Format</th>
+            <th scope="col">Typical role</th>
+            <th scope="col">Reader action</th>
+            <th scope="col">Boundary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {formatAuthorityRows.map((row) => (
+            <tr>
+              <th scope="row">{row.format}</th>
+              <td>{row.role}</td>
+              <td>{row.action}</td>
+              <td>{row.boundary}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </OverflowTable>
+  </section>
+
+  <section id="document-status" class="track-page-band" aria-labelledby="document-status-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Status and freshness</p>
+      <h2 id="document-status-title">Status labels answer different questions.</h2>
+      <p>
+        Publication status, source role, and currentness remain separate. A
+        polished derivative can still be historical, and an indexed source can
+        remain unavailable as a public download.
+      </p>
+    </div>
+    <StatusDossier
+      items={statusGuide}
+      ariaLabel="Documentation status guide"
+      className="track-status-grid"
+    />
+
+    <div class="track-page-heading">
+      <p class="eyebrow">Freshness evidence</p>
+      <h3>Current-state material needs an inspectable time boundary.</h3>
+      <p>
+        When any field is unavailable, the page should say that freshness
+        cannot be confirmed rather than infer currentness from presentation.
+      </p>
+    </div>
+    <OverflowTable id="documentation-freshness-table" label="Documentation freshness evidence guide">
+      <table class="greenfield-matrix">
+        <thead>
+          <tr>
+            <th scope="col">Field</th>
+            <th scope="col">Why it matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          {freshnessRows.map((row) => (
+            <tr>
+              <th scope="row">{row.field}</th>
+              <td>{row.purpose}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </OverflowTable>
+  </section>
+
+  <section id="documentation-reading-paths" class="track-page-band" aria-labelledby="documentation-reading-paths-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Internal-first reading paths</p>
+      <h2 id="documentation-reading-paths-title">Start with the page that explains the question.</h2>
+      <p>
+        Downloads, raw files, manifests, and repository paths follow the
+        explanatory route unless a specialist already knows the exact source
+        record that requires inspection.
+      </p>
+    </div>
+    <OverflowTable id="documentation-reader-paths-table" label="Documentation reader paths">
+      <table class="greenfield-matrix">
+        <thead>
+          <tr>
+            <th scope="col">Reader</th>
+            <th scope="col">Recommended route sequence</th>
+            <th scope="col">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          {documentationReaderPathRows.map((row) => (
+            <tr>
+              <th scope="row">{row.reader}</th>
+              <td>{row.sequence}</td>
+              <td>{row.reason}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </OverflowTable>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="catalog-snapshot-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Catalog-backed publication state</p>
+      <h2 id="catalog-snapshot-title">Only populated approved collections appear as published.</h2>
+      <p>
+        The catalog summary is derived from the current public document
+        records. It does not turn an empty planned category into a publication
+        and does not expand the authority of any listed item.
+      </p>
+    </div>
+    <StatusDossier
+      items={catalogSnapshot}
+      ariaLabel="Current document catalog summary"
+      className="track-status-grid"
+    />
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Continue by document purpose, then inspect provenance when needed."
+    lead="Canonical internal routes remain the primary reader journey; source and manifest evidence stays available for audit."
+  >
+    <EvidenceRail
+      items={relatedDocumentationRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related Documentation Overview routes"
+      className="link-grid"
+    />
+  </CommandBand>
+</BaseLayout>

@@ -1,0 +1,73 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-009-A"
+task_id: "WI-20260720-009"
+job_id: "WJ-20260720-009-A"
+created_utc: "2026-07-20T22:20:24Z"
+completed_utc: "2026-07-20T22:20:24Z"
+status: "completed"
+summary: "Created the catalog-backed Research Articles page with the canonical ontology sequence, one logical card per article, paired TeX and PDF roles, and stable existing asset URLs."
+changed_files:
+  - "src/pages/documents/research/index.astro"
+requirements_satisfied:
+  - "Existing ontology articles remain available as logical TeX and PDF pairs in their canonical reading order."
+  - "Registered TeX and readable PDF roles remain distinct and existing physical asset URLs do not move."
+  - "The page is a Research Articles collection rather than the general Documents overview."
+acceptance_results:
+  - criterion: "Existing ontology articles remain available as logical TeX and PDF pairs in their canonical reading order."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/research/index.astro"
+      - "dist/documents/research/index.html"
+      - "public/files/manifests/document_catalog.json"
+  - criterion: "Registered TeX and readable PDF roles remain distinct and existing physical asset URLs do not move."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/research/index.astro"
+      - "src/components/documents/DocumentActions.astro"
+      - "public/files/manifests/document_catalog.json"
+  - criterion: "The page is a Research Articles collection rather than the general Documents overview."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/research/index.astro"
+      - "dist/documents/research/index.html"
+validator_results:
+  - id: "afdoc-009-01"
+    command: "manual inspection of Research Articles ontology order logical grouping source and derivative labels and asset URLs"
+    status: "passed"
+    evidence: "Rendered-page inspection found the Research Articles h1 followed by exactly eight logical article h3 headings in canonical order. Each article retains one TeX URL and one PDF URL from the catalog; visible actions distinguish Download TeX source from Read and Download PDF derivative."
+  - id: "afdoc-009-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "The required command completed with no whitespace errors; the untracked route also produced no whitespace diagnostics under git diff --no-index --check."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 67 static pages, including /documents/research/index.html."
+  - command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Asset/source manifest paths and the logical document catalog both passed validation."
+  - command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The completed no-action packet and retained non-required validator history passed structural implementation-control validation."
+  - command: "npm run validate"
+    status: "failed"
+    evidence: "The aggregate gate passed manifest, content, claim, and internal-link checks, then stopped at validate:layout because the pre-existing out-of-scope src/components/DocumentActions.astro change expects primitive token StatusDossier. AFDOC-009 did not modify that file; its route build and required validators passed."
+scope_preservation:
+  canonical_article_count: 8
+  logical_article_duplicated: false
+  existing_asset_url_changed: false
+  catalog_changed: false
+  site_content_changed: false
+  scientific_claim_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-009 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

@@ -1,0 +1,106 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260720-020-A"
+task_id: "WI-20260720-020"
+title: "Add direct 301 mappings from every retired Resources route to its exact canonical Documents destination."
+created_utc: "2026-07-21T00:37:57Z"
+updated_utc: "2026-07-21T00:45:39Z"
+status: "completed"
+objective: "Add direct 301 mappings from every retired Resources route to its exact canonical Documents destination."
+plan_binding:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-020"
+  plan_task_sha256: "748e910c84c8ef5da8f244ae9f8eda3d0aab450e56562452fed3e4eece7ed23f"
+  binding_manifest_sha256: "2c4d40d9dcaad931cab8862d604703ac6059407b77b66373e7a63fa05f649954"
+  authority_sha256: "af08cdff8a2161d6e5e0ad69c8953e0ea25e00e380e4450dd6a1e013b6905d55"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "README.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - "astro.config.mjs"
+  - "package.json"
+  - "implementation_control/**"
+  - "src/**"
+  - "public/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+allowed_writes:
+  - "public/_redirects"
+  - "scripts/validate_cloudflare_pages_config.py"
+  - "tests/test_validate_cloudflare_pages_config.py"
+required_outputs:
+  - "Every route in the accepted migration matrix has one semantic 301 destination."
+  - "No blanket Resources wildcard hides an unmapped route or creates duplicate canonical content."
+  - "Redirects are direct and do not depend on a second redirect."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - id: "afdoc-020-01"
+    command: "npm run validate:cloudflare"
+    required: true
+  - id: "afdoc-020-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+next_recommended_action:
+  task_packet: "AFDOC-020"
+  summary: "Add direct 301 mappings from every retired Resources route to its exact canonical Documents destination."
+  do_not_skip: "Execute only this mapped packet."

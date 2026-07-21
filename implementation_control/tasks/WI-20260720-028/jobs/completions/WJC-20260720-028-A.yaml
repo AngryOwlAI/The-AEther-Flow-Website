@@ -1,0 +1,73 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-028-A"
+task_id: "WI-20260720-028"
+job_id: "WJ-20260720-028-A"
+created_utc: "2026-07-21T05:50:24Z"
+completed_utc: "2026-07-21T05:50:24Z"
+status: "completed"
+summary: "The final Astro static build completed successfully against the canonical Documents source state without a product-source change."
+changed_files: []
+requirements_satisfied:
+  - "The affected and required routes build as static Astro pages."
+  - "No build-time route collision, missing import, or broken asset reference remains."
+  - "The task records the exact build command and result without changing source."
+acceptance_results:
+  - criterion: "The affected and required routes build as static Astro pages."
+    status: "passed"
+    evidence_refs:
+      - "npm run build"
+  - criterion: "No build-time route collision, missing import, or broken asset reference remains."
+    status: "passed"
+    evidence_refs:
+      - "npm run build"
+  - criterion: "The task records the exact build command and result without changing source."
+    status: "passed"
+    evidence_refs:
+      - "implementation_control/tasks/WI-20260720-028/jobs/completions/WJC-20260720-028-A.yaml"
+validator_results:
+  - id: "afdoc-028-01"
+    command: "npm run build"
+    status: "passed"
+    evidence: "Exit code 0. Astro completed a static build of 63 pages in 438 milliseconds."
+build_evidence:
+  command: "npm run build"
+  exit_code: 0
+  output_mode: "static"
+  output_directory: "dist/"
+  page_count: 63
+  result: "complete"
+  required_documents_routes:
+    - "/documents/"
+    - "/documents/anthology/"
+    - "/documents/derivatives/"
+    - "/documents/diagrams/"
+    - "/documents/governance/"
+    - "/documents/governance/publication-process/"
+    - "/documents/governance/registries/"
+    - "/documents/governance/repository-map/"
+    - "/documents/governance/retrieval-layers/"
+    - "/documents/governance/site-builder-guide/"
+    - "/documents/governance/source-authority/"
+    - "/documents/reading-paths/"
+    - "/documents/reading-paths/general-public/"
+    - "/documents/research/"
+    - "/documents/reviewer-packet/"
+  route_collision_observed: false
+  missing_import_observed: false
+  broken_asset_reference_observed: false
+scope_preservation:
+  completion_disposition: "verification_only"
+  product_source_changed: false
+  changed_product_path_count: 0
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-028 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

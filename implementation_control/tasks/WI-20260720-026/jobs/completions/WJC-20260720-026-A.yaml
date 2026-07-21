@@ -1,0 +1,79 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-026-A"
+task_id: "WI-20260720-026"
+job_id: "WJ-20260720-026-A"
+created_utc: "2026-07-21T05:15:32Z"
+completed_utc: "2026-07-21T05:15:32Z"
+status: "completed"
+summary: "Updated the five authorized maintainer documentation files to use canonical Documents routes, preserve source and derivative roles, index the accepted plan, and keep validation and release actions distinct."
+changed_files:
+  - "README.md"
+  - "AGENTS.md"
+  - "docs/README.md"
+  - "docs/project-features-and-functionality.md"
+  - "docs/deployment/cloudflare-pages.md"
+requirements_satisfied:
+  - "README, AGENTS, documentation indexes, feature map, and Cloudflare deployment guidance use canonical Documents routes."
+  - "Source-authority, generated-derivative, validation, commit, push, and deployment boundaries remain explicit."
+  - "No instruction is weakened and the accepted plan is indexed for maintainers."
+acceptance_results:
+  - criterion: "README, AGENTS, documentation indexes, feature map, and Cloudflare deployment guidance use canonical Documents routes."
+    status: "passed"
+    evidence_refs:
+      - "README.md"
+      - "AGENTS.md"
+      - "docs/README.md"
+      - "docs/project-features-and-functionality.md"
+      - "docs/deployment/cloudflare-pages.md"
+      - "src/lib/siteContent.ts"
+      - "public/_redirects"
+  - criterion: "Source-authority, generated-derivative, validation, commit, push, and deployment boundaries remain explicit."
+    status: "passed"
+    evidence_refs:
+      - "README.md"
+      - "AGENTS.md"
+      - "docs/project-features-and-functionality.md"
+      - "docs/deployment/cloudflare-pages.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - criterion: "No instruction is weakened and the accepted plan is indexed for maintainers."
+    status: "passed"
+    evidence_refs:
+      - "AGENTS.md"
+      - "docs/README.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+      - "scoped final diff inspection"
+validator_results:
+  - id: "afdoc-026-01"
+    command: "manual inspection of maintainer documentation route examples authority boundaries validation guidance and deployment separation"
+    status: "passed"
+    evidence: "Reviewed all five changed documents against the accepted route map, live Documents navigation, semantic Resources redirects, existing public assets, source-authority roles, and the separate release boundary."
+  - id: "afdoc-026-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "python3 .codex/skills/technical-writing-quality-gate/scripts/technical_writing_warning_gate.py README.md AGENTS.md docs/README.md docs/project-features-and-functionality.md docs/deployment/cloudflare-pages.md"
+    status: "passed"
+    evidence: "Technical writing quality gate passed for five files with zero warning hits and zero read errors."
+  - command: "read-only canonical route, plan-link, and deployment-example inspection"
+    status: "passed"
+    evidence: "Confirmed the cited plan files, canonical Documents route sources, ontology TeX and PDF examples, and diagram asset exist in the bound checkout."
+scope_preservation:
+  completion_disposition: "task_complete"
+  changed_product_path_count: 5
+  changed_product_paths_match_allowlist: true
+  resources_namespace_used_only_for_redirect_compatibility: true
+  source_authority_strengthened: false
+  scientific_claim_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-026 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

@@ -1,0 +1,68 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-008-A"
+task_id: "WI-20260720-008"
+job_id: "WJ-20260720-008-A"
+created_utc: "2026-07-20T22:09:41Z"
+completed_utc: "2026-07-20T22:09:41Z"
+status: "completed"
+summary: "Generalized document presentation into reusable collection, card, action, and metadata components and preserved the ontology document consumer through a compatibility wrapper."
+changed_files:
+  - "src/components/DocumentActions.astro"
+  - "src/components/documents/DocumentCollection.astro"
+  - "src/components/documents/DocumentCard.astro"
+  - "src/components/documents/DocumentActions.astro"
+  - "src/components/documents/DocumentMetadata.astro"
+  - "src/styles/global.css"
+requirements_satisfied:
+  - "Action labels distinguish source inspection from readable derivatives and avoid generic unlabeled downloads."
+  - "Components preserve existing consumers or migrate them within this exact boundary."
+  - "Metadata wraps safely and no broad visual-system redesign or dependency is introduced."
+acceptance_results:
+  - criterion: "Action labels distinguish source inspection from readable derivatives and avoid generic unlabeled downloads."
+    status: "passed"
+    evidence_refs:
+      - "src/components/documents/DocumentActions.astro"
+      - "src/components/documents/DocumentCard.astro"
+  - criterion: "Components preserve existing consumers or migrate them within this exact boundary."
+    status: "passed"
+    evidence_refs:
+      - "src/components/DocumentActions.astro"
+      - "src/pages/resources/documents.astro"
+  - criterion: "Metadata wraps safely and no broad visual-system redesign or dependency is introduced."
+    status: "passed"
+    evidence_refs:
+      - "src/components/documents/DocumentMetadata.astro"
+      - "src/styles/global.css"
+validator_results:
+  - id: "afdoc-008-01"
+    command: "manual inspection of document component APIs existing consumers action labels focus behavior and metadata wrapping"
+    status: "passed"
+    evidence: "Manual inspection confirmed the four generic component APIs, the unchanged ontology wrapper props and sole existing consumer, role-specific format labels, native anchors under the global focus-visible rule, omitted controls for missing manifestations, and anywhere wrapping for format and metadata values. The Astro compiler transformed all five affected component files without diagnostics."
+  - id: "afdoc-008-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "The required command completed with no whitespace errors."
+additional_validation:
+  - command: "Astro compiler transform for the five affected component files"
+    status: "passed"
+    evidence: "The installed Astro compiler returned no diagnostics for the compatibility wrapper and four generic components."
+  - command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "Implementation-control structural validation passed."
+scope_preservation:
+  existing_consumer_props_changed: false
+  existing_asset_url_changed: false
+  scientific_claim_changed: false
+  runtime_dependency_added: false
+  broad_visual_system_redesigned: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-008 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

@@ -1,0 +1,65 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-017-A"
+task_id: "WI-20260720-017"
+job_id: "WJ-20260720-017-A"
+created_utc: "2026-07-21T00:01:57Z"
+completed_utc: "2026-07-21T00:01:57Z"
+status: "completed"
+summary: "Replaced the primary Resources navigation object with Documents, added exactly five ordered internal category links, preserved nested-route active state, and left the shared header interaction controller unchanged."
+changed_files:
+  - "src/lib/siteContent.ts"
+  - "tests/test_mobile_navigation.py"
+requirements_satisfied:
+  - "The dropdown label is Documents and its entries are exactly Documentation Overview, Anthology Articles, Research Articles, Governance & Control, and Diagram Gallery in that order."
+  - "Parent active state covers nested Documents routes and every child link is internal-first."
+  - "Desktop, mobile, keyboard, no-script, Escape, outside-click, and focus-return behavior remains unchanged unless a directly evidenced defect requires a bounded fix."
+acceptance_results:
+  - criterion: "The dropdown label is Documents and its entries are exactly Documentation Overview, Anthology Articles, Research Articles, Governance & Control, and Diagram Gallery in that order."
+    status: "passed"
+    evidence_refs:
+      - "src/lib/siteContent.ts"
+      - "tests/test_mobile_navigation.py"
+  - criterion: "Parent active state covers nested Documents routes and every child link is internal-first."
+    status: "passed"
+    evidence_refs:
+      - "src/lib/siteContent.ts"
+      - "src/layouts/BaseLayout.astro"
+      - "tests/test_mobile_navigation.py"
+  - criterion: "Desktop, mobile, keyboard, no-script, Escape, outside-click, and focus-return behavior remains unchanged unless a directly evidenced defect requires a bounded fix."
+    status: "passed"
+    evidence_refs:
+      - "src/layouts/BaseLayout.astro"
+      - "tests/test_mobile_navigation.py"
+validator_results:
+  - id: "afdoc-017-01"
+    command: "manual inspection of Documents navigation order active-state prefixes mobile disclosure keyboard behavior and no-script parity"
+    status: "passed"
+    evidence: "Source inspection confirmed the Documents label, exact five-entry order, canonical internal routes, and /documents/ match prefix. BaseLayout.astro was not modified; its existing shared rendering and controller continue to provide desktop and compact disclosure, exact-child and parent active state, no-script links, Escape and outside-click closing, and focus return."
+  - id: "afdoc-017-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_mobile_navigation.py -q"
+    status: "passed"
+    evidence: "All six focused navigation tests passed."
+scope_preservation:
+  documents_dropdown_entries: 5
+  resources_primary_navigation_present: false
+  all_child_links_internal: true
+  nested_documents_parent_active: true
+  base_layout_modified: false
+  interaction_controller_modified: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-017 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

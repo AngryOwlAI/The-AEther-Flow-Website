@@ -366,7 +366,7 @@ const diagramGallerySourceItems = [
   },
   {
     group: "source-authority",
-    title: "General-public guided start",
+    title: "General-public reading path",
     src: "/assets/diagrams/comprehension/general-public-guided-start.png",
     alt: "Diagram showing a general-public reader moving through Home, current state, source authority, claim boundaries, and provenance without creating new claims.",
     caption:
@@ -376,12 +376,12 @@ const diagramGallerySourceItems = [
   },
   {
     group: "source-authority",
-    title: "Specialist guided starts",
+    title: "Audience reading paths",
     src: "/assets/diagrams/comprehension/specialist-guided-starts.png",
     alt:
-      "Diagram showing a specialist guided-start hub routing physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers to internal prerequisite pages while preserving the no-new-claims boundary.",
+      "Diagram showing one reading-path hub routing physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers to internal prerequisite pages while preserving the no-new-claims boundary.",
     caption:
-      "The diagram illustrates specialist guided starts for physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers.",
+      "The diagram illustrates audience reading paths for physicists, mathematicians, AI and agent researchers, software and system engineers, and external reviewers.",
     provenance:
       "Mermaid source: docs/content-dossiers/guided-start-specialists/diagrams/specialist-guided-starts.mmd.",
   },
@@ -438,12 +438,12 @@ const diagramGallerySourceItems = [
   },
   {
     group: "source-authority",
-    title: "Resources manifest chain",
+    title: "Document manifest chain",
     src: "/assets/diagrams/comprehension/resources-manifest-chain.png",
     alt:
-      "Diagram showing source manifest, asset manifest, resource index, downloads, hashes, status labels, and no authority creation.",
+      "Diagram showing source manifest, asset manifest, document index, downloads, hashes, status labels, and no authority creation.",
     caption:
-      "The diagram illustrates how source manifests, asset manifests, resource routes, downloads, hashes, and status labels organize public resources.",
+      "The diagram illustrates how source manifests, asset manifests, document routes, downloads, hashes, and status labels organize public documents.",
     provenance:
       "Mermaid source: docs/content-dossiers/resources-index/diagrams/resource-manifest-chain.mmd.",
   },
@@ -658,16 +658,8 @@ export const greenfieldRouteDiagramBlocks = withGreenfieldDiagramDefaults({
       "The technical tiers diagram shows Node, Python, validators, browser checks, build tools, and the boundary that tool availability does not grant permission.",
     diagram: requireDiagram("Technical tool authority tiers"),
   },
-  resourcesIndex: {
-    id: "resources-index-static-diagram",
-    eyebrow: "Static diagram",
-    title: "Read resources as a manifest-backed reader layer.",
-    summary:
-      "The manifest chain shows source-manifest records, asset-manifest bytes, resource routes, downloads, hashes, status labels, and the no-authority-creation boundary.",
-    diagram: requireDiagram("Resources manifest chain"),
-  },
-  resourcesSourceAuthority: {
-    id: "resources-source-authority-static-diagram",
+  documentsSourceAuthority: {
+    id: "documents-source-authority-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep website pages downstream from source authority.",
     diagramFit: "viewport-contained",
@@ -675,24 +667,24 @@ export const greenfieldRouteDiagramBlocks = withGreenfieldDiagramDefaults({
       "The source-authority ladder shows source files and registries above generated derivatives, public pages, diagrams, and reader orientation.",
     diagram: requireDiagram("Source authority ladder"),
   },
-  resourcesRegistries: {
-    id: "resources-registries-static-diagram",
+  documentsRegistries: {
+    id: "documents-registries-static-diagram",
     eyebrow: "Static diagram",
     title: "Read registries as typed control records.",
     summary:
       "The claim-boundary explorer diagram is reused to show how registry rows feed checked snapshots and public readers while forbidden overreads remain blocked.",
     diagram: requireDiagram("Claim boundary explorer"),
   },
-  resourcesGeneratedDerivatives: {
-    id: "resources-derivatives-static-diagram",
+  documentsGeneratedDerivatives: {
+    id: "documents-derivatives-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep generated derivatives downstream from source and manifests.",
     summary:
       "The publication-provenance diagram shows source basis, route maps, page provenance, source manifests, asset manifests, static build output, and conflict paths back to source.",
     diagram: requireDiagram("Publication provenance system"),
   },
-  resourcesRetrievalLayers: {
-    id: "resources-retrieval-static-diagram",
+  documentsRetrievalLayers: {
+    id: "documents-retrieval-static-diagram",
     eyebrow: "Static diagram",
     title: "Keep retrieval layers below canonical source inspection.",
     diagramFit: "viewport-contained",
@@ -700,100 +692,31 @@ export const greenfieldRouteDiagramBlocks = withGreenfieldDiagramDefaults({
       "The source-first memory diagram shows memory, semantic extracts, mirrors, caches, registries, handoffs, and the final source-inspection boundary.",
     diagram: requireDiagram("Memory source-first layers"),
   },
-  resourcesPublicationProcess: {
-    id: "resources-publication-static-diagram",
+  documentsPublicationProcess: {
+    id: "documents-publication-static-diagram",
     eyebrow: "Static diagram",
     title: "Read publication as review flow, not authority promotion.",
     summary:
       "The publication flow diagram shows brief, source spec, reader page, screenshots, human review, manifests, and provenance in one auditable chain.",
     diagram: requireDiagram("Publication review flow"),
   },
-  resourcesRepositoryMap: {
-    id: "resources-repository-map-static-diagram",
+  documentsRepositoryMap: {
+    id: "documents-repository-map-static-diagram",
     eyebrow: "Static diagram",
     title: "Read repository topology through manifest and source boundaries.",
     summary:
-      "The manifest chain is reused here to keep canonical source, public assets, generated derivatives, resource routes, and no-authority boundaries visible while reading folder lanes.",
-    diagram: requireDiagram("Resources manifest chain"),
+      "The manifest chain is reused here to keep canonical source, public assets, generated derivatives, document routes, and no-authority boundaries visible while reading folder lanes.",
+    diagram: requireDiagram("Document manifest chain"),
   },
-  resourcesSiteBuilderGuide: {
-    id: "resources-site-builder-static-diagram",
+  documentsSiteBuilderGuide: {
+    id: "documents-site-builder-static-diagram",
     eyebrow: "Static diagram",
     title: "Build pages from source bundles through provenance.",
     summary:
       "The publication-provenance diagram shows the source-bundle-first workflow: inspect source, build the route, update manifests, validate, and hand off without strengthening claims.",
     diagram: requireDiagram("Publication provenance system"),
   },
-  resourcesLibrary: {
-    id: "resources-library-static-diagram",
-    eyebrow: "Static diagram",
-    title: "Read the library as an internal-first shelf map.",
-    summary:
-      "The manifest chain shows how reader routes, public files, manifest records, hashes, and status labels organize inspection without becoming authority.",
-    diagram: requireDiagram("Resources manifest chain"),
-  },
-  resourcesReadingPaths: {
-    id: "resources-reading-paths-static-diagram",
-    eyebrow: "Static diagram",
-    title: "Route readers by audience and question while preserving source boundaries.",
-    summary:
-      "The specialist guided-starts diagram shows audience-specific paths into internal pages before provenance links or source inspection.",
-    diagram: requireDiagram("Specialist guided starts"),
-  },
 } satisfies Record<string, ComprehensionContent>);
-
-export const resourceGroups = [
-  {
-    title: "External reviewer packet",
-    href: "/resources/reviewer-packet/",
-    body: "Human-review-pending inspection packet with claim boundaries before source inspection paths.",
-  },
-  {
-    title: "Specialist guided starts",
-    href: "/resources/guided-starts/",
-    body: "Audience-specific reading paths for physicists, mathematicians, AI/agent researchers, software/system engineers, and reviewers.",
-  },
-  {
-    title: "General-public guided start",
-    href: "/resources/guided-starts/general-public/",
-    body: "A first reading path that answers what this is, what is currently claimed, and what not to infer.",
-  },
-  {
-    title: "Home",
-    href: "/",
-    body: "Canonical public entry point for the dual physics-and-AI research program framing.",
-  },
-  {
-    title: "Physics Research",
-    href: "/physics/",
-    body: "Source-boundary-safe reader path for ontology, benchmark, derivation, and claim-gate pages.",
-  },
-  {
-    title: "AI Research-Agent System",
-    href: "/ai-research-system/",
-    body: "Reader path for workflow, roles, memory, registries, and validator/operator pages.",
-  },
-  {
-    title: "Source authority",
-    href: "/resources/source-authority/",
-    body: "Trust boundary for website pages, generated derivatives, manifests, and upstream records.",
-  },
-  {
-    title: "Ontology Documents",
-    href: "/resources/documents/",
-    body: "Canonical ontology PDF derivatives and registered TeX source files served from the website.",
-  },
-  {
-    title: "Operations",
-    href: "/ai-research-system/",
-    body: "Operational guides for routing, roles, validation, publication, improvement, and tool requirements.",
-  },
-  {
-    title: "Diagram gallery",
-    href: "/resources/diagrams/",
-    body: "Current visual orientation fixture with explicit caption, provenance, and manifest status.",
-  },
-];
 
 export type ProjectRouteStatus = "accepted" | "implemented" | "planned";
 
@@ -1357,7 +1280,7 @@ export const projectOperationsRoutes = [
   },
   {
     title: "Publication process",
-    href: "/resources/publication-process/",
+    href: "/documents/governance/publication-process/",
     phase: "Operations",
     status: "implemented",
     description: "Brief, source spec, public page, screenshot evidence, and review discipline.",
@@ -1388,7 +1311,7 @@ export const projectSourceAuthorityRoutes = [
   },
   {
     title: "Publication And Provenance System",
-    href: "/resources/publication-process/",
+    href: "/documents/governance/publication-process/",
     phase: "PG-024",
     status: "implemented",
     description: "Route maps, page provenance, source manifests, asset manifests, hashes, and internal-first routing without creating source truth.",
@@ -1510,63 +1433,33 @@ export const siteNavigationLinks: SiteNavigationLink[] = [
     ],
   },
   {
-    title: "Resources",
-    href: "/resources/",
-    matchPrefixes: ["/resources/"],
+    title: "Documents",
+    href: "/documents/",
+    matchPrefixes: ["/documents/"],
     children: [
       {
-        title: "Resources Overview",
-        href: "/resources/",
-        description: "Category landing for source authority, registries, derivatives, paths, and diagrams.",
+        title: "Documentation Overview",
+        href: "/documents/",
+        description: "Document categories, formats, status, authority, provenance, and reading paths.",
       },
       {
-        title: "Source Authority",
-        href: "/resources/source-authority/",
-        description: "Trust boundary for website pages, source records, manifests, and derivatives.",
+        title: "Anthology Articles",
+        href: "/documents/anthology/",
+        description: "Reader-facing anthology articles published as approved PDF documents.",
       },
       {
-        title: "Registries",
-        href: "/resources/registries/",
-        description: "Registry surfaces used as evidence maps rather than proof mechanisms.",
+        title: "Research Articles",
+        href: "/documents/research/",
+        description: "Research documents with distinct source and readable derivative roles.",
       },
       {
-        title: "Generated Derivatives",
-        href: "/resources/generated-derivatives/",
-        description: "Generated PDFs, diagrams, and publication artifacts downstream from sources.",
-      },
-      {
-        title: "Retrieval Layers",
-        href: "/resources/retrieval-layers/",
-        description: "Local retrieval layers as navigation aids, not authority surfaces.",
-      },
-      {
-        title: "Publication Process",
-        href: "/resources/publication-process/",
-        description: "How source bundles, manifests, reviews, and static routes are published.",
-      },
-      {
-        title: "Library",
-        href: "/resources/library/",
-        description: "Reader-facing library for approved documents and source-backed resources.",
-      },
-      {
-        title: "Reading Paths",
-        href: "/resources/reading-paths/",
-        description: "Internal-first routes for general readers, specialists, and reviewers.",
-      },
-      {
-        title: "Repository Map",
-        href: "/resources/repository-map/",
-        description: "Public-safe map of source areas and website presentation boundaries.",
-      },
-      {
-        title: "Site Builder Guide",
-        href: "/resources/site-builder-guide/",
-        description: "Rules for source bundles, page contracts, provenance, and validation.",
+        title: "Governance & Control",
+        href: "/documents/governance/",
+        description: "Approved governance and control documents with explicit status and scope.",
       },
       {
         title: "Diagram Gallery",
-        href: "/resources/diagrams/",
+        href: "/documents/diagrams/",
         description: "Website-local visual aids with explicit provenance and non-authority status.",
       },
     ],
@@ -1611,7 +1504,7 @@ export const projectReadingPathRoutes: ProjectRouteMetadata[] = [
   },
   {
     title: "Source Authority",
-    href: "/resources/source-authority/",
+    href: "/documents/governance/source-authority/",
     phase: "Phase 3 / PG-005",
     status: "implemented",
     description: "Trust and source-boundary page explaining how readers should treat website material, generated derivatives, and claim-boundary snapshots.",
@@ -1625,13 +1518,13 @@ export const projectInformationArchitectureDecision = {
     "/physics/",
     "/ai-research-system/",
     "/ai-research-system/",
-    "/resources/source-authority/",
+    "/documents/governance/source-authority/",
   ],
   navigationChange: {
     status: "implemented",
     phase: "Phase 7",
     rationale:
-      "Primary navigation now exposes the public project reading path: Home, physics, AI system, operations, source authority, and resources.",
+      "Primary navigation now exposes the public project reading path: Home, physics, AI system, operations, source authority, and documents.",
   },
   internalFirstLinkDecision: {
     status: "implemented",

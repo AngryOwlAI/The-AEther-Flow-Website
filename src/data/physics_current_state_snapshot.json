@@ -1,24 +1,17 @@
 {
-  "active_task_id": "RT-20260709-006",
+  "active_task_id": "RT-20260720-025",
   "blocked_claims": [
-    "coverage audit as physics proof",
-    "coverage count as Distance-to-GR promotion",
-    "v18 plan completion as completed derivation",
-    "general EqSrc discharge",
-    "RetainH adoption",
-    "GenH adoption",
-    "source-law adoption",
-    "detector or readout semantics adoption",
-    "coupling-law adoption",
-    "matter-coupling derivation",
-    "Einstein-equation derivation",
-    "benchmark promotion",
-    "Gate Chair verdict",
-    "future source-extension impossibility",
-    "program-wide no-go conclusion"
+    "probability law sample stationary law or phase as a canonical deterministic point",
+    "effective GR dynamics as substrate selector dynamics",
+    "structural equivariance as physical gauge",
+    "ontology measure dynamics or source-law adoption",
+    "general EqSrc or downstream GR discharge",
+    "scientific-ledger change",
+    "P3-T05 as already executed",
+    "benchmark promotion Gate Chair verdict publication completed derivation or global no-go"
   ],
-  "claim_boundary_summary": "RT-20260709-006 completed v18 P11-T05 by assigning final covered status to V18-R01 through V18-R10. No project-improvement signal was emitted, P11-T06 is not required, all applicable v18 plan tasks are complete, and the next route is EqSrc_family_closure_repair_or_stress while preserving no Distance-to-GR status change no proof authority no benchmark authority no Gate Chair verdict no physics promotion and no completed-derivation claim.",
-  "current_status": "v18_p11_t05_coverage_audit_complete_no_signals_v18_complete_next_eqsrc_route",
+  "claim_boundary_summary": "RT-20260720-025 completed only v21 P3-T04. On finite prospectively declared source-side G-sets, invariant laws form the orbit simplex, invariant Dirac laws and equivariant decoders select only structural fixed points, invariant inputs remain invariant under equivariant Markov dynamics, and an equivariant unique global point attractor is structurally fixed. Eight exact controls distinguish law, stationarity, sample, history, attractor, and deterministic point. This does not derive or adopt a probability law, substrate dynamics, canonical non-fixed point, physical gauge, general EqSrc, a scientific-ledger delta, promotion, publication, global no-go, or completed derivation.",
+  "current_status": "v21_p3_t04_finite_probability_dynamics_theorems_and_scoped_obstruction_completed_p3_t05_selected_no_adoption_or_distance_delta",
   "derivation_burden": {
     "active_burden_id": "source_equivalence_eqsrc",
     "active_row": {
@@ -84,69 +77,69 @@
       }
     ]
   },
-  "latest_handoff_created_at": "2026-07-09T03:11:04Z",
-  "latest_handoff_id": "handoff-0740",
-  "latest_handoff_next_action": "Run one bounded EqSrc family-closure repair-or-stress packet from validated v18 outputs.",
-  "latest_handoff_summary": "RT-20260709-006 completed v18 P11-T05 by assigning final covered status to V18-R01 through V18-R10. No missing or partial recommendation was found, no project-improvement signal was emitted, P11-T06 is not required, and v18 applicable plan tasks are complete. No Distance-to-GR ledger status change, physics promotion, proof authority, source-law adoption, general EqSrc discharge, RetainH adoption, GenH adoption, detector/readout semantics adoption, matter-coupling derivation, Einstein-equation derivation, benchmark promotion, Gate Chair verdict, or completed-derivation claim is authorized.",
-  "next_recommended_action": "Run one bounded EqSrc family-closure repair-or-stress packet from validated v18 outputs.",
-  "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
-  "source_commit_date": "2026-07-13T11:45:40-06:00",
+  "latest_handoff_created_at": "2026-07-21T13:27:51Z",
+  "latest_handoff_id": "handoff-0795",
+  "latest_handoff_next_action": "Run exactly one bounded v21 P3-T05 ontology-formalizer packet constructing a proposal-only quotient-based EqSrc candidate with equivalence and congruence obligations plus positive and negative witness pairs.",
+  "latest_handoff_summary": "RT-20260720-025 completed only v21 P3-T04. It proves the exact finite orbit-simplex classification, invariant-Dirac and equivariant-decoder fixed-point criteria, equivariant Markov symmetry preservation, a unique-stationary-law guard, and an equivariant unique-global-attractor fixed-point theorem. Eight exact rational controls pass. Symmetry-respecting probability or dynamics does not manufacture a non-fixed deterministic point from invariant data; selection by an existing fixed point or explicit asymmetry and history remains conditional with provenance retained. Actual substrate dynamics remain unconstructed and deferred to plan phase P5. No ontology general EqSrc ledger promotion publication global no-go or completed-derivation status changes.",
+  "next_recommended_action": "Run exactly one bounded v21 P3-T05 ontology-formalizer packet constructing a proposal-only quotient-based EqSrc candidate with equivalence and congruence obligations plus positive and negative witness pairs.",
+  "source_commit": "c6aa66b9a7412f14c6573dd0467b82ea11310c20",
+  "source_commit_date": "2026-07-21T08:05:50-06:00",
   "source_dependencies": [
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/program_state.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/program_state.yaml",
       "path": "research_control/program_state.yaml",
-      "sha256": "1a28fc71d3076347be4221e4d30b4bf962e5f752fd9d90f099d916dd89a4706c"
+      "sha256": "b18c543e12116fd76c44997bb957893c99d58194ea540549005b75abfff0ced1"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.yaml",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.yaml",
-      "path": "research_control/handoffs/handoff-0740.yaml",
-      "sha256": "5be1f16f476c1f03db0baf3dcfec8ffc1947ff61c5d5d3ff43012239ce5c0c1d"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0795.yaml",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.yaml",
+      "path": "research_control/handoffs/handoff-0795.yaml",
+      "sha256": "00d7e744c312fb5537e16ab798a4186ebd82a57f3a9883209ac55915a2126515"
     },
     {
-      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0740.md",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.md",
-      "path": "research_control/handoffs/handoff-0740.md",
-      "sha256": "2d2bb5936181f7040357c1074c06e124904b28cd84fdb6b3138be59055d02402"
+      "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0795.md",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.md",
+      "path": "research_control/handoffs/handoff-0795.md",
+      "sha256": "eb8ddefc80cf936b9c32f5e2820b3cae77a97a16f61905f3d5e5579417525a43"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/DISTANCE_TO_GR_LEDGER.csv",
       "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
       "sha256": "0ec3266d708398acde6f380515c37751c0db8ce03bbb135f8aa60fb0f494ce61"
     },
     {
       "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-      "sha256": "27c8059dbe0d5e4e07174827f32cfce13345adb2e644294c27fdcce5566b042e"
+      "sha256": "75c9b98f3165fed82892cc15747763d31dd8e80a0f1fa2d2caa7929fd8e181a2"
     }
   ],
   "source_provenance_links": [
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/program_state.yaml",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/program_state.yaml",
       "label": "research_control/program_state.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.yaml",
-      "label": "research_control/handoffs/handoff-0740.yaml"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.yaml",
+      "label": "research_control/handoffs/handoff-0795.yaml"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0740.md",
-      "label": "research_control/handoffs/handoff-0740.md"
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.md",
+      "label": "research_control/handoffs/handoff-0795.md"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/DISTANCE_TO_GR_LEDGER.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/DISTANCE_TO_GR_LEDGER.csv",
       "label": "registries/DISTANCE_TO_GR_LEDGER.csv"
     },
     {
-      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+      "href": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/CLAIM_BOUNDARY_REGISTRY.csv",
       "label": "registries/CLAIM_BOUNDARY_REGISTRY.csv"
     }
   ],
-  "source_refresh_date": "2026-07-13",
+  "source_refresh_date": "2026-07-21",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
   "version": 1,
-  "website_publication_date": "2026-07-13"
+  "website_publication_date": "2026-07-21"
 }

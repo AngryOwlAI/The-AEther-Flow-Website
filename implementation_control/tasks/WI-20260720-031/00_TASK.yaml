@@ -1,0 +1,135 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260720-031"
+title: "Run the change-relevant manifest, provenance, and Cloudflare validators once against the final bounded source state."
+created_utc: "2026-07-21T07:04:55Z"
+updated_utc: "2026-07-21T07:18:37Z"
+status: "superseded"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-031"
+  plan_task_sha256: "b3fd0508e62b1b57120c1d4ecec4a68b34ef0b1702f0227b8fc782ae6c0b0908"
+  binding_manifest_sha256: "2c4d40d9dcaad931cab8862d604703ac6059407b77b66373e7a63fa05f649954"
+  authority_sha256: "3614e9aeeee63b7e75453de62022cb9e7234785613e7964769d07745cfed5193"
+  implementation_authority: "implementation_control only"
+goal: "Run the change-relevant manifest, provenance, and Cloudflare validators once against the final bounded source state."
+requirements:
+  - "Manifest validation passes for all changed document records and assets."
+  - "Page provenance validation passes for final canonical route bytes."
+  - "Cloudflare configuration validation passes with the final headers and redirects."
+scope:
+  in_scope:
+    - "public/files/manifests/document_catalog.json"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/asset_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "public/_redirects"
+    - "public/_headers"
+    - "scripts/validate_document_catalog.py"
+    - "scripts/validate_manifest_paths.py"
+    - "scripts/validate_page_provenance.py"
+    - "scripts/validate_cloudflare_pages_config.py"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "astro.config.mjs"
+    - "package.json"
+    - "implementation_control/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository:
+    - "public/files/manifests/document_catalog.json"
+    - "public/files/manifests/source_manifest.json"
+    - "public/files/manifests/asset_manifest.json"
+    - "public/files/manifests/page_route_map.json"
+    - "public/files/manifests/page_provenance.json"
+    - "public/_redirects"
+    - "public/_headers"
+    - "scripts/validate_document_catalog.py"
+    - "scripts/validate_manifest_paths.py"
+    - "scripts/validate_page_provenance.py"
+    - "scripts/validate_cloudflare_pages_config.py"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_downloadable_assets:
+    status: "approved"
+    reason: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  public_manifest_authority_records:
+    status: "approved"
+    reason: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  git_push:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - id: "afdoc-031-01"
+    command: "npm run validate:manifests"
+    required: true
+  - id: "afdoc-031-02"
+    command: "npm run validate:provenance"
+    required: true
+  - id: "afdoc-031-03"
+    command: "npm run validate:cloudflare"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+handoff:
+  latest_handoff_id: "WH-20260720-031"
+  yaml_path: "implementation_control/handoffs/WH-20260720-031.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260720-031.md"
+next_recommended_action:
+  task_packet: "AFDOC-031"
+  summary: "Run the change-relevant manifest, provenance, and Cloudflare validators once against the final bounded source state."
+  do_not_skip: "Do not broaden the hash-bound website packet."

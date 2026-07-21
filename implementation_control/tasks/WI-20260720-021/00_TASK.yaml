@@ -1,0 +1,118 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260720-021"
+title: "Repoint older aliases such as diagrams, equations, and downloads directly to their final Documents destinations."
+created_utc: "2026-07-21T00:49:07Z"
+updated_utc: "2026-07-21T00:54:40Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-021"
+  plan_task_sha256: "19b5e82565f0992bff97afc09a058bab043d50ca1864db060a79653bc6d5b444"
+  binding_manifest_sha256: "2c4d40d9dcaad931cab8862d604703ac6059407b77b66373e7a63fa05f649954"
+  authority_sha256: "00899aff9bfb799ace1f8f4f72e1ad54b4c0e5d75198712314ddae6e90aef7f3"
+  implementation_authority: "implementation_control only"
+goal: "Repoint older aliases such as diagrams, equations, and downloads directly to their final Documents destinations."
+requirements:
+  - "Legacy aliases resolve directly to final canonical routes without Resources intermediates."
+  - "Representative alias tests cover status and Location values."
+  - "No redirect chain or canonical contradiction remains."
+scope:
+  in_scope:
+    - "public/_redirects"
+    - "astro.config.mjs"
+    - "scripts/validate_cloudflare_pages_config.py"
+    - "tests/test_validate_cloudflare_pages_config.py"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "astro.config.mjs"
+    - "package.json"
+    - "implementation_control/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository:
+    - "public/_redirects"
+    - "astro.config.mjs"
+    - "scripts/validate_cloudflare_pages_config.py"
+    - "tests/test_validate_cloudflare_pages_config.py"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  git_push:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - id: "afdoc-021-01"
+    command: "npm run validate:cloudflare"
+    required: true
+  - id: "afdoc-021-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+handoff:
+  latest_handoff_id: "WH-20260720-021"
+  yaml_path: "implementation_control/handoffs/WH-20260720-021.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260720-021.md"
+next_recommended_action:
+  task_packet: "AFDOC-021"
+  summary: "Repoint older aliases such as diagrams, equations, and downloads directly to their final Documents destinations."
+  do_not_skip: "Do not broaden the hash-bound website packet."

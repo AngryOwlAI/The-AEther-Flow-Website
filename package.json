@@ -16,7 +16,7 @@
     "test:plan-goal": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_plan_goal_adapter.py tests/test_plan_goal_facade.py tests/test_plan_goal_installation.py .agents/skills/implementation-plan-goal/tests",
     "validate:claims": "node scripts/generate_public_claim_review.mjs --check",
     "checkpoint:implementation": "python3 scripts/implementation_control/checkpoint_implementation_transaction.py",
-    "validate:manifests": "python3 scripts/validate_manifest_paths.py",
+    "validate:manifests": "python3 scripts/validate_manifest_paths.py && python3 scripts/validate_document_catalog.py",
     "validate:content": "python3 scripts/validate_content_sources.py",
     "validate:links": "python3 scripts/validate_internal_first_links.py",
     "validate:layout": "python3 scripts/validate_layout_language.py",

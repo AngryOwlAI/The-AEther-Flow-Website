@@ -22,7 +22,8 @@ The repository contains the deployed Astro static site for the public AEther
 Flow website. It includes MDX, KaTeX, manifest-backed downloads, Python/Bash
 validation tooling, Docker development configuration, reader-facing project
 overview pages, physics and AI research track pages, source-authority pages,
-resource indexes, and Cloudflare Pages deployment documentation.
+canonical Documents routes, catalog-backed downloads, and Cloudflare Pages
+deployment documentation.
 
 Production site:
 
@@ -80,6 +81,17 @@ The project feature and functionality operating map is:
 docs/project-features-and-functionality.md
 ```
 
+The accepted Documents architecture is indexed by the human-readable plan and
+its hash-bound canonical relay artifact:
+
+```text
+ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md
+ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json
+```
+
+Live records under `implementation_control/` remain the execution authority for
+each bounded plan task and any permitted external effect.
+
 These repository documents are for maintainers and implementation agents. They
 are not exposed in the public website navigation.
 
@@ -100,8 +112,8 @@ npm run preview -- --host 127.0.0.1 --port 4321
 python scripts/smoke_test_site.py --base-url http://127.0.0.1:4321
 ```
 
-The smoke test checks the main public routes, resource downloads, diagram
-asset, and `robots.txt`.
+The smoke test checks the main public routes, canonical Documents routes,
+document downloads, a diagram asset, and `robots.txt`.
 
 ## Deployment
 
@@ -112,6 +124,11 @@ https://the-aether-flow-website.pages.dev/
 ```
 
 Publish a verified local build to Cloudflare Pages with:
+
+Local implementation and validation do not create a commit, push a revision,
+or deploy the site. Treat commit, push, and deployment as separate checkpoints;
+run the following command only after deployment is explicitly authorized and
+the release revision and push status have been recorded.
 
 ```bash
 make quality
@@ -151,6 +168,12 @@ Website content should be derived from reviewed source material, publication
 briefs, source specs, or other approved project surfaces. If a website page
 needs to make or change a scientific, mathematical, governance, or research
 workflow claim, update and validate the source repository first.
+
+Within `/documents/`, registered TeX remains the source-authority format for
+the ontology collection. PDFs are generated human-readable derivatives, and
+rendered pages, catalog rows, manifests, provenance hashes, and validator
+results organize or check publication state without becoming scientific claim
+authority.
 
 ## Git Remote
 

@@ -1,0 +1,64 @@
+---
+import type { DocumentManifestation, DocumentRecord } from "../../lib/documents";
+import DocumentActions from "./DocumentActions.astro";
+import DocumentMetadata from "./DocumentMetadata.astro";
+
+type MetadataItem = {
+  label: string;
+  title?: string;
+  value?: string | number | null;
+  body?: string;
+  href?: string;
+};
+
+interface Props {
+  document: DocumentRecord;
+  showCollection?: boolean;
+  showSummary?: boolean;
+  metadataItems?: MetadataItem[];
+}
+
+const {
+  document,
+  showCollection = true,
+  showSummary = true,
+  metadataItems = [],
+} = Astro.props;
+
+const phrase = (value: string) => value.replaceAll("_", " ").replaceAll("-", " ");
+const titleCase = (value: string) =>
+  phrase(value).replace(/\b\w/g, (character) => character.toUpperCase());
+const formatLabel = (kind: DocumentManifestation["kind"]) =>
+  kind === "tex"
+    ? "TeX"
+    : kind === "svg"
+      ? "SVG"
+      : kind === "png"
+        ? "PNG"
+        : kind[0].toUpperCase() + kind.slice(1);
+const headingId = `document-${document.slug}`;
+const kindLabel =
+  showCollection && document.collection
+    ? titleCase(document.collection)
+    : `${titleCase(document.category)} document`;
+---
+
+<article class="download-item document-action-item document-card" aria-labelledby={headingId}>
+  <div class="document-card-copy">
+    <p class="download-kind">{kindLabel}</p>
+    <h3 id={headingId}>{document.title}</h3>
+    {showSummary && <p>{document.summary}</p>}
+    {document.manifestations.length > 0 && (
+      <ul class="document-format-list" aria-label={`${document.title} available formats`}>
+        {document.manifestations.map((manifestation) => (
+          <li>
+            <strong>{formatLabel(manifestation.kind)}</strong>
+            <span>{phrase(manifestation.role)}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+    <DocumentActions {document} />
+  </div>
+  <DocumentMetadata document={document} additionalItems={metadataItems} />
+</article>

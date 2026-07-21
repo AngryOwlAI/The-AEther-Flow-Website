@@ -1,0 +1,69 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-024-A"
+task_id: "WI-20260720-024"
+job_id: "WJ-20260720-024-A"
+created_utc: "2026-07-21T04:50:55Z"
+completed_utc: "2026-07-21T04:50:55Z"
+status: "completed"
+summary: "Verified that the coupled provenance produced by AFDOC-034 already satisfies AFDOC-024; no product artifact required regeneration."
+changed_files: []
+requirements_satisfied:
+  - "Every canonical Documents page has matching source identity and page hash evidence."
+  - "Retired Resources sources are not represented as canonical provenance pages."
+  - "No private path or stale hash appears in public provenance."
+acceptance_results:
+  - criterion: "Every canonical Documents page has matching source identity and page hash evidence."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/page_route_map.json"
+      - "public/files/manifests/page_provenance.json"
+      - "npm run validate\u003aprovenance"
+  - criterion: "Retired Resources sources are not represented as canonical provenance pages."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/page_route_map.json"
+      - "public/files/manifests/page_provenance.json"
+      - "tests/test_validate_page_provenance.py"
+  - criterion: "No private path or stale hash appears in public provenance."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/page_provenance.json"
+      - "scripts/validate_page_provenance.py"
+      - "npm run validate\u003aprovenance"
+validator_results:
+  - id: "afdoc-024-01"
+    command: "npm run validate\u003aprovenance"
+    status: "passed"
+    evidence: "Page provenance validation passed for all 34 canonical routes with current local page hashes and private-path checks."
+  - id: "afdoc-024-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: ".venv/bin/python -m pytest -p no\u003acacheprovider tests/test_validate_page_provenance.py"
+    status: "passed"
+    evidence: "Four focused provenance tests passed."
+  - command: "read-only route, source-identity, hash-shape, and path-safety audit"
+    status: "passed"
+    evidence: "Verified 34 matching route/provenance records, 15 Documents routes, zero retired Resources routes, matching source identities, present SHA-256 evidence, and zero unsafe local paths."
+scope_preservation:
+  completion_disposition: "verified_no_op"
+  changed_product_path_count: 0
+  canonical_route_count: 34
+  canonical_documents_routes: 15
+  retired_resources_canonical_routes: 0
+  source_identities_match_route_map: true
+  local_page_hashes_current: true
+  private_paths_present: false
+  reviewed_claim_boundary_strengthened: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-024 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

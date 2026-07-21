@@ -1,0 +1,112 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-030-A"
+task_id: "WI-20260720-030"
+job_id: "WJ-20260720-030-A"
+created_utc: "2026-07-21T06:59:33Z"
+completed_utc: "2026-07-21T06:59:33Z"
+status: "completed"
+summary: "Validated the accepted canonical, Resources, and legacy redirect mappings without finding a bounded redirect defect; no product source changed."
+changed_files: []
+requirements_satisfied:
+  - "Representative old Resources and legacy aliases return direct 301 locations to their final Documents routes."
+  - "No loop, avoidable chain, or reverse Documents-to-Resources redirect is observed."
+  - "Any bounded redirect defect is repaired only within the declared redirect files."
+acceptance_results:
+  - criterion: "Representative old Resources and legacy aliases return direct 301 locations to their final Documents routes."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "dist/_redirects"
+      - "manual status and Location matrix inspection"
+  - criterion: "No loop, avoidable chain, or reverse Documents-to-Resources redirect is observed."
+    status: "passed"
+    evidence_refs:
+      - "public/_redirects"
+      - "tests/test_validate_cloudflare_pages_config.py"
+      - "manual terminal-destination inspection"
+  - criterion: "Any bounded redirect defect is repaired only within the declared redirect files."
+    status: "passed"
+    evidence_refs:
+      - "No bounded defect was observed; no product file repair was required."
+validator_results:
+  - id: "afdoc-030-01"
+    command: "npm run validate:cloudflare"
+    status: "passed"
+    evidence: "Cloudflare Pages config validation passed."
+  - id: "afdoc-030-02"
+    command: "manual inspection of representative redirect status and Location values for canonical Resources and legacy aliases"
+    status: "passed"
+    evidence: "Static config inspection confirmed direct status and Location values for /documents, the four plan-named Resources routes, and changed legacy aliases; no destination was another redirect source and /documents/ remained terminal."
+redirect_evidence:
+  production_source: "public/_redirects"
+  built_copy_matches_source: true
+  representative_results:
+    - source: "/documents"
+      status: 301
+      location: "/documents/"
+      one_hop: true
+    - source: "/resources/"
+      status: 301
+      location: "/documents/"
+      one_hop: true
+    - source: "/resources/library/"
+      status: 301
+      location: "/documents/"
+      one_hop: true
+    - source: "/resources/documents/"
+      status: 301
+      location: "/documents/research/"
+      one_hop: true
+    - source: "/resources/diagrams/"
+      status: 301
+      location: "/documents/diagrams/"
+      one_hop: true
+    - source: "/diagrams"
+      status: 301
+      location: "/documents/diagrams/"
+      one_hop: true
+    - source: "/equations"
+      status: 301
+      location: "/documents/research/"
+      one_hop: true
+    - source: "/downloads"
+      status: 301
+      location: "/documents/"
+      one_hop: true
+    - source: "/project/operations/publication-process/"
+      status: 301
+      location: "/documents/governance/publication-process/"
+      one_hop: true
+    - source: "/project/source-authority/"
+      status: 301
+      location: "/documents/governance/source-authority/"
+      one_hop: true
+  documented_temporary_exception:
+    source: "/research"
+    status: 302
+    location: "/documents/governance/publication-process/"
+    one_hop: true
+    basis: "The accepted implementation plan and existing regression test deliberately preserve this temporary status."
+  canonical_documents_terminal: true
+  resources_redirect_count: 15
+  redirect_chain_count: 0
+  reverse_documents_to_resources_count: 0
+  focused_redirect_tests: "5 passed"
+scope_preservation:
+  completion_disposition: "verification_only"
+  product_source_changed: false
+  changed_product_path_count: 0
+  bounded_redirect_defect_observed: false
+  afdoc_035_documents_overview_repair_preserved: true
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-030 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

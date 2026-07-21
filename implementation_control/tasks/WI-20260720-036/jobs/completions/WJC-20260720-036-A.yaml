@@ -1,0 +1,67 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-036-A"
+task_id: "WI-20260720-036"
+job_id: "WJ-20260720-036-A"
+created_utc: "2026-07-21T07:30:03Z"
+completed_utc: "2026-07-21T07:30:03Z"
+status: "completed"
+summary: "Refreshed exactly the nine stale local page hashes from the current page bytes while preserving every other page-provenance field, then passed the three required validators."
+changed_files:
+  - "public/files/manifests/page_provenance.json"
+requirements_satisfied:
+  - "Exactly the nine reported local_page_sha256 values match the current local page bytes; every other page-provenance field and ordering remains unchanged."
+  - "Manifest validation passes for all changed document records and assets."
+  - "Page provenance validation passes for final canonical route bytes."
+  - "Cloudflare configuration validation passes with the final headers and redirects."
+acceptance_results:
+  - criterion: "Exactly the nine reported local_page_sha256 values match the current local page bytes; every other page-provenance field and ordering remains unchanged."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/page_provenance.json"
+      - "direct SHA-256 comparison against all 34 current local page sources"
+  - criterion: "Manifest validation passes for all changed document records and assets."
+    status: "passed"
+    evidence_refs:
+      - "manifest and document catalog validator output"
+  - criterion: "Page provenance validation passes for final canonical route bytes."
+    status: "passed"
+    evidence_refs:
+      - "page provenance validator output"
+  - criterion: "Cloudflare configuration validation passes with the final headers and redirects."
+    status: "passed"
+    evidence_refs:
+      - "Cloudflare configuration validator output"
+validator_results:
+  - id: "afdoc-036-01"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest validation and document catalog validation passed."
+  - id: "afdoc-036-02"
+    command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "Page provenance validation passed for all 34 routes."
+  - id: "afdoc-036-03"
+    command: "npm run validate:cloudflare"
+    status: "passed"
+    evidence: "Cloudflare Pages config validation passed."
+scope_preservation:
+  changed_product_path_count: 1
+  local_page_hash_values_changed: 9
+  other_page_provenance_fields_changed: false
+  generated_at_changed: false
+  source_pins_changed: false
+  page_entry_order_changed: false
+  broad_provenance_generator_run: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-036 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

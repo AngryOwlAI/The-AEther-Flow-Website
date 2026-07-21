@@ -369,7 +369,7 @@ def test_home_introduction_and_requested_section_order_are_explicit() -> None:
         '<a class="primary-link" href="#ontology-and-gr">Ontology and GR</a>',
         '<a class="secondary-link" href="/physics/">Physics</a>',
         '<a class="secondary-link" href="/ai-research-system/">AI Research</a>',
-        '<a class="secondary-link" href="/resources/">Resources</a>',
+        '<a class="secondary-link" href="/documents/">Documents</a>',
     )
     assert source.count('<nav class="home-action-row"') == 1
     assert [action_block.index(action) for action in expected_actions] == sorted(
@@ -1359,13 +1359,13 @@ def test_resources_library_has_a_general_public_project_introduction_after_the_h
     assert "registries carry routing, provenance, relationship, status" in source
     assert "registered Markdown carries guidance, source specifications, publication briefs" in source
     assert "current governed task records carry task-local permissions and state" in source
-    assert "If a Library summary and its named owner disagree" in source
-    assert "repair the Library surface" in source
+    assert "If a Documentation Overview summary and its named owner disagree" in source
+    assert "repair the Documentation Overview surface" in source
     assert "if a current snapshot is stale, report that uncertainty" in source
     assert "a manifest or hash can identify particular artifacts" in source
     assert "none transfers claim authority or certifies scientific correctness" in source
     assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
-    assert "No Library shelf, reading path, status label, route card" in source
+    assert "No overview section, reading path, status label, route card" in source
     assert "independently proves a physics claim" in source
     assert "completes the open first-principles derivation" in source
     assert "promotes the proposed ontology or a benchmark" in source

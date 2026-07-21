@@ -1,0 +1,65 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-002-A"
+task_id: "WI-20260720-002"
+job_id: "WJ-20260720-002-A"
+created_utc: "2026-07-20T20:37:40Z"
+completed_utc: "2026-07-20T20:44:08Z"
+status: "completed"
+summary: "Added first-class, bounded Markdown manifest support with focused safety validation."
+changed_files:
+  - "src/lib/manifests.ts"
+  - "public/files/manifests/source_manifest.schema.json"
+  - "scripts/validate_manifest_paths.py"
+  - "tests/test_validate_manifest_paths.py"
+requirements_satisfied:
+  - "Markdown is represented as an explicit validated manifest kind with a public URL and source identity."
+  - "Manifest validation rejects malformed or unapproved Markdown records."
+  - "No recursive Markdown publication or private local path exposure is introduced."
+acceptance_results:
+  - criterion: "Markdown is represented as an explicit validated manifest kind with a public URL and source identity."
+    status: "passed"
+    evidence_refs:
+      - "src/lib/manifests.ts"
+      - "public/files/manifests/source_manifest.schema.json"
+      - "scripts/validate_manifest_paths.py"
+  - criterion: "Manifest validation rejects malformed or unapproved Markdown records."
+    status: "passed"
+    evidence_refs:
+      - "scripts/validate_manifest_paths.py"
+      - "tests/test_validate_manifest_paths.py"
+  - criterion: "No recursive Markdown publication or private local path exposure is introduced."
+    status: "passed"
+    evidence_refs:
+      - "scripts/validate_manifest_paths.py"
+      - "tests/test_validate_manifest_paths.py"
+validator_results:
+  - id: "afdoc-002-01"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "The current source and asset manifests passed the bounded path, kind, source-reference, file, and hash checks."
+  - id: "afdoc-002-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+additional_validation:
+  - command: ".venv/bin/python -m pytest -p no:cacheprovider tests/test_validate_manifest_paths.py -q"
+    status: "passed"
+    evidence: "Four focused manifest tests passed, including approved Markdown and fail-closed invalid-record coverage."
+scope_preservation:
+  public_manifest_schema_changed: true
+  public_manifest_data_changed: false
+  public_asset_added: false
+  recursive_markdown_import_added: false
+  reader_facing_route_changed: false
+  scientific_claim_changed: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-002 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

@@ -1,0 +1,108 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260720-000-A"
+task_id: "WI-20260720-000"
+title: "Replace stale installation-baseline assumptions in the website plan-goal validator with checks against the accepted live repository binding and exact plan-controlled changes, without weakening installed-bundle, topology, drift, or external-effect safeguards."
+created_utc: "2026-07-20T19:32:04Z"
+updated_utc: "2026-07-20T19:48:23Z"
+status: "completed"
+objective: "Replace stale installation-baseline assumptions in the website plan-goal validator with checks against the accepted live repository binding and exact plan-controlled changes, without weakening installed-bundle, topology, drift, or external-effect safeguards."
+plan_binding:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-000"
+  plan_task_sha256: "9b064eb5edb1f92858514c63b5c9f50e0b4125fba1d3f7a11e4eeeab76d3e94e"
+  binding_manifest_sha256: "2c4d40d9dcaad931cab8862d604703ac6059407b77b66373e7a63fa05f649954"
+  authority_sha256: "a8a96c0895bc7269dc23d295319cbbb28d976832062744d28a895d6d3dcb3976"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "README.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - "astro.config.mjs"
+  - "package.json"
+  - "implementation_control/**"
+  - "src/**"
+  - "public/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+allowed_writes:
+  - "scripts/implementation_control/validate_plan_goal.py"
+  - "tests/test_plan_goal_adapter.py"
+  - "tests/test_plan_goal_facade.py"
+  - "tests/test_plan_goal_installation.py"
+required_outputs:
+  - "Plan-goal validation accepts the current explicitly bound starting revision instead of a hard-coded historical installation revision."
+  - "Authorized active or terminal plan changes are accepted only when their paths and lifecycle evidence match the exact canonical binding and receipts."
+  - "Unrelated reader-facing drift, forbidden mutable paths, topology changes, open intents, leases, and external effects remain blocking."
+  - "Focused regression tests distinguish accepted plan-controlled changes from unrelated drift."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "The accepted adaptation authorizes only the exact local validator and regression-test repair; no protected public or external surface is entered."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - id: "afdoc-000-01"
+    command: "npm run test:plan-goal"
+    required: true
+  - id: "afdoc-000-02"
+    command: "npm run validate:plan-goal"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+next_recommended_action:
+  task_packet: "AFDOC-000"
+  summary: "Replace stale installation-baseline assumptions in the website plan-goal validator with checks against the accepted live repository binding and exact plan-controlled changes, without weakening installed-bundle, topology, drift, or external-effect safeguards."
+  do_not_skip: "Execute only this mapped packet."

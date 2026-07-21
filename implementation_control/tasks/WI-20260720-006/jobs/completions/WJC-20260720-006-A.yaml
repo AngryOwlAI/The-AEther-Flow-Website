@@ -1,0 +1,65 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-006-A"
+task_id: "WI-20260720-006"
+job_id: "WJ-20260720-006-A"
+created_utc: "2026-07-20T21:42:35Z"
+completed_utc: "2026-07-20T21:42:35Z"
+status: "completed"
+summary: "Created the canonical Documentation Overview with five document destinations, format-specific authority and provenance guidance, status and freshness labels, and internal-first reading paths."
+changed_files:
+  - "src/pages/documents/index.astro"
+  - "src/styles/global.css"
+requirements_satisfied:
+  - "The page identity is Documentation Overview rather than Library or Resources."
+  - "The page explains all five categories and preserves format-specific authority and provenance boundaries."
+  - "Primary reader journeys are internal-first and the page contains no dedicated Source authority section."
+acceptance_results:
+  - criterion: "The page identity is Documentation Overview rather than Library or Resources."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/index.astro"
+  - criterion: "The page explains all five categories and preserves format-specific authority and provenance boundaries."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/index.astro"
+  - criterion: "Primary reader journeys are internal-first and the page contains no dedicated Source authority section."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/index.astro"
+validator_results:
+  - id: "afdoc-006-01"
+    command: "manual inspection of Documentation Overview source hierarchy links authority language and responsive layout"
+    status: "passed"
+    evidence: "Source and rendered-page inspection confirmed the Documentation Overview identity, five internal canonical destinations, contextual authority and provenance language, no dedicated Source authority section, responsive table overflow controls, clean 1440 by 1000 and 390 by 844 layouts, and zero browser-console errors."
+  - id: "afdoc-006-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "The required command completed with no whitespace errors; the new untracked page was also checked with git diff --no-index --check and produced no whitespace diagnostics."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 65 static pages, including /documents/index.html."
+  - command: "npm run validate:layout"
+    status: "passed"
+    evidence: "Layout-language validation passed after the page-scoped hero sizing repair."
+  - command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed for the animated text-free overview visual."
+scope_preservation:
+  navigation_changed: false
+  redirect_changed: false
+  category_route_claimed_complete: false
+  dedicated_source_authority_section_added: false
+  scientific_claim_changed: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-006 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

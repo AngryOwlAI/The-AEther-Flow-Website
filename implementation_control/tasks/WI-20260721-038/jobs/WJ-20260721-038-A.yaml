@@ -1,0 +1,120 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260721-038-A"
+task_id: "WI-20260721-038"
+title: "Review the exact committed upstream bytes for every curator review-required drift, record bounded exact acknowledgements, refresh only the /physics/claim-status/ current-state snapshot and coupled route-map/provenance identity for the two critical drifts, regenerate curator reports, and stop before any claim-strengthening prose change."
+created_utc: "2026-07-21T13:03:56Z"
+updated_utc: "2026-07-21T14:25:32.988666Z"
+status: "completed"
+objective: "Review the exact committed upstream bytes for every curator review-required drift, record bounded exact acknowledgements, refresh only the /physics/claim-status/ current-state snapshot and coupled route-map/provenance identity for the two critical drifts, regenerate curator reports, and stop before any claim-strengthening prose change."
+plan_binding:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-038"
+  plan_task_sha256: "91099a290616bfd7094cc8607a4da3109331c7a8ea5938cb0fad0df638d11b0b"
+  binding_manifest_sha256: "c5091d37df1a55058cce50c9c521c5240a1a1b04e987efd32c7dc16eb36c0953"
+  authority_sha256: "2c8b946c88746b9c121a306412b99263047991d979be788875559d82c22407f9"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "README.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - "astro.config.mjs"
+  - "package.json"
+  - "implementation_control/**"
+  - "src/**"
+  - "public/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+  - "curator/**"
+allowed_writes:
+  - "curator/acknowledgements/**"
+  - "curator/reports/latest.json"
+  - "curator/reports/latest.md"
+  - "src/data/physics_current_state_snapshot.json"
+  - "public/files/manifests/page_route_map.json"
+  - "public/files/manifests/page_provenance.json"
+required_outputs:
+  - "Every review-required curator drift is reviewed against exact committed upstream bytes and covered by an exact, non-expired acknowledgement binding route, source path, severity, commit, and SHA-256; no critical drift is acknowledged."
+  - "The /physics/claim-status/ current-state snapshot, page route map, and page provenance reflect the exact committed upstream registries/CLAIM_BOUNDARY_REGISTRY.csv and research_control/program_state.yaml bytes for the two critical drifts, with no claim-strengthening prose change."
+  - "npm run validate\u003acurator, manifest validation, provenance validation, claim validation, and git diff --check pass after curator reports are regenerated."
+  - "The upstream repository remains unchanged and no branch, worktree, stage, commit, push, deployment, or publication occurs."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "approved"
+    trigger: "The user's explicit curator authorization permits only an exact source-grounded current-state snapshot refresh; any prose or claim strengthening remains a protected stop."
+  - id: "source_refresh_uncertainty"
+    status: "approved"
+    trigger: "The user's explicit curator authorization permits read-only review of exact committed upstream bytes; ambiguity or dirty source input remains a protected stop."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "The user's explicit curator authorization permits only the coupled /physics/claim-status/ route-map and provenance refresh."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - command: "npm run validate:curator"
+    id: "afdoc-038-01"
+    required: true
+  - command: "npm run validate:manifests"
+    id: "afdoc-038-02"
+    required: true
+  - command: "npm run validate:provenance"
+    id: "afdoc-038-03"
+    required: true
+  - command: "npm run validate:claims"
+    id: "afdoc-038-04"
+    required: true
+  - command: "git diff --check"
+    id: "afdoc-038-05"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+next_recommended_action:
+  task_packet: "AFDOC-038"
+  summary: "Review the exact committed upstream bytes for every curator review-required drift, record bounded exact acknowledgements, refresh only the /physics/claim-status/ current-state snapshot and coupled route-map/provenance identity for the two critical drifts, regenerate curator reports, and stop before any claim-strengthening prose change."
+  do_not_skip: "Execute only this mapped packet."

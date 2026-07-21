@@ -1,0 +1,86 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-014-A"
+task_id: "WI-20260720-014"
+job_id: "WJ-20260720-014-A"
+created_utc: "2026-07-20T23:28:03Z"
+completed_utc: "2026-07-20T23:28:03Z"
+status: "completed"
+summary: "Created the canonical Documents governance Repository Map and Site Builder Guide as secondary maintainer routes, updated their Documents architecture guidance and internal-first provenance links, and removed both from the primary dropdown data."
+changed_files:
+  - "src/pages/documents/governance/repository-map/index.astro"
+  - "src/pages/documents/governance/site-builder-guide/index.astro"
+  - "src/lib/siteContent.ts"
+requirements_satisfied:
+  - "Both canonical governance routes exist and are contextual rather than primary dropdown destinations."
+  - "Repository and builder guidance is current for the Documents architecture."
+  - "Reader journeys remain internal-first with GitHub retained for provenance."
+acceptance_results:
+  - criterion: "Both canonical governance routes exist and are contextual rather than primary dropdown destinations."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/repository-map/index.astro"
+      - "src/pages/documents/governance/site-builder-guide/index.astro"
+      - "src/lib/siteContent.ts"
+      - "dist/documents/governance/repository-map/index.html"
+      - "dist/documents/governance/site-builder-guide/index.html"
+  - criterion: "Repository and builder guidance is current for the Documents architecture."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/repository-map/index.astro"
+      - "src/pages/documents/governance/site-builder-guide/index.astro"
+      - "src/pages/resources/repository-map/index.astro"
+      - "src/pages/resources/site-builder-guide/index.astro"
+  - criterion: "Reader journeys remain internal-first with GitHub retained for provenance."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/repository-map/index.astro"
+      - "src/pages/documents/governance/site-builder-guide/index.astro"
+      - "src/lib/siteContent.ts"
+validator_results:
+  - id: "afdoc-014-01"
+    command: "manual inspection of relocated Repository Map and Site Builder Guide route identity links and maintainer framing"
+    status: "passed"
+    evidence: "Unified diff and rendered-route inspection confirmed Documents governance eyebrows, nested imports, accessible figure IDs, reciprocal canonical links, explicit secondary-maintainer framing, current Documents route/catalog/control guidance, internal links before GitHub provenance, and removal of both titles from primary navigation data. Legacy route files were not modified."
+  - id: "afdoc-014-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 75 static pages, including both canonical Documents governance routes."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed."
+  - command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remained current."
+  - command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed for the relocated animated text-free artwork."
+  - command: "npm run validate"
+    status: "not_run"
+    evidence: "The accepted packet requires focused checks for this task and authorizes no aggregate release or deployment action."
+scope_preservation:
+  repository_map_line_count_before: 365
+  repository_map_line_count_after: 378
+  site_builder_guide_line_count_before: 415
+  site_builder_guide_line_count_after: 428
+  primary_dropdown_entries_removed: 2
+  github_provenance_links_added: 2
+  old_routes_modified: false
+  redirects_modified: false
+  manifest_changed: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-014 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

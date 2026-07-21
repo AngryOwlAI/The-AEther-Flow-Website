@@ -1,0 +1,116 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260720-015"
+title: "Create canonical Documents reading-path routes and consolidate the existing guided starts without losing the general-public path."
+created_utc: "2026-07-20T23:32:22Z"
+updated_utc: "2026-07-20T23:41:09Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-015"
+  plan_task_sha256: "cdf264c57b4433828f3bc8034addffed854a84ef92edba478e43c9272ca57019"
+  binding_manifest_sha256: "2c4d40d9dcaad931cab8862d604703ac6059407b77b66373e7a63fa05f649954"
+  authority_sha256: "648946a8e209d6aeee41a74c5b5116de50433155fc71f5f1c5a5111bc1a7b07d"
+  implementation_authority: "implementation_control only"
+goal: "Create canonical Documents reading-path routes and consolidate the existing guided starts without losing the general-public path."
+requirements:
+  - "The canonical reading-path index and general-public route exist with no duplicate guided-start identity."
+  - "Reading paths use canonical Documents category routes and preserve audience-specific guidance."
+  - "No retired Resources route is required for the primary journey."
+scope:
+  in_scope:
+    - "src/pages/documents/reading-paths/index.astro"
+    - "src/pages/documents/reading-paths/general-public/index.astro"
+    - "src/lib/siteContent.ts"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "astro.config.mjs"
+    - "package.json"
+    - "implementation_control/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository:
+    - "src/pages/documents/reading-paths/index.astro"
+    - "src/pages/documents/reading-paths/general-public/index.astro"
+    - "src/lib/siteContent.ts"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "approved"
+    reason: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  broad_navigation_or_route_retirement:
+    status: "approved"
+    reason: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  shared_visual_systems:
+    status: "approved"
+    reason: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This exact packet does not enter this protected write surface."
+  git_push:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The accepted activation goal withholds push and deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - id: "afdoc-015-01"
+    command: "manual inspection of reading path consolidation audience routing canonical links and duplicate removal"
+    required: true
+  - id: "afdoc-015-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+handoff:
+  latest_handoff_id: "WH-20260720-015"
+  yaml_path: "implementation_control/handoffs/WH-20260720-015.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260720-015.md"
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-015 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

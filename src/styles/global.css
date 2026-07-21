@@ -817,6 +817,16 @@ summary:focus-visible {
   gap: 1.25rem;
 }
 
+.document-collection-list {
+  padding: 0;
+  list-style: none;
+}
+
+.document-collection-entry,
+.document-card-copy {
+  min-width: 0;
+}
+
 .document-actions {
   display: flex;
   flex-wrap: wrap;
@@ -827,6 +837,49 @@ summary:focus-visible {
 .document-actions a {
   min-width: 8.75rem;
   text-align: center;
+}
+
+.document-format-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.document-format-list li {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: baseline;
+  max-width: 100%;
+  border: 1px solid var(--content-card-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  color: var(--content-card-muted);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.document-format-list strong {
+  color: var(--content-card-accent);
+  text-transform: uppercase;
+}
+
+.document-metadata dd,
+.document-metadata dd * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.document-collection-empty {
+  margin-top: 1.5rem;
+  border: 1px solid var(--content-card-border);
+  border-radius: 8px;
+  background: var(--content-card-bg);
+  padding: 1rem 1.2rem;
+  color: var(--content-card-muted);
 }
 
 .download-item {
@@ -2344,100 +2397,13 @@ html:has(body.project-overview-page) {
   height: auto;
 }
 
-.resources-manifest-figure {
-  background:
-    radial-gradient(circle at 48% 48%, color-mix(in srgb, var(--overview-orange) 16%, transparent), transparent 13rem),
-    radial-gradient(circle at 78% 34%, color-mix(in srgb, var(--overview-cyan) 9%, transparent), transparent 11rem),
-    var(--overview-bg);
-}
-
-.resources-manifest-svg {
-  overflow: visible;
-}
-
 .support-bg {
   fill: var(--overview-bg);
 }
 
-.resources-glow {
-  fill: url("#resources-glow");
+.documents-glow {
   transform-origin: 260px 170px;
   animation: authority-glow-pulse 5.2s ease-in-out infinite;
-}
-
-.resources-manifest-stream circle,
-.resources-approved-rings circle,
-.resources-approved-rings ellipse,
-.resources-fixture-orbit circle {
-  fill: color-mix(in srgb, var(--color-dark-panel) 90%, transparent);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
-
-.resources-manifest-stream circle {
-  stroke: color-mix(in srgb, var(--overview-orange) 62%, transparent);
-  animation: authority-source-breathe 4.8s ease-in-out infinite alternate;
-}
-
-.resources-manifest-stream circle:nth-child(2) {
-  animation-delay: -1.4s;
-}
-
-.resources-manifest-stream circle:nth-child(3) {
-  animation-delay: -2.8s;
-}
-
-.resources-manifest-stream path,
-.resources-fixture-orbit path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
-
-.resources-manifest-stream path {
-  stroke: color-mix(in srgb, var(--overview-orange) 34%, transparent);
-  stroke-dasharray: 7 12;
-  animation: authority-boundary-scan 7.4s linear infinite;
-}
-
-.resources-approved-rings circle,
-.resources-approved-rings ellipse {
-  stroke: color-mix(in srgb, var(--overview-cyan) 52%, transparent);
-  animation: authority-reader-breathe 5.2s ease-in-out infinite alternate;
-}
-
-.resources-approved-rings circle:nth-child(2),
-.resources-approved-rings ellipse:nth-child(4) {
-  animation-delay: -2.2s;
-}
-
-.resources-fixture-orbit path,
-.resources-fixture-orbit circle {
-  stroke: color-mix(in srgb, var(--overview-cyan) 24%, transparent);
-}
-
-.resources-fixture-orbit path {
-  stroke: color-mix(in srgb, var(--overview-cyan) 24%, transparent);
-  stroke-dasharray: 7 10;
-  animation: authority-boundary-scan 7.4s linear infinite;
-}
-
-.resources-fixture-orbit circle {
-  fill: color-mix(in srgb, var(--color-dark-panel) 86%, transparent);
-  animation: authority-reader-breathe 5.2s ease-in-out infinite alternate;
-}
-
-.resources-flow-path {
-  stroke-dasharray: 10 30;
-  stroke-width: 4.5;
-  animation:
-    detail-flow-breathe 3.8s ease-in-out infinite alternate,
-    authority-flow-dash 6.4s linear infinite;
-}
-
-.resources-flow-path.primary {
-  stroke: url("#resources-rail");
 }
 
 .support-dust {
@@ -3606,6 +3572,12 @@ html:has(body.project-overview-page) {
   overflow-wrap: anywhere;
 }
 
+.documents-overview-page .overview-command-hero .command-band-copy h1 {
+  max-width: min(15ch, 100%);
+  font-size: clamp(2.85rem, 4.1vw, 3.6rem);
+  overflow-wrap: normal;
+}
+
 .home-page .overview-command-hero .command-band-copy h1 {
   max-width: 12ch;
   text-transform: none;
@@ -4470,6 +4442,11 @@ html:has(body.project-overview-page) {
 
   .ai-wide-title-page .overview-command-hero .command-band-copy h1 {
     max-width: min(15ch, 100%);
+  }
+
+  .documents-overview-page .overview-command-hero .command-band-copy h1 {
+    max-width: 100%;
+    font-size: 2.5rem;
   }
 
   .home-page .overview-command-hero .command-band-lead {

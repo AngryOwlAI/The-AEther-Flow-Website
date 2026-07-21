@@ -1,0 +1,83 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-010-A"
+task_id: "WI-20260720-010"
+job_id: "WJ-20260720-010-A"
+created_utc: "2026-07-20T22:36:14Z"
+completed_utc: "2026-07-20T22:36:14Z"
+status: "completed"
+summary: "Created the Governance & Control front door with ten internal contextual entries, explicit scope/status/freshness/type/provenance metadata, and fail-closed raw-Markdown publication behavior."
+changed_files:
+  - "src/pages/documents/governance/index.astro"
+requirements_satisfied:
+  - "Governance entries expose scope, status, freshness, type, and provenance without presenting unapproved Markdown."
+  - "The category routes readers to retained contextual pages and keeps repository layout secondary."
+  - "No governance artifact is promoted beyond its registered status."
+acceptance_results:
+  - criterion: "Governance entries expose scope, status, freshness, type, and provenance without presenting unapproved Markdown."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/index.astro"
+      - "dist/documents/governance/index.html"
+      - "public/files/manifests/document_catalog.json"
+      - "public/files/manifests/page_provenance.json"
+  - criterion: "The category routes readers to retained contextual pages and keeps repository layout secondary."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/index.astro"
+      - "dist/documents/governance/index.html"
+  - criterion: "No governance artifact is promoted beyond its registered status."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/index.astro"
+      - "public/files/manifests/page_provenance.json"
+validator_results:
+  - id: "afdoc-010-01"
+    command: "manual inspection of Governance & Control scope status freshness provenance and allowlist behavior"
+    status: "passed"
+    evidence: "Rendered-page inspection found ten internal contextual actions and the required type/scope/status/freshness/provenance metadata. Generated-noncanonical and draft-control status remained visible, and no /files/markdown/governance/ URL was rendered because the approved reviewed count is zero."
+  - id: "afdoc-010-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "The required command completed with no whitespace errors; the untracked route also produced no whitespace diagnostics under git diff --no-index --check."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 68 static pages, including /documents/governance/index.html."
+  - command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest paths and the document catalog passed validation without adding an unapproved governance record."
+  - command: "npm run validate:content"
+    status: "passed"
+    evidence: "The content-source validator completed successfully."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "All new governance actions remained internal-first."
+  - command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "The checked page-provenance manifest remained internally valid."
+  - command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "The active mapped packet passed structural implementation-control validation before completion recording."
+  - command: "npm run validate"
+    status: "failed"
+    evidence: "The aggregate gate passed manifest, content, claim, and internal-link checks, then stopped at the pre-existing out-of-scope src/components/DocumentActions.astro layout-token error. The new governance route build and required validators passed."
+scope_preservation:
+  contextual_route_count: 10
+  approved_governance_catalog_records: 0
+  public_raw_markdown_count: 0
+  catalog_changed: false
+  site_content_changed: false
+  registered_status_strengthened: false
+  repository_layout_used_as_primary_navigation: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-010 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

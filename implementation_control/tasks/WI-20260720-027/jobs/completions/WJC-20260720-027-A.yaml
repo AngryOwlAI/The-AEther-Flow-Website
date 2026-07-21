@@ -1,0 +1,99 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-027-A"
+task_id: "WI-20260720-027"
+job_id: "WJ-20260720-027-A"
+created_utc: "2026-07-21T05:33:40Z"
+completed_utc: "2026-07-21T05:33:40Z"
+status: "completed"
+summary: "Removed dead Resources-era identifiers, route-card data, and styling hooks from the authorized Documents surfaces while preserving live generic prose, stable asset identities, and provenance paths; manifest and catalog integrity remained valid without asset movement."
+changed_files:
+  - "src/lib/siteContent.ts"
+  - "src/styles/global.css"
+  - "src/pages/documents/derivatives/index.astro"
+  - "src/pages/documents/diagrams/index.astro"
+  - "src/pages/documents/governance/publication-process/index.astro"
+  - "src/pages/documents/governance/registries/index.astro"
+  - "src/pages/documents/governance/repository-map/index.astro"
+  - "src/pages/documents/governance/retrieval-layers/index.astro"
+  - "src/pages/documents/governance/site-builder-guide/index.astro"
+  - "src/pages/documents/governance/source-authority/index.astro"
+  - "src/pages/documents/reading-paths/general-public/index.astro"
+requirements_satisfied:
+  - "Dead product identifiers and route data are removed without deleting legitimate generic prose."
+  - "Document, ontology, and diagram references resolve to existing bytes with matching hashes."
+  - "No stale compatibility data, duplicate catalog entry, or unapproved asset move remains."
+acceptance_results:
+  - criterion: "Dead product identifiers and route data are removed without deleting legitimate generic prose."
+    status: "passed"
+    evidence_refs:
+      - "src/lib/siteContent.ts"
+      - "src/styles/global.css"
+      - "src/pages/documents/**"
+      - "tests/test_documents_internal_links.py"
+  - criterion: "Document, ontology, and diagram references resolve to existing bytes with matching hashes."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/document_catalog.json"
+      - "public/files/manifests/source_manifest.json"
+      - "public/files/manifests/asset_manifest.json"
+      - "npm run validate\u003amanifests"
+  - criterion: "No stale compatibility data, duplicate catalog entry, or unapproved asset move remains."
+    status: "passed"
+    evidence_refs:
+      - "src/lib/siteContent.ts"
+      - "src/styles/global.css"
+      - "src/pages/documents/**"
+      - "public/files/manifests/document_catalog.json"
+      - "scripts/validate_document_catalog.py"
+validator_results:
+  - id: "afdoc-027-01"
+    command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed after the bounded compatibility cleanup."
+  - id: "afdoc-027-02"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest path, byte, SHA-256, source-reference, approval-status, and document-catalog validation passed."
+  - id: "afdoc-027-03"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_documents_internal_links.py -q"
+    status: "passed"
+    evidence: "Both focused canonical-route and stale-product-label regression tests passed."
+  - command: "scoped compatibility-identifier and call-site inspection"
+    status: "passed"
+    evidence: "No dead resourceGroups export, unused Resources diagram-block key, Resources body-class token, Resources styling selector, or Resources diagram-block call site remains in the authorized writable surface."
+  - command: "scoped stable-asset identity review"
+    status: "passed"
+    evidence: "The existing resources-prefixed diagram filenames and dossier paths remain unchanged as stable asset and provenance identities; no public asset or manifest path was moved."
+nonblocking_observations:
+  - "The live resourcesDiagramsComprehension input remains explicitly adapted by the canonical Documents diagram page; it was not dead data and its defining module was outside this packet's write authority."
+  - "Resources-prefixed stable asset filenames and dossier paths remain as provenance identities rather than canonical route or product identifiers."
+scope_preservation:
+  completion_disposition: "bounded_cleanup_and_integrity_verification"
+  changed_product_path_count: 11
+  dead_route_card_arrays_removed: 1
+  unused_resources_diagram_blocks_removed: 3
+  active_documents_diagram_keys_renamed: 7
+  documents_body_class_tokens_renamed: 8
+  stable_asset_paths_changed: false
+  public_asset_bytes_changed: false
+  document_catalog_changed_by_task: false
+  source_manifest_changed_by_task: false
+  asset_manifest_changed_by_task: false
+  generic_resources_prose_removed_indiscriminately: false
+  scientific_or_authority_claim_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-027 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

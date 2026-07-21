@@ -1,0 +1,222 @@
+---
+import CommandBand from "../../../components/CommandBand.astro";
+import ProjectIntroduction from "../../../components/ProjectIntroduction.astro";
+import StatusDossier from "../../../components/StatusDossier.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { documents } from "../../../lib/documents";
+import { approvedDownloads } from "../../../lib/manifests";
+
+const approvedPdfByPath = new Map(
+  approvedDownloads
+    .filter((download) => download.kind === "pdf")
+    .map((download) => [download.path, download]),
+);
+
+const anthologyArticles = documents
+  .flatMap((document) => {
+    if (
+      document.category !== "anthology" ||
+      document.status.toLowerCase() !== "approved"
+    ) {
+      return [];
+    }
+
+    const pdfManifestation = document.manifestations.find(
+      (manifestation) => manifestation.kind === "pdf",
+    );
+    const pdf = pdfManifestation
+      ? approvedPdfByPath.get(pdfManifestation.sitePath)
+      : undefined;
+
+    return pdf && pdf.source?.approval_status === "approved"
+      ? [{ document, pdf, pdfManifestation }]
+      : [];
+  })
+  .sort(
+    (left, right) =>
+      (left.document.readingOrder ?? Number.MAX_SAFE_INTEGER) -
+        (right.document.readingOrder ?? Number.MAX_SAFE_INTEGER) ||
+      left.document.title.localeCompare(right.document.title),
+  );
+
+const anthologyIntroduction = [
+  "Anthology Articles is the PDF-oriented home for reviewed synthesis, exposition, and editorial publications from The Æther Flow Project. A planned title or collection is not treated as published until an approved document-catalog record resolves to an approved public PDF.",
+  "Anthology placement does not create research-source authority. Each listed PDF retains the status, provenance, usage terms, and authority scope recorded by the public catalog, asset manifest, and source manifest.",
+] as const;
+
+const publicationState = [
+  {
+    label: "Published articles",
+    value: anthologyArticles.length,
+    body: "Only approved catalog records with an approved, manifest-backed PDF are counted.",
+  },
+  {
+    label: "Publication gate",
+    title: "Catalog and source approval required",
+    body: "Draft, planned, unreviewed, missing, or non-PDF records are not rendered as publications.",
+  },
+  {
+    label: "PDF role",
+    title: "Reader-facing fixed-layout publication",
+    body: "The attached source record, not presentation quality, determines provenance and authority scope.",
+  },
+  {
+    label: "Research boundary",
+    title: "Synthesis is not automatic source authority",
+    body: "Use Research Articles and the registered source record when a scientific claim requires source inspection.",
+  },
+];
+
+const byteFormatter = new Intl.NumberFormat("en-US");
+const readableRole = (value: string) => value.replaceAll("_", " ");
+
+const articleMetadata = ({ document, pdf, pdfManifestation }) => [
+  {
+    label: "Publication status",
+    title: "Approved",
+    body: `Catalog authority scope: ${readableRole(document.authorityScope)}.`,
+  },
+  ...(document.collection
+    ? [{ label: "Collection", title: document.collection }]
+    : []),
+  {
+    label: "PDF role",
+    title: readableRole(pdfManifestation.role),
+  },
+  {
+    label: "PDF bytes",
+    value: byteFormatter.format(pdf.bytes),
+  },
+  {
+    label: "PDF SHA-256",
+    value: pdf.sha256,
+  },
+  ...(pdf.source?.source_path
+    ? [{ label: "Source path", value: pdf.source.source_path }]
+    : []),
+  ...(pdf.source?.source_commit
+    ? [{ label: "Source commit", value: pdf.source.source_commit }]
+    : []),
+  ...(pdf.source?.generated_at
+    ? [{ label: "Website import", value: pdf.source.generated_at }]
+    : []),
+  ...(pdf.source?.reviewed_by
+    ? [{ label: "Reviewed by", value: pdf.source.reviewed_by }]
+    : []),
+  ...(pdf.source?.license_or_usage_note
+    ? [{ label: "Usage note", value: pdf.source.license_or_usage_note }]
+    : []),
+];
+---
+
+<BaseLayout
+  title="Anthology Articles"
+  description="Approved PDF-first anthology publications from The AEther Flow Project, with explicit status, provenance, and authority boundaries."
+  bodyClass="project-overview-page project-track-page documents-category-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Documents / Anthology"
+    title="Anthology Articles"
+    lead="Read approved PDF-first synthesis and exposition without confusing anthology publication with research-source authority."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Anthology Articles actions">
+      <a class="primary-link" href="#anthology-articles">View publication state</a>
+      <a class="secondary-link" href="/documents/">Documentation Overview</a>
+      <a class="secondary-link" href="/documents/research/">Research Articles</a>
+    </div>
+  </CommandBand>
+
+  <ProjectIntroduction
+    paragraphs={anthologyIntroduction}
+    ariaLabel="About Anthology Articles"
+  />
+
+  <section class="track-page-band" aria-labelledby="anthology-state-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Bounded collection state</p>
+      <h2 id="anthology-state-title">Publication requires an approved PDF chain.</h2>
+      <p>
+        The page intersects the logical document catalog with approved PDF
+        assets and their source records. A title is visible only when that
+        complete public chain exists.
+      </p>
+    </div>
+    <StatusDossier
+      items={publicationState}
+      ariaLabel="Anthology publication rules and current state"
+      className="track-status-grid"
+    />
+  </section>
+
+  <section id="anthology-articles" class="track-page-band" aria-labelledby="anthology-articles-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Approved public PDFs</p>
+      <h2 id="anthology-articles-title">Available articles</h2>
+      <p>
+        Every listed item is backed by an approved catalog record, public PDF
+        asset, and approved source-manifest entry. Read and download actions
+        point to the same verified PDF.
+      </p>
+    </div>
+
+    {anthologyArticles.length > 0 ? (
+      <div class="download-list document-action-list">
+        {anthologyArticles.map(({ document, pdf, pdfManifestation }) => (
+          <article class="download-item document-action-item">
+            <div>
+              <p class="download-kind">{document.collection ?? "Anthology publication"}</p>
+              <h3>{document.title}</h3>
+              <p>{document.summary}</p>
+              <div class="document-actions" aria-label={`${document.title} PDF actions`}>
+                <a class="primary-link" href={pdf.path}>Read PDF</a>
+                <a class="secondary-link" href={pdf.path} download>Download PDF</a>
+              </div>
+              {document.relatedRoutes && document.relatedRoutes.length > 0 && (
+                <p>
+                  Related project pages:{" "}
+                  {document.relatedRoutes.map((route, index) => (
+                    <>
+                      {index > 0 && ", "}
+                      <a href={route}>{route}</a>
+                    </>
+                  ))}
+                </p>
+              )}
+            </div>
+            <StatusDossier
+              items={articleMetadata({ document, pdf, pdfManifestation })}
+              ariaLabel={`${document.title} publication metadata`}
+              className="download-meta document-download-dossier"
+            />
+          </article>
+        ))}
+      </div>
+    ) : (
+      <aside class="source-notice" aria-labelledby="anthology-empty-title">
+        <p class="source-notice-title">Current publication state</p>
+        <h3 id="anthology-empty-title">No approved public anthology articles are currently listed.</h3>
+        <p>
+          The category remains available to explain its publication boundary.
+          Planned material is not represented as published, and no empty
+          download card or sample title is fabricated.
+        </p>
+      </aside>
+    )}
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Provenance and next routes"
+    title="Follow the document role before relying on the file."
+    lead="The catalog groups logical publications; asset and source manifests establish public identity, approval, review, and usage evidence."
+  >
+    <div class="overview-actions" aria-label="Anthology provenance and related routes">
+      <a class="primary-link" href="/files/manifests/document_catalog.json">Inspect catalog JSON</a>
+      <a class="secondary-link" href="/documents/">Documentation Overview</a>
+      <a class="secondary-link" href="/documents/research/">Research Articles</a>
+      <a class="secondary-link" href="/license/">License orientation</a>
+    </div>
+  </CommandBand>
+</BaseLayout>

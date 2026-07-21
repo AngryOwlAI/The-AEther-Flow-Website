@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import subprocess
 import sys
@@ -22,6 +23,7 @@ from implementation_control.plan_goal_adapter import (  # noqa: E402
     ADAPTER_CONFIG_RELATIVE,
     ADAPTER_RUNTIME_RELATIVE,
     ADOPTION_RELATIVE,
+    BINDING_ROOT_RELATIVE,
     BINDING_SCHEMA_RELATIVE,
     CONFORMANCE_RELATIVE,
     CONTROL_ACTIVATION_RELATIVE,
@@ -31,16 +33,21 @@ from implementation_control.plan_goal_adapter import (  # noqa: E402
     LOCK_RELATIVE,
     MANUAL_RELATIVE,
     PLAN_SCHEMA_ROOT_RELATIVE,
+    PROGRAM_STATE_RELATIVE,
     PROVENANCE_RELATIVE,
     REPO_ROOT,
     STATE_RELATIVE,
+    PlanControlStore,
     WebsiteControlStore,
     WebsiteProjectAdapter,
     WebsiteRepositoryProvider,
     WebsiteThreadExecutionProfileProvider,
     canonical_json,
+    content_sha256,
     load_adapter_config,
     load_json_object,
+    load_plan_binding,
+    resolve_effective_task_binding,
     run_conformance,
     status,
     verify_installed_bundle,
@@ -55,7 +62,6 @@ from agentjob_runtime.adapters.protocols import (  # noqa: E402
 
 SOURCE_REPOSITORY = "/Volumes/P-SSD/AngryOwl/skills-Sys4AI"
 SOURCE_COMMIT = "5309fabc665b8c6665a24b9edb42b4ceda82227d"
-BASELINE_REVISION = "7cf3c20a605dc319627615ea27141dbc3cc308e7"
 INSTALL_RECEIPT_RELATIVE = Path(
     ".agents/skill_registry/INSTALL_RECEIPTS/"
     "bundle-implementation-plan-goal-d379c6badd2e43d39ee6a8a457b75b1d.json"
@@ -92,6 +98,8 @@ PACKAGE_SCRIPTS = {
         ".agents/skills/implementation-plan-goal/tests"
     ),
 }
+ACTIVE_TASK_STATUSES = {"reserved", "active"}
+TERMINAL_TASK_STATUSES = {"completed", "superseded"}
 
 
 @dataclass
@@ -123,6 +131,308 @@ def _run(
         capture_output=True,
         text=True,
     )
+
+
+def _git_paths(repo_root: Path, *arguments: str) -> set[str]:
+    result = _run(repo_root, "git", *arguments)
+    if result.returncode != 0:
+        raise ValueError(result.stderr.strip() or "Git path query failed")
+    return {path for path in result.stdout.split("\0") if path}
+
+
+def _path_allowed(path: str, rules: set[str]) -> bool:
+    return any(
+        path == rule
+        or (
+            rule.endswith("/**")
+            and path.startswith(rule[:-3].rstrip("/") + "/")
+        )
+        for rule in rules
+    )
+
+
+def _packet_paths(entry: Mapping[str, Any]) -> set[str]:
+    identifiers = entry["packet_ids"]
+    task_root = (
+        f"implementation_control/tasks/{identifiers['task_id']}"
+    )
+    return {
+        f"{task_root}/00_TASK.yaml",
+        f"{task_root}/jobs/{identifiers['job_id']}.yaml",
+        (
+            f"{task_root}/jobs/completions/"
+            f"{identifiers['completion_id']}.yaml"
+        ),
+        f"implementation_control/handoffs/{identifiers['handoff_id']}.md",
+        f"implementation_control/handoffs/{identifiers['handoff_id']}.yaml",
+    }
+
+
+def _validate_plan_changes(
+    repo_root: Path,
+    report: ValidationReport,
+    *,
+    plan_summary: Mapping[str, Any],
+    changed_paths: set[str],
+    head_revision: str,
+) -> set[str]:
+    plan_id = str(plan_summary["plan_id"])
+    controls = PlanControlStore(repo_root, read_only=True)
+    store = controls.require_store()
+    record = store.load_plan(plan_id)
+    session = plan_summary.get("session")
+    if not isinstance(session, Mapping):
+        report.errors.append(f"plan adapter session is missing: {plan_id}")
+        return set()
+    binding_path = BINDING_ROOT_RELATIVE / f"{plan_id}.yaml"
+    try:
+        binding = load_plan_binding(
+            record["plan"],
+            binding_path,
+            repo_root=repo_root,
+        )
+    except Exception as error:
+        report.errors.append(f"plan binding is invalid: {plan_id}: {error}")
+        return set()
+    report.require(
+        binding["manifest_sha256"]
+        == session.get("binding_manifest_sha256"),
+        f"plan binding differs from accepted session: {plan_id}",
+    )
+    accepted_binding = record["repository_binding"]
+    report.require(
+        head_revision == accepted_binding["starting_revision"],
+        f"website HEAD differs from accepted plan binding: {plan_id}",
+    )
+    observed = WebsiteRepositoryProvider(repo_root).observe()
+    report.require(
+        observed.binding == accepted_binding
+        and observed.topology == session.get("repository_topology"),
+        f"repository binding or topology changed: {plan_id}",
+    )
+    intents = store.list_provider_intents(plan_id)
+    unresolved_intents = [
+        item["intent_id"]
+        for item in intents
+        if (
+            item.get("status") != "returned"
+            or item.get("finalized") is not True
+            or item.get("recovery", {}).get("status") != "not_required"
+        )
+    ]
+    report.require(
+        not unresolved_intents,
+        "unresolved provider intent remains: "
+        + ", ".join(unresolved_intents),
+    )
+
+    allowed = {
+        PROGRAM_STATE_RELATIVE.as_posix(),
+        binding_path.as_posix(),
+    }
+    resolved_bindings: dict[str, Mapping[str, Any]] = {}
+    replacement_authorizations = session.get(
+        "replacement_binding_authorizations", {}
+    )
+    if not isinstance(replacement_authorizations, Mapping):
+        report.errors.append(
+            f"replacement binding authorizations are malformed: {plan_id}"
+        )
+        return allowed
+    for replacement_task_id in replacement_authorizations:
+        try:
+            resolved = resolve_effective_task_binding(
+                store=store,
+                plan_record=record,
+                session=session,
+                base_binding=binding,
+                task_id=str(replacement_task_id),
+                repo_root=repo_root,
+            )
+        except Exception as error:
+            report.errors.append(
+                "replacement binding authorization is invalid: "
+                f"{plan_id}:{replacement_task_id}: {error}"
+            )
+            continue
+        resolved_bindings[str(replacement_task_id)] = resolved
+        allowed.update(str(path) for path in resolved["compatibility_writes"])
+    for path in changed_paths:
+        if not path.endswith(".json"):
+            continue
+        try:
+            candidate = load_json_object(
+                repo_root / path,
+                label="canonical plan candidate",
+            )
+        except Exception:
+            continue
+        if (
+            candidate.get("plan_id") == plan_id
+            and content_sha256(candidate) == record["plan_sha256"]
+        ):
+            allowed.add(path)
+
+    activation = session.get("control_activation", {})
+    activation_receipt = (
+        activation.get("receipt", {})
+        if isinstance(activation, Mapping)
+        else {}
+    )
+    activation_task_id = activation_receipt.get("task_id")
+    try:
+        activation_binding = (
+            resolved_bindings.get(str(activation_task_id))
+            or resolve_effective_task_binding(
+                store=store,
+                plan_record=record,
+                session=session,
+                base_binding=binding,
+                task_id=str(activation_task_id),
+                repo_root=repo_root,
+            )
+        )
+        activation_binding_sha256 = activation_binding[
+            "binding_manifest_sha256"
+        ]
+    except Exception as error:
+        report.errors.append(
+            f"website control activation binding is invalid: {plan_id}: {error}"
+        )
+        activation_binding_sha256 = None
+    report.require(
+        activation_receipt.get("finalized") is True
+        and activation_receipt.get("plan_id") == plan_id
+        and activation_receipt.get("binding_manifest_sha256")
+        == activation_binding_sha256,
+        f"website control activation receipt is invalid: {plan_id}",
+    )
+    allowed.update(
+        str(path)
+        for path in activation_receipt.get("activated_paths", [])
+    )
+
+    receipts = {
+        str(item["task_identity"]["task_id"]): item
+        for item in store.list_receipts(plan_id)
+    }
+    active_tasks: list[Mapping[str, Any]] = []
+    for lifecycle in record["state"]["tasks"]:
+        task_id = str(lifecycle["task_id"])
+        task_status = str(lifecycle["status"])
+        if task_status not in ACTIVE_TASK_STATUSES | TERMINAL_TASK_STATUSES:
+            continue
+        try:
+            resolved = (
+                resolved_bindings.get(task_id)
+                or resolve_effective_task_binding(
+                    store=store,
+                    plan_record=record,
+                    session=session,
+                    base_binding=binding,
+                    task_id=task_id,
+                    repo_root=repo_root,
+                )
+            )
+        except Exception as error:
+            report.errors.append(
+                f"effective task binding is invalid: {plan_id}:{task_id}: {error}"
+            )
+            continue
+        resolved_bindings[task_id] = resolved
+        entry = resolved["entry"]
+        allowed.update(_packet_paths(entry))
+        if task_status in ACTIVE_TASK_STATUSES:
+            active_tasks.append(lifecycle)
+            allowed.update(str(path) for path in entry["allowed_writes"])
+            continue
+        receipt = receipts.get(task_id, {})
+        report.require(
+            receipt.get("finalized") is True
+            and receipt.get("task_identity", {}).get("task_sha256")
+            == lifecycle["task_sha256"]
+            and receipt.get("topology_evidence", {}).get(
+                "repository_binding_sha256"
+            )
+            == record["repository_binding_sha256"],
+            f"terminal task receipt is invalid: {plan_id}:{task_id}",
+        )
+        allowed.update(
+            str(path)
+            for path in receipt.get("direct_evidence", {}).get(
+                "changed_paths", []
+            )
+        )
+
+    lease = record["state"].get("lease")
+    control = WebsiteControlStore(repo_root).snapshot()
+    if active_tasks:
+        worker = session.get("worker")
+        token = (
+            worker.get("worker_token")
+            if isinstance(worker, Mapping)
+            else None
+        )
+        active = active_tasks[0]
+        report.require(
+            len(active_tasks) == 1
+            and session.get("status")
+            in {"worker_claimed", "invocation_consumed"}
+            and isinstance(token, str)
+            and isinstance(lease, Mapping)
+            and lease.get("holder_kind") == "worker"
+            and lease.get("task_id") == active["task_id"]
+            and lease.get("generation") == active["generation"]
+            and lease.get("holder_token_hash")
+            == hashlib.sha256(token.encode("utf-8")).hexdigest(),
+            f"active plan lease or worker evidence is invalid: {plan_id}",
+        )
+        entry = resolved_bindings[str(active["task_id"])]["entry"]
+        identifiers = entry["packet_ids"]
+        if control.resolver.get("status") == "ready":
+            selected = control.payload["selected"]
+            task = (selected.get("task") or {}).get("record", {})
+            job = (selected.get("job") or {}).get("record", {})
+            handoff = (selected.get("handoff") or {}).get("record", {})
+            control_matches = (
+                task.get("task_id") == identifiers["task_id"]
+                and job.get("job_id") == identifiers["job_id"]
+                and handoff.get("handoff_id")
+                == identifiers["handoff_id"]
+            )
+        else:
+            completion_path = next(
+                path
+                for path in _packet_paths(entry)
+                if "/completions/" in path
+            )
+            try:
+                completion = load_yaml(repo_root / completion_path)
+            except Exception:
+                completion = {}
+            control_matches = (
+                control.resolver.get("status") == "no_action"
+                and completion.get("completion_id")
+                == identifiers["completion_id"]
+                and completion.get("task_id") == identifiers["task_id"]
+                and completion.get("job_id") == identifiers["job_id"]
+                and completion.get("status")
+                in {"complete", "completed"}
+            )
+        report.require(
+            control_matches,
+            f"website control differs from active plan task: {plan_id}",
+        )
+    else:
+        report.require(
+            lease is None,
+            f"orphaned plan lease remains: {plan_id}",
+        )
+        report.require(
+            control.resolver.get("status") == "no_action",
+            f"terminal plan retains executable website control: {plan_id}",
+        )
+    return allowed
 
 
 def validate_source_and_install(
@@ -433,10 +743,8 @@ def validate_repository_boundary(
     allow_active_packet: bool,
 ) -> None:
     head = _run(repo_root, "git", "rev-parse", "HEAD")
-    report.require(
-        head.returncode == 0 and head.stdout.strip() == BASELINE_REVISION,
-        "website HEAD drifted from the accepted baseline",
-    )
+    report.require(head.returncode == 0, "website HEAD cannot be resolved")
+    head_revision = head.stdout.strip()
     tracked = _run(repo_root, "git", "ls-files", "-z")
     tracked_paths = tracked.stdout.split("\0") if tracked.returncode == 0 else []
     forbidden_tracked = [
@@ -459,49 +767,75 @@ def validate_repository_boundary(
         not (repo_root / ".agents/control").exists(),
         "parallel .agents/control authority tree exists",
     )
-    diff = _run(
-        repo_root,
-        "git",
-        "diff",
-        "--name-only",
-        "--",
-        "src",
-        "public",
-    )
-    report.require(
-        diff.returncode == 0 and not diff.stdout.strip(),
-        "reader-facing source or public assets changed",
-    )
     program = load_yaml(repo_root / "implementation_control/program_state.yaml")
-    if not allow_active_packet:
-        report.require(
-            program.get("status") == "inactive",
-            "final website program state must be inactive",
-        )
-        report.require(
-            program.get("current_job") in ({}, None),
-            "final website program state retains an executable job",
-        )
     state_result = status(repo_root=repo_root)
     plans = state_result["plan_control"]["plans"]
-    if not allow_active_packet:
-        report.require(
-            plans == [],
-            "final verification found a live local plan goal",
+    try:
+        changed_paths = _git_paths(
+            repo_root,
+            "diff",
+            "--name-only",
+            "--no-renames",
+            "-z",
+            head_revision,
+            "--",
+        ) | _git_paths(
+            repo_root,
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "-z",
         )
+        staged_paths = _git_paths(
+            repo_root,
+            "diff",
+            "--cached",
+            "--name-only",
+            "-z",
+            "--",
+        )
+    except ValueError as error:
+        report.errors.append(str(error))
+        changed_paths = set()
+        staged_paths = set()
+    report.require(
+        not staged_paths,
+        "staged repository effects are not authorized: "
+        + ", ".join(sorted(staged_paths)),
+    )
+    allowed_paths: set[str] = set()
     for plan in plans:
-        report.require(
-            plan.get("plan_lease") is None,
-            f"live plan lease remains: {plan.get('plan_id')}",
+        allowed_paths.update(
+            _validate_plan_changes(
+                repo_root,
+                report,
+                plan_summary=plan,
+                changed_paths=changed_paths,
+                head_revision=head_revision,
+            )
         )
+    unexpected_paths = sorted(
+        path
+        for path in changed_paths
+        if not _path_allowed(path, allowed_paths)
+    )
+    report.require(
+        not unexpected_paths,
+        "repository drift is outside accepted plan control: "
+        + ", ".join(unexpected_paths),
+    )
+    if not plans:
         report.require(
-            plan.get("provider_intents") == 0,
-            f"provider intent remains: {plan.get('plan_id')}",
+            program.get("status") == "inactive"
+            and program.get("current_job") in ({}, None),
+            "inactive repository retains executable website control",
         )
     report.checks["final_state"] = {
         "program_status": program.get("status"),
         "current_job": program.get("current_job"),
         "live_plan_count": len(plans),
+        "accepted_changed_paths": sorted(changed_paths),
+        "allow_active_packet": allow_active_packet,
         "status_effects": state_result["effects"],
     }
 

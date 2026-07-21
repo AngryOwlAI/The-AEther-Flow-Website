@@ -7,6 +7,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BASE_LAYOUT = REPO_ROOT / "src/layouts/BaseLayout.astro"
 GLOBAL_CSS = REPO_ROOT / "src/styles/global.css"
+SITE_CONTENT = REPO_ROOT / "src/lib/siteContent.ts"
 
 
 def test_shared_header_uses_canonical_angryowl_spelling() -> None:
@@ -41,6 +42,32 @@ def test_mobile_controller_preserves_close_and_resize_contracts() -> None:
     assert 'data-active={isActive ? "true" : undefined}' in layout
     assert 'compactNavigationQuery.addEventListener("change", syncCompactNavigation);' in layout
     assert "primaryNavigation.contains(document.activeElement)" in layout
+
+
+def test_documents_navigation_uses_exact_internal_category_order() -> None:
+    site_content = SITE_CONTENT.read_text(encoding="utf-8")
+    navigation = site_content.split(
+        "export const siteNavigationLinks: SiteNavigationLink[] = [", 1
+    )[1].split("export const projectReadingPathRoutes", 1)[0]
+    documents_menu = navigation.split('title: "Documents"', 1)[1]
+    child_source = documents_menu.split("children: [", 1)[1].split("\n    ],", 1)[0]
+
+    assert 'href: "/documents/"' in documents_menu
+    assert 'matchPrefixes: ["/documents/"]' in documents_menu
+    assert 'title: "Resources"' not in navigation
+
+    children = re.findall(
+        r'title: "([^"]+)",\s*href: "([^"]+)",',
+        child_source,
+    )
+    assert children == [
+        ("Documentation Overview", "/documents/"),
+        ("Anthology Articles", "/documents/anthology/"),
+        ("Research Articles", "/documents/research/"),
+        ("Governance & Control", "/documents/governance/"),
+        ("Diagram Gallery", "/documents/diagrams/"),
+    ]
+    assert all(href.startswith("/") for _, href in children)
 
 
 def test_desktop_navigation_targets_are_44_css_pixels_outside_compact_mode() -> None:

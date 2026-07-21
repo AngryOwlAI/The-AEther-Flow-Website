@@ -30,6 +30,31 @@ def test_current_layout_language_contract_passes() -> None:
     assert validator.validate_layout_language(REPO_ROOT) == []
 
 
+def test_document_actions_requires_document_collection(tmp_path: Path) -> None:
+    write_minimal_layout_contract(tmp_path)
+    write(tmp_path / "src/components/DocumentActions.astro", "StatusDossier")
+
+    errors = validator.validate_layout_language(tmp_path)
+
+    assert any(
+        "DocumentActions.astro: expected primitive token 'DocumentCollection'" in error
+        for error in errors
+    )
+
+
+def test_retired_resource_source_pages_are_not_required(tmp_path: Path) -> None:
+    write_minimal_layout_contract(tmp_path)
+
+    retired_paths = (
+        "src/pages/resources/index.astro",
+        "src/pages/resources/documents.astro",
+        "src/pages/resources/diagrams.astro",
+    )
+
+    assert all(not (tmp_path / relative).exists() for relative in retired_paths)
+    assert validator.validate_layout_language(tmp_path) == []
+
+
 def test_missing_primitive_fails(tmp_path: Path) -> None:
     write_minimal_layout_contract(tmp_path)
     (tmp_path / "src/components/EvidenceRail.astro").unlink()

@@ -34,7 +34,7 @@
             "pattern": "^/"
           },
           "kind": {
-            "enum": ["pdf", "tex", "image", "diagram", "manifest", "other"]
+            "enum": ["pdf", "tex", "markdown", "image", "diagram", "manifest", "other"]
           },
           "title": {
             "type": "string",

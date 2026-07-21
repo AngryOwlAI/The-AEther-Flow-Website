@@ -111,6 +111,13 @@ basic security headers on all routes.
 
 ## Direct Upload Deployment
 
+The Documents migration remains local implementation state until its required
+checks pass and release is separately authorized. A successful build or
+validator run does not create a commit, push a revision, or deploy production.
+Record commit, push, and deployment status independently, and verify canonical
+`/documents/.../` URLs in production only after a successful authorized
+deployment.
+
 Use this path when Wrangler is authenticated and a local static build should be
 published directly to Cloudflare Pages:
 
@@ -144,9 +151,12 @@ python scripts/smoke_test_site.py \
 7. Add a custom domain if available.
 8. Verify HTTPS and direct access to:
    - `/`
-   - `/resources/`
-   - `/files/pdf/aether-flow-sample.pdf`
-   - `/files/tex/aether-flow-sample.tex`
+   - `/documents/`
+   - `/documents/research/`
+   - `/documents/governance/source-authority/`
+   - `/documents/diagrams/`
+   - `/files/pdf/ontology/aether_flow_foundations.pdf`
+   - `/files/tex/ontology/aether_flow_foundations.tex`
    - `/assets/diagrams/publication-layer-map.svg`
 
 ## Verification Commands

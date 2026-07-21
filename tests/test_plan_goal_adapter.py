@@ -35,9 +35,11 @@ from scripts.implementation_control.plan_goal_adapter import (
     prepare_plan,
     recover,
     render_yaml,
+    resolve_effective_task_binding,
     reserve_next,
     validate_binding_manifest,
     worker_consume,
+    worker_fail,
     worker_finalize,
     worker_prepare,
     worker_unknown,
@@ -47,6 +49,10 @@ from agentjob_runtime.adapters.protocols import (
     ProjectAdapter,
     RepositoryProvider,
     ThreadExecutionProfileProvider,
+)
+from scripts.implementation_control.validate_plan_goal import (
+    ValidationReport,
+    validate_repository_boundary,
 )
 
 
@@ -473,6 +479,180 @@ def test_complete_binding_and_authority_hashes_are_required(tmp_path: Path):
         )
 
 
+def test_explicit_replacement_binding_hydrates_execution_without_changing_base(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    task = {
+        "task_id": "TASK-REPLACEMENT-002",
+        "task_sha256": "",
+        "phase_id": "PHASE-01",
+        "title": "Execute coupled replacement",
+        "objective": "Execute one explicitly authorized replacement task.",
+        "depends_on": ["TASK-001"],
+        "acceptance_criteria": [
+            "The replacement has direct completion evidence."
+        ],
+        "validation_refs": ["evidence/replacement.txt"],
+        "execution_budget": {
+            "one_task_per_discussion": True,
+            "max_continue_invocations": 1,
+            "max_agentjobs": 1,
+            "same_task_successors": 0,
+        },
+        "extensions": {},
+    }
+    task["task_sha256"] = content_sha256(
+        {
+            key: value
+            for key, value in task.items()
+            if key != "task_sha256"
+        }
+    )
+    entry = copy.deepcopy(fixture.binding["tasks"]["TASK-001"])
+    entry.update(
+        {
+            "task_id": task["task_id"],
+            "task_sha256": task["task_sha256"],
+            "packet_ids": {
+                "task_id": "WI-20990101-002",
+                "job_id": "WJ-20990101-002-A",
+                "handoff_id": "WH-20990101-002",
+                "completion_id": "WJC-20990101-002-A",
+            },
+            "objective": task["objective"],
+            "acceptance_criteria": task["acceptance_criteria"],
+            "validators": [
+                {
+                    "id": "validator-replacement",
+                    "command": task["validation_refs"][0],
+                    "required": True,
+                }
+            ],
+            "allowed_writes": ["artifacts/replacement.txt"],
+        }
+    )
+    entry["authority_sha256"] = content_sha256(
+        {
+            key: value
+            for key, value in entry.items()
+            if key != "authority_sha256"
+        }
+    )
+    supersession = {
+        "supersession_id": "PTS-TEST-001",
+        "replacement_tasks": [
+            {
+                "task_id": task["task_id"],
+                "task_sha256": task["task_sha256"],
+            }
+        ],
+    }
+    supplement = {
+        "schema_version": "website.plan-task-replacement-binding.v1",
+        "record_type": "implementation_plan_task_replacement_binding",
+        "status": "non_executable",
+        "plan_id": fixture.plan["plan_id"],
+        "plan_sha256": content_sha256(fixture.plan),
+        "base_binding_manifest_sha256": fixture.binding[
+            "manifest_sha256"
+        ],
+        "supersession_id": supersession["supersession_id"],
+        "supersession_sha256": content_sha256(supersession),
+        "plan_revision": 9,
+        "task": entry,
+        "hash_basis": "canonical_json_without_binding_content_sha256",
+        "binding_content_sha256": "",
+    }
+    supplement["binding_content_sha256"] = content_sha256(
+        {
+            key: value
+            for key, value in supplement.items()
+            if key != "binding_content_sha256"
+        }
+    )
+    session = {
+        "replacement_binding_authorizations": {
+            task["task_id"]: {
+                "status": "approved",
+                "approved_at": FIXED_TIME,
+                "approval_ref": "conversation:replacement-approval",
+                "authorized_plan_revision": 9,
+                "authorized_website_control_sha256": "a" * 64,
+                "task_authority_sha256": entry["authority_sha256"],
+                "replacement_binding_content_sha256": supplement[
+                    "binding_content_sha256"
+                ],
+                "compatibility_writes": [
+                    "scripts/implementation_control/plan_goal_adapter.py"
+                ],
+                "external_effects_authorized": False,
+                "replacement_binding": supplement,
+                "task_definition": task,
+            }
+        }
+    }
+
+    class ReplacementStore:
+        def load_task_definition(self, plan_id: str, task_id: str):
+            assert plan_id == fixture.plan["plan_id"]
+            assert task_id == task["task_id"]
+            return {
+                "task_id": task_id,
+                "task_sha256": task["task_sha256"],
+                "phase_id": task["phase_id"],
+                "origin_kind": "replacement",
+                "depends_on": task["depends_on"],
+                "task_json": {
+                    "task_id": task_id,
+                    "task_sha256": task["task_sha256"],
+                    "depends_on": task["depends_on"],
+                    "one_task_per_discussion": True,
+                    "max_continue_invocations": 1,
+                    "max_agentjobs": 1,
+                },
+            }
+
+        def list_supersessions(self, plan_id: str):
+            assert plan_id == fixture.plan["plan_id"]
+            return [supersession]
+
+    plan_record = {
+        "plan_id": fixture.plan["plan_id"],
+        "plan_sha256": content_sha256(fixture.plan),
+        "effective_plan_sha256": content_sha256(fixture.plan),
+        "state": {"revision": 9},
+    }
+    resolved = resolve_effective_task_binding(
+        store=ReplacementStore(),  # type: ignore[arg-type]
+        plan_record=plan_record,
+        session=session,
+        base_binding=fixture.binding,
+        task_id=task["task_id"],
+        repo_root=fixture.root,
+    )
+    assert resolved["replacement"] is True
+    assert resolved["task_definition"] == task
+    assert resolved["entry"] == entry
+    assert fixture.binding["tasks"] == {"TASK-001": fixture.binding["tasks"]["TASK-001"]}
+
+    stale = copy.deepcopy(session)
+    stale["replacement_binding_authorizations"][task["task_id"]][
+        "replacement_binding"
+    ]["task"]["allowed_writes"].append("outside.txt")
+    with pytest.raises(
+        WebsitePlanAdapterError, match="accepted bytes"
+    ):
+        resolve_effective_task_binding(
+            store=ReplacementStore(),  # type: ignore[arg-type]
+            plan_record=plan_record,
+            session=stale,
+            base_binding=fixture.binding,
+            task_id=task["task_id"],
+            repo_root=fixture.root,
+        )
+
+
 def test_control_cas_materializes_exactly_one_binding_projection(
     tmp_path: Path,
 ):
@@ -500,6 +680,48 @@ def test_control_cas_materializes_exactly_one_binding_projection(
         WebsitePlanAdapterError, match="compare-and-swap"
     ):
         store.activate_packet(staged, before.control_sha256)
+
+
+def test_yaml_renderer_round_trips_colon_in_list_scalar(tmp_path: Path):
+    path = tmp_path / "record.yaml"
+    value = {
+        "requirements": [
+            "npm run validate:provenance passes without exemptions."
+        ]
+    }
+    payload = render_yaml(value)
+    assert b"validate\\u003aprovenance" in payload
+    path.write_bytes(payload)
+    assert load_yaml(path) == value
+
+
+def test_control_activation_rolls_back_unparseable_packet(tmp_path: Path):
+    fixture = make_project(tmp_path, task_count=1)
+    store = WebsiteControlStore(fixture.root)
+    before = store.snapshot()
+    staged = store.stage_packet(
+        {
+            "plan": fixture.plan,
+            "binding": fixture.binding["tasks"]["TASK-001"],
+            "binding_manifest_sha256": fixture.binding[
+                "manifest_sha256"
+            ],
+            "timestamp": FIXED_TIME,
+        }
+    )
+    task_path = (
+        "implementation_control/tasks/"
+        f"{fixture.binding['tasks']['TASK-001']['packet_ids']['task_id']}"
+        "/00_TASK.yaml"
+    )
+    malformed = copy.deepcopy(staged)
+    malformed["records"][task_path] = (
+        b'schema_version: "0.1"\nrequirements:\n  - "bad: scalar"\n'
+    )
+    with pytest.raises(ValueError, match="unsupported key"):
+        store.activate_packet(malformed, before.control_sha256)
+    assert store.snapshot().control_sha256 == before.control_sha256
+    assert not (fixture.root / task_path).exists()
 
 
 def test_acceptance_changes_when_topology_changes(tmp_path: Path):
@@ -530,6 +752,28 @@ def test_director_route_uses_binding_authority_not_plan_prose(tmp_path: Path):
         set(route.job_spec["authority"]["allowed_actions"])
         & {"repository-branch-create", "repository-worktree-create"}
     )
+
+
+def test_director_route_uses_receipt_output_for_zero_write_task(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    task = fixture.plan["tasks"][0]
+    entry = copy.deepcopy(fixture.binding["tasks"][task["task_id"]])
+    entry["allowed_writes"] = []
+    route = compile_binding_director_route(task, entry)
+    completion_path = (
+        "implementation_control/tasks/"
+        f"{entry['packet_ids']['task_id']}/jobs/completions/"
+        f"{entry['packet_ids']['completion_id']}.yaml"
+    )
+    assert route.job_spec["authority"]["allowed_write_paths"] == []
+    assert route.job_spec["authority"]["allowed_generated_paths"] == [
+        completion_path
+    ]
+    assert route.job_spec["expected_outputs"] == [
+        {"path": completion_path, "kind": "receipt"}
+    ]
     assert route.job_spec["policy_refs"] == [
         ".agents/implementation-plan-goal/adapter-config.json"
     ]
@@ -640,6 +884,13 @@ def test_full_relay_adopts_before_prompt_consumes_once_and_is_coordinator_only(
     assert PlanControlStore(fixture.root).require_store().list_receipts(
         fixture.plan["plan_id"]
     )[0]["finalized"] is True
+    boundary_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        boundary_report,
+        allow_active_packet=False,
+    )
+    assert boundary_report.errors == []
 
     with pytest.raises(
         WebsitePlanAdapterError, match="accepted coordinator"
@@ -921,3 +1172,206 @@ def test_unknown_consumed_result_is_quarantined_without_retry(
     assert unknown["status"] == "invocation_unknown"
     assert unknown["retry_authorized"] is False
     assert unknown["recovery_required"] is True
+
+
+def test_known_validator_failure_finalizes_without_retry_or_quarantine(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    _, activation = activate_fixture(fixture)
+    adopt_worker(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=3,
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        creation_status="returned",
+        codex_task_id="worker-thread-failed",
+        effective_reasoning_effort="max",
+        profile_evidence_ref="host:worker-thread-failed:max",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:01:00Z",
+    )
+    worker_prepare(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=4,
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-failed",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:02:00Z",
+    )
+    consumed = worker_consume(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=5,
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-failed",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:03:00Z",
+    )
+    failed = worker_fail(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=consumed["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-failed",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        validator_results={"validator-task-1": "fail"},
+        failure_summary="The required validator returned a known failure.",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:04:00Z",
+    )
+    assert failed["status"] == "task_finalized"
+    assert failed["disposition"] == "validation_failed"
+    assert failed["plan_phase"] == "terminal_validation_failed"
+    assert WebsiteControlStore(fixture.root).snapshot().resolver[
+        "status"
+    ] == "no_action"
+    receipt = PlanControlStore(fixture.root).require_store().list_receipts(
+        fixture.plan["plan_id"]
+    )[0]
+    assert receipt["disposition"] == "validation_failed"
+    assert receipt["execution"]["continue_invocations"] == 1
+    assert receipt["execution"]["agentjobs"] == 1
+    assert receipt["recovery"]["status"] == "not_required"
+
+
+def test_repository_validation_uses_active_plan_binding_and_rejects_drift(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    _, activation = activate_fixture(fixture)
+    adopted = adopt_worker(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=activation["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        creation_status="returned",
+        codex_task_id="worker-thread-boundary",
+        effective_reasoning_effort="max",
+        profile_evidence_ref="host:worker-thread-boundary:max",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:01:00Z",
+    )
+    worker_prepare(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=adopted["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-boundary",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:02:00Z",
+    )
+    allowed = fixture.root / "artifacts/task-1.txt"
+    allowed.parent.mkdir(parents=True)
+    allowed.write_text("bound change\n", encoding="utf-8")
+
+    report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        report,
+        allow_active_packet=False,
+    )
+    assert report.errors == []
+    _run(fixture.root, "git", "add", "artifacts/task-1.txt")
+    staged_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        staged_report,
+        allow_active_packet=False,
+    )
+    assert any(
+        "staged repository effects" in error
+        for error in staged_report.errors
+    )
+    _run(fixture.root, "git", "reset", "--", "artifacts/task-1.txt")
+
+    unrelated = fixture.root / "src/unrelated.ts"
+    unrelated.parent.mkdir(parents=True)
+    unrelated.write_text("export const drift = true;\n", encoding="utf-8")
+    drift_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        drift_report,
+        allow_active_packet=False,
+    )
+    assert any(
+        "src/unrelated.ts" in error for error in drift_report.errors
+    )
+    unrelated.unlink()
+    package = fixture.root / "package.json"
+    package.write_text(
+        package.read_text(encoding="utf-8") + "\n",
+        encoding="utf-8",
+    )
+    tracked_drift_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        tracked_drift_report,
+        allow_active_packet=False,
+    )
+    assert any(
+        "package.json" in error
+        for error in tracked_drift_report.errors
+    )
+
+
+def test_repository_validation_rejects_open_intent_and_topology_change(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    _, activation = activate_fixture(fixture)
+    open_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        open_report,
+        allow_active_packet=True,
+    )
+    assert any(
+        "unresolved provider intent" in error
+        for error in open_report.errors
+    )
+
+    adopted = adopt_worker(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=activation["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        creation_status="returned",
+        codex_task_id="worker-thread-topology",
+        effective_reasoning_effort="max",
+        profile_evidence_ref="host:worker-thread-topology:max",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:01:00Z",
+    )
+    worker_prepare(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=adopted["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-topology",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:02:00Z",
+    )
+    _run(fixture.root, "git", "branch", "unauthorized-topology")
+    topology_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        topology_report,
+        allow_active_packet=False,
+    )
+    assert any(
+        "topology changed" in error
+        for error in topology_report.errors
+    )

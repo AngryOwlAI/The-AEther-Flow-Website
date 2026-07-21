@@ -1,0 +1,61 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-004-A"
+task_id: "WI-20260720-004"
+job_id: "WJ-20260720-004-A"
+created_utc: "2026-07-20T21:14:18Z"
+completed_utc: "2026-07-20T21:14:18Z"
+status: "completed"
+summary: "Added an ownership-scoped, config-driven document collection importer with fail-closed preflight and deterministic cross-manifest records."
+changed_files:
+  - "scripts/import_document_collection.py"
+  - "tests/test_import_document_collection.py"
+requirements_satisfied:
+  - "Collection imports declare explicit ownership and preserve records owned by other importers."
+  - "Imported records bind public bytes, hashes, source references, logical-document identity, and format role."
+  - "Ambiguous ownership or source status fails closed without publishing files."
+acceptance_results:
+  - criterion: "Collection imports declare explicit ownership and preserve records owned by other importers."
+    status: "passed"
+    evidence_refs:
+      - "scripts/import_document_collection.py"
+      - "tests/test_import_document_collection.py"
+  - criterion: "Imported records bind public bytes, hashes, source references, logical-document identity, and format role."
+    status: "passed"
+    evidence_refs:
+      - "scripts/import_document_collection.py"
+      - "tests/test_import_document_collection.py"
+  - criterion: "Ambiguous ownership or source status fails closed without publishing files."
+    status: "passed"
+    evidence_refs:
+      - "scripts/import_document_collection.py"
+      - "tests/test_import_document_collection.py"
+validator_results:
+  - id: "afdoc-004-01"
+    command: "manual inspection of targeted collection importer preservation and deterministic hash results"
+    status: "passed"
+    evidence: "Focused tests prove foreign-row preservation, owned-row replacement, fixed-input determinism, exact byte/hash/source/catalog/role binding, explicit duplicate diagnostics, and pre-publication failure behavior."
+  - id: "afdoc-004-02"
+    command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Source, asset, and document catalog validation passed against the live public manifests."
+additional_validation:
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_import_document_collection.py tests/test_import_ontology_assets.py tests/test_document_catalog.py tests/test_validate_manifest_paths.py -q"
+    status: "passed"
+    evidence: "Nineteen focused and adjacent importer/catalog/manifest tests passed."
+scope_preservation:
+  live_collection_imported_without_configuration: false
+  unrelated_manifest_record_changed: false
+  existing_importer_changed: false
+  runtime_dependency_added: false
+  scientific_claim_changed: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-004 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

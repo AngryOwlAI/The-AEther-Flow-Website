@@ -1,0 +1,92 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-011-A"
+task_id: "WI-20260720-011"
+job_id: "WJ-20260720-011-A"
+created_utc: "2026-07-20T22:47:20Z"
+completed_utc: "2026-07-20T22:47:20Z"
+status: "completed"
+summary: "Created the canonical Documents Diagram Gallery with the complete manifest-backed inventory, duplicate suppression, conceptual grouping, accessibility metadata, provenance, and non-authority framing preserved."
+changed_files:
+  - "src/pages/documents/diagrams/index.astro"
+  - "src/lib/siteContent.ts"
+requirements_satisfied:
+  - "The complete approved diagram inventory and conceptual grouping are preserved without duplicates."
+  - "The existing gallery component contract, accessibility metadata, provenance, and non-authority labels remain intact."
+  - "No SVG policy exception or visible embedded SVG text is introduced."
+acceptance_results:
+  - criterion: "The complete approved diagram inventory and conceptual grouping are preserved without duplicates."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/diagrams/index.astro"
+      - "src/pages/resources/diagrams.astro"
+      - "dist/documents/diagrams/index.html"
+      - "dist/resources/diagrams/index.html"
+  - criterion: "The existing gallery component contract, accessibility metadata, provenance, and non-authority labels remain intact."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/diagrams/index.astro"
+      - "src/components/DiagramGalleryList.astro"
+      - "src/lib/siteContent.ts"
+      - "dist/documents/diagrams/index.html"
+  - criterion: "No SVG policy exception or visible embedded SVG text is introduced."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/diagrams/index.astro"
+      - "dist/documents/diagrams/index.html"
+validator_results:
+  - id: "afdoc-011-01"
+    command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed with no exception and no visible embedded SVG text."
+  - id: "afdoc-011-02"
+    command: "manual inspection of Diagram Gallery inventory captions alt text provenance and non-authority framing"
+    status: "passed"
+    evidence: "Rendered old/new inspection found 37 diagrams on each route, 37 unique new-route asset paths, four identical conceptual groups, identical titles, captions, dimensions, alt text, and image-link labels, no empty accessibility labels, and unchanged provenance/non-authority copy."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 69 static pages, including /documents/diagrams/index.html."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed after the canonical Diagram Gallery route references changed."
+  - command: "npm run validate:manifests"
+    status: "passed"
+    evidence: "Manifest paths and the existing document catalog passed without an unauthorized manifest write."
+  - command: "npm run validate:content"
+    status: "passed"
+    evidence: "Content-source validation passed."
+  - command: "npm run validate:provenance"
+    status: "passed"
+    evidence: "The existing page-provenance manifest remained internally valid."
+  - command: "git diff --check"
+    status: "passed"
+    evidence: "The tracked route-reference edit and the new route produced no whitespace diagnostics."
+  - command: "npm run validate"
+    status: "failed"
+    evidence: "The aggregate gate passed manifest, content, claim, and internal-link checks, then stopped at the pre-existing out-of-scope src/components/DocumentActions.astro expected primitive token StatusDossier error. The required task validators and static build passed independently."
+scope_preservation:
+  approved_diagram_count_before: 37
+  approved_diagram_count_after: 37
+  unique_diagram_path_count_after: 37
+  conceptual_group_count_before: 4
+  conceptual_group_count_after: 4
+  inventory_changed: false
+  gallery_component_changed: false
+  diagram_assets_changed: false
+  visible_svg_text_added: false
+  source_authority_strengthened: false
+  route_references_updated_in_site_content: 2
+  old_route_modified: false
+  manifest_changed: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-011 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

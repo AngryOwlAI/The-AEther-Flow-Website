@@ -57,6 +57,33 @@ const upstream = (path: string) =>
 
 const upstreamRef = (path: string) => `AEther-Flow Project. (2026). ${path}`;
 
+const canonicalDocumentRoute = (href?: string) => {
+  switch (href) {
+    case "/resources/publication-process/":
+      return "/documents/governance/publication-process/";
+    case "/resources/source-authority/":
+      return "/documents/governance/source-authority/";
+    case "/resources/documents/":
+      return "/documents/research/";
+    default:
+      return href;
+  }
+};
+
+const withCanonicalDocumentRoutes = (
+  content: ComprehensionContent,
+): ComprehensionContent => ({
+  ...content,
+  relatedRoutes: content.relatedRoutes?.map((link) => ({
+    ...link,
+    href: canonicalDocumentRoute(link.href),
+  })),
+  sourceBasis: content.sourceBasis?.map((link) => ({
+    ...link,
+    href: canonicalDocumentRoute(link.href),
+  })),
+});
+
 export const operationsLinks: ExplainerLink[] = [
   {
     title: "Director and AgentJob lifecycle",
@@ -75,7 +102,7 @@ export const operationsLinks: ExplainerLink[] = [
   },
   {
     title: "Publication process",
-    href: "/resources/publication-process/",
+    href: "/documents/governance/publication-process/",
     body: "How public explainers move from brief to source spec, page, screenshots, and review.",
   },
   {
@@ -213,7 +240,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "curated operational synthesis",
     updated: "2026-06-28",
     sourceRefs: operationsSourceRefs,
-    comprehension: operationsComprehension,
+    comprehension: withCanonicalDocumentRoutes(operationsComprehension),
     sections: [
       {
         eyebrow: "Operating model",
@@ -268,7 +295,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       },
       {
         title: "Source Authority",
-        href: "/resources/source-authority/",
+        href: "/documents/governance/source-authority/",
         body: "How to read website pages, generated derivatives, registries, and source records.",
       },
     ],
@@ -409,7 +436,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "operational orientation",
     updated: "2026-06-28",
     sourceRefs: directorLifecycleSourceRefs,
-    comprehension: directorAgentjobLifecycleComprehension,
+    comprehension: withCanonicalDocumentRoutes(directorAgentjobLifecycleComprehension),
     sections: [
       {
         eyebrow: "Lifecycle map",
@@ -526,7 +553,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "operational orientation",
     updated: "2026-06-28",
     sourceRefs: roleRoutingSourceRefs,
-    comprehension: roleRoutingComprehension,
+    comprehension: withCanonicalDocumentRoutes(roleRoutingComprehension),
     sections: [
       {
         eyebrow: "Contract stack",
@@ -594,7 +621,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       },
       {
         title: "Source Authority",
-        href: "/resources/source-authority/",
+        href: "/documents/governance/source-authority/",
         body: "How public summaries relate to registered sources.",
       },
     ],
@@ -646,7 +673,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       upstreamRef("tests/README.md"),
       "The AEther Flow Website. (2026). docs/system-analyses/validator-pass-does-not-mean-physics-proof.md",
     ],
-    comprehension: validatorOperatorWorkflowComprehension,
+    comprehension: withCanonicalDocumentRoutes(validatorOperatorWorkflowComprehension),
     sections: [
       {
         eyebrow: "Command map",
@@ -732,7 +759,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       },
       {
         title: "Source Authority",
-        href: "/resources/source-authority/",
+        href: "/documents/governance/source-authority/",
         body: "The broader source and derivative boundary.",
       },
     ],
@@ -775,7 +802,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "publication-process orientation",
     updated: "2026-06-28",
     sourceRefs: publicationProcessSourceRefs,
-    comprehension: publicationProcessComprehension,
+    comprehension: withCanonicalDocumentRoutes(publicationProcessComprehension),
     sections: [
       {
         eyebrow: "Publication lifecycle",
@@ -834,7 +861,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       },
       {
         title: "Source Authority",
-        href: "/resources/source-authority/",
+        href: "/documents/governance/source-authority/",
         body: "Why generated surfaces remain downstream from sources.",
       },
     ],
@@ -885,7 +912,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       upstreamRef("registries/PROJECT_IMPROVEMENT_SIGNAL_REGISTRY.csv"),
       "The AEther Flow Website. (2026). docs/system-analyses/project-system-improvement-loop.md",
     ],
-    comprehension: projectSystemImprovementComprehension,
+    comprehension: withCanonicalDocumentRoutes(projectSystemImprovementComprehension),
     sections: [
       {
         eyebrow: "Improvement loop",
@@ -939,7 +966,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
       },
       {
         title: "Source Authority",
-        href: "/resources/source-authority/",
+        href: "/documents/governance/source-authority/",
         body: "Why generated surfaces and maintenance evidence remain below source authority.",
       },
       {
@@ -987,7 +1014,7 @@ export const internalExplainers: Record<string, InternalExplainer> = {
     claimStatus: "technical-requirements orientation",
     updated: "2026-06-28",
     sourceRefs: technicalRequirementsSourceRefs,
-    comprehension: technicalRequirementsComprehension,
+    comprehension: withCanonicalDocumentRoutes(technicalRequirementsComprehension),
     sections: [
       {
         eyebrow: "Tool tiers",
@@ -1045,13 +1072,13 @@ export const internalExplainers: Record<string, InternalExplainer> = {
         body: "Which checks fit each changed authority surface.",
       },
       {
-        title: "Ontology Documents",
-        href: "/resources/documents/",
+        title: "Research Articles",
+        href: "/documents/research/",
         body: "Read PDF derivatives and download registered TeX source files.",
       },
       {
         title: "Source Authority",
-        href: "/resources/source-authority/",
+        href: "/documents/governance/source-authority/",
         body: "How tools, validators, generated pages, and source records differ.",
       },
     ],

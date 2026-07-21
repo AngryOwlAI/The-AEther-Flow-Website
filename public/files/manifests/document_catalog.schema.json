@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether-flow.local/schemas/document_catalog.schema.json",
+  "title": "The AEther Flow Website Document Catalog",
+  "description": "Logical document grouping only. File identity and source authority remain in the asset and source manifests.",
+  "type": "object",
+  "required": ["version", "generated_at", "documents"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "category",
+          "summary",
+          "status",
+          "authority_scope",
+          "manifestations"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "required": ["manifestations"],
+              "properties": {
+                "manifestations": {
+                  "contains": {
+                    "type": "object",
+                    "required": ["kind"],
+                    "properties": { "kind": { "const": "markdown" } }
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "category": { "const": "governance" },
+                "status": { "const": "approved" },
+                "manifestations": {
+                  "items": {
+                    "if": {
+                      "required": ["kind"],
+                      "properties": { "kind": { "const": "markdown" } }
+                    },
+                    "then": {
+                      "properties": {
+                        "site_path": {
+                          "pattern": "^/files/markdown/governance/.+\\.md$"
+                        },
+                        "role": { "const": "governance_source" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*:[a-z0-9][a-z0-9_-]*$"
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]*$"
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "category": {
+            "enum": ["anthology", "research", "governance", "diagram"]
+          },
+          "collection": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "minLength": 1 },
+          "authority_scope": { "type": "string", "minLength": 1 },
+          "reading_order": { "type": "integer", "minimum": 1 },
+          "tags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "manifestations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["kind", "site_path", "role"],
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": ["pdf", "tex", "markdown", "png", "svg", "mermaid"]
+                },
+                "site_path": { "type": "string", "pattern": "^/files/" },
+                "role": {
+                  "enum": [
+                    "authoritative_source",
+                    "registered_source",
+                    "readable_derivative",
+                    "governance_source",
+                    "operational_record",
+                    "explanatory_derivative",
+                    "public_comprehension_asset",
+                    "provenance_record"
+                  ]
+                },
+                "title": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "related_routes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^/" }
+          }
+        }
+      }
+    }
+  }
+}

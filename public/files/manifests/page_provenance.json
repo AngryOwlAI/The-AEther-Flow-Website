@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "generated_at": "2026-07-16T06:16:49.562083+00:00",
+  "generated_at": "2026-07-21T14:18:20.177666+00:00",
   "source_repository": "AngryOwlAI/The-AEther-Flow",
-  "source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
-  "source_commit_date": "2026-07-13T11:45:40-06:00",
+  "source_commit": "c6aa66b9a7412f14c6573dd0467b82ea11310c20",
+  "source_commit_date": "2026-07-21T08:05:50-06:00",
   "pages": [
     {
       "route_path": "/",
       "local_page_source": "src/pages/index.astro",
-      "local_page_sha256": "89f81f5d40e904cdea291d136739e014347d84e7736f573871db6a24f12fe217",
+      "local_page_sha256": "8229e115b086d426feabd843507ac45b2331246629f88754a195ca9826d3083a",
       "title": "The \u00c6ther Flow Project",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -174,7 +174,7 @@
     {
       "route_path": "/physics/ontology/",
       "local_page_source": "src/pages/physics/ontology/index.astro",
-      "local_page_sha256": "e86f3e971f22092891a4de27083d2b8705ff664a8d3b3bdafc1de0fd5e7e870f",
+      "local_page_sha256": "2b4efb01a4a8488961eb3dd365c64be20eebd5f11ebd857bc60df59a015be20a",
       "title": "\u00c6ther-Flow Ontology",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -432,56 +432,56 @@
       "upstream_sources": [
         {
           "path": "registries/CLAIM_BOUNDARY_REGISTRY.csv",
-          "sha256": "27c8059dbe0d5e4e07174827f32cfce13345adb2e644294c27fdcce5566b042e",
+          "sha256": "75c9b98f3165fed82892cc15747763d31dd8e80a0f1fa2d2caa7929fd8e181a2",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/CLAIM_BOUNDARY_REGISTRY.csv",
           "omission_reason": null
         },
         {
           "path": "research_control/program_state.yaml",
-          "sha256": "1a28fc71d3076347be4221e4d30b4bf962e5f752fd9d90f099d916dd89a4706c",
+          "sha256": "b18c543e12116fd76c44997bb957893c99d58194ea540549005b75abfff0ced1",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/program_state.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/program_state.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0323.yaml",
-          "sha256": "fa899537e409d16637f44fbc2d51320d73b24cae5528d05a6b4610ec9f5147b6",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0323.yaml",
+          "path": "research_control/handoffs/handoff-0795.yaml",
+          "sha256": "00d7e744c312fb5537e16ab798a4186ebd82a57f3a9883209ac55915a2126515",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0795.yaml",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.yaml",
           "omission_reason": null
         },
         {
-          "path": "research_control/handoffs/handoff-0323.md",
-          "sha256": "2784bb52a7a4c853cc64d96011055f451919935043c2308faf76d7e593b08adb",
-          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0323.md",
+          "path": "research_control/handoffs/handoff-0795.md",
+          "sha256": "eb8ddefc80cf936b9c32f5e2820b3cae77a97a16f61905f3d5e5579417525a43",
+          "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0795.md",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.md",
           "omission_reason": null
         },
         {
           "path": "registries/DISTANCE_TO_GR_LEDGER.csv",
           "sha256": "0ec3266d708398acde6f380515c37751c0db8ce03bbb135f8aa60fb0f494ce61",
           "github_main_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv",
-          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/DISTANCE_TO_GR_LEDGER.csv",
+          "github_pinned_url": "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/DISTANCE_TO_GR_LEDGER.csv",
           "omission_reason": null
         }
       ],
-      "upstream_source_commit": "57438af555214bc0785dcb390ee6254f580b8a62",
-      "upstream_source_commit_date": "2026-07-13T11:45:40-06:00",
+      "upstream_source_commit": "c6aa66b9a7412f14c6573dd0467b82ea11310c20",
+      "upstream_source_commit_date": "2026-07-21T08:05:50-06:00",
       "adapted_from_source_date": "2026-06-29",
       "github_main_urls": [
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0323.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0795.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/research_control/handoffs/handoff-0795.md",
         "https://github.com/AngryOwlAI/The-AEther-Flow/blob/main/registries/DISTANCE_TO_GR_LEDGER.csv"
       ],
       "github_pinned_urls": [
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/CLAIM_BOUNDARY_REGISTRY.csv",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/program_state.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0323.yaml",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/research_control/handoffs/handoff-0323.md",
-        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/57438af555214bc0785dcb390ee6254f580b8a62/registries/DISTANCE_TO_GR_LEDGER.csv"
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/CLAIM_BOUNDARY_REGISTRY.csv",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/program_state.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.yaml",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/research_control/handoffs/handoff-0795.md",
+        "https://github.com/AngryOwlAI/The-AEther-Flow/blob/c6aa66b9a7412f14c6573dd0467b82ea11310c20/registries/DISTANCE_TO_GR_LEDGER.csv"
       ],
       "upstream_authority_status": "draft_control_artifact",
       "website_publication_status": "published",
@@ -1199,7 +1199,7 @@
     {
       "route_path": "/ai-research-system/memory-preflight/",
       "local_page_source": "src/pages/ai-research-system/memory-preflight/index.astro",
-      "local_page_sha256": "f7267968d18f81862a828dc7a5f9f8ee7d3f2f0103aa5960dec2eb61a42dbdfd",
+      "local_page_sha256": "7bc699613932583875d0a17a3c7e803b02533d7bf77ac88bd32096861ab01316",
       "title": "Memory Preflight",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1365,7 +1365,7 @@
     {
       "route_path": "/ai-research-system/runtime-requirements/",
       "local_page_source": "src/pages/ai-research-system/runtime-requirements/index.astro",
-      "local_page_sha256": "e438dc7175ccc36a9f0cd07224b7a742224df7a8f8b888d7a81c529bcaf2b86d",
+      "local_page_sha256": "8e0353ff4879f1753d117c263d12843cf1e851293464893ba12f40a5cd6207ff",
       "title": "Runtime Requirements",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1455,10 +1455,10 @@
       "boundary_type": "operational_boundary"
     },
     {
-      "route_path": "/resources/guided-starts/general-public/",
-      "local_page_source": "src/pages/resources/guided-starts/general-public/index.astro",
-      "local_page_sha256": "864f26494c5b3447e25afc1cef5eaa54c95369e85d8ef7bae5e6367ffb1b773f",
-      "title": "General-Public Guided Start",
+      "route_path": "/documents/reading-paths/general-public/",
+      "local_page_source": "src/pages/documents/reading-paths/general-public/index.astro",
+      "local_page_sha256": "25f2831c7e43e8c356e37ad27b3902de8c64f15ccb5fe325fdc97622437197ef",
+      "title": "General-Public Reading Path",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [
@@ -1529,10 +1529,10 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/guided-starts/",
-      "local_page_source": "src/pages/resources/guided-starts/index.astro",
-      "local_page_sha256": "691d44f051077417c24bb41be9bc5d67539a23ebf1785d2942e8191cc257fdc6",
-      "title": "Specialist Guided Starts",
+      "route_path": "/documents/governance/",
+      "local_page_source": "src/pages/documents/governance/index.astro",
+      "local_page_sha256": "a37266b290926eba865accc1f012a238d881d70d8ca675682ccbaca87af97c26",
+      "title": "Governance & Control",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [
@@ -1648,9 +1648,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/reviewer-packet/",
-      "local_page_source": "src/pages/resources/reviewer-packet/index.astro",
-      "local_page_sha256": "55fe2ef5a36930050a88f179c2662cc89afb2d2f9c7763b8235fa5f7d034e0f1",
+      "route_path": "/documents/reviewer-packet/",
+      "local_page_source": "src/pages/documents/reviewer-packet/index.astro",
+      "local_page_sha256": "e49d588639143e8f15b3193a26cc2b8e651f47206a67c76615c973d13878e0a2",
       "title": "External Reviewer Packet",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1785,10 +1785,10 @@
       "boundary_type": "claim_boundary"
     },
     {
-      "route_path": "/resources/documents/",
-      "local_page_source": "src/pages/resources/documents.astro",
-      "local_page_sha256": "f3c48f146411aa0c5eec6d453ccbf30f0177921aeaf65fb4893257c283216ecd",
-      "title": "Ontology Documents",
+      "route_path": "/documents/research/",
+      "local_page_source": "src/pages/documents/research/index.astro",
+      "local_page_sha256": "c792cf7e341261cf37887bd01a61102e6b8c3dda580ea516332155678496243e",
+      "title": "Research Articles",
       "adaptation_type": "asset_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [
@@ -1841,9 +1841,9 @@
       "boundary_type": "authority_boundary"
     },
     {
-      "route_path": "/resources/diagrams/",
-      "local_page_source": "src/pages/resources/diagrams.astro",
-      "local_page_sha256": "50431862ef66cadf1295df7ec8372ab5ef171886a05f2866644310f7b10c6420",
+      "route_path": "/documents/diagrams/",
+      "local_page_source": "src/pages/documents/diagrams/index.astro",
+      "local_page_sha256": "6d11aa856ab6aa262b61155ea8890bdb1ec2f6e975f86121b6f17ed873478644",
       "title": "Diagram Gallery",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -1888,10 +1888,10 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/",
-      "local_page_source": "src/pages/resources/index.astro",
-      "local_page_sha256": "dce32ab002fedbc17d47cce9555020907209ce770a7792d37dd8e6a6f3de87aa",
-      "title": "Resources",
+      "route_path": "/documents/anthology/",
+      "local_page_source": "src/pages/documents/anthology/index.astro",
+      "local_page_sha256": "15f92056a59a01605db750a549b6b792343af6ba93ee83aac098f0bb20beed91",
+      "title": "Anthology Articles",
       "adaptation_type": "curated_index",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [
@@ -1989,9 +1989,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/source-authority/",
-      "local_page_source": "src/pages/resources/source-authority/index.astro",
-      "local_page_sha256": "342f4cec7b672a3666837946152daa652c45c599405a7756e353745a1fe56d90",
+      "route_path": "/documents/governance/source-authority/",
+      "local_page_source": "src/pages/documents/governance/source-authority/index.astro",
+      "local_page_sha256": "5a6326e8d3cb065c97552c93a3af70ceea69c57d28f7d6953530307cf5f6b71b",
       "title": "Source Authority",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2063,9 +2063,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/registries/",
-      "local_page_source": "src/pages/resources/registries/index.astro",
-      "local_page_sha256": "d0a6ab8d58716ffe5938204827bae0f92ff92da23e29526859447677d8c3d193",
+      "route_path": "/documents/governance/registries/",
+      "local_page_source": "src/pages/documents/governance/registries/index.astro",
+      "local_page_sha256": "9f6633196d489566ab05f124cd24560c1ecd4881f9c3c996c7ebd6182735c1ac",
       "title": "Registries",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2164,9 +2164,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/generated-derivatives/",
-      "local_page_source": "src/pages/resources/generated-derivatives/index.astro",
-      "local_page_sha256": "47375e6f5fbe02bfb61d3b81693600aa4af99edcb5a59fec00bd9c2a742f76f7",
+      "route_path": "/documents/derivatives/",
+      "local_page_source": "src/pages/documents/derivatives/index.astro",
+      "local_page_sha256": "9d3875b83bc193bc6fee8f6ff1bf021b29a5a021651d6eebbd4e7171fbb071d3",
       "title": "Generated Derivatives",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2247,9 +2247,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/retrieval-layers/",
-      "local_page_source": "src/pages/resources/retrieval-layers/index.astro",
-      "local_page_sha256": "2fe27aaac88901662f053e462060d4826abb7e5af4ef3daccbb10155f6b5c1b7",
+      "route_path": "/documents/governance/retrieval-layers/",
+      "local_page_source": "src/pages/documents/governance/retrieval-layers/index.astro",
+      "local_page_sha256": "9430e91a2960d99eeb746598db03f91057fd9c38701d397379e8ba8c9ef80770",
       "title": "Retrieval Layers",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2312,9 +2312,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/publication-process/",
-      "local_page_source": "src/pages/resources/publication-process/index.astro",
-      "local_page_sha256": "56967490f159f22d169e87fce752b87864712816e15b10a7ebc7e2f9571224d0",
+      "route_path": "/documents/governance/publication-process/",
+      "local_page_source": "src/pages/documents/governance/publication-process/index.astro",
+      "local_page_sha256": "7fc72ba4fb9b2f9a0ff63ff0d764f529f5abfe04055c52bc75482439a6a31578",
       "title": "Publication Process",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2386,10 +2386,10 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/library/",
-      "local_page_source": "src/pages/resources/library/index.astro",
-      "local_page_sha256": "c1b75856f743426a0621e20280235d585492f85106b0bf368ce8982c3c4ba03e",
-      "title": "Library",
+      "route_path": "/documents/",
+      "local_page_source": "src/pages/documents/index.astro",
+      "local_page_sha256": "a5899bd5b2b68f7eb9bca447544b8b60747fc73a58f7410697d3244d803b8e76",
+      "title": "Documentation Overview",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
       "upstream_sources": [
@@ -2478,9 +2478,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/reading-paths/",
-      "local_page_source": "src/pages/resources/reading-paths/index.astro",
-      "local_page_sha256": "e6cc94509982fa4a5f440771a779fcc6cfd15c2233ab711192091a34648c2f72",
+      "route_path": "/documents/reading-paths/",
+      "local_page_source": "src/pages/documents/reading-paths/index.astro",
+      "local_page_sha256": "d1b052f2031b6ba4d46840bf63df57290c69bd8552ce5c170f29766a8fe32d6f",
       "title": "Reading Paths",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2552,9 +2552,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/repository-map/",
-      "local_page_source": "src/pages/resources/repository-map/index.astro",
-      "local_page_sha256": "66ba568416640a06af21b88c80e73e06d5e9954415ba0403189dbde94c759607",
+      "route_path": "/documents/governance/repository-map/",
+      "local_page_source": "src/pages/documents/governance/repository-map/index.astro",
+      "local_page_sha256": "96cbf9216dd7391b3cc711aa653ee882d785926fef827b24fba7bb9d4160b796",
       "title": "Repository Map",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",
@@ -2635,9 +2635,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/site-builder-guide/",
-      "local_page_source": "src/pages/resources/site-builder-guide/index.astro",
-      "local_page_sha256": "06b9a29a371e40693df4f98d4a49c361b10f0ae0c2f27f7595633ca8bfef1677",
+      "route_path": "/documents/governance/site-builder-guide/",
+      "local_page_source": "src/pages/documents/governance/site-builder-guide/index.astro",
+      "local_page_sha256": "fb11882370aca933c206503d89e85d014cddf95a950bf121b8f28debb29006d4",
       "title": "Site Builder Guide",
       "adaptation_type": "curated_synthesis",
       "upstream_source_repository": "AngryOwlAI/The-AEther-Flow",

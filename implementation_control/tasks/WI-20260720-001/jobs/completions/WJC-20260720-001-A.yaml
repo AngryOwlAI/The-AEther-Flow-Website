@@ -1,0 +1,67 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-001-A"
+task_id: "WI-20260720-001"
+job_id: "WJ-20260720-001-A"
+created_utc: "2026-07-20T20:28:57Z"
+completed_utc: "2026-07-20T20:31:18Z"
+status: "completed"
+summary: "Restricted ontology manifest replacement to ontology-owned paths and added focused preservation coverage for unrelated PDF and TeX records."
+changed_files:
+  - "scripts/import_ontology_assets.py"
+  - "tests/test_import_ontology_assets.py"
+baseline_evidence:
+  inspected_revision: "3a2c8560f8f98d918a388677242b901c8e36a6f9"
+  live_starting_revision: "ad3a61dec5c8f9d13b98ed47d50af9bb5286f258"
+  divergence: "0 commits behind and 6 commits ahead of the inspected baseline."
+  task_owned_paths_at_start: "scripts/import_ontology_assets.py and tests/test_import_ontology_assets.py were unchanged between the inspected baseline and live starting revision."
+  observed_defect: "The starting importer rejected unrelated PDF and TeX rows solely because of their kind."
+requirements_satisfied:
+  - "The live starting revision and its divergence from the inspected baseline are recorded in direct task evidence."
+  - "The ontology importer replaces only ontology-owned records and preserves unrelated PDF and TeX rows."
+  - "Focused regression evidence covers preservation without changing existing ontology asset URLs."
+acceptance_results:
+  - criterion: "The live starting revision and its divergence from the inspected baseline are recorded in direct task evidence."
+    status: "passed"
+    evidence_refs:
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+      - "implementation_control/tasks/WI-20260720-001/jobs/completions/WJC-20260720-001-A.yaml"
+  - criterion: "The ontology importer replaces only ontology-owned records and preserves unrelated PDF and TeX rows."
+    status: "passed"
+    evidence_refs:
+      - "scripts/import_ontology_assets.py"
+      - "tests/test_import_ontology_assets.py"
+  - criterion: "Focused regression evidence covers preservation without changing existing ontology asset URLs."
+    status: "passed"
+    evidence_refs:
+      - "tests/test_import_ontology_assets.py"
+validator_results:
+  - id: "afdoc-001-01"
+    command: "manual inspection of targeted pytest results for ontology importer ownership and unrelated PDF and TeX preservation"
+    status: "passed"
+    evidence: "The focused preservation-and-URL regression passed explicitly; the complete importer test file passed 3 tests on Python 3.12.13."
+  - id: "afdoc-001-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "No whitespace errors."
+additional_validation:
+  - command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "Implementation-control structural validation passed in the completed no-action state."
+  - command: ".venv/bin/python -m py_compile scripts/import_ontology_assets.py tests/test_import_ontology_assets.py"
+    status: "passed"
+    evidence: "Both changed Python files compiled successfully."
+scope_preservation:
+  public_asset_url_changed: false
+  public_manifest_changed: false
+  scientific_claim_changed: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-001 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

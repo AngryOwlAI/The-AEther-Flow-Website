@@ -1,0 +1,1053 @@
+{
+  "acceptance": {
+    "accepted_at": "2026-07-20T18:56:58Z",
+    "authority_ref": "conversation:thread:019f80d5-de30-7922-9855-64c2b182696e;acceptance-turn:019f80d9-f5d6-76e3-837e-b302003aa958;adaptation-authorization-turn:019f80e1-1611-7cc1-bbd2-7674128486c7;source:ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md@sha256:a015fd65d574d5f9ba8593c8d82312ff509a9df5fcccb8f1b601f9b13b4f98cf",
+    "policy_version": "WEBSITE-PLAN-ACCEPTANCE-1",
+    "status": "accepted"
+  },
+  "extensions": {},
+  "objective": "Treat `ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md` as accepted implementation authority. Normalize and validate it without strengthening scientific claims or external-effect permissions, then execute it as a serial, dependency-aware relay. Each launcher generation may select and dispatch exactly one immutable dependency-ready task to exactly one fresh worker discussion and must execute zero AgentJobs itself. Each worker may execute at most one AgentJob. Reuse the current checkout. Do not create a branch or worktree, commit, push, deploy, mutate upstream sources, or publish new scientific claims without separate explicit authorization.",
+  "phases": [
+    {
+      "acceptance_criteria": [
+        "The plan-control validator is revision-bound and the document model, import ownership, and publication safety boundaries are implemented without exposing unapproved source material."
+      ],
+      "depends_on": [],
+      "extensions": {},
+      "phase_id": "AFDOC-PHASE-01",
+      "task_ids": [
+        "AFDOC-000",
+        "AFDOC-001",
+        "AFDOC-002",
+        "AFDOC-003",
+        "AFDOC-004",
+        "AFDOC-005"
+      ],
+      "title": "Establish the document foundation"
+    },
+    {
+      "acceptance_criteria": [
+        "The canonical Documents overview, category pages, and retained contextual routes exist with source-role and non-authority boundaries preserved."
+      ],
+      "depends_on": [
+        "AFDOC-PHASE-01"
+      ],
+      "extensions": {},
+      "phase_id": "AFDOC-PHASE-02",
+      "task_ids": [
+        "AFDOC-006",
+        "AFDOC-007",
+        "AFDOC-008",
+        "AFDOC-009",
+        "AFDOC-010",
+        "AFDOC-011",
+        "AFDOC-012",
+        "AFDOC-013",
+        "AFDOC-014",
+        "AFDOC-015",
+        "AFDOC-016"
+      ],
+      "title": "Create the canonical Documents route family"
+    },
+    {
+      "acceptance_criteria": [
+        "Documents replaces Resources in primary navigation and every retired route has a direct semantic destination without loops or avoidable chains."
+      ],
+      "depends_on": [
+        "AFDOC-PHASE-02"
+      ],
+      "extensions": {},
+      "phase_id": "AFDOC-PHASE-03",
+      "task_ids": [
+        "AFDOC-017",
+        "AFDOC-018",
+        "AFDOC-019",
+        "AFDOC-020",
+        "AFDOC-021",
+        "AFDOC-022"
+      ],
+      "title": "Replace navigation and migrate routes"
+    },
+    {
+      "acceptance_criteria": [
+        "Canonical route, provenance, manifest, maintainer-documentation, and cleanup records describe the final source state."
+      ],
+      "depends_on": [
+        "AFDOC-PHASE-03"
+      ],
+      "extensions": {},
+      "phase_id": "AFDOC-PHASE-04",
+      "task_ids": [
+        "AFDOC-023",
+        "AFDOC-024",
+        "AFDOC-025",
+        "AFDOC-026",
+        "AFDOC-027"
+      ],
+      "title": "Finalize manifests, provenance, documentation, and cleanup"
+    },
+    {
+      "acceptance_criteria": [
+        "The bounded build, interaction, redirect, manifest, provenance, Cloudflare, and aggregate checks are recorded while external release remains separate."
+      ],
+      "depends_on": [
+        "AFDOC-PHASE-04"
+      ],
+      "extensions": {},
+      "phase_id": "AFDOC-PHASE-05",
+      "task_ids": [
+        "AFDOC-028",
+        "AFDOC-029",
+        "AFDOC-030",
+        "AFDOC-031",
+        "AFDOC-032",
+        "AFDOC-033"
+      ],
+      "title": "Verify and record release readiness"
+    }
+  ],
+  "plan_id": "PLAN-AETHER-DOCUMENTS-NAV-001",
+  "repository_binding": {
+    "branch": "main",
+    "environment_mode": "local",
+    "git_common_dir": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website/.git",
+    "project_id": "The-AEther-Flow-Website",
+    "root": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website",
+    "starting_revision": "ad3a61dec5c8f9d13b98ed47d50af9bb5286f258",
+    "worktree": "/Volumes/P-SSD/AngryOwl/The-AEther-Flow-Website"
+  },
+  "required_scope": {
+    "excluded_phase_ids": [],
+    "excluded_task_ids": [],
+    "phase_ids": [
+      "AFDOC-PHASE-01",
+      "AFDOC-PHASE-02",
+      "AFDOC-PHASE-03",
+      "AFDOC-PHASE-04",
+      "AFDOC-PHASE-05"
+    ],
+    "task_ids": [
+      "AFDOC-000",
+      "AFDOC-001",
+      "AFDOC-002",
+      "AFDOC-003",
+      "AFDOC-004",
+      "AFDOC-005",
+      "AFDOC-006",
+      "AFDOC-007",
+      "AFDOC-008",
+      "AFDOC-009",
+      "AFDOC-010",
+      "AFDOC-011",
+      "AFDOC-012",
+      "AFDOC-013",
+      "AFDOC-014",
+      "AFDOC-015",
+      "AFDOC-016",
+      "AFDOC-017",
+      "AFDOC-018",
+      "AFDOC-019",
+      "AFDOC-020",
+      "AFDOC-021",
+      "AFDOC-022",
+      "AFDOC-023",
+      "AFDOC-024",
+      "AFDOC-025",
+      "AFDOC-026",
+      "AFDOC-027",
+      "AFDOC-028",
+      "AFDOC-029",
+      "AFDOC-030",
+      "AFDOC-031",
+      "AFDOC-032",
+      "AFDOC-033"
+    ]
+  },
+  "schema_version": "sys4ai.implementation-plan.v2",
+  "serial_execution": true,
+  "tasks": [
+    {
+      "acceptance_criteria": [
+        "Plan-goal validation accepts the current explicitly bound starting revision instead of a hard-coded historical installation revision.",
+        "Authorized active or terminal plan changes are accepted only when their paths and lifecycle evidence match the exact canonical binding and receipts.",
+        "Unrelated reader-facing drift, forbidden mutable paths, topology changes, open intents, leases, and external effects remain blocking.",
+        "Focused regression tests distinguish accepted plan-controlled changes from unrelated drift."
+      ],
+      "depends_on": [],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Replace stale installation-baseline assumptions in the website plan-goal validator with checks against the accepted live repository binding and exact plan-controlled changes, without weakening installed-bundle, topology, drift, or external-effect safeguards.",
+      "phase_id": "AFDOC-PHASE-01",
+      "task_id": "AFDOC-000",
+      "task_sha256": "9b064eb5edb1f92858514c63b5c9f50e0b4125fba1d3f7a11e4eeeab76d3e94e",
+      "title": "Make plan-goal validation revision-bound",
+      "validation_refs": [
+        "npm run test:plan-goal",
+        "npm run validate:plan-goal"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "The live starting revision and its divergence from the inspected baseline are recorded in direct task evidence.",
+        "The ontology importer replaces only ontology-owned records and preserves unrelated PDF and TeX rows.",
+        "Focused regression evidence covers preservation without changing existing ontology asset URLs."
+      ],
+      "depends_on": [
+        "AFDOC-000"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Re-check the live main checkout against the accepted baseline and restrict ontology import ownership so unrelated PDF and TeX manifest records are preserved.",
+      "phase_id": "AFDOC-PHASE-01",
+      "task_id": "AFDOC-001",
+      "task_sha256": "29a14503c49f186a09d80977ad239f14c53fbbf0d66a1b0d9da28e28876c1795",
+      "title": "Establish the live baseline and safe ontology ownership",
+      "validation_refs": [
+        "manual inspection of targeted pytest results for ontology importer ownership and unrelated PDF and TeX preservation",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Markdown is represented as an explicit validated manifest kind with a public URL and source identity.",
+        "Manifest validation rejects malformed or unapproved Markdown records.",
+        "No recursive Markdown publication or private local path exposure is introduced."
+      ],
+      "depends_on": [
+        "AFDOC-001"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Add the bounded Markdown manifest kind and validation needed for approved governance documents without making arbitrary repository Markdown public.",
+      "phase_id": "AFDOC-PHASE-01",
+      "task_id": "AFDOC-002",
+      "task_sha256": "745f3ae1f2879603849566ab8e196aef66f071ee23e4f2357c8aabc71ae9f060",
+      "title": "Add first-class Markdown manifest support",
+      "validation_refs": [
+        "npm run validate:manifests",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "One logical document can group multiple format manifestations without flattening their authority roles.",
+        "The document catalog has deterministic validation and does not duplicate source or asset manifest authority.",
+        "The model remains static, local, and free of a new runtime dependency or service."
+      ],
+      "depends_on": [
+        "AFDOC-002"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Define small generic document-category, logical-document, format, status, and authority-role types plus a validated document catalog.",
+      "phase_id": "AFDOC-PHASE-01",
+      "task_id": "AFDOC-003",
+      "task_sha256": "b3ed1e1152473fa74b365b3d80de9285deed757f3ab1b02772ed7e43adcff723",
+      "title": "Create the document domain model and catalog",
+      "validation_refs": [
+        "npm run validate:manifests",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Collection imports declare explicit ownership and preserve records owned by other importers.",
+        "Imported records bind public bytes, hashes, source references, logical-document identity, and format role.",
+        "Ambiguous ownership or source status fails closed without publishing files."
+      ],
+      "depends_on": [
+        "AFDOC-003"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Implement a small deterministic collection importer that updates only its owned catalog and manifest records.",
+      "phase_id": "AFDOC-PHASE-01",
+      "task_id": "AFDOC-004",
+      "task_sha256": "2f3c472d073be040e48b37c8597d6faeb012c43131c32e8a6a96be79948fc1b6",
+      "title": "Add the collection-oriented document importer",
+      "validation_refs": [
+        "manual inspection of targeted collection importer preservation and deterministic hash results",
+        "npm run validate:manifests"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Only explicitly allowlisted approved governance Markdown can enter the public catalog.",
+        "Private paths, credentials, local control records, and unreviewed current-state material fail closed.",
+        "Markdown response headers are explicit and do not weaken existing security policy."
+      ],
+      "depends_on": [
+        "AFDOC-004"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Require explicit governance Markdown allowlisting, bounded deny-pattern checks, and safe public response headers before any such asset can publish.",
+      "phase_id": "AFDOC-PHASE-01",
+      "task_id": "AFDOC-005",
+      "task_sha256": "413bbd3889e66460ae827c1893c95bc611c464b102b35861abbab4c87b19c75d",
+      "title": "Enforce governance publication safety and Markdown headers",
+      "validation_refs": [
+        "npm run validate:cloudflare",
+        "manual inspection of governance Markdown allowlist and deny-pattern boundaries"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "The page identity is Documentation Overview rather than Library or Resources.",
+        "The page explains all five categories and preserves format-specific authority and provenance boundaries.",
+        "Primary reader journeys are internal-first and the page contains no dedicated Source authority section."
+      ],
+      "depends_on": [
+        "AFDOC-005"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create `/documents/` as the canonical Documentation Overview with categories, formats, authority roles, provenance, status, and reading paths.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-006",
+      "task_sha256": "5a96a3abac3490a4f7edc2f4a5dc70961eb7b4fc332598409267bd156f4aa06a",
+      "title": "Build Documentation Overview",
+      "validation_refs": [
+        "manual inspection of Documentation Overview source hierarchy links authority language and responsive layout",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Every visible anthology item has an approved catalog-backed PDF or the page clearly reports that no item is published.",
+        "Planned material is not represented as published and PDF role and provenance remain explicit.",
+        "The category remains useful without inventing or importing unapproved content."
+      ],
+      "depends_on": [
+        "AFDOC-006"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create `/documents/anthology/` as a PDF-oriented collection that exposes only approved published anthology items and otherwise reports its bounded collection state.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-007",
+      "task_sha256": "7e279da0d4e168d98e33408054aa6c126a7e2dd31ae10aed95269c630564d367",
+      "title": "Build Anthology Articles",
+      "validation_refs": [
+        "manual inspection of Anthology Articles catalog filtering empty state and provenance language",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Action labels distinguish source inspection from readable derivatives and avoid generic unlabeled downloads.",
+        "Components preserve existing consumers or migrate them within this exact boundary.",
+        "Metadata wraps safely and no broad visual-system redesign or dependency is introduced."
+      ],
+      "depends_on": [
+        "AFDOC-007"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Generalize document actions and add only the small reusable collection, card, action, and metadata components required by the Documents pages.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-008",
+      "task_sha256": "b794ceaee8ba61be53424c2578666e9d9a00a7c6a1881aa5aa5c2e09df477cbb",
+      "title": "Generalize document presentation components",
+      "validation_refs": [
+        "manual inspection of document component APIs existing consumers action labels focus behavior and metadata wrapping",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Existing ontology articles remain available as logical TeX and PDF pairs in their canonical reading order.",
+        "Registered TeX and readable PDF roles remain distinct and existing physical asset URLs do not move.",
+        "The page is a Research Articles collection rather than the general Documents overview."
+      ],
+      "depends_on": [
+        "AFDOC-008"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create `/documents/research/` from the ontology TeX and PDF collection while preserving sequence, stable asset URLs, and distinct source and derivative roles.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-009",
+      "task_sha256": "069d5745ba916302d4891374977a55e1ddaa427c2c646b954b6e10bec86dce56",
+      "title": "Build Research Articles",
+      "validation_refs": [
+        "manual inspection of Research Articles ontology order logical grouping source and derivative labels and asset URLs",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Governance entries expose scope, status, freshness, type, and provenance without presenting unapproved Markdown.",
+        "The category routes readers to retained contextual pages and keeps repository layout secondary.",
+        "No governance artifact is promoted beyond its registered status."
+      ],
+      "depends_on": [
+        "AFDOC-009"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create `/documents/governance/` as the category front door for approved governance, control, registry, publication, and workflow material.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-010",
+      "task_sha256": "2b6bcb88d2d4ec5033402d2a5d7616ac814a5afd677fff5bd9dc4c3cd26e70b1",
+      "title": "Build Governance & Control",
+      "validation_refs": [
+        "manual inspection of Governance & Control scope status freshness provenance and allowlist behavior",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "The complete approved diagram inventory and conceptual grouping are preserved without duplicates.",
+        "The existing gallery component contract, accessibility metadata, provenance, and non-authority labels remain intact.",
+        "No SVG policy exception or visible embedded SVG text is introduced."
+      ],
+      "depends_on": [
+        "AFDOC-010"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create `/documents/diagrams/` by relocating the gallery page while preserving manifest filtering, conceptual groups, captions, alt text, and non-authority framing.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-011",
+      "task_sha256": "fee927417a4cfa0895d234892804f6ac3b894f52d3575d7c8cdaea09f1e75ad1",
+      "title": "Move and preserve Diagram Gallery",
+      "validation_refs": [
+        "npm run validate:svg",
+        "manual inspection of Diagram Gallery inventory captions alt text provenance and non-authority framing"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Both canonical governance routes exist and preserve their existing reviewed claim boundaries.",
+        "Breadcrumbs, metadata, and contextual links use the Documents architecture.",
+        "The category pages do not render a dedicated Source authority section."
+      ],
+      "depends_on": [
+        "AFDOC-011"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create the Documents governance Source Authority and Registries routes from their existing reader-facing content without strengthening authority claims.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-012",
+      "task_sha256": "b721df9b5e30e7570f18aa30e000847deb93252929202631bd03c6571a8092ba",
+      "title": "Relocate Source Authority and Registries",
+      "validation_refs": [
+        "manual inspection of relocated Source Authority and Registries route identity links and claim parity",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Both canonical governance routes exist with reviewed content and internal-first related links.",
+        "Publication workflow and retrieval-layer explanations retain their source and non-authority qualifications.",
+        "No workflow evidence is presented as scientific proof."
+      ],
+      "depends_on": [
+        "AFDOC-012"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create the Documents governance Publication Process and Retrieval Layers routes while preserving operational and provenance boundaries.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-013",
+      "task_sha256": "628b5f7f212c94c6661e375322883b4481dd7d21e070d40606fb8d63d3a13c41",
+      "title": "Relocate Publication Process and Retrieval Layers",
+      "validation_refs": [
+        "manual inspection of relocated Publication Process and Retrieval Layers route identity links and qualifications",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Both canonical governance routes exist and are contextual rather than primary dropdown destinations.",
+        "Repository and builder guidance is current for the Documents architecture.",
+        "Reader journeys remain internal-first with GitHub retained for provenance."
+      ],
+      "depends_on": [
+        "AFDOC-013"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create the Documents governance Repository Map and Site Builder Guide routes as secondary maintainer-oriented reader destinations.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-014",
+      "task_sha256": "5c5b4d2b5de9475a85d62443eacb4d4bcdd5aa5fde470328ea347cd935ece8c6",
+      "title": "Relocate Repository Map and Site Builder Guide",
+      "validation_refs": [
+        "manual inspection of relocated Repository Map and Site Builder Guide route identity links and maintainer framing",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "The canonical reading-path index and general-public route exist with no duplicate guided-start identity.",
+        "Reading paths use canonical Documents category routes and preserve audience-specific guidance.",
+        "No retired Resources route is required for the primary journey."
+      ],
+      "depends_on": [
+        "AFDOC-014"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create canonical Documents reading-path routes and consolidate the existing guided starts without losing the general-public path.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-015",
+      "task_sha256": "cdf264c57b4433828f3bc8034addffed854a84ef92edba478e43c9272ca57019",
+      "title": "Consolidate Reading Paths and Guided Starts",
+      "validation_refs": [
+        "manual inspection of reading path consolidation audience routing canonical links and duplicate removal",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Both canonical routes exist and remain contextual destinations outside the five-item dropdown.",
+        "Reviewer evidence and generated derivatives are not promoted beyond their recorded status.",
+        "Links, breadcrumbs, metadata, and provenance use canonical Documents routes."
+      ],
+      "depends_on": [
+        "AFDOC-015"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Create the canonical Documents Reviewer Packet and Derivatives routes with their existing evidence and generated-output boundaries preserved.",
+      "phase_id": "AFDOC-PHASE-02",
+      "task_id": "AFDOC-016",
+      "task_sha256": "9214927123063f033a21ca3e8d7a102f589718ada03f741decaac30f74369725",
+      "title": "Relocate Reviewer Packet and Generated Derivatives",
+      "validation_refs": [
+        "manual inspection of relocated Reviewer Packet and Derivatives route identity links evidence boundaries and status labels",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "The dropdown label is Documents and its entries are exactly Documentation Overview, Anthology Articles, Research Articles, Governance & Control, and Diagram Gallery in that order.",
+        "Parent active state covers nested Documents routes and every child link is internal-first.",
+        "Desktop, mobile, keyboard, no-script, Escape, outside-click, and focus-return behavior remains unchanged unless a directly evidenced defect requires a bounded fix."
+      ],
+      "depends_on": [
+        "AFDOC-016"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Replace the top-level Resources navigation object with Documents and exactly five ordered category-level entries while preserving header interaction semantics.",
+      "phase_id": "AFDOC-PHASE-03",
+      "task_id": "AFDOC-017",
+      "task_sha256": "1ec5a4e015f3d5fe80e6f87513b80a2f8362070b31bc9c5588b7b68aca896390",
+      "title": "Replace Resources navigation with Documents",
+      "validation_refs": [
+        "manual inspection of Documents navigation order active-state prefixes mobile disclosure keyboard behavior and no-script parity",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Primary internal journeys point directly to canonical Documents routes rather than relying on redirects.",
+        "Library and Resources product identities are removed while legitimate generic prose remains.",
+        "No GitHub provenance link is removed merely because an internal reader route exists."
+      ],
+      "depends_on": [
+        "AFDOC-017"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Inventory and replace primary internal Resources links and stale product labels while retaining legitimate generic uses of the word resources.",
+      "phase_id": "AFDOC-PHASE-03",
+      "task_id": "AFDOC-018",
+      "task_sha256": "6a0ec4a85529474ad1c026d074f1e61b168be0748296bdc74b043b816934b6d3",
+      "title": "Update internal links and public labels",
+      "validation_refs": [
+        "npm run validate:links",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "`/documents` normalizes to `/documents/` and no Documents route redirects into Resources.",
+        "Redirect ownership has one declared source of truth and no loop is present.",
+        "Cloudflare and Astro redirect behavior agree for the affected aliases."
+      ],
+      "depends_on": [
+        "AFDOC-018"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Remove redirects that point Documents or related aliases back into Resources before the new canonical route family is activated.",
+      "phase_id": "AFDOC-PHASE-03",
+      "task_id": "AFDOC-019",
+      "task_sha256": "b854502629c5cc968249f45108774abee345d51c4ccba21622db0c4b7ef85064",
+      "title": "Replace reverse Documents redirects",
+      "validation_refs": [
+        "npm run validate:cloudflare",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Every route in the accepted migration matrix has one semantic 301 destination.",
+        "No blanket Resources wildcard hides an unmapped route or creates duplicate canonical content.",
+        "Redirects are direct and do not depend on a second redirect."
+      ],
+      "depends_on": [
+        "AFDOC-019"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Add direct 301 mappings from every retired Resources route to its exact canonical Documents destination.",
+      "phase_id": "AFDOC-PHASE-03",
+      "task_id": "AFDOC-020",
+      "task_sha256": "748e910c84c8ef5da8f244ae9f8eda3d0aab450e56562452fed3e4eece7ed23f",
+      "title": "Add explicit semantic Resources redirects",
+      "validation_refs": [
+        "npm run validate:cloudflare",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Legacy aliases resolve directly to final canonical routes without Resources intermediates.",
+        "Representative alias tests cover status and Location values.",
+        "No redirect chain or canonical contradiction remains."
+      ],
+      "depends_on": [
+        "AFDOC-020"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Repoint older aliases such as diagrams, equations, and downloads directly to their final Documents destinations.",
+      "phase_id": "AFDOC-PHASE-03",
+      "task_id": "AFDOC-021",
+      "task_sha256": "19b5e82565f0992bff97afc09a058bab043d50ca1864db060a79653bc6d5b444",
+      "title": "Repoint legacy project aliases directly",
+      "validation_refs": [
+        "npm run validate:cloudflare",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Retired Resources page sources no longer build duplicate canonical content.",
+        "Every removed page has a verified canonical destination and direct redirect.",
+        "The deletion does not remove shared components or unrelated resource terminology."
+      ],
+      "depends_on": [
+        "AFDOC-021"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Remove the old Resources page source family only after canonical pages, internal links, and explicit redirects are in place.",
+      "phase_id": "AFDOC-PHASE-03",
+      "task_id": "AFDOC-022",
+      "task_sha256": "2b0875fecbd5c5d1a2c28789e6c93ab881ba0deb31bfa33761fca7ac440322b8",
+      "title": "Remove retired Resources page sources",
+      "validation_refs": [
+        "npm run validate:links",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "All required Documents routes are represented and retired Resources routes are absent as canonical pages.",
+        "The route map reflects the final source paths and canonical URLs.",
+        "Required-route validation fails for a missing category route."
+      ],
+      "depends_on": [
+        "AFDOC-022"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Update required-route checks and the public route map to the final canonical Documents paths after page locations are stable.",
+      "phase_id": "AFDOC-PHASE-04",
+      "task_id": "AFDOC-023",
+      "task_sha256": "e39eb4f1da03d8f0a8422333666e463dc0aa2b576bcf282f0725ed2a4b624573",
+      "title": "Update required routes and route map",
+      "validation_refs": [
+        "npm run validate:provenance",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Every canonical Documents page has matching source identity and page hash evidence.",
+        "Retired Resources sources are not represented as canonical provenance pages.",
+        "No private path or stale hash appears in public provenance."
+      ],
+      "depends_on": [
+        "AFDOC-023"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Regenerate page provenance only after canonical Documents page bytes and route-map locations are final.",
+      "phase_id": "AFDOC-PHASE-04",
+      "task_id": "AFDOC-024",
+      "task_sha256": "1c28417d38ea78442db84f8b3b2d44dcf2699d7cfd65b5a8a941dcf3ba2961d7",
+      "title": "Regenerate page provenance",
+      "validation_refs": [
+        "npm run validate:provenance",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Catalog, source, and asset records cross-reference valid public bytes and hashes.",
+        "Unchanged ontology assets retain stable URLs and identities.",
+        "No manifest row claims scientific correctness or authority beyond its registered role."
+      ],
+      "depends_on": [
+        "AFDOC-024"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Finalize the document catalog and update source or asset manifests only for assets that actually changed or were lawfully added.",
+      "phase_id": "AFDOC-PHASE-04",
+      "task_id": "AFDOC-025",
+      "task_sha256": "c19935518790dcd40b93599221ab073f6016899da335c154ed06804c0e8d687f",
+      "title": "Finalize public document manifests",
+      "validation_refs": [
+        "npm run validate:manifests",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "README, AGENTS, documentation indexes, feature map, and Cloudflare deployment guidance use canonical Documents routes.",
+        "Source-authority, generated-derivative, validation, commit, push, and deployment boundaries remain explicit.",
+        "No instruction is weakened and the accepted plan is indexed for maintainers."
+      ],
+      "depends_on": [
+        "AFDOC-025"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Update repository, agent, feature-map, documentation-index, and deployment guidance for the canonical Documents architecture and separate release boundary.",
+      "phase_id": "AFDOC-PHASE-04",
+      "task_id": "AFDOC-026",
+      "task_sha256": "07030ad22b6fc4ee5235ad1feb614fc314f06a58453615b020fa471c4439c44e",
+      "title": "Update maintainer documentation",
+      "validation_refs": [
+        "manual inspection of maintainer documentation route examples authority boundaries validation guidance and deployment separation",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Dead product identifiers and route data are removed without deleting legitimate generic prose.",
+        "Document, ontology, and diagram references resolve to existing bytes with matching hashes.",
+        "No stale compatibility data, duplicate catalog entry, or unapproved asset move remains."
+      ],
+      "depends_on": [
+        "AFDOC-026"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Remove dead Resources and Library identifiers, prune dead route data, and confirm final document and diagram asset integrity without moving stable assets.",
+      "phase_id": "AFDOC-PHASE-04",
+      "task_id": "AFDOC-027",
+      "task_sha256": "72cc7a5f4b63a43823eb8895c510d7021e99747e5b41b88799f7f9a2c87ed178",
+      "title": "Remove compatibility names and confirm asset integrity",
+      "validation_refs": [
+        "npm run validate:links",
+        "npm run validate:manifests",
+        "git diff --check"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "The affected and required routes build as static Astro pages.",
+        "No build-time route collision, missing import, or broken asset reference remains.",
+        "The task records the exact build command and result without changing source."
+      ],
+      "depends_on": [
+        "AFDOC-027"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Run one final static Astro build against the completed canonical Documents source state and record direct output.",
+      "phase_id": "AFDOC-PHASE-05",
+      "task_id": "AFDOC-028",
+      "task_sha256": "55e971d7d6c716705b887a769cdd8c1628d5f957251e0d42791acf08f03bd902",
+      "title": "Run the final static build",
+      "validation_refs": [
+        "npm run build"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Dropdown order, active state, keyboard and focus behavior, compact disclosure, clipping, and overflow pass representative review.",
+        "Documentation Overview and every category route are reachable through the intended reader journey.",
+        "Observed browser-console or interaction defects are recorded rather than silently ignored."
+      ],
+      "depends_on": [
+        "AFDOC-028"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Perform one representative desktop and one compact headed-browser review of Documents navigation and the category landing pages.",
+      "phase_id": "AFDOC-PHASE-05",
+      "task_id": "AFDOC-029",
+      "task_sha256": "e5b20d3a60302f2c3fae170f7c0f56d285561434eb73f30ce5cf8a6961749a9f",
+      "title": "Review desktop and compact Documents navigation",
+      "validation_refs": [
+        "manual inspection of Documents navigation and category routes at representative desktop and compact viewports including keyboard focus overflow and browser console"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Representative old Resources and legacy aliases return direct 301 locations to their final Documents routes.",
+        "No loop, avoidable chain, or reverse Documents-to-Resources redirect is observed.",
+        "Any bounded redirect defect is repaired only within the declared redirect files."
+      ],
+      "depends_on": [
+        "AFDOC-029"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Validate Cloudflare configuration and representative canonical, Resources, and legacy redirect status and Location values.",
+      "phase_id": "AFDOC-PHASE-05",
+      "task_id": "AFDOC-030",
+      "task_sha256": "5f8ff477a96fe8e964a733bb9891ac985842a50c31ca95988f90c89b3b803466",
+      "title": "Verify representative redirects",
+      "validation_refs": [
+        "npm run validate:cloudflare",
+        "manual inspection of representative redirect status and Location values for canonical Resources and legacy aliases"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "Manifest validation passes for all changed document records and assets.",
+        "Page provenance validation passes for final canonical route bytes.",
+        "Cloudflare configuration validation passes with the final headers and redirects."
+      ],
+      "depends_on": [
+        "AFDOC-030"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Run the change-relevant manifest, provenance, and Cloudflare validators once against the final bounded source state.",
+      "phase_id": "AFDOC-PHASE-05",
+      "task_id": "AFDOC-031",
+      "task_sha256": "b3fd0508e62b1b57120c1d4ecec4a68b34ef0b1702f0227b8fc782ae6c0b0908",
+      "title": "Run targeted manifest provenance and Cloudflare checks",
+      "validation_refs": [
+        "npm run validate:manifests",
+        "npm run validate:provenance",
+        "npm run validate:cloudflare"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "`npm run validate` passes against the final bounded implementation state.",
+        "Any pre-existing or newly introduced failure is distinguished with direct evidence.",
+        "A failing aggregate check does not authorize test weakening, unrelated cleanup, or external release."
+      ],
+      "depends_on": [
+        "AFDOC-031"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Run one aggregate repository validation against the final local source state and stop on any unresolved failure.",
+      "phase_id": "AFDOC-PHASE-05",
+      "task_id": "AFDOC-032",
+      "task_sha256": "ae34203ae0917cc55ac52e52c3d5951c7f125b5207b0740d509371ec72151147",
+      "title": "Run the aggregate repository validation",
+      "validation_refs": [
+        "npm run validate"
+      ]
+    },
+    {
+      "acceptance_criteria": [
+        "A maintainer can reconstruct moved, consolidated, redirected, and retired routes and the checks actually run.",
+        "Commit, push, and deployment are recorded as not performed unless separately authorized and directly evidenced.",
+        "No release, upstream mutation, or scientific claim promotion is implied by implementation completion."
+      ],
+      "depends_on": [
+        "AFDOC-032"
+      ],
+      "execution_budget": {
+        "max_agentjobs": 1,
+        "max_continue_invocations": 1,
+        "one_task_per_discussion": true,
+        "same_task_successors": 0
+      },
+      "extensions": {},
+      "objective": "Record the completed route, navigation, importer, manifest, provenance, and validation results plus intentionally skipped checks and external-effect status.",
+      "phase_id": "AFDOC-PHASE-05",
+      "task_id": "AFDOC-033",
+      "task_sha256": "f9679c2609fc00f6d3d7700803da788b3a28f9968c1e28440885527382508a03",
+      "title": "Record migration completion and release boundary",
+      "validation_refs": [
+        "manual inspection of the Documents migration completion record changed routes validation evidence skipped checks and external-effect status",
+        "git diff --check"
+      ]
+    }
+  ],
+  "title": "Documents Navigation and Documentation Architecture"
+}

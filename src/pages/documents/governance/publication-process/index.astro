@@ -1,0 +1,332 @@
+---
+import CommandBand from "../../../../components/CommandBand.astro";
+import EvidenceRail from "../../../../components/EvidenceRail.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
+import ProjectIntroduction from "../../../../components/ProjectIntroduction.astro";
+import { greenfieldRouteDiagramBlocks } from "../../../../lib/siteContent";
+
+const documentsPublicationProcessProjectIntroduction = [
+  "The Æther Flow Project is a two-part research program about foundational physics and the governed, human-accountable AI research system used to organize and test that work. Its physics track asks whether ordinary general relativity can be interpreted, and eventually derived, from a deeper Æther or Æther-Flow foundation; general relativity remains the exact benchmark for observable gravity, while the first-principles substrate derivation is still open.",
+  "Its AI track uses tracked tasks, Director decisions, bounded AgentJobs, roles, validation, memory preflight, completions, handoffs, and human gates so that theoretical work remains inspectable without becoming accepted physics by workflow alone. Publication is the project's governed process for turning source-bounded material from either track into clear reader surfaces without changing who owns the underlying claims. The chain starts with a canonical source or registry row that supplies the claim basis.",
+  "A Markdown source specification then defines the page's purpose, audience, intended outputs, inspected source materials, and claim boundary, while a separate publication brief defines the reader's job, document type, narrative shape, visual strategy, acceptance criteria, and forbidden patterns. From those planning records, GitHub-facing Markdown can become a native article for repository and AI-assisted reading, tracked HTML can become a standalone no-network visual explainer, and a website adaptation can integrate the subject with internal routes and public provenance.",
+  "These media may organize the material differently, because parity means preserving the same source basis, authority boundary, and core claims rather than copying an identical section order. The page type and visual strategy follow what the reader needs to understand: an overview orients, a concept explainer defines, a workflow guide makes a sequence visible, and a reference catalogue supports scanning.",
+  "Each should lead with the subject instead of making repository metadata or a universal template the main experience. Review evidence also has separate jobs.",
+  "Brief review checks whether the reader job and proposed presentation are coherent; source-spec parity checks whether outputs remain within their evidence and claim limits; desktop and compact screenshots expose layout, legibility, and responsive problems; deterministic validators check known requirements such as links, manifests, and build consistency; and before-and-after notes record human editorial judgment and remaining risks.",
+  "None of those signals substitutes for the others, and a validator PASS does not certify taste, comprehension, source correctness, or scientific truth. Publication-brief registry rows, source paths, route maps, provenance records, manifests, hashes, screenshots, and review notes make the chain auditable; a hash identifies particular file contents, and a reviewed or published label records a bounded reader-surface decision, not scientific correctness or claim promotion.",
+  "When a public surface and its owner disagree, inspect the named source, source specification, brief, registry row, or current control record, preserve the owner's qualification, and repair the downstream surface. As a Documents governance page, Publication Process presents these limits through contextual copy, tables, and provenance rather than a separate Source authority component section.",
+  "No publication brief, source specification, generated Markdown, tracked HTML, website adaptation, registry row, manifest, hash, validator PASS, screenshot, review receipt, AI output, or webpage independently proves a physics claim, completes the open first-principles derivation, promotes the proposed ontology or a benchmark, expands workflow authority, overrides a human gate, or replaces direct source inspection.",
+] as const;
+
+const chainRows = [
+  {
+    layer: "Canonical source or registry",
+    function: "Source basis for claim-bearing material.",
+    websiteUse: "Verify public claims and authority class before writing or reusing copy.",
+    limit: "Publication cannot promote a claim beyond this owner.",
+  },
+  {
+    layer: "Markdown source spec",
+    function: "Publication source lane for an explainer.",
+    websiteUse: "Define purpose, audience, outputs, source materials, and claim boundary.",
+    limit: "A source spec constrains the page; it does not strengthen upstream claims.",
+  },
+  {
+    layer: "Publication brief",
+    function: "Reader-experience and quality contract.",
+    websiteUse: "Define reader job, document type, visual strategy, acceptance criteria, and forbidden patterns.",
+    limit: "A brief shapes publication quality, not source authority.",
+  },
+  {
+    layer: "GitHub-facing Markdown",
+    function: "Repository-browser and AI-reader derivative.",
+    websiteUse: "Reuse as seed copy when source hierarchy is preserved.",
+    limit: "A generated explainer can guide reading, but public claims still require source-basis verification.",
+  },
+  {
+    layer: "Tracked HTML explainer",
+    function: "No-network human reader derivative.",
+    websiteUse: "Reuse as design/content prior, not independent authority.",
+    limit: "Tracked HTML remains downstream from source and publication records.",
+  },
+  {
+    layer: "Website page",
+    function: "Integrated public reading surface.",
+    websiteUse: "Present subject-first content with provenance and internal navigation.",
+    limit: "Publication pages are reader surfaces, not source authority.",
+  },
+];
+
+const validationRows = [
+  {
+    signal: "Brief review",
+    supports: "Reader job, visual strategy, forbidden patterns, and acceptance criteria.",
+    doesNotProve: "The underlying scientific or workflow claim is true.",
+  },
+  {
+    signal: "Source-spec parity",
+    supports: "Shared source basis, authority boundary, and core claims.",
+    doesNotProve: "Identical section order or stronger claim status.",
+  },
+  {
+    signal: "Screenshot QA",
+    supports: "Layout, legibility, visual framing, and responsive behavior.",
+    doesNotProve: "Human comprehension by itself or source correctness.",
+  },
+  {
+    signal: "Validator PASS",
+    supports: "Process conformance, link integrity, manifest integrity, and build consistency.",
+    doesNotProve: "Physics claims, publication acceptance, or upstream promotion.",
+  },
+];
+
+const pageTypeRows = [
+  {
+    type: "Overview article",
+    readerJob: "Orient readers to a domain before terms or process details dominate.",
+    usefulPattern: "Subject-first summary, claim boundary, related internal routes.",
+  },
+  {
+    type: "Concept explainer",
+    readerJob: "Make one idea understandable with definitions and examples.",
+    usefulPattern: "Definition table, boundary map, provenance note.",
+  },
+  {
+    type: "Workflow guide",
+    readerJob: "Explain a sequence without turning process evidence into authority.",
+    usefulPattern: "Step table, safe/unsafe use, validation limits.",
+  },
+  {
+    type: "Reference catalogue",
+    readerJob: "Let readers scan a set of materials with stable labels.",
+    usefulPattern: "Status matrix, reader-job grouping, internal routes first.",
+  },
+];
+
+const relatedRoutes = [
+  {
+    label: "Derivatives",
+    title: "Generated Derivatives",
+    href: "/documents/derivatives/",
+    body: "Read derivative status before reusing generated Markdown, HTML, or PDFs.",
+  },
+  {
+    label: "Documents",
+    title: "Documentation Overview",
+    href: "/documents/",
+    body: "See how publication outputs become reader paths without becoming authority.",
+  },
+  {
+    label: "Provenance",
+    title: "Publication And Provenance System",
+    href: "/documents/governance/publication-process/",
+    body: "Inspect route maps, page provenance, source manifests, asset manifests, and hash limits.",
+  },
+  {
+    label: "Retrieval",
+    title: "Retrieval Layers",
+    href: "/documents/governance/retrieval-layers/",
+    body: "Keep search and navigation support below source authority before publication.",
+  },
+  {
+    label: "Authority",
+    title: "Source Authority",
+    href: "/documents/governance/source-authority/",
+    body: "Return to the source, registry, derivative, retrieval, and website PRD ladder.",
+  },
+  {
+    label: "Governance",
+    title: "Governance & Control",
+    href: "/documents/governance/",
+    body: "Return to the Governance & Control category landing page.",
+  },
+];
+
+const publicationSvg = `
+  <svg class="track-map-svg physics-greenfield-svg" viewBox="0 0 620 360" role="img" aria-labelledby="documents-governance-publication-title documents-governance-publication-desc">
+    <title id="documents-governance-publication-title">Animated publication process chain</title>
+    <desc id="documents-governance-publication-desc">Source, source spec, brief, derivative, website page, validation, and review remain separate publication layers.</desc>
+    <defs>
+      <radialGradient id="documents-governance-publication-core" cx="50%" cy="50%" r="66%">
+        <stop offset="0%" stop-color="var(--owl-orange-100)" stop-opacity="0.6" />
+        <stop offset="44%" stop-color="var(--owl-cyan-400)" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="var(--color-dark-page)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="documents-governance-publication-bloom" x="-20%" y="-24%" width="140%" height="148%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <path class="track-figure-bg" d="M0 0H620V360H0Z" />
+    <circle class="physics-glow" cx="310" cy="180" r="184" fill="url(#documents-governance-publication-core)" />
+    <g class="physics-grid" aria-hidden="true">
+      <path d="M96 110 H524" />
+      <path d="M96 180 H524" />
+      <path d="M96 250 H524" />
+      <ellipse cx="310" cy="180" rx="206" ry="112" />
+    </g>
+    <g filter="url(#documents-governance-publication-bloom)" aria-hidden="true">
+      <path class="track-figure-path orange-path" d="M110 250 C190 188, 236 142, 310 110 C384 142, 430 188, 510 250" />
+      <path class="track-figure-path signal-path" d="M110 110 C190 172, 236 218, 310 250 C384 218, 430 172, 510 110" />
+      <path class="track-figure-path orange-path alternate" d="M120 180 C214 126, 406 126, 500 180" />
+      <path class="track-figure-path signal-path alternate" d="M120 180 C214 234, 406 234, 500 180" />
+    </g>
+    <path class="track-figure-core" d="M310 132 L350 180 L310 228 L270 180 Z" aria-hidden="true" />
+    <g class="track-figure-nodes hollow-nodes" aria-hidden="true">
+      <circle cx="110" cy="110" r="13" />
+      <circle cx="110" cy="250" r="13" />
+      <circle cx="120" cy="180" r="13" />
+      <circle cx="310" cy="110" r="13" />
+      <circle cx="310" cy="250" r="13" />
+      <circle cx="500" cy="180" r="13" />
+      <circle cx="510" cy="110" r="13" />
+      <circle cx="510" cy="250" r="13" />
+    </g>
+  </svg>
+`;
+---
+
+<BaseLayout
+  title="Publication Process"
+  description="Documents governance publication process route explaining source specs, publication briefs, generated derivatives, website pages, validation, and review without making publication source authority."
+  bodyClass="project-overview-page project-track-page documents-greenfield-page ai-greenfield-page documents-governance-page documents-governance-detail-page"
+>
+  <CommandBand
+    className="overview-shell overview-command-hero"
+    eyebrow="Documents / Governance / Publication Process"
+    title="Publication Process"
+    lead="Publication turns source-bounded material into readable pages. It improves inspection and comprehension; it does not authorize source claims."
+    headingLevel="h1"
+  >
+    <div class="overview-actions" aria-label="Documents governance publication process page actions">
+      <a class="primary-link" href="#publication-chain">Read the chain</a>
+      <a class="secondary-link" href="/documents/">Documentation Overview</a>
+      <a class="secondary-link" href="/documents/governance/">Governance &amp; Control</a>
+    </div>
+    <Fragment slot="visual">
+      <figure class="track-page-figure physics-figure" aria-labelledby="documents-governance-publication-caption">
+        <Fragment set:html={publicationSvg} />
+        <figcaption id="documents-governance-publication-caption">
+          Publication pages move from brief and source specification
+          through review evidence and manifests before public routing.
+        </figcaption>
+      </figure>
+    </Fragment>
+  </CommandBand>
+
+  <ProjectIntroduction
+    paragraphs={documentsPublicationProcessProjectIntroduction}
+    ariaLabel="About the Æther Flow Project and Publication Process"
+  />
+
+
+  <ComprehensionBlocks content={greenfieldRouteDiagramBlocks.documentsPublicationProcess} />
+
+  <section id="publication-chain" class="track-page-band" aria-labelledby="publication-chain-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Source-to-publication chain</p>
+      <h2 id="publication-chain-title">Each publication layer has a different job.</h2>
+      <p>
+        The chain keeps process metadata secondary to the reader topic while
+        preserving enough provenance for review.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Layer</th>
+          <th scope="col">Function</th>
+          <th scope="col">Website use</th>
+          <th scope="col">Limit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {chainRows.map((row) => (
+          <tr>
+            <th scope="row">{row.layer}</th>
+            <td>{row.function}</td>
+            <td>{row.websiteUse}</td>
+            <td>{row.limit}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="validation-limits-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Validation limits</p>
+      <h2 id="validation-limits-title">Validation proves process conformance; it does not prove physics claims.</h2>
+      <p>
+        Positive publication evidence is useful because it is narrow. The route
+        keeps those limits visible beside each signal.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Signal</th>
+          <th scope="col">Supports</th>
+          <th scope="col">Does not prove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {validationRows.map((row) => (
+          <tr>
+            <th scope="row">{row.signal}</th>
+            <td>{row.supports}</td>
+            <td>{row.doesNotProve}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="track-page-band" aria-labelledby="page-types-title">
+    <div class="track-page-heading">
+      <p class="eyebrow">Page-type library</p>
+      <h2 id="page-types-title">Page type follows reader job, not repository convenience.</h2>
+      <p>
+        A publication page begins with what the reader needs to understand,
+        then exposes provenance and source boundaries after the topic is clear.
+      </p>
+    </div>
+    <table class="greenfield-matrix">
+      <thead>
+        <tr>
+          <th scope="col">Page type</th>
+          <th scope="col">Reader job</th>
+          <th scope="col">Useful pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pageTypeRows.map((row) => (
+          <tr>
+            <th scope="row">{row.type}</th>
+            <td>{row.readerJob}</td>
+            <td>{row.usefulPattern}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <CommandBand
+    className="overview-panel overview-command-band"
+    eyebrow="Related internal routes"
+    title="Read publication beside derivatives, library paths, provenance, and source authority."
+    lead="The route network keeps source links available while making internal reader paths primary."
+  >
+    <EvidenceRail
+      items={relatedRoutes.map((route) => ({
+        ...route,
+        actionLabel: "Open route",
+      }))}
+      ariaLabel="Related Documents governance publication process routes"
+      className="overview-track-rail"
+    />
+  </CommandBand>
+</BaseLayout>

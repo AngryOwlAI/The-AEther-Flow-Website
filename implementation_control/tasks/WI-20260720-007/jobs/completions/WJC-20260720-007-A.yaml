@@ -1,0 +1,74 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-007-A"
+task_id: "WI-20260720-007"
+job_id: "WJ-20260720-007-A"
+created_utc: "2026-07-20T21:55:19Z"
+completed_utc: "2026-07-20T21:55:19Z"
+status: "completed"
+summary: "Created the catalog-driven Anthology Articles page with approved-PDF filtering, an explicit empty publication state, and contextual provenance and authority boundaries."
+changed_files:
+  - "src/pages/documents/anthology/index.astro"
+requirements_satisfied:
+  - "Every visible anthology item has an approved catalog-backed PDF or the page clearly reports that no item is published."
+  - "Planned material is not represented as published and PDF role and provenance remain explicit."
+  - "The category remains useful without inventing or importing unapproved content."
+acceptance_results:
+  - criterion: "Every visible anthology item has an approved catalog-backed PDF or the page clearly reports that no item is published."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/anthology/index.astro"
+      - "dist/documents/anthology/index.html"
+  - criterion: "Planned material is not represented as published and PDF role and provenance remain explicit."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/anthology/index.astro"
+  - criterion: "The category remains useful without inventing or importing unapproved content."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/anthology/index.astro"
+validator_results:
+  - id: "afdoc-007-01"
+    command: "manual inspection of Anthology Articles catalog filtering empty state and provenance language"
+    status: "passed"
+    evidence: "The live catalog contains zero anthology records; compiled-page inspection confirmed the exact no-approved-articles notice, no download card, approved catalog/PDF/source filtering, and explicit provenance and research-authority boundaries."
+  - id: "afdoc-007-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "The required command completed with no whitespace errors; the untracked page also produced no whitespace diagnostics under git diff --no-index --check."
+additional_validation:
+  - command: "npm run validate"
+    status: "failed"
+    evidence: "The aggregate gate passed manifests, content, claims, links, layout, SVG, and page provenance, then stopped at the repository-wide curator check because checked-in curator reports are stale and existing Physics, AI, and Resources routes require upstream drift acknowledgements. No failure named /documents/anthology/; refreshing those upstream-derived records is outside AFDOC-007 authority."
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 66 static pages, including /documents/anthology/index.html."
+  - command: "python3 scripts/validate_document_catalog.py"
+    status: "passed"
+    evidence: "The live logical catalog and its asset/source relationships remain valid without an invented anthology row."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed."
+  - command: "npm run validate:layout"
+    status: "passed"
+    evidence: "Layout-language validation passed."
+  - command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed; this route adds no SVG artwork."
+scope_preservation:
+  catalog_row_added: false
+  anthology_asset_added: false
+  planned_content_represented_as_published: false
+  site_content_changed: false
+  scientific_claim_changed: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-007 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

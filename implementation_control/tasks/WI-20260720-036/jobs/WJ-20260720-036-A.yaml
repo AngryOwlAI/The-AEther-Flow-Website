@@ -1,0 +1,108 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260720-036-A"
+task_id: "WI-20260720-036"
+title: "Regenerate only the nine stale local_page_sha256 values in public/files/manifests/page_provenance.json from the exact current local page bytes, preserve every other provenance field and repository file, then run the manifest, provenance, and Cloudflare validators exactly once against the repaired final state."
+created_utc: "2026-07-21T07:20:25Z"
+updated_utc: "2026-07-21T07:30:03Z"
+status: "completed"
+objective: "Regenerate only the nine stale local_page_sha256 values in public/files/manifests/page_provenance.json from the exact current local page bytes, preserve every other provenance field and repository file, then run the manifest, provenance, and Cloudflare validators exactly once against the repaired final state."
+plan_binding:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-001"
+  plan_sha256: "019f4019d2aa6aa666a0f816fcb28a7bf7e05ce2108d535ebde0dce68f25a1fc"
+  plan_task_id: "AFDOC-036"
+  plan_task_sha256: "e04bf599f067513bb5ca97d42e0a669a72e7b570e95d82c5963e89fde92d8799"
+  binding_manifest_sha256: "76aa4acd87cbff4dc7fb50bd97e5765ba488c2e03f64e03bf47bc020508c8e7c"
+  authority_sha256: "827db5270e78c91e653ae57d9dae75e7a36713b13ce1c2ec503431fac132a899"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "README.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - "astro.config.mjs"
+  - "package.json"
+  - "implementation_control/**"
+  - "src/**"
+  - "public/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+allowed_writes:
+  - "public/files/manifests/page_provenance.json"
+required_outputs:
+  - "Exactly the nine reported local_page_sha256 values match the current local page bytes; every other page-provenance field and ordering remains unchanged."
+  - "Manifest validation passes for all changed document records and assets."
+  - "Page provenance validation passes for final canonical route bytes."
+  - "Cloudflare configuration validation passes with the final headers and redirects."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "This packet may use only already reviewed website-local evidence; uncertain source refresh requires a protected stop."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "This exact packet does not enter this protected write surface."
+  - id: "public_downloadable_assets"
+    status: "approved"
+    trigger: "The accepted Documents plan authorizes this exact bounded local write surface without claim strengthening or external effects."
+  - id: "public_manifest_authority_records"
+    status: "approved"
+    trigger: "The accepted Documents plan authorizes this exact bounded local page-provenance hash refresh without changing routes, metadata, source pins, claims, or external systems."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "The accepted activation goal withholds push and deployment authority."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "The accepted plan forbids every upstream source-project write."
+required_validators:
+  - command: "npm run validate:manifests"
+    id: "afdoc-036-01"
+    required: true
+  - command: "npm run validate:provenance"
+    id: "afdoc-036-02"
+    required: true
+  - command: "npm run validate:cloudflare"
+    id: "afdoc-036-03"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "Source status is ambiguous or the change would strengthen a scientific or authority claim."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, or mutate the upstream source project."
+    - "Publish unapproved assets or strengthen scientific or authority claims."
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected Documents plan task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  role_id: "website-documents-plan-task-engineer"
+  role_version: "1.0.0"
+next_recommended_action:
+  task_packet: "AFDOC-036"
+  summary: "Regenerate only the nine stale local_page_sha256 values in public/files/manifests/page_provenance.json from the exact current local page bytes, preserve every other provenance field and repository file, then run the manifest, provenance, and Cloudflare validators exactly once against the repaired final state."
+  do_not_skip: "Execute only this mapped packet."

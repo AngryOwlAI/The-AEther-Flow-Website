@@ -1,4 +1,5 @@
-# Cloudflare Pages static redirects.
+# Cloudflare Pages static redirects and production redirect source of truth.
+# Keep Astro preview mirrors aligned with these mappings.
 # Keep static redirects above any future wildcard or dynamic redirects.
 
 /project/overview/ / 301
@@ -29,18 +30,35 @@
 /project/operations/director-agentjob-lifecycle/ /ai-research-system/agentjob-lifecycle/ 301
 /project/operations/role-routing/ /ai-research-system/roles-and-schemas/ 301
 /project/operations/validator-operator-workflow/ /ai-research-system/validators-and-handoffs/ 301
-/project/operations/publication-process/ /resources/publication-process/ 301
+/project/operations/publication-process/ /documents/governance/publication-process/ 301
 /project/operations/project-system-improvement/ /ai-research-system/project-system-improvement/ 301
 /project/operations/technical-requirements/ /ai-research-system/runtime-requirements/ 301
 /project/operations/ /ai-research-system/ 301
 /project/source-authority/claim-boundary-explorer/ /physics/claim-status/ 301
-/project/source-authority/publication-and-provenance-system/ /resources/publication-process/ 301
-/project/source-authority/ /resources/source-authority/ 301
-/research /resources/publication-process/ 302
-/research/map/ /resources/publication-process/ 301
-/documents /resources/documents/ 301
-/diagrams /resources/diagrams/ 301
-/equations /resources/documents/ 301
-/research/equations/ /resources/documents/ 301
-/research/math-sample/ /resources/documents/ 301
-/downloads /resources/ 301
+/project/source-authority/publication-and-provenance-system/ /documents/governance/publication-process/ 301
+/project/source-authority/ /documents/governance/source-authority/ 301
+/research /documents/governance/publication-process/ 302
+/research/map/ /documents/governance/publication-process/ 301
+/documents /documents/ 301
+/diagrams /documents/diagrams/ 301
+/equations /documents/research/ 301
+/research/equations/ /documents/research/ 301
+/research/math-sample/ /documents/research/ 301
+/downloads /documents/ 301
+
+# Retired Resources routes map directly to canonical Documents routes.
+/resources/ /documents/ 301
+/resources/library/ /documents/ 301
+/resources/documents/ /documents/research/ 301
+/resources/diagrams/ /documents/diagrams/ 301
+/resources/source-authority/ /documents/governance/source-authority/ 301
+/resources/registries/ /documents/governance/registries/ 301
+/resources/generated-derivatives/ /documents/derivatives/ 301
+/resources/retrieval-layers/ /documents/governance/retrieval-layers/ 301
+/resources/publication-process/ /documents/governance/publication-process/ 301
+/resources/reading-paths/ /documents/reading-paths/ 301
+/resources/repository-map/ /documents/governance/repository-map/ 301
+/resources/site-builder-guide/ /documents/governance/site-builder-guide/ 301
+/resources/guided-starts/ /documents/reading-paths/ 301
+/resources/guided-starts/general-public/ /documents/reading-paths/general-public/ 301
+/resources/reviewer-packet/ /documents/reviewer-packet/ 301

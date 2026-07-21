@@ -1,0 +1,85 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-012-A"
+task_id: "WI-20260720-012"
+job_id: "WJ-20260720-012-A"
+created_utc: "2026-07-20T22:59:16Z"
+completed_utc: "2026-07-20T22:59:16Z"
+status: "completed"
+summary: "Created the canonical Documents governance Source Authority and Registries routes with reviewed reader content, proof limits, source boundaries, Documents identity, and internal-first context preserved."
+changed_files:
+  - "src/pages/documents/governance/source-authority/index.astro"
+  - "src/pages/documents/governance/registries/index.astro"
+  - "src/lib/siteContent.ts"
+requirements_satisfied:
+  - "Both canonical governance routes exist and preserve their existing reviewed claim boundaries."
+  - "Breadcrumbs, metadata, and contextual links use the Documents architecture."
+  - "The category pages do not render a dedicated Source authority section."
+acceptance_results:
+  - criterion: "Both canonical governance routes exist and preserve their existing reviewed claim boundaries."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/source-authority/index.astro"
+      - "src/pages/documents/governance/registries/index.astro"
+      - "src/pages/resources/source-authority/index.astro"
+      - "src/pages/resources/registries/index.astro"
+      - "dist/documents/governance/source-authority/index.html"
+      - "dist/documents/governance/registries/index.html"
+  - criterion: "Breadcrumbs, metadata, and contextual links use the Documents architecture."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/source-authority/index.astro"
+      - "src/pages/documents/governance/registries/index.astro"
+      - "src/lib/siteContent.ts"
+  - criterion: "The category pages do not render a dedicated Source authority section."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/governance/source-authority/index.astro"
+      - "src/pages/documents/governance/registries/index.astro"
+validator_results:
+  - id: "afdoc-012-01"
+    command: "manual inspection of relocated Source Authority and Registries route identity links and claim parity"
+    status: "passed"
+    evidence: "The source and relocated files retain matching 278-line and 322-line structures. Unified diff inspection found only nested import depth, Documents context and links, accessible figure IDs, body classes, and identifier names changed; reviewed tables, source classes, registry families, exact-GR benchmark language, first-principles-open status, and non-proof boundaries remain intact. Neither route imports a dedicated SourceAuthority or SourceNotice component."
+  - id: "afdoc-012-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 71 static pages, including both canonical Documents governance routes."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed after the canonical route references changed."
+  - command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remained current."
+  - command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed for the relocated animated text-free artwork."
+  - command: "npm run validate"
+    status: "not_run"
+    evidence: "The accepted implementation plan requires targeted checks during implementation and reserves the aggregate release gate for an authorized deployment; this packet authorizes no deployment."
+scope_preservation:
+  source_authority_line_count_before: 278
+  source_authority_line_count_after: 278
+  registries_line_count_before: 322
+  registries_line_count_after: 322
+  site_content_route_references_updated: 5
+  reviewed_claim_boundary_strengthened: false
+  dedicated_source_authority_component_added: false
+  old_routes_modified: false
+  redirects_modified: false
+  manifest_changed: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-012 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

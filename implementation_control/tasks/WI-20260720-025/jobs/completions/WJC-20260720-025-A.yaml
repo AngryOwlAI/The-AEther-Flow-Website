@@ -1,0 +1,71 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-025-A"
+task_id: "WI-20260720-025"
+job_id: "WJ-20260720-025-A"
+created_utc: "2026-07-21T05:02:43Z"
+completed_utc: "2026-07-21T05:02:43Z"
+status: "completed"
+summary: "Verified that the live document catalog and unchanged source and asset manifests already satisfy AFDOC-025; no product manifest churn was required."
+changed_files: []
+requirements_satisfied:
+  - "Catalog, source, and asset records cross-reference valid public bytes and hashes."
+  - "Unchanged ontology assets retain stable URLs and identities."
+  - "No manifest row claims scientific correctness or authority beyond its registered role."
+acceptance_results:
+  - criterion: "Catalog, source, and asset records cross-reference valid public bytes and hashes."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/document_catalog.json"
+      - "public/files/manifests/source_manifest.json"
+      - "public/files/manifests/asset_manifest.json"
+      - "npm run validate\u003amanifests"
+  - criterion: "Unchanged ontology assets retain stable URLs and identities."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/source_manifest.json"
+      - "public/files/manifests/asset_manifest.json"
+      - "read-only scoped Git diff inspection"
+  - criterion: "No manifest row claims scientific correctness or authority beyond its registered role."
+    status: "passed"
+    evidence_refs:
+      - "public/files/manifests/document_catalog.json"
+      - "scripts/validate_document_catalog.py"
+      - "tests/test_document_catalog.py"
+validator_results:
+  - id: "afdoc-025-01"
+    command: "npm run validate\u003amanifests"
+    status: "passed"
+    evidence: "Manifest path, byte, SHA-256, source-reference, and document-catalog validation passed."
+  - id: "afdoc-025-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics."
+additional_validation:
+  - command: "read-only catalog and manifest cross-reference inspection"
+    status: "passed"
+    evidence: "Verified eight logical ontology documents and sixteen catalog manifestations backed by existing source and asset records."
+  - command: "read-only scoped Git diff inspection"
+    status: "passed"
+    evidence: "Source and asset manifests and published ontology asset paths have no task-local change."
+scope_preservation:
+  completion_disposition: "verified_no_op"
+  changed_product_path_count: 0
+  logical_document_count: 8
+  catalog_manifestation_count: 16
+  source_manifest_changed: false
+  asset_manifest_changed: false
+  ontology_asset_urls_changed: false
+  ontology_asset_identities_changed: false
+  scientific_correctness_claim_added: false
+  authority_scope_strengthened: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-025 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

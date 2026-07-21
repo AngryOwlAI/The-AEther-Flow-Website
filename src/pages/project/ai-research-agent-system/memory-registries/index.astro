@@ -2,8 +2,19 @@
 import ComprehensionBlocks from "../../../../components/ComprehensionBlocks.astro";
 import SourceAuthoritySection from "../../../../components/SourceAuthoritySection.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import { aiMemoryRegistriesComprehension } from "../../../../lib/aiComprehensionContent";
+import {
+  aiMemoryRegistriesComprehension as legacyAiMemoryRegistriesComprehension,
+} from "../../../../lib/aiComprehensionContent";
 import { projectSourceNoticeDefaults } from "../../../../lib/siteContent";
+
+const aiMemoryRegistriesComprehension = {
+  ...legacyAiMemoryRegistriesComprehension,
+  relatedRoutes: legacyAiMemoryRegistriesComprehension.relatedRoutes?.map((route) =>
+    route.href === "/resources/source-authority/"
+      ? { ...route, href: "/documents/governance/source-authority/" }
+      : route,
+  ),
+};
 
 const sourceNotice = projectSourceNoticeDefaults.aiMemoryRegistries;
 
@@ -94,7 +105,7 @@ const sourceLinks = [
   },
   {
     title: "Source authority page",
-    href: "/resources/source-authority/",
+    href: "/documents/governance/source-authority/",
     body: "Review the broader trust map for website pages, generated derivatives, registries, and tracked sources.",
   },
   {
@@ -127,7 +138,7 @@ const sourceLinks = [
       </p>
       <div class="overview-actions" aria-label="Memory and registries page actions">
         <a class="primary-link" href="#query-workflow">Trace the preflight</a>
-        <a class="secondary-link" href="/resources/source-authority/">Source authority</a>
+        <a class="secondary-link" href="/documents/governance/source-authority/">Source authority</a>
       </div>
     </div>
 

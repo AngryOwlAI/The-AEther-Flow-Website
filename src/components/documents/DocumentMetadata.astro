@@ -1,0 +1,80 @@
+---
+import StatusDossier from "../StatusDossier.astro";
+import type { DocumentManifestation, DocumentRecord } from "../../lib/documents";
+
+type MetadataItem = {
+  label: string;
+  title?: string;
+  value?: string | number | null;
+  body?: string;
+  href?: string;
+};
+
+interface Props {
+  document: DocumentRecord;
+  additionalItems?: MetadataItem[];
+  ariaLabel?: string;
+}
+
+const {
+  document,
+  additionalItems = [],
+  ariaLabel = `${document.title} document metadata`,
+} = Astro.props;
+const byteFormatter = new Intl.NumberFormat("en-US");
+
+const formatLabel = (kind: DocumentManifestation["kind"]) =>
+  kind === "tex"
+    ? "TeX"
+    : kind === "svg"
+      ? "SVG"
+      : kind === "png"
+        ? "PNG"
+        : kind[0].toUpperCase() + kind.slice(1);
+const phrase = (value: string) => value.replaceAll("_", " ").replaceAll("-", " ");
+const shortCommit = (value?: string) => (value ? value.slice(0, 12) : undefined);
+const dateOnly = (value?: string) => (value ? value.slice(0, 10) : undefined);
+
+const items: MetadataItem[] = [
+  { label: "Status", value: phrase(document.status) },
+  { label: "Authority scope", value: phrase(document.authorityScope) },
+];
+
+if (document.readingOrder !== undefined) {
+  items.push({ label: "Reading order", value: document.readingOrder });
+}
+if (document.collection) {
+  items.push({ label: "Collection", value: phrase(document.collection) });
+}
+
+document.manifestations.forEach((manifestation) => {
+  const format = formatLabel(manifestation.kind);
+  items.push({
+    label: `${format} role`,
+    value: phrase(manifestation.role),
+  });
+  if (manifestation.bytes !== undefined) {
+    items.push({
+      label: `${format} bytes`,
+      value: byteFormatter.format(manifestation.bytes),
+    });
+  }
+  const sourceCommit = shortCommit(manifestation.sourceCommit);
+  if (sourceCommit) {
+    items.push({ label: `${format} source commit`, value: sourceCommit });
+  }
+  const importDate = dateOnly(manifestation.generatedAt);
+  if (importDate) {
+    items.push({ label: `${format} website import`, value: importDate });
+  }
+  if (manifestation.sha256) {
+    items.push({ label: `${format} SHA-256`, value: manifestation.sha256 });
+  }
+});
+---
+
+<StatusDossier
+  items={[...items, ...additionalItems]}
+  {ariaLabel}
+  className="download-meta document-download-dossier document-metadata"
+/>

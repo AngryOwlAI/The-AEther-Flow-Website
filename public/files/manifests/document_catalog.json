@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "generated_at": "2026-07-20T20:47:12Z",
+  "documents": [
+    {
+      "id": "research:aether-flow-exact-closure-sequence-overview",
+      "slug": "aether-flow-exact-closure-sequence-overview",
+      "title": "Exact Closure Sequence Overview",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Canonical scientific front door for the exact-closure package, its reading order, and its claim boundary.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 1,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_exact_closure_sequence_overview.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_exact_closure_sequence_overview.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-exact-closure-note",
+      "slug": "aether-flow-exact-closure-note",
+      "title": "Exact Closure Note",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Short standalone anchor for the active exact-closure position and its explicit nonclaims.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 2,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_exact_closure_note.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_exact_closure_note.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-foundations",
+      "slug": "aether-flow-foundations",
+      "title": "Foundations",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Ontological vocabulary, original framework intent, and the basis for the active exact-closure stance.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 3,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_foundations.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_foundations.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-dynamics",
+      "slug": "aether-flow-dynamics",
+      "title": "Dynamics",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Adopted effective action, field equations, matter coupling, weak-field structure, and benchmark role.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 4,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_dynamics.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_dynamics.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-consistency",
+      "slug": "aether-flow-consistency",
+      "title": "Consistency",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Gauge structure, degree-of-freedom count, and effective health conditions inherited from GR.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 5,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_consistency.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_consistency.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-relativistic-recovery",
+      "slug": "aether-flow-relativistic-recovery",
+      "title": "Relativistic Recovery",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Exact relation to GR and local relation to SR, including propagation, redshift, clocks, and inertial structure.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 6,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_relativistic_recovery.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_relativistic_recovery.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-geometry",
+      "slug": "aether-flow-geometry",
+      "title": "Flow Geometry",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Congruence-based geometric dictionary for the AEther-flow interpretation.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 7,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_geometry.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_geometry.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    },
+    {
+      "id": "research:aether-flow-exact-closure-flagship-article",
+      "slug": "aether-flow-exact-closure-flagship-article",
+      "title": "Exact Closure Flagship Article",
+      "category": "research",
+      "collection": "canonical-ontology",
+      "summary": "Release-facing synthesis of the exact-closure package that does not replace the canonical overview.",
+      "status": "approved",
+      "authority_scope": "registered_research_source",
+      "reading_order": 8,
+      "manifestations": [
+        {
+          "kind": "tex",
+          "site_path": "/files/tex/ontology/aether_flow_exact_closure_flagship_article.tex",
+          "role": "authoritative_source"
+        },
+        {
+          "kind": "pdf",
+          "site_path": "/files/pdf/ontology/aether_flow_exact_closure_flagship_article.pdf",
+          "role": "readable_derivative"
+        }
+      ]
+    }
+  ]
+}

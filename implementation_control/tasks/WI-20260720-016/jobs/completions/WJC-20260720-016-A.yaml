@@ -1,0 +1,84 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-016-A"
+task_id: "WI-20260720-016"
+job_id: "WJ-20260720-016-A"
+created_utc: "2026-07-20T23:53:14Z"
+completed_utc: "2026-07-20T23:53:14Z"
+status: "completed"
+summary: "Created canonical Documents Reviewer Packet and Generated Derivatives routes, preserved their recorded review and source-authority boundaries, and repointed shared route metadata to the canonical destinations."
+changed_files:
+  - "src/pages/documents/reviewer-packet/index.astro"
+  - "src/pages/documents/derivatives/index.astro"
+  - "src/lib/siteContent.ts"
+requirements_satisfied:
+  - "Both canonical routes exist and remain contextual destinations outside the five-item dropdown."
+  - "Reviewer evidence and generated derivatives are not promoted beyond their recorded status."
+  - "Links, breadcrumbs, metadata, and provenance use canonical Documents routes."
+acceptance_results:
+  - criterion: "Both canonical routes exist and remain contextual destinations outside the five-item dropdown."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/reviewer-packet/index.astro"
+      - "src/pages/documents/derivatives/index.astro"
+      - "dist/documents/reviewer-packet/index.html"
+      - "dist/documents/derivatives/index.html"
+  - criterion: "Reviewer evidence and generated derivatives are not promoted beyond their recorded status."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/reviewer-packet/index.astro"
+      - "src/pages/documents/derivatives/index.astro"
+      - "dist/documents/reviewer-packet/index.html"
+      - "dist/documents/derivatives/index.html"
+  - criterion: "Links, breadcrumbs, metadata, and provenance use canonical Documents routes."
+    status: "passed"
+    evidence_refs:
+      - "src/pages/documents/reviewer-packet/index.astro"
+      - "src/pages/documents/derivatives/index.astro"
+      - "src/lib/siteContent.ts"
+validator_results:
+  - id: "afdoc-016-01"
+    command: "manual inspection of relocated Reviewer Packet and Derivatives route identity links evidence boundaries and status labels"
+    status: "passed"
+    evidence: "Source and rendered-route inspection confirmed canonical Documents route identity and internal links, contextual placement outside the future five-item dropdown, preserved human-review-pending and no-external-validation language, preserved generated-derivative classes and source-owner precedence, and no Resources links in either new route body."
+  - id: "afdoc-016-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "Git reported no whitespace diagnostics; separate trailing-whitespace inspection found none in the two untracked route files."
+additional_validation:
+  - command: "npm run build"
+    status: "passed"
+    evidence: "Astro generated 79 static pages, including both canonical Documents routes."
+  - command: "npm run validate:links"
+    status: "passed"
+    evidence: "Internal-first link validation passed."
+  - command: "npm run validate:claims"
+    status: "passed"
+    evidence: "Public claim review evidence remained current."
+  - command: "npm run validate:svg"
+    status: "passed"
+    evidence: "SVG policy validation passed for the animated text-free inline route artwork."
+  - command: "npm run validate"
+    status: "not_run"
+    evidence: "The accepted packet requires focused checks for this task and authorizes no aggregate release or deployment action."
+scope_preservation:
+  canonical_documents_routes_created: 2
+  reviewer_status: "human_review_pending"
+  generated_derivative_source_precedence_preserved: true
+  contextual_routes_added_to_primary_five_item_dropdown: false
+  retired_resources_links_in_new_route_content: 0
+  old_routes_modified: false
+  redirects_modified: false
+  manifest_changed: false
+  reviewed_claim_boundary_strengthened: false
+  runtime_dependency_added: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-016 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

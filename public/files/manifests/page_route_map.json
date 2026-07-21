@@ -111,8 +111,8 @@
       "upstream_source_paths": [
         "registries/CLAIM_BOUNDARY_REGISTRY.csv",
         "research_control/program_state.yaml",
-        "research_control/handoffs/handoff-0323.yaml",
-        "research_control/handoffs/handoff-0323.md",
+        "research_control/handoffs/handoff-0795.yaml",
+        "research_control/handoffs/handoff-0795.md",
         "registries/DISTANCE_TO_GR_LEDGER.csv"
       ],
       "upstream_authority_status": "draft_control_artifact",
@@ -324,9 +324,9 @@
       "boundary_type": "operational_boundary"
     },
     {
-      "route_path": "/resources/guided-starts/general-public/",
-      "local_page_source": "src/pages/resources/guided-starts/general-public/index.astro",
-      "title": "General-Public Guided Start",
+      "route_path": "/documents/reading-paths/general-public/",
+      "local_page_source": "src/pages/documents/reading-paths/general-public/index.astro",
+      "title": "General-Public Reading Path",
       "adaptation_type": "curated_index",
       "upstream_source_paths": [
         "github-facing/project-overview-explainer.md",
@@ -341,9 +341,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/guided-starts/",
-      "local_page_source": "src/pages/resources/guided-starts/index.astro",
-      "title": "Specialist Guided Starts",
+      "route_path": "/documents/governance/",
+      "local_page_source": "src/pages/documents/governance/index.astro",
+      "title": "Governance & Control",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "github-facing/project-overview-explainer.md",
@@ -363,8 +363,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/reviewer-packet/",
-      "local_page_source": "src/pages/resources/reviewer-packet/index.astro",
+      "route_path": "/documents/reviewer-packet/",
+      "local_page_source": "src/pages/documents/reviewer-packet/index.astro",
       "title": "External Reviewer Packet",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -387,9 +387,9 @@
       "boundary_type": "claim_boundary"
     },
     {
-      "route_path": "/resources/documents/",
-      "local_page_source": "src/pages/resources/documents.astro",
-      "title": "Ontology Documents",
+      "route_path": "/documents/research/",
+      "local_page_source": "src/pages/documents/research/index.astro",
+      "title": "Research Articles",
       "adaptation_type": "asset_index",
       "upstream_source_paths": [
         "ontology/README.md",
@@ -402,8 +402,8 @@
       "boundary_type": "authority_boundary"
     },
     {
-      "route_path": "/resources/diagrams/",
-      "local_page_source": "src/pages/resources/diagrams.astro",
+      "route_path": "/documents/diagrams/",
+      "local_page_source": "src/pages/documents/diagrams/index.astro",
       "title": "Diagram Gallery",
       "adaptation_type": "curated_index",
       "upstream_source_paths": [
@@ -416,9 +416,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/",
-      "local_page_source": "src/pages/resources/index.astro",
-      "title": "Resources",
+      "route_path": "/documents/anthology/",
+      "local_page_source": "src/pages/documents/anthology/index.astro",
+      "title": "Anthology Articles",
       "adaptation_type": "curated_index",
       "upstream_source_paths": [
         "github-facing/source-authority-explainer.md",
@@ -436,8 +436,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/source-authority/",
-      "local_page_source": "src/pages/resources/source-authority/index.astro",
+      "route_path": "/documents/governance/source-authority/",
+      "local_page_source": "src/pages/documents/governance/source-authority/index.astro",
       "title": "Source Authority",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -453,8 +453,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/registries/",
-      "local_page_source": "src/pages/resources/registries/index.astro",
+      "route_path": "/documents/governance/registries/",
+      "local_page_source": "src/pages/documents/governance/registries/index.astro",
       "title": "Registries",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -473,8 +473,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/generated-derivatives/",
-      "local_page_source": "src/pages/resources/generated-derivatives/index.astro",
+      "route_path": "/documents/derivatives/",
+      "local_page_source": "src/pages/documents/derivatives/index.astro",
       "title": "Generated Derivatives",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -491,8 +491,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/retrieval-layers/",
-      "local_page_source": "src/pages/resources/retrieval-layers/index.astro",
+      "route_path": "/documents/governance/retrieval-layers/",
+      "local_page_source": "src/pages/documents/governance/retrieval-layers/index.astro",
       "title": "Retrieval Layers",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -507,8 +507,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/publication-process/",
-      "local_page_source": "src/pages/resources/publication-process/index.astro",
+      "route_path": "/documents/governance/publication-process/",
+      "local_page_source": "src/pages/documents/governance/publication-process/index.astro",
       "title": "Publication Process",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -524,9 +524,9 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/library/",
-      "local_page_source": "src/pages/resources/library/index.astro",
-      "title": "Library",
+      "route_path": "/documents/",
+      "local_page_source": "src/pages/documents/index.astro",
+      "title": "Documentation Overview",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
         "github-facing/project-overview-explainer.md",
@@ -543,8 +543,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/reading-paths/",
-      "local_page_source": "src/pages/resources/reading-paths/index.astro",
+      "route_path": "/documents/reading-paths/",
+      "local_page_source": "src/pages/documents/reading-paths/index.astro",
       "title": "Reading Paths",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -560,8 +560,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/repository-map/",
-      "local_page_source": "src/pages/resources/repository-map/index.astro",
+      "route_path": "/documents/governance/repository-map/",
+      "local_page_source": "src/pages/documents/governance/repository-map/index.astro",
       "title": "Repository Map",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [
@@ -578,8 +578,8 @@
       "boundary_type": "trust_boundary"
     },
     {
-      "route_path": "/resources/site-builder-guide/",
-      "local_page_source": "src/pages/resources/site-builder-guide/index.astro",
+      "route_path": "/documents/governance/site-builder-guide/",
+      "local_page_source": "src/pages/documents/governance/site-builder-guide/index.astro",
       "title": "Site Builder Guide",
       "adaptation_type": "curated_synthesis",
       "upstream_source_paths": [

@@ -1,0 +1,69 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260720-000-A"
+task_id: "WI-20260720-000"
+job_id: "WJ-20260720-000-A"
+created_utc: "2026-07-20T19:48:23Z"
+completed_utc: "2026-07-20T19:48:23Z"
+status: "completed"
+summary: "Replaced the stale fixed-revision plan-goal validation boundary with live canonical plan, binding, lifecycle, repository, topology, and changed-path checks."
+changed_files:
+  - "scripts/implementation_control/validate_plan_goal.py"
+  - "tests/test_plan_goal_adapter.py"
+requirements_satisfied:
+  - "Plan-goal validation accepts the current explicitly bound starting revision instead of a hard-coded historical installation revision."
+  - "Authorized active or terminal plan changes are accepted only when their paths and lifecycle evidence match the exact canonical binding and receipts."
+  - "Unrelated reader-facing drift, forbidden mutable paths, topology changes, open intents, leases, and external effects remain blocking."
+  - "Focused regression tests distinguish accepted plan-controlled changes from unrelated drift."
+acceptance_results:
+  - criterion: "Plan-goal validation accepts the current explicitly bound starting revision instead of a hard-coded historical installation revision."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_plan_goal.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "Authorized active or terminal plan changes are accepted only when their paths and lifecycle evidence match the exact canonical binding and receipts."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_plan_goal.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "Unrelated reader-facing drift, forbidden mutable paths, topology changes, open intents, leases, and external effects remain blocking."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_plan_goal.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "Focused regression tests distinguish accepted plan-controlled changes from unrelated drift."
+    status: "passed"
+    evidence_refs:
+      - "tests/test_plan_goal_adapter.py"
+validator_results:
+  - id: "afdoc-000-01"
+    command: "npm run test:plan-goal"
+    status: "passed"
+    evidence: "71 tests passed on Python 3.12.13."
+  - id: "afdoc-000-02"
+    command: "npm run validate:plan-goal"
+    status: "passed"
+    evidence: "Installed-bundle, live revision binding, lifecycle, topology, and changed-path validation passed."
+additional_validation:
+  - command: "npm run validate:implementation-control"
+    status: "passed"
+    evidence: "Implementation-control structural validation passed."
+  - command: "git diff --check"
+    status: "passed"
+    evidence: "No tracked whitespace errors."
+scope_preservation:
+  reader_facing_route_changed: false
+  public_copy_changed: false
+  public_asset_changed: false
+  public_manifest_changed: false
+  scientific_claim_changed: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  upstream_write_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-000 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

@@ -98,8 +98,15 @@ def require_registry_row(
     return row
 
 
-def keep_non_document_item(item: dict[str, Any]) -> bool:
-    return item.get("kind") not in {"pdf", "tex"}
+def is_ontology_manifest_item(item: dict[str, Any]) -> bool:
+    site_path = item.get("site_path") or item.get("path")
+    if not isinstance(site_path, str):
+        return False
+
+    return site_path.startswith((
+        "/files/pdf/ontology/",
+        "/files/tex/ontology/",
+    ))
 
 
 def import_assets(
@@ -125,12 +132,12 @@ def import_assets(
     new_source_items = [
         item
         for item in source_manifest.get("items", [])
-        if isinstance(item, dict) and keep_non_document_item(item)
+        if isinstance(item, dict) and not is_ontology_manifest_item(item)
     ]
     new_asset_items = [
         item
         for item in asset_manifest.get("items", [])
-        if isinstance(item, dict) and keep_non_document_item(item)
+        if isinstance(item, dict) and not is_ontology_manifest_item(item)
     ]
 
     expected_destinations: set[Path] = set()
