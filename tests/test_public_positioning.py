@@ -43,20 +43,23 @@ AI_RESEARCH_SYSTEM_PROJECT_SYSTEM_IMPROVEMENT_PAGE = (
 AI_RESEARCH_SYSTEM_RUNTIME_REQUIREMENTS_PAGE = (
     REPO_ROOT / "src/pages/ai-research-system/runtime-requirements/index.astro"
 )
-RESOURCES_PAGE = REPO_ROOT / "src/pages/resources/index.astro"
-RESOURCES_SOURCE_AUTHORITY_PAGE = REPO_ROOT / "src/pages/resources/source-authority/index.astro"
-RESOURCES_REGISTRY_EXPLORER_PAGE = REPO_ROOT / "src/pages/resources/registries/index.astro"
-RESOURCES_GENERATED_DERIVATIVES_PAGE = (
-    REPO_ROOT / "src/pages/resources/generated-derivatives/index.astro"
+DOCUMENTS_PAGE = REPO_ROOT / "src/pages/documents/index.astro"
+DOCUMENTS_SOURCE_AUTHORITY_PAGE = (
+    REPO_ROOT / "src/pages/documents/governance/source-authority/index.astro"
 )
-RESOURCES_LOCAL_RETRIEVAL_LAYERS_PAGE = (
-    REPO_ROOT / "src/pages/resources/retrieval-layers/index.astro"
+DOCUMENTS_REGISTRY_EXPLORER_PAGE = (
+    REPO_ROOT / "src/pages/documents/governance/registries/index.astro"
 )
-RESOURCES_PUBLICATION_PROCESS_PAGE = (
-    REPO_ROOT / "src/pages/resources/publication-process/index.astro"
+DOCUMENTS_GENERATED_DERIVATIVES_PAGE = (
+    REPO_ROOT / "src/pages/documents/derivatives/index.astro"
 )
-RESOURCES_LIBRARY_PAGE = REPO_ROOT / "src/pages/resources/library/index.astro"
-RESOURCES_READING_PATHS_PAGE = REPO_ROOT / "src/pages/resources/reading-paths/index.astro"
+DOCUMENTS_LOCAL_RETRIEVAL_LAYERS_PAGE = (
+    REPO_ROOT / "src/pages/documents/governance/retrieval-layers/index.astro"
+)
+DOCUMENTS_PUBLICATION_PROCESS_PAGE = (
+    REPO_ROOT / "src/pages/documents/governance/publication-process/index.astro"
+)
+DOCUMENTS_READING_PATHS_PAGE = REPO_ROOT / "src/pages/documents/reading-paths/index.astro"
 PROJECT_INTRODUCTION = REPO_ROOT / "src/components/ProjectIntroduction.astro"
 COMMAND_BAND = REPO_ROOT / "src/components/CommandBand.astro"
 GLOBAL_CSS = REPO_ROOT / "src/styles/global.css"
@@ -83,17 +86,18 @@ PROJECT_INTRODUCTION_ROUTE_SOURCES = tuple(
         "src/pages/physics/index.astro",
         "src/pages/physics/ontology/index.astro",
         "src/pages/physics/open-burdens/index.astro",
-        "src/pages/resources/diagrams.astro",
-        "src/pages/resources/generated-derivatives/index.astro",
-        "src/pages/resources/index.astro",
-        "src/pages/resources/library/index.astro",
-        "src/pages/resources/publication-process/index.astro",
-        "src/pages/resources/reading-paths/index.astro",
-        "src/pages/resources/registries/index.astro",
-        "src/pages/resources/repository-map/index.astro",
-        "src/pages/resources/retrieval-layers/index.astro",
-        "src/pages/resources/site-builder-guide/index.astro",
-        "src/pages/resources/source-authority/index.astro",
+        "src/pages/documents/anthology/index.astro",
+        "src/pages/documents/derivatives/index.astro",
+        "src/pages/documents/diagrams/index.astro",
+        "src/pages/documents/governance/index.astro",
+        "src/pages/documents/governance/publication-process/index.astro",
+        "src/pages/documents/governance/registries/index.astro",
+        "src/pages/documents/governance/repository-map/index.astro",
+        "src/pages/documents/governance/retrieval-layers/index.astro",
+        "src/pages/documents/governance/site-builder-guide/index.astro",
+        "src/pages/documents/governance/source-authority/index.astro",
+        "src/pages/documents/index.astro",
+        "src/pages/documents/research/index.astro",
     )
 )
 
@@ -125,11 +129,11 @@ PROJECT_INTRODUCTION_SENTENCE_VECTORS = {
         "src/pages/physics/index.astro": (2, 2),
         "src/pages/physics/ontology/index.astro": (2, 2),
         "src/pages/physics/open-burdens/index.astro": (2, 2, 2),
-        "src/pages/resources/diagrams.astro": (2,),
-        "src/pages/resources/generated-derivatives/index.astro": (2, 2, 2, 2, 3, 2),
-        "src/pages/resources/index.astro": (2, 3, 2, 2, 1),
-        "src/pages/resources/library/index.astro": (2, 2, 2, 1, 2, 3, 2),
-        "src/pages/resources/publication-process/index.astro": (
+        "src/pages/documents/anthology/index.astro": (2, 2),
+        "src/pages/documents/derivatives/index.astro": (2, 2, 2, 2, 3, 2),
+        "src/pages/documents/diagrams/index.astro": (2,),
+        "src/pages/documents/governance/index.astro": (2, 2, 3),
+        "src/pages/documents/governance/publication-process/index.astro": (
             2,
             3,
             2,
@@ -140,12 +144,13 @@ PROJECT_INTRODUCTION_SENTENCE_VECTORS = {
             2,
             1,
         ),
-        "src/pages/resources/reading-paths/index.astro": (2, 2, 2),
-        "src/pages/resources/registries/index.astro": (2, 2, 2, 2, 2, 2),
-        "src/pages/resources/repository-map/index.astro": (2,),
-        "src/pages/resources/retrieval-layers/index.astro": (2, 2, 1, 2, 2, 2, 2),
-        "src/pages/resources/site-builder-guide/index.astro": (2,),
-        "src/pages/resources/source-authority/index.astro": (2, 3, 2, 2, 2, 1),
+        "src/pages/documents/governance/registries/index.astro": (2, 2, 2, 2, 2, 2),
+        "src/pages/documents/governance/repository-map/index.astro": (2, 2),
+        "src/pages/documents/governance/retrieval-layers/index.astro": (2, 2, 1, 2, 2, 2, 2),
+        "src/pages/documents/governance/site-builder-guide/index.astro": (2, 2),
+        "src/pages/documents/governance/source-authority/index.astro": (2, 3, 2, 2, 2, 1),
+        "src/pages/documents/index.astro": (2, 2, 2, 2),
+        "src/pages/documents/research/index.astro": (2, 3),
     }.items()
 }
 
@@ -459,7 +464,7 @@ def test_all_project_introductions_use_the_accepted_semantic_paragraph_vectors()
         for path in (REPO_ROOT / "src/pages").rglob("*.astro")
         if "<ProjectIntroduction" in path.read_text(encoding="utf-8")
     }
-    assert len(PROJECT_INTRODUCTION_ROUTE_SOURCES) == 29
+    assert len(PROJECT_INTRODUCTION_ROUTE_SOURCES) == 30
     assert all_route_sources == set(PROJECT_INTRODUCTION_ROUTE_SOURCES)
     assert set(PROJECT_INTRODUCTION_SENTENCE_VECTORS) == set(
         PROJECT_INTRODUCTION_ROUTE_SOURCES
@@ -489,8 +494,8 @@ def test_all_project_introductions_use_the_accepted_semantic_paragraph_vectors()
         total_paragraphs += len(paragraphs)
         total_sentences += sum(sentence_counts)
 
-    assert total_paragraphs == 104
-    assert total_sentences == 212
+    assert total_paragraphs == 102
+    assert total_sentences == 210
 
     direct_legacy_panels = [
         path
@@ -554,7 +559,7 @@ def test_related_internal_route_command_bands_use_the_section_title_measure() ->
         for path in (REPO_ROOT / "src/pages").rglob("*.astro")
         if eyebrow in path.read_text(encoding="utf-8")
     }
-    assert len(related_route_sources) == 24
+    assert len(related_route_sources) == 23
     assert all(
         re.search(
             r'<CommandBand\b[^>]*eyebrow="Related internal routes"[^>]*>',
@@ -1065,48 +1070,30 @@ def test_runtime_requirements_has_a_general_public_project_introduction_after_th
     assert hero < introduction < comprehension
 
 
-def test_resources_overview_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_PAGE.read_text(encoding="utf-8")
+def test_documents_overview_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = DOCUMENTS_PAGE.read_text(encoding="utf-8")
 
     assert 'import ProjectIntroduction from "../../components/ProjectIntroduction.astro"' in source
     assert source.count("<ProjectIntroduction") == 1
-    assert "two-part research program about foundational physics" in source
-    assert "governed, human-accountable AI research system" in source
-    assert "general relativity remains the exact benchmark for observable gravity" in source
-    assert "first-principles substrate derivation is still open" in source
-    assert "public map for reading evidence around both tracks" in source
-    assert "Start with the internal route that matches the question" in source
-    assert "Registered TeX carries scoped physics and derivational claims" in source
-    assert "registered Markdown and tracked control records carry guidance and workflow authority" in source
-    assert "registries record provenance, relationships, hashes, routing, and status" in source
-    assert "without replacing the source files they describe" in source
-    assert "Generated pages, PDFs, diagrams, and downloads help people read the project" in source
-    assert "semantic extracts, Obsidian mirrors, SQLite indexes, and local caches help them find material" in source
-    assert "the source and record win" in source
-    assert "path, type, byte count, hash, status, and source reference" in source
-    assert "a hash identifies file contents rather than scientific correctness" in source
-    assert "Publication briefs define the reader and acceptance criteria" in source
-    assert "source specifications bind public outputs to inspected evidence" in source
-    assert "bounded publication quality rather than source authority" in source
-    assert "No route card, manifest row, download, hash, registry entry, generated derivative" in source
-    assert "independently proves a physics claim" in source
-    assert "completes the open first-principles derivation" in source
-    assert "promotes the proposed ontology or a benchmark" in source
-    assert "grants workflow authority" in source
-    assert "replaces human review" in source
-    assert '<section class="greenfield-intro-panel" aria-label="Resources overview introduction">' not in source
+    assert "two related research tracks: foundational physics" in source
+    assert "governed, human-accountable AI workflow" in source
+    assert "Five public destinations organize the system" in source
+    assert "Formats do not inherit equal authority" in source
+    assert "manifest hashes establish artifact identity rather than scientific correctness" in source
+    assert "Begin with the internal route that explains the question" in source
+    assert '<section class="greenfield-intro-panel" aria-label="Documentation overview introduction">' not in source
 
     hero = source.index('className="overview-shell overview-command-hero"')
     introduction = source.index("<ProjectIntroduction", hero)
-    comprehension = source.index("<ComprehensionBlocks", introduction)
+    categories = source.index('aria-labelledby="documentation-categories-title"', introduction)
 
-    assert hero < introduction < comprehension
+    assert hero < introduction < categories
 
 
-def test_resources_source_authority_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_SOURCE_AUTHORITY_PAGE.read_text(encoding="utf-8")
+def test_documents_source_authority_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = DOCUMENTS_SOURCE_AUTHORITY_PAGE.read_text(encoding="utf-8")
 
-    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert 'import ProjectIntroduction from "../../../../components/ProjectIntroduction.astro"' in source
     assert source.count("<ProjectIntroduction") == 1
     assert "two-part research program about foundational physics" in source
     assert "governed, human-accountable AI research system" in source
@@ -1144,10 +1131,10 @@ def test_resources_source_authority_has_a_general_public_project_introduction_af
     assert hero < introduction < comprehension
 
 
-def test_resources_registry_explorer_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_REGISTRY_EXPLORER_PAGE.read_text(encoding="utf-8")
+def test_documents_registry_explorer_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = DOCUMENTS_REGISTRY_EXPLORER_PAGE.read_text(encoding="utf-8")
 
-    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert 'import ProjectIntroduction from "../../../../components/ProjectIntroduction.astro"' in source
     assert source.count("<ProjectIntroduction") == 1
     assert "two-part research program about foundational physics" in source
     assert "governed, human-accountable AI research system" in source
@@ -1187,8 +1174,8 @@ def test_resources_registry_explorer_has_a_general_public_project_introduction_a
     assert hero < introduction < comprehension
 
 
-def test_resources_generated_derivatives_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_GENERATED_DERIVATIVES_PAGE.read_text(encoding="utf-8")
+def test_documents_generated_derivatives_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = DOCUMENTS_GENERATED_DERIVATIVES_PAGE.read_text(encoding="utf-8")
 
     assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
     assert source.count("<ProjectIntroduction") == 1
@@ -1232,10 +1219,10 @@ def test_resources_generated_derivatives_has_a_general_public_project_introducti
     assert hero < introduction < comprehension
 
 
-def test_resources_local_retrieval_layers_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_LOCAL_RETRIEVAL_LAYERS_PAGE.read_text(encoding="utf-8")
+def test_documents_local_retrieval_layers_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = DOCUMENTS_LOCAL_RETRIEVAL_LAYERS_PAGE.read_text(encoding="utf-8")
 
-    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert 'import ProjectIntroduction from "../../../../components/ProjectIntroduction.astro"' in source
     assert source.count("<ProjectIntroduction") == 1
     assert "two-part research program about foundational physics" in source
     assert "governed, human-accountable AI research system" in source
@@ -1279,10 +1266,10 @@ def test_resources_local_retrieval_layers_has_a_general_public_project_introduct
     assert hero < introduction < comprehension
 
 
-def test_resources_publication_process_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_PUBLICATION_PROCESS_PAGE.read_text(encoding="utf-8")
+def test_documents_publication_process_has_a_general_public_project_introduction_after_the_hero() -> None:
+    source = DOCUMENTS_PUBLICATION_PROCESS_PAGE.read_text(encoding="utf-8")
 
-    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
+    assert 'import ProjectIntroduction from "../../../../components/ProjectIntroduction.astro"' in source
     assert source.count("<ProjectIntroduction") == 1
     assert "two-part research program about foundational physics" in source
     assert "governed, human-accountable AI research system" in source
@@ -1331,87 +1318,30 @@ def test_resources_publication_process_has_a_general_public_project_introduction
     assert hero < introduction < comprehension
 
 
-def test_resources_library_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_LIBRARY_PAGE.read_text(encoding="utf-8")
+def test_documents_overview_preserves_authority_and_reader_path_boundaries() -> None:
+    source = DOCUMENTS_PAGE.read_text(encoding="utf-8")
 
-    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
-    assert source.count("<ProjectIntroduction") == 1
-    assert "two-part research program about foundational physics" in source
-    assert "governed, human-accountable AI research system" in source
-    assert "general relativity remains the exact benchmark for observable gravity" in source
-    assert "first-principles substrate derivation is still open" in source
-    assert "organized by what a person wants to understand rather than by repository layout" in source
-    assert "A first-time reader can begin with project orientation" in source
-    assert "a physics reviewer can follow claim status and open burdens" in source
-    assert "an AI workflow maintainer can follow operational routes" in source
-    assert "a provenance reviewer can trace publication and manifests" in source
-    assert "a site builder can inspect page types and source bundles" in source
-    assert "an asset reader can find documents or diagrams" in source
-    assert "Each path starts with an internal website route when one exists" in source
-    assert "before GitHub paths, registry rows, manifests, or downloads become inspection tools" in source
-    assert "reader starts, claim and source status, publication and derivatives" in source
-    assert "documents and diagrams, and operations and workflow" in source
-    assert "does not rank a polished page above the source that owns its claims" in source
-    assert "source-backed, generated derivative, current snapshot, requirements or planning" in source
-    assert "retrieval support helps find material without becoming public evidence" in source
-    assert "Reader job, topic, claim status, freshness, and source basis" in source
-    assert "Registered TeX carries scoped physics and derivational claims" in source
-    assert "registries carry routing, provenance, relationship, status" in source
-    assert "registered Markdown carries guidance, source specifications, publication briefs" in source
-    assert "current governed task records carry task-local permissions and state" in source
-    assert "If a Documentation Overview summary and its named owner disagree" in source
-    assert "repair the Documentation Overview surface" in source
-    assert "if a current snapshot is stale, report that uncertainty" in source
-    assert "a manifest or hash can identify particular artifacts" in source
-    assert "none transfers claim authority or certifies scientific correctness" in source
-    assert "contextual copy, tables, and provenance rather than a separate Source authority component section" in source
-    assert "No overview section, reading path, status label, route card" in source
-    assert "independently proves a physics claim" in source
-    assert "completes the open first-principles derivation" in source
-    assert "promotes the proposed ontology or a benchmark" in source
-    assert "expands workflow authority" in source
-    assert "overrides a human gate" in source
-    assert "replaces direct source inspection" in source
+    assert 'title="Documentation Overview"' in source
+    assert "registered sources and current records" in source
+    assert "Formats do not inherit equal authority" in source
+    assert "Begin with the internal route that explains the question" in source
+    assert 'href: "/documents/anthology/"' in source
+    assert 'href: "/documents/research/"' in source
+    assert 'href: "/documents/governance/"' in source
+    assert 'href: "/documents/diagrams/"' in source
     assert "SourceAuthoritySection" not in source
-    assert '<section class="greenfield-intro-panel" aria-label="Library introduction">' not in source
-
-    hero = source.index('className="overview-shell overview-command-hero"')
-    introduction = source.index("<ProjectIntroduction", hero)
-    comprehension = source.index("<ComprehensionBlocks", introduction)
-
-    assert hero < introduction < comprehension
 
 
-def test_resources_reading_paths_has_a_general_public_project_introduction_after_the_hero() -> None:
-    source = RESOURCES_READING_PATHS_PAGE.read_text(encoding="utf-8")
+def test_documents_reading_paths_preserve_canonical_routes_and_nonclaim_boundaries() -> None:
+    source = DOCUMENTS_READING_PATHS_PAGE.read_text(encoding="utf-8")
 
-    assert 'import ProjectIntroduction from "../../../components/ProjectIntroduction.astro"' in source
-    assert source.count("<ProjectIntroduction") == 1
-    assert 'className="greenfield-intro-panel"' in source
-    assert "two-part research program about foundational physics" in source
-    assert "governed use of AI to organize that research" in source
-    assert "general relativity as the exact benchmark for observable gravity" in source
-    assert "deriving that benchmark from explicit substrate variables remains an open problem" in source
-    assert "does not claim a verified new law of gravity" in source
-    assert "bounded units of work called AgentJobs" in source
-    assert "without treating AI output, a validator result, or a webpage as scientific proof" in source
-    assert "routes for different questions and audiences" in source
-    assert "a general reader can begin with project orientation" in source
-    assert "a physics reviewer can follow ontology, benchmark, claim-status, and open-burden pages" in source
-    assert "an AI workflow reviewer can follow control and validation pages" in source
-    assert "a contributor or site builder can begin with source-authority and publication guidance" in source
-    assert "question-first, internal-route-second, provenance-third sequence" in source
-    assert "before opening registries, manifests, source files, generated derivatives, or downloads" in source
-    assert "does not change claim status, freshness, source precedence, workflow permission" in source
-    assert "the source wins and the reader surface must be repaired" in source
+    assert '<h1 id="reading-paths-title">Reading Paths</h1>' in source
+    assert 'title: "No new claims"' in source
+    assert "doNotInfer" in source
+    assert 'href="/documents/reading-paths/general-public/"' in source
+    assert 'href="/documents/"' in source
+    assert "ProjectIntroduction" not in source
     assert "SourceAuthoritySection" not in source
-    assert '<section class="greenfield-intro-panel" aria-label="Reading paths introduction">' not in source
-
-    hero = source.index('className="overview-shell overview-command-hero"')
-    introduction = source.index("<ProjectIntroduction", hero)
-    comprehension = source.index("<ComprehensionBlocks", introduction)
-
-    assert hero < introduction < comprehension
 
 
 def test_route_metadata_is_source_safe_and_route_local() -> None:

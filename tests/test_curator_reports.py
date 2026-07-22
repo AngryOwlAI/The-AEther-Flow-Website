@@ -8,6 +8,11 @@ import pytest
 import run_curator
 
 
+@pytest.fixture(autouse=True)
+def clear_source_commit_environment(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv(run_curator.SOURCE_COMMIT_ENV_VAR, raising=False)
+
+
 def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 

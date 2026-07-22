@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DOCUMENTS_PAGE = REPO_ROOT / "src/pages/resources/documents.astro"
+DOCUMENTS_PAGE = REPO_ROOT / "src/pages/documents/research/index.astro"
 DOCUMENT_ACTIONS = REPO_ROOT / "src/components/DocumentActions.astro"
 
 EXPECTED_SEQUENCE = [
@@ -102,8 +102,8 @@ def test_documents_consumers_preserve_sequence_and_authority_roles() -> None:
     actions_source = DOCUMENT_ACTIONS.read_text(encoding="utf-8")
 
     assert "ontologyDocumentSequence.map" in page_source
-    assert "documents={ontologyDocuments}" in page_source
-    assert "canonical front door" in page_source
+    assert "documents={researchArticles.map(({ document }) => document)}" in page_source
+    assert "canonicalOntologyDocuments" in page_source
     assert "release-facing synthesis" in page_source
     assert "TeX files are the registered source-authority artifacts" in actions_source
     assert "generated human-readable derivatives" in actions_source

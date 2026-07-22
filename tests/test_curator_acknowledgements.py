@@ -5,8 +5,14 @@ import os
 import subprocess
 from pathlib import Path
 
+import pytest
 import run_curator
 from test_curator_reports import sha256_text, write_fixture_repo
+
+
+@pytest.fixture(autouse=True)
+def clear_source_commit_environment(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv(run_curator.SOURCE_COMMIT_ENV_VAR, raising=False)
 
 
 def init_source_git(source_root: Path) -> str:
