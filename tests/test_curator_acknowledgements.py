@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 from pathlib import Path
@@ -97,28 +98,40 @@ def write_ack(
     return ack_path
 
 
-def write_reports(repo_root: Path, source_root: Path) -> int:
-    return run_curator.main(
-        [
-            "--repo-root",
-            str(repo_root),
-            "--source-root",
-            str(source_root),
-            "--write",
-        ]
-    )
+def write_reports(
+    repo_root: Path,
+    source_root: Path,
+    *,
+    source_commit: str | None = None,
+) -> int:
+    arguments = [
+        "--repo-root",
+        str(repo_root),
+        "--source-root",
+        str(source_root),
+    ]
+    if source_commit is not None:
+        arguments.extend(["--source-commit", source_commit])
+    arguments.append("--write")
+    return run_curator.main(arguments)
 
 
-def check_reports(repo_root: Path, source_root: Path) -> int:
-    return run_curator.main(
-        [
-            "--repo-root",
-            str(repo_root),
-            "--source-root",
-            str(source_root),
-            "--check",
-        ]
-    )
+def check_reports(
+    repo_root: Path,
+    source_root: Path,
+    *,
+    source_commit: str | None = None,
+) -> int:
+    arguments = [
+        "--repo-root",
+        str(repo_root),
+        "--source-root",
+        str(source_root),
+    ]
+    if source_commit is not None:
+        arguments.extend(["--source-commit", source_commit])
+    arguments.append("--check")
+    return run_curator.main(arguments)
 
 
 def test_critical_drift_fails_even_with_acknowledgement(tmp_path: Path) -> None:
@@ -164,6 +177,73 @@ def test_review_required_drift_passes_with_exact_acknowledgement(tmp_path: Path)
 
     assert write_reports(repo_root, source_root) == 0
     assert check_reports(repo_root, source_root) == 0
+
+
+def test_pinned_source_commit_is_stable_after_head_advances(tmp_path: Path) -> None:
+    repo_root, source_root = write_fixture_repo(tmp_path)
+    init_source_git(source_root)
+    (source_root / "source.md").write_text("source v2\n", encoding="utf-8")
+    reviewed_commit = commit_source_changes(source_root, "reviewed drift")
+    write_ack(
+        repo_root,
+        current_commit=reviewed_commit,
+        current_sha256=sha256_text("source v2\n"),
+    )
+
+    assert write_reports(repo_root, source_root, source_commit=reviewed_commit) == 0
+    report_path = repo_root / "curator/reports/latest.json"
+    markdown_path = repo_root / "curator/reports/latest.md"
+    report_before = report_path.read_bytes()
+    markdown_before = markdown_path.read_bytes()
+
+    (source_root / "source.md").write_text("source v3\n", encoding="utf-8")
+    advanced_commit = commit_source_changes(source_root, "later unreviewed drift")
+
+    assert advanced_commit != reviewed_commit
+    assert check_reports(repo_root, source_root) == 1
+    assert check_reports(repo_root, source_root, source_commit=reviewed_commit) == 0
+    assert report_path.read_bytes() == report_before
+    assert markdown_path.read_bytes() == markdown_before
+
+    report = json.loads(report_before)
+    assert report["current_commit"] == reviewed_commit
+    assert report["current_commit_date"] == run_curator.git_output(
+        source_root,
+        "show",
+        "-s",
+        "--format=%cI",
+        reviewed_commit,
+    )
+    assert report["acknowledgement_summary"]["matched_acknowledgement_count"] == 1
+
+
+def test_explicit_source_commit_rejects_invalid_missing_and_noncommit_pins(
+    tmp_path: Path,
+) -> None:
+    repo_root, source_root = write_fixture_repo(tmp_path)
+    init_source_git(source_root)
+    blob_commit = subprocess.run(
+        ["git", "hash-object", "-w", "--stdin"],
+        cwd=source_root,
+        check=True,
+        capture_output=True,
+        input=b"not a commit\n",
+    ).stdout.decode("utf-8").strip()
+
+    for source_commit in ("not-a-commit", "f" * 40, blob_commit):
+        result = run_curator.main(
+            [
+                "--repo-root",
+                str(repo_root),
+                "--source-root",
+                str(source_root),
+                "--source-commit",
+                source_commit,
+                "--check",
+            ]
+        )
+
+        assert result == 1
 
 
 def test_informational_drift_does_not_fail_validation(tmp_path: Path) -> None:

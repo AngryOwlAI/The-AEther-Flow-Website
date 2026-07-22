@@ -1,0 +1,105 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260721-043-A"
+task_id: "WI-20260721-043"
+title: "Correct the plan-to-website authority compiler so validator commands remain exact executable argv while director-decision evidence source_refs contains only the bounded relative task-packet authority path."
+created_utc: "2026-07-21T23:09:30Z"
+updated_utc: "2026-07-21T23:20:16Z"
+status: "completed"
+objective: "Correct the plan-to-website authority compiler so validator commands remain exact executable argv while director-decision evidence source_refs contains only the bounded relative task-packet authority path."
+plan_binding:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001"
+  plan_sha256: "c86c9c3e16c51cb3cb86b6df4b42c92c5a3319c01ba75987e8f557e0b1bf1db7"
+  plan_task_id: "AFDOC-R001A"
+  plan_task_sha256: "01f69b932e61b544d7bdef60f5036c57470fe58c345e07a580490892c95a5954"
+  binding_manifest_sha256: "8e62002a1adcef762ddc829c43ec53ad876b9cd5eed424509a975fa3f6dddd1a"
+  authority_sha256: "f73e921a47248e1327280da2deb5174d4bd7b27468e2d2bfece04e6a782924c8"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "README.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+  - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+  - "package.json"
+  - "implementation_control/**"
+  - "curator/**"
+  - "src/**"
+  - "public/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+allowed_writes:
+  - "scripts/implementation_control/plan_goal_adapter.py"
+  - "tests/test_plan_goal_adapter.py"
+required_outputs:
+  - "The compiled DirectorRoute preserves every bound validator command as exact argv and does not copy command text into the pathList evidence source_refs field."
+  - "Director-decision evidence cites the relative implementation-control task authority record, so an absolute executable such as /usr/bin/env compiles without relaxing relative-path validation."
+  - "Focused tests cover absolute-executable and ordinary validator commands, and the repair grants no external effect or broader repository authority."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "This packet changes curator input selection and tests only; it cannot strengthen public scientific prose."
+  - id: "source_refresh_uncertainty"
+    status: "approved"
+    trigger: "The user authorized read-only curator reconciliation and the packet is pinned to the exact already reviewed upstream commit."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "This packet does not change reader routes or navigation."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "This packet does not change visual systems."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "This packet does not change downloadable assets."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "This packet does not change public manifests or authority records."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "The recovery plan withholds push authority."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "The recovery plan withholds deployment authority."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Every upstream source-project write remains forbidden."
+required_validators:
+  - command: "python3 -m pytest tests/test_plan_goal_adapter.py -q"
+    id: "afdoc-r001a-01"
+    required: true
+  - command: "git diff --check"
+    id: "afdoc-r001a-02"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "A required write or protected effect falls outside this exact binding."
+  - "The repair would weaken relative-path validation, alter validator argv, or grant an external effect."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+    - "Rewrite curator acknowledgements or strengthen scientific or authority claims."
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected recovery task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  role_id: "website-documents-recovery-task-engineer"
+  role_version: "1.0.0"
+next_recommended_action:
+  task_packet: "AFDOC-R001A"
+  summary: "Correct the plan-to-website authority compiler so validator commands remain exact executable argv while director-decision evidence source_refs contains only the bounded relative task-packet authority path."
+  do_not_skip: "Execute only this mapped packet."

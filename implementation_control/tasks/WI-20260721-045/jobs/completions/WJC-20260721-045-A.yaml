@@ -1,0 +1,58 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260721-045-A"
+task_id: "WI-20260721-045"
+job_id: "WJ-20260721-045-A"
+created_utc: "2026-07-21T23:59:45Z"
+completed_utc: "2026-07-21T23:59:45Z"
+status: "completed"
+summary: "Recognized safe argv forms of known validator commands, rejected malformed and unknown wrappers, and allowed empty validators only for inactive or no-action program state."
+changed_files:
+  - "scripts/implementation_control/validate_implementation_control.py"
+  - "tests/test_validate_implementation_control.py"
+requirements_satisfied:
+  - "Environment-wrapped validators are accepted only when their unwrapped argv is an already known npm, Python-script, pytest, manual-inspection, or git validator command."
+  - "Malformed environment wrappers and wrappers around unknown commands still fail closed, while documented pytest commands may carry explicit test paths and options."
+  - "An inactive or no-action program state may carry an empty required_validators list; active program, task, and job records still require nonempty validated commands."
+acceptance_results:
+  - criterion: "Environment-wrapped validators are accepted only when their unwrapped argv is an already known npm, Python-script, pytest, manual-inspection, or git validator command."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_implementation_control.py"
+      - "tests/test_validate_implementation_control.py"
+  - criterion: "Malformed environment wrappers and wrappers around unknown commands still fail closed, while documented pytest commands may carry explicit test paths and options."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_implementation_control.py"
+      - "tests/test_validate_implementation_control.py"
+  - criterion: "An inactive or no-action program state may carry an empty required_validators list; active program, task, and job records still require nonempty validated commands."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_implementation_control.py"
+      - "tests/test_validate_implementation_control.py"
+validator_results:
+  - id: "afdoc-r004-01"
+    command: "python3 -m pytest tests/test_validate_implementation_control.py -q"
+    status: "passed"
+    evidence: "The repository virtual environment supplied python3 on PATH; 26 focused tests passed in 1.54 seconds."
+  - id: "afdoc-r004-02"
+    command: "python3 scripts/implementation_control/validate_implementation_control.py"
+    status: "passed"
+    evidence: "Implementation-control structural validation passed."
+  - id: "afdoc-r004-03"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "git diff --check returned no findings."
+scope_preservation:
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  publication_performed: false
+  upstream_write_performed: false
+  external_effect_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-R004 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

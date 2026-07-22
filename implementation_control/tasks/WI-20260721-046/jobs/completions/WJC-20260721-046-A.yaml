@@ -1,0 +1,64 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260721-046-A"
+task_id: "WI-20260721-046"
+job_id: "WJ-20260721-046-A"
+created_utc: "2026-07-22T00:21:21Z"
+completed_utc: "2026-07-22T00:21:21Z"
+status: "completed"
+summary: "Preserved terminal plan history across later live checkout changes while keeping nonterminal repository identity and all evidence boundaries strict."
+changed_files:
+  - "scripts/implementation_control/validate_plan_goal.py"
+  - "tests/test_plan_goal_adapter.py"
+requirements_satisfied:
+  - "Terminal plans continue to validate their immutable bindings, provider evidence, task receipts, accepted changed paths, and absence of executable control without requiring the live checkout to remain at their starting HEAD or topology."
+  - "Every nonterminal plan still fails on live HEAD, repository-binding, topology, lease, worker, packet, or changed-path drift."
+  - "The exact durable bindings for PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001 and PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-002 load from implementation_control/plan_bindings and match their accepted sessions."
+  - "Focused regression tests and npm run validate\u003aplan-goal pass without allowing staged files, unrelated drift, or active-control substitution."
+acceptance_results:
+  - criterion: "Terminal plans continue to validate their immutable bindings, provider evidence, task receipts, accepted changed paths, and absence of executable control without requiring the live checkout to remain at their starting HEAD or topology."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_plan_goal.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "Every nonterminal plan still fails on live HEAD, repository-binding, topology, lease, worker, packet, or changed-path drift."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/validate_plan_goal.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "The exact durable bindings for PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001 and PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-002 load from implementation_control/plan_bindings and match their accepted sessions."
+    status: "passed"
+    evidence_refs:
+      - "implementation_control/plan_bindings/PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001.yaml"
+      - "implementation_control/plan_bindings/PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-002.yaml"
+      - "scripts/implementation_control/validate_plan_goal.py"
+  - criterion: "Focused regression tests and npm run validate\u003aplan-goal pass without allowing staged files, unrelated drift, or active-control substitution."
+    status: "passed"
+    evidence_refs:
+      - "tests/test_plan_goal_adapter.py"
+validator_results:
+  - id: "afdoc-r005-01"
+    command: "python3 -m pytest tests/test_plan_goal_adapter.py -q"
+    status: "passed"
+    evidence: "The repository virtual environment supplied python3 on PATH; 19 focused tests passed in 35.18 seconds."
+  - id: "afdoc-r005-02"
+    command: "npm run validate:plan-goal"
+    status: "passed"
+    evidence: "Live validation passed with exact durable bindings, two historical terminal plans, and the active AFDOC-R005 packet."
+  - id: "afdoc-r005-03"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "git diff --check returned no findings."
+scope_preservation:
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  publication_performed: false
+  upstream_write_performed: false
+  external_effect_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-R005 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

@@ -1,0 +1,53 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260721-043-A"
+task_id: "WI-20260721-043"
+job_id: "WJ-20260721-043-A"
+created_utc: "2026-07-21T23:20:16Z"
+completed_utc: "2026-07-21T23:20:16Z"
+status: "completed"
+summary: "Derived Director-decision source references from the bound relative website task authority record while preserving exact validator argv, and added focused absolute-executable and ordinary-command regression coverage."
+changed_files:
+  - "scripts/implementation_control/plan_goal_adapter.py"
+  - "tests/test_plan_goal_adapter.py"
+requirements_satisfied:
+  - "The compiled DirectorRoute preserves every bound validator command as exact argv and does not copy command text into the pathList evidence source_refs field."
+  - "Director-decision evidence cites the relative implementation-control task authority record, so an absolute executable such as /usr/bin/env compiles without relaxing relative-path validation."
+  - "Focused tests cover absolute-executable and ordinary validator commands, and the repair grants no external effect or broader repository authority."
+acceptance_results:
+  - criterion: "The compiled DirectorRoute preserves every bound validator command as exact argv and does not copy command text into the pathList evidence source_refs field."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/plan_goal_adapter.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "Director-decision evidence cites the relative implementation-control task authority record, so an absolute executable such as /usr/bin/env compiles without relaxing relative-path validation."
+    status: "passed"
+    evidence_refs:
+      - "scripts/implementation_control/plan_goal_adapter.py"
+      - "tests/test_plan_goal_adapter.py"
+  - criterion: "Focused tests cover absolute-executable and ordinary validator commands, and the repair grants no external effect or broader repository authority."
+    status: "passed"
+    evidence_refs:
+      - "tests/test_plan_goal_adapter.py"
+validator_results:
+  - id: "afdoc-r001a-01"
+    command: "python3 -m pytest tests/test_plan_goal_adapter.py -q"
+    status: "passed"
+    evidence: "The repository virtual environment ran the exact validator argv; 18 tests passed in 29.30 seconds."
+  - id: "afdoc-r001a-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "git diff --check returned no findings."
+scope_preservation:
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  publication_performed: false
+  upstream_write_performed: false
+  external_effect_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-R001A receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

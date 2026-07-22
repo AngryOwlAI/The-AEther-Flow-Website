@@ -17,6 +17,7 @@ from typing import Any
 
 DEFAULT_SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/The-AEther-Flow")
 SOURCE_ROOT_ENV_VAR = "AETHER_FLOW_SOURCE_ROOT"
+SOURCE_COMMIT_ENV_VAR = "AETHER_FLOW_SOURCE_COMMIT"
 DEFAULT_JSON_REPORT = Path("curator/reports/latest.json")
 DEFAULT_MD_REPORT = Path("curator/reports/latest.md")
 DEFAULT_ACKNOWLEDGEMENT_DIR = Path("curator/acknowledgements")
@@ -42,6 +43,10 @@ UTC = timezone.utc  # noqa: UP017 - npm scripts may run on system Python 3.9.
 
 def default_source_root() -> Path:
     return Path(os.environ.get(SOURCE_ROOT_ENV_VAR, DEFAULT_SOURCE_ROOT.as_posix()))
+
+
+def default_source_commit() -> str | None:
+    return os.environ.get(SOURCE_COMMIT_ENV_VAR)
 
 
 class CuratorError(ValueError):
@@ -121,6 +126,34 @@ def git_output(repo: Path, *args: str) -> str | None:
     except (FileNotFoundError, subprocess.CalledProcessError):
         return None
     return result.stdout.strip() or None
+
+
+def resolve_source_commit(source_root: Path, requested_commit: str | None) -> str | None:
+    if requested_commit is None:
+        return git_output(source_root, "rev-parse", "HEAD") if source_root.exists() else None
+
+    if re.fullmatch(r"[0-9A-Fa-f]{40}", requested_commit) is None:
+        raise CuratorError("source commit pin must be a full 40-character hex commit")
+    normalized_commit = requested_commit.lower()
+    if not source_root.exists():
+        raise CuratorError("source commit pin cannot be resolved because the source root is missing")
+
+    object_type = git_output(source_root, "cat-file", "-t", normalized_commit)
+    if object_type is None:
+        raise CuratorError(f"source commit pin {normalized_commit} is missing")
+    if object_type != "commit":
+        raise CuratorError(
+            f"source commit pin {normalized_commit} names a {object_type} object, not a commit"
+        )
+    resolved_commit = git_output(
+        source_root,
+        "rev-parse",
+        "--verify",
+        normalized_commit,
+    )
+    if resolved_commit != normalized_commit:
+        raise CuratorError(f"source commit pin {normalized_commit} did not resolve exactly")
+    return resolved_commit
 
 
 def git_blob_bytes(repo: Path, ref: str, source_path: str) -> bytes | None:
@@ -502,6 +535,7 @@ def dependency_report_entry(
     *,
     source_root: Path,
     current_commit: str | None,
+    allow_worktree_fallback: bool = True,
 ) -> dict[str, Any]:
     source_file = source_root / dependency.source_path
     committed_blob = (
@@ -511,7 +545,10 @@ def dependency_report_entry(
     )
     source_missing = (
         not source_root.exists()
-        or (committed_blob is None and not source_file.is_file())
+        or (
+            committed_blob is None
+            and (not allow_worktree_fallback or not source_file.is_file())
+        )
     )
     new_sha: str | None
     if committed_blob is not None:
@@ -548,6 +585,8 @@ def dependency_report_entry(
 def build_diagnostics(
     source_root: Path,
     current_commit: str | None,
+    *,
+    allow_worktree_fallback: bool = True,
 ) -> list[dict[str, str | None]]:
     diagnostics: list[dict[str, str | None]] = []
     if not source_root.exists():
@@ -575,10 +614,11 @@ def build_diagnostics(
     )
     program_state = source_root / "research_control/program_state.yaml"
     current_frontier = source_root / "research_control/current_frontier.md"
-    if program_text is None and program_state.is_file():
-        program_text = program_state.read_text(encoding="utf-8")
-    if frontier_text is None and current_frontier.is_file():
-        frontier_text = current_frontier.read_text(encoding="utf-8")
+    if allow_worktree_fallback:
+        if program_text is None and program_state.is_file():
+            program_text = program_state.read_text(encoding="utf-8")
+        if frontier_text is None and current_frontier.is_file():
+            frontier_text = current_frontier.read_text(encoding="utf-8")
     if program_text is not None and frontier_text is not None:
         latest_handoff = None
         active_task = None
@@ -643,19 +683,28 @@ def validate_private_path_hygiene(
                 raise CuratorError(f"curator report leaks private path {snippet!r}")
 
 
-def build_report(*, repo_root: Path, source_root: Path) -> dict[str, Any]:
+def build_report(
+    *,
+    repo_root: Path,
+    source_root: Path,
+    source_commit: str | None = None,
+) -> dict[str, Any]:
     dependencies = collect_declared_dependencies(repo_root)
-    current_commit = git_output(source_root, "rev-parse", "HEAD") if source_root.exists() else None
+    current_commit = resolve_source_commit(source_root, source_commit)
     current_commit_date = (
-        git_output(source_root, "show", "-s", "--format=%cI", "HEAD")
+        git_output(source_root, "show", "-s", "--format=%cI", current_commit)
         if current_commit
         else None
     )
+    if source_commit is not None and current_commit_date is None:
+        raise CuratorError(f"source commit pin {current_commit} has no readable commit date")
+    allow_worktree_fallback = source_commit is None
     entries = [
         dependency_report_entry(
             dependency,
             source_root=source_root,
             current_commit=current_commit,
+            allow_worktree_fallback=allow_worktree_fallback,
         )
         for dependency in dependencies
     ]
@@ -679,7 +728,11 @@ def build_report(*, repo_root: Path, source_root: Path) -> dict[str, Any]:
         },
         "dependencies": entries,
         "drift_items": drift_items,
-        "diagnostics": build_diagnostics(source_root, current_commit),
+        "diagnostics": build_diagnostics(
+            source_root,
+            current_commit,
+            allow_worktree_fallback=allow_worktree_fallback,
+        ),
     }
     validate_private_path_hygiene(report, repo_root=repo_root, source_root=source_root)
     return report
@@ -835,6 +888,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
     parser.add_argument("--source-root", type=Path, default=default_source_root())
+    parser.add_argument(
+        "--source-commit",
+        default=default_source_commit(),
+        metavar="FULL_COMMIT_SHA",
+        help=(
+            f"Read the source repository at one exact commit "
+            f"(default: ${SOURCE_COMMIT_ENV_VAR}, otherwise live HEAD)."
+        ),
+    )
     parser.add_argument("--json-report", type=Path, default=DEFAULT_JSON_REPORT)
     parser.add_argument("--markdown-report", type=Path, default=DEFAULT_MD_REPORT)
     parser.add_argument("--acknowledgement-dir", type=Path, default=DEFAULT_ACKNOWLEDGEMENT_DIR)
@@ -861,7 +923,11 @@ def main(argv: list[str] | None = None) -> int:
         else repo_root / args.markdown_report
     )
     try:
-        report = build_report(repo_root=repo_root, source_root=args.source_root)
+        report = build_report(
+            repo_root=repo_root,
+            source_root=args.source_root,
+            source_commit=args.source_commit,
+        )
         apply_acknowledgements(
             report,
             repo_root=repo_root,

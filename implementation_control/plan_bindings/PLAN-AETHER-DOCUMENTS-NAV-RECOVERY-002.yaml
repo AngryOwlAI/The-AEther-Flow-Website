@@ -1,0 +1,373 @@
+schema_version: "website.plan-binding.v1"
+record_type: "implementation_plan_binding"
+status: "non_executable"
+plan_id: "PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-002"
+plan_sha256: "73461ef1d227540d768b6fbc9769777deaf928a6f14696eec05b53a484a139f9"
+binding_revision: 1
+tasks:
+  AFDOC-R004:
+    task_id: "AFDOC-R004"
+    task_sha256: "440758f2ff40707ee991dbf40675cc0f5cbc2a3036e528943880bb51afe973a9"
+    packet_ids:
+      task_id: "WI-20260721-045"
+      job_id: "WJ-20260721-045-A"
+      handoff_id: "WH-20260721-045"
+      completion_id: "WJC-20260721-045-A"
+    objective: "Make implementation-control recognize only environment-wrapped or argument-bearing forms of already known validator commands, and accept the canonical inactive no-action state with an empty validator list without weakening active-packet checks."
+    acceptance_criteria:
+      - "Environment-wrapped validators are accepted only when their unwrapped argv is an already known npm, Python-script, pytest, manual-inspection, or git validator command."
+      - "Malformed environment wrappers and wrappers around unknown commands still fail closed, while documented pytest commands may carry explicit test paths and options."
+      - "An inactive or no-action program state may carry an empty required_validators list; active program, task, and job records still require nonempty validated commands."
+    validators:
+      - id: "afdoc-r004-01"
+        command: "python3 -m pytest tests/test_validate_implementation_control.py -q"
+        required: true
+      - id: "afdoc-r004-02"
+        command: "python3 scripts/implementation_control/validate_implementation_control.py"
+        required: true
+      - id: "afdoc-r004-03"
+        command: "git diff --check"
+        required: true
+    allowed_reads:
+      - "AGENTS.md"
+      - "README.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+      - "package.json"
+      - "implementation_control/**"
+      - "curator/**"
+      - "src/**"
+      - "public/**"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/**"
+    allowed_writes:
+      - "scripts/implementation_control/validate_implementation_control.py"
+      - "tests/test_validate_implementation_control.py"
+    approval_gates:
+      - id: "public_claim_changes"
+        status: "not_required"
+        reason: "This packet changes validation or implementation evidence only and cannot strengthen public scientific prose."
+      - id: "source_refresh_uncertainty"
+        status: "not_required"
+        reason: "This packet does not refresh or reinterpret upstream scientific sources."
+      - id: "broad_navigation_or_route_retirement"
+        status: "not_required"
+        reason: "This packet does not change reader routes or navigation."
+      - id: "shared_visual_systems"
+        status: "not_required"
+        reason: "This packet does not change visual systems."
+      - id: "public_downloadable_assets"
+        status: "not_required"
+        reason: "This packet does not change downloadable assets."
+      - id: "public_manifest_authority_records"
+        status: "not_required"
+        reason: "This packet does not change public manifests or authority records."
+      - id: "git_push"
+        status: "not_required"
+        reason: "The recovery plan withholds push authority."
+      - id: "cloudflare_deployment"
+        status: "not_required"
+        reason: "The recovery plan withholds deployment authority."
+      - id: "upstream_source_project_writes"
+        status: "blocked"
+        reason: "Every upstream source-project write remains forbidden."
+    stop_conditions:
+      - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+      - "A required write or protected effect falls outside this exact binding."
+      - "The change would accept an unknown underlying validator command or weaken active-packet validator requirements."
+      - "The task cannot fit one worker discussion and one AgentJob."
+      - "Validation fails without a bounded evidence-supported repair inside this packet."
+    checkpoint_rights:
+      stage: false
+      commit: false
+      branch: false
+      worktree: false
+      push: false
+      deploy: false
+    execution_role:
+      role_id: "website-documents-recovery-task-engineer"
+      role_version: "1.0.0"
+      responsibilities:
+        - "Re-check live repository and website-control evidence before editing or validation."
+        - "Execute only the selected recovery task within its exact path and gate boundary."
+        - "Produce direct acceptance and validator evidence for the coordinator."
+      may_not:
+        - "Execute or select another plan task."
+        - "Create a branch or worktree or change repository binding."
+        - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+        - "Strengthen scientific or authority claims."
+    authority_sha256: "3570162361684b50053f2b167163ba3f1c4ae1ceace06f56691a6978474dbb48"
+  AFDOC-R005:
+    task_id: "AFDOC-R005"
+    task_sha256: "a14817faf98b5898d6f95e3e03a5bcbc3cfa4f8ce531a2a44c16f6608205eb47"
+    packet_ids:
+      task_id: "WI-20260721-046"
+      job_id: "WJ-20260721-046-A"
+      handoff_id: "WH-20260721-046"
+      completion_id: "WJC-20260721-046-A"
+    objective: "Make plan-goal validation treat terminal plan repository identity as historical receipt evidence while continuing to enforce current HEAD and topology for every nonterminal plan, using durable exact binding files for all plans."
+    acceptance_criteria:
+      - "Terminal plans continue to validate their immutable bindings, provider evidence, task receipts, accepted changed paths, and absence of executable control without requiring the live checkout to remain at their starting HEAD or topology."
+      - "Every nonterminal plan still fails on live HEAD, repository-binding, topology, lease, worker, packet, or changed-path drift."
+      - "The exact durable bindings for PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001 and PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-002 load from implementation_control/plan_bindings and match their accepted sessions."
+      - "Focused regression tests and npm run validate\u003aplan-goal pass without allowing staged files, unrelated drift, or active-control substitution."
+    validators:
+      - id: "afdoc-r005-01"
+        command: "python3 -m pytest tests/test_plan_goal_adapter.py -q"
+        required: true
+      - id: "afdoc-r005-02"
+        command: "npm run validate:plan-goal"
+        required: true
+      - id: "afdoc-r005-03"
+        command: "git diff --check"
+        required: true
+    allowed_reads:
+      - "AGENTS.md"
+      - "README.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+      - "package.json"
+      - "implementation_control/**"
+      - "curator/**"
+      - "src/**"
+      - "public/**"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/**"
+    allowed_writes:
+      - "scripts/implementation_control/validate_plan_goal.py"
+      - "tests/test_plan_goal_adapter.py"
+    approval_gates:
+      - id: "public_claim_changes"
+        status: "not_required"
+        reason: "This packet changes validation or implementation evidence only and cannot strengthen public scientific prose."
+      - id: "source_refresh_uncertainty"
+        status: "not_required"
+        reason: "This packet does not refresh or reinterpret upstream scientific sources."
+      - id: "broad_navigation_or_route_retirement"
+        status: "not_required"
+        reason: "This packet does not change reader routes or navigation."
+      - id: "shared_visual_systems"
+        status: "not_required"
+        reason: "This packet does not change visual systems."
+      - id: "public_downloadable_assets"
+        status: "not_required"
+        reason: "This packet does not change downloadable assets."
+      - id: "public_manifest_authority_records"
+        status: "not_required"
+        reason: "This packet does not change public manifests or authority records."
+      - id: "git_push"
+        status: "not_required"
+        reason: "The recovery plan withholds push authority."
+      - id: "cloudflare_deployment"
+        status: "not_required"
+        reason: "The recovery plan withholds deployment authority."
+      - id: "upstream_source_project_writes"
+        status: "blocked"
+        reason: "Every upstream source-project write remains forbidden."
+    stop_conditions:
+      - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+      - "A required write or protected effect falls outside this exact binding."
+      - "The change would relax live identity, topology, staged-file, unrelated-drift, lease, worker, packet, or changed-path validation for a nonterminal plan."
+      - "The task cannot fit one worker discussion and one AgentJob."
+      - "Validation fails without a bounded evidence-supported repair inside this packet."
+    checkpoint_rights:
+      stage: false
+      commit: false
+      branch: false
+      worktree: false
+      push: false
+      deploy: false
+    execution_role:
+      role_id: "website-documents-recovery-task-engineer"
+      role_version: "1.0.0"
+      responsibilities:
+        - "Re-check live repository and website-control evidence before editing or validation."
+        - "Execute only the selected recovery task within its exact path and gate boundary."
+        - "Produce direct acceptance and validator evidence for the coordinator."
+      may_not:
+        - "Execute or select another plan task."
+        - "Create a branch or worktree or change repository binding."
+        - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+        - "Strengthen scientific or authority claims."
+    authority_sha256: "12c9f2033412418f031fd5a3bf9168ce3af6bb54923f4777c533bc86791e26f6"
+  AFDOC-R006:
+    task_id: "AFDOC-R006"
+    task_sha256: "7aa573dc1a32ef4b1de9deaa084f2e4db3cfcf737714644002bf11c1294e78fa"
+    packet_ids:
+      task_id: "WI-20260721-047"
+      job_id: "WJ-20260721-047-A"
+      handoff_id: "WH-20260721-047"
+      completion_id: "WJC-20260721-047-A"
+    objective: "Run one post-repair aggregate repository validation with curator input pinned to the reviewed AFDOC-038 upstream commit, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+    acceptance_criteria:
+      - "The post-repair aggregate npm run validate command is invoked exactly once with AETHER_FLOW_SOURCE_COMMIT fixed to c6aa66b9a7412f14c6573dd0467b82ea11310c20 and passes."
+      - "Curator, implementation-control, plan-goal, plan-goal tests, build, and every earlier aggregate stage pass against the final bounded website state."
+      - "The validation-only task changes no repository file or external system and performs no branch, worktree, stage, commit, push, deployment, upstream write, or publication."
+    validators:
+      - id: "afdoc-r006-01"
+        command: "/usr/bin/env AETHER_FLOW_SOURCE_COMMIT=c6aa66b9a7412f14c6573dd0467b82ea11310c20 npm run validate"
+        required: true
+      - id: "afdoc-r006-02"
+        command: "git diff --check"
+        required: true
+    allowed_reads:
+      - "AGENTS.md"
+      - "README.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+      - "package.json"
+      - "implementation_control/**"
+      - "curator/**"
+      - "src/**"
+      - "public/**"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/**"
+    allowed_writes: []
+    approval_gates:
+      - id: "public_claim_changes"
+        status: "not_required"
+        reason: "This packet changes validation or implementation evidence only and cannot strengthen public scientific prose."
+      - id: "source_refresh_uncertainty"
+        status: "approved"
+        reason: "The aggregate is pinned to the exact already reviewed upstream commit."
+      - id: "broad_navigation_or_route_retirement"
+        status: "not_required"
+        reason: "This packet does not change reader routes or navigation."
+      - id: "shared_visual_systems"
+        status: "not_required"
+        reason: "This packet does not change visual systems."
+      - id: "public_downloadable_assets"
+        status: "not_required"
+        reason: "This packet does not change downloadable assets."
+      - id: "public_manifest_authority_records"
+        status: "not_required"
+        reason: "This packet does not change public manifests or authority records."
+      - id: "git_push"
+        status: "not_required"
+        reason: "The recovery plan withholds push authority."
+      - id: "cloudflare_deployment"
+        status: "not_required"
+        reason: "The recovery plan withholds deployment authority."
+      - id: "upstream_source_project_writes"
+        status: "blocked"
+        reason: "Every upstream source-project write remains forbidden."
+    stop_conditions:
+      - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+      - "The pinned upstream commit is absent, ambiguous, or does not resolve to c6aa66b9a7412f14c6573dd0467b82ea11310c20."
+      - "A required write or protected effect falls outside this exact binding."
+      - "The aggregate validator fails; no repair or rerun is authorized in this validation-only packet."
+      - "The task cannot fit one worker discussion and one AgentJob."
+    checkpoint_rights:
+      stage: false
+      commit: false
+      branch: false
+      worktree: false
+      push: false
+      deploy: false
+    execution_role:
+      role_id: "website-documents-recovery-task-engineer"
+      role_version: "1.0.0"
+      responsibilities:
+        - "Re-check live repository and website-control evidence before editing or validation."
+        - "Execute only the selected recovery task within its exact path and gate boundary."
+        - "Produce direct acceptance and validator evidence for the coordinator."
+      may_not:
+        - "Execute or select another plan task."
+        - "Create a branch or worktree or change repository binding."
+        - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+        - "Strengthen scientific or authority claims."
+    authority_sha256: "84192dd3d8d260e7615070c9e33b9570d69ec398cee3934cd7a0d1881488ee88"
+  AFDOC-R007:
+    task_id: "AFDOC-R007"
+    task_sha256: "799820afc8573dc9824ff8a9dba364e14e278189f50eda995eb9fbd223c3f997"
+    packet_ids:
+      task_id: "WI-20260721-048"
+      job_id: "WJ-20260721-048-A"
+      handoff_id: "WH-20260721-048"
+      completion_id: "WJC-20260721-048-A"
+    objective: "Record the completed Documents route, navigation, importer, manifest, provenance, curator, control-validation, and aggregate results together with the immutable source snapshot and external-effect status."
+    acceptance_criteria:
+      - "A maintainer can reconstruct moved, consolidated, redirected, and retired routes, the curator source pin, the control-runtime repairs, and the checks actually run."
+      - "The completion record identifies the passing post-repair aggregate receipt and distinguishes the reviewed source snapshot from the later moving upstream checkout."
+      - "Commit, push, deployment, upstream mutation, scientific claim promotion, and publication are not implied; only directly evidenced effects are recorded."
+    validators:
+      - id: "afdoc-r007-01"
+        command: "manual inspection of the Documents migration completion record including changed routes validation evidence source pin control repairs skipped checks and external-effect status"
+        required: true
+      - id: "afdoc-r007-02"
+        command: "git diff --check"
+        required: true
+    allowed_reads:
+      - "AGENTS.md"
+      - "README.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+      - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+      - "package.json"
+      - "implementation_control/**"
+      - "curator/**"
+      - "src/**"
+      - "public/**"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/**"
+    allowed_writes:
+      - "docs/quality/documents-navigation-migration-completion.md"
+    approval_gates:
+      - id: "public_claim_changes"
+        status: "not_required"
+        reason: "This packet changes validation or implementation evidence only and cannot strengthen public scientific prose."
+      - id: "source_refresh_uncertainty"
+        status: "not_required"
+        reason: "This packet does not refresh or reinterpret upstream scientific sources."
+      - id: "broad_navigation_or_route_retirement"
+        status: "not_required"
+        reason: "This packet does not change reader routes or navigation."
+      - id: "shared_visual_systems"
+        status: "not_required"
+        reason: "This packet does not change visual systems."
+      - id: "public_downloadable_assets"
+        status: "not_required"
+        reason: "This packet does not change downloadable assets."
+      - id: "public_manifest_authority_records"
+        status: "not_required"
+        reason: "This packet does not change public manifests or authority records."
+      - id: "git_push"
+        status: "not_required"
+        reason: "The recovery plan withholds push authority."
+      - id: "cloudflare_deployment"
+        status: "not_required"
+        reason: "The recovery plan withholds deployment authority."
+      - id: "upstream_source_project_writes"
+        status: "blocked"
+        reason: "Every upstream source-project write remains forbidden."
+    stop_conditions:
+      - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+      - "The post-repair aggregate validation receipt is missing, failed, or inconsistent with the pinned source commit."
+      - "A required write or protected effect falls outside this exact binding."
+      - "The record would imply an unperformed release, upstream mutation, or scientific claim promotion."
+      - "The task cannot fit one worker discussion and one AgentJob."
+      - "Validation fails without a bounded evidence-supported repair inside this packet."
+    checkpoint_rights:
+      stage: false
+      commit: false
+      branch: false
+      worktree: false
+      push: false
+      deploy: false
+    execution_role:
+      role_id: "website-documents-recovery-task-engineer"
+      role_version: "1.0.0"
+      responsibilities:
+        - "Re-check live repository and website-control evidence before editing or validation."
+        - "Execute only the selected recovery task within its exact path and gate boundary."
+        - "Produce direct acceptance and validator evidence for the coordinator."
+      may_not:
+        - "Execute or select another plan task."
+        - "Create a branch or worktree or change repository binding."
+        - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+        - "Strengthen scientific or authority claims."
+    authority_sha256: "cc0307c4f6cad850f6279dca1a3c218e3565e03f6d507b6ddb1ac222246b4702"
+manifest_sha256: "4de214cd803586eb2dd37e844f9a0b5e770b67165677008f367354d7ffed10ee"

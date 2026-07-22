@@ -114,12 +114,14 @@ from agentjob_runtime.plan.prompts import (  # noqa: E402
 )
 from agentjob_runtime.plan.sqlite_store import SQLitePlanStore  # noqa: E402
 from agentjob_runtime.plan.worker import (  # noqa: E402
+    PlanTaskContinueInvocation,
     PlanWorkerPreclaim,
     _build_receipt,
     _unknown_continue_diagnostic,
     _unknown_continue_result,
+    _validate_authority_record,
     claim_plan_task_generation,
-    compile_plan_task_continue_invocation,
+    compile_plan_task_continue_invocation as compile_runtime_plan_task_invocation,
 )
 from agentjob_runtime.plan.verify import (  # noqa: E402
     verify_plan_task_result,
@@ -3572,6 +3574,11 @@ def compile_binding_director_route(
 
     task = copy.deepcopy(dict(task_definition))
     entry = copy.deepcopy(dict(binding))
+    packet_ids = entry["packet_ids"]
+    task_authority_ref = (
+        "implementation_control/tasks/"
+        f"{packet_ids['task_id']}/00_TASK.yaml"
+    )
     validators = [
         {
             "validator_id": str(item["id"]),
@@ -3599,7 +3606,6 @@ def compile_binding_director_route(
     ]
     generated_paths: list[str] = []
     if not controlled_outputs:
-        packet_ids = entry["packet_ids"]
         completion_path = (
             "implementation_control/tasks/"
             f"{packet_ids['task_id']}/jobs/completions/"
@@ -3630,7 +3636,7 @@ def compile_binding_director_route(
         job_spec={
             "actor_ref": "website:implementation-plan-goal-adapter",
             "policy_refs": [ADAPTER_CONFIG_RELATIVE.as_posix()],
-            "source_refs": list(task["validation_refs"]),
+            "source_refs": [task_authority_ref],
             "objective": task["objective"],
             "authority": {
                 "allowed_read_paths": list(entry["allowed_reads"]),
@@ -3715,6 +3721,84 @@ def compile_binding_director_route(
     )
 
 
+def compile_binding_plan_task_invocation(
+    *,
+    preclaim: PlanWorkerPreclaim,
+    plan_record: Mapping[str, Any],
+    envelope: Mapping[str, Any],
+    selected_task_definition: Mapping[str, Any],
+    resolved_task_id: str,
+    director_route: DirectorRoute,
+    timestamp: str,
+) -> PlanTaskContinueInvocation:
+    """Compile command validators without treating commands as path evidence."""
+
+    task = copy.deepcopy(dict(selected_task_definition))
+    original_validation_refs = list(task.get("validation_refs", []))
+    required_validators = list(
+        director_route.job_spec.get("validators", {}).get("required", [])
+    )
+    source_refs = list(director_route.job_spec.get("source_refs", []))
+    if (
+        len(source_refs) != 1
+        or len(original_validation_refs) != len(required_validators)
+    ):
+        raise RecordValidationError(
+            "website task compiler requires one task authority source and "
+            "one validation reference per validator",
+            details={"reason_code": "plan_task.authority_packet_invalid"},
+        )
+
+    # The generic compiler historically reused validation_refs as the
+    # DirectorDecision pathList.  Give that validation stage bounded relative
+    # placeholders, then restore the canonical validation metadata and replace
+    # the decision evidence with the actual website task authority record.
+    task["validation_refs"] = [
+        f"{source_refs[0]}.validator-{index}"
+        for index in range(len(required_validators))
+    ]
+    compiled = compile_runtime_plan_task_invocation(
+        preclaim=preclaim,
+        plan_record=plan_record,
+        envelope=envelope,
+        selected_task_definition=task,
+        resolved_task_id=resolved_task_id,
+        director_route=director_route,
+        timestamp=timestamp,
+    )
+    invocation = compiled.as_dict()
+    invocation["authority_packet"]["decision"]["evidence"][
+        "source_refs"
+    ] = source_refs
+    invocation["task_binding"]["validation_refs"] = (
+        original_validation_refs
+    )
+    for validation_ref, mapping in zip(
+        original_validation_refs,
+        invocation["execution_mapping"]["validators"],
+        strict=True,
+    ):
+        mapping["validation_ref"] = validation_ref
+    _validate_authority_record(
+        invocation["authority_packet"]["decision"],
+        schema_name="director-decision.schema.json",
+    )
+    invocation["invocation_content_sha256"] = content_sha256(
+        {
+            key: value
+            for key, value in invocation.items()
+            if key != "invocation_content_sha256"
+        }
+    )
+    return PlanTaskContinueInvocation(
+        preclaim.plan_id,
+        preclaim.task_id,
+        preclaim.generation,
+        content_sha256(invocation),
+        invocation,
+    )
+
+
 def worker_consume(
     *,
     plan_id: str,
@@ -3789,7 +3873,7 @@ def worker_consume(
     entry = resolved_binding["entry"]
     execution_definition = resolved_binding["task_definition"]
     preclaim = PlanWorkerPreclaim(**dict(worker["preclaim"]))
-    compiled = compile_plan_task_continue_invocation(
+    compiled = compile_binding_plan_task_invocation(
         preclaim=preclaim,
         plan_record=record,
         envelope=envelope,

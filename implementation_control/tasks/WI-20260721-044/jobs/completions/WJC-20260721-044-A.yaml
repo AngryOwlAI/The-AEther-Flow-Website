@@ -1,0 +1,65 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260721-044-A"
+task_id: "WI-20260721-044"
+job_id: "WJ-20260721-044-A"
+created_utc: "2026-07-21T23:32:46Z"
+completed_utc: "2026-07-21T23:32:46Z"
+status: "completed"
+summary: "Added explicit immutable upstream commit selection through the environment or CLI, rejected malformed, missing, and non-commit objects, prevented pinned reads from falling back to the live worktree, and added moving-HEAD regression coverage."
+changed_files:
+  - "scripts/run_curator.py"
+  - "tests/test_curator_reports.py"
+  - "tests/test_curator_acknowledgements.py"
+requirements_satisfied:
+  - "The curator accepts an explicit full upstream commit through AETHER_FLOW_SOURCE_COMMIT or --source-commit and records that exact resolved commit and commit date."
+  - "An invalid, missing, or non-commit pin fails closed; omitting the pin preserves the existing live-HEAD behavior."
+  - "Focused tests prove that advancing upstream HEAD does not change a report or invalidate exact acknowledgements when the earlier reviewed commit is pinned."
+  - "The checked-in AFDOC-038 curator report and all 58 exact acknowledgements pass against c6aa66b9a7412f14c6573dd0467b82ea11310c20 without rewriting scientific content or curator evidence."
+acceptance_results:
+  - criterion: "The curator accepts an explicit full upstream commit through AETHER_FLOW_SOURCE_COMMIT or --source-commit and records that exact resolved commit and commit date."
+    status: "passed"
+    evidence_refs:
+      - "scripts/run_curator.py"
+      - "tests/test_curator_reports.py"
+  - criterion: "An invalid, missing, or non-commit pin fails closed; omitting the pin preserves the existing live-HEAD behavior."
+    status: "passed"
+    evidence_refs:
+      - "scripts/run_curator.py"
+      - "tests/test_curator_acknowledgements.py"
+      - "tests/test_curator_reports.py"
+  - criterion: "Focused tests prove that advancing upstream HEAD does not change a report or invalidate exact acknowledgements when the earlier reviewed commit is pinned."
+    status: "passed"
+    evidence_refs:
+      - "tests/test_curator_acknowledgements.py"
+  - criterion: "The checked-in AFDOC-038 curator report and all 58 exact acknowledgements pass against c6aa66b9a7412f14c6573dd0467b82ea11310c20 without rewriting scientific content or curator evidence."
+    status: "passed"
+    evidence_refs:
+      - "curator/reports/latest.json"
+      - "curator/acknowledgements"
+validator_results:
+  - id: "afdoc-r001b-01"
+    command: "python3 -m pytest tests/test_curator_reports.py tests/test_curator_acknowledgements.py -q"
+    status: "passed"
+    evidence: "The existing repository virtual environment supplied python3 on PATH and ran the exact validator argv; 17 tests passed in 1.68 seconds."
+  - id: "afdoc-r001b-02"
+    command: "env AETHER_FLOW_SOURCE_COMMIT=c6aa66b9a7412f14c6573dd0467b82ea11310c20 python3 scripts/run_curator.py --check"
+    status: "passed"
+    evidence: "Curator report validation passed against the exact reviewed upstream commit with all checked-in acknowledgements unchanged."
+  - id: "afdoc-r001b-03"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "git diff --check returned no findings."
+scope_preservation:
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  publication_performed: false
+  upstream_write_performed: false
+  external_effect_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-R001B receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task."

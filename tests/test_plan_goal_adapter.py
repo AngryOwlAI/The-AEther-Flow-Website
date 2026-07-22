@@ -10,7 +10,10 @@ from typing import Any
 
 import pytest
 
-from scripts.implementation_control import plan_goal_adapter as adapter_module
+from scripts.implementation_control import (
+    plan_goal_adapter as adapter_module,
+    validate_plan_goal as validation_module,
+)
 from scripts.implementation_control.continue_implementation import load_yaml
 from scripts.implementation_control.plan_goal_adapter import (
     ADAPTER_CONFIG_RELATIVE,
@@ -52,6 +55,7 @@ from agentjob_runtime.adapters.protocols import (
 )
 from scripts.implementation_control.validate_plan_goal import (
     ValidationReport,
+    _selected_control_plan_id,
     validate_repository_boundary,
 )
 
@@ -96,7 +100,12 @@ def _copy_file(source: Path, target: Path) -> None:
     shutil.copy2(source, target)
 
 
-def make_project(tmp_path: Path, *, task_count: int = 2) -> ProjectFixture:
+def make_project(
+    tmp_path: Path,
+    *,
+    task_count: int = 2,
+    first_task_validator_commands: list[str] | None = None,
+) -> ProjectFixture:
     root = tmp_path / "website"
     root.mkdir()
     shutil.copytree(
@@ -164,6 +173,11 @@ def make_project(tmp_path: Path, *, task_count: int = 2) -> ProjectFixture:
     task_ids = [f"TASK-{index:03d}" for index in range(1, task_count + 1)]
     tasks = []
     for index, task_id in enumerate(task_ids, start=1):
+        validation_refs = (
+            list(first_task_validator_commands)
+            if index == 1 and first_task_validator_commands is not None
+            else [f"evidence/task-{index}.txt"]
+        )
         tasks.append(
             {
                 "task_id": task_id,
@@ -175,7 +189,7 @@ def make_project(tmp_path: Path, *, task_count: int = 2) -> ProjectFixture:
                 "acceptance_criteria": [
                     f"Task {index} has direct completion evidence."
                 ],
-                "validation_refs": [f"evidence/task-{index}.txt"],
+                "validation_refs": validation_refs,
                 "execution_budget": {
                     "one_task_per_discussion": True,
                     "max_continue_invocations": 1,
@@ -234,10 +248,17 @@ def make_project(tmp_path: Path, *, task_count: int = 2) -> ProjectFixture:
             "acceptance_criteria": task["acceptance_criteria"],
             "validators": [
                 {
-                    "id": f"validator-task-{index}",
-                    "command": task["validation_refs"][0],
+                    "id": (
+                        f"validator-task-{index}"
+                        if len(task["validation_refs"]) == 1
+                        else f"validator-task-{index}-{validator_index}"
+                    ),
+                    "command": command,
                     "required": True,
                 }
+                for validator_index, command in enumerate(
+                    task["validation_refs"], start=1
+                )
             ],
             "allowed_reads": ["package.json", "implementation_control/**"],
             "allowed_writes": [f"artifacts/task-{index}.txt"],
@@ -752,6 +773,73 @@ def test_director_route_uses_binding_authority_not_plan_prose(tmp_path: Path):
         set(route.job_spec["authority"]["allowed_actions"])
         & {"repository-branch-create", "repository-worktree-create"}
     )
+
+
+def test_worker_compiles_validator_commands_as_argv_not_source_paths(
+    tmp_path: Path,
+):
+    commands = [
+        "/usr/bin/env python3 -m pytest tests/test_plan_goal_adapter.py -q",
+        "git diff --check",
+    ]
+    fixture = make_project(
+        tmp_path,
+        task_count=1,
+        first_task_validator_commands=commands,
+    )
+    _, activation = activate_fixture(fixture)
+    adopted = adopt_worker(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=activation["plan_revision"],
+        expected_control_sha256=activation["website_control_sha256"],
+        creation_status="returned",
+        codex_task_id="worker-thread-command-refs",
+        effective_reasoning_effort="max",
+        profile_evidence_ref="host:worker-thread-command-refs:max",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:01:00Z",
+    )
+    claim = worker_prepare(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=adopted["plan_revision"],
+        expected_control_sha256=activation["website_control_sha256"],
+        current_thread_id="worker-thread-command-refs",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:02:00Z",
+    )
+    consumed = worker_consume(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=claim["plan_revision"],
+        expected_control_sha256=activation["website_control_sha256"],
+        current_thread_id="worker-thread-command-refs",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:03:00Z",
+    )
+
+    compiled = consumed["compiled_invocation"]
+    approved = compiled["authority_packet"]["agent_job"]["commands"][
+        "approved"
+    ]
+    assert [item["argv"] for item in approved] == [
+        [
+            "/usr/bin/env",
+            "python3",
+            "-m",
+            "pytest",
+            "tests/test_plan_goal_adapter.py",
+            "-q",
+        ],
+        ["git", "diff", "--check"],
+    ]
+    source_refs = compiled["authority_packet"]["decision"]["evidence"][
+        "source_refs"
+    ]
+    assert source_refs == [
+        "implementation_control/tasks/WI-20990101-001/00_TASK.yaml"
+    ]
+    assert not set(commands) & set(source_refs)
 
 
 def test_director_route_uses_receipt_output_for_zero_write_task(
@@ -1375,3 +1463,176 @@ def test_repository_validation_rejects_open_intent_and_topology_change(
         "topology changed" in error
         for error in topology_report.errors
     )
+
+    package = fixture.root / "package.json"
+    package.write_text(
+        package.read_text(encoding="utf-8") + "\n",
+        encoding="utf-8",
+    )
+    _run(fixture.root, "git", "add", "package.json")
+    _run(fixture.root, "git", "commit", "-m", "unauthorized head drift")
+    head_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        head_report,
+        allow_active_packet=False,
+    )
+    assert any(
+        "website HEAD differs from accepted plan binding" in error
+        for error in head_report.errors
+    )
+
+
+def test_terminal_plan_keeps_historical_evidence_without_pinning_live_checkout(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    _, activation = activate_fixture(fixture)
+    adopted = adopt_worker(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=activation["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        creation_status="returned",
+        codex_task_id="worker-thread-terminal-history",
+        effective_reasoning_effort="max",
+        profile_evidence_ref="host:worker-thread-terminal-history:max",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:01:00Z",
+    )
+    claimed = worker_prepare(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=adopted["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-terminal-history",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:02:00Z",
+    )
+    consumed = worker_consume(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=claimed["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-terminal-history",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:03:00Z",
+    )
+    active_control = WebsiteControlStore(fixture.root).snapshot()
+    assert active_control.resolver["status"] == "ready"
+    assert _selected_control_plan_id(active_control) == fixture.plan["plan_id"]
+    failed = worker_fail(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=consumed["plan_revision"],
+        expected_control_sha256=activation[
+            "website_control_sha256"
+        ],
+        current_thread_id="worker-thread-terminal-history",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        validator_results={"validator-task-1": "fail"},
+        failure_summary="The synthetic required validator failed.",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:04:00Z",
+    )
+    assert failed["plan_phase"] == "terminal_validation_failed"
+
+    package = fixture.root / "package.json"
+    package.write_text(
+        package.read_text(encoding="utf-8") + "\n",
+        encoding="utf-8",
+    )
+    _run(fixture.root, "git", "add", "package.json")
+    _run(fixture.root, "git", "commit", "-m", "advance after terminal plan")
+    _run(fixture.root, "git", "branch", "post-terminal-topology")
+
+    terminal_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        terminal_report,
+        allow_active_packet=False,
+    )
+    assert terminal_report.errors == []
+
+    with monkeypatch.context() as control_patch:
+        control_patch.setattr(
+            validation_module.WebsiteControlStore,
+            "snapshot",
+            lambda self: active_control,
+        )
+        active_control_report = ValidationReport()
+        validate_repository_boundary(
+            fixture.root,
+            active_control_report,
+            allow_active_packet=False,
+        )
+        assert any(
+            "terminal plan retains executable website control" in error
+            for error in active_control_report.errors
+        ), active_control_report.errors
+
+    unrelated = fixture.root / "src/unrelated.ts"
+    unrelated.parent.mkdir(parents=True)
+    unrelated.write_text("export const drift = true;\n", encoding="utf-8")
+    drift_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        drift_report,
+        allow_active_packet=False,
+    )
+    assert any("src/unrelated.ts" in error for error in drift_report.errors)
+    unrelated.unlink()
+
+    original_binding = fixture.binding_path.read_bytes()
+    fixture.binding_path.write_bytes(
+        original_binding.replace(b"binding_revision: 1", b"binding_revision: 2")
+    )
+    binding_report = ValidationReport()
+    validate_repository_boundary(
+        fixture.root,
+        binding_report,
+        allow_active_packet=False,
+    )
+    assert any(
+        "plan binding is invalid" in error
+        for error in binding_report.errors
+    )
+    fixture.binding_path.write_bytes(original_binding)
+
+    store = validation_module.PlanControlStore(
+        fixture.root,
+        read_only=True,
+    ).require_store()
+    valid_receipts = store.list_receipts(fixture.plan["plan_id"])
+    invalid_receipts = copy.deepcopy(valid_receipts)
+    invalid_receipts[0]["finalized"] = False
+    store_type = type(store)
+    original_list_receipts = store_type.list_receipts
+
+    def list_invalid_receipts(self, plan_id: str):
+        if plan_id == fixture.plan["plan_id"]:
+            return copy.deepcopy(invalid_receipts)
+        return original_list_receipts(self, plan_id)
+
+    with monkeypatch.context() as receipt_patch:
+        receipt_patch.setattr(
+            store_type,
+            "list_receipts",
+            list_invalid_receipts,
+        )
+        receipt_report = ValidationReport()
+        validate_repository_boundary(
+            fixture.root,
+            receipt_report,
+            allow_active_packet=False,
+        )
+        assert any(
+            "terminal task receipt is invalid" in error
+            for error in receipt_report.errors
+        )

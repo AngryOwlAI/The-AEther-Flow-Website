@@ -1,0 +1,110 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260721-041"
+title: "Run exactly one aggregate repository validation with curator input pinned to the already reviewed AFDOC-038 upstream commit, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+created_utc: "2026-07-21T23:35:17Z"
+updated_utc: "2026-07-21T23:40:09Z"
+status: "superseded"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001"
+  plan_sha256: "c86c9c3e16c51cb3cb86b6df4b42c92c5a3319c01ba75987e8f557e0b1bf1db7"
+  plan_task_id: "AFDOC-R002"
+  plan_task_sha256: "f4f7e1cfaebed728337c32b06f4100210d82d8161c22cd7f258a7559b7b0e647"
+  binding_manifest_sha256: "0bd856c347d747d3b615492310584d337be02e3e00d7cdae248a4e88dcf66806"
+  authority_sha256: "6179f9208d157744d713a5b2bc8d9079de2df4d924326a19d71b238c2f574f5b"
+  implementation_authority: "implementation_control only"
+goal: "Run exactly one aggregate repository validation with curator input pinned to the already reviewed AFDOC-038 upstream commit, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+requirements:
+  - "The aggregate npm run validate command is invoked exactly once with AETHER_FLOW_SOURCE_COMMIT fixed to c6aa66b9a7412f14c6573dd0467b82ea11310c20 and passes against the final bounded implementation state."
+  - "The curator gate resolves the 58 exact acknowledgements against their reviewed source snapshot even if the upstream checkout HEAD advances concurrently."
+  - "The validation-only task changes no repository file or external system and performs no branch, worktree, stage, commit, push, deployment, upstream write, or publication."
+scope:
+  in_scope: []
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "package.json"
+    - "implementation_control/**"
+    - "curator/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository: []
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This validation-only packet changes no public claim."
+  source_refresh_uncertainty:
+    status: "approved"
+    reason: "The user authorized read-only curator reconciliation and this validator uses the exact reviewed upstream commit."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This validation-only packet changes no route or navigation."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This validation-only packet changes no visual system."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This validation-only packet changes no downloadable asset."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This validation-only packet changes no public manifest."
+  git_push:
+    status: "not_required"
+    reason: "The recovery plan withholds push authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The recovery plan withholds deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Every upstream source-project write remains forbidden."
+required_validators:
+  - id: "afdoc-r002-01"
+    command: "/usr/bin/env AETHER_FLOW_SOURCE_COMMIT=c6aa66b9a7412f14c6573dd0467b82ea11310c20 npm run validate"
+    required: true
+  - id: "afdoc-r002-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "The pinned upstream commit is absent, ambiguous, or does not resolve to the exact reviewed commit."
+  - "A required write or protected effect falls outside this exact binding."
+  - "The aggregate validator fails; no repair or rerun is authorized in this validation-only packet."
+  - "The task cannot fit one worker discussion and one AgentJob."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-documents-recovery-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before validation."
+    - "Execute only the selected recovery task and run the aggregate command exactly once."
+    - "Record direct pass or failure evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+    - "Repair or rerun a failed aggregate validator."
+handoff:
+  latest_handoff_id: "WH-20260721-041"
+  yaml_path: "implementation_control/handoffs/WH-20260721-041.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260721-041.md"
+next_recommended_action:
+  task_packet: "AFDOC-R002"
+  summary: "Run exactly one aggregate repository validation with curator input pinned to the already reviewed AFDOC-038 upstream commit, record direct pass or failure evidence without repair or rerun, and preserve the release boundary."
+  do_not_skip: "Do not broaden the hash-bound website packet."

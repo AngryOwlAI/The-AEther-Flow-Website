@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shlex
 import sys
 from dataclasses import dataclass
@@ -58,11 +59,10 @@ CHECKPOINT_COMMAND = (
     "python3 scripts/implementation_control/checkpoint_implementation_transaction.py"
 )
 
-DOCUMENTED_STANDALONE_COMMANDS = {
-    ".venv/bin/python -m pytest",
-    "git diff --check",
-    "python3 -m pytest",
-}
+PYTHON_EXECUTABLES = {"python3", "python", ".venv/bin/python"}
+ENVIRONMENT_EXECUTABLES = {"env", "/usr/bin/env"}
+ENVIRONMENT_ASSIGNMENT_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*=.*$", re.DOTALL)
+SHELL_CONTROL_RE = re.compile(r"(?:[;|&<>]|`|\$\(|\x00)")
 
 RISKY_WRITE_RULES = (
     ("public_manifest_authority_records", "public/files/manifests"),
@@ -271,15 +271,32 @@ def validate_allowed_writes(
             )
 
 
-def command_references_existing_script(command: str, repo_root: Path) -> bool:
-    try:
-        parts = shlex.split(command)
-    except ValueError:
-        return False
+def unwrap_environment_argv(parts: list[str]) -> list[str] | None:
+    if not parts:
+        return None
+
+    index = 0
+    if parts[0] in ENVIRONMENT_EXECUTABLES:
+        index = 1
+        if index < len(parts) and parts[index] == "--":
+            index += 1
+        if index < len(parts) and parts[index].startswith("-"):
+            return None
+    elif not ENVIRONMENT_ASSIGNMENT_RE.fullmatch(parts[0]):
+        return parts
+
+    while index < len(parts) and ENVIRONMENT_ASSIGNMENT_RE.fullmatch(parts[index]):
+        index += 1
+    if index >= len(parts):
+        return None
+    return parts[index:]
+
+
+def command_references_existing_script(parts: list[str], repo_root: Path) -> bool:
     if len(parts) < 2:
         return False
     executable = parts[0]
-    if executable not in {"python3", "python", ".venv/bin/python"}:
+    if executable not in PYTHON_EXECUTABLES:
         return False
     script_path = Path(parts[1])
     return script_path.parts[:1] == ("scripts",) and (repo_root / script_path).is_file()
@@ -290,19 +307,28 @@ def is_known_validator_command(
     repo_root: Path,
     package_scripts: dict[str, str],
 ) -> bool:
-    if command in DOCUMENTED_STANDALONE_COMMANDS:
+    if "\n" in command or "\r" in command:
+        return False
+    try:
+        wrapped_parts = shlex.split(command)
+    except ValueError:
+        return False
+    parts = unwrap_environment_argv(wrapped_parts)
+    if not parts:
+        return False
+
+    if len(parts) >= 4 and parts[:3] == ["manual", "inspection", "of"]:
         return True
-    if command.startswith("manual inspection of "):
-        return True
-    if command_references_existing_script(command, repo_root):
-        return True
-    if command.startswith("npm run "):
-        try:
-            parts = shlex.split(command)
-        except ValueError:
-            return False
-        if len(parts) >= 3 and parts[0] == "npm" and parts[1] == "run":
-            return parts[2] in package_scripts
+    if any(SHELL_CONTROL_RE.search(part) for part in parts):
+        return False
+    if parts[0] in PYTHON_EXECUTABLES:
+        if len(parts) >= 3 and parts[1:3] == ["-m", "pytest"]:
+            return True
+        return command_references_existing_script(parts, repo_root)
+    if len(parts) >= 3 and parts[:2] == ["npm", "run"]:
+        return parts[2] in package_scripts
+    if len(parts) >= 3 and parts[:2] == ["git", "diff"]:
+        return "--check" in parts[2:]
     return False
 
 
@@ -313,9 +339,15 @@ def validate_validator_items(
     repo_root: Path,
     package_scripts: dict[str, str],
     require_required_flag: bool,
+    allow_empty: bool = False,
     errors: list[str],
 ) -> None:
-    if not isinstance(items, list) or not items:
+    if not isinstance(items, list):
+        errors.append(f"{label}.required_validators must be a nonempty list")
+        return
+    if not items:
+        if allow_empty:
+            return
         errors.append(f"{label}.required_validators must be a nonempty list")
         return
     seen_ids: set[str] = set()
@@ -466,16 +498,17 @@ def validate_implementation_control(repo_root: Path = REPO_ROOT) -> list[str]:
     if repository_boundary.get("deployment_status") not in {"not_authorized", "not-authorized"}:
         errors.append("program_state.repository_boundary.deployment_status must be not_authorized")
 
+    program_status = str(program.get("status", ""))
     validate_validator_items(
         program.get("required_validators"),
         label="program_state",
         repo_root=repo_root,
         package_scripts=package_scripts,
         require_required_flag=True,
+        allow_empty=program_status in NO_ACTION_STATUSES,
         errors=errors,
     )
 
-    program_status = str(program.get("status", ""))
     if program_status in NO_ACTION_STATUSES:
         return sorted(set(errors))
 

@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from implementation_control import validate_implementation_control as validator
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +25,16 @@ HIGH_RISK_GATES = [
 def write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
+
+
+def replace_top_level_list_with_empty(path: Path, key: str) -> None:
+    lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+    start = next(index for index, line in enumerate(lines) if line == f"{key}:\n")
+    end = start + 1
+    while end < len(lines) and (lines[end].startswith(" ") or not lines[end].strip()):
+        end += 1
+    lines[start:end] = [f"{key}: []\n"]
+    path.write_text("".join(lines), encoding="utf-8")
 
 
 def gate_statuses(overrides: dict[str, str] | None = None) -> dict[str, str]:
@@ -278,6 +290,96 @@ def test_unknown_required_validator_command_fails(tmp_path: Path) -> None:
     errors = validator.validate_implementation_control(tmp_path)
 
     assert any("not a known validator command" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    "validator_command",
+    [
+        "/usr/bin/env AETHER_FLOW_SOURCE_COMMIT=c6aa66b9 npm run validate",
+        "AETHER_FLOW_SOURCE_ROOT=/tmp/source npm run validate:content -- --strict",
+        (
+            "/usr/bin/env PYTHONDONTWRITEBYTECODE=1 "
+            "python3 scripts/check_fixture.py --check"
+        ),
+        (
+            "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest "
+            "-p no:cacheprovider tests/test_fixture.py -q"
+        ),
+        "/usr/bin/env REVIEW_MODE=local manual inspection of rendered routes",
+        "/usr/bin/env GIT_OPTIONAL_LOCKS=0 git diff --check -- tests",
+    ],
+)
+def test_known_argument_bearing_or_environment_wrapped_validator_passes(
+    tmp_path: Path,
+    validator_command: str,
+) -> None:
+    write_valid_control_fixture(tmp_path, validator_command=validator_command)
+    write_text(tmp_path / "scripts/check_fixture.py", "# Fixture validator.\n")
+
+    assert validator.validate_implementation_control(tmp_path) == []
+
+
+@pytest.mark.parametrize(
+    "validator_command",
+    [
+        "/usr/bin/env SAFE_MODE=1 do-the-secret-check",
+        "/usr/bin/env SAFE_MODE=1 npm run unknown-validator",
+        "/usr/bin/env",
+        "/usr/bin/env --",
+        "/usr/bin/env -S 'npm run validate'",
+        "BROKEN-NAME=1 npm run validate",
+        "/usr/bin/env SAFE_MODE=1 npm run validate && do-the-secret-check",
+    ],
+)
+def test_malformed_or_unknown_environment_wrapped_validator_fails(
+    tmp_path: Path,
+    validator_command: str,
+) -> None:
+    write_valid_control_fixture(tmp_path, validator_command=validator_command)
+
+    errors = validator.validate_implementation_control(tmp_path)
+
+    assert any("not a known validator command" in error for error in errors)
+
+
+def test_inactive_program_allows_empty_required_validators(tmp_path: Path) -> None:
+    write_valid_control_fixture(tmp_path)
+    program_path = tmp_path / "implementation_control/program_state.yaml"
+    program_text = program_path.read_text(encoding="utf-8").replace(
+        'status: "active"',
+        'status: "inactive"',
+        1,
+    )
+    program_path.write_text(program_text, encoding="utf-8")
+    replace_top_level_list_with_empty(program_path, "required_validators")
+
+    assert validator.validate_implementation_control(tmp_path) == []
+
+
+@pytest.mark.parametrize(
+    ("relative_path", "record_label"),
+    [
+        ("implementation_control/program_state.yaml", "program_state"),
+        ("implementation_control/tasks/WI-TEST-001/00_TASK.yaml", "active_task"),
+        (
+            "implementation_control/tasks/WI-TEST-001/jobs/WJ-TEST-001-A.yaml",
+            "current_job",
+        ),
+    ],
+)
+def test_active_records_require_nonempty_required_validators(
+    tmp_path: Path,
+    relative_path: str,
+    record_label: str,
+) -> None:
+    write_valid_control_fixture(tmp_path)
+    replace_top_level_list_with_empty(tmp_path / relative_path, "required_validators")
+
+    errors = validator.validate_implementation_control(tmp_path)
+
+    assert (
+        f"{record_label}.required_validators must be a nonempty list" in errors
+    )
 
 
 def test_package_wiring_must_include_validator_before_build(tmp_path: Path) -> None:

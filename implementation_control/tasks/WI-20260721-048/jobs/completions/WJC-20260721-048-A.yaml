@@ -1,0 +1,64 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260721-048-A"
+task_id: "WI-20260721-048"
+job_id: "WJ-20260721-048-A"
+created_utc: "2026-07-22T00:49:12Z"
+completed_utc: "2026-07-22T00:49:12Z"
+status: "completed"
+summary: "Recorded the completed Documents migration, immutable curator source snapshot, post-repair aggregate receipt, control-runtime repairs, intentionally non-rerun checks, and withheld external effects in one maintainer-facing evidence record."
+changed_files:
+  - "docs/quality/documents-navigation-migration-completion.md"
+requirements_satisfied:
+  - "A maintainer can reconstruct moved, consolidated, redirected, and retired routes, the curator source pin, the control-runtime repairs, and the checks actually run."
+  - "The completion record identifies the passing post-repair aggregate receipt and distinguishes the reviewed source snapshot from the later moving upstream checkout."
+  - "Commit, push, deployment, upstream mutation, scientific claim promotion, and publication are not implied; only directly evidenced effects are recorded."
+acceptance_results:
+  - criterion: "A maintainer can reconstruct moved, consolidated, redirected, and retired routes, the curator source pin, the control-runtime repairs, and the checks actually run."
+    status: "passed"
+    evidence_refs:
+      - "docs/quality/documents-navigation-migration-completion.md"
+  - criterion: "The completion record identifies the passing post-repair aggregate receipt and distinguishes the reviewed source snapshot from the later moving upstream checkout."
+    status: "passed"
+    evidence_refs:
+      - "docs/quality/documents-navigation-migration-completion.md"
+      - "implementation_control/tasks/WI-20260721-047/jobs/completions/WJC-20260721-047-A.yaml"
+      - "curator/reports/latest.json"
+  - criterion: "Commit, push, deployment, upstream mutation, scientific claim promotion, and publication are not implied; only directly evidenced effects are recorded."
+    status: "passed"
+    evidence_refs:
+      - "docs/quality/documents-navigation-migration-completion.md"
+validator_results:
+  - id: "afdoc-r007-01"
+    command: "manual inspection of the Documents migration completion record including changed routes validation evidence source pin control repairs skipped checks and external-effect status"
+    status: "passed"
+    evidence: "Manual inspection confirmed the 15-route migration map, five-item navigation, importer/catalog/provenance results, pinned c6aa66b9 source snapshot, PTR-b33588398239f93ead44122d70d88f73 aggregate evidence, control repairs, intentional non-runs, and explicit external-effect boundary."
+  - id: "afdoc-r007-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "git diff --check returned no findings after the bounded completion record was written."
+scope_preservation:
+  completion_disposition: "documentation_only"
+  changed_product_path_count: 1
+  reader_route_changed: false
+  navigation_changed: false
+  manifest_changed: false
+  public_asset_changed: false
+  public_prose_claim_changed: false
+  scientific_claim_promoted: false
+  aggregate_validate_rerun: false
+  browser_review_rerun: false
+  redirect_review_rerun: false
+  curator_check_rerun: false
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  publication_performed: false
+  upstream_write_performed: false
+  external_effect_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-R007 receipt to the plan coordinator."
+  do_not_skip: "Do not reserve or select a successor from this worker."

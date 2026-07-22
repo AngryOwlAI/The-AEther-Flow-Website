@@ -1,0 +1,113 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260721-048"
+title: "Record the completed Documents route, navigation, importer, manifest, provenance, curator, control-validation, and aggregate results together with the immutable source snapshot and external-effect status."
+created_utc: "2026-07-22T00:38:14Z"
+updated_utc: "2026-07-22T00:49:12Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-002"
+  plan_sha256: "73461ef1d227540d768b6fbc9769777deaf928a6f14696eec05b53a484a139f9"
+  plan_task_id: "AFDOC-R007"
+  plan_task_sha256: "799820afc8573dc9824ff8a9dba364e14e278189f50eda995eb9fbd223c3f997"
+  binding_manifest_sha256: "4de214cd803586eb2dd37e844f9a0b5e770b67165677008f367354d7ffed10ee"
+  authority_sha256: "cc0307c4f6cad850f6279dca1a3c218e3565e03f6d507b6ddb1ac222246b4702"
+  implementation_authority: "implementation_control only"
+goal: "Record the completed Documents route, navigation, importer, manifest, provenance, curator, control-validation, and aggregate results together with the immutable source snapshot and external-effect status."
+requirements:
+  - "A maintainer can reconstruct moved, consolidated, redirected, and retired routes, the curator source pin, the control-runtime repairs, and the checks actually run."
+  - "The completion record identifies the passing post-repair aggregate receipt and distinguishes the reviewed source snapshot from the later moving upstream checkout."
+  - "Commit, push, deployment, upstream mutation, scientific claim promotion, and publication are not implied; only directly evidenced effects are recorded."
+scope:
+  in_scope:
+    - "docs/quality/documents-navigation-migration-completion.md"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "package.json"
+    - "implementation_control/**"
+    - "curator/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository:
+    - "docs/quality/documents-navigation-migration-completion.md"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This packet changes validation or implementation evidence only and cannot strengthen public scientific prose."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "This packet does not refresh or reinterpret upstream scientific sources."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This packet does not change reader routes or navigation."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This packet does not change visual systems."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This packet does not change downloadable assets."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This packet does not change public manifests or authority records."
+  git_push:
+    status: "not_required"
+    reason: "The recovery plan withholds push authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The recovery plan withholds deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Every upstream source-project write remains forbidden."
+required_validators:
+  - id: "afdoc-r007-01"
+    command: "manual inspection of the Documents migration completion record including changed routes validation evidence source pin control repairs skipped checks and external-effect status"
+    required: true
+  - id: "afdoc-r007-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "The post-repair aggregate validation receipt is missing, failed, or inconsistent with the pinned source commit."
+  - "A required write or protected effect falls outside this exact binding."
+  - "The record would imply an unperformed release, upstream mutation, or scientific claim promotion."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-documents-recovery-task-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing or validation."
+    - "Execute only the selected recovery task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+    - "Strengthen scientific or authority claims."
+handoff:
+  latest_handoff_id: "WH-20260721-048"
+  yaml_path: "implementation_control/handoffs/WH-20260721-048.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260721-048.md"
+next_recommended_action:
+  task_packet: "AFDOC-R007"
+  summary: "Record the completed Documents route, navigation, importer, manifest, provenance, curator, control-validation, and aggregate results together with the immutable source snapshot and external-effect status."
+  do_not_skip: "Do not broaden the hash-bound website packet."

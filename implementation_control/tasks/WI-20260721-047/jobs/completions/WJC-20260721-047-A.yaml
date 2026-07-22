@@ -1,0 +1,49 @@
+schema_version: "0.1"
+record_type: "implementation_completion"
+completion_id: "WJC-20260721-047-A"
+task_id: "WI-20260721-047"
+job_id: "WJ-20260721-047-A"
+created_utc: "2026-07-22T00:35:37Z"
+completed_utc: "2026-07-22T00:35:37Z"
+status: "completed"
+summary: "Ran the repaired aggregate gate exactly once against the pinned reviewed upstream commit; every configured gate passed, followed by one clean whitespace check."
+changed_files: []
+requirements_satisfied:
+  - "The post-repair aggregate npm run validate command is invoked exactly once with AETHER_FLOW_SOURCE_COMMIT fixed to c6aa66b9a7412f14c6573dd0467b82ea11310c20 and passes."
+  - "Curator, implementation-control, plan-goal, plan-goal tests, build, and every earlier aggregate stage pass against the final bounded website state."
+  - "The validation-only task changes no repository file or external system and performs no branch, worktree, stage, commit, push, deployment, upstream write, or publication."
+acceptance_results:
+  - criterion: "The post-repair aggregate npm run validate command is invoked exactly once with AETHER_FLOW_SOURCE_COMMIT fixed to c6aa66b9a7412f14c6573dd0467b82ea11310c20 and passes."
+    status: "passed"
+    evidence_refs:
+      - "implementation_control/tasks/WI-20260721-047/jobs/completions/WJC-20260721-047-A.yaml"
+  - criterion: "Curator, implementation-control, plan-goal, plan-goal tests, build, and every earlier aggregate stage pass against the final bounded website state."
+    status: "passed"
+    evidence_refs:
+      - "implementation_control/tasks/WI-20260721-047/jobs/completions/WJC-20260721-047-A.yaml"
+  - criterion: "The validation-only task changes no repository file or external system and performs no branch, worktree, stage, commit, push, deployment, upstream write, or publication."
+    status: "passed"
+    evidence_refs:
+      - "implementation_control/tasks/WI-20260721-047/jobs/completions/WJC-20260721-047-A.yaml"
+validator_results:
+  - id: "afdoc-r006-01"
+    command: "/usr/bin/env AETHER_FLOW_SOURCE_COMMIT=c6aa66b9a7412f14c6573dd0467b82ea11310c20 npm run validate"
+    status: "passed"
+    evidence: "The single pinned aggregate exited 0. All configured gates passed, the plan-goal suite reported 78 passed, and Astro built 64 static pages."
+  - id: "afdoc-r006-02"
+    command: "git diff --check"
+    status: "passed"
+    evidence: "The single git diff --check invocation exited 0 with no findings."
+scope_preservation:
+  branch_or_worktree_created: false
+  staging_performed: false
+  commit_created: false
+  push_performed: false
+  deployment_performed: false
+  publication_performed: false
+  upstream_write_performed: false
+  external_effect_performed: false
+next_recommended_action:
+  task_packet: "none"
+  summary: "Return the finalized AFDOC-R006 receipt to the plan coordinator."
+  do_not_skip: "Only the coordinator may reserve the next plan task; do not reserve or select AFDOC-R007 here."

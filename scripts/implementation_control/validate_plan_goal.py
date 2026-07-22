@@ -100,6 +100,24 @@ PACKAGE_SCRIPTS = {
 }
 ACTIVE_TASK_STATUSES = {"reserved", "active"}
 TERMINAL_TASK_STATUSES = {"completed", "superseded"}
+PROTECTED_TASK_STATUSES = {
+    "blocked",
+    "replan_required",
+    "human_gate_required",
+    "validation_failed",
+    "invocation_unknown",
+    "cancelled",
+}
+RECEIPT_TASK_STATUSES = TERMINAL_TASK_STATUSES | PROTECTED_TASK_STATUSES
+TERMINAL_PLAN_PHASES = {
+    "terminal_complete",
+    "terminal_blocked_no_runnable",
+    "terminal_awaiting_human",
+    "terminal_validation_failed",
+    "terminal_capability_blocked",
+    "terminal_corrupt_state",
+    "terminal_cancelled",
+}
 
 
 @dataclass
@@ -168,6 +186,39 @@ def _packet_paths(entry: Mapping[str, Any]) -> set[str]:
     }
 
 
+def _selected_control_plan_id(control: Any) -> str | None:
+    if control.resolver.get("status") != "ready":
+        return None
+    selected = control.payload.get("selected")
+    if not isinstance(selected, Mapping):
+        return None
+    plan_ids: set[str] = set()
+    for record_name, binding_name in (
+        ("task", "source_context"),
+        ("job", "plan_binding"),
+        ("handoff", "plan_binding"),
+    ):
+        projection = selected.get(record_name)
+        record = (
+            projection.get("record")
+            if isinstance(projection, Mapping)
+            else None
+        )
+        binding = (
+            record.get(binding_name)
+            if isinstance(record, Mapping)
+            else None
+        )
+        plan_id = (
+            binding.get("plan_id")
+            if isinstance(binding, Mapping)
+            else None
+        )
+        if isinstance(plan_id, str) and plan_id:
+            plan_ids.add(plan_id)
+    return next(iter(plan_ids)) if len(plan_ids) == 1 else None
+
+
 def _validate_plan_changes(
     repo_root: Path,
     report: ValidationReport,
@@ -199,17 +250,19 @@ def _validate_plan_changes(
         == session.get("binding_manifest_sha256"),
         f"plan binding differs from accepted session: {plan_id}",
     )
-    accepted_binding = record["repository_binding"]
-    report.require(
-        head_revision == accepted_binding["starting_revision"],
-        f"website HEAD differs from accepted plan binding: {plan_id}",
-    )
-    observed = WebsiteRepositoryProvider(repo_root).observe()
-    report.require(
-        observed.binding == accepted_binding
-        and observed.topology == session.get("repository_topology"),
-        f"repository binding or topology changed: {plan_id}",
-    )
+    plan_phase = str(record["state"].get("phase", ""))
+    if plan_phase not in TERMINAL_PLAN_PHASES:
+        accepted_binding = record["repository_binding"]
+        report.require(
+            head_revision == accepted_binding["starting_revision"],
+            f"website HEAD differs from accepted plan binding: {plan_id}",
+        )
+        observed = WebsiteRepositoryProvider(repo_root).observe()
+        report.require(
+            observed.binding == accepted_binding
+            and observed.topology == session.get("repository_topology"),
+            f"repository binding or topology changed: {plan_id}",
+        )
     intents = store.list_provider_intents(plan_id)
     unresolved_intents = [
         item["intent_id"]
@@ -320,7 +373,7 @@ def _validate_plan_changes(
     for lifecycle in record["state"]["tasks"]:
         task_id = str(lifecycle["task_id"])
         task_status = str(lifecycle["status"])
-        if task_status not in ACTIVE_TASK_STATUSES | TERMINAL_TASK_STATUSES:
+        if task_status not in ACTIVE_TASK_STATUSES | RECEIPT_TASK_STATUSES:
             continue
         try:
             resolved = (
@@ -428,8 +481,15 @@ def _validate_plan_changes(
             lease is None,
             f"orphaned plan lease remains: {plan_id}",
         )
+        control_status = control.resolver.get("status")
+        selected_control_plan_id = _selected_control_plan_id(control)
         report.require(
-            control.resolver.get("status") == "no_action",
+            control_status == "no_action"
+            or (
+                control_status == "ready"
+                and selected_control_plan_id is not None
+                and selected_control_plan_id != plan_id
+            ),
             f"terminal plan retains executable website control: {plan_id}",
         )
     return allowed

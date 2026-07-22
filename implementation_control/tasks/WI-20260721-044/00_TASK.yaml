@@ -1,0 +1,121 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260721-044"
+title: "Make curator report generation and checking accept one explicit immutable upstream commit while preserving live-HEAD behavior when no pin is supplied, then prove that a moving upstream HEAD cannot invalidate a pinned review snapshot."
+created_utc: "2026-07-21T23:23:45Z"
+updated_utc: "2026-07-21T23:32:46Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001"
+  plan_sha256: "c86c9c3e16c51cb3cb86b6df4b42c92c5a3319c01ba75987e8f557e0b1bf1db7"
+  plan_task_id: "AFDOC-R001B"
+  plan_task_sha256: "79e8a41f09906232ebf325587e9f6db4538e800ad612ee0fde53bd84e2c5f3c3"
+  binding_manifest_sha256: "6ed04e40391e719227a783808e65460dfb963de43ef9c182de60c856bbb40e75"
+  authority_sha256: "752836df34c821c60a15559ac64a7d809f397289bf8a6b6b3f0c0f11493ab460"
+  implementation_authority: "implementation_control only"
+goal: "Make curator report generation and checking accept one explicit immutable upstream commit while preserving live-HEAD behavior when no pin is supplied, then prove that a moving upstream HEAD cannot invalidate a pinned review snapshot."
+requirements:
+  - "The curator accepts an explicit full upstream commit through AETHER_FLOW_SOURCE_COMMIT or --source-commit and records that exact resolved commit and commit date."
+  - "An invalid, missing, or non-commit pin fails closed; omitting the pin preserves the existing live-HEAD behavior."
+  - "Focused tests prove that advancing upstream HEAD does not change a report or invalidate exact acknowledgements when the earlier reviewed commit is pinned."
+  - "The checked-in AFDOC-038 curator report and all 58 exact acknowledgements pass against c6aa66b9a7412f14c6573dd0467b82ea11310c20 without rewriting scientific content or curator evidence."
+scope:
+  in_scope:
+    - "scripts/run_curator.py"
+    - "tests/test_curator_reports.py"
+    - "tests/test_curator_acknowledgements.py"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "README.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.md"
+    - "ImplementationPlans/aether-flow-documents-navigation-implementation-plan.canonical.json"
+    - "package.json"
+    - "implementation_control/**"
+    - "curator/**"
+    - "src/**"
+    - "public/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+allowed_writes:
+  website_repository:
+    - "scripts/run_curator.py"
+    - "tests/test_curator_reports.py"
+    - "tests/test_curator_acknowledgements.py"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This packet changes curator input selection and tests only; it cannot strengthen public scientific prose."
+  source_refresh_uncertainty:
+    status: "approved"
+    reason: "The user authorized read-only curator reconciliation and the packet is pinned to the exact already reviewed upstream commit."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "This packet does not change reader routes or navigation."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "This packet does not change visual systems."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "This packet does not change downloadable assets."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "This packet does not change public manifests or authority records."
+  git_push:
+    status: "not_required"
+    reason: "The recovery plan withholds push authority."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "The recovery plan withholds deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Every upstream source-project write remains forbidden."
+required_validators:
+  - command: "python3 -m pytest tests/test_curator_reports.py tests/test_curator_acknowledgements.py -q"
+    id: "afdoc-r001b-01"
+    required: true
+  - command: "env AETHER_FLOW_SOURCE_COMMIT=c6aa66b9a7412f14c6573dd0467b82ea11310c20 python3 scripts/run_curator.py --check"
+    id: "afdoc-r001b-02"
+    required: true
+  - command: "git diff --check"
+    id: "afdoc-r001b-03"
+    required: true
+stop_conditions:
+  - "Plan, task, binding, thread, revision, repository, topology, or control identity differs."
+  - "The pinned upstream commit is absent, ambiguous, or does not resolve to the exact reviewed commit."
+  - "A required write or protected effect falls outside this exact binding."
+  - "The change would rewrite curator evidence, strengthen a scientific claim, or mutate the upstream source project."
+  - "The task cannot fit one worker discussion and one AgentJob."
+  - "Validation fails without a bounded evidence-supported repair inside this packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  may_not:
+    - "Execute or select another plan task."
+    - "Create a branch or worktree or change repository binding."
+    - "Stage, commit, push, deploy, publish, or mutate the upstream source project."
+    - "Rewrite curator acknowledgements or strengthen scientific or authority claims."
+  responsibilities:
+    - "Re-check live repository and website-control evidence before editing."
+    - "Execute only the selected recovery task within its exact path and gate boundary."
+    - "Produce direct acceptance and validator evidence for the coordinator."
+  role_id: "website-documents-recovery-task-engineer"
+  role_version: "1.0.0"
+handoff:
+  latest_handoff_id: "WH-20260721-044"
+  yaml_path: "implementation_control/handoffs/WH-20260721-044.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260721-044.md"
+next_recommended_action:
+  task_packet: "AFDOC-R001B"
+  summary: "Make curator report generation and checking accept one explicit immutable upstream commit while preserving live-HEAD behavior when no pin is supplied, then prove that a moving upstream HEAD cannot invalidate a pinned review snapshot."
+  do_not_skip: "Do not broaden the hash-bound website packet."

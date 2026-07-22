@@ -128,6 +128,47 @@ def test_parse_args_uses_source_root_environment(
     assert args.source_root == tmp_path
 
 
+def test_parse_args_uses_source_commit_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source_commit = "a" * 40
+    monkeypatch.setenv(run_curator.SOURCE_COMMIT_ENV_VAR, source_commit)
+
+    args = run_curator.parse_args(["--check"])
+
+    assert args.source_commit == source_commit
+
+
+def test_explicit_source_commit_argument_overrides_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv(run_curator.SOURCE_COMMIT_ENV_VAR, "a" * 40)
+
+    args = run_curator.parse_args(["--source-commit", "b" * 40, "--check"])
+
+    assert args.source_commit == "b" * 40
+
+
+def test_empty_source_commit_environment_fails_closed(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    repo_root, source_root = write_fixture_repo(tmp_path)
+    monkeypatch.setenv(run_curator.SOURCE_COMMIT_ENV_VAR, "")
+
+    result = run_curator.main(
+        [
+            "--repo-root",
+            str(repo_root),
+            "--source-root",
+            str(source_root),
+            "--check",
+        ]
+    )
+
+    assert result == 1
+
+
 def test_changed_declared_dependency_creates_drift_item(tmp_path: Path) -> None:
     repo_root, source_root = write_fixture_repo(tmp_path)
     (source_root / "source.md").write_text("source v2\n", encoding="utf-8")
