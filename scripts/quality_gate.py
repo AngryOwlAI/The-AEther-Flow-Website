@@ -22,24 +22,23 @@ ROUTES_WITH_HIDDEN_ROUTE_PATH_TEXT = {
     "/project/physics/",
     "/project/ai-research-agent-system/",
 }
-RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA = {
-    "/resources/documents/",
+DOCUMENT_ROUTES_REQUIRING_COLLECTION_SCHEMA = {
+    "/documents/research/",
 }
-RESOURCE_ROUTES_REQUIRING_GREENFIELD_SCHEMA = {
-    "/resources/diagrams/": [
+DOCUMENT_ROUTES_REQUIRING_GREENFIELD_SCHEMA = {
+    "/documents/diagrams/": [
         (
-            'class="project-overview-page project-track-page resources-greenfield-page '
+            'class="project-overview-page project-track-page documents-greenfield-page '
             'ai-greenfield-page"'
         ),
         'class="command-band overview-shell overview-command-hero"',
         'class="track-map-svg physics-greenfield-svg"',
-        'id="resources-diagrams-comprehension-title"',
+        'id="documents-diagrams-comprehension-title"',
         'id="diagram-status-title"',
-        'class="diagram-gallery-list"',
+        'class="greenfield-matrix"',
     ],
 }
 RESOURCE_SOURCE_AUTHORITY_SECTION_SNIPPETS = {
-    'class="source-notice"',
     "source-authority-section",
     'aria-label="Source authority notice"',
 }
@@ -215,45 +214,48 @@ def validate_no_visible_route_path_text(dist_dir: Path) -> list[str]:
     return errors
 
 
-def validate_resource_support_schema(dist_dir: Path) -> list[str]:
+def validate_document_collection_schema(dist_dir: Path) -> list[str]:
     errors: list[str] = []
     required_snippets = [
-        'class="project-overview-page project-support-page"',
-        'class="content-band project-support-hero"',
-        'class="support-svg"',
+        (
+            'class="project-overview-page project-track-page documents-category-page '
+            'documents-research-page"'
+        ),
+        'class="command-band overview-shell overview-command-hero"',
+        'id="canonical-ontology"',
     ]
-    for route in sorted(RESOURCE_ROUTES_REQUIRING_SUPPORT_SCHEMA):
+    for route in sorted(DOCUMENT_ROUTES_REQUIRING_COLLECTION_SCHEMA):
         html_path = url_path_to_dist_path(dist_dir, route)
         text = html_path.read_text(encoding="utf-8")
         for snippet in required_snippets:
             if snippet not in text:
-                errors.append(f"{route}: missing resource support schema snippet {snippet!r}")
+                errors.append(f"{route}: missing document collection schema snippet {snippet!r}")
     return errors
 
 
-def validate_resource_greenfield_schema(dist_dir: Path) -> list[str]:
+def validate_document_greenfield_schema(dist_dir: Path) -> list[str]:
     errors: list[str] = []
-    for route, required_snippets in sorted(RESOURCE_ROUTES_REQUIRING_GREENFIELD_SCHEMA.items()):
+    for route, required_snippets in sorted(DOCUMENT_ROUTES_REQUIRING_GREENFIELD_SCHEMA.items()):
         html_path = url_path_to_dist_path(dist_dir, route)
         text = html_path.read_text(encoding="utf-8")
         for snippet in required_snippets:
             if snippet not in text:
-                errors.append(f"{route}: missing resource greenfield schema snippet {snippet!r}")
+                errors.append(f"{route}: missing document greenfield schema snippet {snippet!r}")
     return errors
 
 
-def validate_no_resource_source_authority_sections(dist_dir: Path) -> list[str]:
+def validate_no_document_source_authority_sections(dist_dir: Path) -> list[str]:
     errors: list[str] = []
-    resources_root = dist_dir / "resources"
-    if not resources_root.exists():
+    documents_root = dist_dir / "documents"
+    if not documents_root.exists():
         return errors
-    for html_path in sorted(resources_root.rglob("*.html")):
+    for html_path in sorted(documents_root.rglob("*.html")):
         text = html_path.read_text(encoding="utf-8")
         route = route_for_html(dist_dir, html_path)
         for snippet in sorted(RESOURCE_SOURCE_AUTHORITY_SECTION_SNIPPETS):
             if snippet in text:
                 errors.append(
-                    f"{route}: Library resource pages must not render "
+                    f"{route}: Document collection pages must not render "
                     f"dedicated Source authority sections"
                 )
                 break
@@ -280,9 +282,9 @@ def main() -> int:
     errors.extend(validate_equation_rendering(dist_dir))
     errors.extend(validate_no_local_path_leaks(dist_dir))
     errors.extend(validate_no_visible_route_path_text(dist_dir))
-    errors.extend(validate_resource_support_schema(dist_dir))
-    errors.extend(validate_resource_greenfield_schema(dist_dir))
-    errors.extend(validate_no_resource_source_authority_sections(dist_dir))
+    errors.extend(validate_document_collection_schema(dist_dir))
+    errors.extend(validate_document_greenfield_schema(dist_dir))
+    errors.extend(validate_no_document_source_authority_sections(dist_dir))
 
     if errors:
         for error in errors:
