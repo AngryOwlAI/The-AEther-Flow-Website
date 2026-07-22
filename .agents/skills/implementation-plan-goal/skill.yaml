@@ -1,79 +1,56 @@
 skill_id: implementation-plan-goal
-version: 0.1.0
+version: 0.3.0
 status: template
-release_maturity: experimental
-stability: evolving
+release_maturity: deprecated
+stability: frozen
 canonical_path: skills/implementation-plan-goal
-summary: Validate an accepted implementation plan and dispatch exactly one dependency-ready task to a fresh worker discussion.
+summary: Deprecated compatibility launcher that routes new runs to implementation-plan-relay.
 installation:
   entrypoint_class: user_workflow
   selection_policy: dependency_resolved
   direct_copy_supported: false
-  project_adaptation: required
+  project_adaptation: package_managed
   recommended_selectors:
     - kind: skill
-      id: implementation-plan-goal
-    - kind: bundle
-      id: implementation-plan-goal
+      id: implementation-plan-relay
   prerequisites:
     bootstrap: explicit_required
-    adapters:
-      - PlanControlStore
-      - RepositoryProvider
-      - ThreadProvider
-      - ThreadExecutionProfileProvider
+    adapters: []
     external_tools: []
 scope:
   system_agnostic: true
   target_system_types:
     - governed agentic systems
-    - software repositories
-    - research and documentation systems
 domain_emphasis:
-  - implementation plan relay
-  - deterministic dependency selection
-  - one task per discussion
+  - compatibility routing
+  - recursive plan relay
 required_role_posture:
   - system_analyst
   - system_engineer
   - software_engineer
-optional_role_posture:
-  - process_integrity_auditor
-  - verification_engineer
 activation:
   triggers:
-    - A user explicitly requests serial execution of an accepted implementation plan across fresh discussions.
+    - A caller uses the deprecated implementation-plan-goal name.
   when_not_to_use:
-    - The plan has not been accepted as execution authority.
-    - Task identity, dependencies, or repository binding are ambiguous.
-    - Several tasks should execute in one discussion.
-  preconditions:
-    - A canonical plan validates against the accepted plan contract.
-    - The current discussion profile can be configured and verified, or manually attested.
-    - Combined acceptance binds the exact goal, plan hash, and reasoning_effort before initialization.
-    - A compatible PlanControlStore, ThreadProvider, and ThreadExecutionProfileProvider are configured.
+    - A new integration can invoke implementation-plan-relay directly.
 inputs:
   required:
-    - Accepted canonical implementation plan.
-    - Explicit project and repository binding.
-    - Explicit fresh-discussion authorization.
-    - Combined acceptance of the exact goal and reasoning_effort.
+    - Inputs required by implementation-plan-relay.
   optional:
-    - Target-project validators, checkpoint policy, and manual handoff preference.
+    - Explicit read-only legacy inspection selector.
 outputs:
   primary:
-    - One zero-AgentJob launcher result and one reserved plan-task envelope at most.
+    - Redirect to implementation-plan-relay with a deprecation warning.
   evidence:
-    - Plan and task hashes, selection proof, provider receipt, successor identity, and state revision.
-    - Activation receipt, requested and effective reasoning effort, and pre/post topology evidence.
+    - Selected recursive profile and canonical target.
 dependencies:
   required_skills:
-    - agentjob-control
+    - implementation-plan-relay
     - continue-implementing-plan-task
   optional_skills: []
   required_skill_versions:
-    agentjob-control: ^0.3.0
-    continue-implementing-plan-task: ^0.1.0
+    implementation-plan-relay: ^0.3.0
+    continue-implementing-plan-task: ^0.3.0
   python:
     standard_library_only: true
     requires_python: ">=3.11"
@@ -82,165 +59,67 @@ dependencies:
   external_tools: []
 authority:
   may_read:
-    - Accepted plan, repository identity, task evidence, and target-project configuration.
+    - New launcher inputs and read-only legacy status.
   may_write:
-    - One future plan record, one task reservation, and one provider receipt through adapted runtime interfaces.
+    - Nothing independently; all new writes belong to implementation-plan-relay.
   may_not:
-    - Execute an AgentJob or selected task in the launcher discussion.
-    - Dispatch more than one task worker.
-    - Treat a generated plan as accepted authority.
-    - Store mutable state in a skill or plugin directory.
-    - Initialize any plan record before combined goal-and-effort acceptance.
-    - Create or switch a branch, worktree, or repository binding without exact one-shot user authority.
+    - Create a native Goal, generic outer goal, coordinator, task call, or implicit legacy write.
   canonical_sources:
     - skills/implementation-plan-goal
-    - skills/agentjob-control
+    - skills/implementation-plan-relay
   generated_derivatives:
-    - Target-project plan state, task envelope, prompt, and provider receipt.
+    - Installed compatibility shim.
   human_gates:
-    - Plan acceptance, ambiguous task selection, protected external effects, and incompatible amendments.
+    - Explicit legacy mutation selection for a named historical run.
 validation:
   commands:
     - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/implementation-plan-goal/skill.yaml
       validator_class: schema_validation
       mode: required
       dry_runnable: true
-    - command: python3 -m unittest discover -s skills/implementation-plan-goal/tests -p "test_*.py" -v
-      validator_class: control_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 -m unittest discover -s scripts/skills/tests -p "test_implementation_plan_*.py" -v
-      validator_class: control_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/build_phase02_fixture_corpus.py --check
-      validator_class: control_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py classify skills/implementation-plan-goal/templates/canonical-plan-template.json --source-root . --authority accepted --json
-      validator_class: process_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py normalize skills/implementation-plan-goal/examples/normalization-partial-source.example.json --source-root . --authority accepted --json
-      validator_class: process_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py validate skills/implementation-plan-goal/templates/canonical-plan-template.json --json
-      validator_class: schema_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py validate-record skills/implementation-plan-goal/examples/plan-task-envelope.example.json --json
-      validator_class: schema_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py select-next skills/implementation-plan-goal/templates/canonical-plan-template.json --json
-      validator_class: process_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py diff skills/implementation-plan-goal/templates/canonical-plan-template.json skills/implementation-plan-goal/templates/canonical-plan-template.json --json
-      validator_class: control_validation
-      mode: required
-      dry_runnable: true
-    - command: python3 skills/implementation-plan-goal/scripts/planctl.py reason-codes --json
-      validator_class: control_validation
-      mode: required
-      dry_runnable: true
   validator_classes:
     - schema_validation
     - dependency_validation
-    - trace_validation
-    - process_validation
     - control_validation
-    - human_authority
   evidence_required:
-    - Valid immutable plan schema, exact scope, phase membership, and dependency graphs.
-    - Valid immutable PlanTaskReceipt identity, cardinality, direct-evidence, disposition, and journal relationships.
-    - Valid normalization, amendment, task-supersession, provider-intent, and selection-proof records with cross-record semantic parity.
-    - Deterministic seven-class source routing, least-transformative canonical preservation or synthesis, explicit authority and precedence, stable task splitting, and exact golden output.
-    - Offline content-hash, state, receipt, amendment, supersession, provider, proof, plan-diff, task-drift, and redaction evidence with stable reason codes.
-    - Deterministic hash-indexed PHASE-02 fixtures with exact enum coverage and one structural fault per adversarial file.
-    - Read compatibility for sys4ai.implementation-plan.v1.
-    - Zero AgentJobs and at most one reserved worker discussion.
-    - Verified current-thread profile before acceptance and verified successor profile before claim.
-    - Profile/topology evidence in every new task receipt and no unauthorized topology change.
+    - New calls resolve only to implementation-plan-relay.
 handoff:
   requires_completion_receipt: false
   evidence:
-    - Plan identity, selected task identity, envelope hash, successor identity, and expected revision.
-  next_role: continue_implementing_plan_task_worker
-  open_issue_policy: Stop for validation, human authority, recovery, or append-only replanning.
+    - Canonical target and deprecation warning.
+  next_role: implementation_plan_relay_launcher
+  open_issue_policy: Fail closed on mixed topology; use read-only legacy status.
 execution:
   kind: relay_launcher
   invocation_policy: explicit
   maximum_agentjobs_per_invocation: 0
   may_spawn_threads: true
-  may_create_control_records: true
+  may_create_control_records: false
   invokes_skills:
-    - continue-implementing-plan-task
+    - implementation-plan-relay
 runtime_capabilities:
   provides:
-    - sys4ai.implementation-plan-goal.runtime.v1
-    - sys4ai.planctl.offline-control.v1
-    - sys4ai.implementation-plan.v1
-    - sys4ai.implementation-plan.v2
-    - sys4ai.implementation-plan-state.v1
-    - sys4ai.plan-task-envelope.v1
-    - sys4ai.plan-task-envelope.v2
-    - sys4ai.plan-task-receipt.v1
-    - sys4ai.plan-task-receipt.v2
-    - sys4ai.plan-activation-receipt.v1
-    - sys4ai.plan-execution-profile.v1
-    - sys4ai.repository-topology-policy.v1
-    - sys4ai.plan-normalization-report.v1
-    - sys4ai.plan-amendment.v1
-    - sys4ai.plan-task-supersession.v1
-    - sys4ai.plan-provider-intent.v1
-    - sys4ai.plan-provider-intent.v2
-    - sys4ai.plan-selection-proof.v1
-    - sys4ai.plan-store.sqlite.v5
+    - sys4ai.implementation-plan-goal.compat-shim.v1
   requires:
-    - sys4ai.agentjob-control.v1
-    - sys4ai.continue-implementing-plan-task.runtime.v1
-    - sys4ai.thread-provider.v2
-    - sys4ai.repository-topology-enforcement.v1
-    - python>=3.11
+    - sys4ai.implementation-plan-relay.runtime.v1
   optional: []
 control_protocol:
   profile: registered
   record_types:
-    - ImplementationPlan
-    - ImplementationPlanState
-    - PlanTaskEnvelope
-    - PlanTaskReceipt
-    - PlanNormalizationReport
-    - PlanAmendment
-    - PlanTaskSupersession
-    - PlanProviderIntent
-    - PlanSelectionProof
-    - PlanActivationReceipt
-    - PlanExecutionProfile
-    - RepositoryTopologyPolicy
+    - CompatibilityRedirect
   immutable_after_activation: true
   supersession_required: true
 state:
   tracked_root_template: "{project_root}/.agents/control"
-  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-goal"
+  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-relay"
   mutable_state_must_not_live_in_skill_directory: true
+compatibility_shims:
+  - implementation-plan-relay
 adapters:
   required_interfaces:
-    - PlanControlStore
-    - RepositoryProvider
     - ThreadProvider
-    - ThreadExecutionProfileProvider
-  optional_interfaces:
-    - CheckpointProvider
-  manual_thread_fallback: true
+  optional_interfaces: []
+  manual_thread_fallback: false
 recovery:
-  supported: true
+  supported: false
   automatic_rerun_after_consumption: false
-compatibility_shims: []
-failure_modes:
-  - mode: Plan authority, schema, dependency graph, repository identity, or provider capability is invalid.
-    recovery: Write no plan state and report deterministic findings.
-  - mode: A task exceeds one discussion or one AgentJob.
-    recovery: Stop as task_requires_replan and require append-only replacement task IDs.

@@ -22,7 +22,9 @@ from scripts.implementation_control.plan_goal_adapter import (
     CONTROL_ACTIVATION_SCHEMA_RELATIVE,
     EXPECTED_LOCK_SHA256,
     LOCK_RELATIVE,
+    LEGACY_PLAN_COMPLETION_SCHEMA_RELATIVE,
     PLAN_SCHEMA_ROOT_RELATIVE,
+    STATE_RELATIVE,
     PlanControlStore,
     RepositoryEvidence,
     WebsiteControlStore,
@@ -32,10 +34,14 @@ from scripts.implementation_control.plan_goal_adapter import (
     WebsiteThreadExecutionProfileProvider,
     activate_plan,
     adopt_worker,
+    bootstrap_website_packet,
     compile_binding_director_route,
+    complete_bootstrap_website_packet,
     content_sha256,
+    finalize_plan,
     load_plan_binding,
     prepare_plan,
+    prepare_plan_finalization,
     recover,
     render_yaml,
     resolve_effective_task_binding,
@@ -118,6 +124,7 @@ def make_project(
         BINDING_SCHEMA_RELATIVE,
         CONTROL_ACTIVATION_SCHEMA_RELATIVE,
         ADOPTION_SCHEMA_RELATIVE,
+        LEGACY_PLAN_COMPLETION_SCHEMA_RELATIVE,
     ):
         _copy_file(REPO_ROOT / relative, root / relative)
     program = {
@@ -454,6 +461,56 @@ def write_completion(
     program_path.write_bytes(render_yaml(program))
 
 
+def complete_only_plan_task(
+    fixture: ProjectFixture,
+) -> tuple[dict[str, Any], str]:
+    _, activation = activate_fixture(fixture)
+    adopted = adopt_worker(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=activation["plan_revision"],
+        expected_control_sha256=activation["website_control_sha256"],
+        creation_status="returned",
+        codex_task_id="worker-thread-finalization",
+        effective_reasoning_effort="max",
+        profile_evidence_ref="host:worker-thread-finalization:max",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:01:00Z",
+    )
+    claim = worker_prepare(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=adopted["plan_revision"],
+        expected_control_sha256=activation["website_control_sha256"],
+        current_thread_id="worker-thread-finalization",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:02:00Z",
+    )
+    consumed = worker_consume(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=claim["plan_revision"],
+        expected_control_sha256=activation["website_control_sha256"],
+        current_thread_id="worker-thread-finalization",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:03:00Z",
+    )
+    write_completion(fixture, plan_task_id="TASK-001")
+    control_sha256 = WebsiteControlStore(
+        fixture.root
+    ).snapshot().control_sha256
+    finalized = worker_finalize(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=consumed["plan_revision"],
+        expected_control_sha256=control_sha256,
+        current_thread_id="worker-thread-finalization",
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:05:00Z",
+    )
+    return finalized, control_sha256
+
+
 def test_complete_binding_and_authority_hashes_are_required(tmp_path: Path):
     fixture = make_project(tmp_path)
     loaded = load_plan_binding(
@@ -615,23 +672,29 @@ def test_explicit_replacement_binding_hydrates_execution_without_changing_base(
     }
 
     class ReplacementStore:
+        def __init__(self, *, expanded: bool):
+            self.expanded = expanded
+
         def load_task_definition(self, plan_id: str, task_id: str):
             assert plan_id == fixture.plan["plan_id"]
             assert task_id == task["task_id"]
+            compact = {
+                "task_id": task_id,
+                "task_sha256": task["task_sha256"],
+                "depends_on": task["depends_on"],
+                "one_task_per_discussion": True,
+                "max_continue_invocations": 1,
+                "max_agentjobs": 1,
+            }
             return {
                 "task_id": task_id,
                 "task_sha256": task["task_sha256"],
                 "phase_id": task["phase_id"],
                 "origin_kind": "replacement",
                 "depends_on": task["depends_on"],
-                "task_json": {
-                    "task_id": task_id,
-                    "task_sha256": task["task_sha256"],
-                    "depends_on": task["depends_on"],
-                    "one_task_per_discussion": True,
-                    "max_continue_invocations": 1,
-                    "max_agentjobs": 1,
-                },
+                "task_json": copy.deepcopy(task)
+                if self.expanded
+                else compact,
             }
 
         def list_supersessions(self, plan_id: str):
@@ -644,17 +707,18 @@ def test_explicit_replacement_binding_hydrates_execution_without_changing_base(
         "effective_plan_sha256": content_sha256(fixture.plan),
         "state": {"revision": 9},
     }
-    resolved = resolve_effective_task_binding(
-        store=ReplacementStore(),  # type: ignore[arg-type]
-        plan_record=plan_record,
-        session=session,
-        base_binding=fixture.binding,
-        task_id=task["task_id"],
-        repo_root=fixture.root,
-    )
-    assert resolved["replacement"] is True
-    assert resolved["task_definition"] == task
-    assert resolved["entry"] == entry
+    for expanded in (False, True):
+        resolved = resolve_effective_task_binding(
+            store=ReplacementStore(expanded=expanded),  # type: ignore[arg-type]
+            plan_record=plan_record,
+            session=session,
+            base_binding=fixture.binding,
+            task_id=task["task_id"],
+            repo_root=fixture.root,
+        )
+        assert resolved["replacement"] is True
+        assert resolved["task_definition"] == task
+        assert resolved["entry"] == entry
     assert fixture.binding["tasks"] == {"TASK-001": fixture.binding["tasks"]["TASK-001"]}
 
     stale = copy.deepcopy(session)
@@ -665,7 +729,7 @@ def test_explicit_replacement_binding_hydrates_execution_without_changing_base(
         WebsitePlanAdapterError, match="accepted bytes"
     ):
         resolve_effective_task_binding(
-            store=ReplacementStore(),  # type: ignore[arg-type]
+            store=ReplacementStore(expanded=True),  # type: ignore[arg-type]
             plan_record=plan_record,
             session=stale,
             base_binding=fixture.binding,
@@ -701,6 +765,71 @@ def test_control_cas_materializes_exactly_one_binding_projection(
         WebsitePlanAdapterError, match="compare-and-swap"
     ):
         store.activate_packet(staged, before.control_sha256)
+
+
+def test_standalone_bootstrap_and_completion_do_not_create_legacy_state(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    store = WebsiteControlStore(fixture.root)
+    before = store.snapshot()
+    state_path = fixture.root / STATE_RELATIVE
+    assert not state_path.exists()
+
+    activated = bootstrap_website_packet(
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        task_id="TASK-001",
+        expected_control_sha256=before.control_sha256,
+        authorization_message="Authorize this exact standalone packet.",
+        authorization_evidence_ref="test:accepted-plan",
+        repo_root=fixture.root,
+        timestamp=FIXED_TIME,
+    )
+    assert activated["status"] == "activated"
+    assert activated["isolation"]["generic_outer_goal_created"] is False
+    assert activated["effects"]["legacy_plan_state_writes"] == 0
+    assert not state_path.exists()
+    assert store.snapshot().resolver["status"] == "ready"
+
+    entry = fixture.binding["tasks"]["TASK-001"]
+    artifact = fixture.root / entry["allowed_writes"][0]
+    artifact.parent.mkdir(parents=True, exist_ok=True)
+    artifact.write_text("bounded result\n", encoding="utf-8")
+    ready = store.snapshot()
+    completed = complete_bootstrap_website_packet(
+        plan_path=fixture.plan_path.relative_to(fixture.root),
+        binding_path=fixture.binding_path.relative_to(fixture.root),
+        task_id="TASK-001",
+        expected_control_sha256=ready.control_sha256,
+        authorization_evidence_ref="test:accepted-plan",
+        validator_results={"validator-task-1": "pass"},
+        changed_files=entry["allowed_writes"],
+        completion_summary="The standalone packet is complete.",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:05:00Z",
+    )
+    assert completed["status"] == "completed"
+    assert store.snapshot().resolver["status"] == "no_action"
+    assert not state_path.exists()
+
+
+def test_standalone_bootstrap_rejects_multi_task_plan(tmp_path: Path):
+    fixture = make_project(tmp_path, task_count=2)
+    before = WebsiteControlStore(fixture.root).snapshot()
+    with pytest.raises(
+        WebsitePlanAdapterError, match="exactly one dependency-free task"
+    ):
+        bootstrap_website_packet(
+            plan_path=fixture.plan_path.relative_to(fixture.root),
+            binding_path=fixture.binding_path.relative_to(fixture.root),
+            task_id="TASK-001",
+            expected_control_sha256=before.control_sha256,
+            authorization_message="Authorize this exact standalone packet.",
+            authorization_evidence_ref="test:accepted-plan",
+            repo_root=fixture.root,
+            timestamp=FIXED_TIME,
+        )
 
 
 def test_yaml_renderer_round_trips_colon_in_list_scalar(tmp_path: Path):
@@ -1109,6 +1238,139 @@ def test_reserve_next_is_read_only_no_action_after_final_task(
     assert result["reason_code"] == "plan.completion_candidate"
     assert result["plan_revision"] == finalized["plan_revision"]
     assert result["execution_performed"] is False
+
+
+def test_legacy_finalize_plan_is_cas_bound_atomic_and_idempotent(
+    tmp_path: Path,
+):
+    fixture = make_project(tmp_path, task_count=1)
+    finalized_task, control_sha256 = complete_only_plan_task(fixture)
+    before_revision = finalized_task["plan_revision"]
+    prepared = prepare_plan_finalization(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=before_revision,
+        expected_control_sha256=control_sha256,
+        current_holder_thread_id="coordinator-thread-001",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:06:00Z",
+    )
+    assert prepared["status"] == "completion_report_ready"
+    assert prepared["effects"]["state_writes"] == 0
+    report_path = fixture.root / "reports/legacy-completion.json"
+    report_path.parent.mkdir(parents=True)
+    report_path.write_text(
+        json.dumps(
+            prepared["completion_report"],
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    result = finalize_plan(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=before_revision,
+        expected_control_sha256=control_sha256,
+        current_holder_thread_id="coordinator-thread-001",
+        completion_report_path=report_path.relative_to(fixture.root),
+        expected_completion_report_sha256=prepared[
+            "completion_report_sha256"
+        ],
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:07:00Z",
+    )
+    assert result["status"] == "terminal_complete"
+    assert result["plan_revision"] == before_revision + 1
+    store = PlanControlStore(fixture.root).require_store()
+    terminal = store.load_plan(fixture.plan["plan_id"])
+    assert terminal["state"]["phase"] == "terminal_complete"
+    assert terminal["state"]["lease"] is None
+    receipts = [
+        item
+        for item in terminal["journal"]
+        if item["kind"] == "plan_completion_receipt"
+    ]
+    assert len(receipts) == 1
+    assert receipts[0]["payload"]["historical_event_names_reused"] is False
+    assert not {
+        "plan_completion_candidate_confirmed",
+        "plan_terminal_completion_recorded",
+    } & {
+        str(item["payload"].get("event_type"))
+        for item in terminal["journal"]
+    }
+
+    duplicate = finalize_plan(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=before_revision,
+        expected_control_sha256=control_sha256,
+        current_holder_thread_id="coordinator-thread-001",
+        completion_report_path=report_path.relative_to(fixture.root),
+        expected_completion_report_sha256=prepared[
+            "completion_report_sha256"
+        ],
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:08:00Z",
+    )
+    assert duplicate["status"] == "already_terminal"
+    assert duplicate["execution_performed"] is False
+    assert store.load_plan(fixture.plan["plan_id"])["state"][
+        "revision"
+    ] == before_revision + 1
+
+
+def test_legacy_finalize_plan_rejects_incomplete_or_mismatched_proof(
+    tmp_path: Path,
+):
+    incomplete_root = tmp_path / "incomplete"
+    incomplete_root.mkdir()
+    incomplete = make_project(incomplete_root, task_count=1)
+    _, activation = activate_fixture(incomplete)
+    with pytest.raises(
+        WebsitePlanAdapterError, match="accepted coordinator boundary"
+    ):
+        prepare_plan_finalization(
+            plan_id=incomplete.plan["plan_id"],
+            expected_plan_revision=activation["plan_revision"],
+            expected_control_sha256=activation[
+                "website_control_sha256"
+            ],
+            current_holder_thread_id="coordinator-thread-001",
+            repo_root=incomplete.root,
+            timestamp="2026-07-20T06:01:00Z",
+        )
+
+    mismatch_root = tmp_path / "mismatch"
+    mismatch_root.mkdir()
+    fixture = make_project(mismatch_root, task_count=1)
+    finalized_task, control_sha256 = complete_only_plan_task(fixture)
+    prepared = prepare_plan_finalization(
+        plan_id=fixture.plan["plan_id"],
+        expected_plan_revision=finalized_task["plan_revision"],
+        expected_control_sha256=control_sha256,
+        current_holder_thread_id="coordinator-thread-001",
+        repo_root=fixture.root,
+        timestamp="2026-07-20T06:06:00Z",
+    )
+    report_path = fixture.root / "reports/legacy-completion.json"
+    report_path.parent.mkdir(parents=True)
+    report_path.write_text(
+        json.dumps(prepared["completion_report"], sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(
+        WebsitePlanAdapterError, match="differs from requested CAS authority"
+    ):
+        finalize_plan(
+            plan_id=fixture.plan["plan_id"],
+            expected_plan_revision=finalized_task["plan_revision"],
+            expected_control_sha256=control_sha256,
+            current_holder_thread_id="coordinator-thread-001",
+            completion_report_path=report_path.relative_to(fixture.root),
+            expected_completion_report_sha256="0" * 64,
+            repo_root=fixture.root,
+            timestamp="2026-07-20T06:07:00Z",
+        )
 
 
 def test_partial_successor_activation_enters_recovery_without_duplication(

@@ -1,0 +1,61 @@
+{
+  "schema_version": "website.implementation-plan-relay-adapter.v1",
+  "adapter_id": "the-aether-flow-website-plan-native-relay",
+  "adapter_version": "1.0.0",
+  "canonical_execution_authority": "implementation_control",
+  "relay_profile": "recursive_chain_v1",
+  "relay_topology": "recursive_chain_v1",
+  "default_new_run_profile": "recursive_chain_v1",
+  "recursive_writer_enabled": true,
+  "state_path": ".local/sys4ai/implementation-plan-relay/state.sqlite3",
+  "legacy_state_path": ".local/sys4ai/implementation-plan-goal/state.sqlite3",
+  "persistent_coordinator": false,
+  "generic_outer_goal": false,
+  "native_goal_mode": "optional_advisory_mirror",
+  "native_goal_may_mark_complete": false,
+  "provider_mode": "degraded_manual",
+  "automatic_provider_required_capabilities": [
+    "create_thread",
+    "read_thread",
+    "query_by_idempotency_key",
+    "current_thread_identity",
+    "same_project_evidence",
+    "bound_checkout_evidence",
+    "requested_and_effective_effort"
+  ],
+  "relay_cardinality": {
+    "launcher_successors": 1,
+    "tasks_per_relay_frame": 1,
+    "continue_invocations_per_relay_frame": 1,
+    "agent_jobs_per_relay_frame": 1,
+    "next_task_successors_per_relay_frame": 1,
+    "same_task_successors": 0
+  },
+  "mutation_guards": {
+    "require_expected_plan_revision": true,
+    "require_expected_website_control_sha256": true,
+    "require_current_thread_identity": true,
+    "fail_closed_on_mismatch": true,
+    "automatic_lease_takeover": false,
+    "automatic_consumed_rerun": false,
+    "blind_provider_retry": false
+  },
+  "release_effects_authorized_by_completion": false,
+  "legacy_mode": {
+    "profile": "coordinator_v2_legacy",
+    "default_writer_enabled": false,
+    "mutation_status": "retired_from_default_surface",
+    "explicit_historical_selector": "coordinator_v2_legacy",
+    "named_historical_runs_only": true,
+    "read_only_status_export_enabled": true,
+    "retention_policy": "retain databases, readers, exports, and terminal evidence; never convert in place"
+  },
+  "preserved_unrelated_paths": [
+    {
+      "path": "ImplementationPlans/aether-flow-human-first-document-library-implementation-plan.md",
+      "sha256": "2f6333a3887c88fe3bdd915255a380b91a44dee6c041470b202983eefef0542a",
+      "classification": "user_owned_preexisting",
+      "baseline_evidence": "docs/quality/plan-native-recursive-relay-baseline-audit-2026-07-22.md"
+    }
+  ]
+}

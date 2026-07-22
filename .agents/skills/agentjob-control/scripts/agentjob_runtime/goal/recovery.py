@@ -12,6 +12,7 @@ from agentjob_runtime.goal.leases import DEFAULT_LEASE_SECONDS, require_active_l
 from agentjob_runtime.goal.model import (
     ABSORBING_TERMINALS,
     GOAL_SCHEMA_VERSION,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
     RECOVERABLE_TERMINALS,
     TERMINAL_PHASES,
     V3_TERMINAL_PHASES,
@@ -167,7 +168,7 @@ def adopt_successor(
         entry["phase"] = "successor_created"
         entry["successor_thread_id"] = successor_thread_id
         entry["terminal_or_successor_outcome"] = "successor_created"
-        if record.get("schema_version") == GOAL_SCHEMA_VERSION:
+        if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
             effort = record["execution_profile"]["reasoning_effort"]
             binding_hash = content_sha256(record["repository_binding"])
             if (
@@ -663,16 +664,16 @@ def abandon_unconsumed(
         if entry["invocation_consumed"]:
             raise StateConflict("consumed work cannot be abandoned as zero execution")
         prior_phase = record["state"]["phase"]
-        v3 = record.get("schema_version") == GOAL_SCHEMA_VERSION
+        profiled = record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
         resulting_phase = (
-            "recovery_pending" if v3 else "terminal_failed"
+            "recovery_pending" if profiled else "terminal_failed"
         )
         entry["phase"] = resulting_phase
         record["state"]["phase"] = resulting_phase
         record["state"]["terminal_reason"] = (
-            None if v3 else "abandoned_unconsumed"
+            None if profiled else "abandoned_unconsumed"
         )
-        if v3:
+        if profiled:
             disposition = classify_resolution(
                 reason_code="recovery.unconsumed_generation_abandoned",
                 status="recovery_pending",
@@ -694,14 +695,14 @@ def abandon_unconsumed(
             mutation,
             generation=generation,
             invocation_count=0,
-            decision="unknown" if v3 else "failed",
+            decision="unknown" if profiled else "failed",
             evidence={
                 "zero_job_reason": "holder proved terminal before invocation consumption",
                 "goal_evaluation": "unmet",
                 "progress_summary": "The unconsumed generation was abandoned through recovery.",
                 "remaining_work": (
                     "Prove a legal route, then resume the same immutable goal."
-                    if v3
+                    if profiled
                     else "A new generation requires explicit recovery and a legal route."
                 ),
             },
@@ -713,7 +714,7 @@ def abandon_unconsumed(
             prior_phase=prior_phase,
             resulting_phase=resulting_phase,
         )
-        if v3:
+        if profiled:
             mutation.replace_lease(
                 generation=generation,
                 holder_kind="continuation",
@@ -812,7 +813,7 @@ def reconcile_consumed(
             }
         else:
             record["state"]["terminal_reason"] = "reconciled_consumed_generation"
-            if record.get("schema_version") == GOAL_SCHEMA_VERSION:
+            if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
                 if decision not in V3_TERMINAL_PHASES:
                     raise RecordValidationError(
                         "goal v3 reconciliation requires a v3 terminal phase"
@@ -875,14 +876,14 @@ def reconcile_consumed(
                     if decision == "terminal_cancelled"
                     else "unknown"
                 )
-                if record.get("schema_version") == GOAL_SCHEMA_VERSION
+                if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
                 else "failed"
                 if returned_proven
                 else "unknown",
                 evidence=receipt_evidence,
             )
             if (
-                record.get("schema_version") == GOAL_SCHEMA_VERSION
+                record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
                 and decision == "terminal_complete"
             ):
                 from agentjob_runtime.goal.completion_report import (
@@ -915,7 +916,7 @@ def cancel_relay(
         generation = int(record["state"]["current_generation"])
         record["state"]["phase"] = "terminal_cancelled"
         record["state"]["terminal_reason"] = "cancelled"
-        if record.get("schema_version") == GOAL_SCHEMA_VERSION:
+        if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
             if generation < 1 or str(generation) not in record["generations"]:
                 raise StateConflict(
                     "v3 cancellation requires an existing relay generation"

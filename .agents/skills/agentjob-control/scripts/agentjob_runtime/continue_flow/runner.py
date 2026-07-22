@@ -79,6 +79,8 @@ def _protected_finalization(
     reason_code: str | None = None,
     status: str | None = None,
     next_recommended_action: str | None = None,
+    execution_authority_sha256: str | None = None,
+    protected_action_request: Mapping[str, Any] | None = None,
 ) -> ContinueFinalization:
     value = preflight.boundary
     return finalize_no_action(
@@ -90,6 +92,8 @@ def _protected_finalization(
         decision_id=str(value["decision_id"]) if value.get("decision_id") else None,
         job_id=str(value["job_id"]) if value.get("job_id") else None,
         next_recommended_action=next_recommended_action,
+        execution_authority_sha256=execution_authority_sha256,
+        protected_action_request=protected_action_request,
     )
 
 
@@ -115,6 +119,8 @@ def run_continue(
     actor_ref: str = "continue:system-director",
     policy_refs: Sequence[str] = (".agents/control/policies/default.json",),
     policies: Sequence[Mapping[str, Any]] = (),
+    execution_authority_sha256: str | None = None,
+    protected_action_request: Mapping[str, Any] | None = None,
     timestamp: str | None = None,
 ) -> ContinueInvocation:
     """Resolve, execute, validate, and finalize at most one AgentJob."""
@@ -134,11 +140,19 @@ def run_continue(
         "human_gate_required",
     }
     if boundary == "human_gate_required":
-        finalization = _protected_finalization(preflight)
+        finalization = _protected_finalization(
+            preflight,
+            execution_authority_sha256=execution_authority_sha256,
+            protected_action_request=protected_action_request,
+        )
         return ContinueInvocation(preflight.as_dict(), None, None, None, finalization)
 
     if machine_boundary:
-        routed = _protected_finalization(preflight)
+        routed = _protected_finalization(
+            preflight,
+            execution_authority_sha256=execution_authority_sha256,
+            protected_action_request=protected_action_request,
+        )
         disposition = routed.result["resolution_disposition"]
         if (
             disposition["machine_resolvable"] is not True
@@ -185,6 +199,8 @@ def run_continue(
             status="human_gate_required"
             if director.boundary == "human_gate_required"
             else "blocked",
+            execution_authority_sha256=execution_authority_sha256,
+            protected_action_request=protected_action_request,
         )
         return ContinueInvocation(
             preflight.as_dict(), director.as_dict(), None, None, finalization
@@ -195,6 +211,8 @@ def run_continue(
             reason_code="execution.runtime_controls_missing",
             status="blocked",
             next_recommended_action="Configure exact runtime enforcement controls.",
+            execution_authority_sha256=execution_authority_sha256,
+            protected_action_request=protected_action_request,
         )
         return ContinueInvocation(
             preflight.as_dict(), director.as_dict(), None, None, finalization
@@ -205,6 +223,8 @@ def run_continue(
             reason_code="execution.operation_adapter_missing",
             status="blocked",
             next_recommended_action="Supply the bounded AgentJob operation adapter.",
+            execution_authority_sha256=execution_authority_sha256,
+            protected_action_request=protected_action_request,
         )
         return ContinueInvocation(
             preflight.as_dict(), director.as_dict(), None, None, finalization
@@ -259,6 +279,8 @@ def run_continue(
         close_task=close_task,
         handoff_plan=handoff_plan,
         policies=policies,
+        execution_authority_sha256=execution_authority_sha256,
+        protected_action_request=protected_action_request,
     )
     return ContinueInvocation(
         preflight.as_dict(),

@@ -46,7 +46,10 @@ generic lease transaction.
 | ---: | --- | --- | --- |
 | 1 | `initial` | retained, immutable | Existing generic goal-relay tables, indexes, and triggers. |
 | 2 | `nullable_effective_deadline` | retained, immutable | Existing v1 deadline projection and v2 unlimited-deadline support. |
-| 3 | `plan_state_v1` | proposed by IPG-0301 | Add all plan tables, indexes, views, and immutability/CAS triggers as one atomic profile installation. |
+| 3 | `plan_state_v1` | retained, immutable | Add all base plan tables, indexes, views, and immutability/CAS triggers as one atomic profile installation. |
+| 4 | `goal_v3_profiles_and_reports` | retained, immutable | Add generic goal activation profiles, resolution records, and authoritative completion reports. |
+| 5 | `plan_execution_profiles` | retained, immutable | Add accepted plan execution profiles, topology authority, and profile-aware provider/task evidence. |
+| 6 | `plan_continuous_relay` | current additive writer | Add question batches and responses, execution authority, continuous state v2, coordinator wakeups, and canonical completion reports. |
 
 The production version-3 file, if IPG-0302 accepts this design, belongs at
 `scripts/agentjob_runtime/goal/migrations/003_plan_state_v1.sql`. Splitting
@@ -76,6 +79,12 @@ or higher and never alter the applied version-3 bytes or checksum.
 | `plan_leases` | Plan projection of the active generic lease, using a holder-token hash. | `transaction_id`; unique active lease per plan and repository fingerprint; unique outer lease transaction. |
 | `plan_events` | Append-only hash-linked plan journal. | `(plan_id, sequence)` and globally unique event hash. |
 | `plan_recovery_actions` | Append-only authorized recovery evidence. | `recovery_action_id`; unique sequence and action hash. |
+| `plan_question_batches` | Immutable deterministic activation and late-input batches. | `batch_id`; content hash and plan binding are immutable. |
+| `plan_execution_authorities` | Immutable default-local and exact-exception authority manifest. | One accepted authority per continuous plan. |
+| `plan_question_responses` | Immutable complete response to one question batch. | `response_id`; binds the exact batch hash. |
+| `plan_continuous_states` | CAS-protected coordinator projection, nonterminal wait/safeguard state, and completion binding. | One row per plan with exact revision advancement. |
+| `plan_coordinator_wakeups` | Idempotent worker-receipt notification and parent-resume evidence. | `wakeup_id`; unique generation and worker/receipt identity. |
+| `plan_completion_reports` | Immutable canonical goal-completion proof. | One complete report per plan. |
 
 The canonical JSON record remains authoritative for field meaning. Normalized
 columns and child rows are searchable integrity projections, not a second
@@ -150,6 +159,12 @@ intent is committed first; the provider is called at most once; its returned,
 definitive-failure, or uncertain outcome is then committed in a new
 revision-checked transaction. Ambiguity is never hidden by holding a database
 transaction across the external call.
+
+Continuous coordinator waiting and parent resumption also remain outside the
+transaction. Each wakeup intent is persisted before `resume_thread`; delivered
+or ambiguous evidence is finalized exactly once. An ambiguous resume enters
+`suspended_safeguard` and never authorizes a duplicate provider create or a
+rerun of consumed work.
 
 ## Ready-task query
 
@@ -229,14 +244,15 @@ scheduler, CLI command, provider effect, recovery command, installer change,
 generated copy, plugin, or mutable runtime state was added. IPG-0302 and later
 Phase-03 work subsequently supplied the production migration, backup
 implementation, checksums, canonical plan model, transactional store,
-lifecycle mutations, and scheduler runtime.
+lifecycle mutations, and scheduler runtime. Later additive versions 4 through
+6 preserve every applied migration byte and add profile, topology, and
+continuous-coordinator records without silently upgrading an active v1 run.
 
 ## Design verification
 
-Current repository validation statically checks the production migration and
-runtime sources, including the required uniqueness constraints and ready-task
-views. The canonical AgentJob runtime regression suite has been retired, so
-this static verification does not prove migration execution, backup behavior,
-store behavior, scheduler behavior, or end-to-end runtime behavior. Prior
-receipts and reports retain the historical validation evidence observed before
-retirement.
+Current repository validation checks immutable migration checksums, executed
+3-to-4-to-5-to-6 paths, rollback and export behavior, uniqueness constraints,
+ready-task views, coordinator CAS, provider ambiguity, worker wakeups, and a
+multi-task continuous journey. Target-project adapters and a live provider
+still require their own pilot because repository tests use controlled provider
+transports.

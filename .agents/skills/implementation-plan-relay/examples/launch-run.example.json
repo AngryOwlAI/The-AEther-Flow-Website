@@ -1,0 +1,18 @@
+{
+  "schema_version": "sys4ai.plan-relay-run.v1",
+  "run_id": "RUN-EXAMPLE-001",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "plan_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "acceptance_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "repository_binding_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "repository_fingerprint": "repo-example",
+  "control_fingerprint": "control-example",
+  "relay_profile": "recursive_chain_v1",
+  "relay_topology": "recursive_chain_v1",
+  "launcher_thread_id": "launcher-example",
+  "requested_effort": "max",
+  "revision": 1,
+  "status": "active",
+  "current_generation": 1,
+  "completion_report_sha256": null
+}

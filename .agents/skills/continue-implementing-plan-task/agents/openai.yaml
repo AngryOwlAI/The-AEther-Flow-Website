@@ -1,23 +1,14 @@
 interface:
-  display_name: Continue Implementing Plan Task
-  short_description: Execute one profile-bound plan task.
+  display_name: Continue Implementing Plan Task (Deprecated)
+  short_description: Compatibility name for the recursive plan frame.
 policy:
   allow_implicit_invocation: false
   user_invocation: hidden_by_default
-  internal_invocation: token_bound_or_recovery
+  internal_invocation: deprecated_redirect
 constraints:
   maximum_continue_invocations: 1
   maximum_agentjobs_per_invocation: 1
-  maximum_successors_per_invocation: 0
-  may_spawn_threads: false
-  recovery_supported: true
+  maximum_successors_per_invocation: 1
+  persistent_coordinator: false
 capabilities:
-  - sys4ai.continue-implementing-plan-task.runtime.v1
-  - sys4ai.plan-task-envelope.v2
-  - sys4ai.plan-task-receipt.v2
-  - sys4ai.repository-topology-enforcement.v1
-inheritance_contract:
-  reasoning_effort_source: plan_task_envelope
-  static_reasoning_effort_forbidden: true
-  profile_verification_required_before_claim: true
-  environment_mode: reuse_bound_checkout
+  - sys4ai.continue-implementing-plan-task.compat-shim.v1

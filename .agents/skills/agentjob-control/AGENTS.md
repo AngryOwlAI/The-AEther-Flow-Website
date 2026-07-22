@@ -35,12 +35,17 @@ project adapters and domain policy.
   separate from v2 read/write capability.
 - Keep canonical v2 null deadlines distinct from SQLite's reserved legacy
   projection marker.
-- Keep v1/v2 goal records reader-only. New launches use v3 and must carry a
-  validated combined activation receipt.
+- Keep v1-v3 goal records readable and unchanged. Advanced compatibility
+  initialization may still emit v3; new uninterrupted launches use v4 only
+  after complete question, response, authority, and activation bindings.
 - No v3 non-success terminal is valid without a human-necessity report proving
   no lawful machine route remains.
 - Require exact one-shot authority and before/after identity checks for
   branch/worktree/binding changes.
+- Keep the v4 coordinator at zero AgentJobs, reject manual ThreadProviders,
+  and require automatic create/profile/query/wait/resume capabilities at
+  verified `max` before activation.
+- Preserve SQLite migrations append-only through schema version 7.
 
 ## Validation
 

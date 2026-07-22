@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/plan-relay-lease-v1.schema.json",
+  "title": "PlanRelayLease v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "repository_fingerprint", "holder_kind", "holder_generation", "holder_thread_id", "holder_token_sha256", "heartbeat_at", "expires_at", "released_at", "steal_authorized"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-relay-lease.v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "repository_fingerprint": {"type": "string", "minLength": 1},
+    "holder_kind": {"enum": ["launcher", "worker", "successor_reserved", "quarantined"]},
+    "holder_generation": {"type": ["integer", "null"], "minimum": 1},
+    "holder_thread_id": {"type": "string", "minLength": 1},
+    "holder_token_sha256": {"$ref": "#/$defs/sha256"},
+    "heartbeat_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "released_at": {"type": ["string", "null"], "format": "date-time"},
+    "steal_authorized": {"const": false}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

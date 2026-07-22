@@ -1,5 +1,5 @@
 skill_id: agentjob-control
-version: 0.3.0
+version: 0.4.1
 status: template
 release_maturity: experimental
 stability: evolving
@@ -133,16 +133,45 @@ runtime_capabilities:
     - sys4ai.control-records.v1
     - sys4ai.goal-relay-state-reader.v1
     - sys4ai.goal-relay-state-reader.v2
+    - sys4ai.goal-relay-state-reader.v3
     - sys4ai.goal-relay-state.v3
+    - sys4ai.goal-relay-state.v4
     - sys4ai.continuation-envelope.v2
+    - sys4ai.continuation-envelope.v3
+    - sys4ai.continue-result.v3
+    - sys4ai.goal-question-batch.v1
+    - sys4ai.goal-question-response.v1
+    - sys4ai.goal-execution-authority.v1
+    - sys4ai.goal-activation-receipt.v2
+    - sys4ai.goal-coordinator-wakeup.v1
+    - sys4ai.goal-step-receipt.v3
     - sys4ai.thread-provider.v2
+    - sys4ai.thread-provider.continuous.v1
     - sys4ai.repository-topology-enforcement.v1
     - sys4ai.plan-activation-receipt.v1
+    - sys4ai.plan-activation-receipt.v2
     - sys4ai.plan-execution-profile.v1
+    - sys4ai.plan-question-batch.v1
+    - sys4ai.plan-question-response.v1
+    - sys4ai.plan-execution-authority.v1
+    - sys4ai.implementation-plan-state.v2
+    - sys4ai.plan-coordinator-wakeup.v1
+    - sys4ai.plan-completion-report.v1
     - sys4ai.plan-task-envelope.v2
     - sys4ai.plan-provider-intent.v2
     - sys4ai.plan-task-receipt.v2
     - sys4ai.plan-store.sqlite.v5
+    - sys4ai.plan-store.sqlite.v6
+    - sys4ai.plan-relay.sqlite.v1
+    - sys4ai.plan-relay-run.v1
+    - sys4ai.plan-relay-generation.v1
+    - sys4ai.plan-task-envelope.v3
+    - sys4ai.plan-task-receipt.v3
+    - sys4ai.plan-dispatch-intent.v3
+    - sys4ai.plan-relay-lease.v1
+    - sys4ai.plan-completion-report.v2
+    - sys4ai.codex-goal-mirror.v1
+    - sys4ai.goal-store.sqlite.v7
     - sys4ai.project-bootstrap.v1
   requires:
     - python>=3.11
@@ -162,8 +191,22 @@ control_protocol:
     - Supersession
     - GoalState
     - GoalStepReceipt
+    - PlanRelayRun
+    - PlanRelayGeneration
+    - PlanDispatchIntent
+    - PlanRelayLease
+    - GoalQuestionBatch
+    - GoalQuestionResponse
+    - GoalExecutionAuthority
+    - GoalCoordinatorWakeup
     - ContinuationEnvelope
     - ContinueResult
+    - PlanQuestionBatch
+    - PlanQuestionResponse
+    - PlanExecutionAuthority
+    - ImplementationPlanState
+    - PlanCoordinatorWakeup
+    - PlanCompletionReport
   immutable_after_activation: true
   supersession_required: true
 state:

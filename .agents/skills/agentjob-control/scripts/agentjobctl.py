@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import importlib.util
 import json
 import re
@@ -13,6 +14,10 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 from agentjob_runtime import PACKAGE_VERSION, PROTOCOL_VERSION
+from agentjob_runtime.adapters.thread_auto import (
+    inspect_thread_provider,
+    select_thread_provider,
+)
 from agentjob_runtime.adapters.thread_manual import ManualThreadProvider
 from agentjob_runtime.config import LoadedConfig, load_config, resolve_project_path
 from agentjob_runtime.control.activation import _format_cross_issues, _record_set, activate_packet
@@ -28,10 +33,17 @@ from agentjob_runtime.errors import (
     RecordNotFound,
     RecordValidationError,
     SecurityError,
+    StateConflict,
 )
 from agentjob_runtime.fingerprinting.canonical import FingerprintResult
 from agentjob_runtime.goal.decide import decide_generation
 from agentjob_runtime.goal.completion_report import render_completion_markdown
+from agentjob_runtime.goal.continuous import (
+    accept_and_run as accept_and_run_goal,
+    advance_once as advance_goal_once,
+    preparation_from_mapping as goal_preparation_from_mapping,
+    prepare_goal_activation,
+)
 from agentjob_runtime.goal.execution import (
     claim_generation,
     consume_invocation,
@@ -54,6 +66,16 @@ from agentjob_runtime.goal.sqlite_store import SQLiteGoalStore
 from agentjob_runtime.goal.successor import record_successor, reserve_successor
 from agentjob_runtime.goal.verify import verify_generation
 from agentjob_runtime.plan.initialize import initialize_plan
+from agentjob_runtime.plan.continuous import (
+    ContinuousPreparation,
+    accept_continuous_activation,
+    advance_once as advance_plan_once,
+    answer_and_resume,
+    prepare_continuous_activation,
+    run_to_goal as run_plan_to_goal,
+    validate_execution_authority,
+    validate_question_batch,
+)
 from agentjob_runtime.plan.launcher import (
     PlanLauncherGuards,
     PlanSourceRequest,
@@ -382,7 +404,10 @@ def _goal_summary(record: Mapping[str, Any]) -> dict[str, Any]:
         "generations": generations,
         "execution_performed": False,
     }
-    if record.get("schema_version") == "sys4ai.continue-goal.v3":
+    if record.get("schema_version") in {
+        "sys4ai.continue-goal.v3",
+        "sys4ai.continue-goal.v4",
+    }:
         result.update(
             {
                 "reasoning_effort": record["execution_profile"][
@@ -401,6 +426,35 @@ def _goal_summary(record: Mapping[str, Any]) -> dict[str, Any]:
                     if record.get("completion_report")
                     else None
                 ),
+            }
+        )
+    if record.get("schema_version") == "sys4ai.continue-goal.v4":
+        granted_ids = {
+            item["grant_id"]
+            for item in record["question_response"]["grants"]
+            if item["granted"] is True
+        }
+        consumed_ids = {
+            item["grant_id"] for item in record["grant_consumptions"]
+        }
+        result.update(
+            {
+                "coordinator_status": record["coordinator"]["status"],
+                "coordinator_thread_id": record["coordinator"]["thread_id"],
+                "current_worker_thread_id": record["coordinator"][
+                    "current_worker_thread_id"
+                ],
+                "question_batch_id": record["question_batch"]["batch_id"],
+                "execution_authority_id": record["execution_authority"][
+                    "authority_id"
+                ],
+                "available_grant_ids": [
+                    item["grant_id"]
+                    for item in record["execution_authority"]["requested_grants"]
+                    if item["grant_id"] in granted_ids
+                    and item["grant_id"] not in consumed_ids
+                ],
+                "continue_required": False,
             }
         )
     return result
@@ -952,8 +1006,670 @@ def _plan_dispatch_reason_code(status: str) -> str:
     }.get(status, "plan.launcher_completed")
 
 
+def _plan_state_path(args: argparse.Namespace) -> tuple[Path, Path]:
+    root = Path(args.project_root).expanduser().resolve()
+    if not root.is_dir():
+        raise RecordValidationError(
+            "plan-goal project root must be an existing directory",
+            details={"reason_code": "plan.repository_mismatch"},
+        )
+    state_path = resolve_project_path(
+        root,
+        args.state_db,
+        purpose="plan-goal state database",
+        reject_install_roots=True,
+    )
+    return root, state_path
+
+
+def _load_project_thread_provider(
+    project_root: Path,
+    adapter_path: str,
+) -> Any:
+    path = _protected_project_file(
+        project_root,
+        adapter_path,
+        purpose="ThreadProvider adapter",
+    )
+    spec = importlib.util.spec_from_file_location(
+        "_sys4ai_project_thread_provider",
+        path,
+    )
+    if spec is None or spec.loader is None:
+        raise BootstrapRequired(
+            "configured ThreadProvider adapter cannot be loaded",
+            details={"reason_code": "thread_provider.adapter_unavailable"},
+        )
+    module = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(module)
+    except Exception as exc:
+        raise BootstrapRequired(
+            "configured ThreadProvider adapter failed to load",
+            details={
+                "reason_code": "thread_provider.adapter_unavailable",
+                "error_type": type(exc).__name__,
+            },
+        ) from exc
+    factory = getattr(module, "build_thread_provider", None)
+    if not callable(factory):
+        raise BootstrapRequired(
+            "ThreadProvider adapter must expose build_thread_provider(project_root=...)",
+            details={"reason_code": "thread_provider.adapter_unavailable"},
+        )
+    provider = factory(project_root=project_root)
+    inspect_thread_provider(provider)
+    return provider
+
+
+def _continuous_provider(args: argparse.Namespace, root: Path) -> Any:
+    provider = _load_project_thread_provider(root, args.provider_adapter)
+    selected = select_thread_provider(
+        configured_provider=str(provider.provider_id),
+        strategy=args.thread_strategy,
+        providers=[provider],
+        require_continuous=True,
+    )
+    return selected
+
+
+def _load_goal_setup_adapter(project_root: Path, adapter_path: str) -> Any:
+    path = _protected_project_file(
+        project_root,
+        adapter_path,
+        purpose="goal setup adapter",
+    )
+    spec = importlib.util.spec_from_file_location(
+        "_sys4ai_project_goal_setup_adapter",
+        path,
+    )
+    if spec is None or spec.loader is None:
+        raise BootstrapRequired(
+            "configured goal setup adapter cannot be loaded",
+            details={"reason_code": "goal.setup_adapter_unavailable"},
+        )
+    module = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(module)
+    except Exception as exc:
+        raise BootstrapRequired(
+            "configured goal setup adapter failed to load",
+            details={
+                "reason_code": "goal.setup_adapter_unavailable",
+                "error_type": type(exc).__name__,
+            },
+        ) from exc
+    required = (
+        "apply_goal_setup",
+        "observe_goal_repository",
+        "fingerprint_goal_repository",
+    )
+    missing = [name for name in required if not callable(getattr(module, name, None))]
+    if missing:
+        raise BootstrapRequired(
+            "goal setup adapter lacks required callables",
+            details={
+                "reason_code": "goal.setup_adapter_unavailable",
+                "missing": missing,
+            },
+        )
+    return module
+
+
+def command_goal_prepare(args: argparse.Namespace) -> dict[str, Any]:
+    """Perform the complete read-only v4 intake and emit one prompt."""
+
+    root = Path(args.project_root).expanduser().resolve()
+    if not root.is_dir():
+        raise RecordValidationError("goal project root must be an existing directory")
+    proposal = _load_protected_mapping(
+        root,
+        args.proposal,
+        purpose="verified goal activation proposal",
+    )
+    completion_contract = _load_protected_mapping(
+        root,
+        args.completion_contract,
+        purpose="goal completion contract",
+    )
+    repository_binding = _load_protected_mapping(
+        root,
+        args.repository_binding,
+        purpose="goal repository binding",
+    )
+    repository_observation = _load_protected_mapping(
+        root,
+        args.repository_observation,
+        purpose="goal repository observation",
+    )
+    provider_capabilities = _load_protected_mapping(
+        root,
+        args.provider_capabilities,
+        purpose="ThreadProvider capability report",
+    )
+    intake_inventory = _load_protected_mapping(
+        root,
+        args.intake_inventory,
+        purpose="complete goal intake inventory",
+    )
+    question_manifest = (
+        _load_protected_mapping(
+            root,
+            args.questions,
+            purpose="declared goal questions",
+        )
+        if args.questions
+        else {"questions": []}
+    )
+    grant_manifest = (
+        _load_protected_mapping(
+            root,
+            args.grants,
+            purpose="declared protected goal actions",
+        )
+        if args.grants
+        else {"grants": []}
+    )
+    questions = question_manifest.get("questions")
+    grants = grant_manifest.get("grants")
+    if not isinstance(questions, list) or not isinstance(grants, list):
+        raise RecordValidationError(
+            "question and grant manifests must contain list values"
+        )
+    preparation = prepare_goal_activation(
+        proposal,
+        completion_contract=completion_contract,
+        repository_binding=repository_binding,
+        repository_observation=repository_observation,
+        initial_fingerprint=args.initial_fingerprint,
+        provider_capabilities=provider_capabilities,
+        intake_inventory=intake_inventory,
+        questions=questions,
+        requested_grants=grants,
+        timestamp=args.timestamp,
+    )
+    return preparation.as_dict()
+
+
+def command_goal_accept_and_run(args: argparse.Namespace) -> dict[str, Any]:
+    """Accept the complete v4 intake once and remain active to canonical met."""
+
+    root = Path(args.project_root).expanduser().resolve()
+    preparation = goal_preparation_from_mapping(
+        _load_protected_mapping(
+            root,
+            args.preparation,
+            purpose="continuous goal preparation",
+        )
+    )
+    provider = _continuous_provider(args, root)
+    response_input = (
+        _load_protected_mapping(
+            root,
+            args.response,
+            purpose="consolidated goal response",
+        )
+        if args.response
+        else {"answers": {}, "grants": {}}
+    )
+    answers = response_input.get("answers", {})
+    grants = response_input.get("grants", {})
+    if not isinstance(answers, Mapping) or not isinstance(grants, Mapping):
+        raise RecordValidationError(
+            "consolidated response requires answers and grants mappings"
+        )
+    acceptance_message = (
+        _read_protected_text(
+            root,
+            args.acceptance_message_file,
+            purpose="combined goal acceptance message",
+        )
+        if args.acceptance_message_file
+        else args.acceptance_message
+    )
+    setup_executor = None
+    repository_observer = None
+    fingerprint_provider = None
+    if args.setup_adapter:
+        adapter = _load_goal_setup_adapter(root, args.setup_adapter)
+        setup_executor = lambda grant: adapter.apply_goal_setup(
+            project_root=root,
+            grant=grant,
+        )
+        repository_observer = lambda: adapter.observe_goal_repository(
+            project_root=root
+        )
+        fingerprint_provider = lambda: adapter.fingerprint_goal_repository(
+            project_root=root
+        )
+    else:
+        if not args.repository_observation or not args.initial_fingerprint:
+            raise RecordValidationError(
+                "accept-and-run requires live --repository-observation and "
+                "--initial-fingerprint when no setup adapter is used"
+            )
+        live_observation = _load_protected_mapping(
+            root,
+            args.repository_observation,
+            purpose="live goal repository observation",
+        )
+        repository_observer = lambda: copy.deepcopy(live_observation)
+        fingerprint_provider = lambda: str(args.initial_fingerprint)
+    _, store = _goal_store(args)
+    return accept_and_run_goal(
+        store,
+        preparation=preparation,
+        acceptance_message=str(acceptance_message),
+        acceptance_evidence_ref=args.acceptance_evidence_ref,
+        answers=answers,
+        grants=grants,
+        provider=provider,
+        setup_executor=setup_executor,
+        repository_observer=repository_observer,
+        fingerprint_provider=fingerprint_provider,
+        guards=load_structured(args.guards) if args.guards else None,
+        runtime_binding=(
+            _load_protected_mapping(
+                root,
+                args.runtime_binding,
+                purpose="goal runtime binding",
+            )
+            if args.runtime_binding
+            else None
+        ),
+        goal_id=args.goal_id,
+        timestamp=args.timestamp,
+    )
+
+
+def command_goal_advance(args: argparse.Namespace) -> dict[str, Any]:
+    """Run one idempotent internal v4 coordinator boundary."""
+
+    root = Path(args.project_root).expanduser().resolve()
+    provider = _continuous_provider(args, root)
+    _, store = _goal_store(args)
+    return advance_goal_once(
+        store,
+        goal_id=args.goal_id,
+        provider=provider,
+        timestamp=args.timestamp,
+    ).as_dict()
+
+
+def _preparation_from_mapping(value: Mapping[str, Any]) -> ContinuousPreparation:
+    required = {
+        "proposal",
+        "plan",
+        "question_batch",
+        "execution_authority",
+        "prompt",
+        "status",
+    }
+    if set(value) != required:
+        raise RecordValidationError(
+            "continuous preparation has missing or unknown fields"
+        )
+    batch = validate_question_batch(value["question_batch"])
+    authority = validate_execution_authority(value["execution_authority"])
+    if (
+        value["status"] not in {"confirmation_required", "suspended_safeguard"}
+        or not isinstance(value["prompt"], str)
+        or not value["prompt"].strip()
+        or value["proposal"].get("state") != "presented"
+        or value["proposal"].get("accepted_plan_sha256")
+        != batch["accepted_plan_sha256"]
+        or authority["accepted_plan_sha256"]
+        != batch["accepted_plan_sha256"]
+        or authority["accepted_plan_revision"]
+        != batch["accepted_plan_revision"]
+    ):
+        raise RecordValidationError(
+            "continuous preparation bindings are inconsistent"
+        )
+    return ContinuousPreparation(
+        proposal=copy.deepcopy(dict(value["proposal"])),
+        plan=copy.deepcopy(dict(value["plan"])),
+        question_batch=batch,
+        execution_authority=authority,
+        prompt=str(value["prompt"]),
+        status=str(value["status"]),
+    )
+
+
+def command_plan_goal_prepare(args: argparse.Namespace) -> dict[str, Any]:
+    """Run deterministic read-only intake and return one complete prompt."""
+
+    root = Path(args.project_root).expanduser().resolve()
+    plan_skill_root = _implementation_plan_skill_root()
+    proposal = _load_protected_mapping(
+        root,
+        args.proposal,
+        purpose="verified plan activation proposal",
+    )
+    plan = _load_protected_mapping(
+        root,
+        args.plan,
+        purpose="accepted implementation plan",
+    )
+    repository_observation = _load_protected_mapping(
+        root,
+        args.repository_observation,
+        purpose="plan repository observation",
+    )
+    capabilities = _load_protected_mapping(
+        root,
+        args.provider_capabilities,
+        purpose="ThreadProvider capability report",
+    )
+    effects_record = (
+        _load_protected_mapping(
+            root,
+            args.effects,
+            purpose="declared protected effects",
+        )
+        if args.effects
+        else {"effects": []}
+    )
+    questions_record = (
+        _load_protected_mapping(
+            root,
+            args.questions,
+            purpose="declared plan questions",
+        )
+        if args.questions
+        else {"questions": []}
+    )
+    effects = effects_record.get("effects")
+    questions = questions_record.get("questions")
+    if not isinstance(effects, list) or not isinstance(questions, list):
+        raise RecordValidationError(
+            "effects and questions manifests must contain list values"
+        )
+    preparation = prepare_continuous_activation(
+        proposal,
+        plan=plan,
+        plan_schema_path=(
+            plan_skill_root / "schemas" / "implementation-plan.schema.json"
+        ),
+        repository_observation=repository_observation,
+        provider_capabilities=capabilities,
+        plan_revision=args.plan_revision,
+        requested_effects=effects,
+        questions=questions,
+        timestamp=args.timestamp,
+    )
+    return preparation.as_dict()
+
+
+def command_plan_goal_accept_and_run(args: argparse.Namespace) -> dict[str, Any]:
+    """Atomically accept prepared authority, initialize, and enter the loop."""
+
+    root, state_path = _plan_state_path(args)
+    plan_skill_root = _implementation_plan_skill_root()
+    preparation = _preparation_from_mapping(
+        _load_protected_mapping(
+            root,
+            args.preparation,
+            purpose="continuous plan preparation",
+        )
+    )
+    if preparation.status != "confirmation_required":
+        raise BootstrapRequired(
+            "continuous preparation safeguards are not resolved",
+            details={
+                "reason_code": "plan.continuous_safeguard",
+                "safeguards": preparation.question_batch["safeguards"],
+            },
+        )
+    provider = _continuous_provider(args, root)
+    if provider.provider_id != preparation.proposal["provider_id"]:
+        raise StateConflict(
+            "live ThreadProvider differs from the confirmed preparation"
+        )
+    response_input = (
+        _load_protected_mapping(
+            root,
+            args.response,
+            purpose="consolidated plan response",
+        )
+        if args.response
+        else {"answers": {}, "grants": {}}
+    )
+    answers = response_input.get("answers", {})
+    grants = response_input.get("grants", {})
+    if not isinstance(answers, Mapping) or not isinstance(grants, Mapping):
+        raise RecordValidationError(
+            "consolidated response requires answers and grants mappings"
+        )
+    acceptance_message = (
+        _read_protected_text(
+            root,
+            args.acceptance_message_file,
+            purpose="combined acceptance message",
+        )
+        if args.acceptance_message_file
+        else args.acceptance_message
+    )
+    _, activation_receipt, question_response = accept_continuous_activation(
+        preparation,
+        acceptance_message=acceptance_message,
+        acceptance_evidence_ref=args.acceptance_evidence_ref,
+        answers=answers,
+        grants=grants,
+        timestamp=args.timestamp,
+        activation_id=args.activation_id,
+    )
+    report = _load_protected_mapping(
+        root,
+        args.normalization_report,
+        purpose="plan normalization report",
+    )
+    topology = _load_protected_mapping(
+        root,
+        args.repository_topology_policy,
+        purpose="plan repository topology policy",
+    )
+    outer_holder_token = _read_protected_secret(
+        root,
+        args.outer_holder_token_file,
+        purpose="outer goal holder token",
+    )
+    store = SQLitePlanStore(
+        state_path,
+        schema_root=plan_skill_root / "schemas",
+    )
+    created, initialization_receipt = store.create_initialized_plan(
+        plan=preparation.plan,
+        normalization_report=report,
+        activation_receipt=activation_receipt,
+        activation_goal_text=preparation.proposal["goal_text"],
+        repository_topology_policy=topology,
+        outer_goal_id=args.outer_goal_id,
+        expected_outer_revision=args.expected_outer_revision,
+        outer_holder_token=outer_holder_token,
+        question_batch=preparation.question_batch,
+        execution_authority=preparation.execution_authority,
+        question_response=question_response,
+        timestamp=args.timestamp,
+    )
+    result = run_plan_to_goal(
+        store,
+        plan_id=created["plan_id"],
+        provider=provider,
+        current_outer_holder_token=outer_holder_token,
+    )
+    return {
+        "schema_version": "sys4ai.plan-goal-continuous-launch.v1",
+        **result.as_dict(),
+        "activation_receipt_sha256": content_sha256(activation_receipt),
+        "question_batch_sha256": content_sha256(
+            preparation.question_batch
+        ),
+        "execution_authority_sha256": content_sha256(
+            preparation.execution_authority
+        ),
+        "initialization_receipt_sha256": initialization_receipt[
+            "receipt_content_sha256"
+        ],
+        "continue_required": False,
+    }
+
+
+def command_plan_goal_advance(args: argparse.Namespace) -> dict[str, Any]:
+    root, state_path = _plan_state_path(args)
+    provider = _continuous_provider(args, root)
+    token = (
+        _read_protected_secret(
+            root,
+            args.outer_holder_token_file,
+            purpose="outer goal holder token",
+        )
+        if args.outer_holder_token_file
+        else None
+    )
+    store = SQLitePlanStore(
+        state_path,
+        schema_root=_implementation_plan_skill_root() / "schemas",
+    )
+    return advance_plan_once(
+        store,
+        plan_id=args.plan_id,
+        provider=provider,
+        current_outer_holder_token=token,
+        timestamp=args.timestamp,
+    ).as_dict()
+
+
+def command_plan_goal_answer(args: argparse.Namespace) -> dict[str, Any]:
+    root, state_path = _plan_state_path(args)
+    provider = _continuous_provider(args, root)
+    response_input = _load_protected_mapping(
+        root,
+        args.response,
+        purpose="consolidated plan response",
+    )
+    answers = response_input.get("answers", {})
+    grants = response_input.get("grants", {})
+    if not isinstance(answers, Mapping) or not isinstance(grants, Mapping):
+        raise RecordValidationError(
+            "consolidated response requires answers and grants mappings"
+        )
+    store = SQLitePlanStore(
+        state_path,
+        schema_root=_implementation_plan_skill_root() / "schemas",
+    )
+    state = store.load_continuous_state(args.plan_id)
+    if state["pending_question_batch_sha256"] is None:
+        raise StateConflict("plan has no pending consolidated question batch")
+    batch = store.load_question_batch(
+        args.plan_id,
+        batch_sha256=state["pending_question_batch_sha256"],
+    )
+    authority = store.load_execution_authority(args.plan_id)
+    return answer_and_resume(
+        store,
+        plan_id=args.plan_id,
+        question_batch=batch,
+        execution_authority=authority,
+        answers=answers,
+        grants=grants,
+        provider=provider,
+        timestamp=args.timestamp,
+    )
+
+
+def command_plan_goal_status(args: argparse.Namespace) -> dict[str, Any]:
+    _, state_path = _plan_state_path(args)
+    store = SQLitePlanStore(
+        state_path,
+        schema_root=_implementation_plan_skill_root() / "schemas",
+        read_only=True,
+        auto_migrate=False,
+    )
+    record = store.load_plan(args.plan_id)
+    try:
+        continuous = store.load_continuous_state(args.plan_id)
+    except RecordNotFound:
+        return {
+            "schema_version": "sys4ai.plan-goal-status.v2",
+            "status": "legacy_manual",
+            "reason_code": "plan.legacy_state",
+            "plan_id": args.plan_id,
+            "plan_revision": record["state"]["revision"],
+            "plan_phase": record["state"]["phase"],
+            "continue_required": True,
+        }
+    pending_batch = (
+        store.load_question_batch(
+            args.plan_id,
+            batch_sha256=continuous["pending_question_batch_sha256"],
+        )
+        if continuous["pending_question_batch_sha256"] is not None
+        else None
+    )
+    return {
+        "schema_version": "sys4ai.plan-goal-status.v2",
+        "status": continuous["status"],
+        "reason_code": f"plan.{continuous['status']}",
+        "plan_id": args.plan_id,
+        "plan_revision": record["state"]["revision"],
+        "plan_phase": record["state"]["phase"],
+        "continuous_revision": continuous["revision"],
+        "generation": record["state"]["current_generation"],
+        "current_worker_thread_id": continuous["current_worker_thread_id"],
+        "pending_questions": (
+            [item["prompt"] for item in pending_batch["questions"]]
+            if pending_batch is not None
+            else []
+        ),
+        "completion_report_sha256": continuous[
+            "completion_report_sha256"
+        ],
+        "continue_required": False,
+    }
+
+
 def command_plan_goal_initialize(args: argparse.Namespace) -> dict[str, Any]:
-    """Compose one zero-AgentJob plan launch from protected file inputs."""
+    """Compatibility alias: prepare v2, or run the explicit legacy manual form."""
+
+    if getattr(args, "proposal", None) is not None:
+        missing = [
+            name
+            for name in (
+                "plan",
+                "repository_observation",
+                "provider_capabilities",
+            )
+            if getattr(args, name, None) is None
+        ]
+        if missing:
+            raise RecordValidationError(
+                "initialize preparation alias is missing required inputs",
+                details={"missing": missing},
+            )
+        return command_plan_goal_prepare(args)
+
+    legacy_required = (
+        "state_db",
+        "sources",
+        "goal_text_file",
+        "activation_receipt",
+        "repository_binding",
+        "repository_observation",
+        "repository_topology_policy",
+        "outer_goal_id",
+        "expected_outer_revision",
+        "outer_holder_token_file",
+        "predecessor_thread_id",
+    )
+    missing = [
+        name for name in legacy_required if getattr(args, name, None) is None
+    ]
+    if missing:
+        raise RecordValidationError(
+            "legacy manual initialize is missing required inputs",
+            details={"missing": missing},
+        )
 
     root = Path(args.project_root).expanduser().resolve()
     plan_skill_root = _implementation_plan_skill_root()
@@ -1169,6 +1885,24 @@ def add_goal_identity(subparser: argparse.ArgumentParser, *, generation: bool = 
         subparser.add_argument("--generation", required=True, type=int)
 
 
+def add_plan_continuous_provider(
+    subparser: argparse.ArgumentParser,
+) -> None:
+    subparser.add_argument(
+        "--provider-adapter",
+        required=True,
+        help=(
+            "Project-relative Python adapter exposing "
+            "build_thread_provider(project_root=...)."
+        ),
+    )
+    subparser.add_argument(
+        "--thread-strategy",
+        choices=["fresh_summary", "fork_history"],
+        default="fresh_summary",
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Validate and operate portable AgentJob control records.",
@@ -1244,9 +1978,89 @@ def build_parser() -> argparse.ArgumentParser:
         dest="plan_goal_command",
         required=True,
     )
+    plan_prepare = plan_goal_commands.add_parser(
+        "prepare",
+        help="Read-only intake and one consolidated activation prompt.",
+    )
+    plan_prepare.add_argument("--project-root", required=True)
+    plan_prepare.add_argument("--proposal", required=True)
+    plan_prepare.add_argument("--plan", required=True)
+    plan_prepare.add_argument("--plan-revision", type=int, default=1)
+    plan_prepare.add_argument("--repository-observation", required=True)
+    plan_prepare.add_argument("--provider-capabilities", required=True)
+    plan_prepare.add_argument("--effects")
+    plan_prepare.add_argument("--questions")
+    plan_prepare.add_argument("--timestamp")
+    plan_prepare.add_argument("--json", action="store_true")
+    plan_prepare.set_defaults(handler=command_plan_goal_prepare)
+
+    plan_accept = plan_goal_commands.add_parser(
+        "accept-and-run",
+        help="Record one combined acceptance and enter continuous execution.",
+    )
+    plan_accept.add_argument("--project-root", required=True)
+    plan_accept.add_argument("--state-db", required=True)
+    plan_accept.add_argument("--preparation", required=True)
+    plan_accept.add_argument("--normalization-report", required=True)
+    plan_accept.add_argument("--repository-topology-policy", required=True)
+    plan_accept.add_argument("--outer-goal-id", required=True)
+    plan_accept.add_argument(
+        "--expected-outer-revision", required=True, type=int
+    )
+    plan_accept.add_argument("--outer-holder-token-file", required=True)
+    acceptance = plan_accept.add_mutually_exclusive_group(required=True)
+    acceptance.add_argument("--acceptance-message")
+    acceptance.add_argument("--acceptance-message-file")
+    plan_accept.add_argument("--acceptance-evidence-ref", required=True)
+    plan_accept.add_argument("--activation-id")
+    plan_accept.add_argument("--response")
+    plan_accept.add_argument("--timestamp")
+    plan_accept.add_argument("--json", action="store_true")
+    add_plan_continuous_provider(plan_accept)
+    plan_accept.set_defaults(handler=command_plan_goal_accept_and_run)
+
+    plan_advance = plan_goal_commands.add_parser(
+        "advance",
+        help="Internal idempotent continuous coordinator step.",
+    )
+    plan_advance.add_argument("--project-root", required=True)
+    plan_advance.add_argument("--state-db", required=True)
+    plan_advance.add_argument("--plan-id", required=True)
+    plan_advance.add_argument("--outer-holder-token-file")
+    plan_advance.add_argument("--timestamp")
+    plan_advance.add_argument("--json", action="store_true")
+    add_plan_continuous_provider(plan_advance)
+    plan_advance.set_defaults(handler=command_plan_goal_advance)
+
+    plan_answer = plan_goal_commands.add_parser(
+        "answer",
+        help="Record one complete answer batch and resume automatically.",
+    )
+    plan_answer.add_argument("--project-root", required=True)
+    plan_answer.add_argument("--state-db", required=True)
+    plan_answer.add_argument("--plan-id", required=True)
+    plan_answer.add_argument("--response", required=True)
+    plan_answer.add_argument("--timestamp")
+    plan_answer.add_argument("--json", action="store_true")
+    add_plan_continuous_provider(plan_answer)
+    plan_answer.set_defaults(handler=command_plan_goal_answer)
+
+    plan_status = plan_goal_commands.add_parser(
+        "status",
+        help="Report canonical continuous, waiting, safeguard, or completion state.",
+    )
+    plan_status.add_argument("--project-root", required=True)
+    plan_status.add_argument("--state-db", required=True)
+    plan_status.add_argument("--plan-id", required=True)
+    plan_status.add_argument("--json", action="store_true")
+    plan_status.set_defaults(handler=command_plan_goal_status)
+
     plan_initialize = plan_goal_commands.add_parser(
         "initialize",
-        help="Initialize one plan and produce one first-worker manual handoff.",
+        help=(
+            "Compatibility entry: route --proposal input to read-only preparation; "
+            "the legacy full form remains an explicit manual degraded mode."
+        ),
     )
     plan_initialize.add_argument(
         "--project-root",
@@ -1255,8 +2069,29 @@ def build_parser() -> argparse.ArgumentParser:
     )
     plan_initialize.add_argument(
         "--state-db",
-        required=True,
+        required=False,
         help="Project-relative shared outer-goal and plan SQLite state path.",
+    )
+    plan_initialize.add_argument(
+        "--proposal",
+        help="Project-relative verified activation proposal; selects v2 preparation.",
+    )
+    plan_initialize.add_argument(
+        "--plan",
+        help="Project-relative accepted implementation plan for v2 preparation.",
+    )
+    plan_initialize.add_argument("--plan-revision", type=int, default=1)
+    plan_initialize.add_argument(
+        "--provider-capabilities",
+        help="Project-relative continuous ThreadProvider capability report.",
+    )
+    plan_initialize.add_argument(
+        "--effects",
+        help="Optional project-relative declared protected-effects manifest.",
+    )
+    plan_initialize.add_argument(
+        "--questions",
+        help="Optional project-relative declared plan-questions manifest.",
     )
     plan_initialize.add_argument(
         "--local-state-root",
@@ -1265,48 +2100,48 @@ def build_parser() -> argparse.ArgumentParser:
     )
     plan_initialize.add_argument(
         "--sources",
-        required=True,
+        required=False,
         help="Project-relative JSON/YAML source manifest with path, authority, and precedence.",
     )
     plan_initialize.add_argument(
         "--goal-text-file",
-        required=True,
+        required=False,
         help="Project-relative exact accepted activation-goal text file.",
     )
     plan_initialize.add_argument(
         "--activation-receipt",
-        required=True,
+        required=False,
         help="Project-relative combined goal-and-effort acceptance receipt.",
     )
     plan_initialize.add_argument(
         "--repository-binding",
-        required=True,
+        required=False,
         help="Project-relative accepted repository-binding record.",
     )
     plan_initialize.add_argument(
         "--repository-observation",
-        required=True,
+        required=False,
         help="Project-relative current RepositoryProvider observation.",
     )
     plan_initialize.add_argument(
         "--repository-topology-policy",
-        required=True,
+        required=False,
         help="Project-relative accepted repository-topology policy.",
     )
-    plan_initialize.add_argument("--outer-goal-id", required=True)
+    plan_initialize.add_argument("--outer-goal-id", required=False)
     plan_initialize.add_argument(
         "--expected-outer-revision",
-        required=True,
+        required=False,
         type=int,
     )
     plan_initialize.add_argument(
         "--outer-holder-token-file",
-        required=True,
+        required=False,
         help="Project-relative private file; group/other permissions are rejected.",
     )
     plan_initialize.add_argument(
         "--predecessor-thread-id",
-        required=True,
+        required=False,
     )
     plan_initialize.add_argument(
         "--manual-handoff-root",
@@ -1337,9 +2172,62 @@ def build_parser() -> argparse.ArgumentParser:
 
     goal = commands.add_parser(
         "goal",
-        help="Durable goal relay operations; mutation subcommands are advanced and revision-checked.",
+        help="One-confirmation continuous goals plus advanced compatibility operations.",
     )
     goal_commands = goal.add_subparsers(dest="goal_command", required=True)
+
+    goal_prepare = goal_commands.add_parser(
+        "prepare",
+        help="Read-only complete intake and one consolidated v4 confirmation prompt.",
+    )
+    goal_prepare.add_argument("--project-root", required=True)
+    goal_prepare.add_argument("--proposal", required=True)
+    goal_prepare.add_argument("--completion-contract", required=True)
+    goal_prepare.add_argument("--repository-binding", required=True)
+    goal_prepare.add_argument("--repository-observation", required=True)
+    goal_prepare.add_argument("--initial-fingerprint", required=True)
+    goal_prepare.add_argument("--provider-capabilities", required=True)
+    goal_prepare.add_argument("--intake-inventory", required=True)
+    goal_prepare.add_argument("--questions")
+    goal_prepare.add_argument("--grants")
+    goal_prepare.add_argument("--timestamp")
+    goal_prepare.add_argument("--json", action="store_true")
+    goal_prepare.set_defaults(handler=command_goal_prepare)
+
+    goal_accept = goal_commands.add_parser(
+        "accept-and-run",
+        help="Record one complete response, initialize v4, and stay active until met.",
+    )
+    add_goal_common(goal_accept)
+    goal_accept.add_argument("--preparation", required=True)
+    goal_accept.add_argument("--response")
+    goal_accept.add_argument("--repository-observation")
+    goal_accept.add_argument("--initial-fingerprint")
+    goal_accept.add_argument(
+        "--setup-adapter",
+        help=(
+            "Project-relative adapter for accepted setup effects and live "
+            "post-setup repository revalidation."
+        ),
+    )
+    acceptance = goal_accept.add_mutually_exclusive_group(required=True)
+    acceptance.add_argument("--acceptance-message")
+    acceptance.add_argument("--acceptance-message-file")
+    goal_accept.add_argument("--acceptance-evidence-ref", required=True)
+    goal_accept.add_argument("--guards")
+    goal_accept.add_argument("--runtime-binding")
+    goal_accept.add_argument("--goal-id")
+    add_plan_continuous_provider(goal_accept)
+    goal_accept.set_defaults(handler=command_goal_accept_and_run)
+
+    goal_advance = goal_commands.add_parser(
+        "advance",
+        help="Internal idempotent v4 coordinator resumption boundary.",
+    )
+    add_goal_common(goal_advance)
+    add_goal_identity(goal_advance)
+    add_plan_continuous_provider(goal_advance)
+    goal_advance.set_defaults(handler=command_goal_advance)
 
     initialize = goal_commands.add_parser("initialize", help="Initialize one exact durable goal.")
     add_goal_common(initialize)

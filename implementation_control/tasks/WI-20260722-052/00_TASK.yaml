@@ -1,0 +1,170 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260722-052"
+title: "Finish and verify the website-facing plan-native recursive relay cutover without authorizing Git or deployment effects."
+created_utc: "2026-07-22T19:26:41Z"
+updated_utc: "2026-07-22T20:18:27Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-SYS4AI-RECURSIVE-RELAY-BOOTSTRAP-RLY-WEB-CUTOVER"
+  plan_sha256: "961060a68a5bcfbbb9f1183af00e4d835b194236c55f94dd7af1734df070a940"
+  plan_task_id: "RLY-WEB-CUTOVER"
+  plan_task_sha256: "3ff8b2129da0cae80d01bf99b6fdc4f0e3524fa1970afc266106e4b6448a76cb"
+  binding_manifest_sha256: "244b7328c61b696db1468311a5c9d2444985dbf6512070ef7d9f1b84422d30d2"
+  authority_sha256: "1e0547dda8864ab5ea1f64156742e17c1523d7c250ff89b41296db618204679f"
+  implementation_authority: "implementation_control only"
+goal: "Finish and verify the website-facing plan-native recursive relay cutover without authorizing Git or deployment effects."
+requirements:
+  - "The exact six-skill recursive relay bundle is installed from its canonical lock without modifying either runtime database."
+  - "New website relay runs default to recursive_chain_v1 with one-task-per-discussion cardinality and website-control CAS on every mutation."
+  - "Legacy coordinator mutations require the explicit coordinator_v2_legacy profile while read-only legacy status remains available."
+  - "Completed standalone packet evidence is validated and only the hash-pinned unrelated user file is excluded from relay implementation drift."
+  - "Pilot, recovery, cutover, retirement, and all-task recommendation evidence is complete and all required validators pass."
+scope:
+  in_scope:
+    - ".agents/implementation-plan-relay/**"
+    - ".agents/skill_registry/SKILL_REGISTRY.yaml"
+    - ".agents/skill_registry/INSTALL_RECEIPTS/**"
+    - ".agents/skill_registry/locks/implementation-plan-relay.lock.yaml"
+    - ".agents/skills/agentjob-control/**"
+    - ".agents/skills/continue/**"
+    - ".agents/skills/continue-implementation-plan-relay/**"
+    - ".agents/skills/continue-implementing-plan-task/**"
+    - ".agents/skills/implementation-plan-goal/**"
+    - ".agents/skills/implementation-plan-relay/**"
+    - ".codex/skills/THIRD_PARTY_NOTICES.md"
+    - "ImplementationPlans/plan_native_recursive_discussion_relay_implementation_plan.md"
+    - "docs/quality/legacy-finalize-plan-safety-path.md"
+    - "docs/quality/plan-native-recursive-relay-baseline-audit-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-operator-guide.md"
+    - "docs/quality/plan-native-recursive-relay-terminalization-event-provenance-audit-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-pilot-and-recovery-report-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-cutover-and-retirement-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-task-and-recommendation-audit-2026-07-22.md"
+    - "implementation_control/schemas/legacy-plan-completion-report-v1.schema.json"
+    - "package.json"
+    - "scripts/implementation_control/continue_plan_goal.py"
+    - "scripts/implementation_control/plan_goal_adapter.py"
+    - "scripts/implementation_control/plan_relay_adapter.py"
+    - "scripts/implementation_control/validate_plan_goal.py"
+    - "tests/test_plan_goal_adapter.py"
+    - "tests/test_plan_goal_facade.py"
+    - "tests/test_plan_goal_installation.py"
+    - "tests/test_plan_relay_adapter.py"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "SOUL.md"
+    - "ImplementationPlans/plan_native_recursive_discussion_relay_implementation_plan.md"
+    - "package.json"
+    - "implementation_control/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+    - ".agents/**"
+    - ".codex/skills/THIRD_PARTY_NOTICES.md"
+    - ".local/sys4ai/implementation-plan-goal/**"
+allowed_writes:
+  website_repository:
+    - ".agents/implementation-plan-relay/**"
+    - ".agents/skill_registry/SKILL_REGISTRY.yaml"
+    - ".agents/skill_registry/INSTALL_RECEIPTS/**"
+    - ".agents/skill_registry/locks/implementation-plan-relay.lock.yaml"
+    - ".agents/skills/agentjob-control/**"
+    - ".agents/skills/continue/**"
+    - ".agents/skills/continue-implementation-plan-relay/**"
+    - ".agents/skills/continue-implementing-plan-task/**"
+    - ".agents/skills/implementation-plan-goal/**"
+    - ".agents/skills/implementation-plan-relay/**"
+    - ".codex/skills/THIRD_PARTY_NOTICES.md"
+    - "ImplementationPlans/plan_native_recursive_discussion_relay_implementation_plan.md"
+    - "docs/quality/legacy-finalize-plan-safety-path.md"
+    - "docs/quality/plan-native-recursive-relay-baseline-audit-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-operator-guide.md"
+    - "docs/quality/plan-native-recursive-relay-terminalization-event-provenance-audit-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-pilot-and-recovery-report-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-cutover-and-retirement-2026-07-22.md"
+    - "docs/quality/plan-native-recursive-relay-task-and-recommendation-audit-2026-07-22.md"
+    - "implementation_control/schemas/legacy-plan-completion-report-v1.schema.json"
+    - "package.json"
+    - "scripts/implementation_control/continue_plan_goal.py"
+    - "scripts/implementation_control/plan_goal_adapter.py"
+    - "scripts/implementation_control/plan_relay_adapter.py"
+    - "scripts/implementation_control/validate_plan_goal.py"
+    - "tests/test_plan_goal_adapter.py"
+    - "tests/test_plan_goal_facade.py"
+    - "tests/test_plan_goal_installation.py"
+    - "tests/test_plan_relay_adapter.py"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "This packet changes local control tooling and evidence, not public scientific claims."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "Canonical source identity is pinned by the bundle lock and import provenance."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "No reader navigation or public route is changed."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "No visual system or SVG asset is changed."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "No downloadable public asset is changed."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "The relay evidence is local implementation-control metadata, not public source authority."
+  git_push:
+    status: "blocked"
+    reason: "This packet grants no push authority."
+  cloudflare_deployment:
+    status: "blocked"
+    reason: "This packet grants no deployment authority."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "The source skills repository changes are governed and verified separately; this packet permits no additional upstream writes."
+required_validators:
+  - id: "rly-web-cutover-01"
+    command: "npm run test:plan-goal"
+    required: true
+  - id: "rly-web-cutover-02"
+    command: "npm run validate:plan-goal -- --allow-active-packet"
+    required: true
+  - id: "rly-web-cutover-03"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "The plan, bundle lock, repository, or control identity differs from the accepted evidence."
+  - "A runtime database changes during installation or validation."
+  - "A recursive mutation bypasses plan revision or website-control compare-and-swap."
+  - "A required effect exceeds the exact local packet or requires Git, push, deployment, or publication authority."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-plan-native-relay-cutover-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Complete the website adapter, compatibility boundary, validation, and release evidence."
+    - "Verify the canonical bundle and installed bytes without mutating runtime databases."
+    - "Close the packet only after focused and aggregate local gates pass."
+  may_not:
+    - "Create a generic outer goal or persistent coordinator for recursive runs."
+    - "Convert or rewrite historical legacy plan runs."
+    - "Stage, commit, push, deploy, publish, or modify public source authority."
+handoff:
+  latest_handoff_id: "WH-20260722-052"
+  yaml_path: "implementation_control/handoffs/WH-20260722-052.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260722-052.md"
+next_recommended_action:
+  task_packet: "RLY-WEB-CUTOVER"
+  summary: "Finish and verify the website-facing plan-native recursive relay cutover without authorizing Git or deployment effects."
+  do_not_skip: "Do not broaden the hash-bound website packet."

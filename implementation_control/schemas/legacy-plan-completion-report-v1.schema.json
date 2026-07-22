@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "website.legacy-plan-completion-report-v1",
+  "title": "Website legacy plan completion report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "report_id",
+    "plan_id",
+    "plan_sha256",
+    "expected_plan_revision",
+    "status",
+    "created_at",
+    "coordinator_thread_id_sha256",
+    "website_control_sha256",
+    "repository_binding_sha256",
+    "repository_topology_sha256",
+    "repository_fingerprint",
+    "selection",
+    "canonical_completion_report",
+    "canonical_completion_report_sha256",
+    "task_receipts",
+    "provider_intents",
+    "open_provider_intent_count",
+    "lease_boundary",
+    "prior_journal_sha256",
+    "report_content_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "website.legacy-plan-completion-report.v1"
+    },
+    "report_id": {"type": "string", "minLength": 1},
+    "plan_id": {"type": "string", "minLength": 1},
+    "plan_sha256": {"$ref": "#/$defs/sha256"},
+    "expected_plan_revision": {"type": "integer", "minimum": 0},
+    "status": {"const": "complete"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "coordinator_thread_id_sha256": {"$ref": "#/$defs/sha256"},
+    "website_control_sha256": {"$ref": "#/$defs/sha256"},
+    "repository_binding_sha256": {"$ref": "#/$defs/sha256"},
+    "repository_topology_sha256": {"$ref": "#/$defs/sha256"},
+    "repository_fingerprint": {"$ref": "#/$defs/sha256"},
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outcome",
+        "reason_code",
+        "proof_id",
+        "proof_sha256",
+        "prior_journal_sha256"
+      ],
+      "properties": {
+        "outcome": {"const": "completion_candidate"},
+        "reason_code": {"const": "plan.completion_candidate"},
+        "proof_id": {"type": "string", "minLength": 1},
+        "proof_sha256": {"$ref": "#/$defs/sha256"},
+        "prior_journal_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "canonical_completion_report": {"type": "object"},
+    "canonical_completion_report_sha256": {"$ref": "#/$defs/sha256"},
+    "task_receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "receipt_id",
+          "task_id",
+          "disposition",
+          "acceptance_status",
+          "validator_status",
+          "checkpoint_status",
+          "receipt_sha256"
+        ],
+        "properties": {
+          "receipt_id": {"type": "string", "minLength": 1},
+          "task_id": {"type": "string", "minLength": 1},
+          "disposition": {"type": "string", "minLength": 1},
+          "acceptance_status": {
+            "enum": ["pass", "fail", "indeterminate", "not_applicable"]
+          },
+          "validator_status": {
+            "enum": ["pass", "fail", "indeterminate", "not_applicable"]
+          },
+          "checkpoint_status": {
+            "enum": ["pass", "fail", "not_required", "unknown", "not_applicable"]
+          },
+          "receipt_sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "provider_intents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "intent_id",
+          "generation",
+          "status",
+          "returned_thread_id_sha256",
+          "intent_sha256"
+        ],
+        "properties": {
+          "intent_id": {"type": "string", "minLength": 1},
+          "generation": {"type": "integer", "minimum": 1},
+          "status": {"const": "returned"},
+          "returned_thread_id_sha256": {"$ref": "#/$defs/sha256"},
+          "intent_sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "open_provider_intent_count": {"const": 0},
+    "lease_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active_plan_lease",
+        "active_outer_goal_lease",
+        "active_task_id",
+        "disposition"
+      ],
+      "properties": {
+        "active_plan_lease": {"const": false},
+        "active_outer_goal_lease": {"const": false},
+        "active_task_id": {"type": "null"},
+        "disposition": {"const": "released_before_completion_candidate"}
+      }
+    },
+    "prior_journal_sha256": {"$ref": "#/$defs/sha256"},
+    "report_content_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

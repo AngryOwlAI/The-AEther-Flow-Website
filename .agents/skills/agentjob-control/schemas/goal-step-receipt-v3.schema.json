@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-step-receipt-v3.schema.json",
+  "title": "Authority-Bound Portable Goal Step Receipt v3",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "goal_id",
+    "generation",
+    "handoff_token_hash",
+    "idempotency_key",
+    "predecessor_thread_id",
+    "successor_thread_id",
+    "started_at",
+    "finished_at",
+    "repository_binding",
+    "revision_before",
+    "revision_after",
+    "fingerprint_before",
+    "fingerprint_after",
+    "continue_invocation_count",
+    "agent_job_id",
+    "zero_job_reason",
+    "task_id",
+    "decision_id",
+    "completion_id",
+    "handoff_id",
+    "changed_paths",
+    "changed_path_source_ref",
+    "output_refs",
+    "checkpoint",
+    "validator_results",
+    "completion_contract_results",
+    "goal_evaluation",
+    "progress_summary",
+    "remaining_work",
+    "decision",
+    "resolution_disposition",
+    "material_progress_dimensions",
+    "requested_reasoning_effort",
+    "effective_reasoning_effort",
+    "skill_runtime_binding",
+    "repository_topology_evidence",
+    "execution_authority_sha256",
+    "question_response_sha256",
+    "grant_consumption",
+    "human_necessity_report_ref",
+    "completion_report_ref",
+    "journal_entry_hash",
+    "prior_journal_hash",
+    "finalized",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-step-receipt.v3"},
+    "receipt_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "generation": {"type": "integer", "minimum": 1},
+    "handoff_token_hash": {"$ref": "common.schema.json#/$defs/sha256"},
+    "idempotency_key": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "predecessor_thread_id": {"type": ["string", "null"]},
+    "successor_thread_id": {"type": ["string", "null"]},
+    "started_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "finished_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "repository_binding": {"$ref": "goal-state-v2.schema.json#/$defs/repositoryBinding"},
+    "revision_before": {"type": ["string", "null"]},
+    "revision_after": {"type": ["string", "null"]},
+    "fingerprint_before": {"$ref": "common.schema.json#/$defs/sha256"},
+    "fingerprint_after": {"$ref": "common.schema.json#/$defs/sha256"},
+    "continue_invocation_count": {"enum": [0, 1, "unknown"]},
+    "agent_job_id": {"type": ["string", "null"]},
+    "zero_job_reason": {"type": ["string", "null"]},
+    "task_id": {"type": ["string", "null"]},
+    "decision_id": {"type": ["string", "null"]},
+    "completion_id": {"type": ["string", "null"]},
+    "handoff_id": {"type": ["string", "null"]},
+    "changed_paths": {"$ref": "common.schema.json#/$defs/stringList"},
+    "changed_path_source_ref": {"type": ["string", "null"]},
+    "output_refs": {"type": "array", "items": {"type": "object"}},
+    "checkpoint": {
+      "type": "object",
+      "required": ["provider", "status", "revision", "evidence_ref"],
+      "properties": {
+        "provider": {"$ref": "common.schema.json#/$defs/id"},
+        "status": {"enum": ["pass", "fail", "not_required", "unknown"]},
+        "revision": {"type": ["string", "null"]},
+        "evidence_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "validator_results": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/validationResult"},
+      "uniqueItems": true
+    },
+    "completion_contract_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["criterion", "status", "evidence_refs"],
+        "properties": {
+          "criterion": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+          "status": {"enum": ["pass", "fail", "indeterminate"]},
+          "evidence_refs": {"$ref": "common.schema.json#/$defs/stringList"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "goal_evaluation": {"enum": ["unmet", "met", "indeterminate"]},
+    "progress_summary": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "remaining_work": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "decision": {
+      "enum": [
+        "terminal_complete",
+        "continuation_required",
+        "human_intervention_required",
+        "policy_limit_reached",
+        "integrity_incident",
+        "cancelled",
+        "unknown"
+      ]
+    },
+    "resolution_disposition": {
+      "oneOf": [
+        {"$ref": "resolution-disposition.schema.json"},
+        {"type": "null"}
+      ]
+    },
+    "material_progress_dimensions": {"$ref": "common.schema.json#/$defs/stringList"},
+    "requested_reasoning_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "effective_reasoning_effort": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "skill_runtime_binding": {"type": "object"},
+    "repository_topology_evidence": {"type": "object"},
+    "execution_authority_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "question_response_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "grant_consumption": {
+      "oneOf": [
+        {"$ref": "goal-grant-consumption.schema.json"},
+        {"type": "null"}
+      ]
+    },
+    "human_necessity_report_ref": {"type": ["string", "null"]},
+    "completion_report_ref": {"type": ["string", "null"]},
+    "journal_entry_hash": {"$ref": "common.schema.json#/$defs/sha256"},
+    "prior_journal_hash": {
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "finalized": {"const": true},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {"continue_invocation_count": {"const": 0}},
+        "required": ["continue_invocation_count"]
+      },
+      "then": {
+        "properties": {
+          "agent_job_id": {"type": "null"},
+          "zero_job_reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ]
+}

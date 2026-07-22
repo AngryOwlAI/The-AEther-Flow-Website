@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-question-batch.schema.json",
+  "title": "Immutable Consolidated Plan Question Batch",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "batch_id",
+    "plan_id",
+    "accepted_plan_sha256",
+    "accepted_plan_revision",
+    "questions",
+    "safeguards",
+    "created_at",
+    "hash_basis",
+    "batch_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-question-batch.v1"
+    },
+    "batch_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "plan_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "accepted_plan_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "accepted_plan_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    },
+    "safeguards": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/safeguard"
+      }
+    },
+    "created_at": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "hash_basis": {
+      "const": "canonical_json_without_batch_content_sha256"
+    },
+    "batch_content_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "question_id",
+        "category",
+        "prompt",
+        "required",
+        "affected_task_ids",
+        "effect_id"
+      ],
+      "properties": {
+        "question_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "category": {
+          "enum": [
+            "information",
+            "authorization",
+            "human_decision"
+          ]
+        },
+        "prompt": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "affected_task_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "effect_id": {
+          "oneOf": [
+            {
+              "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "safeguard": {
+      "type": "object",
+      "required": [
+        "reason_code",
+        "message",
+        "affected_task_ids"
+      ],
+      "properties": {
+        "reason_code": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "message": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "affected_task_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

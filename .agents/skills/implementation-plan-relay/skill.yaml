@@ -1,0 +1,164 @@
+skill_id: implementation-plan-relay
+version: 0.3.0
+status: template
+release_maturity: experimental
+stability: evolving
+canonical_path: skills/implementation-plan-relay
+summary: Launch generation 1 of a plan-native recursive discussion relay without executing a task.
+installation:
+  entrypoint_class: user_workflow
+  selection_policy: dependency_resolved
+  direct_copy_supported: false
+  project_adaptation: required
+  recommended_selectors:
+    - kind: skill
+      id: implementation-plan-relay
+    - kind: bundle
+      id: implementation-plan-relay
+  prerequisites:
+    bootstrap: explicit_required
+    adapters:
+      - PlanRelayStore
+      - RepositoryProvider
+      - RelayThreadProvider
+    external_tools: []
+scope:
+  system_agnostic: true
+  target_system_types:
+    - governed agentic systems
+    - software repositories
+    - research and documentation systems
+domain_emphasis:
+  - recursive implementation-plan relay
+  - exactly-once fresh-discussion dispatch
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+optional_role_posture:
+  - process_integrity_auditor
+  - verification_engineer
+activation:
+  triggers:
+    - A user authorizes execution of an accepted implementation plan across one fresh discussion per task.
+  when_not_to_use:
+    - The plan or repository identity is ambiguous.
+    - A legacy coordinator run is active.
+    - More than generation 1 should be scheduled by the launcher.
+  preconditions:
+    - Exact plan, acceptance, repository, control, profile, topology, effort, and provider evidence are available.
+inputs:
+  required:
+    - Accepted plan and acceptance evidence.
+    - Repository binding and control fingerprint.
+    - Launcher identity, effort, profile, and provider mode.
+  optional:
+    - Explicit degraded-manual transport selection.
+outputs:
+  primary:
+    - One generation-1 dispatch or protected result and immediate launcher stop.
+  evidence:
+    - Run, envelope, intent, lease, provider response, and journal hashes.
+dependencies:
+  required_skills:
+    - agentjob-control
+    - continue-implementation-plan-relay
+  optional_skills: []
+  required_skill_versions:
+    agentjob-control: ^0.4.0
+    continue-implementation-plan-relay: ^0.3.0
+  python:
+    standard_library_only: true
+    requires_python: ">=3.11"
+    required_packages: []
+    optional_packages: []
+  external_tools: []
+authority:
+  may_read:
+    - Accepted plan, repository, control, and provider capability evidence.
+  may_write:
+    - One plan-native run, generation 1, lease, intent, and successor record.
+  may_not:
+    - Execute a task or AgentJob.
+    - Create a native Codex Goal or generic outer goal.
+    - Create more than one discussion or retry an ambiguous create.
+  canonical_sources:
+    - skills/implementation-plan-relay
+    - skills/agentjob-control
+  generated_derivatives:
+    - Target-project relay state and installed skill copies.
+  human_gates:
+    - Missing authority or capability, ambiguity, identity drift, cancellation, and non-deterministic recovery.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/implementation-plan-relay/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+    - command: python3 scripts/skills/run_with_compatible_python.py -- -m unittest scripts.skills.tests.test_plan_native_relay -v
+      validator_class: control_validation
+      mode: required
+      dry_runnable: true
+  validator_classes:
+    - schema_validation
+    - dependency_validation
+    - process_validation
+    - control_validation
+    - human_authority
+  evidence_required:
+    - Zero-AgentJob launch and one create budget.
+    - Strict v3 records and cross-record identity parity.
+    - No generic goal row or coordinator state.
+handoff:
+  requires_completion_receipt: false
+  evidence:
+    - Generation-1 envelope, recorded child or protected dispatch disposition.
+  next_role: continue_implementation_plan_relay_worker
+  open_issue_policy: Reconcile deterministic dispatch evidence or enter a named human gate; never blindly retry.
+execution:
+  kind: relay_launcher
+  invocation_policy: explicit
+  maximum_agentjobs_per_invocation: 0
+  may_spawn_threads: true
+  may_create_control_records: true
+  invokes_skills:
+    - continue-implementation-plan-relay
+runtime_capabilities:
+  provides:
+    - sys4ai.implementation-plan-relay.runtime.v1
+    - sys4ai.plan-relay.sqlite.v1
+    - sys4ai.plan-task-envelope.v3
+    - sys4ai.plan-dispatch-intent.v3
+  requires:
+    - sys4ai.agentjob-control.v1
+    - sys4ai.continue-implementation-plan-relay.runtime.v1
+    - python>=3.11
+  optional:
+    - sys4ai.native-goal-mirror.v1
+control_protocol:
+  profile: registered
+  record_types:
+    - PlanRelayRun
+    - PlanRelayGeneration
+    - PlanTaskEnvelope
+    - PlanDispatchIntent
+    - PlanRelayLease
+  immutable_after_activation: true
+  supersession_required: true
+state:
+  tracked_root_template: "{project_root}/.agents/control"
+  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-relay"
+  mutable_state_must_not_live_in_skill_directory: true
+compatibility_shims:
+  - implementation-plan-goal
+adapters:
+  required_interfaces:
+    - PlanRelayStore
+    - RepositoryProvider
+    - RelayThreadProvider
+  optional_interfaces:
+    - NativeGoalMirror
+  manual_thread_fallback: true
+recovery:
+  supported: true
+  automatic_rerun_after_consumption: false

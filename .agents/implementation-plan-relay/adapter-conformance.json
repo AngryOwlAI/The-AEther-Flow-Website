@@ -1,0 +1,46 @@
+{
+  "schema_version": "website.implementation-plan-relay-conformance.v1",
+  "adapter_id": "the-aether-flow-website-plan-native-relay",
+  "adapter_version": "1.0.0",
+  "status": "conformant",
+  "relay_profile": "recursive_chain_v1",
+  "relay_topology": "recursive_chain_v1",
+  "canonical_source_roots": [
+    "implementation_control",
+    ".agents/skills/agentjob-control",
+    ".agents/skills/implementation-plan-relay",
+    ".agents/skills/continue-implementation-plan-relay"
+  ],
+  "checks": [
+    {
+      "feature_id": "no_generic_goal",
+      "status": "pass",
+      "evidence": "Recursive state uses .local/sys4ai/implementation-plan-relay/state.sqlite3 and contains no goals table."
+    },
+    {
+      "feature_id": "generation_owned_successor",
+      "status": "pass",
+      "evidence": "Only the verified worker and receipt for N can reserve N+1."
+    },
+    {
+      "feature_id": "website_control_cas",
+      "status": "pass",
+      "evidence": "Every recursive mutation recomputes and compares the website control fingerprint."
+    },
+    {
+      "feature_id": "one_task_cardinality",
+      "status": "pass",
+      "evidence": "SQLite generation and receipt constraints plus consume-before-call tests enforce one task invocation."
+    },
+    {
+      "feature_id": "protected_effect_boundary",
+      "status": "pass",
+      "evidence": "Terminal plan state explicitly returns release_effects_authorized false."
+    },
+    {
+      "feature_id": "legacy_boundary",
+      "status": "pass",
+      "evidence": "Legacy coordinator data is read-only/default-disabled and requires coordinator_v2_legacy for mutation."
+    }
+  ]
+}

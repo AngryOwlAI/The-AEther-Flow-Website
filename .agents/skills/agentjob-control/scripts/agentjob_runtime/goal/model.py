@@ -17,11 +17,19 @@ from agentjob_runtime.validation.schema import format_issues, validate_instance
 
 GOAL_SCHEMA_VERSION_V1 = "sys4ai.continue-goal.v1"
 GOAL_SCHEMA_VERSION_V2 = "sys4ai.continue-goal.v2"
-GOAL_SCHEMA_VERSION = "sys4ai.continue-goal.v3"
+GOAL_SCHEMA_VERSION_V3 = "sys4ai.continue-goal.v3"
+GOAL_SCHEMA_VERSION_V4 = "sys4ai.continue-goal.v4"
+# Retained as the v3 compatibility-writer constant. New uninterrupted launches
+# select GOAL_SCHEMA_VERSION_V4 explicitly after the complete intake is accepted.
+GOAL_SCHEMA_VERSION = GOAL_SCHEMA_VERSION_V3
+PROFILED_GOAL_SCHEMA_VERSIONS = frozenset(
+    {GOAL_SCHEMA_VERSION_V3, GOAL_SCHEMA_VERSION_V4}
+)
 GOAL_SCHEMA_FILES = {
     GOAL_SCHEMA_VERSION_V1: "goal-state.schema.json",
     GOAL_SCHEMA_VERSION_V2: "goal-state-v2.schema.json",
-    GOAL_SCHEMA_VERSION: "goal-state-v3.schema.json",
+    GOAL_SCHEMA_VERSION_V3: "goal-state-v3.schema.json",
+    GOAL_SCHEMA_VERSION_V4: "goal-state-v4.schema.json",
 }
 LEASE_SCHEMA_VERSION = "sys4ai.continue-goal-worktree-lease.v1"
 
@@ -245,7 +253,11 @@ def fingerprint_status(history: Iterable[str], candidate: str) -> str:
 
 
 def map_stop(reason: str, *, schema_version: str | None = None) -> str:
-    mapping = V3_STOP_PHASES if schema_version == GOAL_SCHEMA_VERSION else STOP_PHASES
+    mapping = (
+        V3_STOP_PHASES
+        if schema_version in PROFILED_GOAL_SCHEMA_VERSIONS
+        else STOP_PHASES
+    )
     try:
         return mapping[reason]
     except KeyError as error:
@@ -326,17 +338,17 @@ def validate_goal_record(record: Mapping[str, Any]) -> None:
         raise RecordValidationError("last fingerprint does not match fingerprint history")
     terminal_phases = (
         V3_TERMINAL_PHASES
-        if schema_version == GOAL_SCHEMA_VERSION
+        if schema_version in PROFILED_GOAL_SCHEMA_VERSIONS
         else TERMINAL_PHASES
     )
     absorbing = (
         V3_TERMINAL_PHASES
-        if schema_version == GOAL_SCHEMA_VERSION
+        if schema_version in PROFILED_GOAL_SCHEMA_VERSIONS
         else ABSORBING_TERMINALS
     )
     if record["state"]["phase"] in absorbing and record["state"]["active_lease"]:
         raise RecordValidationError("absorbing terminal cannot retain a lease")
-    if schema_version == GOAL_SCHEMA_VERSION:
+    if schema_version in PROFILED_GOAL_SCHEMA_VERSIONS:
         activation = record["activation"]
         profile = record["execution_profile"]
         if record["authorization"]["activation_receipt_sha256"] != content_sha256(
@@ -391,6 +403,57 @@ def validate_goal_record(record: Mapping[str, Any]) -> None:
                 raise RecordValidationError(
                     "v3 non-success terminal requires a human-necessity report"
                 )
+        if schema_version == GOAL_SCHEMA_VERSION_V4:
+            batch = record["question_batch"]
+            response = record["question_response"]
+            authority = record["execution_authority"]
+            activation = record["activation"]
+            expected_hashes = {
+                "question_batch_sha256": content_sha256(batch),
+                "question_response_sha256": content_sha256(response),
+                "execution_authority_sha256": content_sha256(authority),
+            }
+            for field, expected in expected_hashes.items():
+                if (
+                    record["authorization"].get(field) != expected
+                    or activation.get(field) != expected
+                ):
+                    raise RecordValidationError(
+                        f"v4 authority binding mismatch: {field}"
+                    )
+            if activation["reasoning_effort"] != "max":
+                raise RecordValidationError("v4 goals require reasoning_effort max")
+            consumed: set[str] = set()
+            declared = {
+                item["grant_id"]: item
+                for item in authority["requested_grants"]
+            }
+            for item in record["grant_consumptions"]:
+                grant_id = str(item["grant_id"])
+                if grant_id in consumed or grant_id not in declared:
+                    raise RecordValidationError(
+                        "v4 grant consumption is duplicate or undeclared"
+                    )
+                if (
+                    item["goal_id"] != record["goal_id"]
+                    or item["authority_content_sha256"]
+                    != authority["authority_content_sha256"]
+                    or item["action_sha256"] != declared[grant_id]["action_sha256"]
+                ):
+                    raise RecordValidationError(
+                        "v4 grant consumption differs from exact accepted authority"
+                    )
+                consumed.add(grant_id)
+            coordinator = record["coordinator"]
+            if coordinator["thread_id"] != profile["current_thread_id"]:
+                raise RecordValidationError(
+                    "v4 coordinator differs from the accepted current thread"
+                )
+            if phase == "terminal_complete" and coordinator["status"] != "goal_reached":
+                raise RecordValidationError(
+                    "v4 terminal completion requires goal-reached coordinator state"
+                )
+
         strategy_keys: set[tuple[str, str]] = set()
         for disposition in record["resolution_history"]:
             selected = disposition.get("selected_strategy_id")
@@ -446,7 +509,7 @@ def validate_goal_record(record: Mapping[str, Any]) -> None:
         )
         if receipt_hash != journal_hash:
             raise RecordValidationError("generation receipt link mismatch")
-        if schema_version == GOAL_SCHEMA_VERSION:
+        if schema_version in PROFILED_GOAL_SCHEMA_VERSIONS:
             if generation["requested_reasoning_effort"] != record[
                 "execution_profile"
             ]["reasoning_effort"]:
@@ -470,7 +533,7 @@ def transition_allowed(
     recovery: bool = False,
     schema_version: str | None = None,
 ) -> bool:
-    if schema_version == GOAL_SCHEMA_VERSION:
+    if schema_version in PROFILED_GOAL_SCHEMA_VERSIONS:
         return (old_phase, new_phase) in V3_NORMAL_TRANSITIONS
     if recovery:
         return (

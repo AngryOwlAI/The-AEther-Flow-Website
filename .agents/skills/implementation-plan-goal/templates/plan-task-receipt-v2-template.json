@@ -77,7 +77,7 @@
         "validator_class": "schema_validation",
         "status": "pass",
         "reason_code": null,
-        "evidence_ref": "skills/implementation-plan-goal/tests/test_planctl.py",
+        "evidence_ref": "scripts/skills/tests/test_implementation_plan_profile_end_to_end.py",
         "notes": []
       }
     ],
@@ -127,7 +127,7 @@
     "entry_hash": "7777777777777777777777777777777777777777777777777777777777777777"
   },
   "hash_basis": "canonical_json_without_receipt_content_sha256",
-  "receipt_content_sha256": "5644cc7afdeb0ffbfd8a1ddda0a59ad33a5eace84da4a78c09bcbe63e1fef3f2",
+  "receipt_content_sha256": "9b38470d57e4a76f8822e4a8bbf11239d9fd96df978d7fb8768016c715c24088",
   "finalized": true,
   "extensions": {}
 }

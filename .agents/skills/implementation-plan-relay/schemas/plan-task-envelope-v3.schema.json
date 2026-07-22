@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/plan-task-envelope-v3.schema.json",
+  "title": "PlanTaskEnvelope v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "plan_id", "plan_sha256", "task_id", "task_sha256", "generation", "predecessor_thread_id", "predecessor_receipt_sha256", "repository_binding", "repository_fingerprint", "control_fingerprint", "relay_profile", "relay_topology", "requested_effort", "handoff_token_sha256", "cardinality"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-task-envelope.v3"},
+    "run_id": {"type": "string", "minLength": 1},
+    "plan_id": {"type": "string", "minLength": 1},
+    "plan_sha256": {"$ref": "#/$defs/sha256"},
+    "task_id": {"type": "string", "minLength": 1},
+    "task_sha256": {"$ref": "#/$defs/sha256"},
+    "generation": {"type": "integer", "minimum": 1},
+    "predecessor_thread_id": {"type": "string", "minLength": 1},
+    "predecessor_receipt_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+    "repository_binding": {"type": "object"},
+    "repository_fingerprint": {"type": "string", "minLength": 1},
+    "control_fingerprint": {"type": "string", "minLength": 1},
+    "relay_profile": {"const": "recursive_chain_v1"},
+    "relay_topology": {"const": "recursive_chain_v1"},
+    "requested_effort": {"type": "string", "minLength": 1},
+    "handoff_token_sha256": {"$ref": "#/$defs/sha256"},
+    "cardinality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tasks", "continue_invocations", "agentjobs", "next_task_successors", "same_task_successors"],
+      "properties": {
+        "tasks": {"const": 1},
+        "continue_invocations": {"const": 1},
+        "agentjobs": {"const": 1},
+        "next_task_successors": {"const": 1},
+        "same_task_successors": {"const": 0}
+      }
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

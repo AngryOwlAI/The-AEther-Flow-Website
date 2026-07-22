@@ -55,7 +55,9 @@ class ContinueFinalization:
 
 def _validate_result(result: Mapping[str, Any]) -> None:
     schema_name = (
-        "continue-result-v2.schema.json"
+        "continue-result-v3.schema.json"
+        if result.get("schema_version") == "sys4ai.continue-result.v3"
+        else "continue-result-v2.schema.json"
         if result.get("schema_version") == "sys4ai.continue-result.v2"
         else "continue-result.schema.json"
     )
@@ -69,6 +71,29 @@ def _validate_result(result: Mapping[str, Any]) -> None:
                 "findings": format_issues(issues).splitlines(),
             },
         )
+
+
+def _bind_execution_authority(
+    result: Mapping[str, Any],
+    *,
+    execution_authority_sha256: str | None,
+    protected_action_request: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    bound = copy.deepcopy(dict(result))
+    if execution_authority_sha256 is None:
+        if protected_action_request is not None:
+            raise RecordValidationError(
+                "a protected action request requires an execution-authority binding"
+            )
+        return bound
+    bound["schema_version"] = "sys4ai.continue-result.v3"
+    bound["execution_authority_sha256"] = execution_authority_sha256
+    bound["protected_action_request"] = (
+        copy.deepcopy(dict(protected_action_request))
+        if protected_action_request is not None
+        else None
+    )
+    return bound
 
 
 def _validator_counts(
@@ -203,6 +228,8 @@ def finalize_no_action(
     resolution_history: Sequence[Mapping[str, Any]] = (),
     authority_refs: Sequence[str] = (),
     evidence_refs: Sequence[str] = (),
+    execution_authority_sha256: str | None = None,
+    protected_action_request: Mapping[str, Any] | None = None,
 ) -> ContinueFinalization:
     """Return a validated read-only result without creating control evidence."""
 
@@ -276,6 +303,11 @@ def finalize_no_action(
         "repair_route": repair_route,
         "extensions": {},
     }
+    result = _bind_execution_authority(
+        result,
+        execution_authority_sha256=execution_authority_sha256,
+        protected_action_request=protected_action_request,
+    )
     _validate_result(result)
     return ContinueFinalization(result, None, None, None, None, None, None, "not_run")
 
@@ -296,6 +328,8 @@ def finalize_execution(
     handoff_plan: HandoffPlan | None = None,
     next_recommended_action: str | None = "Reevaluate the containing goal.",
     policies: Sequence[Mapping[str, Any]] = (),
+    execution_authority_sha256: str | None = None,
+    protected_action_request: Mapping[str, Any] | None = None,
 ) -> ContinueFinalization:
     """Finalize exactly one successfully validated execution transaction."""
 
@@ -435,6 +469,11 @@ def finalize_execution(
         ),
         "extensions": {},
     }
+    result = _bind_execution_authority(
+        result,
+        execution_authority_sha256=execution_authority_sha256,
+        protected_action_request=protected_action_request,
+    )
     _validate_result(result)
     completion_hash = content_sha256(completion)
     if completion_hash != completion_receipt.sha256:

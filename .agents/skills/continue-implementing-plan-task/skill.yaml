@@ -1,10 +1,10 @@
 skill_id: continue-implementing-plan-task
-version: 0.1.0
+version: 0.3.0
 status: template
-release_maturity: experimental
-stability: evolving
+release_maturity: deprecated
+stability: frozen
 canonical_path: skills/continue-implementing-plan-task
-summary: Consume one immutable plan-task envelope and execute at most one bounded continuation for exactly that task.
+summary: Deprecated compatibility frame that routes new generations to continue-implementation-plan-relay.
 installation:
   entrypoint_class: internal_component
   selection_policy: internal_only
@@ -12,65 +12,43 @@ installation:
   project_adaptation: package_managed
   recommended_selectors:
     - kind: bundle
-      id: implementation-plan-goal
+      id: implementation-plan-relay
   prerequisites:
     bootstrap: explicit_required
-    adapters:
-      - PlanControlStore
-      - ProjectAdapter
-      - RepositoryProvider
-      - ThreadProvider
-      - ThreadExecutionProfileProvider
+    adapters: []
     external_tools: []
 scope:
   system_agnostic: true
   target_system_types:
     - governed agentic systems
-    - software repositories
-    - research and documentation systems
 domain_emphasis:
-  - one plan task per discussion
-  - at-most-once task execution
-  - direct evidence verification
+  - compatibility routing
+  - one-generation recursive relay
 required_role_posture:
   - system_analyst
   - system_engineer
   - software_engineer
-optional_role_posture:
-  - process_integrity_auditor
-  - verification_engineer
 activation:
   triggers:
-    - A token-bound plan coordinator invokes one reserved task generation.
+    - A caller uses the deprecated continue-implementing-plan-task name.
   when_not_to_use:
-    - No valid plan-task envelope or matching fresh discussion exists.
-    - The request would execute several plan tasks.
-  preconditions:
-    - Compatible agentjob-control and continue capabilities are installed.
-    - Canonical plan state and repository binding are accessible through an adapted runtime.
-    - A profile-aware v2 envelope and exact observed current-thread profile are available for new runs.
+    - A new integration can invoke continue-implementation-plan-relay directly.
 inputs:
   required:
-    - Explicit project root and normal mode.
-    - Plan ID and hash, task ID and hash, generation, handoff token, envelope hash, and expected revision.
-    - Matching successor discussion identity.
-    - Inherited execution profile, provider evidence, bound-checkout attestation, and pre-task topology.
+    - Inputs required by continue-implementation-plan-relay.
   optional:
-    - Explicit target-project validators and checkpoint provider.
+    - Explicit read-only legacy inspection selector.
 outputs:
   primary:
-    - One immutable PlanTaskReceipt v2 or one protected-stop result.
+    - Redirect to continue-implementation-plan-relay with a warning.
   evidence:
-    - Direct continuation result, fingerprints, validators, checkpoint, and task disposition.
-    - Requested/effective effort and pre/post topology evidence.
+    - Canonical target and recursive topology identity.
 dependencies:
   required_skills:
-    - agentjob-control
-    - continue
+    - continue-implementation-plan-relay
   optional_skills: []
   required_skill_versions:
-    agentjob-control: ^0.3.0
-    continue: ^0.3.0
+    continue-implementation-plan-relay: ^0.3.0
   python:
     standard_library_only: true
     requires_python: ">=3.11"
@@ -79,104 +57,66 @@ dependencies:
   external_tools: []
 authority:
   may_read:
-    - Canonical plan state, one token-bound task envelope, repository state, and direct evidence.
+    - One recursive generation or read-only legacy status.
   may_write:
-    - One future task lifecycle and one task receipt through adapted runtime interfaces.
+    - Nothing independently; all new writes belong to the recursive frame.
   may_not:
-    - Invoke continue more than once.
-    - Execute more than one AgentJob or one task ID.
-    - Create a same-task successor or start the next task.
-    - Rerun consumed or unknown work automatically.
+    - Wake/resume a coordinator, create a Goal, rerun consumed work, or select mixed topology.
   canonical_sources:
     - skills/continue-implementing-plan-task
-    - skills/implementation-plan-goal
-    - skills/agentjob-control
-    - skills/continue
+    - skills/continue-implementation-plan-relay
   generated_derivatives:
-    - Target-project plan-task events, receipt, and coordinator handoff.
+    - Installed compatibility shim.
   human_gates:
-    - Ambiguous task evaluation, append-only replanning, recovery, and protected project actions.
+    - Explicit legacy mutation selection for a named historical run.
 validation:
   commands:
     - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/continue-implementing-plan-task/skill.yaml
       validator_class: schema_validation
       mode: required
       dry_runnable: true
-    - command: python3 -m unittest discover -s skills/implementation-plan-goal/tests -p "test_*.py" -v
-      validator_class: control_validation
-      mode: required
-      dry_runnable: true
   validator_classes:
     - schema_validation
     - dependency_validation
-    - trace_validation
-    - process_validation
     - control_validation
-    - claim_validation
-    - human_authority
   evidence_required:
-    - One direct continuation result or one explicit unknown-outcome record.
-    - Exactly one task ID, zero or one AgentJob, and no same-task successor.
-    - Exact envelope/canonical/provider/current-thread profile parity before claim.
+    - New calls resolve only to continue-implementation-plan-relay.
 handoff:
-  requires_completion_receipt: true
+  requires_completion_receipt: false
   evidence:
-    - Plan and task identity, receipt or protected stop, final fingerprint, and exact coordinator action.
-  next_role: implementation_plan_goal_coordinator
-  open_issue_policy: Stop for recovery or append-only replanning rather than repeat work.
+    - Canonical target and deprecation warning.
+  next_role: continue_implementation_plan_relay_worker
+  open_issue_policy: Fail closed on mixed topology and consumed uncertainty.
 execution:
   kind: relay_worker
   invocation_policy: internal
   maximum_agentjobs_per_invocation: 1
   may_spawn_threads: false
-  may_create_control_records: true
+  may_create_control_records: false
   invokes_skills:
-    - continue
+    - continue-implementation-plan-relay
 runtime_capabilities:
   provides:
-    - sys4ai.continue-implementing-plan-task.runtime.v1
+    - sys4ai.continue-implementing-plan-task.compat-shim.v1
   requires:
-    - sys4ai.agentjob-control.v1
-    - sys4ai.continue.v1
-    - sys4ai.implementation-plan.v1
-    - sys4ai.plan-task-envelope.v1
-    - sys4ai.plan-task-envelope.v2
-    - sys4ai.plan-task-receipt.v2
-    - sys4ai.plan-execution-profile.v1
-    - sys4ai.repository-topology-enforcement.v1
-    - python>=3.11
+    - sys4ai.continue-implementation-plan-relay.runtime.v1
   optional: []
 control_protocol:
   profile: registered
   record_types:
-    - ImplementationPlan
-    - PlanTaskEnvelope
-    - Task
-    - AgentJob
-    - Completion
+    - CompatibilityRedirect
   immutable_after_activation: true
   supersession_required: true
 state:
   tracked_root_template: "{project_root}/.agents/control"
-  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-goal"
+  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-relay"
   mutable_state_must_not_live_in_skill_directory: true
+compatibility_shims:
+  - continue-implementation-plan-relay
 adapters:
-  required_interfaces:
-    - PlanControlStore
-    - ProjectAdapter
-    - RepositoryProvider
-    - ThreadProvider
-    - ThreadExecutionProfileProvider
-  optional_interfaces:
-    - CheckpointProvider
-    - ContextProvider
+  required_interfaces: []
+  optional_interfaces: []
   manual_thread_fallback: false
 recovery:
   supported: true
   automatic_rerun_after_consumption: false
-compatibility_shims: []
-failure_modes:
-  - mode: Invalid plan, task, token, thread, envelope, repository, or revision identity.
-    recovery: Reject before consumption.
-  - mode: Consumed task outcome is unknown or the task is oversized.
-    recovery: Require explicit recovery or append-only task replacement without rerun.

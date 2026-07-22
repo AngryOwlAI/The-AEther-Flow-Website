@@ -1,14 +1,16 @@
 # Third-Party Notices
 
-## Sys4AI Implementation Plan Goal Bundle
+## Sys4AI Implementation Plan Relay Bundle
 
 The project-local `agentjob-control`, `continue`,
-`continue-implementing-plan-task`, and `implementation-plan-goal` packages are
-exact locked imports from `/Volumes/P-SSD/AngryOwl/skills-Sys4AI` commit
-`5309fabc665b8c6665a24b9edb42b4ceda82227d`.
+`continue-implementation-plan-relay`, `continue-implementing-plan-task`,
+`implementation-plan-goal`, and `implementation-plan-relay` packages are exact
+locked imports from `/Volumes/P-SSD/AngryOwl/skills-Sys4AI` release tag
+`implementation-plan-relay-v0.3.0` at commit
+`e9fd6cb5d836bd6b1ee19edef2f025a6ab9178e3`.
 
 The source lock SHA-256 is
-`a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9`.
+`72bbb35580e9b5678c8a126b7ae45c6ee2167983e4c75d0218a91a3dcbfe1fd2`.
 The package is experimental and evolving. Plugin distribution is disabled.
 The local `.codex/skills` files are website-specific adapter front doors; they
 do not change the imported package bytes or grant execution authority.

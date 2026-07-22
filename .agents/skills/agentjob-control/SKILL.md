@@ -28,6 +28,11 @@ Use this skill when a declared parent skill or operator needs to:
 - stage and atomically activate one bounded decision/job/role packet;
 - close one AgentJob and optionally create one non-authoritative handoff;
 - inspect or recover governed continuation state;
+- prepare one complete generic goal intake, bind one combined response and
+  exact authority manifest, supervise v4 coordination, and report only
+  canonical met completion;
+- prepare, accept, advance, answer, or inspect a dependency-resolved continuous
+  implementation-plan coordinator on behalf of its parent skill;
 - generate deterministic indexes and fingerprints.
 
 Do not use it as a general-purpose task runner, background controller, domain
@@ -83,6 +88,19 @@ AgentJob and claim boundary.
 10. Regenerate derived indexes from canonical records and report hashes,
     validators, warnings, failures, and unresolved gates.
 
+For the implementation-plan 0.2 profile, `agentjobctl.py plan-goal` exposes
+read-only `prepare`, atomic `accept-and-run`, internal idempotent `advance`,
+complete-batch `answer`, and read-only `status`. `initialize` is a compatibility
+entry that routes v2 proposal inputs to preparation; its legacy full form is
+explicit manual degraded mode.
+
+For generic uninterrupted goals, `agentjobctl.py goal prepare` performs the
+read-only complete intake and emits one consolidated prompt;
+`goal accept-and-run` binds the complete response, applies/revalidates accepted
+setup, initializes v4, and stays active. `goal advance` is the durable internal
+resumption boundary. Existing low-level goal commands remain advanced
+compatibility operations.
+
 ## Invariants
 
 - A draft packet has no execution authority.
@@ -106,11 +124,12 @@ python3 <AGENTJOB_CONTROL_PATH>/scripts/agentjobctl.py --help
 python3 <AGENTJOB_CONTROL_PATH>/scripts/agentjobctl.py validate --project-root <PROJECT_ROOT> --json
 ```
 
-The canonical package has static, schema, documentation, example, and CLI
-verification only. It does not include a runtime regression suite. Validation
-proves only the class it reports: a static or schema PASS does not establish
-runtime correctness, and process or control PASS does not establish domain
-truth.
+The shared regression suite also verifies migration, provider, worker,
+recovery, and continuous implementation-plan behavior with controlled
+transports. Validation proves only the class it reports: a static or schema
+PASS does not establish runtime correctness, a controlled provider PASS does
+not replace a live target-project pilot, and process or control PASS does not
+establish domain truth.
 
 ## Failure Modes
 

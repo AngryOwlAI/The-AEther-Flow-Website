@@ -78,8 +78,11 @@ def build_completion_report(
 ) -> dict[str, Any]:
     """Derive the report only from canonical goal records and finalized receipts."""
 
-    if record.get("schema_version") != "sys4ai.continue-goal.v3":
-        raise StateConflict("authoritative completion reports require goal state v3")
+    if record.get("schema_version") not in {
+        "sys4ai.continue-goal.v3",
+        "sys4ai.continue-goal.v4",
+    }:
+        raise StateConflict("authoritative completion reports require goal state v3 or v4")
     if record["state"]["goal_evaluation"] != "met":
         raise StateConflict("goal completion report requires canonical met evaluation")
     receipts = _step_receipts(record)

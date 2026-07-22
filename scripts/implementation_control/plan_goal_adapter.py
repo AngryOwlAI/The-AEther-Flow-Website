@@ -95,6 +95,9 @@ from agentjob_runtime.plan.activation import (  # noqa: E402
     request_current_thread_profile as request_plan_profile,
 )
 from agentjob_runtime.plan.initialize import initialize_plan  # noqa: E402
+from agentjob_runtime.plan.completion_report import (  # noqa: E402
+    build_plan_completion_report as build_canonical_plan_completion_report,
+)
 from agentjob_runtime.plan.launcher import (  # noqa: E402
     PlanLauncherGuards,
     PlanSourceRequest,
@@ -141,13 +144,13 @@ ADAPTER_CONFIG_RELATIVE = Path(
     ".agents/implementation-plan-goal/adapter-config.json"
 )
 PROVENANCE_RELATIVE = Path(
-    ".agents/implementation-plan-goal/import-provenance.json"
+    ".agents/implementation-plan-relay/import-provenance.json"
 )
 CONFORMANCE_RELATIVE = Path(
     ".agents/implementation-plan-goal/adapter-conformance.json"
 )
 LOCK_RELATIVE = Path(
-    ".agents/skill_registry/locks/implementation-plan-goal.lock.yaml"
+    ".agents/skill_registry/locks/implementation-plan-relay.lock.yaml"
 )
 PLAN_SCHEMA_ROOT_RELATIVE = Path(
     ".agents/skills/implementation-plan-goal/schemas"
@@ -177,26 +180,37 @@ CONTROL_ACTIVATION_SCHEMA_RELATIVE = Path(
 ADOPTION_SCHEMA_RELATIVE = Path(
     "implementation_control/schemas/codex-task-adoption-receipt-v1.schema.json"
 )
+LEGACY_PLAN_COMPLETION_SCHEMA_RELATIVE = Path(
+    "implementation_control/schemas/legacy-plan-completion-report-v1.schema.json"
+)
 PROGRAM_STATE_RELATIVE = Path("implementation_control/program_state.yaml")
 EXPECTED_LOCK_SHA256 = (
-    "a158c82edd140e0cfc637a780733a0a35241bfdb6083725e97e335441a6b7bb9"
+    "72bbb35580e9b5678c8a126b7ae45c6ee2167983e4c75d0218a91a3dcbfe1fd2"
 )
 EXPECTED_SKILLS = {
     "agentjob-control": (
-        "0.3.0",
-        "4fa0e93dc884e2c95ab3e0e01b3398c50aacacc91297574aabb456e1cc093c2d",
+        "0.4.1",
+        "7700ecba131698b03cf0b8f81cd9507b2c8b8364fa9e109b50640ec9f063e53c",
     ),
     "continue": (
+        "0.4.0",
+        "f7b2ebb1df26ea31ba526458263a3745a1a23254e769c4bd72419c9eda9f8bad",
+    ),
+    "continue-implementation-plan-relay": (
         "0.3.0",
-        "8ea81082ca76f77accaf4af2e839741b928817b6ff64761412fba71f0481294d",
+        "c98a4c1a2b19c1a3af5e4a555d189288cb558ae6ac4bbe1aeaba32ebf0718e17",
     ),
     "continue-implementing-plan-task": (
-        "0.1.0",
-        "947c9d5b828746316d96874e253b772376978712e749ace48ef074fdbbcc7859",
+        "0.3.0",
+        "ecea5223950c1a3ef250b9b8815021a415f84a63005627add552d34d18f318ee",
     ),
     "implementation-plan-goal": (
-        "0.1.0",
-        "5c9320e736ae6314aaa794b57e488eb18488e73bc08031c6805493aa9a36ab76",
+        "0.3.0",
+        "38dad3a248185701a48c9320827723f0234beb04f92c5d4e907eff0bbeae2b7a",
+    ),
+    "implementation-plan-relay": (
+        "0.3.0",
+        "c0a2e0a70a0c92b350f6b736846d3482506177b6fc923bfdd988ad0a730b361c",
     ),
 }
 REQUIRED_HIGH_RISK_GATES = {
@@ -1252,6 +1266,7 @@ class WebsiteControlStore:
         records: Mapping[str, bytes],
         *,
         expected_control_sha256: str,
+        expected_resolver_status: str | None = None,
     ) -> tuple[WebsiteControlSnapshot, WebsiteControlSnapshot]:
         before = self.snapshot()
         if before.control_sha256 != expected_control_sha256:
@@ -1290,6 +1305,17 @@ class WebsiteControlStore:
             raise
         try:
             after = self.snapshot()
+            if (
+                expected_resolver_status is not None
+                and after.resolver.get("status")
+                != expected_resolver_status
+            ):
+                raise _protected(
+                    "website control mutation did not reach its required state",
+                    "website.packet_activation_failed",
+                    expected=expected_resolver_status,
+                    actual=after.resolver.get("status"),
+                )
         except Exception:
             for path in reversed(written):
                 original = backups[path]
@@ -1347,14 +1373,117 @@ class WebsiteControlStore:
         _, after = self._write_records_with_cas(
             records,
             expected_control_sha256=expected,
+            expected_resolver_status="no_action",
         )
-        if after.resolver.get("status") != "no_action":
-            raise _protected(
-                "superseded website packet did not reach no-action state",
-                "website.packet_activation_failed",
-            )
         return {
             "status": "superseded",
+            "website_control_sha256_before": before.control_sha256,
+            "website_control_sha256_after": after.control_sha256,
+        }
+
+    def complete_packet(self, request: Mapping[str, Any]) -> dict[str, Any]:
+        """Atomically complete one selected packet through an explicit CAS."""
+
+        expected = str(request.get("expected_control_sha256", ""))
+        timestamp = str(request.get("timestamp") or utc_now())
+        parse_utc(timestamp)
+        value = request.get("record")
+        if not isinstance(value, Mapping):
+            raise _protected(
+                "website completion request lacks one record",
+                "website.packet_invalid",
+            )
+        completion = copy.deepcopy(dict(value))
+        completion_id = _safe_record_id(
+            completion.get("completion_id"),
+            label="website completion ID",
+        )
+        task_id = _safe_record_id(
+            completion.get("task_id"),
+            label="website task ID",
+        )
+        job_id = _safe_record_id(
+            completion.get("job_id"),
+            label="website job ID",
+        )
+        if (
+            completion.get("record_type") != "implementation_completion"
+            or completion.get("status") not in {"complete", "completed"}
+        ):
+            raise _protected(
+                "website completion record is not final",
+                "website.packet_invalid",
+            )
+
+        before = self.snapshot()
+        if (
+            before.resolver_exit_code != 0
+            or before.resolver.get("status") != "ready"
+        ):
+            raise _protected(
+                "website completion requires one ready selected packet",
+                "website.packet_invalid",
+            )
+        selected = before.payload["selected"]
+        required = ("task", "job", "handoff")
+        if any(not isinstance(selected.get(key), Mapping) for key in required):
+            raise _protected(
+                "selected website packet is incomplete",
+                "website.packet_invalid",
+            )
+        task_record = selected["task"]["record"]
+        job_record = selected["job"]["record"]
+        if (
+            task_record.get("task_id") != task_id
+            or job_record.get("job_id") != job_id
+            or job_record.get("task_id") != task_id
+        ):
+            raise _protected(
+                "website completion identity differs from the selected packet",
+                "website.packet_invalid",
+            )
+
+        relative = (
+            f"implementation_control/tasks/{task_id}/jobs/completions/"
+            f"{completion_id}.yaml"
+        )
+        if (self.repo_root / relative).exists():
+            raise _protected(
+                "website completion record already exists",
+                "website.append_only_conflict",
+            )
+        records: dict[str, bytes] = {relative: render_yaml(completion)}
+        for key in required:
+            projection = selected[key]
+            record = copy.deepcopy(dict(projection["record"]))
+            record["status"] = "completed"
+            record["updated_utc"] = timestamp
+            records[str(projection["path"])] = render_yaml(record)
+        program = copy.deepcopy(
+            dict(before.payload["program_state"]["record"])
+        )
+        program["status"] = "inactive"
+        program["updated_utc"] = timestamp
+        if isinstance(program.get("active_task"), Mapping):
+            program["active_task"]["status"] = "completed"
+        program["current_job"] = {}
+        if isinstance(program.get("latest_handoff"), Mapping):
+            program["latest_handoff"]["status"] = "completed"
+        program["required_validators"] = []
+        program["next_recommended_action"] = {
+            "task_packet": "none",
+            "summary": "The mapped website packet is complete.",
+            "do_not_skip": "Open fresh hash-bound authority before more work.",
+        }
+        records[PROGRAM_STATE_RELATIVE.as_posix()] = render_yaml(program)
+        before, after = self._write_records_with_cas(
+            records,
+            expected_control_sha256=expected,
+            expected_resolver_status="no_action",
+        )
+        return {
+            "status": "completed",
+            "path": relative,
             "website_control_sha256_before": before.control_sha256,
             "website_control_sha256_after": after.control_sha256,
         }
@@ -1974,6 +2103,308 @@ def load_plan_binding(
     )
 
 
+def _legacy_plan_state_sha256(repo_root: Path) -> str | None:
+    path = repo_root / STATE_RELATIVE
+    return file_sha256(path) if path.is_file() else None
+
+
+def _load_standalone_bootstrap_packet(
+    *,
+    plan_path: str | Path,
+    binding_path: str | Path | None,
+    task_id: str,
+    authorization_evidence_ref: str,
+    repo_root: Path,
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Load one accepted, dependency-free packet without a legacy outer goal."""
+
+    if not authorization_evidence_ref.strip():
+        raise _protected(
+            "standalone bootstrap requires explicit authorization evidence",
+            "activation.acceptance_missing",
+        )
+    plan = load_project_plan(plan_path, repo_root=repo_root)
+    binding = load_plan_binding(plan, binding_path, repo_root=repo_root)
+    phases = plan["phases"]
+    tasks = plan["tasks"]
+    required_scope = plan["required_scope"]
+    if (
+        len(phases) != 1
+        or len(tasks) != 1
+        or required_scope["phase_ids"] != [phases[0]["phase_id"]]
+        or required_scope["task_ids"] != [tasks[0]["task_id"]]
+        or required_scope["excluded_phase_ids"]
+        or required_scope["excluded_task_ids"]
+        or phases[0]["task_ids"] != [tasks[0]["task_id"]]
+        or phases[0]["depends_on"]
+        or tasks[0]["depends_on"]
+        or tasks[0]["phase_id"] != phases[0]["phase_id"]
+        or tasks[0]["task_id"] != task_id
+    ):
+        raise _protected(
+            "standalone bootstrap accepts exactly one dependency-free task",
+            "plan.bootstrap_scope_invalid",
+        )
+    if (
+        plan["acceptance"]["status"] != "accepted"
+        or plan["acceptance"]["authority_ref"]
+        != authorization_evidence_ref
+    ):
+        raise _protected(
+            "standalone bootstrap authority differs from plan acceptance",
+            "activation.acceptance_invalidated",
+        )
+    entry = binding["tasks"].get(task_id)
+    if not isinstance(entry, Mapping):
+        raise _protected(
+            "standalone bootstrap task lacks one exact website binding",
+            "plan.binding_incomplete",
+            task_id=task_id,
+        )
+    return plan, binding, copy.deepcopy(dict(entry))
+
+
+def bootstrap_website_packet(
+    *,
+    plan_path: str | Path,
+    binding_path: str | Path | None,
+    task_id: str,
+    expected_control_sha256: str,
+    authorization_message: str,
+    authorization_evidence_ref: str,
+    repo_root: Path = REPO_ROOT,
+    timestamp: str | None = None,
+) -> dict[str, Any]:
+    """CAS-activate one accepted packet without generic goal/provider state."""
+
+    root = Path(repo_root).resolve(strict=True)
+    now = timestamp or utc_now()
+    parse_utc(now)
+    if not authorization_message.strip():
+        raise _protected(
+            "standalone bootstrap requires an explicit authorization message",
+            "activation.acceptance_missing",
+        )
+    plan, binding, entry = _load_standalone_bootstrap_packet(
+        plan_path=plan_path,
+        binding_path=binding_path,
+        task_id=task_id,
+        authorization_evidence_ref=authorization_evidence_ref,
+        repo_root=root,
+    )
+    control_store = WebsiteControlStore(root)
+    before = control_store.snapshot()
+    if (
+        before.control_sha256 != expected_control_sha256
+        or before.resolver_exit_code != 0
+        or before.resolver.get("status") != "no_action"
+    ):
+        raise _protected(
+            "standalone bootstrap requires the exact no-action control state",
+            "website.control_hash_conflict",
+            expected=expected_control_sha256,
+            actual=before.control_sha256,
+            resolver_status=before.resolver.get("status"),
+        )
+    if plan["repository_binding"] != before.repository.binding:
+        raise _protected(
+            "standalone bootstrap repository differs from the accepted checkout",
+            "plan.repository_mismatch",
+        )
+    legacy_before = _legacy_plan_state_sha256(root)
+    staged = control_store.stage_packet(
+        {
+            "plan": plan,
+            "binding": entry,
+            "binding_manifest_sha256": binding["manifest_sha256"],
+            "timestamp": now,
+        }
+    )
+    activated = control_store.activate_packet(
+        staged,
+        expected_control_sha256,
+    )
+    legacy_after = _legacy_plan_state_sha256(root)
+    if legacy_after != legacy_before:
+        raise _protected(
+            "standalone bootstrap changed legacy plan state",
+            "plan.bootstrap_isolation_failed",
+        )
+    return {
+        **activated,
+        "plan_id": plan["plan_id"],
+        "task_id": task_id,
+        "authorization": {
+            "evidence_ref": authorization_evidence_ref,
+            "message_sha256": content_sha256(authorization_message),
+        },
+        "isolation": {
+            "legacy_plan_state_sha256_before": legacy_before,
+            "legacy_plan_state_sha256_after": legacy_after,
+            "generic_outer_goal_created": False,
+            "provider_intent_created": False,
+        },
+        "effects": {
+            "website_control_records_written": 5,
+            "activation_receipts_written": 1,
+            "legacy_plan_state_writes": 0,
+            "provider_create_calls": 0,
+            "worker_discussions": 0,
+            "agentjobs": 0,
+            "continue_invocations": 0,
+        },
+    }
+
+
+def complete_bootstrap_website_packet(
+    *,
+    plan_path: str | Path,
+    binding_path: str | Path | None,
+    task_id: str,
+    expected_control_sha256: str,
+    authorization_evidence_ref: str,
+    validator_results: Mapping[str, str],
+    changed_files: Sequence[str],
+    completion_summary: str,
+    repo_root: Path = REPO_ROOT,
+    timestamp: str | None = None,
+) -> dict[str, Any]:
+    """Validate evidence and atomically close one standalone website packet."""
+
+    root = Path(repo_root).resolve(strict=True)
+    now = timestamp or utc_now()
+    parse_utc(now)
+    if not completion_summary.strip():
+        raise _protected(
+            "standalone completion requires a nonempty summary",
+            "plan.validation_failed",
+        )
+    plan, binding, entry = _load_standalone_bootstrap_packet(
+        plan_path=plan_path,
+        binding_path=binding_path,
+        task_id=task_id,
+        authorization_evidence_ref=authorization_evidence_ref,
+        repo_root=root,
+    )
+    control_store = WebsiteControlStore(root)
+    before = control_store.snapshot()
+    if (
+        before.control_sha256 != expected_control_sha256
+        or before.resolver_exit_code != 0
+        or before.resolver.get("status") != "ready"
+    ):
+        raise _protected(
+            "standalone completion requires the exact ready control state",
+            "website.control_hash_conflict",
+            expected=expected_control_sha256,
+            actual=before.control_sha256,
+            resolver_status=before.resolver.get("status"),
+        )
+    if plan["repository_binding"] != before.repository.binding:
+        raise _protected(
+            "standalone completion repository differs from the accepted checkout",
+            "plan.repository_mismatch",
+        )
+    selected_task = before.payload["selected"]["task"]["record"]
+    source = selected_task.get("source_context", {})
+    if (
+        source.get("plan_id") != plan["plan_id"]
+        or source.get("plan_sha256") != content_sha256(plan)
+        or source.get("plan_task_id") != task_id
+        or source.get("plan_task_sha256") != entry["task_sha256"]
+        or source.get("binding_manifest_sha256")
+        != binding["manifest_sha256"]
+        or source.get("authority_sha256") != entry["authority_sha256"]
+    ):
+        raise _protected(
+            "selected website packet differs from standalone completion authority",
+            "activation.acceptance_invalidated",
+        )
+    expected_validators = {
+        str(item["id"]): item for item in entry["validators"]
+    }
+    if set(validator_results) != set(expected_validators) or any(
+        str(status).lower() not in {"pass", "passed"}
+        for status in validator_results.values()
+    ):
+        raise _protected(
+            "standalone completion lacks passing evidence for every validator",
+            "plan.validation_failed",
+            expected=sorted(expected_validators),
+            actual=sorted(validator_results),
+        )
+    normalized_files = [str(item) for item in changed_files]
+    if (
+        not normalized_files
+        or len(set(normalized_files)) != len(normalized_files)
+        or any(
+            not _path_allowed(item, entry["allowed_writes"])
+            or Path(item).is_absolute()
+            or ".." in Path(item).parts
+            for item in normalized_files
+        )
+    ):
+        raise _protected(
+            "standalone completion changed files exceed exact write authority",
+            "plan.path_boundary_violation",
+        )
+    ids = entry["packet_ids"]
+    completion = {
+        "schema_version": "0.1",
+        "record_type": "implementation_completion",
+        "completion_id": ids["completion_id"],
+        "task_id": ids["task_id"],
+        "job_id": ids["job_id"],
+        "status": "completed",
+        "completed_utc": now,
+        "summary": completion_summary,
+        "changed_files": normalized_files,
+        "requirements_satisfied": list(entry["acceptance_criteria"]),
+        "validator_results": [
+            {
+                "id": validator_id,
+                "command": expected_validators[validator_id]["command"],
+                "status": "passed",
+                "evidence": normalized_files[0],
+            }
+            for validator_id in expected_validators
+        ],
+    }
+    legacy_before = _legacy_plan_state_sha256(root)
+    completed = control_store.complete_packet(
+        {
+            "expected_control_sha256": expected_control_sha256,
+            "timestamp": now,
+            "record": completion,
+        }
+    )
+    legacy_after = _legacy_plan_state_sha256(root)
+    if legacy_after != legacy_before:
+        raise _protected(
+            "standalone completion changed legacy plan state",
+            "plan.bootstrap_isolation_failed",
+        )
+    return {
+        **completed,
+        "plan_id": plan["plan_id"],
+        "task_id": task_id,
+        "isolation": {
+            "legacy_plan_state_sha256_before": legacy_before,
+            "legacy_plan_state_sha256_after": legacy_after,
+            "generic_outer_goal_created": False,
+            "provider_intent_created": False,
+        },
+        "effects": {
+            "website_control_records_written": 5,
+            "legacy_plan_state_writes": 0,
+            "provider_create_calls": 0,
+            "worker_discussions": 0,
+            "agentjobs": 0,
+            "continue_invocations": 0,
+        },
+    }
+
+
 def _require_replacement_binding_authorization(
     *,
     store: SQLitePlanStore,
@@ -2182,16 +2613,26 @@ def _require_replacement_binding_authorization(
     )
     runtime_task = runtime_definition.get("task_json", {})
     budget = task["execution_budget"]
+    runtime_budget = runtime_task.get("execution_budget")
+    if not isinstance(runtime_budget, Mapping):
+        # Schema-v5 replacement rows stored only the compact scheduling
+        # projection at the top level.  The compatibility reader now returns
+        # the fully inherited task definition when it can prove that exact
+        # projection, so accept either representation without weakening any
+        # identity or hash check.
+        runtime_budget = runtime_task
     if (
         runtime_definition.get("origin_kind") != "replacement"
         or runtime_definition.get("task_sha256") != task["task_sha256"]
         or runtime_definition.get("phase_id") != task["phase_id"]
         or runtime_definition.get("depends_on") != task["depends_on"]
-        or runtime_task.get("one_task_per_discussion")
+        or runtime_budget.get("one_task_per_discussion")
         != budget["one_task_per_discussion"]
-        or runtime_task.get("max_continue_invocations")
+        or runtime_budget.get("max_continue_invocations")
         != budget["max_continue_invocations"]
-        or runtime_task.get("max_agentjobs") != budget["max_agentjobs"]
+        or runtime_budget.get("max_agentjobs") != budget["max_agentjobs"]
+        or runtime_budget.get("same_task_successors", 0)
+        != budget.get("same_task_successors", 0)
         or budget.get("same_task_successors") != 0
     ):
         raise _protected(
@@ -3216,15 +3657,13 @@ def activate_plan(
     }
 
 
-def _require_mutation_cas(
+def _require_session_control_cas(
     *,
     controls: PlanControlStore,
     control_store: WebsiteControlStore,
     plan_id: str,
-    expected_plan_revision: int,
     expected_control_sha256: str,
 ) -> tuple[dict[str, Any], WebsiteControlSnapshot]:
-    controls.assert_revision(plan_id, expected_plan_revision)
     snapshot = control_store.snapshot()
     if snapshot.control_sha256 != expected_control_sha256:
         raise _protected(
@@ -3260,6 +3699,421 @@ def _require_mutation_cas(
             "plan.repository_topology_changed",
         )
     return session, snapshot
+
+
+def _require_mutation_cas(
+    *,
+    controls: PlanControlStore,
+    control_store: WebsiteControlStore,
+    plan_id: str,
+    expected_plan_revision: int,
+    expected_control_sha256: str,
+) -> tuple[dict[str, Any], WebsiteControlSnapshot]:
+    controls.assert_revision(plan_id, expected_plan_revision)
+    return _require_session_control_cas(
+        controls=controls,
+        control_store=control_store,
+        plan_id=plan_id,
+        expected_control_sha256=expected_control_sha256,
+    )
+
+
+def _validate_legacy_completion_report(
+    report: Mapping[str, Any],
+    *,
+    repo_root: Path,
+) -> dict[str, Any]:
+    value = copy.deepcopy(dict(report))
+    findings = validate_instance(
+        value,
+        repo_root / LEGACY_PLAN_COMPLETION_SCHEMA_RELATIVE,
+    )
+    if findings:
+        raise _protected(
+            "legacy completion report failed schema validation",
+            "plan.completion_report_invalid",
+            findings=format_issues(findings).splitlines(),
+        )
+    expected = content_sha256(
+        {
+            key: item
+            for key, item in value.items()
+            if key != "report_content_sha256"
+        }
+    )
+    if value["report_content_sha256"] != expected:
+        raise _protected(
+            "legacy completion report content hash is invalid",
+            "plan.completion_report_hash_mismatch",
+        )
+    return value
+
+
+def _legacy_receipt_projections(
+    store: SQLitePlanStore,
+    plan_id: str,
+) -> list[dict[str, Any]]:
+    connection = store.connect()
+    try:
+        rows = list(
+            connection.execute(
+                "SELECT receipt_id, task_id, disposition, "
+                "acceptance_status, validator_status, checkpoint_status, "
+                "receipt_sha256 FROM plan_receipts "
+                "WHERE plan_id=? AND receipt_kind='task' "
+                "ORDER BY finalized_at, receipt_id",
+                (plan_id,),
+            )
+        )
+    finally:
+        connection.close()
+    return [
+        {
+            "receipt_id": str(row["receipt_id"]),
+            "task_id": str(row["task_id"]),
+            "disposition": str(row["disposition"]),
+            "acceptance_status": str(row["acceptance_status"]),
+            "validator_status": str(row["validator_status"]),
+            "checkpoint_status": str(row["checkpoint_status"]),
+            "receipt_sha256": str(row["receipt_sha256"]),
+        }
+        for row in rows
+    ]
+
+
+def prepare_plan_finalization(
+    *,
+    plan_id: str,
+    expected_plan_revision: int,
+    expected_control_sha256: str,
+    current_holder_thread_id: str,
+    repo_root: Path = REPO_ROOT,
+    timestamp: str | None = None,
+) -> dict[str, Any]:
+    """Build one immutable legacy completion report without mutating state."""
+
+    root = Path(repo_root).resolve(strict=True)
+    now = timestamp or utc_now()
+    parse_utc(now)
+    controls = PlanControlStore(root, read_only=True)
+    session, snapshot = _require_mutation_cas(
+        controls=controls,
+        control_store=WebsiteControlStore(root),
+        plan_id=plan_id,
+        expected_plan_revision=expected_plan_revision,
+        expected_control_sha256=expected_control_sha256,
+    )
+    if (
+        not current_holder_thread_id.strip()
+        or session.get("coordinator_thread_id")
+        != current_holder_thread_id
+        or session.get("status") != "task_finalized"
+    ):
+        raise _protected(
+            "legacy finalization requires the accepted coordinator boundary",
+            "plan.coordinator_only",
+        )
+    store = controls.require_store()
+    record = store.load_plan(plan_id)
+    selection = store.select_next_task(
+        plan_id,
+        expected_revision=expected_plan_revision,
+    )
+    if selection.status != "completion_candidate":
+        raise _protected(
+            "legacy plan does not have canonical completion-candidate evidence",
+            "plan.completion_incomplete",
+            selection_status=selection.status,
+            selection_reason_code=selection.reason_code,
+        )
+    completion = build_canonical_plan_completion_report(
+        store,
+        plan_id=plan_id,
+    )
+    if completion.get("status") != "complete":
+        raise _protected(
+            "legacy canonical completion proof is incomplete",
+            "plan.completion_incomplete",
+        )
+    intents = store.list_provider_intents(plan_id)
+    if not intents or any(item.get("status") != "returned" for item in intents):
+        raise _protected(
+            "legacy plan has an open or ambiguous provider intent",
+            "plan.provider_intent_unresolved",
+        )
+    receipts = _legacy_receipt_projections(store, plan_id)
+    if not receipts:
+        raise _protected(
+            "legacy plan has no immutable task receipts",
+            "plan.completion_incomplete",
+        )
+    outer = store.goal_store.load_goal(record["outer_goal_id"])
+    if (
+        record["state"]["active_task_id"] is not None
+        or record["state"].get("lease") is not None
+        or outer["state"].get("active_lease") is not None
+    ):
+        raise _protected(
+            "legacy completion candidate has an active task or lease",
+            "plan.lease_mismatch",
+        )
+    proof = selection.proof
+    report: dict[str, Any] = {
+        "schema_version": "website.legacy-plan-completion-report.v1",
+        "report_id": "LPR-"
+        + content_sha256(
+            {
+                "plan_id": plan_id,
+                "revision": expected_plan_revision,
+                "control": snapshot.control_sha256,
+                "selection": proof["proof_content_sha256"],
+            }
+        )[:24].upper(),
+        "plan_id": plan_id,
+        "plan_sha256": record["effective_plan_sha256"],
+        "expected_plan_revision": expected_plan_revision,
+        "status": "complete",
+        "created_at": now,
+        "coordinator_thread_id_sha256": content_sha256(
+            {"thread_id": current_holder_thread_id}
+        ),
+        "website_control_sha256": snapshot.control_sha256,
+        "repository_binding_sha256": snapshot.repository.binding_sha256,
+        "repository_topology_sha256": snapshot.repository.topology_sha256,
+        "repository_fingerprint": record["repository_fingerprint"],
+        "selection": {
+            "outcome": "completion_candidate",
+            "reason_code": selection.reason_code,
+            "proof_id": proof["proof_id"],
+            "proof_sha256": content_sha256(proof),
+            "prior_journal_sha256": proof["prior_journal_sha256"],
+        },
+        "canonical_completion_report": completion,
+        "canonical_completion_report_sha256": content_sha256(completion),
+        "task_receipts": receipts,
+        "provider_intents": [
+            {
+                "intent_id": item["intent_id"],
+                "generation": item["generation"],
+                "status": item["status"],
+                "returned_thread_id_sha256": content_sha256(
+                    {"thread_id": item["returned_thread_id"]}
+                ),
+                "intent_sha256": content_sha256(item),
+            }
+            for item in intents
+        ],
+        "open_provider_intent_count": 0,
+        "lease_boundary": {
+            "active_plan_lease": False,
+            "active_outer_goal_lease": False,
+            "active_task_id": None,
+            "disposition": "released_before_completion_candidate",
+        },
+        "prior_journal_sha256": record["journal"][-1]["event_hash"],
+        "report_content_sha256": "",
+    }
+    report["report_content_sha256"] = content_sha256(
+        {
+            key: item
+            for key, item in report.items()
+            if key != "report_content_sha256"
+        }
+    )
+    report = _validate_legacy_completion_report(report, repo_root=root)
+    return {
+        "status": "completion_report_ready",
+        "plan_id": plan_id,
+        "plan_revision": expected_plan_revision,
+        "website_control_sha256": snapshot.control_sha256,
+        "completion_report": report,
+        "completion_report_sha256": content_sha256(report),
+        "effects": {
+            "state_writes": 0,
+            "provider_create_calls": 0,
+            "worker_discussions": 0,
+            "agentjobs": 0,
+            "continue_invocations": 0,
+        },
+    }
+
+
+def finalize_plan(
+    *,
+    plan_id: str,
+    expected_plan_revision: int,
+    expected_control_sha256: str,
+    current_holder_thread_id: str,
+    completion_report_path: str | Path,
+    expected_completion_report_sha256: str,
+    repo_root: Path = REPO_ROOT,
+    timestamp: str | None = None,
+) -> dict[str, Any]:
+    """CAS-terminalize one legacy completion candidate with one journal receipt."""
+
+    root = Path(repo_root).resolve(strict=True)
+    now = timestamp or utc_now()
+    parse_utc(now)
+    resolved, relative = _safe_relative_path(
+        root,
+        completion_report_path,
+        label="legacy completion report",
+        must_exist=True,
+    )
+    report = _validate_legacy_completion_report(
+        load_json_object(resolved, label="legacy completion report"),
+        repo_root=root,
+    )
+    report_sha256 = content_sha256(report)
+    if (
+        expected_completion_report_sha256 != report_sha256
+        or report["plan_id"] != plan_id
+        or report["expected_plan_revision"] != expected_plan_revision
+        or report["website_control_sha256"] != expected_control_sha256
+        or report["coordinator_thread_id_sha256"]
+        != content_sha256({"thread_id": current_holder_thread_id})
+    ):
+        raise _protected(
+            "legacy completion report differs from requested CAS authority",
+            "plan.completion_report_hash_mismatch",
+        )
+    controls = PlanControlStore(root)
+    session, snapshot = _require_session_control_cas(
+        controls=controls,
+        control_store=WebsiteControlStore(root),
+        plan_id=plan_id,
+        expected_control_sha256=expected_control_sha256,
+    )
+    if session.get("coordinator_thread_id") != current_holder_thread_id:
+        raise _protected(
+            "legacy finalization requires the accepted coordinator",
+            "plan.coordinator_only",
+        )
+    store = controls.require_store()
+    record = store.load_plan(plan_id)
+    matching = [
+        entry
+        for entry in record["journal"]
+        if entry["kind"] == "plan_completion_receipt"
+        and entry["payload"].get("receipt_schema_version")
+        == "website.legacy-plan-completion-receipt.v1"
+    ]
+    if record["state"]["phase"] == "terminal_complete":
+        if (
+            len(matching) == 1
+            and matching[0]["payload"].get("completion_report_sha256")
+            == report_sha256
+            and matching[0]["payload"].get("completion_report") == report
+        ):
+            return {
+                "status": "already_terminal",
+                "plan_id": plan_id,
+                "plan_revision": record["state"]["revision"],
+                "plan_phase": "terminal_complete",
+                "completion_report_path": relative,
+                "completion_report_sha256": report_sha256,
+                "receipt_id": matching[0]["payload"]["receipt_id"],
+                "receipt_event_sha256": matching[0]["event_hash"],
+                "website_control_sha256": snapshot.control_sha256,
+                "execution_performed": False,
+            }
+        raise _protected(
+            "terminal legacy plan lacks the requested supported receipt",
+            "plan.finalization_conflict",
+        )
+    controls.assert_revision(plan_id, expected_plan_revision)
+    prepared = prepare_plan_finalization(
+        plan_id=plan_id,
+        expected_plan_revision=expected_plan_revision,
+        expected_control_sha256=expected_control_sha256,
+        current_holder_thread_id=current_holder_thread_id,
+        repo_root=root,
+        timestamp=report["created_at"],
+    )
+    if prepared["completion_report"] != report:
+        raise _protected(
+            "legacy completion evidence changed after report preparation",
+            "activation.acceptance_invalidated",
+        )
+    receipt_id = "LPCR-" + report_sha256[:24].upper()
+    with store.mutation(
+        plan_id,
+        expected_revision=expected_plan_revision,
+        timestamp=now,
+    ) as mutation:
+        state = mutation.record["state"]
+        outer = store.goal_store.load_goal(mutation.record["outer_goal_id"])
+        if (
+            state["active_task_id"] is not None
+            or state.get("lease") is not None
+            or outer["state"].get("active_lease") is not None
+        ):
+            raise _protected(
+                "legacy completion boundary acquired a task or lease",
+                "plan.lease_mismatch",
+            )
+        state["phase"] = "terminal_complete"
+        state["evaluation"] = "met"
+        state["terminal_reason"] = "legacy_completion_report_verified"
+        receipt_event_sha256 = mutation.journal(
+            "plan_completion_receipt",
+            {
+                "receipt_schema_version": (
+                    "website.legacy-plan-completion-receipt.v1"
+                ),
+                "receipt_id": receipt_id,
+                "plan_id": plan_id,
+                "prior_plan_revision": expected_plan_revision,
+                "completion_report": report,
+                "completion_report_sha256": report_sha256,
+                "website_control_sha256": snapshot.control_sha256,
+                "coordinator_thread_id_sha256": content_sha256(
+                    {"thread_id": current_holder_thread_id}
+                ),
+                "lease_disposition": (
+                    "released_before_completion_candidate"
+                ),
+                "historical_event_names_reused": False,
+            },
+        )
+    final = store.load_plan(plan_id)
+    updated = controls.write_session(
+        plan_id,
+        {
+            **session,
+            "status": "terminal_complete",
+            "legacy_finalization": {
+                "report_id": report["report_id"],
+                "report_sha256": report_sha256,
+                "receipt_id": receipt_id,
+                "receipt_event_sha256": receipt_event_sha256,
+                "plan_revision": final["state"]["revision"],
+            },
+            "last_error": None,
+        },
+        expected_adapter_revision=session["adapter_revision"],
+    )
+    return {
+        "status": "terminal_complete",
+        "plan_id": plan_id,
+        "plan_revision": final["state"]["revision"],
+        "plan_phase": final["state"]["phase"],
+        "completion_report_path": relative,
+        "completion_report_sha256": report_sha256,
+        "receipt_id": receipt_id,
+        "receipt_event_sha256": receipt_event_sha256,
+        "website_control_sha256": snapshot.control_sha256,
+        "adapter_revision": updated["adapter_revision"],
+        "execution_performed": True,
+        "effects": {
+            "plan_state_writes": 1,
+            "adapter_session_writes": 1,
+            "provider_create_calls": 0,
+            "worker_discussions": 0,
+            "agentjobs": 0,
+            "continue_invocations": 0,
+        },
+    }
 
 
 def adopt_worker(
@@ -5224,6 +6078,7 @@ __all__ = [
     "EXPECTED_LOCK_SHA256",
     "EXPECTED_SKILLS",
     "LOCK_RELATIVE",
+    "LEGACY_PLAN_COMPLETION_SCHEMA_RELATIVE",
     "MANUAL_RELATIVE",
     "PLAN_SCHEMA_ROOT_RELATIVE",
     "PROVENANCE_RELATIVE",
@@ -5238,14 +6093,18 @@ __all__ = [
     "WebsiteThreadExecutionProfileProvider",
     "activate_plan",
     "adopt_worker",
+    "bootstrap_website_packet",
     "canonical_json",
+    "complete_bootstrap_website_packet",
     "compile_binding_director_route",
     "directory_sha256",
     "file_sha256",
+    "finalize_plan",
     "load_adapter_config",
     "load_plan_binding",
     "load_project_plan",
     "prepare_plan",
+    "prepare_plan_finalization",
     "recover",
     "render_yaml",
     "reserve_next",

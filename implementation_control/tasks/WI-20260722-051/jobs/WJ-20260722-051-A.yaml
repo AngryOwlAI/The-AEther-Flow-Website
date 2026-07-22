@@ -1,0 +1,106 @@
+schema_version: "0.1"
+record_type: "implementation_job"
+job_id: "WJ-20260722-051-A"
+task_id: "WI-20260722-051"
+title: "Close the current facade and provenance gap before another legacy coordinator-mode plan depends on terminalization."
+created_utc: "2026-07-22T07:40:00Z"
+updated_utc: "2026-07-22T08:10:00Z"
+status: "completed"
+objective: "Close the current facade and provenance gap before another legacy coordinator-mode plan depends on terminalization."
+plan_binding:
+  plan_id: "PLAN-SYS4AI-RECURSIVE-RELAY-BOOTSTRAP-RLY-00-03"
+  plan_sha256: "a80e09f6d60beab31b293f2c4ff496943b168d83091d874ba6dc8bb61b73a998"
+  plan_task_id: "RLY-00-03"
+  plan_task_sha256: "7b4bfa48e1d3c0fa582264370f12aafc064d947ed73840633f8ab0de1ce225b8"
+  binding_manifest_sha256: "58a1a1a890d4bf18957abd4939a4ca9aea4d124d29e9b5a8d22bc78b076b44fb"
+  authority_sha256: "32d361262a44af4398533e771fd4ad68aaac7a8d3493fbd71aeb6556b333eb86"
+  implementation_authority: "implementation_control only"
+execution_boundary:
+  invocation_limit: "one mapped website job"
+  implementation_authority: "implementation_control only"
+  generic_executor_status: "forbidden"
+allowed_reads:
+  - "AGENTS.md"
+  - "SOUL.md"
+  - "ImplementationPlans/plan_native_recursive_discussion_relay_implementation_plan.md"
+  - "package.json"
+  - "implementation_control/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+  - ".agents/**"
+  - ".local/sys4ai/implementation-plan-goal/**"
+allowed_writes:
+  - "scripts/implementation_control/plan_goal_adapter.py"
+  - "scripts/implementation_control/continue_plan_goal.py"
+  - "tests/test_plan_goal_adapter.py"
+  - "tests/test_plan_goal_facade.py"
+  - "implementation_control/schemas/legacy-plan-completion-report-v1.schema.json"
+  - "docs/quality/legacy-finalize-plan-safety-path.md"
+required_outputs:
+  - "A completion candidate cannot become terminal through an untracked manual mutation."
+  - "Terminalization occurs only at an atomically verified lease-free completion boundary."
+  - "Repeating the same finalized request is idempotent or returns a deterministic already-terminal result."
+  - "A mismatched report revision or control fingerprint fails closed."
+approval_gates:
+  - id: "public_claim_changes"
+    status: "not_required"
+    trigger: "public_claim_changes is outside this local control-runtime repair."
+  - id: "source_refresh_uncertainty"
+    status: "not_required"
+    trigger: "source_refresh_uncertainty is outside this local control-runtime repair."
+  - id: "broad_navigation_or_route_retirement"
+    status: "not_required"
+    trigger: "broad_navigation_or_route_retirement is outside this local control-runtime repair."
+  - id: "shared_visual_systems"
+    status: "not_required"
+    trigger: "shared_visual_systems is outside this local control-runtime repair."
+  - id: "public_downloadable_assets"
+    status: "not_required"
+    trigger: "public_downloadable_assets is outside this local control-runtime repair."
+  - id: "public_manifest_authority_records"
+    status: "not_required"
+    trigger: "public_manifest_authority_records is outside this local control-runtime repair."
+  - id: "git_push"
+    status: "not_required"
+    trigger: "git_push is outside this local control-runtime repair."
+  - id: "cloudflare_deployment"
+    status: "not_required"
+    trigger: "cloudflare_deployment is outside this local control-runtime repair."
+  - id: "upstream_source_project_writes"
+    status: "blocked"
+    trigger: "Every upstream write is forbidden; this is a website-local legacy safety repair."
+required_validators:
+  - id: "rly-00-03-01"
+    command: "npm run test:plan-goal"
+    required: true
+  - id: "rly-00-03-02"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan task binding repository or control identity differs."
+  - "The installed v0.1.0 store cannot support a safe append-only journal receipt without modifying installed skill bytes."
+  - "Atomic CAS terminalization cannot reject open intents active invocations validation failure or lease mismatch."
+  - "A required write or effect exceeds this exact packet."
+checkpoint:
+  staging_allowed: false
+  commit_allowed: false
+  branch_allowed: false
+  worktree_allowed: false
+  push_allowed: false
+  deploy_allowed: false
+execution_role:
+  role_id: "website-legacy-finalization-safety-engineer"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Implement a first-class CAS-bound legacy completion-report and finalization facade."
+    - "Reuse installed completion-proof and SQLite mutation logic only where semantics match."
+    - "Add focused success rejection and duplicate-call tests plus operator documentation."
+  may_not:
+    - "Synthesize or reuse either unexplained historical event name."
+    - "Modify installed skill bytes canonical repository or historical records."
+    - "Stage commit push deploy or execute another relay task."
+next_recommended_action:
+  task_packet: "RLY-00-03"
+  summary: "Close the current facade and provenance gap before another legacy coordinator-mode plan depends on terminalization."
+  do_not_skip: "Execute only this mapped packet."

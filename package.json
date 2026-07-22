@@ -13,7 +13,7 @@
     "validate:implementation-control": "python3 scripts/implementation_control/validate_implementation_control.py",
     "plan-goal": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/implementation_control/continue_plan_goal.py",
     "validate:plan-goal": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/implementation_control/validate_plan_goal.py",
-    "test:plan-goal": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_plan_goal_adapter.py tests/test_plan_goal_facade.py tests/test_plan_goal_installation.py .agents/skills/implementation-plan-goal/tests",
+    "test:plan-goal": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -p no:cacheprovider tests/test_plan_goal_adapter.py tests/test_plan_goal_facade.py tests/test_plan_goal_installation.py tests/test_plan_relay_adapter.py",
     "validate:claims": "node scripts/generate_public_claim_review.mjs --check",
     "checkpoint:implementation": "python3 scripts/implementation_control/checkpoint_implementation_transaction.py",
     "validate:manifests": "python3 scripts/validate_manifest_paths.py && python3 scripts/validate_document_catalog.py",

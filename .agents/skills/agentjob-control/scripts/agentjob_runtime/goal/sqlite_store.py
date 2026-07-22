@@ -35,7 +35,7 @@ from agentjob_runtime.records.canonical import canonical_json_bytes, content_sha
 
 
 SQL_UNLIMITED_DEADLINE = "__SYS4AI_UNLIMITED__"
-CURRENT_SQLITE_SCHEMA_VERSION = 5
+CURRENT_SQLITE_SCHEMA_VERSION = 7
 # Compatibility alias for callers that imported the former goal-store name.
 DEFAULT_SCHEMA_VERSION = CURRENT_SQLITE_SCHEMA_VERSION
 MIGRATION_BACKUP_SCHEMA_VERSION = "sys4ai.sqlite-migration-backup.v1"
@@ -523,6 +523,43 @@ class SQLiteGoalStore:
             if not self._table_exists(connection, "plan_activation_receipts"):
                 raise MigrationError(
                     "database schema version 5 lacks plan activation receipts"
+                )
+        if len(migrations) >= 6:
+            required_tables = {
+                "plan_question_batches",
+                "plan_execution_authorities",
+                "plan_question_responses",
+                "plan_continuous_states",
+                "plan_coordinator_wakeups",
+                "plan_completion_reports",
+            }
+            missing_tables = sorted(
+                table
+                for table in required_tables
+                if not self._table_exists(connection, table)
+            )
+            if missing_tables:
+                raise MigrationError(
+                    "database schema version 6 lacks continuous plan tables",
+                    details={"missing_tables": missing_tables},
+                )
+        if len(migrations) >= 7:
+            required_tables = {
+                "goal_question_batches",
+                "goal_execution_authorities",
+                "goal_question_responses",
+                "goal_grant_consumptions",
+                "goal_coordinator_states",
+            }
+            missing_tables = sorted(
+                table
+                for table in required_tables
+                if not self._table_exists(connection, table)
+            )
+            if missing_tables:
+                raise MigrationError(
+                    "database schema version 7 lacks continuous goal tables",
+                    details={"missing_tables": missing_tables},
                 )
 
     def _validate_goal_parity(self, connection: sqlite3.Connection) -> None:
@@ -1713,6 +1750,7 @@ class SQLiteGoalStore:
             )
             self._sync_generation(connection, goal_id, generation, record["updated_at"], handoff)
         self._sync_v3_records(connection, record)
+        self._sync_v4_records(connection, record)
         history = record["state"]["canonical_fingerprint_history"]
         for sequence, fingerprint in enumerate(history):
             row = connection.execute(
@@ -1998,7 +2036,10 @@ class SQLiteGoalStore:
         connection: sqlite3.Connection,
         record: Mapping[str, Any],
     ) -> None:
-        if record.get("schema_version") != "sys4ai.continue-goal.v3":
+        if record.get("schema_version") not in {
+            "sys4ai.continue-goal.v3",
+            "sys4ai.continue-goal.v4",
+        }:
             return
         goal_id = str(record["goal_id"])
         activation = record["activation"]
@@ -2113,6 +2154,148 @@ class SQLiteGoalStore:
                 )
             elif existing["report_sha256"] != completion_hash:
                 raise IntegrityError("goal completion report is immutable")
+
+    @staticmethod
+    def _sync_v4_records(
+        connection: sqlite3.Connection,
+        record: Mapping[str, Any],
+    ) -> None:
+        if record.get("schema_version") != "sys4ai.continue-goal.v4":
+            return
+        goal_id = str(record["goal_id"])
+        immutable_records = (
+            (
+                "goal_question_batches",
+                "batch_id",
+                record["question_batch"]["batch_id"],
+                "batch_json",
+                record["question_batch"],
+                "batch_sha256",
+                content_sha256(record["question_batch"]),
+                "created_at",
+                record["question_batch"]["created_at"],
+            ),
+            (
+                "goal_execution_authorities",
+                "authority_id",
+                record["execution_authority"]["authority_id"],
+                "authority_json",
+                record["execution_authority"],
+                "authority_sha256",
+                content_sha256(record["execution_authority"]),
+                "created_at",
+                record["execution_authority"]["created_at"],
+            ),
+            (
+                "goal_question_responses",
+                "response_id",
+                record["question_response"]["response_id"],
+                "response_json",
+                record["question_response"],
+                "response_sha256",
+                content_sha256(record["question_response"]),
+                "answered_at",
+                record["question_response"]["answered_at"],
+            ),
+        )
+        for (
+            table,
+            id_column,
+            record_id,
+            json_column,
+            value,
+            hash_column,
+            digest,
+            time_column,
+            timestamp,
+        ) in immutable_records:
+            existing = connection.execute(
+                f"SELECT {hash_column} FROM {table} WHERE {id_column}=?",
+                (record_id,),
+            ).fetchone()
+            if existing is None:
+                columns = [
+                    id_column,
+                    "goal_id",
+                    json_column,
+                    hash_column,
+                    time_column,
+                ]
+                values: list[Any] = [
+                    record_id,
+                    goal_id,
+                    canonical_json_bytes(value).decode("utf-8"),
+                    digest,
+                    timestamp,
+                ]
+                if table == "goal_question_responses":
+                    columns.insert(2, "batch_id")
+                    values.insert(2, record["question_response"]["batch_id"])
+                connection.execute(
+                    f"INSERT INTO {table}({', '.join(columns)}) "
+                    f"VALUES ({', '.join('?' for _ in columns)})",
+                    tuple(values),
+                )
+            elif existing[hash_column] != digest:
+                raise IntegrityError(f"{table} immutable record changed")
+        for consumption in record["grant_consumptions"]:
+            digest = content_sha256(consumption)
+            existing = connection.execute(
+                "SELECT consumption_sha256 FROM goal_grant_consumptions "
+                "WHERE consumption_id=?",
+                (consumption["consumption_id"],),
+            ).fetchone()
+            if existing is None:
+                connection.execute(
+                    """
+                    INSERT INTO goal_grant_consumptions(
+                        consumption_id, goal_id, generation, grant_id,
+                        action_sha256, consumption_json, consumption_sha256,
+                        consumed_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        consumption["consumption_id"],
+                        goal_id,
+                        consumption["generation"],
+                        consumption["grant_id"],
+                        consumption["action_sha256"],
+                        canonical_json_bytes(consumption).decode("utf-8"),
+                        digest,
+                        consumption["consumed_at"],
+                    ),
+                )
+            elif existing["consumption_sha256"] != digest:
+                raise IntegrityError("goal grant consumption changed")
+        coordinator = record["coordinator"]
+        existing_coordinator = connection.execute(
+            "SELECT coordinator_thread_id FROM goal_coordinator_states "
+            "WHERE goal_id=?",
+            (goal_id,),
+        ).fetchone()
+        if existing_coordinator is not None and (
+            existing_coordinator["coordinator_thread_id"]
+            != coordinator["thread_id"]
+        ):
+            raise IntegrityError("goal coordinator identity is immutable")
+        connection.execute(
+            """
+            INSERT INTO goal_coordinator_states(
+                goal_id, coordinator_thread_id, status, state_json, updated_at
+            ) VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(goal_id) DO UPDATE SET
+                status=excluded.status,
+                state_json=excluded.state_json,
+                updated_at=excluded.updated_at
+            """,
+            (
+                goal_id,
+                coordinator["thread_id"],
+                coordinator["status"],
+                canonical_json_bytes(coordinator).decode("utf-8"),
+                coordinator["updated_at"],
+            ),
+        )
     @staticmethod
     def _insert_provider_receipts(
         connection: sqlite3.Connection,

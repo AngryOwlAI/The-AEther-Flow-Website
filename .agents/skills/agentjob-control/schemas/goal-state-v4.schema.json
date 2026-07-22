@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-state-v4.schema.json",
+  "title": "Portable Continue Goal State v4",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "goal_id",
+    "goal_text",
+    "goal_sha256",
+    "completion_contract",
+    "completion_contract_sha256",
+    "amendments",
+    "created_at",
+    "deadline_at",
+    "guards",
+    "repository_binding",
+    "authorization",
+    "activation",
+    "execution_profile",
+    "runtime_binding",
+    "repository_topology_policy",
+    "question_batch",
+    "question_response",
+    "execution_authority",
+    "grant_consumptions",
+    "coordinator",
+    "supersession",
+    "resolution_history",
+    "human_intervention",
+    "completion_report",
+    "state",
+    "generations",
+    "handoff",
+    "journal",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.continue-goal.v4"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_text": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract": {"$ref": "goal-state-v2.schema.json#/$defs/completionContract"},
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "amendments": {
+      "type": "array",
+      "items": {"$ref": "goal-state-v2.schema.json#/$defs/amendment"}
+    },
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "deadline_at": {
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/timestamp"},
+        {"type": "null"}
+      ]
+    },
+    "guards": {"$ref": "goal-state-v2.schema.json#/$defs/guards"},
+    "repository_binding": {"$ref": "goal-state-v2.schema.json#/$defs/repositoryBinding"},
+    "authorization": {
+      "type": "object",
+      "required": [
+        "fresh_recursive_threads_explicitly_requested",
+        "activation_receipt_sha256",
+        "question_batch_sha256",
+        "question_response_sha256",
+        "execution_authority_sha256"
+      ],
+      "properties": {
+        "fresh_recursive_threads_explicitly_requested": {"const": true},
+        "activation_receipt_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "question_batch_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "question_response_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "execution_authority_sha256": {"$ref": "common.schema.json#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "activation": {"$ref": "goal-activation-receipt-v2.schema.json"},
+    "execution_profile": {"$ref": "goal-state-v3.schema.json#/$defs/executionProfile"},
+    "runtime_binding": {"$ref": "goal-state-v3.schema.json#/$defs/runtimeBinding"},
+    "repository_topology_policy": {"$ref": "goal-state-v3.schema.json#/$defs/repositoryTopologyPolicy"},
+    "question_batch": {"$ref": "goal-question-batch.schema.json"},
+    "question_response": {"$ref": "goal-question-response.schema.json"},
+    "execution_authority": {"$ref": "goal-execution-authority.schema.json"},
+    "grant_consumptions": {
+      "type": "array",
+      "items": {"$ref": "goal-grant-consumption.schema.json"}
+    },
+    "coordinator": {"$ref": "#/$defs/coordinator"},
+    "supersession": {
+      "oneOf": [
+        {"$ref": "goal-state-v3.schema.json#/$defs/supersession"},
+        {"type": "null"}
+      ]
+    },
+    "resolution_history": {
+      "type": "array",
+      "items": {"$ref": "resolution-disposition.schema.json"}
+    },
+    "human_intervention": {
+      "oneOf": [
+        {"$ref": "human-necessity-report.schema.json"},
+        {"type": "null"}
+      ]
+    },
+    "completion_report": {
+      "oneOf": [
+        {"$ref": "goal-completion-report.schema.json"},
+        {"type": "null"}
+      ]
+    },
+    "state": {"$ref": "goal-state-v3.schema.json#/$defs/state"},
+    "generations": {
+      "type": "object",
+      "patternProperties": {
+        "^[1-9][0-9]*$": {"$ref": "goal-state-v3.schema.json#/$defs/generation"}
+      },
+      "additionalProperties": false
+    },
+    "handoff": {"$ref": "goal-state-v3.schema.json#/$defs/handoff"},
+    "journal": {
+      "type": "array",
+      "items": {"$ref": "goal-state-v2.schema.json#/$defs/journalEntry"}
+    },
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "coordinator": {
+      "type": "object",
+      "required": [
+        "thread_id",
+        "status",
+        "current_worker_thread_id",
+        "last_worker_receipt_sha256",
+        "wakeup",
+        "updated_at"
+      ],
+      "properties": {
+        "thread_id": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "status": {
+          "enum": [
+            "active",
+            "worker_active",
+            "suspended_safeguard",
+            "goal_reached",
+            "cancelled"
+          ]
+        },
+        "current_worker_thread_id": {"type": ["string", "null"]},
+        "last_worker_receipt_sha256": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/sha256"},
+            {"type": "null"}
+          ]
+        },
+        "wakeup": {
+          "type": "object",
+          "required": ["status", "wakeup_id"],
+          "properties": {
+            "status": {"enum": ["idle", "pending", "delivered", "ambiguous"]},
+            "wakeup_id": {"type": ["string", "null"]}
+          },
+          "additionalProperties": false
+        },
+        "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

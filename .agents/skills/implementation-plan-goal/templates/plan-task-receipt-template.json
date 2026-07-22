@@ -56,7 +56,7 @@
         "validator_class": "schema_validation",
         "status": "pass",
         "reason_code": null,
-        "evidence_ref": "skills/implementation-plan-goal/tests/test_planctl.py",
+        "evidence_ref": "scripts/skills/tests/test_implementation_plan_profile_end_to_end.py",
         "notes": []
       }
     ],
@@ -69,7 +69,7 @@
     "approvals": [
       {
         "approval_id": null,
-        "action": "repository-local schema and fixture changes",
+        "action": "repository-local schema changes",
         "status": "not_required",
         "evidence_ref": null
       }
@@ -106,7 +106,7 @@
     "entry_hash": "7777777777777777777777777777777777777777777777777777777777777777"
   },
   "hash_basis": "canonical_json_without_receipt_content_sha256",
-  "receipt_content_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+  "receipt_content_sha256": "12f3efc1e57446f7442b643662f6b8114141245842af8da4749c999f315f7530",
   "finalized": true,
   "extensions": {}
 }

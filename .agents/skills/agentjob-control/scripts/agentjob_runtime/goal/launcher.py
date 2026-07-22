@@ -13,7 +13,10 @@ from agentjob_runtime.goal.activation import (
     execution_profile_from_receipt,
 )
 from agentjob_runtime.goal.initialize import initialize_goal
-from agentjob_runtime.goal.model import GOAL_SCHEMA_VERSION
+from agentjob_runtime.goal.model import (
+    GOAL_SCHEMA_VERSION_V4,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
+)
 from agentjob_runtime.goal.sqlite_store import SQLiteGoalStore
 from agentjob_runtime.goal.successor import (
     record_dispatch_outcome,
@@ -214,11 +217,14 @@ def build_continuation_envelope(
 ) -> dict[str, Any]:
     generation = int(record["state"]["current_generation"])
     entry = record["generations"][str(generation)]
-    v3 = record.get("schema_version") == GOAL_SCHEMA_VERSION
+    profiled = record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
+    v4 = record.get("schema_version") == GOAL_SCHEMA_VERSION_V4
     envelope: dict[str, Any] = {
         "schema_version": (
-            "sys4ai.continuation-envelope.v2"
-            if v3
+            "sys4ai.continuation-envelope.v3"
+            if v4
+            else "sys4ai.continuation-envelope.v2"
+            if profiled
             else "sys4ai.continuation-envelope.v1"
         ),
         "goal_id": record["goal_id"],
@@ -243,7 +249,7 @@ def build_continuation_envelope(
         "required_skill": "continue-implementing-goal",
         "extensions": {},
     }
-    if v3:
+    if profiled:
         envelope["repository_topology_policy"] = copy.deepcopy(
             record["repository_topology_policy"]
         )
@@ -255,12 +261,29 @@ def build_continuation_envelope(
         envelope["canonical_state"]["resolution_disposition"] = copy.deepcopy(
             entry.get("resolution_disposition")
         )
+    if v4:
+        from agentjob_runtime.goal.continuous import available_grant_ids
+
+        envelope.update(
+            {
+                "execution_authority_sha256": content_sha256(
+                    record["execution_authority"]
+                ),
+                "question_response_sha256": content_sha256(
+                    record["question_response"]
+                ),
+                "coordinator_thread_id": record["coordinator"]["thread_id"],
+                "available_grant_ids": available_grant_ids(record),
+            }
+        )
     schema = (
         Path(__file__).resolve().parents[3]
         / "schemas"
         / (
-            "continuation-envelope-v2.schema.json"
-            if v3
+            "continuation-envelope-v3.schema.json"
+            if v4
+            else "continuation-envelope-v2.schema.json"
+            if profiled
             else "continuation-envelope.schema.json"
         )
     )
@@ -281,7 +304,10 @@ def build_worker_prompt(
 ) -> str:
     envelope_hash = content_sha256(envelope)
     profile_lines = ""
-    if envelope.get("schema_version") == "sys4ai.continuation-envelope.v2":
+    if envelope.get("schema_version") in {
+        "sys4ai.continuation-envelope.v2",
+        "sys4ai.continuation-envelope.v3",
+    }:
         profile_lines = (
             f"reasoning_effort: {envelope['execution_profile']['reasoning_effort']}\n"
             "environment_mode: reuse_bound_checkout\n"

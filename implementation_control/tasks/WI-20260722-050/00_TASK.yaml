@@ -1,0 +1,108 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260722-050"
+title: "Document the missing writer provenance without rewriting the events or inventing an explanation."
+created_utc: "2026-07-22T07:20:00Z"
+updated_utc: "2026-07-22T07:35:00Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-SYS4AI-RECURSIVE-RELAY-BOOTSTRAP-RLY-00-02"
+  plan_sha256: "eae3731743fa739604a0ed8180e48613e9bc248409860eaa15f06be7f55db29e"
+  plan_task_id: "RLY-00-02"
+  plan_task_sha256: "d3a5309b2a88636c5c40de1d8f8df0c13b871c036cb62c64873b6cc7746020fa"
+  binding_manifest_sha256: "7e9a1defa1cdde0d16965c8260cfc4a9c28b2537e9987f2fecd38f32b06e5829"
+  authority_sha256: "c16c552554af6d89d7526495c95e12343060789c5bc498b9217ca9797441a863"
+  implementation_authority: "implementation_control only"
+goal: "Document the missing writer provenance without rewriting the events or inventing an explanation."
+requirements:
+  - "Original event records and their journal ordering are unchanged."
+  - "The note does not attribute authorship or authority without evidence."
+  - "Any integrity break or hash mismatch is reported as a blocker rather than silently repaired."
+scope:
+  in_scope:
+    - "docs/quality/plan-native-recursive-relay-terminalization-event-provenance-audit-2026-07-22.md"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "SOUL.md"
+    - "ImplementationPlans/plan_native_recursive_discussion_relay_implementation_plan.md"
+    - "implementation_control/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+    - ".agents/**"
+    - ".codex/**"
+    - ".local/sys4ai/implementation-plan-goal/**"
+allowed_writes:
+  website_repository:
+    - "docs/quality/plan-native-recursive-relay-terminalization-event-provenance-audit-2026-07-22.md"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "public_claim_changes is outside this append-only audit packet."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "source_refresh_uncertainty is outside this append-only audit packet."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "broad_navigation_or_route_retirement is outside this append-only audit packet."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "shared_visual_systems is outside this append-only audit packet."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "public_downloadable_assets is outside this append-only audit packet."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "public_manifest_authority_records is outside this append-only audit packet."
+  git_push:
+    status: "not_required"
+    reason: "git_push is outside this append-only audit packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "cloudflare_deployment is outside this append-only audit packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Every upstream write is forbidden; canonical sources are inspected read-only."
+required_validators:
+  - id: "rly-00-02-01"
+    command: "shasum -a 256 .local/sys4ai/implementation-plan-goal/state.sqlite3"
+    required: true
+  - id: "rly-00-02-02"
+    command: "manual cross-check of terminalization event bytes journal ordering backup occurrences tracked writers and git history"
+    required: true
+stop_conditions:
+  - "Plan task binding repository or control identity differs."
+  - "Journal-chain integrity or original event bytes differ from the RLY-00-01 baseline."
+  - "Evidence indicates concurrent state mutation."
+  - "A required write or effect exceeds this exact packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-terminalization-provenance-auditor"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Inspect event bytes journal ordering backups current code and Git history read-only."
+    - "Separate structural facts from unknown writer provenance."
+    - "Preserve every original database and migration snapshot byte."
+  may_not:
+    - "Rewrite rename replay or delete either historical event."
+    - "Attribute authorship without direct evidence."
+    - "Execute another relay task or any external effect."
+handoff:
+  latest_handoff_id: "WH-20260722-050"
+  yaml_path: "implementation_control/handoffs/WH-20260722-050.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260722-050.md"
+next_recommended_action:
+  task_packet: "RLY-00-02"
+  summary: "Document the missing writer provenance without rewriting the events or inventing an explanation."
+  do_not_skip: "Do not broaden the hash-bound website packet."

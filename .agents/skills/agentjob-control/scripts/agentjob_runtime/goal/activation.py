@@ -119,7 +119,12 @@ def _schema(name: str) -> Path:
 
 def _validate_receipt(receipt: Mapping[str, Any]) -> dict[str, Any]:
     value = copy.deepcopy(dict(receipt))
-    issues = validate_instance(value, _schema("goal-activation-receipt.schema.json"))
+    schema_name = (
+        "goal-activation-receipt-v2.schema.json"
+        if value.get("schema_version") == "sys4ai.goal-activation-receipt.v2"
+        else "goal-activation-receipt.schema.json"
+    )
+    issues = validate_instance(value, _schema(schema_name))
     if issues:
         raise RecordValidationError(
             "goal activation receipt failed schema validation",
@@ -129,6 +134,18 @@ def _validate_receipt(receipt: Mapping[str, Any]) -> dict[str, Any]:
         raise RecordValidationError("accepted effort differs from the current-thread request")
     if value["reasoning_effort"] != value["current_thread_effective_effort"]:
         raise RecordValidationError("accepted effort was not verified on the current discussion")
+    if value.get("schema_version") == "sys4ai.goal-activation-receipt.v2":
+        expected = content_sha256(
+            {
+                key: item
+                for key, item in value.items()
+                if key != "receipt_content_sha256"
+            }
+        )
+        if value["receipt_content_sha256"] != expected:
+            raise RecordValidationError(
+                "continuous goal activation receipt hash mismatch"
+            )
     return value
 
 

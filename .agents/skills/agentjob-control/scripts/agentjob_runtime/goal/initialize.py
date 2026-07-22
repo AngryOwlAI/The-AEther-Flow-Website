@@ -16,6 +16,7 @@ from agentjob_runtime.goal.activation import (
 )
 from agentjob_runtime.goal.model import (
     GOAL_SCHEMA_VERSION,
+    GOAL_SCHEMA_VERSION_V4,
     add_seconds,
     append_journal,
     canonical_goal_text,
@@ -146,8 +147,13 @@ def initialize_goal(
     goal_id: str | None = None,
     timestamp: str | None = None,
     launcher_token: str | None = None,
+    continuous_context: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Initialize one accepted v3 goal and acquire its worktree lease atomically."""
+    """Initialize one accepted goal and acquire its worktree lease atomically.
+
+    The advanced compatibility path emits v3. A supplied, fully validated
+    continuous context emits v4 and is used only by ``goal accept-and-run``.
+    """
 
     now = timestamp or utc_now()
     parse_utc(now)
@@ -172,28 +178,66 @@ def initialize_goal(
         raise RecordValidationError(
             "new goals must reuse the current bound checkout without topology authority"
         )
-    accepted = validate_activation_receipt(
-        activation_receipt,
-        goal_text=exact_goal,
-        completion_contract=contract,
-        repository_binding=binding,
-        repository_topology_policy=topology,
-    )
+    continuous: dict[str, Any] | None = None
+    if continuous_context is None:
+        accepted = validate_activation_receipt(
+            activation_receipt,
+            goal_text=exact_goal,
+            completion_contract=contract,
+            repository_binding=binding,
+            repository_topology_policy=topology,
+        )
+        schema_version = GOAL_SCHEMA_VERSION
+    else:
+        from agentjob_runtime.goal.continuous import (
+            validate_continuous_activation_bundle,
+        )
+
+        continuous = validate_continuous_activation_bundle(
+            continuous_context,
+            activation_receipt=activation_receipt,
+            goal_text=exact_goal,
+            completion_contract=contract,
+            repository_binding=binding,
+            initial_fingerprint=initial_fingerprint,
+        )
+        accepted = continuous["activation_receipt"]
+        schema_version = GOAL_SCHEMA_VERSION_V4
     execution_profile = execution_profile_from_receipt(accepted)
     runtime = copy.deepcopy(
         dict(
             runtime_binding
             or {
                 "skill_versions": {
-                    "agentjob-control": "0.3.0",
-                    "continue": "0.3.0",
-                    "continue-goal": "0.3.0",
-                    "continue-implementing-goal": "0.3.0",
+                    "agentjob-control": "0.4.0"
+                    if schema_version == GOAL_SCHEMA_VERSION_V4
+                    else "0.3.0",
+                    "continue": "0.4.0"
+                    if schema_version == GOAL_SCHEMA_VERSION_V4
+                    else "0.3.0",
+                    "continue-goal": "0.4.0"
+                    if schema_version == GOAL_SCHEMA_VERSION_V4
+                    else "0.3.0",
+                    "continue-implementing-goal": "0.4.0"
+                    if schema_version == GOAL_SCHEMA_VERSION_V4
+                    else "0.3.0",
                 },
                 "capability_versions": [
-                    "sys4ai.goal-relay-state.v3",
-                    "sys4ai.continuation-envelope.v2",
-                    "sys4ai.thread-provider.v2",
+                    *(
+                        [
+                            "sys4ai.goal-relay-state.v4",
+                            "sys4ai.goal-execution-authority.v1",
+                            "sys4ai.goal-coordinator.v1",
+                            "sys4ai.continuation-envelope.v3",
+                            "sys4ai.thread-provider.continuous.v1",
+                        ]
+                        if schema_version == GOAL_SCHEMA_VERSION_V4
+                        else [
+                            "sys4ai.goal-relay-state.v3",
+                            "sys4ai.continuation-envelope.v2",
+                            "sys4ai.thread-provider.v2",
+                        ]
+                    ),
                 ],
                 "source_lock_ref": None,
                 "provider_id": accepted["provider_id"],
@@ -228,7 +272,7 @@ def initialize_goal(
         "expires_at": add_seconds(now, 300),
     }
     record: dict[str, Any] = {
-        "schema_version": GOAL_SCHEMA_VERSION,
+        "schema_version": schema_version,
         "goal_id": candidate_id,
         "goal_text": exact_goal,
         "goal_sha256": goal_text_sha256(exact_goal),
@@ -242,6 +286,21 @@ def initialize_goal(
         "authorization": {
             "fresh_recursive_threads_explicitly_requested": True,
             "activation_receipt_sha256": content_sha256(accepted),
+            **(
+                {
+                    "question_batch_sha256": content_sha256(
+                        continuous["question_batch"]
+                    ),
+                    "question_response_sha256": content_sha256(
+                        continuous["question_response"]
+                    ),
+                    "execution_authority_sha256": content_sha256(
+                        continuous["execution_authority"]
+                    ),
+                }
+                if continuous is not None
+                else {}
+            ),
         },
         "activation": accepted,
         "execution_profile": execution_profile,
@@ -277,6 +336,31 @@ def initialize_goal(
         "updated_at": now,
         "extensions": {},
     }
+    if continuous is not None:
+        record.update(
+            {
+                "question_batch": copy.deepcopy(
+                    continuous["question_batch"]
+                ),
+                "question_response": copy.deepcopy(
+                    continuous["question_response"]
+                ),
+                "execution_authority": copy.deepcopy(
+                    continuous["execution_authority"]
+                ),
+                "grant_consumptions": copy.deepcopy(
+                    continuous.get("setup_consumptions", [])
+                ),
+                "coordinator": {
+                    "thread_id": accepted["current_thread_id"],
+                    "status": "active",
+                    "current_worker_thread_id": None,
+                    "last_worker_receipt_sha256": None,
+                    "wakeup": {"status": "idle", "wakeup_id": None},
+                    "updated_at": now,
+                },
+            }
+        )
     append_journal(
         record,
         "event",

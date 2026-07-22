@@ -28,6 +28,10 @@ PLAN_PHASE_TRANSITIONS = frozenset(
         ("completion_candidate", "terminal_complete"),
         ("recovery_pending", "continuation_required"),
         ("recovery_pending", "task_reserved"),
+        ("terminal_blocked_no_runnable", "recovery_pending"),
+        ("terminal_awaiting_human", "recovery_pending"),
+        ("terminal_validation_failed", "recovery_pending"),
+        ("terminal_capability_blocked", "recovery_pending"),
     }
 )
 TERMINAL_PLAN_PHASES = frozenset(
@@ -50,6 +54,9 @@ TASK_TRANSITIONS = frozenset(
         ("reserved", "active"),
         ("active", "verifying"),
         ("replan_required", "superseded"),
+        ("blocked", "superseded"),
+        ("human_gate_required", "superseded"),
+        ("validation_failed", "superseded"),
     }
 )
 RECEIPT_TASK_STATUSES = {
@@ -514,7 +521,12 @@ def validate_plan_transition(
     current_history = list(after["fingerprints"]["history"])
     if current_history[: len(prior_history)] != prior_history:
         raise StateConflict("plan fingerprint history is append-only")
-    if old_phase in TERMINAL_PLAN_PHASES:
+    if old_phase in TERMINAL_PLAN_PHASES and phase_edge not in {
+        ("terminal_blocked_no_runnable", "recovery_pending"),
+        ("terminal_awaiting_human", "recovery_pending"),
+        ("terminal_validation_failed", "recovery_pending"),
+        ("terminal_capability_blocked", "recovery_pending"),
+    }:
         raise StateConflict("terminal plan state is absorbing")
 
     active = [

@@ -1,0 +1,22 @@
+{
+  "schema_version": "sys4ai.plan-completion-report.v2",
+  "run_id": "RUN-EXAMPLE-001",
+  "plan_id": "PLAN-EXAMPLE-001",
+  "plan_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "repository_fingerprint": "repo-example",
+  "control_fingerprint": "control-example",
+  "relay_profile": "recursive_chain_v1",
+  "relay_topology": "recursive_chain_v1",
+  "task_count": 1,
+  "receipt_count": 1,
+  "completed_task_ids": [
+    "TASK-A"
+  ],
+  "missing_task_ids": [],
+  "open_intent_count": 0,
+  "terminal_proof": true,
+  "receipt_sha256s": [
+    "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  ],
+  "report_content_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+}

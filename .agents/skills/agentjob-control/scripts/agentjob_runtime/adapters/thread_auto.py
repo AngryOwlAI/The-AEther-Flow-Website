@@ -28,6 +28,8 @@ class ThreadProviderReport:
     can_reuse_bound_checkout: bool = False
     can_create_worktree: bool = False
     can_query_by_idempotency_key: bool = False
+    can_wait_for_terminal: bool = False
+    can_resume_thread: bool = False
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -49,6 +51,8 @@ class ThreadProviderReport:
             "can_reuse_bound_checkout": self.can_reuse_bound_checkout,
             "can_create_worktree": self.can_create_worktree,
             "can_query_by_idempotency_key": self.can_query_by_idempotency_key,
+            "can_wait_for_terminal": self.can_wait_for_terminal,
+            "can_resume_thread": self.can_resume_thread,
         }
 
 
@@ -118,6 +122,8 @@ def inspect_thread_provider(provider: Any) -> ThreadProviderReport:
         capabilities.get("can_reuse_bound_checkout") is True,
         capabilities.get("can_create_worktree") is True,
         capabilities.get("can_query_by_idempotency_key") is True,
+        capabilities.get("can_wait_for_terminal") is True,
+        capabilities.get("can_resume_thread") is True,
     )
 
 
@@ -176,6 +182,20 @@ class SelectedThreadProvider:
     ) -> Mapping[str, Any]:
         return self.delegate.query_by_idempotency_key(idempotency_key)
 
+    def read_thread(self, thread_id: str) -> Mapping[str, Any]:
+        return self.delegate.read_thread(thread_id)
+
+    def wait_for_terminal(self, thread_id: str) -> Mapping[str, Any]:
+        return self.delegate.wait_for_terminal(thread_id)
+
+    def resume_thread(
+        self, thread_id: str, prompt: str
+    ) -> Mapping[str, Any]:
+        return self.delegate.resume_thread(thread_id, prompt)
+
+    def confirm_terminal(self, thread_id: str) -> bool:
+        return self.delegate.confirm_terminal(thread_id)
+
 
 def select_thread_provider(
     *,
@@ -184,6 +204,7 @@ def select_thread_provider(
     providers: Sequence[Any],
     manual_provider: Any | None = None,
     require_automatic: bool = False,
+    require_continuous: bool = False,
 ) -> SelectedThreadProvider:
     """Select only from an explicit ordered provider list; never infer host tools."""
 
@@ -256,11 +277,25 @@ def select_thread_provider(
                 "selected_provider": provider_report.provider_id,
             },
         )
-    if require_automatic and not provider_report.automatic:
+    if (require_automatic or require_continuous) and not provider_report.automatic:
         raise BootstrapRequired(
             "automatic recursion was required but only manual handoff is available",
             details={
                 "reason_code": "thread_provider.automatic_unavailable",
+                "selected_provider": provider_report.provider_id,
+            },
+        )
+    if require_continuous and (
+        provider_report.can_configure_current_thread is not True
+        or provider_report.can_query_by_idempotency_key is not True
+        or provider_report.can_wait_for_terminal is not True
+        or provider_report.can_resume_thread is not True
+        or "max" not in provider_report.supported_reasoning_efforts
+    ):
+        raise BootstrapRequired(
+            "continuous execution requires verified max, idempotency lookup, terminal waiting, and coordinator resumption",
+            details={
+                "reason_code": "thread_provider.continuous_unavailable",
                 "selected_provider": provider_report.provider_id,
             },
         )

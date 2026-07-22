@@ -51,7 +51,7 @@ from agentjob_runtime.validation.schema import format_issues, validate_instance
 
 
 PLAN_SCHEMA_VERSION = CURRENT_SQLITE_SCHEMA_VERSION
-PLAN_EXPORT_SCHEMA_VERSION = "sys4ai.plan-store-export.v2"
+PLAN_EXPORT_SCHEMA_VERSION = "sys4ai.plan-store-export.v3"
 PLAN_INITIALIZATION_RECEIPT_SCHEMA_VERSION_V1 = (
     "sys4ai.plan-initialization-receipt.v1"
 )
@@ -606,6 +606,9 @@ class SQLitePlanStore:
         self.activation_receipt_schema_path = (
             self.schema_root / "plan-activation-receipt.schema.json"
         )
+        self.activation_receipt_v2_schema_path = (
+            self.schema_root / "plan-activation-receipt-v2.schema.json"
+        )
         self.execution_profile_schema_path = (
             self.schema_root / "plan-execution-profile.schema.json"
         )
@@ -614,6 +617,24 @@ class SQLitePlanStore:
         )
         self.selection_proof_schema_path = (
             self.schema_root / "selection-proof.schema.json"
+        )
+        self.question_batch_schema_path = (
+            self.schema_root / "plan-question-batch.schema.json"
+        )
+        self.execution_authority_schema_path = (
+            self.schema_root / "plan-execution-authority.schema.json"
+        )
+        self.question_response_schema_path = (
+            self.schema_root / "plan-question-response.schema.json"
+        )
+        self.continuous_state_schema_path = (
+            self.schema_root / "implementation-plan-state-v2.schema.json"
+        )
+        self.coordinator_wakeup_schema_path = (
+            self.schema_root / "plan-coordinator-wakeup.schema.json"
+        )
+        self.completion_report_schema_path = (
+            self.schema_root / "plan-completion-report.schema.json"
         )
         required_schemas = (
             self.plan_schema_path,
@@ -625,9 +646,16 @@ class SQLitePlanStore:
             self.provider_intent_schema_path,
             self.provider_intent_v2_schema_path,
             self.activation_receipt_schema_path,
+            self.activation_receipt_v2_schema_path,
             self.execution_profile_schema_path,
             self.topology_policy_schema_path,
             self.selection_proof_schema_path,
+            self.question_batch_schema_path,
+            self.execution_authority_schema_path,
+            self.question_response_schema_path,
+            self.continuous_state_schema_path,
+            self.coordinator_wakeup_schema_path,
+            self.completion_report_schema_path,
         )
         if any(not path.is_file() for path in required_schemas):
             raise RecordValidationError(
@@ -645,7 +673,7 @@ class SQLitePlanStore:
         actual_version = self.goal_store.current_schema_version()
         self.database_schema_version = actual_version
         allowed_versions = (
-            {3, 4, PLAN_SCHEMA_VERSION}
+            {3, 4, 5, PLAN_SCHEMA_VERSION}
             if read_only and not auto_migrate
             else {PLAN_SCHEMA_VERSION}
         )
@@ -710,11 +738,87 @@ class SQLitePlanStore:
         self,
         value: Mapping[str, Any],
     ) -> dict[str, Any]:
+        schema_path = (
+            self.activation_receipt_v2_schema_path
+            if value.get("schema_version")
+            == "sys4ai.plan-activation-receipt.v2"
+            else self.activation_receipt_schema_path
+        )
         return self._require_profile_record(
             value,
-            schema_path=self.activation_receipt_schema_path,
+            schema_path=schema_path,
             content_hash_field="receipt_content_sha256",
             label="plan activation receipt",
+        )
+
+    def _require_question_batch(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        return self._require_profile_record(
+            value,
+            schema_path=self.question_batch_schema_path,
+            content_hash_field="batch_content_sha256",
+            label="plan question batch",
+        )
+
+    def _require_execution_authority(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        return self._require_profile_record(
+            value,
+            schema_path=self.execution_authority_schema_path,
+            content_hash_field="authority_content_sha256",
+            label="plan execution authority",
+        )
+
+    def _require_question_response(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        return self._require_profile_record(
+            value,
+            schema_path=self.question_response_schema_path,
+            content_hash_field="response_content_sha256",
+            label="plan question response",
+        )
+
+    def _require_continuous_state(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        candidate = copy.deepcopy(dict(value))
+        issues = validate_instance(candidate, self.continuous_state_schema_path)
+        if issues:
+            raise RecordValidationError(
+                "continuous plan state failed canonical validation",
+                details={"findings": format_issues(issues).splitlines()},
+            )
+        if contains_secret(canonical_json_bytes(candidate).decode("utf-8")):
+            raise SecurityError("continuous plan state appears to contain a secret")
+        return candidate
+
+    def _require_coordinator_wakeup(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        return self._require_profile_record(
+            value,
+            schema_path=self.coordinator_wakeup_schema_path,
+            content_hash_field="wakeup_content_sha256",
+            label="plan coordinator wakeup",
+        )
+
+    def _require_completion_report(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        return self._require_profile_record(
+            value,
+            schema_path=self.completion_report_schema_path,
+            content_hash_field="report_content_sha256",
+            label="plan completion report",
         )
 
     def _require_execution_profile(
@@ -1740,13 +1844,29 @@ class SQLitePlanStore:
                         raise IntegrityError(
                             "plan supersession replacement definition is invalid"
                         )
+                    replacement_task_json = copy.deepcopy(
+                        dict(original_definition["task_json"])
+                    )
+                    replacement_task_json.update(
+                        {
+                            "task_id": task_id,
+                            "task_sha256": str(item["task_sha256"]),
+                            "depends_on": dependencies,
+                        }
+                    )
                     definition = {
                         "task_id": task_id,
                         "task_sha256": str(item["task_sha256"]),
                         "phase_id": original_definition["phase_id"],
                         "canonical_position": position,
                         "origin_kind": "replacement",
-                        "task_json": copy.deepcopy(dict(item)),
+                        "task_json": replacement_task_json,
+                        # Schema-v5 stores created before the expanded replacement
+                        # projection retained the canonical supersession item here.
+                        # Keep that exact historical representation available for
+                        # read-only parity checks; new writes continue to persist the
+                        # complete inherited task definition above.
+                        "legacy_task_json": copy.deepcopy(dict(item)),
                         "depends_on": dependencies,
                     }
                     definitions[task_id] = definition
@@ -2253,26 +2373,52 @@ class SQLitePlanStore:
             )
             for item in all_definitions
         ]
-        self._assert_rows(
-            connection,
-            query=(
+        task_columns = (
+            "plan_id",
+            "task_id",
+            "task_sha256",
+            "phase_id",
+            "canonical_position",
+            "origin_kind",
+            "task_json",
+        )
+        actual_tasks = [
+            tuple(row[column] for column in task_columns)
+            for row in connection.execute(
                 "SELECT plan_id, task_id, task_sha256, phase_id, "
                 "canonical_position, origin_kind, task_json FROM plan_tasks "
-                "WHERE plan_id=? ORDER BY canonical_position, task_id"
-            ),
-            parameters=(plan_id,),
-            columns=(
-                "plan_id",
-                "task_id",
-                "task_sha256",
-                "phase_id",
-                "canonical_position",
-                "origin_kind",
-                "task_json",
-            ),
-            expected=expected_tasks,
-            label="tasks",
-        )
+                "WHERE plan_id=? ORDER BY canonical_position, task_id",
+                (plan_id,),
+            )
+        ]
+        task_rows_match = len(actual_tasks) == len(expected_tasks)
+        if task_rows_match:
+            for item, expected, actual in zip(
+                all_definitions,
+                expected_tasks,
+                actual_tasks,
+            ):
+                valid_json = {expected[-1]}
+                legacy_task_json = item.get("legacy_task_json")
+                if item["origin_kind"] == "replacement" and isinstance(
+                    legacy_task_json,
+                    Mapping,
+                ):
+                    valid_json.add(
+                        canonical_json_bytes(legacy_task_json).decode("utf-8")
+                    )
+                if actual[:-1] != expected[:-1] or actual[-1] not in valid_json:
+                    task_rows_match = False
+                    break
+        if not task_rows_match:
+            raise IntegrityError(
+                "plan normalized child projection mismatch: tasks",
+                details={
+                    "label": "tasks",
+                    "expected_count": len(expected_tasks),
+                    "actual_count": len(actual_tasks),
+                },
+            )
         expected_task_dependencies = [
             (plan_id, item["task_id"], dependency, dependency_position)
             for item in all_definitions
@@ -2350,7 +2496,12 @@ class SQLitePlanStore:
         disposition_by_status = {
             "completed": {"task_complete"},
             "blocked": {"blocked"},
-            "superseded": {"replan_required"},
+            "superseded": {
+                "blocked",
+                "replan_required",
+                "human_gate_required",
+                "validation_failed",
+            },
             "replan_required": {"replan_required"},
             "human_gate_required": {"human_gate_required"},
             "validation_failed": {"validation_failed"},
@@ -2940,6 +3091,227 @@ class SQLitePlanStore:
         )
         self._validate_plan_lease_parity(connection, record)
         self._validate_activation_history(connection, record)
+        self._validate_continuous_parity(connection, record)
+
+    def _validate_continuous_parity(
+        self,
+        connection: sqlite3.Connection,
+        record: Mapping[str, Any],
+    ) -> None:
+        if self.database_schema_version < 6:
+            return
+        plan_id = str(record["plan_id"])
+        state_row = connection.execute(
+            "SELECT * FROM plan_continuous_states WHERE plan_id=?",
+            (plan_id,),
+        ).fetchone()
+        activation_history = self._activation_history(connection, plan_id)
+        v2_activations = [
+            item
+            for item in activation_history
+            if item.get("schema_version")
+            == "sys4ai.plan-activation-receipt.v2"
+        ]
+        continuous_counts = {
+            table: int(
+                connection.execute(
+                    f'SELECT COUNT(*) FROM "{table}" WHERE plan_id=?',
+                    (plan_id,),
+                ).fetchone()[0]
+            )
+            for table in (
+                "plan_question_batches",
+                "plan_execution_authorities",
+                "plan_question_responses",
+                "plan_coordinator_wakeups",
+                "plan_completion_reports",
+            )
+        }
+        if state_row is None:
+            if v2_activations or any(continuous_counts.values()):
+                raise IntegrityError(
+                    "continuous plan records exist without coordinator state"
+                )
+            return
+        if len(v2_activations) != 1:
+            raise IntegrityError(
+                "continuous coordinator requires one activation receipt v2"
+            )
+        state = self._require_continuous_state(
+            self._parse_canonical_object(
+                str(state_row["state_json"]),
+                label="continuous plan state",
+            )
+        )
+        if (
+            state_row["state_revision"] != state["revision"]
+            or state_row["status"] != state["status"]
+            or state_row["updated_at"] != state["updated_at"]
+            or state["plan_id"] != plan_id
+            or state["plan_sha256"] != record["effective_plan_sha256"]
+            or state["base_plan_revision"] > record["state"]["revision"]
+        ):
+            raise IntegrityError(
+                "continuous coordinator projection differs from canonical plan"
+            )
+        if (
+            state["base_plan_revision"] == record["state"]["revision"]
+            and state["base_state_sha256"] != content_sha256(record["state"])
+        ):
+            raise IntegrityError(
+                "continuous coordinator base-state hash is invalid"
+            )
+        activation = v2_activations[0]
+        if content_sha256(activation) != state["activation_receipt_sha256"]:
+            raise IntegrityError(
+                "continuous coordinator activation receipt hash is invalid"
+            )
+
+        batch_rows: dict[str, tuple[dict[str, Any], Any]] = {}
+        for row in connection.execute(
+            "SELECT * FROM plan_question_batches WHERE plan_id=?",
+            (plan_id,),
+        ):
+            batch = self._require_question_batch(
+                self._parse_canonical_object(
+                    str(row["batch_json"]),
+                    label="continuous question batch",
+                )
+            )
+            digest = content_sha256(batch)
+            if (
+                row["batch_id"] != batch["batch_id"]
+                or row["batch_sha256"] != digest
+                or row["created_at"] != batch["created_at"]
+                or batch["plan_id"] != plan_id
+            ):
+                raise IntegrityError("continuous question batch projection mismatch")
+            batch_rows[digest] = (batch, row)
+        authority_rows: dict[str, dict[str, Any]] = {}
+        for row in connection.execute(
+            "SELECT * FROM plan_execution_authorities WHERE plan_id=?",
+            (plan_id,),
+        ):
+            authority = self._require_execution_authority(
+                self._parse_canonical_object(
+                    str(row["authority_json"]),
+                    label="continuous execution authority",
+                )
+            )
+            digest = content_sha256(authority)
+            if (
+                row["authority_id"] != authority["authority_id"]
+                or row["authority_sha256"] != digest
+                or row["created_at"] != authority["created_at"]
+                or authority["plan_id"] != plan_id
+            ):
+                raise IntegrityError(
+                    "continuous execution authority projection mismatch"
+                )
+            authority_rows[digest] = authority
+        response_hashes: set[str] = set()
+        for row in connection.execute(
+            "SELECT * FROM plan_question_responses WHERE plan_id=?",
+            (plan_id,),
+        ):
+            response = self._require_question_response(
+                self._parse_canonical_object(
+                    str(row["response_json"]),
+                    label="continuous question response",
+                )
+            )
+            digest = content_sha256(response)
+            batch = next(
+                (
+                    item
+                    for item, _ in batch_rows.values()
+                    if item["batch_id"] == response["batch_id"]
+                ),
+                None,
+            )
+            if (
+                row["response_id"] != response["response_id"]
+                or row["batch_id"] != response["batch_id"]
+                or row["response_sha256"] != digest
+                or row["answered_at"] != response["answered_at"]
+                or batch is None
+                or response["batch_content_sha256"] != content_sha256(batch)
+            ):
+                raise IntegrityError(
+                    "continuous question response projection mismatch"
+                )
+            response_hashes.add(digest)
+        if (
+            state["question_batch_sha256"] not in batch_rows
+            or state["execution_authority_sha256"] not in authority_rows
+            or activation["question_batch_sha256"]
+            != state["question_batch_sha256"]
+            or activation["execution_authority_sha256"]
+            != state["execution_authority_sha256"]
+            or activation["question_response_sha256"] not in response_hashes
+        ):
+            raise IntegrityError(
+                "continuous activation bindings are not durably present"
+            )
+        if (
+            state["pending_question_batch_sha256"] is not None
+            and state["pending_question_batch_sha256"] not in batch_rows
+        ):
+            raise IntegrityError(
+                "continuous pending question batch is missing"
+            )
+
+        for row in connection.execute(
+            "SELECT * FROM plan_coordinator_wakeups WHERE plan_id=?",
+            (plan_id,),
+        ):
+            wakeup = self._require_coordinator_wakeup(
+                self._parse_canonical_object(
+                    str(row["record_json"]),
+                    label="continuous coordinator wakeup",
+                )
+            )
+            if (
+                row["wakeup_id"] != wakeup["wakeup_id"]
+                or row["generation"] != wakeup["generation"]
+                or row["worker_thread_id"] != wakeup["worker_thread_id"]
+                or row["coordinator_thread_id"]
+                != wakeup["coordinator_thread_id"]
+                or row["task_receipt_sha256"]
+                != wakeup["task_receipt_sha256"]
+                or row["idempotency_key"] != wakeup["idempotency_key"]
+                or row["status"] != wakeup["status"]
+                or row["record_sha256"] != content_sha256(wakeup)
+            ):
+                raise IntegrityError(
+                    "continuous coordinator wakeup projection mismatch"
+                )
+        report_row = connection.execute(
+            "SELECT * FROM plan_completion_reports WHERE plan_id=?",
+            (plan_id,),
+        ).fetchone()
+        if report_row is not None:
+            report = self._require_completion_report(
+                self._parse_canonical_object(
+                    str(report_row["report_json"]),
+                    label="continuous plan completion report",
+                )
+            )
+            digest = content_sha256(report)
+            if (
+                report_row["report_sha256"] != digest
+                or report["plan_id"] != plan_id
+                or report["plan_sha256"] != record["effective_plan_sha256"]
+            ):
+                raise IntegrityError(
+                    "continuous completion report projection mismatch"
+                )
+            if state["completion_report_sha256"] not in {None, digest}:
+                raise IntegrityError(
+                    "continuous completion report state hash is invalid"
+                )
+        elif state["completion_report_sha256"] is not None:
+            raise IntegrityError("continuous completion report is missing")
 
     def _load_plan(
         self,
@@ -3025,11 +3397,108 @@ class SQLitePlanStore:
             connection.close()
 
     def export_plan(self, plan_id: str) -> dict[str, Any]:
-        return {
+        value = {
             "schema_version": PLAN_EXPORT_SCHEMA_VERSION,
             "record": self.load_plan(plan_id),
             "activation_receipts": self.list_activation_receipts(plan_id),
         }
+        if self.database_schema_version < 6:
+            value.update(
+                {
+                    "question_batches": [],
+                    "execution_authorities": [],
+                    "question_responses": [],
+                    "continuous_state": None,
+                    "coordinator_wakeups": [],
+                    "completion_report": None,
+                }
+            )
+            return value
+        connection = self.connect()
+        try:
+            value["question_batches"] = [
+                self._require_question_batch(
+                    self._parse_canonical_object(
+                        str(row["batch_json"]),
+                        label="exported plan question batch",
+                    )
+                )
+                for row in connection.execute(
+                    "SELECT batch_json FROM plan_question_batches "
+                    "WHERE plan_id=? ORDER BY created_at, batch_id",
+                    (plan_id,),
+                )
+            ]
+            value["execution_authorities"] = [
+                self._require_execution_authority(
+                    self._parse_canonical_object(
+                        str(row["authority_json"]),
+                        label="exported plan execution authority",
+                    )
+                )
+                for row in connection.execute(
+                    "SELECT authority_json FROM plan_execution_authorities "
+                    "WHERE plan_id=? ORDER BY created_at, authority_id",
+                    (plan_id,),
+                )
+            ]
+            value["question_responses"] = [
+                self._require_question_response(
+                    self._parse_canonical_object(
+                        str(row["response_json"]),
+                        label="exported plan question response",
+                    )
+                )
+                for row in connection.execute(
+                    "SELECT response_json FROM plan_question_responses "
+                    "WHERE plan_id=? ORDER BY answered_at, response_id",
+                    (plan_id,),
+                )
+            ]
+            state_row = connection.execute(
+                "SELECT state_json FROM plan_continuous_states WHERE plan_id=?",
+                (plan_id,),
+            ).fetchone()
+            value["continuous_state"] = (
+                self._require_continuous_state(
+                    self._parse_canonical_object(
+                        str(state_row["state_json"]),
+                        label="exported continuous plan state",
+                    )
+                )
+                if state_row is not None
+                else None
+            )
+            value["coordinator_wakeups"] = [
+                self._require_coordinator_wakeup(
+                    self._parse_canonical_object(
+                        str(row["record_json"]),
+                        label="exported coordinator wakeup",
+                    )
+                )
+                for row in connection.execute(
+                    "SELECT record_json FROM plan_coordinator_wakeups "
+                    "WHERE plan_id=? ORDER BY generation, wakeup_id",
+                    (plan_id,),
+                )
+            ]
+            report_row = connection.execute(
+                "SELECT report_json FROM plan_completion_reports WHERE plan_id=?",
+                (plan_id,),
+            ).fetchone()
+            value["completion_report"] = (
+                self._require_completion_report(
+                    self._parse_canonical_object(
+                        str(report_row["report_json"]),
+                        label="exported plan completion report",
+                    )
+                )
+                if report_row is not None
+                else None
+            )
+        finally:
+            connection.close()
+        return value
 
     def export_plans(self) -> dict[str, Any]:
         return {
@@ -3096,6 +3565,118 @@ class SQLitePlanStore:
             ),
         )
         return receipt_sha256
+
+    def _insert_question_batch(
+        self,
+        connection: sqlite3.Connection,
+        plan_id: str,
+        value: Mapping[str, Any],
+    ) -> str:
+        batch = self._require_question_batch(value)
+        if batch["plan_id"] != plan_id:
+            raise StateConflict("question batch plan identity is invalid")
+        batch_sha256 = content_sha256(batch)
+        connection.execute(
+            """
+            INSERT INTO plan_question_batches(
+                batch_id, plan_id, batch_json, batch_sha256, created_at
+            ) VALUES (?, ?, ?, ?, ?)
+            """,
+            (
+                batch["batch_id"],
+                plan_id,
+                canonical_json_bytes(batch).decode("utf-8"),
+                batch_sha256,
+                batch["created_at"],
+            ),
+        )
+        return batch_sha256
+
+    def _insert_execution_authority(
+        self,
+        connection: sqlite3.Connection,
+        plan_id: str,
+        value: Mapping[str, Any],
+    ) -> str:
+        authority = self._require_execution_authority(value)
+        if authority["plan_id"] != plan_id:
+            raise StateConflict("execution authority plan identity is invalid")
+        authority_sha256 = content_sha256(authority)
+        connection.execute(
+            """
+            INSERT INTO plan_execution_authorities(
+                authority_id, plan_id, authority_json,
+                authority_sha256, created_at
+            ) VALUES (?, ?, ?, ?, ?)
+            """,
+            (
+                authority["authority_id"],
+                plan_id,
+                canonical_json_bytes(authority).decode("utf-8"),
+                authority_sha256,
+                authority["created_at"],
+            ),
+        )
+        return authority_sha256
+
+    def _insert_question_response(
+        self,
+        connection: sqlite3.Connection,
+        plan_id: str,
+        value: Mapping[str, Any],
+    ) -> str:
+        response = self._require_question_response(value)
+        batch = connection.execute(
+            "SELECT batch_sha256 FROM plan_question_batches "
+            "WHERE batch_id=? AND plan_id=?",
+            (response["batch_id"], plan_id),
+        ).fetchone()
+        if (
+            batch is None
+            or batch["batch_sha256"] != response["batch_content_sha256"]
+        ):
+            raise StateConflict(
+                "question response does not match one persisted question batch"
+            )
+        response_sha256 = content_sha256(response)
+        connection.execute(
+            """
+            INSERT INTO plan_question_responses(
+                response_id, plan_id, batch_id, response_json,
+                response_sha256, answered_at
+            ) VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (
+                response["response_id"],
+                plan_id,
+                response["batch_id"],
+                canonical_json_bytes(response).decode("utf-8"),
+                response_sha256,
+                response["answered_at"],
+            ),
+        )
+        return response_sha256
+
+    def _insert_continuous_state(
+        self,
+        connection: sqlite3.Connection,
+        value: Mapping[str, Any],
+    ) -> None:
+        state = self._require_continuous_state(value)
+        connection.execute(
+            """
+            INSERT INTO plan_continuous_states(
+                plan_id, state_revision, status, state_json, updated_at
+            ) VALUES (?, ?, ?, ?, ?)
+            """,
+            (
+                state["plan_id"],
+                state["revision"],
+                state["status"],
+                canonical_json_bytes(state).decode("utf-8"),
+                state["updated_at"],
+            ),
+        )
 
     @staticmethod
     def _insert_plan_row(
@@ -3309,6 +3890,9 @@ class SQLitePlanStore:
         outer_goal_id: str,
         expected_outer_revision: int,
         outer_holder_token: str,
+        question_batch: Mapping[str, Any] | None = None,
+        execution_authority: Mapping[str, Any] | None = None,
+        question_response: Mapping[str, Any] | None = None,
         timestamp: str | None = None,
     ) -> tuple[dict[str, Any], dict[str, Any]]:
         """Atomically bind one finalized plan profile to its outer goal lease."""
@@ -3337,6 +3921,81 @@ class SQLitePlanStore:
             repository_topology_policy,
             require_default_deny=True,
         )
+        continuous_records = (
+            question_batch,
+            execution_authority,
+            question_response,
+        )
+        continuous = activation_receipt.get("schema_version") == (
+            "sys4ai.plan-activation-receipt.v2"
+        )
+        if continuous and any(item is None for item in continuous_records):
+            raise RecordValidationError(
+                "continuous initialization requires question, authority, and "
+                "response records"
+            )
+        if not continuous and any(item is not None for item in continuous_records):
+            raise RecordValidationError(
+                "legacy initialization cannot acquire continuous authority"
+            )
+        accepted_batch = (
+            self._require_question_batch(question_batch)
+            if question_batch is not None
+            else None
+        )
+        accepted_authority = (
+            self._require_execution_authority(execution_authority)
+            if execution_authority is not None
+            else None
+        )
+        accepted_response = (
+            self._require_question_response(question_response)
+            if question_response is not None
+            else None
+        )
+        if continuous:
+            assert accepted_batch is not None
+            assert accepted_authority is not None
+            assert accepted_response is not None
+            if (
+                accepted_batch["plan_id"] != plan.get("plan_id")
+                or accepted_authority["plan_id"] != plan.get("plan_id")
+                or accepted_batch["accepted_plan_sha256"]
+                != content_sha256(plan)
+                or accepted_authority["accepted_plan_sha256"]
+                != accepted_batch["accepted_plan_sha256"]
+                or accepted_authority["accepted_plan_revision"]
+                != accepted_batch["accepted_plan_revision"]
+                or accepted_response["batch_id"] != accepted_batch["batch_id"]
+                or accepted_response["batch_content_sha256"]
+                != content_sha256(accepted_batch)
+            ):
+                raise StateConflict(
+                    "continuous intake records do not share one plan and batch identity"
+                )
+            required_questions = {
+                item["question_id"]
+                for item in accepted_batch["questions"]
+                if item["required"] is True
+                and item["category"] != "authorization"
+            }
+            answered = {
+                item["question_id"] for item in accepted_response["answers"]
+            }
+            required_effects = {
+                item["effect_id"]
+                for item in accepted_authority["requested_effects"]
+                if item["required"] is True
+            }
+            granted = {
+                item["effect_id"]
+                for item in accepted_response["grants"]
+                if item["granted"] is True
+            }
+            if not required_questions <= answered or not required_effects <= granted:
+                raise StateConflict(
+                    "continuous initialization is missing a required answer or grant"
+                )
         if (
             not isinstance(activation_goal_text, str)
             or not activation_goal_text.strip()
@@ -3359,6 +4018,9 @@ class SQLitePlanStore:
             goal_text=activation_goal_text,
             repository_binding=canonical_plan.get("repository_binding", {}),
             repository_topology_policy=topology,
+            question_batch=accepted_batch,
+            execution_authority=accepted_authority,
+            question_response=accepted_response,
         )
         if (
             accepted_activation["effective_from_generation"] != 1
@@ -3608,6 +4270,39 @@ class SQLitePlanStore:
                 raise IntegrityError(
                     "persisted activation receipt hash changed"
                 )
+            if continuous:
+                from agentjob_runtime.plan.continuous import (
+                    build_continuous_state,
+                )
+
+                assert accepted_batch is not None
+                assert accepted_authority is not None
+                assert accepted_response is not None
+                self._insert_question_batch(
+                    connection,
+                    record["plan_id"],
+                    accepted_batch,
+                )
+                self._insert_execution_authority(
+                    connection,
+                    record["plan_id"],
+                    accepted_authority,
+                )
+                self._insert_question_response(
+                    connection,
+                    record["plan_id"],
+                    accepted_response,
+                )
+                self._insert_continuous_state(
+                    connection,
+                    build_continuous_state(
+                        record,
+                        activation_receipt=accepted_activation,
+                        question_batch=accepted_batch,
+                        execution_authority=accepted_authority,
+                        timestamp=now,
+                    ),
+                )
             self._insert_base_children(connection, record)
             self._insert_events(
                 connection,
@@ -3742,6 +4437,755 @@ class SQLitePlanStore:
             )
         finally:
             connection.close()
+
+    def load_continuous_state(self, plan_id: str) -> dict[str, Any]:
+        connection = self.connect()
+        try:
+            self._load_plan(connection, plan_id)
+            row = connection.execute(
+                "SELECT state_json FROM plan_continuous_states WHERE plan_id=?",
+                (plan_id,),
+            ).fetchone()
+            if row is None:
+                raise RecordNotFound(
+                    f"continuous plan state does not exist: {plan_id}"
+                )
+            return self._require_continuous_state(
+                self._parse_canonical_object(
+                    str(row["state_json"]),
+                    label="continuous plan state",
+                )
+            )
+        finally:
+            connection.close()
+
+    def update_continuous_state(
+        self,
+        expected_revision: int,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        if self.read_only:
+            raise StateConflict("read-only plan store cannot advance the coordinator")
+        state = self._require_continuous_state(value)
+        if state["revision"] != expected_revision + 1:
+            raise RecordValidationError(
+                "continuous state revision must advance by exactly one"
+            )
+        connection = self.connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            plan = self._load_plan(connection, state["plan_id"])
+            if (
+                state["plan_sha256"] != plan["effective_plan_sha256"]
+                or state["base_plan_revision"] != plan["state"]["revision"]
+                or state["base_state_sha256"] != content_sha256(plan["state"])
+            ):
+                raise StateConflict(
+                    "continuous state does not bind the current canonical plan state"
+                )
+            cursor = connection.execute(
+                """
+                UPDATE plan_continuous_states SET
+                    state_revision=?, status=?, state_json=?, updated_at=?
+                WHERE plan_id=? AND state_revision=?
+                """,
+                (
+                    state["revision"],
+                    state["status"],
+                    canonical_json_bytes(state).decode("utf-8"),
+                    state["updated_at"],
+                    state["plan_id"],
+                    expected_revision,
+                ),
+            )
+            if cursor.rowcount != 1:
+                raise StateConflict(
+                    "continuous plan revision changed during coordinator advance"
+                )
+            connection.commit()
+            return copy.deepcopy(state)
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def persist_question_batch(
+        self,
+        plan_id: str,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        if self.read_only:
+            raise StateConflict("read-only plan store cannot persist questions")
+        batch = self._require_question_batch(value)
+        connection = self.connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            self._load_plan(connection, plan_id)
+            row = connection.execute(
+                "SELECT batch_json FROM plan_question_batches WHERE batch_id=?",
+                (batch["batch_id"],),
+            ).fetchone()
+            if row is None:
+                self._insert_question_batch(connection, plan_id, batch)
+            else:
+                existing = self._require_question_batch(
+                    self._parse_canonical_object(
+                        str(row["batch_json"]),
+                        label="plan question batch",
+                    )
+                )
+                if existing != batch:
+                    raise StateConflict(
+                        "question batch ID conflicts with existing immutable bytes"
+                    )
+            connection.commit()
+            return copy.deepcopy(batch)
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def load_question_batch(
+        self,
+        plan_id: str,
+        *,
+        batch_sha256: str | None = None,
+    ) -> dict[str, Any]:
+        connection = self.connect()
+        try:
+            query = (
+                "SELECT batch_json FROM plan_question_batches WHERE plan_id=? "
+                + ("AND batch_sha256=? " if batch_sha256 is not None else "")
+                + "ORDER BY created_at DESC, batch_id DESC LIMIT 1"
+            )
+            parameters: tuple[Any, ...] = (
+                (plan_id, batch_sha256)
+                if batch_sha256 is not None
+                else (plan_id,)
+            )
+            row = connection.execute(query, parameters).fetchone()
+            if row is None:
+                raise RecordNotFound(
+                    f"plan question batch does not exist: {plan_id}"
+                )
+            return self._require_question_batch(
+                self._parse_canonical_object(
+                    str(row["batch_json"]),
+                    label="plan question batch",
+                )
+            )
+        finally:
+            connection.close()
+
+    def load_execution_authority(self, plan_id: str) -> dict[str, Any]:
+        connection = self.connect()
+        try:
+            row = connection.execute(
+                "SELECT authority_json FROM plan_execution_authorities "
+                "WHERE plan_id=? ORDER BY created_at DESC, authority_id DESC LIMIT 1",
+                (plan_id,),
+            ).fetchone()
+            if row is None:
+                raise RecordNotFound(
+                    f"plan execution authority does not exist: {plan_id}"
+                )
+            return self._require_execution_authority(
+                self._parse_canonical_object(
+                    str(row["authority_json"]),
+                    label="plan execution authority",
+                )
+            )
+        finally:
+            connection.close()
+
+    def load_question_responses(self, plan_id: str) -> list[dict[str, Any]]:
+        """Load immutable question responses in deterministic answer order."""
+
+        connection = self.connect()
+        try:
+            self._load_plan(connection, plan_id)
+            rows = connection.execute(
+                "SELECT response_json FROM plan_question_responses "
+                "WHERE plan_id=? ORDER BY answered_at, response_id",
+                (plan_id,),
+            ).fetchall()
+            return [
+                self._require_question_response(
+                    self._parse_canonical_object(
+                        str(row["response_json"]),
+                        label="plan question response",
+                    )
+                )
+                for row in rows
+            ]
+        finally:
+            connection.close()
+
+    def persist_question_response(
+        self,
+        plan_id: str,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        if self.read_only:
+            raise StateConflict("read-only plan store cannot persist answers")
+        response = self._require_question_response(value)
+        connection = self.connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            self._load_plan(connection, plan_id)
+            row = connection.execute(
+                "SELECT response_json FROM plan_question_responses "
+                "WHERE response_id=?",
+                (response["response_id"],),
+            ).fetchone()
+            if row is None:
+                self._insert_question_response(connection, plan_id, response)
+            else:
+                existing = self._require_question_response(
+                    self._parse_canonical_object(
+                        str(row["response_json"]),
+                        label="plan question response",
+                    )
+                )
+                if existing != response:
+                    raise StateConflict(
+                        "question response ID conflicts with existing immutable bytes"
+                    )
+            connection.commit()
+            return copy.deepcopy(response)
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def persist_coordinator_wakeup(
+        self,
+        value: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        if self.read_only:
+            raise StateConflict("read-only plan store cannot persist a wakeup")
+        wakeup = self._require_coordinator_wakeup(value)
+        connection = self.connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            plan = self._load_plan(connection, wakeup["plan_id"])
+            continuous_row = connection.execute(
+                "SELECT state_json FROM plan_continuous_states WHERE plan_id=?",
+                (wakeup["plan_id"],),
+            ).fetchone()
+            receipt_row = connection.execute(
+                "SELECT generation FROM plan_receipts WHERE plan_id=? "
+                "AND receipt_kind='task' AND receipt_sha256=?",
+                (wakeup["plan_id"], wakeup["task_receipt_sha256"]),
+            ).fetchone()
+            intent_row = connection.execute(
+                "SELECT returned_thread_id FROM plan_provider_intents "
+                "WHERE plan_id=? AND generation=? AND status='returned'",
+                (wakeup["plan_id"], wakeup["generation"]),
+            ).fetchone()
+            if continuous_row is None or receipt_row is None or intent_row is None:
+                raise StateConflict(
+                    "coordinator wakeup lacks canonical plan evidence"
+                )
+            continuous = self._require_continuous_state(
+                self._parse_canonical_object(
+                    str(continuous_row["state_json"]),
+                    label="continuous plan state",
+                )
+            )
+            if (
+                int(receipt_row["generation"]) != wakeup["generation"]
+                or intent_row["returned_thread_id"]
+                != wakeup["worker_thread_id"]
+                or continuous["coordinator_thread_id"]
+                != wakeup["coordinator_thread_id"]
+                or plan["state"]["current_generation"]
+                < wakeup["generation"]
+            ):
+                raise StateConflict(
+                    "coordinator wakeup identity differs from canonical evidence"
+                )
+            row = connection.execute(
+                "SELECT record_json FROM plan_coordinator_wakeups "
+                "WHERE wakeup_id=? OR idempotency_key=?",
+                (wakeup["wakeup_id"], wakeup["idempotency_key"]),
+            ).fetchone()
+            if row is None:
+                connection.execute(
+                    """
+                    INSERT INTO plan_coordinator_wakeups(
+                        wakeup_id, plan_id, generation, worker_thread_id,
+                        coordinator_thread_id, task_receipt_sha256,
+                        idempotency_key, status, record_json, record_sha256,
+                        created_at, updated_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        wakeup["wakeup_id"],
+                        wakeup["plan_id"],
+                        wakeup["generation"],
+                        wakeup["worker_thread_id"],
+                        wakeup["coordinator_thread_id"],
+                        wakeup["task_receipt_sha256"],
+                        wakeup["idempotency_key"],
+                        wakeup["status"],
+                        canonical_json_bytes(wakeup).decode("utf-8"),
+                        content_sha256(wakeup),
+                        wakeup["created_at"],
+                        wakeup["updated_at"],
+                    ),
+                )
+                result = wakeup
+            else:
+                result = self._require_coordinator_wakeup(
+                    self._parse_canonical_object(
+                        str(row["record_json"]),
+                        label="plan coordinator wakeup",
+                    )
+                )
+                identity_fields = {
+                    "wakeup_id",
+                    "plan_id",
+                    "generation",
+                    "worker_thread_id",
+                    "coordinator_thread_id",
+                    "task_receipt_sha256",
+                    "idempotency_key",
+                }
+                if any(result[key] != wakeup[key] for key in identity_fields):
+                    raise StateConflict(
+                        "coordinator wakeup conflicts with existing identity"
+                    )
+            connection.commit()
+            return copy.deepcopy(result)
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def finalize_coordinator_wakeup(
+        self,
+        wakeup_id: str,
+        *,
+        status: str,
+        provider_response_sha256: str | None,
+        timestamp: str | None = None,
+    ) -> dict[str, Any]:
+        if status not in {"delivered", "ambiguous"}:
+            raise RecordValidationError("wakeup final status is invalid")
+        now = timestamp or utc_now()
+        connection = self.connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            row = connection.execute(
+                "SELECT record_json FROM plan_coordinator_wakeups "
+                "WHERE wakeup_id=?",
+                (wakeup_id,),
+            ).fetchone()
+            if row is None:
+                raise RecordNotFound(
+                    f"coordinator wakeup does not exist: {wakeup_id}"
+                )
+            value = self._require_coordinator_wakeup(
+                self._parse_canonical_object(
+                    str(row["record_json"]),
+                    label="plan coordinator wakeup",
+                )
+            )
+            if value["status"] == "delivered":
+                connection.commit()
+                return value
+            value["status"] = status
+            value["provider_response_sha256"] = provider_response_sha256
+            value["updated_at"] = now
+            value["wakeup_content_sha256"] = ""
+            value["wakeup_content_sha256"] = content_sha256(
+                {
+                    key: item
+                    for key, item in value.items()
+                    if key != "wakeup_content_sha256"
+                }
+            )
+            value = self._require_coordinator_wakeup(value)
+            connection.execute(
+                "UPDATE plan_coordinator_wakeups SET status=?, record_json=?, "
+                "record_sha256=?, updated_at=? WHERE wakeup_id=?",
+                (
+                    value["status"],
+                    canonical_json_bytes(value).decode("utf-8"),
+                    content_sha256(value),
+                    value["updated_at"],
+                    wakeup_id,
+                ),
+            )
+            connection.commit()
+            return copy.deepcopy(value)
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def load_plan_completion_report(self, plan_id: str) -> dict[str, Any]:
+        connection = self.connect()
+        try:
+            row = connection.execute(
+                "SELECT report_json FROM plan_completion_reports WHERE plan_id=?",
+                (plan_id,),
+            ).fetchone()
+            if row is None:
+                raise RecordNotFound(
+                    f"plan completion report does not exist: {plan_id}"
+                )
+            return self._require_completion_report(
+                self._parse_canonical_object(
+                    str(row["report_json"]),
+                    label="plan completion report",
+                )
+            )
+        finally:
+            connection.close()
+
+    def finalize_plan_completion(
+        self,
+        plan_id: str,
+        *,
+        expected_revision: int,
+        report: Mapping[str, Any],
+        timestamp: str | None = None,
+    ) -> dict[str, Any]:
+        value = self._require_completion_report(report)
+        if value["status"] != "complete":
+            raise StateConflict("an incomplete report cannot complete a plan")
+        now = timestamp or utc_now()
+        with self.mutation(
+            plan_id,
+            expected_revision=expected_revision,
+            timestamp=now,
+        ) as mutation:
+            record = mutation.record
+            if (
+                value["plan_id"] != plan_id
+                or value["plan_sha256"] != record["effective_plan_sha256"]
+                or not all(
+                    task["status"] in {"completed", "superseded"}
+                    for task in record["state"]["tasks"]
+                )
+                or record["state"]["active_task_id"] is not None
+                or record["state"]["lease"] is not None
+            ):
+                raise StateConflict(
+                    "completion report does not prove the current canonical plan"
+                )
+            existing = mutation._connection.execute(
+                "SELECT report_sha256 FROM plan_completion_reports "
+                "WHERE plan_id=?",
+                (plan_id,),
+            ).fetchone()
+            report_sha256 = content_sha256(value)
+            if existing is None:
+                mutation._connection.execute(
+                    """
+                    INSERT INTO plan_completion_reports(
+                        plan_id, report_json, report_sha256, completed_at
+                    ) VALUES (?, ?, ?, ?)
+                    """,
+                    (
+                        plan_id,
+                        canonical_json_bytes(value).decode("utf-8"),
+                        report_sha256,
+                        now,
+                    ),
+                )
+            elif existing["report_sha256"] != report_sha256:
+                raise StateConflict(
+                    "plan already has a different immutable completion report"
+                )
+            record["state"]["phase"] = "terminal_complete"
+            record["state"]["evaluation"] = "met"
+            record["state"]["terminal_reason"] = "goal_reached"
+            mutation.journal(
+                "plan_completion_receipt",
+                {
+                    "report_sha256": report_sha256,
+                    "completion_report": value,
+                },
+            )
+        return self.load_plan(plan_id)
+
+    def supersede_protected_task(
+        self,
+        plan_id: str,
+        *,
+        expected_revision: int,
+        reason_code: str,
+        reason: str,
+        authorization_ref: str,
+        evidence_ref: str,
+        timestamp: str | None = None,
+    ) -> dict[str, Any]:
+        """Append one replacement for returned, non-unknown protected work."""
+
+        allowed_reasons = {
+            "plan_task.task_requires_replan",
+            "plan_task.scope_violation",
+            "plan.validation_failed",
+            "plan.human_gate_required",
+            "plan.capability_blocked",
+            "plan.blocked_no_runnable",
+            "plan.machine_repair",
+        }
+        if reason_code not in allowed_reasons:
+            reason_code = "plan.machine_repair"
+        now = timestamp or utc_now()
+        with self.mutation(
+            plan_id,
+            expected_revision=expected_revision,
+            timestamp=now,
+        ) as mutation:
+            record = mutation.record
+            eligible = [
+                task
+                for task in record["state"]["tasks"]
+                if task["status"]
+                in {
+                    "blocked",
+                    "replan_required",
+                    "human_gate_required",
+                    "validation_failed",
+                }
+            ]
+            if len(eligible) != 1:
+                raise StateConflict(
+                    "repair supersession requires exactly one protected task",
+                    details={
+                        "eligible_task_ids": [item["task_id"] for item in eligible]
+                    },
+                )
+            original_state = eligible[0]
+            if original_state["receipt_link"] is None:
+                raise IntegrityError(
+                    "repair supersession requires the original immutable receipt"
+                )
+            original_definition = self._definitions(
+                mutation._connection,
+                record,
+            )[original_state["task_id"]]
+            definitions = self._definitions(mutation._connection, record)
+            next_position = max(
+                int(item["canonical_position"])
+                for item in definitions.values()
+            ) + 1
+            attempt = 1 + sum(
+                str(item["task_id"]).startswith(
+                    str(original_state["task_id"]) + "-R"
+                )
+                for item in definitions.values()
+            )
+            replacement_id = (
+                f"{original_state['task_id']}-R"
+                f"{original_state['generation']}-{attempt}"
+            )
+            replacement_basis = copy.deepcopy(
+                dict(original_definition["task_json"])
+            )
+            replacement_basis.update(
+                {
+                    "task_id": replacement_id,
+                    "depends_on": list(original_definition["depends_on"]),
+                    "repair_reason_code": reason_code,
+                    "repair_attempt": attempt,
+                }
+            )
+            replacement_sha256 = content_sha256(replacement_basis)
+            replacement = {
+                "task_id": replacement_id,
+                "task_sha256": replacement_sha256,
+                "depends_on": list(original_definition["depends_on"]),
+                "canonical_position": next_position,
+                "one_task_per_discussion": True,
+                "max_continue_invocations": 1,
+                "max_agentjobs": 1,
+            }
+            acceptance_criteria = list(
+                original_definition["task_json"].get(
+                    "acceptance_criteria",
+                    ["The replacement satisfies the original accepted task."],
+                )
+            )
+            acceptance_mapping = [
+                {
+                    "criterion_id": "AC-"
+                    + content_sha256(
+                        {
+                            "task_id": original_state["task_id"],
+                            "position": position,
+                            "criterion": criterion,
+                        }
+                    )[:24].upper(),
+                    "replacement_task_ids": [replacement_id],
+                    "shared_gate_ref": None,
+                }
+                for position, criterion in enumerate(acceptance_criteria)
+            ]
+            graph_basis = [
+                {
+                    "task_id": replacement["task_id"],
+                    "task_sha256": replacement["task_sha256"],
+                    "depends_on": replacement["depends_on"],
+                    "canonical_position": replacement["canonical_position"],
+                }
+            ]
+            supersession = {
+                "schema_version": "sys4ai.plan-task-supersession.v1",
+                "supersession_id": "PTS-"
+                + content_sha256(
+                    {
+                        "plan_id": plan_id,
+                        "original_task_id": original_state["task_id"],
+                        "receipt_sha256": original_state["receipt_link"][
+                            "receipt_sha256"
+                        ],
+                        "replacement_id": replacement_id,
+                    }
+                )[:24].upper(),
+                "plan_id": plan_id,
+                "plan_sha256": record["effective_plan_sha256"],
+                "original_task": {
+                    "task_id": original_state["task_id"],
+                    "task_sha256": original_state["task_sha256"],
+                    "generation": original_state["generation"],
+                    "receipt_id": original_state["receipt_link"]["receipt_id"],
+                    "receipt_sha256": original_state["receipt_link"][
+                        "receipt_sha256"
+                    ],
+                    "terminal_status": original_state["status"],
+                },
+                "replacement_tasks": [replacement],
+                "acceptance_mapping": acceptance_mapping,
+                "replacement_graph_sha256": content_sha256(graph_basis),
+                "reason_code": reason_code,
+                "reason": reason,
+                "authorization_ref": authorization_ref,
+                "evidence_refs": [evidence_ref],
+                "acyclic": True,
+                "original_redispatch_forbidden": True,
+                "same_task_successors": 0,
+                "prior_receipt_preserved": True,
+                "partial_work_preserved": True,
+                "prior_journal_sha256": record["journal"][-1]["event_hash"],
+                "hash_basis": (
+                    "canonical_json_without_supersession_content_sha256"
+                ),
+                "supersession_content_sha256": "",
+                "finalized": True,
+                "extensions": {},
+            }
+            supersession["supersession_content_sha256"] = content_sha256(
+                {
+                    key: item
+                    for key, item in supersession.items()
+                    if key != "supersession_content_sha256"
+                }
+            )
+            mutation.add_supersession(supersession)
+            original_state["status"] = "superseded"
+            original_state["terminal_reason"] = reason
+            original_state["updated_at"] = now
+            record["state"]["tasks"].append(
+                {
+                    "task_id": replacement_id,
+                    "task_sha256": replacement_sha256,
+                    "status": "pending",
+                    "generation": None,
+                    "counters": {
+                        "worker_discussions": 0,
+                        "continue_invocations": 0,
+                        "agentjobs": 0,
+                        "provider_creates": 0,
+                        "successor_creates": 0,
+                        "same_task_successors": 0,
+                    },
+                    "receipt_link": None,
+                    "fingerprint_before": None,
+                    "fingerprint_after": None,
+                    "terminal_reason": None,
+                    "updated_at": now,
+                    "extensions": {},
+                }
+            )
+            record["state"]["phase"] = "recovery_pending"
+            record["state"]["active_task_id"] = None
+            record["state"]["lease"] = None
+            record["state"]["evaluation"] = "unmet"
+            record["state"]["terminal_reason"] = reason
+            record["state"]["counters"]["tasks_superseded"] = sum(
+                item["status"] == "superseded"
+                for item in record["state"]["tasks"]
+            )
+            record["state"]["counters"]["protected_stops"] = sum(
+                item["status"]
+                in {
+                    "blocked",
+                    "replan_required",
+                    "human_gate_required",
+                    "validation_failed",
+                    "invocation_unknown",
+                    "cancelled",
+                }
+                for item in record["state"]["tasks"]
+            )
+            mutation.event(
+                "continuous_repair_supersession_recorded",
+                {
+                    "original_task_id": original_state["task_id"],
+                    "replacement_task_id": replacement_id,
+                    "original_receipt_sha256": original_state["receipt_link"][
+                        "receipt_sha256"
+                    ],
+                },
+            )
+        return self.load_plan(plan_id)
+
+    def resume_repaired_plan(
+        self,
+        plan_id: str,
+        *,
+        expected_revision: int,
+        evidence_ref: str,
+        timestamp: str | None = None,
+    ) -> dict[str, Any]:
+        now = timestamp or utc_now()
+        with self.mutation(
+            plan_id,
+            expected_revision=expected_revision,
+            timestamp=now,
+        ) as mutation:
+            state = mutation.record["state"]
+            if (
+                state["phase"] != "recovery_pending"
+                or state["active_task_id"] is not None
+                or state["lease"] is not None
+                or not any(task["status"] == "pending" for task in state["tasks"])
+            ):
+                raise StateConflict(
+                    "repair resumption requires a lease-free pending replacement"
+                )
+            state["phase"] = "continuation_required"
+            state["evaluation"] = "unmet"
+            state["terminal_reason"] = None
+            mutation.journal(
+                "recovery",
+                {
+                    "action": "resume_after_continuous_repair",
+                    "evidence_ref": evidence_ref,
+                },
+            )
+        return self.load_plan(plan_id)
 
     def upgrade_execution_profile(
         self,
@@ -4769,6 +6213,16 @@ class SQLitePlanStore:
             ),
         )
         for item in replacements:
+            replacement_task_json = copy.deepcopy(
+                dict(original_definition["task_json"])
+            )
+            replacement_task_json.update(
+                {
+                    "task_id": item["task_id"],
+                    "task_sha256": item["task_sha256"],
+                    "depends_on": item["depends_on"],
+                }
+            )
             connection.execute(
                 """
                 INSERT INTO plan_tasks(
@@ -4782,7 +6236,7 @@ class SQLitePlanStore:
                     item["task_sha256"],
                     original_definition["phase_id"],
                     item["canonical_position"],
-                    canonical_json_bytes(item).decode("utf-8"),
+                    canonical_json_bytes(replacement_task_json).decode("utf-8"),
                 ),
             )
         for item in replacements:

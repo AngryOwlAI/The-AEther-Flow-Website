@@ -13,7 +13,7 @@
     "replacement_tasks": {"type": "array", "items": {"$ref": "#/$defs/replacementTask"}, "minItems": 1, "uniqueItems": true},
     "acceptance_mapping": {"type": "array", "items": {"$ref": "#/$defs/acceptanceMap"}, "minItems": 1, "uniqueItems": true},
     "replacement_graph_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
-    "reason_code": {"enum": ["plan_task.task_requires_replan", "plan_task.scope_violation", "plan.validation_failed", "plan.human_gate_required"]},
+    "reason_code": {"enum": ["plan_task.task_requires_replan", "plan_task.scope_violation", "plan.validation_failed", "plan.human_gate_required", "plan.capability_blocked", "plan.blocked_no_runnable", "plan.machine_repair"]},
     "reason": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"},
     "authorization_ref": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/relativePath"},
     "evidence_refs": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/pathList", "minItems": 1},

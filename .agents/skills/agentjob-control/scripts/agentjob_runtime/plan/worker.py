@@ -122,6 +122,8 @@ class PlanWorkerSummary:
     agentjobs: int | str
     receipt_sha256: str
     recovery_required: bool
+    coordinator_wakeup_status: str | None = None
+    coordinator_wakeup_sha256: str | None = None
 
     def as_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -717,6 +719,135 @@ def _validate_authority_record(
         )
 
 
+def _continuous_execution_authority_evidence(
+    store: SQLitePlanStore,
+    *,
+    plan_id: str,
+    task_id: str,
+    director_route: DirectorRoute,
+) -> dict[str, Any]:
+    """Bind a continuous worker route to exact, currently granted effects."""
+
+    record = store.load_plan(plan_id)
+    authority = store.load_execution_authority(plan_id)
+    if (
+        authority["plan_id"] != plan_id
+        or authority["accepted_plan_sha256"]
+        != record["effective_plan_sha256"]
+    ):
+        raise StateConflict(
+            "continuous execution authority no longer matches the accepted plan",
+            details={"reason_code": "plan.acceptance_invalidated"},
+        )
+
+    requested_by_id = {
+        str(item["effect_id"]): copy.deepcopy(dict(item))
+        for item in authority["requested_effects"]
+    }
+    responses = store.load_question_responses(plan_id)
+    latest_grants: dict[str, bool] = {}
+    for response in responses:
+        for grant in response["grants"]:
+            effect_id = str(grant["effect_id"])
+            if effect_id not in requested_by_id:
+                raise IntegrityError(
+                    "a persisted response refers to an unknown protected effect",
+                    details={
+                        "reason_code": "plan.protected_effect_unknown",
+                        "effect_id": effect_id,
+                    },
+                )
+            latest_grants[effect_id] = grant["granted"] is True
+    granted_effect_ids = {
+        effect_id
+        for effect_id, granted in latest_grants.items()
+        if granted
+    }
+
+    task_effects = {
+        effect_id: item
+        for effect_id, item in requested_by_id.items()
+        if not item["affected_task_ids"]
+        or task_id in item["affected_task_ids"]
+    }
+    authority_block = director_route.job_spec.get("authority")
+    if not isinstance(authority_block, Mapping):
+        raise StateConflict(
+            "continuous worker route lacks a declared authority block",
+            details={"reason_code": "plan.protected_effect_unapproved"},
+        )
+    route_effects = authority_block.get("external_effects")
+    route_refs = director_route.job_spec.get(
+        "external_effect_authority_refs", []
+    )
+    if (
+        not isinstance(route_effects, list)
+        or any(
+            not isinstance(item, str) or not item.strip()
+            for item in route_effects
+        )
+        or len(route_effects) != len(set(route_effects))
+        or not isinstance(route_refs, list)
+        or any(
+            not isinstance(item, str) or not item.strip()
+            for item in route_refs
+        )
+        or len(route_refs) != len(set(route_refs))
+    ):
+        raise StateConflict(
+            "continuous worker route has malformed protected-effect bindings",
+            details={"reason_code": "plan.protected_effect_unapproved"},
+        )
+
+    matched_effect_ids: list[str] = []
+    for description in route_effects:
+        matches = [
+            effect_id
+            for effect_id, item in task_effects.items()
+            if item["description"] == description
+        ]
+        if len(matches) != 1:
+            raise StateConflict(
+                "continuous worker route does not name one exact accepted effect",
+                details={
+                    "reason_code": "plan.protected_effect_unapproved",
+                    "effect": description,
+                    "matching_effect_ids": sorted(matches),
+                },
+            )
+        matched_effect_ids.append(matches[0])
+
+    if set(route_refs) != set(matched_effect_ids):
+        raise StateConflict(
+            "continuous worker route authority references do not match its effects",
+            details={
+                "reason_code": "plan.protected_effect_unapproved",
+                "expected_effect_ids": sorted(matched_effect_ids),
+                "observed_effect_ids": sorted(route_refs),
+            },
+        )
+    ungranted = sorted(set(matched_effect_ids) - granted_effect_ids)
+    if ungranted:
+        raise StateConflict(
+            "continuous worker route requests a protected effect without its grant",
+            details={
+                "reason_code": "plan.protected_effect_unapproved",
+                "ungranted_effect_ids": ungranted,
+            },
+        )
+
+    return {
+        "authority_record_sha256": content_sha256(authority),
+        "authority_content_sha256": authority["authority_content_sha256"],
+        "response_record_sha256s": [
+            content_sha256(response) for response in responses
+        ],
+        "granted_effect_ids": sorted(granted_effect_ids),
+        "task_effect_ids": sorted(task_effects),
+        "route_effect_ids": sorted(matched_effect_ids),
+    }
+
+
 def compile_plan_task_continue_invocation(
     *,
     preclaim: PlanWorkerPreclaim,
@@ -726,6 +857,7 @@ def compile_plan_task_continue_invocation(
     resolved_task_id: str,
     director_route: DirectorRoute,
     timestamp: str,
+    continuous_authority_evidence: Mapping[str, Any] | None = None,
 ) -> PlanTaskContinueInvocation:
     """Compile one exact-task, token-free continuation authority packet."""
 
@@ -882,6 +1014,10 @@ def compile_plan_task_continue_invocation(
             ),
         },
     }
+    if continuous_authority_evidence is not None:
+        binding_basis["continuous_authority_evidence"] = copy.deepcopy(
+            dict(continuous_authority_evidence)
+        )
     if contains_secret(
         canonical_json_bytes(binding_basis).decode("utf-8")
     ):
@@ -1145,6 +1281,10 @@ def compile_plan_task_continue_invocation(
         },
         "invocation_content_sha256": "",
     }
+    if continuous_authority_evidence is not None:
+        invocation["execution_mapping"][
+            "continuous_authority_evidence"
+        ] = copy.deepcopy(dict(continuous_authority_evidence))
     invocation["invocation_content_sha256"] = content_sha256(
         {
             key: item
@@ -1546,11 +1686,41 @@ def run_plan_task_worker(
     timestamp: str | None = None,
     expires_at: str | None = None,
     quarantine_token: str | None = None,
+    coordinator_provider: Any | None = None,
+    coordinator_thread_id: str | None = None,
 ) -> PlanWorkerSummary:
     """Claim, consume, invoke, verify, and finalize exactly one plan task."""
 
     now = timestamp or utc_now()
     parse_utc(now)
+    if (coordinator_provider is None) != (coordinator_thread_id is None):
+        raise RecordValidationError(
+            "coordinator provider and thread identity must be supplied together"
+        )
+    continuous_authority_evidence: dict[str, Any] | None = None
+    if coordinator_provider is not None:
+        capabilities = coordinator_provider.capabilities()
+        if (
+            not isinstance(capabilities, Mapping)
+            or capabilities.get("automatic") is not True
+            or capabilities.get("can_resume_thread") is not True
+        ):
+            raise RecordValidationError(
+                "continuous worker requires an automatic coordinator-resume capability"
+            )
+        continuous_state = store.load_continuous_state(str(envelope["plan_id"]))
+        if continuous_state["coordinator_thread_id"] != coordinator_thread_id:
+            raise StateConflict(
+                "worker coordinator identity differs from canonical continuous state"
+            )
+        continuous_authority_evidence = (
+            _continuous_execution_authority_evidence(
+                store,
+                plan_id=str(envelope["plan_id"]),
+                task_id=str(envelope["task_id"]),
+                director_route=director_route,
+            )
+        )
     expiry = expires_at or add_seconds(now, 900)
     claim = claim_plan_task_generation(
         store,
@@ -1585,6 +1755,7 @@ def run_plan_task_worker(
         resolved_task_id=resolved_task_id,
         director_route=director_route,
         timestamp=now,
+        continuous_authority_evidence=continuous_authority_evidence,
     )
     with store.mutation(
         preclaim.plan_id,
@@ -1742,6 +1913,26 @@ def run_plan_task_worker(
             )
     final = store.load_plan(preclaim.plan_id)
     outer = store.goal_store.load_goal(final["outer_goal_id"])
+    wakeup_status: str | None = None
+    wakeup_sha256: str | None = None
+    if coordinator_provider is not None and coordinator_thread_id is not None:
+        if final.get("activation_goal_text") is None:
+            raise IntegrityError(
+                "continuous coordinator wakeup requires a profile-aware plan"
+            )
+        from agentjob_runtime.plan.continuous import notify_coordinator
+
+        wakeup = notify_coordinator(
+            store,
+            plan_id=preclaim.plan_id,
+            generation=preclaim.generation,
+            worker_thread_id=current_thread_id,
+            task_receipt_sha256=content_sha256(receipt),
+            provider=coordinator_provider,
+            timestamp=now,
+        )
+        wakeup_status = str(wakeup["status"])
+        wakeup_sha256 = content_sha256(wakeup)
     return PlanWorkerSummary(
         (
             "invocation_unknown"
@@ -1757,4 +1948,6 @@ def run_plan_task_worker(
         result["agentjobs"],
         content_sha256(receipt),
         quarantine,
+        wakeup_status,
+        wakeup_sha256,
     )

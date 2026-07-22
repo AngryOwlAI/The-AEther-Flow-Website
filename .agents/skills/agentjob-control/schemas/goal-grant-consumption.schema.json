@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-grant-consumption.schema.json",
+  "title": "One-Shot Goal Execution Grant Consumption",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "consumption_id",
+    "goal_id",
+    "generation",
+    "grant_id",
+    "authority_content_sha256",
+    "action_sha256",
+    "evidence_ref",
+    "consumed_at",
+    "hash_basis",
+    "consumption_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-grant-consumption.v1"},
+    "consumption_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "generation": {"type": "integer", "minimum": 0},
+    "grant_id": {"$ref": "common.schema.json#/$defs/id"},
+    "authority_content_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "action_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "evidence_ref": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "consumed_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "hash_basis": {"const": "canonical_json_without_consumption_content_sha256"},
+    "consumption_content_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false
+}

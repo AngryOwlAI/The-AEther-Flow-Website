@@ -8,7 +8,10 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from agentjob_runtime.errors import RecordValidationError, StateConflict
-from agentjob_runtime.goal.model import GOAL_SCHEMA_VERSION
+from agentjob_runtime.goal.model import (
+    GOAL_SCHEMA_VERSION_V4,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
+)
 from agentjob_runtime.records.canonical import content_sha256
 from agentjob_runtime.validation.schema import format_issues, validate_instance
 
@@ -43,11 +46,14 @@ def finalize_receipt(
         raise StateConflict("receipt invocation count disagrees with generation invocation state")
     supplied = copy.deepcopy(dict(evidence))
     prior_hash = record["journal"][-1]["entry_hash"] if record["journal"] else None
-    v3 = record.get("schema_version") == GOAL_SCHEMA_VERSION
+    profiled = record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
+    v4 = record.get("schema_version") == GOAL_SCHEMA_VERSION_V4
     receipt: dict[str, Any] = {
         "schema_version": (
-            "sys4ai.goal-step-receipt.v2"
-            if v3
+            "sys4ai.goal-step-receipt.v3"
+            if v4
+            else "sys4ai.goal-step-receipt.v2"
+            if profiled
             else "sys4ai.goal-step-receipt.v1"
         ),
         "receipt_id": f"GSR-{record['goal_id']}-{generation}",
@@ -91,7 +97,7 @@ def finalize_receipt(
         "finalized": True,
         "extensions": supplied.pop("extensions", {}),
     }
-    if v3:
+    if profiled:
         completion_results = supplied.pop(
             "completion_contract_results",
             [
@@ -153,6 +159,26 @@ def finalize_receipt(
                 ),
             }
         )
+    if v4:
+        consumption = next(
+            (
+                copy.deepcopy(item)
+                for item in reversed(record["grant_consumptions"])
+                if int(item["generation"]) == generation
+            ),
+            None,
+        )
+        receipt.update(
+            {
+                "execution_authority_sha256": content_sha256(
+                    record["execution_authority"]
+                ),
+                "question_response_sha256": content_sha256(
+                    record["question_response"]
+                ),
+                "grant_consumption": consumption,
+            }
+        )
     if supplied:
         raise RecordValidationError(
             "unknown receipt evidence fields",
@@ -163,8 +189,10 @@ def finalize_receipt(
         Path(__file__).resolve().parents[3]
         / "schemas"
         / (
-            "goal-step-receipt-v2.schema.json"
-            if v3
+            "goal-step-receipt-v3.schema.json"
+            if v4
+            else "goal-step-receipt-v2.schema.json"
+            if profiled
             else "goal-step-receipt.schema.json"
         )
     )

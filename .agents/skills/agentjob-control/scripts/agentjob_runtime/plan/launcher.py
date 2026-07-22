@@ -866,16 +866,21 @@ def reserve_first_plan_task(
             },
         )
     selected_task_id = str(selection.selected_task["task_id"])
-    task_definitions = [
-        copy.deepcopy(item)
-        for item in record["plan"]["tasks"]
-        if item["task_id"] == selected_task_id
-    ]
-    if len(task_definitions) != 1:
+    canonical_definition = store.load_task_definition(
+        plan_id,
+        selected_task_id,
+    )
+    task_definition = copy.deepcopy(
+        dict(canonical_definition["task_json"])
+    )
+    if (
+        task_definition.get("task_id") != selected_task_id
+        or task_definition.get("task_sha256")
+        != selection.selected_task["task_sha256"]
+    ):
         raise IntegrityError(
-            "first selected task is not uniquely present in immutable plan bytes"
+            "selected task definition differs from canonical storage"
         )
-    task_definition = task_definitions[0]
     generation = int(state["current_generation"]) + 1
     effective_handoff_token = handoff_token or secrets.token_hex(24)
     envelope_schema_path = store.schema_root / (

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-question-batch.schema.json",
+  "title": "Immutable Consolidated Goal Question Batch",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "batch_id",
+    "goal_sha256",
+    "completion_contract_sha256",
+    "repository_binding_sha256",
+    "repository_observation_sha256",
+    "initial_fingerprint",
+    "provider_id",
+    "provider_capabilities_sha256",
+    "intake_inventory_sha256",
+    "questions",
+    "safeguards",
+    "created_at",
+    "hash_basis",
+    "batch_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-question-batch.v1"},
+    "batch_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "repository_binding_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "repository_observation_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "initial_fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+    "provider_id": {"$ref": "common.schema.json#/$defs/id"},
+    "provider_capabilities_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "intake_inventory_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "questions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/question"}
+    },
+    "safeguards": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/safeguard"}
+    },
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "hash_basis": {"const": "canonical_json_without_batch_content_sha256"},
+    "batch_content_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "question_id",
+        "category",
+        "prompt",
+        "required",
+        "grant_id"
+      ],
+      "properties": {
+        "question_id": {"$ref": "common.schema.json#/$defs/id"},
+        "category": {"enum": ["information", "authorization", "human_decision"]},
+        "prompt": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "required": {"type": "boolean"},
+        "grant_id": {
+          "oneOf": [
+            {"$ref": "common.schema.json#/$defs/id"},
+            {"type": "null"}
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "safeguard": {
+      "type": "object",
+      "required": ["reason_code", "message"],
+      "properties": {
+        "reason_code": {"$ref": "common.schema.json#/$defs/id"},
+        "message": {"$ref": "common.schema.json#/$defs/nonEmptyString"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

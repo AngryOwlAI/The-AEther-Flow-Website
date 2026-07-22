@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-execution-authority.schema.json",
+  "title": "Immutable Goal Execution Authority Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "authority_id",
+    "goal_sha256",
+    "completion_contract_sha256",
+    "repository_binding_sha256",
+    "question_batch_sha256",
+    "bound_checkout_only",
+    "default_local_actions",
+    "forbidden_action_classes",
+    "requested_grants",
+    "created_at",
+    "hash_basis",
+    "authority_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-execution-authority.v1"},
+    "authority_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "repository_binding_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "question_batch_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "bound_checkout_only": {"const": true},
+    "default_local_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/localAction"},
+      "uniqueItems": true
+    },
+    "forbidden_action_classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/actionClass"},
+      "uniqueItems": true
+    },
+    "requested_grants": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/requestedGrant"}
+    },
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "hash_basis": {"const": "canonical_json_without_authority_content_sha256"},
+    "authority_content_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "localAction": {
+      "enum": [
+        "read_goal_and_repository",
+        "edit_goal_scoped_files",
+        "run_goal_scoped_tests",
+        "run_goal_scoped_builds",
+        "regenerate_goal_scoped_derivatives",
+        "perform_safe_goal_repairs"
+      ]
+    },
+    "actionClass": {
+      "enum": [
+        "commit",
+        "dependency_installation",
+        "network_or_external_system",
+        "destructive_operation",
+        "branch_or_worktree",
+        "push_or_merge",
+        "publication",
+        "deployment"
+      ]
+    },
+    "requestedGrant": {
+      "type": "object",
+      "required": [
+        "grant_id",
+        "action_class",
+        "operation",
+        "target",
+        "description",
+        "phase",
+        "required",
+        "action_sha256"
+      ],
+      "properties": {
+        "grant_id": {"$ref": "common.schema.json#/$defs/id"},
+        "action_class": {"$ref": "#/$defs/actionClass"},
+        "operation": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "target": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "description": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+        "phase": {"enum": ["setup", "runtime"]},
+        "required": {"type": "boolean"},
+        "action_sha256": {"$ref": "common.schema.json#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

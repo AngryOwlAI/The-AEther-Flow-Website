@@ -9,7 +9,7 @@ from typing import Any, Mapping
 from agentjob_runtime.errors import AgentJobControlError, RecordValidationError, StateConflict
 from agentjob_runtime.goal.leases import DEFAULT_LEASE_SECONDS, require_active_lease
 from agentjob_runtime.goal.model import add_seconds, map_stop, parse_utc, utc_now
-from agentjob_runtime.goal.model import GOAL_SCHEMA_VERSION
+from agentjob_runtime.goal.model import PROFILED_GOAL_SCHEMA_VERSIONS
 from agentjob_runtime.goal.resolution import (
     append_resolution,
     build_human_necessity_report,
@@ -73,7 +73,7 @@ def reserve_successor(
             "claimed_at": None,
             "successor_thread_id": None,
         }
-        if record.get("schema_version") == GOAL_SCHEMA_VERSION:
+        if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
             generation_record.update(
                 {
                     "requested_reasoning_effort": record["execution_profile"][
@@ -157,7 +157,7 @@ def record_successor(
             raise StateConflict("successor generation does not exist")
         if entry["successor_thread_id"] not in (None, successor_thread_id):
             raise StateConflict("a different successor identity is already recorded")
-        if record.get("schema_version") == GOAL_SCHEMA_VERSION:
+        if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
             effort = record["execution_profile"]["reasoning_effort"]
             expected_binding = content_sha256(record["repository_binding"])
             if (
@@ -260,13 +260,13 @@ def record_dispatch_outcome(
         if handoff.get("generation") != generation or handoff.get("token") != handoff_token:
             raise StateConflict("dispatch outcome handoff identity mismatch")
         entry = record["generations"][str(generation)]
-        v3 = record.get("schema_version") == GOAL_SCHEMA_VERSION
+        profiled = record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
         terminal = map_stop(
             reason_by_outcome[outcome],
             schema_version=record.get("schema_version"),
         )
         disposition = None
-        if v3:
+        if profiled:
             disposition = classify_resolution(
                 reason_code=f"provider.{reason_by_outcome[outcome]}",
                 status=outcome,
@@ -301,9 +301,9 @@ def record_dispatch_outcome(
                     generation=prior_generation,
                     decision=(
                         "continuation_required"
-                        if v3 and outcome != "duplicate"
+                        if profiled and outcome != "duplicate"
                         else "integrity_incident"
-                        if v3
+                        if profiled
                         else "unknown"
                         if outcome in {"ambiguous", "timeout"}
                         else "failed"
@@ -328,7 +328,7 @@ def record_dispatch_outcome(
             "dispatch_outcome",
             {"generation": generation, "outcome": outcome, "diagnostic": copy.deepcopy(dict(diagnostic))},
         )
-        if v3 and outcome == "duplicate":
+        if profiled and outcome == "duplicate":
             report = build_human_necessity_report(
                 goal_id=record["goal_id"],
                 generation=generation,
@@ -350,7 +350,7 @@ def record_dispatch_outcome(
             record["human_intervention"] = report
             entry["human_necessity_report_ref"] = report["report_id"]
             mutation.release_lease()
-        elif v3 or outcome == "ambiguous":
+        elif profiled or outcome == "ambiguous":
             mutation.replace_lease(
                 generation=generation,
                 holder_kind="quarantined",

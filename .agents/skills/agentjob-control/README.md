@@ -9,23 +9,24 @@
 > **Required dependencies:** none<br>
 > **Recommended bundle:** `governed-continuation`, `research-control`<br>
 > **Recommended plugin:** `sys4ai-governed-continuation`<br>
-> **Mutable state required:** no<br>
+> **Mutable state required:** yes — `{project_root}/.local/sys4ai/continuation`; keep it outside installed skill/plugin trees and preserve it on uninstall<br>
 > **Install command:** `python3 scripts/skills/install_skills.py --skill agentjob-control --target-project <PROJECT_ROOT>`<br>
 > **Canonical installation documentation:** [INSTALL.md](../../INSTALL.md)
 <!-- END GENERATED INSTALLATION BANNER -->
 
 ## Plan execution-profile support
 
-The shared runtime provides additive SQLite schema 5 plus plan activation,
-execution-profile, task-envelope v2, provider-intent v2, task-receipt v2,
-manual/recovery adoption, and repository-topology enforcement used by the
-non-plugin `implementation-plan-goal` bundle. Thread providers must expose
-creation with exact effort, effective-effort verification, and bound-checkout
-reuse for profile-aware plan dispatch.
+The shared runtime provides additive SQLite schema 6 plus plan activation v2,
+question/authority records, continuous state v2, task-envelope v2,
+provider-intent v2, task-receipt v2, coordinator wakeups, canonical completion
+reports, recovery adoption, and repository-topology enforcement used by the
+non-plugin `implementation-plan-goal` bundle. Continuous ThreadProviders must
+expose creation with exact effort, effective-effort verification,
+bound-checkout reuse, terminal waiting, and same-coordinator resumption.
 
 ## Release status
 
-This package is an experimental `0.3.0` template with lifecycle status
+This package is an experimental `0.4.0` template with lifecycle status
 `draft`. It is available for validation and neutral-project pilots, not as a
 claim of production readiness. Installation does not activate project adapters,
 legacy shims, external effects, or a target project's control authority.
@@ -37,8 +38,9 @@ goal-relay state, recovery, adapters, policy-pack loading, and diagnostics.
 
 The goal-state runtime reads unchanged finite
 `sys4ai.continue-goal.v1` records and reads/writes
-`sys4ai.continue-goal.v3` records while retaining byte-preserving readers for
-v1/v2. In v2, canonical null pass/deadline fields
+`sys4ai.continue-goal.v4` records through the continuous entry while retaining
+byte-preserving readers for v1-v3 and the advanced v3 compatibility writer. In
+v2, canonical null pass/deadline fields
 mean unlimited passes and no wall-clock deadline.
 
 It is an internal dependency. It does not execute work merely because it is
@@ -48,10 +50,16 @@ or bootstrap the portable registered profile.
 
 ## Package Contents
 
-Version `0.3.0` adds combined activation receipts, ThreadProvider v2 execution
-profiles, resolution and human-necessity records, one-shot repository topology
-authority, goal-step receipt v2, authoritative completion reports, and
-transactional SQLite schema version 4.
+Version `0.4.0` supplies both the continuous implementation-plan substrate and
+generic one-confirmation goals: question batches, complete responses, exact
+execution authority, activation receipt v2, authority-bound envelope/result/
+receipt v3, durable coordinator wakeups, provider waiting/resumption, one-shot
+grant consumption, and SQLite schema version 7. It retains the continuous
+implementation-plan 0.2.0
+substrate: combined activation receipts v2, consolidated question and exact
+authority records, ThreadProvider terminal waiting and parent resumption,
+idempotent `advance_once`, nonterminal input/safeguard states, authoritative
+plan completion reports, and transactional SQLite schema version 6.
 
 - `SKILL.md`: executable agent instructions and authority limits.
 - `AGENTS.md`: maintenance and adaptation rules.
@@ -82,11 +90,12 @@ commands, branch rules, or claim gates into the generic core.
 
 ## Validation Summary
 
-The runtime uses the Python standard library. Current assurance is limited to
-static package, manifest, schema, documentation, example, and CLI verification;
-the canonical package does not include a runtime regression suite. Run those
-checks and target-project `doctor` before use. A project without the mandatory
-capability receives `bootstrap_required`; no ungoverned fallback exists.
+The runtime uses the Python standard library. The shared regression suite
+exercises migrations, activation, provider identity, topology, task workers,
+continuous multi-task advancement, late input, bounded repair, ambiguity, and
+completion. Run those checks and target-project `doctor` before use. A project
+without the mandatory capability receives `bootstrap_required`; no ungoverned
+continuous fallback exists.
 
 ## Provenance
 

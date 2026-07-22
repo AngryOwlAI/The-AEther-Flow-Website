@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/implementation-plan-state-v2.schema.json",
+  "title": "Continuous Implementation Plan Coordinator State",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "plan_id",
+    "plan_sha256",
+    "revision",
+    "status",
+    "coordinator_thread_id",
+    "current_worker_thread_id",
+    "current_generation",
+    "base_plan_revision",
+    "base_state_sha256",
+    "activation_receipt_sha256",
+    "question_batch_sha256",
+    "execution_authority_sha256",
+    "pending_question_batch_sha256",
+    "last_worker_receipt_sha256",
+    "completion_report_sha256",
+    "repair_history",
+    "wakeup",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.implementation-plan-state.v2"},
+    "plan_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "revision": {"type": "integer", "minimum": 1},
+    "status": {
+      "enum": [
+        "active",
+        "worker_active",
+        "awaiting_user_input",
+        "suspended_safeguard",
+        "goal_reached",
+        "cancelled"
+      ]
+    },
+    "coordinator_thread_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "current_worker_thread_id": {
+      "oneOf": [
+        {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+        {"type": "null"}
+      ]
+    },
+    "current_generation": {"type": "integer", "minimum": 0},
+    "base_plan_revision": {"type": "integer", "minimum": 1},
+    "base_state_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "activation_receipt_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "question_batch_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "execution_authority_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "pending_question_batch_sha256": {
+      "oneOf": [
+        {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "last_worker_receipt_sha256": {
+      "oneOf": [
+        {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "completion_report_sha256": {
+      "oneOf": [
+        {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "repair_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["blocker_signature", "strategy_id", "attempt", "outcome", "evidence_refs"],
+        "properties": {
+          "blocker_signature": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+          "strategy_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+          "attempt": {"type": "integer", "minimum": 1},
+          "outcome": {"enum": ["selected", "succeeded", "failed", "exhausted"]},
+          "evidence_refs": {
+            "type": "array",
+            "items": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"},
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "wakeup": {
+      "type": "object",
+      "required": ["status", "wakeup_id"],
+      "properties": {
+        "status": {"enum": ["idle", "pending", "delivered", "ambiguous"]},
+        "wakeup_id": {
+          "oneOf": [
+            {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+            {"type": "null"}
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "updated_at": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"},
+    "extensions": {"type": "object", "maxProperties": 0, "additionalProperties": false}
+  },
+  "additionalProperties": false
+}

@@ -11,6 +11,8 @@ from agentjob_runtime.fingerprinting.canonical import FingerprintResult, apply_f
 from agentjob_runtime.goal.leases import require_active_lease
 from agentjob_runtime.goal.model import (
     GOAL_SCHEMA_VERSION,
+    GOAL_SCHEMA_VERSION_V4,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
     effective_completion_contract,
     utc_now,
 )
@@ -24,7 +26,9 @@ def _validate_continue_result(value: Mapping[str, Any]) -> dict[str, Any]:
         raise RecordValidationError("structured continue result must be an object")
     result = copy.deepcopy(dict(value))
     schema_name = (
-        "continue-result-v2.schema.json"
+        "continue-result-v3.schema.json"
+        if result.get("schema_version") == "sys4ai.continue-result.v3"
+        else "continue-result-v2.schema.json"
         if result.get("schema_version") == "sys4ai.continue-result.v2"
         else "continue-result.schema.json"
     )
@@ -174,7 +178,7 @@ def verify_generation(
             ),
         }
         if (
-            record.get("schema_version") == GOAL_SCHEMA_VERSION
+            record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
             and result.get("resolution_disposition") is not None
         ):
             entry["resolution_disposition"] = copy.deepcopy(
@@ -187,7 +191,7 @@ def verify_generation(
                 result["resolution_disposition"].get("strategy_attempt", 0)
             )
         if (
-            record.get("schema_version") == GOAL_SCHEMA_VERSION
+            record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
             and "material_progress_dimensions" in evidence
         ):
             entry["material_progress_dimensions"] = list(

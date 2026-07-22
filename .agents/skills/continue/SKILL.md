@@ -36,10 +36,12 @@ AgentJob.
 
 ## Outputs
 
-Return one `sys4ai.continue-result.v2` object containing the boundary entered,
-zero or one executed AgentJob, canonical record IDs, before and after
-fingerprints, validator counts, execution status, a stable reason code, and the
-next recommended action.
+Return one `sys4ai.continue-result.v3` object when invoked by a v4 goal worker.
+It contains the boundary entered, zero or one executed AgentJob, canonical
+record IDs, before and after fingerprints, validator counts, execution status,
+a stable reason code, the accepted execution-authority hash, any exact
+protected-action request, and the next recommended action. Standalone and
+historical callers retain compatible v1/v2 results.
 
 ## Procedure
 
@@ -63,6 +65,9 @@ next recommended action.
    non-authoritative handoff only when a next route is known.
 9. Regenerate indexes, capture the final fingerprint, return the structured
    result, and perform no second job.
+10. In v4 goal context, bind the result to the envelope's exact execution
+    authority. Report a protected action as a structured exact request; do not
+    ask the user directly or infer broader permission.
 
 ## Invariants
 
@@ -73,6 +78,7 @@ next recommended action.
 - Read-only and no-action paths create no completion, checkpoint commit, or
   synthetic work record.
 - Process validation and checkpoint evidence cannot promote a domain claim.
+- A v4 result cannot omit or change its accepted execution-authority hash.
 
 ## Validation
 

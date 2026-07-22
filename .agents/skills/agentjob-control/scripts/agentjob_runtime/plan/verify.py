@@ -385,6 +385,7 @@ def _approvals_and_effects(
     direct: Mapping[str, Any],
     *,
     allowed_effects: set[str],
+    allowed_approval_refs: set[str],
     human_findings: set[str],
     scope_findings: set[str],
     validation_findings: set[str],
@@ -479,6 +480,14 @@ def _approvals_and_effects(
             ):
                 human_findings.add(
                     "protected_effect.approval_missing"
+                )
+            if (
+                normalized["status"] in {"authorized", "completed"}
+                and normalized["approval_id"] is not None
+                and normalized["approval_id"] not in allowed_approval_refs
+            ):
+                scope_findings.add(
+                    "protected_effect.approval_outside_authority"
                 )
     return approvals, effects
 
@@ -633,6 +642,11 @@ def verify_plan_task_result(
     approvals, protected_effects = _approvals_and_effects(
         direct,
         allowed_effects=set(authority["external_effects"]),
+        allowed_approval_refs=set(
+            invocation["execution_mapping"].get(
+                "external_effect_authority_refs", []
+            )
+        ),
         human_findings=human_findings,
         scope_findings=scope_findings,
         validation_findings=validation_findings,

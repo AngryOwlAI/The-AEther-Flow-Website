@@ -61,10 +61,11 @@ from agentjob_runtime.adapters.protocols import (  # noqa: E402
 
 
 SOURCE_REPOSITORY = "/Volumes/P-SSD/AngryOwl/skills-Sys4AI"
-SOURCE_COMMIT = "5309fabc665b8c6665a24b9edb42b4ceda82227d"
+SOURCE_COMMIT = "e9fd6cb5d836bd6b1ee19edef2f025a6ab9178e3"
+SOURCE_RELEASE_TAG = "implementation-plan-relay-v0.3.0"
 INSTALL_RECEIPT_RELATIVE = Path(
     ".agents/skill_registry/INSTALL_RECEIPTS/"
-    "bundle-implementation-plan-goal-d379c6badd2e43d39ee6a8a457b75b1d.json"
+    "bundle-implementation-plan-relay-620f37c82966485f86d7a02cf57dc6da.json"
 )
 REGISTRY_RELATIVE = Path(".agents/skill_registry/SKILL_REGISTRY.yaml")
 FRONT_DOORS = {
@@ -95,7 +96,7 @@ PACKAGE_SCRIPTS = {
         "-p no:cacheprovider tests/test_plan_goal_adapter.py "
         "tests/test_plan_goal_facade.py "
         "tests/test_plan_goal_installation.py "
-        ".agents/skills/implementation-plan-goal/tests"
+        "tests/test_plan_relay_adapter.py"
     ),
 }
 ACTIVE_TASK_STATUSES = {"reserved", "active"}
@@ -167,6 +168,251 @@ def _path_allowed(path: str, rules: set[str]) -> bool:
         )
         for rule in rules
     )
+
+
+def _safe_repository_rule(rule: str) -> bool:
+    base = rule[:-3] if rule.endswith("/**") else rule
+    candidate = Path(base)
+    return bool(base) and not candidate.is_absolute() and ".." not in candidate.parts
+
+
+def _validate_standalone_packet_changes(
+    repo_root: Path,
+    report: ValidationReport,
+    *,
+    allow_active_packet: bool,
+) -> set[str]:
+    """Authorize only hash-bound standalone website packet evidence.
+
+    These packets deliberately create no legacy plan row or generic goal, so
+    they are not visible in ``PlanControlStore.list_plans``.  Their ignored
+    activation receipts plus tracked task/completion records form the complete
+    authority chain for repository-boundary validation.
+    """
+
+    allowed: set[str] = set()
+    accepted: list[dict[str, Any]] = []
+    receipt_root = repo_root / CONTROL_ACTIVATION_RELATIVE
+    if not receipt_root.is_dir():
+        report.checks["standalone_packets"] = accepted
+        return allowed
+    for receipt_path in sorted(receipt_root.glob("*/*.json")):
+        try:
+            receipt = load_json_object(
+                receipt_path, label="website control activation receipt"
+            )
+        except Exception as error:
+            report.errors.append(
+                f"website control activation receipt is invalid: {receipt_path}: {error}"
+            )
+            continue
+        plan_id = str(receipt.get("plan_id", ""))
+        if not plan_id.startswith(
+            "PLAN-SYS4AI-RECURSIVE-RELAY-BOOTSTRAP-"
+        ):
+            continue
+        basis = {
+            key: value
+            for key, value in receipt.items()
+            if key != "receipt_content_sha256"
+        }
+        activated = receipt.get("activated_paths")
+        valid_receipt = (
+            receipt.get("schema_version")
+            == "website.control-activation-receipt.v1"
+            and receipt.get("finalized") is True
+            and receipt.get("receipt_content_sha256")
+            == content_sha256(basis)
+            and isinstance(activated, list)
+            and len(activated) == 5
+            and len(set(activated)) == len(activated)
+            and all(
+                isinstance(item, str) and _safe_repository_rule(item)
+                for item in activated
+            )
+        )
+        report.require(
+            valid_receipt,
+            f"standalone activation receipt is invalid: {plan_id}",
+        )
+        if not valid_receipt:
+            continue
+        task_paths = [
+            item for item in activated if item.endswith("/00_TASK.yaml")
+        ]
+        if len(task_paths) != 1:
+            report.errors.append(
+                f"standalone activation has no unique task record: {plan_id}"
+            )
+            continue
+        try:
+            task = load_yaml(repo_root / task_paths[0])
+        except Exception as error:
+            report.errors.append(
+                f"standalone task record is invalid: {plan_id}: {error}"
+            )
+            continue
+        source = task.get("source_context", {})
+        website_task_id = str(task.get("task_id", ""))
+        writes_value = task.get("allowed_writes", {}).get(
+            "website_repository", []
+        )
+        writes = {
+            str(item) for item in writes_value if isinstance(item, str)
+        }
+        valid_task = (
+            task.get("record_type") == "implementation_task"
+            and source.get("plan_id") == plan_id
+            and source.get("plan_task_id") == receipt.get("task_id")
+            and source.get("plan_task_sha256")
+            == receipt.get("task_sha256")
+            and source.get("binding_manifest_sha256")
+            == receipt.get("binding_manifest_sha256")
+            and source.get("authority_sha256")
+            == receipt.get("authority_sha256")
+            and bool(writes)
+            and all(_safe_repository_rule(rule) for rule in writes)
+        )
+        report.require(
+            valid_task,
+            f"standalone task authority is invalid: {plan_id}",
+        )
+        if not valid_task:
+            continue
+        allowed.update(str(item) for item in activated)
+        completion_root = (
+            repo_root
+            / "implementation_control"
+            / "tasks"
+            / website_task_id
+            / "jobs"
+            / "completions"
+        )
+        completions = (
+            sorted(completion_root.glob("*.yaml"))
+            if completion_root.is_dir()
+            else []
+        )
+        task_status = str(task.get("status", ""))
+        if task_status == "active":
+            report.require(
+                allow_active_packet,
+                f"standalone packet remains active: {plan_id}",
+            )
+            if allow_active_packet:
+                allowed.update(writes)
+            accepted.append(
+                {
+                    "plan_id": plan_id,
+                    "task_id": receipt["task_id"],
+                    "status": "active",
+                }
+            )
+            continue
+        if task_status != "completed" or len(completions) != 1:
+            report.errors.append(
+                f"standalone packet terminal evidence is incomplete: {plan_id}"
+            )
+            continue
+        completion_path = completions[0]
+        try:
+            completion = load_yaml(completion_path)
+        except Exception as error:
+            report.errors.append(
+                f"standalone completion is invalid: {plan_id}: {error}"
+            )
+            continue
+        changed = completion.get("changed_files")
+        valid_changed = (
+            completion.get("record_type") == "implementation_completion"
+            and completion.get("status") in {"complete", "completed"}
+            and completion.get("task_id") == website_task_id
+            and isinstance(changed, list)
+            and bool(changed)
+            and len(set(changed)) == len(changed)
+            and all(
+                isinstance(item, str)
+                and _safe_repository_rule(item)
+                and _path_allowed(item, writes)
+                for item in changed
+            )
+        )
+        report.require(
+            valid_changed,
+            f"standalone completion exceeds exact path authority: {plan_id}",
+        )
+        if not valid_changed:
+            continue
+        allowed.add(completion_path.relative_to(repo_root).as_posix())
+        allowed.update(str(item) for item in changed)
+        accepted.append(
+            {
+                "plan_id": plan_id,
+                "task_id": receipt["task_id"],
+                "status": "completed",
+                "changed_path_count": len(changed),
+            }
+        )
+    report.checks["standalone_packets"] = accepted
+    return allowed
+
+
+def _validate_preserved_unrelated_paths(
+    repo_root: Path, report: ValidationReport
+) -> set[str]:
+    """Exclude only immutable, hash-pinned user work captured at baseline."""
+
+    config_path = (
+        repo_root
+        / ".agents/implementation-plan-relay/adapter-config.json"
+    )
+    # Repository-boundary validation is also used by isolated legacy fixtures
+    # that intentionally contain no recursive adapter. The full repository
+    # validator requires this config separately; an absent optional registry
+    # must not make the generic boundary helper crash.
+    if not config_path.exists():
+        report.checks["preserved_unrelated_paths"] = []
+        return set()
+    config = load_json_object(
+        config_path,
+        label="recursive relay adapter config",
+    )
+    entries = config.get("preserved_unrelated_paths", [])
+    if not isinstance(entries, list):
+        report.errors.append("preserved unrelated path registry is invalid")
+        return set()
+    allowed: set[str] = set()
+    evidence: list[dict[str, str]] = []
+    for entry in entries:
+        if not isinstance(entry, Mapping):
+            report.errors.append("preserved unrelated path entry is invalid")
+            continue
+        relative = str(entry.get("path", ""))
+        expected = str(entry.get("sha256", ""))
+        path = repo_root / relative
+        actual = (
+            hashlib.sha256(path.read_bytes()).hexdigest()
+            if _safe_repository_rule(relative)
+            and path.is_file()
+            and not path.is_symlink()
+            else ""
+        )
+        valid = (
+            entry.get("classification") == "user_owned_preexisting"
+            and entry.get("baseline_evidence")
+            == "docs/quality/plan-native-recursive-relay-baseline-audit-2026-07-22.md"
+            and len(expected) == 64
+            and actual == expected
+        )
+        report.require(
+            valid,
+            f"preserved unrelated path changed or lacks exact baseline evidence: {relative}",
+        )
+        if valid:
+            allowed.add(relative)
+            evidence.append({"path": relative, "sha256": actual})
+    report.checks["preserved_unrelated_paths"] = evidence
+    return allowed
 
 
 def _packet_paths(entry: Mapping[str, Any]) -> set[str]:
@@ -517,12 +763,14 @@ def validate_source_and_install(
         "import provenance source commit is not exact",
     )
     report.require(
-        provenance.get("source_access_method") == "git archive"
-        and provenance.get("source_working_tree_used") is False,
-        "import provenance must prove git-archive-only source access",
+        provenance.get("status") == "verified_release_install"
+        and provenance.get("source_working_tree_used") is False
+        and provenance.get("source_release_tag") == SOURCE_RELEASE_TAG
+        and provenance.get("source_release_published") is True,
+        "import provenance must truthfully identify the published clean-source release",
     )
     report.require(
-        provenance.get("lock_sha256") == EXPECTED_LOCK_SHA256,
+        provenance.get("source_lock_sha256") == EXPECTED_LOCK_SHA256,
         "import provenance lock hash is not exact",
     )
     report.require(
@@ -531,8 +779,8 @@ def validate_source_and_install(
         "import provenance must forbid bootstrap and Python installation",
     )
     report.require(
-        provenance.get("plugin_distribution_enabled") is False,
-        "plugin distribution must remain disabled",
+        provenance.get("runtime_database_modified_by_install") is False,
+        "installer provenance must prove runtime databases were not modified",
     )
     try:
         installed = verify_installed_bundle(repo_root)
@@ -570,10 +818,13 @@ def validate_source_and_install(
     actions = receipt.get("actions")
     report.require(
         isinstance(actions, list)
-        and len(actions) == 4
+        and len(actions) == 6
         and {item.get("skill_id") for item in actions} == set(EXPECTED_SKILLS)
-        and all(item.get("action") == "install" for item in actions),
-        "installer receipt must contain exactly four install actions",
+        and all(
+            item.get("action") in {"install", "overwrite", "unchanged"}
+            for item in actions
+        ),
+        "installer receipt must contain exactly six bounded install/overwrite/unchanged actions",
     )
     registry_path = repo_root / REGISTRY_RELATIVE
     try:
@@ -588,7 +839,7 @@ def validate_source_and_install(
     }
     report.require(
         set(registry_entries) == set(EXPECTED_SKILLS),
-        "installed skill registry must contain exactly four pinned skills",
+        "installed skill registry must contain exactly six pinned skills",
     )
     for skill_id, (version, source_hash) in EXPECTED_SKILLS.items():
         entry = registry_entries.get(skill_id, {})
@@ -719,6 +970,55 @@ def validate_adapter_contracts(
         "compile_plan_task_continue_invocation" in adapter_source
         and "resolve_continue_context" in adapter_source,
         "website adapter does not compile DirectorRoute into local continue",
+    )
+    relay_config_path = (
+        repo_root / ".agents/implementation-plan-relay/adapter-config.json"
+    )
+    try:
+        relay_config = load_json_object(
+            relay_config_path, label="recursive relay adapter config"
+        )
+    except Exception as error:
+        report.errors.append(f"recursive relay adapter config is invalid: {error}")
+        return
+    report.require(
+        relay_config.get("relay_profile") == "recursive_chain_v1"
+        and relay_config.get("relay_topology") == "recursive_chain_v1"
+        and relay_config.get("default_new_run_profile")
+        == "recursive_chain_v1"
+        and relay_config.get("recursive_writer_enabled") is True
+        and relay_config.get("persistent_coordinator") is False
+        and relay_config.get("generic_outer_goal") is False,
+        "new relay runs do not have one exact recursive default",
+    )
+    report.require(
+        relay_config.get("native_goal_mode")
+        == "optional_advisory_mirror"
+        and relay_config.get("native_goal_may_mark_complete") is False
+        and relay_config.get("release_effects_authorized_by_completion")
+        is False,
+        "advisory mirror or protected-effect boundary is not fail closed",
+    )
+    legacy = relay_config.get("legacy_mode", {})
+    report.require(
+        isinstance(legacy, Mapping)
+        and legacy.get("profile") == "coordinator_v2_legacy"
+        and legacy.get("default_writer_enabled") is False
+        and legacy.get("read_only_status_export_enabled") is True,
+        "legacy coordinator compatibility is not read-only by default",
+    )
+    relay_source = (
+        repo_root
+        / "scripts/implementation_control/plan_relay_adapter.py"
+    ).read_text(encoding="utf-8")
+    report.require(
+        "from agentjob_runtime.goal" not in relay_source
+        and "import agentjob_runtime.goal" not in relay_source
+        and "RelayStore" in relay_source
+        and "_require_control" in relay_source
+        and "record_protected_stop" in relay_source
+        and "semantic_projection" in relay_source,
+        "recursive adapter imports coordinator authority or lacks required controls",
     )
 
 
@@ -874,6 +1174,16 @@ def validate_repository_boundary(
                 head_revision=head_revision,
             )
         )
+    allowed_paths.update(
+        _validate_standalone_packet_changes(
+            repo_root,
+            report,
+            allow_active_packet=allow_active_packet,
+        )
+    )
+    allowed_paths.update(
+        _validate_preserved_unrelated_paths(repo_root, report)
+    )
     unexpected_paths = sorted(
         path
         for path in changed_paths

@@ -10,6 +10,7 @@ from agentjob_runtime.errors import GuardStop, RecordValidationError, StateConfl
 from agentjob_runtime.goal.leases import DEFAULT_LEASE_SECONDS, require_active_lease
 from agentjob_runtime.goal.model import (
     GOAL_SCHEMA_VERSION,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
     add_seconds,
     effective_guards,
     map_stop,
@@ -217,7 +218,7 @@ def record_invocation_unknown(
             raise StateConflict("unknown invocation lacks a consumed matching claim")
         entry["invocation_state"] = "unknown"
         entry["pending_step_result"] = {"diagnostic": copy.deepcopy(dict(diagnostic))}
-        if record.get("schema_version") == GOAL_SCHEMA_VERSION:
+        if record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
             disposition = classify_resolution(
                 reason_code="worker.continue_outcome_unknown",
                 status="unknown",
@@ -264,7 +265,7 @@ def pre_execution_stop(
     timestamp: str | None = None,
 ) -> dict[str, Any]:
     current = store.load_goal(goal_id)
-    v3 = current.get("schema_version") == GOAL_SCHEMA_VERSION
+    profiled = current.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
     terminal = map_stop(
         stop_reason,
         schema_version=current.get("schema_version"),
@@ -281,7 +282,7 @@ def pre_execution_stop(
         if entry["invocation_consumed"] or entry["lease_token"] != claim_token:
             raise StateConflict("pre-execution stop cannot follow consumption")
         disposition = None
-        if v3:
+        if profiled:
             disposition = classify_resolution(
                 reason_code=f"precheck.{stop_reason}",
                 status=stop_reason,
@@ -313,18 +314,18 @@ def pre_execution_stop(
         }
         receipt_decision = (
             "continuation_required"
-            if v3 and terminal in {"continuation_required", "recovery_pending"}
+            if profiled and terminal in {"continuation_required", "recovery_pending"}
             else "policy_limit_reached"
-            if v3 and terminal == "terminal_policy_limit"
+            if profiled and terminal == "terminal_policy_limit"
             else "human_intervention_required"
-            if v3 and terminal == "terminal_awaiting_human"
+            if profiled and terminal == "terminal_awaiting_human"
             else "integrity_incident"
-            if v3 and terminal == "terminal_integrity_incident"
+            if profiled and terminal == "terminal_integrity_incident"
             else "guard_stop"
             if terminal == "terminal_guard_exhausted"
             else "protected_stop"
         )
-        if v3 and terminal.startswith("terminal_"):
+        if profiled and terminal.startswith("terminal_"):
             report = build_human_necessity_report(
                 goal_id=record["goal_id"],
                 generation=generation,
@@ -358,8 +359,8 @@ def pre_execution_stop(
             decision=receipt_decision,
             evidence=supplied,
         )
-        if v3 and terminal.startswith("terminal_"):
+        if profiled and terminal.startswith("terminal_"):
             mutation.release_lease()
-        elif not v3:
+        elif not profiled:
             mutation.release_lease()
     return store.load_goal(goal_id)

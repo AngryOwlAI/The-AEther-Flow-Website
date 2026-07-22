@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/codex-goal-mirror-v1.schema.json",
+  "title": "CodexGoalMirror v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "mirror_id", "may_mark_complete", "projection", "projection_sha256", "last_error", "updated_at"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.codex-goal-mirror.v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "mirror_id": {"type": "string", "minLength": 1},
+    "may_mark_complete": {"const": false},
+    "projection": {"type": "object"},
+    "projection_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "last_error": {"type": ["string", "null"]},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}

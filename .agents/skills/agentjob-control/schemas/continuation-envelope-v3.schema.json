@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/continuation-envelope-v3.schema.json",
+  "title": "Authority-Bound Portable Continuation Envelope v3",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "goal_id",
+    "goal_sha256",
+    "completion_contract_sha256",
+    "generation",
+    "handoff_token",
+    "idempotency_key",
+    "predecessor_thread_id",
+    "predecessor_handoff_id",
+    "repository_binding",
+    "repository_topology_policy",
+    "execution_profile",
+    "runtime_binding",
+    "execution_authority_sha256",
+    "question_response_sha256",
+    "coordinator_thread_id",
+    "available_grant_ids",
+    "canonical_state",
+    "progress_summary",
+    "remaining_work",
+    "required_skill",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.continuation-envelope.v3"},
+    "goal_id": {"$ref": "common.schema.json#/$defs/id"},
+    "goal_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "completion_contract_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "generation": {"type": "integer", "minimum": 1},
+    "handoff_token": {"type": "string", "minLength": 32, "maxLength": 512},
+    "idempotency_key": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "predecessor_thread_id": {"type": ["string", "null"]},
+    "predecessor_handoff_id": {
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/id"},
+        {"type": "null"}
+      ]
+    },
+    "repository_binding": {"$ref": "goal-state-v2.schema.json#/$defs/repositoryBinding"},
+    "repository_topology_policy": {"$ref": "goal-state-v3.schema.json#/$defs/repositoryTopologyPolicy"},
+    "execution_profile": {"$ref": "goal-state-v3.schema.json#/$defs/executionProfile"},
+    "runtime_binding": {"$ref": "goal-state-v3.schema.json#/$defs/runtimeBinding"},
+    "execution_authority_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "question_response_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "coordinator_thread_id": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "available_grant_ids": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/id"},
+      "uniqueItems": true
+    },
+    "canonical_state": {
+      "type": "object",
+      "required": [
+        "fingerprint",
+        "control_revision",
+        "active_task_id",
+        "current_decision_id",
+        "current_job_id",
+        "resolution_disposition"
+      ],
+      "properties": {
+        "fingerprint": {"$ref": "common.schema.json#/$defs/sha256"},
+        "control_revision": {"type": ["integer", "null"], "minimum": 0},
+        "active_task_id": {"type": ["string", "null"]},
+        "current_decision_id": {"type": ["string", "null"]},
+        "current_job_id": {"type": ["string", "null"]},
+        "resolution_disposition": {
+          "oneOf": [
+            {"$ref": "resolution-disposition.schema.json"},
+            {"type": "null"}
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "progress_summary": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "remaining_work": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+    "required_skill": {"const": "continue-implementing-goal"},
+    "extensions": {"$ref": "common.schema.json#/$defs/extensions"}
+  },
+  "additionalProperties": false
+}

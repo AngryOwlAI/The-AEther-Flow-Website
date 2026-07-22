@@ -9,6 +9,10 @@ capabilities:
   - sys4ai.agentjob-control.v1
   - sys4ai.control-records.v1
   - sys4ai.goal-relay-state-reader.v1
+  - sys4ai.goal-relay-state-reader.v2
+  - sys4ai.goal-relay-state-reader.v3
   - sys4ai.goal-relay-state.v3
-  - sys4ai.continuation-envelope.v2
-  - sys4ai.thread-provider.v2
+  - sys4ai.goal-relay-state.v4
+  - sys4ai.continuation-envelope.v3
+  - sys4ai.thread-provider.continuous.v1
+  - sys4ai.goal-execution-authority.v1

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/plan-dispatch-intent-v3.schema.json",
+  "title": "PlanDispatchIntent v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "intent_id", "run_id", "generation", "idempotency_key", "create_budget", "attempt_count", "status", "requested_effort", "child_thread_id", "provider_response_sha256"],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-dispatch-intent.v3"},
+    "intent_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "generation": {"type": "integer", "minimum": 1},
+    "idempotency_key": {"type": "string", "minLength": 1},
+    "create_budget": {"const": 1},
+    "attempt_count": {"type": "integer", "minimum": 0, "maximum": 1},
+    "status": {"enum": ["pending", "creating", "returned", "recorded", "ambiguous", "failed_before_create", "human_gate"]},
+    "requested_effort": {"type": "string", "minLength": 1},
+    "child_thread_id": {"type": ["string", "null"]},
+    "provider_response_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

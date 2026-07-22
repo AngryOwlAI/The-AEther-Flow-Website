@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-coordinator-wakeup.schema.json",
+  "title": "Plan Coordinator Wakeup Intent",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "wakeup_id",
+    "plan_id",
+    "generation",
+    "worker_thread_id",
+    "coordinator_thread_id",
+    "task_receipt_sha256",
+    "idempotency_key",
+    "status",
+    "provider_response_sha256",
+    "created_at",
+    "updated_at",
+    "hash_basis",
+    "wakeup_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-coordinator-wakeup.v1"},
+    "wakeup_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "generation": {"type": "integer", "minimum": 1},
+    "worker_thread_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "coordinator_thread_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "task_receipt_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "idempotency_key": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "status": {"enum": ["pending", "delivered", "ambiguous"]},
+    "provider_response_sha256": {
+      "oneOf": [
+        {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "created_at": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"},
+    "hash_basis": {"const": "canonical_json_without_wakeup_content_sha256"},
+    "wakeup_content_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false
+}

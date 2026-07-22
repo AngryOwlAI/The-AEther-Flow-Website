@@ -1,5 +1,5 @@
 skill_id: continue
-version: 0.3.0
+version: 0.4.0
 status: template
 release_maturity: experimental
 stability: evolving
@@ -59,7 +59,7 @@ inputs:
     - Goal and generation context that does not broaden authority.
 outputs:
   primary:
-    - One validated sys4ai.continue-result.v2 object.
+    - One validated sys4ai.continue-result.v3 object when invoked by a v4 goal, or a compatible historical result outside v4.
   evidence:
     - Direct before and after fingerprints, canonical record IDs, command results, validators, and checkpoint status.
 dependencies:
@@ -67,7 +67,7 @@ dependencies:
     - agentjob-control
   optional_skills: []
   required_skill_versions:
-    agentjob-control: ^0.3.0
+    agentjob-control: ^0.4.0
   python:
     standard_library_only: true
     requires_python: ">=3.11"
@@ -131,6 +131,7 @@ runtime_capabilities:
   provides:
     - sys4ai.continue.v1
     - sys4ai.continue.v2
+    - sys4ai.continue.v3
   requires:
     - sys4ai.agentjob-control.v1
     - sys4ai.control-records.v1

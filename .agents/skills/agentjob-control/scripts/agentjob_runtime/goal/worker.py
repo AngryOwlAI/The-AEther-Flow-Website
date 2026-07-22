@@ -25,7 +25,12 @@ from agentjob_runtime.goal.launcher import (
     build_continuation_envelope,
     build_worker_prompt,
 )
-from agentjob_runtime.goal.model import GOAL_SCHEMA_VERSION, fingerprint_status
+from agentjob_runtime.goal.model import (
+    GOAL_SCHEMA_VERSION,
+    GOAL_SCHEMA_VERSION_V4,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
+    fingerprint_status,
+)
 from agentjob_runtime.goal.sqlite_store import SQLiteGoalStore
 from agentjob_runtime.goal.successor import record_dispatch_outcome, record_successor
 from agentjob_runtime.goal.verify import verify_generation
@@ -93,7 +98,9 @@ def _validate_envelope(
         Path(__file__).resolve().parents[3]
         / "schemas"
         / (
-            "continuation-envelope-v2.schema.json"
+            "continuation-envelope-v3.schema.json"
+            if value.get("schema_version") == "sys4ai.continuation-envelope.v3"
+            else "continuation-envelope-v2.schema.json"
             if value.get("schema_version") == "sys4ai.continuation-envelope.v2"
             else "continuation-envelope.schema.json"
         )
@@ -144,9 +151,19 @@ def _validate_envelope(
                     "actual_revision": effective_revision,
                 },
             )
-    if value.get("schema_version") == "sys4ai.continuation-envelope.v2":
-        if record.get("schema_version") != GOAL_SCHEMA_VERSION:
-            raise StateConflict("a v2 envelope requires canonical goal state v3")
+    if value.get("schema_version") in {
+        "sys4ai.continuation-envelope.v2",
+        "sys4ai.continuation-envelope.v3",
+    }:
+        expected_goal_version = (
+            GOAL_SCHEMA_VERSION_V4
+            if value.get("schema_version") == "sys4ai.continuation-envelope.v3"
+            else GOAL_SCHEMA_VERSION
+        )
+        if record.get("schema_version") != expected_goal_version:
+            raise StateConflict(
+                "the authority-bound envelope and canonical goal versions disagree"
+            )
         if (
             value.get("execution_profile") != record["execution_profile"]
             or value.get("repository_topology_policy")
@@ -192,6 +209,22 @@ def _validate_envelope(
                     "expected_repository_binding_sha256": expected_binding,
                 },
             )
+        if value.get("schema_version") == "sys4ai.continuation-envelope.v3":
+            from agentjob_runtime.goal.continuous import available_grant_ids
+
+            if (
+                value.get("execution_authority_sha256")
+                != content_sha256(record["execution_authority"])
+                or value.get("question_response_sha256")
+                != content_sha256(record["question_response"])
+                or value.get("coordinator_thread_id")
+                != record["coordinator"]["thread_id"]
+                or value.get("available_grant_ids")
+                != available_grant_ids(record)
+            ):
+                raise StateConflict(
+                    "worker envelope differs from canonical v4 execution authority"
+                )
     return record, effective_revision
 
 
@@ -200,7 +233,9 @@ def _validate_continue_result(result: Mapping[str, Any]) -> list[str]:
         Path(__file__).resolve().parents[3]
         / "schemas"
         / (
-            "continue-result-v2.schema.json"
+            "continue-result-v3.schema.json"
+            if result.get("schema_version") == "sys4ai.continue-result.v3"
+            else "continue-result-v2.schema.json"
             if result.get("schema_version") == "sys4ai.continue-result.v2"
             else "continue-result.schema.json"
         )
@@ -219,7 +254,10 @@ def _result_stop_reason(
         return "pass_limit"
     if status == "integrity_incident":
         return "duplicate"
-    if result.get("schema_version") == "sys4ai.continue-result.v2":
+    if result.get("schema_version") in {
+        "sys4ai.continue-result.v2",
+        "sys4ai.continue-result.v3",
+    }:
         return None
     if status == "bootstrap_required":
         return "capability"
@@ -286,6 +324,7 @@ def run_goal_worker(
     observations: Mapping[str, bool] | None = None,
     legal_route_available: bool,
     successor_provider: ThreadProvider | None = None,
+    coordinator_provider: Any | None = None,
     claim_token: str | None = None,
     successor_handoff_token: str | None = None,
     observed_execution_profile: Mapping[str, Any] | None = None,
@@ -306,6 +345,50 @@ def run_goal_worker(
     goal_id = str(record["goal_id"])
     generation = int(envelope["generation"])
     budget = WorkerBudget()
+
+    def finish(
+        final_record: Mapping[str, Any],
+        *,
+        status: str,
+        agentjobs_executed: int | str,
+        successor_envelope_sha256: str | None = None,
+        recovery_required: bool = False,
+    ) -> WorkerSummary:
+        summary = _summary(
+            final_record,
+            generation=generation,
+            status=status,
+            budget=budget,
+            agentjobs_executed=agentjobs_executed,
+            successor_envelope_sha256=successor_envelope_sha256,
+            recovery_required=recovery_required,
+        )
+        if (
+            record.get("schema_version") == GOAL_SCHEMA_VERSION_V4
+            and coordinator_provider is not None
+            and summary.receipt_hash is not None
+        ):
+            from agentjob_runtime.goal.continuous import notify_coordinator
+
+            notify_coordinator(
+                store,
+                goal_id=goal_id,
+                generation=generation,
+                worker_thread_id=current_thread_id,
+                step_receipt_sha256=summary.receipt_hash,
+                provider=coordinator_provider,
+                timestamp=timestamp,
+            )
+            summary = _summary(
+                store.load_goal(goal_id),
+                generation=generation,
+                status=status,
+                budget=budget,
+                agentjobs_executed=agentjobs_executed,
+                successor_envelope_sha256=successor_envelope_sha256,
+                recovery_required=recovery_required,
+            )
+        return summary
     claimed = claim_generation(
         store,
         goal_id=goal_id,
@@ -329,9 +412,8 @@ def run_goal_worker(
             stop_reason=stops[0],
             timestamp=timestamp,
         )
-        return _summary(
+        return finish(
             stopped,
-            generation=generation,
             status=(
                 "repair_routed"
                 if stopped["state"]["phase"] == "continuation_required"
@@ -339,7 +421,6 @@ def run_goal_worker(
                 if stopped["state"]["phase"] == "recovery_pending"
                 else "pre_execution_stop"
             ),
-            budget=budget,
             agentjobs_executed=0,
             recovery_required=stopped["state"]["phase"]
             in {"continuation_required", "recovery_pending"},
@@ -370,11 +451,9 @@ def run_goal_worker(
             },
             timestamp=timestamp,
         )
-        return _summary(
+        return finish(
             unknown,
-            generation=generation,
             status="invocation_unknown",
-            budget=budget,
             agentjobs_executed="unknown",
             recovery_required=True,
         )
@@ -392,14 +471,52 @@ def run_goal_worker(
             },
             timestamp=timestamp,
         )
-        return _summary(
+        return finish(
             unknown,
-            generation=generation,
             status="invocation_unknown",
-            budget=budget,
             agentjobs_executed="unknown",
             recovery_required=True,
         )
+    if record.get("schema_version") == GOAL_SCHEMA_VERSION_V4:
+        if result.get("schema_version") != "sys4ai.continue-result.v3":
+            unknown = record_invocation_unknown(
+                store,
+                goal_id=goal_id,
+                expected_revision=int(consumed["state"]["revision"]),
+                generation=generation,
+                claim_token=effective_claim_token,
+                diagnostic={
+                    "reason_code": "worker.authority_bound_result_required",
+                    "actual_schema_version": result.get("schema_version"),
+                },
+                timestamp=timestamp,
+            )
+            return finish(
+                unknown,
+                status="invocation_unknown",
+                agentjobs_executed="unknown",
+                recovery_required=True,
+            )
+        if result.get("execution_authority_sha256") != content_sha256(
+            record["execution_authority"]
+        ):
+            unknown = record_invocation_unknown(
+                store,
+                goal_id=goal_id,
+                expected_revision=int(consumed["state"]["revision"]),
+                generation=generation,
+                claim_token=effective_claim_token,
+                diagnostic={
+                    "reason_code": "worker.execution_authority_mismatch",
+                },
+                timestamp=timestamp,
+            )
+            return finish(
+                unknown,
+                status="invocation_unknown",
+                agentjobs_executed="unknown",
+                recovery_required=True,
+            )
     returned = record_invocation_returned(
         store,
         goal_id=goal_id,
@@ -430,6 +547,51 @@ def run_goal_worker(
         timestamp=timestamp,
     )
     stop_reason = _result_stop_reason(result, direct_evidence)
+    protected_action = result.get("protected_action_request")
+    if (
+        verified.get("schema_version") == GOAL_SCHEMA_VERSION_V4
+        and isinstance(protected_action, Mapping)
+    ):
+        from agentjob_runtime.goal.continuous import (
+            consume_execution_grant,
+            route_protected_action,
+        )
+
+        try:
+            verified = consume_execution_grant(
+                store,
+                goal_id=goal_id,
+                expected_revision=int(verified["state"]["revision"]),
+                generation=generation,
+                action=protected_action,
+                evidence_ref=f"generation:{generation}:continue-result",
+                timestamp=timestamp,
+            )
+        except StateConflict:
+            if legal_route_available:
+                verified = route_protected_action(
+                    store,
+                    goal_id=goal_id,
+                    expected_revision=int(verified["state"]["revision"]),
+                    generation=generation,
+                    action=protected_action,
+                    preauthorized=False,
+                    timestamp=timestamp,
+                )
+                stop_reason = None
+            else:
+                stop_reason = "human_gate"
+        else:
+            verified = route_protected_action(
+                store,
+                goal_id=goal_id,
+                expected_revision=int(verified["state"]["revision"]),
+                generation=generation,
+                action=protected_action,
+                preauthorized=True,
+                timestamp=timestamp,
+            )
+            stop_reason = None
     if stop_reason is not None:
         final = decide_generation(
             store,
@@ -441,16 +603,14 @@ def run_goal_worker(
             explicit_stop_reason=stop_reason,
             timestamp=timestamp,
         )
-        return _summary(
+        return finish(
             final,
-            generation=generation,
             status=(
                 "provider_recovery_required"
                 if final["state"]["phase"]
                 in {"continuation_required", "recovery_pending"}
                 else "terminal"
             ),
-            budget=budget,
             agentjobs_executed=result["agent_jobs_executed"],
             recovery_required=final["state"]["phase"]
             in {"continuation_required", "recovery_pending"},
@@ -470,11 +630,9 @@ def run_goal_worker(
             explicit_stop_reason="capability",
             timestamp=timestamp,
         )
-        return _summary(
+        return finish(
             final,
-            generation=generation,
             status="terminal",
-            budget=budget,
             agentjobs_executed=result["agent_jobs_executed"],
         )
     decided = decide_and_reserve_successor(
@@ -496,11 +654,9 @@ def run_goal_worker(
         timestamp=timestamp,
     )
     if decided["state"]["phase"] != "successor_intent":
-        return _summary(
+        return finish(
             decided,
-            generation=generation,
             status="terminal",
-            budget=budget,
             agentjobs_executed=result["agent_jobs_executed"],
         )
     next_generation = int(decided["state"]["current_generation"])
@@ -531,7 +687,7 @@ def run_goal_worker(
             envelope=next_envelope,
             idempotency_key=str(next_entry["idempotency_key"]),
             execution_profile=copy.deepcopy(decided["execution_profile"])
-            if decided.get("schema_version") == GOAL_SCHEMA_VERSION
+            if decided.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
             else {},
         )
     except Exception as error:  # Unknown provider outcome must never be retried here.
@@ -540,7 +696,7 @@ def run_goal_worker(
             None,
             {"reason_code": "provider.exception", "exception_type": type(error).__name__},
         )
-    if decided.get("schema_version") == GOAL_SCHEMA_VERSION:
+    if decided.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS:
         provider_result = _validate_created_profile(
             provider_result,
             execution_profile=decided["execution_profile"],
@@ -584,11 +740,9 @@ def run_goal_worker(
             timestamp=timestamp,
         )
         status = "successor_dispatch_failed"
-    return _summary(
+    return finish(
         final,
-        generation=generation,
         status=status,
-        budget=budget,
         agentjobs_executed=result["agent_jobs_executed"],
         successor_envelope_sha256=next_envelope_hash,
         recovery_required=provider_status != "returned"

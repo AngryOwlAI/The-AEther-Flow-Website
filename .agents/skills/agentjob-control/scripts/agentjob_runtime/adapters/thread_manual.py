@@ -94,6 +94,12 @@ def _validate_envelope(envelope: Mapping[str, Any]) -> dict[str, Any]:
             / "schemas"
             / "continuation-envelope-v2.schema.json"
         )
+    elif version == "sys4ai.continuation-envelope.v3":
+        schema = (
+            Path(__file__).resolve().parents[3]
+            / "schemas"
+            / "continuation-envelope-v3.schema.json"
+        )
     elif version == "sys4ai.plan-task-envelope.v1":
         schema = (
             Path(__file__).resolve().parents[4]
@@ -164,6 +170,8 @@ class ManualThreadProvider:
             "can_reuse_bound_checkout": True,
             "can_create_worktree": False,
             "can_query_by_idempotency_key": False,
+            "can_wait_for_terminal": False,
+            "can_resume_thread": False,
         }
 
     def _directory(self, envelope: Mapping[str, Any]) -> Path:
@@ -201,6 +209,7 @@ class ManualThreadProvider:
         requested_effort = str(execution_profile["reasoning_effort"])
         if value.get("schema_version") in {
             "sys4ai.continuation-envelope.v2",
+            "sys4ai.continuation-envelope.v3",
             "sys4ai.plan-task-envelope.v2",
         }:
             if (
@@ -337,6 +346,7 @@ def adopt_manual_successor(
     if envelope["schema_version"] not in {
         "sys4ai.continuation-envelope.v1",
         "sys4ai.continuation-envelope.v2",
+        "sys4ai.continuation-envelope.v3",
     }:
         raise StateConflict(
             "generic manual adoption requires a continuation envelope"
@@ -367,7 +377,10 @@ def adopt_manual_successor(
         "receipt_path": receipt_path.relative_to(root).as_posix(),
         "envelope_sha256": envelope_sha256,
     }
-    if envelope["schema_version"] == "sys4ai.continuation-envelope.v2":
+    if envelope["schema_version"] in {
+        "sys4ai.continuation-envelope.v2",
+        "sys4ai.continuation-envelope.v3",
+    }:
         requested = envelope["execution_profile"]["reasoning_effort"]
         observed_binding = copy.deepcopy(
             dict(observed_repository_binding or {})

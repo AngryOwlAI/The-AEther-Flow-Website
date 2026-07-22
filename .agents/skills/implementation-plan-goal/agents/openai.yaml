@@ -1,22 +1,14 @@
 interface:
-  display_name: Implementation Plan Goal
-  short_description: Launch a profile-bound serial implementation-plan relay.
+  display_name: Implementation Plan Goal (Deprecated)
+  short_description: Compatibility name for Implementation Plan Relay.
 policy:
   allow_implicit_invocation: false
-  user_invocation: explicit_only
-  internal_invocation: forbidden
+  user_invocation: deprecated_redirect
+  internal_invocation: false
 constraints:
+  maximum_continue_invocations: 0
   maximum_agentjobs_per_invocation: 0
   maximum_successors_per_invocation: 1
-  may_spawn_threads: true
+  persistent_coordinator: false
 capabilities:
-  - sys4ai.implementation-plan-goal.runtime.v1
-  - sys4ai.plan-task-envelope.v2
-  - sys4ai.thread-provider.v2
-  - sys4ai.repository-topology-enforcement.v1
-defaults:
-  reasoning_effort: max
-  environment_mode: reuse_bound_checkout
-activation_contract:
-  requires_combined_goal_and_effort_acceptance: true
-  metadata_is_not_runtime_verification: true
+  - sys4ai.implementation-plan-goal.compat-shim.v1

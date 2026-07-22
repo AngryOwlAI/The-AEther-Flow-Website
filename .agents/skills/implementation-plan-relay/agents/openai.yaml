@@ -1,0 +1,18 @@
+interface:
+  display_name: Implementation Plan Relay
+  short_description: Launch one plan-native recursive task chain.
+policy:
+  allow_implicit_invocation: false
+  user_invocation: explicit
+  internal_invocation: false
+constraints:
+  maximum_continue_invocations: 0
+  maximum_agentjobs_per_invocation: 0
+  maximum_successors_per_invocation: 1
+  may_spawn_threads: true
+  persistent_coordinator: false
+capabilities:
+  - sys4ai.implementation-plan-relay.runtime.v1
+  - sys4ai.plan-relay.sqlite.v1
+  - sys4ai.plan-task-envelope.v3
+

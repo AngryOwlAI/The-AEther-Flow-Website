@@ -1,6 +1,0 @@
-{
-  "requirements": [
-    "The implementation must be deterministic.",
-    "The result must be directly verified."
-  ]
-}

@@ -1,0 +1,111 @@
+schema_version: "0.1"
+record_type: "implementation_task"
+task_id: "WI-20260722-049"
+title: "Prevent topology changes from overlapping an active or ambiguous generation and capture the exact pre-redesign evidence set."
+created_utc: "2026-07-22T07:00:00Z"
+updated_utc: "2026-07-22T07:15:00Z"
+status: "completed"
+source_context:
+  plan_id: "PLAN-SYS4AI-RECURSIVE-RELAY-BOOTSTRAP-RLY-00-01"
+  plan_sha256: "ba0d6a2a52000f9d32d9cc8d30c768e3cd8c7a47cb74298c2ee784655a5066e0"
+  plan_task_id: "RLY-00-01"
+  plan_task_sha256: "9e70f2e79fabc0120652962255c72f5f6147964faf81c9c290eadfa2ba4bfc32"
+  binding_manifest_sha256: "07eee0525d3aa75e335520fca69e6ca72ac41f694dc438172f59b2afe4dae690"
+  authority_sha256: "1b11807a4f83befaff6f54c8528e84418edf9187527d39bfc936039340dda454"
+  implementation_authority: "implementation_control only"
+goal: "Prevent topology changes from overlapping an active or ambiguous generation and capture the exact pre-redesign evidence set."
+requirements:
+  - "No state mutation was performed during discovery."
+  - "Every known run is classified as terminal, active, ambiguous, or corrupt with direct record references."
+  - "No active or ambiguous generation is selected for topology conversion."
+  - "Database and repository identities are sufficient to detect drift later."
+scope:
+  in_scope:
+    - "docs/quality/plan-native-recursive-relay-baseline-audit-2026-07-22.md"
+  out_of_scope:
+    - "Any path, task, claim, or effect absent from this exact binding."
+allowed_reads:
+  website_repository:
+    - "AGENTS.md"
+    - "SOUL.md"
+    - "ImplementationPlans/plan_native_recursive_discussion_relay_implementation_plan.md"
+    - "package.json"
+    - "implementation_control/**"
+    - "scripts/**"
+    - "tests/**"
+    - "docs/**"
+    - ".local/sys4ai/implementation-plan-goal/**"
+allowed_writes:
+  website_repository:
+    - "docs/quality/plan-native-recursive-relay-baseline-audit-2026-07-22.md"
+  upstream_source_repository: []
+approval_gates:
+  public_claim_changes:
+    status: "not_required"
+    reason: "public_claim_changes is outside this baseline-audit packet."
+  source_refresh_uncertainty:
+    status: "not_required"
+    reason: "source_refresh_uncertainty is outside this baseline-audit packet."
+  broad_navigation_or_route_retirement:
+    status: "not_required"
+    reason: "broad_navigation_or_route_retirement is outside this baseline-audit packet."
+  shared_visual_systems:
+    status: "not_required"
+    reason: "shared_visual_systems is outside this baseline-audit packet."
+  public_downloadable_assets:
+    status: "not_required"
+    reason: "public_downloadable_assets is outside this baseline-audit packet."
+  public_manifest_authority_records:
+    status: "not_required"
+    reason: "public_manifest_authority_records is outside this baseline-audit packet."
+  git_push:
+    status: "not_required"
+    reason: "git_push is outside this baseline-audit packet."
+  cloudflare_deployment:
+    status: "not_required"
+    reason: "cloudflare_deployment is outside this baseline-audit packet."
+  upstream_source_project_writes:
+    status: "blocked"
+    reason: "Every upstream write is forbidden; this packet records a website-local read-only baseline."
+required_validators:
+  - id: "rly-00-01-01"
+    command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/implementation_control/continue_plan_goal.py status"
+    required: true
+  - id: "rly-00-01-02"
+    command: "manual cross-check of plan-run record counts database hashes journal heads and repository identities"
+    required: true
+  - id: "rly-00-01-03"
+    command: "git diff --check"
+    required: true
+stop_conditions:
+  - "Plan task binding repository or control identity differs."
+  - "Discovery finds an active ambiguous consumed-unknown or unrecorded-child generation."
+  - "SQLite integrity journal parity or provider/session parity fails."
+  - "A required write or effect exceeds this exact packet."
+checkpoint_expectations:
+  automated_checkpoint_command_available: false
+  staging_allowed_by_this_job: false
+  commit_allowed_by_this_job: false
+  branch_allowed_by_this_job: false
+  worktree_allowed_by_this_job: false
+  push_allowed_by_this_job: false
+  deploy_allowed_by_this_job: false
+execution_role:
+  role_id: "website-relay-baseline-auditor"
+  role_version: "1.0.0"
+  responsibilities:
+    - "Inspect current control and SQLite state without mutation."
+    - "Record the exact baseline parity table ambiguity list and freeze disposition."
+    - "Preserve unrelated dirty work and all historical evidence."
+  may_not:
+    - "Repair or convert any stored run."
+    - "Execute another relay task."
+    - "Stage commit push deploy or mutate an upstream repository."
+handoff:
+  latest_handoff_id: "WH-20260722-049"
+  yaml_path: "implementation_control/handoffs/WH-20260722-049.yaml"
+  markdown_path: "implementation_control/handoffs/WH-20260722-049.md"
+next_recommended_action:
+  task_packet: "RLY-00-01"
+  summary: "Prevent topology changes from overlapping an active or ambiguous generation and capture the exact pre-redesign evidence set."
+  do_not_skip: "Do not broaden the hash-bound website packet."

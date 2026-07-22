@@ -1,0 +1,57 @@
+{
+  "schema_version": "website.plan-native-relay-cutover.v1",
+  "status": "active_for_new_runs",
+  "activated_at": "2026-07-22T20:02:53Z",
+  "authority_ref": "codex-thread:019f8ad5-73d1-77f2-8d9d-521ccc9c98df:user-message:any-issue-authorization",
+  "canonical_release": {
+    "repository": "/Volumes/P-SSD/AngryOwl/skills-Sys4AI",
+    "commit": "e9fd6cb5d836bd6b1ee19edef2f025a6ab9178e3",
+    "tag": "implementation-plan-relay-v0.3.0",
+    "tag_published_to_origin": true,
+    "bundle_id": "implementation-plan-relay",
+    "bundle_version": "0.3.0",
+    "relay_profile": "recursive_chain_v1",
+    "relay_topology": "recursive_chain_v1",
+    "database_schema": "sys4ai.implementation-plan-relay.sqlite.v1",
+    "source_lock_sha256": "72bbb35580e9b5678c8a126b7ae45c6ee2167983e4c75d0218a91a3dcbfe1fd2",
+    "acceptance_receipt_sha256": "022ddd16f0e85e338046c8f880dca90f65612fefd5f93f4b41c31f717ac44b54"
+  },
+  "final_install": {
+    "installer_version": "2.0.0",
+    "transaction_id": "620f37c82966485f86d7a02cf57dc6da",
+    "receipt": ".agents/skill_registry/INSTALL_RECEIPTS/bundle-implementation-plan-relay-620f37c82966485f86d7a02cf57dc6da.json",
+    "receipt_sha256": "25568b4e830d4ef9fb567d0a79b9d8ef463248018037af3a7f65753fdac95bd3",
+    "action_count": 6,
+    "actions": "all unchanged after clean-source release",
+    "installed_hash_verification": "pass",
+    "bootstrap_requested": false,
+    "python_package_install_requested": false
+  },
+  "website_selection": {
+    "default_new_run_profile": "recursive_chain_v1",
+    "recursive_writer_enabled": true,
+    "legacy_default_writer_enabled": false,
+    "persistent_coordinator": false,
+    "generic_outer_goal": false,
+    "provider_mode": "degraded_manual",
+    "release_effects_authorized_by_completion": false
+  },
+  "state_preservation": {
+    "recursive_state_path": ".local/sys4ai/implementation-plan-relay/state.sqlite3",
+    "recursive_state_initialized_by_install": false,
+    "legacy_state_path": ".local/sys4ai/implementation-plan-goal/state.sqlite3",
+    "legacy_state_sha256_before_install": "ad7aecf857bc9153fa50722cee03b5136b7ea5790889c6c4440f83d01ce4cf5b",
+    "legacy_state_sha256_after_install": "ad7aecf857bc9153fa50722cee03b5136b7ea5790889c6c4440f83d01ce4cf5b",
+    "dual_write_used": false,
+    "state_deleted_or_converted": false
+  },
+  "rollback": {
+    "selector_action": "set recursive_writer_enabled=false and refuse new launch",
+    "installer_manifest": ".local/sys4ai/install-transactions/620f37c82966485f86d7a02cf57dc6da/rollback.json",
+    "preserve_recursive_state": true,
+    "preserve_legacy_state": true,
+    "active_or_consumed_run_conversion_authorized": false
+  },
+  "compatibility_window_started_at": "2026-07-22T20:02:53Z",
+  "website_push_or_deployment_performed": false
+}

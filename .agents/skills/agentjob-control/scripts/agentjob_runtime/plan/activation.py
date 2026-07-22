@@ -319,9 +319,15 @@ def _validate_activation_receipt_record(
     receipt: Mapping[str, Any],
 ) -> dict[str, Any]:
     value = copy.deepcopy(dict(receipt))
+    schema_name = (
+        "plan-activation-receipt-v2.schema.json"
+        if value.get("schema_version")
+        == "sys4ai.plan-activation-receipt.v2"
+        else "plan-activation-receipt.schema.json"
+    )
     issues = validate_instance(
         value,
-        _schema("plan-activation-receipt.schema.json"),
+        _schema(schema_name),
     )
     if issues:
         raise RecordValidationError(
@@ -343,6 +349,13 @@ def _validate_activation_receipt_record(
     if value["reasoning_effort"] != value["current_thread_effective_effort"]:
         raise RecordValidationError(
             "accepted effort was not verified on the current discussion"
+        )
+    if value.get("schema_version") == "sys4ai.plan-activation-receipt.v2" and (
+        value["reasoning_effort"] != "max"
+        or value.get("continuous_execution") is not True
+    ):
+        raise RecordValidationError(
+            "continuous plan activation requires verified max effort"
         )
     return value
 
@@ -455,6 +468,9 @@ def validate_activation_receipt(
     goal_text: str,
     repository_binding: Mapping[str, Any],
     repository_topology_policy: Mapping[str, Any],
+    question_batch: Mapping[str, Any] | None = None,
+    execution_authority: Mapping[str, Any] | None = None,
+    question_response: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     value = _validate_activation_receipt_record(receipt)
     binding = validate_repository_binding(
@@ -490,6 +506,53 @@ def validate_activation_receipt(
                 "reason_code": "plan_activation.binding_mismatch",
                 "mismatches": mismatches,
             },
+        )
+    supplied_continuous = (
+        question_batch,
+        execution_authority,
+        question_response,
+    )
+    if value["schema_version"] == "sys4ai.plan-activation-receipt.v2":
+        if any(item is None for item in supplied_continuous):
+            raise StateConflict(
+                "activation receipt v2 requires its exact question, authority, "
+                "and response records"
+            )
+        continuous_expected = {
+            "accepted_plan_revision": question_batch[
+                "accepted_plan_revision"
+            ],
+            "question_batch_sha256": content_sha256(question_batch),
+            "execution_authority_sha256": content_sha256(
+                execution_authority
+            ),
+            "question_response_sha256": content_sha256(question_response),
+        }
+        continuous_mismatches = {
+            key: {"expected": expected_value, "actual": value.get(key)}
+            for key, expected_value in continuous_expected.items()
+            if value.get(key) != expected_value
+        }
+        if continuous_mismatches:
+            raise StateConflict(
+                "continuous activation records do not match the receipt",
+                details={
+                    "reason_code": "plan_activation.intake_binding_mismatch",
+                    "mismatches": continuous_mismatches,
+                },
+            )
+        if (
+            question_batch["accepted_plan_revision"]
+            != execution_authority["accepted_plan_revision"]
+            or question_batch["accepted_plan_sha256"]
+            != execution_authority["accepted_plan_sha256"]
+        ):
+            raise StateConflict(
+                "continuous question and authority records bind different plan revisions"
+            )
+    elif any(item is not None for item in supplied_continuous):
+        raise RecordValidationError(
+            "legacy activation receipts cannot acquire continuous authority"
         )
     return value
 

@@ -10,6 +10,8 @@ from agentjob_runtime.goal.leases import require_active_lease
 from agentjob_runtime.goal.model import (
     ABSORBING_TERMINALS,
     GOAL_SCHEMA_VERSION,
+    GOAL_SCHEMA_VERSION_V4,
+    PROFILED_GOAL_SCHEMA_VERSIONS,
     RECOVERABLE_TERMINALS,
     TERMINAL_PHASES,
     V3_TERMINAL_PHASES,
@@ -41,7 +43,7 @@ def select_decision(
     if entry is None or record["state"]["phase"] != "step_verified":
         raise StateConflict("decision selection requires a verified generation")
     evaluation = record["state"]["goal_evaluation"]
-    v3 = record.get("schema_version") == GOAL_SCHEMA_VERSION
+    profiled = record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
     if explicit_stop_reason is not None:
         terminal = map_stop(
             explicit_stop_reason,
@@ -54,11 +56,11 @@ def select_decision(
         return terminal, explicit_stop_reason
     if evaluation == "met":
         return "terminal_complete", "goal_met"
-    if v3:
+    if profiled:
         stops = guard_precheck(record, timestamp=timestamp)
         if stops:
             return (
-                map_stop(stops[0], schema_version=GOAL_SCHEMA_VERSION),
+                map_stop(stops[0], schema_version=record.get("schema_version")),
                 stops[0],
             )
         disposition = entry.get("resolution_disposition")
@@ -103,7 +105,8 @@ def decide_generation(
     now = timestamp or utc_now()
     with store.mutation(goal_id, expected_revision=expected_revision, timestamp=now) as mutation:
         record = mutation.record
-        v3 = record.get("schema_version") == GOAL_SCHEMA_VERSION
+        profiled = record.get("schema_version") in PROFILED_GOAL_SCHEMA_VERSIONS
+        v4 = record.get("schema_version") == GOAL_SCHEMA_VERSION_V4
         entry = record["generations"].get(str(generation))
         if entry is None or record["state"]["phase"] != "step_verified":
             raise StateConflict("generation decision requires step_verified")
@@ -123,8 +126,8 @@ def decide_generation(
             schema_version=record.get("schema_version"),
         ):
             raise StateConflict(f"unlisted normal transition: step_verified -> {decision}")
-        disposition = entry.get("resolution_disposition") if v3 else None
-        if v3:
+        disposition = entry.get("resolution_disposition") if profiled else None
+        if profiled:
             if decision == "terminal_complete":
                 disposition = classify_resolution(
                     reason_code="goal.met",
@@ -197,14 +200,14 @@ def decide_generation(
                 else "integrity_incident"
                 if decision == "terminal_integrity_incident"
                 else "human_intervention_required"
-                if v3
+                if profiled
                 else "guard_stop"
                 if decision == "terminal_guard_exhausted"
                 else "protected_stop"
                 if decision in {"terminal_awaiting_human", "terminal_capability_blocked"}
                 else "failed"
             )
-            if v3 and decision != "terminal_complete":
+            if profiled and decision != "terminal_complete":
                 human = build_human_necessity_report(
                     goal_id=record["goal_id"],
                     generation=generation,
@@ -244,7 +247,20 @@ def decide_generation(
                 generation=generation,
                 decision=receipt_decision,
             )
-            if v3 and decision == "terminal_complete":
+            if v4:
+                record["coordinator"]["status"] = (
+                    "goal_reached"
+                    if decision == "terminal_complete"
+                    else "cancelled"
+                    if decision == "terminal_cancelled"
+                    else "suspended_safeguard"
+                )
+                record["coordinator"]["current_worker_thread_id"] = None
+                record["coordinator"]["last_worker_receipt_sha256"] = entry[
+                    "finalized_receipt_hash"
+                ]
+                record["coordinator"]["updated_at"] = now
+            if profiled and decision == "terminal_complete":
                 report = build_completion_report(record, completed_at=now)
                 record["completion_report"] = report
                 entry["completion_report_ref"] = report["report_id"]

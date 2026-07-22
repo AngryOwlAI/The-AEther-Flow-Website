@@ -1,0 +1,28 @@
+{
+  "schema_version": "sys4ai.plan-task-envelope.v3",
+  "run_id": "RUN-REPLACE-ME",
+  "plan_id": "PLAN-REPLACE-ME",
+  "plan_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "task_id": "TASK-REPLACE-ME",
+  "task_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "generation": 1,
+  "predecessor_thread_id": "LAUNCHER-THREAD-REPLACE-ME",
+  "predecessor_receipt_sha256": null,
+  "repository_binding": {
+    "project_id": "PROJECT-REPLACE-ME",
+    "checkout_id": "CHECKOUT-REPLACE-ME"
+  },
+  "repository_fingerprint": "REPOSITORY-FINGERPRINT-REPLACE-ME",
+  "control_fingerprint": "CONTROL-FINGERPRINT-REPLACE-ME",
+  "relay_profile": "recursive_chain_v1",
+  "relay_topology": "recursive_chain_v1",
+  "requested_effort": "REPLACE-ME",
+  "handoff_token_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "cardinality": {
+    "tasks": 1,
+    "continue_invocations": 1,
+    "agentjobs": 1,
+    "next_task_successors": 1,
+    "same_task_successors": 0
+  }
+}

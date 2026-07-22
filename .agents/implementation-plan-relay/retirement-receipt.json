@@ -1,0 +1,46 @@
+{
+  "schema_version": "website.legacy-coordinator-retirement.v1",
+  "status": "retired_from_default_surface",
+  "decided_at": "2026-07-22T20:04:00Z",
+  "recursive_release": "implementation-plan-relay-v0.3.0",
+  "compatibility_window_basis": "one published recursive version plus passing pilot, recovery, installation, adapter, and legacy-read evidence",
+  "monitoring": {
+    "mode": "passive_only",
+    "recursive_live_run_count": 0,
+    "ambiguous_intents": 0,
+    "multiple_children": 0,
+    "unknown_consumed_invocations": 0,
+    "lease_anomalies": 0,
+    "terminalization_failures": 0,
+    "mirror_failures": 0,
+    "automatic_retry_or_reassignment_performed": false
+  },
+  "legacy_audit": {
+    "database_sha256": "ad7aecf857bc9153fa50722cee03b5136b7ea5790889c6c4440f83d01ce4cf5b",
+    "plan_count": 3,
+    "terminal_complete": 1,
+    "terminal_validation_failed": 2,
+    "finalized_provider_intents": 47,
+    "open_provider_intents": 0,
+    "active_plan_leases": 0,
+    "active_goal_leases": 0,
+    "preserved_pending_tasks_in_terminal_plans": [
+      "PLAN-AETHER-DOCUMENTS-NAV-001:AFDOC-033",
+      "PLAN-AETHER-DOCUMENTS-NAV-RECOVERY-001:AFDOC-R003"
+    ],
+    "active_generation_converted_or_rewritten": false,
+    "required_default_legacy_writer_found": false
+  },
+  "retirement_boundary": {
+    "default_coordinator_writer_enabled": false,
+    "recursive_adapter_imports_legacy_writer": false,
+    "legacy_mutation_requires_explicit_profile": "coordinator_v2_legacy",
+    "legacy_mutation_scope": "named historical runs only",
+    "worker_to_coordinator_wakeup_default": false,
+    "resume_thread_coordinator_default": false,
+    "read_only_status_export_retained": true,
+    "schema_3_through_7_readers_retained": true
+  },
+  "decision": "No permanent coordinator is required for new operation. Historical terminal state remains readable and immutable; selector-gated legacy code is retained only as an archived compatibility boundary, not a default writer.",
+  "website_push_or_deployment_performed": false
+}

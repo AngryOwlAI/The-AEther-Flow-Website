@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/agentjob-control/goal-question-response.schema.json",
+  "title": "Immutable Consolidated Goal Question Response",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "response_id",
+    "batch_id",
+    "batch_content_sha256",
+    "answers",
+    "grants",
+    "answered_at",
+    "hash_basis",
+    "response_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.goal-question-response.v1"},
+    "response_id": {"$ref": "common.schema.json#/$defs/id"},
+    "batch_id": {"$ref": "common.schema.json#/$defs/id"},
+    "batch_content_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question_id", "answer"],
+        "properties": {
+          "question_id": {"$ref": "common.schema.json#/$defs/id"},
+          "answer": {"$ref": "common.schema.json#/$defs/nonEmptyString"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "grants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["grant_id", "granted"],
+        "properties": {
+          "grant_id": {"$ref": "common.schema.json#/$defs/id"},
+          "granted": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "answered_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "hash_basis": {"const": "canonical_json_without_response_content_sha256"},
+    "response_content_sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+    "finalized": {"const": true}
+  },
+  "additionalProperties": false
+}

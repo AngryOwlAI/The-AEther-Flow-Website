@@ -113,7 +113,7 @@ control:
 goal_relay:
   state_backend: sqlite
   local_root: .local/sys4ai/continuation
-  thread_provider: manual-handoff
+  thread_provider: auto
   thread_strategy: fresh_summary
   native_goal_mirror: false
   at_most_once_consumption: true

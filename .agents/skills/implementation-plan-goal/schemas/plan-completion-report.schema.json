@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-completion-report.schema.json",
+  "title": "Canonical Plan Completion Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "plan_id",
+    "plan_sha256",
+    "status",
+    "accepted_profiles",
+    "generation_profile_evidence",
+    "task_receipt_sha256s",
+    "profile_conformant",
+    "topology_conformant",
+    "tasks_complete",
+    "report_content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "sys4ai.plan-completion-report.v1"},
+    "plan_id": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"},
+    "plan_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+    "status": {"enum": ["complete", "incomplete"]},
+    "accepted_profiles": {"type": "array", "items": {"type": "object"}},
+    "generation_profile_evidence": {"type": "array", "items": {"type": "object"}},
+    "task_receipt_sha256s": {
+      "type": "array",
+      "items": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"},
+      "uniqueItems": true
+    },
+    "profile_conformant": {"type": "boolean"},
+    "topology_conformant": {"type": "boolean"},
+    "tasks_complete": {"type": "boolean"},
+    "report_content_sha256": {"$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"}
+  },
+  "additionalProperties": false
+}

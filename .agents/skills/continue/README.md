@@ -9,14 +9,14 @@
 > **Required dependencies:** `agentjob-control`<br>
 > **Recommended bundle:** `governed-continuation`<br>
 > **Recommended plugin:** `sys4ai-governed-continuation`<br>
-> **Mutable state required:** no<br>
+> **Mutable state required:** yes — `{project_root}/.local/sys4ai/continuation`; keep it outside installed skill/plugin trees and preserve it on uninstall<br>
 > **Install command:** `python3 scripts/skills/install_skills.py --skill continue --target-project <PROJECT_ROOT>`<br>
 > **Canonical installation documentation:** [INSTALL.md](../../INSTALL.md)
 <!-- END GENERATED INSTALLATION BANNER -->
 
 ## Release status
 
-This package is an experimental `0.3.0` template with lifecycle status
+This package is an experimental `0.4.0` template with lifecycle status
 `draft`. Use it for governed validation and neutral pilots only after the target
 project supplies explicit adapters, policy, and authority.
 
@@ -26,7 +26,8 @@ or one activated job. It never starts a successor discussion.
 
 ## Required dependency
 
-Version `0.3.0` returns `sys4ai.continue-result.v2`, classifies machine repair
+Version `0.4.0` returns authority-bound `sys4ai.continue-result.v3` inside a
+v4 goal while preserving compatible historical results, classifies machine repair
 separately from human intervention, preserves failed validator/checkpoint
 evidence, and requires repository-topology enforcement for command-capable
 AgentJobs.
@@ -39,8 +40,8 @@ performs no work.
 ## Inputs and output
 
 Supply an explicit `<PROJECT_ROOT>` and, when needed, a task ID. The output is a
-validated `sys4ai.continue-result.v1` object with canonical IDs, fingerprints,
-validator counts, and a stable next-action reason.
+validated structured result with canonical IDs, fingerprints, validator counts,
+execution-authority evidence where applicable, and a stable next-action reason.
 
 ## Portability boundary
 

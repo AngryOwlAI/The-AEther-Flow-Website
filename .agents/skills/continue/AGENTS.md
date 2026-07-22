@@ -20,6 +20,9 @@ belong in this package.
   route; never edit a failure into a pass.
 - Reject branch/worktree creation without exact one-shot protected-action
   authority and before/after topology validation.
+- When invoked by goal state v4, emit `continue-result.v3` bound to the exact
+  execution-authority hash. Surface protected effects as structured requests
+  for worker-side one-shot consumption; never prompt the user from `continue`.
 
 ## Required validation
 

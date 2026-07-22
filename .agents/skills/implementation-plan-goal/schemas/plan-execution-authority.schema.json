@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sys4ai/implementation-plan-goal/plan-execution-authority.schema.json",
+  "title": "Immutable Plan Execution Authority Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "authority_id",
+    "plan_id",
+    "accepted_plan_sha256",
+    "accepted_plan_revision",
+    "bound_checkout_only",
+    "default_local_actions",
+    "excluded_effect_kinds",
+    "requested_effects",
+    "created_at",
+    "hash_basis",
+    "authority_content_sha256",
+    "finalized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sys4ai.plan-execution-authority.v1"
+    },
+    "authority_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "plan_id": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+    },
+    "accepted_plan_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "accepted_plan_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "bound_checkout_only": {
+      "const": true
+    },
+    "default_local_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "read_plan_and_repository",
+          "edit_plan_scoped_files",
+          "run_declared_tests",
+          "run_declared_builds",
+          "regenerate_declared_derivatives",
+          "perform_safe_plan_repairs"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "excluded_effect_kinds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/effectKind"
+      },
+      "uniqueItems": true
+    },
+    "requested_effects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/requestedEffect"
+      }
+    },
+    "created_at": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/timestamp"
+    },
+    "hash_basis": {
+      "const": "canonical_json_without_authority_content_sha256"
+    },
+    "authority_content_sha256": {
+      "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/sha256"
+    },
+    "finalized": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "effectKind": {
+      "enum": [
+        "commit",
+        "branch_or_worktree",
+        "dependency_installation",
+        "network_or_external_system",
+        "destructive_operation",
+        "publication_or_deployment"
+      ]
+    },
+    "requestedEffect": {
+      "type": "object",
+      "required": [
+        "effect_id",
+        "kind",
+        "description",
+        "required",
+        "affected_task_ids"
+      ],
+      "properties": {
+        "effect_id": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+        },
+        "kind": {
+          "$ref": "#/$defs/effectKind"
+        },
+        "description": {
+          "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/nonEmptyString"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "affected_task_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "../../agentjob-control/schemas/common.schema.json#/$defs/id"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

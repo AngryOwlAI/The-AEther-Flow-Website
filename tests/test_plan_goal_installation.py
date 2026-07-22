@@ -1,11 +1,9 @@
 from __future__ import annotations
 
 import hashlib
-import io
 import json
 import os
 import subprocess
-import tarfile
 from pathlib import Path
 
 from scripts.implementation_control.plan_goal_adapter import (
@@ -18,29 +16,6 @@ from scripts.implementation_control.plan_goal_adapter import (
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = Path("/Volumes/P-SSD/AngryOwl/skills-Sys4AI")
-SOURCE_COMMIT = "5309fabc665b8c6665a24b9edb42b4ceda82227d"
-
-
-def archive_source(destination: Path) -> None:
-    completed = subprocess.run(
-        [
-            "git",
-            "-C",
-            str(SOURCE_ROOT),
-            "archive",
-            SOURCE_COMMIT,
-            ".agents/skill_registry",
-            "scripts/skills",
-            "skills/agentjob-control",
-            "skills/continue",
-            "skills/continue-implementing-plan-task",
-            "skills/implementation-plan-goal",
-        ],
-        check=True,
-        capture_output=True,
-    )
-    with tarfile.open(fileobj=io.BytesIO(completed.stdout)) as archive:
-        archive.extractall(destination, filter="data")
 
 
 def run_installer(
@@ -55,7 +30,7 @@ def run_installer(
             "--root",
             str(source),
             "--bundle",
-            "implementation-plan-goal",
+            "implementation-plan-relay",
             "--target-project",
             str(target),
             "--lock",
@@ -71,20 +46,18 @@ def run_installer(
     return json.loads(completed.stdout)
 
 
-def test_exact_archive_install_is_deterministic_and_plugin_free(
+def test_exact_release_candidate_install_is_deterministic_and_plugin_free(
     tmp_path: Path,
 ):
-    source = tmp_path / "archive"
+    source = SOURCE_ROOT
     target = tmp_path / "target"
-    source.mkdir()
     target.mkdir()
-    archive_source(source)
     lock = source / LOCK_RELATIVE
     assert hashlib.sha256(lock.read_bytes()).hexdigest() == EXPECTED_LOCK_SHA256
 
     dry_run = run_installer(source, target, "--dry-run")
     assert dry_run["status"] == "ready"
-    assert len(dry_run["actions"]) == 4
+    assert len(dry_run["actions"]) == 6
     assert {item["action"] for item in dry_run["actions"]} == {"install"}
     assert dry_run["conflicts"] == []
     assert dry_run["bootstrap_requested"] is False
@@ -99,7 +72,7 @@ def test_exact_archive_install_is_deterministic_and_plugin_free(
     assert applied["python_install_requested"] is False
 
     unchanged = run_installer(source, target, "--dry-run")
-    assert len(unchanged["actions"]) == 4
+    assert len(unchanged["actions"]) == 6
     assert {item["action"] for item in unchanged["actions"]} == {
         "unchanged"
     }

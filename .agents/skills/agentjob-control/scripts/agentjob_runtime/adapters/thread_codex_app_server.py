@@ -115,6 +115,8 @@ class CodexAppServerThreadProvider:
                     "can_query_by_idempotency_key": (
                         "thread.query_by_idempotency_key" in operations
                     ),
+                    "can_wait_for_terminal": "thread.wait" in operations,
+                    "can_resume_thread": "thread.resume" in operations,
                     "reason_code": None
                     if available
                     else "provider.required_operation_unavailable",
@@ -136,6 +138,8 @@ class CodexAppServerThreadProvider:
                     "can_reuse_bound_checkout": False,
                     "can_create_worktree": False,
                     "can_query_by_idempotency_key": False,
+                    "can_wait_for_terminal": False,
+                    "can_resume_thread": False,
                     "reason_code": f"provider.capability_error.{type(error).__name__}",
                 }
         return dict(self._capabilities)
@@ -372,6 +376,10 @@ class CodexAppServerThreadProvider:
         }
 
     def resume_thread(self, thread_id: str, prompt: str) -> Mapping[str, Any]:
+        if self.capabilities().get("can_resume_thread") is not True:
+            raise RecordValidationError(
+                "Codex host cannot resume the coordinator discussion"
+            )
         response = self.transport.request(
             "thread.resume",
             {"thread_id": thread_id, "prompt": prompt},
@@ -380,6 +388,23 @@ class CodexAppServerThreadProvider:
         return {
             "thread_id": str(response.get("thread_id") or thread_id),
             "status": str(response.get("status") or "unknown"),
+            "request_id": _redact(response.get("request_id")),
+        }
+
+    def wait_for_terminal(self, thread_id: str) -> Mapping[str, Any]:
+        if self.capabilities().get("can_wait_for_terminal") is not True:
+            raise RecordValidationError(
+                "Codex host cannot wait for a worker discussion"
+            )
+        response = self.transport.request(
+            "thread.wait",
+            {"thread_id": thread_id},
+            timeout_seconds=self.timeout_seconds,
+        )
+        return {
+            "thread_id": str(response.get("thread_id") or thread_id),
+            "status": str(response.get("status") or "unknown"),
+            "terminal": response.get("terminal") is True,
             "request_id": _redact(response.get("request_id")),
         }
 

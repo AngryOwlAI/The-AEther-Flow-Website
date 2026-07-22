@@ -1,0 +1,159 @@
+skill_id: continue-implementation-plan-relay
+version: 0.3.0
+status: template
+release_maturity: experimental
+stability: evolving
+canonical_path: skills/continue-implementation-plan-relay
+summary: Execute and relay exactly one immutable plan generation in one discussion.
+installation:
+  entrypoint_class: internal_component
+  selection_policy: internal_only
+  direct_copy_supported: false
+  project_adaptation: package_managed
+  recommended_selectors:
+    - kind: bundle
+      id: implementation-plan-relay
+  prerequisites:
+    bootstrap: explicit_required
+    adapters:
+      - PlanRelayStore
+      - ProjectAdapter
+      - RepositoryProvider
+      - RelayThreadProvider
+    external_tools: []
+scope:
+  system_agnostic: true
+  target_system_types:
+    - governed agentic systems
+    - software repositories
+    - research and documentation systems
+domain_emphasis:
+  - one task per discussion
+  - consume-before-call recovery
+  - worker-owned successor relay
+required_role_posture:
+  - system_analyst
+  - system_engineer
+  - software_engineer
+optional_role_posture:
+  - process_integrity_auditor
+  - verification_engineer
+activation:
+  triggers:
+    - A recorded recursive relay generation names the current fresh discussion.
+  when_not_to_use:
+    - The successor record, envelope, token, predecessor, profile, effort, repository, or control identity is absent or mismatched.
+  preconditions:
+    - Current-thread equality and predecessor handoff are directly proven.
+inputs:
+  required:
+    - Run and generation identity, envelope hash, expected revision, and raw handoff token.
+    - Current discussion, effort, repository, and control evidence.
+  optional:
+    - Target-project validators and checkpoint provider.
+outputs:
+  primary:
+    - One immutable task receipt and terminal/protected result or one recorded next-task successor.
+  evidence:
+    - Claim, consume, direct result, receipt, decision, intent, and successor hashes.
+dependencies:
+  required_skills:
+    - agentjob-control
+    - continue
+  optional_skills: []
+  required_skill_versions:
+    agentjob-control: ^0.4.0
+    continue: ^0.4.0
+  python:
+    standard_library_only: true
+    requires_python: ">=3.11"
+    required_packages: []
+    optional_packages: []
+  external_tools: []
+authority:
+  may_read:
+    - One immutable plan generation and live repository/control evidence.
+  may_write:
+    - One claim, consume, result, receipt, decision, and at most one next-task successor.
+  may_not:
+    - Execute more than one task or continue invocation.
+    - Rerun consumed work, create a same-task successor, or wake a coordinator.
+  canonical_sources:
+    - skills/continue-implementation-plan-relay
+    - skills/implementation-plan-relay
+    - skills/agentjob-control
+  generated_derivatives:
+    - Target-project receipts, intents, status, and installed copies.
+  human_gates:
+    - Ambiguous provider result, missing authority/capability, integrity drift, and non-deterministic recovery.
+validation:
+  commands:
+    - command: python3 scripts/skills/validate_skill_manifest.py --manifest skills/continue-implementation-plan-relay/skill.yaml
+      validator_class: schema_validation
+      mode: required
+      dry_runnable: true
+    - command: python3 scripts/skills/run_with_compatible_python.py -- -m unittest scripts.skills.tests.test_plan_native_relay -v
+      validator_class: control_validation
+      mode: required
+      dry_runnable: true
+  validator_classes:
+    - schema_validation
+    - dependency_validation
+    - process_validation
+    - control_validation
+    - claim_validation
+  evidence_required:
+    - One task, one consume, at most one direct executor call, and one receipt.
+    - Zero coordinator wakeups and zero automatic consumed reruns.
+handoff:
+  requires_completion_receipt: true
+  evidence:
+    - Receipt plus terminal/protected disposition or one successor record.
+  next_role: continue_implementation_plan_relay_worker
+  open_issue_policy: Use one typed recovery or enter a named protected human gate.
+execution:
+  kind: relay_worker
+  invocation_policy: internal
+  maximum_agentjobs_per_invocation: 1
+  may_spawn_threads: true
+  may_create_control_records: true
+  invokes_skills:
+    - continue
+runtime_capabilities:
+  provides:
+    - sys4ai.continue-implementation-plan-relay.runtime.v1
+    - sys4ai.plan-task-receipt.v3
+  requires:
+    - sys4ai.agentjob-control.v1
+    - sys4ai.continue.v1
+    - sys4ai.plan-task-envelope.v3
+    - python>=3.11
+  optional: []
+control_protocol:
+  profile: registered
+  record_types:
+    - PlanRelayRun
+    - PlanRelayGeneration
+    - PlanTaskEnvelope
+    - PlanTaskReceipt
+    - PlanDispatchIntent
+    - PlanCompletionReport
+  immutable_after_activation: true
+  supersession_required: true
+state:
+  tracked_root_template: "{project_root}/.agents/control"
+  local_root_template: "{project_root}/.local/sys4ai/implementation-plan-relay"
+  mutable_state_must_not_live_in_skill_directory: true
+compatibility_shims:
+  - continue-implementing-plan-task
+adapters:
+  required_interfaces:
+    - PlanRelayStore
+    - ProjectAdapter
+    - RepositoryProvider
+    - RelayThreadProvider
+  optional_interfaces: []
+  manual_thread_fallback: true
+recovery:
+  supported: true
+  automatic_rerun_after_consumption: false
